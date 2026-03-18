@@ -8,5 +8,17 @@
       "전략37"
     ],
     "created_at": "2026-03-18T15:04:02.247Z"
+  },
+  {
+    "problem_id": "Problem5",
+    "content": "# Problem5. (Unknown Source) - 로그부등식\n\n## Problem\n\n자연수 $n(n \\geq 2)$에 대하여\n\n$$\\log_x x > 6\\log_n\\left|x - \\frac{11}{2}\\right|$$\n\n을 만족시키는 자연수 $x$의 개수가 4가 되도록 하는 모든 $n$의 값의 합은 [4점]\n\n## Choices\n① 12    ② 13    ③ 15    ④ 18    ⑤ 22\n\n**Answer**: ③ 15\n**Difficulty**: unknown\n**Score**: 4점\n**Type**: multiple choice\n\n---\n\n## Solution\n\n$f(x) = \\log_x x$, $g(x) = 6\\log_n\\left|x - \\frac{11}{2}\\right|$\n\n이라 하면 문제의 부등식은\n\n$$f(x) > g(x) \\cdots ①$$\n\n이고, 이때\n\n• $g(5) = g(6) < 0$이고 $g(4) = g(7)$\n• $y = f(x)$는 $f(1) = 0$이고 증가함수\n\n이므로\n\n• $x = 5$, $x = 6$은 항상 ①을 만족시킴\n• $x = 4$가 ①을 만족시키면 $x = 7$도 ①을 만족시킴\n\n을 알 수 있다.\n\n따라서\n\n①인 자연수 $x$의 개수가 $4 \\Rightarrow \\begin{cases} (i) & x = 4, 5, 6, 7 \\\\ (ii) & x = 5, 6, 7, 8 \\end{cases}$\n\n의 경우만 가능하다.\n\n**(i)의 경우:**\n\n위 그림을 참고하면\n\n$$g(3) = g(8) \\Rightarrow \\begin{cases} x = 8\\text{이 ①을 만족시키지 않으면} \\\\ x = 3\\text{도 ①을 만족시키지 않음} \\end{cases}$$\n\n을 알 수 있으므로\n\n• $f(4) > g(4) \\Rightarrow \\log_4 4 > 6\\log_n \\frac{3}{2} \\Rightarrow n > \\left(\\frac{3}{2}\\right)^3 = 3.xx$\n\n• $f(8) < g(8) \\Rightarrow \\log_8 8 \\leq 6\\log_n \\frac{5}{2} \\Rightarrow n \\leq \\left(\\frac{5}{2}\\right)^2 = 6.xx$\n\n$\\Rightarrow n = 4, 5, 6$ ($\\because$ $n$은 자연수)\n\n이다.\n\n**(ii)의 경우:**\n\n(i)의 과정을 참고하면\n\n$$\\begin{cases} • f(4) \\leq g(4) \\Rightarrow n \\leq \\left(\\frac{3}{2}\\right)^3 = 3.xx \\\\ • f(8) > g(8) \\Rightarrow n > \\left(\\frac{5}{2}\\right)^2 = 6.xx \\end{cases}$$\n\n인 $n$이 존재하지 않음\n\n을 알 수 있다.\n\n따라서 (i), (ii)에 의해\n\n(모든 $n$의 값의 합) = $4 + 5 + 6 = 15$\n\n임을 알 수 있다.",
+    "needed_neurons": [
+      "사실75",
+      "사실76",
+      "전략36",
+      "전략37",
+      "전략38"
+    ],
+    "created_at": "2026-03-18T15:09:16.494Z"
   }
 ]
