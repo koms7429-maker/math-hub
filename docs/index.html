@@ -22,8 +22,8 @@
 .prob-item .id{font-size:12px;font-weight:600}.prob-item.active .id{font-weight:700;color:var(--accent)}
 .prob-item .sub{font-size:10px;color:var(--text-dim);margin-top:1px}
 .main{flex:1;display:flex;flex-direction:column;min-width:0}
-.tabs{display:flex;border-bottom:1px solid var(--border);background:var(--panel);padding:0 20px;overflow-x:auto}
-.tab{padding:12px 14px;border:none;cursor:pointer;background:transparent;font-family:inherit;font-size:11px;color:var(--text-dim);border-bottom:2px solid transparent;transition:all .15s;white-space:nowrap}
+.tabs{display:flex;border-bottom:1px solid var(--border);background:var(--panel);padding:0 16px;overflow-x:auto}
+.tab{padding:11px 13px;border:none;cursor:pointer;background:transparent;font-family:inherit;font-size:11px;color:var(--text-dim);border-bottom:2px solid transparent;transition:all .15s;white-space:nowrap}
 .tab:hover{color:var(--text)}.tab.active{color:var(--accent);font-weight:700;border-bottom-color:var(--accent)}
 .content{flex:1;overflow-y:auto;padding:20px 24px}
 .card{background:var(--card);border-radius:8px;padding:20px;border:1px solid var(--border);margin-bottom:16px}
@@ -50,10 +50,10 @@
 .hist-card{background:var(--card);border-radius:8px;padding:16px;border:1px solid var(--border);margin-bottom:12px}
 .hist-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
 .hist-toggle{font-size:10px;color:var(--accent);cursor:pointer;background:var(--accent-bg);border:1px solid rgba(124,131,253,.2);border-radius:4px;padding:2px 8px}
-.hist-body{max-height:300px;overflow-y:auto;margin-top:8px}
+.hist-body{max-height:400px;overflow-y:auto;margin-top:8px}
 .nlib-search{width:100%;background:var(--panel);border:1px solid var(--border);border-radius:6px;padding:7px 10px;color:var(--text);font-size:11px;outline:none;font-family:inherit;margin-bottom:12px}
 .tip-wrap{position:relative;display:inline}
-.tip-wrap .tip{display:none;position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);background:#1e2235;border:1px solid var(--border-light);border-radius:6px;padding:8px 12px;font-size:11px;color:var(--text);white-space:normal;width:max-content;max-width:320px;z-index:99;line-height:1.5;box-shadow:0 4px 12px rgba(0,0,0,.5);pointer-events:none}
+.tip-wrap .tip{display:none;position:fixed;background:#1e2235;border:1px solid var(--border-light);border-radius:6px;padding:10px 14px;font-size:11px;color:var(--text);white-space:normal;width:max-content;max-width:450px;z-index:999;line-height:1.6;box-shadow:0 4px 16px rgba(0,0,0,.6);pointer-events:none}
 .tip-wrap:hover .tip{display:block}
 ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--border-light);border-radius:3px}
 </style>
@@ -73,30 +73,35 @@
   <div class="content" id="content"><div class="empty">← 문제를 선택하세요</div></div>
 </div>
 <script>
-const OWNER='koms7429-maker',REPO='math-hub',BRANCH='main';
-const SECTIONS=['문제문','DAG','Skeleton','Solution','뉴런','전체 뉴런','이력'];
-let problems=[],nMap={},nAll=[],selected=null,curSec=0,expandedHist={},nlibQ='';
+var OWNER='koms7429-maker',REPO='math-hub',BRANCH='main';
+var SECTIONS=['문제문','DAG','Skeleton','Solution','원본해설','뉴런','전체 뉴런','이력'];
+var problems=[],nMap={},nAll=[],selected=null,curSec=0,expandedHist={},nlibQ='';
 
-function decB64(b64){return new TextDecoder('utf-8').decode(Uint8Array.from(atob(b64.replace(/\s/g,'')),c=>c.charCodeAt(0)))}
-
-function rm(t){if(!t)return'';return String(t).split(/(\$[^$]+\$)/g).map(p=>{if(p.startsWith('$')&&p.endsWith('$')){try{return katex.renderToString(p.slice(1,-1),{throwOnError:false})}catch(e){return'<code>'+p.slice(1,-1)+'</code>'}}return p.replace(/</g,'&lt;').replace(/>/g,'&gt;')}).join('')}
-
+function decB64(b64){return new TextDecoder('utf-8').decode(Uint8Array.from(atob(b64.replace(/\s/g,'')),function(c){return c.charCodeAt(0)}))}
+function rm(t){if(!t)return'';return String(t).split(/(\$[^$]+\$)/g).map(function(p){if(p.startsWith('$')&&p.endsWith('$')){try{return katex.renderToString(p.slice(1,-1),{throwOnError:false})}catch(e){return'<code>'+p.slice(1,-1)+'</code>'}}return p.replace(/</g,'&lt;').replace(/>/g,'&gt;')}).join('')}
 function nc(id){if(!id)return'var(--text-dim)';if(id.startsWith('사실'))return'var(--fact)';if(id.startsWith('연산'))return'var(--op)';if(id.startsWith('전략'))return'var(--strat)';return'var(--text-dim)'}
 function bi(to){return to?to.replace(/_\d+$/,''):''}
 function nType(id){if(id.startsWith('사실'))return'fact';if(id.startsWith('연산'))return'operation';if(id.startsWith('전략'))return'strategy';return''}
+function parseNeuronLine(l){var m=l.match(/^\|\s*((?:사실|연산|전략)\d+)\s*\|\s*(.*)\s*$/);if(m){var stmt=m[2].replace(/\|\s*$/,'').trim();if(stmt)return{id:m[1],statement:stmt}}return null}
 
-function parseNeuronLine(l){
-  const m=l.match(/^\|\s*((?:사실|연산|전략)\d+)\s*\|\s*(.*)\s*$/);
-  if(m){const stmt=m[2].replace(/\|\s*$/,'').trim();if(stmt)return{id:m[1],statement:stmt};}
-  return null;
-}
+// 툴팁 마우스 추적
+document.addEventListener('mousemove',function(ev){
+  var tips=document.querySelectorAll('.tip-wrap:hover .tip');
+  tips.forEach(function(t){
+    var x=ev.clientX+12,y=ev.clientY-10;
+    if(x+460>window.innerWidth)x=ev.clientX-460;
+    if(y<10)y=ev.clientY+20;
+    if(y+200>window.innerHeight)y=ev.clientY-200;
+    t.style.left=x+'px';t.style.top=y+'px';
+  });
+});
 
 async function loadData(){
-  const api=u=>`https://api.github.com/repos/${OWNER}/${REPO}/contents/${u}?ref=${BRANCH}`;
+  var api=function(u){return'https://api.github.com/repos/'+OWNER+'/'+REPO+'/contents/'+u+'?ref='+BRANCH};
   try{
-    const[r1,r2]=await Promise.all([fetch(api('bookshelf.json')),fetch(api('neuron-list.md'))]);
-    if(r1.ok){const j=await r1.json();problems=JSON.parse(decB64(j.content))}
-    if(r2.ok){const j=await r2.json();const t=decB64(j.content);t.split('\n').forEach(l=>{const n=parseNeuronLine(l);if(n){nMap[n.id]={id:n.id,statement:n.statement};nAll.push({id:n.id,statement:n.statement,type:nType(n.id)})}})}
+    var r=await Promise.all([fetch(api('bookshelf.json')),fetch(api('neuron-list.md'))]);
+    if(r[0].ok){var j=await r[0].json();problems=JSON.parse(decB64(j.content))}
+    if(r[1].ok){var j2=await r[1].json();var t=decB64(j2.content);t.split('\n').forEach(function(l){var n=parseNeuronLine(l);if(n){nMap[n.id]={id:n.id,statement:n.statement};nAll.push({id:n.id,statement:n.statement,type:nType(n.id)})}})}
   }catch(e){console.error(e)}
   document.getElementById('sidebar-meta').textContent=problems.length+'문제 · '+nAll.length+'뉴런';
   renderList();renderTabs();
@@ -104,32 +109,33 @@ async function loadData(){
 }
 
 function renderList(){
-  const q=document.getElementById('search').value.toLowerCase();
-  const f=q?problems.filter(p=>(p.problem_id||'').toLowerCase().includes(q)||(p.answer||'').includes(q)||(p.statement||'').toLowerCase().includes(q)):problems;
-  document.getElementById('prob-list').innerHTML=f.map(p=>{
-    const a=selected&&selected.problem_id===p.problem_id;
-    const hc=(p.history||[]).length;
-    return`<div class="prob-item ${a?'active':''}" onclick="sel('${p.problem_id}')"><div class="id">${p.problem_id||'?'}</div><div class="sub">${p.metadata?.unit||''} ${p.answer?'· 답: '+p.answer:''}</div><div class="sub">edges: ${(p.skeleton||[]).length}${hc?' · v'+(hc+1):''}</div></div>`
+  var q=document.getElementById('search').value.toLowerCase();
+  var f=q?problems.filter(function(p){return(p.problem_id||'').toLowerCase().indexOf(q)>=0||(p.answer||'').indexOf(q)>=0||(p.statement||'').toLowerCase().indexOf(q)>=0}):problems;
+  document.getElementById('prob-list').innerHTML=f.map(function(p){
+    var a=selected&&selected.problem_id===p.problem_id;
+    var hc=(p.history||[]).length;
+    return'<div class="prob-item '+(a?'active':'')+'" onclick="sel(\''+p.problem_id+'\')"><div class="id">'+(p.problem_id||'?')+'</div><div class="sub">'+(p.metadata&&p.metadata.unit||'')+' '+(p.answer?'· 답: '+p.answer:'')+'</div><div class="sub">edges: '+(p.skeleton||[]).length+(hc?' · v'+(hc+1):'')+'</div></div>'
   }).join('')}
 
 function filterProblems(){renderList()}
-function sel(pid){selected=problems.find(p=>p.problem_id===pid);curSec=0;expandedHist={};renderList();renderTabs();renderContent()}
-function renderTabs(){document.getElementById('tabs').innerHTML=SECTIONS.map((s,i)=>{
-  let label=s;
-  if(i===5)label='전체 뉴런 ('+nAll.length+')';
-  if(i===6&&selected&&selected.history&&selected.history.length)label+=' ('+selected.history.length+')';
+function sel(pid){selected=problems.find(function(p){return p.problem_id===pid});curSec=0;expandedHist={};renderList();renderTabs();renderContent()}
+function renderTabs(){document.getElementById('tabs').innerHTML=SECTIONS.map(function(s,i){
+  var label=s;
+  if(i===6)label='전체 뉴런 ('+nAll.length+')';
+  if(i===7&&selected&&selected.history&&selected.history.length)label+=' ('+selected.history.length+')';
   return'<button class="tab '+(curSec===i?'active':'')+'" onclick="sw('+i+')">'+label+'</button>'
 }).join('')}
 function sw(i){curSec=i;renderTabs();renderContent()}
 
 function renderContent(){
-  const el=document.getElementById('content');
-  if(curSec===5){el.innerHTML=rNlib();return}
+  var el=document.getElementById('content');
+  if(curSec===6){el.innerHTML=rNlib();return}
   if(!selected){el.innerHTML='<div class="empty">← 문제를 선택하세요</div>';return}
-  const p=selected,edges=(p.skeleton||[]).length,sides=(p.skeleton||[]).filter(function(e){return e.main===false}).length;
-  const hc=(p.history||[]).length;
-  let h='<div style="margin-bottom:20px"><div><span style="font-size:20px;font-weight:800;color:var(--text-bright)">'+p.problem_id+'</span><span style="font-size:12px;color:var(--text-dim);margin-left:12px">'+(p.number||'')+'</span></div><div class="badges">'+(p.metadata&&p.metadata.unit?'<span class="badge badge-unit">'+p.metadata.unit+'</span>':'')+(p.metadata&&p.metadata.difficulty?'<span class="badge badge-diff">'+p.metadata.difficulty+'</span>':'')+(p.answer?'<span class="badge badge-ans">답: '+p.answer+'</span>':'')+'<span class="badge badge-edge">edges: '+edges+' (main '+(edges-sides)+' + side '+sides+')</span>'+(hc?'<span class="badge badge-ver">v'+(hc+1)+' (이전 '+hc+'건)</span>':'')+'</div></div>';
-  switch(curSec){case 0:h+=rStmt(p);break;case 1:h+=rDAG(p);break;case 2:h+=rSkel(p);break;case 3:h+=rSol(p);break;case 4:h+=rNeur(p);break;case 6:h+=rHist(p);break}
+  var p=selected,edges=(p.skeleton||[]).length,sides=0;
+  for(var i=0;i<(p.skeleton||[]).length;i++){if(p.skeleton[i].main===false)sides++}
+  var hc=(p.history||[]).length;
+  var h='<div style="margin-bottom:20px"><div><span style="font-size:20px;font-weight:800;color:var(--text-bright)">'+p.problem_id+'</span><span style="font-size:12px;color:var(--text-dim);margin-left:12px">'+(p.number||'')+'</span></div><div class="badges">'+(p.metadata&&p.metadata.unit?'<span class="badge badge-unit">'+p.metadata.unit+'</span>':'')+(p.metadata&&p.metadata.difficulty?'<span class="badge badge-diff">'+p.metadata.difficulty+'</span>':'')+(p.answer?'<span class="badge badge-ans">답: '+p.answer+'</span>':'')+'<span class="badge badge-edge">edges: '+edges+' (main '+(edges-sides)+' + side '+sides+')</span>'+(hc?'<span class="badge badge-ver">v'+(hc+1)+' (이전 '+hc+'건)</span>':'')+'</div></div>';
+  switch(curSec){case 0:h+=rStmt(p);break;case 1:h+=rDAG(p);break;case 2:h+=rSkel(p);break;case 3:h+=rSol(p);break;case 4:h+=rAnalysis(p);break;case 5:h+=rNeur(p);break;case 7:h+=rHist(p);break}
   el.innerHTML=h}
 
 function rStmt(p){
@@ -162,13 +168,11 @@ function rDAG(p){
 function makeTip(id,label){
   var b=bi(id);var n=nMap[b];var c=nc(b);
   if(n)return'<span class="tip-wrap"><span style="color:'+c+';cursor:pointer;font-weight:700">'+label+'</span><span class="tip"><b style="color:'+c+'">'+b+'</b><br>'+rm(n.statement)+'</span></span>';
-  return'<span style="color:'+c+';font-weight:700">'+label+'</span>';
-}
+  return'<span style="color:'+c+';font-weight:700">'+label+'</span>'}
 function makeFromTip(id){
   var b=bi(id);var n=nMap[b];var c=nc(b);
   if(n)return'<span class="tip-wrap"><span style="color:'+c+';cursor:pointer">'+id+'</span><span class="tip"><b style="color:'+c+'">'+b+'</b><br>'+rm(n.statement)+'</span></span>';
-  return'<span style="color:var(--text-dim)">'+id+'</span>';
-}
+  return'<span style="color:var(--text-dim)">'+id+'</span>'}
 
 function rSkel(p){
   if(!p.skeleton||!p.skeleton.length)return'<div class="empty">Skeleton 없음</div>';
@@ -177,8 +181,7 @@ function rSkel(p){
     var e=p.skeleton[i];var fs=Array.isArray(e.from)?e.from:[e.from];var b=bi(e.to);var iS=e.main===false;var c=nc(b);
     var fromParts=[];for(var j=0;j<fs.length;j++){fromParts.push(makeFromTip(fs[j]))}
     var toTip=makeTip(e.to,e.to);
-    html+='<div class="edge-row '+(iS?'side':'')+'" style="border-left:3px solid '+c+'"><div class="edge-header"><span class="edge-num">#'+(i+1)+'</span>'+fromParts.join(' <span style="color:var(--text-dim)">+</span> ')+' <span class="edge-arrow">→</span> '+toTip+(iS?' <span class="edge-side-badge">side</span>':'')+'</div>'+(e.note?'<div class="edge-note">'+rm(e.note)+'</div>':'')+'</div>';
-  }
+    html+='<div class="edge-row '+(iS?'side':'')+'" style="border-left:3px solid '+c+'"><div class="edge-header"><span class="edge-num">#'+(i+1)+'</span>'+fromParts.join(' <span style="color:var(--text-dim)">+</span> ')+' <span class="edge-arrow">→</span> '+toTip+(iS?' <span class="edge-side-badge">side</span>':'')+'</div>'+(e.note?'<div class="edge-note">'+rm(e.note)+'</div>':'')+'</div>'}
   return html}
 
 function rSol(p){
@@ -188,10 +191,20 @@ function rSol(p){
   for(var i=0;i<lines.length;i++){
     var l=lines[i];
     if(/^STEP\s+\d/.test(l))html+='<div class="sol-step">'+rm(l)+'</div>';
-    else html+='<div class="sol-line">'+rm(l)+'</div>';
-  }
-  html+='</div>';
-  return html}
+    else html+='<div class="sol-line">'+rm(l)+'</div>'}
+  html+='</div>';return html}
+
+function rAnalysis(p){
+  if(!p.analysis)return'<div class="empty">원본해설 없음</div>';
+  var lines=p.analysis.split('\n');
+  var html='<div class="card" style="line-height:2">';
+  for(var i=0;i<lines.length;i++){
+    var l=lines[i];
+    if(/^\d+\./.test(l.trim()))html+='<div style="margin-top:8px;font-size:13px">'+rm(l)+'</div>';
+    else if(l.trim().startsWith('**'))html+='<div style="margin-top:12px;font-weight:700;font-size:13px;color:var(--accent)">'+rm(l)+'</div>';
+    else if(l.trim().startsWith('-'))html+='<div style="padding-left:16px;font-size:12px;color:var(--text)">'+rm(l)+'</div>';
+    else html+='<div style="font-size:13px">'+rm(l)+'</div>'}
+  html+='</div>';return html}
 
 function rNeur(p){
   if(!p.skeleton)return'<div class="empty">Skeleton 없음</div>';
@@ -207,11 +220,9 @@ function rNeur(p){
       for(var si=0;si<p.skeleton.length;si++){if(bi(p.skeleton[si].to)===id){cnt++;usages.push({idx:si,note:p.skeleton[si].note,to:p.skeleton[si].to})}}
       h+='<div class="neuron-row" style="flex-direction:column"><div style="display:flex;gap:10px;align-items:flex-start;width:100%"><span class="neuron-id" style="color:'+g.c+'">'+id+'</span><span class="neuron-stmt">'+(n?rm(n.statement):'<i style="color:var(--text-dim)">목록에 없음</i>')+'</span>'+(cnt>1?'<span class="neuron-count">×'+cnt+'</span>':'')+'</div><div style="padding-left:62px;margin-top:4px">';
       for(var ui=0;ui<usages.length;ui++){var u=usages[ui];h+='<div style="font-size:10px;color:var(--text-dim);line-height:1.6"><span style="color:'+g.c+'">#'+(u.idx+1)+'</span> <span style="color:var(--text-dim)">'+u.to+'</span> — '+rm(u.note||'')+'</div>'}
-      h+='</div></div>';
-    }
+      h+='</div></div>'}
     h+='</div>'}
-  h+='<div style="font-size:11px;color:var(--text-dim);margin-top:8px">총 '+used.length+'종 · edges '+p.skeleton.length+'개</div>';
-  return h}
+  h+='<div style="font-size:11px;color:var(--text-dim);margin-top:8px">총 '+used.length+'종 · edges '+p.skeleton.length+'개</div>';return h}
 
 function rNlib(){
   var facts=[],ops=[],strats=[];
@@ -244,7 +255,7 @@ function rHist(p){
     if(expanded){
       h+='<div class="hist-body">';
       if(v.skeleton){h+='<div class="section-label" style="margin-top:4px">Skeleton</div>';
-        for(var ei=0;ei<v.skeleton.length;ei++){var e=v.skeleton[ei];var fs=Array.isArray(e.from)?e.from:[e.from];var b=bi(e.to);var c=nc(b);var iS=e.main===false;var n=nMap[b];
+        for(var ei=0;ei<v.skeleton.length;ei++){var e=v.skeleton[ei];var fs=Array.isArray(e.from)?e.from:[e.from];var b=bi(e.to);var c=nc(b);var iS=e.main===false;
           var fromParts=[];for(var fi=0;fi<fs.length;fi++){fromParts.push(makeFromTip(fs[fi]))}
           var toTip=makeTip(e.to,e.to);
           h+='<div class="edge-row '+(iS?'side':'')+'" style="border-left:3px solid '+c+'"><div class="edge-header"><span class="edge-num">#'+(ei+1)+'</span>'+fromParts.join(' <span style="color:var(--text-dim)">+</span> ')+' <span class="edge-arrow">→</span> '+toTip+(iS?' <span class="edge-side-badge">side</span>':'')+'</div>'+(e.note?'<div class="edge-note">'+rm(e.note)+'</div>':'')+'</div>'}}
