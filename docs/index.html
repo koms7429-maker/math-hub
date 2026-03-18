@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math Skeleton Viewer</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<style>
+:root{--bg:#0a0c10;--panel:#0d0f14;--card:#11131a;--border:#1a1d2e;--border-light:#252940;--accent:#7c83fd;--accent-bg:rgba(124,131,253,.09);--text:#d8dce8;--text-dim:#7a7f9a;--text-bright:#f0f2ff;--fact:#4fc3f7;--op:#ffd54f;--strat:#ef5350;--success:#66bb6a;--warn:#ffa726}
+*{margin:0;padding:0;box-sizing:border-box}body{background:var(--bg);color:var(--text);font-family:'Pretendard',-apple-system,sans-serif;display:flex;height:100vh;overflow:hidden}
+.sidebar{width:230px;border-right:1px solid var(--border);display:flex;flex-direction:column;flex-shrink:0}
+.sidebar-header{padding:16px 14px 12px;border-bottom:1px solid var(--border)}
+.sidebar-header .label{font-size:9px;letter-spacing:3px;color:var(--accent);text-transform:uppercase;margin-bottom:3px}
+.sidebar-header .title{font-size:16px;font-weight:800;color:var(--text-bright)}
+.sidebar-header .meta{font-size:10px;color:var(--text-dim);margin-top:4px}
+.search-box{padding:8px 10px}.search-box input{width:100%;background:var(--panel);border:1px solid var(--border);border-radius:6px;padding:7px 10px;color:var(--text);font-size:11px;outline:none;font-family:inherit}
+.prob-list{flex:1;overflow-y:auto;padding:4px 6px}
+.prob-item{padding:8px 10px;border-radius:6px;cursor:pointer;margin-bottom:2px;border-left:3px solid transparent;transition:all .15s}
+.prob-item:hover{background:var(--accent-bg)}.prob-item.active{background:var(--accent-bg);border-left-color:var(--accent)}
+.prob-item .id{font-size:12px;font-weight:600}.prob-item.active .id{font-weight:700;color:var(--accent)}
+.prob-item .sub{font-size:10px;color:var(--text-dim);margin-top:1px}
+.main{flex:1;display:flex;flex-direction:column;min-width:0}
+.tabs{display:flex;border-bottom:1px solid var(--border);background:var(--panel);padding:0 20px}
+.tab{padding:12px 18px;border:none;cursor:pointer;background:transparent;font-family:inherit;font-size:12px;color:var(--text-dim);border-bottom:2px solid transparent;transition:all .15s}
+.tab:hover{color:var(--text)}.tab.active{color:var(--accent);font-weight:700;border-bottom-color:var(--accent)}
+.content{flex:1;overflow-y:auto;padding:20px 24px}
+.card{background:var(--card);border-radius:8px;padding:20px;border:1px solid var(--border);margin-bottom:16px}
+.section-label{font-size:11px;font-weight:700;color:var(--text-dim);letter-spacing:2px;margin-bottom:8px;text-transform:uppercase}
+.clue-row{display:flex;gap:10px;padding:6px 12px;background:var(--card);border-radius:6px;border:1px solid var(--border);align-items:center;margin-bottom:4px}
+.clue-id{font-size:11px;font-weight:700;color:#8ab4f8;min-width:42px}.clue-text{font-size:12px}
+.edge-row{padding:8px 12px;border-radius:6px;background:var(--card);margin-bottom:3px}.edge-row.side{opacity:.65;background:rgba(26,29,46,.5)}
+.edge-header{display:flex;align-items:center;gap:8px;font-size:11px}
+.edge-num{color:var(--text-dim);font-weight:600;min-width:22px}.edge-from{color:var(--text-dim)}.edge-arrow{color:var(--text-dim)}.edge-to{font-weight:700}
+.edge-side-badge{font-size:9px;color:var(--warn);border:1px solid rgba(255,167,38,.3);border-radius:4px;padding:1px 5px}
+.edge-note{font-size:12px;color:var(--text);margin-top:4px;padding-left:30px;line-height:1.6}
+.edge-neuron-desc{font-size:10px;color:var(--text-dim);margin-top:3px;padding-left:30px;font-style:italic}
+.sol-step{margin-top:16px;margin-bottom:6px;font-weight:800;font-size:14px;color:var(--accent)}.sol-line{font-size:13px;line-height:2}
+.neuron-group{margin-bottom:20px}.neuron-group-label{font-size:11px;font-weight:700;letter-spacing:2px;margin-bottom:8px;text-transform:uppercase}
+.neuron-row{display:flex;gap:10px;padding:6px 12px;background:var(--card);border-radius:6px;border:1px solid var(--border);margin-bottom:3px;align-items:flex-start}
+.neuron-id{font-size:11px;font-weight:700;min-width:52px;flex-shrink:0}.neuron-stmt{font-size:12px;flex:1}
+.neuron-count{font-size:9px;color:var(--text-dim);background:var(--border);border-radius:4px;padding:1px 6px;flex-shrink:0}
+.dag-container{overflow:auto;max-height:500px;background:var(--bg);border-radius:8px;border:1px solid var(--border)}
+.dag-legend{display:flex;gap:16px;margin-top:12px;font-size:10px;color:var(--text-dim);flex-wrap:wrap}
+.badges{display:flex;gap:8px;margin-top:6px;flex-wrap:wrap}.badge{font-size:10px;padding:2px 8px;border-radius:4px}
+.badge-unit{background:var(--accent-bg);color:var(--accent)}.badge-diff{background:rgba(255,167,38,.1);color:var(--warn)}
+.badge-ans{background:rgba(102,187,106,.1);color:var(--success)}.badge-edge{background:rgba(79,195,247,.1);color:var(--fact)}
+.empty{color:var(--text-dim);font-size:13px;text-align:center;margin-top:80px}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--border-light);border-radius:3px}
+</style>
+</head>
+<body>
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="label">Skeleton</div>
+    <div class="title">Viewer</div>
+    <div class="meta" id="sidebar-meta">로딩 중...</div>
+  </div>
+  <div class="search-box"><input id="search" placeholder="검색..." oninput="filterProblems()"></div>
+  <div class="prob-list" id="prob-list"></div>
+</div>
+<div class="main">
+  <div class="tabs" id="tabs"></div>
+  <div class="content" id="content"><div class="empty">← 문제를 선택하세요</div></div>
+</div>
+<script>
+const OWNER='koms7429-maker',REPO='math-hub',BRANCH='main';
+const SECTIONS=['문제문','DAG','Skeleton','Solution','뉴런'];
+let problems=[],nMap={},selected=null,curSec=0;
+
+function rm(t){if(!t)return'';return String(t).split(/(\$[^$]+\$)/g).map(p=>{if(p.startsWith('$')&&p.endsWith('$')){try{return katex.renderToString(p.slice(1,-1),{throwOnError:false})}catch(e){return'<code>'+p.slice(1,-1)+'</code>'}}return p.replace(/</g,'&lt;').replace(/>/g,'&gt;')}).join('')}
+function nc(id){if(!id)return'var(--text-dim)';if(id.startsWith('사실'))return'var(--fact)';if(id.startsWith('연산'))return'var(--op)';if(id.startsWith('전략'))return'var(--strat)';return'var(--text-dim)'}
+function bi(to){return to?to.replace(/_\d+$/,''):''}
+
+async function loadData(){
+  const raw=u=>`https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}/${u}`;
+  try{
+    const[r1,r2]=await Promise.all([fetch(raw('bookshelf.json')),fetch(raw('neuron-list.md'))]);
+    if(r1.ok)problems=await r1.json();
+    if(r2.ok){const t=await r2.text();t.split('\n').forEach(l=>{const m=l.match(/^\|\s*((?:사실|연산|전략)\d+)\s*\|\s*(.+?)\s*\|/);if(m)nMap[m[1]]={id:m[1],statement:m[2].trim()}})}
+  }catch(e){console.error(e)}
+  document.getElementById('sidebar-meta').textContent=problems.length+'문제 · '+Object.keys(nMap).length+'뉴런';
+  renderList();renderTabs();
+  if(problems.length>0){selected=problems[0];renderList();renderTabs();renderContent()}
+}
+
+function renderList(){
+  const q=document.getElementById('search').value.toLowerCase();
+  const f=q?problems.filter(p=>(p.problem_id||'').toLowerCase().includes(q)||(p.answer||'').includes(q)||(p.statement||'').toLowerCase().includes(q)):problems;
+  document.getElementById('prob-list').innerHTML=f.map(p=>{
+    const a=selected&&selected.problem_id===p.problem_id;
+    return`<div class="prob-item ${a?'active':''}" onclick="sel('${p.problem_id}')"><div class="id">${p.problem_id||'?'}</div><div class="sub">${p.metadata?.unit||''} ${p.answer?'· 답: '+p.answer:''}</div><div class="sub">edges: ${(p.skeleton||[]).length}</div></div>`
+  }).join('')}
+
+function filterProblems(){renderList()}
+function sel(pid){selected=problems.find(p=>p.problem_id===pid);curSec=0;renderList();renderTabs();renderContent()}
+function renderTabs(){document.getElementById('tabs').innerHTML=SECTIONS.map((s,i)=>`<button class="tab ${curSec===i?'active':''}" onclick="sw(${i})">${s}</button>`).join('')}
+function sw(i){curSec=i;renderTabs();renderContent()}
+
+function renderContent(){
+  const el=document.getElementById('content');
+  if(!selected){el.innerHTML='<div class="empty">← 문제를 선택하세요</div>';return}
+  const p=selected,edges=(p.skeleton||[]).length,sides=(p.skeleton||[]).filter(e=>e.main===false).length;
+  let h=`<div style="margin-bottom:20px"><div><span style="font-size:20px;font-weight:800;color:var(--text-bright)">${p.problem_id}</span><span style="font-size:12px;color:var(--text-dim);margin-left:12px">${p.number||''}</span></div><div class="badges">${p.metadata?.unit?`<span class="badge badge-unit">${p.metadata.unit}</span>`:''}${p.metadata?.difficulty?`<span class="badge badge-diff">${p.metadata.difficulty}</span>`:''}${p.answer?`<span class="badge badge-ans">답: ${p.answer}</span>`:''}<span class="badge badge-edge">edges: ${edges} (main ${edges-sides} + side ${sides})</span></div></div>`;
+  switch(curSec){case 0:h+=rStmt(p);break;case 1:h+=rDAG(p);break;case 2:h+=rSkel(p);break;case 3:h+=rSol(p);break;case 4:h+=rNeur(p);break}
+  el.innerHTML=h}
+
+function rStmt(p){
+  let h=`<div class="card" style="line-height:1.8;font-size:13px">${rm(p.statement||'문제문 없음')}</div>`;
+  if(p.clues&&p.clues.length)h+=`<div class="section-label">단서</div>`+p.clues.map(c=>`<div class="clue-row"><span class="clue-id">${c.id}</span><span class="clue-text">${rm(c.text)}</span></div>`).join('');
+  if(p.constraints&&p.constraints.length)h+=`<div class="section-label" style="margin-top:16px">제약조건</div><div style="display:flex;flex-wrap:wrap;gap:6px">${p.constraints.map(c=>`<span style="font-size:11px;padding:3px 10px;background:rgba(239,83,80,.07);border:1px solid rgba(239,83,80,.2);border-radius:4px">${rm(c)}</span>`).join('')}</div>`;
+  return h}
+
+function rDAG(p){
+  if(!p.skeleton||!p.skeleton.length)return'<div class="empty">Skeleton 없음</div>';
+  const nodes=new Set,edges=[],cIds=new Set((p.clues||[]).map(c=>c.id));
+  (p.clues||[]).forEach(c=>nodes.add(c.id));
+  p.skeleton.forEach(e=>{const fs=Array.isArray(e.from)?e.from:[e.from];fs.forEach(f=>{if(f)nodes.add(f)});if(e.to)nodes.add(e.to);fs.forEach(f=>{if(f&&e.to)edges.push({from:f,to:e.to,main:e.main!==false})})});
+  const adj={};edges.forEach(e=>{if(!adj[e.from])adj[e.from]=[];adj[e.from].push(e.to)});
+  const layers={},q=[];cIds.forEach(c=>{layers[c]=0;q.push(c)});
+  while(q.length){const n=q.shift();(adj[n]||[]).forEach(x=>{const nl=(layers[n]||0)+1;if(layers[x]===undefined||layers[x]<nl){layers[x]=nl;q.push(x)}})}
+  const mL=Math.max(0,...Object.values(layers)),lN={};
+  [...nodes].forEach(n=>{const l=layers[n]||0;if(!lN[l])lN[l]=[];lN[l].push(n)});
+  const nW=110,nH=30,gX=30,gY=50,pos={};
+  for(let l=0;l<=mL;l++){const ns=lN[l]||[];const tw=ns.length*nW+(ns.length-1)*gX;const sx=-tw/2;ns.forEach((n,i)=>{pos[n]={x:sx+i*(nW+gX)+nW/2,y:l*(nH+gY)+nH/2+24}})}
+  const mNL=Math.max(1,...Object.values(lN).map(l=>l.length)),svgW=Math.max(500,mNL*(nW+gX)+120),svgH=(mL+1)*(nH+gY)+60,ox=svgW/2;
+  let s=`<div class="dag-container"><svg width="${svgW}" height="${svgH}" style="display:block"><defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="var(--text-dim)" stroke-width="1.5"/></marker><marker id="ahs" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="var(--border-light)" stroke-width="1.5"/></marker></defs>`;
+  edges.forEach(e=>{const p1=pos[e.from],p2=pos[e.to];if(!p1||!p2)return;s+=`<line x1="${p1.x+ox}" y1="${p1.y+nH/2}" x2="${p2.x+ox}" y2="${p2.y-nH/2}" stroke="${e.main?'var(--text-dim)':'var(--border-light)'}" stroke-width="${e.main?1.2:.8}" ${e.main?'':'stroke-dasharray="4 3"'} marker-end="${e.main?'url(#ah)':'url(#ahs)'}" opacity=".6"/>`});
+  [...nodes].forEach(n=>{const p=pos[n];if(!p)return;const iC=cIds.has(n),iE=n==='END';const bg=iC?'#1a2340':iE?'#1a3020':'#151720';const br=iC?'#3a5090':iE?'var(--success)':nc(bi(n));const tc=iC?'#8ab4f8':iE?'var(--success)':nc(bi(n));const lb=n.length>13?n.slice(0,12)+'…':n;s+=`<rect x="${p.x+ox-nW/2}" y="${p.y-nH/2}" width="${nW}" height="${nH}" rx="${iE?14:6}" fill="${bg}" stroke="${br}" stroke-width=".8"/><text x="${p.x+ox}" y="${p.y+1}" text-anchor="middle" dominant-baseline="central" fill="${tc}" font-size="10" font-family="'Pretendard',sans-serif" font-weight="600">${lb}</text>`});
+  s+='</svg></div>';
+  s+=`<div class="dag-legend"><span>● <span style="color:#8ab4f8">단서</span></span><span>● <span style="color:var(--fact)">사실</span></span><span>● <span style="color:var(--op)">연산</span></span><span>● <span style="color:var(--strat)">전략</span></span><span>● <span style="color:var(--success)">END</span></span><span style="margin-left:12px">── main &nbsp; ┄┄ side</span></div>`;
+  return s}
+
+function rSkel(p){
+  if(!p.skeleton||!p.skeleton.length)return'<div class="empty">Skeleton 없음</div>';
+  return p.skeleton.map((e,i)=>{const fs=Array.isArray(e.from)?e.from:[e.from];const b=bi(e.to);const n=nMap[b];const iS=e.main===false;const c=nc(b);
+    return`<div class="edge-row ${iS?'side':''}" style="border-left:3px solid ${c}"><div class="edge-header"><span class="edge-num">#${i+1}</span><span class="edge-from">${fs.join(' + ')}</span><span class="edge-arrow">→</span><span class="edge-to" style="color:${c}">${e.to}</span>${iS?'<span class="edge-side-badge">side</span>':''}</div>${e.note?`<div class="edge-note">${rm(e.note)}</div>`:''}${n?`<div class="edge-neuron-desc">${rm(n.statement)}</div>`:''}</div>`}).join('')}
+
+function rSol(p){
+  if(!p.solution)return'<div class="empty">Solution 없음</div>';
+  return`<div class="card">${p.solution.split('\n').map(l=>/^STEP\s+\d/.test(l)?`<div class="sol-step">${rm(l)}</div>`:`<div class="sol-line">${rm(l)}</div>`).join('')}</div>`}
+
+function rNeur(p){
+  if(!p.skeleton)return'<div class="empty">Skeleton 없음</div>';
+  const used=[...new Set(p.skeleton.map(e=>bi(e.to)).filter(id=>id&&id!=='END'&&!id.startsWith('단서')))];
+  const gs=[{l:'사실 (FACT)',items:used.filter(n=>n.startsWith('사실')).sort(),c:'var(--fact)'},{l:'연산 (OPERATION)',items:used.filter(n=>n.startsWith('연산')).sort(),c:'var(--op)'},{l:'전략 (STRATEGY)',items:used.filter(n=>n.startsWith('전략')).sort(),c:'var(--strat)'}];
+  let h='';gs.forEach(g=>{if(!g.items.length)return;h+=`<div class="neuron-group"><div class="neuron-group-label" style="color:${g.c}">${g.l} (${g.items.length})</div>`;g.items.forEach(id=>{const n=nMap[id];const cnt=p.skeleton.filter(e=>bi(e.to)===id).length;h+=`<div class="neuron-row"><span class="neuron-id" style="color:${g.c}">${id}</span><span class="neuron-stmt">${n?rm(n.statement):'<i style="color:var(--text-dim)">목록에 없음</i>'}</span>${cnt>1?`<span class="neuron-count">×${cnt}</span>`:''}</div>`});h+='</div>'});
+  h+=`<div style="font-size:11px;color:var(--text-dim);margin-top:8px">총 ${used.length}종 · edges ${p.skeleton.length}개</div>`;return h}
+
+loadData();
+</script>
+</body>
+</html>
