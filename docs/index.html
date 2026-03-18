@@ -81,10 +81,11 @@ function bi(to){return to?to.replace(/_\d+$/,''):''}
 
 async function loadData(){
   const api=u=>`https://api.github.com/repos/${OWNER}/${REPO}/contents/${u}?ref=${BRANCH}`;
+  function decB64(b64){return new TextDecoder('utf-8').decode(Uint8Array.from(atob(b64),c=>c.charCodeAt(0)))}
   try{
     const[r1,r2]=await Promise.all([fetch(api('bookshelf.json')),fetch(api('neuron-list.md'))]);
-    if(r1.ok){const j=await r1.json();problems=JSON.parse(atob(j.content))}
-    if(r2.ok){const j=await r2.json();const t=atob(j.content);t.split('\n').forEach(l=>{const m=l.match(/^\|\s*((?:사실|연산|전략)\d+)\s*\|\s*(.+?)\s*\|/);if(m)nMap[m[1]]={id:m[1],statement:m[2].trim()}})}
+    if(r1.ok){const j=await r1.json();problems=JSON.parse(decB64(j.content))}
+    if(r2.ok){const j=await r2.json();const t=decB64(j.content);t.split('\n').forEach(l=>{const m=l.match(/^\|\s*((?:사실|연산|전략)\d+)\s*\|\s*(.+?)\s*\|/);if(m)nMap[m[1]]={id:m[1],statement:m[2].trim()}})}
   }catch(e){console.error(e)}
   document.getElementById('sidebar-meta').textContent=problems.length+'문제 · '+Object.keys(nMap).length+'뉴런';
   renderList();renderTabs();
