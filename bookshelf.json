@@ -3147,5 +3147,249 @@
     "statement": "다음 조건을 만족시키는 2 이상의 모든 자연수 $n$의 값의 합은? [4점]\n\n$x$에 대한 방정식\n$$(x^n - 2^{25})(x^{2n} - 2^{20}) = 0$$\n의 서로 다른 모든 실근의 곱은 $-100$보다 큰 정수이다.",
     "created_at": "2026-03-18T14:39:18.886Z",
     "history": []
+  },
+  {
+    "problem_id": "Problem7",
+    "answer": "14",
+    "clues": [
+      {
+        "id": "단서A",
+        "text": "곡선 $y=4-a^{-x}$이 $x$축, $y$축과 만나는 점을 각각 A, B라 한다"
+      },
+      {
+        "id": "단서B",
+        "text": "O는 원점이고 삼각형 OAB는 직각삼각형이다"
+      },
+      {
+        "id": "단서C",
+        "text": "삼각형 OAB의 외접원이 곡선 $y=a^x-1$과 O가 아닌 점 C에서 만나고 $\\overline{CO}=\\overline{CA}$이며 반지름이 2이다"
+      },
+      {
+        "id": "단서D",
+        "text": "점 C는 곡선 $y=a^x-1$ 위의 점이다"
+      }
+    ],
+    "skeleton": [
+      {
+        "from": [
+          "단서A"
+        ],
+        "to": "연산2",
+        "note": "곡선 $y=4-a^{-x}$과 $x$축의 교점 A에서 $4-a^{-x}=0$을 풀면 $a^{-x}=4$, $x=-\\log_a 4$이다"
+      },
+      {
+        "from": [
+          "연산2"
+        ],
+        "to": "전략25",
+        "note": "$A(-\\log_a 4, 0)$이다"
+      },
+      {
+        "from": [
+          "단서A"
+        ],
+        "to": "사실18",
+        "note": "곡선 $y=4-a^{-x}$과 $y$축의 교점 B에서 $x=0$을 대입하면 $y=4-a^0=4-1=3$이다"
+      },
+      {
+        "from": [
+          "사실18"
+        ],
+        "to": "전략25_1",
+        "note": "$B(0, 3)$이다"
+      },
+      {
+        "from": [
+          "단서B"
+        ],
+        "to": "사실11",
+        "note": "$\\angle AOB=90^\\circ$일 때 직각삼각형 OAB의 외접원의 지름은 빗변 AB이다"
+      },
+      {
+        "from": [
+          "사실11"
+        ],
+        "to": "사실70",
+        "note": "외접원의 중심 M은 빗변 AB의 중점이다"
+      },
+      {
+        "from": [
+          "전략25",
+          "전략25_1"
+        ],
+        "to": "연산12",
+        "note": "A와 B의 중점 M의 좌표는 $\\left(-\\frac{\\log_a 4}{2}, \\frac{3}{2}\\right)$이다"
+      },
+      {
+        "from": [
+          "연산12"
+        ],
+        "to": "연산2_1",
+        "note": "$-\\frac{\\log_a 4}{2} = -\\frac{2\\log_a 2}{2} = -\\log_a 2$이다"
+      },
+      {
+        "from": [
+          "연산2_1"
+        ],
+        "to": "전략25_2",
+        "note": "$M\\left(-\\log_a 2, \\frac{3}{2}\\right)$이다"
+      },
+      {
+        "from": [
+          "단서C"
+        ],
+        "to": "사실13",
+        "note": "$\\overline{CO}=\\overline{CA}$일 때 점 C는 선분 OA의 수직이등분선 위에 있다"
+      },
+      {
+        "from": [
+          "사실13",
+          "전략25"
+        ],
+        "to": "전략21",
+        "note": "선분 OA는 $x$축 위에 있다"
+      },
+      {
+        "from": [
+          "전략21"
+        ],
+        "to": "연산30",
+        "note": "$x$축 위 선분 OA의 수직이등분선은 중점을 지나는 수직선이다"
+      },
+      {
+        "from": [
+          "연산30",
+          "전략25_2"
+        ],
+        "to": "전략25_3",
+        "note": "수직이등분선은 $x=-\\log_a 2$이다"
+      },
+      {
+        "from": [
+          "전략25_3",
+          "단서D"
+        ],
+        "to": "연산2_2",
+        "note": "C는 $x=-\\log_a 2$에서 곡선 $y=a^x-1$ 위의 점이다"
+      },
+      {
+        "from": [
+          "연산2_2"
+        ],
+        "to": "사실18_1",
+        "note": "$x=-\\log_a 2$일 때 $y=a^{-\\log_a 2}-1$이다"
+      },
+      {
+        "from": [
+          "사실18_1"
+        ],
+        "to": "연산2_3",
+        "note": "$a^{-\\log_a 2}=\\frac{1}{a^{\\log_a 2}}=\\frac{1}{2}$이다"
+      },
+      {
+        "from": [
+          "연산2_3"
+        ],
+        "to": "전략25_4",
+        "note": "$y=\\frac{1}{2}-1=-\\frac{1}{2}$이다"
+      },
+      {
+        "from": [
+          "전략25_3",
+          "전략25_4"
+        ],
+        "to": "전략25_5",
+        "note": "$C\\left(-\\log_a 2, -\\frac{1}{2}\\right)$이다"
+      },
+      {
+        "from": [
+          "단서C"
+        ],
+        "to": "전략21_1",
+        "note": "외접원의 반지름은 $\\overline{MC}=2$이다"
+      },
+      {
+        "from": [
+          "전략21_1"
+        ],
+        "to": "전략25_6",
+        "note": "지름 $\\overline{AB}=2\\overline{MC}=4$이다"
+      },
+      {
+        "from": [
+          "전략25_6",
+          "전략25_1"
+        ],
+        "to": "연산6",
+        "note": "직각삼각형 OAB에서 $\\overline{OB}=3$이고 $\\overline{AB}=4$일 때 피타고라스 정리를 적용한다"
+      },
+      {
+        "from": [
+          "연산6"
+        ],
+        "to": "전략25_7",
+        "note": "$\\overline{OA}^2+9=16$에서 $\\overline{OA}=\\sqrt{7}$이다"
+      },
+      {
+        "from": [
+          "전략25_7",
+          "전략25"
+        ],
+        "to": "연산2_4",
+        "note": "$\\overline{OA}=\\sqrt{7}$이고 A의 $x$좌표가 $-\\log_a 4$일 때 $\\log_a 4=\\sqrt{7}$이다"
+      },
+      {
+        "from": [
+          "연산2_4"
+        ],
+        "to": "연산17",
+        "note": "$\\log_a 4=2\\log_a 2$이다"
+      },
+      {
+        "from": [
+          "연산17"
+        ],
+        "to": "전략25_8",
+        "note": "$\\log_a 2=\\frac{\\sqrt{7}}{2}$이다"
+      },
+      {
+        "from": [
+          "전략25_8",
+          "전략25_4"
+        ],
+        "to": "전략25_9",
+        "note": "$C\\left(-\\frac{\\sqrt{7}}{2}, -\\frac{1}{2}\\right)$이다"
+      },
+      {
+        "from": [
+          "전략25_9",
+          "전략25_1"
+        ],
+        "to": "연산11",
+        "note": "B$(0,3)$과 C$\\left(-\\frac{\\sqrt{7}}{2}, -\\frac{1}{2}\\right)$ 사이의 거리 제곱을 계산한다"
+      },
+      {
+        "from": [
+          "연산11"
+        ],
+        "to": "END",
+        "note": "$\\overline{BC}^2=\\left(\\frac{\\sqrt{7}}{2}\\right)^2+\\left(\\frac{7}{2}\\right)^2=\\frac{7}{4}+\\frac{49}{4}=14$이다"
+      }
+    ],
+    "solution": "STEP 1. 곡선 $y=4-a^{-x}$과 $x$축의 교점 A에서 $4-a^{-x}=0$을 풀면 $a^{-x}=4$, $x=-\\log_a 4$이다.\n\nSTEP 2. $A(-\\log_a 4, 0)$이다.\n\nSTEP 3. 곡선 $y=4-a^{-x}$과 $y$축의 교점 B에서 $x=0$을 대입하면 $y=4-a^0=4-1=3$이다.\n\nSTEP 4. $B(0, 3)$이다.\n\nSTEP 5. $\\angle AOB=90^\\circ$일 때 직각삼각형 OAB의 외접원의 지름은 빗변 AB이다.\n\nSTEP 6. 외접원의 중심 M은 빗변 AB의 중점이다.\n\nSTEP 7. A와 B의 중점 M의 좌표는 $\\left(-\\frac{\\log_a 4}{2}, \\frac{3}{2}\\right)$이다.\n\nSTEP 8. $-\\frac{\\log_a 4}{2} = -\\frac{2\\log_a 2}{2} = -\\log_a 2$이다.\n\nSTEP 9. $M\\left(-\\log_a 2, \\frac{3}{2}\\right)$이다.\n\nSTEP 10. $\\overline{CO}=\\overline{CA}$일 때 점 C는 선분 OA의 수직이등분선 위에 있다.\n\nSTEP 11. 선분 OA는 $x$축 위에 있다.\n\nSTEP 12. $x$축 위 선분 OA의 수직이등분선은 중점을 지나는 수직선이다.\n\nSTEP 13. 수직이등분선은 $x=-\\log_a 2$이다.\n\nSTEP 14. C는 $x=-\\log_a 2$에서 곡선 $y=a^x-1$ 위의 점이다.\n\nSTEP 15. $x=-\\log_a 2$일 때 $y=a^{-\\log_a 2}-1$이다.\n\nSTEP 16. $a^{-\\log_a 2}=\\frac{1}{a^{\\log_a 2}}=\\frac{1}{2}$이다.\n\nSTEP 17. $y=\\frac{1}{2}-1=-\\frac{1}{2}$이다.\n\nSTEP 18. $C\\left(-\\log_a 2, -\\frac{1}{2}\\right)$이다.\n\nSTEP 19. 외접원의 반지름은 $\\overline{MC}=2$이다.\n\nSTEP 20. 지름 $\\overline{AB}=2\\overline{MC}=4$이다.\n\nSTEP 21. 직각삼각형 OAB에서 $\\overline{OB}=3$이고 $\\overline{AB}=4$일 때 피타고라스 정리를 적용한다.\n\nSTEP 22. $\\overline{OA}^2+9=16$에서 $\\overline{OA}=\\sqrt{7}$이다.\n\nSTEP 23. $\\overline{OA}=\\sqrt{7}$이고 A의 $x$좌표가 $-\\log_a 4$일 때 $\\log_a 4=\\sqrt{7}$이다.\n\nSTEP 24. $\\log_a 4=2\\log_a 2$이다.\n\nSTEP 25. $\\log_a 2=\\frac{\\sqrt{7}}{2}$이다.\n\nSTEP 26. $C\\left(-\\frac{\\sqrt{7}}{2}, -\\frac{1}{2}\\right)$이다.\n\nSTEP 27. B$(0,3)$과 C$\\left(-\\frac{\\sqrt{7}}{2}, -\\frac{1}{2}\\right)$ 사이의 거리 제곱을 계산한다.\n\nSTEP 28. $\\overline{BC}^2=\\left(\\frac{\\sqrt{7}}{2}\\right)^2+\\left(\\frac{7}{2}\\right)^2=\\frac{7}{4}+\\frac{49}{4}=14$이다.",
+    "analysis": "1. 점 A는 곡선 y=4-a^(-x)과 x축의 교점이므로 0=4-a^(-x)에서 a^(-x)=4, x=-log_a 4이다. 따라서 A(-log_a 4, 0)이다.\n2. 점 B는 y축 교점이므로 x=0을 대입하면 y=4-a^0=4-1=3이다. 따라서 B(0, 3)이다.\n3. 삼각형 OAB에서 ∠AOB=90°이므로 탈레스 정리의 역에 의해 외접원의 지름은 빗변 AB이다.\n4. 외접원의 중심 M은 빗변 AB의 중점이므로 M((-log_a 4+0)/2, (0+3)/2) = M(-log_a 2, 3/2)이다.\n5. CO=CA이므로 점 C는 선분 OA의 수직이등분선 위에 있다.\n6. OA는 x축 위의 선분이므로 수직이등분선은 x=-log_a 2인 수직선이다.\n7. C는 이 수직선과 곡선 y=a^x-1의 교점이므로 x=-log_a 2를 대입하면 y=a^(-log_a 2)-1=1/2-1=-1/2이다. 따라서 C(-log_a 2, -1/2)이다.\n8. MC=2 (외접원 반지름)이고 AB=2·MC=4이다 (지름=2×반지름).\n9. 피타고라스 정리에서 OA²+OB²=AB²이므로 OA²+9=16, OA²=7, OA=√7이다.\n10. OA=√7이고 A의 x좌표가 -log_a 4이므로 log_a 4=√7이다.\n11. log_a 4=√7이면 log_a 2=√7/2이므로 C(-√7/2, -1/2)이다.\n12. BC²=(√7/2-0)²+(-1/2-3)²=7/4+49/4=56/4=14이다.",
+    "new_neurons": [],
+    "metadata": {
+      "unit": "Exponential Functions, Logarithms, Geometry",
+      "difficulty": "unknown",
+      "score": "4",
+      "type": "short answer",
+      "answer": "14"
+    },
+    "edge_count": 28,
+    "side_count": 0,
+    "statement": "$a>1$일 수 $a$에 대하여 곡선 $y=4-a^{-x}$이 $x$축, $y$축과 만나는 점을 각각 A, B라 하자. 삼각형 OAB의 외접원이 곡선 $y=a^x-1$과 O가 아닌 점 C에서 만나고 $\\overline{\\mathrm{CO}}=\\overline{\\mathrm{CA}}$일 때, $\\overline{\\mathrm{BC}}^2$의 값을 구하시오. (단, O는 원점이다.)",
+    "created_at": "2026-03-18T15:11:17.382Z",
+    "history": []
   }
 ]
