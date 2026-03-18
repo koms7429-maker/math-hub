@@ -150,24 +150,196 @@ function rNlib(){var q=nlQ.toLowerCase();var fl=function(list){return q?list.fil
 function toggleHist(i){exH[i]=!exH[i];rCon()}
 function rHi(p){if(!p.history||!p.history.length)return'<div class="empty">no history</div>';var h='';[...p.history].reverse().forEach(function(v,ri){var oi=p.history.length-1-ri;h+='<div class="hist-card"><div style="display:flex;justify-content:space-between;align-items:center"><span style="font-weight:700;color:var(--text-dim)">v'+(oi+1)+' (edges:'+(v.skeleton||[]).length+')</span><span class="hist-toggle" onclick="toggleHist('+oi+')">'+(exH[oi]?'collapse':'expand')+'</span></div>'+(exH[oi]?'<div style="font-size:11px;color:var(--text-dim);margin-top:8px">'+(v.created_at||'')+'</div>':'')+'</div>'});return h}
 
-// ── Manage ──
-function rMg(p){var t=tg(p);var h='<div class="section-label">Info</div><div class="card">';h+='<div class="mg-row"><span class="mg-label">ID</span><input class="mg-input" id="mg-pid" value="'+p.problem_id+'"></div>';h+='<div class="mg-row"><span class="mg-label">Answer</span><input class="mg-input" id="mg-ans" value="'+(p.answer||'')+'"></div>';h+='<div class="mg-row"><span class="mg-label">Source</span><input class="mg-input" id="mg-src" value="'+(t.source||'')+'"></div>';h+='<div class="mg-row"><span class="mg-label">Theme</span><input class="mg-input" id="mg-theme" value="'+(t.theme||'')+'"></div>';h+='<div class="mg-row"><span class="mg-label">Difficulty</span><input class="mg-input" id="mg-diff" value="'+(t.difficulty||'')+'"></div></div>';
-  h+='<div class="section-label" style="margin-top:16px">Custom Tags</div><div class="card"><div id="mg-tags" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px">';(t.custom||[]).forEach(function(c,i){h+='<span class="mg-tag">'+c+' <span class="mg-tag-x" onclick="rmTag('+i+')">x</span></span>'});h+='</div><div style="display:flex;gap:6px"><input class="mg-input" id="mg-newtag" placeholder="new tag..."><button class="mg-btn mg-btn-s" onclick="addTag()">Add</button></div></div>';
-  h+='<div style="display:flex;gap:10px;margin-top:20px"><button class="mg-btn mg-btn-p" id="mg-save" onclick="saveMg()">Save</button><button class="mg-btn mg-btn-d" onclick="delProb()">Delete</button></div><div id="mg-status"></div>';return h}
+// ── Manage Tab ──
+function rMg(p){
+  var t=tg(p);
+  var h='<div class="section-label">Info</div><div class="card">';
+  h+='<div class="mg-row"><span class="mg-label">ID</span><input class="mg-input" id="mg-pid" value="'+p.problem_id+'"></div>';
+  h+='<div class="mg-row"><span class="mg-label">Answer</span><input class="mg-input" id="mg-ans" value="'+(p.answer||'')+'"></div>';
+  h+='<div class="mg-row"><span class="mg-label">Source</span><input class="mg-input" id="mg-src" value="'+(t.source||'')+'"></div>';
+  h+='<div class="mg-row"><span class="mg-label">Theme</span><input class="mg-input" id="mg-theme" value="'+(t.theme||'')+'"></div>';
+  h+='<div class="mg-row"><span class="mg-label">Difficulty</span><input class="mg-input" id="mg-diff" value="'+(t.difficulty||'')+'"></div></div>';
 
-function addTag(){var v=document.getElementById('mg-newtag').value.trim();if(!v||!sel)return;if(!sel.tags)sel.tags=tg(sel);if(!sel.tags.custom)sel.tags.custom=[];if(sel.tags.custom.indexOf(v)<0)sel.tags.custom.push(v);rCon()}
-function rmTag(i){if(!sel||!sel.tags||!sel.tags.custom)return;sel.tags.custom.splice(i,1);rCon()}
+  h+='<div class="section-label" style="margin-top:16px">Custom Tags</div><div class="card"><div id="mg-tags" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px">';
+  (t.custom||[]).forEach(function(c,i){h+='<span class="mg-tag">'+c+' <span class="mg-tag-x" onclick="rmTag('+i+')">x</span></span>'});
+  h+='</div><div style="display:flex;gap:6px"><input class="mg-input" id="mg-newtag" placeholder="new tag..."><button class="mg-btn mg-btn-s" onclick="addTag()">Add</button></div></div>';
 
-async function saveMg(){if(!ghTk){document.getElementById('mg-status').innerHTML='<div class="reg-status reg-err">Set token in register tab</div>';return}
-  document.getElementById('mg-save').disabled=true;sel.problem_id=document.getElementById('mg-pid').value.trim()||sel.problem_id;sel.answer=document.getElementById('mg-ans').value.trim();
-  if(!sel.tags)sel.tags={};sel.tags.source=document.getElementById('mg-src').value.trim();sel.tags.theme=document.getElementById('mg-theme').value.trim();sel.tags.difficulty=document.getElementById('mg-diff').value.trim();
-  if(!sel.metadata)sel.metadata={};sel.metadata.source=sel.tags.source;sel.metadata.unit=sel.tags.theme;sel.metadata.difficulty=sel.tags.difficulty;
-  try{await saveBS('update: '+sel.problem_id);document.getElementById('mg-status').innerHTML='<div class="reg-status reg-ok">Saved!</div>';rList();rTabs()}catch(e){document.getElementById('mg-status').innerHTML='<div class="reg-status reg-err">'+e.message+'</div>'}document.getElementById('mg-save').disabled=false}
+  h+='<div class="section-label" style="margin-top:16px">Statement</div><div class="card">';
+  h+='<textarea class="reg-input" id="mg-stmt" style="min-height:100px">'+(p.statement||'').replace(/</g,'&lt;')+'</textarea></div>';
 
-async function delProb(){if(!sel||!ghTk||!confirm('Delete '+sel.problem_id+'?'))return;var idx=probs.indexOf(sel);if(idx>=0)probs.splice(idx,1);try{await saveBS('delete: '+sel.problem_id);sel=probs.length?probs[0]:null;rList();rTabs();rCon()}catch(e){alert(e.message)}}
+  h+='<div class="section-label" style="margin-top:16px">Clues <button class="mg-btn mg-btn-s" onclick="addClue()" style="padding:2px 8px;margin-left:8px;font-size:9px">+ add</button></div><div class="card" id="mg-clues">';
+  var clues=p.clues||[];
+  for(var i=0;i<clues.length;i++){
+    h+='<div class="mg-row" style="margin-bottom:4px">';
+    h+='<input class="mg-input" style="max-width:60px" id="mg-cl-id-'+i+'" value="'+clues[i].id+'">';
+    h+='<input class="mg-input" id="mg-cl-tx-'+i+'" value="'+(clues[i].text||'').replace(/"/g,'&quot;')+'">';
+    h+='<button class="mg-btn mg-btn-d" style="padding:2px 6px;font-size:9px" onclick="rmClue('+i+')">x</button>';
+    h+='</div>';
+  }
+  h+='</div>';
 
-async function saveBS(msg){var api='https://api.github.com/repos/'+OW+'/'+RP+'/contents/bookshelf.json?ref='+BR;var res=await fetch(api,{headers:{'Authorization':'token '+ghTk}});if(!res.ok)throw new Error('read:'+res.status);var g=await res.json();bsSha=g.sha;var nc=btoa(unescape(encodeURIComponent(JSON.stringify(probs,null,2))));var pr=await fetch(api,{method:'PUT',headers:{'Authorization':'token '+ghTk,'Content-Type':'application/json'},body:JSON.stringify({message:msg,content:nc,sha:bsSha,branch:BR})});if(!pr.ok)throw new Error('save:'+pr.status);bsSha=(await pr.json()).content.sha}
+  h+='<div class="section-label" style="margin-top:16px">Skeleton <button class="mg-btn mg-btn-s" onclick="fmtSkel()" style="padding:2px 8px;margin-left:8px;font-size:9px">format</button></div><div class="card">';
+  h+='<textarea class="reg-input" id="mg-skel" style="min-height:180px;font-family:monospace;font-size:10px">'+JSON.stringify(p.skeleton||[],null,2).replace(/</g,'&lt;')+'</textarea></div>';
 
+  h+='<div class="section-label" style="margin-top:16px">Solution</div><div class="card">';
+  h+='<textarea class="reg-input" id="mg-sol" style="min-height:140px">'+(p.solution||'').replace(/</g,'&lt;')+'</textarea></div>';
+
+  h+='<div class="section-label" style="margin-top:16px">Analysis</div><div class="card">';
+  h+='<textarea class="reg-input" id="mg-ana" style="min-height:140px">'+(p.analysis||'').replace(/</g,'&lt;')+'</textarea></div>';
+
+  h+='<div style="display:flex;gap:10px;margin-top:16px;position:sticky;bottom:0;background:var(--bg);padding:10px 0;border-top:1px solid var(--border)">';
+  h+='<button class="mg-btn mg-btn-p" id="mg-save" onclick="saveMg()">Save</button>';
+  h+='<button class="mg-btn mg-btn-s" onclick="prevMg()">Preview</button>';
+  h+='<button class="mg-btn mg-btn-d" onclick="delProb()">Delete</button>';
+  h+='</div><div id="mg-status"></div>';
+  return h;
+}
+
+function addTag(){
+  var v=document.getElementById('mg-newtag').value.trim();
+  if(!v||!sel)return;
+  if(!sel.tags)sel.tags=tg(sel);
+  if(!sel.tags.custom)sel.tags.custom=[];
+  if(sel.tags.custom.indexOf(v)<0)sel.tags.custom.push(v);
+  rCon();
+}
+
+function rmTag(i){
+  if(!sel||!sel.tags||!sel.tags.custom)return;
+  sel.tags.custom.splice(i,1);
+  rCon();
+}
+
+function addClue(){
+  if(!sel)return;
+  if(!sel.clues)sel.clues=[];
+  var next=String.fromCharCode(65+sel.clues.length);
+  sel.clues.push({id:'clue'+next,text:''});
+  rCon();
+}
+
+function rmClue(i){
+  if(!sel||!sel.clues)return;
+  sel.clues.splice(i,1);
+  rCon();
+}
+
+function fmtSkel(){
+  var el=document.getElementById('mg-skel');
+  try{el.value=JSON.stringify(JSON.parse(el.value),null,2)}
+  catch(e){document.getElementById('mg-status').innerHTML='<div class="reg-status reg-err">Skeleton JSON error: '+e.message+'</div>'}
+}
+
+function readMg(){
+  var clues=[];
+  var i=0;
+  while(true){
+    var idEl=document.getElementById('mg-cl-id-'+i);
+    var txEl=document.getElementById('mg-cl-tx-'+i);
+    if(!idEl||!txEl)break;
+    if(idEl.value.trim())clues.push({id:idEl.value.trim(),text:txEl.value.trim()});
+    i++;
+  }
+  var skel;
+  try{skel=JSON.parse(document.getElementById('mg-skel').value)}
+  catch(e){return{error:'Skeleton JSON error: '+e.message}}
+  return{
+    pid:document.getElementById('mg-pid').value.trim(),
+    ans:document.getElementById('mg-ans').value.trim(),
+    src:document.getElementById('mg-src').value.trim(),
+    thm:document.getElementById('mg-theme').value.trim(),
+    dif:document.getElementById('mg-diff').value.trim(),
+    stmt:document.getElementById('mg-stmt').value,
+    clues:clues,
+    skel:skel,
+    sol:document.getElementById('mg-sol').value,
+    ana:document.getElementById('mg-ana').value
+  };
+}
+
+function prevMg(){
+  var d=readMg();
+  if(d.error){document.getElementById('mg-status').innerHTML='<div class="reg-status reg-err">'+d.error+'</div>';return}
+  sel.statement=d.stmt;
+  sel.clues=d.clues;
+  sel.skeleton=d.skel;
+  sel.solution=d.sol;
+  sel.analysis=d.ana;
+  sel.answer=d.ans;
+  curSec=0;rTabs();rCon();
+  document.getElementById('mg-status').innerHTML='<div class="reg-status reg-ok">Preview applied. Check other tabs, come back to save.</div>';
+}
+
+async function saveMg(){
+  if(!ghTk){document.getElementById('mg-status').innerHTML='<div class="reg-status reg-err">Set token in register tab</div>';return}
+  var d=readMg();
+  if(d.error){document.getElementById('mg-status').innerHTML='<div class="reg-status reg-err">'+d.error+'</div>';return}
+  if(!d.pid){document.getElementById('mg-status').innerHTML='<div class="reg-status reg-err">ID required</div>';return}
+
+  document.getElementById('mg-save').disabled=true;
+
+  if(!sel.history)sel.history=[];
+  sel.history.push({
+    skeleton:sel.skeleton,
+    solution:sel.solution,
+    analysis:sel.analysis,
+    statement:sel.statement,
+    answer:sel.answer,
+    edge_count:(sel.skeleton||[]).length,
+    created_at:sel.created_at||new Date().toISOString()
+  });
+
+  var oldPid=sel.problem_id;
+  sel.problem_id=d.pid;
+  sel.answer=d.ans;
+  sel.statement=d.stmt;
+  sel.clues=d.clues;
+  sel.skeleton=d.skel;
+  sel.solution=d.sol;
+  sel.analysis=d.ana;
+  sel.created_at=new Date().toISOString();
+  if(!sel.metadata)sel.metadata={};
+  sel.metadata.source=d.src;
+  sel.metadata.unit=d.thm;
+  sel.metadata.difficulty=d.dif;
+  if(!sel.tags)sel.tags={};
+  sel.tags.source=d.src;
+  sel.tags.theme=d.thm;
+  sel.tags.difficulty=d.dif;
+
+  try{
+    await saveBS('edit: '+oldPid+(oldPid!==d.pid?' -> '+d.pid:''));
+    document.getElementById('mg-status').innerHTML='<div class="reg-status reg-ok">Saved! (v'+(sel.history.length+1)+')</div>';
+    rList();rTabs();
+  }catch(e){
+    document.getElementById('mg-status').innerHTML='<div class="reg-status reg-err">'+e.message+'</div>';
+  }
+  document.getElementById('mg-save').disabled=false;
+}
+
+async function delProb(){
+  if(!sel||!ghTk||!confirm('Delete '+sel.problem_id+'?'))return;
+  var idx=probs.indexOf(sel);
+  if(idx>=0)probs.splice(idx,1);
+  try{
+    await saveBS('delete: '+sel.problem_id);
+    sel=probs.length?probs[0]:null;
+    rList();rTabs();rCon();
+  }catch(e){alert(e.message)}
+}
+
+async function saveBS(msg){
+  var api='https://api.github.com/repos/'+OW+'/'+RP+'/contents/bookshelf.json?ref='+BR;
+  var res=await fetch(api,{headers:{'Authorization':'token '+ghTk}});
+  if(!res.ok)throw new Error('read:'+res.status);
+  var g=await res.json();
+  bsSha=g.sha;
+  var nc=btoa(unescape(encodeURIComponent(JSON.stringify(probs,null,2))));
+  var pr=await fetch(api,{method:'PUT',headers:{'Authorization':'token '+ghTk,'Content-Type':'application/json'},body:JSON.stringify({message:msg,content:nc,sha:bsSha,branch:BR})});
+  if(!pr.ok)throw new Error('save:'+pr.status);
+  bsSha=(await pr.json()).content.sha;
+}
+  
 // ── Register ──
 function rReg(){var h='<div style="margin-bottom:16px"><span style="font-size:18px;font-weight:800;color:var(--text-bright)">Register</span></div>';h+='<div class="section-label">GitHub Token</div><input class="reg-token" type="password" id="reg-token" placeholder="ghp_..." value="'+ghTk+'" onchange="svTk()">';h+='<div class="section-label" style="margin-top:12px">JSON</div><textarea class="reg-input" id="reg-json"></textarea>';h+='<div style="display:flex;gap:8px;margin-top:10px"><button class="mg-btn mg-btn-s" onclick="valReg()">Validate</button><button class="mg-btn mg-btn-p" id="reg-sub" onclick="subReg()">Register</button></div><div id="reg-status"></div>';return h}
 function svTk(){ghTk=document.getElementById('reg-token').value;localStorage.setItem('gh_token',ghTk)}
