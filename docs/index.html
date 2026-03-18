@@ -74,7 +74,7 @@ function nc(id){if(!id)return'var(--text-dim)';if(id.startsWith('사실'))return
 function bi(to){return to?to.replace(/_\d+$/,''):''}
 
 async function loadData(){
-  const raw=u=>`https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}/${u}`;
+  const raw=u=>`https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}/${u}?t=${Date.now()}`;
   try{
     const[r1,r2]=await Promise.all([fetch(raw('bookshelf.json')),fetch(raw('neuron-list.md'))]);
     if(r1.ok)problems=await r1.json();
