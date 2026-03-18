@@ -4,7 +4,7 @@
 
 자연수 $n(n \geq 2)$에 대하여
 
-$$\log_x x > 6\log_n\left|x - \frac{11}{2}\right|$$
+$$\log_n x > 6\log_n\left|x - \frac{11}{2}\right|$$
 
 을 만족시키는 자연수 $x$의 개수가 4가 되도록 하는 모든 $n$의 값의 합은 [4점]
 
@@ -20,7 +20,7 @@ $$\log_x x > 6\log_n\left|x - \frac{11}{2}\right|$$
 
 ## Solution
 
-$f(x) = \log_x x$, $g(x) = 6\log_n\left|x - \frac{11}{2}\right|$
+$f(x) = \log_n x$, $g(x) = 6\log_n\left|x - \frac{11}{2}\right|$
 
 이라 하면 문제의 부등식은
 
