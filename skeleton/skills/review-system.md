@@ -5,6 +5,8 @@
 - 이전 오류를 반드시 모두 수정할 것.
 - problem_id, answer, skeleton, clues, solution, statement 등 전체 JSON을 출력할 것.
 - skeleton이나 solution을 빈 배열/빈 문자열로 두지 말 것.
+- 반드시 skeleton 배열을 포함할 것. skeleton이 비어있으면 무효.
+- 반드시 problem_id를 포함할 것.
 
 출력: 전체 JSON (Analyze와 동일한 형식).
 
