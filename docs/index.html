@@ -31,11 +31,10 @@
 .clue-row{display:flex;gap:10px;padding:6px 12px;background:var(--card);border-radius:6px;border:1px solid var(--border);align-items:center;margin-bottom:4px}
 .clue-id{font-size:11px;font-weight:700;color:#8ab4f8;min-width:42px}.clue-text{font-size:12px}
 .edge-row{padding:8px 12px;border-radius:6px;background:var(--card);margin-bottom:3px}.edge-row.side{opacity:.65;background:rgba(26,29,46,.5)}
-.edge-header{display:flex;align-items:center;gap:8px;font-size:11px}
-.edge-num{color:var(--text-dim);font-weight:600;min-width:22px}.edge-from{color:var(--text-dim)}.edge-arrow{color:var(--text-dim)}.edge-to{font-weight:700}
+.edge-header{display:flex;align-items:center;gap:8px;font-size:11px;flex-wrap:wrap}
+.edge-num{color:var(--text-dim);font-weight:600;min-width:22px}.edge-arrow{color:var(--text-dim)}
 .edge-side-badge{font-size:9px;color:var(--warn);border:1px solid rgba(255,167,38,.3);border-radius:4px;padding:1px 5px}
 .edge-note{font-size:12px;color:var(--text);margin-top:4px;padding-left:30px;line-height:1.6}
-.edge-neuron-desc{font-size:10px;color:var(--text-dim);margin-top:3px;padding-left:30px;font-style:italic}
 .sol-step{margin-top:16px;margin-bottom:6px;font-weight:800;font-size:14px;color:var(--accent)}.sol-line{font-size:13px;line-height:2}
 .neuron-group{margin-bottom:20px}.neuron-group-label{font-size:11px;font-weight:700;letter-spacing:2px;margin-bottom:8px;text-transform:uppercase}
 .neuron-row{display:flex;gap:10px;padding:6px 12px;background:var(--card);border-radius:6px;border:1px solid var(--border);margin-bottom:3px;align-items:flex-start}
@@ -53,8 +52,10 @@
 .hist-toggle{font-size:10px;color:var(--accent);cursor:pointer;background:var(--accent-bg);border:1px solid rgba(124,131,253,.2);border-radius:4px;padding:2px 8px}
 .hist-body{max-height:300px;overflow-y:auto;margin-top:8px}
 .nlib-search{width:100%;background:var(--panel);border:1px solid var(--border);border-radius:6px;padding:7px 10px;color:var(--text);font-size:11px;outline:none;font-family:inherit;margin-bottom:12px}
+.tip-wrap{position:relative;display:inline}
+.tip-wrap .tip{display:none;position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);background:#1e2235;border:1px solid var(--border-light);border-radius:6px;padding:8px 12px;font-size:11px;color:var(--text);white-space:normal;width:max-content;max-width:320px;z-index:99;line-height:1.5;box-shadow:0 4px 12px rgba(0,0,0,.5);pointer-events:none}
+.tip-wrap:hover .tip{display:block}
 ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--border-light);border-radius:3px}
-.tip-wrap{position:relative;display:inline}.tip-wrap .tip{display:none;position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);background:#1e2235;border:1px solid var(--border-light);border-radius:6px;padding:8px 12px;font-size:11px;color:var(--text);white-space:normal;width:max-content;max-width:320px;z-index:99;line-height:1.5;box-shadow:0 4px 12px rgba(0,0,0,.5);pointer-events:none}.tip-wrap:hover .tip{display:block}
 </style>
 </head>
 <body>
@@ -77,17 +78,25 @@ const SECTIONS=['문제문','DAG','Skeleton','Solution','뉴런','전체 뉴런'
 let problems=[],nMap={},nAll=[],selected=null,curSec=0,expandedHist={},nlibQ='';
 
 function decB64(b64){return new TextDecoder('utf-8').decode(Uint8Array.from(atob(b64.replace(/\s/g,'')),c=>c.charCodeAt(0)))}
+
 function rm(t){if(!t)return'';return String(t).split(/(\$[^$]+\$)/g).map(p=>{if(p.startsWith('$')&&p.endsWith('$')){try{return katex.renderToString(p.slice(1,-1),{throwOnError:false})}catch(e){return'<code>'+p.slice(1,-1)+'</code>'}}return p.replace(/</g,'&lt;').replace(/>/g,'&gt;')}).join('')}
+
 function nc(id){if(!id)return'var(--text-dim)';if(id.startsWith('사실'))return'var(--fact)';if(id.startsWith('연산'))return'var(--op)';if(id.startsWith('전략'))return'var(--strat)';return'var(--text-dim)'}
 function bi(to){return to?to.replace(/_\d+$/,''):''}
 function nType(id){if(id.startsWith('사실'))return'fact';if(id.startsWith('연산'))return'operation';if(id.startsWith('전략'))return'strategy';return''}
+
+function parseNeuronLine(l){
+  const m=l.match(/^\|\s*((?:사실|연산|전략)\d+)\s*\|\s*(.*)\s*$/);
+  if(m){const stmt=m[2].replace(/\|\s*$/,'').trim();if(stmt)return{id:m[1],statement:stmt};}
+  return null;
+}
 
 async function loadData(){
   const api=u=>`https://api.github.com/repos/${OWNER}/${REPO}/contents/${u}?ref=${BRANCH}`;
   try{
     const[r1,r2]=await Promise.all([fetch(api('bookshelf.json')),fetch(api('neuron-list.md'))]);
     if(r1.ok){const j=await r1.json();problems=JSON.parse(decB64(j.content))}
-    if(r2.ok){const j=await r2.json();const t=decB64(j.content);t.split('\n').forEach(l=>{const m=l.match(/^\|\s*((?:사실|연산|전략)\d+)\s*\|\s*(.*)\s*$/);if(m){m[2]=m[2].replace(/\|\s*$/,'').trim();}if(m){nMap[m[1]]={id:m[1],statement:m[2].trim()};nAll.push({id:m[1],statement:m[2].trim(),type:nType(m[1])})}})}
+    if(r2.ok){const j=await r2.json();const t=decB64(j.content);t.split('\n').forEach(l=>{const n=parseNeuronLine(l);if(n){nMap[n.id]={id:n.id,statement:n.statement};nAll.push({id:n.id,statement:n.statement,type:nType(n.id)})}})}
   }catch(e){console.error(e)}
   document.getElementById('sidebar-meta').textContent=problems.length+'문제 · '+nAll.length+'뉴런';
   renderList();renderTabs();
@@ -107,144 +116,143 @@ function filterProblems(){renderList()}
 function sel(pid){selected=problems.find(p=>p.problem_id===pid);curSec=0;expandedHist={};renderList();renderTabs();renderContent()}
 function renderTabs(){document.getElementById('tabs').innerHTML=SECTIONS.map((s,i)=>{
   let label=s;
-  if(i===5)label=`전체 뉴런 (${nAll.length})`;
-  if(i===6&&selected&&selected.history&&selected.history.length)label+=` (${selected.history.length})`;
-  return`<button class="tab ${curSec===i?'active':''}" onclick="sw(${i})">${label}</button>`
+  if(i===5)label='전체 뉴런 ('+nAll.length+')';
+  if(i===6&&selected&&selected.history&&selected.history.length)label+=' ('+selected.history.length+')';
+  return'<button class="tab '+(curSec===i?'active':'')+'" onclick="sw('+i+')">'+label+'</button>'
 }).join('')}
 function sw(i){curSec=i;renderTabs();renderContent()}
 
 function renderContent(){
   const el=document.getElementById('content');
-  // 전체 뉴런 탭은 문제 선택 없이도 동작
   if(curSec===5){el.innerHTML=rNlib();return}
   if(!selected){el.innerHTML='<div class="empty">← 문제를 선택하세요</div>';return}
-  const p=selected,edges=(p.skeleton||[]).length,sides=(p.skeleton||[]).filter(e=>e.main===false).length;
+  const p=selected,edges=(p.skeleton||[]).length,sides=(p.skeleton||[]).filter(function(e){return e.main===false}).length;
   const hc=(p.history||[]).length;
-  let h=`<div style="margin-bottom:20px"><div><span style="font-size:20px;font-weight:800;color:var(--text-bright)">${p.problem_id}</span><span style="font-size:12px;color:var(--text-dim);margin-left:12px">${p.number||''}</span></div><div class="badges">${p.metadata?.unit?`<span class="badge badge-unit">${p.metadata.unit}</span>`:''}${p.metadata?.difficulty?`<span class="badge badge-diff">${p.metadata.difficulty}</span>`:''}${p.answer?`<span class="badge badge-ans">답: ${p.answer}</span>`:''}<span class="badge badge-edge">edges: ${edges} (main ${edges-sides} + side ${sides})</span>${hc?`<span class="badge badge-ver">v${hc+1} (이전 ${hc}건)</span>`:''}</div></div>`;
+  let h='<div style="margin-bottom:20px"><div><span style="font-size:20px;font-weight:800;color:var(--text-bright)">'+p.problem_id+'</span><span style="font-size:12px;color:var(--text-dim);margin-left:12px">'+(p.number||'')+'</span></div><div class="badges">'+(p.metadata&&p.metadata.unit?'<span class="badge badge-unit">'+p.metadata.unit+'</span>':'')+(p.metadata&&p.metadata.difficulty?'<span class="badge badge-diff">'+p.metadata.difficulty+'</span>':'')+(p.answer?'<span class="badge badge-ans">답: '+p.answer+'</span>':'')+'<span class="badge badge-edge">edges: '+edges+' (main '+(edges-sides)+' + side '+sides+')</span>'+(hc?'<span class="badge badge-ver">v'+(hc+1)+' (이전 '+hc+'건)</span>':'')+'</div></div>';
   switch(curSec){case 0:h+=rStmt(p);break;case 1:h+=rDAG(p);break;case 2:h+=rSkel(p);break;case 3:h+=rSol(p);break;case 4:h+=rNeur(p);break;case 6:h+=rHist(p);break}
   el.innerHTML=h}
 
 function rStmt(p){
-  let h=`<div class="card" style="line-height:1.8;font-size:13px">${rm(p.statement||'문제문 없음')}</div>`;
-  if(p.clues&&p.clues.length)h+=`<div class="section-label">단서</div>`+p.clues.map(c=>`<div class="clue-row"><span class="clue-id">${c.id}</span><span class="clue-text">${rm(c.text)}</span></div>`).join('');
-  if(p.constraints&&p.constraints.length)h+=`<div class="section-label" style="margin-top:16px">제약조건</div><div style="display:flex;flex-wrap:wrap;gap:6px">${p.constraints.map(c=>`<span style="font-size:11px;padding:3px 10px;background:rgba(239,83,80,.07);border:1px solid rgba(239,83,80,.2);border-radius:4px">${rm(c)}</span>`).join('')}</div>`;
+  var h='<div class="card" style="line-height:1.8;font-size:13px">'+rm(p.statement||'문제문 없음')+'</div>';
+  if(p.clues&&p.clues.length){h+='<div class="section-label">단서</div>';for(var i=0;i<p.clues.length;i++){var c=p.clues[i];h+='<div class="clue-row"><span class="clue-id">'+c.id+'</span><span class="clue-text">'+rm(c.text)+'</span></div>'}}
+  if(p.constraints&&p.constraints.length){h+='<div class="section-label" style="margin-top:16px">제약조건</div><div style="display:flex;flex-wrap:wrap;gap:6px">';for(var i=0;i<p.constraints.length;i++){h+='<span style="font-size:11px;padding:3px 10px;background:rgba(239,83,80,.07);border:1px solid rgba(239,83,80,.2);border-radius:4px">'+rm(p.constraints[i])+'</span>'}h+='</div>'}
   return h}
 
 function rDAG(p){
   if(!p.skeleton||!p.skeleton.length)return'<div class="empty">Skeleton 없음</div>';
-  const nodes=new Set,edges=[],cIds=new Set((p.clues||[]).map(c=>c.id));
-  (p.clues||[]).forEach(c=>nodes.add(c.id));
-  p.skeleton.forEach(e=>{const fs=Array.isArray(e.from)?e.from:[e.from];fs.forEach(f=>{if(f)nodes.add(f)});if(e.to)nodes.add(e.to);fs.forEach(f=>{if(f&&e.to)edges.push({from:f,to:e.to,main:e.main!==false})})});
-  const adj={};edges.forEach(e=>{if(!adj[e.from])adj[e.from]=[];adj[e.from].push(e.to)});
-  const layers={},q=[];cIds.forEach(c=>{layers[c]=0;q.push(c)});
-  while(q.length){const n=q.shift();(adj[n]||[]).forEach(x=>{const nl=(layers[n]||0)+1;if(layers[x]===undefined||layers[x]<nl){layers[x]=nl;q.push(x)}})}
-  const mL=Math.max(0,...Object.values(layers)),lN={};
-  [...nodes].forEach(n=>{const l=layers[n]||0;if(!lN[l])lN[l]=[];lN[l].push(n)});
-  const nW=110,nH=30,gX=30,gY=50,pos={};
-  for(let l=0;l<=mL;l++){const ns=lN[l]||[];const tw=ns.length*nW+(ns.length-1)*gX;const sx=-tw/2;ns.forEach((n,i)=>{pos[n]={x:sx+i*(nW+gX)+nW/2,y:l*(nH+gY)+nH/2+24}})}
-  const mNL=Math.max(1,...Object.values(lN).map(l=>l.length)),svgW=Math.max(500,mNL*(nW+gX)+120),svgH=(mL+1)*(nH+gY)+60,ox=svgW/2;
-  let s=`<div class="dag-container"><svg width="${svgW}" height="${svgH}" style="display:block"><defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="var(--text-dim)" stroke-width="1.5"/></marker><marker id="ahs" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="var(--border-light)" stroke-width="1.5"/></marker></defs>`;
-  edges.forEach(e=>{const p1=pos[e.from],p2=pos[e.to];if(!p1||!p2)return;s+=`<line x1="${p1.x+ox}" y1="${p1.y+nH/2}" x2="${p2.x+ox}" y2="${p2.y-nH/2}" stroke="${e.main?'var(--text-dim)':'var(--border-light)'}" stroke-width="${e.main?1.2:.8}" ${e.main?'':'stroke-dasharray="4 3"'} marker-end="${e.main?'url(#ah)':'url(#ahs)'}" opacity=".6"/>`});
-  [...nodes].forEach(n=>{const p=pos[n];if(!p)return;const iC=cIds.has(n),iE=n==='END';const bg=iC?'#1a2340':iE?'#1a3020':'#151720';const br=iC?'#3a5090':iE?'var(--success)':nc(bi(n));const tc=iC?'#8ab4f8':iE?'var(--success)':nc(bi(n));const lb=n.length>13?n.slice(0,12)+'…':n;s+=`<rect x="${p.x+ox-nW/2}" y="${p.y-nH/2}" width="${nW}" height="${nH}" rx="${iE?14:6}" fill="${bg}" stroke="${br}" stroke-width=".8"/><text x="${p.x+ox}" y="${p.y+1}" text-anchor="middle" dominant-baseline="central" fill="${tc}" font-size="10" font-family="'Pretendard',sans-serif" font-weight="600">${lb}</text>`});
+  var nodes=new Set,edges=[],cIds=new Set;
+  if(p.clues)for(var i=0;i<p.clues.length;i++){cIds.add(p.clues[i].id);nodes.add(p.clues[i].id)}
+  for(var i=0;i<p.skeleton.length;i++){var e=p.skeleton[i];var fs=Array.isArray(e.from)?e.from:[e.from];for(var j=0;j<fs.length;j++){if(fs[j])nodes.add(fs[j])}if(e.to)nodes.add(e.to);for(var j=0;j<fs.length;j++){if(fs[j]&&e.to)edges.push({from:fs[j],to:e.to,main:e.main!==false})}}
+  var adj={};for(var i=0;i<edges.length;i++){var e=edges[i];if(!adj[e.from])adj[e.from]=[];adj[e.from].push(e.to)}
+  var layers={},q=[];cIds.forEach(function(c){layers[c]=0;q.push(c)});
+  while(q.length){var n=q.shift();var nexts=adj[n]||[];for(var i=0;i<nexts.length;i++){var nl=(layers[n]||0)+1;if(layers[nexts[i]]===undefined||layers[nexts[i]]<nl){layers[nexts[i]]=nl;q.push(nexts[i])}}}
+  var mL=0;var nodeArr=[...nodes];for(var k in layers)if(layers[k]>mL)mL=layers[k];
+  var lN={};for(var i=0;i<nodeArr.length;i++){var l=layers[nodeArr[i]]||0;if(!lN[l])lN[l]=[];lN[l].push(nodeArr[i])}
+  var nW=110,nH=30,gX=30,gY=50,pos={};
+  for(var l=0;l<=mL;l++){var ns=lN[l]||[];var tw=ns.length*nW+(ns.length-1)*gX;var sx=-tw/2;for(var i=0;i<ns.length;i++){pos[ns[i]]={x:sx+i*(nW+gX)+nW/2,y:l*(nH+gY)+nH/2+24}}}
+  var mNL=1;for(var k in lN)if(lN[k].length>mNL)mNL=lN[k].length;
+  var svgW=Math.max(500,mNL*(nW+gX)+120),svgH=(mL+1)*(nH+gY)+60,ox=svgW/2;
+  var s='<div class="dag-container"><svg width="'+svgW+'" height="'+svgH+'" style="display:block"><defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="var(--text-dim)" stroke-width="1.5"/></marker><marker id="ahs" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="var(--border-light)" stroke-width="1.5"/></marker></defs>';
+  for(var i=0;i<edges.length;i++){var e=edges[i];var p1=pos[e.from],p2=pos[e.to];if(!p1||!p2)continue;s+='<line x1="'+(p1.x+ox)+'" y1="'+(p1.y+nH/2)+'" x2="'+(p2.x+ox)+'" y2="'+(p2.y-nH/2)+'" stroke="'+(e.main?'var(--text-dim)':'var(--border-light)')+'" stroke-width="'+(e.main?1.2:.8)+'" '+(e.main?'':'stroke-dasharray="4 3"')+' marker-end="'+(e.main?'url(#ah)':'url(#ahs)')+'" opacity=".6"/>'}
+  for(var i=0;i<nodeArr.length;i++){var n=nodeArr[i];var p=pos[n];if(!p)continue;var iC=cIds.has(n),iE=n==='END';var bg=iC?'#1a2340':iE?'#1a3020':'#151720';var br=iC?'#3a5090':iE?'var(--success)':nc(bi(n));var tc=iC?'#8ab4f8':iE?'var(--success)':nc(bi(n));var lb=n.length>13?n.slice(0,12)+'…':n;s+='<rect x="'+(p.x+ox-nW/2)+'" y="'+(p.y-nH/2)+'" width="'+nW+'" height="'+nH+'" rx="'+(iE?14:6)+'" fill="'+bg+'" stroke="'+br+'" stroke-width=".8"/><text x="'+(p.x+ox)+'" y="'+(p.y+1)+'" text-anchor="middle" dominant-baseline="central" fill="'+tc+'" font-size="10" font-family="Pretendard,sans-serif" font-weight="600">'+lb+'</text>'}
   s+='</svg></div>';
-  s+=`<div class="dag-legend"><span>● <span style="color:#8ab4f8">단서</span></span><span>● <span style="color:var(--fact)">사실</span></span><span>● <span style="color:var(--op)">연산</span></span><span>● <span style="color:var(--strat)">전략</span></span><span>● <span style="color:var(--success)">END</span></span><span style="margin-left:12px">── main &nbsp; ┄┄ side</span></div>`;
+  s+='<div class="dag-legend"><span>● <span style="color:#8ab4f8">단서</span></span><span>● <span style="color:var(--fact)">사실</span></span><span>● <span style="color:var(--op)">연산</span></span><span>● <span style="color:var(--strat)">전략</span></span><span>● <span style="color:var(--success)">END</span></span><span style="margin-left:12px">── main &nbsp; ┄┄ side</span></div>';
   return s}
+
+function makeTip(id,label){
+  var b=bi(id);var n=nMap[b];var c=nc(b);
+  if(n)return'<span class="tip-wrap"><span style="color:'+c+';cursor:pointer;font-weight:700">'+label+'</span><span class="tip"><b style="color:'+c+'">'+b+'</b><br>'+rm(n.statement)+'</span></span>';
+  return'<span style="color:'+c+';font-weight:700">'+label+'</span>';
+}
+function makeFromTip(id){
+  var b=bi(id);var n=nMap[b];var c=nc(b);
+  if(n)return'<span class="tip-wrap"><span style="color:'+c+';cursor:pointer">'+id+'</span><span class="tip"><b style="color:'+c+'">'+b+'</b><br>'+rm(n.statement)+'</span></span>';
+  return'<span style="color:var(--text-dim)">'+id+'</span>';
+}
 
 function rSkel(p){
   if(!p.skeleton||!p.skeleton.length)return'<div class="empty">Skeleton 없음</div>';
-  return p.skeleton.map((e,i)=>{const fs=Array.isArray(e.from)?e.from:[e.from];const b=bi(e.to);const n=nMap[b];const iS=e.main===false;const c=nc(b);
-    const fromTips=fs.map(f=>{const fb=bi(f);const fn=nMap[fb];const fc=nc(fb);
-      return fn?`<span class="tip-wrap"><span style="color:${fc};cursor:pointer">${f}</span><span class="tip"><b style="color:${fc}">${fb}</b><br>${rm(fn.statement)}</span></span>`
-      :`<span style="color:var(--text-dim)">${f}</span>`
-    }).join(' + ');
-    const toTip=n?`<span class="tip-wrap"><span style="color:${c};font-weight:700;cursor:pointer">${e.to}</span><span class="tip"><b style="color:${c}">${b}</b><br>${rm(n.statement)}</span></span>`
-      :`<span style="color:${c};font-weight:700">${e.to}</span>`;
-    return`<div class="edge-row ${iS?'side':''}" style="border-left:3px solid ${c}"><div class="edge-header"><span class="edge-num">#${i+1}</span>${fromTips}<span class="edge-arrow">→</span>${toTip}${iS?'<span class="edge-side-badge">side</span>':''}</div>${e.note?`<div class="edge-note">${rm(e.note)}</div>`:''}</div>`}).join('')}
+  var html='';
+  for(var i=0;i<p.skeleton.length;i++){
+    var e=p.skeleton[i];var fs=Array.isArray(e.from)?e.from:[e.from];var b=bi(e.to);var iS=e.main===false;var c=nc(b);
+    var fromParts=[];for(var j=0;j<fs.length;j++){fromParts.push(makeFromTip(fs[j]))}
+    var toTip=makeTip(e.to,e.to);
+    html+='<div class="edge-row '+(iS?'side':'')+'" style="border-left:3px solid '+c+'"><div class="edge-header"><span class="edge-num">#'+(i+1)+'</span>'+fromParts.join(' <span style="color:var(--text-dim)">+</span> ')+' <span class="edge-arrow">→</span> '+toTip+(iS?' <span class="edge-side-badge">side</span>':'')+'</div>'+(e.note?'<div class="edge-note">'+rm(e.note)+'</div>':'')+'</div>';
+  }
+  return html}
+
 function rSol(p){
   if(!p.solution)return'<div class="empty">Solution 없음</div>';
-  return`<div class="card">${p.solution.split('\n').map(l=>/^STEP\s+\d/.test(l)?`<div class="sol-step">${rm(l)}</div>`:`<div class="sol-line">${rm(l)}</div>`).join('')}</div>`}
+  var lines=p.solution.split('\n');
+  var html='<div class="card">';
+  for(var i=0;i<lines.length;i++){
+    var l=lines[i];
+    if(/^STEP\s+\d/.test(l))html+='<div class="sol-step">'+rm(l)+'</div>';
+    else html+='<div class="sol-line">'+rm(l)+'</div>';
+  }
+  html+='</div>';
+  return html}
 
 function rNeur(p){
   if(!p.skeleton)return'<div class="empty">Skeleton 없음</div>';
-  const used=[...new Set(p.skeleton.map(e=>bi(e.to)).filter(id=>id&&id!=='END'&&!id.startsWith('단서')))];
-  const gs=[{l:'사실 (FACT)',items:used.filter(n=>n.startsWith('사실')).sort(),c:'var(--fact)'},{l:'연산 (OPERATION)',items:used.filter(n=>n.startsWith('연산')).sort(),c:'var(--op)'},{l:'전략 (STRATEGY)',items:used.filter(n=>n.startsWith('전략')).sort(),c:'var(--strat)'}];
-  let h='';gs.forEach(g=>{if(!g.items.length)return;h+=`<div class="neuron-group"><div class="neuron-group-label" style="color:${g.c}">${g.l} (${g.items.length})</div>`;g.items.forEach(id=>{const n=nMap[id];const cnt=p.skeleton.filter(e=>bi(e.to)===id).length;
-    // 어떤 edge에서 사용됐는지 표시
-    const usages=p.skeleton.map((e,i)=>({idx:i,note:e.note,to:e.to})).filter(x=>bi(x.to)===id);
-    h+=`<div class="neuron-row" style="flex-direction:column"><div style="display:flex;gap:10px;align-items:flex-start;width:100%"><span class="neuron-id" style="color:${g.c}">${id}</span><span class="neuron-stmt">${n?rm(n.statement):'<i style="color:var(--text-dim)">목록에 없음</i>'}</span>${cnt>1?`<span class="neuron-count">×${cnt}</span>`:''}</div><div style="padding-left:62px;margin-top:4px">${usages.map(u=>`<div style="font-size:10px;color:var(--text-dim);line-height:1.6"><span style="color:${g.c}">#${u.idx+1}</span> <span style="color:var(--text-dim)">${u.to}</span> — ${rm(u.note||'')}</div>`).join('')}</div></div>`});h+='</div>'});
-  h+=`<div style="font-size:11px;color:var(--text-dim);margin-top:8px">총 ${used.length}종 · edges ${p.skeleton.length}개</div>`;return h}
+  var usedSet={};
+  for(var i=0;i<p.skeleton.length;i++){var b=bi(p.skeleton[i].to);if(b&&b!=='END'&&!b.startsWith('단서'))usedSet[b]=true}
+  var used=Object.keys(usedSet);
+  var gs=[{l:'사실 (FACT)',items:used.filter(function(n){return n.startsWith('사실')}).sort(),c:'var(--fact)'},{l:'연산 (OPERATION)',items:used.filter(function(n){return n.startsWith('연산')}).sort(),c:'var(--op)'},{l:'전략 (STRATEGY)',items:used.filter(function(n){return n.startsWith('전략')}).sort(),c:'var(--strat)'}];
+  var h='';
+  for(var gi=0;gi<gs.length;gi++){var g=gs[gi];if(!g.items.length)continue;
+    h+='<div class="neuron-group"><div class="neuron-group-label" style="color:'+g.c+'">'+g.l+' ('+g.items.length+')</div>';
+    for(var ni=0;ni<g.items.length;ni++){var id=g.items[ni];var n=nMap[id];
+      var cnt=0;var usages=[];
+      for(var si=0;si<p.skeleton.length;si++){if(bi(p.skeleton[si].to)===id){cnt++;usages.push({idx:si,note:p.skeleton[si].note,to:p.skeleton[si].to})}}
+      h+='<div class="neuron-row" style="flex-direction:column"><div style="display:flex;gap:10px;align-items:flex-start;width:100%"><span class="neuron-id" style="color:'+g.c+'">'+id+'</span><span class="neuron-stmt">'+(n?rm(n.statement):'<i style="color:var(--text-dim)">목록에 없음</i>')+'</span>'+(cnt>1?'<span class="neuron-count">×'+cnt+'</span>':'')+'</div><div style="padding-left:62px;margin-top:4px">';
+      for(var ui=0;ui<usages.length;ui++){var u=usages[ui];h+='<div style="font-size:10px;color:var(--text-dim);line-height:1.6"><span style="color:'+g.c+'">#'+(u.idx+1)+'</span> <span style="color:var(--text-dim)">'+u.to+'</span> — '+rm(u.note||'')+'</div>'}
+      h+='</div></div>';
+    }
+    h+='</div>'}
+  h+='<div style="font-size:11px;color:var(--text-dim);margin-top:8px">총 '+used.length+'종 · edges '+p.skeleton.length+'개</div>';
+  return h}
 
-// ── 전체 뉴런 라이브러리 탭 ──
 function rNlib(){
-  const facts=nAll.filter(n=>n.type==='fact');
-  const ops=nAll.filter(n=>n.type==='operation');
-  const strats=nAll.filter(n=>n.type==='strategy');
-  
-  // 각 뉴런이 bookshelf 문제에서 몇 번 사용됐는지
-  const usageCount={};
-  const usageProblems={};
-  problems.forEach(p=>{
-    (p.skeleton||[]).forEach(e=>{
-      const b=bi(e.to);
-      if(b&&b!=='END'&&!b.startsWith('단서')){
-        usageCount[b]=(usageCount[b]||0)+1;
-        if(!usageProblems[b])usageProblems[b]=new Set();
-        usageProblems[b].add(p.problem_id);
-      }
-    });
-  });
-
-  const q=nlibQ.toLowerCase();
-  const filter=list=>q?list.filter(n=>n.id.toLowerCase().includes(q)||n.statement.toLowerCase().includes(q)):list;
-
-  let h=`<div style="margin-bottom:20px"><span style="font-size:20px;font-weight:800;color:var(--text-bright)">전체 뉴런 라이브러리</span><span style="font-size:12px;color:var(--text-dim);margin-left:12px">${nAll.length}개</span></div>`;
-  h+=`<input class="nlib-search" placeholder="뉴런 검색 (ID 또는 내용)..." value="${nlibQ}" oninput="nlibQ=this.value;renderContent()">`;
-  
-  const gs=[
-    {l:'사실 (FACT)',items:filter(facts),c:'var(--fact)',total:facts.length},
-    {l:'연산 (OPERATION)',items:filter(ops),c:'var(--op)',total:ops.length},
-    {l:'전략 (STRATEGY)',items:filter(strats),c:'var(--strat)',total:strats.length}
-  ];
-  
-  gs.forEach(g=>{
-    if(!g.items.length)return;
-    h+=`<div class="neuron-group"><div class="neuron-group-label" style="color:${g.c}">${g.l} (${q?g.items.length+'/'+g.total:g.total})</div>`;
-    g.items.forEach(n=>{
-      const uc=usageCount[n.id]||0;
-      const up=usageProblems[n.id]?[...usageProblems[n.id]]:[];
-      h+=`<div class="neuron-row" style="flex-direction:column"><div style="display:flex;gap:10px;align-items:flex-start;width:100%"><span class="neuron-id" style="color:${g.c}">${n.id}</span><span class="neuron-stmt">${rm(n.statement)}</span>${uc?`<span class="neuron-count" style="background:${g.c}22;color:${g.c}">${uc}회</span>`:''}</div>${up.length?`<div style="padding-left:62px;margin-top:2px;font-size:10px;color:var(--text-dim)">사용: ${up.map(pid=>`<span style="cursor:pointer;color:var(--accent);text-decoration:underline" onclick="sel('${pid}')">${pid}</span>`).join(', ')}</div>`:''}</div>`;
-    });
-    h+='</div>';
-  });
+  var facts=[],ops=[],strats=[];
+  for(var i=0;i<nAll.length;i++){var n=nAll[i];if(n.type==='fact')facts.push(n);else if(n.type==='operation')ops.push(n);else if(n.type==='strategy')strats.push(n)}
+  var usageCount={},usageProblems={};
+  for(var pi=0;pi<problems.length;pi++){var p=problems[pi];var sk=p.skeleton||[];for(var si=0;si<sk.length;si++){var b=bi(sk[si].to);if(b&&b!=='END'&&!b.startsWith('단서')){usageCount[b]=(usageCount[b]||0)+1;if(!usageProblems[b])usageProblems[b]={};usageProblems[b][p.problem_id]=true}}}
+  var q=nlibQ.toLowerCase();
+  function filt(list){if(!q)return list;var r=[];for(var i=0;i<list.length;i++){if(list[i].id.toLowerCase().indexOf(q)>=0||list[i].statement.toLowerCase().indexOf(q)>=0)r.push(list[i])}return r}
+  var h='<div style="margin-bottom:20px"><span style="font-size:20px;font-weight:800;color:var(--text-bright)">전체 뉴런 라이브러리</span><span style="font-size:12px;color:var(--text-dim);margin-left:12px">'+nAll.length+'개</span></div>';
+  h+='<input class="nlib-search" placeholder="뉴런 검색 (ID 또는 내용)..." value="'+nlibQ+'" oninput="nlibQ=this.value;renderContent()">';
+  var gs=[{l:'사실 (FACT)',items:filt(facts),c:'var(--fact)',total:facts.length},{l:'연산 (OPERATION)',items:filt(ops),c:'var(--op)',total:ops.length},{l:'전략 (STRATEGY)',items:filt(strats),c:'var(--strat)',total:strats.length}];
+  for(var gi=0;gi<gs.length;gi++){var g=gs[gi];if(!g.items.length)continue;
+    h+='<div class="neuron-group"><div class="neuron-group-label" style="color:'+g.c+'">'+g.l+' ('+(q?g.items.length+'/'+g.total:g.total)+')</div>';
+    for(var ni=0;ni<g.items.length;ni++){var n=g.items[ni];var uc=usageCount[n.id]||0;var up=usageProblems[n.id]?Object.keys(usageProblems[n.id]):[];
+      h+='<div class="neuron-row" style="flex-direction:column"><div style="display:flex;gap:10px;align-items:flex-start;width:100%"><span class="neuron-id" style="color:'+g.c+'">'+n.id+'</span><span class="neuron-stmt">'+rm(n.statement)+'</span>'+(uc?'<span class="neuron-count" style="background:'+g.c+'22;color:'+g.c+'">'+uc+'회</span>':'')+'</div>'+(up.length?'<div style="padding-left:62px;margin-top:2px;font-size:10px;color:var(--text-dim)">사용: '+up.map(function(pid){return'<span style="cursor:pointer;color:var(--accent);text-decoration:underline" onclick="sel(\''+pid+'\')">'+pid+'</span>'}).join(', ')+'</div>':'')+'</div>'}
+    h+='</div>'}
   return h}
 
 function toggleHist(i){expandedHist[i]=!expandedHist[i];renderContent()}
 
 function rHist(p){
   if(!p.history||!p.history.length)return'<div class="empty">이전 버전 없음 (첫 제출)</div>';
-  let h=`<div class="section-label">버전 이력 (${p.history.length}건) — 최신순</div>`;
-  const reversed=[...p.history].reverse();
-  h+=reversed.map((v,ri)=>{
-    const origIdx=p.history.length-1-ri;
-    const vNum=origIdx+1;
-    const edges=(v.skeleton||[]).length;
-    const sides=(v.skeleton||[]).filter(e=>e.main===false).length;
-    const expanded=expandedHist[origIdx];
-    return`<div class="hist-card">
-      <div class="hist-header">
-        <div><span style="font-size:13px;font-weight:700;color:var(--text-dim)">v${vNum}</span><span style="font-size:11px;color:var(--text-dim);margin-left:8px">edges: ${edges} (main ${edges-sides} + side ${sides})</span></div>
-        <div style="display:flex;gap:8px;align-items:center"><span style="font-size:10px;color:var(--text-dim)">${v.created_at?new Date(v.created_at).toLocaleString('ko-KR'):'날짜 없음'}</span><span class="hist-toggle" onclick="toggleHist(${origIdx})">${expanded?'접기':'펼치기'}</span></div>
-      </div>
-      ${expanded?`<div class="hist-body">
-        ${v.skeleton?`<div class="section-label" style="margin-top:4px">Skeleton</div>`+v.skeleton.map((e,j)=>{
-          const fs=Array.isArray(e.from)?e.from:[e.from];const b=bi(e.to);const c=nc(b);const iS=e.main===false;const n=nMap[b];
-          return`<div class="edge-row ${iS?'side':''}" style="border-left:3px solid ${c}"><div class="edge-header"><span class="edge-num">#${j+1}</span><span class="edge-from">${fs.join(' + ')}</span><span class="edge-arrow">→</span><span class="edge-to" style="color:${c}">${e.to}</span>${iS?'<span class="edge-side-badge">side</span>':''}</div>${e.note?`<div class="edge-note">${rm(e.note)}</div>`:''}${n?`<div class="edge-neuron-desc">🧠 ${rm(n.statement)}</div>`:''}</div>`
-        }).join(''):''}
-        ${v.solution?`<div class="section-label" style="margin-top:12px">Solution</div><div style="font-size:12px;color:var(--text-dim);line-height:1.8">${v.solution.split('\n').map(l=>/^STEP\s+\d/.test(l)?`<div style="font-weight:700;color:var(--accent);margin-top:8px">${rm(l)}</div>`:`<div>${rm(l)}</div>`).join('')}</div>`:''}
-      </div>`:''}
-    </div>`
-  }).join('');
-  h+=`<div style="margin-top:16px;padding:12px 16px;background:var(--accent-bg);border-radius:8px;border:1px solid rgba(124,131,253,.15)"><div style="font-size:11px;color:var(--accent);font-weight:700;margin-bottom:4px">현재 버전: v${p.history.length+1}</div><div style="font-size:10px;color:var(--text-dim)">${p.created_at?new Date(p.created_at).toLocaleString('ko-KR'):''} · edges ${(p.skeleton||[]).length}개</div></div>`;
+  var h='<div class="section-label">버전 이력 ('+p.history.length+'건) — 최신순</div>';
+  var reversed=[...p.history].reverse();
+  for(var ri=0;ri<reversed.length;ri++){var v=reversed[ri];
+    var origIdx=p.history.length-1-ri;var vNum=origIdx+1;
+    var edges=(v.skeleton||[]).length;var sides=0;for(var si=0;si<(v.skeleton||[]).length;si++){if(v.skeleton[si].main===false)sides++}
+    var expanded=expandedHist[origIdx];
+    h+='<div class="hist-card"><div class="hist-header"><div><span style="font-size:13px;font-weight:700;color:var(--text-dim)">v'+vNum+'</span><span style="font-size:11px;color:var(--text-dim);margin-left:8px">edges: '+edges+' (main '+(edges-sides)+' + side '+sides+')</span></div><div style="display:flex;gap:8px;align-items:center"><span style="font-size:10px;color:var(--text-dim)">'+(v.created_at?new Date(v.created_at).toLocaleString('ko-KR'):'날짜 없음')+'</span><span class="hist-toggle" onclick="toggleHist('+origIdx+')">'+(expanded?'접기':'펼치기')+'</span></div></div>';
+    if(expanded){
+      h+='<div class="hist-body">';
+      if(v.skeleton){h+='<div class="section-label" style="margin-top:4px">Skeleton</div>';
+        for(var ei=0;ei<v.skeleton.length;ei++){var e=v.skeleton[ei];var fs=Array.isArray(e.from)?e.from:[e.from];var b=bi(e.to);var c=nc(b);var iS=e.main===false;var n=nMap[b];
+          var fromParts=[];for(var fi=0;fi<fs.length;fi++){fromParts.push(makeFromTip(fs[fi]))}
+          var toTip=makeTip(e.to,e.to);
+          h+='<div class="edge-row '+(iS?'side':'')+'" style="border-left:3px solid '+c+'"><div class="edge-header"><span class="edge-num">#'+(ei+1)+'</span>'+fromParts.join(' <span style="color:var(--text-dim)">+</span> ')+' <span class="edge-arrow">→</span> '+toTip+(iS?' <span class="edge-side-badge">side</span>':'')+'</div>'+(e.note?'<div class="edge-note">'+rm(e.note)+'</div>':'')+'</div>'}}
+      if(v.solution){h+='<div class="section-label" style="margin-top:12px">Solution</div><div style="font-size:12px;color:var(--text-dim);line-height:1.8">';
+        var slines=v.solution.split('\n');for(var li=0;li<slines.length;li++){var sl=slines[li];if(/^STEP\s+\d/.test(sl))h+='<div style="font-weight:700;color:var(--accent);margin-top:8px">'+rm(sl)+'</div>';else h+='<div>'+rm(sl)+'</div>'}h+='</div>'}
+      h+='</div>'}
+    h+='</div>'}
+  h+='<div style="margin-top:16px;padding:12px 16px;background:var(--accent-bg);border-radius:8px;border:1px solid rgba(124,131,253,.15)"><div style="font-size:11px;color:var(--accent);font-weight:700;margin-bottom:4px">현재 버전: v'+(p.history.length+1)+'</div><div style="font-size:10px;color:var(--text-dim)">'+(p.created_at?new Date(p.created_at).toLocaleString('ko-KR'):'')+' · edges '+(p.skeleton||[]).length+'개</div></div>';
   return h}
 
 loadData();
