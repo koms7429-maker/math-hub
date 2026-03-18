@@ -1860,5 +1860,156 @@
     "statement": "두 곡선 $y=2^{x-1}-4$, $y=-\\frac{1}{7}\\times 2^{n-x}+a$가 서로 다른 두 점 A, B에서 만날 때, 선분 AB가 $x$축과 만나지 않으면서 $y$축과 만나도록 하는 정수 $a$의 개수가 3이 되도록 하는 모든 자연수 $n$의 값의 합을 구하시오.",
     "created_at": "2026-03-18T14:16:10.901Z",
     "history": []
+  },
+  {
+    "problem_id": "Problem23",
+    "answer": "⑤",
+    "clues": [
+      {
+        "id": "단서A",
+        "text": "곡선 $y=2^{7-x}$"
+      },
+      {
+        "id": "단서B",
+        "text": "곡선 $y=8^x$"
+      },
+      {
+        "id": "단서C",
+        "text": "직선 $y=k$가 두 곡선과 각각 점 P, Q에서 만난다"
+      },
+      {
+        "id": "단서D",
+        "text": "두 점 P, Q 사이의 거리가 3이다"
+      }
+    ],
+    "skeleton": [
+      {
+        "from": [
+          "단서A"
+        ],
+        "to": "사실5",
+        "note": "y=2^(7-x)는 감소함수이다",
+        "main": true
+      },
+      {
+        "from": [
+          "단서B"
+        ],
+        "to": "사실5_1",
+        "note": "y=8^x는 증가함수이다",
+        "main": true
+      },
+      {
+        "from": [
+          "사실5",
+          "사실5_1"
+        ],
+        "to": "전략6",
+        "note": "P의 x좌표와 Q의 x좌표의 대소관계에 따라 두 경우로 분리한다",
+        "main": true
+      },
+      {
+        "from": [
+          "단서C"
+        ],
+        "to": "연산2",
+        "note": "2^(7-x_P) = k에서 x_P = 7 - log_2 k이다",
+        "main": true
+      },
+      {
+        "from": [
+          "단서C"
+        ],
+        "to": "연산2_1",
+        "note": "8^(x_Q) = k에서 x_Q = log_8 k이다",
+        "main": true
+      },
+      {
+        "from": [
+          "연산2",
+          "연산2_1",
+          "단서D",
+          "전략6"
+        ],
+        "to": "연산21",
+        "note": "경우①: x_Q > x_P일 때 x_Q - x_P = log_8 k - (7 - log_2 k) = 3이다",
+        "main": true
+      },
+      {
+        "from": [
+          "연산21"
+        ],
+        "to": "연산1",
+        "note": "log_8 k = log_2 k / 3을 대입하면 log_2 k = 15/2이다",
+        "main": true
+      },
+      {
+        "from": [
+          "연산1"
+        ],
+        "to": "연산2_2",
+        "note": "k = 2^(15/2)이다",
+        "main": true
+      },
+      {
+        "from": [
+          "연산2",
+          "연산2_1",
+          "단서D",
+          "전략6"
+        ],
+        "to": "연산21_1",
+        "note": "경우②: x_P > x_Q일 때 x_P - x_Q = (7 - log_2 k) - log_8 k = 3이다",
+        "main": true
+      },
+      {
+        "from": [
+          "연산21_1"
+        ],
+        "to": "연산1_1",
+        "note": "log_8 k = log_2 k / 3을 대입하면 log_2 k = 3이다",
+        "main": true
+      },
+      {
+        "from": [
+          "연산1_1"
+        ],
+        "to": "연산2_3",
+        "note": "k = 2^3 = 8이다",
+        "main": true
+      },
+      {
+        "from": [
+          "연산2_2",
+          "연산2_3"
+        ],
+        "to": "연산18",
+        "note": "두 k값의 곱은 2^(15/2) × 2^3 = 2^(15/2 + 3) = 2^(21/2)이다",
+        "main": true
+      },
+      {
+        "from": [
+          "연산18"
+        ],
+        "to": "END",
+        "note": "답은 2^(21/2)이다",
+        "main": true
+      }
+    ],
+    "solution": "STEP 1. y=2^(7-x)는 감소함수이다.\n\nSTEP 2. y=8^x는 증가함수이다.\n\nSTEP 3. P의 x좌표와 Q의 x좌표의 대소관계에 따라 두 경우로 분리한다.\n\nSTEP 4. 2^(7-x_P) = k에서 x_P = 7 - log_2 k이다.\n\nSTEP 5. 8^(x_Q) = k에서 x_Q = log_8 k이다.\n\nSTEP 6. 경우①: x_Q > x_P일 때 x_Q - x_P = log_8 k - (7 - log_2 k) = 3이다.\n\nSTEP 7. log_8 k = log_2 k / 3을 대입하면 log_2 k = 15/2이다.\n\nSTEP 8. k = 2^(15/2)이다.\n\nSTEP 9. 경우②: x_P > x_Q일 때 x_P - x_Q = (7 - log_2 k) - log_8 k = 3이다.\n\nSTEP 10. log_8 k = log_2 k / 3을 대입하면 log_2 k = 3이다.\n\nSTEP 11. k = 2^3 = 8이다.\n\nSTEP 12. 두 k값의 곱은 2^(15/2) × 2^3 = 2^(15/2 + 3) = 2^(21/2)이다.\n\nSTEP 13. 답은 2^(21/2)이다.",
+    "analysis": "1. y=2^(7-x)는 지수함수 y=2^u (u=7-x)에서 u가 감소하므로 감소함수이다. y=8^x = (2^3)^x = 2^(3x)는 증가함수이다.\n\n2. 직선 y=k가 두 곡선과 만나는 점 P, Q에서, P는 y=2^(7-x) 위, Q는 y=8^x 위에 있다 (또는 그 반대). 두 함수의 단조성에 의해 다음 두 경우가 가능하다:\n  - 경우①: P의 x좌표 < Q의 x좌표\n  - 경우②: P의 x좌표 > Q의 x좌표\n\n3. P, Q의 y좌표는 모두 k이므로:\n  - P가 y=2^(7-x) 위에 있으면 2^(7-x_P) = k → 7-x_P = log_2 k → x_P = 7 - log_2 k\n  - Q가 y=8^x 위에 있으면 8^(x_Q) = k → x_Q = log_8 k\n\n4. 경우①: x_Q - x_P = 3\n  log_8 k - (7 - log_2 k) = 3\n  log_8 k + log_2 k = 10\n  log_8 k = log_2 k / 3이므로 (log_2 k)/3 + log_2 k = 10 → (4/3)log_2 k = 10 → log_2 k = 15/2\n  따라서 k = 2^(15/2)\n\n5. 경우②: x_P - x_Q = 3\n  (7 - log_2 k) - log_8 k = 3\n  7 - log_2 k - (log_2 k)/3 = 3\n  7 - (4/3)log_2 k = 3\n  (4/3)log_2 k = 4\n  log_2 k = 3\n  따라서 k = 2^3 = 8\n\n6. 두 k값의 곱 = 2^(15/2) × 2^3 = 2^(15/2 + 3) = 2^(15/2 + 6/2) = 2^(21/2)",
+    "new_neurons": [],
+    "metadata": {
+      "unit": "지수와 로그",
+      "difficulty": "unknown",
+      "score": "4",
+      "type": "multiple choice",
+      "answer": "⑤"
+    },
+    "edge_count": 13,
+    "side_count": 0,
+    "statement": "직선 $y=k$가 두 곡선 $y=2^{7-x}$, $y=8^x$와 각각 두 점 P, Q에서 만날 때, 두 점 P, Q 사이의 거리가 3이 되도록 하는 모든 양수 $k$의 값의 곱은?",
+    "created_at": "2026-03-18T14:17:28.148Z",
+    "history": []
   }
 ]
