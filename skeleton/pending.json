@@ -1,14 +1,1 @@
-[
-  {
-    "problem_id": "2",
-    "content": "# 2. 지수·로그 — 집합과 이차함수\n\n## 문제\n\n이차함수 $f(x)$에 대하여 두 집합\n\n$$A = \\{x \\mid x \\text{는 실수}\\},$$\n\n$$B = \\{x \\mid \\log|4^x - 3| \\times \\log f(x) \\ge 0\\}$$\n\n이 있다. $n(A - B) = 2$일 때, $f(3)$의 값을 구하시오. [4점]\n\n---\n\n## 정답\n\n$$\\boxed{81}$$\n\n---\n\n## 해설\n\n### 집합 B의 원소 조건\n\n집합 $B$의 원소인 $x$는\n\n- $4^x - 3 \\ne 0$이고, $f(x) > 0$ (∵ 진수조건)\n- $(|4^x - 3| - 1) \\times \\{f(x) - 1\\} \\ge 0$\n\n을 **모두** 만족시켜야 한다.\n\n### $A - B$의 원소 분석\n\n$$4^x - 3 = 0 \\iff x = \\log_4 3$$\n\n은 집합 $A - B$의 원소이다.\n\n이때\n\n- $f(x) < 0$인 $x$는 없거나 무수히 많음\n- $(|4^x - 3| - 1) \\times \\{f(x) - 1\\} < 0$인 $x$는 없거나 무수히 많음\n\n을 참고하면\n\n$$n(A - B) = 2$$\n\n를 만족시키기 위해서는\n\n> ① $f(x) = 0$인 $x$의 개수는 1이고, 이때의 $x \\ne \\log_4 3$\n>\n> ② 모든 $x$에 대하여 $(|4^x - 3| - 1) \\times \\{f(x) - 1\\} \\ge 0$\n\n임을 알 수 있다.\n\n### $f(x)$의 결정\n\n한편,\n\n$$|4^x - 3| \\ge 1 \\iff x \\le \\frac{1}{2}, \\quad x \\ge 1$$\n\n이므로\n\n$$②\\implies \\begin{cases} x \\le \\dfrac{1}{2},\\; x \\ge 1 \\text{에서 } f(x) \\ge 1 \\\\[6pt] \\dfrac{1}{2} < x < 1 \\text{에서 } f(x) < 1 \\end{cases}$$\n\n$$\\implies f(x) = k\\!\\left(x - \\frac{1}{2}\\right)(x - 1) + 1 \\quad (\\text{단, } k > 0)$$\n\n로 놓으면\n\n$$① \\implies f\\!\\left(\\frac{3}{4}\\right) = 0 \\quad (\\because \\text{이차함수의 대칭축})$$\n\n$$\\implies k = 16$$\n\n을 얻는다.\n\n### 최종 답\n\n$$\\therefore\\; f(x) = 16\\!\\left(x - \\frac{1}{2}\\right)(x - 1) + 1 \\implies f(3) = \\boxed{81}$$",
-    "needed_neurons": [
-      "전략30",
-      "전략31",
-      "전략32",
-      "사실71",
-      "전략33"
-    ],
-    "created_at": "2026-03-18T09:50:57.330Z"
-  }
-]
+[]
