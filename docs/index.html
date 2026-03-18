@@ -10,20 +10,24 @@
 <style>
 :root{--bg:#0a0c10;--panel:#0d0f14;--card:#11131a;--border:#1a1d2e;--border-light:#252940;--accent:#7c83fd;--accent-bg:rgba(124,131,253,.09);--text:#d8dce8;--text-dim:#7a7f9a;--text-bright:#f0f2ff;--fact:#4fc3f7;--op:#ffd54f;--strat:#ef5350;--success:#66bb6a;--warn:#ffa726}
 *{margin:0;padding:0;box-sizing:border-box}body{background:var(--bg);color:var(--text);font-family:'Pretendard',-apple-system,sans-serif;display:flex;height:100vh;overflow:hidden}
-.sidebar{width:230px;border-right:1px solid var(--border);display:flex;flex-direction:column;flex-shrink:0}
-.sidebar-header{padding:16px 14px 12px;border-bottom:1px solid var(--border)}
+.sidebar{width:250px;border-right:1px solid var(--border);display:flex;flex-direction:column;flex-shrink:0}
+.sidebar-header{padding:14px 12px 10px;border-bottom:1px solid var(--border)}
 .sidebar-header .label{font-size:9px;letter-spacing:3px;color:var(--accent);text-transform:uppercase;margin-bottom:3px}
 .sidebar-header .title{font-size:16px;font-weight:800;color:var(--text-bright)}
 .sidebar-header .meta{font-size:10px;color:var(--text-dim);margin-top:4px}
-.search-box{padding:8px 10px}.search-box input{width:100%;background:var(--panel);border:1px solid var(--border);border-radius:6px;padding:7px 10px;color:var(--text);font-size:11px;outline:none;font-family:inherit}
+.group-bar{display:flex;gap:2px;padding:6px 8px;border-bottom:1px solid var(--border);overflow-x:auto}
+.group-btn{padding:4px 8px;border:none;cursor:pointer;background:transparent;font-family:inherit;font-size:10px;color:var(--text-dim);border-radius:4px;white-space:nowrap}
+.group-btn.active{background:var(--accent-bg);color:var(--accent);font-weight:700}
+.search-box{padding:6px 8px}.search-box input{width:100%;background:var(--panel);border:1px solid var(--border);border-radius:6px;padding:6px 8px;color:var(--text);font-size:11px;outline:none;font-family:inherit}
 .prob-list{flex:1;overflow-y:auto;padding:4px 6px}
-.prob-item{padding:8px 10px;border-radius:6px;cursor:pointer;margin-bottom:2px;border-left:3px solid transparent;transition:all .15s}
+.folder-label{font-size:10px;font-weight:700;color:var(--text-dim);padding:8px 8px 4px;letter-spacing:1px}
+.prob-item{padding:6px 10px;border-radius:6px;cursor:pointer;margin-bottom:1px;border-left:3px solid transparent;transition:all .15s}
 .prob-item:hover{background:var(--accent-bg)}.prob-item.active{background:var(--accent-bg);border-left-color:var(--accent)}
-.prob-item .id{font-size:12px;font-weight:600}.prob-item.active .id{font-weight:700;color:var(--accent)}
-.prob-item .sub{font-size:10px;color:var(--text-dim);margin-top:1px}
+.prob-item .id{font-size:11px;font-weight:600}.prob-item.active .id{font-weight:700;color:var(--accent)}
+.prob-item .sub{font-size:9px;color:var(--text-dim);margin-top:1px}
 .main{flex:1;display:flex;flex-direction:column;min-width:0}
-.tabs{display:flex;border-bottom:1px solid var(--border);background:var(--panel);padding:0 16px;overflow-x:auto}
-.tab{padding:11px 13px;border:none;cursor:pointer;background:transparent;font-family:inherit;font-size:11px;color:var(--text-dim);border-bottom:2px solid transparent;transition:all .15s;white-space:nowrap}
+.tabs{display:flex;border-bottom:1px solid var(--border);background:var(--panel);padding:0 14px;overflow-x:auto}
+.tab{padding:10px 12px;border:none;cursor:pointer;background:transparent;font-family:inherit;font-size:11px;color:var(--text-dim);border-bottom:2px solid transparent;transition:all .15s;white-space:nowrap}
 .tab:hover{color:var(--text)}.tab.active{color:var(--accent);font-weight:700;border-bottom-color:var(--accent)}
 .content{flex:1;overflow-y:auto;padding:20px 24px}
 .card{background:var(--card);border-radius:8px;padding:20px;border:1px solid var(--border);margin-bottom:16px}
@@ -41,230 +45,136 @@
 .neuron-id{font-size:11px;font-weight:700;min-width:52px;flex-shrink:0}.neuron-stmt{font-size:12px;flex:1}
 .neuron-count{font-size:9px;color:var(--text-dim);background:var(--border);border-radius:4px;padding:1px 6px;flex-shrink:0}
 .dag-container{overflow:auto;max-height:500px;background:var(--bg);border-radius:8px;border:1px solid var(--border)}
-.dag-legend{display:flex;gap:16px;margin-top:12px;font-size:10px;color:var(--text-dim);flex-wrap:wrap}
-.badges{display:flex;gap:8px;margin-top:6px;flex-wrap:wrap}.badge{font-size:10px;padding:2px 8px;border-radius:4px}
+.badges{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap}.badge{font-size:10px;padding:2px 8px;border-radius:4px}
 .badge-unit{background:var(--accent-bg);color:var(--accent)}.badge-diff{background:rgba(255,167,38,.1);color:var(--warn)}
 .badge-ans{background:rgba(102,187,106,.1);color:var(--success)}.badge-edge{background:rgba(79,195,247,.1);color:var(--fact)}
-.badge-ver{background:rgba(124,131,253,.1);color:var(--accent)}
+.badge-src{background:rgba(124,131,253,.06);color:var(--text-dim)}
 .empty{color:var(--text-dim);font-size:13px;text-align:center;margin-top:80px}
 .hist-card{background:var(--card);border-radius:8px;padding:16px;border:1px solid var(--border);margin-bottom:12px}
-.hist-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
 .hist-toggle{font-size:10px;color:var(--accent);cursor:pointer;background:var(--accent-bg);border:1px solid rgba(124,131,253,.2);border-radius:4px;padding:2px 8px}
-.hist-body{max-height:400px;overflow-y:auto;margin-top:8px}
 .nlib-search{width:100%;background:var(--panel);border:1px solid var(--border);border-radius:6px;padding:7px 10px;color:var(--text);font-size:11px;outline:none;font-family:inherit;margin-bottom:12px}
-.tip-wrap{position:relative;display:inline}
-.tip-wrap .tip{display:none;position:fixed;background:#1e2235;border:1px solid var(--border-light);border-radius:6px;padding:10px 14px;font-size:11px;color:var(--text);white-space:normal;width:max-content;max-width:450px;z-index:999;line-height:1.6;box-shadow:0 4px 16px rgba(0,0,0,.6);pointer-events:none}
-.tip-wrap:hover .tip{display:block}
+.tip-wrap{position:relative;display:inline}.tip-wrap .tip{display:none;position:fixed;background:#1e2235;border:1px solid var(--border-light);border-radius:6px;padding:10px 14px;font-size:11px;color:var(--text);white-space:normal;width:max-content;max-width:450px;z-index:999;line-height:1.6;box-shadow:0 4px 16px rgba(0,0,0,.6);pointer-events:none}.tip-wrap:hover .tip{display:block}
+.mg-row{display:flex;gap:8px;align-items:center;margin-bottom:8px}.mg-label{font-size:10px;color:var(--text-dim);min-width:60px}
+.mg-input{flex:1;background:var(--panel);border:1px solid var(--border);border-radius:4px;padding:5px 8px;color:var(--text);font-size:11px;outline:none;font-family:inherit}
+.mg-tag{display:inline-flex;align-items:center;gap:4px;font-size:10px;padding:2px 8px;background:var(--border);border-radius:4px;color:var(--text)}.mg-tag-x{cursor:pointer;color:var(--strat);font-weight:700}
+.mg-btn{padding:6px 14px;border:none;border-radius:4px;font-family:inherit;font-size:11px;font-weight:700;cursor:pointer}
+.mg-btn-p{background:var(--accent);color:#fff}.mg-btn-s{background:var(--border-light);color:var(--text)}.mg-btn-d{background:rgba(239,83,80,.15);color:var(--strat)}
+.mg-btn:disabled{opacity:.4;cursor:not-allowed}
+.reg-input{width:100%;background:var(--panel);border:1px solid var(--border);border-radius:6px;padding:8px 10px;color:var(--text);font-size:11px;outline:none;font-family:'Pretendard',monospace;resize:vertical;min-height:250px}
+.reg-token{width:100%;background:var(--panel);border:1px solid var(--border);border-radius:6px;padding:7px 10px;color:var(--text);font-size:11px;outline:none;font-family:inherit;margin-bottom:8px}
+.reg-status{font-size:11px;padding:8px 12px;border-radius:6px;margin-top:10px}
+.reg-ok{background:rgba(102,187,106,.1);color:var(--success);border:1px solid rgba(102,187,106,.2)}
+.reg-err{background:rgba(239,83,80,.1);color:var(--strat);border:1px solid rgba(239,83,80,.2)}
 ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--border-light);border-radius:3px}
 </style>
 </head>
 <body>
 <div class="sidebar">
-  <div class="sidebar-header">
-    <div class="label">Skeleton</div>
-    <div class="title">Viewer</div>
-    <div class="meta" id="sidebar-meta">로딩 중...</div>
-  </div>
-  <div class="search-box"><input id="search" placeholder="검색..." oninput="filterProblems()"></div>
+  <div class="sidebar-header"><div class="label">Skeleton</div><div class="title">Viewer</div><div class="meta" id="sidebar-meta">loading...</div></div>
+  <div class="group-bar" id="group-bar"></div>
+  <div class="search-box"><input id="search" placeholder="search..." oninput="filterProblems()"></div>
   <div class="prob-list" id="prob-list"></div>
 </div>
 <div class="main">
   <div class="tabs" id="tabs"></div>
-  <div class="content" id="content"><div class="empty">← 문제를 선택하세요</div></div>
+  <div class="content" id="content"><div class="empty">select a problem</div></div>
 </div>
 <script>
-var OWNER='koms7429-maker',REPO='math-hub',BRANCH='main';
-var SECTIONS=['문제문','DAG','Skeleton','Solution','원본해설','뉴런','전체 뉴런','이력'];
-var problems=[],nMap={},nAll=[],selected=null,curSec=0,expandedHist={},nlibQ='';
+var OW='koms7429-maker',RP='math-hub',BR='main';
+var SECS=['problem','DAG','Skeleton','Solution','analysis','neurons','all neurons','history','manage','register'];
+var GMODES=['all','source','theme','difficulty','custom'];
+var probs=[],nMap={},nAll=[],sel=null,curS=0,exH={},nlQ='',gMode='all',ghTk='',bsSha='';
 
-function decB64(b64){return new TextDecoder('utf-8').decode(Uint8Array.from(atob(b64.replace(/\s/g,'')),function(c){return c.charCodeAt(0)}))}
+function d64(b){return new TextDecoder('utf-8').decode(Uint8Array.from(atob(b.replace(/\s/g,'')),function(c){return c.charCodeAt(0)}))}
 function rm(t){if(!t)return'';return String(t).split(/(\$[^$]+\$)/g).map(function(p){if(p.startsWith('$')&&p.endsWith('$')){try{return katex.renderToString(p.slice(1,-1),{throwOnError:false})}catch(e){return'<code>'+p.slice(1,-1)+'</code>'}}return p.replace(/</g,'&lt;').replace(/>/g,'&gt;')}).join('')}
-function nc(id){if(!id)return'var(--text-dim)';if(id.startsWith('사실'))return'var(--fact)';if(id.startsWith('연산'))return'var(--op)';if(id.startsWith('전략'))return'var(--strat)';return'var(--text-dim)'}
+function nc(id){if(!id)return'var(--text-dim)';if(id.startsWith('\uC0AC\uC2E4'))return'var(--fact)';if(id.startsWith('\uC5F0\uC0B0'))return'var(--op)';if(id.startsWith('\uC804\uB7B5'))return'var(--strat)';return'var(--text-dim)'}
 function bi(to){return to?to.replace(/_\d+$/,''):''}
-function nType(id){if(id.startsWith('사실'))return'fact';if(id.startsWith('연산'))return'operation';if(id.startsWith('전략'))return'strategy';return''}
-function parseNeuronLine(l){var m=l.match(/^\|\s*((?:사실|연산|전략)\d+)\s*\|\s*(.*)\s*$/);if(m){var stmt=m[2].replace(/\|\s*$/,'').trim();if(stmt)return{id:m[1],statement:stmt}}return null}
+function pnl(l){var m=l.match(/^\|\s*((?:\uC0AC\uC2E4|\uC5F0\uC0B0|\uC804\uB7B5)\d+)\s*\|\s*(.*)\s*$/);if(m){var s=m[2].replace(/\|\s*$/,'').trim();if(s)return{id:m[1],statement:s}}return null}
+function tg(p){return p.tags||{source:(p.metadata&&p.metadata.source)||'',theme:(p.metadata&&p.metadata.unit)||'',difficulty:(p.metadata&&p.metadata.difficulty)||'',custom:[]}}
 
-// 툴팁 마우스 추적
-document.addEventListener('mousemove',function(ev){
-  var tips=document.querySelectorAll('.tip-wrap:hover .tip');
-  tips.forEach(function(t){
-    var x=ev.clientX+12,y=ev.clientY-10;
-    if(x+460>window.innerWidth)x=ev.clientX-460;
-    if(y<10)y=ev.clientY+20;
-    if(y+200>window.innerHeight)y=ev.clientY-200;
-    t.style.left=x+'px';t.style.top=y+'px';
-  });
-});
+document.addEventListener('mousemove',function(ev){document.querySelectorAll('.tip-wrap:hover .tip').forEach(function(t){var x=ev.clientX+12,y=ev.clientY-10;if(x+460>window.innerWidth)x=ev.clientX-460;if(y<10)y=ev.clientY+20;if(y+200>window.innerHeight)y=ev.clientY-200;t.style.left=x+'px';t.style.top=y+'px'})});
 
 async function loadData(){
-  var api=function(u){return'https://api.github.com/repos/'+OWNER+'/'+REPO+'/contents/'+u+'?ref='+BRANCH};
-  try{
-    var r=await Promise.all([fetch(api('bookshelf.json')),fetch(api('neuron-list.md'))]);
-    if(r[0].ok){var j=await r[0].json();problems=JSON.parse(decB64(j.content))}
-    if(r[1].ok){var j2=await r[1].json();var t=decB64(j2.content);t.split('\n').forEach(function(l){var n=parseNeuronLine(l);if(n){nMap[n.id]={id:n.id,statement:n.statement};nAll.push({id:n.id,statement:n.statement,type:nType(n.id)})}})}
-  }catch(e){console.error(e)}
-  document.getElementById('sidebar-meta').textContent=problems.length+'문제 · '+nAll.length+'뉴런';
-  renderList();renderTabs();
-  if(problems.length>0){selected=problems[0];renderList();renderTabs();renderContent()}
-}
+  var api=function(u){return'https://api.github.com/repos/'+OW+'/'+RP+'/contents/'+u+'?ref='+BR};
+  try{var r=await Promise.all([fetch(api('bookshelf.json')),fetch(api('neuron-list.md'))]);
+  if(r[0].ok){var j=await r[0].json();probs=JSON.parse(d64(j.content));bsSha=j.sha}
+  if(r[1].ok){var j2=await r[1].json();d64(j2.content).split('\n').forEach(function(l){var n=pnl(l);if(n){nMap[n.id]=n;nAll.push({id:n.id,statement:n.statement,type:n.id.startsWith('\uC0AC\uC2E4')?'fact':n.id.startsWith('\uC5F0\uC0B0')?'op':'strat'})}})}}catch(e){console.error(e)}
+  ghTk=localStorage.getItem('gh_token')||'';
+  document.getElementById('sidebar-meta').textContent=probs.length+' problems / '+nAll.length+' neurons';
+  rGB();rList();rTabs();if(probs.length>0){sel=probs[0];rList();rTabs();rCon()}}
 
-function renderList(){
+function rGB(){document.getElementById('group-bar').innerHTML=GMODES.map(function(m){return'<button class="group-btn '+(gMode===m?'active':'')+'" onclick="sG(\''+m+'\')">'+m+'</button>'}).join('')}
+function sG(m){gMode=m;rGB();rList()}
+
+function rList(){
   var q=document.getElementById('search').value.toLowerCase();
-  var f=q?problems.filter(function(p){return(p.problem_id||'').toLowerCase().indexOf(q)>=0||(p.answer||'').indexOf(q)>=0||(p.statement||'').toLowerCase().indexOf(q)>=0}):problems;
-  document.getElementById('prob-list').innerHTML=f.map(function(p){
-    var a=selected&&selected.problem_id===p.problem_id;
-    var hc=(p.history||[]).length;
-    return'<div class="prob-item '+(a?'active':'')+'" onclick="sel(\''+p.problem_id+'\')"><div class="id">'+(p.problem_id||'?')+'</div><div class="sub">'+(p.metadata&&p.metadata.unit||'')+' '+(p.answer?'· 답: '+p.answer:'')+'</div><div class="sub">edges: '+(p.skeleton||[]).length+(hc?' · v'+(hc+1):'')+'</div></div>'
-  }).join('')}
+  var f=q?probs.filter(function(p){return(p.problem_id||'').toLowerCase().indexOf(q)>=0||(p.answer||'').indexOf(q)>=0}):probs;
+  var el=document.getElementById('prob-list');
+  if(gMode==='all'){el.innerHTML=f.map(pI).join('');return}
+  var gs={};f.forEach(function(p){var t=tg(p);var k='';
+    if(gMode==='source')k=t.source||'(none)';else if(gMode==='theme')k=t.theme||'(none)';else if(gMode==='difficulty')k=t.difficulty||'(none)';
+    else if(gMode==='custom'){var cl=t.custom||[];if(!cl.length)cl=['(unfiled)'];cl.forEach(function(c){if(!gs[c])gs[c]=[];gs[c].push(p)});return}
+    if(!gs[k])gs[k]=[];gs[k].push(p)});
+  var html='';Object.keys(gs).sort().forEach(function(k){html+='<div class="folder-label">'+k+' ('+gs[k].length+')</div>';gs[k].forEach(function(p){html+=pI(p)})});el.innerHTML=html}
 
-function filterProblems(){renderList()}
-function sel(pid){selected=problems.find(function(p){return p.problem_id===pid});curSec=0;expandedHist={};renderList();renderTabs();renderContent()}
-function renderTabs(){document.getElementById('tabs').innerHTML=SECTIONS.map(function(s,i){
-  var label=s;
-  if(i===6)label='전체 뉴런 ('+nAll.length+')';
-  if(i===7&&selected&&selected.history&&selected.history.length)label+=' ('+selected.history.length+')';
-  return'<button class="tab '+(curSec===i?'active':'')+'" onclick="sw('+i+')">'+label+'</button>'
-}).join('')}
-function sw(i){curSec=i;renderTabs();renderContent()}
+function pI(p){var a=sel&&sel.problem_id===p.problem_id;return'<div class="prob-item '+(a?'active':'')+'" onclick="sP(\''+p.problem_id.replace(/'/g,"\\'")  +'\')"><div class="id">'+p.problem_id+'</div><div class="sub">'+(tg(p).theme||'')+' '+(p.answer?'ans:'+p.answer:'')+'</div></div>'}
+function filterProblems(){rList()}
+function sP(pid){sel=probs.find(function(p){return p.problem_id===pid});curS=0;exH={};rList();rTabs();rCon()}
+function rTabs(){document.getElementById('tabs').innerHTML=SECS.map(function(s,i){var l=s;if(i===6)l='all neurons ('+nAll.length+')';if(i===7&&sel&&sel.history&&sel.history.length)l+=' ('+sel.history.length+')';if(i===8)l='manage';if(i===9)l='+ register';return'<button class="tab '+(curS===i?'active':'')+'" onclick="sT('+i+')">'+l+'</button>'}).join('')}
+function sT(i){curS=i;rTabs();rCon()}
 
-function renderContent(){
+function rCon(){
   var el=document.getElementById('content');
-  if(curSec===6){el.innerHTML=rNlib();return}
-  if(!selected){el.innerHTML='<div class="empty">← 문제를 선택하세요</div>';return}
-  var p=selected,edges=(p.skeleton||[]).length,sides=0;
-  for(var i=0;i<(p.skeleton||[]).length;i++){if(p.skeleton[i].main===false)sides++}
-  var hc=(p.history||[]).length;
-  var h='<div style="margin-bottom:20px"><div><span style="font-size:20px;font-weight:800;color:var(--text-bright)">'+p.problem_id+'</span><span style="font-size:12px;color:var(--text-dim);margin-left:12px">'+(p.number||'')+'</span></div><div class="badges">'+(p.metadata&&p.metadata.unit?'<span class="badge badge-unit">'+p.metadata.unit+'</span>':'')+(p.metadata&&p.metadata.difficulty?'<span class="badge badge-diff">'+p.metadata.difficulty+'</span>':'')+(p.answer?'<span class="badge badge-ans">답: '+p.answer+'</span>':'')+'<span class="badge badge-edge">edges: '+edges+' (main '+(edges-sides)+' + side '+sides+')</span>'+(hc?'<span class="badge badge-ver">v'+(hc+1)+' (이전 '+hc+'건)</span>':'')+'</div></div>';
-  switch(curSec){case 0:h+=rStmt(p);break;case 1:h+=rDAG(p);break;case 2:h+=rSkel(p);break;case 3:h+=rSol(p);break;case 4:h+=rAnalysis(p);break;case 5:h+=rNeur(p);break;case 7:h+=rHist(p);break}
-  el.innerHTML=h}
+  if(curS===6){el.innerHTML=rNlib();return}if(curS===9){el.innerHTML=rReg();return}
+  if(!sel){el.innerHTML='<div class="empty">select a problem</div>';return}
+  var p=sel,ed=(p.skeleton||[]).length,sd=0;for(var i=0;i<ed;i++){if(p.skeleton[i].main===false)sd++}var t=tg(p);
+  var h='<div style="margin-bottom:20px"><span style="font-size:20px;font-weight:800;color:var(--text-bright)">'+p.problem_id+'</span><div class="badges">'+(t.source?'<span class="badge badge-src">'+t.source+'</span>':'')+(t.theme?'<span class="badge badge-unit">'+t.theme+'</span>':'')+(t.difficulty?'<span class="badge badge-diff">'+t.difficulty+'</span>':'')+(p.answer?'<span class="badge badge-ans">ans:'+p.answer+'</span>':'')+'<span class="badge badge-edge">edges:'+ed+'(m'+(ed-sd)+'/s'+sd+')</span>'+((t.custom||[]).map(function(c){return'<span class="badge badge-src">'+c+'</span>'}).join(''))+'</div></div>';
+  switch(curS){case 0:h+=rSt(p);break;case 1:h+=rDAG(p);break;case 2:h+=rSk(p);break;case 3:h+=rSo(p);break;case 4:h+=rAn(p);break;case 5:h+=rNe(p);break;case 7:h+=rHi(p);break;case 8:h+=rMg(p);break}el.innerHTML=h}
 
-function rStmt(p){
-  var h='<div class="card" style="line-height:1.8;font-size:13px">'+rm(p.statement||'문제문 없음')+'</div>';
-  if(p.clues&&p.clues.length){h+='<div class="section-label">단서</div>';for(var i=0;i<p.clues.length;i++){var c=p.clues[i];h+='<div class="clue-row"><span class="clue-id">'+c.id+'</span><span class="clue-text">'+rm(c.text)+'</span></div>'}}
-  if(p.constraints&&p.constraints.length){h+='<div class="section-label" style="margin-top:16px">제약조건</div><div style="display:flex;flex-wrap:wrap;gap:6px">';for(var i=0;i<p.constraints.length;i++){h+='<span style="font-size:11px;padding:3px 10px;background:rgba(239,83,80,.07);border:1px solid rgba(239,83,80,.2);border-radius:4px">'+rm(p.constraints[i])+'</span>'}h+='</div>'}
-  return h}
+function rSt(p){var h='<div class="card" style="line-height:1.8;font-size:13px">'+rm(p.statement||'')+'</div>';if(p.clues&&p.clues.length){h+='<div class="section-label">clues</div>';p.clues.forEach(function(c){h+='<div class="clue-row"><span class="clue-id">'+c.id+'</span><span class="clue-text">'+rm(c.text)+'</span></div>'})}return h}
 
-function rDAG(p){
-  if(!p.skeleton||!p.skeleton.length)return'<div class="empty">Skeleton 없음</div>';
-  var nodes=new Set,edges=[],cIds=new Set;
-  if(p.clues)for(var i=0;i<p.clues.length;i++){cIds.add(p.clues[i].id);nodes.add(p.clues[i].id)}
-  for(var i=0;i<p.skeleton.length;i++){var e=p.skeleton[i];var fs=Array.isArray(e.from)?e.from:[e.from];for(var j=0;j<fs.length;j++){if(fs[j])nodes.add(fs[j])}if(e.to)nodes.add(e.to);for(var j=0;j<fs.length;j++){if(fs[j]&&e.to)edges.push({from:fs[j],to:e.to,main:e.main!==false})}}
-  var adj={};for(var i=0;i<edges.length;i++){var e=edges[i];if(!adj[e.from])adj[e.from]=[];adj[e.from].push(e.to)}
-  var layers={},q=[];cIds.forEach(function(c){layers[c]=0;q.push(c)});
-  while(q.length){var n=q.shift();var nexts=adj[n]||[];for(var i=0;i<nexts.length;i++){var nl=(layers[n]||0)+1;if(layers[nexts[i]]===undefined||layers[nexts[i]]<nl){layers[nexts[i]]=nl;q.push(nexts[i])}}}
-  var mL=0;var nodeArr=[...nodes];for(var k in layers)if(layers[k]>mL)mL=layers[k];
-  var lN={};for(var i=0;i<nodeArr.length;i++){var l=layers[nodeArr[i]]||0;if(!lN[l])lN[l]=[];lN[l].push(nodeArr[i])}
-  var nW=110,nH=30,gX=30,gY=50,pos={};
-  for(var l=0;l<=mL;l++){var ns=lN[l]||[];var tw=ns.length*nW+(ns.length-1)*gX;var sx=-tw/2;for(var i=0;i<ns.length;i++){pos[ns[i]]={x:sx+i*(nW+gX)+nW/2,y:l*(nH+gY)+nH/2+24}}}
-  var mNL=1;for(var k in lN)if(lN[k].length>mNL)mNL=lN[k].length;
-  var svgW=Math.max(500,mNL*(nW+gX)+120),svgH=(mL+1)*(nH+gY)+60,ox=svgW/2;
-  var s='<div class="dag-container"><svg width="'+svgW+'" height="'+svgH+'" style="display:block"><defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="var(--text-dim)" stroke-width="1.5"/></marker><marker id="ahs" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="var(--border-light)" stroke-width="1.5"/></marker></defs>';
-  for(var i=0;i<edges.length;i++){var e=edges[i];var p1=pos[e.from],p2=pos[e.to];if(!p1||!p2)continue;s+='<line x1="'+(p1.x+ox)+'" y1="'+(p1.y+nH/2)+'" x2="'+(p2.x+ox)+'" y2="'+(p2.y-nH/2)+'" stroke="'+(e.main?'var(--text-dim)':'var(--border-light)')+'" stroke-width="'+(e.main?1.2:.8)+'" '+(e.main?'':'stroke-dasharray="4 3"')+' marker-end="'+(e.main?'url(#ah)':'url(#ahs)')+'" opacity=".6"/>'}
-  for(var i=0;i<nodeArr.length;i++){var n=nodeArr[i];var p=pos[n];if(!p)continue;var iC=cIds.has(n),iE=n==='END';var bg=iC?'#1a2340':iE?'#1a3020':'#151720';var br=iC?'#3a5090':iE?'var(--success)':nc(bi(n));var tc=iC?'#8ab4f8':iE?'var(--success)':nc(bi(n));var lb=n.length>13?n.slice(0,12)+'…':n;s+='<rect x="'+(p.x+ox-nW/2)+'" y="'+(p.y-nH/2)+'" width="'+nW+'" height="'+nH+'" rx="'+(iE?14:6)+'" fill="'+bg+'" stroke="'+br+'" stroke-width=".8"/><text x="'+(p.x+ox)+'" y="'+(p.y+1)+'" text-anchor="middle" dominant-baseline="central" fill="'+tc+'" font-size="10" font-family="Pretendard,sans-serif" font-weight="600">'+lb+'</text>'}
-  s+='</svg></div>';
-  s+='<div class="dag-legend"><span>● <span style="color:#8ab4f8">단서</span></span><span>● <span style="color:var(--fact)">사실</span></span><span>● <span style="color:var(--op)">연산</span></span><span>● <span style="color:var(--strat)">전략</span></span><span>● <span style="color:var(--success)">END</span></span><span style="margin-left:12px">── main &nbsp; ┄┄ side</span></div>';
-  return s}
+function rDAG(p){if(!p.skeleton||!p.skeleton.length)return'<div class="empty">no skeleton</div>';var nodes=new Set,edges=[],cIds=new Set;if(p.clues)p.clues.forEach(function(c){cIds.add(c.id);nodes.add(c.id)});p.skeleton.forEach(function(e){var fs=Array.isArray(e.from)?e.from:[e.from];fs.forEach(function(f){if(f)nodes.add(f)});if(e.to)nodes.add(e.to);fs.forEach(function(f){if(f&&e.to)edges.push({from:f,to:e.to,main:e.main!==false})})});var adj={};edges.forEach(function(e){if(!adj[e.from])adj[e.from]=[];adj[e.from].push(e.to)});var layers={},q=[];cIds.forEach(function(c){layers[c]=0;q.push(c)});while(q.length){var n=q.shift();(adj[n]||[]).forEach(function(x){var nl=(layers[n]||0)+1;if(layers[x]===undefined||layers[x]<nl){layers[x]=nl;q.push(x)}})}var mL=0;var na=[...nodes];for(var k in layers)if(layers[k]>mL)mL=layers[k];var lN={};na.forEach(function(n){var l=layers[n]||0;if(!lN[l])lN[l]=[];lN[l].push(n)});var nW=110,nH=30,gX=30,gY=50,pos={};for(var l=0;l<=mL;l++){var ns=lN[l]||[];var tw=ns.length*nW+(ns.length-1)*gX;var sx=-tw/2;ns.forEach(function(n,i){pos[n]={x:sx+i*(nW+gX)+nW/2,y:l*(nH+gY)+nH/2+24}})}var mNL=1;for(var k in lN)if(lN[k].length>mNL)mNL=lN[k].length;var svgW=Math.max(500,mNL*(nW+gX)+120),svgH=(mL+1)*(nH+gY)+60,ox=svgW/2;var s='<div class="dag-container"><svg width="'+svgW+'" height="'+svgH+'" style="display:block"><defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="var(--text-dim)" stroke-width="1.5"/></marker><marker id="ahs" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="var(--border-light)" stroke-width="1.5"/></marker></defs>';edges.forEach(function(e){var p1=pos[e.from],p2=pos[e.to];if(!p1||!p2)return;s+='<line x1="'+(p1.x+ox)+'" y1="'+(p1.y+nH/2)+'" x2="'+(p2.x+ox)+'" y2="'+(p2.y-nH/2)+'" stroke="'+(e.main?'var(--text-dim)':'var(--border-light)')+'" stroke-width="'+(e.main?1.2:.8)+'" '+(e.main?'':'stroke-dasharray="4 3"')+' marker-end="'+(e.main?'url(#ah)':'url(#ahs)')+'" opacity=".6"/>'});na.forEach(function(n){var p=pos[n];if(!p)return;var iC=cIds.has(n),iE=n==='END';var bg=iC?'#1a2340':iE?'#1a3020':'#151720';var br=iC?'#3a5090':iE?'var(--success)':nc(bi(n));var tc=iC?'#8ab4f8':iE?'var(--success)':nc(bi(n));s+='<rect x="'+(p.x+ox-nW/2)+'" y="'+(p.y-nH/2)+'" width="'+nW+'" height="'+nH+'" rx="'+(iE?14:6)+'" fill="'+bg+'" stroke="'+br+'" stroke-width=".8"/><text x="'+(p.x+ox)+'" y="'+(p.y+1)+'" text-anchor="middle" dominant-baseline="central" fill="'+tc+'" font-size="10" font-family="Pretendard,sans-serif" font-weight="600">'+(n.length>13?n.slice(0,12)+'..':n)+'</text>'});s+='</svg></div>';return s}
 
-function makeTip(id,label){
-  var b=bi(id);var n=nMap[b];var c=nc(b);
-  if(n)return'<span class="tip-wrap"><span style="color:'+c+';cursor:pointer;font-weight:700">'+label+'</span><span class="tip"><b style="color:'+c+'">'+b+'</b><br>'+rm(n.statement)+'</span></span>';
-  return'<span style="color:'+c+';font-weight:700">'+label+'</span>'}
-function makeFromTip(id){
-  var b=bi(id);var n=nMap[b];var c=nc(b);
-  if(n)return'<span class="tip-wrap"><span style="color:'+c+';cursor:pointer">'+id+'</span><span class="tip"><b style="color:'+c+'">'+b+'</b><br>'+rm(n.statement)+'</span></span>';
-  return'<span style="color:var(--text-dim)">'+id+'</span>'}
+function mT(id,lb){var b=bi(id);var n=nMap[b];var c=nc(b);if(n)return'<span class="tip-wrap"><span style="color:'+c+';cursor:pointer;font-weight:700">'+lb+'</span><span class="tip"><b style="color:'+c+'">'+b+'</b><br>'+rm(n.statement)+'</span></span>';return'<span style="color:'+c+';font-weight:700">'+lb+'</span>'}
+function mFT(id){var b=bi(id);var n=nMap[b];var c=nc(b);if(n)return'<span class="tip-wrap"><span style="color:'+c+';cursor:pointer">'+id+'</span><span class="tip"><b style="color:'+c+'">'+b+'</b><br>'+rm(n.statement)+'</span></span>';return'<span style="color:var(--text-dim)">'+id+'</span>'}
 
-function rSkel(p){
-  if(!p.skeleton||!p.skeleton.length)return'<div class="empty">Skeleton 없음</div>';
-  var html='';
-  for(var i=0;i<p.skeleton.length;i++){
-    var e=p.skeleton[i];var fs=Array.isArray(e.from)?e.from:[e.from];var b=bi(e.to);var iS=e.main===false;var c=nc(b);
-    var fromParts=[];for(var j=0;j<fs.length;j++){fromParts.push(makeFromTip(fs[j]))}
-    var toTip=makeTip(e.to,e.to);
-    html+='<div class="edge-row '+(iS?'side':'')+'" style="border-left:3px solid '+c+'"><div class="edge-header"><span class="edge-num">#'+(i+1)+'</span>'+fromParts.join(' <span style="color:var(--text-dim)">+</span> ')+' <span class="edge-arrow">→</span> '+toTip+(iS?' <span class="edge-side-badge">side</span>':'')+'</div>'+(e.note?'<div class="edge-note">'+rm(e.note)+'</div>':'')+'</div>'}
-  return html}
+function rSk(p){if(!p.skeleton||!p.skeleton.length)return'<div class="empty">no skeleton</div>';var h='';p.skeleton.forEach(function(e,i){var fs=Array.isArray(e.from)?e.from:[e.from];var iS=e.main===false;var c=nc(bi(e.to));var fp=fs.map(mFT);h+='<div class="edge-row '+(iS?'side':'')+'" style="border-left:3px solid '+c+'"><div class="edge-header"><span class="edge-num">#'+(i+1)+'</span>'+fp.join(' + ')+' <span class="edge-arrow">-></span> '+mT(e.to,e.to)+(iS?' <span class="edge-side-badge">side</span>':'')+'</div>'+(e.note?'<div class="edge-note">'+rm(e.note)+'</div>':'')+'</div>'});return h}
 
-function rSol(p){
-  if(!p.solution)return'<div class="empty">Solution 없음</div>';
-  var lines=p.solution.split('\n');
-  var html='<div class="card">';
-  for(var i=0;i<lines.length;i++){
-    var l=lines[i];
-    if(/^STEP\s+\d/.test(l))html+='<div class="sol-step">'+rm(l)+'</div>';
-    else html+='<div class="sol-line">'+rm(l)+'</div>'}
-  html+='</div>';return html}
+function rSo(p){if(!p.solution)return'<div class="empty">no solution</div>';var h='<div class="card">';p.solution.split('\n').forEach(function(l){h+=(/^STEP\s+\d/.test(l)?'<div class="sol-step">':'<div class="sol-line">')+rm(l)+'</div>'});return h+'</div>'}
+function rAn(p){if(!p.analysis)return'<div class="empty">no analysis</div>';var h='<div class="card" style="line-height:2">';p.analysis.split('\n').forEach(function(l){h+='<div style="font-size:13px">'+rm(l)+'</div>'});return h+'</div>'}
 
-function rAnalysis(p){
-  if(!p.analysis)return'<div class="empty">원본해설 없음</div>';
-  var lines=p.analysis.split('\n');
-  var html='<div class="card" style="line-height:2">';
-  for(var i=0;i<lines.length;i++){
-    var l=lines[i];
-    if(/^\d+\./.test(l.trim()))html+='<div style="margin-top:8px;font-size:13px">'+rm(l)+'</div>';
-    else if(l.trim().startsWith('**'))html+='<div style="margin-top:12px;font-weight:700;font-size:13px;color:var(--accent)">'+rm(l)+'</div>';
-    else if(l.trim().startsWith('-'))html+='<div style="padding-left:16px;font-size:12px;color:var(--text)">'+rm(l)+'</div>';
-    else html+='<div style="font-size:13px">'+rm(l)+'</div>'}
-  html+='</div>';return html}
+function rNe(p){if(!p.skeleton)return'';var us={};p.skeleton.forEach(function(e){var b=bi(e.to);if(b&&b!=='END'&&!b.startsWith('\uB2E8\uC11C'))us[b]=true});var uk=Object.keys(us);var gs=[{l:'FACT',it:uk.filter(function(n){return n.startsWith('\uC0AC\uC2E4')}).sort(),c:'var(--fact)'},{l:'OP',it:uk.filter(function(n){return n.startsWith('\uC5F0\uC0B0')}).sort(),c:'var(--op)'},{l:'STRAT',it:uk.filter(function(n){return n.startsWith('\uC804\uB7B5')}).sort(),c:'var(--strat)'}];var h='';gs.forEach(function(g){if(!g.it.length)return;h+='<div class="neuron-group"><div class="neuron-group-label" style="color:'+g.c+'">'+g.l+' ('+g.it.length+')</div>';g.it.forEach(function(id){var n=nMap[id];h+='<div class="neuron-row"><span class="neuron-id" style="color:'+g.c+'">'+id+'</span><span class="neuron-stmt">'+(n?rm(n.statement):'?')+'</span></div>'});h+='</div>'});return h}
 
-function rNeur(p){
-  if(!p.skeleton)return'<div class="empty">Skeleton 없음</div>';
-  var usedSet={};
-  for(var i=0;i<p.skeleton.length;i++){var b=bi(p.skeleton[i].to);if(b&&b!=='END'&&!b.startsWith('단서'))usedSet[b]=true}
-  var used=Object.keys(usedSet);
-  var gs=[{l:'사실 (FACT)',items:used.filter(function(n){return n.startsWith('사실')}).sort(),c:'var(--fact)'},{l:'연산 (OPERATION)',items:used.filter(function(n){return n.startsWith('연산')}).sort(),c:'var(--op)'},{l:'전략 (STRATEGY)',items:used.filter(function(n){return n.startsWith('전략')}).sort(),c:'var(--strat)'}];
-  var h='';
-  for(var gi=0;gi<gs.length;gi++){var g=gs[gi];if(!g.items.length)continue;
-    h+='<div class="neuron-group"><div class="neuron-group-label" style="color:'+g.c+'">'+g.l+' ('+g.items.length+')</div>';
-    for(var ni=0;ni<g.items.length;ni++){var id=g.items[ni];var n=nMap[id];
-      var cnt=0;var usages=[];
-      for(var si=0;si<p.skeleton.length;si++){if(bi(p.skeleton[si].to)===id){cnt++;usages.push({idx:si,note:p.skeleton[si].note,to:p.skeleton[si].to})}}
-      h+='<div class="neuron-row" style="flex-direction:column"><div style="display:flex;gap:10px;align-items:flex-start;width:100%"><span class="neuron-id" style="color:'+g.c+'">'+id+'</span><span class="neuron-stmt">'+(n?rm(n.statement):'<i style="color:var(--text-dim)">목록에 없음</i>')+'</span>'+(cnt>1?'<span class="neuron-count">×'+cnt+'</span>':'')+'</div><div style="padding-left:62px;margin-top:4px">';
-      for(var ui=0;ui<usages.length;ui++){var u=usages[ui];h+='<div style="font-size:10px;color:var(--text-dim);line-height:1.6"><span style="color:'+g.c+'">#'+(u.idx+1)+'</span> <span style="color:var(--text-dim)">'+u.to+'</span> — '+rm(u.note||'')+'</div>'}
-      h+='</div></div>'}
-    h+='</div>'}
-  h+='<div style="font-size:11px;color:var(--text-dim);margin-top:8px">총 '+used.length+'종 · edges '+p.skeleton.length+'개</div>';return h}
+function rNlib(){var q=nlQ.toLowerCase();var fl=function(list){return q?list.filter(function(n){return n.id.toLowerCase().indexOf(q)>=0||n.statement.toLowerCase().indexOf(q)>=0}):list};var gs=[{l:'FACT',it:fl(nAll.filter(function(n){return n.type==='fact'})),c:'var(--fact)'},{l:'OP',it:fl(nAll.filter(function(n){return n.type==='op'})),c:'var(--op)'},{l:'STRAT',it:fl(nAll.filter(function(n){return n.type==='strat'})),c:'var(--strat)'}];var h='<div style="margin-bottom:16px"><span style="font-size:18px;font-weight:800;color:var(--text-bright)">Neuron Library</span> <span style="color:var(--text-dim)">'+nAll.length+'</span></div><input class="nlib-search" placeholder="search..." value="'+nlQ+'" oninput="nlQ=this.value;rCon()">';gs.forEach(function(g){if(!g.it.length)return;h+='<div class="neuron-group"><div class="neuron-group-label" style="color:'+g.c+'">'+g.l+' ('+g.it.length+')</div>';g.it.forEach(function(n){h+='<div class="neuron-row"><span class="neuron-id" style="color:'+g.c+'">'+n.id+'</span><span class="neuron-stmt">'+rm(n.statement)+'</span></div>'});h+='</div>'});return h}
 
-function rNlib(){
-  var facts=[],ops=[],strats=[];
-  for(var i=0;i<nAll.length;i++){var n=nAll[i];if(n.type==='fact')facts.push(n);else if(n.type==='operation')ops.push(n);else if(n.type==='strategy')strats.push(n)}
-  var usageCount={},usageProblems={};
-  for(var pi=0;pi<problems.length;pi++){var p=problems[pi];var sk=p.skeleton||[];for(var si=0;si<sk.length;si++){var b=bi(sk[si].to);if(b&&b!=='END'&&!b.startsWith('단서')){usageCount[b]=(usageCount[b]||0)+1;if(!usageProblems[b])usageProblems[b]={};usageProblems[b][p.problem_id]=true}}}
-  var q=nlibQ.toLowerCase();
-  function filt(list){if(!q)return list;var r=[];for(var i=0;i<list.length;i++){if(list[i].id.toLowerCase().indexOf(q)>=0||list[i].statement.toLowerCase().indexOf(q)>=0)r.push(list[i])}return r}
-  var h='<div style="margin-bottom:20px"><span style="font-size:20px;font-weight:800;color:var(--text-bright)">전체 뉴런 라이브러리</span><span style="font-size:12px;color:var(--text-dim);margin-left:12px">'+nAll.length+'개</span></div>';
-  h+='<input class="nlib-search" placeholder="뉴런 검색 (ID 또는 내용)..." value="'+nlibQ+'" oninput="nlibQ=this.value;renderContent()">';
-  var gs=[{l:'사실 (FACT)',items:filt(facts),c:'var(--fact)',total:facts.length},{l:'연산 (OPERATION)',items:filt(ops),c:'var(--op)',total:ops.length},{l:'전략 (STRATEGY)',items:filt(strats),c:'var(--strat)',total:strats.length}];
-  for(var gi=0;gi<gs.length;gi++){var g=gs[gi];if(!g.items.length)continue;
-    h+='<div class="neuron-group"><div class="neuron-group-label" style="color:'+g.c+'">'+g.l+' ('+(q?g.items.length+'/'+g.total:g.total)+')</div>';
-    for(var ni=0;ni<g.items.length;ni++){var n=g.items[ni];var uc=usageCount[n.id]||0;var up=usageProblems[n.id]?Object.keys(usageProblems[n.id]):[];
-      h+='<div class="neuron-row" style="flex-direction:column"><div style="display:flex;gap:10px;align-items:flex-start;width:100%"><span class="neuron-id" style="color:'+g.c+'">'+n.id+'</span><span class="neuron-stmt">'+rm(n.statement)+'</span>'+(uc?'<span class="neuron-count" style="background:'+g.c+'22;color:'+g.c+'">'+uc+'회</span>':'')+'</div>'+(up.length?'<div style="padding-left:62px;margin-top:2px;font-size:10px;color:var(--text-dim)">사용: '+up.map(function(pid){return'<span style="cursor:pointer;color:var(--accent);text-decoration:underline" onclick="sel(\''+pid+'\')">'+pid+'</span>'}).join(', ')+'</div>':'')+'</div>'}
-    h+='</div>'}
-  return h}
+function toggleHist(i){exH[i]=!exH[i];rCon()}
+function rHi(p){if(!p.history||!p.history.length)return'<div class="empty">no history</div>';var h='';[...p.history].reverse().forEach(function(v,ri){var oi=p.history.length-1-ri;h+='<div class="hist-card"><div style="display:flex;justify-content:space-between;align-items:center"><span style="font-weight:700;color:var(--text-dim)">v'+(oi+1)+' (edges:'+(v.skeleton||[]).length+')</span><span class="hist-toggle" onclick="toggleHist('+oi+')">'+(exH[oi]?'collapse':'expand')+'</span></div>'+(exH[oi]?'<div style="font-size:11px;color:var(--text-dim);margin-top:8px">'+(v.created_at||'')+'</div>':'')+'</div>'});return h}
 
-function toggleHist(i){expandedHist[i]=!expandedHist[i];renderContent()}
+// ── Manage ──
+function rMg(p){var t=tg(p);var h='<div class="section-label">Info</div><div class="card">';h+='<div class="mg-row"><span class="mg-label">ID</span><input class="mg-input" id="mg-pid" value="'+p.problem_id+'"></div>';h+='<div class="mg-row"><span class="mg-label">Answer</span><input class="mg-input" id="mg-ans" value="'+(p.answer||'')+'"></div>';h+='<div class="mg-row"><span class="mg-label">Source</span><input class="mg-input" id="mg-src" value="'+(t.source||'')+'"></div>';h+='<div class="mg-row"><span class="mg-label">Theme</span><input class="mg-input" id="mg-theme" value="'+(t.theme||'')+'"></div>';h+='<div class="mg-row"><span class="mg-label">Difficulty</span><input class="mg-input" id="mg-diff" value="'+(t.difficulty||'')+'"></div></div>';
+  h+='<div class="section-label" style="margin-top:16px">Custom Tags</div><div class="card"><div id="mg-tags" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px">';(t.custom||[]).forEach(function(c,i){h+='<span class="mg-tag">'+c+' <span class="mg-tag-x" onclick="rmTag('+i+')">x</span></span>'});h+='</div><div style="display:flex;gap:6px"><input class="mg-input" id="mg-newtag" placeholder="new tag..."><button class="mg-btn mg-btn-s" onclick="addTag()">Add</button></div></div>';
+  h+='<div style="display:flex;gap:10px;margin-top:20px"><button class="mg-btn mg-btn-p" id="mg-save" onclick="saveMg()">Save</button><button class="mg-btn mg-btn-d" onclick="delProb()">Delete</button></div><div id="mg-status"></div>';return h}
 
-function rHist(p){
-  if(!p.history||!p.history.length)return'<div class="empty">이전 버전 없음 (첫 제출)</div>';
-  var h='<div class="section-label">버전 이력 ('+p.history.length+'건) — 최신순</div>';
-  var reversed=[...p.history].reverse();
-  for(var ri=0;ri<reversed.length;ri++){var v=reversed[ri];
-    var origIdx=p.history.length-1-ri;var vNum=origIdx+1;
-    var edges=(v.skeleton||[]).length;var sides=0;for(var si=0;si<(v.skeleton||[]).length;si++){if(v.skeleton[si].main===false)sides++}
-    var expanded=expandedHist[origIdx];
-    h+='<div class="hist-card"><div class="hist-header"><div><span style="font-size:13px;font-weight:700;color:var(--text-dim)">v'+vNum+'</span><span style="font-size:11px;color:var(--text-dim);margin-left:8px">edges: '+edges+' (main '+(edges-sides)+' + side '+sides+')</span></div><div style="display:flex;gap:8px;align-items:center"><span style="font-size:10px;color:var(--text-dim)">'+(v.created_at?new Date(v.created_at).toLocaleString('ko-KR'):'날짜 없음')+'</span><span class="hist-toggle" onclick="toggleHist('+origIdx+')">'+(expanded?'접기':'펼치기')+'</span></div></div>';
-    if(expanded){
-      h+='<div class="hist-body">';
-      if(v.skeleton){h+='<div class="section-label" style="margin-top:4px">Skeleton</div>';
-        for(var ei=0;ei<v.skeleton.length;ei++){var e=v.skeleton[ei];var fs=Array.isArray(e.from)?e.from:[e.from];var b=bi(e.to);var c=nc(b);var iS=e.main===false;
-          var fromParts=[];for(var fi=0;fi<fs.length;fi++){fromParts.push(makeFromTip(fs[fi]))}
-          var toTip=makeTip(e.to,e.to);
-          h+='<div class="edge-row '+(iS?'side':'')+'" style="border-left:3px solid '+c+'"><div class="edge-header"><span class="edge-num">#'+(ei+1)+'</span>'+fromParts.join(' <span style="color:var(--text-dim)">+</span> ')+' <span class="edge-arrow">→</span> '+toTip+(iS?' <span class="edge-side-badge">side</span>':'')+'</div>'+(e.note?'<div class="edge-note">'+rm(e.note)+'</div>':'')+'</div>'}}
-      if(v.solution){h+='<div class="section-label" style="margin-top:12px">Solution</div><div style="font-size:12px;color:var(--text-dim);line-height:1.8">';
-        var slines=v.solution.split('\n');for(var li=0;li<slines.length;li++){var sl=slines[li];if(/^STEP\s+\d/.test(sl))h+='<div style="font-weight:700;color:var(--accent);margin-top:8px">'+rm(sl)+'</div>';else h+='<div>'+rm(sl)+'</div>'}h+='</div>'}
-      h+='</div>'}
-    h+='</div>'}
-  h+='<div style="margin-top:16px;padding:12px 16px;background:var(--accent-bg);border-radius:8px;border:1px solid rgba(124,131,253,.15)"><div style="font-size:11px;color:var(--accent);font-weight:700;margin-bottom:4px">현재 버전: v'+(p.history.length+1)+'</div><div style="font-size:10px;color:var(--text-dim)">'+(p.created_at?new Date(p.created_at).toLocaleString('ko-KR'):'')+' · edges '+(p.skeleton||[]).length+'개</div></div>';
-  return h}
+function addTag(){var v=document.getElementById('mg-newtag').value.trim();if(!v||!sel)return;if(!sel.tags)sel.tags=tg(sel);if(!sel.tags.custom)sel.tags.custom=[];if(sel.tags.custom.indexOf(v)<0)sel.tags.custom.push(v);rCon()}
+function rmTag(i){if(!sel||!sel.tags||!sel.tags.custom)return;sel.tags.custom.splice(i,1);rCon()}
+
+async function saveMg(){if(!ghTk){document.getElementById('mg-status').innerHTML='<div class="reg-status reg-err">Set token in register tab</div>';return}
+  document.getElementById('mg-save').disabled=true;sel.problem_id=document.getElementById('mg-pid').value.trim()||sel.problem_id;sel.answer=document.getElementById('mg-ans').value.trim();
+  if(!sel.tags)sel.tags={};sel.tags.source=document.getElementById('mg-src').value.trim();sel.tags.theme=document.getElementById('mg-theme').value.trim();sel.tags.difficulty=document.getElementById('mg-diff').value.trim();
+  if(!sel.metadata)sel.metadata={};sel.metadata.source=sel.tags.source;sel.metadata.unit=sel.tags.theme;sel.metadata.difficulty=sel.tags.difficulty;
+  try{await saveBS('update: '+sel.problem_id);document.getElementById('mg-status').innerHTML='<div class="reg-status reg-ok">Saved!</div>';rList();rTabs()}catch(e){document.getElementById('mg-status').innerHTML='<div class="reg-status reg-err">'+e.message+'</div>'}document.getElementById('mg-save').disabled=false}
+
+async function delProb(){if(!sel||!ghTk||!confirm('Delete '+sel.problem_id+'?'))return;var idx=probs.indexOf(sel);if(idx>=0)probs.splice(idx,1);try{await saveBS('delete: '+sel.problem_id);sel=probs.length?probs[0]:null;rList();rTabs();rCon()}catch(e){alert(e.message)}}
+
+async function saveBS(msg){var api='https://api.github.com/repos/'+OW+'/'+RP+'/contents/bookshelf.json?ref='+BR;var res=await fetch(api,{headers:{'Authorization':'token '+ghTk}});if(!res.ok)throw new Error('read:'+res.status);var g=await res.json();bsSha=g.sha;var nc=btoa(unescape(encodeURIComponent(JSON.stringify(probs,null,2))));var pr=await fetch(api,{method:'PUT',headers:{'Authorization':'token '+ghTk,'Content-Type':'application/json'},body:JSON.stringify({message:msg,content:nc,sha:bsSha,branch:BR})});if(!pr.ok)throw new Error('save:'+pr.status);bsSha=(await pr.json()).content.sha}
+
+// ── Register ──
+function rReg(){var h='<div style="margin-bottom:16px"><span style="font-size:18px;font-weight:800;color:var(--text-bright)">Register</span></div>';h+='<div class="section-label">GitHub Token</div><input class="reg-token" type="password" id="reg-token" placeholder="ghp_..." value="'+ghTk+'" onchange="svTk()">';h+='<div class="section-label" style="margin-top:12px">JSON</div><textarea class="reg-input" id="reg-json"></textarea>';h+='<div style="display:flex;gap:8px;margin-top:10px"><button class="mg-btn mg-btn-s" onclick="valReg()">Validate</button><button class="mg-btn mg-btn-p" id="reg-sub" onclick="subReg()">Register</button></div><div id="reg-status"></div>';return h}
+function svTk(){ghTk=document.getElementById('reg-token').value;localStorage.setItem('gh_token',ghTk)}
+function sRS(m,ok){var el=document.getElementById('reg-status');if(el)el.innerHTML='<div class="reg-status '+(ok?'reg-ok':'reg-err')+'">'+m+'</div>'}
+function valReg(){var r=document.getElementById('reg-json').value.trim();if(!r){sRS('empty',false);return}try{var d=JSON.parse(r);var e=Array.isArray(d)?d:[d];var er=[];e.forEach(function(x,i){if(!x.problem_id)er.push(i+': no id');if(!x.skeleton||!x.skeleton.length)er.push(i+': no skeleton')});if(er.length)sRS(er.join(', '),false);else sRS('Valid! '+e.length+' items',true)}catch(e){sRS('parse error',false)}}
+async function subReg(){if(!ghTk){sRS('set token',false);return}var r=document.getElementById('reg-json').value.trim();if(!r)return;var d;try{d=JSON.parse(r)}catch(e){sRS('parse error',false);return}var entries=Array.isArray(d)?d:[d];entries.forEach(function(e){if(!e.created_at)e.created_at=new Date().toISOString();if(!e.history)e.history=[]});document.getElementById('reg-sub').disabled=true;sRS('saving...',true);
+  try{var ad=[],up=[];entries.forEach(function(entry){var ex=probs.find(function(x){return x.problem_id===entry.problem_id});if(ex){if(!ex.history)ex.history=[];ex.history.push({skeleton:ex.skeleton,solution:ex.solution,analysis:ex.analysis,created_at:ex.created_at});Object.assign(ex,entry);up.push(entry.problem_id)}else{probs.push(entry);ad.push(entry.problem_id)}});await saveBS('register: '+ad.concat(up).join(', '));sRS('Done! +'+ad.length+' ~'+up.length+' total:'+probs.length,true);rList();rTabs();document.getElementById('reg-json').value=''}catch(e){sRS(e.message,false)}document.getElementById('reg-sub').disabled=false}
 
 loadData();
 </script>
