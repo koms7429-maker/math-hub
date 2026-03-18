@@ -173,9 +173,54 @@ function rReg(){var h='<div style="margin-bottom:16px"><span style="font-size:18
 function svTk(){ghTk=document.getElementById('reg-token').value;localStorage.setItem('gh_token',ghTk)}
 function sRS(m,ok){var el=document.getElementById('reg-status');if(el)el.innerHTML='<div class="reg-status '+(ok?'reg-ok':'reg-err')+'">'+m+'</div>'}
 function valReg(){var r=document.getElementById('reg-json').value.trim();if(!r){sRS('empty',false);return}try{var d=JSON.parse(r);var e=Array.isArray(d)?d:[d];var er=[];e.forEach(function(x,i){if(!x.problem_id)er.push(i+': no id');if(!x.skeleton||!x.skeleton.length)er.push(i+': no skeleton')});if(er.length)sRS(er.join(', '),false);else sRS('Valid! '+e.length+' items',true)}catch(e){sRS('parse error',false)}}
-async function subReg(){if(!ghTk){sRS('set token',false);return}var r=document.getElementById('reg-json').value.trim();if(!r)return;var d;try{d=JSON.parse(r)}catch(e){sRS('parse error',false);return}var entries=Array.isArray(d)?d:[d];entries.forEach(function(e){if(!e.created_at)e.created_at=new Date().toISOString();if(!e.history)e.history=[]});document.getElementById('reg-sub').disabled=true;sRS('saving...',true);
-  try{var ad=[],up=[];entries.forEach(function(entry){var ex=probs.find(function(x){return x.problem_id===entry.problem_id});if(ex){if(!ex.history)ex.history=[];ex.history.push({skeleton:ex.skeleton,solution:ex.solution,analysis:ex.analysis,created_at:ex.created_at});Object.assign(ex,entry);up.push(entry.problem_id)}else{probs.push(entry);ad.push(entry.problem_id)}});await saveBS('register: '+ad.concat(up).join(', '));sRS('Done! +'+ad.length+' ~'+up.length+' total:'+probs.length,true);rList();rTabs();document.getElementById('reg-json').value=''}catch(e){sRS(e.message,false)}document.getElementById('reg-sub').disabled=false}
+async function subReg(){
+  if(!ghTk){sRS('set token first',false);return}
+  var r=document.getElementById('reg-json').value.trim();
+  if(!r){sRS('empty',false);return}
+  var d;
+  try{d=JSON.parse(r)}catch(e){sRS('parse error',false);return}
+  var entries=Array.isArray(d)?d:[d];
 
+  for(var i=0;i<entries.length;i++){
+    if(!entries[i].created_at)entries[i].created_at=new Date().toISOString();
+    if(!entries[i].history)entries[i].history=[];
+    if(!entries[i].folders)entries[i].folders=[];
+  }
+
+  document.getElementById('reg-sub').disabled=true;
+  sRS('saving...',true);
+
+  try{
+    var ad=[],renamed=[];
+
+    for(var i=0;i<entries.length;i++){
+      var entry=entries[i];
+      var exists=probs.some(function(x){return x.problem_id===entry.problem_id});
+      if(exists){
+        var base=entry.problem_id;
+        var cnt=probs.filter(function(x){return x.problem_id.startsWith(base)}).length;
+        var nid=base+'_'+(cnt+1);
+        entry.problem_id=nid;
+        renamed.push(base+' -> '+nid);
+      }
+      probs.push(entry);
+      ad.push(entry.problem_id);
+    }
+
+    await saveBS('register: '+ad.join(', '));
+
+    var msg='Done! Added: '+ad.join(', ')+'\n';
+    if(renamed.length)msg+='Renamed: '+renamed.join(', ')+'\n';
+    msg+='Total: '+probs.length;
+    sRS(msg,true);
+
+    rList();rTabs();
+    document.getElementById('reg-json').value='';
+  }catch(e){
+    sRS('Error: '+e.message,false);
+  }
+  document.getElementById('reg-sub').disabled=false;
+}
 loadData();
 </script>
 </body>
