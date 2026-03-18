@@ -86,7 +86,7 @@ async function loadData(){
   try{
     const[r1,r2]=await Promise.all([fetch(api('bookshelf.json')),fetch(api('neuron-list.md'))]);
     if(r1.ok){const j=await r1.json();problems=JSON.parse(decB64(j.content))}
-    if(r2.ok){const j=await r2.json();const t=decB64(j.content);t.split('\n').forEach(l=>{const m=l.match(/^\|\s*((?:사실|연산|전략)\d+)\s*\|\s*(.+?)\s*\|/);if(m){nMap[m[1]]={id:m[1],statement:m[2].trim()};nAll.push({id:m[1],statement:m[2].trim(),type:nType(m[1])})}})}
+    if(r2.ok){const j=await r2.json();const t=decB64(j.content);t.split('\n').forEach(l=>{const m=l.match(/^\|\s*((?:사실|연산|전략)\d+)\s*\|\s*(.*\S)\s*\|$/);if(m){nMap[m[1]]={id:m[1],statement:m[2].trim()};nAll.push({id:m[1],statement:m[2].trim(),type:nType(m[1])})}})}
   }catch(e){console.error(e)}
   document.getElementById('sidebar-meta').textContent=problems.length+'문제 · '+nAll.length+'뉴런';
   renderList();renderTabs();
