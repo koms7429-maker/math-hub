@@ -81,7 +81,7 @@ function bi(to){return to?to.replace(/_\d+$/,''):''}
 
 async function loadData(){
   const api=u=>`https://api.github.com/repos/${OWNER}/${REPO}/contents/${u}?ref=${BRANCH}`;
-  function decB64(b64){return new TextDecoder('utf-8').decode(Uint8Array.from(atob(b64),c=>c.charCodeAt(0)))}
+  function decB64(b64){return new TextDecoder('utf-8').decode(Uint8Array.from(atob(b64.replace(/\s/g,'')),c=>c.charCodeAt(0)))}
   try{
     const[r1,r2]=await Promise.all([fetch(api('bookshelf.json')),fetch(api('neuron-list.md'))]);
     if(r1.ok){const j=await r1.json();problems=JSON.parse(decB64(j.content))}
