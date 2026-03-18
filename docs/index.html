@@ -23,7 +23,7 @@
 .prob-item .sub{font-size:10px;color:var(--text-dim);margin-top:1px}
 .main{flex:1;display:flex;flex-direction:column;min-width:0}
 .tabs{display:flex;border-bottom:1px solid var(--border);background:var(--panel);padding:0 20px;overflow-x:auto}
-.tab{padding:12px 16px;border:none;cursor:pointer;background:transparent;font-family:inherit;font-size:12px;color:var(--text-dim);border-bottom:2px solid transparent;transition:all .15s;white-space:nowrap}
+.tab{padding:12px 14px;border:none;cursor:pointer;background:transparent;font-family:inherit;font-size:11px;color:var(--text-dim);border-bottom:2px solid transparent;transition:all .15s;white-space:nowrap}
 .tab:hover{color:var(--text)}.tab.active{color:var(--accent);font-weight:700;border-bottom-color:var(--accent)}
 .content{flex:1;overflow-y:auto;padding:20px 24px}
 .card{background:var(--card);border-radius:8px;padding:20px;border:1px solid var(--border);margin-bottom:16px}
@@ -50,9 +50,9 @@
 .empty{color:var(--text-dim);font-size:13px;text-align:center;margin-top:80px}
 .hist-card{background:var(--card);border-radius:8px;padding:16px;border:1px solid var(--border);margin-bottom:12px}
 .hist-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
-.hist-ver{font-size:13px;font-weight:700;color:var(--text-dim)}.hist-date{font-size:10px;color:var(--text-dim)}
 .hist-toggle{font-size:10px;color:var(--accent);cursor:pointer;background:var(--accent-bg);border:1px solid rgba(124,131,253,.2);border-radius:4px;padding:2px 8px}
 .hist-body{max-height:300px;overflow-y:auto;margin-top:8px}
+.nlib-search{width:100%;background:var(--panel);border:1px solid var(--border);border-radius:6px;padding:7px 10px;color:var(--text);font-size:11px;outline:none;font-family:inherit;margin-bottom:12px}
 ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--border-light);border-radius:3px}
 </style>
 </head>
@@ -72,22 +72,23 @@
 </div>
 <script>
 const OWNER='koms7429-maker',REPO='math-hub',BRANCH='main';
-const SECTIONS=['문제문','DAG','Skeleton','Solution','뉴런','이력'];
-let problems=[],nMap={},selected=null,curSec=0,expandedHist={};
+const SECTIONS=['문제문','DAG','Skeleton','Solution','뉴런','전체 뉴런','이력'];
+let problems=[],nMap={},nAll=[],selected=null,curSec=0,expandedHist={},nlibQ='';
 
+function decB64(b64){return new TextDecoder('utf-8').decode(Uint8Array.from(atob(b64.replace(/\s/g,'')),c=>c.charCodeAt(0)))}
 function rm(t){if(!t)return'';return String(t).split(/(\$[^$]+\$)/g).map(p=>{if(p.startsWith('$')&&p.endsWith('$')){try{return katex.renderToString(p.slice(1,-1),{throwOnError:false})}catch(e){return'<code>'+p.slice(1,-1)+'</code>'}}return p.replace(/</g,'&lt;').replace(/>/g,'&gt;')}).join('')}
 function nc(id){if(!id)return'var(--text-dim)';if(id.startsWith('사실'))return'var(--fact)';if(id.startsWith('연산'))return'var(--op)';if(id.startsWith('전략'))return'var(--strat)';return'var(--text-dim)'}
 function bi(to){return to?to.replace(/_\d+$/,''):''}
+function nType(id){if(id.startsWith('사실'))return'fact';if(id.startsWith('연산'))return'operation';if(id.startsWith('전략'))return'strategy';return''}
 
 async function loadData(){
   const api=u=>`https://api.github.com/repos/${OWNER}/${REPO}/contents/${u}?ref=${BRANCH}`;
-  function decB64(b64){return new TextDecoder('utf-8').decode(Uint8Array.from(atob(b64.replace(/\s/g,'')),c=>c.charCodeAt(0)))}
   try{
     const[r1,r2]=await Promise.all([fetch(api('bookshelf.json')),fetch(api('neuron-list.md'))]);
     if(r1.ok){const j=await r1.json();problems=JSON.parse(decB64(j.content))}
-    if(r2.ok){const j=await r2.json();const t=decB64(j.content);t.split('\n').forEach(l=>{const m=l.match(/^\|\s*((?:사실|연산|전략)\d+)\s*\|\s*(.+?)\s*\|/);if(m)nMap[m[1]]={id:m[1],statement:m[2].trim()}})}
+    if(r2.ok){const j=await r2.json();const t=decB64(j.content);t.split('\n').forEach(l=>{const m=l.match(/^\|\s*((?:사실|연산|전략)\d+)\s*\|\s*(.+?)\s*\|/);if(m){nMap[m[1]]={id:m[1],statement:m[2].trim()};nAll.push({id:m[1],statement:m[2].trim(),type:nType(m[1])})}})}
   }catch(e){console.error(e)}
-  document.getElementById('sidebar-meta').textContent=problems.length+'문제 · '+Object.keys(nMap).length+'뉴런';
+  document.getElementById('sidebar-meta').textContent=problems.length+'문제 · '+nAll.length+'뉴런';
   renderList();renderTabs();
   if(problems.length>0){selected=problems[0];renderList();renderTabs();renderContent()}
 }
@@ -105,18 +106,21 @@ function filterProblems(){renderList()}
 function sel(pid){selected=problems.find(p=>p.problem_id===pid);curSec=0;expandedHist={};renderList();renderTabs();renderContent()}
 function renderTabs(){document.getElementById('tabs').innerHTML=SECTIONS.map((s,i)=>{
   let label=s;
-  if(i===5&&selected&&selected.history&&selected.history.length)label+=` (${selected.history.length})`;
+  if(i===5)label=`전체 뉴런 (${nAll.length})`;
+  if(i===6&&selected&&selected.history&&selected.history.length)label+=` (${selected.history.length})`;
   return`<button class="tab ${curSec===i?'active':''}" onclick="sw(${i})">${label}</button>`
 }).join('')}
 function sw(i){curSec=i;renderTabs();renderContent()}
 
 function renderContent(){
   const el=document.getElementById('content');
+  // 전체 뉴런 탭은 문제 선택 없이도 동작
+  if(curSec===5){el.innerHTML=rNlib();return}
   if(!selected){el.innerHTML='<div class="empty">← 문제를 선택하세요</div>';return}
   const p=selected,edges=(p.skeleton||[]).length,sides=(p.skeleton||[]).filter(e=>e.main===false).length;
   const hc=(p.history||[]).length;
   let h=`<div style="margin-bottom:20px"><div><span style="font-size:20px;font-weight:800;color:var(--text-bright)">${p.problem_id}</span><span style="font-size:12px;color:var(--text-dim);margin-left:12px">${p.number||''}</span></div><div class="badges">${p.metadata?.unit?`<span class="badge badge-unit">${p.metadata.unit}</span>`:''}${p.metadata?.difficulty?`<span class="badge badge-diff">${p.metadata.difficulty}</span>`:''}${p.answer?`<span class="badge badge-ans">답: ${p.answer}</span>`:''}<span class="badge badge-edge">edges: ${edges} (main ${edges-sides} + side ${sides})</span>${hc?`<span class="badge badge-ver">v${hc+1} (이전 ${hc}건)</span>`:''}</div></div>`;
-  switch(curSec){case 0:h+=rStmt(p);break;case 1:h+=rDAG(p);break;case 2:h+=rSkel(p);break;case 3:h+=rSol(p);break;case 4:h+=rNeur(p);break;case 5:h+=rHist(p);break}
+  switch(curSec){case 0:h+=rStmt(p);break;case 1:h+=rDAG(p);break;case 2:h+=rSkel(p);break;case 3:h+=rSol(p);break;case 4:h+=rNeur(p);break;case 6:h+=rHist(p);break}
   el.innerHTML=h}
 
 function rStmt(p){
@@ -148,7 +152,7 @@ function rDAG(p){
 function rSkel(p){
   if(!p.skeleton||!p.skeleton.length)return'<div class="empty">Skeleton 없음</div>';
   return p.skeleton.map((e,i)=>{const fs=Array.isArray(e.from)?e.from:[e.from];const b=bi(e.to);const n=nMap[b];const iS=e.main===false;const c=nc(b);
-    return`<div class="edge-row ${iS?'side':''}" style="border-left:3px solid ${c}"><div class="edge-header"><span class="edge-num">#${i+1}</span><span class="edge-from">${fs.join(' + ')}</span><span class="edge-arrow">→</span><span class="edge-to" style="color:${c}">${e.to}</span>${iS?'<span class="edge-side-badge">side</span>':''}</div>${e.note?`<div class="edge-note">${rm(e.note)}</div>`:''}${n?`<div class="edge-neuron-desc">${rm(n.statement)}</div>`:''}</div>`}).join('')}
+    return`<div class="edge-row ${iS?'side':''}" style="border-left:3px solid ${c}"><div class="edge-header"><span class="edge-num">#${i+1}</span><span class="edge-from">${fs.join(' + ')}</span><span class="edge-arrow">→</span><span class="edge-to" style="color:${c}">${e.to}</span>${iS?'<span class="edge-side-badge">side</span>':''}</div>${e.note?`<div class="edge-note">${rm(e.note)}</div>`:''}${n?`<div class="edge-neuron-desc">🧠 ${rm(n.statement)}</div>`:''}</div>`}).join('')}
 
 function rSol(p){
   if(!p.solution)return'<div class="empty">Solution 없음</div>';
@@ -158,8 +162,55 @@ function rNeur(p){
   if(!p.skeleton)return'<div class="empty">Skeleton 없음</div>';
   const used=[...new Set(p.skeleton.map(e=>bi(e.to)).filter(id=>id&&id!=='END'&&!id.startsWith('단서')))];
   const gs=[{l:'사실 (FACT)',items:used.filter(n=>n.startsWith('사실')).sort(),c:'var(--fact)'},{l:'연산 (OPERATION)',items:used.filter(n=>n.startsWith('연산')).sort(),c:'var(--op)'},{l:'전략 (STRATEGY)',items:used.filter(n=>n.startsWith('전략')).sort(),c:'var(--strat)'}];
-  let h='';gs.forEach(g=>{if(!g.items.length)return;h+=`<div class="neuron-group"><div class="neuron-group-label" style="color:${g.c}">${g.l} (${g.items.length})</div>`;g.items.forEach(id=>{const n=nMap[id];const cnt=p.skeleton.filter(e=>bi(e.to)===id).length;h+=`<div class="neuron-row"><span class="neuron-id" style="color:${g.c}">${id}</span><span class="neuron-stmt">${n?rm(n.statement):'<i style="color:var(--text-dim)">목록에 없음</i>'}</span>${cnt>1?`<span class="neuron-count">×${cnt}</span>`:''}</div>`});h+='</div>'});
+  let h='';gs.forEach(g=>{if(!g.items.length)return;h+=`<div class="neuron-group"><div class="neuron-group-label" style="color:${g.c}">${g.l} (${g.items.length})</div>`;g.items.forEach(id=>{const n=nMap[id];const cnt=p.skeleton.filter(e=>bi(e.to)===id).length;
+    // 어떤 edge에서 사용됐는지 표시
+    const usages=p.skeleton.map((e,i)=>({idx:i,note:e.note,to:e.to})).filter(x=>bi(x.to)===id);
+    h+=`<div class="neuron-row" style="flex-direction:column"><div style="display:flex;gap:10px;align-items:flex-start;width:100%"><span class="neuron-id" style="color:${g.c}">${id}</span><span class="neuron-stmt">${n?rm(n.statement):'<i style="color:var(--text-dim)">목록에 없음</i>'}</span>${cnt>1?`<span class="neuron-count">×${cnt}</span>`:''}</div><div style="padding-left:62px;margin-top:4px">${usages.map(u=>`<div style="font-size:10px;color:var(--text-dim);line-height:1.6"><span style="color:${g.c}">#${u.idx+1}</span> <span style="color:var(--text-dim)">${u.to}</span> — ${rm(u.note||'')}</div>`).join('')}</div></div>`});h+='</div>'});
   h+=`<div style="font-size:11px;color:var(--text-dim);margin-top:8px">총 ${used.length}종 · edges ${p.skeleton.length}개</div>`;return h}
+
+// ── 전체 뉴런 라이브러리 탭 ──
+function rNlib(){
+  const facts=nAll.filter(n=>n.type==='fact');
+  const ops=nAll.filter(n=>n.type==='operation');
+  const strats=nAll.filter(n=>n.type==='strategy');
+  
+  // 각 뉴런이 bookshelf 문제에서 몇 번 사용됐는지
+  const usageCount={};
+  const usageProblems={};
+  problems.forEach(p=>{
+    (p.skeleton||[]).forEach(e=>{
+      const b=bi(e.to);
+      if(b&&b!=='END'&&!b.startsWith('단서')){
+        usageCount[b]=(usageCount[b]||0)+1;
+        if(!usageProblems[b])usageProblems[b]=new Set();
+        usageProblems[b].add(p.problem_id);
+      }
+    });
+  });
+
+  const q=nlibQ.toLowerCase();
+  const filter=list=>q?list.filter(n=>n.id.toLowerCase().includes(q)||n.statement.toLowerCase().includes(q)):list;
+
+  let h=`<div style="margin-bottom:20px"><span style="font-size:20px;font-weight:800;color:var(--text-bright)">전체 뉴런 라이브러리</span><span style="font-size:12px;color:var(--text-dim);margin-left:12px">${nAll.length}개</span></div>`;
+  h+=`<input class="nlib-search" placeholder="뉴런 검색 (ID 또는 내용)..." value="${nlibQ}" oninput="nlibQ=this.value;renderContent()">`;
+  
+  const gs=[
+    {l:'사실 (FACT)',items:filter(facts),c:'var(--fact)',total:facts.length},
+    {l:'연산 (OPERATION)',items:filter(ops),c:'var(--op)',total:ops.length},
+    {l:'전략 (STRATEGY)',items:filter(strats),c:'var(--strat)',total:strats.length}
+  ];
+  
+  gs.forEach(g=>{
+    if(!g.items.length)return;
+    h+=`<div class="neuron-group"><div class="neuron-group-label" style="color:${g.c}">${g.l} (${q?g.items.length+'/'+g.total:g.total})</div>`;
+    g.items.forEach(n=>{
+      const uc=usageCount[n.id]||0;
+      const up=usageProblems[n.id]?[...usageProblems[n.id]]:[];
+      h+=`<div class="neuron-row" style="flex-direction:column"><div style="display:flex;gap:10px;align-items:flex-start;width:100%"><span class="neuron-id" style="color:${g.c}">${n.id}</span><span class="neuron-stmt">${rm(n.statement)}</span>${uc?`<span class="neuron-count" style="background:${g.c}22;color:${g.c}">${uc}회</span>`:''}</div>${up.length?`<div style="padding-left:62px;margin-top:2px;font-size:10px;color:var(--text-dim)">사용: ${up.map(pid=>`<span style="cursor:pointer;color:var(--accent);text-decoration:underline" onclick="sel('${pid}')">${pid}</span>`).join(', ')}</div>`:''}</div>`;
+    });
+    h+='</div>';
+  });
+  return h}
 
 function toggleHist(i){expandedHist[i]=!expandedHist[i];renderContent()}
 
@@ -175,19 +226,18 @@ function rHist(p){
     const expanded=expandedHist[origIdx];
     return`<div class="hist-card">
       <div class="hist-header">
-        <div><span class="hist-ver">v${vNum}</span><span style="font-size:11px;color:var(--text-dim);margin-left:8px">edges: ${edges} (main ${edges-sides} + side ${sides})</span></div>
-        <div style="display:flex;gap:8px;align-items:center"><span class="hist-date">${v.created_at?new Date(v.created_at).toLocaleString('ko-KR'):'날짜 없음'}</span><span class="hist-toggle" onclick="toggleHist(${origIdx})">${expanded?'접기':'펼치기'}</span></div>
+        <div><span style="font-size:13px;font-weight:700;color:var(--text-dim)">v${vNum}</span><span style="font-size:11px;color:var(--text-dim);margin-left:8px">edges: ${edges} (main ${edges-sides} + side ${sides})</span></div>
+        <div style="display:flex;gap:8px;align-items:center"><span style="font-size:10px;color:var(--text-dim)">${v.created_at?new Date(v.created_at).toLocaleString('ko-KR'):'날짜 없음'}</span><span class="hist-toggle" onclick="toggleHist(${origIdx})">${expanded?'접기':'펼치기'}</span></div>
       </div>
       ${expanded?`<div class="hist-body">
         ${v.skeleton?`<div class="section-label" style="margin-top:4px">Skeleton</div>`+v.skeleton.map((e,j)=>{
-          const fs=Array.isArray(e.from)?e.from:[e.from];const b=bi(e.to);const c=nc(b);const iS=e.main===false;
-          return`<div class="edge-row ${iS?'side':''}" style="border-left:3px solid ${c}"><div class="edge-header"><span class="edge-num">#${j+1}</span><span class="edge-from">${fs.join(' + ')}</span><span class="edge-arrow">→</span><span class="edge-to" style="color:${c}">${e.to}</span>${iS?'<span class="edge-side-badge">side</span>':''}</div>${e.note?`<div class="edge-note">${rm(e.note)}</div>`:''}</div>`
+          const fs=Array.isArray(e.from)?e.from:[e.from];const b=bi(e.to);const c=nc(b);const iS=e.main===false;const n=nMap[b];
+          return`<div class="edge-row ${iS?'side':''}" style="border-left:3px solid ${c}"><div class="edge-header"><span class="edge-num">#${j+1}</span><span class="edge-from">${fs.join(' + ')}</span><span class="edge-arrow">→</span><span class="edge-to" style="color:${c}">${e.to}</span>${iS?'<span class="edge-side-badge">side</span>':''}</div>${e.note?`<div class="edge-note">${rm(e.note)}</div>`:''}${n?`<div class="edge-neuron-desc">🧠 ${rm(n.statement)}</div>`:''}</div>`
         }).join(''):''}
         ${v.solution?`<div class="section-label" style="margin-top:12px">Solution</div><div style="font-size:12px;color:var(--text-dim);line-height:1.8">${v.solution.split('\n').map(l=>/^STEP\s+\d/.test(l)?`<div style="font-weight:700;color:var(--accent);margin-top:8px">${rm(l)}</div>`:`<div>${rm(l)}</div>`).join('')}</div>`:''}
       </div>`:''}
     </div>`
   }).join('');
-
   h+=`<div style="margin-top:16px;padding:12px 16px;background:var(--accent-bg);border-radius:8px;border:1px solid rgba(124,131,253,.15)"><div style="font-size:11px;color:var(--accent);font-weight:700;margin-bottom:4px">현재 버전: v${p.history.length+1}</div><div style="font-size:10px;color:var(--text-dim)">${p.created_at?new Date(p.created_at).toLocaleString('ko-KR'):''} · edges ${(p.skeleton||[]).length}개</div></div>`;
   return h}
 
