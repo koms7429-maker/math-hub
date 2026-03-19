@@ -2983,5 +2983,382 @@
     "folders": [],
     "history": [],
     "created_at": "2026-03-19T14:17:51.347Z"
+  },
+  {
+    "problem_id": "Problem6",
+    "answer": "④ 18",
+    "clues": [
+      {
+        "id": "단서A",
+        "text": "$x^2+(2a+1)x+a^2+a=0$"
+      },
+      {
+        "id": "단서B",
+        "text": "$a$는 자연수이다"
+      },
+      {
+        "id": "단서C",
+        "text": "어떤 자연수 $n$에 대하여 $k^n=64$이다"
+      }
+    ],
+    "skeleton": [
+      {
+        "from": "단서A",
+        "to": "연산9",
+        "note": "$(x+a)(x+a+1)=0$으로 인수분해된다. $k=-a$ 또는 $k=-a-1$이다"
+      },
+      {
+        "from": [
+          "단서B",
+          "연산9"
+        ],
+        "to": "사실76",
+        "note": "$a$가 자연수일 때 $k$는 음의 정수이다. $k^n=64>0$이 되려면 $n$이 짝수이어야 한다",
+        "main": true
+      },
+      {
+        "from": "단서C",
+        "to": "사실74",
+        "note": "$k<0$이고 $k^n>0$일 때 $n$은 짝수이어야 한다",
+        "main": false
+      },
+      {
+        "from": [
+          "사실76",
+          "단서C"
+        ],
+        "to": "사실75",
+        "note": "$|k|^n=64=2^6$에서 $|k|=2^{6/n}$이 정수가 되려면 $n$이 $6$의 약수이고 짝수이어야 한다. $n=2$ 또는 $n=6$이다"
+      },
+      {
+        "from": "사실75",
+        "to": "전략22",
+        "note": "$n=2$일 때 $|k|=8$이고 $k=-8$이다. $n=6$일 때 $|k|=2$이고 $k=-2$이다. 두 케이스로 분류한다"
+      },
+      {
+        "from": [
+          "전략22",
+          "연산9"
+        ],
+        "to": "전략10",
+        "note": "$k=-8$일 때 $a=8$ 또는 $a=7$이다. $k=-2$일 때 $a=2$ 또는 $a=1$이다. 모든 자연수 $a$: $\\{1, 2, 7, 8\\}$이다"
+      },
+      {
+        "from": "전략10",
+        "to": "END",
+        "note": "$8+7+2+1=18$이다"
+      }
+    ],
+    "solution": "STEP 1. 방정식 $x^2+(2a+1)x+a^2+a=0$을 인수분해하면 $(x+a)(x+a+1)=0$이고 실근 $k=-a$ 또는 $k=-a-1$이다.\n\nSTEP 2. $a$가 자연수일 때 $k$는 음의 정수이다. $k^n=64>0$이 되려면 $n$이 짝수이어야 한다.\n\nSTEP 3. $|k|^n=64=2^6$에서 $|k|=2^{6/n}$이 양의 정수가 되려면 $n$이 $6$의 약수이고 짝수이어야 한다. $n=2$ 또는 $n=6$이다.\n\nSTEP 4. $n=2$일 때 $k=-8$이고, $n=6$일 때 $k=-2$이다. $k=-a$ 또는 $k=-a-1$에 대입하면: $k=-8$일 때 $a=8$ 또는 $a=7$이고, $k=-2$일 때 $a=2$ 또는 $a=1$이다.\n\nSTEP 5. 모든 자연수 $a$의 합은 $8+7+2+1=18$이다.",
+    "analysis": "주어진 방정식을 인수분해하면 x^2+(2a+1)x+a^2+a = (x+a)(x+a+1) = 0이다. 영인자법칙에 의해 x=-a 또는 x=-a-1이므로 실근 k=-a 또는 k=-a-1이다.\n\na가 자연수(양의 정수)이므로 k=-a이면 k는 음의 정수, k=-a-1이면 k도 음의 정수이다. 따라서 k는 반드시 음의 정수이다.\n\n조건: 어떤 자연수 n에 대해 k^n=64=2^6. k가 음의 정수이므로 k^n이 양수(64>0)가 되려면 n이 짝수여야 한다. n이 짝수이고 k<0이면 k^n=(|k|)^n=64이다.\n\n|k|^n=64=2^6에서 |k|는 양의 정수이고 자연수 n(짝수)에 대해 |k|^n=2^6을 만족해야 한다. |k|=2^(6/n)이 정수가 되려면 n이 6의 약수이고 n이 짝수여야 한다. 6의 약수: 1,2,3,6. 짝수인 것: 2, 6.\n- n=2이면 |k|=2^3=8, 즉 k=-8\n- n=6이면 |k|=2^1=2, 즉 k=-2\n\n각 케이스에서 k=-a 또는 k=-a-1 조건 적용:\n- k=-8이면: -a=-8 → a=8, 또는 -a-1=-8 → a=7\n- k=-2이면: -a=-2 → a=2, 또는 -a-1=-2 → a=1\n\n모든 자연수 a의 합: 8+7+2+1=18",
+    "new_neurons": [],
+    "metadata": {
+      "unit": "지수와 로그",
+      "difficulty": "unknown",
+      "score": "4",
+      "type": "multiple choice",
+      "answer": "④ 18"
+    },
+    "edge_count": 7,
+    "side_count": 1,
+    "statement": "$x$에 대한 방정식 $x^2 + (2a+1)x + a^2 + a = 0$의 한 실근 $k$가 다음 조건을 만족시키도록 하는 모든 자연수 $a$의 값의 합은? (어떤 자연수 $n$에 대하여 $k^n = 64$이다)",
+    "dna": {
+      "nodes": [
+        {
+          "id": "top",
+          "dna": "Q3",
+          "label": "모든 자연수 a의 값의 합을 구하라",
+          "category": "발문"
+        },
+        {
+          "id": "va",
+          "dna": "T1",
+          "label": "변수 a",
+          "category": "말단"
+        },
+        {
+          "id": "a_nat",
+          "dna": "L3",
+          "label": "a는 자연수",
+          "category": "제한"
+        },
+        {
+          "id": "eq_obj",
+          "dna": "G2",
+          "label": "이차방정식 (x에 대한)",
+          "category": "기하"
+        },
+        {
+          "id": "eq_def",
+          "dna": "C11",
+          "label": "방정식 정의",
+          "category": "조건"
+        },
+        {
+          "id": "eq_c1",
+          "dna": "C1",
+          "label": "x² + (2a+1)x + a²+a = 0",
+          "category": "조건"
+        },
+        {
+          "id": "lhs",
+          "dna": "E1",
+          "label": "합(x², (2a+1)x, a²+a)",
+          "category": "수식"
+        },
+        {
+          "id": "xsq",
+          "dna": "E7",
+          "label": "x²",
+          "category": "수식"
+        },
+        {
+          "id": "vx",
+          "dna": "T3",
+          "label": "독립변수 x",
+          "category": "말단"
+        },
+        {
+          "id": "c2_exp",
+          "dna": "T2",
+          "label": "상수 2",
+          "category": "말단"
+        },
+        {
+          "id": "c1_const",
+          "dna": "T2",
+          "label": "상수 1",
+          "category": "말단"
+        },
+        {
+          "id": "c0",
+          "dna": "T2",
+          "label": "상수 0",
+          "category": "말단"
+        },
+        {
+          "id": "coef_mid",
+          "dna": "E1",
+          "label": "합(2a, 1)",
+          "category": "수식"
+        },
+        {
+          "id": "two_a",
+          "dna": "E6",
+          "label": "곱(2, a)",
+          "category": "수식"
+        },
+        {
+          "id": "mid_term",
+          "dna": "E6",
+          "label": "곱((2a+1), x)",
+          "category": "수식"
+        },
+        {
+          "id": "const_term",
+          "dna": "E1",
+          "label": "합(a², a)",
+          "category": "수식"
+        },
+        {
+          "id": "asq",
+          "dna": "E7",
+          "label": "a²",
+          "category": "수식"
+        },
+        {
+          "id": "root_k",
+          "dna": "T1",
+          "label": "한 실근 k",
+          "category": "말단"
+        },
+        {
+          "id": "root_cond",
+          "dna": "C15",
+          "label": "한 실근 k가 조건을 만족",
+          "category": "조건"
+        },
+        {
+          "id": "vn",
+          "dna": "T1",
+          "label": "어떤 자연수 n",
+          "category": "말단"
+        },
+        {
+          "id": "n_nat",
+          "dna": "L3",
+          "label": "n은 자연수",
+          "category": "제한"
+        },
+        {
+          "id": "kn_eq",
+          "dna": "C1",
+          "label": "k^n = 64",
+          "category": "조건"
+        },
+        {
+          "id": "kn",
+          "dna": "E7",
+          "label": "k^n",
+          "category": "수식"
+        },
+        {
+          "id": "c64",
+          "dna": "T2",
+          "label": "상수 64",
+          "category": "말단"
+        },
+        {
+          "id": "exist_n",
+          "dna": "X5",
+          "label": "어떤 자연수 n이 존재",
+          "category": "존재"
+        },
+        {
+          "id": "all_a_sum",
+          "dna": "E1",
+          "label": "모든 자연수 a의 합",
+          "category": "수식"
+        }
+      ],
+      "edges": [
+        {
+          "from": "all_a_sum",
+          "to": "top"
+        },
+        {
+          "from": "va",
+          "to": "all_a_sum"
+        },
+        {
+          "from": "a_nat",
+          "to": "va"
+        },
+        {
+          "from": "eq_def",
+          "to": "eq_obj"
+        },
+        {
+          "from": "eq_c1",
+          "to": "eq_def"
+        },
+        {
+          "from": "lhs",
+          "to": "eq_c1"
+        },
+        {
+          "from": "c0",
+          "to": "eq_c1"
+        },
+        {
+          "from": "xsq",
+          "to": "lhs"
+        },
+        {
+          "from": "mid_term",
+          "to": "lhs"
+        },
+        {
+          "from": "const_term",
+          "to": "lhs"
+        },
+        {
+          "from": "vx",
+          "to": "xsq"
+        },
+        {
+          "from": "c2_exp",
+          "to": "xsq"
+        },
+        {
+          "from": "coef_mid",
+          "to": "mid_term"
+        },
+        {
+          "from": "vx",
+          "to": "mid_term"
+        },
+        {
+          "from": "two_a",
+          "to": "coef_mid"
+        },
+        {
+          "from": "c1_const",
+          "to": "coef_mid"
+        },
+        {
+          "from": "c2_exp",
+          "to": "two_a"
+        },
+        {
+          "from": "va",
+          "to": "two_a"
+        },
+        {
+          "from": "asq",
+          "to": "const_term"
+        },
+        {
+          "from": "va",
+          "to": "const_term"
+        },
+        {
+          "from": "va",
+          "to": "asq"
+        },
+        {
+          "from": "c2_exp",
+          "to": "asq"
+        },
+        {
+          "from": "root_cond",
+          "to": "eq_obj"
+        },
+        {
+          "from": "root_k",
+          "to": "root_cond"
+        },
+        {
+          "from": "exist_n",
+          "to": "root_cond"
+        },
+        {
+          "from": "kn_eq",
+          "to": "exist_n"
+        },
+        {
+          "from": "vn",
+          "to": "exist_n"
+        },
+        {
+          "from": "n_nat",
+          "to": "vn"
+        },
+        {
+          "from": "kn",
+          "to": "kn_eq"
+        },
+        {
+          "from": "c64",
+          "to": "kn_eq"
+        },
+        {
+          "from": "root_k",
+          "to": "kn"
+        },
+        {
+          "from": "vn",
+          "to": "kn"
+        },
+        {
+          "from": "eq_obj",
+          "to": "top"
+        }
+      ],
+      "new_dna": []
+    },
+    "folders": [],
+    "history": [],
+    "created_at": "2026-03-19T15:27:27.842Z"
   }
 ]
