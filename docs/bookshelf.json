@@ -1,1 +1,230 @@
-[]
+[
+  {
+    "problem_id": "Problem3",
+    "answer": "18",
+    "clues": [
+      {
+        "id": "단서A",
+        "text": "$(x-m^n)(x^n-m)=0$의 서로 다른 실근의 개수가 1"
+      },
+      {
+        "id": "단서B",
+        "text": "$-3 \\leq m \\leq 3$인 정수, $2 \\leq n \\leq 6$인 자연수"
+      }
+    ],
+    "skeleton": [
+      {
+        "from": "단서A",
+        "to": "연산9",
+        "note": "$(x-m^n)(x^n-m)=0$에서 $x=m^n$ 또는 $x^n=m$이다"
+      },
+      {
+        "from": "연산9",
+        "to": "전략12",
+        "note": "$n$이 홀수인 경우와 짝수인 경우를 분리한다"
+      },
+      {
+        "from": "전략12",
+        "to": "사실4",
+        "note": "$n$이 홀수일 때 실근은 $m^n$과 $\\sqrt[n]{m}$이다"
+      },
+      {
+        "from": "사실4",
+        "to": "전략6",
+        "note": "$m^n = \\sqrt[n]{m}$일 때 $m=-1,0,1$이다"
+      },
+      {
+        "from": "전략6",
+        "to": "전략10",
+        "note": "홀수 $n$: 3개, $m$: 3개일 때 $3 \\times 2 = 6$가지이다"
+      },
+      {
+        "from": [
+          "전략12",
+          "사실4"
+        ],
+        "to": "전략10_1",
+        "note": "짝수 $n$, $m \\leq 0$: 항상 실근 1개이고 $3 \\times 4 = 12$가지이다"
+      },
+      {
+        "from": [
+          "전략10",
+          "전략10_1"
+        ],
+        "to": "END",
+        "note": "$6 + 12 = 18$이다"
+      }
+    ],
+    "solution": "STEP 1. 영인자법칙으로 분리\nSTEP 2. n의 홀짝에 따라 경우 분리\nSTEP 3. 각 경우에서 실근 개수 = 1 조건 적용\nSTEP 4. 순서쌍 카운팅: 6 + 12 = 18",
+    "analysis": "방정식 (x-m^n)(x^n-m)=0에서 영인자법칙으로 x=m^n 또는 x^n=m으로 분리한다. n의 홀짝과 m의 부호에 따라 실근의 개수가 달라진다. 서로 다른 실근의 개수가 1이 되는 (m,n) 순서쌍을 카운팅한다.",
+    "new_neurons": [],
+    "metadata": {
+      "source": "unknown",
+      "difficulty": "unknown",
+      "score": "4"
+    },
+    "edge_count": 7,
+    "side_count": 0,
+    "statement": "# Problem1\n\n## 문제\n$2x + 3 = 7$일 때, $x$의 값을 구하시오.\n\n**답:** 2\n\n## Solution\n$2x = 4$이고 $x = 2$이다.",
+    "dna": {
+      "nodes": [
+        {
+          "id": "top",
+          "dna": "Q2",
+          "label": "개수를 구하라",
+          "category": "발문"
+        },
+        {
+          "id": "ask",
+          "dna": "X2",
+          "label": "순서쌍 (m,n)",
+          "category": "존재"
+        },
+        {
+          "id": "vm",
+          "dna": "T1",
+          "label": "변수 m",
+          "category": "말단"
+        },
+        {
+          "id": "vn",
+          "dna": "T1",
+          "label": "변수 n",
+          "category": "말단"
+        },
+        {
+          "id": "lim_m",
+          "dna": "L2",
+          "label": "-3 <= m <= 3",
+          "category": "제한"
+        },
+        {
+          "id": "lim_m_int",
+          "dna": "L3",
+          "label": "m은 정수",
+          "category": "제한"
+        },
+        {
+          "id": "lim_n",
+          "dna": "L2",
+          "label": "2 <= n <= 6",
+          "category": "제한"
+        },
+        {
+          "id": "lim_n_nat",
+          "dna": "L3",
+          "label": "n은 자연수",
+          "category": "제한"
+        },
+        {
+          "id": "eq_main",
+          "dna": "C11",
+          "label": "방정식",
+          "category": "조건"
+        },
+        {
+          "id": "eq_c1",
+          "dna": "C1",
+          "label": "(x-m^n)(x^n-m)=0",
+          "category": "조건"
+        },
+        {
+          "id": "prod",
+          "dna": "E6",
+          "label": "곱(x-m^n, x^n-m)",
+          "category": "수식"
+        },
+        {
+          "id": "vx",
+          "dna": "T3",
+          "label": "독립변수 x",
+          "category": "말단"
+        },
+        {
+          "id": "c0",
+          "dna": "T2",
+          "label": "상수 0",
+          "category": "말단"
+        },
+        {
+          "id": "root_cnt",
+          "dna": "C9",
+          "label": "실근 개수 = 1",
+          "category": "조건"
+        },
+        {
+          "id": "c1",
+          "dna": "T2",
+          "label": "상수 1",
+          "category": "말단"
+        }
+      ],
+      "edges": [
+        {
+          "from": "ask",
+          "to": "top"
+        },
+        {
+          "from": "vm",
+          "to": "ask"
+        },
+        {
+          "from": "vn",
+          "to": "ask"
+        },
+        {
+          "from": "lim_m",
+          "to": "vm"
+        },
+        {
+          "from": "lim_m_int",
+          "to": "vm"
+        },
+        {
+          "from": "lim_n",
+          "to": "vn"
+        },
+        {
+          "from": "lim_n_nat",
+          "to": "vn"
+        },
+        {
+          "from": "eq_main",
+          "to": "top"
+        },
+        {
+          "from": "eq_c1",
+          "to": "eq_main"
+        },
+        {
+          "from": "prod",
+          "to": "eq_c1"
+        },
+        {
+          "from": "c0",
+          "to": "eq_c1"
+        },
+        {
+          "from": "vx",
+          "to": "prod"
+        },
+        {
+          "from": "root_cnt",
+          "to": "top"
+        },
+        {
+          "from": "eq_main",
+          "to": "root_cnt"
+        },
+        {
+          "from": "c1",
+          "to": "root_cnt"
+        }
+      ],
+      "new_dna": []
+    },
+    "folders": [],
+    "history": [],
+    "created_at": "2026-03-19T21:06:14.180Z"
+  }
+]
