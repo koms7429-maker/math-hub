@@ -1,1 +1,309 @@
-[]
+[
+  {
+    "problem_id": "Problem",
+    "content": "# Problem 5. (Unknown Source) - Logarithm and Inequality\n\n## Problem\n\n자연수 $n(n \\geq 2)$에 대하여\n\n$$\\log_n x > 6\\log_n \\left| x - \\frac{11}{2} \\right|$$\n\n을 만족시키는 자연수 $x$의 개수가 4가 되도록 하는 모든 $n$의 값의 합은 [4점]\n\n## Choices\n① 12  ② 13  ③ 15  ④ 18  ⑤ 22\n\n**Answer**: ③ 15\n**Difficulty**: unknown\n**Score**: 4점\n**Type**: multiple choice\n\n---\n\n## Solution\n\n[힌트] ③\n\n[풀이]\n\n$$f(x) = \\log_n x, \\quad g(x) = 6\\log_n \\left| x - \\frac{11}{2} \\right|$$\n\n이라 하면 문제의 부등식은\n\n$$f(x) > g(x) \\cdots ①$$\n\n이고, 이때\n\n• $g(5) = g(6) < 0$이고 $g(4) = g(7)$\n• $y = f(x)$는 $f(1) = 0$이고 증가함수\n\n이므로\n\n• $x = 5$, $x = 6$은 항상 ①을 만족시킴\n• $x = 4$가 ①을 만족시키면 $x = 7$도 ①을 만족시킴\n\n을 알 수 있다.\n\n따라서\n\n①인 자연수 $x$의 개수가 $4 \\Rightarrow \\begin{cases} (i) & x = 4, 5, 6, 7 \\\\ (ii) & x = 5, 6, 7, 8 \\end{cases}$\n\n의 경우만 가능하다.\n\n[FIGURE: 두 개의 그래프가 제시됨. 왼쪽은 [(i)의 경우], 오른쪽은 [(ii)의 경우]로 표시되어 있으며, 각각 $y=g(x)$, $y=f(x)$의 그래프가 그려져 있고 $x = 3, 4, 5, 6, 7, 8$ 근처에서의 교점 관계를 보여줌]\n\n(i)의 경우:\n\n위 그림을 참고하면\n\n$$g(3) = g(8) \\Rightarrow \\begin{cases} x = 8\\text{이 ①을 만족시키지 않으면} \\\\ x = 3\\text{도 ①을 만족시키지 않음} \\end{cases}$$\n\n을 알 수 있으므로\n\n• $f(4) > g(4) \\Rightarrow \\log_n 4 > 6\\log_n \\frac{3}{2} \\Rightarrow n > \\left(\\frac{3}{2}\\right)^3 = 3.xx$\n\n• $f(8) < g(8) \\Rightarrow \\log_n 8 \\leq 6\\log_n \\frac{5}{2} \\Rightarrow n \\leq \\left(\\frac{5}{2}\\right)^2 = 6.xx$\n\n$\\Rightarrow n = 4, 5, 6$ ($\\because$ $n$는 자연수)\n\n이다.\n\n(ii)의 경우:\n\n(i)의 과정을 참고하면\n\n• $f(4) \\leq g(4) \\Rightarrow n \\leq \\left(\\frac{3}{2}\\right)^3 = 3.xx$\n\n• $f(8) > g(8) \\Rightarrow n > \\left(\\frac{5}{2}\\right)^2 = 6.xx$\n\n인 $n$이 존재하지 않음\n\n을 알 수 있다.\n\n따라서 (i), (ii)의 의해\n\n(모든 $n$의 값의 합) = $4 + 5 + 6 = 15$\n\n임을 알 수 있다.\n\n---",
+    "skel_status": "pending",
+    "dna_status": "ok",
+    "needed_neurons": [
+      "사실76",
+      "사실77",
+      "전략36",
+      "전략37",
+      "전략38",
+      "전략39"
+    ],
+    "needed_dna": [],
+    "previous_analysis": "",
+    "previous_matching": "1. $f(x) = \\log_n x$, $g(x) = 6\\log_n |x - 11/2|$ 정의 → 단순 정의, 뉴런 불필요\n2. $g(x)$가 $x = 11/2$에 대해 대칭 → 사실2 (절댓값 대칭)은 있으나, 로그 합성 대칭은 명시 필요 → 사실76 신규\n3. $g(5) = g(6)$ 도출 → 전략37 (대칭성 활용) 신규\n4. $g(5) = 6\\log_n (1/2) < 0$ 판정 → 사실77 (로그 부호 판정) 신규\n5. $f(x)$는 증가함수 → 사실12 매칭\n6. $f(1) = 0$ → 사실62 매칭\n7. $x = 5, 6$은 항상 해 → 전략38 (확정 해 분리) 신규\n8. $x = 4 \\in$ 해 $\\iff x = 7 \\in$ 해 → 전략37 + 논리 추론\n9. 자연수 해 개수 = 4 → 케이스 분류 필요 → 전략22 (기준 케이스 분류) 매칭\n10. (i) $x = 4, 5, 6, 7$ 경우: $g(3) = g(8)$ 대칭 → 전략37\n11. $f(4) > g(4)$ 조건을 $n$ 부등식으로 변환 → 전략39 (로그 부등식 변환) 신규\n12. $\\log_n 4 > 6\\log_n (3/2)$ → 연산17 (로그 거듭제곱) 매칭\n13. $n > (3/2)^3$ 도출 → 전략39\n14. $f(8) < g(8)$ 조건 → 마찬가지로 전략39\n15. $n \\leq (5/2)^2$ 도출 → 전략39\n16. $n = 4, 5, 6$ 확정 → 전략36 (경계 역산) 신규\n17. (ii) $x = 5, 6, 7, 8$ 경우: 모순 확인 → 전략23 (모순 배제) 매칭\n18. 합계 계산 → 단순 산술, 뉴런 불필요\n\n결론: 사실76, 사실77, 전략36, 전략37, 전략38, 전략39가 필요",
+    "previous_matched": [
+      "사실12",
+      "사실62",
+      "연산17",
+      "전략6",
+      "전략20",
+      "전략22",
+      "전략25",
+      "전략23"
+    ],
+    "previous_skeleton": [],
+    "previous_new_neurons": [
+      {
+        "id": "사실76",
+        "statement": "로그함수 $y = \\log_a |x - c|$는 직선 $x = c$에 대해 대칭이다",
+        "type": "fact",
+        "reason": "절댓값 대칭 + 로그 합성의 대칭성. 사실2는 일반적 절댓값 대칭이지만, 로그와 절댓값의 합성에 대한 대칭 사실이 명시적으로 필요함"
+      },
+      {
+        "id": "사실77",
+        "statement": "$\\log_a |b| < 0 \\iff (a > 1 \\land 0 < |b| < 1) \\lor (0 < a < 1 \\land |b| > 1)$",
+        "type": "fact",
+        "reason": "로그 부호 판정. 로그함수의 단조성과 $\\log_a 1 = 0$을 결합하여 로그값의 부호를 판단하는 법칙"
+      },
+      {
+        "id": "전략36",
+        "statement": "부등식을 만족하는 자연수의 개수가 주어지면, 경계 자연수들에서의 조건을 역산하여 매개변수 범위를 구한다",
+        "type": "strategy",
+        "reason": "개수 조건 → 경계 조건 역산. 이산적 조건에서 연속 매개변수 범위를 추론하는 전략"
+      },
+      {
+        "id": "전략37",
+        "statement": "대칭 함수에서 두 점 $a$, $b$가 대칭축으로부터 같은 거리에 있으면 함수값이 같다",
+        "type": "strategy",
+        "reason": "대칭성 활용. 사실76을 적용하여 $g(x)$의 대칭성으로부터 $g(5) = g(6)$, $g(4) = g(7)$, $g(3) = g(8)$ 등을 도출하는 전략적 판단"
+      },
+      {
+        "id": "전략38",
+        "statement": "부등식 해의 개수를 세기 위해, 항상 성립하는 확정 해와 경계 의존 해를 분리한다",
+        "type": "strategy",
+        "reason": "확정 해 분리. $x = 5, 6$은 항상 해이므로 고정하고, 나머지 $x = 4, 7, 8$ 등의 포함 여부를 경계 조건으로 결정하는 전략"
+      },
+      {
+        "id": "전략39",
+        "statement": "로그 부등식 $\\log_n A > k \\log_n B$를 변환하여 $\\log_n A > \\log_n B^k$, 즉 $A > B^k$ (단조성 이용) 또는 $n$에 대한 조건으로 정리한다",
+        "type": "strategy",
+        "reason": "로그 부등식 변환. 로그 거듭제곱 법칙과 단조성을 결합하여 부등식을 정리하는 전략"
+      }
+    ],
+    "previous_dna_nodes": [
+      {
+        "id": "top",
+        "dna": "Q3",
+        "label": "합을 구하라",
+        "category": "발문"
+      },
+      {
+        "id": "ask",
+        "dna": "T1",
+        "label": "모든 n",
+        "category": "말단"
+      },
+      {
+        "id": "conds",
+        "dna": "S1",
+        "label": "여러 조건",
+        "category": "구조"
+      },
+      {
+        "id": "vn",
+        "dna": "T1",
+        "label": "변수 n",
+        "category": "말단"
+      },
+      {
+        "id": "ln1",
+        "dna": "L3",
+        "label": "n은 자연수",
+        "category": "제한"
+      },
+      {
+        "id": "ln2",
+        "dna": "L2",
+        "label": "n ≥ 2",
+        "category": "제한"
+      },
+      {
+        "id": "c2",
+        "dna": "T2",
+        "label": "상수 2",
+        "category": "말단"
+      },
+      {
+        "id": "ineq",
+        "dna": "C2",
+        "label": "부등식 >",
+        "category": "조건"
+      },
+      {
+        "id": "left",
+        "dna": "E3",
+        "label": "logₙ x",
+        "category": "수식"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
+      },
+      {
+        "id": "right",
+        "dna": "E6",
+        "label": "곱(6, log)",
+        "category": "수식"
+      },
+      {
+        "id": "c6",
+        "dna": "T2",
+        "label": "상수 6",
+        "category": "말단"
+      },
+      {
+        "id": "log_abs",
+        "dna": "E3",
+        "label": "logₙ |x-11/2|",
+        "category": "수식"
+      },
+      {
+        "id": "abs",
+        "dna": "E5",
+        "label": "|x-11/2|",
+        "category": "수식"
+      },
+      {
+        "id": "diff",
+        "dna": "E1",
+        "label": "합(x, -11/2)",
+        "category": "수식"
+      },
+      {
+        "id": "neg_half",
+        "dna": "E2",
+        "label": "부호반전(11/2)",
+        "category": "수식"
+      },
+      {
+        "id": "c11_2",
+        "dna": "T2",
+        "label": "상수 11/2",
+        "category": "말단"
+      },
+      {
+        "id": "cnt_cond",
+        "dna": "C1",
+        "label": "개수 = 4",
+        "category": "조건"
+      },
+      {
+        "id": "cnt",
+        "dna": "X4",
+        "label": "정확히 4개",
+        "category": "존재"
+      },
+      {
+        "id": "x_nat",
+        "dna": "X3",
+        "label": "x는 자연수",
+        "category": "존재"
+      },
+      {
+        "id": "c4",
+        "dna": "T2",
+        "label": "상수 4",
+        "category": "말단"
+      },
+      {
+        "id": "mc",
+        "dna": "S1",
+        "label": "객관식",
+        "category": "구조"
+      }
+    ],
+    "previous_dna_edges": [
+      {
+        "from": "ask",
+        "to": "top"
+      },
+      {
+        "from": "conds",
+        "to": "top"
+      },
+      {
+        "from": "mc",
+        "to": "top"
+      },
+      {
+        "from": "vn",
+        "to": "ask"
+      },
+      {
+        "from": "ln1",
+        "to": "vn"
+      },
+      {
+        "from": "ln2",
+        "to": "vn"
+      },
+      {
+        "from": "c2",
+        "to": "ln2"
+      },
+      {
+        "from": "ineq",
+        "to": "conds"
+      },
+      {
+        "from": "left",
+        "to": "ineq"
+      },
+      {
+        "from": "right",
+        "to": "ineq"
+      },
+      {
+        "from": "vn",
+        "to": "left"
+      },
+      {
+        "from": "vx",
+        "to": "left"
+      },
+      {
+        "from": "c6",
+        "to": "right"
+      },
+      {
+        "from": "log_abs",
+        "to": "right"
+      },
+      {
+        "from": "vn",
+        "to": "log_abs"
+      },
+      {
+        "from": "abs",
+        "to": "log_abs"
+      },
+      {
+        "from": "diff",
+        "to": "abs"
+      },
+      {
+        "from": "vx",
+        "to": "diff"
+      },
+      {
+        "from": "neg_half",
+        "to": "diff"
+      },
+      {
+        "from": "c11_2",
+        "to": "neg_half"
+      },
+      {
+        "from": "cnt_cond",
+        "to": "conds"
+      },
+      {
+        "from": "cnt",
+        "to": "cnt_cond"
+      },
+      {
+        "from": "c4",
+        "to": "cnt_cond"
+      },
+      {
+        "from": "ineq",
+        "to": "cnt"
+      },
+      {
+        "from": "x_nat",
+        "to": "cnt"
+      },
+      {
+        "from": "vx",
+        "to": "x_nat"
+      }
+    ],
+    "created_at": "2026-03-19T11:23:52.012Z"
+  }
+]
