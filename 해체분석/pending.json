@@ -1874,7 +1874,13 @@
         "category": "수식"
       },
       {
-        "id": "c1_const",
+        "id": "c2_coeff",
+        "dna": "T2",
+        "label": "상수 2 (계수)",
+        "category": "말단"
+      },
+      {
+        "id": "c1_coeff",
         "dna": "T2",
         "label": "상수 1",
         "category": "말단"
@@ -1910,16 +1916,16 @@
         "category": "말단"
       },
       {
-        "id": "root_cond",
-        "dna": "C15",
-        "label": "한 실근 k가 k^n=64를 만족",
-        "category": "조건"
-      },
-      {
         "id": "vk",
         "dna": "T1",
         "label": "변수 k (한 실근)",
         "category": "말단"
+      },
+      {
+        "id": "root_cond",
+        "dna": "C15",
+        "label": "한 실근 k가 조건을 만족",
+        "category": "조건"
       },
       {
         "id": "exist_n",
@@ -2024,11 +2030,11 @@
         "to": "coeff_x"
       },
       {
-        "from": "c1_const",
+        "from": "c1_coeff",
         "to": "coeff_x"
       },
       {
-        "from": "c2_exp",
+        "from": "c2_coeff",
         "to": "two_a"
       },
       {
@@ -2092,6 +2098,6 @@
         "to": "kn"
       }
     ],
-    "created_at": "2026-03-19T15:09:08.424Z"
+    "created_at": "2026-03-19T15:10:18.533Z"
   }
 ]
