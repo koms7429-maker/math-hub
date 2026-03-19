@@ -1,1 +1,412 @@
-[]
+[
+  {
+    "problem_id": "Problem1",
+    "answer": "18",
+    "clues": [
+      {
+        "id": "단서A",
+        "text": "방정식 $(x-m^n)(x^n-m)=0$"
+      },
+      {
+        "id": "단서B",
+        "text": "서로 다른 실근의 개수가 1"
+      },
+      {
+        "id": "단서C",
+        "text": "$-3 \\leq m \\leq 3$인 정수 $m$과 $2 \\leq n \\leq 6$인 자연수 $n$"
+      }
+    ],
+    "skeleton": [
+      {
+        "from": [
+          "단서A"
+        ],
+        "to": "연산9",
+        "note": "방정식을 x=m^n 또는 x^n=m으로 분리한다"
+      },
+      {
+        "from": [
+          "연산9"
+        ],
+        "to": "전략22",
+        "note": "x^n=m의 실근 개수는 n의 홀짝과 m의 부호에 따라 달라진다"
+      },
+      {
+        "from": [
+          "전략22"
+        ],
+        "to": "사실4",
+        "note": "n의 홀짝과 m의 부호를 기준으로 케이스를 분류한다"
+      },
+      {
+        "from": [
+          "사실4"
+        ],
+        "to": "전략20",
+        "note": "케이스 1: n 홀수일 때 x^n=m은 실근 1개를 가진다. 케이스 2: n 짝수, m<0일 때 x^n=m은 실근이 없다. 케이스 3: n 짝수, m=0일 때 x^n=0은 x=0(중근)이다. 케이스 4: n 짝수, m>0일 때 x^n=m은 실근 2개를 가진다"
+      },
+      {
+        "from": [
+          "전략20",
+          "단서B"
+        ],
+        "to": "전략21",
+        "note": "케이스 1에서 m^n = n√m 조건을 확인한다",
+        "main": true
+      },
+      {
+        "from": [
+          "전략21"
+        ],
+        "to": "전략17",
+        "note": "케이스 1: m^(n² - 1)/n = 1을 만족하는 m은 -1, 0, 1이다",
+        "main": false
+      },
+      {
+        "from": [
+          "전략17",
+          "단서C"
+        ],
+        "to": "전략10",
+        "note": "케이스 1(n 홀수): n=3,5 (2가지) × m=-1,0,1 (3가지) = 6가지이다",
+        "main": true
+      },
+      {
+        "from": [
+          "전략20",
+          "단서B"
+        ],
+        "to": "전략21_1",
+        "note": "케이스 2,3은 이미 실근 1개를 만족한다",
+        "main": true
+      },
+      {
+        "from": [
+          "전략21_1",
+          "단서C"
+        ],
+        "to": "전략10_1",
+        "note": "케이스 2,3(n 짝수, m≤0): n=2,4,6 (3가지) × m=-3,-2,-1,0 (4가지) = 12가지이다",
+        "main": true
+      },
+      {
+        "from": [
+          "전략20",
+          "단서B"
+        ],
+        "to": "전략23",
+        "note": "케이스 4(n 짝수, m>0)는 실근이 3개가 되어 조건을 만족하지 않는다",
+        "main": false
+      },
+      {
+        "from": [
+          "전략10",
+          "전략10_1",
+          "전략23"
+        ],
+        "to": "연산18",
+        "note": "총 개수는 6 + 12 + 0이다"
+      },
+      {
+        "from": [
+          "연산18"
+        ],
+        "to": "END",
+        "note": "18이다"
+      }
+    ],
+    "solution": "STEP 1. 방정식을 x=m^n 또는 x^n=m으로 분리한다.\n\nSTEP 2. x^n=m의 실근 개수는 n의 홀짝과 m의 부호에 따라 달라진다.\n\nSTEP 3. n의 홀짝과 m의 부호를 기준으로 케이스를 분류한다.\n\nSTEP 4. 케이스 1에서 m^n = n√m 조건을 확인한다.\n\nSTEP 5. 케이스 1(n 홀수): n=3,5 (2가지) × m=-1,0,1 (3가지) = 6가지이다.\n\nSTEP 6. 케이스 2,3은 이미 실근 1개를 만족한다.\n\nSTEP 7. 케이스 2,3(n 짝수, m≤0): n=2,4,6 (3가지) × m=-3,-2,-1,0 (4가지) = 12가지이다.\n\nSTEP 8. 총 개수는 6 + 12 + 0이다.\n\nSTEP 9. 18이다.",
+    "analysis": "방정식 (x-m^n)(x^n-m)=0에서 영인자법칙을 적용하면 x=m^n 또는 x^n=m이다.\n\n첫 번째 인수에서 x=m^n은 항상 1개의 실근을 준다.\n두 번째 인수 x^n=m의 실근 개수는 사실4에 따라:\n- n이 홀수: m의 부호 무관하게 실근 1개 (n√m)\n- n이 짝수, m>0: 실근 2개 (±n√m)\n- n이 짝수, m=0: 실근 1개 (0)\n- n이 짝수, m<0: 실근 0개\n\n따라서 전체 실근 목록은:\n케이스 1) n 홀수: x = m^n, n√m (최대 2개)\n케이스 2) n 짝수, m<0: x = m^n (1개)\n케이스 3) n 짝수, m=0: x = 0, 0 (1개, 중근)\n케이스 4) n 짝수, m>0: x = m^n, n√m, -n√m (최대 3개)\n\n서로 다른 실근이 정확히 1개가 되려면:\n- 케이스 1: m^n = n√m이어야 함 → m^n = m^(1/n) → m^(n-1/n) = 1 → m ∈ {-1, 0, 1}\n  (n=2,3,4,5,6이므로 5가지 × m 3가지 = 15... 아니다, n 홀수만이므로 n=3,5 2가지 × m 3가지 = 6가지)\n- 케이스 2: 항상 1개 (m=-3,-2,-1, n=2,4,6 → 3×3=9... 아니다, m<0이므로 m=-1,-2,-3 3가지, n=2,4,6 3가지... 아니다 n≤6이고 짝수이므로 2,4,6 3가지... 잠깐, n=2,4,6이고 m=-3,-2,-1이므로 3×3=9? 아니다)\n  재확인: n 짝수(2,4,6) 4가지? 아니다 2,4,6은 3가지이다. m<0이므로 m=-3,-2,-1 3가지. 3×3=9가지? 해설에서는 12가지라고 했는데?\n  \n해설 재분석:\n케이스 1 (n 홀수): n=3,5 (2가지), m=-1,0,1 (3가지) → 2×3=6\n케이스 2,3 (n 짝수, m≤0): n=2,4,6 (3가지)... 아니다 해설에서 \"3×4=12\"라고 했으므로 n이 4가지? 아니다.\n다시 보니 해설에서 케이스 2,3을 합쳤다. m≤0이면 m=-3,-2,-1,0 (4가지), n=2,4,6 (3가지) → 4×3=12\n\n케이스 4 (n 짝수, m>0): 실근이 3개이므로 조건 불만족 → 0가지\n\n합계: 6+12+0=18",
+    "new_neurons": [],
+    "metadata": {
+      "unit": "다항방정식",
+      "difficulty": "unknown",
+      "score": "4",
+      "type": "multiple choice",
+      "answer": "18"
+    },
+    "edge_count": 12,
+    "side_count": 2,
+    "statement": "$-3 \\leq m \\leq 3$인 정수 $m$과 $2 \\leq n \\leq 6$인 자연수 $n$에 대하여 $x$에 대한 방정식 $(x-m^n)(x^n-m)=0$의 서로 다른 실근의 개수가 $1$이 되도록 하는 모든 순서쌍 $(m, n)$의 개수는?",
+    "dna": {
+      "nodes": [
+        {
+          "id": "top",
+          "dna": "Q2",
+          "label": "개수를 구하라",
+          "category": "발문"
+        },
+        {
+          "id": "ask",
+          "dna": "X2",
+          "label": "순서쌍 (m, n)",
+          "category": "존재"
+        },
+        {
+          "id": "vm",
+          "dna": "T1",
+          "label": "변수 m",
+          "category": "말단"
+        },
+        {
+          "id": "vn",
+          "dna": "T1",
+          "label": "변수 n",
+          "category": "말단"
+        },
+        {
+          "id": "conds",
+          "dna": "S1",
+          "label": "여러 조건",
+          "category": "구조"
+        },
+        {
+          "id": "lim_m",
+          "dna": "L2",
+          "label": "m 범위",
+          "category": "제한"
+        },
+        {
+          "id": "c_3",
+          "dna": "T2",
+          "label": "상수 -3",
+          "category": "말단"
+        },
+        {
+          "id": "c3",
+          "dna": "T2",
+          "label": "상수 3",
+          "category": "말단"
+        },
+        {
+          "id": "kind_m",
+          "dna": "L3",
+          "label": "m은 정수",
+          "category": "제한"
+        },
+        {
+          "id": "lim_n",
+          "dna": "L2",
+          "label": "n 범위",
+          "category": "제한"
+        },
+        {
+          "id": "c2",
+          "dna": "T2",
+          "label": "상수 2",
+          "category": "말단"
+        },
+        {
+          "id": "c6",
+          "dna": "T2",
+          "label": "상수 6",
+          "category": "말단"
+        },
+        {
+          "id": "kind_n",
+          "dna": "L3",
+          "label": "n은 자연수",
+          "category": "제한"
+        },
+        {
+          "id": "eq",
+          "dna": "C1",
+          "label": "방정식 = 0",
+          "category": "조건"
+        },
+        {
+          "id": "eq_prod",
+          "dna": "E6",
+          "label": "곱((x-m^n), (x^n-m))",
+          "category": "수식"
+        },
+        {
+          "id": "c0",
+          "dna": "T2",
+          "label": "상수 0",
+          "category": "말단"
+        },
+        {
+          "id": "factor1",
+          "dna": "E1",
+          "label": "합(x, -m^n)",
+          "category": "수식"
+        },
+        {
+          "id": "vx",
+          "dna": "T3",
+          "label": "독립변수 x",
+          "category": "말단"
+        },
+        {
+          "id": "neg_mn",
+          "dna": "E2",
+          "label": "부호반전(m^n)",
+          "category": "수식"
+        },
+        {
+          "id": "mn_pow",
+          "dna": "E7",
+          "label": "거듭제곱(m, n)",
+          "category": "수식"
+        },
+        {
+          "id": "factor2",
+          "dna": "E1",
+          "label": "합(x^n, -m)",
+          "category": "수식"
+        },
+        {
+          "id": "xn_pow",
+          "dna": "E7",
+          "label": "거듭제곱(x, n)",
+          "category": "수식"
+        },
+        {
+          "id": "neg_m",
+          "dna": "E2",
+          "label": "부호반전(m)",
+          "category": "수식"
+        },
+        {
+          "id": "root_cond",
+          "dna": "C9",
+          "label": "서로 다른 실근 개수 = 1",
+          "category": "조건"
+        },
+        {
+          "id": "c1",
+          "dna": "T2",
+          "label": "상수 1",
+          "category": "말단"
+        }
+      ],
+      "edges": [
+        {
+          "from": "ask",
+          "to": "top"
+        },
+        {
+          "from": "vm",
+          "to": "ask"
+        },
+        {
+          "from": "vn",
+          "to": "ask"
+        },
+        {
+          "from": "conds",
+          "to": "top"
+        },
+        {
+          "from": "lim_m",
+          "to": "vm"
+        },
+        {
+          "from": "c_3",
+          "to": "lim_m"
+        },
+        {
+          "from": "c3",
+          "to": "lim_m"
+        },
+        {
+          "from": "kind_m",
+          "to": "vm"
+        },
+        {
+          "from": "lim_n",
+          "to": "vn"
+        },
+        {
+          "from": "c2",
+          "to": "lim_n"
+        },
+        {
+          "from": "c6",
+          "to": "lim_n"
+        },
+        {
+          "from": "kind_n",
+          "to": "vn"
+        },
+        {
+          "from": "eq",
+          "to": "conds"
+        },
+        {
+          "from": "eq_prod",
+          "to": "eq"
+        },
+        {
+          "from": "c0",
+          "to": "eq"
+        },
+        {
+          "from": "factor1",
+          "to": "eq_prod"
+        },
+        {
+          "from": "factor2",
+          "to": "eq_prod"
+        },
+        {
+          "from": "vx",
+          "to": "factor1"
+        },
+        {
+          "from": "neg_mn",
+          "to": "factor1"
+        },
+        {
+          "from": "mn_pow",
+          "to": "neg_mn"
+        },
+        {
+          "from": "vm",
+          "to": "mn_pow"
+        },
+        {
+          "from": "vn",
+          "to": "mn_pow"
+        },
+        {
+          "from": "xn_pow",
+          "to": "factor2"
+        },
+        {
+          "from": "neg_m",
+          "to": "factor2"
+        },
+        {
+          "from": "vx",
+          "to": "xn_pow"
+        },
+        {
+          "from": "vn",
+          "to": "xn_pow"
+        },
+        {
+          "from": "vm",
+          "to": "neg_m"
+        },
+        {
+          "from": "root_cond",
+          "to": "conds"
+        },
+        {
+          "from": "eq",
+          "to": "root_cond"
+        },
+        {
+          "from": "c1",
+          "to": "root_cond"
+        }
+      ],
+      "new_dna": []
+    },
+    "folders": [],
+    "history": [],
+    "created_at": "2026-03-19T11:01:42.250Z"
+  }
+]
