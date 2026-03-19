@@ -139,7 +139,7 @@ async function load(){
   ghTk=localStorage.getItem('gh_token')||'';
   var api=function(u){return'https://api.github.com/repos/'+OW+'/'+RP+'/contents/'+u+'?ref='+BR};
   var hd=ghTk?{headers:{'Authorization':'token '+ghTk}}:{};
-  try{var r=await Promise.all([fetch(api('bookshelf.json'),hd),fetch(api('neuron-list.md'),hd)]);
+  try{var r=await Promise.all([fetch(api('해체분석/skeleton/neuron-list.md'),hd),fetch(api('neuron-list.md'),hd)]);
     if(r[0].ok){var j=await r[0].json();probs=JSON.parse(d64(j.content));bsSha=j.sha}
     else if(r[0].status===401||r[0].status===403||r[0].status===404){document.getElementById('meta').textContent='Token required (private repo)';return}
     if(r[1].ok){var j2=await r[1].json();var t=d64(j2.content);t.split('\n').forEach(function(l){var n=pNL(l);if(n){nMap[n.id]={id:n.id,statement:n.statement};nAll.push({id:n.id,statement:n.statement,type:nTy(n.id)})}})}}catch(e){console.error(e)}
