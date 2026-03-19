@@ -1,80 +1,258 @@
 [
   {
     "problem_id": "Problem",
-    "content": "# Problem 5. (Unknown Source) - Logarithm and Inequality\n\n## Problem\n\n자연수 $n(n \\geq 2)$에 대하여\n\n$$\\log_n x > 6\\log_n \\left| x - \\frac{11}{2} \\right|$$\n\n을 만족시키는 자연수 $x$의 개수가 4가 되도록 하는 모든 $n$의 값의 합은 [4점]\n\n## Choices\n① 12  ② 13  ③ 15  ④ 18  ⑤ 22\n\n**Answer**: ③ 15\n**Difficulty**: unknown\n**Score**: 4점\n**Type**: multiple choice\n\n---\n\n## Solution\n\n[힌트] ③\n\n[풀이]\n\n$$f(x) = \\log_n x, \\quad g(x) = 6\\log_n \\left| x - \\frac{11}{2} \\right|$$\n\n이라 하면 문제의 부등식은\n\n$$f(x) > g(x) \\cdots ①$$\n\n이고, 이때\n\n• $g(5) = g(6) < 0$이고 $g(4) = g(7)$\n• $y = f(x)$는 $f(1) = 0$이고 증가함수\n\n이므로\n\n• $x = 5$, $x = 6$은 항상 ①을 만족시킴\n• $x = 4$가 ①을 만족시키면 $x = 7$도 ①을 만족시킴\n\n을 알 수 있다.\n\n따라서\n\n①인 자연수 $x$의 개수가 $4 \\Rightarrow \\begin{cases} (i) & x = 4, 5, 6, 7 \\\\ (ii) & x = 5, 6, 7, 8 \\end{cases}$\n\n의 경우만 가능하다.\n\n[FIGURE: 두 개의 그래프가 제시됨. 왼쪽은 [(i)의 경우], 오른쪽은 [(ii)의 경우]로 표시되어 있으며, 각각 $y=g(x)$, $y=f(x)$의 그래프가 그려져 있고 $x = 3, 4, 5, 6, 7, 8$ 근처에서의 교점 관계를 보여줌]\n\n(i)의 경우:\n\n위 그림을 참고하면\n\n$$g(3) = g(8) \\Rightarrow \\begin{cases} x = 8\\text{이 ①을 만족시키지 않으면} \\\\ x = 3\\text{도 ①을 만족시키지 않음} \\end{cases}$$\n\n을 알 수 있으므로\n\n• $f(4) > g(4) \\Rightarrow \\log_n 4 > 6\\log_n \\frac{3}{2} \\Rightarrow n > \\left(\\frac{3}{2}\\right)^3 = 3.xx$\n\n• $f(8) < g(8) \\Rightarrow \\log_n 8 \\leq 6\\log_n \\frac{5}{2} \\Rightarrow n \\leq \\left(\\frac{5}{2}\\right)^2 = 6.xx$\n\n$\\Rightarrow n = 4, 5, 6$ ($\\because$ $n$는 자연수)\n\n이다.\n\n(ii)의 경우:\n\n(i)의 과정을 참고하면\n\n• $f(4) \\leq g(4) \\Rightarrow n \\leq \\left(\\frac{3}{2}\\right)^3 = 3.xx$\n\n• $f(8) > g(8) \\Rightarrow n > \\left(\\frac{5}{2}\\right)^2 = 6.xx$\n\n인 $n$이 존재하지 않음\n\n을 알 수 있다.\n\n따라서 (i), (ii)의 의해\n\n(모든 $n$의 값의 합) = $4 + 5 + 6 = 15$\n\n임을 알 수 있다.\n\n---",
+    "content": "# Problem 7. (Unknown Source) - Logarithm and Exponential Functions\n\n## Problem\n\n$a > 1$인 실수 $a$에 대하여 곡선 $y = 4 - a^{-x}$의 $x$축, $y$축과 만나는 점을 각각 A, B라 하자. 삼각형 OAB의 외접원이 곡선 $y = a^x - 1$과 O가 아닌 점 C에서 만나고 $\\overline{CO} = \\overline{CA}$일 때, $\\overline{BC}^2$의 값을 구하시오. (단, O는 원점이다.) [4점]\n\n[그림: 좌표평면에 곡선 $y = 4 - a^{-x}$와 $y = a^x - 1$이 그려져 있고, 점 A는 $x$축 위에, 점 B는 $y$축 위에, 점 C는 원점 근처에 표시되어 있으며, 삼각형 OAB의 외접원이 그려져 있다.]\n\n**Answer**: 14\n**Difficulty**: unknown\n**Score**: 4점\n**Type**: short answer\n\n---\n\n## Solution\n\n문제의 조건에 의해 두 점 A, B의 좌표는 각각\n\n$$A(-\\log_a 4, 0), \\quad B(0, 3)$$\n\n이다. 이때 선분 AB의 중점을 $M\\left(-\\log_a 2, \\frac{3}{2}\\right)$이라 하면\n\n$$\\angle AOB = \\frac{\\pi}{2} \\Rightarrow \\text{점 M은 삼각형 OAB의 외심}$$\n\n$$\\Rightarrow \\text{직선 MC는 선분 OA의 수직이등분선}$$\n\n$$(\\because \\overline{CO} = \\overline{CA})$$\n\n임을 알 수 있다. 따라서\n\n$$(점 C의 x좌표) = (점 M의 x좌표) = -\\log_a 2$$\n\n$$\\Rightarrow (점 C의 y좌표) = -\\frac{1}{2} \\quad (\\because C가 곡선 y = a^x - 1 위의 점)$$\n\n$$\\Rightarrow C\\left(-\\log_a 2, -\\frac{1}{2}\\right) \\cdots ①$$\n\n이다.\n\n한편,\n\n$$(삼각형 OAB의 외접원의 반지름의 길이) = \\overline{MC} = 2$$\n\n이므로\n\n$$\\overline{AB} = 2\\overline{MC} = 4 \\Rightarrow \\overline{OA} = \\sqrt{\\overline{AB}^2 - \\overline{OB}^2} = \\sqrt{4^2 - 3^2} = \\sqrt{7}$$\n\n$$\\Rightarrow \\log_a 4 = \\sqrt{7}$$\n\n에서 이를 ①에 대입하면\n\n$$C\\left(-\\frac{\\sqrt{7}}{2}, -\\frac{1}{2}\\right) \\Rightarrow \\overline{BC}^2 = \\left(\\frac{\\sqrt{7}}{2}\\right)^2 + \\left(\\frac{7}{2}\\right)^2 = 14$$\n\n를 얻는다.\n\n---",
     "skel_status": "pending",
     "dna_status": "ok",
     "needed_neurons": [
       "사실76",
       "사실77",
-      "전략36",
-      "전략37",
-      "전략38",
-      "전략39"
+      "사실78",
+      "사실60"
     ],
     "needed_dna": [],
-    "previous_analysis": "",
-    "previous_matching": "1. $f(x) = \\log_n x$, $g(x) = 6\\log_n |x - 11/2|$ 정의 → 단순 정의, 뉴런 불필요\n2. $g(x)$가 $x = 11/2$에 대해 대칭 → 사실2 (절댓값 대칭)은 있으나, 로그 합성 대칭은 명시 필요 → 사실76 신규\n3. $g(5) = g(6)$ 도출 → 전략37 (대칭성 활용) 신규\n4. $g(5) = 6\\log_n (1/2) < 0$ 판정 → 사실77 (로그 부호 판정) 신규\n5. $f(x)$는 증가함수 → 사실12 매칭\n6. $f(1) = 0$ → 사실62 매칭\n7. $x = 5, 6$은 항상 해 → 전략38 (확정 해 분리) 신규\n8. $x = 4 \\in$ 해 $\\iff x = 7 \\in$ 해 → 전략37 + 논리 추론\n9. 자연수 해 개수 = 4 → 케이스 분류 필요 → 전략22 (기준 케이스 분류) 매칭\n10. (i) $x = 4, 5, 6, 7$ 경우: $g(3) = g(8)$ 대칭 → 전략37\n11. $f(4) > g(4)$ 조건을 $n$ 부등식으로 변환 → 전략39 (로그 부등식 변환) 신규\n12. $\\log_n 4 > 6\\log_n (3/2)$ → 연산17 (로그 거듭제곱) 매칭\n13. $n > (3/2)^3$ 도출 → 전략39\n14. $f(8) < g(8)$ 조건 → 마찬가지로 전략39\n15. $n \\leq (5/2)^2$ 도출 → 전략39\n16. $n = 4, 5, 6$ 확정 → 전략36 (경계 역산) 신규\n17. (ii) $x = 5, 6, 7, 8$ 경우: 모순 확인 → 전략23 (모순 배제) 매칭\n18. 합계 계산 → 단순 산술, 뉴런 불필요\n\n결론: 사실76, 사실77, 전략36, 전략37, 전략38, 전략39가 필요",
+    "previous_analysis": "주어진 조건:\n- $a>1$\n- 곡선 $y=4-a^{-x}$가 $x$축과 만나는 점 A\n- 곡선 $y=4-a^{-x}$가 $y$축과 만나는 점 B\n- 삼각형 OAB의 외접원이 곡선 $y=a^x-1$과 O가 아닌 점 C에서 만남\n- $\\overline{CO}=\\overline{CA}$\n\n전개:\n1. A의 좌표: $y=0$일 때 $4-a^{-x}=0$ → $a^{-x}=4$ → $x=-\\log_a 4$. 따라서 $A(-\\log_a 4, 0)$.\n2. B의 좌표: $x=0$일 때 $y=4-a^0=4-1=3$. 따라서 $B(0,3)$.\n3. 선분 AB의 중점 M: $M\\left(-\\frac{\\log_a 4}{2}, \\frac{3}{2}\\right) = \\left(-\\log_a 2, \\frac{3}{2}\\right)$.\n4. $\\angle AOB = 90°$ (A는 $x$축, B는 $y$축 위).\n5. 직각삼각형 OAB의 외심은 빗변 AB의 중점 M이다.\n6. $\\overline{CO}=\\overline{CA}$이므로 C는 선분 OA의 수직이등분선 위에 있다.\n7. M이 외심이고 $\\overline{CO}=\\overline{CA}$이므로, 직선 MC는 선분 OA의 수직이등분선이다.\n8. OA는 $x$축 위의 선분이므로, 그 수직이등분선은 수직선이다. 따라서 C의 $x$좌표 = M의 $x$좌표 = $-\\log_a 2$.\n9. C가 곡선 $y=a^x-1$ 위에 있으므로, C의 $y$좌표 $= a^{-\\log_a 2}-1 = \\frac{1}{2}-1 = -\\frac{1}{2}$.\n10. 따라서 $C\\left(-\\log_a 2, -\\frac{1}{2}\\right)$.\n11. 외접원의 반지름 $= \\overline{MC} = \\sqrt{\\left(-\\log_a 2 - (-\\log_a 2)\\right)^2 + \\left(-\\frac{1}{2}-\\frac{3}{2}\\right)^2} = \\sqrt{0+4} = 2$.\n12. 직각삼각형에서 빗변 = 2×외접원 반지름. 따라서 $\\overline{AB} = 2 \\times 2 = 4$.\n13. 피타고라스 정리: $\\overline{OA}^2 + \\overline{OB}^2 = \\overline{AB}^2$ → $\\overline{OA}^2 + 9 = 16$ → $\\overline{OA} = \\sqrt{7}$.\n14. $\\overline{OA} = \\log_a 4 = \\sqrt{7}$.\n15. 따라서 $-\\log_a 2 = -\\frac{\\sqrt{7}}{2}$. C의 좌표는 $\\left(-\\frac{\\sqrt{7}}{2}, -\\frac{1}{2}\\right)$.\n16. $\\overline{BC}^2 = \\left(0-\\left(-\\frac{\\sqrt{7}}{2}\\right)\\right)^2 + \\left(3-\\left(-\\frac{1}{2}\\right)\\right)^2 = \\frac{7}{4} + \\frac{49}{4} = \\frac{56}{4} = 14$.",
+    "previous_matching": "1. $y=4-a^{-x}$가 $x$축과 만나는 점: $4-a^{-x}=0$ → 연산2 (로그와 지수 역관계)\n2. A의 좌표 $(-\\log_a 4, 0)$ 계산 → 연산2\n3. $y=4-a^{-x}$가 $y$축과 만나는 점: $x=0$ 대입 → 연산2 (지수 정의)\n4. B의 좌표 $(0, 3)$ 계산 → 사실18 ($a^0=1$)\n5. 선분 AB의 중점 M → 연산12 (중점 공식)\n6. $\\angle AOB = 90°$ → 사실69 ($x$축과 $y$축 수직)\n7. 직각삼각형의 외심은 빗변 중점 → 사실70 (직각삼각형 외심 정리, 원의 지름 중점은 중심)\n8. $\\overline{CO}=\\overline{CA}$ → 사실13 (이등변삼각형 꼭지점은 밑변 수직이등분선 위)\n9. 직선 MC는 OA의 수직이등분선 → 사실8과 사실13의 조합\n10. C의 $x$좌표 = M의 $x$좌표 → 수직이등분선 성질\n11. C가 $y=a^x-1$ 위 → 연산2 (대입)\n12. $\\overline{MC}=2$ 계산 → 연산11 (거리 공식)\n13. $\\overline{AB}=2\\overline{MC}$ → 사실70 (직각삼각형에서 빗변=2×외접원 반지름)\n14. $\\overline{OA}=\\sqrt{\\overline{AB}^2-\\overline{OB}^2}$ → 연산6 (피타고라스)\n15. $\\log_a 4 = \\sqrt{7}$ → 전략2 (연립)\n16. C의 좌표에 대입 → 연산2\n17. $\\overline{BC}^2$ 계산 → 연산11 (거리 공식)\n\n모든 단계가 기존 뉴런으로 커버됨.",
     "previous_matched": [
-      "사실12",
-      "사실62",
-      "연산17",
-      "전략6",
-      "전략20",
-      "전략22",
-      "전략25",
-      "전략23"
+      "연산2",
+      "사실18",
+      "연산12",
+      "사실69",
+      "사실11",
+      "사실13",
+      "전략2",
+      "연산6",
+      "연산11"
     ],
-    "previous_skeleton": [],
+    "previous_skeleton": [
+      {
+        "from": [
+          "단서A"
+        ],
+        "to": "연산2",
+        "note": "$y=4-a^{-x}$가 $x$축과 만날 때 $4-a^{-x}=0$이다"
+      },
+      {
+        "from": [
+          "연산2"
+        ],
+        "to": "연산2_1",
+        "note": "$a^{-x}=4$일 때 $x=-\\log_a 4$이다"
+      },
+      {
+        "from": [
+          "연산2_1"
+        ],
+        "to": "사실60",
+        "note": "A의 좌표는 $(-\\log_a 4, 0)$이다"
+      },
+      {
+        "from": [
+          "단서A"
+        ],
+        "to": "사실18",
+        "note": "$y=4-a^{-x}$가 $y$축과 만날 때 $x=0$을 대입한다"
+      },
+      {
+        "from": [
+          "사실18"
+        ],
+        "to": "사실60_1",
+        "note": "$y=4-a^0=3$이다. B의 좌표는 $(0,3)$이다"
+      },
+      {
+        "from": [
+          "사실60",
+          "사실60_1"
+        ],
+        "to": "연산12",
+        "note": "선분 AB의 중점 M의 좌표는 $\\left(-\\frac{\\log_a 4}{2}, \\frac{3}{2}\\right) = \\left(-\\log_a 2, \\frac{3}{2}\\right)$이다"
+      },
+      {
+        "from": [
+          "사실60",
+          "사실60_1"
+        ],
+        "to": "사실69",
+        "note": "A는 $x$축 위, B는 $y$축 위이다"
+      },
+      {
+        "from": [
+          "사실69"
+        ],
+        "to": "사실11",
+        "note": "$\\angle AOB = 90°$일 때 직각삼각형 OAB의 외심은 빗변 AB의 중점 M이다"
+      },
+      {
+        "from": [
+          "단서C"
+        ],
+        "to": "사실13",
+        "note": "$\\overline{CO}=\\overline{CA}$일 때 C는 선분 OA의 수직이등분선 위에 있다"
+      },
+      {
+        "from": [
+          "사실11",
+          "사실13"
+        ],
+        "to": "전략2",
+        "note": "M이 외심이고 C가 OA의 수직이등분선 위에 있을 때, 직선 MC는 선분 OA의 수직이등분선이다"
+      },
+      {
+        "from": [
+          "전략2",
+          "사실60"
+        ],
+        "to": "사실76",
+        "note": "OA는 $x$축 위의 선분이다. 수직이등분선은 $x$축에 수직인 직선이다"
+      },
+      {
+        "from": [
+          "사실76",
+          "연산12"
+        ],
+        "to": "사실60_2",
+        "note": "C의 $x$좌표는 M의 $x$좌표와 같아 $-\\log_a 2$이다"
+      },
+      {
+        "from": [
+          "사실60_2",
+          "단서B"
+        ],
+        "to": "연산2_2",
+        "note": "C가 곡선 $y=a^x-1$ 위에 있을 때 $y=a^{-\\log_a 2}-1$이다"
+      },
+      {
+        "from": [
+          "연산2_2"
+        ],
+        "to": "사실60_3",
+        "note": "$y=\\frac{1}{2}-1=-\\frac{1}{2}$이다. C의 좌표는 $\\left(-\\log_a 2, -\\frac{1}{2}\\right)$이다"
+      },
+      {
+        "from": [
+          "연산12",
+          "사실60_3"
+        ],
+        "to": "연산11",
+        "note": "$\\overline{MC} = \\sqrt{0^2+\\left(-\\frac{1}{2}-\\frac{3}{2}\\right)^2} = 2$이다"
+      },
+      {
+        "from": [
+          "연산11",
+          "사실11"
+        ],
+        "to": "사실77",
+        "note": "직각삼각형에서 빗변은 외접원의 지름이다. $\\overline{AB}=2\\overline{MC}=4$이다"
+      },
+      {
+        "from": [
+          "사실77",
+          "사실60_1"
+        ],
+        "to": "연산6",
+        "note": "피타고라스 정리를 적용하면 $\\overline{OA}^2+9=16$이다"
+      },
+      {
+        "from": [
+          "연산6"
+        ],
+        "to": "사실78",
+        "note": "$\\overline{OA}=\\sqrt{7}$이다"
+      },
+      {
+        "from": [
+          "사실78",
+          "사실60"
+        ],
+        "to": "연산2_3",
+        "note": "$\\overline{OA}=\\log_a 4=\\sqrt{7}$일 때 $\\log_a 2=\\frac{\\sqrt{7}}{2}$이다"
+      },
+      {
+        "from": [
+          "연산2_3",
+          "사실60_3"
+        ],
+        "to": "사실60_4",
+        "note": "C의 좌표는 $\\left(-\\frac{\\sqrt{7}}{2}, -\\frac{1}{2}\\right)$이다"
+      },
+      {
+        "from": [
+          "사실60_4",
+          "사실60_1"
+        ],
+        "to": "연산11_1",
+        "note": "$\\overline{BC}^2 = \\left(\\frac{\\sqrt{7}}{2}\\right)^2 + \\left(\\frac{7}{2}\\right)^2 = \\frac{7}{4}+\\frac{49}{4}=14$이다"
+      },
+      {
+        "from": [
+          "연산11_1"
+        ],
+        "to": "END",
+        "note": "$\\overline{BC}^2=14$이다"
+      }
+    ],
     "previous_new_neurons": [
       {
         "id": "사실76",
-        "statement": "로그함수 $y = \\log_a |x - c|$는 직선 $x = c$에 대해 대칭이다",
+        "statement": "$x$축 위의 선분의 수직이등분선은 중점을 지나고 $x$축에 수직인 직선이다",
         "type": "fact",
-        "reason": "절댓값 대칭 + 로그 합성의 대칭성. 사실2는 일반적 절댓값 대칭이지만, 로그와 절댓값의 합성에 대한 대칭 사실이 명시적으로 필요함"
+        "reason": "edge '전략2,사실60→사실76'에서 'OA는 x축 위의 선분이다. 수직이등분선은 x축에 수직인 직선이다'라는 논리가 사용되었으나, 이는 뉴런 목록에 없는 기하학적 사실이다. 사실15(두 직선 수직 조건)와 사실13(이등변삼각형 꼭지점)은 있으나, x축 위 선분의 수직이등분선이 x축에 수직이라는 구체적 사실은 별도로 필요하다."
       },
       {
         "id": "사실77",
-        "statement": "$\\log_a |b| < 0 \\iff (a > 1 \\land 0 < |b| < 1) \\lor (0 < a < 1 \\land |b| > 1)$",
+        "statement": "직각삼각형의 빗변은 외접원의 지름이다",
         "type": "fact",
-        "reason": "로그 부호 판정. 로그함수의 단조성과 $\\log_a 1 = 0$을 결합하여 로그값의 부호를 판단하는 법칙"
+        "reason": "edge '연산11,사실11→사실77'에서 '직각삼각형에서 빗변은 외접원의 지름이다'라는 논리가 사용되었다. 사실11은 '원에 내접하는 삼각형에서 지름이면 직각'이라는 탈레스 정리이지만, 그 역(직각삼각형의 빗변=지름)은 명시되지 않았다. 이는 독립적인 기하학 사실로 추가가 필요하다."
       },
       {
-        "id": "전략36",
-        "statement": "부등식을 만족하는 자연수의 개수가 주어지면, 경계 자연수들에서의 조건을 역산하여 매개변수 범위를 구한다",
-        "type": "strategy",
-        "reason": "개수 조건 → 경계 조건 역산. 이산적 조건에서 연속 매개변수 범위를 추론하는 전략"
+        "id": "사실78",
+        "statement": "$\\overline{OA}^2 = 7$이면 $\\overline{OA} = \\sqrt{7}$이다 (양수 제곱근)",
+        "type": "fact",
+        "reason": "edge '연산6→사실78'에서 제곱 방정식의 해를 양수 제곱근으로 확정하는 과정이 사용되었다. 거리는 항상 양수이므로 음수 해를 배제하는 것은 자명하지만, skeleton에서는 이를 명시적 논리 단계로 표현했다. 이는 '거리의 양수성'이라는 기하학적 사실이 필요함을 시사한다."
       },
       {
-        "id": "전략37",
-        "statement": "대칭 함수에서 두 점 $a$, $b$가 대칭축으로부터 같은 거리에 있으면 함수값이 같다",
-        "type": "strategy",
-        "reason": "대칭성 활용. 사실76을 적용하여 $g(x)$의 대칭성으로부터 $g(5) = g(6)$, $g(4) = g(7)$, $g(3) = g(8)$ 등을 도출하는 전략적 판단"
-      },
-      {
-        "id": "전략38",
-        "statement": "부등식 해의 개수를 세기 위해, 항상 성립하는 확정 해와 경계 의존 해를 분리한다",
-        "type": "strategy",
-        "reason": "확정 해 분리. $x = 5, 6$은 항상 해이므로 고정하고, 나머지 $x = 4, 7, 8$ 등의 포함 여부를 경계 조건으로 결정하는 전략"
-      },
-      {
-        "id": "전략39",
-        "statement": "로그 부등식 $\\log_n A > k \\log_n B$를 변환하여 $\\log_n A > \\log_n B^k$, 즉 $A > B^k$ (단조성 이용) 또는 $n$에 대한 조건으로 정리한다",
-        "type": "strategy",
-        "reason": "로그 부등식 변환. 로그 거듭제곱 법칙과 단조성을 결합하여 부등식을 정리하는 전략"
+        "id": "사실60",
+        "statement": "좌표평면에서 점의 위치는 순서쌍 $(x, y)$로 표현된다",
+        "type": "fact",
+        "reason": "skeleton 전반에 걸쳐 '사실60'이 점의 좌표 표현에 반복 사용되었으나(사실60, 사실60_1, 사실60_2, 사실60_3, 사실60_4), 이는 뉴런 목록에 없다. 좌표 표현의 기본 정의가 필요하다."
       }
     ],
     "previous_dna_nodes": [
       {
         "id": "top",
-        "dna": "Q3",
-        "label": "합을 구하라",
+        "dna": "Q1",
+        "label": "값을 구하라",
         "category": "발문"
       },
       {
         "id": "ask",
-        "dna": "T1",
-        "label": "모든 n",
+        "dna": "E7",
+        "label": "BC²",
+        "category": "수식"
+      },
+      {
+        "id": "bc_dist",
+        "dna": "G18",
+        "label": "거리 BC",
+        "category": "기하"
+      },
+      {
+        "id": "pt_b",
+        "dna": "G1",
+        "label": "점 B",
+        "category": "기하"
+      },
+      {
+        "id": "pt_c",
+        "dna": "G1",
+        "label": "점 C",
+        "category": "기하"
+      },
+      {
+        "id": "c2_exp",
+        "dna": "T2",
+        "label": "상수 2",
         "category": "말단"
       },
       {
@@ -84,39 +262,69 @@
         "category": "구조"
       },
       {
-        "id": "vn",
-        "dna": "T1",
-        "label": "변수 n",
-        "category": "말단"
-      },
-      {
-        "id": "ln1",
-        "dna": "L3",
-        "label": "n은 자연수",
-        "category": "제한"
-      },
-      {
-        "id": "ln2",
+        "id": "lim_a",
         "dna": "L2",
-        "label": "n ≥ 2",
+        "label": "a > 1",
         "category": "제한"
       },
       {
-        "id": "c2",
-        "dna": "T2",
-        "label": "상수 2",
+        "id": "va",
+        "dna": "T1",
+        "label": "변수 a",
         "category": "말단"
       },
       {
-        "id": "ineq",
-        "dna": "C2",
-        "label": "부등식 >",
+        "id": "c1",
+        "dna": "T2",
+        "label": "상수 1",
+        "category": "말단"
+      },
+      {
+        "id": "crv1",
+        "dna": "G2",
+        "label": "곡선1",
+        "category": "기하"
+      },
+      {
+        "id": "crv1_eq",
+        "dna": "C11",
+        "label": "방정식1",
         "category": "조건"
       },
       {
-        "id": "left",
-        "dna": "E3",
-        "label": "logₙ x",
+        "id": "crv1_c1",
+        "dna": "C1",
+        "label": "y = 4-a^(-x)",
+        "category": "조건"
+      },
+      {
+        "id": "crv1_sum",
+        "dna": "E1",
+        "label": "합(4, -a^(-x))",
+        "category": "수식"
+      },
+      {
+        "id": "c4",
+        "dna": "T2",
+        "label": "상수 4",
+        "category": "말단"
+      },
+      {
+        "id": "crv1_neg",
+        "dna": "E2",
+        "label": "부호반전",
+        "category": "수식"
+      },
+      {
+        "id": "crv1_exp",
+        "dna": "E4",
+        "label": "지수 a^(-x)",
+        "category": "수식"
+      },
+      {
+        "id": "crv1_negx",
+        "dna": "E2",
+        "label": "부호반전 x",
         "category": "수식"
       },
       {
@@ -126,76 +334,124 @@
         "category": "말단"
       },
       {
-        "id": "right",
-        "dna": "E6",
-        "label": "곱(6, log)",
-        "category": "수식"
-      },
-      {
-        "id": "c6",
-        "dna": "T2",
-        "label": "상수 6",
-        "category": "말단"
-      },
-      {
-        "id": "log_abs",
-        "dna": "E3",
-        "label": "logₙ |x-11/2|",
-        "category": "수식"
-      },
-      {
-        "id": "abs",
-        "dna": "E5",
-        "label": "|x-11/2|",
-        "category": "수식"
-      },
-      {
-        "id": "diff",
-        "dna": "E1",
-        "label": "합(x, -11/2)",
-        "category": "수식"
-      },
-      {
-        "id": "neg_half",
-        "dna": "E2",
-        "label": "부호반전(11/2)",
-        "category": "수식"
-      },
-      {
-        "id": "c11_2",
-        "dna": "T2",
-        "label": "상수 11/2",
-        "category": "말단"
-      },
-      {
-        "id": "cnt_cond",
-        "dna": "C1",
-        "label": "개수 = 4",
+        "id": "meet_x",
+        "dna": "C3",
+        "label": "x축과 만남",
         "category": "조건"
       },
       {
-        "id": "cnt",
-        "dna": "X4",
-        "label": "정확히 4개",
-        "category": "존재"
+        "id": "x_axis",
+        "dna": "G13",
+        "label": "x축",
+        "category": "기하"
       },
       {
-        "id": "x_nat",
-        "dna": "X3",
-        "label": "x는 자연수",
-        "category": "존재"
+        "id": "pt_a",
+        "dna": "G1",
+        "label": "점 A",
+        "category": "기하"
       },
       {
-        "id": "c4",
+        "id": "meet_y",
+        "dna": "C3",
+        "label": "y축과 만남",
+        "category": "조건"
+      },
+      {
+        "id": "y_axis",
+        "dna": "G13",
+        "label": "y축",
+        "category": "기하"
+      },
+      {
+        "id": "tri_oab",
+        "dna": "G25",
+        "label": "삼각형 OAB",
+        "category": "기하"
+      },
+      {
+        "id": "pt_o",
+        "dna": "G17",
+        "label": "원점 O",
+        "category": "기하"
+      },
+      {
+        "id": "c0",
         "dna": "T2",
-        "label": "상수 4",
+        "label": "상수 0",
         "category": "말단"
       },
       {
-        "id": "mc",
-        "dna": "S1",
-        "label": "객관식",
-        "category": "구조"
+        "id": "circ_oab",
+        "dna": "G26",
+        "label": "외접원",
+        "category": "기하"
+      },
+      {
+        "id": "crv2",
+        "dna": "G2",
+        "label": "곡선2",
+        "category": "기하"
+      },
+      {
+        "id": "crv2_eq",
+        "dna": "C11",
+        "label": "방정식2",
+        "category": "조건"
+      },
+      {
+        "id": "crv2_c1",
+        "dna": "C1",
+        "label": "y = a^x - 1",
+        "category": "조건"
+      },
+      {
+        "id": "crv2_sum",
+        "dna": "E1",
+        "label": "합(a^x, -1)",
+        "category": "수식"
+      },
+      {
+        "id": "crv2_exp",
+        "dna": "E4",
+        "label": "지수 a^x",
+        "category": "수식"
+      },
+      {
+        "id": "crv2_neg1",
+        "dna": "E2",
+        "label": "부호반전 1",
+        "category": "수식"
+      },
+      {
+        "id": "meet_crv2",
+        "dna": "C3",
+        "label": "외접원과 곡선2 만남",
+        "category": "조건"
+      },
+      {
+        "id": "diff_o",
+        "dna": "C2",
+        "label": "O가 아닌",
+        "category": "조건"
+      },
+      {
+        "id": "dist_eq",
+        "dna": "C1",
+        "label": "CO = CA",
+        "category": "조건"
+      },
+      {
+        "id": "dist_co",
+        "dna": "G18",
+        "label": "거리 CO",
+        "category": "기하"
+      },
+      {
+        "id": "dist_ca",
+        "dna": "G18",
+        "label": "거리 CA",
+        "category": "기하"
       }
     ],
     "previous_dna_edges": [
@@ -204,106 +460,210 @@
         "to": "top"
       },
       {
+        "from": "bc_dist",
+        "to": "ask"
+      },
+      {
+        "from": "pt_b",
+        "to": "bc_dist"
+      },
+      {
+        "from": "pt_c",
+        "to": "bc_dist"
+      },
+      {
+        "from": "c2_exp",
+        "to": "ask"
+      },
+      {
         "from": "conds",
         "to": "top"
       },
       {
-        "from": "mc",
-        "to": "top"
+        "from": "lim_a",
+        "to": "va"
       },
       {
-        "from": "vn",
-        "to": "ask"
+        "from": "va",
+        "to": "lim_a"
       },
       {
-        "from": "ln1",
-        "to": "vn"
+        "from": "c1",
+        "to": "lim_a"
       },
       {
-        "from": "ln2",
-        "to": "vn"
+        "from": "crv1_eq",
+        "to": "crv1"
       },
       {
-        "from": "c2",
-        "to": "ln2"
+        "from": "crv1_c1",
+        "to": "crv1_eq"
       },
       {
-        "from": "ineq",
-        "to": "conds"
-      },
-      {
-        "from": "left",
-        "to": "ineq"
-      },
-      {
-        "from": "right",
-        "to": "ineq"
-      },
-      {
-        "from": "vn",
-        "to": "left"
-      },
-      {
-        "from": "vx",
-        "to": "left"
-      },
-      {
-        "from": "c6",
-        "to": "right"
-      },
-      {
-        "from": "log_abs",
-        "to": "right"
-      },
-      {
-        "from": "vn",
-        "to": "log_abs"
-      },
-      {
-        "from": "abs",
-        "to": "log_abs"
-      },
-      {
-        "from": "diff",
-        "to": "abs"
-      },
-      {
-        "from": "vx",
-        "to": "diff"
-      },
-      {
-        "from": "neg_half",
-        "to": "diff"
-      },
-      {
-        "from": "c11_2",
-        "to": "neg_half"
-      },
-      {
-        "from": "cnt_cond",
-        "to": "conds"
-      },
-      {
-        "from": "cnt",
-        "to": "cnt_cond"
+        "from": "crv1_sum",
+        "to": "crv1_c1"
       },
       {
         "from": "c4",
-        "to": "cnt_cond"
+        "to": "crv1_sum"
       },
       {
-        "from": "ineq",
-        "to": "cnt"
+        "from": "crv1_neg",
+        "to": "crv1_sum"
       },
       {
-        "from": "x_nat",
-        "to": "cnt"
+        "from": "crv1_exp",
+        "to": "crv1_neg"
+      },
+      {
+        "from": "va",
+        "to": "crv1_exp"
+      },
+      {
+        "from": "crv1_negx",
+        "to": "crv1_exp"
       },
       {
         "from": "vx",
-        "to": "x_nat"
+        "to": "crv1_negx"
+      },
+      {
+        "from": "crv1",
+        "to": "meet_x"
+      },
+      {
+        "from": "x_axis",
+        "to": "meet_x"
+      },
+      {
+        "from": "pt_a",
+        "to": "meet_x"
+      },
+      {
+        "from": "meet_x",
+        "to": "conds"
+      },
+      {
+        "from": "crv1",
+        "to": "meet_y"
+      },
+      {
+        "from": "y_axis",
+        "to": "meet_y"
+      },
+      {
+        "from": "pt_b",
+        "to": "meet_y"
+      },
+      {
+        "from": "meet_y",
+        "to": "conds"
+      },
+      {
+        "from": "pt_o",
+        "to": "tri_oab"
+      },
+      {
+        "from": "pt_a",
+        "to": "tri_oab"
+      },
+      {
+        "from": "pt_b",
+        "to": "tri_oab"
+      },
+      {
+        "from": "c0",
+        "to": "pt_o"
+      },
+      {
+        "from": "tri_oab",
+        "to": "circ_oab"
+      },
+      {
+        "from": "crv2_eq",
+        "to": "crv2"
+      },
+      {
+        "from": "crv2_c1",
+        "to": "crv2_eq"
+      },
+      {
+        "from": "crv2_sum",
+        "to": "crv2_c1"
+      },
+      {
+        "from": "crv2_exp",
+        "to": "crv2_sum"
+      },
+      {
+        "from": "va",
+        "to": "crv2_exp"
+      },
+      {
+        "from": "vx",
+        "to": "crv2_exp"
+      },
+      {
+        "from": "crv2_neg1",
+        "to": "crv2_sum"
+      },
+      {
+        "from": "c1",
+        "to": "crv2_neg1"
+      },
+      {
+        "from": "circ_oab",
+        "to": "meet_crv2"
+      },
+      {
+        "from": "crv2",
+        "to": "meet_crv2"
+      },
+      {
+        "from": "pt_c",
+        "to": "meet_crv2"
+      },
+      {
+        "from": "diff_o",
+        "to": "meet_crv2"
+      },
+      {
+        "from": "pt_o",
+        "to": "diff_o"
+      },
+      {
+        "from": "meet_crv2",
+        "to": "conds"
+      },
+      {
+        "from": "dist_co",
+        "to": "dist_eq"
+      },
+      {
+        "from": "dist_ca",
+        "to": "dist_eq"
+      },
+      {
+        "from": "pt_c",
+        "to": "dist_co"
+      },
+      {
+        "from": "pt_o",
+        "to": "dist_co"
+      },
+      {
+        "from": "pt_c",
+        "to": "dist_ca"
+      },
+      {
+        "from": "pt_a",
+        "to": "dist_ca"
+      },
+      {
+        "from": "dist_eq",
+        "to": "conds"
       }
     ],
-    "created_at": "2026-03-19T11:23:52.012Z"
+    "created_at": "2026-03-19T11:26:32.374Z"
   }
 ]
