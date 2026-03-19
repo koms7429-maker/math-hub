@@ -6464,5 +6464,106 @@
     "folders": [],
     "history": [],
     "created_at": "2026-03-19T17:41:38.776Z"
+  },
+  {
+    "problem_id": "Problem6(UnknownSource)-QuadraticEquations",
+    "answer": "42",
+    "clues": [
+      {
+        "id": "단서A",
+        "text": "테스트 조건"
+      }
+    ],
+    "skeleton": [
+      {
+        "from": "단서A",
+        "to": "사실1",
+        "note": "테스트 노트 1"
+      },
+      {
+        "from": "사실1",
+        "to": "연산2",
+        "note": "테스트 노트 2"
+      },
+      {
+        "from": "연산2",
+        "to": "END",
+        "note": "답은 42이다"
+      }
+    ],
+    "solution": "STEP 1. 테스트",
+    "analysis": "더미 본해설",
+    "new_neurons": [],
+    "metadata": {
+      "source": "dummy",
+      "difficulty": "test"
+    },
+    "edge_count": 3,
+    "side_count": 0,
+    "statement": "# Problem6. (Unknown Source) - Quadratic Equations\n\n## Problem\n\n$x$에 대한 방정식 $x^2 + (2a+1)x + a^2 + a = 0$의 한 실근 $k$가 다음 조건을 만족시키도록 하는 모든 자연수 $a$의 값의 합은?\n\n어떤 자연수 $n$에 대하여 $k^n = 64$이다.\n\n## Choices\n① 12  ② 14  ③ 16  ④ 18  ⑤ 20\n\n**Answer**: ④ 18\n**Difficulty**: unknown\n**Score**: 4점\n**Type**: multiple choice\n\n---\n\n## Solution\n\n$$x^2 + (2a+1)x + a^2 + a = 0 \\Leftrightarrow (x+a)(x+a+1) = 0$$\n$$\\Leftrightarrow x = -a \\text{ 또는 } x = -a-1$$\n\n이므로\n$$k = -a \\text{ 또는 } k = -a-1 \\cdots \\text{①}$$\n\n이다. 이때,\n\n$a$가 자연수 $\\Rightarrow$ $k$는 음의 정수\n\n이므로 문제의 박스 조건을 만족시키려면\n\n$k$는 음의 정수이고, $k^n = 2^6 \\Rightarrow$ $n$은 짝수이고 6의 약수\n\n$$\\Rightarrow \\begin{cases} \\text{① } n=2\\text{이고, } k=-8 \\\\ \\text{② } n=6\\text{이고, } k=-2 \\end{cases}$$\n\n이어야 한다. 따라서 ①에 의해\n\n$$\\begin{cases} \\text{①의 경우 } a=8 \\text{ 또는 } a=7 \\\\ \\text{②의 경우 } a=2 \\text{ 또는 } a=1 \\end{cases}$$\n\n$$\\Rightarrow \\text{(모든 자연수 } a\\text{의 값의 합)} = 8+7+2+1 = 18$$\n\n이다.\n\n---",
+    "dna": {
+      "nodes": [
+        {
+          "id": "top",
+          "dna": "Q1",
+          "label": "값을 구하라",
+          "category": "발문"
+        },
+        {
+          "id": "ask",
+          "dna": "E1",
+          "label": "합(a,b)",
+          "category": "수식"
+        },
+        {
+          "id": "va",
+          "dna": "T1",
+          "label": "변수 a",
+          "category": "말단"
+        },
+        {
+          "id": "vb",
+          "dna": "T1",
+          "label": "변수 b",
+          "category": "말단"
+        },
+        {
+          "id": "eq1",
+          "dna": "C1",
+          "label": "a+b=10",
+          "category": "조건"
+        }
+      ],
+      "edges": [
+        {
+          "from": "ask",
+          "to": "top"
+        },
+        {
+          "from": "va",
+          "to": "ask"
+        },
+        {
+          "from": "vb",
+          "to": "ask"
+        },
+        {
+          "from": "eq1",
+          "to": "top"
+        },
+        {
+          "from": "va",
+          "to": "eq1"
+        },
+        {
+          "from": "vb",
+          "to": "eq1"
+        }
+      ],
+      "new_dna": []
+    },
+    "folders": [],
+    "history": [],
+    "created_at": "2026-03-19T17:41:44.164Z"
   }
 ]
