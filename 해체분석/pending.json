@@ -1,1 +1,300 @@
-[]
+[
+  {
+    "problem_id": "Problem6(UnknownSource)-QuadraticEquations",
+    "content": "# Problem6. (Unknown Source) - Quadratic Equations\n\n## Problem\n\n$x$에 대한 방정식 $x^2 + (2a+1)x + a^2 + a = 0$의 한 실근 $k$가 다음 조건을 만족시키도록 하는 모든 자연수 $a$의 값의 합은?\n\n어떤 자연수 $n$에 대하여 $k^n = 64$이다.\n\n## Choices\n① 12  ② 14  ③ 16  ④ 18  ⑤ 20\n\n**Answer**: ④ 18\n**Difficulty**: unknown\n**Score**: 4점\n**Type**: multiple choice\n\n---\n\n## Solution\n\n$$x^2 + (2a+1)x + a^2 + a = 0 \\Leftrightarrow (x+a)(x+a+1) = 0$$\n$$\\Leftrightarrow x = -a \\text{ 또는 } x = -a-1$$\n\n이므로\n$$k = -a \\text{ 또는 } k = -a-1 \\cdots \\text{①}$$\n\n이다. 이때,\n\n$a$가 자연수 $\\Rightarrow$ $k$는 음의 정수\n\n이므로 문제의 박스 조건을 만족시키려면\n\n$k$는 음의 정수이고, $k^n = 2^6 \\Rightarrow$ $n$은 짝수이고 6의 약수\n\n$$\\Rightarrow \\begin{cases} \\text{① } n=2\\text{이고, } k=-8 \\\\ \\text{② } n=6\\text{이고, } k=-2 \\end{cases}$$\n\n이어야 한다. 따라서 ①에 의해\n\n$$\\begin{cases} \\text{①의 경우 } a=8 \\text{ 또는 } a=7 \\\\ \\text{②의 경우 } a=2 \\text{ 또는 } a=1 \\end{cases}$$\n\n$$\\Rightarrow \\text{(모든 자연수 } a\\text{의 값의 합)} = 8+7+2+1 = 18$$\n\n이다.\n\n---",
+    "skel_status": "pending",
+    "dna_status": "ok",
+    "needed_neurons": [],
+    "needed_dna": [],
+    "previous_analysis": "",
+    "previous_matching": "",
+    "previous_matched": [],
+    "previous_skeleton": [],
+    "previous_new_neurons": [],
+    "previous_dna_nodes": [
+      {
+        "id": "top",
+        "dna": "Q3",
+        "label": "모든 자연수 a의 값의 합을 구하라",
+        "category": "발문"
+      },
+      {
+        "id": "va",
+        "dna": "T1",
+        "label": "변수 a",
+        "category": "말단"
+      },
+      {
+        "id": "lim_a_nat",
+        "dna": "L3",
+        "label": "a는 자연수",
+        "category": "제한"
+      },
+      {
+        "id": "ask_sum",
+        "dna": "Q3",
+        "label": "합(모든 자연수 a)",
+        "category": "발문"
+      },
+      {
+        "id": "eq_main",
+        "dna": "C11",
+        "label": "x에 대한 방정식",
+        "category": "조건"
+      },
+      {
+        "id": "eq_c1",
+        "dna": "C1",
+        "label": "x²+(2a+1)x+a²+a = 0",
+        "category": "조건"
+      },
+      {
+        "id": "lhs",
+        "dna": "E1",
+        "label": "합(x², (2a+1)x, a²+a)",
+        "category": "수식"
+      },
+      {
+        "id": "term1",
+        "dna": "E7",
+        "label": "x²",
+        "category": "수식"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
+      },
+      {
+        "id": "c2_exp",
+        "dna": "T2",
+        "label": "상수 2 (지수)",
+        "category": "말단"
+      },
+      {
+        "id": "term2",
+        "dna": "E6",
+        "label": "곱((2a+1), x)",
+        "category": "수식"
+      },
+      {
+        "id": "coef2a1",
+        "dna": "E1",
+        "label": "합(2a, 1)",
+        "category": "수식"
+      },
+      {
+        "id": "two_a",
+        "dna": "E6",
+        "label": "곱(2, a)",
+        "category": "수식"
+      },
+      {
+        "id": "c2",
+        "dna": "T2",
+        "label": "상수 2",
+        "category": "말단"
+      },
+      {
+        "id": "c1",
+        "dna": "T2",
+        "label": "상수 1",
+        "category": "말단"
+      },
+      {
+        "id": "term3",
+        "dna": "E1",
+        "label": "합(a², a)",
+        "category": "수식"
+      },
+      {
+        "id": "a_sq",
+        "dna": "E7",
+        "label": "a²",
+        "category": "수식"
+      },
+      {
+        "id": "c2_sq",
+        "dna": "T2",
+        "label": "상수 2 (제곱)",
+        "category": "말단"
+      },
+      {
+        "id": "rhs_zero",
+        "dna": "T2",
+        "label": "상수 0",
+        "category": "말단"
+      },
+      {
+        "id": "vk",
+        "dna": "T1",
+        "label": "변수 k (한 실근)",
+        "category": "말단"
+      },
+      {
+        "id": "root_cond",
+        "dna": "C15",
+        "label": "한 실근 k가 조건을 만족",
+        "category": "조건"
+      },
+      {
+        "id": "vn",
+        "dna": "T1",
+        "label": "변수 n (어떤 자연수)",
+        "category": "말단"
+      },
+      {
+        "id": "lim_n_nat",
+        "dna": "L3",
+        "label": "n은 자연수",
+        "category": "제한"
+      },
+      {
+        "id": "kn_eq_64",
+        "dna": "C1",
+        "label": "k^n = 64",
+        "category": "조건"
+      },
+      {
+        "id": "kn",
+        "dna": "E7",
+        "label": "k^n",
+        "category": "수식"
+      },
+      {
+        "id": "c64",
+        "dna": "T2",
+        "label": "상수 64",
+        "category": "말단"
+      }
+    ],
+    "previous_dna_edges": [
+      {
+        "from": "ask_sum",
+        "to": "top"
+      },
+      {
+        "from": "va",
+        "to": "ask_sum"
+      },
+      {
+        "from": "lim_a_nat",
+        "to": "va"
+      },
+      {
+        "from": "eq_main",
+        "to": "top"
+      },
+      {
+        "from": "eq_c1",
+        "to": "eq_main"
+      },
+      {
+        "from": "lhs",
+        "to": "eq_c1"
+      },
+      {
+        "from": "rhs_zero",
+        "to": "eq_c1"
+      },
+      {
+        "from": "term1",
+        "to": "lhs"
+      },
+      {
+        "from": "vx",
+        "to": "term1"
+      },
+      {
+        "from": "c2_exp",
+        "to": "term1"
+      },
+      {
+        "from": "term2",
+        "to": "lhs"
+      },
+      {
+        "from": "coef2a1",
+        "to": "term2"
+      },
+      {
+        "from": "vx",
+        "to": "term2"
+      },
+      {
+        "from": "two_a",
+        "to": "coef2a1"
+      },
+      {
+        "from": "c1",
+        "to": "coef2a1"
+      },
+      {
+        "from": "c2",
+        "to": "two_a"
+      },
+      {
+        "from": "va",
+        "to": "two_a"
+      },
+      {
+        "from": "term3",
+        "to": "lhs"
+      },
+      {
+        "from": "a_sq",
+        "to": "term3"
+      },
+      {
+        "from": "va",
+        "to": "a_sq"
+      },
+      {
+        "from": "c2_sq",
+        "to": "a_sq"
+      },
+      {
+        "from": "va",
+        "to": "term3"
+      },
+      {
+        "from": "root_cond",
+        "to": "top"
+      },
+      {
+        "from": "vk",
+        "to": "root_cond"
+      },
+      {
+        "from": "eq_main",
+        "to": "root_cond"
+      },
+      {
+        "from": "kn_eq_64",
+        "to": "root_cond"
+      },
+      {
+        "from": "kn",
+        "to": "kn_eq_64"
+      },
+      {
+        "from": "c64",
+        "to": "kn_eq_64"
+      },
+      {
+        "from": "vk",
+        "to": "kn"
+      },
+      {
+        "from": "vn",
+        "to": "kn"
+      },
+      {
+        "from": "lim_n_nat",
+        "to": "vn"
+      }
+    ],
+    "created_at": "2026-03-19T16:50:48.381Z"
+  }
+]
