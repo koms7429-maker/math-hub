@@ -1,273 +1,5 @@
 [
   {
-    "problem_id": "Problem5",
-    "content": "# Problem5. (Unknown Source) - Logarithm and Inequalities\n\n## Problem\n\n자연수 $n(n \\geq 2)$에 대하여\n\n$$\\log_x x > 6\\log_n \\left| x - \\frac{11}{2} \\right|$$\n\n을 만족시키는 자연수 $x$의 개수가 4가 되도록 하는 모든 $n$의 값의 합은? [4점]\n\n## Choices\n① 12\n② 13\n③ 15\n④ 18\n⑤ 22\n\n**Answer**: ③ 15\n**Difficulty**: unknown\n**Score**: 4점\n**Type**: multiple choice\n\n---\n\n## Solution\n\n[풀이] ③\n\n[해설]\n\n$$f(x) = \\log_x x, \\quad g(x) = 6\\log_n \\left| x - \\frac{11}{2} \\right|$$\n\n이라 하면 문제의 부등식은\n\n$$f(x) > g(x) \\cdots ①$$\n\n이고, 이때\n\n• $g(5) = g(6) < 0$이고 $g(4) = g(7)$\n• $y = f(x)$는 $f(1) = 0$이고 증가함수\n\n이므로\n\n• $x = 5, x = 6$은 항상 ①을 만족시킴\n• $x = 4$가 ①을 만족시키면 $x = 7$도 ①을 만족시킴\n\n을 알 수 있다.\n\n따라서\n\n①인 자연수 $x$의 개수가 4 $\\implies \\begin{cases} (\\text{i}) & x = 4, 5, 6, 7 \\\\ (\\text{ii}) & x = 5, 6, 7, 8 \\end{cases}$\n\n의 경우만 가능하다.\n\n[UNREADABLE]\n\n**(i)의 경우:**\n\n위 그림을 참고하면\n\n$$g(3) = g(8) \\implies \\begin{cases} x = 8\\text{이 ①을 만족시키지 않으면} \\\\ x = 3\\text{도 ①을 만족시키지 않음} \\end{cases}$$\n\n을 알 수 있으므로\n\n• $f(4) > g(4) \\Rightarrow \\log_4 4 > 6\\log_n \\frac{3}{2} \\Rightarrow n > \\left(\\frac{3}{2}\\right)^3 = 3.xx$\n\n• $f(8) < g(8) \\Rightarrow \\log_8 8 \\leq 6\\log_n \\frac{5}{2} \\Rightarrow n \\leq \\left(\\frac{5}{2}\\right)^2 = 6.xx$\n\n$\\Rightarrow n = 4, 5, 6$ ($\\because$ $n$는 자연수)\n\n이다.\n\n**(ii)의 경우:**\n\n(i)의 과정을 참고하면\n\n• $f(4) \\leq g(4) \\Rightarrow n \\leq \\left(\\frac{3}{2}\\right)^3 = 3.xx$\n\n• $f(8) > g(8) \\Rightarrow n > \\left(\\frac{5}{2}\\right)^2 = 6.xx$\n\n인 $n$이 존재하지 않음\n\n을 알 수 있다.\n\n따라서 (i), (ii)에 의해\n\n(모든 $n$의 값의 합) $= 4 + 5 + 6 = 15$\n\n임을 알 수 있다.\n\n---",
-    "skel_status": "pending",
-    "dna_status": "pending",
-    "needed_neurons": [
-      "사실76",
-      "전략37",
-      "연산32"
-    ],
-    "needed_dna": [
-      {
-        "id": "Q3b",
-        "name": "합을 구하라(값들의 합)",
-        "signature": "(대상 집합) → 값",
-        "reason": "Q3는 '모든 n의 값의 합'처럼 조건을 만족하는 값들의 합을 구하는 발문인데, 기존 Q3의 설명이 '모든 n의 값의 합'을 포괄하므로 Q3를 재사용. 단, 기존 목록의 Q3 설명 확인 후 Q3 사용으로 처리."
-      },
-      {
-        "id": "E9",
-        "name": "로그_n(밑=변수)",
-        "signature": "(밑:변수, 진수) → 값",
-        "reason": "E3(로그)는 밑이 상수인 패턴. 이 문제에서 log_n은 밑 n이 미지 변수(구하는 대상)이므로 밑=변수인 로그를 별도로 표현할 필요가 있으나, E3의 시그니처가 (밑, 진수)로 범용적이므로 E3 재사용 가능. 신규 제안 철회."
-      }
-    ],
-    "previous_analysis": "f(x)=log_x x, g(x)=6log_n|x-11/2|로 놓는다.\n\n핵심 관찰:\n1. f(x)=log_x x = 1 (밑과 진수가 같으므로). 따라서 f(x)>g(x)는 1>g(x), 즉 g(x)<1과 같다.\n2. g(x)=6log_n|x-11/2|는 x=11/2=5.5에 대해 대칭이다. 따라서 g(5)=g(6), g(4)=g(7), g(3)=g(8), g(2)=g(9) 등.\n3. g(5)=6log_n(1/2), g(6)=6log_n(1/2): n>=2이면 log_n(1/2)<0이므로 g(5)=g(6)<0<1. 따라서 x=5,6은 항상 f(x)>g(x) 만족.\n4. g(4)=6log_n(3/2)=g(7): n>=2이면 log_n(3/2)>=0 (n=2이면 양수, n이 크면 작아짐). 이 값이 1보다 작은지에 따라 x=4,7 포함 여부 결정.\n5. g(8)=6log_n(5/2)=g(3): g(8)<1이면 x=8도 만족.\n\n자연수 x의 개수가 정확히 4가 되는 경우:\n- x=5,6은 항상 포함. 나머지 2개가 어디서 오는가?\n- 대칭 쌍 (4,7), (3,8), (2,9), ...에서 각 쌍은 동시에 포함되거나 동시에 제외.\n- 4개가 되려면: (i) x=4,5,6,7 (쌍 {4,7}만 추가) 또는 (ii) x=5,6,7,8 (쌍 {7,8} - 불가, 7과 4는 쌍이므로 x=4,5,6,7,8이 되어 5개) → 재검토.\n\n정확한 분류:\n- x=5,6 항상 포함(2개).\n- 쌍 (4,7): f(4)>g(4)이면 x=4,7 포함 → 총 4개. 이 경우 x=3,8은 제외되어야.\n- 쌍 (3,8)이 추가로 포함되면 6개가 되어 불가.\n\n(i) x=4,5,6,7이 해인 경우:\n- f(4)>g(4): 1>6log_n(3/2) → log_n(3/2)<1/6 → (3/2)^6 < n (n>1이고 n이 크면 log_n(3/2) 작아짐) → n>(3/2)^6? \n  \n  아니면: log_n(3/2)<1/6. n>1이면 log_n(3/2)=ln(3/2)/ln(n). 이것이 1/6보다 작으려면 ln(n)>6ln(3/2)=ln((3/2)^6). 즉 n>(3/2)^6=11.39... → n>=12?\n\n  해설에서는 n>(3/2)^3=3.375로 나온다. 다시 계산:\n  f(4)=log_4 4=1, g(4)=6log_n(3/2).\n  1>6log_n(3/2) → log_n(3/2)<1/6.\n  n>1일 때: (3/2)^? = n^(1/6) → 6log_n(3/2)=log_n(3/2)^6.\n  실제로 6log_n(3/2) = log_n(3/2)^6.\n  1 > log_n(3/2)^6 → n^1 > (3/2)^6 = 11.39 → n>=12.\n\n  그런데 해설은 n>(3/2)^3이라 한다. 해설의 계산을 따르면:\n  log_4 4 > 6log_n(3/2)\n  1 > 6·(log(3/2)/log n)\n  log n > 6·log(3/2) ... 이건 n>(3/2)^6.\n  \n  해설에서 \"log_4 4=1\"이고 \"1 > 6log_n(3/2)\"를 \"n > (3/2)^3\"으로 쓴 것은 아마 다른 계산 경로.\n  \n  재검토: log_n(3/2)^6 < 1. n>1이면 (3/2)^6 < n^1. (3/2)^6≈11.39. n>=12.\n  \n  그런데 해설은 n>(3/2)^3=3.375, n=4,5,6을 답으로 한다. 뭔가 다른 해석이 있는 것 같다.\n\n  사실 f(x)=log_x x에서 x=4이면 log_4 4=1. 맞다.\n  g(4)=6log_n|4-11/2|=6log_n(3/2). n>=2이고 n은 자연수.\n  \n  1 > 6log_n(3/2).\n  \n  n=2: 6log_2(1.5)=6·0.585=3.51>1. 불만족.\n  n=4: 6log_4(1.5)=6·(log1.5/log4)=6·0.292=1.755>1. 불만족?\n  n=10: 6log_10(1.5)=6·0.176=1.056>1. 불만족?\n  n=100: 6·(log1.5/2)=6·0.088=0.528<1. 만족.\n\n  해설이 n>(3/2)^3이라 하는데 실제로는 n>(3/2)^6이어야 한다. 해설의 오류일 수 있으나, 답은 15이고 n=4,5,6의 합이 15이므로 내 계산과 해설이 다르다.\n\n  다시 생각: 혹시 f(x)=log_x x≠1? 아니면 문제에서 log_x x가 아니라 log_x X (다른 것)?\n  \n  문제 원문: log_x x > 6log_n|x-11/2|. 여기서 첫 log의 밑이 x이고 진수도 x라면 항상 1.\n  \n  그러나 해설에서 f(1)=0이라 하고 증가함수라 한다. log_x x=1이면 상수함수인데... f(1)=0이고 증가함수라는 것은 f(x)=log_x x≠1임을 의미한다.\n  \n  아! 첫 번째 log의 밑이 x인데, x=1일 때 log_1 x는 정의되지 않으므로 f(1)은 정의 안 됨. 아니면 문제에서 첫 log가 log_n x (밑이 n)인데 잘못 읽혔을 수도.\n  \n  해설의 f(1)=0, 증가함수 설명을 보면 f(x)=log_x x가 아니라 f(x)=log_n x (밑이 n)일 가능성. 하지만 그러면 n에 따라 달라진다.\n  \n  또 다른 가능성: 문제의 첫 log는 log_n x (n이 밑, x가 진수)이고, OCR 오류로 log_x x로 보인 것.\n  \n  f(x)=log_n x로 해석하면:\n  f(1)=log_n 1=0 ✓\n  f는 증가함수 (n>=2) ✓\n  \n  부등식: log_n x > 6log_n|x-11/2|\n  \n  f(x)>g(x): log_n x > 6log_n|x-11/2|\n  \n  이 경우:\n  g(5)=g(6)=6log_n(1/2)<0, f(5)=log_n 5>0, f(6)=log_n 6>0. 조건 만족 ✓\n  g(4)=g(7)=6log_n(3/2)\n  f(4)=log_n 4, f(7)=log_n 7.\n  \n  f(4)>g(4): log_n 4 > 6log_n(3/2)=log_n(3/2)^6=log_n(729/64).\n  n>1이면: 4 > (3/2)^6=729/64≈11.39. 거짓. 항상 불만족?\n  \n  이것도 맞지 않는다.\n  \n  다시 원점으로: 해설에서 f(4)>g(4) → 1 > 6log_n(3/2) → n>(3/2)^3 라는 계산.\n  1 > 6log_n(3/2). \n  1/6 > log_n(3/2).\n  n^(1/6) > 3/2.\n  n > (3/2)^6? 아니면 n^(1/6)이 아닌 다른 방향?\n  \n  n>1일 때 log_n가 증가함수이므로:\n  log_n(3/2) < 1/6\n  3/2 < n^(1/6)\n  (3/2)^6 < n\n  n > (3/2)^6 ≈ 11.39\n  n >= 12.\n\n  해설의 \"n>(3/2)^3\"은 오류처럼 보이나 답이 n=4,5,6이고 합이 15.\n  \n  만약 해설의 (3/2)^3이 맞다면 계산 경로가 다른 것이다. 가능성: 해설에서 f(4)=log_4 4를 1이 아닌 다른 값으로 계산하거나, 6이 다른 지수에 적용되거나.\n  \n  만약 f(x)=log_x x이지만 x는 밑이고, g(x)=6log_n|...|에서 6이 밑이라면?\n  \n  아니면 문제가 log_n x > 6·log_n|x-11/2|이 아니라 log_n x > (log_n|x-11/2|)^6인 경우?\n  \n  혹은: 해설에서 f(4)=log_4 4=1이고, 1>6log_n(3/2)에서 양변을 6으로 나누면 1/6>log_n(3/2), 그리고 이것을 n>(3/2)^(1/(1/6))=(3/2)^6으로 풀어야 하는데 해설이 n>(3/2)^3으로 쓴 것은 (3/2)^6의 제곱근을 계산한 것일 수도? (3/2)^3=27/8=3.375, (3/2)^6≈11.39.\n  \n  해설 검토: n=4일 때 6log_4(3/2)=6·log_4(3/2). log_4(3/2)=log(1.5)/log(4)=0.176/0.602=0.292. 6·0.292=1.755>1. 즉 g(4)>f(4)=1. 조건 불만족.\n  \n  그러면 n=4일 때 x=4는 조건을 만족시키지 않는다. 해설과 모순.\n  \n  결론: 이 문제는 원문이 log_n x > 6log_n|x-11/2|이거나 다른 형태일 가능성이 높다. 해설의 수치와 나의 계산이 일치하지 않으므로, 새로운 뉴런이 필요한 것 외에도 문제 원문 해석에 불확실성이 있다. 그러나 주어진 해설의 논리 구조(대칭성 활용, 경우 분류, 로그 부등식의 지수 변환)는 분명히 존재하고, 이를 커버하는 뉴런이 부족하다.",
-    "previous_matching": "1. f(x)=log_x x, g(x)=6log_n|x-11/2| 정의 → 전략28(이항하여 f(x)-g(x)>0 변환) 부분 매칭\n2. log_x x = 1 (f(x)=1) → 사실76 필요, 기존 뉴런 없음 → 신규 필요\n3. g(5)=g(6)<0이므로 x=5,6 항상 조건 만족 → 대칭 쌍 구조 활용 → 전략37 필요, 기존 뉴런 없음 → 신규 필요\n4. g(4)=g(7), g(3)=g(8) 대칭 쌍으로 케이스 분류 → 전략22(기준 케이스 중심 분류) 매칭, 전략37 추가 필요\n5. 자연수 x의 개수가 4인 경우 (i) x=4,5,6,7 또는 (ii) x=5,6,7,8 으로 경우 분리 → 전략22\n6. f(4)>g(4) ↔ log_4 4 > 6log_n(3/2) 변환 → 연산32 필요, 기존 뉴런 없음 → 신규 필요\n7. f(8)<=g(8) ↔ n<=(5/2)^2 변환 → 연산32 필요\n8. 자연수 n 조건으로 n=4,5,6 확정 → 전략17(전수조사/대입 확인)\n9. (ii) 경우 n이 동시에 만족하는 값 없음 → 전략23(모순 배제)\n10. 합 4+5+6=15 → 전략10(카운팅/합산)",
-    "previous_matched": [
-      "전략28",
-      "사실4",
-      "전략12",
-      "전략22",
-      "전략20",
-      "전략23",
-      "연산9",
-      "전략10",
-      "사실2"
-    ],
-    "previous_skeleton": [],
-    "previous_new_neurons": [
-      {
-        "id": "사실76",
-        "statement": "$\\log_x x = 1$ (밑과 진수가 같은 로그는 항상 1이다, $x > 0$, $x \\neq 1$)",
-        "type": "fact",
-        "reason": "f(x) = log_x x = 1임을 사용하는 단계가 있으나 이를 커버하는 뉴런이 없음"
-      },
-      {
-        "id": "전략37",
-        "statement": "대칭 구조를 가진 함수에서 특정 쌍(x=a, x=b)이 같은 함수값을 가지면, 한 쪽이 조건을 만족할 때 다른 쪽도 만족하는지 연동하여 판단한다",
-        "type": "strategy",
-        "reason": "g(5)=g(6), g(4)=g(7), g(3)=g(8)의 대칭 쌍을 이용해 경우(i),(ii)로 분류하는 논리가 있으나 커버 뉴런이 없음"
-      },
-      {
-        "id": "연산32",
-        "statement": "$\\log_a b > c$ ($b > 0$, $a > 1$) $\\iff b > a^c$; ($0 < a < 1$) $\\iff b < a^c$ (로그 부등식의 지수 변환)",
-        "type": "operation",
-        "reason": "$\\log_4 4 > 6\\log_n \\frac{3}{2}$를 $n > (\\frac{3}{2})^3$으로 변환하는 과정을 커버하는 뉴런이 없음"
-      }
-    ],
-    "previous_dna_nodes": [
-      {
-        "id": "top",
-        "dna": "Q3",
-        "label": "모든 n의 값의 합을 구하라",
-        "category": "발문"
-      },
-      {
-        "id": "ask_sum",
-        "dna": "E1",
-        "label": "합(모든 n)",
-        "category": "수식"
-      },
-      {
-        "id": "vn",
-        "dna": "T1",
-        "label": "변수 n",
-        "category": "말단"
-      },
-      {
-        "id": "lim_nat_n",
-        "dna": "L3",
-        "label": "n은 자연수",
-        "category": "제한"
-      },
-      {
-        "id": "lim_n_ge2",
-        "dna": "L2",
-        "label": "n >= 2",
-        "category": "제한"
-      },
-      {
-        "id": "cnt_cond",
-        "dna": "C9",
-        "label": "자연수 x의 개수 = 4",
-        "category": "조건"
-      },
-      {
-        "id": "c4",
-        "dna": "T2",
-        "label": "상수 4",
-        "category": "말단"
-      },
-      {
-        "id": "ineq_main",
-        "dna": "C2",
-        "label": "f(x) > g(x) 부등식",
-        "category": "조건"
-      },
-      {
-        "id": "lhs",
-        "dna": "E3",
-        "label": "log_x(x)",
-        "category": "수식"
-      },
-      {
-        "id": "vx",
-        "dna": "T3",
-        "label": "독립변수 x (밑)",
-        "category": "말단"
-      },
-      {
-        "id": "vx2",
-        "dna": "T3",
-        "label": "독립변수 x (진수)",
-        "category": "말단"
-      },
-      {
-        "id": "rhs",
-        "dna": "E6",
-        "label": "곱(6, log_n|x-11/2|)",
-        "category": "수식"
-      },
-      {
-        "id": "c6",
-        "dna": "T2",
-        "label": "상수 6",
-        "category": "말단"
-      },
-      {
-        "id": "log_rhs",
-        "dna": "E3",
-        "label": "log_n(|x - 11/2|)",
-        "category": "수식"
-      },
-      {
-        "id": "abs_inner",
-        "dna": "E5",
-        "label": "|x - 11/2|",
-        "category": "수식"
-      },
-      {
-        "id": "diff_inner",
-        "dna": "E1",
-        "label": "합(x, -11/2)",
-        "category": "수식"
-      },
-      {
-        "id": "neg_11_2",
-        "dna": "E2",
-        "label": "부호반전(11/2)",
-        "category": "수식"
-      },
-      {
-        "id": "c11_2",
-        "dna": "T2",
-        "label": "상수 11/2",
-        "category": "말단"
-      },
-      {
-        "id": "lim_nat_x",
-        "dna": "L3",
-        "label": "x는 자연수",
-        "category": "제한"
-      },
-      {
-        "id": "conds",
-        "dna": "S1",
-        "label": "조건들 묶음",
-        "category": "구조"
-      }
-    ],
-    "previous_dna_edges": [
-      {
-        "from": "ask_sum",
-        "to": "top"
-      },
-      {
-        "from": "vn",
-        "to": "ask_sum"
-      },
-      {
-        "from": "lim_nat_n",
-        "to": "vn"
-      },
-      {
-        "from": "lim_n_ge2",
-        "to": "vn"
-      },
-      {
-        "from": "conds",
-        "to": "top"
-      },
-      {
-        "from": "cnt_cond",
-        "to": "conds"
-      },
-      {
-        "from": "c4",
-        "to": "cnt_cond"
-      },
-      {
-        "from": "ineq_main",
-        "to": "cnt_cond"
-      },
-      {
-        "from": "lhs",
-        "to": "ineq_main"
-      },
-      {
-        "from": "rhs",
-        "to": "ineq_main"
-      },
-      {
-        "from": "vx",
-        "to": "lhs"
-      },
-      {
-        "from": "vx2",
-        "to": "lhs"
-      },
-      {
-        "from": "c6",
-        "to": "rhs"
-      },
-      {
-        "from": "log_rhs",
-        "to": "rhs"
-      },
-      {
-        "from": "vn",
-        "to": "log_rhs"
-      },
-      {
-        "from": "abs_inner",
-        "to": "log_rhs"
-      },
-      {
-        "from": "diff_inner",
-        "to": "abs_inner"
-      },
-      {
-        "from": "vx",
-        "to": "diff_inner"
-      },
-      {
-        "from": "neg_11_2",
-        "to": "diff_inner"
-      },
-      {
-        "from": "c11_2",
-        "to": "neg_11_2"
-      },
-      {
-        "from": "lim_nat_x",
-        "to": "vx"
-      }
-    ],
-    "created_at": "2026-03-19T14:15:29.350Z"
-  },
-  {
     "problem_id": "Problem10",
     "content": "# Problem10. (Unknown Source) - Piecewise Function, Exponential Function\n\n## Problem\n\n함수\n\n$$f(x) = \\begin{cases} 2^x & (x \\leq 2) \\\\ a \\times 2^{-x} & (x > 2) \\end{cases}$$\n\n가 다음 조건을 만족시키도록 하는 모든 자연수 $a$의 값의 합을 구하시오. [4점]\n\n(가) 모든 실수 $x$에 대하여 $f(x) \\leq 4$이다.\n\n(나) $f(x)$, $f(x+1)$의 값이 모두 자연수가 되도록 하는 실수 $x$의 개수는 3이다.\n\n## Answer\n\n86\n\n**Difficulty**: unknown\n**Score**: 4점\n**Type**: short answer\n\n---\n\n## Solution\n\n**(가)** $\\Rightarrow a \\leq 16$ $\\cdots$ ①\n\n이고, 실수 $x$가\n\n$f(x)$, $f(x+1)$이 모두 자연수 $\\cdots$ (★)\n\n를 만족시킬 때, $f(x)$의 정의를 고려하여\n\n(i) $x+1 \\leq 2$, (ii) $x \\leq 2 < x+1$, (iii) $x > 2$\n\n인 경우로 나누어 구해보자.\n\n**(i) $x+1 \\leq 2$인 경우:**\n\n(★) $\\Rightarrow 2^x$과 $2^{x+1}$이 모두 자연수 $(x \\leq 1)$\n\n$\\Rightarrow 2^x$이 자연수 $(x \\leq 1)$\n\n$\\Rightarrow x = 0$ 또는 $x = 1$\n\n**(ii) $x \\leq 2 < x+1$인 경우:**\n\n(★) $\\Rightarrow 2^x$과 $a \\times 2^{-(x+1)}$이 모두 자연수 $(1 < x \\leq 2)$\n\n$\\Rightarrow \\begin{cases} ① \\, x = \\log_2 3\\text{이고 } a = 6 \\text{ 또는 } a = 12 \\, (\\because \\text{ ①}) \\\\ ② \\, x = 2\\text{이고 } a = 8 \\text{ 또는 } a = 16 \\, (\\because \\text{ ①}) \\end{cases}$\n\n**(iii) $x > 2$인 경우:**\n\n(★) $\\Rightarrow a \\times 2^{-x}$과 $a \\times 2^{-(x+1)}$이 모두 자연수 $(x > 2)$\n\n$\\Rightarrow x > 2$이고 $a \\times 2^{-(x+1)}$이 자연수\n\n$\\Rightarrow$ ③ $x > 2$이고 $a = 2^{x+1} > 8$\n\n$$(\\because \\text{ ①} \\Rightarrow a \\times 2^{-(x+1)} < 2 \\Rightarrow a \\times 2^{-(x+1)} = 1)$$\n\n**따라서**\n\n$$\\begin{cases} \\text{(나) } \\Rightarrow \\text{ (★)를 만족시키는 실수 } x\\text{의 개수가 } 3 \\\\ \\text{(i) } \\Rightarrow x = 0\\text{과 } x = 1\\text{은 (★)을 만족시킴} \\end{cases}$$\n\n$\\Rightarrow$ ① 또는 ② 또는 ③을 만족시키는 실수 $x$의 개수가 1\n\n$$\\Rightarrow \\begin{cases} ①\\text{을 만족시키는 } x\\text{만 존재 } \\Rightarrow a = 6 \\\\ ②\\text{를 만족시키는 } x\\text{만 존재 } \\Rightarrow a = 8 \\\\ ③\\text{을 만족시키는 } x\\text{만 존재 } \\Rightarrow a > 8, \\, a \\neq 12, \\, a \\neq 16 \\end{cases}$$\n\n이므로 문제의 조건을 만족시키도록 하는 모든 자연수 $a$는\n\n$$6, \\, 8, \\, 9, \\, 10, \\, 11, \\, 13, \\, 14, \\, 15 \\, (\\because \\text{ ①})$$\n\n이다.\n\n$\\therefore$ (구하는 합) $= 86$\n\n---",
     "skel_status": "pending",
@@ -1771,5 +1503,221 @@
       }
     ],
     "created_at": "2026-03-19T15:33:48.530Z"
+  },
+  {
+    "problem_id": "Problem5",
+    "content": "# Problem5. (Unknown Source) - 로그부등식\n\n## Problem\n\n자연수 $n(n \\geq 2)$에 대하여\n\n$$\\log_n x > 6\\log_n\\left|x - \\frac{11}{2}\\right|$$\n\n을 만족시키는 자연수 $x$의 개수가 4가 되도록 하는 모든 $n$의 값의 합은 [4점]\n\n## Choices\n① 12    ② 13    ③ 15    ④ 18    ⑤ 22\n\n**Answer**: ③ 15\n**Difficulty**: unknown\n**Score**: 4점\n**Type**: multiple choice\n\n---\n\n## Solution\n\n$f(x) = \\log_n x$, $g(x) = 6\\log_n\\left|x - \\frac{11}{2}\\right|$\n\n이라 하면 문제의 부등식은\n\n$$f(x) > g(x) \\cdots ①$$\n\n이고, 이때\n\n• $g(5) = g(6) < 0$이고 $g(4) = g(7)$\n• $y = f(x)$는 $f(1) = 0$이고 증가함수\n\n이므로\n\n• $x = 5$, $x = 6$은 항상 ①을 만족시킴\n• $x = 4$가 ①을 만족시키면 $x = 7$도 ①을 만족시킴\n\n을 알 수 있다.\n\n따라서\n\n①인 자연수 $x$의 개수가 $4 \\Rightarrow \\begin{cases} (i) & x = 4, 5, 6, 7 \\\\ (ii) & x = 5, 6, 7, 8 \\end{cases}$\n\n의 경우만 가능하다.\n\n**(i)의 경우:**\n\n위 그림을 참고하면\n\n$$g(3) = g(8) \\Rightarrow \\begin{cases} x = 8\\text{이 ①을 만족시키지 않으면} \\\\ x = 3\\text{도 ①을 만족시키지 않음} \\end{cases}$$\n\n을 알 수 있으므로\n\n• $f(4) > g(4) \\Rightarrow \\log_4 4 > 6\\log_n \\frac{3}{2} \\Rightarrow n > \\left(\\frac{3}{2}\\right)^3 = 3.xx$\n\n• $f(8) < g(8) \\Rightarrow \\log_8 8 \\leq 6\\log_n \\frac{5}{2} \\Rightarrow n \\leq \\left(\\frac{5}{2}\\right)^2 = 6.xx$\n\n$\\Rightarrow n = 4, 5, 6$ ($\\because$ $n$은 자연수)\n\n이다.\n\n**(ii)의 경우:**\n\n(i)의 과정을 참고하면\n\n$$\\begin{cases} • f(4) \\leq g(4) \\Rightarrow n \\leq \\left(\\frac{3}{2}\\right)^3 = 3.xx \\\\ • f(8) > g(8) \\Rightarrow n > \\left(\\frac{5}{2}\\right)^2 = 6.xx \\end{cases}$$\n\n인 $n$이 존재하지 않음\n\n을 알 수 있다.\n\n따라서 (i), (ii)에 의해\n\n(모든 $n$의 값의 합) = $4 + 5 + 6 = 15$\n\n임을 알 수 있다.",
+    "skel_status": "pending",
+    "dna_status": "ok",
+    "needed_neurons": [],
+    "needed_dna": [],
+    "previous_analysis": "",
+    "previous_matching": "",
+    "previous_matched": [],
+    "previous_skeleton": [],
+    "previous_new_neurons": [],
+    "previous_dna_nodes": [
+      {
+        "id": "top",
+        "dna": "Q3",
+        "label": "모든 n의 값의 합을 구하라",
+        "category": "발문"
+      },
+      {
+        "id": "ask_sum",
+        "dna": "E1",
+        "label": "합(모든 n)",
+        "category": "수식"
+      },
+      {
+        "id": "vn",
+        "dna": "T1",
+        "label": "변수 n",
+        "category": "말단"
+      },
+      {
+        "id": "lim_nat_n",
+        "dna": "L3",
+        "label": "n은 자연수",
+        "category": "제한"
+      },
+      {
+        "id": "lim_n_ge2",
+        "dna": "L2",
+        "label": "n >= 2",
+        "category": "제한"
+      },
+      {
+        "id": "conds",
+        "dna": "S1",
+        "label": "조건들 묶음",
+        "category": "구조"
+      },
+      {
+        "id": "cnt_cond",
+        "dna": "C9",
+        "label": "자연수 x의 개수 = 4",
+        "category": "조건"
+      },
+      {
+        "id": "c4",
+        "dna": "T2",
+        "label": "상수 4",
+        "category": "말단"
+      },
+      {
+        "id": "ineq_main",
+        "dna": "C2",
+        "label": "log_n(x) > 6·log_n|x-11/2|",
+        "category": "조건"
+      },
+      {
+        "id": "lhs",
+        "dna": "E3",
+        "label": "log_n(x)",
+        "category": "수식"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
+      },
+      {
+        "id": "lim_nat_x",
+        "dna": "L3",
+        "label": "x는 자연수",
+        "category": "제한"
+      },
+      {
+        "id": "rhs",
+        "dna": "E6",
+        "label": "곱(6, log_n|x-11/2|)",
+        "category": "수식"
+      },
+      {
+        "id": "c6",
+        "dna": "T2",
+        "label": "상수 6",
+        "category": "말단"
+      },
+      {
+        "id": "log_rhs",
+        "dna": "E3",
+        "label": "log_n(|x-11/2|)",
+        "category": "수식"
+      },
+      {
+        "id": "abs_inner",
+        "dna": "E5",
+        "label": "|x - 11/2|",
+        "category": "수식"
+      },
+      {
+        "id": "diff_inner",
+        "dna": "E1",
+        "label": "합(x, -11/2)",
+        "category": "수식"
+      },
+      {
+        "id": "neg_11_2",
+        "dna": "E2",
+        "label": "부호반전(11/2)",
+        "category": "수식"
+      },
+      {
+        "id": "c11_2",
+        "dna": "T2",
+        "label": "상수 11/2",
+        "category": "말단"
+      }
+    ],
+    "previous_dna_edges": [
+      {
+        "from": "ask_sum",
+        "to": "top"
+      },
+      {
+        "from": "conds",
+        "to": "top"
+      },
+      {
+        "from": "vn",
+        "to": "ask_sum"
+      },
+      {
+        "from": "lim_nat_n",
+        "to": "vn"
+      },
+      {
+        "from": "lim_n_ge2",
+        "to": "vn"
+      },
+      {
+        "from": "cnt_cond",
+        "to": "conds"
+      },
+      {
+        "from": "c4",
+        "to": "cnt_cond"
+      },
+      {
+        "from": "ineq_main",
+        "to": "cnt_cond"
+      },
+      {
+        "from": "lhs",
+        "to": "ineq_main"
+      },
+      {
+        "from": "rhs",
+        "to": "ineq_main"
+      },
+      {
+        "from": "vn",
+        "to": "lhs"
+      },
+      {
+        "from": "vx",
+        "to": "lhs"
+      },
+      {
+        "from": "lim_nat_x",
+        "to": "vx"
+      },
+      {
+        "from": "c6",
+        "to": "rhs"
+      },
+      {
+        "from": "log_rhs",
+        "to": "rhs"
+      },
+      {
+        "from": "vn",
+        "to": "log_rhs"
+      },
+      {
+        "from": "abs_inner",
+        "to": "log_rhs"
+      },
+      {
+        "from": "diff_inner",
+        "to": "abs_inner"
+      },
+      {
+        "from": "vx",
+        "to": "diff_inner"
+      },
+      {
+        "from": "neg_11_2",
+        "to": "diff_inner"
+      },
+      {
+        "from": "c11_2",
+        "to": "neg_11_2"
+      }
+    ],
+    "created_at": "2026-03-19T16:00:20.080Z"
   }
 ]
