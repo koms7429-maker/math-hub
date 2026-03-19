@@ -31,12 +31,6 @@
         "category": "제한"
       },
       {
-        "id": "ask_sum",
-        "dna": "Q3",
-        "label": "합(모든 자연수 a)",
-        "category": "발문"
-      },
-      {
         "id": "eq_main",
         "dna": "C11",
         "label": "x에 대한 방정식",
@@ -55,7 +49,7 @@
         "category": "수식"
       },
       {
-        "id": "term1",
+        "id": "term_x2",
         "dna": "E7",
         "label": "x²",
         "category": "수식"
@@ -67,34 +61,28 @@
         "category": "말단"
       },
       {
-        "id": "c2_exp",
+        "id": "c2",
         "dna": "T2",
-        "label": "상수 2 (지수)",
+        "label": "상수 2",
         "category": "말단"
       },
       {
-        "id": "term2",
+        "id": "term_mid",
         "dna": "E6",
-        "label": "곱((2a+1), x)",
+        "label": "(2a+1)·x",
         "category": "수식"
       },
       {
-        "id": "coef2a1",
+        "id": "coef_mid",
         "dna": "E1",
-        "label": "합(2a, 1)",
+        "label": "2a+1",
         "category": "수식"
       },
       {
         "id": "two_a",
         "dna": "E6",
-        "label": "곱(2, a)",
+        "label": "2·a",
         "category": "수식"
-      },
-      {
-        "id": "c2",
-        "dna": "T2",
-        "label": "상수 2",
-        "category": "말단"
       },
       {
         "id": "c1",
@@ -103,27 +91,27 @@
         "category": "말단"
       },
       {
-        "id": "term3",
+        "id": "term_const",
         "dna": "E1",
-        "label": "합(a², a)",
+        "label": "a²+a",
         "category": "수식"
       },
       {
-        "id": "a_sq",
+        "id": "a2",
         "dna": "E7",
         "label": "a²",
         "category": "수식"
       },
       {
-        "id": "c2_sq",
+        "id": "c0",
         "dna": "T2",
-        "label": "상수 2 (제곱)",
+        "label": "상수 0",
         "category": "말단"
       },
       {
-        "id": "rhs_zero",
+        "id": "c_exp2",
         "dna": "T2",
-        "label": "상수 0",
+        "label": "상수 2 (지수)",
         "category": "말단"
       },
       {
@@ -135,13 +123,13 @@
       {
         "id": "root_cond",
         "dna": "C15",
-        "label": "한 실근 k가 조건을 만족",
+        "label": "한 실근 k가 조건 만족",
         "category": "조건"
       },
       {
         "id": "vn",
         "dna": "T1",
-        "label": "변수 n (어떤 자연수)",
+        "label": "변수 n (자연수)",
         "category": "말단"
       },
       {
@@ -151,7 +139,7 @@
         "category": "제한"
       },
       {
-        "id": "kn_eq_64",
+        "id": "kn_eq",
         "dna": "C1",
         "label": "k^n = 64",
         "category": "조건"
@@ -171,12 +159,8 @@
     ],
     "previous_dna_edges": [
       {
-        "from": "ask_sum",
-        "to": "top"
-      },
-      {
         "from": "va",
-        "to": "ask_sum"
+        "to": "top"
       },
       {
         "from": "lim_a_nat",
@@ -195,40 +179,44 @@
         "to": "eq_c1"
       },
       {
-        "from": "rhs_zero",
+        "from": "c0",
         "to": "eq_c1"
       },
       {
-        "from": "term1",
+        "from": "term_x2",
+        "to": "lhs"
+      },
+      {
+        "from": "term_mid",
+        "to": "lhs"
+      },
+      {
+        "from": "term_const",
         "to": "lhs"
       },
       {
         "from": "vx",
-        "to": "term1"
+        "to": "term_x2"
       },
       {
-        "from": "c2_exp",
-        "to": "term1"
+        "from": "c_exp2",
+        "to": "term_x2"
       },
       {
-        "from": "term2",
-        "to": "lhs"
-      },
-      {
-        "from": "coef2a1",
-        "to": "term2"
+        "from": "coef_mid",
+        "to": "term_mid"
       },
       {
         "from": "vx",
-        "to": "term2"
+        "to": "term_mid"
       },
       {
         "from": "two_a",
-        "to": "coef2a1"
+        "to": "coef_mid"
       },
       {
         "from": "c1",
-        "to": "coef2a1"
+        "to": "coef_mid"
       },
       {
         "from": "c2",
@@ -239,24 +227,20 @@
         "to": "two_a"
       },
       {
-        "from": "term3",
-        "to": "lhs"
-      },
-      {
-        "from": "a_sq",
-        "to": "term3"
+        "from": "a2",
+        "to": "term_const"
       },
       {
         "from": "va",
-        "to": "a_sq"
-      },
-      {
-        "from": "c2_sq",
-        "to": "a_sq"
+        "to": "term_const"
       },
       {
         "from": "va",
-        "to": "term3"
+        "to": "a2"
+      },
+      {
+        "from": "c_exp2",
+        "to": "a2"
       },
       {
         "from": "root_cond",
@@ -271,16 +255,16 @@
         "to": "root_cond"
       },
       {
-        "from": "kn_eq_64",
+        "from": "kn_eq",
         "to": "root_cond"
       },
       {
         "from": "kn",
-        "to": "kn_eq_64"
+        "to": "kn_eq"
       },
       {
         "from": "c64",
-        "to": "kn_eq_64"
+        "to": "kn_eq"
       },
       {
         "from": "vk",
@@ -295,6 +279,6 @@
         "to": "vn"
       }
     ],
-    "created_at": "2026-03-19T16:50:48.381Z"
+    "created_at": "2026-03-19T16:50:55.582Z"
   }
 ]
