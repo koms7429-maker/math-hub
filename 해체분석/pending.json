@@ -1,6 +1,6 @@
 [
   {
-    "content": "✅ **Problem1** skel+DNA 완료 (답:②)",
+    "content": "✅ **Problem1** skel+DNA 완료 (답:18)",
     "skel_status": "unknown",
     "dna_status": "unknown",
     "needed_neurons": [],
@@ -12,6 +12,6 @@
     "previous_new_neurons": [],
     "previous_dna_nodes": [],
     "previous_dna_edges": [],
-    "created_at": "2026-03-19T13:28:50.348Z"
+    "created_at": "2026-03-19T13:32:01.526Z"
   }
 ]
