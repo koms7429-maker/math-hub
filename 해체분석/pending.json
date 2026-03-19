@@ -4,21 +4,13 @@
     "content": "# Problem1\n\n## 문제\n$2x + 3 = 7$일 때, $x$의 값을 구하시오.\n\n**답:** 2\n\n## Solution\n$2x = 4$이고 $x = 2$이다.",
     "skel_status": "pending",
     "dna_status": "ok",
-    "needed_neurons": [
-      "사실99"
-    ],
+    "needed_neurons": ["사실99"],
     "needed_dna": [],
     "previous_analysis": "일차방정식 풀이",
     "previous_matching": "",
     "previous_matched": [],
     "previous_skeleton": [],
-    "previous_new_neurons": [
-      {
-        "id": "사실99",
-        "statement": "테스트 뉴런",
-        "type": "fact"
-      }
-    ],
+    "previous_new_neurons": [{"id": "사실99", "statement": "테스트 뉴런", "type": "fact"}],
     "previous_dna_nodes": [],
     "previous_dna_edges": [],
     "created_at": "2026-03-20T00:00:00.000Z"
@@ -29,13 +21,7 @@
     "skel_status": "pending",
     "dna_status": "pending",
     "needed_neurons": [],
-    "needed_dna": [
-      {
-        "id": "T99",
-        "name": "테스트",
-        "signature": "()->값"
-      }
-    ],
+    "needed_dna": [{"id": "T99", "name": "테스트", "signature": "()->값"}],
     "previous_analysis": "",
     "previous_matching": "",
     "previous_matched": [],
@@ -60,22 +46,5 @@
     "previous_dna_nodes": [],
     "previous_dna_edges": [],
     "created_at": "2026-03-20T00:00:00.000Z"
-  },
-  {
-    "content": "WwogIHsKICAgICJwcm9ibGVtX2lkIjogIlByb2JsZW0xIiwKICAgICJjb250\nZW50IjogIiMgUHJvYmxlbTFcblxuIyMg66y47KCcXG4kMnggKyAzID0gNyTs\nnbwg65WMLCAkeCTsnZgg6rCS7J2EIOq1rO2VmOyLnOyYpC5cblxuKirri7U6\nKiogMlxuXG4jIyBTb2x1dGlvblxuJDJ4ID0gNCTsnbTqs6AgJHggPSAyJOyd\ntOuLpC4iLAogICAgInNrZWxfc3RhdHVzIjogInBlbmRpbmciLAogICAgImRu\nYV9zdGF0dXMiOiAib2siLAogICAgIm5lZWRlZF9uZXVyb25zIjogWyLsgqzs\ni6Q5OSJdLAogICAgIm5lZWRlZF9kbmEiOiBbXSwKICAgICJwcmV2aW91c19h\nbmFseXNpcyI6ICLsnbzssKjrsKnsoJXsi50g7ZKA7J20IiwKICAgICJwcmV2\naW91c19tYXRjaGluZyI6ICIiLAogICAgInByZXZpb3VzX21hdGNoZWQiOiBb\nXSwKICAgICJwcmV2aW91c19za2VsZXRvbiI6IFtdLAogICAgInByZXZpb3Vz\nX25ld19uZXVyb25zIjogW3siaWQiOiAi7IKs7IukOTkiLCAic3RhdGVtZW50\nIjogIu2FjOyKpO2KuCDribTrn7AiLCAidHlwZSI6ICJmYWN0In1dLAogICAg\nInByZXZpb3VzX2RuYV9ub2RlcyI6IFtdLAogICAgInByZXZpb3VzX2RuYV9l\nZGdlcyI6IFtdLAogICAgImNyZWF0ZWRfYXQiOiAiMjAyNi0wMy0yMFQwMDow\nMDowMC4wMDBaIgogIH0sCiAgewogICAgInByb2JsZW1faWQiOiAiUHJvYmxl\nbTIiLAogICAgImNvbnRlbnQiOiAiIyBQcm9ibGVtMlxuXG4jIyDrrLjsoJxc\nbiRmKHgpID0gKHgtMyleMiArIDUk7J2YIOy1nOyGn+qwkuydhCDqtaztlZjs\ni5zsmKQuXG5cbioq64u1OioqIDVcblxuIyMgU29sdXRpb25cbiQoeC0zKV4y\nIFxcZ2VxIDAk7J206rOgICR4PTMk7J28IOuVjCDstZzshp/qsJIgJDUk7J20\n64ukLiIsCiAgICAic2tlbF9zdGF0dXMiOiAicGVuZGluZyIsCiAgICAiZG5h\nX3N0YXR1cyI6ICJwZW5kaW5nIiwKICAgICJuZWVkZWRfbmV1cm9ucyI6IFtd\nLAogICAgIm5lZWRlZF9kbmEiOiBbeyJpZCI6ICJUOTkiLCAibmFtZSI6ICLt\nhYzsiqTtirgiLCAic2lnbmF0dXJlIjogIigpLT7qsJIifV0sCiAgICAicHJl\ndmlvdXNfYW5hbHlzaXMiOiAiIiwKICAgICJwcmV2aW91c19tYXRjaGluZyI6\nICIiLAogICAgInByZXZpb3VzX21hdGNoZWQiOiBbXSwKICAgICJwcmV2aW91\nc19za2VsZXRvbiI6IFtdLAogICAgInByZXZpb3VzX25ld19uZXVyb25zIjog\nW10sCiAgICAicHJldmlvdXNfZG5hX25vZGVzIjogW10sCiAgICAicHJldmlv\ndXNfZG5hX2VkZ2VzIjogW10sCiAgICAiY3JlYXRlZF9hdCI6ICIyMDI2LTAz\nLTIwVDAwOjAwOjAwLjAwMFoiCiAgfSwKICB7CiAgICAicHJvYmxlbV9pZCI6\nICJQcm9ibGVtMyIsCiAgICAiY29udGVudCI6ICIjIFByb2JsZW0zXG5cbiMj\nIOusuOygnFxuJFxcbG9nXzIgOCArIFxcbG9nXzIgNCTsnZgg6rCS7J2EIOq1\nrO2VmOyLnOyYpC5cblxuKirri7U6KiogNVxuXG4jIyBTb2x1dGlvblxuJFxc\nbG9nXzIgOCA9IDMk7J206rOgICRcXGxvZ18yIDQgPSAyJOydtOqzoCAkMysy\nPTUk7J2064ukLiIsCiAgICAic2tlbF9zdGF0dXMiOiAicGVuZGluZyIsCiAg\nICAiZG5hX3N0YXR1cyI6ICJvayIsCiAgICAibmVlZGVkX25ldXJvbnMiOiBb\nXSwKICAgICJuZWVkZWRfZG5hIjogW10sCiAgICAicHJldmlvdXNfYW5hbHlz\naXMiOiAiIiwKICAgICJwcmV2aW91c19tYXRjaGluZyI6ICIiLAogICAgInBy\nZXZpb3VzX21hdGNoZWQiOiBbXSwKICAgICJwcmV2aW91c19za2VsZXRvbiI6\nIFtdLAogICAgInByZXZpb3VzX25ld19uZXVyb25zIjogW10sCiAgICAicHJl\ndmlvdXNfZG5hX25vZGVzIjogW10sCiAgICAicHJldmlvdXNfZG5hX2VkZ2Vz\nIjogW10sCiAgICAiY3JlYXRlZF9hdCI6ICIyMDI2LTAzLTIwVDAwOjAwOjAw\nLjAwMFoiCiAgfQpdCg==\n",
-    "content_source": "content",
-    "content_length": 2522,
-    "skel_status": "unknown",
-    "dna_status": "unknown",
-    "needed_neurons": [],
-    "needed_dna": [],
-    "previous_analysis": "",
-    "previous_matching": "",
-    "previous_matched": [],
-    "previous_skeleton": [],
-    "previous_new_neurons": [],
-    "previous_dna_nodes": [],
-    "previous_dna_edges": [],
-    "created_at": "2026-03-19T20:11:49.739Z"
   }
 ]
