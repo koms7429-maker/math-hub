@@ -1,212 +1,5 @@
 [
   {
-    "problem_id": "Problem8",
-    "content": "# Problem8. (Unknown Source) - Exponents and Divisibility\n\n## Problem\n\n자연수 $n(n \\geq 2)$에 대하여 $2^{18}$의 $n$제곱근 중에서 $4$이하의 정수가 존재하도록 하는 모든 $n$의 값의 합은? [4점]\n\n## Choices\n① 26  ② 29  ③ 32  ④ 35  ⑤ 38\n\n**Answer**: ④ 35\n**Difficulty**: unknown\n**Score**: 4점\n**Type**: multiple choice\n\n---\n\n## Solution\n\n$2^{18}$의 $n(n \\geq 2)$제곱근 중 실수인 것은\n\n• $n$이 짝수인 경우, $\\pm 2^{\\frac{18}{n}}$\n\n• $n$이 홀수인 경우, $2^{\\frac{18}{n}}$\n\n이므로\n\n$4$ 이하의 정수인 $2^{18}$의 $n$제곱근이 존재하려면\n\n① $n$이 짝수이면서 $\\frac{18}{n}$이 자연수\n\n② $n$이 홀수이면서 $\\frac{18}{n}$이 $2$ 이하의 자연수\n\n중 하나를 만족시켜야 한다. 이때,\n\n① $\\Rightarrow n=2, 6, 18$ \n② $\\Rightarrow n=9$           $\\Rightarrow$ (모든 $n$의 값의 합)$=35$\n\n를 얻는다.\n\n---",
-    "skel_status": "pending",
-    "dna_status": "pending",
-    "needed_neurons": [
-      "전략39",
-      "사실77"
-    ],
-    "needed_dna": [
-      {
-        "id": "E9",
-        "name": "n제곱근",
-        "signature": "(피연산자, 차수n) → 값",
-        "reason": "n제곱근 $\\sqrt[n]{a}$ 구조는 E8(제곱근)의 일반화이나, 차수 n이 변수인 경우를 별도로 표현해야 함. E8은 고정된 제곱근만 표현 가능."
-      },
-      {
-        "id": "X5",
-        "name": "집합 존재 조건",
-        "signature": "(집합, 원소조건) → 참/거짓",
-        "reason": "특정 조건을 만족하는 원소가 집합 내에 존재하도록 하는 조건. 기존 X1~X4로는 '4이하의 정수가 존재하도록 하는' 구조를 표현하기 어려움."
-      }
-    ],
-    "previous_analysis": "2^18의 n제곱근이란 x^n = 2^18을 만족하는 실수 x를 의미한다.\n\n[실수 n제곱근의 형태]\n- n이 짝수인 경우: 2^18 > 0이므로 실수 n제곱근은 ±2^(18/n)이다 (양수와 음수 각 1개씩 총 2개).\n- n이 홀수인 경우: 실수 n제곱근은 2^(18/n)뿐이다 (1개).\n\n[4 이하의 정수 조건 분석]\n4 이하의 정수란 ..., -3, -2, -1, 0, 1, 2, 3, 4이다.\n\n거듭제곱근 2^(18/n)은 항상 양수이므로, 양수인 4 이하의 정수 후보는 1, 2, 3, 4이다.\n2^(18/n)이 양의 정수가 되려면 18/n이 자연수, 즉 n이 18의 약수여야 한다.\n\n- n이 짝수인 경우: ±2^(18/n) 중 음수 부분 -2^(18/n)도 정수가 될 수 있다. 즉 -2^(18/n)이 정수가 되는 것도 포함. 하지만 음수 거듭제곱근 -2^(18/n)은 음의 정수이고 이는 4 이하이므로 자동으로 조건을 만족한다. 단, 이것이 정수가 되려면 여전히 2^(18/n)이 정수여야 한다. 따라서 n이 짝수일 때 조건: 18/n이 자연수여야 한다 (그러면 ±2^(18/n)이 모두 정수이고, -2^(18/n) < 0 < 4이므로 4 이하의 정수). 18의 짝수 약수: 2, 6, 18. 확인: n=2이면 ±2^9 = ±512, -512 ≤ 4 ✓; n=6이면 ±2^3 = ±8, -8 ≤ 4 ✓; n=18이면 ±2^1 = ±2, -2 ≤ 4 ✓. 모두 4 이하의 정수가 존재.\n\n- n이 홀수인 경우: 실수 n제곱근은 2^(18/n)뿐이다. 이것이 4 이하의 정수가 되려면: (a) 2^(18/n)이 정수 → 18/n이 자연수, 즉 n이 18의 홀수 약수 → n = 1(제외, n≥2), 3, 9. (b) 2^(18/n) ≤ 4 = 2^2 → 18/n ≤ 2 → n ≥ 9. 두 조건을 동시에 만족: n=9이면 2^(18/9) = 2^2 = 4 ≤ 4 ✓. n=3이면 2^(18/3) = 2^6 = 64 > 4 ✗.\n\n따라서 조건을 만족하는 n: 2, 6, 9, 18.\n합 = 2 + 6 + 9 + 18 = 35.",
-    "previous_matching": "1. n이 짝수/홀수일 때 2^18의 n제곱근 실수값이 ±2^(18/n) 또는 2^(18/n)임을 진술 → 사실4는 개수를 말하지만 실수값의 형태(±2^(18/n))를 명시적으로 담은 뉴런이 없음 → 신규 사실77 필요. 2. n의 홀짝에 따라 경우 분리 → 전략12 매칭. 3. 거듭제곱근이 정수가 되려면 18/n이 자연수여야 한다는 조건 + 4 이하 조건으로 후보를 좁히는 발상 → 전략38(지수의 약수·배수 조건 번역)로 부분 커버되지만, '정수 후보를 특정하고 4 이하 조건과 결합'하는 통합 발상 뉴런이 없음 → 신규 전략39 필요. 4. 짝수 n: n=2,6,18 / 홀수 n: n=9 열거 → 전략10(변수 고정 카운팅) 또는 전략25(대입 확인) 매칭. 5. 합산 → 전략10 매칭.",
-    "previous_matched": [
-      "사실4",
-      "전략12",
-      "전략38",
-      "전략10",
-      "전략25"
-    ],
-    "previous_skeleton": [],
-    "previous_new_neurons": [
-      {
-        "id": "전략39",
-        "statement": "거듭제곱근이 정수 조건을 만족하려면, 정수 후보를 먼저 특정한 뒤 각각이 조건을 만족하는지 확인한다.",
-        "type": "strategy",
-        "reason": "이 문제에서 핵심 발상은 '4 이하의 정수'라는 조건을 분석하여 정수 후보를 추려내는 과정이다. 실수 거듭제곱근 $\\pm 2^{18/n}$ 중 정수가 되려면 $18/n$이 자연수이고, 4 이하 조건으로 추가 범위를 결정하는 두 단계가 결합된 발상이다. 기존 전략38(지수의 약수·배수 조건 번역)과 사실4(실수 n제곱근 개수)를 연결하는 중간 발상 뉴런이 없다."
-      },
-      {
-        "id": "사실77",
-        "statement": "$2^{18}$의 $n$제곱근 중 실수인 것: $n$이 짝수이면 $\\pm 2^{18/n}$, $n$이 홀수이면 $2^{18/n}$이다.",
-        "type": "fact",
-        "reason": "양수의 n제곱근 실수값이 $a^{1/n}$ 또는 $-a^{1/n}$임을 구체적으로 표현하는 사실이 뉴런 목록에 없다. 사실4는 '개수'만 말하고 '값의 형태'를 주지 않는다."
-      }
-    ],
-    "previous_dna_nodes": [
-      {
-        "id": "top",
-        "dna": "Q3",
-        "label": "모든 n의 값의 합을 구하라",
-        "category": "발문"
-      },
-      {
-        "id": "ask_sum",
-        "dna": "E1",
-        "label": "합(모든 n의 값)",
-        "category": "수식"
-      },
-      {
-        "id": "vn",
-        "dna": "T3",
-        "label": "자연수 n (독립변수)",
-        "category": "말단"
-      },
-      {
-        "id": "lim_n_nat",
-        "dna": "L1",
-        "label": "n은 자연수",
-        "category": "제한"
-      },
-      {
-        "id": "lim_n_ge2",
-        "dna": "C2",
-        "label": "n ≥ 2",
-        "category": "제한"
-      },
-      {
-        "id": "c2_const",
-        "dna": "T2",
-        "label": "상수 2",
-        "category": "말단"
-      },
-      {
-        "id": "c18",
-        "dna": "T2",
-        "label": "상수 18",
-        "category": "말단"
-      },
-      {
-        "id": "c4",
-        "dna": "T2",
-        "label": "상수 4",
-        "category": "말단"
-      },
-      {
-        "id": "base2",
-        "dna": "T2",
-        "label": "상수 2 (밑)",
-        "category": "말단"
-      },
-      {
-        "id": "pow_2_18",
-        "dna": "E7",
-        "label": "2^18",
-        "category": "수식"
-      },
-      {
-        "id": "nthroot",
-        "dna": "E9",
-        "label": "2^18의 n제곱근",
-        "category": "수식"
-      },
-      {
-        "id": "exist_cond",
-        "dna": "X5",
-        "label": "4 이하의 정수가 존재",
-        "category": "존재"
-      },
-      {
-        "id": "int_cond",
-        "dna": "L1",
-        "label": "정수 조건",
-        "category": "제한"
-      },
-      {
-        "id": "le4_cond",
-        "dna": "C2",
-        "label": "≤ 4",
-        "category": "조건"
-      },
-      {
-        "id": "conds",
-        "dna": "S1",
-        "label": "모든 조건",
-        "category": "구조"
-      }
-    ],
-    "previous_dna_edges": [
-      {
-        "from": "ask_sum",
-        "to": "top"
-      },
-      {
-        "from": "conds",
-        "to": "top"
-      },
-      {
-        "from": "vn",
-        "to": "ask_sum"
-      },
-      {
-        "from": "lim_n_nat",
-        "to": "vn"
-      },
-      {
-        "from": "lim_n_ge2",
-        "to": "vn"
-      },
-      {
-        "from": "c2_const",
-        "to": "lim_n_ge2"
-      },
-      {
-        "from": "base2",
-        "to": "pow_2_18"
-      },
-      {
-        "from": "c18",
-        "to": "pow_2_18"
-      },
-      {
-        "from": "pow_2_18",
-        "to": "nthroot"
-      },
-      {
-        "from": "vn",
-        "to": "nthroot"
-      },
-      {
-        "from": "nthroot",
-        "to": "exist_cond"
-      },
-      {
-        "from": "int_cond",
-        "to": "exist_cond"
-      },
-      {
-        "from": "le4_cond",
-        "to": "exist_cond"
-      },
-      {
-        "from": "c4",
-        "to": "le4_cond"
-      },
-      {
-        "from": "exist_cond",
-        "to": "conds"
-      },
-      {
-        "from": "vn",
-        "to": "conds"
-      }
-    ],
-    "created_at": "2026-03-19T14:32:17.562Z"
-  },
-  {
     "problem_id": "Problem9",
     "content": "# Problem9. (Unknown Source) - Logarithm\n\n## Problem\n\n두 상수 $a$, $b(0<b<8)$에 대하여 $-8 \\le x \\le 8$에서 정의된 함수\n\n$$f(x) = \\begin{cases} \\log_2(8-x)+a & (-8 \\le x < b) \\\\ \\log_2(x+8) & (b \\le x \\le 8) \\end{cases}$$\n\n이 다음 조건을 만족시킬 때, $2^a \\times b$의 값은? [4점]\n\n함수 $f(x)$는 일대일함수이고, 함수 $f(x)$의 치역은 $\\left\\{y \\left| k \\le y \\le k+\\log_2\\frac{9}{2}\\right.\\right\\}$이다.\n\n## Choices\n① 9    ② 8    ③ 7    ④ 6    ⑤ 5\n\n**Answer**: ②\n**Difficulty**: unknown\n**Score**: 4점\n**Type**: multiple choice\n\n---\n\n## Solution\n\n$-8 \\le x < b$에서 $f(x)$의 치역은 $\\left\\{y\\left|\\log_2(8-b)+a < y \\le 4+a\\right.\\right\\}$ ($\\because$ $y=\\log_2(8-x)+a$는 감소함수)\n\n$b \\le x \\le 8$에서 $f(x)$의 치역은 $\\{y|\\log_2(b+8) \\le y \\le 4\\}$ ($\\because$ $y=\\log_2(x+8)$은 증가함수)\n\n이고, 문제의 박스 조건에서 $f(x)$는 일대일 함수 $\\Rightarrow x_1 \\neq x_2$이면 $f(x_1) \\neq f(x_2)$ (단, $-8 \\le x_1 \\le 8$, $-8 \\le x_2 \\le 8$)\n\n이므로\n\n$f(x)$의 치역이 $\\left\\{y\\left|k \\le y \\le k+\\log_2\\frac{9}{2}\\right.\\right\\}$를 만족시키려면\n\n$$\\begin{cases} ① \\log_2(8-b)+a=4 \\\\ ② k=\\log_2(b+8), \\quad k+\\log_2\\frac{9}{2}=4+a \\end{cases}$$\n\n이어야 한다.\n\n[FIGURE: 그래프에서 $x=-8$부터 $b$까지 감소하는 곡선, $x=b$부터 $8$까지 증가하는 곡선이 그려져 있고, $y=k$와 $y=k+\\log_2\\frac{9}{2}$가 표시되어 있음]\n\n따라서\n\n$② \\Rightarrow \\log_2(b+8)+\\log_2\\frac{9}{2}=4+a \\cdots ①$\n\n이고, 이 식과 ①을 각 변끼리 더해서 정리하면\n\n$$\\log_2(8-b)(b+8)=8-\\log_2\\frac{9}{2} \\Rightarrow 64-b^2=\\frac{512}{9}=64\\times\\frac{8}{9}$$\n\n$$\\Rightarrow b=\\frac{8}{3} \\quad (\\because 0<b<8)$$\n\n을 얻고,\n\n$$① \\Rightarrow a=\\log_23 \\Rightarrow 2^a=3$$\n\n을 얻는다.\n\n$$\\therefore 2^a \\times b=3\\times\\frac{8}{3}=8$$\n\n---",
     "skel_status": "ok",
@@ -1469,5 +1262,181 @@
       }
     ],
     "created_at": "2026-03-19T16:03:33.721Z"
+  },
+  {
+    "problem_id": "Problem8",
+    "content": ">�\u001b��Ry'�\tҢ��{�1��ޞ�\u001a���+\"n)b�#롹^�y�z���_\u0017��W^�םu��(h�Ǭۦ����s~]��'�\u0007�s~C���r�m��䞌'I�+{��鮖ة��!�'\u001e�[�������\u0007��\u0019�ƙ�~�����\u001d���5�{x�u��_\u0017��W�{m���s_'������i�|�ݭ]u괴b�\u001bZ��0",
+    "skel_status": "pending",
+    "dna_status": "ok",
+    "needed_neurons": [],
+    "needed_dna": [],
+    "previous_analysis": "",
+    "previous_matching": "",
+    "previous_matched": [],
+    "previous_skeleton": [],
+    "previous_new_neurons": [],
+    "previous_dna_nodes": [
+      {
+        "id": "top",
+        "dna": "Q3",
+        "label": "모든 n의 값의 합을 구하라",
+        "category": "발문"
+      },
+      {
+        "id": "ask_sum",
+        "dna": "E1",
+        "label": "합(모든 n의 값)",
+        "category": "수식"
+      },
+      {
+        "id": "conds",
+        "dna": "S1",
+        "label": "모든 조건",
+        "category": "구조"
+      },
+      {
+        "id": "vn",
+        "dna": "T3",
+        "label": "자연수 n (독립변수)",
+        "category": "말단"
+      },
+      {
+        "id": "lim_n_nat",
+        "dna": "L3",
+        "label": "n은 자연수",
+        "category": "제한"
+      },
+      {
+        "id": "lim_n_ge2",
+        "dna": "C2",
+        "label": "n ≥ 2",
+        "category": "제한"
+      },
+      {
+        "id": "c2_const",
+        "dna": "T2",
+        "label": "상수 2",
+        "category": "말단"
+      },
+      {
+        "id": "c18",
+        "dna": "T2",
+        "label": "상수 18",
+        "category": "말단"
+      },
+      {
+        "id": "c4",
+        "dna": "T2",
+        "label": "상수 4",
+        "category": "말단"
+      },
+      {
+        "id": "pow_2_18",
+        "dna": "E7",
+        "label": "2^18",
+        "category": "수식"
+      },
+      {
+        "id": "nrt",
+        "dna": "F7",
+        "label": "2^18의 n제곱근",
+        "category": "함수"
+      },
+      {
+        "id": "o2_node",
+        "dna": "O2",
+        "label": "n제곱근 중 4 이하의 정수가 존재하는지 판정",
+        "category": "연산"
+      },
+      {
+        "id": "int_cond",
+        "dna": "L3",
+        "label": "정수 조건",
+        "category": "제한"
+      },
+      {
+        "id": "ineq_le4",
+        "dna": "C2",
+        "label": "≤ 4",
+        "category": "조건"
+      },
+      {
+        "id": "exist_cond",
+        "dna": "X5",
+        "label": "4 이하의 정수인 n제곱근이 존재한다",
+        "category": "존재"
+      }
+    ],
+    "previous_dna_edges": [
+      {
+        "from": "ask_sum",
+        "to": "top"
+      },
+      {
+        "from": "conds",
+        "to": "top"
+      },
+      {
+        "from": "vn",
+        "to": "ask_sum"
+      },
+      {
+        "from": "lim_n_nat",
+        "to": "vn"
+      },
+      {
+        "from": "lim_n_ge2",
+        "to": "vn"
+      },
+      {
+        "from": "c2_const",
+        "to": "lim_n_ge2"
+      },
+      {
+        "from": "c2_const",
+        "to": "pow_2_18"
+      },
+      {
+        "from": "c18",
+        "to": "pow_2_18"
+      },
+      {
+        "from": "pow_2_18",
+        "to": "nrt"
+      },
+      {
+        "from": "vn",
+        "to": "nrt"
+      },
+      {
+        "from": "nrt",
+        "to": "o2_node"
+      },
+      {
+        "from": "int_cond",
+        "to": "o2_node"
+      },
+      {
+        "from": "ineq_le4",
+        "to": "o2_node"
+      },
+      {
+        "from": "c4",
+        "to": "ineq_le4"
+      },
+      {
+        "from": "o2_node",
+        "to": "exist_cond"
+      },
+      {
+        "from": "exist_cond",
+        "to": "conds"
+      },
+      {
+        "from": "vn",
+        "to": "conds"
+      }
+    ],
+    "created_at": "2026-03-19T16:13:14.134Z"
   }
 ]
