@@ -1859,5 +1859,602 @@
     "folders": [],
     "history": [],
     "created_at": "2026-03-19T11:08:56.326Z"
+  },
+  {
+    "problem_id": "Problem",
+    "answer": "14",
+    "clues": [
+      {
+        "id": "단서A",
+        "text": "a>1이고, 곡선 y=4-a^{-x}가 x축, y축과 만나는 점이 각각 A, B이다"
+      },
+      {
+        "id": "단서B",
+        "text": "삼각형 OAB의 외접원이 곡선 y=a^x-1과 O가 아닌 점 C에서 만난다"
+      },
+      {
+        "id": "단서C",
+        "text": "CO = CA이다"
+      }
+    ],
+    "skeleton": [
+      {
+        "from": "단서A",
+        "to": "연산2",
+        "note": "y=4-a^{-x}와 x축의 교점에서 y=0일 때 a^{-x}=4이고 x=-log_a 4이다"
+      },
+      {
+        "from": "단서A",
+        "to": "사실18",
+        "note": "y=4-a^{-x}와 y축의 교점에서 x=0일 때 y=4-a^0=4-1=3이다"
+      },
+      {
+        "from": [
+          "연산2",
+          "사실18"
+        ],
+        "to": "사실69",
+        "note": "A는 x축 위(-log_a 4, 0), B는 y축 위(0, 3)에 있을 때 ∠AOB=90°이다"
+      },
+      {
+        "from": "사실69",
+        "to": "사실11",
+        "note": "∠AOB=90°일 때 삼각형 OAB의 외접원에서 AB는 지름이다"
+      },
+      {
+        "from": "사실11",
+        "to": "사실70",
+        "note": "AB가 지름일 때 AB의 중점 M이 외접원의 중심이다"
+      },
+      {
+        "from": [
+          "연산2",
+          "사실18"
+        ],
+        "to": "연산12",
+        "note": "A(-log_a 4, 0), B(0, 3)일 때 중점 M은 (-log_a 2, 3/2)이다"
+      },
+      {
+        "from": [
+          "단서C",
+          "사실70"
+        ],
+        "to": "사실13",
+        "note": "CO=CA이고 M이 외접원의 중심일 때 C는 선분 OA의 수직이등분선 위에 있다"
+      },
+      {
+        "from": [
+          "사실13",
+          "연산12"
+        ],
+        "to": "전략21",
+        "note": "C가 OA의 수직이등분선 위에 있을 때 C의 x좌표는 M의 x좌표인 -log_a 2이다"
+      },
+      {
+        "from": [
+          "전략21",
+          "단서B"
+        ],
+        "to": "연산2_1",
+        "note": "C의 x좌표가 -log_a 2이고 C가 y=a^x-1 위에 있을 때 y=a^{-log_a 2}-1=1/2-1=-1/2이다"
+      },
+      {
+        "from": [
+          "연산12",
+          "연산2_1"
+        ],
+        "to": "연산11",
+        "note": "M(-log_a 2, 3/2), C(-log_a 2, -1/2)일 때 MC=sqrt((3/2-(-1/2))^2)=2이다"
+      },
+      {
+        "from": [
+          "사실70",
+          "연산11"
+        ],
+        "to": "전략21_1",
+        "note": "외접원의 반지름이 2일 때 지름 AB=4이다"
+      },
+      {
+        "from": [
+          "전략21_1",
+          "사실18"
+        ],
+        "to": "연산6",
+        "note": "직각삼각형 OAB에서 AB=4, OB=3일 때 OA^2=16-9=7이다"
+      },
+      {
+        "from": [
+          "연산6",
+          "연산2"
+        ],
+        "to": "연산17",
+        "note": "OA=sqrt(7)이고 OA=log_a 4일 때 log_a 4=sqrt(7)이다"
+      },
+      {
+        "from": "연산17",
+        "to": "연산3",
+        "note": "log_a 4=sqrt(7)일 때 log_a 2=sqrt(7)/2이다"
+      },
+      {
+        "from": [
+          "연산3",
+          "연산2_1"
+        ],
+        "to": "전략21_2",
+        "note": "log_a 2=sqrt(7)/2일 때 C(-sqrt(7)/2, -1/2)이다"
+      },
+      {
+        "from": [
+          "전략21_2",
+          "사실18"
+        ],
+        "to": "연산11_1",
+        "note": "C(-sqrt(7)/2, -1/2), B(0, 3)일 때 BC^2=(sqrt(7)/2)^2+(7/2)^2=7/4+49/4=14이다"
+      },
+      {
+        "from": "연산11_1",
+        "to": "END",
+        "note": "14이다"
+      }
+    ],
+    "solution": "STEP 1. 곡선 y=4-a^{-x}와 x축의 교점에서 y=0일 때 a^{-x}=4이고 A(-log_a 4, 0)이다.\n\nSTEP 2. 곡선 y=4-a^{-x}와 y축의 교점에서 x=0일 때 y=4-1=3이고 B(0, 3)이다.\n\nSTEP 3. A는 x축 위, B는 y축 위에 있을 때 ∠AOB=90°이다.\n\nSTEP 4. ∠AOB=90°일 때 삼각형 OAB의 외접원에서 AB는 지름이고, AB의 중점 M이 외접원의 중심이다.\n\nSTEP 5. A(-log_a 4, 0), B(0, 3)일 때 중점 M은 (-log_a 2, 3/2)이다.\n\nSTEP 6. CO=CA이고 M이 외접원의 중심일 때 C는 선분 OA의 수직이등분선 위에 있고, C의 x좌표는 -log_a 2이다.\n\nSTEP 7. C의 x좌표가 -log_a 2이고 C가 y=a^x-1 위에 있을 때 C(-log_a 2, -1/2)이다.\n\nSTEP 8. M(-log_a 2, 3/2), C(-log_a 2, -1/2)일 때 MC=2이고, 외접원의 반지름이 2일 때 지름 AB=4이다.\n\nSTEP 9. 직각삼각형 OAB에서 AB=4, OB=3일 때 OA=sqrt(7)이다.\n\nSTEP 10. OA=sqrt(7)이고 OA=log_a 4일 때 log_a 2=sqrt(7)/2이고, C(-sqrt(7)/2, -1/2)이다.\n\nSTEP 11. C(-sqrt(7)/2, -1/2), B(0, 3)일 때 BC^2=14이다.",
+    "analysis": "STEP 1. 점 A, B 좌표 결정\n- 곡선 y=4-a^{-x}와 x축의 교점 A: y=0이므로 4-a^{-x}=0 → a^{-x}=4 → -x=log_a 4 → x=-log_a 4. 따라서 A(-log_a 4, 0)\n- 곡선 y=4-a^{-x}와 y축의 교점 B: x=0이므로 y=4-a^0=4-1=3. 따라서 B(0, 3)\n\nSTEP 2. 외접원의 중심 M 결정\n- ∠AOB=90° (A는 음의 x축 위, B는 양의 y축 위, O는 원점)\n- 직각삼각형 OAB의 외접원의 중심은 빗변 AB의 중점이다 (탈레스 정리)\n- AB의 중점 M = ((-log_a 4 + 0)/2, (0+3)/2) = (-log_a 2, 3/2)\n\nSTEP 3. 점 C의 좌표 결정\n- CO=CA이고 M이 외접원의 중심이므로, 점 C는 선분 OA의 수직이등분선 위에 있다 (사실13: 이등변삼각형 꼭지점)\n- 선분 OA는 x축 위의 선분이므로, 그 수직이등분선은 x=-log_a 2인 수직선이다\n- 따라서 C의 x좌표는 -log_a 2\n- C가 곡선 y=a^x-1 위에 있으므로: y = a^{-log_a 2} - 1 = 2^{-1} - 1 = 1/2 - 1 = -1/2\n- 따라서 C(-log_a 2, -1/2)\n\nSTEP 4. log_a 4의 값 결정\n- 외접원의 반지름 = MC = sqrt(((-log_a 2) - (-log_a 2))^2 + ((-1/2) - (3/2))^2) = sqrt(0 + 4) = 2\n- 외접원의 반지름 = AB/2이므로 AB = 4\n- 직각삼각형 OAB에서 피타고라스 정리: OA^2 + OB^2 = AB^2\n- OA^2 = AB^2 - OB^2 = 16 - 9 = 7\n- OA = sqrt(7)\n- A(-log_a 4, 0)이므로 log_a 4 = sqrt(7)\n\nSTEP 5. BC^2 계산\n- log_a 4 = sqrt(7)이므로 log_a 2 = sqrt(7)/2\n- C(-sqrt(7)/2, -1/2), B(0, 3)\n- BC^2 = (0 - (-sqrt(7)/2))^2 + (3 - (-1/2))^2 = 7/4 + (7/2)^2 = 7/4 + 49/4 = 56/4 = 14",
+    "new_neurons": [],
+    "metadata": {
+      "unit": "로그와 지수함수",
+      "difficulty": "unknown",
+      "score": "4",
+      "type": "short answer",
+      "answer": "14"
+    },
+    "edge_count": 17,
+    "side_count": 0,
+    "statement": "a>1인 실수 a에 대하여 곡선 y=4-a^{-x}의 x축, y축과 만나는 점을 각각 A, B라 하자. 삼각형 OAB의 외접원이 곡선 y=a^x-1과 O가 아닌 점 C에서 만나고 CO=CA일 때, BC^2의 값을 구하시오. (단, O는 원점이다.)",
+    "dna": {
+      "nodes": [
+        {
+          "id": "top",
+          "dna": "Q1",
+          "label": "값을 구하라",
+          "category": "발문"
+        },
+        {
+          "id": "ask",
+          "dna": "E7",
+          "label": "BC²",
+          "category": "수식"
+        },
+        {
+          "id": "bc_dist",
+          "dna": "G18",
+          "label": "거리 BC",
+          "category": "기하"
+        },
+        {
+          "id": "pt_b",
+          "dna": "G1",
+          "label": "점 B",
+          "category": "기하"
+        },
+        {
+          "id": "pt_c",
+          "dna": "G1",
+          "label": "점 C",
+          "category": "기하"
+        },
+        {
+          "id": "c2",
+          "dna": "T2",
+          "label": "상수 2",
+          "category": "말단"
+        },
+        {
+          "id": "conds",
+          "dna": "S1",
+          "label": "여러 조건",
+          "category": "구조"
+        },
+        {
+          "id": "limit_a",
+          "dna": "L2",
+          "label": "a > 1",
+          "category": "제한"
+        },
+        {
+          "id": "va",
+          "dna": "T1",
+          "label": "변수 a",
+          "category": "말단"
+        },
+        {
+          "id": "c1",
+          "dna": "T2",
+          "label": "상수 1",
+          "category": "말단"
+        },
+        {
+          "id": "crv1",
+          "dna": "G2",
+          "label": "곡선 y=4-a^(-x)",
+          "category": "기하"
+        },
+        {
+          "id": "crv1_eq",
+          "dna": "C11",
+          "label": "방정식",
+          "category": "조건"
+        },
+        {
+          "id": "crv1_c1",
+          "dna": "C1",
+          "label": "y = 4-a^(-x)",
+          "category": "조건"
+        },
+        {
+          "id": "crv1_sum",
+          "dna": "E1",
+          "label": "합(4, -a^(-x))",
+          "category": "수식"
+        },
+        {
+          "id": "c4",
+          "dna": "T2",
+          "label": "상수 4",
+          "category": "말단"
+        },
+        {
+          "id": "crv1_neg",
+          "dna": "E2",
+          "label": "부호반전",
+          "category": "수식"
+        },
+        {
+          "id": "crv1_exp",
+          "dna": "E4",
+          "label": "지수 a^(-x)",
+          "category": "수식"
+        },
+        {
+          "id": "crv1_neg_x",
+          "dna": "E2",
+          "label": "부호반전(x)",
+          "category": "수식"
+        },
+        {
+          "id": "vx",
+          "dna": "T3",
+          "label": "독립변수 x",
+          "category": "말단"
+        },
+        {
+          "id": "meet_x",
+          "dna": "C3",
+          "label": "x축과 만남",
+          "category": "조건"
+        },
+        {
+          "id": "x_axis",
+          "dna": "G13",
+          "label": "x축",
+          "category": "기하"
+        },
+        {
+          "id": "pt_a",
+          "dna": "G1",
+          "label": "점 A",
+          "category": "기하"
+        },
+        {
+          "id": "meet_y",
+          "dna": "C3",
+          "label": "y축과 만남",
+          "category": "조건"
+        },
+        {
+          "id": "y_axis",
+          "dna": "G13",
+          "label": "y축",
+          "category": "기하"
+        },
+        {
+          "id": "tri_oab",
+          "dna": "G25",
+          "label": "삼각형 OAB",
+          "category": "기하"
+        },
+        {
+          "id": "pt_o",
+          "dna": "G17",
+          "label": "원점 O(0,0)",
+          "category": "기하"
+        },
+        {
+          "id": "circum",
+          "dna": "G26",
+          "label": "외접원",
+          "category": "기하"
+        },
+        {
+          "id": "crv2",
+          "dna": "G2",
+          "label": "곡선 y=a^x-1",
+          "category": "기하"
+        },
+        {
+          "id": "crv2_eq",
+          "dna": "C11",
+          "label": "방정식",
+          "category": "조건"
+        },
+        {
+          "id": "crv2_c1",
+          "dna": "C1",
+          "label": "y = a^x-1",
+          "category": "조건"
+        },
+        {
+          "id": "crv2_sum",
+          "dna": "E1",
+          "label": "합(a^x, -1)",
+          "category": "수식"
+        },
+        {
+          "id": "crv2_exp",
+          "dna": "E4",
+          "label": "지수 a^x",
+          "category": "수식"
+        },
+        {
+          "id": "crv2_neg1",
+          "dna": "E2",
+          "label": "부호반전(1)",
+          "category": "수식"
+        },
+        {
+          "id": "meet_c",
+          "dna": "C3",
+          "label": "곡선과 원이 만남",
+          "category": "조건"
+        },
+        {
+          "id": "diff_o",
+          "dna": "C2",
+          "label": "O가 아닌 점",
+          "category": "조건"
+        },
+        {
+          "id": "len_eq",
+          "dna": "C16",
+          "label": "길이 같음",
+          "category": "조건"
+        },
+        {
+          "id": "co_dist",
+          "dna": "G18",
+          "label": "거리 CO",
+          "category": "기하"
+        },
+        {
+          "id": "ca_dist",
+          "dna": "G18",
+          "label": "거리 CA",
+          "category": "기하"
+        }
+      ],
+      "edges": [
+        {
+          "from": "ask",
+          "to": "top"
+        },
+        {
+          "from": "bc_dist",
+          "to": "ask"
+        },
+        {
+          "from": "pt_b",
+          "to": "bc_dist"
+        },
+        {
+          "from": "pt_c",
+          "to": "bc_dist"
+        },
+        {
+          "from": "c2",
+          "to": "ask"
+        },
+        {
+          "from": "conds",
+          "to": "top"
+        },
+        {
+          "from": "va",
+          "to": "limit_a"
+        },
+        {
+          "from": "c1",
+          "to": "limit_a"
+        },
+        {
+          "from": "limit_a",
+          "to": "conds"
+        },
+        {
+          "from": "crv1_eq",
+          "to": "crv1"
+        },
+        {
+          "from": "crv1_c1",
+          "to": "crv1_eq"
+        },
+        {
+          "from": "crv1_sum",
+          "to": "crv1_c1"
+        },
+        {
+          "from": "c4",
+          "to": "crv1_sum"
+        },
+        {
+          "from": "crv1_neg",
+          "to": "crv1_sum"
+        },
+        {
+          "from": "crv1_exp",
+          "to": "crv1_neg"
+        },
+        {
+          "from": "va",
+          "to": "crv1_exp"
+        },
+        {
+          "from": "crv1_neg_x",
+          "to": "crv1_exp"
+        },
+        {
+          "from": "vx",
+          "to": "crv1_neg_x"
+        },
+        {
+          "from": "crv1",
+          "to": "meet_x"
+        },
+        {
+          "from": "x_axis",
+          "to": "meet_x"
+        },
+        {
+          "from": "pt_a",
+          "to": "meet_x"
+        },
+        {
+          "from": "meet_x",
+          "to": "conds"
+        },
+        {
+          "from": "crv1",
+          "to": "meet_y"
+        },
+        {
+          "from": "y_axis",
+          "to": "meet_y"
+        },
+        {
+          "from": "pt_b",
+          "to": "meet_y"
+        },
+        {
+          "from": "meet_y",
+          "to": "conds"
+        },
+        {
+          "from": "pt_o",
+          "to": "tri_oab"
+        },
+        {
+          "from": "pt_a",
+          "to": "tri_oab"
+        },
+        {
+          "from": "pt_b",
+          "to": "tri_oab"
+        },
+        {
+          "from": "tri_oab",
+          "to": "circum"
+        },
+        {
+          "from": "crv2_eq",
+          "to": "crv2"
+        },
+        {
+          "from": "crv2_c1",
+          "to": "crv2_eq"
+        },
+        {
+          "from": "crv2_sum",
+          "to": "crv2_c1"
+        },
+        {
+          "from": "crv2_exp",
+          "to": "crv2_sum"
+        },
+        {
+          "from": "va",
+          "to": "crv2_exp"
+        },
+        {
+          "from": "vx",
+          "to": "crv2_exp"
+        },
+        {
+          "from": "crv2_neg1",
+          "to": "crv2_sum"
+        },
+        {
+          "from": "c1",
+          "to": "crv2_neg1"
+        },
+        {
+          "from": "circum",
+          "to": "meet_c"
+        },
+        {
+          "from": "crv2",
+          "to": "meet_c"
+        },
+        {
+          "from": "pt_c",
+          "to": "meet_c"
+        },
+        {
+          "from": "meet_c",
+          "to": "conds"
+        },
+        {
+          "from": "pt_c",
+          "to": "diff_o"
+        },
+        {
+          "from": "pt_o",
+          "to": "diff_o"
+        },
+        {
+          "from": "diff_o",
+          "to": "meet_c"
+        },
+        {
+          "from": "co_dist",
+          "to": "len_eq"
+        },
+        {
+          "from": "ca_dist",
+          "to": "len_eq"
+        },
+        {
+          "from": "pt_c",
+          "to": "co_dist"
+        },
+        {
+          "from": "pt_o",
+          "to": "co_dist"
+        },
+        {
+          "from": "pt_c",
+          "to": "ca_dist"
+        },
+        {
+          "from": "pt_a",
+          "to": "ca_dist"
+        },
+        {
+          "from": "len_eq",
+          "to": "conds"
+        }
+      ],
+      "new_dna": []
+    },
+    "folders": [],
+    "history": [],
+    "created_at": "2026-03-19T11:12:39.260Z"
   }
 ]
