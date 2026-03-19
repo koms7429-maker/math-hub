@@ -6,13 +6,15 @@
     "dna_status": "ok",
     "needed_neurons": [],
     "needed_dna": [],
-    "previous_analysis": "전송된 문제 데이터가 바이너리 손상(깨진 인코딩)으로 인해 문제문을 파악할 수 없습니다. 정상적인 텍스트로 문제를 다시 전송해 주세요.",
-    "previous_matching": "문제 데이터가 손상된 바이너리/인코딩 오류로 해석 불가. 문제문을 텍스트로 다시 제공 필요.",
+    "previous_analysis": "문제 파일이 손상된 바이너리 데이터로 전달되어 수학 문제 내용을 파악할 수 없습니다. 원본 문제 텍스트를 다시 제공해 주시기 바랍니다.",
+    "previous_matching": "문제 데이터가 깨진 바이너리로 전달되어 문제 내용을 파악할 수 없습니다. 뉴런 매칭 불가.",
     "previous_matched": [
       "사실4",
       "전략12",
       "전략10",
-      "연산9"
+      "연산9",
+      "전략22",
+      "전략20"
     ],
     "previous_skeleton": [],
     "previous_new_neurons": [],
@@ -54,9 +56,9 @@
         "category": "수식"
       },
       {
-        "id": "lhs2",
+        "id": "lhs12",
         "dna": "E1",
-        "label": "합(x²+(2a+1)x, a²+a)",
+        "label": "합(x², (2a+1)x)",
         "category": "수식"
       },
       {
@@ -75,12 +77,6 @@
         "id": "c2",
         "dna": "T2",
         "label": "상수 2",
-        "category": "말단"
-      },
-      {
-        "id": "c_exp2",
-        "dna": "T2",
-        "label": "상수 2 (지수)",
         "category": "말단"
       },
       {
@@ -123,6 +119,12 @@
         "id": "c0",
         "dna": "T2",
         "label": "상수 0",
+        "category": "말단"
+      },
+      {
+        "id": "c_exp2",
+        "dna": "T2",
+        "label": "상수 2 (지수)",
         "category": "말단"
       },
       {
@@ -190,7 +192,7 @@
         "to": "eq_main"
       },
       {
-        "from": "lhs2",
+        "from": "lhs",
         "to": "eq_c1"
       },
       {
@@ -198,20 +200,20 @@
         "to": "eq_c1"
       },
       {
-        "from": "lhs",
-        "to": "lhs2"
+        "from": "lhs12",
+        "to": "lhs"
       },
       {
         "from": "term_const",
-        "to": "lhs2"
+        "to": "lhs"
       },
       {
         "from": "term_x2",
-        "to": "lhs"
+        "to": "lhs12"
       },
       {
         "from": "term_mid",
-        "to": "lhs"
+        "to": "lhs12"
       },
       {
         "from": "vx",
@@ -294,6 +296,6 @@
         "to": "vn"
       }
     ],
-    "created_at": "2026-03-19T17:22:22.692Z"
+    "created_at": "2026-03-19T17:23:05.335Z"
   }
 ]
