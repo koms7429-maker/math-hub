@@ -229,7 +229,9 @@ function kbDel(){var pids=multiSel.size?[...multiSel]:(sel?[sel.problem_id]:[]);
     if(ev.button!==0)return;
     /* If clicking on an already-selected item, let native drag handle it */
     var pi=ev.target.closest('.pi[data-pid]');
-    if(pi&&multiSel.has(pi.getAttribute('data-pid'))&&multiSel.size>0)return;
+    if(pi){var pid=pi.getAttribute('data-pid');
+      if(multiSel.has(pid)||(sel&&sel.problem_id===pid))return;
+    }
     /* Start pending lasso (will activate after deadzone) */
     pending=true;pendingEv=ev;
     lassoStart={x:ev.clientX,y:ev.clientY,scrollTop:slist.scrollTop};
@@ -297,7 +299,7 @@ async function bulkMove(){var v=(document.getElementById('bulk-folder')||{}).val
 
 function dStart(pid,ev){dragPid=pid;var count=multiSel.has(pid)?multiSel.size:1;var ghost=document.createElement('div');ghost.className='drag-ghost';ghost.textContent=count>1?count+' items':pid;document.body.appendChild(ghost);ev.dataTransfer.setDragImage(ghost,0,0);setTimeout(function(){document.body.removeChild(ghost)},0);ev.dataTransfer.effectAllowed='move';rList()}
 function dEnd(){dragPid=null;rList()}
-function dropToFolder(folder,ev){ev.preventDefault();ev.stopPropagation();var te=ev.currentTarget;if(te)te.classList.remove('fl-drop');if(dragFolder){if(dragFolder!==folder&&!isDescendant(folder,dragFolder)){folderParent[dragFolder]=folder;saveFP()}dragFolder=null;dragPid=null;rList();return}var pids=multiSel.size>1&&multiSel.has(dragPid)?[...multiSel]:(dragPid?[dragPid]:[]);pids.forEach(function(pid){var p=probs.find(function(x){return x.problem_id===pid});if(p){if(!p.tags)p.tags=tg(p);if(!p.tags.custom)p.tags.custom=[];if(p.tags.custom.indexOf(folder)<0)p.tags.custom.push(folder)}});dragPid=null;if(ghTk&&pids.length)saveBS('drag to '+folder).catch(function(e){alert(e.message)});rList()}
+function dropToFolder(folder,ev){ev.preventDefault();ev.stopPropagation();var te=ev.currentTarget;if(te)te.classList.remove('fl-drop');if(dragFolder){if(dragFolder!==folder&&!isDescendant(folder,dragFolder)){folderParent[dragFolder]=folder;saveFP()}dragFolder=null;dragPid=null;rList();return}var pids=multiSel.size>1&&multiSel.has(dragPid)?[...multiSel]:(dragPid?[dragPid]:[]);pids.forEach(function(pid){var p=probs.find(function(x){return x.problem_id===pid});if(p){if(!p.tags)p.tags=tg(p);if(!p.tags.custom)p.tags.custom=[];/* Move: remove all folder tags, add target */p.tags.custom=[folder]}});dragPid=null;if(ghTk&&pids.length)saveBS('move to '+folder).catch(function(e){alert(e.message)});rList()}
 document.addEventListener('dragstart',function(ev){var fl=ev.target.closest('.fl[data-folder]');if(fl&&curV===4){var fn=fl.getAttribute('data-folder');if(fn){dragFolder=fn;ev.dataTransfer.effectAllowed='move';var ghost=document.createElement('div');ghost.className='drag-ghost';ghost.textContent='\uD83D\uDCC1 '+fn;document.body.appendChild(ghost);ev.dataTransfer.setDragImage(ghost,0,0);setTimeout(function(){document.body.removeChild(ghost)},0)}}});
 
 function rTabs(){document.getElementById('tbar').innerHTML=TABS.map(function(s,i){var l=s;if(i===5)l='all ('+nAll.length+')';if(i===6&&sel&&sel.history&&sel.history.length)l+=' ('+sel.history.length+')';if(i===8)l='+ register';return'<button class="tb '+(curT===i?'on':'')+'" onclick="curT='+i+';rTabs();rCon()">'+l+'</button>'}).join('')}
