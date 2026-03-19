@@ -504,5 +504,428 @@
       }
     ],
     "created_at": "2026-03-19T23:26:45.486Z"
+  },
+  {
+    "problem_id": "Problem6(UnknownSource)-QuadraticEquations",
+    "content": "# Problem6. (Unknown Source) - Quadratic Equations\n\n## Problem\n\n$x$에 대한 방정식 $x^2 + (2a+1)x + a^2 + a = 0$의 한 실근 $k$가 다음 조건을 만족시키도록 하는 모든 자연수 $a$의 값의 합은?\n\n어떤 자연수 $n$에 대하여 $k^n = 64$이다.\n\n## Choices\n① 12  ② 14  ③ 16  ④ 18  ⑤ 20\n\n**Answer**: ④ 18\n**Difficulty**: unknown\n**Score**: 4점\n**Type**: multiple choice\n\n---\n\n## Solution\n\n$$x^2 + (2a+1)x + a^2 + a = 0 \\Leftrightarrow (x+a)(x+a+1) = 0$$\n$$\\Leftrightarrow x = -a \\text{ 또는 } x = -a-1$$\n\n이므로\n$$k = -a \\text{ 또는 } k = -a-1 \\cdots \\text{①}$$\n\n이다. 이때,\n\n$a$가 자연수 $\\Rightarrow$ $k$는 음의 정수\n\n이므로 문제의 박스 조건을 만족시키려면\n\n$k$는 음의 정수이고, $k^n = 2^6 \\Rightarrow$ $n$은 짝수이고 6의 약수\n\n$$\\Rightarrow \\begin{cases} \\text{① } n=2\\text{이고, } k=-8 \\\\ \\text{② } n=6\\text{이고, } k=-2 \\end{cases}$$\n\n이어야 한다. 따라서 ①에 의해\n\n$$\\begin{cases} \\text{①의 경우 } a=8 \\text{ 또는 } a=7 \\\\ \\text{②의 경우 } a=2 \\text{ 또는 } a=1 \\end{cases}$$\n\n$$\\Rightarrow \\text{(모든 자연수 } a\\text{의 값의 합)} = 8+7+2+1 = 18$$\n\n이다.\n\n---",
+    "content_source": "FileLoop",
+    "content_length": 914,
+    "skel_status": "pending",
+    "dna_status": "ok",
+    "needed_neurons": [
+      "사실XX",
+      "사실YY"
+    ],
+    "needed_dna": [],
+    "previous_analysis": "방정식 x^2 + (2a+1)x + a^2 + a = 0을 인수분해하면 (x+a)(x+a+1) = 0이 된다. 영인자법칙에 의해 x = -a 또는 x = -a-1이다. a가 자연수(1, 2, 3, ...)이면 -a와 -a-1은 모두 음의 정수이다. 따라서 k는 음의 정수이다.\n\nk^n = 64 = 2^6을 만족해야 한다. k가 음의 정수이므로 k = -(양의 정수)이다. k^n = (음수)^n = 2^6 > 0이 되려면 n이 짝수이어야 한다. (n이 홀수이면 음수의 홀수 제곱은 음수가 되어 64가 될 수 없다.)\n\nn이 짝수이고 k^n = 2^6일 때, k = -2^(6/n)이어야 한다. k가 정수이려면 6/n이 정수이어야 하고, n이 양의 짝수이면서 6의 약수이어야 한다. 양의 짝수이면서 6의 약수인 것은 n=2와 n=6이다.\n\n- n=2이면 k^2 = 64이므로 k = -8 (k<0이므로)\n- n=6이면 k^6 = 64이므로 k = -2 (k<0이므로)\n\nk = -a 또는 k = -a-1이고 a는 자연수이므로:\n- k = -8이면 a=8(k=-a) 또는 a=7(k=-a-1)\n- k = -2이면 a=2(k=-a) 또는 a=1(k=-a-1)\n\n모든 자연수 a의 합 = 8+7+2+1 = 18",
+    "previous_matching": "1. 이차방정식 인수분해 → 전략29 (인수분해 시도)\n2. 영인자법칙으로 근 분리 → 연산9 (영인자법칙)\n3. a가 자연수이면 k는 음의 정수 → 사실4 관련 추론 (실수 근의 부호)\n4. k<0이고 k^n=64=2^6이므로 n이 짝수이어야 함 → 사실74 (음수의 n제곱근이 실수이려면 n이 홀수 또는 짝수 조건) / 사실4 (n제곱근 실수 개수)\n5. n은 짝수이고 6의 약수 → 전략12 (홀짝 경우 분리)\n6. 가능한 (n, k) 쌍 열거 → 전략10 (변수 고정 카운팅)\n7. 각 k 값으로부터 a 값 결정 → 연산9 (근과 a의 관계)\n8. 모든 a 합산 → 전략10",
+    "previous_matched": [
+      "전략29",
+      "연산9",
+      "사실4",
+      "사실74",
+      "전략12",
+      "전략10"
+    ],
+    "previous_skeleton": [
+      {
+        "from": "단서A",
+        "to": "전략29",
+        "note": "$x^2+(2a+1)x+a^2+a = (x+a)(x+a+1)$로 인수분해된다"
+      },
+      {
+        "from": "전략29",
+        "to": "연산9",
+        "note": "$(x+a)(x+a+1)=0$이면 $x=-a$ 또는 $x=-a-1$이다"
+      },
+      {
+        "from": [
+          "연산9",
+          "단서B"
+        ],
+        "to": "사실4_0",
+        "note": "$a$가 자연수일 때 $k=-a$ 또는 $k=-a-1$은 음의 정수이다"
+      },
+      {
+        "from": [
+          "사실4_0",
+          "단서C"
+        ],
+        "to": "사실74",
+        "note": "$k<0$이고 $k^n=64>0$일 때 $n$은 짝수이어야 한다"
+      },
+      {
+        "from": "사실74",
+        "to": "전략12",
+        "note": "$n$은 양의 짝수이면서 $6$의 약수일 때 $n=2$ 또는 $n=6$이다",
+        "main": true
+      },
+      {
+        "from": "전략12",
+        "to": "사실4_1",
+        "note": "$n=2$일 때 $k^2=64$이면 $k=-8$이다",
+        "main": false
+      },
+      {
+        "from": "전략12",
+        "to": "사실4_2",
+        "note": "$n=6$일 때 $k^6=64$이면 $k=-2$이다",
+        "main": false
+      },
+      {
+        "from": [
+          "사실4_1",
+          "연산9"
+        ],
+        "to": "전략10",
+        "note": "$k=-8$일 때 $a=8$ 또는 $a=7$이다",
+        "main": false
+      },
+      {
+        "from": [
+          "사실4_2",
+          "연산9"
+        ],
+        "to": "전략10_1",
+        "note": "$k=-2$일 때 $a=2$ 또는 $a=1$이다",
+        "main": false
+      },
+      {
+        "from": [
+          "전략10",
+          "전략10_1"
+        ],
+        "to": "END",
+        "note": "모든 자연수 $a$의 합은 $8+7+2+1=18$이다",
+        "main": true
+      }
+    ],
+    "previous_new_neurons": [
+      {
+        "id": "사실XX",
+        "statement": "$k^n = m$ ($m > 0$, $n$은 자연수)에서 $k$가 실수이고 음수라면 $n$은 짝수이어야 한다",
+        "type": "fact",
+        "reason": "사실74는 '음의 실수 $n$제곱근이 존재하려면 $n$이 홀수이거나 $a>0$이고 $n$이 짝수'를 다루는데, 여기서 필요한 논리는 반대 방향: $k<0$이고 $k^n>0$이면 $n$이 짝수임을 도출하는 것이다. 현재 사실74를 그 방향으로 사용하는 것은 뉴런 적합성 위반이다."
+      },
+      {
+        "id": "사실YY",
+        "statement": "$k^n = p^m$ ($p$는 소수, $m$은 양의 정수)에서 $k$가 정수이면 $k = \\pm p^{m/n}$이고, $k$가 정수가 되려면 $n \\mid m$이어야 한다",
+        "type": "fact",
+        "reason": "STEP 4의 핵심 논리인 '$n$은 양의 짝수이면서 $6$의 약수일 때 $n=2$ 또는 $n=6$'은 $64=2^6$이므로 $k=-2^{6/n}$이 정수가 되려면 $n \\mid 6$이어야 한다는 논리이다. 사실64, 사실75가 소수 거듭제곱의 정수 조건을 다루지만 이 방향(k가 정수인 조건으로 n을 제한)을 명시적으로 커버하지 않는다."
+      }
+    ],
+    "previous_dna_nodes": [
+      {
+        "id": "top",
+        "dna": "Q3",
+        "label": "모든 자연수 a의 값의 합을 구하라",
+        "category": "발문"
+      },
+      {
+        "id": "va",
+        "dna": "T1",
+        "label": "변수 a",
+        "category": "말단"
+      },
+      {
+        "id": "a_nat",
+        "dna": "L3",
+        "label": "a는 자연수",
+        "category": "제한"
+      },
+      {
+        "id": "eq_obj",
+        "dna": "G2",
+        "label": "방정식(이차)",
+        "category": "기하"
+      },
+      {
+        "id": "eq_def",
+        "dna": "C11",
+        "label": "방정식 정의",
+        "category": "조건"
+      },
+      {
+        "id": "eq_c1",
+        "dna": "C1",
+        "label": "x²+(2a+1)x+a²+a = 0",
+        "category": "조건"
+      },
+      {
+        "id": "lhs",
+        "dna": "E1",
+        "label": "합(x², (2a+1)x, a²+a)",
+        "category": "수식"
+      },
+      {
+        "id": "x2",
+        "dna": "E7",
+        "label": "x²",
+        "category": "수식"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
+      },
+      {
+        "id": "c2_exp",
+        "dna": "T2",
+        "label": "상수 2(지수)",
+        "category": "말단"
+      },
+      {
+        "id": "mid_term",
+        "dna": "E6",
+        "label": "(2a+1)·x",
+        "category": "수식"
+      },
+      {
+        "id": "coeff",
+        "dna": "E1",
+        "label": "2a+1",
+        "category": "수식"
+      },
+      {
+        "id": "two_a",
+        "dna": "E6",
+        "label": "2·a",
+        "category": "수식"
+      },
+      {
+        "id": "c2",
+        "dna": "T2",
+        "label": "상수 2",
+        "category": "말단"
+      },
+      {
+        "id": "c1",
+        "dna": "T2",
+        "label": "상수 1",
+        "category": "말단"
+      },
+      {
+        "id": "last_term",
+        "dna": "E1",
+        "label": "a²+a",
+        "category": "수식"
+      },
+      {
+        "id": "a2",
+        "dna": "E7",
+        "label": "a²",
+        "category": "수식"
+      },
+      {
+        "id": "c2_exp2",
+        "dna": "T2",
+        "label": "상수 2(지수, a용)",
+        "category": "말단"
+      },
+      {
+        "id": "rhs_zero",
+        "dna": "T2",
+        "label": "상수 0",
+        "category": "말단"
+      },
+      {
+        "id": "root_k",
+        "dna": "C15",
+        "label": "한 실근 k가 조건 만족",
+        "category": "조건"
+      },
+      {
+        "id": "vk",
+        "dna": "T1",
+        "label": "변수 k",
+        "category": "말단"
+      },
+      {
+        "id": "box_cond",
+        "dna": "S1",
+        "label": "박스 조건",
+        "category": "구조"
+      },
+      {
+        "id": "nat_n_exist",
+        "dna": "X5",
+        "label": "어떤 자연수 n이 존재한다",
+        "category": "존재"
+      },
+      {
+        "id": "vn",
+        "dna": "T1",
+        "label": "변수 n",
+        "category": "말단"
+      },
+      {
+        "id": "n_nat",
+        "dna": "L3",
+        "label": "n은 자연수",
+        "category": "제한"
+      },
+      {
+        "id": "kn_eq_64",
+        "dna": "C1",
+        "label": "k^n = 64",
+        "category": "조건"
+      },
+      {
+        "id": "kn",
+        "dna": "E7",
+        "label": "k^n",
+        "category": "수식"
+      },
+      {
+        "id": "c64",
+        "dna": "T2",
+        "label": "상수 64",
+        "category": "말단"
+      }
+    ],
+    "previous_dna_edges": [
+      {
+        "from": "va",
+        "to": "top"
+      },
+      {
+        "from": "a_nat",
+        "to": "va"
+      },
+      {
+        "from": "eq_obj",
+        "to": "top"
+      },
+      {
+        "from": "eq_def",
+        "to": "eq_obj"
+      },
+      {
+        "from": "eq_c1",
+        "to": "eq_def"
+      },
+      {
+        "from": "lhs",
+        "to": "eq_c1"
+      },
+      {
+        "from": "rhs_zero",
+        "to": "eq_c1"
+      },
+      {
+        "from": "x2",
+        "to": "lhs"
+      },
+      {
+        "from": "mid_term",
+        "to": "lhs"
+      },
+      {
+        "from": "last_term",
+        "to": "lhs"
+      },
+      {
+        "from": "vx",
+        "to": "x2"
+      },
+      {
+        "from": "c2_exp",
+        "to": "x2"
+      },
+      {
+        "from": "coeff",
+        "to": "mid_term"
+      },
+      {
+        "from": "vx",
+        "to": "mid_term"
+      },
+      {
+        "from": "two_a",
+        "to": "coeff"
+      },
+      {
+        "from": "c1",
+        "to": "coeff"
+      },
+      {
+        "from": "c2",
+        "to": "two_a"
+      },
+      {
+        "from": "va",
+        "to": "two_a"
+      },
+      {
+        "from": "a2",
+        "to": "last_term"
+      },
+      {
+        "from": "va",
+        "to": "last_term"
+      },
+      {
+        "from": "va",
+        "to": "a2"
+      },
+      {
+        "from": "c2_exp2",
+        "to": "a2"
+      },
+      {
+        "from": "root_k",
+        "to": "top"
+      },
+      {
+        "from": "vk",
+        "to": "root_k"
+      },
+      {
+        "from": "eq_obj",
+        "to": "root_k"
+      },
+      {
+        "from": "box_cond",
+        "to": "root_k"
+      },
+      {
+        "from": "nat_n_exist",
+        "to": "box_cond"
+      },
+      {
+        "from": "vn",
+        "to": "nat_n_exist"
+      },
+      {
+        "from": "n_nat",
+        "to": "vn"
+      },
+      {
+        "from": "kn_eq_64",
+        "to": "nat_n_exist"
+      },
+      {
+        "from": "kn_eq_64",
+        "to": "box_cond"
+      },
+      {
+        "from": "kn",
+        "to": "kn_eq_64"
+      },
+      {
+        "from": "c64",
+        "to": "kn_eq_64"
+      },
+      {
+        "from": "vk",
+        "to": "kn"
+      },
+      {
+        "from": "vn",
+        "to": "kn"
+      }
+    ],
+    "created_at": "2026-03-19T23:41:15.033Z"
   }
 ]
