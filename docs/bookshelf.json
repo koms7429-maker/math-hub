@@ -4150,5 +4150,400 @@
     "folders": [],
     "history": [],
     "created_at": "2026-03-19T09:50:18.382Z"
+  },
+  {
+    "problem_id": "Problem1_9",
+    "answer": "18",
+    "clues": [
+      {
+        "id": "단서A",
+        "text": "방정식 $(x-m^n)(x^n-m)=0$"
+      },
+      {
+        "id": "단서B",
+        "text": "서로 다른 실근의 개수가 1"
+      },
+      {
+        "id": "단서C",
+        "text": "$-3 \\leq m \\leq 3$인 정수 $m$"
+      },
+      {
+        "id": "단서D",
+        "text": "$2 \\leq n \\leq 6$인 자연수 $n$"
+      }
+    ],
+    "skeleton": [
+      {
+        "from": [
+          "단서A"
+        ],
+        "to": "연산9",
+        "note": "$(x-m^n)(x^n-m)=0$에서 $x=m^n$ 또는 $x^n=m$이다"
+      },
+      {
+        "from": [
+          "연산9"
+        ],
+        "to": "전략12",
+        "note": "$x^n=m$의 실근 개수는 $n$의 홀짝에 따라 달라진다"
+      },
+      {
+        "from": [
+          "전략12"
+        ],
+        "to": "사실4",
+        "note": "$n$홀수이면 $m$의 부호와 무관하게 실근 1개, $n$짝수이면 $m>0$일 때 실근 2개, $m<0$일 때 실근 0개, $m=0$일 때 실근 1개이다"
+      },
+      {
+        "from": [
+          "사실4"
+        ],
+        "to": "전략22",
+        "note": "$n$의 홀짝과 $m$의 부호를 기준으로 4가지 경우로 분류한다"
+      },
+      {
+        "from": [
+          "전략22"
+        ],
+        "to": "전략6",
+        "note": "경우①: $n$홀수 → 근은 $m^n$, $\\sqrt[n]{m}$ (2개, 중복 가능). 경우②: $n$짝수, $m<0$ → 근은 $m^n$ (1개). 경우③: $n$짝수, $m=0$ → 근은 $0$ (1개). 경우④: $n$짝수, $m>0$ → 근은 $m^n$, $\\sqrt[n]{m}$, $-\\sqrt[n]{m}$ (3개, 중복 가능)이다"
+      },
+      {
+        "from": [
+          "전략6",
+          "단서B"
+        ],
+        "to": "전략17",
+        "note": "서로 다른 실근이 1개가 되려면: ①에서 $m^n=\\sqrt[n]{m}$이어야 하고, ②③은 항상 1개, ④는 불가능하다"
+      },
+      {
+        "from": [
+          "전략17"
+        ],
+        "to": "전략25",
+        "note": "①에서 $m^n=\\sqrt[n]{m}$ → $m^{n-1}=1$ → $m=-1, 0, 1$ (단서C에서 $-3 \\leq m \\leq 3$이고 $n$홀수)이다"
+      },
+      {
+        "from": [
+          "전략25",
+          "단서C",
+          "단서D"
+        ],
+        "to": "전략10",
+        "note": "①: $n \\in \\{3,5\\}$ (홀수) × $m \\in \\{-1,0,1\\}$ = 6가지. ②: $n \\in \\{2,4,6\\}$ (짝수) × $m \\in \\{-3,-2,-1\\}$ (음수) = 9가지. ③: $n \\in \\{2,4,6\\}$ × $m=0$ = 3가지이다"
+      },
+      {
+        "from": [
+          "전략10"
+        ],
+        "to": "END",
+        "note": "전체 순서쌍 개수는 $6+9+3=18$이다"
+      }
+    ],
+    "solution": "STEP 1. $(x-m^n)(x^n-m)=0$에서 $x=m^n$ 또는 $x^n=m$이다.\n\nSTEP 2. $x^n=m$의 실근 개수는 $n$의 홀짝에 따라 달라진다.\n\nSTEP 3. $n$홀수이면 $m$의 부호와 무관하게 실근 1개, $n$짝수이면 $m>0$일 때 실근 2개, $m<0$일 때 실근 0개, $m=0$일 때 실근 1개이다.\n\nSTEP 4. $n$의 홀짝과 $m$의 부호를 기준으로 4가지 경우로 분류한다.\n\nSTEP 5. 경우①: $n$홀수 → 근은 $m^n$, $\\sqrt[n]{m}$ (2개, 중복 가능). 경우②: $n$짝수, $m<0$ → 근은 $m^n$ (1개). 경우③: $n$짝수, $m=0$ → 근은 $0$ (1개). 경우④: $n$짝수, $m>0$ → 근은 $m^n$, $\\sqrt[n]{m}$, $-\\sqrt[n]{m}$ (3개, 중복 가능)이다.\n\nSTEP 6. 서로 다른 실근이 1개가 되려면: ①에서 $m^n=\\sqrt[n]{m}$이어야 하고, ②③은 항상 1개, ④는 불가능하다.\n\nSTEP 7. ①에서 $m^n=\\sqrt[n]{m}$ → $m^{n-1}=1$ → $m=-1, 0, 1$ ($-3 \\leq m \\leq 3$이고 $n$홀수)이다.\n\nSTEP 8. ①: $n \\in \\{3,5\\}$ (홀수) × $m \\in \\{-1,0,1\\}$ = 6가지. ②: $n \\in \\{2,4,6\\}$ (짝수) × $m \\in \\{-3,-2,-1\\}$ (음수) = 9가지. ③: $n \\in \\{2,4,6\\}$ × $m=0$ = 3가지이다.\n\nSTEP 9. 전체 순서쌍 개수는 $6+9+3=18$이다.",
+    "analysis": "방정식 $(x-m^n)(x^n-m)=0$에서 영인자법칙을 적용하면 $x=m^n$ 또는 $x^n=m$이다.\n\n$x=m^n$은 항상 실근 1개이다 ($m$은 정수이므로).\n\n$x^n=m$의 실근 개수는 사실4에 의해:\n- $m>0$이고 $n$홀수 → 1개\n- $m>0$이고 $n$짝수 → 2개\n- $m<0$이고 $n$홀수 → 1개\n- $m<0$이고 $n$짝수 → 0개\n- $m=0$ → 1개\n\n따라서 전체 실근은:\n① $n$홀수: $x=m^n$, $x=\\sqrt[n]{m}$ (2개, 단 중복 가능)\n② $n$짝수, $m<0$: $x=m^n$ (1개)\n③ $n$짝수, $m=0$: $x=0$ (1개, $m^n=0$과 $x^n=0$이 같음)\n④ $n$짝수, $m>0$: $x=m^n$, $x=\\sqrt[n]{m}$, $x=-\\sqrt[n]{m}$ (3개, 단 중복 가능)\n\n서로 다른 실근이 정확히 1개가 되려면:\n- ①에서 $m^n = \\sqrt[n]{m}$ → $m^{n-1}=1$ → $m=-1, 0, 1$ ($n$홀수이므로 $-1$도 가능)\n  - $n=3,5$ (홀수 2개) × $m=-1,0,1$ (3개) = 6가지\n- ②는 항상 실근 1개 → $n=2,4,6$ (짝수 3개) × $m=-3,-2,-1$ (음수 3개, $m=0$ 제외) = 9가지\n- ③은 항상 실근 1개 → $n=2,4,6$ (짝수 3개) × $m=0$ (1개) = 3가지\n- ④에서 3개 근이 모두 일치하려면 불가능 (3개 중 2개는 반드시 부호가 반대) → 0가지\n\n그런데 ②에서 $m=-3,-2,-1$ 외에 $m=0$도 포함되어야 하는지 확인:\n- $m=0$, $n$짝수 → $(x-0)(x^n-0)=x \\cdot x^n=x^{n+1}=0$ → $x=0$ (중근이지만 서로 다른 실근은 1개) → ③으로 분류됨\n\n재계산:\n- ①: $n$홀수 ($n=3,5$) × $m=-1,0,1$ = 6가지\n- ②: $n$짝수 ($n=2,4,6$) × $m<0$ ($m=-3,-2,-1$) = 9가지\n- ③: $n$짝수 ($n=2,4,6$) × $m=0$ = 3가지\n\n합계 = $6+9+3=18$\n\n원본 해설에서는 '②,③의 경우, 3×4=12'라고 했는데, 이는 $n$짝수 3개 × ($m=-3,-2,-1,0$ 4개) = 12가지를 의미한다.",
+    "new_neurons": [],
+    "metadata": {
+      "unit": "방정식과 부등식",
+      "difficulty": "unknown",
+      "score": "4점",
+      "type": "multiple choice",
+      "answer": "18"
+    },
+    "edge_count": 9,
+    "side_count": 0,
+    "statement": "$-3 \\leq m \\leq 3$인 정수 $m$과 $2 \\leq n \\leq 6$인 자연수 $n$에 대하여 $x$에 대한 방정식 $(x-m^n)(x^n-m)=0$의 서로 다른 실근의 개수가 $1$이 되도록 하는 모든 순서쌍 $(m, n)$의 개수는?",
+    "dna": {
+      "nodes": [
+        {
+          "id": "q1",
+          "dna": "Q2",
+          "label": "개수를 구하라",
+          "category": "발문"
+        },
+        {
+          "id": "target1",
+          "dna": "X2",
+          "label": "순서쌍 (m,n)",
+          "category": "존재"
+        },
+        {
+          "id": "var_m",
+          "dna": "T1",
+          "label": "변수 m",
+          "category": "말단"
+        },
+        {
+          "id": "var_n",
+          "dna": "T1",
+          "label": "변수 n",
+          "category": "말단"
+        },
+        {
+          "id": "limit_m",
+          "dna": "L2",
+          "label": "m 범위: -3≤m≤3",
+          "category": "제한"
+        },
+        {
+          "id": "const_neg3",
+          "dna": "T2",
+          "label": "상수 -3",
+          "category": "말단"
+        },
+        {
+          "id": "const_3",
+          "dna": "T2",
+          "label": "상수 3",
+          "category": "말단"
+        },
+        {
+          "id": "type_m",
+          "dna": "L3",
+          "label": "m은 정수",
+          "category": "제한"
+        },
+        {
+          "id": "limit_n",
+          "dna": "L2",
+          "label": "n 범위: 2≤n≤6",
+          "category": "제한"
+        },
+        {
+          "id": "const_2",
+          "dna": "T2",
+          "label": "상수 2",
+          "category": "말단"
+        },
+        {
+          "id": "const_6",
+          "dna": "T2",
+          "label": "상수 6",
+          "category": "말단"
+        },
+        {
+          "id": "type_n",
+          "dna": "L3",
+          "label": "n은 자연수",
+          "category": "제한"
+        },
+        {
+          "id": "cond_main",
+          "dna": "C9",
+          "label": "실근 개수 = 1",
+          "category": "조건"
+        },
+        {
+          "id": "const_1",
+          "dna": "T2",
+          "label": "상수 1",
+          "category": "말단"
+        },
+        {
+          "id": "eq1",
+          "dna": "C11",
+          "label": "방정식",
+          "category": "조건"
+        },
+        {
+          "id": "eq_main",
+          "dna": "C1",
+          "label": "등식",
+          "category": "조건"
+        },
+        {
+          "id": "left_eq",
+          "dna": "E6",
+          "label": "곱",
+          "category": "수식"
+        },
+        {
+          "id": "const_0",
+          "dna": "T2",
+          "label": "상수 0",
+          "category": "말단"
+        },
+        {
+          "id": "factor1",
+          "dna": "E1",
+          "label": "합 (x-m^n)",
+          "category": "수식"
+        },
+        {
+          "id": "var_x",
+          "dna": "T3",
+          "label": "독립변수 x",
+          "category": "말단"
+        },
+        {
+          "id": "neg_mn",
+          "dna": "E2",
+          "label": "부호반전",
+          "category": "수식"
+        },
+        {
+          "id": "m_pow_n",
+          "dna": "E7",
+          "label": "거듭제곱 m^n",
+          "category": "수식"
+        },
+        {
+          "id": "factor2",
+          "dna": "E1",
+          "label": "합 (x^n-m)",
+          "category": "수식"
+        },
+        {
+          "id": "x_pow_n",
+          "dna": "E7",
+          "label": "거듭제곱 x^n",
+          "category": "수식"
+        },
+        {
+          "id": "neg_m",
+          "dna": "E2",
+          "label": "부호반전",
+          "category": "수식"
+        }
+      ],
+      "edges": [
+        {
+          "from": "target1",
+          "to": "q1"
+        },
+        {
+          "from": "var_m",
+          "to": "target1"
+        },
+        {
+          "from": "var_n",
+          "to": "target1"
+        },
+        {
+          "from": "var_m",
+          "to": "limit_m"
+        },
+        {
+          "from": "const_neg3",
+          "to": "limit_m"
+        },
+        {
+          "from": "const_3",
+          "to": "limit_m"
+        },
+        {
+          "from": "var_m",
+          "to": "type_m"
+        },
+        {
+          "from": "var_n",
+          "to": "limit_n"
+        },
+        {
+          "from": "const_2",
+          "to": "limit_n"
+        },
+        {
+          "from": "const_6",
+          "to": "limit_n"
+        },
+        {
+          "from": "var_n",
+          "to": "type_n"
+        },
+        {
+          "from": "eq1",
+          "to": "cond_main"
+        },
+        {
+          "from": "const_1",
+          "to": "cond_main"
+        },
+        {
+          "from": "eq_main",
+          "to": "eq1"
+        },
+        {
+          "from": "left_eq",
+          "to": "eq_main"
+        },
+        {
+          "from": "const_0",
+          "to": "eq_main"
+        },
+        {
+          "from": "factor1",
+          "to": "left_eq"
+        },
+        {
+          "from": "factor2",
+          "to": "left_eq"
+        },
+        {
+          "from": "var_x",
+          "to": "factor1"
+        },
+        {
+          "from": "neg_mn",
+          "to": "factor1"
+        },
+        {
+          "from": "m_pow_n",
+          "to": "neg_mn"
+        },
+        {
+          "from": "var_m",
+          "to": "m_pow_n"
+        },
+        {
+          "from": "var_n",
+          "to": "m_pow_n"
+        },
+        {
+          "from": "x_pow_n",
+          "to": "factor2"
+        },
+        {
+          "from": "neg_m",
+          "to": "factor2"
+        },
+        {
+          "from": "var_m",
+          "to": "neg_m"
+        },
+        {
+          "from": "var_x",
+          "to": "x_pow_n"
+        },
+        {
+          "from": "var_n",
+          "to": "x_pow_n"
+        },
+        {
+          "from": "cond_main",
+          "to": "target1"
+        },
+        {
+          "from": "limit_m",
+          "to": "q1"
+        },
+        {
+          "from": "type_m",
+          "to": "q1"
+        },
+        {
+          "from": "limit_n",
+          "to": "q1"
+        },
+        {
+          "from": "type_n",
+          "to": "q1"
+        }
+      ],
+      "new_dna": []
+    },
+    "folders": [],
+    "history": [],
+    "created_at": "2026-03-19T09:53:47.411Z"
   }
 ]
