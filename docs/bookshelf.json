@@ -408,5 +408,675 @@
     "folders": [],
     "history": [],
     "created_at": "2026-03-19T11:01:42.250Z"
+  },
+  {
+    "problem_id": "Problem9",
+    "answer": "② 8",
+    "clues": [
+      {
+        "id": "단서A",
+        "text": "$f(x) = \\begin{cases} \\log_2(8-x)+a & (-8 \\leq x < b) \\\\ \\log_2(x+8) & (b \\leq x \\leq 8) \\end{cases}$이고 $0<b<8$이다"
+      },
+      {
+        "id": "단서B",
+        "text": "$f(x)$는 일대일함수이고, 치역은 $\\left\\{y \\left| k \\leq y \\leq k+\\log_2 \\frac{9}{2}\\right.\\right\\}$이다"
+      }
+    ],
+    "skeleton": [
+      {
+        "from": [
+          "단서A"
+        ],
+        "to": "사실12",
+        "note": "첫 번째 구간 $-8 \\leq x < b$에서 $f(x) = \\log_2(8-x)+a$는 $x$에 대해 감소함수이다"
+      },
+      {
+        "from": [
+          "사실12"
+        ],
+        "to": "사실19",
+        "note": "첫 번째 구간의 치역은 $[\\log_2(8-b)+a, 4+a]$이다"
+      },
+      {
+        "from": [
+          "단서A"
+        ],
+        "to": "사실12_1",
+        "note": "두 번째 구간 $b \\leq x \\leq 8$에서 $f(x) = \\log_2(x+8)$는 증가함수이다"
+      },
+      {
+        "from": [
+          "사실12_1"
+        ],
+        "to": "사실19_1",
+        "note": "두 번째 구간의 치역은 $[\\log_2(b+8), 4]$이다"
+      },
+      {
+        "from": [
+          "단서B",
+          "사실19",
+          "사실19_1"
+        ],
+        "to": "전략3",
+        "note": "$f(x)$가 일대일함수이고 치역이 $[k, k+\\log_2\\frac{9}{2}]$일 때, 두 구간의 치역이 정확히 이어진다"
+      },
+      {
+        "from": [
+          "전략3"
+        ],
+        "to": "전략2",
+        "note": "$\\log_2(8-b)+a = 4$이고, $k = \\log_2(b+8)$, $k+\\log_2\\frac{9}{2} = 4+a$이다"
+      },
+      {
+        "from": [
+          "전략2"
+        ],
+        "to": "연산16",
+        "note": "$\\log_2(b+8) + \\log_2\\frac{9}{2} = 4+a$이다"
+      },
+      {
+        "from": [
+          "전략2",
+          "연산16"
+        ],
+        "to": "전략11",
+        "note": "첫 번째 식 $\\log_2(8-b)+a = 4$와 $\\log_2(b+8) + \\log_2\\frac{9}{2} = 4+a$를 각 변끼리 더한다"
+      },
+      {
+        "from": [
+          "전략11"
+        ],
+        "to": "연산16_1",
+        "note": "$\\log_2[(8-b)(b+8)\\cdot\\frac{9}{2}] = 8+2a$일 때 $\\log_2[(8-b)(b+8)] = 8-\\log_2\\frac{9}{2}$이다"
+      },
+      {
+        "from": [
+          "연산16_1"
+        ],
+        "to": "연산2",
+        "note": "$\\log_2[(8-b)(b+8)] = \\log_2\\frac{512}{9}$일 때 $(8-b)(b+8) = \\frac{512}{9}$이다"
+      },
+      {
+        "from": [
+          "연산2"
+        ],
+        "to": "연산28",
+        "note": "$64 - b^2 = \\frac{512}{9}$로 전개된다"
+      },
+      {
+        "from": [
+          "연산28"
+        ],
+        "to": "연산21",
+        "note": "$b^2 = 64 - \\frac{512}{9} = \\frac{64}{9}$이다"
+      },
+      {
+        "from": [
+          "연산21",
+          "단서A"
+        ],
+        "to": "사실4",
+        "note": "$0<b<8$일 때 $b = \\frac{8}{3}$이다"
+      },
+      {
+        "from": [
+          "전략2",
+          "사실4"
+        ],
+        "to": "연산2_1",
+        "note": "$\\log_2(8-\\frac{8}{3})+a = 4$일 때 $a = \\log_2 3$이다"
+      },
+      {
+        "from": [
+          "연산2_1"
+        ],
+        "to": "연산2_2",
+        "note": "$2^a = 3$이다"
+      },
+      {
+        "from": [
+          "연산2_2",
+          "사실4"
+        ],
+        "to": "연산18",
+        "note": "$2^a \\times b = 3 \\times \\frac{8}{3} = 8$이다"
+      },
+      {
+        "from": [
+          "연산18"
+        ],
+        "to": "END",
+        "note": "$8$이다"
+      }
+    ],
+    "solution": "STEP 1. 첫 번째 구간 $-8 \\leq x < b$에서 $f(x) = \\log_2(8-x)+a$는 $x$에 대해 감소함수이고, 치역은 $[\\log_2(8-b)+a, 4+a]$이다.\n\nSTEP 2. 두 번째 구간 $b \\leq x \\leq 8$에서 $f(x) = \\log_2(x+8)$는 증가함수이고, 치역은 $[\\log_2(b+8), 4]$이다.\n\nSTEP 3. $f(x)$가 일대일함수이고 치역이 $[k, k+\\log_2\\frac{9}{2}]$일 때, 두 구간의 치역이 정확히 이어진다.\n\nSTEP 4. $\\log_2(8-b)+a = 4$이고, $k = \\log_2(b+8)$, $k+\\log_2\\frac{9}{2} = 4+a$이다.\n\nSTEP 5. 두 번째와 세 번째 조건을 합치면 $\\log_2(b+8) + \\log_2\\frac{9}{2} = 4+a$이다.\n\nSTEP 6. 첫 번째 식과 이 식을 각 변끼리 더하면 $\\log_2[(8-b)(b+8)] = 8-\\log_2\\frac{9}{2} = \\log_2\\frac{512}{9}$이다.\n\nSTEP 7. $(8-b)(b+8) = \\frac{512}{9}$일 때 $64 - b^2 = \\frac{512}{9}$로 전개된다.\n\nSTEP 8. $b^2 = \\frac{64}{9}$일 때 $0<b<8$이므로 $b = \\frac{8}{3}$이다.\n\nSTEP 9. 첫 번째 조건에 대입하면 $a = \\log_2 3$일 때 $2^a = 3$이다.\n\nSTEP 10. $2^a \\times b = 3 \\times \\frac{8}{3} = 8$이다.",
+    "analysis": "주어진 조각 함수 $f(x)$는 두 구간에서 정의된다.\n\n[첫 번째 구간] $-8 \\leq x < b$에서 $f(x) = \\log_2(8-x)+a$이다. 이 함수는 $y=\\log_2 u$ ($u=8-x$)의 합성이다. $x$가 증가하면 $u=8-x$는 감소하고, $\\log_2 u$는 $u$에 대해 증가함수이므로(사실12, $a=2>1$), 전체 함수는 $x$에 대해 감소함수이다. 이 구간의 양 끝에서 함수값은: $x=-8$에서 $f(-8)=\\log_2(16)+a=4+a$, $x \\to b^-$에서 $f(b^-)=\\log_2(8-b)+a$. 감소함수이므로 치역은 $[\\log_2(8-b)+a, 4+a]$이다.\n\n[두 번째 구간] $b \\leq x \\leq 8$에서 $f(x) = \\log_2(x+8)$이다. $\\log_2$는 증가함수(사실12)이므로 이 구간에서도 증가한다. 양 끝에서 함수값은: $x=b$에서 $f(b)=\\log_2(b+8)$, $x=8$에서 $f(8)=\\log_2(16)=4$. 치역은 $[\\log_2(b+8), 4]$이다.\n\n[일대일 조건] $f(x)$가 일대일함수이려면, 서로 다른 $x$에서 같은 함수값을 가지면 안 된다. 조각 함수에서 이는 (1) 각 구간에서 단사 (2) 두 구간의 치역이 겹치지 않거나 정확히 한 점에서 만남을 의미한다. 각 구간에서는 단조함수이므로 단사이다. 따라서 두 치역이 겹치지 않아야 한다.\n\n[치역 조건] 전체 치역이 $[k, k+\\log_2\\frac{9}{2}]$이다. 두 구간의 치역을 합치면 전체 치역이 되어야 하고, 일대일 조건을 만족하려면 두 구간의 치역이 정확히 이어져야 한다. 첫 번째 구간은 감소함수이므로 큰 값 $4+a$에서 시작해 작은 값 $\\log_2(8-b)+a$로 간다. 두 번째 구간은 증가함수이므로 작은 값 $\\log_2(b+8)$에서 시작해 큰 값 $4$로 간다. 두 치역이 이어지려면:\n- 첫 번째 구간의 최댓값 = 전체 치역의 최댓값: $4+a = k+\\log_2\\frac{9}{2}$\n- 첫 번째 구간의 최솟값 = 두 번째 구간의 최솟값: $\\log_2(8-b)+a = \\log_2(b+8) = k$\n\n따라서:\n(1) $\\log_2(8-b)+a = 4$ ... (첫 번째 구간 최솟값 = 두 번째 구간 최댓값)\n(2) $k = \\log_2(b+8)$\n(3) $k+\\log_2\\frac{9}{2} = 4+a$\n\n아, 다시 보니 두 치역이 정확히 이어지는 구조는: 첫 번째 구간의 최솟값이 두 번째 구간의 최솟값과 같아야 하는 것이 아니라, 전체 치역이 $[k, k+\\log_2\\frac{9}{2}]$를 이루려면 한쪽 끝은 $k$, 다른 끝은 $k+\\log_2\\frac{9}{2}$여야 한다.\n\n첫 번째 구간 치역: $[\\log_2(8-b)+a, 4+a]$\n두 번째 구간 치역: $[\\log_2(b+8), 4]$\n\n두 구간이 이어지려면:\n- 첫 번째 구간의 최솟값 = 두 번째 구간의 최댓값: $\\log_2(8-b)+a = 4$\n- 그러면 전체 치역은 $[\\log_2(b+8), 4+a]$가 된다\n- 이것이 $[k, k+\\log_2\\frac{9}{2}]$와 같으므로: $k = \\log_2(b+8)$, $k+\\log_2\\frac{9}{2} = 4+a$\n\n[연립] (2), (3)에서: $\\log_2(b+8) + \\log_2\\frac{9}{2} = 4+a$\n로그 곱셈법칙으로: $\\log_2\\left[(b+8)\\cdot\\frac{9}{2}\\right] = 4+a$ ... (①')\n\n(1)과 (①')를 더하면:\n$\\log_2(8-b) + a + \\log_2(b+8) + \\log_2\\frac{9}{2} = 4 + 4 + a$\n$\\log_2[(8-b)(b+8)\\cdot\\frac{9}{2}] = 8$\n$\\log_2[(8-b)(b+8)] = 8 - \\log_2\\frac{9}{2} = \\log_2 256 - \\log_2\\frac{9}{2} = \\log_2\\frac{512}{9}$\n$(8-b)(b+8) = \\frac{512}{9}$\n$64 - b^2 = \\frac{512}{9}$\n$b^2 = 64 - \\frac{512}{9} = \\frac{576-512}{9} = \\frac{64}{9}$\n$b = \\pm\\frac{8}{3}$\n\n$0 < b < 8$이므로 $b = \\frac{8}{3}$.\n\n(1)에 대입: $\\log_2(8-\\frac{8}{3}) + a = 4$\n$\\log_2\\frac{16}{3} + a = 4$\n$a = 4 - \\log_2\\frac{16}{3} = \\log_2 16 - \\log_2\\frac{16}{3} = \\log_2 3$\n\n따라서 $2^a = 3$.\n\n$2^a \\times b = 3 \\times \\frac{8}{3} = 8$.",
+    "new_neurons": [],
+    "metadata": {
+      "unit": "로그",
+      "difficulty": "unknown",
+      "score": "4",
+      "type": "multiple choice",
+      "answer": "8"
+    },
+    "edge_count": 17,
+    "side_count": 0,
+    "statement": "두 상수 $a$, $b(0<b<8)$에 대하여 $-8 \\leq x \\leq 8$에서 정의된 함수 $f(x) = \\begin{cases} \\log_2(8-x)+a & (-8 \\leq x < b) \\\\ \\log_2(x+8) & (b \\leq x \\leq 8) \\end{cases}$이 다음 조건을 만족시킬 때, $2^a \\times b$의 값은?",
+    "dna": {
+      "nodes": [
+        {
+          "id": "top",
+          "dna": "Q1",
+          "label": "값을 구하라",
+          "category": "발문"
+        },
+        {
+          "id": "ask",
+          "dna": "E6",
+          "label": "곱(2^a, b)",
+          "category": "수식"
+        },
+        {
+          "id": "ask_exp",
+          "dna": "E4",
+          "label": "2^a",
+          "category": "수식"
+        },
+        {
+          "id": "c2",
+          "dna": "T2",
+          "label": "상수 2",
+          "category": "말단"
+        },
+        {
+          "id": "va",
+          "dna": "T1",
+          "label": "변수 a",
+          "category": "말단"
+        },
+        {
+          "id": "vb",
+          "dna": "T1",
+          "label": "변수 b",
+          "category": "말단"
+        },
+        {
+          "id": "conds",
+          "dna": "S1",
+          "label": "여러 조건",
+          "category": "구조"
+        },
+        {
+          "id": "const_lim",
+          "dna": "S1",
+          "label": "상수 조건들",
+          "category": "구조"
+        },
+        {
+          "id": "lim_b1",
+          "dna": "C2",
+          "label": "0 < b",
+          "category": "조건"
+        },
+        {
+          "id": "c0",
+          "dna": "T2",
+          "label": "상수 0",
+          "category": "말단"
+        },
+        {
+          "id": "lim_b2",
+          "dna": "C2",
+          "label": "b < 8",
+          "category": "조건"
+        },
+        {
+          "id": "c8",
+          "dna": "T2",
+          "label": "상수 8",
+          "category": "말단"
+        },
+        {
+          "id": "func_def",
+          "dna": "F6",
+          "label": "함수 f(x) 정의",
+          "category": "함수"
+        },
+        {
+          "id": "vx",
+          "dna": "T3",
+          "label": "독립변수 x",
+          "category": "말단"
+        },
+        {
+          "id": "func_domain",
+          "dna": "F8",
+          "label": "정의역 [-8, 8]",
+          "category": "함수"
+        },
+        {
+          "id": "cm8",
+          "dna": "T2",
+          "label": "상수 -8",
+          "category": "말단"
+        },
+        {
+          "id": "piecewise",
+          "dna": "F1",
+          "label": "조각함수",
+          "category": "함수"
+        },
+        {
+          "id": "piece1",
+          "dna": "F2",
+          "label": "조각1",
+          "category": "함수"
+        },
+        {
+          "id": "piece1_expr",
+          "dna": "E1",
+          "label": "합(log, a)",
+          "category": "수식"
+        },
+        {
+          "id": "piece1_log",
+          "dna": "E3",
+          "label": "log₂(8-x)",
+          "category": "수식"
+        },
+        {
+          "id": "piece1_inner",
+          "dna": "E1",
+          "label": "합(8, -x)",
+          "category": "수식"
+        },
+        {
+          "id": "piece1_neg",
+          "dna": "E2",
+          "label": "부호반전(x)",
+          "category": "수식"
+        },
+        {
+          "id": "piece1_domain",
+          "dna": "F8",
+          "label": "[-8, b)",
+          "category": "함수"
+        },
+        {
+          "id": "piece2",
+          "dna": "F2",
+          "label": "조각2",
+          "category": "함수"
+        },
+        {
+          "id": "piece2_expr",
+          "dna": "E3",
+          "label": "log₂(x+8)",
+          "category": "수식"
+        },
+        {
+          "id": "piece2_inner",
+          "dna": "E1",
+          "label": "합(x, 8)",
+          "category": "수식"
+        },
+        {
+          "id": "piece2_domain",
+          "dna": "F8",
+          "label": "[b, 8]",
+          "category": "함수"
+        },
+        {
+          "id": "cond_box",
+          "dna": "S1",
+          "label": "박스 조건",
+          "category": "구조"
+        },
+        {
+          "id": "one_to_one",
+          "dna": "F12",
+          "label": "일대일함수",
+          "category": "함수"
+        },
+        {
+          "id": "range_cond",
+          "dna": "C17",
+          "label": "치역 조건",
+          "category": "조건"
+        },
+        {
+          "id": "range_set",
+          "dna": "S2",
+          "label": "치역 집합",
+          "category": "구조"
+        },
+        {
+          "id": "range_filter",
+          "dna": "X3",
+          "label": "y 범위",
+          "category": "존재"
+        },
+        {
+          "id": "range_ineq1",
+          "dna": "C2",
+          "label": "k ≤ y",
+          "category": "조건"
+        },
+        {
+          "id": "vk",
+          "dna": "T1",
+          "label": "변수 k",
+          "category": "말단"
+        },
+        {
+          "id": "vy",
+          "dna": "T3",
+          "label": "독립변수 y",
+          "category": "말단"
+        },
+        {
+          "id": "range_ineq2",
+          "dna": "C2",
+          "label": "y ≤ k+log₂(9/2)",
+          "category": "조건"
+        },
+        {
+          "id": "range_upper",
+          "dna": "E1",
+          "label": "합(k, log)",
+          "category": "수식"
+        },
+        {
+          "id": "range_log",
+          "dna": "E3",
+          "label": "log₂(9/2)",
+          "category": "수식"
+        },
+        {
+          "id": "range_frac",
+          "dna": "E6",
+          "label": "곱(9, 2^(-1))",
+          "category": "수식"
+        },
+        {
+          "id": "c9",
+          "dna": "T2",
+          "label": "상수 9",
+          "category": "말단"
+        },
+        {
+          "id": "c2inv",
+          "dna": "E7",
+          "label": "거듭제곱(2, -1)",
+          "category": "수식"
+        },
+        {
+          "id": "cm1",
+          "dna": "T2",
+          "label": "상수 -1",
+          "category": "말단"
+        },
+        {
+          "id": "mc_form",
+          "dna": "Q1",
+          "label": "객관식 5지선다",
+          "category": "발문"
+        }
+      ],
+      "edges": [
+        {
+          "from": "ask",
+          "to": "top"
+        },
+        {
+          "from": "ask_exp",
+          "to": "ask"
+        },
+        {
+          "from": "vb",
+          "to": "ask"
+        },
+        {
+          "from": "c2",
+          "to": "ask_exp"
+        },
+        {
+          "from": "va",
+          "to": "ask_exp"
+        },
+        {
+          "from": "conds",
+          "to": "top"
+        },
+        {
+          "from": "const_lim",
+          "to": "conds"
+        },
+        {
+          "from": "func_def",
+          "to": "conds"
+        },
+        {
+          "from": "cond_box",
+          "to": "conds"
+        },
+        {
+          "from": "lim_b1",
+          "to": "const_lim"
+        },
+        {
+          "from": "lim_b2",
+          "to": "const_lim"
+        },
+        {
+          "from": "c0",
+          "to": "lim_b1"
+        },
+        {
+          "from": "vb",
+          "to": "lim_b1"
+        },
+        {
+          "from": "vb",
+          "to": "lim_b2"
+        },
+        {
+          "from": "c8",
+          "to": "lim_b2"
+        },
+        {
+          "from": "vx",
+          "to": "func_def"
+        },
+        {
+          "from": "func_domain",
+          "to": "func_def"
+        },
+        {
+          "from": "piecewise",
+          "to": "func_def"
+        },
+        {
+          "from": "cm8",
+          "to": "func_domain"
+        },
+        {
+          "from": "c8",
+          "to": "func_domain"
+        },
+        {
+          "from": "piece1",
+          "to": "piecewise"
+        },
+        {
+          "from": "piece2",
+          "to": "piecewise"
+        },
+        {
+          "from": "piece1_domain",
+          "to": "piece1"
+        },
+        {
+          "from": "piece1_expr",
+          "to": "piece1"
+        },
+        {
+          "from": "cm8",
+          "to": "piece1_domain"
+        },
+        {
+          "from": "vb",
+          "to": "piece1_domain"
+        },
+        {
+          "from": "piece1_log",
+          "to": "piece1_expr"
+        },
+        {
+          "from": "va",
+          "to": "piece1_expr"
+        },
+        {
+          "from": "c2",
+          "to": "piece1_log"
+        },
+        {
+          "from": "piece1_inner",
+          "to": "piece1_log"
+        },
+        {
+          "from": "c8",
+          "to": "piece1_inner"
+        },
+        {
+          "from": "piece1_neg",
+          "to": "piece1_inner"
+        },
+        {
+          "from": "vx",
+          "to": "piece1_neg"
+        },
+        {
+          "from": "piece2_domain",
+          "to": "piece2"
+        },
+        {
+          "from": "piece2_expr",
+          "to": "piece2"
+        },
+        {
+          "from": "vb",
+          "to": "piece2_domain"
+        },
+        {
+          "from": "c8",
+          "to": "piece2_domain"
+        },
+        {
+          "from": "c2",
+          "to": "piece2_expr"
+        },
+        {
+          "from": "piece2_inner",
+          "to": "piece2_expr"
+        },
+        {
+          "from": "vx",
+          "to": "piece2_inner"
+        },
+        {
+          "from": "c8",
+          "to": "piece2_inner"
+        },
+        {
+          "from": "one_to_one",
+          "to": "cond_box"
+        },
+        {
+          "from": "range_cond",
+          "to": "cond_box"
+        },
+        {
+          "from": "func_def",
+          "to": "one_to_one"
+        },
+        {
+          "from": "func_def",
+          "to": "range_cond"
+        },
+        {
+          "from": "range_set",
+          "to": "range_cond"
+        },
+        {
+          "from": "range_filter",
+          "to": "range_set"
+        },
+        {
+          "from": "range_ineq1",
+          "to": "range_filter"
+        },
+        {
+          "from": "range_ineq2",
+          "to": "range_filter"
+        },
+        {
+          "from": "vk",
+          "to": "range_ineq1"
+        },
+        {
+          "from": "vy",
+          "to": "range_ineq1"
+        },
+        {
+          "from": "vy",
+          "to": "range_ineq2"
+        },
+        {
+          "from": "range_upper",
+          "to": "range_ineq2"
+        },
+        {
+          "from": "vk",
+          "to": "range_upper"
+        },
+        {
+          "from": "range_log",
+          "to": "range_upper"
+        },
+        {
+          "from": "c2",
+          "to": "range_log"
+        },
+        {
+          "from": "range_frac",
+          "to": "range_log"
+        },
+        {
+          "from": "c9",
+          "to": "range_frac"
+        },
+        {
+          "from": "c2inv",
+          "to": "range_frac"
+        },
+        {
+          "from": "c2",
+          "to": "c2inv"
+        },
+        {
+          "from": "cm1",
+          "to": "c2inv"
+        },
+        {
+          "from": "mc_form",
+          "to": "top"
+        }
+      ],
+      "new_dna": []
+    },
+    "folders": [],
+    "history": [],
+    "created_at": "2026-03-19T11:04:26.652Z"
   }
 ]
