@@ -1,14 +1,19 @@
 [
   {
     "problem_id": "Problem6(UnknownSource)-QuadraticEquations",
-    "content": "# Problem6. (Unknown Source) - Quadratic Equations\n\n## Problem\n\n$x$에 대한 방정식 $x^2 + (2a+1)x + a^2 + a = 0$의 한 실근 $k$가 다음 조건을 만족시키도록 하는 모든 자연수 $a$의 값의 합은?\n\n어떤 자연수 $n$에 대하여 $k^n = 64$이다.\n\n## Choices\n① 12  ② 14  ③ 16  ④ 18  ⑤ 20\n\n**Answer**: ④ 18\n**Difficulty**: unknown\n**Score**: 4점\n**Type**: multiple choice\n\n---\n\n## Solution\n\n$$x^2 + (2a+1)x + a^2 + a = 0 \\Leftrightarrow (x+a)(x+a+1) = 0$$\n$$\\Leftrightarrow x = -a \\text{ 또는 } x = -a-1$$\n\n이므로\n$$k = -a \\text{ 또는 } k = -a-1 \\cdots \\text{①}$$\n\n이다. 이때,\n\n$a$가 자연수 $\\Rightarrow$ $k$는 음의 정수\n\n이므로 문제의 박스 조건을 만족시키려면\n\n$k$는 음의 정수이고, $k^n = 2^6 \\Rightarrow$ $n$은 짝수이고 6의 약수\n\n$$\\Rightarrow \\begin{cases} \\text{① } n=2\\text{이고, } k=-8 \\\\ \\text{② } n=6\\text{이고, } k=-2 \\end{cases}$$\n\n이어야 한다. 따라서 ①에 의해\n\n$$\\begin{cases} \\text{①의 경우 } a=8 \\text{ 또는 } a=7 \\\\ \\text{②의 경우 } a=2 \\text{ 또는 } a=1 \\end{cases}$$\n\n$$\\Rightarrow \\text{(모든 자연수 } a\\text{의 값의 합)} = 8+7+2+1 = 18$$\n\n이다.\n\n---",
+    "content": ">�\u001b��Ry'�\tҢ��{�.i�ڶ'\u0004�歊��>�\u001b���o�k�q���",
     "skel_status": "pending",
     "dna_status": "ok",
     "needed_neurons": [],
     "needed_dna": [],
-    "previous_analysis": "",
-    "previous_matching": "",
-    "previous_matched": [],
+    "previous_analysis": "전송된 문제 데이터가 바이너리 손상(깨진 인코딩)으로 인해 문제문을 파악할 수 없습니다. 정상적인 텍스트로 문제를 다시 전송해 주세요.",
+    "previous_matching": "문제 데이터가 손상된 바이너리/인코딩 오류로 해석 불가. 문제문을 텍스트로 다시 제공 필요.",
+    "previous_matched": [
+      "사실4",
+      "전략12",
+      "전략10",
+      "연산9"
+    ],
     "previous_skeleton": [],
     "previous_new_neurons": [],
     "previous_dna_nodes": [
@@ -49,6 +54,12 @@
         "category": "수식"
       },
       {
+        "id": "lhs2",
+        "dna": "E1",
+        "label": "합(x²+(2a+1)x, a²+a)",
+        "category": "수식"
+      },
+      {
         "id": "term_x2",
         "dna": "E7",
         "label": "x²",
@@ -64,6 +75,12 @@
         "id": "c2",
         "dna": "T2",
         "label": "상수 2",
+        "category": "말단"
+      },
+      {
+        "id": "c_exp2",
+        "dna": "T2",
+        "label": "상수 2 (지수)",
         "category": "말단"
       },
       {
@@ -109,22 +126,16 @@
         "category": "말단"
       },
       {
-        "id": "c_exp2",
-        "dna": "T2",
-        "label": "상수 2 (지수)",
-        "category": "말단"
+        "id": "root_cond",
+        "dna": "C15",
+        "label": "한 실근 k가 k^n=64를 만족",
+        "category": "조건"
       },
       {
         "id": "vk",
         "dna": "T1",
         "label": "변수 k (한 실근)",
         "category": "말단"
-      },
-      {
-        "id": "root_cond",
-        "dna": "C15",
-        "label": "한 실근 k가 조건 만족",
-        "category": "조건"
       },
       {
         "id": "vn",
@@ -171,11 +182,15 @@
         "to": "top"
       },
       {
+        "from": "root_cond",
+        "to": "top"
+      },
+      {
         "from": "eq_c1",
         "to": "eq_main"
       },
       {
-        "from": "lhs",
+        "from": "lhs2",
         "to": "eq_c1"
       },
       {
@@ -183,15 +198,19 @@
         "to": "eq_c1"
       },
       {
+        "from": "lhs",
+        "to": "lhs2"
+      },
+      {
+        "from": "term_const",
+        "to": "lhs2"
+      },
+      {
         "from": "term_x2",
         "to": "lhs"
       },
       {
         "from": "term_mid",
-        "to": "lhs"
-      },
-      {
-        "from": "term_const",
         "to": "lhs"
       },
       {
@@ -243,10 +262,6 @@
         "to": "a2"
       },
       {
-        "from": "root_cond",
-        "to": "top"
-      },
-      {
         "from": "vk",
         "to": "root_cond"
       },
@@ -279,6 +294,6 @@
         "to": "vn"
       }
     ],
-    "created_at": "2026-03-19T16:50:55.582Z"
+    "created_at": "2026-03-19T17:22:22.692Z"
   }
 ]
