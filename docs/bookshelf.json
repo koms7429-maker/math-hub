@@ -1248,5 +1248,270 @@
     "folders": [],
     "history": [],
     "created_at": "2026-03-20T08:16:43.767Z"
+  },
+  {
+    "problem_id": "Problem8(UnknownSource)-지수와정수",
+    "answer": "35",
+    "clues": [
+      {
+        "id": "단서A",
+        "text": "$2^{18}$의 $n$제곱근을 구한다 ($n \\geq 2$, 자연수)"
+      },
+      {
+        "id": "단서B",
+        "text": "4 이하의 정수인 $n$제곱근이 존재해야 한다"
+      },
+      {
+        "id": "단서C",
+        "text": "$n \\geq 2$인 자연수"
+      }
+    ],
+    "skeleton": [
+      {
+        "from": "단서A",
+        "to": "note1",
+        "neuron": "사실4",
+        "note": "$2^{18}>0$이고 $n$이 짝수이면 실수 $n$제곱근은 $+2^{18/n}$과 $-2^{18/n}$이고, $n$이 홀수이면 $2^{18/n}$이다",
+        "main": true
+      },
+      {
+        "from": "note1",
+        "to": "note2",
+        "neuron": "전략12",
+        "note": "$n$이 짝수인 경우와 홀수인 경우로 분리한다",
+        "main": true
+      },
+      {
+        "from": [
+          "note2",
+          "단서B"
+        ],
+        "to": "note3",
+        "neuron": "전략22",
+        "note": "짝수 $n$에서는 $-2^{18/n}<0<4$일 때 음의 실근이 항상 4 이하이고, $2^{18/n}$이 정수이면 조건을 만족한다",
+        "main": true
+      },
+      {
+        "from": "note3",
+        "to": "note4",
+        "neuron": "전략37",
+        "note": "$2^{18/n}$이 정수 $\\Leftrightarrow$ $18/n$이 자연수 $\\Leftrightarrow$ $n$이 $18$의 짝수 약수이다. $n=2,6,18$이다",
+        "main": true
+      },
+      {
+        "from": [
+          "note2",
+          "단서B"
+        ],
+        "to": "note5",
+        "neuron": "전략22",
+        "note": "홀수 $n$에서는 실근이 $2^{18/n}$뿐이고, 4 이하의 정수가 되려면 $2^{18/n} \\leq 4$이고 정수이어야 한다",
+        "main": true
+      },
+      {
+        "from": "note5",
+        "to": "note6",
+        "neuron": "사실5",
+        "note": "$2^{18/n} \\leq 4=2^2$일 때 $18/n \\leq 2$이고 $n \\geq 9$이다",
+        "main": true
+      },
+      {
+        "from": "note6",
+        "to": "note7",
+        "neuron": "전략37",
+        "note": "$2^{18/n}$이 정수이고 홀수 $n \\geq 9$이며 $n | 18$인 것은 $n=9$뿐이고, $2^{18/9}=2^2=4 \\leq 4$이다",
+        "main": true
+      },
+      {
+        "from": [
+          "note4",
+          "단서C"
+        ],
+        "to": "note8",
+        "neuron": "전략25",
+        "note": "$n=2$: $\\pm 2^9=\\pm 512$, $-512 \\leq 4$ ✓; $n=6$: $\\pm 2^3=\\pm 8$, $-8 \\leq 4$ ✓; $n=18$: $\\pm 2^1=\\pm 2$, $-2 \\leq 4$ ✓이다",
+        "main": false
+      },
+      {
+        "from": [
+          "note4",
+          "note7"
+        ],
+        "to": "note9",
+        "neuron": "전략10",
+        "note": "조건을 만족하는 $n$은 $2, 6, 18, 9$이다",
+        "main": true
+      },
+      {
+        "from": "note9",
+        "to": "END",
+        "neuron": "전략10",
+        "note": "모든 $n$의 합은 $2+6+18+9=35$이다",
+        "main": true
+      }
+    ],
+    "solution": "STEP 1. $2^{18}>0$이고, $n$이 짝수이면 실수 $n$제곱근은 $+2^{18/n}$과 $-2^{18/n}$이고, $n$이 홀수이면 $2^{18/n}$이다.\n\nSTEP 2. $n$이 짝수인 경우와 홀수인 경우로 분리한다.\n\nSTEP 3. [짝수 $n$] $-2^{18/n}<0<4$일 때 음의 실근은 항상 4 이하이다. $2^{18/n}$이 정수이면 조건을 만족한다.\n\nSTEP 4. $2^{18/n}$이 정수 $\\Leftrightarrow$ $18/n$이 자연수 $\\Leftrightarrow$ $n$이 $18$의 짝수 약수이다. $18$의 짝수 약수는 $n=2, 6, 18$이다.\n\nSTEP 5. [홀수 $n$] 실근이 $2^{18/n}$뿐이고 4 이하의 정수가 되려면 $2^{18/n} \\leq 4$이고 정수이어야 한다.\n\nSTEP 6. $2^{18/n} \\leq 2^2$일 때 $18/n \\leq 2$이고 $n \\geq 9$이다.\n\nSTEP 7. 홀수 $n \\geq 9$이고 $n | 18$인 것은 $n=9$뿐이고, $2^{18/9}=2^2=4 \\leq 4$이다.\n\nSTEP 8. 조건을 만족하는 $n$은 $2, 6, 18, 9$이다. 모든 $n$의 합은 $2+6+18+9=35$이다.",
+    "analysis": "**$2^{18}$의 $n$제곱근 중 실수 파악**\n$2^{18} > 0$이므로 사실4에 의해:\n- $n$이 짝수: 실수인 $n$제곱근은 $+2^{18/n}$과 $-2^{18/n}$ (2개)\n- $n$이 홀수: 실수인 $n$제곱근은 $2^{18/n}$ (1개)\n\n**'4 이하의 정수'인 $n$제곱근이 존재하는 조건 분석**\n\n조건: 실수 $n$제곱근 중에 4 이하의 정수($\\leq 4$이고 정수)가 있어야 한다.\n\n[짝수 $n$의 경우]\n후보는 $2^{18/n}$과 $-2^{18/n}$.\n- $-2^{18/n}$은 항상 음수이므로 4 이하이다. 단, 정수가 되려면 $2^{18/n}$이 정수이어야 한다. $2^{18/n}$이 정수 $\\Leftrightarrow$ $18/n$이 자연수 (사실4, 전략37).\n- $2^{18/n}$은 양수. 이것이 4 이하의 정수가 되려면 $2^{18/n} \\leq 4 = 2^2$이고 $18/n$이 자연수이어야 한다. $18/n \\leq 2 \\Rightarrow n \\geq 9$인데 $n$이 짝수이면서 $18/n$이 자연수인 것: $n=18$ (이때 $2^1=2 \\leq 4$). $n=9$는 홀수라 제외.\n- 따라서 짝수 $n$에서는 $18/n$이 자연수인 경우를 모두 구하면 된다: $18$의 짝수 약수는 $n=2(18/2=9), 6(18/6=3), 18(18/18=1)$. 이때 $-2^{18/n}$은 모두 음의 정수이므로 4 이하. 확인: $n=2$: $\\pm 2^9=\\pm 512$, $-512 \\leq 4$ ✓; $n=6$: $\\pm 2^3=\\pm 8$, $-8 \\leq 4$ ✓; $n=18$: $\\pm 2^1=\\pm 2$, $-2 \\leq 4$ ✓.\n- $n=4$: $18/4=4.5$ 정수 아님; $n=12$: $18/12=1.5$ 정수 아님. 이외 짝수 약수 없음.\n\n[홀수 $n$의 경우]\n후보는 $2^{18/n}$만. 양수이므로 4 이하이고 정수이려면:\n- $2^{18/n} \\leq 4=2^2 \\Rightarrow 18/n \\leq 2 \\Rightarrow n \\geq 9$\n- $2^{18/n}$이 정수이려면 $18/n$이 음이 아닌 정수, 즉 $n | 18$이고 $18/n$이 자연수.\n- 홀수 $n \\geq 9$이고 $n | 18$: $18=2\\times 3^2$의 홀수 약수는 $1, 3, 9$. $n \\geq 9$이면 $n=9$. $n=9$: $2^{18/9}=2^2=4 \\leq 4$ ✓.\n- $n=3$: $18/3=6$, $2^6=64>4$ (4 이하 아님). $n=1$: 문제 조건 $n \\geq 2$. 홀수 $n=9$만 가능.\n\n**합산**\n$n=2, 6, 18, 9$이므로 합 $= 2+6+18+9=35$.",
+    "new_neurons": [],
+    "metadata": {
+      "unit": "지수와 로그",
+      "difficulty": "unknown",
+      "score": "4",
+      "type": "multiple choice",
+      "answer": "④ 35"
+    },
+    "edge_count": 10,
+    "side_count": 1,
+    "statement": "# Problem8. (Unknown Source) - 지수와 정수\n\n## Problem\n\n자연수 $n(n \\geq 2)$에 대하여 $2^{18}$의 $n$제곱근 중에서 4 이하의 정수가 존재하도록 하는 모든 $n$의 값의 합은? [4점]",
+    "dna": {
+      "nodes": [
+        {
+          "id": "top",
+          "dna": "Q3",
+          "label": "모든 n의 값의 합을 구하라",
+          "category": "발문"
+        },
+        {
+          "id": "ask_sum",
+          "dna": "E1",
+          "label": "합(모든 n)",
+          "category": "수식"
+        },
+        {
+          "id": "vn",
+          "dna": "T3",
+          "label": "독립변수 n",
+          "category": "말단"
+        },
+        {
+          "id": "lim_n_nat",
+          "dna": "L3",
+          "label": "n은 자연수",
+          "category": "제한"
+        },
+        {
+          "id": "lim_n_ge2",
+          "dna": "L2",
+          "label": "n >= 2",
+          "category": "제한"
+        },
+        {
+          "id": "base_pow",
+          "dna": "E7",
+          "label": "2^18",
+          "category": "수식"
+        },
+        {
+          "id": "c2",
+          "dna": "T2",
+          "label": "상수 2",
+          "category": "말단"
+        },
+        {
+          "id": "c18",
+          "dna": "T2",
+          "label": "상수 18",
+          "category": "말단"
+        },
+        {
+          "id": "nthroot_obj",
+          "dna": "F7",
+          "label": "2^18의 n제곱근",
+          "category": "함수"
+        },
+        {
+          "id": "int_le4",
+          "dna": "C2",
+          "label": "4 이하",
+          "category": "조건"
+        },
+        {
+          "id": "c4",
+          "dna": "T2",
+          "label": "상수 4",
+          "category": "말단"
+        },
+        {
+          "id": "is_int",
+          "dna": "L3",
+          "label": "정수",
+          "category": "제한"
+        },
+        {
+          "id": "exist_cond",
+          "dna": "X5",
+          "label": "4 이하의 정수인 n제곱근이 존재한다",
+          "category": "존재"
+        },
+        {
+          "id": "conds",
+          "dna": "S1",
+          "label": "여러 조건",
+          "category": "구조"
+        }
+      ],
+      "edges": [
+        {
+          "from": "ask_sum",
+          "to": "top"
+        },
+        {
+          "from": "conds",
+          "to": "top"
+        },
+        {
+          "from": "vn",
+          "to": "ask_sum"
+        },
+        {
+          "from": "lim_n_nat",
+          "to": "vn"
+        },
+        {
+          "from": "lim_n_ge2",
+          "to": "vn"
+        },
+        {
+          "from": "c2",
+          "to": "base_pow"
+        },
+        {
+          "from": "c18",
+          "to": "base_pow"
+        },
+        {
+          "from": "base_pow",
+          "to": "nthroot_obj"
+        },
+        {
+          "from": "vn",
+          "to": "nthroot_obj"
+        },
+        {
+          "from": "nthroot_obj",
+          "to": "exist_cond"
+        },
+        {
+          "from": "int_le4",
+          "to": "exist_cond"
+        },
+        {
+          "from": "is_int",
+          "to": "int_le4"
+        },
+        {
+          "from": "c4",
+          "to": "int_le4"
+        },
+        {
+          "from": "exist_cond",
+          "to": "conds"
+        }
+      ],
+      "new_dna": []
+    },
+    "folders": [],
+    "history": [],
+    "created_at": "2026-03-20T08:18:44.080Z"
   }
 ]
