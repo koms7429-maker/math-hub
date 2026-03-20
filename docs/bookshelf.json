@@ -3168,5 +3168,593 @@
     "folders": [],
     "history": [],
     "created_at": "2026-03-20T08:26:03.126Z"
+  },
+  {
+    "problem_id": "Problem7(UnknownSource)-ExponentialandLogarithmicFunctions",
+    "answer": "14",
+    "clues": [
+      {
+        "id": "단서A",
+        "text": "곡선 $y = 4 - a^{-x}$ ($a>1$)의 $x$축, $y$축과 만나는 점을 각각 A, B라 한다"
+      },
+      {
+        "id": "단서B",
+        "text": "삼각형 OAB의 외접원이 곡선 $y = a^x - 1$과 O가 아닌 점 C에서 만난다"
+      },
+      {
+        "id": "단서C",
+        "text": "$\\overline{CO} = \\overline{CA}$이다"
+      }
+    ],
+    "skeleton": [
+      {
+        "from": "단서A",
+        "to": "note1",
+        "neuron": "연산2",
+        "note": "$4 - a^{-x} = 0$에서 $a^{-x} = 4$이고 $x = -\\log_a 4$이다. $A = (-\\log_a 4,\\, 0)$이다",
+        "main": true
+      },
+      {
+        "from": "단서A",
+        "to": "note2",
+        "neuron": "사실18",
+        "note": "$x = 0$에서 $y = 4 - a^0 = 3$이다. $B = (0, 3)$이다",
+        "main": true
+      },
+      {
+        "from": [
+          "note1",
+          "note2"
+        ],
+        "to": "note3",
+        "neuron": "사실69",
+        "note": "O는 원점, A는 $x$축 위, B는 $y$축 위일 때 $\\angle AOB = 90°$이다",
+        "main": true
+      },
+      {
+        "from": "note3",
+        "to": "note4",
+        "neuron": "사실11",
+        "note": "직각의 꼭짓점이 O일 때 빗변 AB의 중점 M이 삼각형 OAB의 외심이다",
+        "main": true
+      },
+      {
+        "from": [
+          "note1",
+          "note2"
+        ],
+        "to": "note5",
+        "neuron": "연산12",
+        "note": "선분 AB의 중점 $M = \\left(-\\log_a 2,\\, \\dfrac{3}{2}\\right)$이다",
+        "main": false
+      },
+      {
+        "from": [
+          "단서C",
+          "note4"
+        ],
+        "to": "note6",
+        "neuron": "사실13",
+        "note": "$\\overline{CO} = \\overline{CA}$일 때 C는 선분 OA의 수직이등분선 $x = -\\log_a 2$ 위에 있다",
+        "main": true
+      },
+      {
+        "from": [
+          "note6",
+          "단서B"
+        ],
+        "to": "note7",
+        "neuron": "연산2",
+        "note": "C의 $x$좌표 $-\\log_a 2$를 $y = a^x - 1$에 대입하면 $y = \\dfrac{1}{2} - 1 = -\\dfrac{1}{2}$이다. $C = \\left(-\\log_a 2,\\, -\\dfrac{1}{2}\\right)$이다",
+        "main": true
+      },
+      {
+        "from": [
+          "note5",
+          "note7"
+        ],
+        "to": "note8",
+        "neuron": "연산11",
+        "note": "M과 C는 $x$좌표가 같으므로 $MC = \\left|-\\dfrac{1}{2} - \\dfrac{3}{2}\\right| = 2$이다. 외접원의 반지름은 2이다",
+        "main": true
+      },
+      {
+        "from": [
+          "note4",
+          "note8"
+        ],
+        "to": "note9",
+        "neuron": "연산11",
+        "note": "$MO = MC = 2$일 때 $(\\log_a 2)^2 + \\left(\\dfrac{3}{2}\\right)^2 = 4$이고 $(\\log_a 2)^2 = \\dfrac{7}{4}$이다",
+        "main": true
+      },
+      {
+        "from": [
+          "단서A",
+          "note9"
+        ],
+        "to": "note10",
+        "neuron": "사실5",
+        "note": "$a > 1$일 때 $\\log_a 2 > 0$이다. $\\log_a 2 = \\dfrac{\\sqrt{7}}{2}$이고 $\\log_a 4 = \\sqrt{7}$이다",
+        "main": true
+      },
+      {
+        "from": [
+          "note7",
+          "note10"
+        ],
+        "to": "note11",
+        "neuron": "전략25",
+        "note": "$\\log_a 4 = \\sqrt{7}$을 대입하면 $C = \\left(-\\dfrac{\\sqrt{7}}{2},\\, -\\dfrac{1}{2}\\right)$이다",
+        "main": true
+      },
+      {
+        "from": [
+          "note2",
+          "note11"
+        ],
+        "to": "END",
+        "neuron": "연산11",
+        "note": "$BC^2 = \\left(\\dfrac{\\sqrt{7}}{2}\\right)^2 + \\left(3 + \\dfrac{1}{2}\\right)^2 = \\dfrac{7}{4} + \\dfrac{49}{4} = 14$이다",
+        "main": true
+      }
+    ],
+    "solution": "STEP 1. 곡선 $y=4-a^{-x}$에서 $x$절편: $4-a^{-x}=0$이면 $a^{-x}=4$이고 $x=-\\log_a 4$이다. $A=(-\\log_a 4,\\,0)$이고, $y$절편은 $x=0$에서 $y=3$이므로 $B=(0,3)$이다.\n\nSTEP 2. O는 원점, A는 $x$축 위, B는 $y$축 위일 때 $\\angle AOB=90°$이다. 따라서 삼각형 OAB의 외심은 빗변 AB의 중점 $M=(-\\log_a 2,\\,\\frac{3}{2})$이다.\n\nSTEP 3. $\\overline{CO}=\\overline{CA}$일 때 C는 선분 OA의 수직이등분선 $x=-\\log_a 2$ 위에 있다.\n\nSTEP 4. C의 $x$좌표 $-\\log_a 2$를 $y=a^x-1$에 대입하면 $y=\\frac{1}{2}-1=-\\frac{1}{2}$이다. $C=(-\\log_a 2,\\,-\\frac{1}{2})$이다.\n\nSTEP 5. 외심 M과 C는 $x$좌표가 같으므로 $MC=\\left|-\\frac{1}{2}-\\frac{3}{2}\\right|=2$이다. 외접원의 반지름이 2이고 MO도 반지름이어야 하므로 $(\\log_a 2)^2+(\\frac{3}{2})^2=4$이다. $(\\log_a 2)^2=\\frac{7}{4}$이고, $a>1$일 때 $\\log_a 2>0$이므로 $\\log_a 2=\\frac{\\sqrt{7}}{2}$이다.\n\nSTEP 6. $\\log_a 4=\\sqrt{7}$을 대입하면 $C=(-\\frac{\\sqrt{7}}{2},\\,-\\frac{1}{2})$이다. $B=(0,3)$이므로 $BC^2=\\left(\\frac{\\sqrt{7}}{2}\\right)^2+\\left(\\frac{7}{2}\\right)^2=\\frac{7}{4}+\\frac{49}{4}=14$이다.",
+    "analysis": "**점 A, B 구하기**\n곡선 y=4-a^{-x}에서 x축과의 교점 A: 4-a^{-x}=0 → a^{-x}=4 → -x=log_a 4 → x=-log_a 4. 따라서 A=(-log_a 4, 0).\ny축과의 교점 B: x=0 → y=4-a^0=4-1=3. 따라서 B=(0,3).\n\n**삼각형 OAB의 외심 찾기**\nO는 원점, A는 x축 위, B는 y축 위이므로 ∠AOB=90°. 따라서 삼각형 OAB는 직각삼각형이고, 직각의 꼭짓점이 O이므로 빗변 AB의 중점 M이 외심이다.\nM = ((-log_a 4)/2, 3/2) = (-log_a 2, 3/2).\n\n**점 C의 좌표 구하기**\nCO=CA이므로 C는 선분 OA의 수직이등분선 위에 있다. 선분 OA는 x축 위에 있으므로 수직이등분선은 x=-log_a 4/2 = x=-log_a 2인 수직선이다.\n따라서 C의 x좌표는 -log_a 2.\nC는 곡선 y=a^x-1 위의 점이므로: y=a^{-log_a 2}-1=2^{-1}-1=1/2-1=-1/2.\n따라서 C=(-log_a 2, -1/2) ···①\n\n**외접원 반지름 = MC = 2 조건 활용**\n외접원의 반지름은 외심 M에서 꼭짓점 O까지의 거리이다.\nMO = sqrt((-log_a 2)^2 + (3/2)^2).\n또한 MC = sqrt(0^2 + (-1/2-3/2)^2) (x좌표가 같으므로) = |-1/2-3/2|=2.\n\nMO = MO (외접원 반지름) = MA = MC이어야 한다.\nMO^2 = (log_a 2)^2 + 9/4.\nMC = 2, 즉 MC^2 = 4.\n\nMO=MC이어야 하므로: (log_a 2)^2 + 9/4 = 4 → (log_a 2)^2 = 7/4 → log_a 2 = √7/2 (양수 취함, a>1이고 A의 x좌표 음수).\n따라서 log_a 4 = 2log_a 2 = √7.\n\n**BC^2 계산**\nB=(0,3), C=(-√7/2, -1/2).\nBC^2 = (√7/2)^2 + (3-(-1/2))^2 = 7/4 + (7/2)^2 = 7/4 + 49/4 = 56/4 = 14.",
+    "new_neurons": [],
+    "metadata": {
+      "unit": "지수함수와 로그함수",
+      "difficulty": "unknown",
+      "score": "4점",
+      "type": "단답형",
+      "answer": "14"
+    },
+    "edge_count": 12,
+    "side_count": 1,
+    "statement": "# Problem7. (Unknown Source) - Exponential and Logarithmic Functions\n\n## Problem\n\n$a > 1$인 실수 $a$에 대하여 곡선 $y = 4 - a^{-x}$의 $x$축, $y$축과 만나는 점을 각각 A, B라 하자. 삼각형 OAB의 외접원이 곡선 $y = a^x - 1$과 O가 아닌 점 C에서 만나고 $\\overline{CO} = \\overline{CA}$일 때, $\\overline{BC}^2$의 값을 구하시오. (단, O는 원점이다.) [4점]\n\n[그림: 좌표평면에 두 곡선 $y = 4 - a^{-x}$와 $y = a^x - 1$이 그려져 있고, 점 A는 $x$축 위에, 점 B는 $y$축 위에, 점 C는 제3사분면에 표시되어 있으며, 삼각형 OAB의 외접원이 그려져 있다.]",
+    "dna": {
+      "nodes": [
+        {
+          "id": "top",
+          "dna": "Q1",
+          "label": "BC²의 값을 구하라",
+          "category": "발문"
+        },
+        {
+          "id": "ask",
+          "dna": "E7",
+          "label": "거듭제곱(BC, 2)",
+          "category": "수식"
+        },
+        {
+          "id": "seg_bc",
+          "dna": "G7",
+          "label": "선분 BC",
+          "category": "기하"
+        },
+        {
+          "id": "c2_exp",
+          "dna": "T2",
+          "label": "지수 2",
+          "category": "말단"
+        },
+        {
+          "id": "conds",
+          "dna": "S1",
+          "label": "여러 조건",
+          "category": "구조"
+        },
+        {
+          "id": "va",
+          "dna": "T1",
+          "label": "변수 a",
+          "category": "말단"
+        },
+        {
+          "id": "lim_a",
+          "dna": "C2",
+          "label": "a > 1",
+          "category": "제한"
+        },
+        {
+          "id": "c1_lim",
+          "dna": "T2",
+          "label": "상수 1 (제한)",
+          "category": "말단"
+        },
+        {
+          "id": "crv1",
+          "dna": "G2",
+          "label": "곡선 y = 4 - a^(-x)",
+          "category": "기하"
+        },
+        {
+          "id": "crv1_eq",
+          "dna": "C11",
+          "label": "곡선1 방정식",
+          "category": "조건"
+        },
+        {
+          "id": "crv1_c1",
+          "dna": "C1",
+          "label": "y = 4 - a^(-x)",
+          "category": "조건"
+        },
+        {
+          "id": "crv1_rhs",
+          "dna": "E1",
+          "label": "합(4, -(a^(-x)))",
+          "category": "수식"
+        },
+        {
+          "id": "c4",
+          "dna": "T2",
+          "label": "상수 4",
+          "category": "말단"
+        },
+        {
+          "id": "neg_exp1",
+          "dna": "E2",
+          "label": "부호반전(a^(-x))",
+          "category": "수식"
+        },
+        {
+          "id": "exp1",
+          "dna": "E4",
+          "label": "a^(-x)",
+          "category": "수식"
+        },
+        {
+          "id": "neg_x",
+          "dna": "E2",
+          "label": "부호반전(x)",
+          "category": "수식"
+        },
+        {
+          "id": "vx",
+          "dna": "T3",
+          "label": "독립변수 x",
+          "category": "말단"
+        },
+        {
+          "id": "crv2",
+          "dna": "G2",
+          "label": "곡선 y = a^x - 1",
+          "category": "기하"
+        },
+        {
+          "id": "crv2_eq",
+          "dna": "C11",
+          "label": "곡선2 방정식",
+          "category": "조건"
+        },
+        {
+          "id": "crv2_c1",
+          "dna": "C1",
+          "label": "y = a^x - 1",
+          "category": "조건"
+        },
+        {
+          "id": "crv2_rhs",
+          "dna": "E1",
+          "label": "합(a^x, -1)",
+          "category": "수식"
+        },
+        {
+          "id": "exp2",
+          "dna": "E4",
+          "label": "a^x",
+          "category": "수식"
+        },
+        {
+          "id": "neg1",
+          "dna": "E2",
+          "label": "부호반전(1)",
+          "category": "수식"
+        },
+        {
+          "id": "c1_val",
+          "dna": "T2",
+          "label": "상수 1",
+          "category": "말단"
+        },
+        {
+          "id": "xaxis",
+          "dna": "G13",
+          "label": "x축",
+          "category": "기하"
+        },
+        {
+          "id": "yaxis",
+          "dna": "G13",
+          "label": "y축",
+          "category": "기하"
+        },
+        {
+          "id": "pt_a",
+          "dna": "G1",
+          "label": "점 A",
+          "category": "기하"
+        },
+        {
+          "id": "pt_b",
+          "dna": "G1",
+          "label": "점 B",
+          "category": "기하"
+        },
+        {
+          "id": "pt_c",
+          "dna": "G1",
+          "label": "점 C",
+          "category": "기하"
+        },
+        {
+          "id": "pt_o",
+          "dna": "G17",
+          "label": "원점 O(0,0)",
+          "category": "기하"
+        },
+        {
+          "id": "meet_a",
+          "dna": "C3",
+          "label": "곡선1이 x축과 만나는 점 A",
+          "category": "조건"
+        },
+        {
+          "id": "meet_b",
+          "dna": "C3",
+          "label": "곡선1이 y축과 만나는 점 B",
+          "category": "조건"
+        },
+        {
+          "id": "tri_oab",
+          "dna": "G25",
+          "label": "삼각형 OAB",
+          "category": "기하"
+        },
+        {
+          "id": "circ_oab",
+          "dna": "G26",
+          "label": "삼각형 OAB의 외접원",
+          "category": "기하"
+        },
+        {
+          "id": "meet_c",
+          "dna": "C3",
+          "label": "외접원이 곡선2와 O 아닌 점 C에서 만남",
+          "category": "조건"
+        },
+        {
+          "id": "diff_o",
+          "dna": "C4",
+          "label": "O가 아닌 점",
+          "category": "조건"
+        },
+        {
+          "id": "co_eq_ca",
+          "dna": "C16",
+          "label": "CO = CA",
+          "category": "조건"
+        },
+        {
+          "id": "seg_co",
+          "dna": "G7",
+          "label": "선분 CO",
+          "category": "기하"
+        },
+        {
+          "id": "seg_ca",
+          "dna": "G7",
+          "label": "선분 CA",
+          "category": "기하"
+        }
+      ],
+      "edges": [
+        {
+          "from": "ask",
+          "to": "top"
+        },
+        {
+          "from": "conds",
+          "to": "top"
+        },
+        {
+          "from": "seg_bc",
+          "to": "ask"
+        },
+        {
+          "from": "c2_exp",
+          "to": "ask"
+        },
+        {
+          "from": "pt_b",
+          "to": "seg_bc"
+        },
+        {
+          "from": "pt_c",
+          "to": "seg_bc"
+        },
+        {
+          "from": "lim_a",
+          "to": "va"
+        },
+        {
+          "from": "c1_lim",
+          "to": "lim_a"
+        },
+        {
+          "from": "crv1_eq",
+          "to": "crv1"
+        },
+        {
+          "from": "crv1_c1",
+          "to": "crv1_eq"
+        },
+        {
+          "from": "crv1_rhs",
+          "to": "crv1_c1"
+        },
+        {
+          "from": "c4",
+          "to": "crv1_rhs"
+        },
+        {
+          "from": "neg_exp1",
+          "to": "crv1_rhs"
+        },
+        {
+          "from": "exp1",
+          "to": "neg_exp1"
+        },
+        {
+          "from": "va",
+          "to": "exp1"
+        },
+        {
+          "from": "neg_x",
+          "to": "exp1"
+        },
+        {
+          "from": "vx",
+          "to": "neg_x"
+        },
+        {
+          "from": "crv2_eq",
+          "to": "crv2"
+        },
+        {
+          "from": "crv2_c1",
+          "to": "crv2_eq"
+        },
+        {
+          "from": "crv2_rhs",
+          "to": "crv2_c1"
+        },
+        {
+          "from": "exp2",
+          "to": "crv2_rhs"
+        },
+        {
+          "from": "neg1",
+          "to": "crv2_rhs"
+        },
+        {
+          "from": "c1_val",
+          "to": "neg1"
+        },
+        {
+          "from": "va",
+          "to": "exp2"
+        },
+        {
+          "from": "vx",
+          "to": "exp2"
+        },
+        {
+          "from": "crv1",
+          "to": "meet_a"
+        },
+        {
+          "from": "xaxis",
+          "to": "meet_a"
+        },
+        {
+          "from": "pt_a",
+          "to": "meet_a"
+        },
+        {
+          "from": "meet_a",
+          "to": "conds"
+        },
+        {
+          "from": "crv1",
+          "to": "meet_b"
+        },
+        {
+          "from": "yaxis",
+          "to": "meet_b"
+        },
+        {
+          "from": "pt_b",
+          "to": "meet_b"
+        },
+        {
+          "from": "meet_b",
+          "to": "conds"
+        },
+        {
+          "from": "pt_o",
+          "to": "tri_oab"
+        },
+        {
+          "from": "pt_a",
+          "to": "tri_oab"
+        },
+        {
+          "from": "pt_b",
+          "to": "tri_oab"
+        },
+        {
+          "from": "tri_oab",
+          "to": "circ_oab"
+        },
+        {
+          "from": "circ_oab",
+          "to": "meet_c"
+        },
+        {
+          "from": "crv2",
+          "to": "meet_c"
+        },
+        {
+          "from": "pt_c",
+          "to": "meet_c"
+        },
+        {
+          "from": "diff_o",
+          "to": "meet_c"
+        },
+        {
+          "from": "pt_o",
+          "to": "diff_o"
+        },
+        {
+          "from": "meet_c",
+          "to": "conds"
+        },
+        {
+          "from": "seg_co",
+          "to": "co_eq_ca"
+        },
+        {
+          "from": "seg_ca",
+          "to": "co_eq_ca"
+        },
+        {
+          "from": "pt_c",
+          "to": "seg_co"
+        },
+        {
+          "from": "pt_o",
+          "to": "seg_co"
+        },
+        {
+          "from": "pt_c",
+          "to": "seg_ca"
+        },
+        {
+          "from": "pt_a",
+          "to": "seg_ca"
+        },
+        {
+          "from": "co_eq_ca",
+          "to": "conds"
+        }
+      ],
+      "new_dna": []
+    },
+    "folders": [],
+    "history": [],
+    "created_at": "2026-03-20T08:32:22.082Z"
   }
 ]
