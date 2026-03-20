@@ -2044,5 +2044,493 @@
     "folders": [],
     "history": [],
     "created_at": "2026-03-20T08:21:02.245Z"
+  },
+  {
+    "problem_id": "Problem10(Unknown)-ExponentialFunctionandContinuity",
+    "answer": "86",
+    "clues": [
+      {
+        "id": "단서A",
+        "text": "모든 실수 x에 대하여 f(x)≤4이다 (조건 (가))"
+      },
+      {
+        "id": "단서B",
+        "text": "f(x), f(x+1)의 값이 모두 자연수가 되도록 하는 실수 x의 개수는 3이다 (조건 (나))"
+      },
+      {
+        "id": "단서C",
+        "text": "f(x)=2^x (x≤2), a×2^{-x} (x>2)로 정의된다"
+      }
+    ],
+    "skeleton": [
+      {
+        "from": "단서C",
+        "to": "note1",
+        "neuron": "사실5",
+        "note": "x>2에서 a×2^{-x}는 x가 증가할수록 감소하고, x→2+에서 최댓값 a/4에 가까워진다",
+        "main": true
+      },
+      {
+        "from": [
+          "단서A",
+          "note1"
+        ],
+        "to": "note2",
+        "neuron": "전략26",
+        "note": "a/4≤4일 때 x>2 전체에서 조건 (가)가 만족된다. a≤16이다",
+        "main": true
+      },
+      {
+        "from": "단서B",
+        "to": "note3",
+        "neuron": "전략22",
+        "note": "x+1≤2, x≤2<x+1, x>2인 세 경우로 분류한다",
+        "main": true
+      },
+      {
+        "from": "note3",
+        "to": "note4",
+        "neuron": "전략6",
+        "note": "(i) x≤1, (ii) 1<x≤2, (iii) x>2의 세 구간이 정해진다",
+        "main": true
+      },
+      {
+        "from": "note4",
+        "to": "note5",
+        "neuron": "사실4",
+        "note": "(i) x≤1에서 2^x이 자연수인 경우: x=0(2^0=1)과 x=1(2^1=2)만 성립한다",
+        "main": true
+      },
+      {
+        "from": "note5",
+        "to": "note6",
+        "neuron": "연산9",
+        "note": "(i)의 해는 x=0, x=1 두 개이다",
+        "main": true
+      },
+      {
+        "from": "note4",
+        "to": "note7",
+        "neuron": "사실4",
+        "note": "(ii) 1<x≤2에서 2^x이 자연수인 경우: x=2(2^2=4) 또는 x=log_2(3)(2^{log_2(3)}=3)이다",
+        "main": true
+      },
+      {
+        "from": [
+          "note7",
+          "note2"
+        ],
+        "to": "note8",
+        "neuron": "연산2",
+        "note": "x=2일 때 a×2^{-3}=a/8이 자연수이면 a=8 또는 a=16이다. x=log_2(3)일 때 a/6이 자연수이면 a=6 또는 a=12이다",
+        "main": true
+      },
+      {
+        "from": [
+          "note4",
+          "note2"
+        ],
+        "to": "note9",
+        "neuron": "전략20",
+        "note": "(iii) x>2에서 a×2^{-(x+1)}<a/8≤2일 때 자연수가 되려면 a×2^{-(x+1)}=1이어야 한다",
+        "main": true
+      },
+      {
+        "from": "note9",
+        "to": "note10",
+        "neuron": "연산2",
+        "note": "a=2^{x+1}이고 x>2이면 a>8이다. a>8인 각 자연수 a에 대해 x=log_2(a)-1이 유일하게 존재한다",
+        "main": true
+      },
+      {
+        "from": [
+          "note6",
+          "단서B"
+        ],
+        "to": "note11",
+        "neuron": "전략10",
+        "note": "(i)에서 이미 2개의 해가 있으므로 (ii),(iii)에서 합쳐 정확히 1개의 해가 나와야 한다",
+        "main": true
+      },
+      {
+        "from": [
+          "note8",
+          "note10",
+          "note11"
+        ],
+        "to": "note12",
+        "neuron": "전략23",
+        "note": "a=12일 때 (ii)에서 1개+(iii)에서 1개=2개로 조건 불만족이다. a=16일 때 (ii)에서 1개+(iii)에서 1개=2개로 조건 불만족이다",
+        "main": false
+      },
+      {
+        "from": [
+          "note8",
+          "note10",
+          "note11"
+        ],
+        "to": "note13",
+        "neuron": "전략20",
+        "note": "a=6일 때 (ii)에서 1개, (iii)없음으로 1개이다. a=8일 때 (ii)에서 1개, (iii)없음으로 1개이다. a=9,10,11,13,14,15일 때 (ii)없음, (iii)에서 1개로 1개이다",
+        "main": true
+      },
+      {
+        "from": [
+          "note13",
+          "note2"
+        ],
+        "to": "END",
+        "neuron": "전략10",
+        "note": "조건을 만족하는 자연수 a는 6,8,9,10,11,13,14,15이고 합은 6+8+9+10+11+13+14+15=86이다",
+        "main": true
+      }
+    ],
+    "solution": "STEP 1. x>2에서 a×2^{-x}는 단조감소이고 x→2+에서 최댓값 a/4에 수렴한다. 조건 (가)로부터 a/4≤4, 즉 a≤16이다.\n\nSTEP 2. 조건 (나)에서 f(x)와 f(x+1)이 모두 자연수인 x를 구하기 위해 x+1≤2, x≤2<x+1, x>2인 세 경우로 분류한다. 각각 (i) x≤1, (ii) 1<x≤2, (iii) x>2의 구간이 된다.\n\nSTEP 3. (i) x≤1에서 2^x이 자연수인 경우는 x=0(2^0=1)과 x=1(2^1=2)뿐이다. 두 해 x=0, x=1이 존재한다.\n\nSTEP 4. (ii) 1<x≤2에서 2^x이 자연수인 경우는 x=2(2^2=4) 또는 x=log_2(3)(2^{log_2(3)}=3)이다. x=2일 때 a/8이 자연수이면 a=8 또는 16이고, x=log_2(3)일 때 a/6이 자연수이면 a=6 또는 12이다.\n\nSTEP 5. (iii) x>2에서 a×2^{-(x+1)}<a/8≤2일 때 자연수가 되려면 1이어야 한다. a=2^{x+1}이고 x>2이면 a>8이다. a>8인 각 자연수 a에 대해 해 x=log_2(a)-1이 정확히 1개 존재한다.\n\nSTEP 6. (i)에서 이미 2개의 해가 있으므로 (ii),(iii)에서 합쳐 정확히 1개가 나와야 한다. a=12일 때 (ii)에서 1개+(iii)에서 1개=2개로 불만족이고, a=16일 때 (ii)에서 1개+(iii)에서 1개=2개로 불만족이다.\n\nSTEP 7. 조건을 만족하는 자연수 a는 6, 8, 9, 10, 11, 13, 14, 15이고 합은 6+8+9+10+11+13+14+15=86이다.",
+    "analysis": "(가) f(x)≤4는 x≤2구간에서 2^x≤4이면 x≤2이므로 자동 만족. x>2구간에서 a×2^{-x}는 x→2+에서 최대 a/4이므로 a/4≤4, 즉 a≤16이 된다.\n\n(나)를 분석하기 위해 f(x), f(x+1)이 모두 자연수인 x의 집합을 구한다. x와 x+1의 정의역에 따라 세 경우로 나눈다.\n\n(i) x+1≤2, 즉 x≤1인 경우: f(x)=2^x, f(x+1)=2^{x+1}. 2^{x+1}=2×2^x이므로 2^x가 자연수 ↔ 2^{x+1}도 자연수. 따라서 2^x가 자연수인 x≤1을 구하면 x=0(2^0=1), x=1은 제외(x≤1이고 x=1이면 경계, x+1=2≤2이므로 포함). 실제로 x=0: 2^0=1, 2^1=2 자연수. x=1: 2^1=2, 2^2=4 자연수. x=-1이면 2^{-1}=1/2 자연수 아님. x=0과 x=1만 성립. (x≤1범위에서)\n\n(ii) x≤2<x+1, 즉 1<x≤2인 경우: f(x)=2^x, f(x+1)=a×2^{-(x+1)}. 2^x가 자연수인 1<x≤2: x=2(2^2=4) 또는 x=log_2(3)(2^{log_2(3)}=3). \n- x=2이면 a×2^{-3}이 자연수 → a/8이 자연수 → a=8 또는 16(∵a≤16).\n- x=log_2(3)이면 a×2^{-(log_2(3)+1)}=a/(2×3)=a/6이 자연수 → a=6 또는 12(∵a≤16).\n\n(iii) x>2인 경우: f(x)=a×2^{-x}, f(x+1)=a×2^{-(x+1)}. 둘 다 자연수. a×2^{-(x+1)}는 a×2^{-x}/2이므로 a×2^{-(x+1)}가 자연수이면 a×2^{-x}=2×(자연수)도 자연수. 따라서 a×2^{-(x+1)}가 자연수인 x>2를 구한다. (가)조건에서 x>2이면 a×2^{-x}<a×2^{-2}=a/4≤4. 따라서 a×2^{-(x+1)}<a×2^{-3}=a/8≤2. 즉 a×2^{-(x+1)}는 1 이하의 자연수, 즉 1이어야 한다. → a=2^{x+1}. x>2이면 2^{x+1}>8이므로 a>8. a=2^{x+1}을 만족하는 x: x=log_2(a)-1이 유일하게 존재(x>2이면 a>8). 즉 a>8인 자연수 a에 대해 (iii)의 해가 정확히 1개.\n\n(i)에서 이미 x=0, x=1 두 개의 해가 있다. (나)조건에서 총 3개이므로 (ii),(iii)에서 합쳐 정확히 1개가 나와야 한다.\n\n(ii)와 (iii)에서:\n- a=6: (ii)에서 x=log_2(3) 1개, (iii)에서 a=6≤8이므로 해 없음. 합 1개. ✓\n- a=8: (ii)에서 x=2 1개, (iii)에서 a=8이면 x=log_2(8)-1=2인데 x>2 조건에 안 맞아 0개. 합 1개. ✓\n- a=9~11,13~15(>8이고 ≠12,16): (ii)에서 해 없음, (iii)에서 x=log_2(a)-1이 1개. 합 1개. ✓\n- a=12: (ii)에서 x=log_2(3) 1개, (iii)에서 x=log_2(12)-1 1개. 합 2개. ✗\n- a=16: (ii)에서 x=2 1개, (iii)에서 a=16이면 x=log_2(16)-1=3>2 1개. 합 2개. ✗\n\n따라서 a=6,8,9,10,11,13,14,15. 합=6+8+9+10+11+13+14+15=86.",
+    "new_neurons": [],
+    "metadata": {
+      "unit": "지수함수와 연속",
+      "difficulty": "unknown",
+      "score": "4점",
+      "type": "단답형",
+      "answer": "86"
+    },
+    "edge_count": 14,
+    "side_count": 1,
+    "statement": "# Problem10. (Unknown) - Exponential Function and Continuity\n\n## Problem\n\n함수\n$$f(x) = \\begin{cases} 2^x & (x \\leq 2) \\\\ a \\times 2^{-x} & (x > 2) \\end{cases}$$\n\n가 다음 조건을 만족시키도록 하는 모든 자연수 $a$의 값의 합을 구하시오. [4점]\n\n(가) 모든 실수 $x$에 대하여 $f(x) \\leq 4$이다.\n\n(나) $f(x)$, $f(x+1)$의 값이 모두 자연수가 되도록 하는 실수 $x$의 개수는 3이다.",
+    "dna": {
+      "nodes": [
+        {
+          "id": "top",
+          "dna": "Q3",
+          "label": "모든 자연수 a의 값의 합을 구하라",
+          "category": "발문"
+        },
+        {
+          "id": "ask_sum",
+          "dna": "E1",
+          "label": "합(모든 자연수 a)",
+          "category": "수식"
+        },
+        {
+          "id": "va",
+          "dna": "T1",
+          "label": "변수 a",
+          "category": "말단"
+        },
+        {
+          "id": "va_lim_nat",
+          "dna": "L3",
+          "label": "a는 자연수",
+          "category": "제한"
+        },
+        {
+          "id": "func_f",
+          "dna": "F6",
+          "label": "함수 f(x) 정의",
+          "category": "함수"
+        },
+        {
+          "id": "piecewise",
+          "dna": "F1",
+          "label": "조각함수 f(x)",
+          "category": "함수"
+        },
+        {
+          "id": "piece1",
+          "dna": "F2",
+          "label": "2^x (x≤2)",
+          "category": "함수"
+        },
+        {
+          "id": "piece1_expr",
+          "dna": "E4",
+          "label": "2^x",
+          "category": "수식"
+        },
+        {
+          "id": "c2",
+          "dna": "T2",
+          "label": "상수 2",
+          "category": "말단"
+        },
+        {
+          "id": "vx",
+          "dna": "T3",
+          "label": "독립변수 x",
+          "category": "말단"
+        },
+        {
+          "id": "piece1_dom",
+          "dna": "C2",
+          "label": "x ≤ 2",
+          "category": "조건"
+        },
+        {
+          "id": "piece2",
+          "dna": "F2",
+          "label": "a×2^(-x) (x>2)",
+          "category": "함수"
+        },
+        {
+          "id": "piece2_expr",
+          "dna": "E6",
+          "label": "a × 2^(-x)",
+          "category": "수식"
+        },
+        {
+          "id": "neg_x",
+          "dna": "E2",
+          "label": "-x",
+          "category": "수식"
+        },
+        {
+          "id": "pow2_negx",
+          "dna": "E4",
+          "label": "2^(-x)",
+          "category": "수식"
+        },
+        {
+          "id": "piece2_dom",
+          "dna": "C2",
+          "label": "x > 2",
+          "category": "조건"
+        },
+        {
+          "id": "cond_ga",
+          "dna": "C18",
+          "label": "(가) 모든 실수 x에 대해 f(x)≤4",
+          "category": "조건"
+        },
+        {
+          "id": "ga_ineq",
+          "dna": "C2",
+          "label": "f(x) ≤ 4",
+          "category": "조건"
+        },
+        {
+          "id": "fx_apply",
+          "dna": "F3",
+          "label": "f(x)",
+          "category": "함수"
+        },
+        {
+          "id": "c4",
+          "dna": "T2",
+          "label": "상수 4",
+          "category": "말단"
+        },
+        {
+          "id": "cond_na",
+          "dna": "X4",
+          "label": "(나) 조건을 만족하는 실수 x의 개수는 3",
+          "category": "존재"
+        },
+        {
+          "id": "c3",
+          "dna": "T2",
+          "label": "상수 3",
+          "category": "말단"
+        },
+        {
+          "id": "both_nat",
+          "dna": "S1",
+          "label": "f(x)와 f(x+1) 모두 자연수",
+          "category": "구조"
+        },
+        {
+          "id": "fx_nat",
+          "dna": "L3",
+          "label": "f(x)가 자연수",
+          "category": "제한"
+        },
+        {
+          "id": "fx1_apply",
+          "dna": "F3",
+          "label": "f(x+1)",
+          "category": "함수"
+        },
+        {
+          "id": "x_plus_1",
+          "dna": "E1",
+          "label": "x+1",
+          "category": "수식"
+        },
+        {
+          "id": "c1",
+          "dna": "T2",
+          "label": "상수 1",
+          "category": "말단"
+        },
+        {
+          "id": "fx1_nat",
+          "dna": "L3",
+          "label": "f(x+1)가 자연수",
+          "category": "제한"
+        }
+      ],
+      "edges": [
+        {
+          "from": "ask_sum",
+          "to": "top"
+        },
+        {
+          "from": "va",
+          "to": "ask_sum"
+        },
+        {
+          "from": "va_lim_nat",
+          "to": "va"
+        },
+        {
+          "from": "piecewise",
+          "to": "func_f"
+        },
+        {
+          "from": "piece1",
+          "to": "piecewise"
+        },
+        {
+          "from": "piece2",
+          "to": "piecewise"
+        },
+        {
+          "from": "piece1_expr",
+          "to": "piece1"
+        },
+        {
+          "from": "piece1_dom",
+          "to": "piece1"
+        },
+        {
+          "from": "c2",
+          "to": "piece1_expr"
+        },
+        {
+          "from": "vx",
+          "to": "piece1_expr"
+        },
+        {
+          "from": "vx",
+          "to": "piece1_dom"
+        },
+        {
+          "from": "c2",
+          "to": "piece1_dom"
+        },
+        {
+          "from": "piece2_expr",
+          "to": "piece2"
+        },
+        {
+          "from": "piece2_dom",
+          "to": "piece2"
+        },
+        {
+          "from": "va",
+          "to": "piece2_expr"
+        },
+        {
+          "from": "pow2_negx",
+          "to": "piece2_expr"
+        },
+        {
+          "from": "c2",
+          "to": "pow2_negx"
+        },
+        {
+          "from": "neg_x",
+          "to": "pow2_negx"
+        },
+        {
+          "from": "vx",
+          "to": "neg_x"
+        },
+        {
+          "from": "vx",
+          "to": "piece2_dom"
+        },
+        {
+          "from": "c2",
+          "to": "piece2_dom"
+        },
+        {
+          "from": "func_f",
+          "to": "cond_ga"
+        },
+        {
+          "from": "ga_ineq",
+          "to": "cond_ga"
+        },
+        {
+          "from": "fx_apply",
+          "to": "ga_ineq"
+        },
+        {
+          "from": "c4",
+          "to": "ga_ineq"
+        },
+        {
+          "from": "func_f",
+          "to": "fx_apply"
+        },
+        {
+          "from": "vx",
+          "to": "fx_apply"
+        },
+        {
+          "from": "cond_ga",
+          "to": "top"
+        },
+        {
+          "from": "both_nat",
+          "to": "cond_na"
+        },
+        {
+          "from": "c3",
+          "to": "cond_na"
+        },
+        {
+          "from": "cond_na",
+          "to": "top"
+        },
+        {
+          "from": "fx_nat",
+          "to": "both_nat"
+        },
+        {
+          "from": "fx1_nat",
+          "to": "both_nat"
+        },
+        {
+          "from": "fx_apply",
+          "to": "fx_nat"
+        },
+        {
+          "from": "fx1_apply",
+          "to": "fx1_nat"
+        },
+        {
+          "from": "func_f",
+          "to": "fx1_apply"
+        },
+        {
+          "from": "x_plus_1",
+          "to": "fx1_apply"
+        },
+        {
+          "from": "vx",
+          "to": "x_plus_1"
+        },
+        {
+          "from": "c1",
+          "to": "x_plus_1"
+        }
+      ],
+      "new_dna": []
+    },
+    "folders": [],
+    "history": [],
+    "created_at": "2026-03-20T08:23:55.125Z"
   }
 ]
