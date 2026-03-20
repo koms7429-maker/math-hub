@@ -851,5 +851,402 @@
     "folders": [],
     "history": [],
     "created_at": "2026-03-20T08:15:15.984Z"
+  },
+  {
+    "problem_id": "Problem6(UnknownSource)-QuadraticEquations",
+    "answer": "18",
+    "clues": [
+      {
+        "id": "단서A",
+        "text": "x에 대한 방정식 x²+(2a+1)x+a²+a=0의 한 실근이 k이다"
+      },
+      {
+        "id": "단서B",
+        "text": "a는 자연수이다"
+      },
+      {
+        "id": "단서C",
+        "text": "어떤 자연수 n에 대하여 k^n=64이다"
+      }
+    ],
+    "skeleton": [
+      {
+        "from": "단서A",
+        "to": "note1",
+        "neuron": "전략29",
+        "note": "x²+(2a+1)x+a²+a=(x+a)(x+a+1)로 인수분해된다",
+        "main": true
+      },
+      {
+        "from": "note1",
+        "to": "note2",
+        "neuron": "연산9",
+        "note": "k=-a 또는 k=-a-1이다",
+        "main": true
+      },
+      {
+        "from": [
+          "note2",
+          "단서B"
+        ],
+        "to": "note3",
+        "neuron": "사실76",
+        "note": "a가 자연수이면 k는 음의 정수이다",
+        "main": true
+      },
+      {
+        "from": [
+          "note3",
+          "단서C"
+        ],
+        "to": "note4",
+        "neuron": "전략12",
+        "note": "k가 음의 정수이고 k^n=64>0이 되려면 n은 짝수이어야 한다",
+        "main": true
+      },
+      {
+        "from": "note4",
+        "to": "note5",
+        "neuron": "전략37",
+        "note": "k=-m(m은 양의 정수)으로 놓으면 m^n=2^6이고 n은 짝수인 자연수이다",
+        "main": true
+      },
+      {
+        "from": "note5",
+        "to": "note6",
+        "neuron": "전략20",
+        "note": "짝수 n=2,4,6,...에 대해 m^n=64를 확인하면 (n,m)=(2,8) 또는 (6,2)만 정수 해를 가진다",
+        "main": true
+      },
+      {
+        "from": "note6",
+        "to": "note7",
+        "neuron": "전략23",
+        "note": "n=4이면 m=2^(3/2)로 정수가 아니고, n≥8이면 m^n≥2^8=256≠64이다. (n,k)=(2,-8) 또는 (6,-2)이다",
+        "main": false
+      },
+      {
+        "from": [
+          "note6",
+          "note2"
+        ],
+        "to": "note8",
+        "neuron": "전략10",
+        "note": "k=-8이면 a=8 또는 a=7, k=-2이면 a=2 또는 a=1이다",
+        "main": true
+      },
+      {
+        "from": "note8",
+        "to": "END",
+        "neuron": "전략10",
+        "note": "모든 자연수 a의 합은 8+7+2+1=18이다",
+        "main": true
+      }
+    ],
+    "solution": "STEP 1. 방정식 x²+(2a+1)x+a²+a=0을 인수분해하면 (x+a)(x+a+1)=0이다.\n\nSTEP 2. 영인자법칙에 의해 k=-a 또는 k=-a-1이다.\n\nSTEP 3. a가 자연수이면 k는 음의 정수이다.\n\nSTEP 4. k가 음의 정수이고 k^n=64>0이 되려면 n은 짝수이어야 한다.\n\nSTEP 5. k=-m(m은 양의 정수)으로 놓으면 m^n=2^6이고 n은 짝수인 자연수이다.\n\nSTEP 6. 짝수 n=2,4,6,...에 대해 m^n=64를 확인하면 (n,m)=(2,8) 또는 (6,2)만 정수 해를 가진다. 즉 (n,k)=(2,-8) 또는 (6,-2)이다.\n\nSTEP 7. k=-8이면 a=8 또는 a=7, k=-2이면 a=2 또는 a=1이다.\n\nSTEP 8. 모든 자연수 a의 합은 8+7+2+1=18이다.",
+    "analysis": "방정식 x²+(2a+1)x+a²+a=0을 인수분해하면 (x+a)(x+a+1)=0이다. 영인자법칙에 의해 x=-a 또는 x=-a-1이다. 따라서 k=-a 또는 k=-a-1 ···①\n\na가 자연수이므로 -a는 음의 정수, -a-1도 음의 정수이다. 따라서 k는 반드시 음의 정수이다.\n\nk가 음의 정수이고 k^n=64=2^6을 만족하려면, 음수의 거듭제곱이 양수가 되려면 n이 짝수여야 한다. k=-m(m은 양의 정수)으로 놓으면 (-m)^n=m^n=64(n이 짝수일 때). 즉 m^n=2^6이고 n은 짝수인 자연수이다.\n- n=2: m²=64, m=8, k=-8\n- n=4: m⁴=64=2^6 → m=2^(6/4)=2^(3/2)는 정수가 아님. 불가.\n- n=6: m⁶=64=2^6, m=2, k=-2\n- n≥8(짝수): m^n=64에서 m≥1이므로 m=1이면 64가 안 되고, m=2이면 2^8=256≠64. 불가.\n따라서 (n,k)=(2,-8) 또는 (6,-2)이다.\n\n①에 의해:\n- k=-8이면 -a=-8→a=8 또는 -a-1=-8→a=7\n- k=-2이면 -a=-2→a=2 또는 -a-1=-2→a=1\n\n모든 자연수 a의 합: 8+7+2+1=18",
+    "new_neurons": [],
+    "metadata": {
+      "unit": "이차방정식, 거듭제곱근",
+      "difficulty": "unknown",
+      "score": "4",
+      "type": "multiple choice",
+      "answer": "④ 18"
+    },
+    "edge_count": 9,
+    "side_count": 1,
+    "statement": "# Problem6. (Unknown Source) - Quadratic Equations\n\n## Problem\n\n$x$에 대한 방정식 $x^2+(2a+1)x+a^2+a=0$의 한 실근 $k$가 다음 조건을 만족시키도록 하는 모든 자연수 $a$의 값의 합은?\n\n**조건**: 어떤 자연수 $n$에 대하여 $k^n=64$이다.",
+    "dna": {
+      "nodes": [
+        {
+          "id": "top",
+          "dna": "Q3",
+          "label": "모든 자연수 a의 값의 합을 구하라",
+          "category": "발문"
+        },
+        {
+          "id": "va",
+          "dna": "T1",
+          "label": "변수 a",
+          "category": "말단"
+        },
+        {
+          "id": "lim_a",
+          "dna": "L3",
+          "label": "a는 자연수",
+          "category": "제한"
+        },
+        {
+          "id": "eq_obj",
+          "dna": "G2",
+          "label": "x에 대한 방정식(이차)",
+          "category": "기하"
+        },
+        {
+          "id": "eq_def",
+          "dna": "C11",
+          "label": "방정식 정의",
+          "category": "조건"
+        },
+        {
+          "id": "eq_c1",
+          "dna": "C1",
+          "label": "x²+(2a+1)x+a²+a = 0",
+          "category": "조건"
+        },
+        {
+          "id": "lhs",
+          "dna": "E1",
+          "label": "합(x², (2a+1)x, a²+a)",
+          "category": "수식"
+        },
+        {
+          "id": "term1",
+          "dna": "E7",
+          "label": "x²",
+          "category": "수식"
+        },
+        {
+          "id": "vx",
+          "dna": "T3",
+          "label": "독립변수 x",
+          "category": "말단"
+        },
+        {
+          "id": "c2",
+          "dna": "T2",
+          "label": "상수 2",
+          "category": "말단"
+        },
+        {
+          "id": "c1",
+          "dna": "T2",
+          "label": "상수 1",
+          "category": "말단"
+        },
+        {
+          "id": "c0",
+          "dna": "T2",
+          "label": "상수 0",
+          "category": "말단"
+        },
+        {
+          "id": "term2",
+          "dna": "E6",
+          "label": "(2a+1)·x",
+          "category": "수식"
+        },
+        {
+          "id": "coef2a1",
+          "dna": "E1",
+          "label": "2a+1",
+          "category": "수식"
+        },
+        {
+          "id": "two_a",
+          "dna": "E6",
+          "label": "2·a",
+          "category": "수식"
+        },
+        {
+          "id": "term3",
+          "dna": "E1",
+          "label": "a²+a",
+          "category": "수식"
+        },
+        {
+          "id": "a_sq",
+          "dna": "E7",
+          "label": "a²",
+          "category": "수식"
+        },
+        {
+          "id": "root_k",
+          "dna": "C15",
+          "label": "한 실근 k가 조건 만족",
+          "category": "조건"
+        },
+        {
+          "id": "vk",
+          "dna": "T1",
+          "label": "변수 k (한 실근)",
+          "category": "말단"
+        },
+        {
+          "id": "box_cond",
+          "dna": "X5",
+          "label": "어떤 자연수 n에 대해 k^n=64 존재",
+          "category": "존재"
+        },
+        {
+          "id": "vn",
+          "dna": "T1",
+          "label": "변수 n",
+          "category": "말단"
+        },
+        {
+          "id": "lim_n",
+          "dna": "L3",
+          "label": "n은 자연수",
+          "category": "제한"
+        },
+        {
+          "id": "kn_eq",
+          "dna": "C1",
+          "label": "k^n = 64",
+          "category": "조건"
+        },
+        {
+          "id": "kn",
+          "dna": "E7",
+          "label": "k^n",
+          "category": "수식"
+        },
+        {
+          "id": "c64",
+          "dna": "T2",
+          "label": "상수 64",
+          "category": "말단"
+        }
+      ],
+      "edges": [
+        {
+          "from": "va",
+          "to": "top"
+        },
+        {
+          "from": "lim_a",
+          "to": "va"
+        },
+        {
+          "from": "eq_obj",
+          "to": "top"
+        },
+        {
+          "from": "eq_def",
+          "to": "eq_obj"
+        },
+        {
+          "from": "eq_c1",
+          "to": "eq_def"
+        },
+        {
+          "from": "lhs",
+          "to": "eq_c1"
+        },
+        {
+          "from": "c0",
+          "to": "eq_c1"
+        },
+        {
+          "from": "term1",
+          "to": "lhs"
+        },
+        {
+          "from": "term2",
+          "to": "lhs"
+        },
+        {
+          "from": "term3",
+          "to": "lhs"
+        },
+        {
+          "from": "vx",
+          "to": "term1"
+        },
+        {
+          "from": "c2",
+          "to": "term1"
+        },
+        {
+          "from": "coef2a1",
+          "to": "term2"
+        },
+        {
+          "from": "vx",
+          "to": "term2"
+        },
+        {
+          "from": "two_a",
+          "to": "coef2a1"
+        },
+        {
+          "from": "c1",
+          "to": "coef2a1"
+        },
+        {
+          "from": "c2",
+          "to": "two_a"
+        },
+        {
+          "from": "va",
+          "to": "two_a"
+        },
+        {
+          "from": "a_sq",
+          "to": "term3"
+        },
+        {
+          "from": "va",
+          "to": "term3"
+        },
+        {
+          "from": "va",
+          "to": "a_sq"
+        },
+        {
+          "from": "c2",
+          "to": "a_sq"
+        },
+        {
+          "from": "root_k",
+          "to": "top"
+        },
+        {
+          "from": "vk",
+          "to": "root_k"
+        },
+        {
+          "from": "eq_obj",
+          "to": "root_k"
+        },
+        {
+          "from": "box_cond",
+          "to": "root_k"
+        },
+        {
+          "from": "vn",
+          "to": "box_cond"
+        },
+        {
+          "from": "lim_n",
+          "to": "vn"
+        },
+        {
+          "from": "kn_eq",
+          "to": "box_cond"
+        },
+        {
+          "from": "kn",
+          "to": "kn_eq"
+        },
+        {
+          "from": "c64",
+          "to": "kn_eq"
+        },
+        {
+          "from": "vk",
+          "to": "kn"
+        },
+        {
+          "from": "vn",
+          "to": "kn"
+        }
+      ],
+      "new_dna": []
+    },
+    "folders": [],
+    "history": [],
+    "created_at": "2026-03-20T08:16:43.767Z"
   }
 ]
