@@ -1323,5 +1323,104 @@
       }
     ],
     "created_at": "2026-03-20T07:10:10.496Z"
+  },
+  {
+    "problem_id": "Problem12(UnknownSource)-GeometricSequence",
+    "content": "# Problem12. (Unknown Source) - Geometric Sequence\n\n## Problem\n\n모든 항이 정수인 등비수열 $\\{a_n\\}$이 2 이상의 어떤 자연수 $m$에 대하여\n\n$$a_m = (a_1)^m = 64$$\n\n를 만족시킨다. $a_2 < 0$일 때, $m - \\sum_{k=1}^{4} a_k$의 값은? [4점]\n\n## Choices\n① 107  ② 157  ③ 207  ④ 257  ⑤ 307\n\n**Answer**: ③ 207\n**Difficulty**: unknown\n**Score**: 4점\n**Type**: multiple choice\n\n---\n\n## Solution\n\n등비수열 $\\{a_n\\}$의 공비를 $r$이라 하면\n\n$a_2 < 0$, $a_m > 0 \\Rightarrow r < 0$이고 $a_1 > 0$, $m$은 홀수이므로\n\n$(a_1)^m = 64 \\Rightarrow a_1 = 4$, $m = 3$ ($\\because a_1$은 정수, $m \\geq 2$)\n\n임을 알 수 있다. 이때,\n\n$$a_3 = 64, \\quad a_1 = 4 \\Rightarrow r = -4 \\quad (\\because r < 0)$$\n\n이므로\n\n$$m - \\sum_{k=1}^{4} a_k = 3 - (4 - 16 + 64 - 256) = 207$$\n\n을 얻는다.\n\n---",
+    "content_source": "FileLoop",
+    "content_length": 678,
+    "skel_status": "ok",
+    "dna_status": "pending",
+    "needed_neurons": [],
+    "needed_dna": [],
+    "previous_analysis": "등비수열 {a_n}의 첫째항을 a1, 공비를 r이라 하면 a_n = a1 * r^(n-1)이다.\n\n[1단계] 부호 분석\na_m = 64 > 0이고 a2 < 0이다.\na2 = a1 * r이고 a_m = a1 * r^(m-1).\na2 < 0이므로 a1과 r의 부호가 반대이다.\na_m = a1 * r^(m-1) > 0이어야 하므로, a1과 r^(m-1)의 부호가 같아야 한다.\nr < 0이면 r^(m-1)의 부호는 m-1의 홀짝에 따라 결정된다.\na1 > 0, r < 0이면 a2 = a1*r < 0 (성립).\na_m = a1 * r^(m-1) > 0이 되려면 r^(m-1) > 0이어야 하므로 m-1이 짝수, 즉 m이 홀수이어야 한다.\n\n[2단계] a1과 m 결정\n(a1)^m = 64이고 a1은 양의 정수, m은 2 이상의 홀수이다.\n64 = 2^6이므로:\n- m=3: a1^3=64 → a1=4 (정수, 성립)\n- m=5: a1^5=64 → a1=64^(1/5) = 2^(6/5) (정수 아님, 불성립)\n- m=7 이상: 마찬가지로 정수 불성립\n따라서 a1=4, m=3.\n\n[3단계] 공비 r 결정\na_m = a_3 = 64이고 a_3 = a1 * r^2 = 4r^2 = 64 → r^2 = 16 → r = ±4.\nr < 0이어야 하므로 r = -4.\n\n[4단계] 합 계산\na1=4, a2=4*(-4)=-16, a3=4*(-4)^2=64, a4=4*(-4)^3=-256.\n∑k=1~4 a_k = 4 + (-16) + 64 + (-256) = -204.\nm - ∑ = 3 - (-204) = 207.",
+    "previous_matching": "1. a2<0이고 am>0인데 am=64>0이므로 r<0이고 a1>0 → 부호 추론 (전략6, 사실65)\n2. a1>0이고 m이 홀수이어야 am=a1*r^(m-1)>0 (r<0이므로 m-1이 짝수 → m 홀수) → 홀짝 경우 분리 (전략12)\n3. (a1)^m=64에서 a1은 정수이고 m≥2인 홀수 → a1=4, m=3 → 전략37(거듭제곱·거듭제곱근에서 정수 조건→지수의 약수·배수 조건), 전략17(유한개 전수조사)\n4. a3=64이고 a1=4 → a1*r^2=64 → r^2=16 → r=±4, r<0이므로 r=-4 → 연산4\n5. 합 계산: 4-16+64-256=-204, m-합=3-(-204)=207 → 연산 계산",
+    "previous_matched": [
+      "사실65",
+      "전략12",
+      "전략37",
+      "전략17",
+      "연산4",
+      "전략23",
+      "연산18",
+      "연산21"
+    ],
+    "previous_skeleton": [
+      {
+        "from": "단서A",
+        "to": "note1",
+        "neuron": "사실65",
+        "note": "$a_2 < 0$이고 $a_m = 64 > 0$일 때 $a_1 > 0$이고 $r < 0$이다",
+        "main": true
+      },
+      {
+        "from": [
+          "단서B",
+          "note1"
+        ],
+        "to": "note2",
+        "neuron": "전략12",
+        "note": "$r < 0$이고 $a_1 > 0$일 때 $a_m = a_1 r^{m-1} > 0$이 되려면 $m-1$이 짝수이어야 하고 $m$은 홀수이다",
+        "main": true
+      },
+      {
+        "from": [
+          "단서C",
+          "note2"
+        ],
+        "to": "note3",
+        "neuron": "전략37",
+        "note": "$(a_1)^m = 64 = 2^6$에서 $a_1$이 양의 정수이고 $m$이 2 이상의 홀수일 때 $m=3$, $a_1=4$이다",
+        "main": true
+      },
+      {
+        "from": "note3",
+        "to": "note4",
+        "neuron": "전략17",
+        "note": "$m=5, 7, \\ldots$이면 $a_1 = 64^{1/m}$이 정수가 아님을 확인한다",
+        "main": false
+      },
+      {
+        "from": [
+          "note3",
+          "단서B"
+        ],
+        "to": "note5",
+        "neuron": "연산4",
+        "note": "$a_3 = a_1 r^2 = 4r^2 = 64$일 때 $r^2 = 16$이고 $r = \\pm 4$이다",
+        "main": true
+      },
+      {
+        "from": [
+          "note5",
+          "note1"
+        ],
+        "to": "note6",
+        "neuron": "전략23",
+        "note": "$r < 0$이어야 하므로 $r = 4$는 모순이고 $r = -4$이다",
+        "main": true
+      },
+      {
+        "from": "note6",
+        "to": "note7",
+        "neuron": "연산18",
+        "note": "$a_1=4,\\; a_2=-16,\\; a_3=64,\\; a_4=-256$이고 $\\displaystyle\\sum_{k=1}^{4}a_k = -204$이다",
+        "main": true
+      },
+      {
+        "from": [
+          "note3",
+          "note7"
+        ],
+        "to": "END",
+        "neuron": "연산21",
+        "note": "$m - \\displaystyle\\sum_{k=1}^{4}a_k = 3 - (-204) = 207$이다",
+        "main": true
+      }
+    ],
+    "previous_new_neurons": [],
+    "previous_dna_nodes": [],
+    "previous_dna_edges": [],
+    "created_at": "2026-03-20T07:11:01.230Z"
   }
 ]
