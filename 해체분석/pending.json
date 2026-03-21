@@ -1080,7 +1080,7 @@
     "content_source": "FileLoop",
     "content_length": 1478,
     "skel_status": "neuron_missing",
-    "dna_status": "validate_failed",
+    "dna_status": "review_failed",
     "needed_neurons": [],
     "needed_dna": [],
     "previous_analysis": "",
@@ -1102,75 +1102,69 @@
         "category": "수식"
       },
       {
+        "id": "sigma",
+        "dna": "E1",
+        "label": "∑g(5n),n=1~5",
+        "category": "수식"
+      },
+      {
+        "id": "g5n",
+        "dna": "F3",
+        "label": "g(5n)",
+        "category": "함수"
+      },
+      {
+        "id": "arg_5n",
+        "dna": "E6",
+        "label": "5n",
+        "category": "수식"
+      },
+      {
+        "id": "c5",
+        "dna": "T2",
+        "label": "상수 5",
+        "category": "말단"
+      },
+      {
+        "id": "vn",
+        "dna": "T3",
+        "label": "독립변수 n",
+        "category": "말단"
+      },
+      {
         "id": "vk",
         "dna": "T1",
         "label": "변수 k",
         "category": "말단"
       },
       {
-        "id": "lk_neg",
+        "id": "lim_k",
         "dna": "C2",
         "label": "k<0",
         "category": "조건"
       },
       {
-        "id": "sigma",
-        "dna": "E1",
-        "label": "∑g(5n)",
-        "category": "수식"
+        "id": "va",
+        "dna": "T1",
+        "label": "변수 a",
+        "category": "말단"
       },
       {
-        "id": "gn_app1",
-        "dna": "F3",
-        "label": "g(5)",
-        "category": "함수"
+        "id": "lim_a",
+        "dna": "C2",
+        "label": "a>1",
+        "category": "조건"
       },
       {
-        "id": "gn_app2",
-        "dna": "F3",
-        "label": "g(10)",
-        "category": "함수"
-      },
-      {
-        "id": "gn_app3",
-        "dna": "F3",
-        "label": "g(15)",
-        "category": "함수"
-      },
-      {
-        "id": "gn_app4",
-        "dna": "F3",
-        "label": "g(20)",
-        "category": "함수"
-      },
-      {
-        "id": "gn_app5",
-        "dna": "F3",
-        "label": "g(25)",
-        "category": "함수"
-      },
-      {
-        "id": "fn_def",
-        "dna": "F6",
-        "label": "f(x) 정의",
-        "category": "함수"
-      },
-      {
-        "id": "f_piece",
+        "id": "fn_f",
         "dna": "F1",
-        "label": "조각함수 f",
+        "label": "조각함수 f(x)",
         "category": "함수"
       },
       {
         "id": "piece1",
         "dna": "F2",
-        "label": "x≤1 조각",
-        "category": "함수"
-      },
-      {
-        "id": "piece2",
-        "dna": "F2",
-        "label": "x>1 조각",
+        "label": "조각1(x≤1)",
         "category": "함수"
       },
       {
@@ -1180,70 +1174,28 @@
         "category": "조건"
       },
       {
-        "id": "dom2",
-        "dna": "C2",
-        "label": "x>1",
-        "category": "조건"
-      },
-      {
         "id": "abs_expr",
         "dna": "F5",
-        "label": "|a^{x+1}-3a|",
+        "label": "|a^(x+1)-3a|",
         "category": "함수"
       },
       {
         "id": "inner_diff",
         "dna": "E1",
-        "label": "a^{x+1}-3a",
+        "label": "a^(x+1)+(-3a)",
         "category": "수식"
       },
       {
-        "id": "exp_term",
+        "id": "exp_ax1",
         "dna": "E4",
-        "label": "a^{x+1}",
+        "label": "a^(x+1)",
         "category": "수식"
       },
       {
-        "id": "exp_inner",
+        "id": "xp1",
         "dna": "E1",
         "label": "x+1",
         "category": "수식"
-      },
-      {
-        "id": "neg_3a",
-        "dna": "E2",
-        "label": "-(3a)",
-        "category": "수식"
-      },
-      {
-        "id": "three_a",
-        "dna": "E6",
-        "label": "3*a",
-        "category": "수식"
-      },
-      {
-        "id": "va",
-        "dna": "T1",
-        "label": "변수 a",
-        "category": "말단"
-      },
-      {
-        "id": "la_gt1",
-        "dna": "C2",
-        "label": "a>1",
-        "category": "조건"
-      },
-      {
-        "id": "c1",
-        "dna": "T2",
-        "label": "상수 1",
-        "category": "말단"
-      },
-      {
-        "id": "c3",
-        "dna": "T2",
-        "label": "상수 3",
-        "category": "말단"
       },
       {
         "id": "vx",
@@ -1252,73 +1204,103 @@
         "category": "말단"
       },
       {
-        "id": "quad_expr",
-        "dna": "E6",
-        "label": "k*(x-1)*(x-a)",
+        "id": "c1",
+        "dna": "T2",
+        "label": "상수 1",
+        "category": "말단"
+      },
+      {
+        "id": "neg3a",
+        "dna": "E2",
+        "label": "부호반전(3a)",
         "category": "수식"
       },
       {
-        "id": "factor1",
+        "id": "three_a",
+        "dna": "E6",
+        "label": "3a",
+        "category": "수식"
+      },
+      {
+        "id": "c3",
+        "dna": "T2",
+        "label": "상수 3",
+        "category": "말단"
+      },
+      {
+        "id": "piece2",
+        "dna": "F2",
+        "label": "조각2(x>1)",
+        "category": "함수"
+      },
+      {
+        "id": "dom2",
+        "dna": "C2",
+        "label": "x>1",
+        "category": "조건"
+      },
+      {
+        "id": "quad_expr",
+        "dna": "E6",
+        "label": "k(x-1)(x-a)",
+        "category": "수식"
+      },
+      {
+        "id": "x_m1",
         "dna": "E1",
-        "label": "x-1",
+        "label": "x+(-1)",
         "category": "수식"
       },
       {
         "id": "neg1",
         "dna": "E2",
-        "label": "-1",
+        "label": "부호반전(1)",
         "category": "수식"
       },
       {
-        "id": "factor2",
+        "id": "x_ma",
         "dna": "E1",
-        "label": "x-a",
+        "label": "x+(-a)",
         "category": "수식"
       },
       {
         "id": "neg_a",
         "dna": "E2",
-        "label": "-a",
+        "label": "부호반전(a)",
         "category": "수식"
       },
       {
-        "id": "kf1",
-        "dna": "E6",
-        "label": "k*(x-1)",
-        "category": "수식"
-      },
-      {
-        "id": "gn_def",
+        "id": "fn_g",
         "dna": "F6",
-        "label": "g(n) 정의",
+        "label": "함수 g(n)정의",
         "category": "함수"
       },
       {
-        "id": "root_count",
-        "dna": "C9",
-        "label": "실근 개수=n",
-        "category": "조건"
-      },
-      {
-        "id": "eq_fxn",
+        "id": "eq_fxn_n",
         "dna": "C1",
         "label": "f(x^n)=n",
         "category": "조건"
       },
       {
-        "id": "comp_arg",
+        "id": "fxn",
+        "dna": "F3",
+        "label": "f(x^n)",
+        "category": "함수"
+      },
+      {
+        "id": "xpown",
         "dna": "E7",
         "label": "x^n",
         "category": "수식"
       },
       {
-        "id": "vn",
-        "dna": "T3",
-        "label": "독립변수 n",
-        "category": "말단"
+        "id": "rootcount",
+        "dna": "C9",
+        "label": "실근개수=g(n)",
+        "category": "조건"
       },
       {
-        "id": "ln_nat",
+        "id": "nat_n",
         "dna": "L3",
         "label": "n은 자연수",
         "category": "제한"
@@ -1330,7 +1312,7 @@
         "category": "조건"
       },
       {
-        "id": "g14_app",
+        "id": "g14",
         "dna": "F3",
         "label": "g(14)",
         "category": "함수"
@@ -1342,9 +1324,9 @@
         "category": "말단"
       },
       {
-        "id": "c5",
+        "id": "c_five",
         "dna": "T2",
-        "label": "상수 5",
+        "label": "상수 5(값)",
         "category": "말단"
       }
     ],
@@ -1362,44 +1344,40 @@
         "to": "ask_sum"
       },
       {
-        "from": "gn_app1",
+        "from": "g5n",
         "to": "sigma"
       },
       {
-        "from": "gn_app2",
-        "to": "sigma"
+        "from": "arg_5n",
+        "to": "g5n"
       },
       {
-        "from": "gn_app3",
-        "to": "sigma"
+        "from": "c5",
+        "to": "arg_5n"
       },
       {
-        "from": "gn_app4",
-        "to": "sigma"
+        "from": "vn",
+        "to": "arg_5n"
       },
       {
-        "from": "gn_app5",
-        "to": "sigma"
-      },
-      {
-        "from": "lk_neg",
+        "from": "lim_k",
         "to": "vk"
       },
       {
-        "from": "la_gt1",
+        "from": "lim_a",
         "to": "va"
       },
       {
-        "from": "fn_def",
-        "to": "f_piece"
+        "from": "fn_f",
+        "to": "top"
       },
       {
-        "from": "f_piece",
-        "to": "piece1"
+        "from": "piece1",
+        "to": "fn_f"
       },
       {
-        "from": "f_piece",
-        "to": "piece2"
+        "from": "piece2",
+        "to": "fn_f"
       },
       {
         "from": "dom1",
@@ -1410,28 +1388,36 @@
         "to": "piece1"
       },
       {
-        "from": "dom2",
-        "to": "piece2"
-      },
-      {
-        "from": "quad_expr",
-        "to": "piece2"
-      },
-      {
         "from": "inner_diff",
         "to": "abs_expr"
       },
       {
-        "from": "exp_term",
+        "from": "exp_ax1",
         "to": "inner_diff"
       },
       {
-        "from": "neg_3a",
+        "from": "neg3a",
         "to": "inner_diff"
+      },
+      {
+        "from": "va",
+        "to": "exp_ax1"
+      },
+      {
+        "from": "xp1",
+        "to": "exp_ax1"
+      },
+      {
+        "from": "vx",
+        "to": "xp1"
+      },
+      {
+        "from": "c1",
+        "to": "xp1"
       },
       {
         "from": "three_a",
-        "to": "neg_3a"
+        "to": "neg3a"
       },
       {
         "from": "c3",
@@ -1442,60 +1428,36 @@
         "to": "three_a"
       },
       {
-        "from": "va",
-        "to": "exp_term"
-      },
-      {
-        "from": "exp_inner",
-        "to": "exp_term"
-      },
-      {
-        "from": "vx",
-        "to": "exp_inner"
-      },
-      {
-        "from": "c1",
-        "to": "exp_inner"
-      },
-      {
         "from": "vx",
         "to": "dom1"
       },
       {
-        "from": "c1",
-        "to": "dom1"
+        "from": "dom2",
+        "to": "piece2"
       },
       {
-        "from": "vx",
-        "to": "dom2"
-      },
-      {
-        "from": "c1",
-        "to": "dom2"
-      },
-      {
-        "from": "kf1",
-        "to": "quad_expr"
-      },
-      {
-        "from": "factor2",
-        "to": "quad_expr"
+        "from": "quad_expr",
+        "to": "piece2"
       },
       {
         "from": "vk",
-        "to": "kf1"
+        "to": "quad_expr"
       },
       {
-        "from": "factor1",
-        "to": "kf1"
+        "from": "x_m1",
+        "to": "quad_expr"
+      },
+      {
+        "from": "x_ma",
+        "to": "quad_expr"
       },
       {
         "from": "vx",
-        "to": "factor1"
+        "to": "x_m1"
       },
       {
         "from": "neg1",
-        "to": "factor1"
+        "to": "x_m1"
       },
       {
         "from": "c1",
@@ -1503,113 +1465,73 @@
       },
       {
         "from": "vx",
-        "to": "factor2"
+        "to": "x_ma"
       },
       {
         "from": "neg_a",
-        "to": "factor2"
+        "to": "x_ma"
       },
       {
         "from": "va",
         "to": "neg_a"
       },
       {
-        "from": "gn_def",
-        "to": "root_count"
+        "from": "vx",
+        "to": "dom2"
       },
       {
-        "from": "root_count",
-        "to": "eq_fxn"
+        "from": "fn_g",
+        "to": "top"
       },
       {
-        "from": "eq_fxn",
-        "to": "gn_def"
+        "from": "eq_fxn_n",
+        "to": "fn_g"
       },
       {
-        "from": "comp_arg",
-        "to": "eq_fxn"
+        "from": "fxn",
+        "to": "eq_fxn_n"
       },
       {
         "from": "vn",
-        "to": "eq_fxn"
+        "to": "eq_fxn_n"
+      },
+      {
+        "from": "xpown",
+        "to": "fxn"
       },
       {
         "from": "vx",
-        "to": "comp_arg"
+        "to": "xpown"
       },
       {
         "from": "vn",
-        "to": "comp_arg"
+        "to": "xpown"
       },
       {
-        "from": "ln_nat",
+        "from": "rootcount",
+        "to": "fn_g"
+      },
+      {
+        "from": "nat_n",
         "to": "vn"
-      },
-      {
-        "from": "f_piece",
-        "to": "eq_fxn"
-      },
-      {
-        "from": "g14_app",
-        "to": "g14_cond"
-      },
-      {
-        "from": "c14",
-        "to": "g14_cond"
-      },
-      {
-        "from": "c14",
-        "to": "g14_app"
-      },
-      {
-        "from": "gn_def",
-        "to": "g14_app"
-      },
-      {
-        "from": "gn_def",
-        "to": "gn_app1"
-      },
-      {
-        "from": "gn_def",
-        "to": "gn_app2"
-      },
-      {
-        "from": "gn_def",
-        "to": "gn_app3"
-      },
-      {
-        "from": "gn_def",
-        "to": "gn_app4"
-      },
-      {
-        "from": "gn_def",
-        "to": "gn_app5"
-      },
-      {
-        "from": "c5",
-        "to": "gn_app1"
-      },
-      {
-        "from": "c5",
-        "to": "gn_app2"
-      },
-      {
-        "from": "c5",
-        "to": "gn_app3"
-      },
-      {
-        "from": "c5",
-        "to": "gn_app4"
-      },
-      {
-        "from": "c5",
-        "to": "gn_app5"
       },
       {
         "from": "g14_cond",
         "to": "top"
+      },
+      {
+        "from": "g14",
+        "to": "g14_cond"
+      },
+      {
+        "from": "c_five",
+        "to": "g14_cond"
+      },
+      {
+        "from": "c14",
+        "to": "g14"
       }
     ],
-    "created_at": "2026-03-21T13:20:43.325Z"
+    "created_at": "2026-03-21T13:40:31.403Z"
   }
 ]
