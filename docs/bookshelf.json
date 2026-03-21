@@ -6994,5 +6994,582 @@
     "folders": [],
     "history": [],
     "created_at": "2026-03-21T07:15:13.809Z"
+  },
+  {
+    "problem_id": "Problem11",
+    "answer": "2^(1/3)",
+    "clues": [
+      {
+        "id": "단서A",
+        "text": "$f(x)=|\\log_a(x+b)|$, $a>1$, $0<b<1$"
+      },
+      {
+        "id": "단서B",
+        "text": "삼각형 $PQR$의 외접원이 $y$축과 점 $Q$에서만 만난다"
+      },
+      {
+        "id": "단서C",
+        "text": "삼각형 $PQR$의 외접원이 점 $(3,0)$을 지난다"
+      }
+    ],
+    "skeleton": [
+      {
+        "from": "단서A",
+        "to": "note1",
+        "neuron": "연산2",
+        "note": "$f(x)=0$이면 $\\log_a(x+b)=0$이고 $x+b=1$이다. $x=1-b$이고 $P(1-b,\\,0)$이다",
+        "main": true
+      },
+      {
+        "from": "단서A",
+        "to": "note2",
+        "neuron": "사실12",
+        "note": "$a>1$이고 $0<b<1$일 때 $\\log_a b < 0$이다. $f(0)=|\\log_a b|=-\\log_a b$이고 $Q(0,\\,-\\log_a b)$이다",
+        "main": true
+      },
+      {
+        "from": "단서A",
+        "to": "note3",
+        "neuron": "사실6",
+        "note": "$|\\log_a(x+b)|=-\\log_a b$의 두 해는 $x=0$과 $x=\\tfrac{1}{b}-b$이다. $R\\!\\left(\\tfrac{1}{b}-b,\\,-\\log_a b\\right)$이다",
+        "main": true
+      },
+      {
+        "from": "단서B",
+        "to": "note4",
+        "neuron": "사실8",
+        "note": "외접원이 $y$축과 $Q$에서만 만나므로 $y$축은 외접원의 접선이다. 원의 중심은 $(r,\\,-\\log_a b)$이고 반지름은 $r>0$이다",
+        "main": true
+      },
+      {
+        "from": [
+          "note2",
+          "note3",
+          "note4"
+        ],
+        "to": "note5",
+        "neuron": "사실11",
+        "note": "$Q$와 $R$이 같은 높이에 있고 원의 중심 $y$좌표가 $-\\log_a b$이다. $QR$은 외접원의 지름이다",
+        "main": true
+      },
+      {
+        "from": [
+          "note3",
+          "note4"
+        ],
+        "to": "note6",
+        "neuron": "연산12",
+        "note": "$QR$의 중점 $x$좌표는 $\\tfrac{1}{2}\\!\\left(\\tfrac{1}{b}-b\\right)$이다. 이것이 반지름 $r$과 같으므로 $r=\\tfrac{1}{2b}-\\tfrac{b}{2}$이다",
+        "main": true
+      },
+      {
+        "from": [
+          "note1",
+          "단서C",
+          "note4"
+        ],
+        "to": "note7",
+        "neuron": "전략2",
+        "note": "$P(1-b,0)$과 $(3,0)$이 모두 원 위에 있다. 원의 방정식에 대입하면 $(1-b-r)^2+q^2=r^2$이고 $(3-r)^2+q^2=r^2$이다. 두 식의 차로부터 $(-b-2)(4-b-2r)=0$이고 $r=\\tfrac{4-b}{2}$이다",
+        "main": true
+      },
+      {
+        "from": [
+          "note6",
+          "note7"
+        ],
+        "to": "note8",
+        "neuron": "전략2",
+        "note": "$\\tfrac{1}{2b}-\\tfrac{b}{2}=\\tfrac{4-b}{2}$이다. 풀면 $\\tfrac{1}{b}=4$이고 $b=\\tfrac{1}{4}$이다",
+        "main": true
+      },
+      {
+        "from": "note8",
+        "to": "note9",
+        "neuron": "전략25",
+        "note": "$b=\\tfrac{1}{4}$을 대입하면 $P\\!\\left(\\tfrac{3}{4},0\\right)$, $Q(0,\\,2\\log_a 2)$, $R\\!\\left(\\tfrac{15}{4},\\,2\\log_a 2\\right)$, 반지름 $r=\\tfrac{15}{8}$이다",
+        "main": true
+      },
+      {
+        "from": [
+          "note5",
+          "note9"
+        ],
+        "to": "note10",
+        "neuron": "사실11",
+        "note": "$QR$이 지름이고 $P$가 원 위에 있으므로 $\\angle QPR=90°$이다. $\\overrightarrow{PQ}\\cdot\\overrightarrow{PR}=\\left(-\\tfrac{3}{4}\\right)(3)+(2\\log_a 2)^2=0$이다",
+        "main": true
+      },
+      {
+        "from": "note10",
+        "to": "note11",
+        "neuron": "연산2",
+        "note": "$4(\\log_a 2)^2=\\tfrac{9}{4}$이고 $\\log_a 2=\\tfrac{3}{4}$이다. $a^{3/4}=2$이고 $a=2^{4/3}$이다",
+        "main": true
+      },
+      {
+        "from": [
+          "note8",
+          "note11"
+        ],
+        "to": "END",
+        "neuron": "연산18",
+        "note": "$a\\times b=2^{4/3}\\times\\tfrac{1}{4}=2^{4/3}\\times 2^{-2}=2^{-2/3}$이다",
+        "main": true
+      }
+    ],
+    "solution": "STEP 1. f(x)=0에서 x+b=1이므로 P=(1-b, 0).\nSTEP 2. a>1, 0<b<1이면 log_a(b)<0이므로 Q=(0, -log_a(b)).\nSTEP 3. |log_a(x+b)|=-log_a(b)의 두 해는 x=0과 x=1/b-b이므로 R=(1/b-b, -log_a(b)).\nSTEP 4. 외접원이 y축과 Q에서만 접하므로 원의 중심은 (r, -log_a(b))이고 반지름=r.\nSTEP 5. QR이 지름이므로 r=(1/b-b)/2.\nSTEP 6. P와 (3,0) 모두 원 위: 두 조건에서 r=(4-b)/2.\nSTEP 7. (1/b-b)/2=(4-b)/2 풀면 b=1/4.\nSTEP 8. b=1/4 대입: P=(3/4,0), Q=(0,2log_a2), R=(15/4,2log_a2).\nSTEP 9. QR이 지름이고 P가 원 위이므로 PQ·PR=0. (-3/4)(3)+4(log_a2)^2=0.\nSTEP 10. log_a2=3/4, a=2^(4/3).\nSTEP 11. a×b=2^(4/3)×2^(-2)=2^(-2/3).",
+    "original_solution": "[FIGURE: 그래프에 원과 삼각형이 그려져 있음]\n\n문제의 조건에 의해\n\n$$f(x)=0 \\Rightarrow \\log_a(x+b)=0 \\Rightarrow x=1-b \\Rightarrow P(1-b, 0)$$\n\n이고,\n\n$$f(x)=f(0) \\Rightarrow |\\log_a(x+b)| = |\\log_a b|$$\n\n$$\\Rightarrow x=0, \\quad x=\\frac{1}{b}-b$$\n\n$$\\Rightarrow Q(0, -\\log_a b), \\quad R\\left(\\frac{1}{b}-b, -\\log_a b\\right)$$\n\n이다. 이때, 삼각형 PQR의 외접원을 $C$라 하면\n\n원 $C$가 $y$축과 $\\left\\{\\begin{array}{l}\\text{점 Q에서 접함} \\\\ \\text{점 Q에서 원 C의 접선이 } y\\text{축과 수 직 P, } (3,0)\\text{에서 만남}\\end{array}\\right\\}$ $\\Rightarrow$ 선분 QR은 원 $C$의 지름 $\\cdots$ ⑤\n\n임을 알 수 있고,\n\n$$0<b<1 \\Rightarrow 0<(\\text{점 P의 }x\\text{좌표})<1$$\n\n$$\\Rightarrow \\text{원 }C\\text{는 }x\\text{축과 두 점 P, }(3,0)\\text{에서 만남}$$\n\n을 알 수 있다.\n\n점 $(3,0)$을 S라 하고 점 S에서 선분 QR에 내린 수선의 발을 H라 하자.\n\n위 그림에서 원의 대칭성에 의해\n\n(선분 PS의 중점의 $x$좌표) = (선분 QR의 중점의 $x$좌표)\n\n$$\\Rightarrow (1-b)+3 = \\frac{1}{b}-b$$\n\n$$\\Rightarrow b=\\frac{1}{4}$$\n\n이므로\n\n$$\\begin{cases}\nQ(0, 2\\log_a 2), & R\\left(\\frac{15}{4}, 2\\log_a 2\\right) \\\\\n\\overline{SH}^2 = \\overline{QH} \\times \\overline{RH} \\quad (\\because \\text{⑤} \\Rightarrow \\angle QSR = \\frac{\\pi}{2})\n\\end{cases}$$\n\n$$\\Rightarrow (2\\log_a 2)^2 = 3 \\times \\frac{3}{4}$$\n\n$$\\Rightarrow \\log_a 2 = \\frac{3}{4} \\quad (\\because a>1)$$\n\n$$\\Rightarrow a = 2^{\\frac{4}{3}}$$\n\n을 얻는다.\n\n$$\\therefore \\quad a \\times b = 2^{\\frac{4}{3}} \\times \\frac{1}{4} = 2^{\\frac{4}{3}} \\times 2^{-2} = 2^{\\frac{1}{3}}$$\n\n---",
+    "analysis": "f(x)=|log_a(x+b)|에서 x축과의 교점 P: f(x)=0이면 log_a(x+b)=0, x+b=1, x=1-b. 0<b<1이므로 1-b>0. P=(1-b,0). y축과의 교점 Q: x=0이면 f(0)=|log_a(b)|. a>1, 0<b<1이면 log_a(b)<0, f(0)=-log_a(b). Q=(0,-log_a(b)). R: y=f(x)와 y=-log_a(b)의 교점 중 Q=(0,-log_a(b)) 제외. |log_a(x+b)|=-log_a(b)=log_a(1/b). log_a(x+b)=log_a(1/b)이면 x=1/b-b. log_a(x+b)=-log_a(1/b)=log_a(b)이면 x=0(Q). R=(1/b-b, -log_a(b)). 외접원이 y축과 Q에서만 만남: y축은 접선, 원의 중심은y축에서 떨어진 점. QR은 y=-log_a(b) 위의 수평선분이므로, 외접원이 y축에 접하고 QR과 같은 y좌표에 중심이 있으면 QR이 지름. 중심 x좌표=r(반지름), r=QR/2=(1/b-b)/2. 외접원이 (3,0)을 지남: P=(1-b,0)도 외접원 위. x축 위의 두 점 P=(1-b,0)과 (3,0)에 대해 원의 중심의 x좌표는 두 점 x좌표의 평균 (이는 QR이 지름임을 이용한 것과 결합). 원의 중심=(r, -log_a(b)). P와 (3,0) 모두 원 위. 중심에서 P까지 거리=반지름: (1-b-r)^2+(log_a(b))^2=r^2. 중심에서 (3,0)까지: (3-r)^2+(log_a(b))^2=r^2. 두 식 빼기: (1-b-r)^2=(3-r)^2. 1-b-r=±(3-r). 양수 경우: 1-b=3, b=-2 불가. 음수 경우: 1-b-r=-(3-r), 1-b-r=-3+r, 4-b=2r, r=(4-b)/2. 또한 r=(1/b-b)/2. (1/b-b)/2=(4-b)/2. 1/b-b=4-b. 1/b=4. b=1/4. r=(4-1/4)/2=15/8. P=(3/4,0), Q=(0,2log_a(2)), R=(15/4,2log_a(2)). QR이 지름이고 P가 원 위이므로 각QPR=90°. PQ벡터=(-3/4, 2log_a(2)), PR벡터=(3, 2log_a(2)). 내적=(-3/4)(3)+(2log_a(2))^2=0. -9/4+4(log_a(2))^2=0. (log_a(2))^2=9/16. log_a(2)=3/4(양수). a^(3/4)=2. a=2^(4/3). a×b=2^(4/3)×(1/4)=2^(4/3)×2^(-2)=2^(4/3-2)=2^(-2/3). 하지만 답이 2^(1/3)이므로 재확인. 사실 log_a(b)<0이므로 -log_a(b)>0. log_a(b)=-log_a(1/b). Q=(0,log_a(1/b))로 쓰면 양수. b=1/4일 때 log_a(4)=2log_a(2). PQ·PR=(-3/4)(3)+(2log_a2)^2=0이면 4(log_a2)^2=9/4, (log_a2)^2=9/16, log_a2=3/4. a=2^(4/3). a×b=2^(4/3)/4=2^(4/3-2)=2^(-2/3). 이것은 2^(1/3)이 아니다. 다시 확인: 답이 2^(1/3)이면 a×b=2^(1/3). 혹시 외접원 조건이 달리 적용될 수 있다. QR이 지름이 아닐 수 있다. y축에 접하고 Q를 지나는 조건만으로: 접선이 y축 → 중심의 x좌표=r(반지름). Q=(0,q)가 원 위 → r^2+(q-k)^2=r^2, (q-k)^2=0, k=q. 즉 중심=(r,q). 맞다 QR이 지름. 계산을 다시: P=(1-b,0), (3,0) 모두 원 위. 원의 방정식: (x-r)^2+(y-q)^2=r^2. P 대입: (1-b-r)^2+q^2=r^2. (3,0) 대입: (3-r)^2+q^2=r^2. 빼기: (1-b-r)^2-(3-r)^2=0. [(1-b-r)-(3-r)][(1-b-r)+(3-r)]=0. [1-b-3][(4-b-2r)]=0. [-b-2][4-b-2r]=0. b>0이므로 -b-2≠0. 따라서 4-b-2r=0, r=(4-b)/2. r=(1/b-b)/2로부터 (1/b-b)/2=(4-b)/2. 1/b=4. b=1/4. q=-log_a(b)=log_a(4)=2log_a(2). r=(4-1/4)/2=15/8. PQ·PR=0: PQ=(-3/4, 2log_a2), PR=(3, 2log_a2). 내적=-9/4+4(log_a2)^2=0. log_a2=3/4. a=2^(4/3). a*b=2^(4/3)*2^(-2)=2^(-2/3). 이것은 양수이지만 2^(1/3)≠2^(-2/3). 답이 2^(1/3)이면 뭔가 달리 해석해야 한다. 혹시 a*b=2^(1/3)이고 내가 놓친게 있나. 어쩌면 문제의 답이 2^(-2/3)이고 표기가 2^(1/3)로 쓰인게 오류일 수 있다. skeleton은 계산 과정에 따라 그대로 작성한다.",
+    "new_neurons": [],
+    "metadata": {
+      "unit": "지수·로그",
+      "difficulty": "고난도",
+      "score": "4",
+      "type": "단답형",
+      "answer": "2^(-2/3)"
+    },
+    "edge_count": 12,
+    "side_count": 0,
+    "statement": "# Problem11. (Unknown Source) - Logarithm and Geometry\n\n## Problem\n\n주어진 두 상수 $a(a>1)$, $b(0<b<1)$에 대하여 함수\n\n$$f(x) = |\\log_a(x+b)|$$\n\n의 그래프가 $x$축, $y$축과 만나는 점을 각각 P, Q라 하자. 점 Q를 지나고 $x$축과 평행한 직선이 곡선 $y=f(x)$와 만나는 점 중 Q가 아닌 점을 R이라 할 때, 삼각형 PQR의 외접원이 점 $(3, 0)$을 지나고 $y$축과 점 Q에서만 만난다. $a \\times b$의 값은? [14점]",
+    "dna": {
+      "nodes": [
+        {
+          "id": "top",
+          "dna": "Q1",
+          "label": "값을 구하라",
+          "category": "발문"
+        },
+        {
+          "id": "ask",
+          "dna": "E6",
+          "label": "곱(a,b)",
+          "category": "수식"
+        },
+        {
+          "id": "va",
+          "dna": "T1",
+          "label": "변수 a",
+          "category": "말단"
+        },
+        {
+          "id": "vb",
+          "dna": "T1",
+          "label": "변수 b",
+          "category": "말단"
+        },
+        {
+          "id": "lim_a",
+          "dna": "C2",
+          "label": "a>1",
+          "category": "제한"
+        },
+        {
+          "id": "c1_const",
+          "dna": "T2",
+          "label": "상수 1",
+          "category": "말단"
+        },
+        {
+          "id": "lim_b_lo",
+          "dna": "C2",
+          "label": "b>0",
+          "category": "제한"
+        },
+        {
+          "id": "lim_b_hi",
+          "dna": "C2",
+          "label": "b<1",
+          "category": "말단"
+        },
+        {
+          "id": "c0",
+          "dna": "T2",
+          "label": "상수 0",
+          "category": "말단"
+        },
+        {
+          "id": "crv",
+          "dna": "G2",
+          "label": "곡선 y=f(x)",
+          "category": "기하"
+        },
+        {
+          "id": "fdef",
+          "dna": "F6",
+          "label": "f(x) 정의",
+          "category": "함수"
+        },
+        {
+          "id": "fabs",
+          "dna": "F5",
+          "label": "|log_a(x+b)|",
+          "category": "함수"
+        },
+        {
+          "id": "flog",
+          "dna": "E3",
+          "label": "log_a(x+b)",
+          "category": "수식"
+        },
+        {
+          "id": "vx",
+          "dna": "T3",
+          "label": "독립변수 x",
+          "category": "말단"
+        },
+        {
+          "id": "inner_sum",
+          "dna": "E1",
+          "label": "합(x,b)",
+          "category": "수식"
+        },
+        {
+          "id": "ax_x",
+          "dna": "G13",
+          "label": "x축",
+          "category": "기하"
+        },
+        {
+          "id": "ax_y",
+          "dna": "G13",
+          "label": "y축",
+          "category": "기하"
+        },
+        {
+          "id": "pt_p",
+          "dna": "G1",
+          "label": "점 P",
+          "category": "기하"
+        },
+        {
+          "id": "pt_q",
+          "dna": "G1",
+          "label": "점 Q",
+          "category": "기하"
+        },
+        {
+          "id": "meet_p",
+          "dna": "C3",
+          "label": "곡선∩x축=P",
+          "category": "조건"
+        },
+        {
+          "id": "meet_q",
+          "dna": "C3",
+          "label": "곡선∩y축=Q",
+          "category": "조건"
+        },
+        {
+          "id": "line_r",
+          "dna": "G12",
+          "label": "Q통과 x평행선",
+          "category": "기하"
+        },
+        {
+          "id": "par_x",
+          "dna": "G19",
+          "label": "x축에 평행",
+          "category": "기하"
+        },
+        {
+          "id": "pass_q",
+          "dna": "G16",
+          "label": "직선이 Q 지남",
+          "category": "기하"
+        },
+        {
+          "id": "pt_r",
+          "dna": "G1",
+          "label": "점 R",
+          "category": "기하"
+        },
+        {
+          "id": "meet_r",
+          "dna": "C3",
+          "label": "직선∩곡선=R",
+          "category": "조건"
+        },
+        {
+          "id": "not_q",
+          "dna": "X4",
+          "label": "Q 아닌 점",
+          "category": "존재"
+        },
+        {
+          "id": "tri_pqr",
+          "dna": "G25",
+          "label": "삼각형 PQR",
+          "category": "기하"
+        },
+        {
+          "id": "circ",
+          "dna": "G26",
+          "label": "외접원",
+          "category": "기하"
+        },
+        {
+          "id": "pt_s",
+          "dna": "G17",
+          "label": "점(3,0)",
+          "category": "기하"
+        },
+        {
+          "id": "c3_const",
+          "dna": "T2",
+          "label": "상수 3",
+          "category": "말단"
+        },
+        {
+          "id": "pass_s",
+          "dna": "G16",
+          "label": "외접원이(3,0)지남",
+          "category": "기하"
+        },
+        {
+          "id": "meet_y_only_q",
+          "dna": "X4",
+          "label": "y축∩원=Q만",
+          "category": "존재"
+        },
+        {
+          "id": "conds",
+          "dna": "S1",
+          "label": "전체 조건 묶음",
+          "category": "구조"
+        }
+      ],
+      "edges": [
+        {
+          "from": "ask",
+          "to": "top"
+        },
+        {
+          "from": "va",
+          "to": "ask"
+        },
+        {
+          "from": "vb",
+          "to": "ask"
+        },
+        {
+          "from": "lim_a",
+          "to": "va"
+        },
+        {
+          "from": "c1_const",
+          "to": "lim_a"
+        },
+        {
+          "from": "lim_b_lo",
+          "to": "vb"
+        },
+        {
+          "from": "lim_b_hi",
+          "to": "vb"
+        },
+        {
+          "from": "c0",
+          "to": "lim_b_lo"
+        },
+        {
+          "from": "c1_const",
+          "to": "lim_b_hi"
+        },
+        {
+          "from": "conds",
+          "to": "top"
+        },
+        {
+          "from": "fdef",
+          "to": "crv"
+        },
+        {
+          "from": "fabs",
+          "to": "fdef"
+        },
+        {
+          "from": "flog",
+          "to": "fabs"
+        },
+        {
+          "from": "va",
+          "to": "flog"
+        },
+        {
+          "from": "inner_sum",
+          "to": "flog"
+        },
+        {
+          "from": "vx",
+          "to": "inner_sum"
+        },
+        {
+          "from": "vb",
+          "to": "inner_sum"
+        },
+        {
+          "from": "crv",
+          "to": "meet_p"
+        },
+        {
+          "from": "ax_x",
+          "to": "meet_p"
+        },
+        {
+          "from": "pt_p",
+          "to": "meet_p"
+        },
+        {
+          "from": "meet_p",
+          "to": "conds"
+        },
+        {
+          "from": "crv",
+          "to": "meet_q"
+        },
+        {
+          "from": "ax_y",
+          "to": "meet_q"
+        },
+        {
+          "from": "pt_q",
+          "to": "meet_q"
+        },
+        {
+          "from": "meet_q",
+          "to": "conds"
+        },
+        {
+          "from": "par_x",
+          "to": "line_r"
+        },
+        {
+          "from": "pass_q",
+          "to": "line_r"
+        },
+        {
+          "from": "pt_q",
+          "to": "pass_q"
+        },
+        {
+          "from": "ax_x",
+          "to": "par_x"
+        },
+        {
+          "from": "line_r",
+          "to": "meet_r"
+        },
+        {
+          "from": "crv",
+          "to": "meet_r"
+        },
+        {
+          "from": "pt_r",
+          "to": "meet_r"
+        },
+        {
+          "from": "not_q",
+          "to": "meet_r"
+        },
+        {
+          "from": "pt_q",
+          "to": "not_q"
+        },
+        {
+          "from": "meet_r",
+          "to": "conds"
+        },
+        {
+          "from": "pt_p",
+          "to": "tri_pqr"
+        },
+        {
+          "from": "pt_q",
+          "to": "tri_pqr"
+        },
+        {
+          "from": "pt_r",
+          "to": "tri_pqr"
+        },
+        {
+          "from": "tri_pqr",
+          "to": "circ"
+        },
+        {
+          "from": "circ",
+          "to": "pass_s"
+        },
+        {
+          "from": "pt_s",
+          "to": "pass_s"
+        },
+        {
+          "from": "c3_const",
+          "to": "pt_s"
+        },
+        {
+          "from": "c0",
+          "to": "pt_s"
+        },
+        {
+          "from": "pass_s",
+          "to": "conds"
+        },
+        {
+          "from": "circ",
+          "to": "meet_y_only_q"
+        },
+        {
+          "from": "ax_y",
+          "to": "meet_y_only_q"
+        },
+        {
+          "from": "pt_q",
+          "to": "meet_y_only_q"
+        },
+        {
+          "from": "meet_y_only_q",
+          "to": "conds"
+        }
+      ],
+      "new_dna": []
+    },
+    "thinking_profile": {
+      "total_think_tokens": 217,
+      "edge_count": 0,
+      "by_type": {
+        "사실": {
+          "count": 0,
+          "total": 0,
+          "avg": 0,
+          "avg_normalized": 0,
+          "avg_elapsed_ms": 0
+        },
+        "연산": {
+          "count": 0,
+          "total": 0,
+          "avg": 0,
+          "avg_normalized": 0,
+          "avg_elapsed_ms": 0
+        },
+        "전략": {
+          "count": 0,
+          "total": 0,
+          "avg": 0,
+          "avg_normalized": 0,
+          "avg_elapsed_ms": 0
+        }
+      },
+      "hardest_edge": null,
+      "hardest_normalized": null,
+      "hardest_difficulty": null,
+      "profiler_skeleton": [],
+      "edges": [],
+      "_debug": "JSON 파싱 실패: 문제를 분석해보겠습니다.\n\n단서A: 함수 $f(x) = |\\log_a(x+b)|$ (단, $a>1$, $0<b<1$)\n단서B: 함수의 그래프가 $x$축과 만나는 점을 P라고 함  "
+    },
+    "folders": [],
+    "history": [],
+    "created_at": "2026-03-21T07:40:13.903Z"
   }
 ]
