@@ -1080,7 +1080,7 @@
     "content_source": "FileLoop",
     "content_length": 1478,
     "skel_status": "neuron_missing",
-    "dna_status": "dna_missing",
+    "dna_status": "validate_failed",
     "needed_neurons": [],
     "needed_dna": [],
     "previous_analysis": "",
@@ -1088,8 +1088,576 @@
     "previous_matched": [],
     "previous_skeleton": [],
     "previous_new_neurons": [],
-    "previous_dna_nodes": [],
-    "previous_dna_edges": [],
-    "created_at": "2026-03-21T13:07:36.742Z"
+    "previous_dna_nodes": [
+      {
+        "id": "top",
+        "dna": "Q1",
+        "label": "값을 구하라",
+        "category": "발문"
+      },
+      {
+        "id": "ask_sum",
+        "dna": "E1",
+        "label": "k+시그마합",
+        "category": "수식"
+      },
+      {
+        "id": "sigma",
+        "dna": "E1",
+        "label": "g(5n)의 합",
+        "category": "수식"
+      },
+      {
+        "id": "g5_1",
+        "dna": "F3",
+        "label": "g(5)",
+        "category": "함수"
+      },
+      {
+        "id": "g5_2",
+        "dna": "F3",
+        "label": "g(10)",
+        "category": "함수"
+      },
+      {
+        "id": "g5_3",
+        "dna": "F3",
+        "label": "g(15)",
+        "category": "함수"
+      },
+      {
+        "id": "g5_4",
+        "dna": "F3",
+        "label": "g(20)",
+        "category": "함수"
+      },
+      {
+        "id": "g5_5",
+        "dna": "F3",
+        "label": "g(25)",
+        "category": "함수"
+      },
+      {
+        "id": "va",
+        "dna": "T1",
+        "label": "변수 a",
+        "category": "말단"
+      },
+      {
+        "id": "vk",
+        "dna": "T1",
+        "label": "변수 k",
+        "category": "말단"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
+      },
+      {
+        "id": "vn",
+        "dna": "T3",
+        "label": "독립변수 n",
+        "category": "말단"
+      },
+      {
+        "id": "c_1",
+        "dna": "T2",
+        "label": "상수 1",
+        "category": "말단"
+      },
+      {
+        "id": "c_3",
+        "dna": "T2",
+        "label": "상수 3",
+        "category": "말단"
+      },
+      {
+        "id": "c_5",
+        "dna": "T2",
+        "label": "상수 5",
+        "category": "말단"
+      },
+      {
+        "id": "c_14",
+        "dna": "T2",
+        "label": "상수 14",
+        "category": "말단"
+      },
+      {
+        "id": "lim_a",
+        "dna": "C2",
+        "label": "a > 1",
+        "category": "조건"
+      },
+      {
+        "id": "lim_k",
+        "dna": "C2",
+        "label": "k < 0",
+        "category": "조건"
+      },
+      {
+        "id": "lim_n",
+        "dna": "L3",
+        "label": "n은 자연수",
+        "category": "제한"
+      },
+      {
+        "id": "fx_def",
+        "dna": "F6",
+        "label": "f(x) 정의",
+        "category": "함수"
+      },
+      {
+        "id": "fx_piece",
+        "dna": "F1",
+        "label": "f(x) 조각함수",
+        "category": "함수"
+      },
+      {
+        "id": "piece1",
+        "dna": "F2",
+        "label": "x≤1 조각",
+        "category": "함수"
+      },
+      {
+        "id": "dom1",
+        "dna": "C2",
+        "label": "x ≤ 1",
+        "category": "조건"
+      },
+      {
+        "id": "abs_expr",
+        "dna": "F5",
+        "label": "|a^{x+1}-3a|",
+        "category": "함수"
+      },
+      {
+        "id": "inner_abs",
+        "dna": "E1",
+        "label": "a^{x+1}-3a",
+        "category": "수식"
+      },
+      {
+        "id": "exp_term",
+        "dna": "E4",
+        "label": "a^{x+1}",
+        "category": "수식"
+      },
+      {
+        "id": "exp_inner",
+        "dna": "E1",
+        "label": "x+1",
+        "category": "수식"
+      },
+      {
+        "id": "neg_3a",
+        "dna": "E2",
+        "label": "-(3a)",
+        "category": "수식"
+      },
+      {
+        "id": "mul_3a",
+        "dna": "E6",
+        "label": "3*a",
+        "category": "수식"
+      },
+      {
+        "id": "piece2",
+        "dna": "F2",
+        "label": "x>1 조각",
+        "category": "함수"
+      },
+      {
+        "id": "dom2",
+        "dna": "C2",
+        "label": "x > 1",
+        "category": "조건"
+      },
+      {
+        "id": "kxa_expr",
+        "dna": "E6",
+        "label": "k*(x-1)*(x-a)",
+        "category": "수식"
+      },
+      {
+        "id": "mul_k_mid",
+        "dna": "E6",
+        "label": "k*(x-1)",
+        "category": "수식"
+      },
+      {
+        "id": "x_minus1",
+        "dna": "E1",
+        "label": "x + (-1)",
+        "category": "수식"
+      },
+      {
+        "id": "neg1",
+        "dna": "E2",
+        "label": "-1",
+        "category": "수식"
+      },
+      {
+        "id": "x_minus_a",
+        "dna": "E1",
+        "label": "x + (-a)",
+        "category": "수식"
+      },
+      {
+        "id": "neg_a",
+        "dna": "E2",
+        "label": "-a",
+        "category": "수식"
+      },
+      {
+        "id": "gn_def",
+        "dna": "F6",
+        "label": "g(n) 정의",
+        "category": "함수"
+      },
+      {
+        "id": "eq_fxn_n",
+        "dna": "C11",
+        "label": "f(x^n)=n 방정식",
+        "category": "조건"
+      },
+      {
+        "id": "eq_c1",
+        "dna": "C1",
+        "label": "f(x^n) = n",
+        "category": "조건"
+      },
+      {
+        "id": "fxn_apply",
+        "dna": "F3",
+        "label": "f(x^n)",
+        "category": "함수"
+      },
+      {
+        "id": "xn_pow",
+        "dna": "E7",
+        "label": "x^n",
+        "category": "수식"
+      },
+      {
+        "id": "root_count",
+        "dna": "C9",
+        "label": "실근 개수=g(n)",
+        "category": "조건"
+      },
+      {
+        "id": "cond_g14",
+        "dna": "C1",
+        "label": "g(14)=5",
+        "category": "조건"
+      },
+      {
+        "id": "g14_apply",
+        "dna": "F3",
+        "label": "g(14)",
+        "category": "함수"
+      },
+      {
+        "id": "c_5v",
+        "dna": "T2",
+        "label": "상수 5",
+        "category": "말단"
+      },
+      {
+        "id": "conds",
+        "dna": "S1",
+        "label": "모든 조건",
+        "category": "구조"
+      },
+      {
+        "id": "ask_k",
+        "dna": "T1",
+        "label": "변수 k(발문)",
+        "category": "말단"
+      },
+      {
+        "id": "n_in_5",
+        "dna": "E6",
+        "label": "5n 입력",
+        "category": "수식"
+      }
+    ],
+    "previous_dna_edges": [
+      {
+        "from": "ask_sum",
+        "to": "top"
+      },
+      {
+        "from": "conds",
+        "to": "top"
+      },
+      {
+        "from": "vk",
+        "to": "ask_sum"
+      },
+      {
+        "from": "sigma",
+        "to": "ask_sum"
+      },
+      {
+        "from": "g5_1",
+        "to": "sigma"
+      },
+      {
+        "from": "g5_2",
+        "to": "sigma"
+      },
+      {
+        "from": "g5_3",
+        "to": "sigma"
+      },
+      {
+        "from": "g5_4",
+        "to": "sigma"
+      },
+      {
+        "from": "g5_5",
+        "to": "sigma"
+      },
+      {
+        "from": "n_in_5",
+        "to": "g5_1"
+      },
+      {
+        "from": "n_in_5",
+        "to": "g5_2"
+      },
+      {
+        "from": "n_in_5",
+        "to": "g5_3"
+      },
+      {
+        "from": "n_in_5",
+        "to": "g5_4"
+      },
+      {
+        "from": "n_in_5",
+        "to": "g5_5"
+      },
+      {
+        "from": "c_5",
+        "to": "n_in_5"
+      },
+      {
+        "from": "vn",
+        "to": "n_in_5"
+      },
+      {
+        "from": "lim_a",
+        "to": "conds"
+      },
+      {
+        "from": "lim_k",
+        "to": "conds"
+      },
+      {
+        "from": "lim_n",
+        "to": "conds"
+      },
+      {
+        "from": "fx_def",
+        "to": "conds"
+      },
+      {
+        "from": "gn_def",
+        "to": "conds"
+      },
+      {
+        "from": "cond_g14",
+        "to": "conds"
+      },
+      {
+        "from": "va",
+        "to": "lim_a"
+      },
+      {
+        "from": "vk",
+        "to": "lim_k"
+      },
+      {
+        "from": "vn",
+        "to": "lim_n"
+      },
+      {
+        "from": "fx_piece",
+        "to": "fx_def"
+      },
+      {
+        "from": "vx",
+        "to": "fx_def"
+      },
+      {
+        "from": "piece1",
+        "to": "fx_piece"
+      },
+      {
+        "from": "piece2",
+        "to": "fx_piece"
+      },
+      {
+        "from": "dom1",
+        "to": "piece1"
+      },
+      {
+        "from": "abs_expr",
+        "to": "piece1"
+      },
+      {
+        "from": "vx",
+        "to": "dom1"
+      },
+      {
+        "from": "c_1",
+        "to": "dom1"
+      },
+      {
+        "from": "inner_abs",
+        "to": "abs_expr"
+      },
+      {
+        "from": "exp_term",
+        "to": "inner_abs"
+      },
+      {
+        "from": "neg_3a",
+        "to": "inner_abs"
+      },
+      {
+        "from": "va",
+        "to": "exp_term"
+      },
+      {
+        "from": "exp_inner",
+        "to": "exp_term"
+      },
+      {
+        "from": "vx",
+        "to": "exp_inner"
+      },
+      {
+        "from": "c_1",
+        "to": "exp_inner"
+      },
+      {
+        "from": "mul_3a",
+        "to": "neg_3a"
+      },
+      {
+        "from": "c_3",
+        "to": "mul_3a"
+      },
+      {
+        "from": "va",
+        "to": "mul_3a"
+      },
+      {
+        "from": "dom2",
+        "to": "piece2"
+      },
+      {
+        "from": "kxa_expr",
+        "to": "piece2"
+      },
+      {
+        "from": "vx",
+        "to": "dom2"
+      },
+      {
+        "from": "c_1",
+        "to": "dom2"
+      },
+      {
+        "from": "mul_k_mid",
+        "to": "kxa_expr"
+      },
+      {
+        "from": "x_minus_a",
+        "to": "kxa_expr"
+      },
+      {
+        "from": "vk",
+        "to": "mul_k_mid"
+      },
+      {
+        "from": "x_minus1",
+        "to": "mul_k_mid"
+      },
+      {
+        "from": "vx",
+        "to": "x_minus1"
+      },
+      {
+        "from": "neg1",
+        "to": "x_minus1"
+      },
+      {
+        "from": "c_1",
+        "to": "neg1"
+      },
+      {
+        "from": "vx",
+        "to": "x_minus_a"
+      },
+      {
+        "from": "neg_a",
+        "to": "x_minus_a"
+      },
+      {
+        "from": "va",
+        "to": "neg_a"
+      },
+      {
+        "from": "eq_fxn_n",
+        "to": "gn_def"
+      },
+      {
+        "from": "root_count",
+        "to": "gn_def"
+      },
+      {
+        "from": "eq_c1",
+        "to": "eq_fxn_n"
+      },
+      {
+        "from": "fxn_apply",
+        "to": "eq_c1"
+      },
+      {
+        "from": "vn",
+        "to": "eq_c1"
+      },
+      {
+        "from": "xn_pow",
+        "to": "fxn_apply"
+      },
+      {
+        "from": "vx",
+        "to": "xn_pow"
+      },
+      {
+        "from": "vn",
+        "to": "xn_pow"
+      },
+      {
+        "from": "g14_apply",
+        "to": "cond_g14"
+      },
+      {
+        "from": "c_14",
+        "to": "g14_apply"
+      },
+      {
+        "from": "c_5v",
+        "to": "cond_g14"
+      }
+    ],
+    "created_at": "2026-03-21T13:16:24.269Z"
   }
 ]
