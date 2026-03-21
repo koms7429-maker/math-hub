@@ -1642,5 +1642,474 @@
     "folders": [],
     "history": [],
     "created_at": "2026-03-21T04:21:09.410Z"
+  },
+  {
+    "problem_id": "Problem6",
+    "answer": "18",
+    "clues": [
+      {
+        "id": "단서A",
+        "text": "$x$에 대한 방정식 $x^2+(2a+1)x+a^2+a=0$"
+      },
+      {
+        "id": "단서B",
+        "text": "$a$는 자연수"
+      },
+      {
+        "id": "단서C",
+        "text": "어떤 자연수 $n$에 대하여 $k^n=64$"
+      }
+    ],
+    "skeleton": [
+      {
+        "from": "단서A",
+        "to": "note1",
+        "neuron": "연산9",
+        "note": "$x^2+(2a+1)x+a^2+a=(x+a)(x+a+1)=0$이고 실근은 $x=-a$ 또는 $x=-a-1$이다",
+        "main": true
+      },
+      {
+        "from": [
+          "note1",
+          "단서B"
+        ],
+        "to": "note2",
+        "neuron": "사실76",
+        "note": "$a$가 자연수이면 $k=-a$ 또는 $k=-a-1$은 음의 정수이다",
+        "main": true
+      },
+      {
+        "from": [
+          "note2",
+          "단서C"
+        ],
+        "to": "note3",
+        "neuron": "사실74",
+        "note": "$k$가 음의 정수이고 $k^n=64>0$이면 $n$은 짝수여야 한다",
+        "main": true
+      },
+      {
+        "from": "note3",
+        "to": "note4",
+        "neuron": "전략37",
+        "note": "$k^n=2^6$에서 $n$이 짝수인 자연수이면 $k=-2$이고 $n=6$이거나, $k=-8$이고 $n=2$이다",
+        "main": true
+      },
+      {
+        "from": [
+          "note4",
+          "note1"
+        ],
+        "to": "note5",
+        "neuron": "전략10",
+        "note": "$k=-8$이면 $a=8$ 또는 $a=7$이고, $k=-2$이면 $a=2$ 또는 $a=1$이다",
+        "main": true
+      },
+      {
+        "from": "note5",
+        "to": "END",
+        "neuron": "전략10",
+        "note": "모든 자연수 $a$의 합은 $8+7+2+1=18$이다",
+        "main": true
+      }
+    ],
+    "solution": "STEP 1. 방정식을 인수분해하면 $(x+a)(x+a+1)=0$이고 실근은 $x=-a$ 또는 $x=-a-1$이다.\n\nSTEP 2. $a$가 자연수이면 $k=-a$ 또는 $k=-a-1$은 음의 정수이다.\n\nSTEP 3. $k$가 음의 정수이고 $k^n=64>0$이면 $n$은 짝수여야 한다.\n\nSTEP 4. $k^n=2^6$에서 $n$이 짝수인 자연수이면 $k=-2$이고 $n=6$이거나, $k=-8$이고 $n=2$이다.\n\nSTEP 5. $k=-8$이면 $a=8$ 또는 $a=7$이고, $k=-2$이면 $a=2$ 또는 $a=1$이다.\n\nSTEP 6. 모든 자연수 $a$의 합은 $8+7+2+1=18$이다.",
+    "analysis": "방정식 $x^2+(2a+1)x+a^2+a=0$을 인수분해하면 $(x+a)(x+a+1)=0$이다. 따라서 실근은 $x=-a$ 또는 $x=-a-1$이다. $a$가 자연수이므로 $k=-a$ 또는 $k=-a-1$은 음의 정수이다. 조건 $k^n=64=2^6$에서 $k$가 음의 정수이므로 $k^n$이 양수가 되려면 $n$이 짝수여야 한다. $n$이 짝수이고 $k^n=2^6$에서, $k=-2$이면 $n=6$, $k=-8$이면 $n=2$가 가능하다(둘 다 자연수 $n$이 존재). $k=-8$이면 $-a=-8$ 또는 $-a-1=-8$에서 $a=8$ 또는 $a=7$이다. $k=-2$이면 $-a=-2$ 또는 $-a-1=-2$에서 $a=2$ 또는 $a=1$이다. 모든 자연수 $a$의 합은 $8+7+2+1=18$이다.",
+    "new_neurons": [],
+    "metadata": {
+      "unit": "지수와 로그",
+      "difficulty": "unknown",
+      "score": "4",
+      "type": "multiple choice",
+      "answer": "④ 18"
+    },
+    "edge_count": 6,
+    "side_count": 0,
+    "statement": "# Problem6. (Unknown Source) - Quadratic Equations\n\n## Problem\n\n$x$에 대한 방정식 $x^2 + (2a+1)x + a^2 + a = 0$의 한 실근 $k$가 다음 조건을 만족시키도록 하는 모든 자연수 $a$의 값의 합은?\n\n어떤 자연수 $n$에 대하여 $k^n = 64$이다.",
+    "dna": {
+      "nodes": [
+        {
+          "id": "top",
+          "dna": "Q3",
+          "label": "모든 자연수 a의 값의 합을 구하라",
+          "category": "발문"
+        },
+        {
+          "id": "va",
+          "dna": "T1",
+          "label": "변수 a",
+          "category": "말단"
+        },
+        {
+          "id": "lim_a_nat",
+          "dna": "L3",
+          "label": "a는 자연수",
+          "category": "제한"
+        },
+        {
+          "id": "eq_main",
+          "dna": "C11",
+          "label": "이차방정식 (x에 대한)",
+          "category": "조건"
+        },
+        {
+          "id": "eq_c1",
+          "dna": "C1",
+          "label": "x² + (2a+1)x + a²+a = 0",
+          "category": "조건"
+        },
+        {
+          "id": "lhs",
+          "dna": "E1",
+          "label": "합(x², (2a+1)x, a²+a)",
+          "category": "수식"
+        },
+        {
+          "id": "term1",
+          "dna": "E7",
+          "label": "x²",
+          "category": "수식"
+        },
+        {
+          "id": "vx",
+          "dna": "T3",
+          "label": "독립변수 x",
+          "category": "말단"
+        },
+        {
+          "id": "c2_exp",
+          "dna": "T2",
+          "label": "상수 2 (지수)",
+          "category": "말단"
+        },
+        {
+          "id": "term2",
+          "dna": "E6",
+          "label": "곱((2a+1), x)",
+          "category": "수식"
+        },
+        {
+          "id": "coeff",
+          "dna": "E1",
+          "label": "합(2a, 1)",
+          "category": "수식"
+        },
+        {
+          "id": "two_a",
+          "dna": "E6",
+          "label": "곱(2, a)",
+          "category": "수식"
+        },
+        {
+          "id": "c2",
+          "dna": "T2",
+          "label": "상수 2",
+          "category": "말단"
+        },
+        {
+          "id": "c1",
+          "dna": "T2",
+          "label": "상수 1",
+          "category": "말단"
+        },
+        {
+          "id": "term3",
+          "dna": "E1",
+          "label": "합(a², a)",
+          "category": "수식"
+        },
+        {
+          "id": "a_sq",
+          "dna": "E7",
+          "label": "a²",
+          "category": "수식"
+        },
+        {
+          "id": "c2_pow",
+          "dna": "T2",
+          "label": "상수 2 (제곱)",
+          "category": "말단"
+        },
+        {
+          "id": "c0",
+          "dna": "T2",
+          "label": "상수 0 (우변)",
+          "category": "말단"
+        },
+        {
+          "id": "vk",
+          "dna": "T1",
+          "label": "변수 k (한 실근)",
+          "category": "말단"
+        },
+        {
+          "id": "root_cond",
+          "dna": "C15",
+          "label": "한 실근 k가 조건을 만족",
+          "category": "조건"
+        },
+        {
+          "id": "vn",
+          "dna": "T1",
+          "label": "변수 n (자연수)",
+          "category": "말단"
+        },
+        {
+          "id": "lim_n_nat",
+          "dna": "L3",
+          "label": "n은 자연수",
+          "category": "제한"
+        },
+        {
+          "id": "kn_eq",
+          "dna": "C1",
+          "label": "k^n = 64",
+          "category": "조건"
+        },
+        {
+          "id": "kn",
+          "dna": "E7",
+          "label": "k^n",
+          "category": "수식"
+        },
+        {
+          "id": "c64",
+          "dna": "T2",
+          "label": "상수 64",
+          "category": "말단"
+        }
+      ],
+      "edges": [
+        {
+          "from": "va",
+          "to": "top"
+        },
+        {
+          "from": "lim_a_nat",
+          "to": "va"
+        },
+        {
+          "from": "eq_main",
+          "to": "top"
+        },
+        {
+          "from": "eq_c1",
+          "to": "eq_main"
+        },
+        {
+          "from": "lhs",
+          "to": "eq_c1"
+        },
+        {
+          "from": "c0",
+          "to": "eq_c1"
+        },
+        {
+          "from": "term1",
+          "to": "lhs"
+        },
+        {
+          "from": "term2",
+          "to": "lhs"
+        },
+        {
+          "from": "term3",
+          "to": "lhs"
+        },
+        {
+          "from": "vx",
+          "to": "term1"
+        },
+        {
+          "from": "c2_exp",
+          "to": "term1"
+        },
+        {
+          "from": "coeff",
+          "to": "term2"
+        },
+        {
+          "from": "vx",
+          "to": "term2"
+        },
+        {
+          "from": "two_a",
+          "to": "coeff"
+        },
+        {
+          "from": "c1",
+          "to": "coeff"
+        },
+        {
+          "from": "c2",
+          "to": "two_a"
+        },
+        {
+          "from": "va",
+          "to": "two_a"
+        },
+        {
+          "from": "a_sq",
+          "to": "term3"
+        },
+        {
+          "from": "va",
+          "to": "term3"
+        },
+        {
+          "from": "va",
+          "to": "a_sq"
+        },
+        {
+          "from": "c2_pow",
+          "to": "a_sq"
+        },
+        {
+          "from": "root_cond",
+          "to": "top"
+        },
+        {
+          "from": "vk",
+          "to": "root_cond"
+        },
+        {
+          "from": "eq_main",
+          "to": "root_cond"
+        },
+        {
+          "from": "kn_eq",
+          "to": "root_cond"
+        },
+        {
+          "from": "kn",
+          "to": "kn_eq"
+        },
+        {
+          "from": "c64",
+          "to": "kn_eq"
+        },
+        {
+          "from": "vk",
+          "to": "kn"
+        },
+        {
+          "from": "vn",
+          "to": "kn"
+        },
+        {
+          "from": "lim_n_nat",
+          "to": "vn"
+        }
+      ],
+      "new_dna": []
+    },
+    "thinking_profile": {
+      "total_think_tokens": 513,
+      "edge_count": 8,
+      "by_type": {
+        "사실": {
+          "count": 3,
+          "total": 227,
+          "avg": 76
+        },
+        "연산": {
+          "count": 2,
+          "total": 109,
+          "avg": 55
+        },
+        "전략": {
+          "count": 2,
+          "total": 146,
+          "avg": 73
+        }
+      },
+      "hardest_edge": {
+        "edge_num": 5,
+        "from": "note4",
+        "to": "note5",
+        "neuron": "사실64",
+        "to_type": "사실",
+        "think_tokens": 99,
+        "note": "$k^n = 2^6$에서 $k = -2^{6/n}$이 정수가 되려면 $n$은 6의 약수여야 함"
+      },
+      "edges": [
+        {
+          "edge_num": 1,
+          "from": "단서A",
+          "to": "note1",
+          "neuron": "전략29",
+          "to_type": "전략",
+          "note": "방정식 $x^2 + (2a+1)x + a^2 + a = 0$을 인수분해하면 $(x+a)(x+a+1) = 0$",
+          "think_tokens": 93
+        },
+        {
+          "edge_num": 2,
+          "from": "note1",
+          "to": "note2",
+          "neuron": "연산9",
+          "to_type": "연산",
+          "note": "$(x+a)(x+a+1) = 0$에서 $x+a=0$ 또는 $x+a+1=0$이므로 $x = -a$ 또는 $x = -a-1$",
+          "think_tokens": 45
+        },
+        {
+          "edge_num": 3,
+          "from": "note2",
+          "to": "note3",
+          "neuron": "사실27",
+          "to_type": "사실",
+          "note": "$a$가 자연수이므로 $k = -a$ 또는 $k = -a-1$은 모두 음의 정수",
+          "think_tokens": 45
+        },
+        {
+          "edge_num": 4,
+          "from": "note3",
+          "to": "note4",
+          "neuron": "사실76",
+          "to_type": "사실",
+          "note": "$k$가 음의 정수이고 $k^n = 64 > 0$이려면 $n$이 짝수여야 함",
+          "think_tokens": 83
+        },
+        {
+          "edge_num": 5,
+          "from": "note4",
+          "to": "note5",
+          "neuron": "사실64",
+          "to_type": "사실",
+          "note": "$k^n = 2^6$에서 $k = -2^{6/n}$이 정수가 되려면 $n$은 6의 약수여야 함",
+          "think_tokens": 99
+        },
+        {
+          "edge_num": 6,
+          "from": "note5",
+          "to": "note6",
+          "neuron": "전략17",
+          "to_type": "전략",
+          "note": "6의 약수 중 짝수는 2, 6이므로 $n=2$일 때 $k=-8$, $n=6$일 때 $k=-2$",
+          "think_tokens": 53
+        },
+        {
+          "edge_num": 7,
+          "from": "note6",
+          "to": "note7",
+          "neuron": "연산24",
+          "to_type": "연산",
+          "note": "$k = -8$인 경우: $-a = -8$에서 $a = 8$, $-a-1 = -8$에서 $a = 7$이고, $k = -2$인 경우: $-a = -2$에서 $a = 2$, $-a-1 = -2$에서 $a = 1$",
+          "think_tokens": 64
+        },
+        {
+          "edge_num": 8,
+          "from": "note7",
+          "to": "END",
+          "neuron": "연산18",
+          "to_type": "END",
+          "note": "모든 자연수 $a$의 값의 합은 $8 + 7 + 2 + 1 = 18$",
+          "think_tokens": 31
+        }
+      ],
+      "_debug": "OK"
+    },
+    "folders": [],
+    "history": [],
+    "created_at": "2026-03-21T04:23:21.430Z"
   }
 ]
