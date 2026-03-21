@@ -2497,5 +2497,803 @@
     "folders": [],
     "history": [],
     "created_at": "2026-03-21T04:26:15.352Z"
+  },
+  {
+    "problem_id": "Problem9",
+    "answer": "8",
+    "clues": [
+      {
+        "id": "단서A",
+        "text": "f(x)= log_2(8-x)+a (-8≤x<b), log_2(x+8) (b≤x≤8)"
+      },
+      {
+        "id": "단서B",
+        "text": "0<b<8"
+      },
+      {
+        "id": "단서C",
+        "text": "f(x)는 일대일함수이고 치역은 {y | k≤y≤k+log_2(9/2)}"
+      }
+    ],
+    "skeleton": [
+      {
+        "from": "단서A",
+        "to": "note1",
+        "neuron": "사실12",
+        "note": "-8≤x<b에서 f(x)=log_2(8-x)+a는 순감소이고, b≤x≤8에서 f(x)=log_2(x+8)은 순증가이다",
+        "main": true
+      },
+      {
+        "from": "note1",
+        "to": "note2",
+        "neuron": "사실53",
+        "note": "-8≤x<b에서 치역은 (log_2(8-b)+a, 4+a]이고, b≤x≤8에서 치역은 [log_2(b+8), 4]이다",
+        "main": true
+      },
+      {
+        "from": [
+          "단서B",
+          "단서C",
+          "note2"
+        ],
+        "to": "note3",
+        "neuron": "전략3",
+        "note": "f(x)가 일대일함수이고 치역이 [k, k+log_2(9/2)]가 되려면 두 조각의 치역이 겹치지 않고 연결되어야 한다",
+        "main": true
+      },
+      {
+        "from": "note3",
+        "to": "note4",
+        "neuron": "전략22",
+        "note": "두 조각의 치역이 아래-위로 연결되는 경우: log_2(8-b)+a=4(①)이고 k=log_2(b+8), k+log_2(9/2)=4+a(②)이다",
+        "main": true
+      },
+      {
+        "from": "note4",
+        "to": "note5",
+        "neuron": "전략2",
+        "note": "①: log_2(8-b)+a=4, ②: log_2(b+8)+log_2(9/2)=4+a를 연립한다",
+        "main": true
+      },
+      {
+        "from": "note5",
+        "to": "note6",
+        "neuron": "전략11",
+        "note": "①+②의 양변을 더하면 log_2(8-b)+log_2(b+8)+log_2(9/2)+a=8+a이다",
+        "main": true
+      },
+      {
+        "from": "note6",
+        "to": "note7",
+        "neuron": "연산16",
+        "note": "log_2[(8-b)(b+8)·(9/2)]=8이다",
+        "main": true
+      },
+      {
+        "from": "note7",
+        "to": "note8",
+        "neuron": "연산2",
+        "note": "(64-b²)·(9/2)=256이다",
+        "main": true
+      },
+      {
+        "from": "note8",
+        "to": "note9",
+        "neuron": "연산9",
+        "note": "64-b²=512/9이고 b²=64/9이다",
+        "main": true
+      },
+      {
+        "from": [
+          "note9",
+          "단서B"
+        ],
+        "to": "note10",
+        "neuron": "사실4",
+        "note": "0<b<8일 때 b²=64/9에서 b=8/3이다",
+        "main": true
+      },
+      {
+        "from": [
+          "note10",
+          "note5"
+        ],
+        "to": "note11",
+        "neuron": "연산3",
+        "note": "①에 b=8/3을 대입하면 log_2(16/3)+a=4이고 a=log_2(3)이며 2^a=3이다",
+        "main": true
+      },
+      {
+        "from": [
+          "note11",
+          "note10"
+        ],
+        "to": "END",
+        "neuron": "전략11",
+        "note": "2^a×b=3×(8/3)=8이다",
+        "main": true
+      }
+    ],
+    "solution": "STEP 1. -8≤x<b에서 f(x)=log_2(8-x)+a는 순감소이고, b≤x≤8에서 f(x)=log_2(x+8)은 순증가이다.\n\nSTEP 2. 각 조각에서 치역을 구한다. 첫 번째 조각의 치역은 (log_2(8-b)+a, 4+a]이고, 두 번째 조각의 치역은 [log_2(b+8), 4]이다.\n\nSTEP 3. f(x)가 일대일함수이고 치역이 [k, k+log_2(9/2)]가 되려면 두 조각의 치역이 겹치지 않고 연결되어야 한다.\n\nSTEP 4. 두 조각의 치역이 아래-위로 연결되는 경우: ①log_2(8-b)+a=4, ②k=log_2(b+8), k+log_2(9/2)=4+a이다.\n\nSTEP 5. ①과 ②를 연립한다: ①log_2(8-b)+a=4, ②log_2(b+8)+log_2(9/2)=4+a.\n\nSTEP 6. ①+②의 양변을 더하면 log_2(8-b)+log_2(b+8)+log_2(9/2)+a=8+a이다.\n\nSTEP 7. 로그 곱셈법칙을 적용하면 log_2[(8-b)(b+8)·(9/2)]=8이다.\n\nSTEP 8. 지수-로그 변환: (64-b²)·(9/2)=256이다.\n\nSTEP 9. 정리하면 64-b²=512/9이고 b²=64/9이다.\n\nSTEP 10. 0<b<8일 때 b²=64/9에서 b=8/3이다.\n\nSTEP 11. ①에 b=8/3을 대입하면 log_2(16/3)+a=4이고 a=log_2(3)이며 2^a=3이다.\n\nSTEP 12. 2^a×b=3×(8/3)=8이다.",
+    "analysis": "f(x)는 두 조각으로 구성된다. 첫 번째 조각(-8≤x<b)에서 log_2(8-x)+a는 x에 대해 순감소이므로 치역은 (log_2(8-b)+a, 4+a]이다. 두 번째 조각(b≤x≤8)에서 log_2(x+8)은 순증가이므로 치역은 [log_2(b+8), 4]이다. f(x)가 일대일함수이고 치역이 [k, k+log_2(9/2)]인 폐구간이 되려면, 두 조각의 치역이 서로 겹치지 않고 연결되어야 한다. 첫 번째 조각의 치역 상한은 4+a, 두 번째 조각의 치역 하한은 log_2(b+8)이다. 두 조각의 치역이 연결되려면 첫 번째 조각의 하한이 두 번째 조각의 상한과 만나야 하므로 log_2(8-b)+a=4(①)이고, k=log_2(b+8), k+log_2(9/2)=4+a(②)이어야 한다. ②에서 log_2(b+8)+log_2(9/2)=4+a. ①과 이 식을 더하면 log_2(8-b)+log_2(b+8)+log_2(9/2)=8이다. 로그 곱셈법칙으로 log_2[(8-b)(b+8)·(9/2)]=8, 즉 (64-b²)·(9/2)=256, 64-b²=512/9, b²=64/9이다. 0<b<8이므로 b=8/3이다. ①에 대입하면 log_2(16/3)+a=4, a=4-log_2(16/3)=log_2(3)이므로 2^a=3이다. 따라서 2^a×b=3×(8/3)=8이다.",
+    "new_neurons": [],
+    "metadata": {
+      "unit": "Logarithm",
+      "difficulty": "unknown",
+      "score": "4",
+      "type": "multiple choice",
+      "answer": "②"
+    },
+    "edge_count": 12,
+    "side_count": 0,
+    "statement": "# Problem9. (Unknown Source) - Logarithm\n\n## Problem\n\n두 상수 $a$, $b(0<b<8)$에 대하여 $-8 \\le x \\le 8$에서 정의된 함수\n\n$$f(x) = \\begin{cases} \\log_2(8-x)+a & (-8 \\le x < b) \\\\ \\log_2(x+8) & (b \\le x \\le 8) \\end{cases}$$\n\n이 다음 조건을 만족시킬 때, $2^a \\times b$의 값은? [4점]\n\n함수 $f(x)$는 일대일함수이고, 함수 $f(x)$의 치역은 $\\left\\{y \\left| k \\le y \\le k+\\log_2\\frac{9}{2}\\right.\\right\\}$이다.",
+    "dna": {
+      "nodes": [
+        {
+          "id": "top",
+          "dna": "Q1",
+          "label": "값을 구하라: 2^a × b",
+          "category": "발문"
+        },
+        {
+          "id": "ask",
+          "dna": "E6",
+          "label": "곱(2^a, b)",
+          "category": "수식"
+        },
+        {
+          "id": "ask_pow",
+          "dna": "E4",
+          "label": "2^a",
+          "category": "수식"
+        },
+        {
+          "id": "c2_base",
+          "dna": "T2",
+          "label": "상수 2 (지수함수 밑)",
+          "category": "말단"
+        },
+        {
+          "id": "va",
+          "dna": "T1",
+          "label": "변수 a",
+          "category": "말단"
+        },
+        {
+          "id": "vb",
+          "dna": "T1",
+          "label": "변수 b",
+          "category": "말단"
+        },
+        {
+          "id": "conds",
+          "dna": "S1",
+          "label": "모든 조건 묶음",
+          "category": "구조"
+        },
+        {
+          "id": "const_range_a",
+          "dna": "L3",
+          "label": "a는 상수",
+          "category": "제한"
+        },
+        {
+          "id": "const_range_b",
+          "dna": "L3",
+          "label": "b는 상수",
+          "category": "제한"
+        },
+        {
+          "id": "b_range",
+          "dna": "L2",
+          "label": "0 < b < 8",
+          "category": "제한"
+        },
+        {
+          "id": "b_lo",
+          "dna": "T2",
+          "label": "상수 0",
+          "category": "말단"
+        },
+        {
+          "id": "b_hi",
+          "dna": "T2",
+          "label": "상수 8",
+          "category": "말단"
+        },
+        {
+          "id": "func_f",
+          "dna": "F6",
+          "label": "함수 f(x) 정의",
+          "category": "함수"
+        },
+        {
+          "id": "piecewise",
+          "dna": "F1",
+          "label": "조각함수 f(x)",
+          "category": "함수"
+        },
+        {
+          "id": "vx",
+          "dna": "T3",
+          "label": "독립변수 x",
+          "category": "말단"
+        },
+        {
+          "id": "dom",
+          "dna": "F8",
+          "label": "정의역 [-8, 8]",
+          "category": "함수"
+        },
+        {
+          "id": "dom_lo",
+          "dna": "T2",
+          "label": "상수 -8",
+          "category": "말단"
+        },
+        {
+          "id": "dom_hi",
+          "dna": "T2",
+          "label": "상수 8",
+          "category": "말단"
+        },
+        {
+          "id": "piece1",
+          "dna": "F2",
+          "label": "조각1: log₂(8-x)+a, -8≤x<b",
+          "category": "함수"
+        },
+        {
+          "id": "piece1_dom",
+          "dna": "F8",
+          "label": "정의역 [-8, b)",
+          "category": "함수"
+        },
+        {
+          "id": "piece1_expr",
+          "dna": "E1",
+          "label": "합(log₂(8-x), a)",
+          "category": "수식"
+        },
+        {
+          "id": "piece1_log",
+          "dna": "E3",
+          "label": "log₂(8-x)",
+          "category": "수식"
+        },
+        {
+          "id": "c2_log1",
+          "dna": "T2",
+          "label": "상수 2 (로그 밑)",
+          "category": "말단"
+        },
+        {
+          "id": "piece1_inner",
+          "dna": "E1",
+          "label": "합(8, -x)",
+          "category": "수식"
+        },
+        {
+          "id": "c8",
+          "dna": "T2",
+          "label": "상수 8 (8-x 용)",
+          "category": "말단"
+        },
+        {
+          "id": "neg_x",
+          "dna": "E2",
+          "label": "부호반전(x)",
+          "category": "수식"
+        },
+        {
+          "id": "piece2",
+          "dna": "F2",
+          "label": "조각2: log₂(x+8), b≤x≤8",
+          "category": "함수"
+        },
+        {
+          "id": "piece2_dom",
+          "dna": "F8",
+          "label": "정의역 [b, 8]",
+          "category": "함수"
+        },
+        {
+          "id": "piece2_expr",
+          "dna": "E3",
+          "label": "log₂(x+8)",
+          "category": "수식"
+        },
+        {
+          "id": "c2_log2",
+          "dna": "T2",
+          "label": "상수 2 (로그 밑)",
+          "category": "말단"
+        },
+        {
+          "id": "piece2_inner",
+          "dna": "E1",
+          "label": "합(x, 8)",
+          "category": "수식"
+        },
+        {
+          "id": "c8b",
+          "dna": "T2",
+          "label": "상수 8 (x+8 용)",
+          "category": "말단"
+        },
+        {
+          "id": "injective_cond",
+          "dna": "F12",
+          "label": "f(x)는 일대일함수",
+          "category": "조건"
+        },
+        {
+          "id": "range_cond",
+          "dna": "C17",
+          "label": "치역 = {y | k ≤ y ≤ k+log₂(9/2)}",
+          "category": "조건"
+        },
+        {
+          "id": "range_set",
+          "dna": "F9",
+          "label": "f(x)의 치역",
+          "category": "함수"
+        },
+        {
+          "id": "range_lo",
+          "dna": "T1",
+          "label": "변수 k (치역 하한)",
+          "category": "말단"
+        },
+        {
+          "id": "range_hi",
+          "dna": "E1",
+          "label": "합(k, log₂(9/2))",
+          "category": "수식"
+        },
+        {
+          "id": "range_log",
+          "dna": "E3",
+          "label": "log₂(9/2)",
+          "category": "수식"
+        },
+        {
+          "id": "c2_rangelog",
+          "dna": "T2",
+          "label": "상수 2 (로그 밑)",
+          "category": "말단"
+        },
+        {
+          "id": "frac_9_2",
+          "dna": "E6",
+          "label": "곱(9, (1/2))",
+          "category": "수식"
+        },
+        {
+          "id": "c9",
+          "dna": "T2",
+          "label": "상수 9",
+          "category": "말단"
+        },
+        {
+          "id": "inv2",
+          "dna": "E7",
+          "label": "거듭제곱(2, -1) = 1/2",
+          "category": "수식"
+        },
+        {
+          "id": "c2_inv",
+          "dna": "T2",
+          "label": "상수 2 (분모)",
+          "category": "말단"
+        },
+        {
+          "id": "cneg1",
+          "dna": "T2",
+          "label": "상수 -1",
+          "category": "말단"
+        }
+      ],
+      "edges": [
+        {
+          "from": "ask",
+          "to": "top"
+        },
+        {
+          "from": "conds",
+          "to": "top"
+        },
+        {
+          "from": "ask_pow",
+          "to": "ask"
+        },
+        {
+          "from": "vb",
+          "to": "ask"
+        },
+        {
+          "from": "c2_base",
+          "to": "ask_pow"
+        },
+        {
+          "from": "va",
+          "to": "ask_pow"
+        },
+        {
+          "from": "const_range_a",
+          "to": "va"
+        },
+        {
+          "from": "const_range_b",
+          "to": "vb"
+        },
+        {
+          "from": "b_range",
+          "to": "vb"
+        },
+        {
+          "from": "b_lo",
+          "to": "b_range"
+        },
+        {
+          "from": "b_hi",
+          "to": "b_range"
+        },
+        {
+          "from": "func_f",
+          "to": "conds"
+        },
+        {
+          "from": "piecewise",
+          "to": "func_f"
+        },
+        {
+          "from": "dom",
+          "to": "func_f"
+        },
+        {
+          "from": "dom_lo",
+          "to": "dom"
+        },
+        {
+          "from": "dom_hi",
+          "to": "dom"
+        },
+        {
+          "from": "piece1",
+          "to": "piecewise"
+        },
+        {
+          "from": "piece2",
+          "to": "piecewise"
+        },
+        {
+          "from": "piece1_dom",
+          "to": "piece1"
+        },
+        {
+          "from": "piece1_expr",
+          "to": "piece1"
+        },
+        {
+          "from": "dom_lo",
+          "to": "piece1_dom"
+        },
+        {
+          "from": "vb",
+          "to": "piece1_dom"
+        },
+        {
+          "from": "piece1_log",
+          "to": "piece1_expr"
+        },
+        {
+          "from": "va",
+          "to": "piece1_expr"
+        },
+        {
+          "from": "c2_log1",
+          "to": "piece1_log"
+        },
+        {
+          "from": "piece1_inner",
+          "to": "piece1_log"
+        },
+        {
+          "from": "c8",
+          "to": "piece1_inner"
+        },
+        {
+          "from": "neg_x",
+          "to": "piece1_inner"
+        },
+        {
+          "from": "vx",
+          "to": "neg_x"
+        },
+        {
+          "from": "piece2_dom",
+          "to": "piece2"
+        },
+        {
+          "from": "piece2_expr",
+          "to": "piece2"
+        },
+        {
+          "from": "vb",
+          "to": "piece2_dom"
+        },
+        {
+          "from": "dom_hi",
+          "to": "piece2_dom"
+        },
+        {
+          "from": "c2_log2",
+          "to": "piece2_expr"
+        },
+        {
+          "from": "piece2_inner",
+          "to": "piece2_expr"
+        },
+        {
+          "from": "vx",
+          "to": "piece2_inner"
+        },
+        {
+          "from": "c8b",
+          "to": "piece2_inner"
+        },
+        {
+          "from": "injective_cond",
+          "to": "conds"
+        },
+        {
+          "from": "piecewise",
+          "to": "injective_cond"
+        },
+        {
+          "from": "range_cond",
+          "to": "conds"
+        },
+        {
+          "from": "range_set",
+          "to": "range_cond"
+        },
+        {
+          "from": "piecewise",
+          "to": "range_set"
+        },
+        {
+          "from": "range_lo",
+          "to": "range_cond"
+        },
+        {
+          "from": "range_hi",
+          "to": "range_cond"
+        },
+        {
+          "from": "range_lo",
+          "to": "range_hi"
+        },
+        {
+          "from": "range_log",
+          "to": "range_hi"
+        },
+        {
+          "from": "c2_rangelog",
+          "to": "range_log"
+        },
+        {
+          "from": "frac_9_2",
+          "to": "range_log"
+        },
+        {
+          "from": "c9",
+          "to": "frac_9_2"
+        },
+        {
+          "from": "inv2",
+          "to": "frac_9_2"
+        },
+        {
+          "from": "c2_inv",
+          "to": "inv2"
+        },
+        {
+          "from": "cneg1",
+          "to": "inv2"
+        }
+      ],
+      "new_dna": []
+    },
+    "thinking_profile": {
+      "total_think_tokens": 2238,
+      "edge_count": 17,
+      "by_type": {
+        "사실": {
+          "count": 4,
+          "total": 448,
+          "avg": 112
+        },
+        "연산": {
+          "count": 5,
+          "total": 404,
+          "avg": 81
+        },
+        "전략": {
+          "count": 7,
+          "total": 1357,
+          "avg": 194
+        }
+      },
+      "hardest_edge": {
+        "edge_num": 10,
+        "from": "note6",
+        "to": "note10",
+        "neuron": "전략21",
+        "to_type": "전략",
+        "think_tokens": 488,
+        "note": "전체 치역의 최댓값이 4+a이고 첫 번째 구간의 최댓값도 4+a이므로, 첫 번째 구간에서 최솟값도 최댓값과 같아야 한다. 즉 log₂(8-b)+a = 4이다"
+      },
+      "edges": [
+        {
+          "edge_num": 1,
+          "from": "단서A",
+          "to": "note1",
+          "neuron": "사실54",
+          "to_type": "사실",
+          "note": "첫 번째 구간에서 f(x) = log₂(8-x)+a는 감소함수이다 (log₂는 증가함수, 8-x는 감소함수이므로 합성은 감소함수)",
+          "think_tokens": 227
+        },
+        {
+          "edge_num": 2,
+          "from": "note1",
+          "to": "note2",
+          "neuron": "사실54",
+          "to_type": "사실",
+          "note": "두 번째 구간에서 f(x) = log₂(x+8)는 증가함수이다 (log₂는 증가함수, x+8은 증가함수이므로 합성은 증가함수)",
+          "think_tokens": 32
+        },
+        {
+          "edge_num": 3,
+          "from": "note1",
+          "to": "note3",
+          "neuron": "사실56",
+          "to_type": "사실",
+          "note": "첫 번째 구간 -8 ≤ x < b에서 감소함수 f(x) = log₂(8-x)+a의 치역은 (log₂(8-b)+a, 4+a]이다 (x=-8에서 최댓값 4+a, x→b에서 최솟값 log₂(8-b)+a)",
+          "think_tokens": 135
+        },
+        {
+          "edge_num": 4,
+          "from": "note2",
+          "to": "note4",
+          "neuron": "사실56",
+          "to_type": "사실",
+          "note": "두 번째 구간 b ≤ x ≤ 8에서 증가함수 f(x) = log₂(x+8)의 치역은 [log₂(b+8), 4]이다 (x=b에서 최솟값 log₂(b+8), x=8에서 최댓값 4)",
+          "think_tokens": 54
+        },
+        {
+          "edge_num": 5,
+          "from": "note3",
+          "to": "note5",
+          "neuron": "전략3",
+          "to_type": "전략",
+          "note": "f(x)가 일대일함수이려면 두 구간의 치역이 겹치지 않아야 하므로, (log₂(8-b)+a, 4+a]와 [log₂(b+8), 4]가 겹치지 않아야 한다",
+          "think_tokens": 71
+        },
+        {
+          "edge_num": 6,
+          "from": "note5",
+          "to": "note6",
+          "neuron": "전략21",
+          "to_type": "전략",
+          "note": "f(x)가 일대일함수이고 연속된 치역을 가지려면, 두 구간이 연결점 x=b에서 연속되어야 하므로 log₂(8-b)+a = log₂(b+8)이어야 한다",
+          "think_tokens": 145
+        },
+        {
+          "edge_num": 7,
+          "from": "단서D",
+          "to": "note7",
+          "neuron": "전략21",
+          "to_type": "전략",
+          "note": "전체 치역이 [k, k+log₂(9/2)]이므로, 최솟값 k = log₂(b+8)이고 최댓값 k+log₂(9/2) = 4+a이다",
+          "think_tokens": 233
+        },
+        {
+          "edge_num": 8,
+          "from": "note6",
+          "to": "note8",
+          "neuron": "전략11",
+          "to_type": "전략",
+          "note": "log₂(8-b)+a = log₂(b+8) = k이고 k+log₂(9/2) = 4+a이므로, log₂(b+8) + log₂(9/2) = 4 + a가 성립한다",
+          "think_tokens": 128
+        },
+        {
+          "edge_num": 9,
+          "from": "note8",
+          "to": "note9",
+          "neuron": "연산16",
+          "to_type": "연산",
+          "note": "log₂(b+8) + log₂(9/2) = log₂((b+8)·9/2)이므로, log₂((b+8)·9/2) = 4 + a가 성립한다",
+          "think_tokens": 87
+        },
+        {
+          "edge_num": 10,
+          "from": "note6",
+          "to": "note10",
+          "neuron": "전략21",
+          "to_type": "전략",
+          "note": "전체 치역의 최댓값이 4+a이고 첫 번째 구간의 최댓값도 4+a이므로, 첫 번째 구간에서 최솟값도 최댓값과 같아야 한다. 즉 log₂(8-b)+a = 4이다",
+          "think_tokens": 488
+        },
+        {
+          "edge_num": 11,
+          "from": "note9",
+          "to": "note11",
+          "neuron": "전략11",
+          "to_type": "전략",
+          "note": "note10에서 a = 4 - log₂(8-b)이므로, 이를 note9에 대입하면 log₂((b+8)·9/2) = 4 + (4 - log₂(8-b)) = 8 - log₂(8-b)이다",
+          "think_tokens": 216
+        },
+        {
+          "edge_num": 12,
+          "from": "note11",
+          "to": "note12",
+          "neuron": "연산2",
+          "to_type": "연산",
+          "note": "log₂((b+8)·9/2) = 8 - log₂(8-b)에서 양변에 log₂(8-b)를 더하면 log₂((b+8)·9/2) + log₂(8-b) = 8이다",
+          "think_tokens": 134
+        },
+        {
+          "edge_num": 13,
+          "from": "note12",
+          "to": "note13",
+          "neuron": "연산16",
+          "to_type": "연산",
+          "note": "log₂((b+8)·9/2) + log₂(8-b) = log₂((b+8)·9/2·(8-b)) = 8이므로, (b+8)(8-b)·9/2 = 2⁸ = 256이다",
+          "think_tokens": 91
+        },
+        {
+          "edge_num": 14,
+          "from": "note13",
+          "to": "note14",
+          "neuron": "연산24",
+          "to_type": "연산",
+          "note": "(b+8)(8-b)·9/2 = 256에서 (64-b²)·9/2 = 256이므로, 64-b² = 512/9이다. 따라서 b² = 64/9이고 b = 8/3이다 (0 < b < 8 조건에 의해)",
+          "think_tokens": 50
+        },
+        {
+          "edge_num": 15,
+          "from": "note14",
+          "to": "note15",
+          "neuron": "전략25",
+          "to_type": "전략",
+          "note": "b = 8/3를 note10의 log₂(8-b)+a = 4에 대입하면, log₂(8-8/3)+a = log₂(16/3)+a = 4이므로 a = 4 - log₂(16/3) = log₂(3)이다",
+          "think_tokens": 76
+        },
+        {
+          "edge_num": 16,
+          "from": "note15",
+          "to": "note16",
+          "neuron": "연산2",
+          "to_type": "연산",
+          "note": "a = log₂(3)이므로 2^a = 2^(log₂(3)) = 3이다",
+          "think_tokens": 42
+        },
+        {
+          "edge_num": 17,
+          "from": "note16",
+          "to": "END",
+          "neuron": "연산24",
+          "to_type": "END",
+          "note": "2^a × b = 3 × 8/3 = 8",
+          "think_tokens": 29
+        }
+      ],
+      "_debug": "OK"
+    },
+    "folders": [],
+    "history": [],
+    "created_at": "2026-03-21T04:31:34.721Z"
   }
 ]
