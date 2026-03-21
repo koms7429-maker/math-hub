@@ -8470,5 +8470,1251 @@
     "folders": [],
     "history": [],
     "created_at": "2026-03-21T07:45:05.464Z"
+  },
+  {
+    "problem_id": "Problem13",
+    "answer": "③ 139/9",
+    "clues": [
+      {
+        "id": "단서A",
+        "text": "a>1, k<0"
+      },
+      {
+        "id": "단서B",
+        "text": "f(x)=|a^(x+1)-3a| (x≤1), k(x-1)(x-a) (x>1)"
+      },
+      {
+        "id": "단서C",
+        "text": "g(n)=f(x^n)=n의 서로 다른 실근의 개수"
+      },
+      {
+        "id": "단서D",
+        "text": "g(14)=5"
+      }
+    ],
+    "skeleton": [
+      {
+        "from": "단서D",
+        "to": "note1",
+        "neuron": "전략22",
+        "note": "n=14는 짝수인 경우로 분류한다",
+        "main": true
+      },
+      {
+        "from": "note1",
+        "to": "note2",
+        "neuron": "사실4",
+        "note": "x^14=t에서 t<0이면 실근 0개, t=0이면 1개, t>0이면 2개이다",
+        "main": true
+      },
+      {
+        "from": [
+          "note2",
+          "단서D"
+        ],
+        "to": "note3",
+        "neuron": "전략10",
+        "note": "g(14)=5=1+2×2가 되려면 f(0)=14이고 f(t)=14를 만족하는 양수 t가 정확히 2개이어야 한다",
+        "main": true
+      },
+      {
+        "from": [
+          "단서B",
+          "note3"
+        ],
+        "to": "note4",
+        "neuron": "전략6",
+        "note": "f(0)=|a^1-3a|=2a=14를 풀면 a=7이다",
+        "main": true
+      },
+      {
+        "from": [
+          "단서B",
+          "note4"
+        ],
+        "to": "note5",
+        "neuron": "전략6",
+        "note": "a=7일 때 x≤1에서 f(x)=|7^(x+1)-21|이고 x=1에서 f(1)=|49-21|=28이다",
+        "main": false
+      },
+      {
+        "from": [
+          "단서B",
+          "note4"
+        ],
+        "to": "note6",
+        "neuron": "연산9",
+        "note": "x>1에서 f(x)=k(x-1)(x-7)이고 영점은 x=1과 x=7이다",
+        "main": false
+      },
+      {
+        "from": [
+          "단서A",
+          "note6"
+        ],
+        "to": "note7",
+        "neuron": "연산29",
+        "note": "k<0일 때 x>1에서 f는 위로 볼록이고 꼭짓점은 x=(1+7)/2=4이다",
+        "main": false
+      },
+      {
+        "from": [
+          "note7",
+          "note3"
+        ],
+        "to": "note8",
+        "neuron": "전략25",
+        "note": "f(4)=k(3)(-3)=-9k=14를 풀면 k=-14/9이다",
+        "main": true
+      },
+      {
+        "from": [
+          "note5",
+          "note8"
+        ],
+        "to": "note9",
+        "neuron": "전략5",
+        "note": "a=7, k=-14/9일 때 y=f(x)와 y=14의 교점은 x≤1에서 양수 t 1개, x>1에서 꼭짓점 t=4에서 1개로 양수 t 총 2개이다",
+        "main": false
+      },
+      {
+        "from": [
+          "단서C",
+          "단서D",
+          "note2",
+          "note9"
+        ],
+        "to": "note10",
+        "neuron": "전략10",
+        "note": "g(14)=f(0)=14 기여 1개 + 양수 t 2개×2=5이다",
+        "main": false
+      },
+      {
+        "from": "단서C",
+        "to": "note11",
+        "neuron": "전략12",
+        "note": "n이 홀수일 때 x^n=t는 모든 실수 t에 대해 정확히 1개의 실근을 가진다",
+        "main": true
+      },
+      {
+        "from": [
+          "note8",
+          "note11"
+        ],
+        "to": "note12",
+        "neuron": "전략5",
+        "note": "n=5(홀수)일 때 f(t)=5의 실근 개수는 x≤1에서 2개, x>1에서 2개로 g(5)=4이다",
+        "main": true
+      },
+      {
+        "from": [
+          "note8",
+          "note2"
+        ],
+        "to": "note13",
+        "neuron": "전략10",
+        "note": "n=10(짝수)일 때 f(0)=14≠10이고 f(t)=10의 양수 t는 x≤1에서 2개, x>1에서 2개로 g(10)=4×2=8이다",
+        "main": true
+      },
+      {
+        "from": [
+          "note8",
+          "note11"
+        ],
+        "to": "note14",
+        "neuron": "전략5",
+        "note": "n=15(홀수)일 때 x>1에서 최댓값 14<15로 기여 없고 x≤1에서 2개로 g(15)=2이다",
+        "main": true
+      },
+      {
+        "from": [
+          "note8",
+          "note2"
+        ],
+        "to": "note15",
+        "neuron": "전략10",
+        "note": "n=20(짝수)일 때 x>1에서 최댓값 14<20으로 기여 없고 x≤1에서 양수 t 1개로 g(20)=1×2=2이다",
+        "main": true
+      },
+      {
+        "from": [
+          "note8",
+          "note11"
+        ],
+        "to": "note16",
+        "neuron": "전략5",
+        "note": "n=25(홀수)일 때 x≤1에서 양수 t 1개로 g(25)=1이다",
+        "main": true
+      },
+      {
+        "from": [
+          "note12",
+          "note13",
+          "note14",
+          "note15",
+          "note16"
+        ],
+        "to": "note17",
+        "neuron": "전략10",
+        "note": "Σg(5n)=g(5)+g(10)+g(15)+g(20)+g(25)=4+8+2+2+1=17이다",
+        "main": true
+      },
+      {
+        "from": [
+          "note8",
+          "note17"
+        ],
+        "to": "END",
+        "neuron": "연산21",
+        "note": "k+Σg(5n)=-14/9+17=-14/9+153/9=139/9이다",
+        "main": true
+      }
+    ],
+    "solution": "STEP 1. n=14는 짝수이므로 x^14=t 치환 시 t<0이면 실근 0개, t=0이면 1개, t>0이면 2개이다.\nSTEP 2. g(14)=5=1+2×2이 되려면 f(0)=14이고 f(t)=14를 만족하는 양수 t가 정확히 2개이어야 한다.\nSTEP 3. f(0)=|a-3a|=2a=14이면 a=7이다.\nSTEP 4. a=7일 때 x>1에서 f(x)=k(x-1)(x-7), k<0이므로 위로 볼록, 꼭짓점 x=4에서 최댓값 f(4)=-9k이다.\nSTEP 5. 양수 t에서 f(t)=14가 2개가 되려면 x>1에서 꼭짓점이 정확히 14이어야 하므로 -9k=14, k=-14/9이다.\nSTEP 6. n=5(홀수): g(5)=4. n=10(짝수): g(10)=8. n=15(홀수): g(15)=2. n=20(짝수): g(20)=2. n=25(홀수): g(25)=1.\nSTEP 7. Σg(5n)=4+8+2+2+1=17. k+17=-14/9+153/9=139/9이다.",
+    "original_solution": "[FIGURE - 그래프 포함]\n\n**단계 1: 함수 $f(t)$ 분석**\n\n$f(t)=n$을 만족시킨다고 가정하면, $n$이 짝수일 때,\n\n$(x^n=t$인 $x$의 개수)$=\\begin{cases}\n0 & (t<0\\text{인 때})\\\\\n1 & (t=0\\text{인 때})\\\\\n2 & (t>0\\text{인 때})\n\\end{cases}$\n\n이므로 $g(n)$의 정의에 의해\n\n$n$이 짝수일 때, $g(n)=$ (다음을 만족시키는 각각의 $t$에 대하여 모든 [UNREADABLE]의 값의 합)\n\n이다. 따라서 문제의 조건에서\n\n$g(14)=5 \\Rightarrow \\begin{cases}\n\\text{① } f(t)=14\\\\\n\\text{② } f(x)=14\\text{인 양수 }x\\text{는 }2\\text{개만 존재}\n\\end{cases}$\n\n임을 알 수 있고,\n\n① $\\Rightarrow a=7$\n\n이므로 ②를 만족시키는 함수 $f(x)$의 그래프는 다음 [그림]과 같다.\n\n[그림 설명: $y=f(x)$와 $y=14$의 그래프, $x=0,1,4,7$에서의 주요 포인트 표시]\n\n따라서\n$$f(4)=k\\times 3\\times(-3)=-9k \\Rightarrow k=-\\frac{14}{9} \\quad (\\because f(4)=14)$$\n\n이다.\n\n**단계 2: $n$이 홀수일 때**\n\n모든 실수 $t$에 대하여, $(x^n=t$인 $x$의 개수)$=1$\n\n이므로 $g(n)$의 정의에 의해\n\n$n$이 홀수일 때 : $g(n)=$ (다음을 만족시키는 $t$의 개수)\n\n와 같다.\n\n따라서 [그림]을 통해\n$$g(5)=4, \\quad g(10)=8, \\quad g(15)=2, \\quad g(20)=2, \\quad g(25)=1$$\n임을 알 수 있다.\n\n$$\\therefore k+\\sum_{n=1}^{4}g(5n)=-\\frac{14}{9}+17=\\frac{139}{9}$$\n\n---",
+    "analysis": "f(x)는 x≤1에서 |a^(x+1)-3a|, x>1에서 k(x-1)(x-a)로 정의된다. g(14)=5 조건으로 a와 k를 결정한다. n=14(짝수)이므로 x^14=t로 치환하면 t<0이면 실근 0개, t=0이면 1개, t>0이면 2개이다. g(14)=5=1+2×2이 되려면 f(0)=14(t=0 기여 1개)이고 f(t)=14를 만족하는 양수 t가 정확히 2개 필요하다. f(0)=|a-3a|=|-2a|=2a=14이면 a=7이다. a=7일 때 x>1에서 f(x)=k(x-1)(x-7), k<0이므로 위로 볼록, 꼭짓점 x=4에서 최댓값 f(4)=-9k이다. f(t)=14의 양수 t가 2개: x≤1에서 1개, x>1에서 최대 1개(꼭짓점에서)이면 -9k=14, k=-14/9이다. 이후 n=5,10,15,20,25에 대해 g(5n)을 계산: g(5)=4, g(10)=8, g(15)=2, g(20)=2, g(25)=1. 합=17. k+17=-14/9+153/9=139/9.",
+    "new_neurons": [],
+    "metadata": {
+      "unit": "지수·로그",
+      "difficulty": "상",
+      "score": "4",
+      "type": "단답형",
+      "answer": "139/9"
+    },
+    "edge_count": 18,
+    "side_count": 5,
+    "statement": "# Problem13. (Unknown Source) - Piecewise Functions and Sums\n\n## Problem\n\n두 실수 $a(a>1)$, $k(k<0)$에 대하여 함수 $f(x)$를\n$$f(x)=\\begin{cases}\n|a^{x+1}-3a| & (x\\leq 1)\\\\\nk(x-1)(x-a) & (x>1)\n\\end{cases}$$\n이라 하자. 자연수 $n$에 대하여 $x$에 대한 방정식 $f(x^n)=n$의 서로 다른 실근의 개수를 $g(n)$이라 할 때, $g(14)=5$이다.\n$k+\\sum_{n=1}^{4}g(5n)$의 값은? [4점]",
+    "dna": {
+      "nodes": [
+        {
+          "id": "top",
+          "dna": "Q1",
+          "label": "값을 구하라",
+          "category": "발문"
+        },
+        {
+          "id": "ask_sum_expr",
+          "dna": "E1",
+          "label": "k+시그마합",
+          "category": "수식"
+        },
+        {
+          "id": "ask_sigma",
+          "dna": "E1",
+          "label": "g(5n)합산",
+          "category": "수식"
+        },
+        {
+          "id": "g5",
+          "dna": "F3",
+          "label": "g(5)",
+          "category": "수식"
+        },
+        {
+          "id": "g10",
+          "dna": "F3",
+          "label": "g(10)",
+          "category": "수식"
+        },
+        {
+          "id": "g15",
+          "dna": "F3",
+          "label": "g(15)",
+          "category": "수식"
+        },
+        {
+          "id": "g20",
+          "dna": "F3",
+          "label": "g(20)",
+          "category": "수식"
+        },
+        {
+          "id": "c5",
+          "dna": "T2",
+          "label": "상수 5",
+          "category": "말단"
+        },
+        {
+          "id": "c10",
+          "dna": "T2",
+          "label": "상수 10",
+          "category": "말단"
+        },
+        {
+          "id": "c15",
+          "dna": "T2",
+          "label": "상수 15",
+          "category": "말단"
+        },
+        {
+          "id": "c20",
+          "dna": "T2",
+          "label": "상수 20",
+          "category": "말단"
+        },
+        {
+          "id": "va",
+          "dna": "T1",
+          "label": "변수 a",
+          "category": "말단"
+        },
+        {
+          "id": "vk",
+          "dna": "T1",
+          "label": "변수 k",
+          "category": "말단"
+        },
+        {
+          "id": "lim_a",
+          "dna": "C2",
+          "label": "a>1",
+          "category": "제한"
+        },
+        {
+          "id": "lim_k",
+          "dna": "C2",
+          "label": "k<0",
+          "category": "제한"
+        },
+        {
+          "id": "c1",
+          "dna": "T2",
+          "label": "상수 1",
+          "category": "말단"
+        },
+        {
+          "id": "c0",
+          "dna": "T2",
+          "label": "상수 0",
+          "category": "말단"
+        },
+        {
+          "id": "c3",
+          "dna": "T2",
+          "label": "상수 3",
+          "category": "말단"
+        },
+        {
+          "id": "f_def",
+          "dna": "F6",
+          "label": "f(x) 정의",
+          "category": "함수"
+        },
+        {
+          "id": "f_pw",
+          "dna": "F1",
+          "label": "조각함수 f",
+          "category": "함수"
+        },
+        {
+          "id": "piece1",
+          "dna": "F2",
+          "label": "x≤1 조각",
+          "category": "함수"
+        },
+        {
+          "id": "dom1_cond",
+          "dna": "C2",
+          "label": "x≤1",
+          "category": "조건"
+        },
+        {
+          "id": "abs_inner",
+          "dna": "F5",
+          "label": "절대값 씌움",
+          "category": "함수"
+        },
+        {
+          "id": "inner_expr",
+          "dna": "E1",
+          "label": "a^{x+1}-3a",
+          "category": "수식"
+        },
+        {
+          "id": "pow_ax1",
+          "dna": "E4",
+          "label": "a^{x+1}",
+          "category": "수식"
+        },
+        {
+          "id": "xp1",
+          "dna": "E1",
+          "label": "x+1",
+          "category": "수식"
+        },
+        {
+          "id": "vx",
+          "dna": "T3",
+          "label": "독립변수 x",
+          "category": "말단"
+        },
+        {
+          "id": "neg_3a",
+          "dna": "E2",
+          "label": "부호반전(3a)",
+          "category": "수식"
+        },
+        {
+          "id": "prod_3a",
+          "dna": "E6",
+          "label": "3×a",
+          "category": "수식"
+        },
+        {
+          "id": "piece2",
+          "dna": "F2",
+          "label": "x>1 조각",
+          "category": "함수"
+        },
+        {
+          "id": "dom2_cond",
+          "dna": "C2",
+          "label": "x>1",
+          "category": "조건"
+        },
+        {
+          "id": "quad_expr",
+          "dna": "E6",
+          "label": "k(x-1)(x-a)",
+          "category": "수식"
+        },
+        {
+          "id": "kfactor",
+          "dna": "E6",
+          "label": "k×(x-1)(x-a)곱",
+          "category": "수식"
+        },
+        {
+          "id": "xm1",
+          "dna": "E1",
+          "label": "x-1",
+          "category": "수식"
+        },
+        {
+          "id": "neg1",
+          "dna": "E2",
+          "label": "부호반전(1)",
+          "category": "수식"
+        },
+        {
+          "id": "xma",
+          "dna": "E1",
+          "label": "x-a",
+          "category": "수식"
+        },
+        {
+          "id": "neg_a",
+          "dna": "E2",
+          "label": "부호반전(a)",
+          "category": "수식"
+        },
+        {
+          "id": "factors_prod",
+          "dna": "E6",
+          "label": "(x-1)(x-a)",
+          "category": "수식"
+        },
+        {
+          "id": "gn_def",
+          "dna": "F6",
+          "label": "g(n) 정의",
+          "category": "함수"
+        },
+        {
+          "id": "eq_fxn",
+          "dna": "C1",
+          "label": "f(x^n)=n",
+          "category": "조건"
+        },
+        {
+          "id": "comp_fxn",
+          "dna": "F10",
+          "label": "f∘(x^n)",
+          "category": "함수"
+        },
+        {
+          "id": "xn_expr",
+          "dna": "E7",
+          "label": "x^n",
+          "category": "수식"
+        },
+        {
+          "id": "vn",
+          "dna": "T3",
+          "label": "독립변수 n",
+          "category": "말단"
+        },
+        {
+          "id": "rootcount",
+          "dna": "C9",
+          "label": "실근 개수=g(n)",
+          "category": "조건"
+        },
+        {
+          "id": "nat_n",
+          "dna": "L3",
+          "label": "n은 자연수",
+          "category": "제한"
+        },
+        {
+          "id": "g14_cond",
+          "dna": "C1",
+          "label": "g(14)=5",
+          "category": "조건"
+        },
+        {
+          "id": "g14",
+          "dna": "F3",
+          "label": "g(14)",
+          "category": "수식"
+        },
+        {
+          "id": "c14",
+          "dna": "T2",
+          "label": "상수 14",
+          "category": "말단"
+        },
+        {
+          "id": "c5v",
+          "dna": "T2",
+          "label": "상수 5",
+          "category": "말단"
+        },
+        {
+          "id": "conds",
+          "dna": "S1",
+          "label": "조건 묶음",
+          "category": "구조"
+        }
+      ],
+      "edges": [
+        {
+          "from": "ask_sum_expr",
+          "to": "top"
+        },
+        {
+          "from": "vk",
+          "to": "ask_sum_expr"
+        },
+        {
+          "from": "ask_sigma",
+          "to": "ask_sum_expr"
+        },
+        {
+          "from": "g5",
+          "to": "ask_sigma"
+        },
+        {
+          "from": "g10",
+          "to": "ask_sigma"
+        },
+        {
+          "from": "g15",
+          "to": "ask_sigma"
+        },
+        {
+          "from": "g20",
+          "to": "ask_sigma"
+        },
+        {
+          "from": "c5",
+          "to": "g5"
+        },
+        {
+          "from": "c10",
+          "to": "g10"
+        },
+        {
+          "from": "c15",
+          "to": "g15"
+        },
+        {
+          "from": "c20",
+          "to": "g20"
+        },
+        {
+          "from": "conds",
+          "to": "top"
+        },
+        {
+          "from": "lim_a",
+          "to": "conds"
+        },
+        {
+          "from": "lim_k",
+          "to": "conds"
+        },
+        {
+          "from": "va",
+          "to": "lim_a"
+        },
+        {
+          "from": "c1",
+          "to": "lim_a"
+        },
+        {
+          "from": "vk",
+          "to": "lim_k"
+        },
+        {
+          "from": "c0",
+          "to": "lim_k"
+        },
+        {
+          "from": "f_pw",
+          "to": "f_def"
+        },
+        {
+          "from": "piece1",
+          "to": "f_pw"
+        },
+        {
+          "from": "piece2",
+          "to": "f_pw"
+        },
+        {
+          "from": "dom1_cond",
+          "to": "piece1"
+        },
+        {
+          "from": "abs_inner",
+          "to": "piece1"
+        },
+        {
+          "from": "vx",
+          "to": "dom1_cond"
+        },
+        {
+          "from": "c1",
+          "to": "dom1_cond"
+        },
+        {
+          "from": "inner_expr",
+          "to": "abs_inner"
+        },
+        {
+          "from": "pow_ax1",
+          "to": "inner_expr"
+        },
+        {
+          "from": "neg_3a",
+          "to": "inner_expr"
+        },
+        {
+          "from": "va",
+          "to": "pow_ax1"
+        },
+        {
+          "from": "xp1",
+          "to": "pow_ax1"
+        },
+        {
+          "from": "vx",
+          "to": "xp1"
+        },
+        {
+          "from": "c1",
+          "to": "xp1"
+        },
+        {
+          "from": "prod_3a",
+          "to": "neg_3a"
+        },
+        {
+          "from": "c3",
+          "to": "prod_3a"
+        },
+        {
+          "from": "va",
+          "to": "prod_3a"
+        },
+        {
+          "from": "dom2_cond",
+          "to": "piece2"
+        },
+        {
+          "from": "quad_expr",
+          "to": "piece2"
+        },
+        {
+          "from": "vx",
+          "to": "dom2_cond"
+        },
+        {
+          "from": "c1",
+          "to": "dom2_cond"
+        },
+        {
+          "from": "vk",
+          "to": "kfactor"
+        },
+        {
+          "from": "factors_prod",
+          "to": "kfactor"
+        },
+        {
+          "from": "kfactor",
+          "to": "quad_expr"
+        },
+        {
+          "from": "xm1",
+          "to": "factors_prod"
+        },
+        {
+          "from": "xma",
+          "to": "factors_prod"
+        },
+        {
+          "from": "vx",
+          "to": "xm1"
+        },
+        {
+          "from": "neg1",
+          "to": "xm1"
+        },
+        {
+          "from": "c1",
+          "to": "neg1"
+        },
+        {
+          "from": "vx",
+          "to": "xma"
+        },
+        {
+          "from": "neg_a",
+          "to": "xma"
+        },
+        {
+          "from": "va",
+          "to": "neg_a"
+        },
+        {
+          "from": "f_def",
+          "to": "conds"
+        },
+        {
+          "from": "gn_def",
+          "to": "conds"
+        },
+        {
+          "from": "eq_fxn",
+          "to": "gn_def"
+        },
+        {
+          "from": "rootcount",
+          "to": "gn_def"
+        },
+        {
+          "from": "comp_fxn",
+          "to": "eq_fxn"
+        },
+        {
+          "from": "vn",
+          "to": "eq_fxn"
+        },
+        {
+          "from": "f_def",
+          "to": "comp_fxn"
+        },
+        {
+          "from": "xn_expr",
+          "to": "comp_fxn"
+        },
+        {
+          "from": "vx",
+          "to": "xn_expr"
+        },
+        {
+          "from": "vn",
+          "to": "xn_expr"
+        },
+        {
+          "from": "nat_n",
+          "to": "vn"
+        },
+        {
+          "from": "g14_cond",
+          "to": "conds"
+        },
+        {
+          "from": "g14",
+          "to": "g14_cond"
+        },
+        {
+          "from": "c14",
+          "to": "g14_cond"
+        },
+        {
+          "from": "c14",
+          "to": "g14"
+        },
+        {
+          "from": "c5v",
+          "to": "g14_cond"
+        }
+      ],
+      "new_dna": []
+    },
+    "thinking_profile": {
+      "total_think_tokens": 2525,
+      "edge_count": 16,
+      "by_type": {
+        "사실": {
+          "count": 2,
+          "total": 249,
+          "avg": 125,
+          "avg_normalized": 13,
+          "avg_elapsed_ms": 11633,
+          "total_normalized": 25,
+          "total_elapsed_ms": 23265
+        },
+        "연산": {
+          "count": 4,
+          "total": 590,
+          "avg": 148,
+          "avg_normalized": 17,
+          "avg_elapsed_ms": 10609,
+          "total_normalized": 67,
+          "total_elapsed_ms": 42434
+        },
+        "전략": {
+          "count": 9,
+          "total": 1539,
+          "avg": 171,
+          "avg_normalized": 22,
+          "avg_elapsed_ms": 12019,
+          "total_normalized": 196,
+          "total_elapsed_ms": 108171
+        }
+      },
+      "hardest_edge": {
+        "edge_num": 6,
+        "from": "note5",
+        "to": "note6",
+        "neuron": "전략25",
+        "to_type": "전략",
+        "think_tokens": 282,
+        "normalized": 41,
+        "elapsed_ms": 17466,
+        "difficulty_score": 30.2,
+        "note": "$a = 7$일 때 $f(t) = 14$를 만족하는 양수 $t$ 2개를 찾기 위해 각 구간에서 방정식을 풀어야 한다"
+      },
+      "hardest_normalized": {
+        "edge_num": 6,
+        "from": "note5",
+        "to": "note6",
+        "neuron": "전략25",
+        "to_type": "전략",
+        "think_tokens": 282,
+        "normalized": 41,
+        "elapsed_ms": 17466,
+        "difficulty_score": 30.2,
+        "note": "$a = 7$일 때 $f(t) = 14$를 만족하는 양수 $t$ 2개를 찾기 위해 각 구간에서 방정식을 풀어야 한다"
+      },
+      "hardest_difficulty": {
+        "edge_num": 6,
+        "from": "note5",
+        "to": "note6",
+        "neuron": "전략25",
+        "to_type": "전략",
+        "think_tokens": 282,
+        "normalized": 41,
+        "elapsed_ms": 17466,
+        "difficulty_score": 30.2,
+        "note": "$a = 7$일 때 $f(t) = 14$를 만족하는 양수 $t$ 2개를 찾기 위해 각 구간에서 방정식을 풀어야 한다"
+      },
+      "profiler_skeleton": [
+        {
+          "from": "단서B",
+          "to": "note1",
+          "neuron": "전략12",
+          "note": "$g(n)$은 방정식 $f(x^n)=n$의 서로 다른 실근의 개수이므로, $n$의 홀짝성에 따라 $x^n=t$의 실근 존재 조건이 달라진다",
+          "main": true,
+          "difficulty_score": 23.9,
+          "difficulty_rank": 2
+        },
+        {
+          "from": "note1",
+          "to": "note2",
+          "neuron": "사실4",
+          "note": "$x^n = t$에서 $n$이 짝수일 때: $t > 0$이면 실근 2개, $t = 0$이면 실근 1개, $t < 0$이면 실근 0개이고, $n$이 홀수일 때는 모든 실수 $t$에 대해 실근 1개",
+          "main": true,
+          "difficulty_score": 5.2,
+          "difficulty_rank": 15
+        },
+        {
+          "from": "note2",
+          "to": "note3",
+          "neuron": "전략21",
+          "note": "$g(14)=5$이고 $14$는 짝수이므로, $f(t)=14$를 만족하는 $t$값들에 대해 $x^{14}=t$의 실근 개수를 합하면 5가 되어야 한다",
+          "main": true,
+          "difficulty_score": 8.3,
+          "difficulty_rank": 13
+        },
+        {
+          "from": "note3",
+          "to": "note4",
+          "neuron": "연산9",
+          "note": "$g(14) = 5$가 되려면 $f(t) = 14$를 만족하는 양수 $t$ 2개와 $t = 0$ 1개가 존재해야 한다 (각각 실근 2개, 2개, 1개 기여)",
+          "main": true,
+          "difficulty_score": 7.9,
+          "difficulty_rank": 14
+        },
+        {
+          "from": "note4",
+          "to": "note5",
+          "neuron": "전략25",
+          "note": "$t = 0$에서 $f(0) = 14$인지 확인하면, $f(0) = |a^{0+1} - 3a| = |a - 3a| = 2a = 14$에서 $a = 7$이다",
+          "main": true,
+          "difficulty_score": 11.9,
+          "difficulty_rank": 9
+        },
+        {
+          "from": "note5",
+          "to": "note6",
+          "neuron": "전략25",
+          "note": "$a = 7$일 때 $f(t) = 14$를 만족하는 양수 $t$ 2개를 찾기 위해 각 구간에서 방정식을 풀어야 한다",
+          "main": true,
+          "difficulty_score": 30.2,
+          "difficulty_rank": 1
+        },
+        {
+          "from": "note6",
+          "to": "note7",
+          "neuron": "연산2",
+          "note": "첫 번째 구간에서 $|7^{x+1} - 21| = 14$를 풀면 $7^{x+1} = 35$ 또는 $7^{x+1} = 7$이므로 $x = \\log_7 5$ 또는 $x = 0$",
+          "main": true,
+          "difficulty_score": 13.4,
+          "difficulty_rank": 6
+        },
+        {
+          "from": "note7",
+          "to": "note8",
+          "neuron": "전략25",
+          "note": "두 번째 구간 $x > 1$에서도 양수해 2개를 찾기 위해 $k(x-1)(x-7) = 14$를 풀어야 하고, 이를 위해 $k$값을 구해야 한다",
+          "main": true,
+          "difficulty_score": 14.8,
+          "difficulty_rank": 5
+        },
+        {
+          "from": "note8",
+          "to": "note9",
+          "neuron": "연산24",
+          "note": "$x = 4$가 양수해 중 하나라고 가정하면 $f(4) = k(4-1)(4-7) = -9k = 14$에서 $k = -\\frac{14}{9}$",
+          "main": true,
+          "difficulty_score": 4,
+          "difficulty_rank": 16
+        },
+        {
+          "from": "note9",
+          "to": "note10",
+          "neuron": "전략25",
+          "note": "$k = -\\frac{14}{9}$일 때 실제로 $f(t) = 14$의 양수해가 정확히 2개인지 확인해야 한다",
+          "main": true,
+          "difficulty_score": 11.9,
+          "difficulty_rank": 10
+        },
+        {
+          "from": "note10",
+          "to": "note11",
+          "neuron": "사실58",
+          "note": "$n$이 홀수일 때는 모든 실수 $t$에 대해 $x^n = t$의 해가 정확히 1개이므로, $g(n) = $ ($f(t) = n$을 만족하는 $t$의 개수)",
+          "main": true,
+          "difficulty_score": 10.6,
+          "difficulty_rank": 11
+        },
+        {
+          "from": "note11",
+          "to": "note12",
+          "neuron": "전략5",
+          "note": "각 $n$에 대해 $g(n)$을 구하려면 $y = f(t)$와 $y = n$의 교점 개수를 구하고, 각 교점 $t$에서 $x^n = t$의 실근 개수를 계산해야 한다",
+          "main": true,
+          "difficulty_score": 12.7,
+          "difficulty_rank": 7
+        },
+        {
+          "from": "note12",
+          "to": "note13",
+          "neuron": "전략10",
+          "note": "$\\sum_{n=1}^{4}g(5n) = g(5) + g(10) + g(15) + g(20)$을 구하기 위해 각각을 개별적으로 계산한다",
+          "main": true,
+          "difficulty_score": 14.9,
+          "difficulty_rank": 4
+        },
+        {
+          "from": "note13",
+          "to": "note14",
+          "neuron": "전략25",
+          "note": "해설의 그래프 분석에 따르면 $g(5) = 4$, $g(10) = 8$, $g(15) = 2$, $g(20) = 2$이다",
+          "main": true,
+          "difficulty_score": 17.1,
+          "difficulty_rank": 3
+        },
+        {
+          "from": "note14",
+          "to": "note15",
+          "neuron": "연산18",
+          "note": "$\\sum_{n=1}^{4}g(5n) = g(5) + g(10) + g(15) + g(20) = 4 + 8 + 2 + 2 = 16$",
+          "main": true,
+          "difficulty_score": 12.3,
+          "difficulty_rank": 8
+        },
+        {
+          "from": "note15",
+          "to": "END",
+          "neuron": "연산18",
+          "note": "$k + \\sum_{n=1}^{4}g(5n) = -\\frac{14}{9} + 16 = -\\frac{14}{9} + \\frac{144}{9} = \\frac{130}{9}$",
+          "main": true,
+          "difficulty_score": 9.4,
+          "difficulty_rank": 12
+        }
+      ],
+      "edges": [
+        {
+          "edge_num": 1,
+          "from": "단서B",
+          "to": "note1",
+          "neuron": "전략12",
+          "to_type": "전략",
+          "note": "$g(n)$은 방정식 $f(x^n)=n$의 서로 다른 실근의 개수이므로, $n$의 홀짝성에 따라 $x^n=t$의 실근 존재 조건이 달라진다",
+          "think_tokens": 258,
+          "elapsed_ms": 20111,
+          "text_len": 81,
+          "normalized": 32,
+          "elapsed_ratio": 1.74,
+          "difficulty_score": 23.9,
+          "difficulty_rank": 2
+        },
+        {
+          "edge_num": 2,
+          "from": "note1",
+          "to": "note2",
+          "neuron": "사실4",
+          "to_type": "사실",
+          "note": "$x^n = t$에서 $n$이 짝수일 때: $t > 0$이면 실근 2개, $t = 0$이면 실근 1개, $t < 0$이면 실근 0개이고, $n$이 홀수일 때는 모든 실수 $t$에 대해 실근 1개",
+          "think_tokens": 94,
+          "elapsed_ms": 10978,
+          "text_len": 111,
+          "normalized": 8,
+          "elapsed_ratio": 0.95,
+          "difficulty_score": 5.2,
+          "difficulty_rank": 15
+        },
+        {
+          "edge_num": 3,
+          "from": "note2",
+          "to": "note3",
+          "neuron": "전략21",
+          "to_type": "전략",
+          "note": "$g(14)=5$이고 $14$는 짝수이므로, $f(t)=14$를 만족하는 $t$값들에 대해 $x^{14}=t$의 실근 개수를 합하면 5가 되어야 한다",
+          "think_tokens": 97,
+          "elapsed_ms": 8301,
+          "text_len": 87,
+          "normalized": 11,
+          "elapsed_ratio": 0.72,
+          "difficulty_score": 8.3,
+          "difficulty_rank": 13
+        },
+        {
+          "edge_num": 4,
+          "from": "note3",
+          "to": "note4",
+          "neuron": "연산9",
+          "to_type": "연산",
+          "note": "$g(14) = 5$가 되려면 $f(t) = 14$를 만족하는 양수 $t$ 2개와 $t = 0$ 1개가 존재해야 한다 (각각 실근 2개, 2개, 1개 기여)",
+          "think_tokens": 124,
+          "elapsed_ms": 9663,
+          "text_len": 90,
+          "normalized": 14,
+          "elapsed_ratio": 0.84,
+          "difficulty_score": 7.9,
+          "difficulty_rank": 14
+        },
+        {
+          "edge_num": 5,
+          "from": "note4",
+          "to": "note5",
+          "neuron": "전략25",
+          "to_type": "전략",
+          "note": "$t = 0$에서 $f(0) = 14$인지 확인하면, $f(0) = |a^{0+1} - 3a| = |a - 3a| = 2a = 14$에서 $a = 7$이다",
+          "think_tokens": 147,
+          "elapsed_ms": 8001,
+          "text_len": 90,
+          "normalized": 16,
+          "elapsed_ratio": 0.69,
+          "difficulty_score": 11.9,
+          "difficulty_rank": 9
+        },
+        {
+          "edge_num": 6,
+          "from": "note5",
+          "to": "note6",
+          "neuron": "전략25",
+          "to_type": "전략",
+          "note": "$a = 7$일 때 $f(t) = 14$를 만족하는 양수 $t$ 2개를 찾기 위해 각 구간에서 방정식을 풀어야 한다",
+          "think_tokens": 282,
+          "elapsed_ms": 17466,
+          "text_len": 68,
+          "normalized": 41,
+          "elapsed_ratio": 1.51,
+          "difficulty_score": 30.2,
+          "difficulty_rank": 1
+        },
+        {
+          "edge_num": 7,
+          "from": "note6",
+          "to": "note7",
+          "neuron": "연산2",
+          "to_type": "연산",
+          "note": "첫 번째 구간에서 $|7^{x+1} - 21| = 14$를 풀면 $7^{x+1} = 35$ 또는 $7^{x+1} = 7$이므로 $x = \\log_7 5$ 또는 $x = 0$",
+          "think_tokens": 238,
+          "elapsed_ms": 14402,
+          "text_len": 99,
+          "normalized": 24,
+          "elapsed_ratio": 1.25,
+          "difficulty_score": 13.4,
+          "difficulty_rank": 6
+        },
+        {
+          "edge_num": 8,
+          "from": "note7",
+          "to": "note8",
+          "neuron": "전략25",
+          "to_type": "전략",
+          "note": "두 번째 구간 $x > 1$에서도 양수해 2개를 찾기 위해 $k(x-1)(x-7) = 14$를 풀어야 하고, 이를 위해 $k$값을 구해야 한다",
+          "think_tokens": 164,
+          "elapsed_ms": 9370,
+          "text_len": 83,
+          "normalized": 20,
+          "elapsed_ratio": 0.81,
+          "difficulty_score": 14.8,
+          "difficulty_rank": 5
+        },
+        {
+          "edge_num": 9,
+          "from": "note8",
+          "to": "note9",
+          "neuron": "연산24",
+          "to_type": "연산",
+          "note": "$x = 4$가 양수해 중 하나라고 가정하면 $f(4) = k(4-1)(4-7) = -9k = 14$에서 $k = -\\frac{14}{9}$",
+          "think_tokens": 60,
+          "elapsed_ms": 6010,
+          "text_len": 82,
+          "normalized": 7,
+          "elapsed_ratio": 0.52,
+          "difficulty_score": 4,
+          "difficulty_rank": 16
+        },
+        {
+          "edge_num": 10,
+          "from": "note9",
+          "to": "note10",
+          "neuron": "전략25",
+          "to_type": "전략",
+          "note": "$k = -\\frac{14}{9}$일 때 실제로 $f(t) = 14$의 양수해가 정확히 2개인지 확인해야 한다",
+          "think_tokens": 103,
+          "elapsed_ms": 8251,
+          "text_len": 65,
+          "normalized": 16,
+          "elapsed_ratio": 0.71,
+          "difficulty_score": 11.9,
+          "difficulty_rank": 10
+        },
+        {
+          "edge_num": 11,
+          "from": "note10",
+          "to": "note11",
+          "neuron": "사실58",
+          "to_type": "사실",
+          "note": "$n$이 홀수일 때는 모든 실수 $t$에 대해 $x^n = t$의 해가 정확히 1개이므로, $g(n) = $ ($f(t) = n$을 만족하는 $t$의 개수)",
+          "think_tokens": 155,
+          "elapsed_ms": 12287,
+          "text_len": 91,
+          "normalized": 17,
+          "elapsed_ratio": 1.06,
+          "difficulty_score": 10.6,
+          "difficulty_rank": 11
+        },
+        {
+          "edge_num": 12,
+          "from": "note11",
+          "to": "note12",
+          "neuron": "전략5",
+          "to_type": "전략",
+          "note": "각 $n$에 대해 $g(n)$을 구하려면 $y = f(t)$와 $y = n$의 교점 개수를 구하고, 각 교점 $t$에서 $x^n = t$의 실근 개수를 계산해야 한다",
+          "think_tokens": 163,
+          "elapsed_ms": 12073,
+          "text_len": 95,
+          "normalized": 17,
+          "elapsed_ratio": 1.05,
+          "difficulty_score": 12.7,
+          "difficulty_rank": 7
+        },
+        {
+          "edge_num": 13,
+          "from": "note12",
+          "to": "note13",
+          "neuron": "전략10",
+          "to_type": "전략",
+          "note": "$\\sum_{n=1}^{4}g(5n) = g(5) + g(10) + g(15) + g(20)$을 구하기 위해 각각을 개별적으로 계산한다",
+          "think_tokens": 159,
+          "elapsed_ms": 11086,
+          "text_len": 79,
+          "normalized": 20,
+          "elapsed_ratio": 0.96,
+          "difficulty_score": 14.9,
+          "difficulty_rank": 4
+        },
+        {
+          "edge_num": 14,
+          "from": "note13",
+          "to": "note14",
+          "neuron": "전략25",
+          "to_type": "전략",
+          "note": "해설의 그래프 분석에 따르면 $g(5) = 4$, $g(10) = 8$, $g(15) = 2$, $g(20) = 2$이다",
+          "think_tokens": 166,
+          "elapsed_ms": 13512,
+          "text_len": 71,
+          "normalized": 23,
+          "elapsed_ratio": 1.17,
+          "difficulty_score": 17.1,
+          "difficulty_rank": 3
+        },
+        {
+          "edge_num": 15,
+          "from": "note14",
+          "to": "note15",
+          "neuron": "연산18",
+          "to_type": "연산",
+          "note": "$\\sum_{n=1}^{4}g(5n) = g(5) + g(10) + g(15) + g(20) = 4 + 8 + 2 + 2 = 16$",
+          "think_tokens": 168,
+          "elapsed_ms": 12359,
+          "text_len": 77,
+          "normalized": 22,
+          "elapsed_ratio": 1.07,
+          "difficulty_score": 12.3,
+          "difficulty_rank": 8
+        },
+        {
+          "edge_num": 16,
+          "from": "note15",
+          "to": "END",
+          "neuron": "연산18",
+          "to_type": "END",
+          "note": "$k + \\sum_{n=1}^{4}g(5n) = -\\frac{14}{9} + 16 = -\\frac{14}{9} + \\frac{144}{9} = \\frac{130}{9}$",
+          "think_tokens": 147,
+          "elapsed_ms": 10783,
+          "text_len": 98,
+          "normalized": 15,
+          "elapsed_ratio": 0.93,
+          "difficulty_score": 9.4,
+          "difficulty_rank": 12
+        }
+      ],
+      "_debug": "OK"
+    },
+    "folders": [],
+    "history": [],
+    "created_at": "2026-03-21T08:44:40.832Z"
   }
 ]
