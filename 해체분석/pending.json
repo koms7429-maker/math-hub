@@ -1,573 +1,5 @@
 [
   {
-    "problem_id": "Problem14",
-    "content": "# Problem14. (Unknown Source) - Piecewise Functions and Continuity\n\n## Problem\n\n두 상수 $a(a>1)$, $b$에 대하여 함수 $f(x)$를\n\n$$f(x)=\\begin{cases} a^{x+b} & (a^{x+b} \\le 2x+5) \\\\ [2x+5] & (a^{x+b} > 2x+5) \\end{cases}$$\n\n라 하자. 양수 $t$에 대하여 $x$에 대한 방정식 $f(x)=t$의 서로 다른 모든 실근의 합을 $g(t)$라 하자. $g(t)=k$(k는 상수)를 만족시키는 모든 양수 $t$의 값의 범위가 $1<t<9$일 때, $f(-b)+f(0)$의 값을 구하시오. [4점]\n\n## Choices\n답: 18\n\n**Answer**: 18\n**Difficulty**: unknown\n**Score**: 4점\n**Type**: short answer\n\n---\n\n## Solution\n\n[FIGURE: 두 개의 그래프가 제시됨. ①의 경우와 ②의 경우를 보여줌]\n\n문제의 $f(x)$의 식에서\n\n① $y=a^{x+b}$, $y=2x+5$의 교점의 개수가 1 이라면 경우,\n   $f(x)=[2x+5]$\n   (∵ 모든 실수 $x$에 대하여 $a^{x+b} \\ge 2x+5$)\n\n② $y=a^{x+b}$, $y=2x+5$의 교점의 개수가 2인 경우,\n   두 교점의 $x$좌표를 $p$, $q$라 하면\n   \n   $$f(x)=\\begin{cases} a^{x+b} & (p \\le x \\le q) \\\\ [2x+5] & (x<p, \\ x>q) \\end{cases}$$\n\n임을 알 수 있다.\n\n한편, 양수 $t$에 대하여\n- $x$에 대한 방정식 $f(x)=t$의 모든 실근의 합이므로 ①의 경우,\n- 모든 양수 $t$에 대하여 $g(t)=-5$\n  (∵ $y=[2x+5]$는 $x=-\\frac{5}{2}$에 대하여 대칭)\n\n임을 알 수 있고, ②의 경우,\n\n$$\\begin{cases} g(t) \\ge f(q) \\text{일 때 } g(t)=-5 \\\\ f(p) < t < f(q) \\text{일 때 } g(t)=-5 \\end{cases}$$\n\n임을 알 수 있다.\n\n따라서 문제의 조건에서\n\n$$\\begin{cases} g(t)=k \\text{(k는 상수)를 만족시키는} \\\\ \\text{모든 양수 } t \\text{의 값의 범위가 } 1<t<9 \\end{cases}$$\n\n를 만족시키는 경우는 ②의 경우뿐이고, 이때\n\n$$k=-5$$\n\n를 얻고,\n\n$$\\begin{cases} f(p)=1 \\Rightarrow 2p+5=a^{p+b}=1 \\\\ f(q)=9 \\Rightarrow 2q+5=a^{q+b}=9 \\end{cases}$$\n\n를 얻는다. $\\Rightarrow p=-2$, $q=2$, $a=\\sqrt{3}$, $b=2$\n\n따라서\n\n$$f(x)=\\begin{cases} (\\sqrt{3})^{x+2} & (-2 \\le x \\le 2) \\\\ [2x+5] & (x<-2, \\ x>2) \\end{cases}$$\n\n$$\\therefore f(-b)+f(0)=f(5)+f(0)=15+3=18$$\n\n---",
-    "content_source": "FileLoop",
-    "content_length": 1543,
-    "skel_status": "ok",
-    "dna_status": "pending",
-    "needed_neurons": [],
-    "needed_dna": [
-      {
-        "id": "E9",
-        "name": "가우스함수(floor)",
-        "signature": "(입력) → 값",
-        "reason": "바닥함수 [x] 표현이 기존 DNA 목록에 없음. E3~E8 어느 것도 floor 연산을 표현하지 못함."
-      },
-      {
-        "id": "F13",
-        "name": "실근합 함수 정의",
-        "signature": "(방정식, 매개변수) → 함수",
-        "reason": "방정식 f(x)=t의 서로 다른 모든 실근의 합을 g(t)로 정의하는 구조. F6(함수 정의)로는 '실근의 합'이라는 집계 연산을 표현할 수 없음."
-      },
-      {
-        "id": "C20",
-        "name": "t값 범위 조건",
-        "signature": "(함수, 상수, 범위) → 조건",
-        "reason": "g(t)=k를 만족시키는 모든 양수 t의 값의 범위가 1<t<9라는 조건은, 함수가 특정 상수값을 취하는 정의역의 범위가 주어진 구간과 같다는 구조. 기존 C1~C19로 표현 불가."
-      }
-    ],
-    "previous_analysis": "f(x)는 a^{x+b}와 2x+5의 대소에 따라 정의된다. a>1이므로 a^{x+b}는 순증가, 2x+5는 선형 증가. 두 곡선의 교점 개수에 따라 f(x)의 구조가 달라진다. 교점이 2개(x좌표 p<q)이면 [p,q]에서 f(x)=a^{x+b}, 나머지에서 f(x)=[2x+5]이다. g(t)=k(상수)인 구간이 1<t<9이려면 f(p)=1, f(q)=9이어야 하고, [2x+5] 구간에서의 근의 합이 -5이므로 k=-5이다. f(p)=1에서 p=-2, f(q)=9에서 q=2. a^{p+b}=1에서 p+b=0, b=2. a^{q+b}=9에서 a^4=9, a=sqrt(3). f(-b)=f(-2)=a^{-2+2}=1, f(0)=a^{0+2}=3. 합=4. 그런데 답이 18이므로 재검토: b=-5이면 -b=5이고 f(-b)=f(5)=[2*5+5]=[15]=15, f(0)=a^{0+(-5)}=a^{-5}. a=sqrt(3)이면 a^{-5}=3^{-5/2}로 정수가 아님. 다시 생각하면 교점이 접하는 경우(1개)를 포함하거나, 구간 외부에서 g(t)가 -5가 되는 방식을 재검토해야 한다. 실제로는 [2x+5]가 가우스 함수(floor function)임을 주목해야 한다. [2x+5]는 정수값만 취하고, f(x)=t에서 t가 정수가 아니면 [2x+5]=t의 해는 없다. t가 양의 정수가 아닌 경우 [2x+5]=t는 해 없음. t가 정수이면 [2x+5]=t의 해는 구간 [t/2-5/2, t/2-2)의 모든 x. 즉 가우스 구간의 근의 합은 적분 중심. 이 문제에서 g(t)=k가 열린구간 1<t<9에서 상수: 이 구간 내 비정수 t에서도 g(t)=k이려면 a^{x+b}=t 부분의 근만 기여. 정수 t에서는 [2x+5]=t 부분도 기여. g(t)가 상수이려면 정수 t에서도 같은 값이어야 한다. 따라서 구간 [p,q]의 경계조건을 다시 설정: f(p)=1, f(q)=9이고 교점에서 a^{p+b}=2p+5=1이면 p=-2, a^{q+b}=2q+5=9이면 q=2. b=2, a^4=9, a=3^{1/2}. f(-b)=f(-2)=3^0=1, f(0)=3^1... 잠깐 a^{0+2}=(sqrt(3))^2=3. 1+3=4≠18. 답 18을 얻으려면 다른 경우: b=-5. f(-b)=f(5), f(0). a^{x+b}=a^{x-5}. 교점: a^{x-5}=2x+5. p<q가 교점. 만약 p=0, q=... 아니면 문제 조건을 다시 보면: g(t)=k인 범위가 1<t<9. [2x+5]=가우스 기호이므로 floor(2x+5). 비정수 t에서 floor(2x+5)=t는 해 없음. 그러면 비정수 t∈(1,9)에서 f(x)=t의 근은 a^{x+b}=t 부분만. a^{x+b}=t는 [p,q]에서 유일근 x=log_a(t)-b. g(t)=log_a(t)-b(비정수 t에서). 이것이 상수k이려면 log_a(t)-b=k, 즉 t=a^{k+b}=상수. 하지만 t가 구간이므로 모순. 따라서 비정수 구간에서 g(t)=log_a(t)-b가 상수가 되려면 이 구간에서 a^{x+b}가 조건 a^{x+b}≤2x+5를 만족하는 구간이 없어야 하거나, 다른 구조여야 한다. 실제 해설: floor 함수와 지수함수가 교차하는 구조에서, 비정수 t∈(1,9)에서 f(x)=t의 근은 a^{x+b} 부분과 floor(2x+5) 부분 각각에서 나온다. floor(2x+5)=t(비정수)는 해 없으므로 a^{x+b}=t의 근만 존재. 이것이 단 하나 x_t=log_a(t)-b. g(t)=x_t=log_a(t)-b. 이것이 상수가 아니므로, g(t)=k(상수)가 성립하는 양수 t의 범위가 1<t<9라는 것은 다른 해석이 필요. 즉 a^{x+b}=t의 근이 [p,q] 밖에 있어서 해당 정의에 의해 f(x)=t에 기여하지 않는 경우. floor 부분의 근이 여러 개여서 합이 상수가 되는 구조일 수 있다. 이 문제는 매우 복잡한 분석이 필요하며, 기존 해설 기반으로 skeleton을 수정하는 것이 목적이므로, 오류(금지어)만 수정한다.",
-    "previous_matching": "1. f(x)의 정의에서 두 식의 대소 관계 분류 → 전략22(기준 케이스 분류)\n2. y=a^{x+b}와 y=2x+5의 교점 개수에 따른 케이스 → 전략20(소거법)\n3. f(x)=t의 실근 합 g(t) 분석 → 전략5(그래프와 수평선 교점)\n4. [2x+5]의 대칭성 → 사실2(y=f(|x-c|) 대칭)\n5. g(t)=k가 구간 1<t<9에서 성립 → 전략22(케이스 분류)\n6. 교점 개수 1인 경우 소거 → 전략23(모순 소거)\n7. f(p)=1, f(q)=9 연립 → 전략2(연립)\n8. 교점 조건에서 a, b 결정 → 전략2\n9. 대입 검증 → 전략25",
-    "previous_matched": [
-      "전략22",
-      "전략20",
-      "전략23",
-      "사실5",
-      "전략5",
-      "전략2",
-      "전략25",
-      "연산9",
-      "사실4",
-      "전략6",
-      "전략10"
-    ],
-    "previous_skeleton": [
-      {
-        "from": "단서A",
-        "to": "note1",
-        "neuron": "전략22",
-        "note": "$y=a^{x+b}$와 $y=2x+5$의 교점 개수를 기준으로 경우를 분류한다.",
-        "main": true
-      },
-      {
-        "from": "note1",
-        "to": "note2",
-        "neuron": "전략20",
-        "note": "교점이 1개 이하인 경우(①): $a^{x+b} \\ge 2x+5$가 거의 항상 성립하여 $f(x)=[2x+5]$이다.",
-        "main": false
-      },
-      {
-        "from": "note2",
-        "to": "note3",
-        "neuron": "전략23",
-        "note": "①의 경우 $g(t)=-5$가 모든 양수 $t$에서 성립하여 $g(t)=k$의 범위가 열린구간 $1<t<9$가 될 수 없다. ①은 불가능하다.",
-        "main": false
-      },
-      {
-        "from": "note1",
-        "to": "note4",
-        "neuron": "전략20",
-        "note": "교점이 2개(②)인 경우: 교점의 $x$좌표를 $p<q$라 하면 $p \\le x \\le q$에서 $f(x)=a^{x+b}$, 그 외에서 $f(x)=[2x+5]$이다.",
-        "main": true
-      },
-      {
-        "from": "note4",
-        "to": "note5",
-        "neuron": "사실5",
-        "note": "$a>1$일 때 $a^{x+b}$는 순증가하여 $[p,q]$에서 $f(p) < f(q)$이다.",
-        "main": true
-      },
-      {
-        "from": [
-          "note4",
-          "note5"
-        ],
-        "to": "note6",
-        "neuron": "전략5",
-        "note": "$f(p) < t < f(q)$인 $t$에 대해 $f(x)=t$는 $a^{x+b}$ 부분에서 근 1개와 $[2x+5]$ 부분에서의 근들을 합쳐 $g(t) \\ne -5$이고, $t \\ge f(q)$ 또는 $0 < t \\le f(p)$이면 $g(t)=-5$이다.",
-        "main": true
-      },
-      {
-        "from": [
-          "note6",
-          "단서B"
-        ],
-        "to": "note7",
-        "neuron": "전략22",
-        "note": "$g(t)=k$(상수)가 성립하는 범위가 $1<t<9$이면 $f(p)=1$, $f(q)=9$이고 $k=-5$이다.",
-        "main": true
-      },
-      {
-        "from": "note7",
-        "to": "note8",
-        "neuron": "전략2",
-        "note": "$f(p)=1$에서 $2p+5=1$을 풀면 $p=-2$이고, $f(q)=9$에서 $2q+5=9$를 풀면 $q=2$이다.",
-        "main": true
-      },
-      {
-        "from": "note8",
-        "to": "note9",
-        "neuron": "전략2",
-        "note": "$a^{p+b}=1$이고 $p=-2$일 때 $-2+b=0$이고 $b=2$이다. $a^{q+b}=9$이고 $q=2$, $b=2$일 때 $a^4=9$이고 $a=\\sqrt{3}$이다.",
-        "main": true
-      },
-      {
-        "from": "note9",
-        "to": "note10",
-        "neuron": "전략25",
-        "note": "$a=\\sqrt{3}>1$ 조건을 만족한다. $f(x)=\\begin{cases} (\\sqrt{3})^{x+2} & (-2 \\le x \\le 2) \\\\ [2x+5] & (x<-2 \\text{ 또는 } x>2) \\end{cases}$이다.",
-        "main": true
-      },
-      {
-        "from": [
-          "note10",
-          "단서C"
-        ],
-        "to": "note11",
-        "neuron": "전략25",
-        "note": "$b=2$일 때 $-b=-2$이고 $f(-2)=(\\sqrt{3})^{-2+2}=(\\sqrt{3})^0=1$이다. $f(0)=(\\sqrt{3})^{0+2}=3$이다. 합은 $1+3=4$이다.",
-        "main": false
-      },
-      {
-        "from": [
-          "note9",
-          "단서C"
-        ],
-        "to": "END",
-        "neuron": "전략25",
-        "note": "$b=2$일 때 $-b=-2$이고 $f(-b)=f(-2)=1$이다. $f(0)=(\\sqrt{3})^2=3$이다. $f(-b)+f(0)=18$이다.",
-        "main": true
-      }
-    ],
-    "previous_new_neurons": [],
-    "previous_dna_nodes": [
-      {
-        "id": "top",
-        "dna": "Q1",
-        "label": "값을 구하라",
-        "category": "발문"
-      },
-      {
-        "id": "ask_sum",
-        "dna": "E1",
-        "label": "f(-b)+f(0)",
-        "category": "수식"
-      },
-      {
-        "id": "ask_fb",
-        "dna": "F3",
-        "label": "f(-b)",
-        "category": "수식"
-      },
-      {
-        "id": "ask_f0",
-        "dna": "F3",
-        "label": "f(0)",
-        "category": "수식"
-      },
-      {
-        "id": "neg_b",
-        "dna": "E2",
-        "label": "부호반전(-b)",
-        "category": "수식"
-      },
-      {
-        "id": "c0",
-        "dna": "T2",
-        "label": "상수 0",
-        "category": "말단"
-      },
-      {
-        "id": "va",
-        "dna": "T1",
-        "label": "변수 a",
-        "category": "말단"
-      },
-      {
-        "id": "vb",
-        "dna": "T1",
-        "label": "변수 b",
-        "category": "말단"
-      },
-      {
-        "id": "lim_a",
-        "dna": "C2",
-        "label": "a>1",
-        "category": "제한"
-      },
-      {
-        "id": "lim_aconst",
-        "dna": "L3",
-        "label": "a는 상수",
-        "category": "제한"
-      },
-      {
-        "id": "lim_bconst",
-        "dna": "L3",
-        "label": "b는 상수",
-        "category": "제한"
-      },
-      {
-        "id": "c1val",
-        "dna": "T2",
-        "label": "상수 1",
-        "category": "말단"
-      },
-      {
-        "id": "fx_def",
-        "dna": "F6",
-        "label": "f(x) 정의",
-        "category": "함수"
-      },
-      {
-        "id": "fx_pw",
-        "dna": "F1",
-        "label": "f(x) 조각함수",
-        "category": "함수"
-      },
-      {
-        "id": "vx",
-        "dna": "T3",
-        "label": "독립변수 x",
-        "category": "말단"
-      },
-      {
-        "id": "piece1",
-        "dna": "F2",
-        "label": "조각1: a^{x+b}",
-        "category": "함수"
-      },
-      {
-        "id": "piece1_expr",
-        "dna": "E4",
-        "label": "a^{x+b}",
-        "category": "수식"
-      },
-      {
-        "id": "xplusb",
-        "dna": "E1",
-        "label": "x+b",
-        "category": "수식"
-      },
-      {
-        "id": "piece1_cond",
-        "dna": "C2",
-        "label": "a^{x+b}≤2x+5",
-        "category": "조건"
-      },
-      {
-        "id": "piece2",
-        "dna": "F2",
-        "label": "조각2: [2x+5]",
-        "category": "함수"
-      },
-      {
-        "id": "piece2_expr",
-        "dna": "E9",
-        "label": "[2x+5]",
-        "category": "수식"
-      },
-      {
-        "id": "lin_2x5",
-        "dna": "E1",
-        "label": "2x+5",
-        "category": "수식"
-      },
-      {
-        "id": "c2val",
-        "dna": "T2",
-        "label": "상수 2",
-        "category": "말단"
-      },
-      {
-        "id": "c5val",
-        "dna": "T2",
-        "label": "상수 5",
-        "category": "말단"
-      },
-      {
-        "id": "two_x",
-        "dna": "E6",
-        "label": "2·x",
-        "category": "수식"
-      },
-      {
-        "id": "piece2_cond",
-        "dna": "C2",
-        "label": "a^{x+b}>2x+5",
-        "category": "조건"
-      },
-      {
-        "id": "vt",
-        "dna": "T1",
-        "label": "변수 t",
-        "category": "말단"
-      },
-      {
-        "id": "lim_tpos",
-        "dna": "C2",
-        "label": "t>0(양수)",
-        "category": "제한"
-      },
-      {
-        "id": "eq_fxt",
-        "dna": "C1",
-        "label": "f(x)=t",
-        "category": "조건"
-      },
-      {
-        "id": "eq_fxt_eq",
-        "dna": "C11",
-        "label": "방정식 f(x)=t",
-        "category": "조건"
-      },
-      {
-        "id": "diff_roots",
-        "dna": "C4",
-        "label": "서로 다른 실근",
-        "category": "조건"
-      },
-      {
-        "id": "gt_def",
-        "dna": "F13",
-        "label": "g(t): 실근합 함수",
-        "category": "함수"
-      },
-      {
-        "id": "vk",
-        "dna": "T1",
-        "label": "변수 k(상수)",
-        "category": "말단"
-      },
-      {
-        "id": "gt_eq_k",
-        "dna": "C1",
-        "label": "g(t)=k",
-        "category": "조건"
-      },
-      {
-        "id": "range_cond",
-        "dna": "C20",
-        "label": "t범위 1<t<9",
-        "category": "조건"
-      },
-      {
-        "id": "c9val",
-        "dna": "T2",
-        "label": "상수 9",
-        "category": "말단"
-      },
-      {
-        "id": "lim_tpos2",
-        "dna": "C2",
-        "label": "t는 양수",
-        "category": "조건"
-      },
-      {
-        "id": "conds",
-        "dna": "S1",
-        "label": "전체 조건 묶음",
-        "category": "구조"
-      }
-    ],
-    "previous_dna_edges": [
-      {
-        "from": "ask_sum",
-        "to": "top"
-      },
-      {
-        "from": "conds",
-        "to": "top"
-      },
-      {
-        "from": "ask_fb",
-        "to": "ask_sum"
-      },
-      {
-        "from": "ask_f0",
-        "to": "ask_sum"
-      },
-      {
-        "from": "neg_b",
-        "to": "ask_fb"
-      },
-      {
-        "from": "vb",
-        "to": "neg_b"
-      },
-      {
-        "from": "c0",
-        "to": "ask_f0"
-      },
-      {
-        "from": "lim_a",
-        "to": "va"
-      },
-      {
-        "from": "c1val",
-        "to": "lim_a"
-      },
-      {
-        "from": "lim_aconst",
-        "to": "va"
-      },
-      {
-        "from": "lim_bconst",
-        "to": "vb"
-      },
-      {
-        "from": "fx_pw",
-        "to": "fx_def"
-      },
-      {
-        "from": "fx_def",
-        "to": "conds"
-      },
-      {
-        "from": "vx",
-        "to": "fx_def"
-      },
-      {
-        "from": "piece1",
-        "to": "fx_pw"
-      },
-      {
-        "from": "piece2",
-        "to": "fx_pw"
-      },
-      {
-        "from": "piece1_expr",
-        "to": "piece1"
-      },
-      {
-        "from": "piece1_cond",
-        "to": "piece1"
-      },
-      {
-        "from": "va",
-        "to": "piece1_expr"
-      },
-      {
-        "from": "xplusb",
-        "to": "piece1_expr"
-      },
-      {
-        "from": "vx",
-        "to": "xplusb"
-      },
-      {
-        "from": "vb",
-        "to": "xplusb"
-      },
-      {
-        "from": "lin_2x5",
-        "to": "piece1_cond"
-      },
-      {
-        "from": "piece1_expr",
-        "to": "piece1_cond"
-      },
-      {
-        "from": "piece2_expr",
-        "to": "piece2"
-      },
-      {
-        "from": "piece2_cond",
-        "to": "piece2"
-      },
-      {
-        "from": "lin_2x5",
-        "to": "piece2_expr"
-      },
-      {
-        "from": "two_x",
-        "to": "lin_2x5"
-      },
-      {
-        "from": "c5val",
-        "to": "lin_2x5"
-      },
-      {
-        "from": "c2val",
-        "to": "two_x"
-      },
-      {
-        "from": "vx",
-        "to": "two_x"
-      },
-      {
-        "from": "piece1_expr",
-        "to": "piece2_cond"
-      },
-      {
-        "from": "lin_2x5",
-        "to": "piece2_cond"
-      },
-      {
-        "from": "lim_tpos",
-        "to": "vt"
-      },
-      {
-        "from": "eq_fxt_eq",
-        "to": "gt_def"
-      },
-      {
-        "from": "eq_fxt",
-        "to": "eq_fxt_eq"
-      },
-      {
-        "from": "fx_def",
-        "to": "eq_fxt"
-      },
-      {
-        "from": "vt",
-        "to": "eq_fxt"
-      },
-      {
-        "from": "diff_roots",
-        "to": "gt_def"
-      },
-      {
-        "from": "vt",
-        "to": "gt_def"
-      },
-      {
-        "from": "gt_def",
-        "to": "conds"
-      },
-      {
-        "from": "gt_eq_k",
-        "to": "range_cond"
-      },
-      {
-        "from": "vk",
-        "to": "gt_eq_k"
-      },
-      {
-        "from": "gt_def",
-        "to": "gt_eq_k"
-      },
-      {
-        "from": "lim_tpos2",
-        "to": "range_cond"
-      },
-      {
-        "from": "c1val",
-        "to": "range_cond"
-      },
-      {
-        "from": "c9val",
-        "to": "range_cond"
-      },
-      {
-        "from": "range_cond",
-        "to": "conds"
-      }
-    ],
-    "created_at": "2026-03-21T07:49:20.037Z"
-  },
-  {
     "problem_id": "Problem19",
     "content": "# Problem19. (Unknown Source) - Logarithm and Inequalities\n\n## Problem\n\n실수 $k(k > 4\\sqrt{5})$와 $2$ 이상의 자연수 $n$에 대하여 $x$에 대한 방정식\n\n$$\\frac{\\log_n(x^2-20)^n}{n} = \\frac{\\log_n(2x+k)^{n+1}}{n+1} + 1$$\n\n의 실근의 개수가 $3$이 되도록 하는 모든 $n$의 값이 $n_1, n_2 (n_2 > n_1 \\geq 2)$일 때, $k + n_2 - n_1$의 값은? [4점]\n\n## Choices\n① 10\n② 11\n③ 12\n④ 13\n⑤ 14\n\n**Answer**: ①\n**Difficulty**: unknown\n**Score**: 4점\n**Type**: multiple choice\n\n---\n\n## Solution\n\n문제의 방정식을 정리하면\n\n① $n$의 홀수일 때, $\\log_n(x^2-20) = \\log_n|2x+k|+1$\n\n$\\Rightarrow x^2 - 20 = 2n\\left|x + \\frac{k}{2}\\right|, x^2 - 20 > 0, x \\neq -\\frac{k}{2}$\n\n② $n$이 짝수일 때, $\\log_n|x^2-20| = \\log_n(2x+k)+1$\n\n$\\Rightarrow |x^2-20| = 2n\\left(x + \\frac{k}{2}\\right), x^2 \\neq 20, x > -\\frac{k}{2}$\n\n이때, 이때,\n\n$$k > 4\\sqrt{5} \\Rightarrow -\\frac{k}{2} < -2\\sqrt{5}$$\n\n앞을 함께 고려하면 문제의 방정식의 실근의 개수가 $3$이 되는 경우를 다음 그림과 같이 나타낼 수 있다.\n\n[FIGURE: 두 개의 그래프가 제시됨]\n- [1의 경우]: $y = x^2 - 20$와 $y = 2n\\left|x + \\frac{k}{2}\\right|$의 교점, $x < -2\\sqrt{5}$에서 $-2\\sqrt{5} < x$\n- [2의 경우]: $y = |x^2-20|$와 $y = 2n\\left(x + \\frac{k}{2}\\right)$의 교점, $-2\\sqrt{5} < x < 2\\sqrt{5}$에서\n\n위 그림을 참고하면 ①의 경우,\n\n$y = x^2 - 20$, $y = -2n\\left(x + \\frac{k}{2}\\right)$이 $x < -2\\sqrt{5}$에서 접함\n\n$\\Rightarrow x^2 + 2nx + kn - 20 = 0$이 $x < -2\\sqrt{5}$인 중근을 가짐\n\n$$\\begin{cases}\nD/4 = n^2 - kn + 20 = 0 \\cdots \\text{ⓐ} \\\\\n\\Rightarrow \\text{ⓑ (대칭축)} = -n < -2\\sqrt{5} \\Rightarrow n \\geq n > 2\\sqrt{5} \\text{ 인 홀수} \\\\\n\\Rightarrow n = 5, 7, \\cdots \\cdots \\text{ⓒ}\n\\end{cases}$$\n\n이고, ②의 경우,\n\n$y = -(x^2-20)$, $y = 2n\\left(x + \\frac{k}{2}\\right)$이 $-2\\sqrt{5} < x < 2\\sqrt{5}$에서 접함\n\n$\\Rightarrow x^2 + 2nx + kn - 20 = 0$이 $-2\\sqrt{5} < x < 2\\sqrt{5}$인 중근을 가짐\n\n$$\\begin{cases}\n\\text{중근을 가짐 조건과 ⓐ와 동일} \\\\\n\\bullet -2\\sqrt{5} < -n < 2\\sqrt{5} \\text{ (∵ ⓑ의 과정 참고)} \\\\\n\\Rightarrow \\text{짝수 } n: -2\\sqrt{5} < n < 2\\sqrt{5} \\text{인 짝수} \\\\\n\\Rightarrow n = 2, 4 \\cdots \\text{ⓔ}\n\\end{cases}$$\n\n이때,\n\n따라서 문제의 조건과 ⓐ에 의해,\n\n$$\\begin{cases}\nn \\text{에 대한 이차방정식 } n^2 - kn + 20 = 0 \\text{의} \\\\\n서로 다른 두 실근이 } n_1, n_2 \\text{ } (n_2 > n_1 \\geq 2)\n\\end{cases}$$\n\n임을 알 수 있고, 이때\n\n$$n_1 \\times n_2 = 20 \\text{ (∵ 근과 계수의 관계)}$$\n\n이므로\n\n$$\\text{ⓒ, ⓔ} \\Rightarrow n_1 = 4, n_2 = 5$$\n\n임을 알 수 있고,\n\n$$\\text{ⓐ} \\Rightarrow k = 9$$\n\n를 얻는다.\n\n$$\\therefore k + n_2 - n_1 = 9 + 5 - 4 = 10$$\n\n---",
     "content_source": "FileLoop",
@@ -1705,5 +1137,626 @@
       }
     ],
     "created_at": "2026-03-21T18:34:16.545Z"
+  },
+  {
+    "problem_id": "Problem14",
+    "content": "# Problem14. (Unknown Source) - Piecewise Functions and Continuity\n\n## Problem\n\n두 상수 $a(a>1)$, $b$에 대하여 함수 $f(x)$를\n\n$$f(x)=\\begin{cases} a^{x+b} & (a^{x+b} \\le 2x+5) \\\\ [2x+5] & (a^{x+b} > 2x+5) \\end{cases}$$\n\n라 하자. 양수 $t$에 대하여 $x$에 대한 방정식 $f(x)=t$의 서로 다른 모든 실근의 합을 $g(t)$라 하자. $g(t)=k$(k는 상수)를 만족시키는 모든 양수 $t$의 값의 범위가 $1<t<9$일 때, $f(-b)+f(0)$의 값을 구하시오. [4점]\n\n## Choices\n답: 18\n\n**Answer**: 18\n**Difficulty**: unknown\n**Score**: 4점\n**Type**: short answer\n\n---\n\n## Solution\n\n[FIGURE: 두 개의 그래프가 제시됨. ①의 경우와 ②의 경우를 보여줌]\n\n문제의 $f(x)$의 식에서\n\n① $y=a^{x+b}$, $y=2x+5$의 교점의 개수가 1 이라면 경우,\n   $f(x)=[2x+5]$\n   (∵ 모든 실수 $x$에 대하여 $a^{x+b} \\ge 2x+5$)\n\n② $y=a^{x+b}$, $y=2x+5$의 교점의 개수가 2인 경우,\n   두 교점의 $x$좌표를 $p$, $q$라 하면\n   \n   $$f(x)=\\begin{cases} a^{x+b} & (p \\le x \\le q) \\\\ [2x+5] & (x<p, \\ x>q) \\end{cases}$$\n\n임을 알 수 있다.\n\n한편, 양수 $t$에 대하여\n- $x$에 대한 방정식 $f(x)=t$의 모든 실근의 합이므로 ①의 경우,\n- 모든 양수 $t$에 대하여 $g(t)=-5$\n  (∵ $y=[2x+5]$는 $x=-\\frac{5}{2}$에 대하여 대칭)\n\n임을 알 수 있고, ②의 경우,\n\n$$\\begin{cases} g(t) \\ge f(q) \\text{일 때 } g(t)=-5 \\\\ f(p) < t < f(q) \\text{일 때 } g(t)=-5 \\end{cases}$$\n\n임을 알 수 있다.\n\n따라서 문제의 조건에서\n\n$$\\begin{cases} g(t)=k \\text{(k는 상수)를 만족시키는} \\\\ \\text{모든 양수 } t \\text{의 값의 범위가 } 1<t<9 \\end{cases}$$\n\n를 만족시키는 경우는 ②의 경우뿐이고, 이때\n\n$$k=-5$$\n\n를 얻고,\n\n$$\\begin{cases} f(p)=1 \\Rightarrow 2p+5=a^{p+b}=1 \\\\ f(q)=9 \\Rightarrow 2q+5=a^{q+b}=9 \\end{cases}$$\n\n를 얻는다. $\\Rightarrow p=-2$, $q=2$, $a=\\sqrt{3}$, $b=2$\n\n따라서\n\n$$f(x)=\\begin{cases} (\\sqrt{3})^{x+2} & (-2 \\le x \\le 2) \\\\ [2x+5] & (x<-2, \\ x>2) \\end{cases}$$\n\n$$\\therefore f(-b)+f(0)=f(5)+f(0)=15+3=18$$\n\n---",
+    "content_source": "FileLoop",
+    "content_length": 1543,
+    "skel_status": "neuron_missing",
+    "dna_status": "dna_missing",
+    "needed_neurons": [
+      "사실80",
+      "사실81"
+    ],
+    "needed_dna": [
+      {
+        "id": "E9",
+        "name": "가우스(바닥함수)",
+        "signature": "(입력) → 정수값",
+        "reason": "[ ] 기호로 표현되는 바닥함수(floor function)를 표현하는 DNA가 목록에 없음"
+      },
+      {
+        "id": "F13",
+        "name": "실근합 함수 정의",
+        "signature": "(방정식, 매개변수) → 함수",
+        "reason": "방정식의 모든 실근의 합을 새로운 함수로 정의하는 구조(g(t)=모든 실근의 합)를 표현하는 DNA가 없음"
+      },
+      {
+        "id": "C20",
+        "name": "범위 조건",
+        "signature": "(함수, 상수, 범위) → 조건",
+        "reason": "g(t)=k를 만족시키는 모든 양수 t의 값의 범위가 특정 구간이라는 조건을 표현하는 DNA가 없음. C2(부등식)와 다르게 '만족시키는 t의 범위 전체'가 주어진 구간과 일치한다는 구조임"
+      }
+    ],
+    "previous_analysis": "f(x)는 a^{x+b} ≤ 2x+5이면 a^{x+b}, 아니면 [2x+5]이다.\n\n【케이스 분류】\n①y=a^{x+b}와 y=2x+5의 교점이 1개(접하거나 모든 x에서 a^{x+b}≥2x+5)인 경우: f(x)=[2x+5]이다. y=[2x+5]는 x=-5/2에 대해 대칭이므로 f(x)=t의 근의 합은 항상 -5이다. 따라서 모든 양수 t에 대해 g(t)=-5(상수)이고, g(t)=k를 만족하는 양수 t의 범위는 모든 양수 전체가 되어 1<t<9라는 유한 구간이 될 수 없다.\n\n②y=a^{x+b}와 y=2x+5의 교점이 2개인 경우: 두 교점의 x좌표를 p<q라 하면,\nf(x) = a^{x+b} (p≤x≤q), [2x+5] (x<p 또는 x>q)이다.\n\n【g(t) 분석】\nt≥f(q) 또는 t≤f(p)이면 지수 조각에서 근이 없고 [2x+5] 조각만 기여하므로 g(t)=-5이다.\nf(p)<t<f(q)이면 지수 조각 a^{x+b}=t의 근 1개(x=x_1)와 [2x+5]=t의 근들의 합이 더해진다. [2x+5]=t의 근들의 합은 -5이므로 g(t)=-5+x_1≠-5(일반적으로)이다.\n\n따라서 g(t)=k(상수)를 만족하는 양수 t의 범위가 1<t<9이 되려면, f(p)=1이고 f(q)=9이어야 한다. 이때 k=-5이다.\n\n【p, q, a, b 결정】\nf(p)=1: 교점에서 a^{p+b}=2p+5=1이므로 2p+5=1 → p=-2이다.\nf(q)=9: 교점에서 a^{q+b}=2q+5=9이므로 2q+5=9 → q=2이다.\n\na^{p+b}=1이고 a>1이므로 p+b=0 → b=2이다.\na^{q+b}=9이므로 a^{2+2}=a^4=9 → a=9^{1/4}=3^{1/2}=√3이다.\n\n【f(-b)+f(0) 계산】\nb=2이므로 f(-b)=f(-2)이다. x=-2는 p=-2이므로 f(-2)=a^{-2+2}=a^0=1이다.\n\n한편 f(0): x=0은 p=-2≤0≤2=q이므로 f(0)=a^{0+2}=(√3)^2=3이다.\n\nf(-b)+f(0)=f(-2)+f(0)=1+3=4이다.\n\n【해설 검토】\n해설에서는 f(-b)=f(5)=15, f(0)=3으로 계산하여 18을 얻었다. b=2이므로 -b=-2가 아니라 b=2이고 f(-b)=f(-2)=1이 맞는데, 해설은 f(5)=15라 했다. 해설에서 b=2이므로 -b=-2인데 f(-b)=f(-(-2))=f(2)가 아니라 f(5)라 한 것은 b=2일 때 -b=-2이므로 f(-b)=f(-2)=1이어야 한다. 그런데 해설은 f(-b)=f(5)=15라 했으므로 b=-5/2가 아닌지 확인한다.\n\na^{p+b}=1, p=-2: a^{-2+b}=1 → -2+b=0 → b=2이다.\na^{q+b}=9, q=2: a^{2+2}=a^4=9 → a=√3이다.\n\nb=2이면 -b=-2이고 f(-b)=f(-2)=a^{-2+2}=1이다. 해설의 f(-b)=f(5)=15는 b=-5일 때 성립한다. b=-5이면 a^{-2+(-5)}=a^{-7}=1이 되어 a=1이 되므로 모순이다.\n\n해설에서 b=2이고 f(-b)=f(-2)=1, f(0)=3이므로 f(-b)+f(0)=4이다. 그러나 주어진 답은 18이다.",
+    "previous_matching": "1. f(x)의 두 조각 분석 → 전략22(케이스 분류), 전략6(절댓값/부등호 분리)\n2. y=a^{x+b}와 y=2x+5의 교점 개수에 따른 분기 → 전략22\n3. [2x+5]는 x=-5/2에 대해 대칭 → 사실2\n4. f(x)=t의 근의 합 g(t) 분석 → 전략5, 사실44\n5. g(t)=k가 상수인 구간 1<t<9 조건 → 전략22, 전략25\n6. f(p)=1, f(q)=9에서 p,q,a,b 결정 → 전략2, 연산2, 전략25\n7. f(-b)+f(0) 계산 → 전략25, 사실18",
+    "previous_matched": [
+      "사실5",
+      "사실12",
+      "사실41",
+      "사실42",
+      "사실19",
+      "사실43",
+      "사실44",
+      "사실2",
+      "전략5",
+      "전략6",
+      "전략7",
+      "전략22",
+      "전략25",
+      "전략2",
+      "연산2",
+      "연산9",
+      "사실18"
+    ],
+    "previous_skeleton": [
+      {
+        "from": "단서A",
+        "to": "note1",
+        "neuron": "전략22",
+        "note": "$y=a^{x+b}$와 $y=2x+5$의 교점 개수에 따라 경우①(교점 1개 이하)과 경우②(교점 2개)로 분류한다"
+      },
+      {
+        "from": "note1",
+        "to": "note2",
+        "neuron": "전략23",
+        "note": "경우①에서 $f(x)=[2x+5]$이고 $[2x+5]=t$의 해는 구간이므로 $g(t)$가 상수가 되는 양수 $t$의 범위가 유한 열린구간 $1<t<9$가 될 수 없다. 경우①은 배제된다",
+        "main": false
+      },
+      {
+        "from": "note1",
+        "to": "note3",
+        "neuron": "전략22",
+        "note": "경우②에서 두 교점의 $x$좌표를 $p<q$라 하면 $f(x)=a^{x+b}$ ($p\\le x\\le q$), $f(x)=[2x+5]$ ($x<p$ 또는 $x>q$)이다"
+      },
+      {
+        "from": "note3",
+        "to": "note4",
+        "neuron": "사실5",
+        "note": "$a>1$이므로 $a^{x+b}$는 순증가이고, $p\\le x\\le q$ 구간에서 $f(x)=a^{x+b}$는 순증가이다",
+        "main": false
+      },
+      {
+        "from": [
+          "note3",
+          "note4"
+        ],
+        "to": "note5",
+        "neuron": "사실43",
+        "note": "$p\\le x\\le q$ 구간에서 $f(x)=t$의 근은 $f(p)\\le t\\le f(q)$이면 정확히 1개, 그 외이면 0개이다",
+        "main": false
+      },
+      {
+        "from": "note3",
+        "to": "note6",
+        "neuron": "전략22",
+        "note": "$x<p$ 또는 $x>q$ 구간에서 $[2x+5]=t$ ($t$는 양의 정수)의 해는 구간 $\\left[\\frac{t-5}{2},\\frac{t-4}{2}\\right)$에서 $x<p$ 또는 $x>q$에 해당하는 부분이다",
+        "main": false
+      },
+      {
+        "from": [
+          "note5",
+          "note6",
+          "단서B"
+        ],
+        "to": "note7",
+        "neuron": "전략25",
+        "note": "$g(t)=k$가 열린구간 $1<t<9$에서만 성립하려면, 이 구간에서 지수 조각의 근 $x_1(t)$가 존재하고 $[2x+5]$ 조각의 근이 없어야 한다. 즉 $f(p)=1$, $f(q)=9$이고, $1<t<9$에서 $[2x+5]=t$의 해가 $[p,q]$ 안에만 있어야 한다"
+      },
+      {
+        "from": "note7",
+        "to": "note8",
+        "neuron": "전략6",
+        "note": "교점에서 $a^{p+b}=2p+5$이므로 $f(p)=1$에서 $2p+5=1$이다"
+      },
+      {
+        "from": "note8",
+        "to": "note9",
+        "neuron": "전략2",
+        "note": "$2p+5=1$을 풀면 $p=-2$이다"
+      },
+      {
+        "from": "note7",
+        "to": "note10",
+        "neuron": "전략6",
+        "note": "교점에서 $a^{q+b}=2q+5$이므로 $f(q)=9$에서 $2q+5=9$이다"
+      },
+      {
+        "from": "note10",
+        "to": "note11",
+        "neuron": "전략2",
+        "note": "$2q+5=9$를 풀면 $q=2$이다"
+      },
+      {
+        "from": [
+          "note9",
+          "note8"
+        ],
+        "to": "note12",
+        "neuron": "연산2",
+        "note": "$a^{p+b}=1$이고 $a>1$이므로 $p+b=0$이다. $p=-2$이므로 $b=2$이다"
+      },
+      {
+        "from": [
+          "note11",
+          "note10",
+          "note12"
+        ],
+        "to": "note13",
+        "neuron": "연산2",
+        "note": "$a^{q+b}=9$이고 $q=2$, $b=2$이므로 $a^4=9$이다"
+      },
+      {
+        "from": "note13",
+        "to": "note14",
+        "neuron": "전략37",
+        "note": "$a^4=9=3^2$이므로 $a=9^{1/4}=3^{1/2}=\\sqrt{3}$이다"
+      },
+      {
+        "from": [
+          "note9",
+          "note11",
+          "note12",
+          "note14"
+        ],
+        "to": "note15",
+        "neuron": "전략25",
+        "note": "$f(x)=(\\sqrt{3})^{x+2}$ ($-2\\le x\\le 2$), $f(x)=[2x+5]$ ($x<-2$ 또는 $x>2$)이다"
+      },
+      {
+        "from": [
+          "note15",
+          "note12"
+        ],
+        "to": "note16",
+        "neuron": "전략25",
+        "note": "$b=2$이므로 $-b=-2$이다. $x=-2$는 $-2\\le x\\le 2$에 속하므로 $f(-b)=f(-2)=(\\sqrt{3})^{-2+2}=(\\sqrt{3})^0=1$이다"
+      },
+      {
+        "from": "note15",
+        "to": "note17",
+        "neuron": "사실18",
+        "note": "$f(0)=(\\sqrt{3})^{0+2}=(\\sqrt{3})^2=3$이다"
+      },
+      {
+        "from": [
+          "note16",
+          "note17"
+        ],
+        "to": "note18",
+        "neuron": "전략2",
+        "note": "$f(-b)+f(0)=1+3=4$이다"
+      },
+      {
+        "from": "note18",
+        "to": "END",
+        "neuron": "전략25",
+        "note": "그러나 이 값은 문제의 답 18과 일치하지 않으므로 skeleton의 핵심 논리(note7: $[2x+5]$ 조각의 근 처리 및 $g(t)$ 구조 분석)에 오류가 있다. 신규 뉴런 및 전면 재검토가 필요하다"
+      }
+    ],
+    "previous_new_neurons": [
+      {
+        "id": "사실80",
+        "statement": "$[2x+5]=t$ ($t$는 정수)의 해집합은 구간 $\\left[\\frac{t-5}{2},\\frac{t-4}{2}\\right)$이다. 이 구간의 해들의 합은 정의되지 않는다(무한합).",
+        "type": "fact",
+        "reason": "floor 함수 방정식의 해가 구간임을 명시하는 뉴런이 없어 note6의 '근의 합 -5' 오류가 발생함"
+      },
+      {
+        "id": "사실81",
+        "statement": "$f(x)=t$의 실근의 합이 정의되려면 실근의 개수가 유한해야 한다. 구간 전체가 근이면 합이 발산한다.",
+        "type": "fact",
+        "reason": "g(t)가 상수가 되는 조건 분석에 필요"
+      }
+    ],
+    "previous_dna_nodes": [
+      {
+        "id": "top",
+        "dna": "Q1",
+        "label": "값을 구하라",
+        "category": "발문"
+      },
+      {
+        "id": "ask_sum",
+        "dna": "E1",
+        "label": "f(-b)+f(0)",
+        "category": "수식"
+      },
+      {
+        "id": "ask_f_negb",
+        "dna": "F3",
+        "label": "f(-b) 적용",
+        "category": "함수"
+      },
+      {
+        "id": "ask_f_0",
+        "dna": "F3",
+        "label": "f(0) 적용",
+        "category": "함수"
+      },
+      {
+        "id": "neg_b",
+        "dna": "E2",
+        "label": "부호반전(b)",
+        "category": "수식"
+      },
+      {
+        "id": "c0",
+        "dna": "T2",
+        "label": "상수 0",
+        "category": "말단"
+      },
+      {
+        "id": "va",
+        "dna": "T1",
+        "label": "변수 a",
+        "category": "말단"
+      },
+      {
+        "id": "vb",
+        "dna": "T1",
+        "label": "변수 b",
+        "category": "말단"
+      },
+      {
+        "id": "lim_a",
+        "dna": "C2",
+        "label": "a>1",
+        "category": "조건"
+      },
+      {
+        "id": "c1_val",
+        "dna": "T2",
+        "label": "상수 1",
+        "category": "말단"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
+      },
+      {
+        "id": "func_f",
+        "dna": "F1",
+        "label": "조각함수 f(x)",
+        "category": "함수"
+      },
+      {
+        "id": "piece1",
+        "dna": "F2",
+        "label": "조각1: a^{x+b}",
+        "category": "함수"
+      },
+      {
+        "id": "piece2",
+        "dna": "F2",
+        "label": "조각2: [2x+5]",
+        "category": "함수"
+      },
+      {
+        "id": "exp_axb",
+        "dna": "E4",
+        "label": "a^{x+b}",
+        "category": "수식"
+      },
+      {
+        "id": "xplusb",
+        "dna": "E1",
+        "label": "x+b",
+        "category": "수식"
+      },
+      {
+        "id": "gauss_2x5",
+        "dna": "E9",
+        "label": "[2x+5]",
+        "category": "수식"
+      },
+      {
+        "id": "lin_2x5",
+        "dna": "E1",
+        "label": "2x+5",
+        "category": "수식"
+      },
+      {
+        "id": "two_x",
+        "dna": "E6",
+        "label": "2*x",
+        "category": "수식"
+      },
+      {
+        "id": "c2_val",
+        "dna": "T2",
+        "label": "상수 2",
+        "category": "말단"
+      },
+      {
+        "id": "c5_val",
+        "dna": "T2",
+        "label": "상수 5",
+        "category": "말단"
+      },
+      {
+        "id": "cond_piece1",
+        "dna": "C2",
+        "label": "a^{x+b}≤2x+5",
+        "category": "조건"
+      },
+      {
+        "id": "cond_piece2",
+        "dna": "C2",
+        "label": "a^{x+b}>2x+5",
+        "category": "조건"
+      },
+      {
+        "id": "vt",
+        "dna": "T1",
+        "label": "변수 t",
+        "category": "말단"
+      },
+      {
+        "id": "lim_t_pos",
+        "dna": "C2",
+        "label": "t>0 (양수)",
+        "category": "조건"
+      },
+      {
+        "id": "eq_fxt",
+        "dna": "C11",
+        "label": "방정식 f(x)=t",
+        "category": "조건"
+      },
+      {
+        "id": "eq_fxt_c1",
+        "dna": "C1",
+        "label": "f(x)=t 등식",
+        "category": "조건"
+      },
+      {
+        "id": "f3_fxt",
+        "dna": "F3",
+        "label": "f(x) 적용",
+        "category": "함수"
+      },
+      {
+        "id": "func_g",
+        "dna": "F13",
+        "label": "g(t)=실근합",
+        "category": "함수"
+      },
+      {
+        "id": "vk",
+        "dna": "T1",
+        "label": "변수 k(상수)",
+        "category": "말단"
+      },
+      {
+        "id": "cond_gt_k",
+        "dna": "C1",
+        "label": "g(t)=k",
+        "category": "조건"
+      },
+      {
+        "id": "cond_range",
+        "dna": "C20",
+        "label": "범위 1<t<9",
+        "category": "조건"
+      },
+      {
+        "id": "c9_val",
+        "dna": "T2",
+        "label": "상수 9",
+        "category": "말단"
+      },
+      {
+        "id": "conds_all",
+        "dna": "S1",
+        "label": "전체 조건 묶음",
+        "category": "구조"
+      }
+    ],
+    "previous_dna_edges": [
+      {
+        "from": "ask_sum",
+        "to": "top"
+      },
+      {
+        "from": "conds_all",
+        "to": "top"
+      },
+      {
+        "from": "ask_f_negb",
+        "to": "ask_sum"
+      },
+      {
+        "from": "ask_f_0",
+        "to": "ask_sum"
+      },
+      {
+        "from": "func_f",
+        "to": "ask_f_negb"
+      },
+      {
+        "from": "neg_b",
+        "to": "ask_f_negb"
+      },
+      {
+        "from": "func_f",
+        "to": "ask_f_0"
+      },
+      {
+        "from": "c0",
+        "to": "ask_f_0"
+      },
+      {
+        "from": "vb",
+        "to": "neg_b"
+      },
+      {
+        "from": "va",
+        "to": "lim_a"
+      },
+      {
+        "from": "c1_val",
+        "to": "lim_a"
+      },
+      {
+        "from": "lim_a",
+        "to": "conds_all"
+      },
+      {
+        "from": "piece1",
+        "to": "func_f"
+      },
+      {
+        "from": "piece2",
+        "to": "func_f"
+      },
+      {
+        "from": "exp_axb",
+        "to": "piece1"
+      },
+      {
+        "from": "cond_piece1",
+        "to": "piece1"
+      },
+      {
+        "from": "gauss_2x5",
+        "to": "piece2"
+      },
+      {
+        "from": "cond_piece2",
+        "to": "piece2"
+      },
+      {
+        "from": "va",
+        "to": "exp_axb"
+      },
+      {
+        "from": "xplusb",
+        "to": "exp_axb"
+      },
+      {
+        "from": "vx",
+        "to": "xplusb"
+      },
+      {
+        "from": "vb",
+        "to": "xplusb"
+      },
+      {
+        "from": "lin_2x5",
+        "to": "gauss_2x5"
+      },
+      {
+        "from": "two_x",
+        "to": "lin_2x5"
+      },
+      {
+        "from": "c5_val",
+        "to": "lin_2x5"
+      },
+      {
+        "from": "c2_val",
+        "to": "two_x"
+      },
+      {
+        "from": "vx",
+        "to": "two_x"
+      },
+      {
+        "from": "exp_axb",
+        "to": "cond_piece1"
+      },
+      {
+        "from": "lin_2x5",
+        "to": "cond_piece1"
+      },
+      {
+        "from": "exp_axb",
+        "to": "cond_piece2"
+      },
+      {
+        "from": "lin_2x5",
+        "to": "cond_piece2"
+      },
+      {
+        "from": "lim_t_pos",
+        "to": "conds_all"
+      },
+      {
+        "from": "vt",
+        "to": "lim_t_pos"
+      },
+      {
+        "from": "eq_fxt",
+        "to": "conds_all"
+      },
+      {
+        "from": "eq_fxt_c1",
+        "to": "eq_fxt"
+      },
+      {
+        "from": "f3_fxt",
+        "to": "eq_fxt_c1"
+      },
+      {
+        "from": "vt",
+        "to": "eq_fxt_c1"
+      },
+      {
+        "from": "func_f",
+        "to": "f3_fxt"
+      },
+      {
+        "from": "vx",
+        "to": "f3_fxt"
+      },
+      {
+        "from": "func_g",
+        "to": "conds_all"
+      },
+      {
+        "from": "eq_fxt",
+        "to": "func_g"
+      },
+      {
+        "from": "vt",
+        "to": "func_g"
+      },
+      {
+        "from": "cond_gt_k",
+        "to": "conds_all"
+      },
+      {
+        "from": "func_g",
+        "to": "cond_gt_k"
+      },
+      {
+        "from": "vk",
+        "to": "cond_gt_k"
+      },
+      {
+        "from": "cond_range",
+        "to": "conds_all"
+      },
+      {
+        "from": "cond_gt_k",
+        "to": "cond_range"
+      },
+      {
+        "from": "c1_val",
+        "to": "cond_range"
+      },
+      {
+        "from": "c9_val",
+        "to": "cond_range"
+      },
+      {
+        "from": "vt",
+        "to": "cond_range"
+      }
+    ],
+    "created_at": "2026-03-21T18:44:50.346Z"
   }
 ]
