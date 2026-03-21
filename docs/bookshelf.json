@@ -10839,5 +10839,933 @@
     "folders": [],
     "history": [],
     "created_at": "2026-03-21T18:26:13.546Z"
+  },
+  {
+    "problem_id": "Problem12_2",
+    "answer": "45",
+    "clues": [
+      {
+        "id": "단서A",
+        "text": "$f(x)=\\frac{1}{16}\\{(x-3)^2+n\\}$ ($n$은 $n\\neq 12$인 자연수)"
+      },
+      {
+        "id": "단서B",
+        "text": "$\\log_{f(1)}f(x)\\geq\\log_{f(1)}\\left(\\frac{n+1}{8}\\right)$의 정수 근의 개수가 7"
+      }
+    ],
+    "skeleton": [
+      {
+        "from": "단서A",
+        "to": "note1",
+        "neuron": "전략25",
+        "note": "$f(1)=\\frac{1}{16}\\{(1-3)^2+n\\}=\\frac{n+4}{16}$이다"
+      },
+      {
+        "from": [
+          "단서A",
+          "단서B"
+        ],
+        "to": "note2",
+        "neuron": "전략22",
+        "note": "$n\\geq 13$이면 $f(1)=\\frac{n+4}{16}>1$이고, $1\\leq n\\leq 11$이면 $0<f(1)=\\frac{n+4}{16}<1$이다"
+      },
+      {
+        "from": "note2",
+        "to": "note3",
+        "neuron": "사실12",
+        "note": "$f(1)>1$이면 $\\log_{f(1)}$은 단조증가이고, $0<f(1)<1$이면 $\\log_{f(1)}$은 단조감소이다"
+      },
+      {
+        "from": "note3",
+        "to": "note4",
+        "neuron": "사실50",
+        "note": "$f(1)>1$이면 부등식은 $f(x)\\geq\\frac{n+1}{8}$과 동치이고, $0<f(1)<1$이면 $f(x)\\leq\\frac{n+1}{8}$과 동치이다"
+      },
+      {
+        "from": [
+          "note4",
+          "단서A"
+        ],
+        "to": "note5",
+        "neuron": "연산21",
+        "note": "$f(1)>1$일 때 $f(x)\\geq\\frac{n+1}{8}$은 $(x-3)^2\\geq n+2$와 동치이다",
+        "main": false
+      },
+      {
+        "from": "note5",
+        "to": "note6",
+        "neuron": "사실19",
+        "note": "$(x-3)^2\\geq n+2$의 해는 $x\\leq 3-\\sqrt{n+2}$ 또는 $x\\geq 3+\\sqrt{n+2}$로 양 방향 무한 구간이다",
+        "main": false
+      },
+      {
+        "from": "note6",
+        "to": "note7",
+        "neuron": "전략23",
+        "note": "경우(i) $n\\geq 13$에서 정수 근이 무한히 많으므로 7개가 될 수 없다. 경우(i)는 소거된다"
+      },
+      {
+        "from": [
+          "note4",
+          "단서A"
+        ],
+        "to": "note8",
+        "neuron": "연산21",
+        "note": "$0<f(1)<1$일 때 $f(x)\\leq\\frac{n+1}{8}$은 $(x-3)^2\\leq n+2$와 동치이다"
+      },
+      {
+        "from": "note8",
+        "to": "note9",
+        "neuron": "사실19",
+        "note": "$(x-3)^2\\leq n+2$의 해 구간은 $3-\\sqrt{n+2}\\leq x\\leq 3+\\sqrt{n+2}$이다"
+      },
+      {
+        "from": "note9",
+        "to": "note10",
+        "neuron": "전략25",
+        "note": "정수 근의 개수는 $1+2\\lfloor\\sqrt{n+2}\\rfloor$이다"
+      },
+      {
+        "from": "note10",
+        "to": "note11",
+        "neuron": "전략25",
+        "note": "정수 근의 개수가 7이 되려면 $\\lfloor\\sqrt{n+2}\\rfloor=3$이어야 한다"
+      },
+      {
+        "from": "note11",
+        "to": "note12",
+        "neuron": "연산21",
+        "note": "$\\lfloor\\sqrt{n+2}\\rfloor=3$은 $7\\leq n<14$와 동치이다"
+      },
+      {
+        "from": [
+          "note12",
+          "note2"
+        ],
+        "to": "note13",
+        "neuron": "전략22",
+        "note": "경우(ii) 조건 $1\\leq n\\leq 11$과 교집합하면 $7\\leq n\\leq 11$이다"
+      },
+      {
+        "from": "note13",
+        "to": "END",
+        "neuron": "전략17",
+        "note": "$n=7,8,9,10,11$이고 합은 $7+8+9+10+11=45$이다"
+      }
+    ],
+    "solution": "STEP 1. $f(1)=\\frac{n+4}{16}$이다.\n\nSTEP 2. $n\\geq 13$이면 $f(1)>1$이고, $1\\leq n\\leq 11$이면 $0<f(1)<1$이다.\n\nSTEP 3. $\\log_{f(1)}$의 단조성에 따라 $f(1)>1$이면 부등식은 $f(x)\\geq\\frac{n+1}{8}$, $0<f(1)<1$이면 $f(x)\\leq\\frac{n+1}{8}$과 동치이다.\n\nSTEP 4. 경우(i) $n\\geq 13$에서 부등식은 $(x-3)^2\\geq n+2$이고 해가 양 방향 무한 구간이므로 정수 근이 무한히 많다. 경우(i)는 소거된다.\n\nSTEP 5. 경우(ii) $0<f(1)<1$에서 부등식은 $(x-3)^2\\leq n+2$이고 해 구간은 $3-\\sqrt{n+2}\\leq x\\leq 3+\\sqrt{n+2}$이다.\n\nSTEP 6. 정수 근의 개수는 $1+2\\lfloor\\sqrt{n+2}\\rfloor$이고, 이것이 7이 되려면 $\\lfloor\\sqrt{n+2}\\rfloor=3$, 즉 $7\\leq n<14$이어야 한다.\n\nSTEP 7. 경우(ii) 조건 $1\\leq n\\leq 11$과 교집합하면 $7\\leq n\\leq 11$이다.\n\nSTEP 8. $n=7,8,9,10,11$이고 합은 $7+8+9+10+11=45$이다.",
+    "original_solution": "$f(x)=\\frac{1}{16}\\{(x-3)^2+n\\}$ ... ①\n\n이므로\n\n(i) $n$이 12보다 큰 자연수인 경우, $f(1) > 1$\n\n(ii) $n$이 12보다 작은 자연수인 경우, $0 < f(1) < 1$\n\n로 경우를 나누어 부등식\n\n$$\\log_{f(1)}f(x) \\geq \\log_{f(1)}\\left(\\frac{n+1}{8}\\right)$$ ... ②\n\n의 실근 중 정수인 것을 조사해보자.\n\n**(i)의 경우:**\n\n② $\\Leftrightarrow f(x) \\geq \\frac{n+1}{8}$\n\n$\\Leftrightarrow (x-3)^2 \\geq n+2$ ($\\because$ ①)\n\n이므로 $n > 12$인 모든 자연수 $n$에 대하여 이 부등식을 만족시키는 정수 $x$는 부수히 많음 $\\Rightarrow$ ②의 개수가 7일 수 없음을 알 수 있다.\n\n**(ii)의 경우:**\n\n② $\\Leftrightarrow 0 < f(x) \\leq \\frac{n+1}{8}$\n\n$\\Leftrightarrow -n < (x-3)^2 \\leq n+2$ ($\\because$ ①) ... ③\n\n이므로\n\n③의 개수가 7을 만족시키려면 다음 그림과 같이\n\n$x=6$이 은을 만족시키고,\n\n$x=7$이 은을 만족시지 않아야 ... ④\n\n함\n\n[FIGURE: 그래프에는 $y=(x-3)^2$ 포물선과 $y=n+2$, $y=4^2$, $y=3^2$ 수평선이 표시되어 있으며, $x$축에 0부터 7까지 눈금이 표시됨]\n\n따라서\n\n• ④ $\\Rightarrow 3^2 \\leq n+2 < 4^2 \\Rightarrow 7 \\leq n < 14$\n\n• (ii)의 경우는 $n$이 12보다 작은 자연수\n\n$\\Rightarrow 7 \\leq n \\leq 11$\n\n임을 알 수 있다.\n\n$\\therefore$ (모든 자연수 $n$의 값의 합) $= 7+8+9+10+11 = 45$\n\n---",
+    "analysis": "f(x)=1/16{(x-3)^2+n}이므로 f(1)=1/16{(1-3)^2+n}=(n+4)/16이다.\n\n로그의 밑 조건: f(1)>0은 n≥1이므로 항상 성립. f(1)≠1이면 n≠12인데 문제 조건에서 n≠12이므로 자동 만족.\n\n경우 분류:\n- n≥13이면 f(1)=(n+4)/16>1\n- 1≤n≤11이면 0<f(1)<1\n\n진수 조건: f(x)=1/16{(x-3)^2+n}≥n/16>0이므로 항상 양수. (n+1)/8>0도 항상 성립.\n\n경우(i): n≥13, f(1)>1\n로그함수 밑>1이면 단조증가이므로 부등식은 f(x)≥(n+1)/8와 동치.\n1/16{(x-3)^2+n}≥(n+1)/8\n(x-3)^2+n≥2(n+1)\n(x-3)^2≥n+2\nn≥13이면 n+2≥15>0이므로 해는 x≤3-√(n+2) 또는 x≥3+√(n+2)로 양 방향 무한 구간. 정수 근이 무한히 많으므로 7개가 될 수 없다. 경우(i)에서 조건 만족하는 n 없음.\n\n경우(ii): 1≤n≤11, 0<f(1)<1\n로그함수 밑이 0과 1 사이이면 단조감소이므로 부등식은 0<f(x)≤(n+1)/8와 동치.\nf(x)>0은 항상 성립하므로 실질 조건은 f(x)≤(n+1)/8.\n1/16{(x-3)^2+n}≤(n+1)/8\n(x-3)^2+n≤2(n+1)\n(x-3)^2≤n+2\n\n해 구간: 3-√(n+2)≤x≤3+√(n+2). x=3 중심 대칭.\n\n정수 근 개수: k=|x-3|으로 놓으면 k^2≤n+2인 음이 아닌 정수 k에 대해 x=3±k가 해.\nk=0이면 x=3 (1개), k≥1이면 x=3+k, x=3-k (각 2개).\n정수 근 개수=1+2·floor(√(n+2)).\n\n개수=7이 되려면: 1+2·floor(√(n+2))=7 → floor(√(n+2))=3.\nfloor(√(n+2))=3 ⟺ 3≤√(n+2)<4 ⟺ 9≤n+2<16 ⟺ 7≤n<14.\n\n경우(ii) 조건 1≤n≤11과 교집합: 7≤n≤11.\n\n조건 만족하는 n: 7, 8, 9, 10, 11.\n합: 7+8+9+10+11=45.\n\n주어진 답 45와 일치한다.",
+    "new_neurons": [],
+    "metadata": {
+      "unit": "지수·로그",
+      "difficulty": "unknown",
+      "score": "4",
+      "type": "multiple choice",
+      "answer": "③ 45"
+    },
+    "edge_count": 14,
+    "side_count": 2,
+    "statement": "# Problem12. (Unknown Source) - Logarithmic Inequality\n\n## Problem\n\n함수 $f(x)=\\frac{1}{16}\\{(x-3)^2+n\\}$ ($n$은 $n \\neq 12$인 자연수)에 대하여 $x$에 관한 부등식\n\n$$\\log_{f(1)}f(x) \\geq \\log_{f(1)}\\left(\\frac{n+1}{8}\\right)$$\n\n의 실근 중에서 정수인 것의 개수가 7이도록 하는 모든 자연수 $n$의 값의 합은? [4점]",
+    "dna": {
+      "nodes": [
+        {
+          "id": "top",
+          "dna": "Q3",
+          "label": "합을 구하라",
+          "category": "발문"
+        },
+        {
+          "id": "vn",
+          "dna": "T1",
+          "label": "변수 n",
+          "category": "말단"
+        },
+        {
+          "id": "n_natural",
+          "dna": "L3",
+          "label": "n은 자연수",
+          "category": "제한"
+        },
+        {
+          "id": "n_neq12",
+          "dna": "C2",
+          "label": "n≠12",
+          "category": "조건"
+        },
+        {
+          "id": "c12",
+          "dna": "T2",
+          "label": "상수 12",
+          "category": "말단"
+        },
+        {
+          "id": "conds",
+          "dna": "S1",
+          "label": "여러 조건",
+          "category": "구조"
+        },
+        {
+          "id": "fn_def",
+          "dna": "F6",
+          "label": "f(x) 정의",
+          "category": "함수"
+        },
+        {
+          "id": "fn_eq",
+          "dna": "C11",
+          "label": "f(x) 방정식",
+          "category": "조건"
+        },
+        {
+          "id": "fn_c1",
+          "dna": "C1",
+          "label": "f(x)=1/16*((x-3)^2+n)",
+          "category": "조건"
+        },
+        {
+          "id": "rhs_fx",
+          "dna": "E6",
+          "label": "곱(1/16, 내부)",
+          "category": "수식"
+        },
+        {
+          "id": "c1_16",
+          "dna": "T2",
+          "label": "상수 1/16",
+          "category": "말단"
+        },
+        {
+          "id": "inner_sum",
+          "dna": "E1",
+          "label": "합(제곱항, n)",
+          "category": "수식"
+        },
+        {
+          "id": "sq_term",
+          "dna": "E7",
+          "label": "(x-3)^2",
+          "category": "수식"
+        },
+        {
+          "id": "x_minus3",
+          "dna": "E1",
+          "label": "합(x, -3)",
+          "category": "수식"
+        },
+        {
+          "id": "vx",
+          "dna": "T3",
+          "label": "독립변수 x",
+          "category": "말단"
+        },
+        {
+          "id": "neg3",
+          "dna": "E2",
+          "label": "부호반전(3)",
+          "category": "수식"
+        },
+        {
+          "id": "c3",
+          "dna": "T2",
+          "label": "상수 3",
+          "category": "말단"
+        },
+        {
+          "id": "c2_exp",
+          "dna": "T2",
+          "label": "상수 2(지수)",
+          "category": "말단"
+        },
+        {
+          "id": "f1_val",
+          "dna": "G8",
+          "label": "f(1) 명명",
+          "category": "기하"
+        },
+        {
+          "id": "f1_apply",
+          "dna": "F3",
+          "label": "f(1) 적용",
+          "category": "함수"
+        },
+        {
+          "id": "c1_const",
+          "dna": "T2",
+          "label": "상수 1",
+          "category": "말단"
+        },
+        {
+          "id": "ineq_cond",
+          "dna": "C2",
+          "label": "로그 부등식",
+          "category": "조건"
+        },
+        {
+          "id": "lhs_log",
+          "dna": "E3",
+          "label": "log_{f(1)}f(x)",
+          "category": "수식"
+        },
+        {
+          "id": "fx_apply",
+          "dna": "F3",
+          "label": "f(x) 적용",
+          "category": "함수"
+        },
+        {
+          "id": "rhs_log",
+          "dna": "E3",
+          "label": "log_{f(1)}((n+1)/8)",
+          "category": "수식"
+        },
+        {
+          "id": "rhs_frac",
+          "dna": "E6",
+          "label": "곱((n+1), 1/8)",
+          "category": "수식"
+        },
+        {
+          "id": "n_plus1",
+          "dna": "E1",
+          "label": "합(n, 1)",
+          "category": "수식"
+        },
+        {
+          "id": "c1_8inv",
+          "dna": "T2",
+          "label": "상수 1/8",
+          "category": "말단"
+        },
+        {
+          "id": "int_root_cnt",
+          "dna": "C9",
+          "label": "정수 실근 개수=7",
+          "category": "조건"
+        },
+        {
+          "id": "c7",
+          "dna": "T2",
+          "label": "상수 7",
+          "category": "말단"
+        }
+      ],
+      "edges": [
+        {
+          "from": "vn",
+          "to": "top"
+        },
+        {
+          "from": "conds",
+          "to": "top"
+        },
+        {
+          "from": "n_natural",
+          "to": "vn"
+        },
+        {
+          "from": "n_neq12",
+          "to": "vn"
+        },
+        {
+          "from": "c12",
+          "to": "n_neq12"
+        },
+        {
+          "from": "fn_def",
+          "to": "conds"
+        },
+        {
+          "from": "fn_eq",
+          "to": "fn_def"
+        },
+        {
+          "from": "fn_c1",
+          "to": "fn_eq"
+        },
+        {
+          "from": "rhs_fx",
+          "to": "fn_c1"
+        },
+        {
+          "from": "c1_16",
+          "to": "rhs_fx"
+        },
+        {
+          "from": "inner_sum",
+          "to": "rhs_fx"
+        },
+        {
+          "from": "sq_term",
+          "to": "inner_sum"
+        },
+        {
+          "from": "vn",
+          "to": "inner_sum"
+        },
+        {
+          "from": "x_minus3",
+          "to": "sq_term"
+        },
+        {
+          "from": "c2_exp",
+          "to": "sq_term"
+        },
+        {
+          "from": "vx",
+          "to": "x_minus3"
+        },
+        {
+          "from": "neg3",
+          "to": "x_minus3"
+        },
+        {
+          "from": "c3",
+          "to": "neg3"
+        },
+        {
+          "from": "f1_apply",
+          "to": "f1_val"
+        },
+        {
+          "from": "fn_def",
+          "to": "f1_apply"
+        },
+        {
+          "from": "c1_const",
+          "to": "f1_apply"
+        },
+        {
+          "from": "ineq_cond",
+          "to": "conds"
+        },
+        {
+          "from": "f1_val",
+          "to": "ineq_cond"
+        },
+        {
+          "from": "lhs_log",
+          "to": "ineq_cond"
+        },
+        {
+          "from": "rhs_log",
+          "to": "ineq_cond"
+        },
+        {
+          "from": "f1_val",
+          "to": "lhs_log"
+        },
+        {
+          "from": "fx_apply",
+          "to": "lhs_log"
+        },
+        {
+          "from": "fn_def",
+          "to": "fx_apply"
+        },
+        {
+          "from": "vx",
+          "to": "fx_apply"
+        },
+        {
+          "from": "f1_val",
+          "to": "rhs_log"
+        },
+        {
+          "from": "rhs_frac",
+          "to": "rhs_log"
+        },
+        {
+          "from": "n_plus1",
+          "to": "rhs_frac"
+        },
+        {
+          "from": "c1_8inv",
+          "to": "rhs_frac"
+        },
+        {
+          "from": "vn",
+          "to": "n_plus1"
+        },
+        {
+          "from": "c1_const",
+          "to": "n_plus1"
+        },
+        {
+          "from": "int_root_cnt",
+          "to": "conds"
+        },
+        {
+          "from": "ineq_cond",
+          "to": "int_root_cnt"
+        },
+        {
+          "from": "c7",
+          "to": "int_root_cnt"
+        }
+      ],
+      "new_dna": []
+    },
+    "thinking_profile": {
+      "total_think_tokens": 1680,
+      "edge_count": 16,
+      "by_type": {
+        "사실": {
+          "count": 4,
+          "total": 671,
+          "avg": 168,
+          "avg_normalized": 26,
+          "avg_elapsed_ms": 14754,
+          "total_normalized": 103,
+          "total_elapsed_ms": 59015
+        },
+        "연산": {
+          "count": 7,
+          "total": 616,
+          "avg": 88,
+          "avg_normalized": 14,
+          "avg_elapsed_ms": 7041,
+          "total_normalized": 96,
+          "total_elapsed_ms": 49289
+        },
+        "전략": {
+          "count": 4,
+          "total": 306,
+          "avg": 77,
+          "avg_normalized": 13,
+          "avg_elapsed_ms": 7171,
+          "total_normalized": 51,
+          "total_elapsed_ms": 28682
+        }
+      },
+      "hardest_edge": {
+        "edge_num": 1,
+        "from": "단서B",
+        "to": "note1",
+        "neuron": "사실59",
+        "to_type": "사실",
+        "think_tokens": 465,
+        "normalized": 76,
+        "elapsed_ms": 39983,
+        "difficulty_score": 47.4,
+        "note": "부등식이 정의되려면 f(1) > 0, f(1) ≠ 1, f(x) > 0, (n+1)/8 > 0이어야 함"
+      },
+      "hardest_normalized": {
+        "edge_num": 1,
+        "from": "단서B",
+        "to": "note1",
+        "neuron": "사실59",
+        "to_type": "사실",
+        "think_tokens": 465,
+        "normalized": 76,
+        "elapsed_ms": 39983,
+        "difficulty_score": 47.4,
+        "note": "부등식이 정의되려면 f(1) > 0, f(1) ≠ 1, f(x) > 0, (n+1)/8 > 0이어야 함"
+      },
+      "hardest_difficulty": {
+        "edge_num": 1,
+        "from": "단서B",
+        "to": "note1",
+        "neuron": "사실59",
+        "to_type": "사실",
+        "think_tokens": 465,
+        "normalized": 76,
+        "elapsed_ms": 39983,
+        "difficulty_score": 47.4,
+        "note": "부등식이 정의되려면 f(1) > 0, f(1) ≠ 1, f(x) > 0, (n+1)/8 > 0이어야 함"
+      },
+      "profiler_skeleton": [
+        {
+          "from": "단서B",
+          "to": "note1",
+          "neuron": "사실59",
+          "note": "부등식이 정의되려면 f(1) > 0, f(1) ≠ 1, f(x) > 0, (n+1)/8 > 0이어야 함",
+          "main": true,
+          "difficulty_score": 47.4,
+          "difficulty_rank": 1
+        },
+        {
+          "from": "note1",
+          "to": "note2",
+          "neuron": "연산7",
+          "note": "f(1) = (1/16){(1-3)²+n} = (1/16)(4+n) = (4+n)/16",
+          "main": true,
+          "difficulty_score": 10.5,
+          "difficulty_rank": 5
+        },
+        {
+          "from": "note2",
+          "to": "note3",
+          "neuron": "전략12",
+          "note": "f(1) = (4+n)/16에서 n의 값에 따라 f(1) > 1인 경우와 0 < f(1) < 1인 경우로 나누어 분석",
+          "main": true,
+          "difficulty_score": 5.3,
+          "difficulty_rank": 12
+        },
+        {
+          "from": "note3",
+          "to": "note4",
+          "neuron": "연산21",
+          "note": "f(1) > 1 ⇔ (4+n)/16 > 1 ⇔ 4+n > 16 ⇔ n > 12",
+          "main": true,
+          "difficulty_score": 9.4,
+          "difficulty_rank": 6
+        },
+        {
+          "from": "note4",
+          "to": "note5",
+          "neuron": "사실12",
+          "note": "n > 12일 때 f(1) > 1이므로 log_{f(1)} f(x) ≥ log_{f(1)}((n+1)/8) ⇔ f(x) ≥ (n+1)/8",
+          "main": true,
+          "difficulty_score": 7.5,
+          "difficulty_rank": 8
+        },
+        {
+          "from": "note5",
+          "to": "note6",
+          "neuron": "연산21",
+          "note": "f(x) ≥ (n+1)/8 ⇔ (1/16){(x-3)² + n} ≥ (n+1)/8 ⇔ (x-3)² ≥ n + 2",
+          "main": true,
+          "difficulty_score": 5.6,
+          "difficulty_rank": 11
+        },
+        {
+          "from": "note6",
+          "to": "note7",
+          "neuron": "전략27",
+          "note": "n > 12일 때 (x-3)² ≥ n + 2를 만족하는 정수 x는 무한히 많으므로 정수해 개수가 7개 조건을 만족할 수 없음",
+          "main": true,
+          "difficulty_score": 9.1,
+          "difficulty_rank": 7
+        },
+        {
+          "from": "note7",
+          "to": "note8",
+          "neuron": "연산21",
+          "note": "n < 12일 때 f(1) = (4+n)/16 < 1이므로 0 < f(1) < 1",
+          "main": true,
+          "difficulty_score": 4,
+          "difficulty_rank": 16
+        },
+        {
+          "from": "note8",
+          "to": "note9",
+          "neuron": "사실12",
+          "note": "0 < f(1) < 1일 때 log_{f(1)} f(x) ≥ log_{f(1)}((n+1)/8) ⇔ f(x) ≤ (n+1)/8",
+          "main": true,
+          "difficulty_score": 4.4,
+          "difficulty_rank": 15
+        },
+        {
+          "from": "note9",
+          "to": "note10",
+          "neuron": "사실1",
+          "note": "f(x) = (1/16){(x-3)² + n}에서 n은 자연수이므로 f(x) > 0이 항상 성립하여 0 < f(x) ≤ (n+1)/8",
+          "main": true,
+          "difficulty_score": 5.1,
+          "difficulty_rank": 13
+        },
+        {
+          "from": "note10",
+          "to": "note11",
+          "neuron": "연산21",
+          "note": "0 < f(x) ≤ (n+1)/8 ⇔ 0 < (1/16){(x-3)² + n} ≤ (n+1)/8 ⇔ (x-3)² ≤ n + 2",
+          "main": true,
+          "difficulty_score": 6.2,
+          "difficulty_rank": 10
+        },
+        {
+          "from": "note11",
+          "to": "note12",
+          "neuron": "연산6",
+          "note": "(x-3)² ≤ n + 2 ⇔ -√(n+2) ≤ x-3 ≤ √(n+2) ⇔ 3-√(n+2) ≤ x ≤ 3+√(n+2)",
+          "main": true,
+          "difficulty_score": 11.2,
+          "difficulty_rank": 4
+        },
+        {
+          "from": "note12",
+          "to": "note13",
+          "neuron": "전략26",
+          "note": "정수해가 7개가 되려면 x = 6이 해에 포함되고 x = 7이 해에 포함되지 않아야 함",
+          "main": true,
+          "difficulty_score": 19.2,
+          "difficulty_rank": 2
+        },
+        {
+          "from": "note13",
+          "to": "note14",
+          "neuron": "연산21",
+          "note": "x = 6이 해에 포함: 6 ≤ 3+√(n+2) ⇔ √(n+2) ≥ 3 ⇔ n ≥ 7, x = 7이 해에 포함되지 않음: 7 > 3+√(n+2) ⇔ √(n+2) < 4 ⇔ n < 14",
+          "main": true,
+          "difficulty_score": 6.8,
+          "difficulty_rank": 9
+        },
+        {
+          "from": "note14",
+          "to": "note15",
+          "neuron": "전략2",
+          "note": "n < 12 (자연수), n ≥ 7, n < 14 조건을 종합하면 7 ≤ n ≤ 11인 자연수",
+          "main": true,
+          "difficulty_score": 4.5,
+          "difficulty_rank": 14
+        },
+        {
+          "from": "note15",
+          "to": "END",
+          "neuron": "전략10",
+          "note": "n = 7, 8, 9, 10, 11의 합 = 7+8+9+10+11 = 45",
+          "main": true,
+          "difficulty_score": 11.8,
+          "difficulty_rank": 3
+        }
+      ],
+      "edges": [
+        {
+          "edge_num": 1,
+          "from": "단서B",
+          "to": "note1",
+          "neuron": "사실59",
+          "to_type": "사실",
+          "note": "부등식이 정의되려면 f(1) > 0, f(1) ≠ 1, f(x) > 0, (n+1)/8 > 0이어야 함",
+          "think_tokens": 465,
+          "elapsed_ms": 39983,
+          "text_len": 61,
+          "normalized": 76,
+          "elapsed_ratio": 4.39,
+          "difficulty_score": 47.4,
+          "difficulty_rank": 1
+        },
+        {
+          "edge_num": 2,
+          "from": "note1",
+          "to": "note2",
+          "neuron": "연산7",
+          "to_type": "연산",
+          "note": "f(1) = (1/16){(1-3)²+n} = (1/16)(4+n) = (4+n)/16",
+          "think_tokens": 95,
+          "elapsed_ms": 7335,
+          "text_len": 51,
+          "normalized": 19,
+          "elapsed_ratio": 0.8,
+          "difficulty_score": 10.5,
+          "difficulty_rank": 5
+        },
+        {
+          "edge_num": 3,
+          "from": "note2",
+          "to": "note3",
+          "neuron": "전략12",
+          "to_type": "전략",
+          "note": "f(1) = (4+n)/16에서 n의 값에 따라 f(1) > 1인 경우와 0 < f(1) < 1인 경우로 나누어 분석",
+          "think_tokens": 48,
+          "elapsed_ms": 5807,
+          "text_len": 69,
+          "normalized": 7,
+          "elapsed_ratio": 0.64,
+          "difficulty_score": 5.3,
+          "difficulty_rank": 12
+        },
+        {
+          "edge_num": 4,
+          "from": "note3",
+          "to": "note4",
+          "neuron": "연산21",
+          "to_type": "연산",
+          "note": "f(1) > 1 ⇔ (4+n)/16 > 1 ⇔ 4+n > 16 ⇔ n > 12",
+          "think_tokens": 78,
+          "elapsed_ms": 5323,
+          "text_len": 47,
+          "normalized": 17,
+          "elapsed_ratio": 0.58,
+          "difficulty_score": 9.4,
+          "difficulty_rank": 6
+        },
+        {
+          "edge_num": 5,
+          "from": "note4",
+          "to": "note5",
+          "neuron": "사실12",
+          "to_type": "사실",
+          "note": "n > 12일 때 f(1) > 1이므로 log_{f(1)} f(x) ≥ log_{f(1)}((n+1)/8) ⇔ f(x) ≥ (n+1)/8",
+          "think_tokens": 99,
+          "elapsed_ms": 7903,
+          "text_len": 80,
+          "normalized": 12,
+          "elapsed_ratio": 0.87,
+          "difficulty_score": 7.5,
+          "difficulty_rank": 8
+        },
+        {
+          "edge_num": 6,
+          "from": "note5",
+          "to": "note6",
+          "neuron": "연산21",
+          "to_type": "연산",
+          "note": "f(x) ≥ (n+1)/8 ⇔ (1/16){(x-3)² + n} ≥ (n+1)/8 ⇔ (x-3)² ≥ n + 2",
+          "think_tokens": 66,
+          "elapsed_ms": 6056,
+          "text_len": 66,
+          "normalized": 10,
+          "elapsed_ratio": 0.66,
+          "difficulty_score": 5.6,
+          "difficulty_rank": 11
+        },
+        {
+          "edge_num": 7,
+          "from": "note6",
+          "to": "note7",
+          "neuron": "전략27",
+          "to_type": "전략",
+          "note": "n > 12일 때 (x-3)² ≥ n + 2를 만족하는 정수 x는 무한히 많으므로 정수해 개수가 7개 조건을 만족할 수 없음",
+          "think_tokens": 88,
+          "elapsed_ms": 8709,
+          "text_len": 73,
+          "normalized": 12,
+          "elapsed_ratio": 0.96,
+          "difficulty_score": 9.1,
+          "difficulty_rank": 7
+        },
+        {
+          "edge_num": 8,
+          "from": "note7",
+          "to": "note8",
+          "neuron": "연산21",
+          "to_type": "연산",
+          "note": "n < 12일 때 f(1) = (4+n)/16 < 1이므로 0 < f(1) < 1",
+          "think_tokens": 33,
+          "elapsed_ms": 4476,
+          "text_len": 49,
+          "normalized": 7,
+          "elapsed_ratio": 0.49,
+          "difficulty_score": 4,
+          "difficulty_rank": 16
+        },
+        {
+          "edge_num": 9,
+          "from": "note8",
+          "to": "note9",
+          "neuron": "사실12",
+          "to_type": "사실",
+          "note": "0 < f(1) < 1일 때 log_{f(1)} f(x) ≥ log_{f(1)}((n+1)/8) ⇔ f(x) ≤ (n+1)/8",
+          "think_tokens": 49,
+          "elapsed_ms": 5362,
+          "text_len": 74,
+          "normalized": 7,
+          "elapsed_ratio": 0.59,
+          "difficulty_score": 4.4,
+          "difficulty_rank": 15
+        },
+        {
+          "edge_num": 10,
+          "from": "note9",
+          "to": "note10",
+          "neuron": "사실1",
+          "to_type": "사실",
+          "note": "f(x) = (1/16){(x-3)² + n}에서 n은 자연수이므로 f(x) > 0이 항상 성립하여 0 < f(x) ≤ (n+1)/8",
+          "think_tokens": 58,
+          "elapsed_ms": 5767,
+          "text_len": 77,
+          "normalized": 8,
+          "elapsed_ratio": 0.63,
+          "difficulty_score": 5.1,
+          "difficulty_rank": 13
+        },
+        {
+          "edge_num": 11,
+          "from": "note10",
+          "to": "note11",
+          "neuron": "연산21",
+          "to_type": "연산",
+          "note": "0 < f(x) ≤ (n+1)/8 ⇔ 0 < (1/16){(x-3)² + n} ≤ (n+1)/8 ⇔ (x-3)² ≤ n + 2",
+          "think_tokens": 85,
+          "elapsed_ms": 6556,
+          "text_len": 74,
+          "normalized": 11,
+          "elapsed_ratio": 0.72,
+          "difficulty_score": 6.2,
+          "difficulty_rank": 10
+        },
+        {
+          "edge_num": 12,
+          "from": "note11",
+          "to": "note12",
+          "neuron": "연산6",
+          "to_type": "연산",
+          "note": "(x-3)² ≤ n + 2 ⇔ -√(n+2) ≤ x-3 ≤ √(n+2) ⇔ 3-√(n+2) ≤ x ≤ 3+√(n+2)",
+          "think_tokens": 133,
+          "elapsed_ms": 10958,
+          "text_len": 68,
+          "normalized": 20,
+          "elapsed_ratio": 1.2,
+          "difficulty_score": 11.2,
+          "difficulty_rank": 4
+        },
+        {
+          "edge_num": 13,
+          "from": "note12",
+          "to": "note13",
+          "neuron": "전략26",
+          "to_type": "전략",
+          "note": "정수해가 7개가 되려면 x = 6이 해에 포함되고 x = 7이 해에 포함되지 않아야 함",
+          "think_tokens": 137,
+          "elapsed_ms": 10053,
+          "text_len": 52,
+          "normalized": 26,
+          "elapsed_ratio": 1.1,
+          "difficulty_score": 19.2,
+          "difficulty_rank": 2
+        },
+        {
+          "edge_num": 14,
+          "from": "note13",
+          "to": "note14",
+          "neuron": "연산21",
+          "to_type": "연산",
+          "note": "x = 6이 해에 포함: 6 ≤ 3+√(n+2) ⇔ √(n+2) ≥ 3 ⇔ n ≥ 7, x = 7이 해에 포함되지 않음: 7 > 3+√(n+2) ⇔ √(n+2) < 4 ⇔ n < 14",
+          "think_tokens": 126,
+          "elapsed_ms": 8585,
+          "text_len": 106,
+          "normalized": 12,
+          "elapsed_ratio": 0.94,
+          "difficulty_score": 6.8,
+          "difficulty_rank": 9
+        },
+        {
+          "edge_num": 15,
+          "from": "note14",
+          "to": "note15",
+          "neuron": "전략2",
+          "to_type": "전략",
+          "note": "n < 12 (자연수), n ≥ 7, n < 14 조건을 종합하면 7 ≤ n ≤ 11인 자연수",
+          "think_tokens": 33,
+          "elapsed_ms": 4113,
+          "text_len": 55,
+          "normalized": 6,
+          "elapsed_ratio": 0.45,
+          "difficulty_score": 4.5,
+          "difficulty_rank": 14
+        },
+        {
+          "edge_num": 16,
+          "from": "note15",
+          "to": "END",
+          "neuron": "전략10",
+          "to_type": "END",
+          "note": "n = 7, 8, 9, 10, 11의 합 = 7+8+9+10+11 = 45",
+          "think_tokens": 87,
+          "elapsed_ms": 8894,
+          "text_len": 45,
+          "normalized": 19,
+          "elapsed_ratio": 0.98,
+          "difficulty_score": 11.8,
+          "difficulty_rank": 3
+        }
+      ],
+      "_debug": "OK"
+    },
+    "folders": [],
+    "history": [],
+    "created_at": "2026-03-21T18:39:15.659Z"
   }
 ]
