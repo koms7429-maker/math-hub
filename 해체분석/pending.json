@@ -1,512 +1,5 @@
 [
   {
-    "problem_id": "Problem19",
-    "content": "# Problem19. (Unknown Source) - Logarithm and Inequalities\n\n## Problem\n\n실수 $k(k > 4\\sqrt{5})$와 $2$ 이상의 자연수 $n$에 대하여 $x$에 대한 방정식\n\n$$\\frac{\\log_n(x^2-20)^n}{n} = \\frac{\\log_n(2x+k)^{n+1}}{n+1} + 1$$\n\n의 실근의 개수가 $3$이 되도록 하는 모든 $n$의 값이 $n_1, n_2 (n_2 > n_1 \\geq 2)$일 때, $k + n_2 - n_1$의 값은? [4점]\n\n## Choices\n① 10\n② 11\n③ 12\n④ 13\n⑤ 14\n\n**Answer**: ①\n**Difficulty**: unknown\n**Score**: 4점\n**Type**: multiple choice\n\n---\n\n## Solution\n\n문제의 방정식을 정리하면\n\n① $n$의 홀수일 때, $\\log_n(x^2-20) = \\log_n|2x+k|+1$\n\n$\\Rightarrow x^2 - 20 = 2n\\left|x + \\frac{k}{2}\\right|, x^2 - 20 > 0, x \\neq -\\frac{k}{2}$\n\n② $n$이 짝수일 때, $\\log_n|x^2-20| = \\log_n(2x+k)+1$\n\n$\\Rightarrow |x^2-20| = 2n\\left(x + \\frac{k}{2}\\right), x^2 \\neq 20, x > -\\frac{k}{2}$\n\n이때, 이때,\n\n$$k > 4\\sqrt{5} \\Rightarrow -\\frac{k}{2} < -2\\sqrt{5}$$\n\n앞을 함께 고려하면 문제의 방정식의 실근의 개수가 $3$이 되는 경우를 다음 그림과 같이 나타낼 수 있다.\n\n[FIGURE: 두 개의 그래프가 제시됨]\n- [1의 경우]: $y = x^2 - 20$와 $y = 2n\\left|x + \\frac{k}{2}\\right|$의 교점, $x < -2\\sqrt{5}$에서 $-2\\sqrt{5} < x$\n- [2의 경우]: $y = |x^2-20|$와 $y = 2n\\left(x + \\frac{k}{2}\\right)$의 교점, $-2\\sqrt{5} < x < 2\\sqrt{5}$에서\n\n위 그림을 참고하면 ①의 경우,\n\n$y = x^2 - 20$, $y = -2n\\left(x + \\frac{k}{2}\\right)$이 $x < -2\\sqrt{5}$에서 접함\n\n$\\Rightarrow x^2 + 2nx + kn - 20 = 0$이 $x < -2\\sqrt{5}$인 중근을 가짐\n\n$$\\begin{cases}\nD/4 = n^2 - kn + 20 = 0 \\cdots \\text{ⓐ} \\\\\n\\Rightarrow \\text{ⓑ (대칭축)} = -n < -2\\sqrt{5} \\Rightarrow n \\geq n > 2\\sqrt{5} \\text{ 인 홀수} \\\\\n\\Rightarrow n = 5, 7, \\cdots \\cdots \\text{ⓒ}\n\\end{cases}$$\n\n이고, ②의 경우,\n\n$y = -(x^2-20)$, $y = 2n\\left(x + \\frac{k}{2}\\right)$이 $-2\\sqrt{5} < x < 2\\sqrt{5}$에서 접함\n\n$\\Rightarrow x^2 + 2nx + kn - 20 = 0$이 $-2\\sqrt{5} < x < 2\\sqrt{5}$인 중근을 가짐\n\n$$\\begin{cases}\n\\text{중근을 가짐 조건과 ⓐ와 동일} \\\\\n\\bullet -2\\sqrt{5} < -n < 2\\sqrt{5} \\text{ (∵ ⓑ의 과정 참고)} \\\\\n\\Rightarrow \\text{짝수 } n: -2\\sqrt{5} < n < 2\\sqrt{5} \\text{인 짝수} \\\\\n\\Rightarrow n = 2, 4 \\cdots \\text{ⓔ}\n\\end{cases}$$\n\n이때,\n\n따라서 문제의 조건과 ⓐ에 의해,\n\n$$\\begin{cases}\nn \\text{에 대한 이차방정식 } n^2 - kn + 20 = 0 \\text{의} \\\\\n서로 다른 두 실근이 } n_1, n_2 \\text{ } (n_2 > n_1 \\geq 2)\n\\end{cases}$$\n\n임을 알 수 있고, 이때\n\n$$n_1 \\times n_2 = 20 \\text{ (∵ 근과 계수의 관계)}$$\n\n이므로\n\n$$\\text{ⓒ, ⓔ} \\Rightarrow n_1 = 4, n_2 = 5$$\n\n임을 알 수 있고,\n\n$$\\text{ⓐ} \\Rightarrow k = 9$$\n\n를 얻는다.\n\n$$\\therefore k + n_2 - n_1 = 9 + 5 - 4 = 10$$\n\n---",
-    "content_source": "FileLoop",
-    "content_length": 2226,
-    "skel_status": "pending",
-    "dna_status": "ok",
-    "needed_neurons": [
-      "사실N1",
-      "전략N1",
-      "전략N2"
-    ],
-    "needed_dna": [],
-    "previous_analysis": "",
-    "previous_matching": "1. 방정식 정리 시 n의 홀짝에 따라 경우 분리 → 전략12 매칭, 그러나 로그 지수의 홀짝 처리 자체(사실N1)는 미매칭\n2. 절댓값 분리 → 전략6 매칭\n3. 교점 개수가 3개인 조건 파악 → 전략5 매칭\n4. 그래프 접선 조건으로 환원 → 전략N2 미매칭\n5. 이차방정식 중근 조건(판별식=0) + 범위 조건 → 전략N1 미매칭\n6. 근과 계수의 관계 → 뉴런 목록에 없음(미매칭)\n7. n의 후보 전수조사 → 전략17 매칭",
-    "previous_matched": [
-      "전략12",
-      "사실4",
-      "전략22",
-      "전략6",
-      "연산9",
-      "전략5",
-      "사실35"
-    ],
-    "previous_skeleton": [],
-    "previous_new_neurons": [
-      {
-        "id": "사실N1",
-        "statement": "$\\log_n(f(x))^n / n$에서 $n$이 홀수이면 $\\log_n f(x)$, $n$이 짝수이면 $\\log_n |f(x)|$로 단순화된다 (거듭제곱근과 로그의 홀짝 정리)",
-        "type": "fact",
-        "reason": "방정식 $\\frac{\\log_n(x^2-20)^n}{n}$을 단순화하는 과정에서 $n$의 홀짝에 따라 절댓값 유무가 결정되는 단계가 매칭되는 뉴런 없음"
-      },
-      {
-        "id": "전략N1",
-        "statement": "이차방정식 $ax^2+bx+c=0$이 특정 범위에서 중근을 가지려면, 판별식=0 조건과 중근의 위치 조건을 동시에 적용한다",
-        "type": "strategy",
-        "reason": "접선 조건(판별식=0)과 중근의 위치 범위 조건을 함께 처리하는 단계가 매칭되는 뉴런 없음"
-      },
-      {
-        "id": "전략N2",
-        "statement": "두 곡선의 교점 개수 조건을 '한 교점이 접점(중근)'인 경우로 환원하여 분석한다",
-        "type": "strategy",
-        "reason": "그래프 교점 개수가 3이 되는 조건을 '특정 구간에서 접함'으로 환원하는 발상이 매칭되는 뉴런 없음"
-      }
-    ],
-    "previous_dna_nodes": [
-      {
-        "id": "top",
-        "dna": "Q1",
-        "label": "값을 구하라",
-        "category": "발문"
-      },
-      {
-        "id": "ask",
-        "dna": "E1",
-        "label": "k+n2-n1",
-        "category": "수식"
-      },
-      {
-        "id": "ask_kn2",
-        "dna": "E1",
-        "label": "합(k,n2)",
-        "category": "수식"
-      },
-      {
-        "id": "neg_n1",
-        "dna": "E2",
-        "label": "부호반전(n1)",
-        "category": "수식"
-      },
-      {
-        "id": "vk",
-        "dna": "T1",
-        "label": "변수 k",
-        "category": "말단"
-      },
-      {
-        "id": "vn1",
-        "dna": "T1",
-        "label": "변수 n1",
-        "category": "말단"
-      },
-      {
-        "id": "vn2",
-        "dna": "T1",
-        "label": "변수 n2",
-        "category": "말단"
-      },
-      {
-        "id": "vn",
-        "dna": "T1",
-        "label": "변수 n",
-        "category": "말단"
-      },
-      {
-        "id": "vx",
-        "dna": "T3",
-        "label": "독립변수 x",
-        "category": "말단"
-      },
-      {
-        "id": "c2",
-        "dna": "T2",
-        "label": "상수 2",
-        "category": "말단"
-      },
-      {
-        "id": "c20",
-        "dna": "T2",
-        "label": "상수 20",
-        "category": "말단"
-      },
-      {
-        "id": "c1",
-        "dna": "T2",
-        "label": "상수 1",
-        "category": "말단"
-      },
-      {
-        "id": "c4sqrt5",
-        "dna": "T2",
-        "label": "상수 4√5",
-        "category": "말단"
-      },
-      {
-        "id": "lim_k",
-        "dna": "C2",
-        "label": "k > 4√5",
-        "category": "제한"
-      },
-      {
-        "id": "lim_n_range",
-        "dna": "L2",
-        "label": "n ≥ 2",
-        "category": "제한"
-      },
-      {
-        "id": "lim_n_type",
-        "dna": "L3",
-        "label": "n은 자연수",
-        "category": "제한"
-      },
-      {
-        "id": "eq_main",
-        "dna": "C11",
-        "label": "주 방정식",
-        "category": "조건"
-      },
-      {
-        "id": "eq_c1",
-        "dna": "C1",
-        "label": "LHS = RHS",
-        "category": "조건"
-      },
-      {
-        "id": "lhs",
-        "dna": "E6",
-        "label": "좌변(log×1/n)",
-        "category": "수식"
-      },
-      {
-        "id": "lhs_log",
-        "dna": "E3",
-        "label": "log_n((x²-20)^n)",
-        "category": "수식"
-      },
-      {
-        "id": "lhs_base",
-        "dna": "T1",
-        "label": "밑 n (좌변)",
-        "category": "말단"
-      },
-      {
-        "id": "lhs_arg",
-        "dna": "E7",
-        "label": "(x²-20)^n",
-        "category": "수식"
-      },
-      {
-        "id": "x2_minus20",
-        "dna": "E1",
-        "label": "x²-20",
-        "category": "수식"
-      },
-      {
-        "id": "x2",
-        "dna": "E7",
-        "label": "x²",
-        "category": "수식"
-      },
-      {
-        "id": "neg20",
-        "dna": "E2",
-        "label": "-20",
-        "category": "수식"
-      },
-      {
-        "id": "inv_n",
-        "dna": "E7",
-        "label": "n^(-1)",
-        "category": "수식"
-      },
-      {
-        "id": "neg1",
-        "dna": "T2",
-        "label": "상수 -1",
-        "category": "말단"
-      },
-      {
-        "id": "rhs",
-        "dna": "E1",
-        "label": "우변(log항+1)",
-        "category": "수식"
-      },
-      {
-        "id": "rhs_log_term",
-        "dna": "E6",
-        "label": "log×1/(n+1)",
-        "category": "수식"
-      },
-      {
-        "id": "rhs_log",
-        "dna": "E3",
-        "label": "log_n((2x+k)^(n+1))",
-        "category": "수식"
-      },
-      {
-        "id": "rhs_base",
-        "dna": "T1",
-        "label": "밑 n (우변)",
-        "category": "말단"
-      },
-      {
-        "id": "rhs_arg",
-        "dna": "E7",
-        "label": "(2x+k)^(n+1)",
-        "category": "수식"
-      },
-      {
-        "id": "two_x_plus_k",
-        "dna": "E1",
-        "label": "2x+k",
-        "category": "수식"
-      },
-      {
-        "id": "two_x",
-        "dna": "E6",
-        "label": "2x",
-        "category": "수식"
-      },
-      {
-        "id": "np1",
-        "dna": "E1",
-        "label": "n+1",
-        "category": "수식"
-      },
-      {
-        "id": "inv_np1",
-        "dna": "E7",
-        "label": "(n+1)^(-1)",
-        "category": "수식"
-      },
-      {
-        "id": "cond_roots3",
-        "dna": "C9",
-        "label": "실근 개수=3",
-        "category": "조건"
-      },
-      {
-        "id": "cond_n_vals",
-        "dna": "S1",
-        "label": "n1,n2 조건묶음",
-        "category": "구조"
-      },
-      {
-        "id": "cond_n2_gt_n1",
-        "dna": "C2",
-        "label": "n2 > n1",
-        "category": "조건"
-      },
-      {
-        "id": "cond_n1_ge2",
-        "dna": "C2",
-        "label": "n1 ≥ 2",
-        "category": "조건"
-      }
-    ],
-    "previous_dna_edges": [
-      {
-        "from": "ask",
-        "to": "top"
-      },
-      {
-        "from": "ask_kn2",
-        "to": "ask"
-      },
-      {
-        "from": "neg_n1",
-        "to": "ask"
-      },
-      {
-        "from": "vk",
-        "to": "ask_kn2"
-      },
-      {
-        "from": "vn2",
-        "to": "ask_kn2"
-      },
-      {
-        "from": "vn1",
-        "to": "neg_n1"
-      },
-      {
-        "from": "lim_k",
-        "to": "top"
-      },
-      {
-        "from": "vk",
-        "to": "lim_k"
-      },
-      {
-        "from": "c4sqrt5",
-        "to": "lim_k"
-      },
-      {
-        "from": "lim_n_range",
-        "to": "top"
-      },
-      {
-        "from": "lim_n_type",
-        "to": "top"
-      },
-      {
-        "from": "vn",
-        "to": "lim_n_range"
-      },
-      {
-        "from": "vn",
-        "to": "lim_n_type"
-      },
-      {
-        "from": "cond_roots3",
-        "to": "top"
-      },
-      {
-        "from": "eq_main",
-        "to": "cond_roots3"
-      },
-      {
-        "from": "eq_c1",
-        "to": "eq_main"
-      },
-      {
-        "from": "lhs",
-        "to": "eq_c1"
-      },
-      {
-        "from": "rhs",
-        "to": "eq_c1"
-      },
-      {
-        "from": "lhs_log",
-        "to": "lhs"
-      },
-      {
-        "from": "inv_n",
-        "to": "lhs"
-      },
-      {
-        "from": "vn",
-        "to": "inv_n"
-      },
-      {
-        "from": "neg1",
-        "to": "inv_n"
-      },
-      {
-        "from": "lhs_base",
-        "to": "lhs_log"
-      },
-      {
-        "from": "lhs_arg",
-        "to": "lhs_log"
-      },
-      {
-        "from": "x2_minus20",
-        "to": "lhs_arg"
-      },
-      {
-        "from": "vn",
-        "to": "lhs_arg"
-      },
-      {
-        "from": "x2",
-        "to": "x2_minus20"
-      },
-      {
-        "from": "neg20",
-        "to": "x2_minus20"
-      },
-      {
-        "from": "vx",
-        "to": "x2"
-      },
-      {
-        "from": "c2",
-        "to": "x2"
-      },
-      {
-        "from": "c20",
-        "to": "neg20"
-      },
-      {
-        "from": "rhs_log_term",
-        "to": "rhs"
-      },
-      {
-        "from": "c1",
-        "to": "rhs"
-      },
-      {
-        "from": "rhs_log",
-        "to": "rhs_log_term"
-      },
-      {
-        "from": "inv_np1",
-        "to": "rhs_log_term"
-      },
-      {
-        "from": "np1",
-        "to": "inv_np1"
-      },
-      {
-        "from": "neg1",
-        "to": "inv_np1"
-      },
-      {
-        "from": "vn",
-        "to": "np1"
-      },
-      {
-        "from": "c1",
-        "to": "np1"
-      },
-      {
-        "from": "rhs_base",
-        "to": "rhs_log"
-      },
-      {
-        "from": "rhs_arg",
-        "to": "rhs_log"
-      },
-      {
-        "from": "two_x_plus_k",
-        "to": "rhs_arg"
-      },
-      {
-        "from": "np1",
-        "to": "rhs_arg"
-      },
-      {
-        "from": "two_x",
-        "to": "two_x_plus_k"
-      },
-      {
-        "from": "vk",
-        "to": "two_x_plus_k"
-      },
-      {
-        "from": "c2",
-        "to": "two_x"
-      },
-      {
-        "from": "vx",
-        "to": "two_x"
-      },
-      {
-        "from": "cond_n_vals",
-        "to": "top"
-      },
-      {
-        "from": "cond_n2_gt_n1",
-        "to": "cond_n_vals"
-      },
-      {
-        "from": "cond_n1_ge2",
-        "to": "cond_n_vals"
-      },
-      {
-        "from": "vn1",
-        "to": "cond_n2_gt_n1"
-      },
-      {
-        "from": "vn2",
-        "to": "cond_n2_gt_n1"
-      },
-      {
-        "from": "vn1",
-        "to": "cond_n1_ge2"
-      },
-      {
-        "from": "c2",
-        "to": "cond_n1_ge2"
-      }
-    ],
-    "created_at": "2026-03-21T07:50:50.075Z"
-  },
-  {
     "problem_id": "Problem11",
     "content": "# Problem11. (Unknown Source) - Logarithm and Geometry\n\n## Problem\n\n주어진 두 상수 $a(a>1)$, $b(0<b<1)$에 대하여 함수\n\n$$f(x) = |\\log_a(x+b)|$$\n\n의 그래프가 $x$축, $y$축과 만나는 점을 각각 P, Q라 하자. 점 Q를 지나고 $x$축과 평행한 직선이 곡선 $y=f(x)$와 만나는 점 중 Q가 아닌 점을 R이라 할 때, 삼각형 PQR의 외접원이 점 $(3, 0)$을 지나고 $y$축과 점 Q에서만 만난다. $a \\times b$의 값은? [14점]\n\n## Choices\n① $2^{-\\frac{2}{3}}$  ② $2^{-\\frac{1}{3}}$  ③ $1$  ④ $2^{\\frac{1}{3}}$  ⑤ $2^{\\frac{2}{3}}$\n\n**Answer**: ④ $2^{\\frac{1}{3}}$\n**Difficulty**: unknown\n**Score**: 14\n**Type**: multiple choice\n\n---\n\n## Solution\n\n[FIGURE: 그래프에 원과 삼각형이 그려져 있음]\n\n문제의 조건에 의해\n\n$$f(x)=0 \\Rightarrow \\log_a(x+b)=0 \\Rightarrow x=1-b \\Rightarrow P(1-b, 0)$$\n\n이고,\n\n$$f(x)=f(0) \\Rightarrow |\\log_a(x+b)| = |\\log_a b|$$\n\n$$\\Rightarrow x=0, \\quad x=\\frac{1}{b}-b$$\n\n$$\\Rightarrow Q(0, -\\log_a b), \\quad R\\left(\\frac{1}{b}-b, -\\log_a b\\right)$$\n\n이다. 이때, 삼각형 PQR의 외접원을 $C$라 하면\n\n원 $C$가 $y$축과 $\\left\\{\\begin{array}{l}\\text{점 Q에서 접함} \\\\ \\text{점 Q에서 원 C의 접선이 } y\\text{축과 수 직 P, } (3,0)\\text{에서 만남}\\end{array}\\right\\}$ $\\Rightarrow$ 선분 QR은 원 $C$의 지름 $\\cdots$ ⑤\n\n임을 알 수 있고,\n\n$$0<b<1 \\Rightarrow 0<(\\text{점 P의 }x\\text{좌표})<1$$\n\n$$\\Rightarrow \\text{원 }C\\text{는 }x\\text{축과 두 점 P, }(3,0)\\text{에서 만남}$$\n\n을 알 수 있다.\n\n점 $(3,0)$을 S라 하고 점 S에서 선분 QR에 내린 수선의 발을 H라 하자.\n\n위 그림에서 원의 대칭성에 의해\n\n(선분 PS의 중점의 $x$좌표) = (선분 QR의 중점의 $x$좌표)\n\n$$\\Rightarrow (1-b)+3 = \\frac{1}{b}-b$$\n\n$$\\Rightarrow b=\\frac{1}{4}$$\n\n이므로\n\n$$\\begin{cases}\nQ(0, 2\\log_a 2), & R\\left(\\frac{15}{4}, 2\\log_a 2\\right) \\\\\n\\overline{SH}^2 = \\overline{QH} \\times \\overline{RH} \\quad (\\because \\text{⑤} \\Rightarrow \\angle QSR = \\frac{\\pi}{2})\n\\end{cases}$$\n\n$$\\Rightarrow (2\\log_a 2)^2 = 3 \\times \\frac{3}{4}$$\n\n$$\\Rightarrow \\log_a 2 = \\frac{3}{4} \\quad (\\because a>1)$$\n\n$$\\Rightarrow a = 2^{\\frac{4}{3}}$$\n\n을 얻는다.\n\n$$\\therefore \\quad a \\times b = 2^{\\frac{4}{3}} \\times \\frac{1}{4} = 2^{\\frac{4}{3}} \\times 2^{-2} = 2^{\\frac{1}{3}}$$\n\n---",
     "content_source": "FileLoop",
@@ -1758,5 +1251,552 @@
       }
     ],
     "created_at": "2026-03-21T18:44:50.346Z"
+  },
+  {
+    "problem_id": "Problem19",
+    "content": "# Problem19. (Unknown Source) - Logarithm and Inequalities\n\n## Problem\n\n실수 $k(k > 4\\sqrt{5})$와 $2$ 이상의 자연수 $n$에 대하여 $x$에 대한 방정식\n\n$$\\frac{\\log_n(x^2-20)^n}{n} = \\frac{\\log_n(2x+k)^{n+1}}{n+1} + 1$$\n\n의 실근의 개수가 $3$이 되도록 하는 모든 $n$의 값이 $n_1, n_2 (n_2 > n_1 \\geq 2)$일 때, $k + n_2 - n_1$의 값은? [4점]\n\n## Choices\n① 10\n② 11\n③ 12\n④ 13\n⑤ 14\n\n**Answer**: ①\n**Difficulty**: unknown\n**Score**: 4점\n**Type**: multiple choice\n\n---\n\n## Solution\n\n문제의 방정식을 정리하면\n\n① $n$의 홀수일 때, $\\log_n(x^2-20) = \\log_n|2x+k|+1$\n\n$\\Rightarrow x^2 - 20 = 2n\\left|x + \\frac{k}{2}\\right|, x^2 - 20 > 0, x \\neq -\\frac{k}{2}$\n\n② $n$이 짝수일 때, $\\log_n|x^2-20| = \\log_n(2x+k)+1$\n\n$\\Rightarrow |x^2-20| = 2n\\left(x + \\frac{k}{2}\\right), x^2 \\neq 20, x > -\\frac{k}{2}$\n\n이때, 이때,\n\n$$k > 4\\sqrt{5} \\Rightarrow -\\frac{k}{2} < -2\\sqrt{5}$$\n\n앞을 함께 고려하면 문제의 방정식의 실근의 개수가 $3$이 되는 경우를 다음 그림과 같이 나타낼 수 있다.\n\n[FIGURE: 두 개의 그래프가 제시됨]\n- [1의 경우]: $y = x^2 - 20$와 $y = 2n\\left|x + \\frac{k}{2}\\right|$의 교점, $x < -2\\sqrt{5}$에서 $-2\\sqrt{5} < x$\n- [2의 경우]: $y = |x^2-20|$와 $y = 2n\\left(x + \\frac{k}{2}\\right)$의 교점, $-2\\sqrt{5} < x < 2\\sqrt{5}$에서\n\n위 그림을 참고하면 ①의 경우,\n\n$y = x^2 - 20$, $y = -2n\\left(x + \\frac{k}{2}\\right)$이 $x < -2\\sqrt{5}$에서 접함\n\n$\\Rightarrow x^2 + 2nx + kn - 20 = 0$이 $x < -2\\sqrt{5}$인 중근을 가짐\n\n$$\\begin{cases}\nD/4 = n^2 - kn + 20 = 0 \\cdots \\text{ⓐ} \\\\\n\\Rightarrow \\text{ⓑ (대칭축)} = -n < -2\\sqrt{5} \\Rightarrow n \\geq n > 2\\sqrt{5} \\text{ 인 홀수} \\\\\n\\Rightarrow n = 5, 7, \\cdots \\cdots \\text{ⓒ}\n\\end{cases}$$\n\n이고, ②의 경우,\n\n$y = -(x^2-20)$, $y = 2n\\left(x + \\frac{k}{2}\\right)$이 $-2\\sqrt{5} < x < 2\\sqrt{5}$에서 접함\n\n$\\Rightarrow x^2 + 2nx + kn - 20 = 0$이 $-2\\sqrt{5} < x < 2\\sqrt{5}$인 중근을 가짐\n\n$$\\begin{cases}\n\\text{중근을 가짐 조건과 ⓐ와 동일} \\\\\n\\bullet -2\\sqrt{5} < -n < 2\\sqrt{5} \\text{ (∵ ⓑ의 과정 참고)} \\\\\n\\Rightarrow \\text{짝수 } n: -2\\sqrt{5} < n < 2\\sqrt{5} \\text{인 짝수} \\\\\n\\Rightarrow n = 2, 4 \\cdots \\text{ⓔ}\n\\end{cases}$$\n\n이때,\n\n따라서 문제의 조건과 ⓐ에 의해,\n\n$$\\begin{cases}\nn \\text{에 대한 이차방정식 } n^2 - kn + 20 = 0 \\text{의} \\\\\n서로 다른 두 실근이 } n_1, n_2 \\text{ } (n_2 > n_1 \\geq 2)\n\\end{cases}$$\n\n임을 알 수 있고, 이때\n\n$$n_1 \\times n_2 = 20 \\text{ (∵ 근과 계수의 관계)}$$\n\n이므로\n\n$$\\text{ⓒ, ⓔ} \\Rightarrow n_1 = 4, n_2 = 5$$\n\n임을 알 수 있고,\n\n$$\\text{ⓐ} \\Rightarrow k = 9$$\n\n를 얻는다.\n\n$$\\therefore k + n_2 - n_1 = 9 + 5 - 4 = 10$$\n\n---",
+    "content_source": "FileLoop",
+    "content_length": 2226,
+    "skel_status": "neuron_missing",
+    "dna_status": "ok",
+    "needed_neurons": [
+      "사실80",
+      "사실81",
+      "전략38",
+      "전략39"
+    ],
+    "needed_dna": [],
+    "previous_analysis": "",
+    "previous_matching": "1. 로그 지수법칙으로 방정식 변환 → 연산17(역방향, 절댓값 미처리), 사실80 필요\n2. n의 홀짝에 따른 진수 조건 분리 → 사실76(부분 커버), 사실81 필요\n3. 방정식을 그래프 교점 문제로 변환 → 전략5(수평선만), 전략38 필요\n4. 접하는 경계 조건(판별식=0) → 전략38 필요\n5. 중근 위치 조건 → 전략22(케이스 분류)\n6. 두 근의 곱=20 → 전략39(근과 계수의 관계) 필요\n7. n1=4, n2=5 결정 → 전략25(대입 확인)\n8. k=9 계산 → 전략2(연립)\n9. 최종 답 계산 → 전략25",
+    "previous_matched": [
+      "연산17",
+      "연산2",
+      "사실76",
+      "전략5",
+      "전략22",
+      "전략25",
+      "전략2",
+      "사실4"
+    ],
+    "previous_skeleton": [],
+    "previous_new_neurons": [
+      {
+        "id": "사실80",
+        "statement": "로그의 지수 법칙: $\\log_a(A^m) = m\\log_a|A|$ (단, $A \\neq 0$, $a>0$, $a\\neq 1$)",
+        "type": "fact",
+        "reason": "STEP 1에서 $\\frac{\\log_n(x^2-20)^n}{n} = \\log_n|x^2-20|$로 변환하는 핵심 단계인데, 이를 커버하는 뉴런이 없다. 연산17($n\\log_a x = \\log_a x^n$)은 역방향이고 절댓값 처리가 없다."
+      },
+      {
+        "id": "사실81",
+        "statement": "$n$이 홀수이면 $(A)^n$의 부호는 $A$의 부호와 같고, $n$이 짝수이면 $(A)^n \\geq 0$이다 (단, $A \\neq 0$이면 양수)",
+        "type": "fact",
+        "reason": "STEP 1에서 $n$의 홀짝에 따라 로그 진수 조건이 달라지는 핵심 판단인데, 사실76은 $a<0$인 경우만 다루고 일반적인 거듭제곱 부호 판단을 커버하지 않는다."
+      },
+      {
+        "id": "전략38",
+        "statement": "방정식 $f(x)=g(x)$의 실근 개수를 두 함수의 그래프 교점 수로 해석하고, 접하는 경계 조건(판별식=0)으로 교점 개수 변화를 분석한다",
+        "type": "strategy",
+        "reason": "STEP 3, 4에서 포물선과 직선/V자형 함수의 교점 개수를 판별식으로 분석하는 전략이 필요하다. 전략5는 $f(x)=c$ 형태(수평선)만 다루고, 일반적인 두 함수의 교점 분석과 접선 조건(판별식=0)을 커버하지 않는다."
+      },
+      {
+        "id": "전략39",
+        "statement": "이차방정식 $ax^2+bx+c=0$의 두 근의 합과 곱을 계수로 표현한다 (근과 계수의 관계: 합$=-b/a$, 곱$=c/a$)",
+        "type": "strategy",
+        "reason": "STEP 5에서 $n^2-kn+20=0$의 두 근의 곱이 20임을 도출하는 핵심 단계인데, 이를 커버하는 뉴런이 없다."
+      }
+    ],
+    "previous_dna_nodes": [
+      {
+        "id": "top",
+        "dna": "Q1",
+        "label": "값을 구하라",
+        "category": "발문"
+      },
+      {
+        "id": "ask",
+        "dna": "E1",
+        "label": "합(k, n2, -n1)",
+        "category": "수식"
+      },
+      {
+        "id": "ask_kn2",
+        "dna": "E1",
+        "label": "합(k, n2)",
+        "category": "수식"
+      },
+      {
+        "id": "neg_n1",
+        "dna": "E2",
+        "label": "부호반전(n1)",
+        "category": "수식"
+      },
+      {
+        "id": "vk",
+        "dna": "T1",
+        "label": "변수 k",
+        "category": "말단"
+      },
+      {
+        "id": "vn1",
+        "dna": "T1",
+        "label": "변수 n1",
+        "category": "말단"
+      },
+      {
+        "id": "vn2",
+        "dna": "T1",
+        "label": "변수 n2",
+        "category": "말단"
+      },
+      {
+        "id": "vn",
+        "dna": "T3",
+        "label": "독립변수 n",
+        "category": "말단"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
+      },
+      {
+        "id": "c2",
+        "dna": "T2",
+        "label": "상수 2",
+        "category": "말단"
+      },
+      {
+        "id": "c1",
+        "dna": "T2",
+        "label": "상수 1",
+        "category": "말단"
+      },
+      {
+        "id": "c20",
+        "dna": "T2",
+        "label": "상수 20",
+        "category": "말단"
+      },
+      {
+        "id": "c4s5",
+        "dna": "T2",
+        "label": "상수 4√5",
+        "category": "말단"
+      },
+      {
+        "id": "lk_k",
+        "dna": "C2",
+        "label": "k > 4√5",
+        "category": "조건"
+      },
+      {
+        "id": "lk_n_nat",
+        "dna": "L3",
+        "label": "n은 자연수",
+        "category": "제한"
+      },
+      {
+        "id": "lk_n_ge2",
+        "dna": "L2",
+        "label": "n ≥ 2",
+        "category": "제한"
+      },
+      {
+        "id": "eq_main",
+        "dna": "C11",
+        "label": "x에 대한 방정식",
+        "category": "조건"
+      },
+      {
+        "id": "eq_c1",
+        "dna": "C1",
+        "label": "좌변=우변",
+        "category": "조건"
+      },
+      {
+        "id": "lhs",
+        "dna": "E6",
+        "label": "좌변 분수",
+        "category": "수식"
+      },
+      {
+        "id": "lhs_log",
+        "dna": "E3",
+        "label": "log_n((x²-20)^n)",
+        "category": "수식"
+      },
+      {
+        "id": "lhs_base",
+        "dna": "T3",
+        "label": "밑 n(좌)",
+        "category": "말단"
+      },
+      {
+        "id": "lhs_arg",
+        "dna": "E7",
+        "label": "(x²-20)^n",
+        "category": "수식"
+      },
+      {
+        "id": "x2m20",
+        "dna": "E1",
+        "label": "합(x², -20)",
+        "category": "수식"
+      },
+      {
+        "id": "x2",
+        "dna": "E7",
+        "label": "x²",
+        "category": "수식"
+      },
+      {
+        "id": "neg20",
+        "dna": "E2",
+        "label": "부호반전(20)",
+        "category": "수식"
+      },
+      {
+        "id": "lhs_n_exp",
+        "dna": "T3",
+        "label": "지수 n(좌)",
+        "category": "말단"
+      },
+      {
+        "id": "lhs_denom",
+        "dna": "T3",
+        "label": "분모 n(좌)",
+        "category": "말단"
+      },
+      {
+        "id": "lhs_inv_n",
+        "dna": "E7",
+        "label": "n^(-1)(좌)",
+        "category": "수식"
+      },
+      {
+        "id": "neg1",
+        "dna": "T2",
+        "label": "상수 -1",
+        "category": "말단"
+      },
+      {
+        "id": "rhs",
+        "dna": "E1",
+        "label": "우변 합",
+        "category": "수식"
+      },
+      {
+        "id": "rhs_frac",
+        "dna": "E6",
+        "label": "우변 분수",
+        "category": "수식"
+      },
+      {
+        "id": "rhs_log",
+        "dna": "E3",
+        "label": "log_n((2x+k)^(n+1))",
+        "category": "수식"
+      },
+      {
+        "id": "rhs_base",
+        "dna": "T3",
+        "label": "밑 n(우)",
+        "category": "말단"
+      },
+      {
+        "id": "rhs_arg",
+        "dna": "E7",
+        "label": "(2x+k)^(n+1)",
+        "category": "수식"
+      },
+      {
+        "id": "two_x_k",
+        "dna": "E1",
+        "label": "합(2x, k)",
+        "category": "수식"
+      },
+      {
+        "id": "two_x",
+        "dna": "E6",
+        "label": "곱(2, x)",
+        "category": "수식"
+      },
+      {
+        "id": "rhs_exp",
+        "dna": "E1",
+        "label": "지수 n+1",
+        "category": "수식"
+      },
+      {
+        "id": "rhs_denom",
+        "dna": "E1",
+        "label": "분모 n+1",
+        "category": "수식"
+      },
+      {
+        "id": "rhs_inv_np1",
+        "dna": "E7",
+        "label": "(n+1)^(-1)",
+        "category": "수식"
+      },
+      {
+        "id": "root_cnt3",
+        "dna": "C9",
+        "label": "실근 개수=3",
+        "category": "조건"
+      },
+      {
+        "id": "n1n2_def",
+        "dna": "S1",
+        "label": "n1,n2 정의",
+        "category": "구조"
+      },
+      {
+        "id": "n2_gt_n1",
+        "dna": "C2",
+        "label": "n2 > n1 ≥ 2",
+        "category": "조건"
+      }
+    ],
+    "previous_dna_edges": [
+      {
+        "from": "ask",
+        "to": "top"
+      },
+      {
+        "from": "ask_kn2",
+        "to": "ask"
+      },
+      {
+        "from": "neg_n1",
+        "to": "ask"
+      },
+      {
+        "from": "vk",
+        "to": "ask_kn2"
+      },
+      {
+        "from": "vn2",
+        "to": "ask_kn2"
+      },
+      {
+        "from": "vn1",
+        "to": "neg_n1"
+      },
+      {
+        "from": "lk_k",
+        "to": "top"
+      },
+      {
+        "from": "vk",
+        "to": "lk_k"
+      },
+      {
+        "from": "c4s5",
+        "to": "lk_k"
+      },
+      {
+        "from": "lk_n_nat",
+        "to": "vn"
+      },
+      {
+        "from": "lk_n_ge2",
+        "to": "vn"
+      },
+      {
+        "from": "eq_main",
+        "to": "top"
+      },
+      {
+        "from": "eq_c1",
+        "to": "eq_main"
+      },
+      {
+        "from": "lhs",
+        "to": "eq_c1"
+      },
+      {
+        "from": "rhs",
+        "to": "eq_c1"
+      },
+      {
+        "from": "lhs_log",
+        "to": "lhs"
+      },
+      {
+        "from": "lhs_inv_n",
+        "to": "lhs"
+      },
+      {
+        "from": "lhs_base",
+        "to": "lhs_log"
+      },
+      {
+        "from": "lhs_arg",
+        "to": "lhs_log"
+      },
+      {
+        "from": "x2m20",
+        "to": "lhs_arg"
+      },
+      {
+        "from": "lhs_n_exp",
+        "to": "lhs_arg"
+      },
+      {
+        "from": "x2",
+        "to": "x2m20"
+      },
+      {
+        "from": "neg20",
+        "to": "x2m20"
+      },
+      {
+        "from": "vx",
+        "to": "x2"
+      },
+      {
+        "from": "c2",
+        "to": "x2"
+      },
+      {
+        "from": "c20",
+        "to": "neg20"
+      },
+      {
+        "from": "lhs_denom",
+        "to": "lhs_inv_n"
+      },
+      {
+        "from": "neg1",
+        "to": "lhs_inv_n"
+      },
+      {
+        "from": "rhs_frac",
+        "to": "rhs"
+      },
+      {
+        "from": "c1",
+        "to": "rhs"
+      },
+      {
+        "from": "rhs_log",
+        "to": "rhs_frac"
+      },
+      {
+        "from": "rhs_inv_np1",
+        "to": "rhs_frac"
+      },
+      {
+        "from": "rhs_base",
+        "to": "rhs_log"
+      },
+      {
+        "from": "rhs_arg",
+        "to": "rhs_log"
+      },
+      {
+        "from": "two_x_k",
+        "to": "rhs_arg"
+      },
+      {
+        "from": "rhs_exp",
+        "to": "rhs_arg"
+      },
+      {
+        "from": "two_x",
+        "to": "two_x_k"
+      },
+      {
+        "from": "vk",
+        "to": "two_x_k"
+      },
+      {
+        "from": "c2",
+        "to": "two_x"
+      },
+      {
+        "from": "vx",
+        "to": "two_x"
+      },
+      {
+        "from": "vn",
+        "to": "rhs_exp"
+      },
+      {
+        "from": "c1",
+        "to": "rhs_exp"
+      },
+      {
+        "from": "rhs_denom",
+        "to": "rhs_inv_np1"
+      },
+      {
+        "from": "neg1",
+        "to": "rhs_inv_np1"
+      },
+      {
+        "from": "vn",
+        "to": "rhs_denom"
+      },
+      {
+        "from": "c1",
+        "to": "rhs_denom"
+      },
+      {
+        "from": "vn",
+        "to": "lhs_base"
+      },
+      {
+        "from": "vn",
+        "to": "lhs_n_exp"
+      },
+      {
+        "from": "vn",
+        "to": "lhs_denom"
+      },
+      {
+        "from": "vn",
+        "to": "rhs_base"
+      },
+      {
+        "from": "root_cnt3",
+        "to": "top"
+      },
+      {
+        "from": "eq_main",
+        "to": "root_cnt3"
+      },
+      {
+        "from": "n1n2_def",
+        "to": "top"
+      },
+      {
+        "from": "vn1",
+        "to": "n1n2_def"
+      },
+      {
+        "from": "vn2",
+        "to": "n1n2_def"
+      },
+      {
+        "from": "n2_gt_n1",
+        "to": "n1n2_def"
+      },
+      {
+        "from": "vn2",
+        "to": "n2_gt_n1"
+      },
+      {
+        "from": "vn1",
+        "to": "n2_gt_n1"
+      },
+      {
+        "from": "c2",
+        "to": "n2_gt_n1"
+      }
+    ],
+    "created_at": "2026-03-21T18:47:51.487Z"
   }
 ]
