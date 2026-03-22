@@ -798,5 +798,272 @@
     "recovery_warnings": [],
     "errata": [],
     "created_at": "2026-03-22T17:07:21.255Z"
+  },
+  {
+    "problem_id": "Problem15",
+    "answer": "150",
+    "clues": [
+      {
+        "id": "단서A",
+        "text": "$2 \\leq n \\leq 50$인 자연수 $n$"
+      },
+      {
+        "id": "단서B",
+        "text": "$-\\sqrt[5]{4}$이 어떤 자연수의 $n$제곱근이 된다"
+      }
+    ],
+    "skeleton": [
+      {
+        "from": "단서B",
+        "to": "note1",
+        "neuron": "사실74",
+        "note": "$-\\sqrt[5]{4} < 0$이므로 음의 $n$제곱근이 존재하려면 $n$이 홀수이거나, 밑이 양수이고 $n$이 짝수이어야 한다. 여기서 자연수의 $n$제곱근이므로 $n$이 짝수이어야 한다",
+        "main": true,
+        "step": 1
+      },
+      {
+        "from": "단서B",
+        "to": "note2",
+        "neuron": "사실4",
+        "note": "$n$이 짝수일 때 자연수 $a$의 $n$제곱근 중 음수는 $-a^{\\frac{1}{n}}$이다",
+        "main": true,
+        "step": 2
+      },
+      {
+        "from": "note2",
+        "to": "note3",
+        "neuron": "전략2",
+        "note": "$-a^{\\frac{1}{n}} = -\\sqrt[5]{4}$이므로 $a^{\\frac{1}{n}} = 2^{\\frac{2}{5}}$이다",
+        "main": true,
+        "step": 2
+      },
+      {
+        "from": "note3",
+        "to": "note4",
+        "neuron": "연산4",
+        "note": "$a = \\left(2^{\\frac{2}{5}}\\right)^n = 2^{\\frac{2n}{5}}$이다",
+        "main": true,
+        "step": 2
+      },
+      {
+        "from": "note4",
+        "to": "note5",
+        "neuron": "전략37",
+        "note": "$a = 2^{\\frac{2n}{5}}$이 자연수이려면 $\\frac{2n}{5}$이 양의 정수이어야 한다",
+        "main": true,
+        "step": 3
+      },
+      {
+        "from": "note5",
+        "to": "note6",
+        "neuron": "사실75",
+        "note": "$5 \\mid 2n$이고 $\\gcd(2,5)=1$이므로 $5 \\mid n$이다",
+        "main": true,
+        "step": 3
+      },
+      {
+        "from": [
+          "note1",
+          "note6"
+        ],
+        "to": "note7",
+        "neuron": "사실66",
+        "note": "$2 \\mid n$이고 $5 \\mid n$이면 $\\text{lcm}(2,5)=10$이므로 $10 \\mid n$이다",
+        "main": true,
+        "step": 3
+      },
+      {
+        "from": [
+          "단서A",
+          "note7"
+        ],
+        "to": "note8",
+        "neuron": "전략17",
+        "note": "$2 \\leq n \\leq 50$에서 $10$의 배수인 $n$은 $10, 20, 30, 40, 50$이다",
+        "main": true,
+        "step": 4
+      },
+      {
+        "from": "note8",
+        "to": "END",
+        "neuron": "연산28",
+        "note": "합은 $10+20+30+40+50=150$이다",
+        "main": true,
+        "step": 5
+      }
+    ],
+    "solution": "STEP 1. $-\\sqrt[5]{4} < 0$이므로, 자연수 $a$의 $n$제곱근 중 음수가 존재하려면 $n$이 짝수이어야 한다.\n\nSTEP 2. $n$이 짝수일 때 자연수 $a$의 $n$제곱근 중 음수는 $-a^{\\frac{1}{n}}$이다. $-a^{\\frac{1}{n}} = -\\sqrt[5]{4}$이므로 $a^{\\frac{1}{n}} = 2^{\\frac{2}{5}}$이다. 따라서 $a = 2^{\\frac{2n}{5}}$이다.\n\nSTEP 3. $a = 2^{\\frac{2n}{5}}$이 자연수이려면 $\\frac{2n}{5}$이 양의 정수이어야 한다. $\\gcd(2,5)=1$이므로 $5 \\mid n$이다. $2 \\mid n$이고 $5 \\mid n$이면 $\\text{lcm}(2,5)=10$이므로 $10 \\mid n$이다.\n\nSTEP 4. $2 \\leq n \\leq 50$에서 $10$의 배수인 $n$은 $10, 20, 30, 40, 50$이다.\n\nSTEP 5. 구하는 합은 $10+20+30+40+50=\\boxed{150}$이다.",
+    "original_solution": "문제에서의 어떤 자연수를 $a$라 하면\n\n$a > 0 \\Rightarrow a$의 $n$제곱근은 $\\begin{cases} \\text{• } n\\text{이 홀수이면 } a^{\\frac{1}{n}} \\ (>0) \\\\ \\text{• } n\\text{이 짝수이면 } \\pm a^{\\frac{1}{n}} \\end{cases}$\n\n이므로\n\n$-\\sqrt[4]{4}$이 $a$의 $n$제곱근 $\\Rightarrow \\begin{cases} \\text{① } n\\text{은 짝수 } (\\because -\\sqrt[4]{4} < 0) \\\\ \\text{② } -\\sqrt[4]{4} = -a^{\\frac{1}{n}} \\end{cases}$\n\n임을 알 수 있다.\n\n따라서\n\n$$\\text{②} \\Rightarrow a = (\\sqrt[4]{4})^n = 2^{\\frac{2n}{5}} \\text{의 값이 자연수}$$\n\n$$\\Rightarrow n = 10, \\ 20, \\ \\cdots \\ \\ (\\because \\text{①})$$\n\n$$\\Rightarrow \\left|\\begin{array}{c} 2 \\leq n \\leq 50\\text{인 모든} \\\\ \\text{자연수 } n\\text{의 값의} \\\\ \\text{합} \\end{array}\\right| = 10 + 20 + 30 + 40 + 50 = 150$$\n\n을 얻는다.\n\n---",
+    "analysis": "문제의 √[4]{4}는 √[5]{4}의 오기. 올바른 풀이: -√[5]{4}가 자연수 a의 n제곱근 → n짝수(음수 조건) + a=2^{2n/5}가 자연수(5|n) → 10|n → n=10,20,30,40,50 → 합=150",
+    "new_neurons": [],
+    "metadata": {
+      "unit": "지수와 로그",
+      "difficulty": "중",
+      "score": "4",
+      "type": "객관식",
+      "answer": "③ 150"
+    },
+    "edge_count": 7,
+    "side_count": 0,
+    "statement": "# Problem15. (Unknown Source) - Exponents and Radicals\n\n## Problem\n\n$2 \\leq n \\leq 50$인 자연수 $n$에 대하여 $-\\sqrt[4]{4}$이 어떤 자연수의 $n$제곱근이 되도록 하는 모든 $n$의 값의 합은? [4점]",
+    "dna": {
+      "nodes": [
+        {
+          "id": "top",
+          "dna": "Q3",
+          "label": "n값의 합",
+          "category": "발문"
+        },
+        {
+          "id": "vn",
+          "dna": "T1",
+          "label": "변수 n",
+          "category": "말단"
+        },
+        {
+          "id": "lim_n_range",
+          "dna": "L2",
+          "label": "2≤n≤50",
+          "category": "제한"
+        },
+        {
+          "id": "lim_n_nat",
+          "dna": "L3",
+          "label": "n은 자연수",
+          "category": "제한"
+        },
+        {
+          "id": "c2",
+          "dna": "T2",
+          "label": "상수 2",
+          "category": "말단"
+        },
+        {
+          "id": "c50",
+          "dna": "T2",
+          "label": "상수 50",
+          "category": "말단"
+        },
+        {
+          "id": "c4",
+          "dna": "T2",
+          "label": "상수 4",
+          "category": "말단"
+        },
+        {
+          "id": "sqrt4_4",
+          "dna": "E8",
+          "label": "⁴√4",
+          "category": "수식"
+        },
+        {
+          "id": "neg_sqrt",
+          "dna": "E2",
+          "label": "-⁴√4",
+          "category": "수식"
+        },
+        {
+          "id": "va",
+          "dna": "T1",
+          "label": "변수 a",
+          "category": "말단"
+        },
+        {
+          "id": "lim_a_nat",
+          "dna": "L3",
+          "label": "a는 자연수",
+          "category": "제한"
+        },
+        {
+          "id": "nthroot_a",
+          "dna": "F7",
+          "label": "a의 n제곱근",
+          "category": "함수"
+        },
+        {
+          "id": "exist_a",
+          "dna": "X5",
+          "label": "자연수 a 존재",
+          "category": "존재"
+        },
+        {
+          "id": "eq_nthroot",
+          "dna": "C1",
+          "label": "-⁴√4=n제곱근",
+          "category": "조건"
+        },
+        {
+          "id": "conds",
+          "dna": "S1",
+          "label": "전체 조건",
+          "category": "구조"
+        }
+      ],
+      "edges": [
+        {
+          "from": "c2",
+          "to": "lim_n_range"
+        },
+        {
+          "from": "c50",
+          "to": "lim_n_range"
+        },
+        {
+          "from": "lim_n_range",
+          "to": "vn"
+        },
+        {
+          "from": "lim_n_nat",
+          "to": "vn"
+        },
+        {
+          "from": "c4",
+          "to": "sqrt4_4"
+        },
+        {
+          "from": "sqrt4_4",
+          "to": "neg_sqrt"
+        },
+        {
+          "from": "lim_a_nat",
+          "to": "va"
+        },
+        {
+          "from": "va",
+          "to": "nthroot_a"
+        },
+        {
+          "from": "vn",
+          "to": "nthroot_a"
+        },
+        {
+          "from": "neg_sqrt",
+          "to": "eq_nthroot"
+        },
+        {
+          "from": "nthroot_a",
+          "to": "eq_nthroot"
+        },
+        {
+          "from": "eq_nthroot",
+          "to": "exist_a"
+        },
+        {
+          "from": "exist_a",
+          "to": "conds"
+        },
+        {
+          "from": "conds",
+          "to": "top"
+        }
+      ],
+      "new_dna": []
+    },
+    "thinking_profile": null,
+    "folders": [],
+    "history": [],
+    "recovery_warnings": [],
+    "errata": [],
+    "created_at": "2026-03-22T17:09:53.289Z"
   }
 ]
