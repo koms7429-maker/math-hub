@@ -1900,5 +1900,714 @@
     "recovery_warnings": [],
     "errata": [],
     "created_at": "2026-03-22T17:14:44.670Z"
+  },
+  {
+    "problem_id": "Problem17",
+    "answer": "①127/27",
+    "clues": [
+      {
+        "id": "단서A",
+        "text": "$f(x) = \\begin{cases} a^{x-1}+1 & (x < 2) \\\\ -2x+9 & (x \\geq 2) \\end{cases}$, $1 < a < 4$"
+      },
+      {
+        "id": "단서B",
+        "text": "$g(t) = \\max(f(t),\\, f(t+2))$"
+      },
+      {
+        "id": "단서C",
+        "text": "조건 (가): $g(t)=k$를 만족시키는 실수 $t$의 개수가 $3$이다."
+      },
+      {
+        "id": "단서D",
+        "text": "조건 (나): $g(k-3)=k$"
+      }
+    ],
+    "skeleton": [
+      {
+        "from": "단서A",
+        "to": "note1",
+        "neuron": "사실5",
+        "note": "$a > 1$이므로 $x < 2$에서 $f(x) = a^{x-1}+1$은 단조증가이다. $f(1)=2$이고 $x \\to 2^-$이면 $f(x) \\to a+1$이다.",
+        "main": true,
+        "step": 1
+      },
+      {
+        "from": "단서A",
+        "to": "note2",
+        "neuron": "사실38",
+        "note": "$x \\geq 2$에서 $f(x) = -2x+9$는 단조감소이다. $f(2)=5$, $f(3)=3$, $f(4)=1$이다.",
+        "main": true,
+        "step": 1
+      },
+      {
+        "from": "단서A",
+        "to": "note3",
+        "neuron": "연산7",
+        "note": "$f(t+2)$는 $f(x)$를 $x$축 방향으로 $-2$만큼 평행이동한 것이다. $t < 0$이면 $f(t+2)=a^{t+1}+1$, $t \\geq 0$이면 $f(t+2)=-2t+5$이다.",
+        "main": true,
+        "step": 2
+      },
+      {
+        "from": "note3",
+        "to": "note4",
+        "neuron": "사실5",
+        "note": "$t < 0$에서 $f(t+2)=a^{t+1}+1$은 단조증가이고, $t \\to 0^-$이면 $a+1$에 수렴한다.",
+        "main": false,
+        "step": 2
+      },
+      {
+        "from": "note3",
+        "to": "note5",
+        "neuron": "사실38",
+        "note": "$0 \\leq t$에서 $f(t+2)=-2t+5$는 단조감소이다. $t=1$에서 $f(t+2)=3$, $t=2$에서 $f(t+2)=1$이다.",
+        "main": false,
+        "step": 2
+      },
+      {
+        "from": [
+          "note1",
+          "note5"
+        ],
+        "to": "note6",
+        "neuron": "전략22",
+        "note": "$1 < t < 2$ 구간에서 $t=1$이면 $f(t)=2 < 3=f(t+2)$이고, $t \\to 2^-$이면 $f(t) \\to a+1 > 1 = f(t+2)$이다.",
+        "main": true,
+        "step": 3
+      },
+      {
+        "from": "note6",
+        "to": "note7",
+        "neuron": "사실22",
+        "note": "$1 < c < 2$인 점 $t=c$에서 $f(c)=f(c+2)$가 성립한다. 즉 $a^{c-1}+1 = -2c+5$이다.",
+        "main": true,
+        "step": 3
+      },
+      {
+        "from": [
+          "단서B",
+          "note7"
+        ],
+        "to": "note8",
+        "neuron": "전략6",
+        "note": "$g(t) = \\begin{cases} f(t+2) & (t < c) \\\\ f(t) & (t \\geq c) \\end{cases}$이다.",
+        "main": true,
+        "step": 4
+      },
+      {
+        "from": "note8",
+        "to": "note9",
+        "neuron": "사실46",
+        "note": "$t \\to -\\infty$이면 $g(t) = a^{t+1}+1 \\to 1$이고, $t=0$에서 $g(0^-)=a+1$에서 $g(0)=5$로 불연속 점프가 있다. $t=2$에서도 $g(2^-)=a+1$에서 $g(2)=5$로 불연속 점프가 있다.",
+        "main": true,
+        "step": 4
+      },
+      {
+        "from": [
+          "note8",
+          "note7"
+        ],
+        "to": "note10",
+        "neuron": "사실19",
+        "note": "$t=c$에서 $g(c) = -2c+5 = a^{c-1}+1$이고, $1 < c < 2$이므로 $1 < g(c) < 3$이다.",
+        "main": true,
+        "step": 5
+      },
+      {
+        "from": [
+          "note8",
+          "note10"
+        ],
+        "to": "note11",
+        "neuron": "전략5",
+        "note": "$g(t)=k$의 해의 개수는 수평선 $y=k$와 $g(t)$ 그래프의 교점 수와 같다. $k=g(c)$일 때 해가 정확히 3개이다: $t<0$에서 1개, $t=c$에서 1개, $t>2$에서 1개.",
+        "main": true,
+        "step": 5
+      },
+      {
+        "from": "note11",
+        "to": "note12",
+        "neuron": "사실43",
+        "note": "$g(c) < k < a+1$이면 $t<0$, $0 \\leq t < c$, $c \\leq t < 2$, $t>2$ 각 구간에서 해가 1개씩 총 4개이다.",
+        "main": false,
+        "step": 5
+      },
+      {
+        "from": "note12",
+        "to": "note13",
+        "neuron": "전략23",
+        "note": "$g(c) < k < a+1$인 경우는 해가 4개이므로 조건 (가)를 만족하지 않아 배제된다.",
+        "main": false,
+        "step": 5
+      },
+      {
+        "from": "note11",
+        "to": "note14",
+        "neuron": "사실43",
+        "note": "$a+1 \\leq k < 5$이면 $t<0$ 구간에서 해가 없고 총 해가 2개 이하이다.",
+        "main": false,
+        "step": 5
+      },
+      {
+        "from": "note14",
+        "to": "note15",
+        "neuron": "전략23",
+        "note": "$a+1 \\leq k < 5$인 경우는 해가 3개가 되지 않으므로 배제된다.",
+        "main": false,
+        "step": 5
+      },
+      {
+        "from": [
+          "단서C",
+          "note11"
+        ],
+        "to": "note16",
+        "neuron": "전략20",
+        "note": "조건 (가)를 만족하는 경우는 $k = g(c)$이고 $1 < k < 3$이다.",
+        "main": true,
+        "step": 5
+      },
+      {
+        "from": [
+          "단서D",
+          "note16"
+        ],
+        "to": "note17",
+        "neuron": "전략6",
+        "note": "$1 < k < 3$이므로 $-2 < k-3 < 0$이다. 따라서 $g(k-3) = a^{(k-3)+1}+1 = a^{k-2}+1 = k$이다.",
+        "main": true,
+        "step": 6
+      },
+      {
+        "from": "note17",
+        "to": "note18",
+        "neuron": "연산21",
+        "note": "$a^{k-2} = k-1$ $\\cdots (**)$이다.",
+        "main": true,
+        "step": 6
+      },
+      {
+        "from": "note16",
+        "to": "note19",
+        "neuron": "연산21",
+        "note": "$k = -2c+5$이므로 $c = \\dfrac{5-k}{2}$이고, $c-1 = \\dfrac{3-k}{2}$이다.",
+        "main": true,
+        "step": 7
+      },
+      {
+        "from": [
+          "note7",
+          "note19"
+        ],
+        "to": "note20",
+        "neuron": "연산28",
+        "note": "$a^{c-1} = k-1$에 $c-1 = \\dfrac{3-k}{2}$를 대입하면 $a^{\\frac{3-k}{2}} = k-1$ $\\cdots (*)$이다.",
+        "main": true,
+        "step": 7
+      },
+      {
+        "from": [
+          "note18",
+          "note20"
+        ],
+        "to": "note21",
+        "neuron": "사실58",
+        "note": "$a^{\\frac{3-k}{2}} = a^{k-2}$이고 $a > 1$이므로 지수가 같다: $\\dfrac{3-k}{2} = k-2$이다.",
+        "main": true,
+        "step": 8
+      },
+      {
+        "from": "note21",
+        "to": "note22",
+        "neuron": "연산28",
+        "note": "$3-k = 2k-4$이므로 $3k = 7$, $k = \\dfrac{7}{3}$이다.",
+        "main": true,
+        "step": 8
+      },
+      {
+        "from": [
+          "note22",
+          "note18"
+        ],
+        "to": "note23",
+        "neuron": "전략25",
+        "note": "$k = \\dfrac{7}{3}$을 $(**)$에 대입하면 $a^{\\frac{1}{3}} = \\dfrac{4}{3}$이므로 $a = \\left(\\dfrac{4}{3}\\right)^3 = \\dfrac{64}{27}$이다.",
+        "main": true,
+        "step": 9
+      },
+      {
+        "from": [
+          "note23",
+          "note22"
+        ],
+        "to": "END",
+        "neuron": "연산28",
+        "note": "$a + k = \\dfrac{64}{27} + \\dfrac{7}{3} = \\dfrac{64}{27} + \\dfrac{63}{27} = \\dfrac{127}{27}$이다.",
+        "main": true,
+        "step": 10
+      }
+    ],
+    "solution": "STEP 1. $a > 1$이므로 $x < 2$에서 $f(x) = a^{x-1}+1$은 단조증가이며 $f(1)=2$, $x \\to 2^-$이면 $f(x) \\to a+1$이다. $x \\geq 2$에서 $f(x)=-2x+9$는 단조감소이며 $f(2)=5$, $f(3)=3$, $f(4)=1$이다.\n\nSTEP 2. $f(t+2)$는 $f(x)$를 $x$축 방향으로 $-2$만큼 평행이동한 것이므로, $t < 0$이면 $f(t+2)=a^{t+1}+1$, $t \\geq 0$이면 $f(t+2)=-2t+5$이다.\n\nSTEP 3. $1 < t < 2$ 구간에서 $t=1$이면 $f(t)=2 < 3=f(t+2)$이고, $t \\to 2^-$이면 $f(t) \\to a+1 > 1 = f(t+2)$이다. 중간값 정리에 의해 $1 < c < 2$인 점 $t=c$에서 $f(c)=f(c+2)$, 즉 $a^{c-1}+1 = -2c+5$가 성립한다.\n\nSTEP 4. $g(t) = \\begin{cases} f(t+2) & (t < c) \\\\ f(t) & (t \\geq c) \\end{cases}$이다. $t \\to -\\infty$이면 $g(t) \\to 1$이고, $t=0$에서 $g(0^-)=a+1$에서 $g(0)=5$로 불연속 점프가 있다. $t=2$에서도 $g(2^-)=a+1$에서 $g(2)=5$로 불연속 점프가 있다. $t=c$에서 $g(c) = -2c+5 = a^{c-1}+1$이고 $1 < c < 2$이므로 $1 < g(c) < 3$이다.\n\nSTEP 5. $g(t)=k$의 해의 개수를 분석하면, $k=g(c)$일 때 $t<0$에서 1개, $t=c$에서 1개, $t>2$에서 1개로 총 3개이다. $g(c) < k < a+1$이면 4개, $a+1 \\leq k$이면 2개 이하이므로 배제된다. 따라서 조건 (가)를 만족하는 경우는 $k = g(c)$이고 $1 < k < 3$이다.\n\nSTEP 6. $1 < k < 3$이므로 $k-3 < 0$이다. 조건 (나) $g(k-3)=k$에서 $a^{k-2}+1 = k$이므로 $a^{k-2} = k-1$ $\\cdots (**)$이다.\n\nSTEP 7. $k = -2c+5$이므로 $c-1 = \\dfrac{3-k}{2}$이다. $a^{c-1} = k-1$에 대입하면 $a^{\\frac{3-k}{2}} = k-1$ $\\cdots (*)$이다.\n\nSTEP 8. $(*)$와 $(**)$에서 $a^{\\frac{3-k}{2}} = a^{k-2}$이고 $a > 1$이므로 $\\dfrac{3-k}{2} = k-2$이다. 풀면 $k = \\dfrac{7}{3}$이다.\n\nSTEP 9. $k = \\dfrac{7}{3}$을 $(**)$에 대입하면 $a^{\\frac{1}{3}} = \\dfrac{4}{3}$이므로 $a = \\dfrac{64}{27}$이다.\n\nSTEP 10. $a + k = \\dfrac{64}{27} + \\dfrac{7}{3} = \\dfrac{64}{27} + \\dfrac{63}{27} = \\dfrac{127}{27}$이다.",
+    "original_solution": "[FIGURE: Graph showing $y=f(x)$, $y=f(x+2)$, $y=g(x)$, and horizontal line $y=k$]\n\n문제의 $f(x)$의 성질:\n① 곡선 $y=a^{x-1}+1$은 점 $(1,2)$를 지나며 증가 ($\\because a>1$)\n② 직선 $y=-2x+9$는 두 점 $(3,3)$, $(4,1)$을 지남\n\n이고,\n\n$y=f(x+2)$는 $y=f(x)$를 $x$축의 방향으로 $-2$만큼 평행이동시킨 곡선\n\n이므로\n\n② $\\Rightarrow y=f(x+2)$는 두 점 $(1,3)$, $(2,1)$을 지남\n\n$\\Rightarrow y=f(x)$와 $y=f(x+2)$는 $x=c$ $(1<c<2)$에서 만남 ($\\because$ ①)\n\n를 알 수 있다. 따라서 다음 그림을 참고하면\n\n$$g(x) = \\begin{cases} f(x+2) & (x < c) \\\\ f(x) & (x \\geq c) \\end{cases} \\cdots \\circled{1}$$\n\n이므로\n\n$g(t)=k$를 만족시키는 실수 $t$의 개수가 $3 \\Rightarrow g(c)=k \\cdots \\circled{2}$\n$\\Rightarrow 2<k<3 \\cdots \\circled{3}$\n\n임을 알 수 있다.\n\n이때,\n\n(나) $\\Rightarrow g(t)=k$의 해 실수 중 가장 작은 단위 $k-3$ ($\\because$ ②, ③ $\\Rightarrow k-3<0$)\n\n$\\Rightarrow c=(k-3)+2=k-1$ ($\\because$ 평행이동)\n\n이므로\n\n$$\\circled{1}, \\circled{2} \\Rightarrow \\begin{cases} -2(k-1)+5=k \\\\ a^{k-2}+1=k \\end{cases}$$\n\n$$\\Rightarrow k=\\frac{7}{3}, \\quad a=\\frac{64}{27}$$\n\n를 얻는다.\n\n$$\\therefore a+k = \\frac{64}{27} + \\frac{7}{3} = \\frac{127}{27}$$\n\n---",
+    "analysis": "g(t)=max(f(t),f(t+2))의 구조를 파악하고, g(t)=k의 해가 3개인 조건에서 k=g(c)임을 도출한 뒤, 조건(나)로 연립방정식을 세워 k=7/3, a=64/27을 구한다.",
+    "new_neurons": [],
+    "metadata": {
+      "unit": "지수·로그함수",
+      "difficulty": "고난도",
+      "score": "4",
+      "type": "객관식",
+      "answer": "127/27"
+    },
+    "edge_count": 24,
+    "side_count": 6,
+    "statement": "# Problem17. (Unknown Source) - Piecewise Functions and Continuity\n\n## Problem\n\n$1 < a < 4$인 실수 $a$에 대하여 함수 $f(x)$는\n\n$$f(x) = \\begin{cases} a^{x-1}+1 & (x < 2) \\\\ -2x+9 & (x \\geq 2) \\end{cases}$$\n\n이다. 실수 $t$에 대하여 $f(t)$와 $f(t+2)$ 중 작지 않은 값을 $g(t)$라 하자. 함수 $g(t)$가 다음 조건을 만족시킬 때, $a+k$의 값은? (단, $k$는 상수이다.) [4점]\n\n(가) $g(t)=k$를 만족시키는 실수 $t$의 개수가 3이다.\n\n(나) $g(k-3)=k$",
+    "dna": {
+      "nodes": [
+        {
+          "id": "top",
+          "dna": "Q1",
+          "label": "값을 구하라",
+          "category": "발문"
+        },
+        {
+          "id": "ask",
+          "dna": "E1",
+          "label": "합(a,k)",
+          "category": "수식"
+        },
+        {
+          "id": "va",
+          "dna": "T1",
+          "label": "변수 a",
+          "category": "말단"
+        },
+        {
+          "id": "vk",
+          "dna": "T1",
+          "label": "변수 k",
+          "category": "말단"
+        },
+        {
+          "id": "lim_a",
+          "dna": "C2",
+          "label": "1<a<4",
+          "category": "조건"
+        },
+        {
+          "id": "c1_const",
+          "dna": "T2",
+          "label": "상수 1",
+          "category": "말단"
+        },
+        {
+          "id": "c2_const",
+          "dna": "T2",
+          "label": "상수 2",
+          "category": "말단"
+        },
+        {
+          "id": "c4_const",
+          "dna": "T2",
+          "label": "상수 4",
+          "category": "말단"
+        },
+        {
+          "id": "c9_const",
+          "dna": "T2",
+          "label": "상수 9",
+          "category": "말단"
+        },
+        {
+          "id": "c3_const",
+          "dna": "T2",
+          "label": "상수 3",
+          "category": "말단"
+        },
+        {
+          "id": "vx",
+          "dna": "T3",
+          "label": "독립변수 x",
+          "category": "말단"
+        },
+        {
+          "id": "fx_def",
+          "dna": "F6",
+          "label": "f(x) 정의",
+          "category": "함수"
+        },
+        {
+          "id": "fx_piece",
+          "dna": "F1",
+          "label": "f(x) 조각함수",
+          "category": "함수"
+        },
+        {
+          "id": "piece1",
+          "dna": "F2",
+          "label": "조각1(x<2)",
+          "category": "함수"
+        },
+        {
+          "id": "dom1",
+          "dna": "C2",
+          "label": "x<2",
+          "category": "조건"
+        },
+        {
+          "id": "exp_expr",
+          "dna": "E4",
+          "label": "a^(x-1)",
+          "category": "수식"
+        },
+        {
+          "id": "x_minus1",
+          "dna": "E1",
+          "label": "합(x,-1)",
+          "category": "수식"
+        },
+        {
+          "id": "neg1",
+          "dna": "E2",
+          "label": "부호반전(1)",
+          "category": "수식"
+        },
+        {
+          "id": "piece1_expr",
+          "dna": "E1",
+          "label": "a^(x-1)+1",
+          "category": "수식"
+        },
+        {
+          "id": "piece2",
+          "dna": "F2",
+          "label": "조각2(x≥2)",
+          "category": "함수"
+        },
+        {
+          "id": "dom2",
+          "dna": "C2",
+          "label": "x≥2",
+          "category": "조건"
+        },
+        {
+          "id": "neg2x",
+          "dna": "E6",
+          "label": "곱(-2,x)",
+          "category": "수식"
+        },
+        {
+          "id": "neg2_const",
+          "dna": "T2",
+          "label": "상수 -2",
+          "category": "말단"
+        },
+        {
+          "id": "piece2_expr",
+          "dna": "E1",
+          "label": "-2x+9",
+          "category": "수식"
+        },
+        {
+          "id": "vt",
+          "dna": "T3",
+          "label": "독립변수 t",
+          "category": "말단"
+        },
+        {
+          "id": "ft_apply",
+          "dna": "F3",
+          "label": "f(t)",
+          "category": "함수"
+        },
+        {
+          "id": "t_plus2",
+          "dna": "E1",
+          "label": "합(t,2)",
+          "category": "수식"
+        },
+        {
+          "id": "ft2_apply",
+          "dna": "F3",
+          "label": "f(t+2)",
+          "category": "함수"
+        },
+        {
+          "id": "gt_def",
+          "dna": "F6",
+          "label": "g(t) 정의",
+          "category": "함수"
+        },
+        {
+          "id": "gt_max",
+          "dna": "C2",
+          "label": "작지않은값",
+          "category": "조건"
+        },
+        {
+          "id": "conds",
+          "dna": "S1",
+          "label": "조건(가)(나)",
+          "category": "구조"
+        },
+        {
+          "id": "cond_ga",
+          "dna": "C9",
+          "label": "실근개수=3",
+          "category": "조건"
+        },
+        {
+          "id": "gt_eq_k",
+          "dna": "C1",
+          "label": "g(t)=k",
+          "category": "조건"
+        },
+        {
+          "id": "gt_apply",
+          "dna": "F3",
+          "label": "g(t) 적용",
+          "category": "함수"
+        },
+        {
+          "id": "cond_na",
+          "dna": "C1",
+          "label": "g(k-3)=k",
+          "category": "조건"
+        },
+        {
+          "id": "gk3_apply",
+          "dna": "F3",
+          "label": "g(k-3)",
+          "category": "함수"
+        },
+        {
+          "id": "k_minus3",
+          "dna": "E1",
+          "label": "합(k,-3)",
+          "category": "수식"
+        },
+        {
+          "id": "neg3_const",
+          "dna": "T2",
+          "label": "상수 -3",
+          "category": "말단"
+        }
+      ],
+      "edges": [
+        {
+          "from": "ask",
+          "to": "top"
+        },
+        {
+          "from": "conds",
+          "to": "top"
+        },
+        {
+          "from": "va",
+          "to": "ask"
+        },
+        {
+          "from": "vk",
+          "to": "ask"
+        },
+        {
+          "from": "va",
+          "to": "lim_a"
+        },
+        {
+          "from": "c1_const",
+          "to": "lim_a"
+        },
+        {
+          "from": "c4_const",
+          "to": "lim_a"
+        },
+        {
+          "from": "fx_piece",
+          "to": "fx_def"
+        },
+        {
+          "from": "piece1",
+          "to": "fx_piece"
+        },
+        {
+          "from": "piece2",
+          "to": "fx_piece"
+        },
+        {
+          "from": "dom1",
+          "to": "piece1"
+        },
+        {
+          "from": "vx",
+          "to": "dom1"
+        },
+        {
+          "from": "c2_const",
+          "to": "dom1"
+        },
+        {
+          "from": "piece1_expr",
+          "to": "piece1"
+        },
+        {
+          "from": "exp_expr",
+          "to": "piece1_expr"
+        },
+        {
+          "from": "c1_const",
+          "to": "piece1_expr"
+        },
+        {
+          "from": "va",
+          "to": "exp_expr"
+        },
+        {
+          "from": "x_minus1",
+          "to": "exp_expr"
+        },
+        {
+          "from": "vx",
+          "to": "x_minus1"
+        },
+        {
+          "from": "neg1",
+          "to": "x_minus1"
+        },
+        {
+          "from": "c1_const",
+          "to": "neg1"
+        },
+        {
+          "from": "dom2",
+          "to": "piece2"
+        },
+        {
+          "from": "vx",
+          "to": "dom2"
+        },
+        {
+          "from": "c2_const",
+          "to": "dom2"
+        },
+        {
+          "from": "piece2_expr",
+          "to": "piece2"
+        },
+        {
+          "from": "neg2x",
+          "to": "piece2_expr"
+        },
+        {
+          "from": "c9_const",
+          "to": "piece2_expr"
+        },
+        {
+          "from": "neg2_const",
+          "to": "neg2x"
+        },
+        {
+          "from": "vx",
+          "to": "neg2x"
+        },
+        {
+          "from": "gt_max",
+          "to": "gt_def"
+        },
+        {
+          "from": "ft_apply",
+          "to": "gt_max"
+        },
+        {
+          "from": "ft2_apply",
+          "to": "gt_max"
+        },
+        {
+          "from": "fx_def",
+          "to": "ft_apply"
+        },
+        {
+          "from": "vt",
+          "to": "ft_apply"
+        },
+        {
+          "from": "fx_def",
+          "to": "ft2_apply"
+        },
+        {
+          "from": "t_plus2",
+          "to": "ft2_apply"
+        },
+        {
+          "from": "vt",
+          "to": "t_plus2"
+        },
+        {
+          "from": "c2_const",
+          "to": "t_plus2"
+        },
+        {
+          "from": "cond_ga",
+          "to": "conds"
+        },
+        {
+          "from": "gt_eq_k",
+          "to": "cond_ga"
+        },
+        {
+          "from": "c3_const",
+          "to": "cond_ga"
+        },
+        {
+          "from": "gt_apply",
+          "to": "gt_eq_k"
+        },
+        {
+          "from": "vk",
+          "to": "gt_eq_k"
+        },
+        {
+          "from": "gt_def",
+          "to": "gt_apply"
+        },
+        {
+          "from": "vt",
+          "to": "gt_apply"
+        },
+        {
+          "from": "cond_na",
+          "to": "conds"
+        },
+        {
+          "from": "gk3_apply",
+          "to": "cond_na"
+        },
+        {
+          "from": "vk",
+          "to": "cond_na"
+        },
+        {
+          "from": "gt_def",
+          "to": "gk3_apply"
+        },
+        {
+          "from": "k_minus3",
+          "to": "gk3_apply"
+        },
+        {
+          "from": "vk",
+          "to": "k_minus3"
+        },
+        {
+          "from": "neg3_const",
+          "to": "k_minus3"
+        }
+      ],
+      "new_dna": []
+    },
+    "thinking_profile": null,
+    "folders": [],
+    "history": [],
+    "recovery_warnings": [],
+    "errata": [],
+    "created_at": "2026-03-22T17:20:00.646Z"
   }
 ]
