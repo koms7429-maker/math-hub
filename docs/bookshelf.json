@@ -1,1 +1,487 @@
-[]
+[
+  {
+    "problem_id": "Problem1",
+    "answer": "18",
+    "clues": [
+      {
+        "id": "단서A",
+        "text": "방정식 $(x - m^n)(x^n - m) = 0$"
+      },
+      {
+        "id": "단서B",
+        "text": "$-3 \\leq m \\leq 3$인 정수 $m$, $2 \\leq n \\leq 6$인 자연수 $n$"
+      }
+    ],
+    "skeleton": [
+      {
+        "from": "단서A",
+        "to": "note1",
+        "neuron": "연산9",
+        "note": "방정식의 실근은 $x - m^n = 0$ 또는 $x^n - m = 0$을 만족하는 실수 $x$이다",
+        "main": true,
+        "step": 1
+      },
+      {
+        "from": [
+          "단서A",
+          "단서B"
+        ],
+        "to": "note2",
+        "neuron": "전략12",
+        "note": "$n$의 홀짝성과 $m$의 부호에 따라 경우 (가)~(라)로 분리한다",
+        "main": true,
+        "step": 1
+      },
+      {
+        "from": [
+          "note1",
+          "note2"
+        ],
+        "to": "note3",
+        "neuron": "사실4",
+        "note": "경우 (가) $n$이 홀수: $x^n = m$의 실근은 $x = \\sqrt[n]{m}$ 하나이고, 실근 후보는 $\\{m^n,\\ \\sqrt[n]{m}\\}$이다",
+        "main": true,
+        "step": 1
+      },
+      {
+        "from": [
+          "note1",
+          "note2"
+        ],
+        "to": "note4",
+        "neuron": "사실4",
+        "note": "경우 (나) $n$이 짝수이고 $m < 0$: $x^n = m < 0$을 만족하는 실수 $x$는 없으므로 실근은 $x = m^n$ 하나뿐이다",
+        "main": true,
+        "step": 1
+      },
+      {
+        "from": [
+          "note1",
+          "note2"
+        ],
+        "to": "note5",
+        "neuron": "사실4",
+        "note": "경우 (다) $n$이 짝수이고 $m = 0$: $x^n = 0$의 실근은 $x = 0$이고 $m^n = 0$이므로 실근은 $x = 0$ 하나뿐이다",
+        "main": true,
+        "step": 1
+      },
+      {
+        "from": [
+          "note1",
+          "note2"
+        ],
+        "to": "note6",
+        "neuron": "사실4",
+        "note": "경우 (라) $n$이 짝수이고 $m > 0$: $x^n = m$의 실근은 $x = \\sqrt[n]{m}$과 $x = -\\sqrt[n]{m}$ 두 개이고, 실근 후보는 $\\{m^n,\\ \\sqrt[n]{m},\\ -\\sqrt[n]{m}\\}$이다",
+        "main": true,
+        "step": 1
+      },
+      {
+        "from": "note3",
+        "to": "note7",
+        "neuron": "전략20",
+        "note": "경우 (가)에서 서로 다른 실근의 개수가 1이 되려면 두 후보가 일치해야 하므로 $m^n = \\sqrt[n]{m}$이어야 한다",
+        "main": true,
+        "step": 2
+      },
+      {
+        "from": "note7",
+        "to": "note8",
+        "neuron": "전략25",
+        "note": "$m = -1, 0, 1$은 $m^n = \\sqrt[n]{m}$을 만족하고, $m = \\pm 2, \\pm 3$은 만족하지 않으므로 조건을 만족하는 $m$은 $\\{-1, 0, 1\\}$이다",
+        "main": true,
+        "step": 2
+      },
+      {
+        "from": "단서B",
+        "to": "note9",
+        "neuron": "전략12",
+        "note": "$n$이 홀수인 경우는 $n \\in \\{3, 5\\}$로 2가지이다",
+        "main": false,
+        "step": 2
+      },
+      {
+        "from": "note4",
+        "to": "note10",
+        "neuron": "전략23",
+        "note": "경우 (나)는 실근이 항상 1개이므로 조건을 항상 만족한다",
+        "main": true,
+        "step": 2
+      },
+      {
+        "from": "note5",
+        "to": "note11",
+        "neuron": "전략23",
+        "note": "경우 (다)는 실근이 항상 1개이므로 조건을 항상 만족한다",
+        "main": true,
+        "step": 2
+      },
+      {
+        "from": "note6",
+        "to": "note12",
+        "neuron": "사실65",
+        "note": "$m > 0$이면 $\\sqrt[n]{m} > 0$이고 $-\\sqrt[n]{m} < 0$이므로 $\\sqrt[n]{m} \\neq -\\sqrt[n]{m}$이다",
+        "main": false,
+        "step": 2
+      },
+      {
+        "from": [
+          "note6",
+          "note12"
+        ],
+        "to": "note13",
+        "neuron": "전략23",
+        "note": "경우 (라)는 $\\sqrt[n]{m}$과 $-\\sqrt[n]{m}$이 항상 서로 다른 두 실근이므로 실근의 개수가 항상 2개 이상이다. 조건을 만족하는 경우가 없다",
+        "main": true,
+        "step": 2
+      },
+      {
+        "from": [
+          "note8",
+          "note9"
+        ],
+        "to": "note14",
+        "neuron": "전략10",
+        "note": "경우 (가)의 순서쌍 수는 $3 \\times 2 = 6$가지이다",
+        "main": true,
+        "step": 3
+      },
+      {
+        "from": [
+          "note10",
+          "단서B"
+        ],
+        "to": "note15",
+        "neuron": "전략10",
+        "note": "경우 (나)의 순서쌍 수는 $m \\in \\{-3,-2,-1\\}$ (3가지), $n \\in \\{2,4,6\\}$ (3가지)이므로 $3 \\times 3 = 9$가지이다",
+        "main": true,
+        "step": 3
+      },
+      {
+        "from": [
+          "note11",
+          "단서B"
+        ],
+        "to": "note16",
+        "neuron": "전략10",
+        "note": "경우 (다)의 순서쌍 수는 $m = 0$ (1가지), $n \\in \\{2,4,6\\}$ (3가지)이므로 $1 \\times 3 = 3$가지이다",
+        "main": true,
+        "step": 3
+      },
+      {
+        "from": [
+          "note14",
+          "note15",
+          "note16",
+          "note13"
+        ],
+        "to": "END",
+        "neuron": "전략10",
+        "note": "모든 순서쌍 $(m, n)$의 개수는 $6 + 9 + 3 + 0 = 18$이다",
+        "main": true,
+        "step": 3
+      }
+    ],
+    "solution": "STEP 1. 방정식 $(x-m^n)(x^n-m)=0$의 실근은 $x-m^n=0$ 또는 $x^n-m=0$을 만족하는 실수이다. $n$의 홀짝성과 $m$의 부호에 따라 네 경우로 분리한다. 경우 (가) $n$이 홀수: $x^n=m$의 실근은 $x=\\sqrt[n]{m}$ 하나이므로 실근 후보는 $\\{m^n, \\sqrt[n]{m}\\}$이다. 경우 (나) $n$이 짝수이고 $m<0$: $x^n=m<0$의 실근이 없으므로 실근은 $x=m^n$ 하나뿐이다. 경우 (다) $n$이 짝수이고 $m=0$: $x^n=0$의 실근은 $x=0$이고 $m^n=0$이므로 실근은 $x=0$ 하나뿐이다. 경우 (라) $n$이 짝수이고 $m>0$: $x^n=m$의 실근은 $x=\\sqrt[n]{m}$과 $x=-\\sqrt[n]{m}$ 두 개이므로 실근 후보는 $\\{m^n, \\sqrt[n]{m}, -\\sqrt[n]{m}\\}$이다.\n\nSTEP 2. 각 경우에서 서로 다른 실근의 개수가 1이 되는 조건을 분석한다. 경우 (가): 두 후보가 일치해야 하므로 $m^n=\\sqrt[n]{m}$이어야 한다. 대입 검증 결과 $m\\in\\{-1,0,1\\}$만 이를 만족하고, $n$이 홀수인 경우는 $n\\in\\{3,5\\}$로 2가지이다. 경우 (나): 실근이 항상 1개이므로 조건을 항상 만족한다. 경우 (다): 실근이 항상 1개이므로 조건을 항상 만족한다. 경우 (라): $m>0$이면 $\\sqrt[n]{m}>0$이고 $-\\sqrt[n]{m}<0$이므로 두 값이 항상 서로 달라 실근이 항상 2개 이상이다. 조건을 만족하는 경우가 없다.\n\nSTEP 3. 각 경우의 순서쌍 수를 계산한다. 경우 (가): $m\\in\\{-1,0,1\\}$ (3가지), $n\\in\\{3,5\\}$ (2가지)이므로 $3\\times2=6$가지. 경우 (나): $m\\in\\{-3,-2,-1\\}$ (3가지), $n\\in\\{2,4,6\\}$ (3가지)이므로 $3\\times3=9$가지. 경우 (다): $m=0$ (1가지), $n\\in\\{2,4,6\\}$ (3가지)이므로 $1\\times3=3$가지. 경우 (라): 0가지. 따라서 모든 순서쌍 $(m,n)$의 개수는 $6+9+3+0=18$이다.",
+    "original_solution": "방정식\n$$(x-m^n)(x^n-m)=0 \\cdots ①$$\n의 모든 실근은\n\n① $n$이 홀수일 때, $x=m^n$, $\\sqrt[n]{m}$\n\n② $n$이 짝수, $m<0$일 때, $x=m^n$\n\n③ $n$이 짝수, $m=0$일 때, $x=0$\n\n④ $n$이 짝수, $m>0$일 때, $x=m^n$, $\\sqrt[n]{m}$, $-\\sqrt[n]{m}$\n\n이다.\n\n따라서\n\n• ①의 서로 다른 실근의 개수가 1 $\\cdots$ ⓒ\n• $2 \\leq n \\leq 6$, $-3 \\leq m \\leq 3$\n\n을 만족시키려면\n\n①의 경우, $m^n = \\sqrt[n]{m} \\Rightarrow m = -1, 0, 1$\n$\\Rightarrow 2 \\times 3 = 6$ (가지)\n\n②, ③의 경우, 항상 ⓒ를 만족시킴 $\\Rightarrow 3 \\times 4 = 12$ (가지)\n\n④의 경우, ⓒ를 만족시키지 않음 $\\Rightarrow 0$ (가지)\n\n이어야 한다.\n\n$\\therefore$ (모든 순서쌍 $(m, n)$의 개수) $= 6 + 12 + 0 = 18$\n\n---",
+    "analysis": "방정식을 두 인수로 분리한 뒤, n의 홀짝성과 m의 부호에 따라 4가지 경우로 나누어 실근 개수=1 조건을 분석한다. 경우(가)는 m=-1,0,1만 만족(6가지), 경우(나)는 항상 만족(9가지), 경우(다)는 항상 만족(3가지), 경우(라)는 불가(0가지). 합계 18.",
+    "new_neurons": [],
+    "metadata": {
+      "unit": "지수와 로그",
+      "difficulty": "중",
+      "score": "4",
+      "type": "객관식",
+      "answer": "18"
+    },
+    "edge_count": 17,
+    "side_count": 2,
+    "statement": "# Problem1. (Unknown Source) - Polynomial Equations and Roots\n\n## Problem\n\n$-3 \\leq m \\leq 3$인 정수 $m$과 $2 \\leq n \\leq 6$인 자연수 $n$에 대하여 $x$에 대한 방정식 $(x-m^n)(x^n-m)=0$의 서로 다른 실근의 개수가 1이 되도록 하는 모든 순서쌍 $(m, n)$의 개수는? [4점]",
+    "dna": {
+      "nodes": [
+        {
+          "id": "top",
+          "dna": "Q2",
+          "label": "개수를 구하라",
+          "category": "발문"
+        },
+        {
+          "id": "pair_mn",
+          "dna": "X2",
+          "label": "순서쌍 (m,n)",
+          "category": "존재"
+        },
+        {
+          "id": "conds",
+          "dna": "S1",
+          "label": "여러 조건",
+          "category": "구조"
+        },
+        {
+          "id": "vm",
+          "dna": "T1",
+          "label": "변수 m",
+          "category": "말단"
+        },
+        {
+          "id": "vn",
+          "dna": "T1",
+          "label": "변수 n",
+          "category": "말단"
+        },
+        {
+          "id": "lim_m_range",
+          "dna": "L2",
+          "label": "m: -3~3",
+          "category": "제한"
+        },
+        {
+          "id": "lim_m_int",
+          "dna": "L3",
+          "label": "m은 정수",
+          "category": "제한"
+        },
+        {
+          "id": "lim_n_range",
+          "dna": "L2",
+          "label": "n: 2~6",
+          "category": "제한"
+        },
+        {
+          "id": "lim_n_nat",
+          "dna": "L3",
+          "label": "n은 자연수",
+          "category": "제한"
+        },
+        {
+          "id": "cm3",
+          "dna": "T2",
+          "label": "상수 -3",
+          "category": "말단"
+        },
+        {
+          "id": "c3",
+          "dna": "T2",
+          "label": "상수 3",
+          "category": "말단"
+        },
+        {
+          "id": "c2",
+          "dna": "T2",
+          "label": "상수 2",
+          "category": "말단"
+        },
+        {
+          "id": "c6",
+          "dna": "T2",
+          "label": "상수 6",
+          "category": "말단"
+        },
+        {
+          "id": "c1",
+          "dna": "T2",
+          "label": "상수 1",
+          "category": "말단"
+        },
+        {
+          "id": "c0",
+          "dna": "T2",
+          "label": "상수 0",
+          "category": "말단"
+        },
+        {
+          "id": "vx",
+          "dna": "T3",
+          "label": "독립변수 x",
+          "category": "말단"
+        },
+        {
+          "id": "eq_main",
+          "dna": "C11",
+          "label": "방정식 정의",
+          "category": "조건"
+        },
+        {
+          "id": "eq_c1",
+          "dna": "C1",
+          "label": "곱=0 등식",
+          "category": "조건"
+        },
+        {
+          "id": "prod_factors",
+          "dna": "E6",
+          "label": "두 인수의 곱",
+          "category": "수식"
+        },
+        {
+          "id": "factor1",
+          "dna": "E1",
+          "label": "x - m^n",
+          "category": "수식"
+        },
+        {
+          "id": "neg_mn",
+          "dna": "E2",
+          "label": "-(m^n)",
+          "category": "수식"
+        },
+        {
+          "id": "mn_pow",
+          "dna": "E7",
+          "label": "m^n",
+          "category": "수식"
+        },
+        {
+          "id": "factor2",
+          "dna": "E1",
+          "label": "x^n - m",
+          "category": "수식"
+        },
+        {
+          "id": "neg_m",
+          "dna": "E2",
+          "label": "-m",
+          "category": "수식"
+        },
+        {
+          "id": "xn_pow",
+          "dna": "E7",
+          "label": "x^n",
+          "category": "수식"
+        },
+        {
+          "id": "root_count",
+          "dna": "C9",
+          "label": "실근 개수=1",
+          "category": "조건"
+        }
+      ],
+      "edges": [
+        {
+          "from": "pair_mn",
+          "to": "top"
+        },
+        {
+          "from": "conds",
+          "to": "top"
+        },
+        {
+          "from": "vm",
+          "to": "pair_mn"
+        },
+        {
+          "from": "vn",
+          "to": "pair_mn"
+        },
+        {
+          "from": "lim_m_range",
+          "to": "vm"
+        },
+        {
+          "from": "lim_m_int",
+          "to": "vm"
+        },
+        {
+          "from": "lim_n_range",
+          "to": "vn"
+        },
+        {
+          "from": "lim_n_nat",
+          "to": "vn"
+        },
+        {
+          "from": "cm3",
+          "to": "lim_m_range"
+        },
+        {
+          "from": "c3",
+          "to": "lim_m_range"
+        },
+        {
+          "from": "c2",
+          "to": "lim_n_range"
+        },
+        {
+          "from": "c6",
+          "to": "lim_n_range"
+        },
+        {
+          "from": "root_count",
+          "to": "conds"
+        },
+        {
+          "from": "eq_c1",
+          "to": "eq_main"
+        },
+        {
+          "from": "prod_factors",
+          "to": "eq_c1"
+        },
+        {
+          "from": "c0",
+          "to": "eq_c1"
+        },
+        {
+          "from": "factor1",
+          "to": "prod_factors"
+        },
+        {
+          "from": "factor2",
+          "to": "prod_factors"
+        },
+        {
+          "from": "vx",
+          "to": "factor1"
+        },
+        {
+          "from": "neg_mn",
+          "to": "factor1"
+        },
+        {
+          "from": "mn_pow",
+          "to": "neg_mn"
+        },
+        {
+          "from": "vm",
+          "to": "mn_pow"
+        },
+        {
+          "from": "vn",
+          "to": "mn_pow"
+        },
+        {
+          "from": "xn_pow",
+          "to": "factor2"
+        },
+        {
+          "from": "neg_m",
+          "to": "factor2"
+        },
+        {
+          "from": "vx",
+          "to": "xn_pow"
+        },
+        {
+          "from": "vn",
+          "to": "xn_pow"
+        },
+        {
+          "from": "vm",
+          "to": "neg_m"
+        },
+        {
+          "from": "eq_main",
+          "to": "root_count"
+        },
+        {
+          "from": "c1",
+          "to": "root_count"
+        }
+      ],
+      "new_dna": []
+    },
+    "thinking_profile": null,
+    "folders": [],
+    "history": [],
+    "created_at": "2026-03-22T12:26:04.302Z"
+  }
+]
