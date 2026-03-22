@@ -2800,15 +2800,15 @@
       "new_dna": []
     },
     "thinking_profile": {
-      "_version": 3,
-      "total_think_tokens": 3585,
+      "_version": 4,
+      "total_think_tokens": 3605,
       "step_count": 12,
-      "consumed_count": 0,
+      "consumed_count": 6,
       "partial_count": 0,
-      "miss_count": 12,
+      "miss_count": 6,
       "highlight_steps": [
         1,
-        2
+        3
       ],
       "hardest_step": {
         "step_num": 1,
@@ -2833,14 +2833,14 @@
         {
           "step_num": 2,
           "correct_step": "STEP 2. 각 조각에서 치역을 구한다. 첫 번째 조각의 치역은 (log_2(8-b)+a, 4+a]이고, 두 번째 조각의 치역은 [log_2(b+8), 4]이다.",
-          "consumed": false,
-          "discovered_in_round": null,
+          "consumed": true,
+          "discovered_in_round": 1,
           "partial_hits": 0,
           "best_partial_score": null,
           "structural_difficulty": 0.15,
-          "difficulty_score": 0.26,
-          "discovery_score": 0.5,
-          "tok_score": 0
+          "difficulty_score": 0.09,
+          "discovery_score": 0.01,
+          "tok_score": 0.11
         },
         {
           "step_num": 3,
@@ -2857,14 +2857,14 @@
         {
           "step_num": 4,
           "correct_step": "STEP 4. 두 조각의 치역이 아래-위로 연결되는 경우: ①log_2(8-b)+a=4, ②k=log_2(b+8), k+log_2(9/2)=4+a이다.",
-          "consumed": false,
-          "discovered_in_round": null,
+          "consumed": true,
+          "discovered_in_round": 3,
           "partial_hits": 0,
           "best_partial_score": null,
           "structural_difficulty": 0.15,
-          "difficulty_score": 0.26,
-          "discovery_score": 0.5,
-          "tok_score": 0
+          "difficulty_score": 0.08,
+          "discovery_score": 0.04,
+          "tok_score": 0.02
         },
         {
           "step_num": 5,
@@ -2905,38 +2905,38 @@
         {
           "step_num": 8,
           "correct_step": "STEP 8. 지수-로그 변환: (64-b²)·(9/2)=256이다.",
-          "consumed": false,
-          "discovered_in_round": null,
+          "consumed": true,
+          "discovered_in_round": 6,
           "partial_hits": 0,
           "best_partial_score": null,
           "structural_difficulty": 0.15,
-          "difficulty_score": 0.26,
-          "discovery_score": 0.5,
+          "difficulty_score": 0.06,
+          "discovery_score": 0,
           "tok_score": 0
         },
         {
           "step_num": 9,
           "correct_step": "STEP 9. 정리하면 64-b²=512/9이고 b²=64/9이다.",
-          "consumed": false,
-          "discovered_in_round": null,
+          "consumed": true,
+          "discovered_in_round": 7,
           "partial_hits": 0,
           "best_partial_score": null,
           "structural_difficulty": 0.15,
-          "difficulty_score": 0.26,
-          "discovery_score": 0.5,
+          "difficulty_score": 0.07,
+          "discovery_score": 0.02,
           "tok_score": 0
         },
         {
           "step_num": 10,
           "correct_step": "STEP 10. 0<b<8일 때 b²=64/9에서 b=8/3이다.",
-          "consumed": false,
-          "discovered_in_round": null,
+          "consumed": true,
+          "discovered_in_round": 5,
           "partial_hits": 0,
           "best_partial_score": null,
           "structural_difficulty": 0.15,
-          "difficulty_score": 0.26,
-          "discovery_score": 0.5,
-          "tok_score": 0
+          "difficulty_score": 0.08,
+          "discovery_score": 0.02,
+          "tok_score": 0.07
         },
         {
           "step_num": 11,
@@ -2953,13 +2953,13 @@
         {
           "step_num": 12,
           "correct_step": "STEP 12. 2^a×b=3×(8/3)=8이다.",
-          "consumed": false,
-          "discovered_in_round": null,
+          "consumed": true,
+          "discovered_in_round": 11,
           "partial_hits": 0,
           "best_partial_score": null,
           "structural_difficulty": 0.15,
-          "difficulty_score": 0.26,
-          "discovery_score": 0.5,
+          "difficulty_score": 0.06,
+          "discovery_score": 0.01,
           "tok_score": 0
         }
       ],
@@ -2967,134 +2967,98 @@
         {
           "round": 1,
           "skipped": false,
-          "think_tokens": 622,
-          "elapsed_ms": 40368,
-          "claude_step": "## STEP 1. 각 구간에서 f(x)의 범위 분석\n\n첫 번째 조각: log₂(8-x)+a는 **감소함수**이므로 (-8 ≤ x < b)\n- x = -8일 때: log₂(16)+a = **4+a** (최댓값)\n- x → b⁻일 때: log₂(8-b)+a에 수렴 (도달 못함)\n- 범위: **(log₂(8-b)+a, 4+a]**\n\n두 번째 조각: log₂(x+8)은 **증가함수**이므로 (b ≤ x ≤ 8)\n- x = b일 때: log₂(b+8) (최솟값)\n- x = 8일 때: log₂(16) = **4** (최댓값)\n- 범위: **[log₂(b+8), 4]**\n\n일대일함수 조건 + 치역이 닫힌구간이 되려면, 두 범위가 겹치지 않고 연결되어야 하므로:\n\n$$\\log_2(8-b) + a = 4$$\n\n이 성립할 때, 첫 번째 조각의 범위는 **(4, 4+a]**, 두 번째 조각의 범위는 **[log₂(b+8), 4]** 로 서로 겹치지 않고 연결됨.",
-          "matched_step_num": null,
-          "match_score": 0,
-          "match_reason": "match HTTP: Request failed with status code 400",
-          "discovery_type": "miss"
+          "think_tokens": 1234,
+          "elapsed_ms": 42473,
+          "claude_step": "## STEP 1. 각 조각 함수의 단조성과 치역 범위를 분석한다.\n\n첫 번째 조각 $f(x) = \\log_2(8-x)+a$ ($-8 \\le x < b$)는 **감소함수**이므로 치역은:\n$$\\left(\\log_2(8-b)+a,\\ 4+a\\right]$$\n\n두 번째 조각 $f(x) = \\log_2(x+8)$ ($b \\le x \\le 8$)는 **증가함수**이므로 치역은:\n$$\\left[\\log_2(b+8),\\ 4\\right]$$\n\n일대일함수 조건을 만족하려면 두 조각의 치역이 **겹치지 않아야** 한다.",
+          "matched_step_num": 2,
+          "match_score": 0.9,
+          "match_reason": "Claude의 답변이 두 조각의 치역을 (log_2(8-b)+a, 4+a]와 [log_2(b+8), 4]로 정확히 동일하게 계산하여 B의 결론과 완전히 일치함",
+          "discovery_type": "consumed"
         },
         {
           "round": 2,
-          "skipped": false,
-          "think_tokens": 687,
-          "elapsed_ms": 37299,
-          "claude_step": "## 풀이\n\n**STEP 1 복습:** 첫 번째 조각은 순감소(범위: $(log_2(8-b)+a,\\ 4+a]$), 두 번째 조각은 순증가(범위: $[log_2(b+8),\\ 4]$)\n\n---\n\n**STEP 2.** 치역이 닫힌 구간 $[k,\\ k+\\log_2\\frac{9}{2}]$가 되려면, 두 조각의 치역이 **겹치지 않으면서 연결**되어야 한다.\n\n- 두 번째 조각의 최댓값: $f(8) = \\log_2 16 = 4$\n- 첫 번째 조각의 하한(미도달): $\\log_2(8-b)+a$ (x→b⁻이므로 미포함)\n\n일대일함수 조건상 두 범위가 겹치려면 안 되므로, 첫 번째 조각의 범위 전체가 두 번째 조각 위에 위치해야 한다. 즉:\n\n$$\\log_2(8-b)+a \\geq 4$$\n\n이때 첫 번째 조각의 하한이 두 번째 조각의 최댓값 $4$와 **정확히 일치**해야 치역이 틈 없는 닫힌 구간 $[\\log_2(b+8),\\ 4+a]$를 이루므로:\n\n$$\\boxed{\\log_2(8-b)+a = 4}$$",
-          "matched_step_num": null,
-          "match_score": 0,
-          "match_reason": "match HTTP: Request failed with status code 400",
-          "discovery_type": "miss"
+          "skipped": true,
+          "reason": "Step 2: Round 1에서 발견됨"
         },
         {
           "round": 3,
           "skipped": false,
-          "think_tokens": 587,
-          "elapsed_ms": 23089,
-          "claude_step": "## STEP 3. f(x)가 일대일함수이면서 치역이 닫힌 구간이 되려면, 두 조각의 치역이 한 점에서 맞닿아야 하므로 첫 번째 조각의 하한(미포함)이 두 번째 조각의 상한 4와 일치해야 한다: **log₂(8-b) + a = 4**",
-          "matched_step_num": null,
-          "match_score": 0,
-          "match_reason": "match HTTP: Request failed with status code 400",
-          "discovery_type": "miss"
+          "think_tokens": 710,
+          "elapsed_ms": 30621,
+          "claude_step": "## STEP 3. 전체 치역이 닫힌 구간이 되기 위한 조건을 설정한다.\n\n첫 번째 조각의 치역 **(log₂(8-b)+a, 4+a]** (x=b 제외로 열린 끝점)과  \n두 번째 조각의 치역 **[log₂(b+8), 4]** (닫힌 구간)의 합집합이 닫힌 구간이 되려면,  \n열린 끝점 log₂(8-b)+a가 두 번째 조각의 닫힌 끝점 **4**와 일치해야 한다.\n\n$$\\log_2(8-b)+a = 4$$\n\n이때 두 치역의 합집합은 **[log₂(b+8), 4+a]** (닫힌 구간)가 된다.  \n*(만약 4+a = log₂(b+8)로 연결하면 f(-8)=f(b)가 되어 일대일 조건 위반)*",
+          "matched_step_num": 4,
+          "match_score": 0.75,
+          "match_reason": "Claude의 핵심 결론인 log₂(8-b)+a=4 조건 설정이 후보 C의 ①과 일치하며, 두 치역의 합집합이 닫힌 구간이 되기 위한 연결 조건을 같은 방식으로 도출함",
+          "discovery_type": "consumed"
         },
         {
           "round": 4,
-          "skipped": false,
-          "think_tokens": 756,
-          "elapsed_ms": 31583,
-          "claude_step": "## STEP 4. 두 조각의 치역이 연결되는 방식을 결정한다.\n\n첫 번째 조각의 치역 $(\\log_2(8-b)+a,\\ 4+a]$는 아래쪽이 열린 구간이고, 두 번째 조각의 치역 $[\\log_2(b+8),\\ 4]$는 닫힌 구간이다. 전체 치역이 **닫힌 구간**이 되려면 최솟값이 반드시 달성되어야 하므로, 최솟값은 두 번째 조각에서 나와야 한다. 따라서 두 조각의 치역이 겹치지 않으면서 연결되려면 첫 번째 조각이 두 번째 조각 **위**에 위치해야 하고, 연결 조건:\n\n$$\\log_2(8-b)+a = 4$$\n\n가 성립해야 한다. 이때 전체 치역은 $[\\log_2(b+8),\\ 4+a]$이다.",
-          "matched_step_num": null,
-          "match_score": 0,
-          "match_reason": "match HTTP: Request failed with status code 400",
-          "discovery_type": "miss"
+          "skipped": true,
+          "reason": "Step 4: Round 3에서 발견됨"
         },
         {
           "round": 5,
           "skipped": false,
-          "think_tokens": 251,
-          "elapsed_ms": 11928,
-          "claude_step": "STEP 5. ①에서 a = 4 - log₂(8-b)를 ②의 k+log₂(9/2)=4+a에 대입하면, log₂(b+8)+log₂(9/2) = 8-log₂(8-b), 즉 log₂[9(b+8)(8-b)/2] = 8이다.",
-          "matched_step_num": null,
-          "match_score": 0,
-          "match_reason": "match HTTP: Request failed with status code 400",
-          "discovery_type": "miss"
+          "think_tokens": 999,
+          "elapsed_ms": 43355,
+          "claude_step": "STEP 5. ①에서 a = 4 - log_2(8-b)를 ②의 4+a - log_2(b+8) = log_2(9/2)에 대입하면 log_2[(8-b)(b+8)·(9/2)] = 8, 즉 9(64-b²)/2 = 256이므로 b² = 64/9, **b = 8/3**을 얻는다.",
+          "matched_step_num": 10,
+          "match_score": 0.85,
+          "match_reason": "Claude의 답변은 E→F→G→H 과정을 한 번에 서술하며, 최종 결론 b=8/3(0<b<8 조건 포함)이 H와 완전히 일치",
+          "discovery_type": "consumed"
         },
         {
           "round": 6,
           "skipped": false,
-          "think_tokens": 106,
-          "elapsed_ms": 5317,
-          "claude_step": "STEP 6. ①에서 a=4-log_2(8-b)를 ②에 대입하면: log_2(b+8)+log_2(9/2)+log_2(8-b)=8, 즉 log_2[(b+8)(8-b)·(9/2)]=8이므로 (64-b²)·(9/2)=256, 따라서 9b²=64, b=8/3이다.",
-          "matched_step_num": null,
-          "match_score": 0,
-          "match_reason": "match HTTP: Request failed with status code 400",
-          "discovery_type": "miss"
+          "think_tokens": 495,
+          "elapsed_ms": 19628,
+          "claude_step": "STEP 6. ①에서 a = 4 - log_2(8-b)를 ②에 대입하면, log_2(b+8) + log_2(9/2) + log_2(8-b) = 8이므로 log_2[(b+8)(8-b)·(9/2)] = 8, 즉 (64-b²)·(9/2) = 256이다.",
+          "matched_step_num": 8,
+          "match_score": 1,
+          "match_reason": "Claude의 최종 결론 (64-b²)·(9/2)=256이 STEP F와 완전히 일치하며, 중간 로그 식도 STEP E와 일치하나 핵심 도달 결론은 F이다.",
+          "discovery_type": "consumed"
         },
         {
           "round": 7,
           "skipped": false,
-          "think_tokens": 349,
-          "elapsed_ms": 20897,
-          "claude_step": "STEP 7. a를 소거하면 log_2((8-b)(b+8)·(9/2))=8이므로 (64-b²)·(9/2)=256, 즉 64-b²=512/9이고 b²=64/9이므로 b=8/3이다.",
-          "matched_step_num": null,
-          "match_score": 0,
-          "match_reason": "match HTTP: Request failed with status code 400",
-          "discovery_type": "miss"
+          "think_tokens": 109,
+          "elapsed_ms": 5079,
+          "claude_step": "STEP 7. 양변에서 a를 소거하면 log_2(8-b)+log_2(b+8)+log_2(9/2)=8, 즉 log_2((8-b)(b+8)·9/2)=8이므로 (64-b²)·9/2=256, 따라서 b²=64-512/9=64/9, b=8/3이다.",
+          "matched_step_num": 9,
+          "match_score": 0.85,
+          "match_reason": "Claude의 답변은 로그 합산 후 (64-b²)·9/2=256을 정리하여 b²=64/9, b=8/3을 도출했으며, 이는 F의 핵심 결론 '64-b²=512/9이고 b²=64/9'와 수학적으로 완전히 일치함 (b=8/3까지 포함하여 오히려 더 많은 내용 포함)",
+          "discovery_type": "consumed"
         },
         {
           "round": 8,
-          "skipped": false,
-          "think_tokens": 46,
-          "elapsed_ms": 4031,
-          "claude_step": "STEP 8. 양변을 지수로 나타내면 (8-b)(b+8)·(9/2) = 256이므로, (64-b²)·(9/2) = 256, 즉 64-b² = 512/9, b² = 64/9, b = 8/3 (∵ 0<b<8)이다.",
-          "matched_step_num": null,
-          "match_score": 0,
-          "match_reason": "match HTTP: Request failed with status code 400",
-          "discovery_type": "miss"
+          "skipped": true,
+          "reason": "Step 8: Round 6에서 발견됨"
         },
         {
           "round": 9,
-          "skipped": false,
-          "think_tokens": 33,
-          "elapsed_ms": 5920,
-          "claude_step": "STEP 9. (64-b²)=256×(2/9)=512/9이므로 b²=64-512/9=576/9-512/9=64/9, 따라서 b=8/3이다.",
-          "matched_step_num": null,
-          "match_score": 0,
-          "match_reason": "match HTTP: Request failed with status code 400",
-          "discovery_type": "miss"
+          "skipped": true,
+          "reason": "Step 9: Round 7에서 발견됨"
         },
         {
           "round": 10,
-          "skipped": false,
-          "think_tokens": 84,
-          "elapsed_ms": 4675,
-          "claude_step": "STEP 10. b>0이므로 b=8/3이고, ①에 대입하면 a=4-log_2(16/3)=log_2(3)이므로 2^a×b=3×(8/3)=**8**이다.",
-          "matched_step_num": null,
-          "match_score": 0,
-          "match_reason": "match HTTP: Request failed with status code 400",
-          "discovery_type": "miss"
+          "skipped": true,
+          "reason": "Step 10: Round 5에서 발견됨"
         },
         {
           "round": 11,
           "skipped": false,
-          "think_tokens": 48,
-          "elapsed_ms": 4531,
-          "claude_step": "STEP 11. ①에서 a=4-log_2(8-b)=4-log_2(16/3)이므로 2^a=16÷(16/3)=3이고, 따라서 2^a×b=3×(8/3)=**8**이다.",
-          "matched_step_num": null,
-          "match_score": 0,
-          "match_reason": "match HTTP: Request failed with status code 400",
-          "discovery_type": "miss"
+          "think_tokens": 58,
+          "elapsed_ms": 5166,
+          "claude_step": "STEP 11. b=8/3을 ①에 대입하면 log_2(8-8/3)+a=log_2(16/3)+a=4이므로 a=4-log_2(16/3)=log_2(3)이고, 따라서 2^a×b=3×(8/3)=**8**이다.",
+          "matched_step_num": 12,
+          "match_score": 0.95,
+          "match_reason": "Claude의 핵심 결론 2^a×b=3×(8/3)=8이 STEP 12와 완전히 일치하며, a=log_2(3) 도출(STEP F)도 포함하고 있어 G가 최종 결론으로 가장 일치",
+          "discovery_type": "consumed"
         },
         {
           "round": 12,
-          "skipped": false,
-          "think_tokens": 16,
-          "elapsed_ms": 1758,
-          "claude_step": "STEP 12. 따라서 2^a × b = 3 × (8/3) = 8이다.",
-          "matched_step_num": null,
-          "match_score": 0,
-          "match_reason": "match HTTP: Request failed with status code 400",
-          "discovery_type": "miss"
+          "skipped": true,
+          "reason": "Step 12: Round 11에서 발견됨"
         }
       ],
       "_debug": "OK"
