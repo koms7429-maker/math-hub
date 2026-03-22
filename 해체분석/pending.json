@@ -178,5 +178,35 @@
     "previous_dna_nodes": [],
     "previous_dna_edges": [],
     "created_at": "2026-03-22T23:27:41.773Z"
+  },
+  {
+    "problem_id": "20(UnknownSource)-로그함수와원의관계",
+    "content": "# 20. (Unknown Source) - 로그함수와 원의 관계\n\n## Problem\n\n두 양수 $a$ $(a>1)$, $b$에 대하여 두 곡선 $y=\\log_a(b-1-x)$와 $y=\\log_a(b-x)$의 점근선이 $x$축과 만나는 점을 각각 A, B라 하자. 두 곡선 $y=\\log_a(b-1-x)$와 $y=\\log_a(b-x)$의 점근선이 곡선 $y=(\\sqrt{2})^x$과 만나는 점을 각각 C, D라 할 때, 점 D의 $y$좌표가 점 C의 $y$좌표의 2배이다.\n\n네 점 A, B, C, D가 한 원 위에 있을 때, $a^b$의 값은? [4점]\n\n## Choices\n\n① $2^{\\frac{\\sqrt{2}}{2}}$ ② $2^{\\sqrt{2}}$ ③ $2^{\\frac{3\\sqrt{2}}{2}}$ ④ $2^{2\\sqrt{2}}$ ⑤ $2^{\\frac{5\\sqrt{2}}{2}}$\n\n**Answer**: ③  \n**Difficulty**: unknown  \n**Score**: 4점  \n**Type**: multiple choice\n\n---\n\n## Solution\n\n[FIGURE: 좌표평면에 곡선 $y=\\log_a(b-x)$, 곡선 $y=(\\sqrt{2})^x$, 그리고 점 A, B, C, D와 원이 표시된 그래프]\n\n문제의 조건에 의해\n\n$$\\text{A}(b-1, 0), \\quad \\text{B}(b, 0), \\quad \\text{D}(b, (\\sqrt{2})^b),$$\n\n이고,\n\n점 D의 $y$좌표가 점 C의 $y$좌표의 2배\n\n$$\\Rightarrow (\\text{점 C의 }y\\text{좌표})=\\frac{(\\sqrt{2})^b}{2}=(\\sqrt{2})^{b-2}$$\n\n$$\\Rightarrow \\text{C}(b-2, (\\sqrt{2})^{b-2}) \\quad (\\because \\text{ 점 C는 곡선 } y=(\\sqrt{2})^x \\text{ 위의 점})$$\n\n이다. 이때,\n\n• 네 점 A, B, C, D가 한 원 위에 있음 $\\Rightarrow$ AD가 원의 직경\n\n• $\\angle \\text{ABD}=\\frac{\\pi}{2}$\n\n이므로\n\n$$\\angle \\text{ACD}=\\frac{\\pi}{2} \\Rightarrow (\\text{AC의 기울기})\\times(\\text{CD의 기울기})=-1$$\n\n$$\\Rightarrow \\frac{(\\sqrt{2})^{b-2}-0}{(b-2)-(b-1)} \\times \\frac{(\\sqrt{2})^b-(\\sqrt{2})^{b-2}}{b-(b-2)}=-1$$\n\n$$\\Rightarrow \\frac{-(\\sqrt{2})^{b-2}}{1} \\times \\frac{(\\sqrt{2})^{b-2}(2-1)}{2}=-1$$\n\n$$\\Rightarrow -\\frac{(\\sqrt{2})^{2(b-2)}}{2}=-1$$\n\n$$\\Rightarrow 2^{b-2}=2$$\n\n$$\\Rightarrow b=3$$\n\n을 얻고,\n\n$$\\text{C}(1, \\sqrt{2})\\text{가 }y=\\log_a(3-x) \\text{ 위의 점} \\Rightarrow \\sqrt{2}=\\log_a(2) \\Rightarrow a^{\\sqrt{2}}=2 \\Rightarrow a=2^{\\frac{1}{\\sqrt{2}}}$$\n\n을 얻는다.\n\n$$\\therefore a^b=\\left(2^{\\frac{1}{\\sqrt{2}}}\\right)^3=2^{\\frac{3}{\\sqrt{2}}}=2^{\\frac{3\\sqrt{2}}{2}}$$\n\n---",
+    "content_source": "FileLoop",
+    "content_length": 1724,
+    "skel_status": "neuron_missing",
+    "dna_status": "dna_missing",
+    "needed_neurons": [
+      "???"
+    ],
+    "needed_dna": [],
+    "previous_analysis": "",
+    "previous_matching": "",
+    "previous_matched": [],
+    "previous_skeleton": [],
+    "previous_new_neurons": [
+      {
+        "id": "???",
+        "type": "???",
+        "statement": "(자동 감지) 뉴런 부족 판정이나 구체적 뉴런 제안 누락",
+        "reason": "skeleton이 비어있고 new_neurons도 비어있음 — Claude가 두 필드 모두 빈 채로 반환",
+        "blocked_edge": "N/A"
+      }
+    ],
+    "previous_partial_skeleton": [],
+    "previous_blockage_point": "",
+    "previous_dna_nodes": [],
+    "previous_dna_edges": [],
+    "created_at": "2026-03-22T23:36:10.885Z"
   }
 ]
