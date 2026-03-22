@@ -4448,5 +4448,551 @@
     "folders": [],
     "history": [],
     "created_at": "2026-03-22T13:14:21.668Z"
+  },
+  {
+    "problem_id": "Problem10",
+    "answer": "86",
+    "clues": [
+      {
+        "id": "단서A",
+        "text": "$f(x) = \\begin{cases} 2^x & (x \\leq 2) \\\\ a \\times 2^{-x} & (x > 2) \\end{cases}$"
+      },
+      {
+        "id": "단서B",
+        "text": "조건 (가): 모든 실수 $x$에 대하여 $f(x) \\leq 4$이다"
+      },
+      {
+        "id": "단서C",
+        "text": "조건 (나): $f(x)$, $f(x+1)$의 값이 모두 자연수가 되도록 하는 실수 $x$의 개수는 3이다"
+      }
+    ],
+    "skeleton": [
+      {
+        "from": "단서A",
+        "to": "note1",
+        "neuron": "사실5",
+        "note": "$x \\leq 2$에서 $2^x$는 순증가이다",
+        "main": false,
+        "step": 1
+      },
+      {
+        "from": "note1",
+        "to": "note2",
+        "neuron": "사실53",
+        "note": "$x \\leq 2$에서 $2^x$의 최댓값은 $x=2$일 때 $2^2=4$이다",
+        "main": false,
+        "step": 1
+      },
+      {
+        "from": "단서A",
+        "to": "note3",
+        "neuron": "사실5",
+        "note": "$2^{-x} = (1/2)^x$이고 $0 < 1/2 < 1$이므로 $2^{-x}$는 순감소이다",
+        "main": false,
+        "step": 1
+      },
+      {
+        "from": "note3",
+        "to": "note4",
+        "neuron": "사실19",
+        "note": "$x > 2$에서 $a \\cdot 2^{-x}$의 상한은 $x \\to 2^+$일 때의 극한값 $\\dfrac{a}{4}$이고, $f(x) < \\dfrac{a}{4}$이다",
+        "main": true,
+        "step": 1
+      },
+      {
+        "from": [
+          "note2",
+          "note4",
+          "단서B"
+        ],
+        "to": "note5",
+        "neuron": "연산21",
+        "note": "조건 (가)의 필요충분조건은 $\\dfrac{a}{4} \\leq 4$, 즉 $a \\leq 16$이다 ···①",
+        "main": true,
+        "step": 1
+      },
+      {
+        "from": [
+          "단서A",
+          "단서C"
+        ],
+        "to": "note6",
+        "neuron": "전략22",
+        "note": "$f(x)$와 $f(x+1)$이 모두 자연수가 되는 $x$를 구하기 위해 (i) $x+1 \\leq 2$, (ii) $x \\leq 2 < x+1$, (iii) $x > 2$ 세 경우로 나눈다",
+        "main": true,
+        "step": 2
+      },
+      {
+        "from": [
+          "단서A",
+          "note6"
+        ],
+        "to": "note7",
+        "neuron": "사실44",
+        "note": "경우 (i) $x \\leq 1$에서 $f(x)=2^x$이고 $f(x+1)=2^{x+1}$이다",
+        "main": true,
+        "step": 3
+      },
+      {
+        "from": "note7",
+        "to": "note8",
+        "neuron": "연산18",
+        "note": "$2^{x+1} = 2 \\cdot 2^x$이므로 $2^x$가 자연수이면 $2^{x+1}$도 자연수이다. 따라서 조건은 $2^x$가 자연수인 조건과 동치이다",
+        "main": true,
+        "step": 3
+      },
+      {
+        "from": "note8",
+        "to": "note9",
+        "neuron": "전략17",
+        "note": "$x \\leq 1$에서 $2^x$가 자연수인 경우는 $x=0$ ($2^0=1$) 또는 $x=1$ ($2^1=2$)이다",
+        "main": true,
+        "step": 3
+      },
+      {
+        "from": [
+          "단서A",
+          "note6"
+        ],
+        "to": "note10",
+        "neuron": "사실44",
+        "note": "경우 (ii) $1 < x \\leq 2$에서 $f(x)=2^x$이고 $f(x+1)=a \\cdot 2^{-(x+1)}$이다",
+        "main": true,
+        "step": 4
+      },
+      {
+        "from": "note10",
+        "to": "note11",
+        "neuron": "사실19",
+        "note": "$1 < x \\leq 2$에서 $2^x \\in (2, 4]$이므로 $2^x$가 자연수이면 $2^x = 3$ 또는 $2^x = 4$이다",
+        "main": true,
+        "step": 4
+      },
+      {
+        "from": "note11",
+        "to": "note12",
+        "neuron": "연산2",
+        "note": "$2^x=3$이면 $x=\\log_2 3$이고, $2^x=4$이면 $x=2$이다",
+        "main": true,
+        "step": 4
+      },
+      {
+        "from": [
+          "note10",
+          "note12"
+        ],
+        "to": "note13",
+        "neuron": "연산2",
+        "note": "$x=\\log_2 3$일 때 $f(x+1)=a \\cdot 2^{-(\\log_2 3+1)}=\\dfrac{a}{6}$이고, $x=2$일 때 $f(x+1)=a \\cdot 2^{-3}=\\dfrac{a}{8}$이다",
+        "main": true,
+        "step": 4
+      },
+      {
+        "from": [
+          "note13",
+          "note5"
+        ],
+        "to": "note14",
+        "neuron": "전략17",
+        "note": "$\\dfrac{a}{6}$이 자연수이고 $a \\leq 16$이면 $a \\in \\{6, 12\\}$이고, $\\dfrac{a}{8}$이 자연수이고 $a \\leq 16$이면 $a \\in \\{8, 16\\}$이다",
+        "main": true,
+        "step": 4
+      },
+      {
+        "from": [
+          "단서A",
+          "note6"
+        ],
+        "to": "note15",
+        "neuron": "사실44",
+        "note": "경우 (iii) $x > 2$에서 $f(x)=a \\cdot 2^{-x}$이고 $f(x+1)=a \\cdot 2^{-(x+1)}$이다",
+        "main": true,
+        "step": 5
+      },
+      {
+        "from": "note15",
+        "to": "note16",
+        "neuron": "연산18",
+        "note": "$a \\cdot 2^{-x} = 2 \\cdot (a \\cdot 2^{-(x+1)})$이므로 $f(x+1)$이 자연수이면 $f(x)$도 자연수이다. 따라서 조건은 $f(x+1) = a \\cdot 2^{-(x+1)}$이 자연수인 조건과 동치이다",
+        "main": true,
+        "step": 5
+      },
+      {
+        "from": [
+          "note16",
+          "note5"
+        ],
+        "to": "note17",
+        "neuron": "사실50",
+        "note": "$x > 2$이면 $x+1 > 3$이므로 $a \\cdot 2^{-(x+1)} < a \\cdot 2^{-3} = \\dfrac{a}{8}$이고, $a \\leq 16$이므로 $\\dfrac{a}{8} \\leq 2$이다. 따라서 $a \\cdot 2^{-(x+1)} < 2$이다",
+        "main": true,
+        "step": 5
+      },
+      {
+        "from": "note17",
+        "to": "note18",
+        "neuron": "전략23",
+        "note": "$a \\cdot 2^{-(x+1)} < 2$이고 자연수이어야 하므로 $a \\cdot 2^{-(x+1)} = 1$이다",
+        "main": true,
+        "step": 5
+      },
+      {
+        "from": "note18",
+        "to": "note19",
+        "neuron": "연산2",
+        "note": "$a = 2^{x+1}$이고 $x > 2$이므로 $a > 8$이다. $x = \\log_2 a - 1$로 유일하게 결정된다",
+        "main": true,
+        "step": 5
+      },
+      {
+        "from": [
+          "note9",
+          "note14",
+          "note19",
+          "단서C"
+        ],
+        "to": "note20",
+        "neuron": "전략20",
+        "note": "경우 (i)에서 $x=0$, $x=1$은 항상 조건을 만족한다. 조건 (나)에서 총 개수가 3이 되려면 경우 (ii)와 (iii)을 합쳐 정확히 1개의 $x$가 추가되어야 한다",
+        "main": true,
+        "step": 6
+      },
+      {
+        "from": "note20",
+        "to": "note21",
+        "neuron": "전략23",
+        "note": "$a=12$이면 경우 (ii)에서 $x=\\log_2 3$, 경우 (iii)에서 $x=\\log_2 12-1$이 추가되어 2개가 되므로 $a=12$는 불가하다. $a=16$이면 경우 (ii)에서 $x=2$, 경우 (iii)에서 $x=3$이 추가되어 2개가 되므로 $a=16$은 불가하다",
+        "main": false,
+        "step": 6
+      },
+      {
+        "from": [
+          "note20",
+          "note21"
+        ],
+        "to": "note22",
+        "neuron": "전략17",
+        "note": "경우 (ii)에서만 1개 추가: $a=6$ ($x=\\log_2 3$, 경우 (iii) 없음) 또는 $a=8$ ($x=2$, 경우 (iii) 없음). 경우 (iii)에서만 1개 추가: $a \\in \\{9,10,11,13,14,15\\}$ (경우 (ii) 해당 없고 $8 < a \\leq 16$, $a \\notin \\{12,16\\}$)",
+        "main": true,
+        "step": 6
+      },
+      {
+        "from": "note22",
+        "to": "END",
+        "neuron": "전략10",
+        "note": "조건을 만족하는 자연수 $a$는 $6, 8, 9, 10, 11, 13, 14, 15$이고, 합은 $6+8+9+10+11+13+14+15=86$이다",
+        "main": true,
+        "step": 7
+      }
+    ],
+    "solution": "STEP 1. 조건 (가)에서 $a$의 범위를 구한다. $x \\leq 2$에서 $2^x$는 순증가이므로 최댓값은 $x=2$일 때 $4$이고, $x > 2$에서 $a \\cdot 2^{-x}$는 순감소이므로 상한은 $x \\to 2^+$일 때의 극한값 $\\dfrac{a}{4}$이다. 조건 (가)가 성립하려면 $\\dfrac{a}{4} \\leq 4$, 즉 $a \\leq 16$이어야 한다 ···①.\n\nSTEP 2. 조건 (나)를 분석하기 위해 $f$의 분기점 $x=2$를 기준으로 (i) $x+1 \\leq 2$, (ii) $x \\leq 2 < x+1$, (iii) $x > 2$ 세 경우로 나눈다.\n\nSTEP 3. 경우 (i) $x \\leq 1$: $f(x)=2^x$, $f(x+1)=2^{x+1}=2 \\cdot 2^x$이다. $2^x$가 자연수이면 $2^{x+1}$도 자연수이므로 $2^x$가 자연수인 조건만 확인하면 된다. $x \\leq 1$에서 $2^x$가 자연수인 경우는 $x=0$ 또는 $x=1$이다. 따라서 경우 (i)에서 조건을 만족하는 $x$는 $0$과 $1$, 총 2개이다.\n\nSTEP 4. 경우 (ii) $1 < x \\leq 2$: $f(x)=2^x$, $f(x+1)=a \\cdot 2^{-(x+1)}$이다. $1 < x \\leq 2$에서 $2^x \\in (2,4]$이므로 $2^x$가 자연수이면 $2^x=3$ ($x=\\log_2 3$) 또는 $2^x=4$ ($x=2$)이다. $x=\\log_2 3$일 때 $f(x+1)=\\dfrac{a}{6}$이 자연수이고 $a \\leq 16$이면 $a \\in \\{6,12\\}$이다. $x=2$일 때 $f(x+1)=\\dfrac{a}{8}$이 자연수이고 $a \\leq 16$이면 $a \\in \\{8,16\\}$이다.\n\nSTEP 5. 경우 (iii) $x > 2$: $f(x)=a \\cdot 2^{-x}=2 \\cdot (a \\cdot 2^{-(x+1)})$이므로 $f(x+1)$이 자연수이면 $f(x)$도 자연수이다. $x > 2$이면 $a \\cdot 2^{-(x+1)} < \\dfrac{a}{8} \\leq 2$이므로 자연수이려면 $a \\cdot 2^{-(x+1)}=1$이어야 한다. 따라서 $a=2^{x+1}$이고 $x > 2$이므로 $a > 8$이며, $x=\\log_2 a - 1$로 유일하게 결정된다.\n\nSTEP 6. 조건 (나)를 적용한다. 경우 (i)에서 $x=0$, $x=1$은 항상 조건을 만족하므로, 경우 (ii)와 (iii)을 합쳐 정확히 1개의 $x$가 추가되어야 한다. $a=12$이면 경우 (ii)에서 $x=\\log_2 3$, 경우 (iii)에서 $x=\\log_2 12-1$이 추가되어 2개가 되므로 불가하다. $a=16$이면 경우 (ii)에서 $x=2$, 경우 (iii)에서 $x=3$이 추가되어 2개가 되므로 불가하다. 따라서 $a=6$ ($x=\\log_2 3$만 추가), $a=8$ ($x=2$만 추가), $a \\in \\{9,10,11,13,14,15\\}$ ($x=\\log_2 a-1$만 추가)가 조건을 만족한다.\n\nSTEP 7. 조건을 만족하는 자연수 $a$는 $6, 8, 9, 10, 11, 13, 14, 15$이고, 합은 $6+8+9+10+11+13+14+15=86$이다.",
+    "original_solution": "**(가)** $\\Rightarrow a \\leq 16$ $\\cdots$ ①\n\n이고, 실수 $x$가\n\n$f(x)$, $f(x+1)$이 모두 자연수 $\\cdots$ (★)\n\n를 만족시킬 때, $f(x)$의 정의를 고려하여\n\n(i) $x+1 \\leq 2$, (ii) $x \\leq 2 < x+1$, (iii) $x > 2$\n\n인 경우로 나누어 구해보자.\n\n**(i) $x+1 \\leq 2$인 경우:**\n\n(★) $\\Rightarrow 2^x$과 $2^{x+1}$이 모두 자연수 $(x \\leq 1)$\n\n$\\Rightarrow 2^x$이 자연수 $(x \\leq 1)$\n\n$\\Rightarrow x = 0$ 또는 $x = 1$\n\n**(ii) $x \\leq 2 < x+1$인 경우:**\n\n(★) $\\Rightarrow 2^x$과 $a \\times 2^{-(x+1)}$이 모두 자연수 $(1 < x \\leq 2)$\n\n$\\Rightarrow \\begin{cases} ① \\, x = \\log_2 3\\text{이고 } a = 6 \\text{ 또는 } a = 12 \\, (\\because \\text{ ①}) \\\\ ② \\, x = 2\\text{이고 } a = 8 \\text{ 또는 } a = 16 \\, (\\because \\text{ ①}) \\end{cases}$\n\n**(iii) $x > 2$인 경우:**\n\n(★) $\\Rightarrow a \\times 2^{-x}$과 $a \\times 2^{-(x+1)}$이 모두 자연수 $(x > 2)$\n\n$\\Rightarrow x > 2$이고 $a \\times 2^{-(x+1)}$이 자연수\n\n$\\Rightarrow$ ③ $x > 2$이고 $a = 2^{x+1} > 8$\n\n$$(\\because \\text{ ①} \\Rightarrow a \\times 2^{-(x+1)} < 2 \\Rightarrow a \\times 2^{-(x+1)} = 1)$$\n\n**따라서**\n\n$$\\begin{cases} \\text{(나) } \\Rightarrow \\text{ (★)를 만족시키는 실수 } x\\text{의 개수가 } 3 \\\\ \\text{(i) } \\Rightarrow x = 0\\text{과 } x = 1\\text{은 (★)을 만족시킴} \\end{cases}$$\n\n$\\Rightarrow$ ① 또는 ② 또는 ③을 만족시키는 실수 $x$의 개수가 1\n\n$$\\Rightarrow \\begin{cases} ①\\text{을 만족시키는 } x\\text{만 존재 } \\Rightarrow a = 6 \\\\ ②\\text{를 만족시키는 } x\\text{만 존재 } \\Rightarrow a = 8 \\\\ ③\\text{을 만족시키는 } x\\text{만 존재 } \\Rightarrow a > 8, \\, a \\neq 12, \\, a \\neq 16 \\end{cases}$$\n\n이므로 문제의 조건을 만족시키도록 하는 모든 자연수 $a$는\n\n$$6, \\, 8, \\, 9, \\, 10, \\, 11, \\, 13, \\, 14, \\, 15 \\, (\\because \\text{ ①})$$\n\n이다.\n\n$\\therefore$ (구하는 합) $= 86$\n\n---",
+    "analysis": "조건 (가)에서 a≤16을 도출하고, 조건 (나)에서 x의 위치에 따라 세 경우로 나누어 각 경우에서 조건을 만족하는 x를 구한 뒤, 총 개수가 3이 되는 a를 결정한다.",
+    "new_neurons": [],
+    "metadata": {
+      "unit": "지수함수와 로그함수",
+      "difficulty": "고난도",
+      "score": "4",
+      "type": "단답형",
+      "answer": "86"
+    },
+    "edge_count": 23,
+    "side_count": 4,
+    "statement": "# Problem10. (Unknown Source) - Piecewise Function, Exponential Function\n\n## Problem\n\n함수\n\n$$f(x) = \\begin{cases} 2^x & (x \\leq 2) \\\\ a \\times 2^{-x} & (x > 2) \\end{cases}$$\n\n가 다음 조건을 만족시키도록 하는 모든 자연수 $a$의 값의 합을 구하시오. [4점]\n\n(가) 모든 실수 $x$에 대하여 $f(x) \\leq 4$이다.\n\n(나) $f(x)$, $f(x+1)$의 값이 모두 자연수가 되도록 하는 실수 $x$의 개수는 3이다.\n\n## Answer\n\n86",
+    "dna": {
+      "nodes": [
+        {
+          "id": "top",
+          "dna": "Q3",
+          "label": "a값의 합",
+          "category": "발문"
+        },
+        {
+          "id": "va",
+          "dna": "T1",
+          "label": "변수 a",
+          "category": "말단"
+        },
+        {
+          "id": "va_lim",
+          "dna": "L3",
+          "label": "a는 자연수",
+          "category": "제한"
+        },
+        {
+          "id": "vx",
+          "dna": "T3",
+          "label": "독립변수 x",
+          "category": "말단"
+        },
+        {
+          "id": "c1",
+          "dna": "T2",
+          "label": "상수 1",
+          "category": "말단"
+        },
+        {
+          "id": "c2",
+          "dna": "T2",
+          "label": "상수 2",
+          "category": "말단"
+        },
+        {
+          "id": "c4",
+          "dna": "T2",
+          "label": "상수 4",
+          "category": "말단"
+        },
+        {
+          "id": "c3",
+          "dna": "T2",
+          "label": "상수 3",
+          "category": "말단"
+        },
+        {
+          "id": "func_f",
+          "dna": "F1",
+          "label": "조각함수 f",
+          "category": "함수"
+        },
+        {
+          "id": "piece1",
+          "dna": "F2",
+          "label": "조각1: x≤2",
+          "category": "함수"
+        },
+        {
+          "id": "piece2",
+          "dna": "F2",
+          "label": "조각2: x>2",
+          "category": "함수"
+        },
+        {
+          "id": "exp1",
+          "dna": "E4",
+          "label": "2^x",
+          "category": "수식"
+        },
+        {
+          "id": "neg_x",
+          "dna": "E2",
+          "label": "부호반전(x)",
+          "category": "수식"
+        },
+        {
+          "id": "exp2",
+          "dna": "E4",
+          "label": "2^(-x)",
+          "category": "수식"
+        },
+        {
+          "id": "prod_a",
+          "dna": "E6",
+          "label": "a×2^(-x)",
+          "category": "수식"
+        },
+        {
+          "id": "dom1_cond",
+          "dna": "C2",
+          "label": "x≤2 조건",
+          "category": "조건"
+        },
+        {
+          "id": "dom2_cond",
+          "dna": "C2",
+          "label": "x>2 조건",
+          "category": "조건"
+        },
+        {
+          "id": "cond_ga",
+          "dna": "C18",
+          "label": "모든x: f(x)≤4",
+          "category": "조건"
+        },
+        {
+          "id": "fx_val",
+          "dna": "F3",
+          "label": "f(x)",
+          "category": "함수"
+        },
+        {
+          "id": "cond_na",
+          "dna": "C9",
+          "label": "x개수=3",
+          "category": "조건"
+        },
+        {
+          "id": "nat_filter",
+          "dna": "X3",
+          "label": "f(x),f(x+1) 모두 자연수",
+          "category": "존재"
+        },
+        {
+          "id": "fx1_val",
+          "dna": "F3",
+          "label": "f(x+1)",
+          "category": "함수"
+        },
+        {
+          "id": "x_plus1",
+          "dna": "E1",
+          "label": "x+1",
+          "category": "수식"
+        },
+        {
+          "id": "conds",
+          "dna": "S1",
+          "label": "조건 묶음",
+          "category": "구조"
+        }
+      ],
+      "edges": [
+        {
+          "from": "va",
+          "to": "top"
+        },
+        {
+          "from": "va_lim",
+          "to": "va"
+        },
+        {
+          "from": "conds",
+          "to": "top"
+        },
+        {
+          "from": "func_f",
+          "to": "conds"
+        },
+        {
+          "from": "cond_ga",
+          "to": "conds"
+        },
+        {
+          "from": "cond_na",
+          "to": "conds"
+        },
+        {
+          "from": "piece1",
+          "to": "func_f"
+        },
+        {
+          "from": "piece2",
+          "to": "func_f"
+        },
+        {
+          "from": "exp1",
+          "to": "piece1"
+        },
+        {
+          "from": "dom1_cond",
+          "to": "piece1"
+        },
+        {
+          "from": "c2",
+          "to": "exp1"
+        },
+        {
+          "from": "vx",
+          "to": "exp1"
+        },
+        {
+          "from": "prod_a",
+          "to": "piece2"
+        },
+        {
+          "from": "dom2_cond",
+          "to": "piece2"
+        },
+        {
+          "from": "va",
+          "to": "prod_a"
+        },
+        {
+          "from": "exp2",
+          "to": "prod_a"
+        },
+        {
+          "from": "c2",
+          "to": "exp2"
+        },
+        {
+          "from": "neg_x",
+          "to": "exp2"
+        },
+        {
+          "from": "vx",
+          "to": "neg_x"
+        },
+        {
+          "from": "vx",
+          "to": "dom1_cond"
+        },
+        {
+          "from": "c2",
+          "to": "dom1_cond"
+        },
+        {
+          "from": "vx",
+          "to": "dom2_cond"
+        },
+        {
+          "from": "c2",
+          "to": "dom2_cond"
+        },
+        {
+          "from": "fx_val",
+          "to": "cond_ga"
+        },
+        {
+          "from": "c4",
+          "to": "cond_ga"
+        },
+        {
+          "from": "func_f",
+          "to": "fx_val"
+        },
+        {
+          "from": "vx",
+          "to": "fx_val"
+        },
+        {
+          "from": "nat_filter",
+          "to": "cond_na"
+        },
+        {
+          "from": "c3",
+          "to": "cond_na"
+        },
+        {
+          "from": "fx_val",
+          "to": "nat_filter"
+        },
+        {
+          "from": "fx1_val",
+          "to": "nat_filter"
+        },
+        {
+          "from": "func_f",
+          "to": "fx1_val"
+        },
+        {
+          "from": "x_plus1",
+          "to": "fx1_val"
+        },
+        {
+          "from": "vx",
+          "to": "x_plus1"
+        },
+        {
+          "from": "c1",
+          "to": "x_plus1"
+        }
+      ],
+      "new_dna": []
+    },
+    "thinking_profile": null,
+    "folders": [],
+    "history": [],
+    "created_at": "2026-03-22T13:18:27.962Z"
   }
 ]
