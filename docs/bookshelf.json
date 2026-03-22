@@ -7703,5 +7703,786 @@
     "folders": [],
     "history": [],
     "created_at": "2026-03-22T14:22:08.872Z"
+  },
+  {
+    "problem_id": "Problem13_3",
+    "answer": "③ 139/9",
+    "clues": [
+      {
+        "id": "단서A",
+        "text": "$a > 1$, $k < 0$인 실수에 대해 $f(x) = \\begin{cases} |a^{x+1}-3a| & (x \\leq 1) \\\\ k(x-1)(x-a) & (x > 1) \\end{cases}$"
+      },
+      {
+        "id": "단서B",
+        "text": "자연수 $n$에 대해 방정식 $f(x^n)=n$의 서로 다른 실근의 개수를 $g(n)$이라 한다"
+      },
+      {
+        "id": "단서C",
+        "text": "$g(14)=5$"
+      }
+    ],
+    "skeleton": [
+      {
+        "from": "단서B",
+        "to": "note1",
+        "neuron": "사실4",
+        "note": "$n$이 짝수일 때 $x^n = t$의 실수 해의 개수는 $t<0$이면 $0$개, $t=0$이면 $1$개, $t>0$이면 $2$개이다",
+        "main": true,
+        "step": 1
+      },
+      {
+        "from": [
+          "단서B",
+          "note1"
+        ],
+        "to": "note2",
+        "neuron": "전략5",
+        "note": "$n$이 짝수일 때 $g(n) = \\sum_{t: f(t)=n} (x^n=t\\text{의 실근 개수})$이다",
+        "main": true,
+        "step": 1
+      },
+      {
+        "from": [
+          "단서C",
+          "note2"
+        ],
+        "to": "note3",
+        "neuron": "전략22",
+        "note": "$g(14)=5$이고 $14$는 짝수이므로, $f(t)=14$를 만족하는 $t$의 구성은 양수 $t$가 $2$개, $t=0$이 $1$개이다 ($2\\times2+1=5$)",
+        "main": true,
+        "step": 2
+      },
+      {
+        "from": [
+          "단서A",
+          "note3"
+        ],
+        "to": "note4",
+        "neuron": "전략6",
+        "note": "$t=0$일 때 $f(0)=|a^1-3a|=2a=14$이므로 $a=7$이다",
+        "main": true,
+        "step": 3
+      },
+      {
+        "from": "단서A",
+        "to": "note5",
+        "neuron": "사실5",
+        "note": "$a=7>1$이므로 $x\\leq 1$에서 $7^{x+1}$은 순증가이다",
+        "main": false,
+        "step": 3
+      },
+      {
+        "from": "note5",
+        "to": "note6",
+        "neuron": "사실46",
+        "note": "$x\\leq 1$에서 $7^{x+1}$은 $x\\to-\\infty$일 때 $0$으로 감소하고 $x=1$일 때 $49$이다",
+        "main": false,
+        "step": 3
+      },
+      {
+        "from": [
+          "note4",
+          "note6"
+        ],
+        "to": "note7",
+        "neuron": "전략6",
+        "note": "$a=7$일 때 $7^{x+1}-21=0$이면 $x=\\log_7 21 - 1 \\approx 0.565$이다. $x\\leq 1$에서 $f(x)=|7^{x+1}-21|$은 $x<\\log_7 21-1$이면 $21-7^{x+1}$, $x\\geq \\log_7 21-1$이면 $7^{x+1}-21$이다",
+        "main": false,
+        "step": 3
+      },
+      {
+        "from": [
+          "note4",
+          "note7"
+        ],
+        "to": "note8",
+        "neuron": "사실19",
+        "note": "$x\\leq 1$에서 $f(x)$는 $x\\to-\\infty$일 때 $21$에 수렴하고, $x=\\log_7 21-1$에서 최솟값 $0$, $x=1$에서 $f(1)=|49-21|=28$이다",
+        "main": false,
+        "step": 3
+      },
+      {
+        "from": [
+          "note3",
+          "note4"
+        ],
+        "to": "note9",
+        "neuron": "전략25",
+        "note": "$x>1$에서 $f(t)=14$를 만족하는 양수 $t$가 정확히 $2$개 존재해야 한다",
+        "main": true,
+        "step": 4
+      },
+      {
+        "from": [
+          "단서A",
+          "note4"
+        ],
+        "to": "note10",
+        "neuron": "사실35",
+        "note": "$x>1$에서 $k(x-1)(x-7)$은 $k<0$이므로 $1<x<7$에서 양수, $x>7$에서 음수이다",
+        "main": false,
+        "step": 4
+      },
+      {
+        "from": [
+          "note9",
+          "note10"
+        ],
+        "to": "note11",
+        "neuron": "전략22",
+        "note": "$f(t)=14$의 양수 해 $2$개는 $1<x<7$ 구간에 있고, 그 중 하나가 $x=4$이다",
+        "main": false,
+        "step": 4
+      },
+      {
+        "from": [
+          "단서A",
+          "note4",
+          "note11"
+        ],
+        "to": "note12",
+        "neuron": "전략25",
+        "note": "$f(4)=k(4-1)(4-7)=k\\times3\\times(-3)=-9k=14$이므로 $k=-\\dfrac{14}{9}$이다",
+        "main": true,
+        "step": 4
+      },
+      {
+        "from": "단서B",
+        "to": "note13",
+        "neuron": "사실4",
+        "note": "$n$이 홀수일 때 모든 실수 $t$에 대해 $x^n=t$의 실수 해는 정확히 $1$개이다",
+        "main": true,
+        "step": 5
+      },
+      {
+        "from": [
+          "note13",
+          "단서B"
+        ],
+        "to": "note14",
+        "neuron": "전략5",
+        "note": "$n$이 홀수일 때 $g(n) = f(t)=n$을 만족하는 $t$의 개수이다",
+        "main": true,
+        "step": 5
+      },
+      {
+        "from": [
+          "note4",
+          "note12",
+          "note14"
+        ],
+        "to": "note15",
+        "neuron": "전략5",
+        "note": "$a=7$, $k=-\\dfrac{14}{9}$일 때 $y=f(x)$의 그래프와 $y=5$의 교점 수는 $4$개이므로 $g(5)=4$이다",
+        "main": true,
+        "step": 6
+      },
+      {
+        "from": [
+          "note4",
+          "note12",
+          "note2"
+        ],
+        "to": "note16",
+        "neuron": "전략5",
+        "note": "$y=f(x)$와 $y=10$의 교점 수: $x\\leq1$ 구간에서 $4$개, $x>1$ 구간에서 $4$개이므로 $g(10)=8$이다",
+        "main": true,
+        "step": 6
+      },
+      {
+        "from": [
+          "note4",
+          "note12",
+          "note14"
+        ],
+        "to": "note17",
+        "neuron": "전략5",
+        "note": "$y=f(x)$와 $y=15$의 교점 수는 $2$개이므로 $g(15)=2$이다",
+        "main": true,
+        "step": 6
+      },
+      {
+        "from": [
+          "note4",
+          "note12",
+          "note2"
+        ],
+        "to": "note18",
+        "neuron": "전략5",
+        "note": "$y=f(x)$와 $y=20$의 교점 수는 $2$개이므로 $g(20)=2$이다",
+        "main": true,
+        "step": 6
+      },
+      {
+        "from": [
+          "note4",
+          "note12",
+          "note14"
+        ],
+        "to": "note19",
+        "neuron": "전략5",
+        "note": "$y=f(x)$와 $y=25$의 교점 수는 $1$개이므로 $g(25)=1$이다",
+        "main": true,
+        "step": 6
+      },
+      {
+        "from": [
+          "note12",
+          "note15",
+          "note16",
+          "note17",
+          "note18",
+          "note19"
+        ],
+        "to": "END",
+        "neuron": "전략17",
+        "note": "$k + \\sum_{n=1}^{4}g(5n) = -\\dfrac{14}{9} + (4+8+2+2+1) = -\\dfrac{14}{9} + 17 = \\dfrac{-14+153}{9} = \\dfrac{139}{9}$이다",
+        "main": true,
+        "step": 7
+      }
+    ],
+    "solution": "STEP 1. $n$이 짝수일 때, $x^n = t$의 실수 해의 개수는 $t<0$이면 $0$개, $t=0$이면 $1$개, $t>0$이면 $2$개이다. 따라서 $n$이 짝수일 때 $g(n) = \\sum_{t:\\,f(t)=n}(x^n=t\\text{의 실근 개수})$이다.\n\nSTEP 2. $g(14)=5$이고 $14$는 짝수이므로, $f(t)=14$를 만족하는 $t$의 구성은 양수 $t$가 $2$개, $t=0$이 $1$개이어야 한다 ($2\\times2+1=5$).\n\nSTEP 3. $t=0$일 때 $f(0)=|a^1-3a|=2a=14$이므로 $a=7$이다.\n\nSTEP 4. $x>1$에서 $k<0$이므로 $k(x-1)(x-7)$은 $1<x<7$에서 양수이다. $f(t)=14$의 양수 해 $2$개 중 하나가 $x=4$이고, $f(4)=k(3)(-3)=-9k=14$이므로 $k=-\\dfrac{14}{9}$이다.\n\nSTEP 5. $n$이 홀수일 때 모든 실수 $t$에 대해 $x^n=t$의 실수 해는 정확히 $1$개이므로, $g(n) = f(t)=n$을 만족하는 $t$의 개수이다.\n\nSTEP 6. $a=7$, $k=-\\dfrac{14}{9}$로 결정된 $f(x)$의 그래프와 각 수평선의 교점 수를 세면: $g(5)=4$, $g(10)=8$, $g(15)=2$, $g(20)=2$, $g(25)=1$이다.\n\nSTEP 7. $k+\\sum_{n=1}^{4}g(5n) = -\\dfrac{14}{9}+(4+8+2+2+1) = -\\dfrac{14}{9}+17 = \\dfrac{139}{9}$이다.",
+    "original_solution": "[FIGURE: 그래프 포함]\n\n**만약 실수 $t$가**\n\n$$f(t)=n$$\n\n을 만족시킨다고 가정하면, $n$이 짝수일 때,\n\n$$(x^n=t \\text{인 } x \\text{의 개수})= \\begin{cases} 0 & (t<0 \\text{일 때}) \\\\ 1 & (t=0 \\text{일 때}) \\\\ 2 & (t>0 \\text{일 때}) \\end{cases}$$\n\n이므로 $g(n)$의 정의에 의해\n\n$n$이 짝수일 때, $g(n)=(\\text{①을 만족시키는 각각의 } t\\text{에 대하여 모든 ②의 값의 합})$\n\n이다. 따라서 문제의 조건에서\n\n$$g(14)=5 \\Rightarrow \\begin{cases} ① \\quad f(t)=14 \\\\ ② \\quad f(x)=14\\text{인 양수 } x\\text{는 } 2\\text{개만 존재} \\end{cases}$$\n\n임을 알 수 있고,\n\n① $\\Rightarrow a=7$\n\n이므로 ②를 만족시키는 함수 $f(x)$의 그래프는 다음 [그림]과 같다.\n\n따라서\n\n$$f(4)=k\\times 3\\times(-3)=-9k \\Rightarrow k=-\\frac{14}{9} \\quad (\\because f(4)=14)$$\n\n이다.\n\n한편, $n$이 홀수일 때는\n\n모든 실수 $t$에 대하여, $(x^n=t \\text{인 } x \\text{의 개수})=1$\n\n이므로 $g(n)$의 정의에 의해\n\n$n$이 홀수일 때 : $g(n)=(\\text{①을 만족시키는 } t\\text{의 개수})$\n\n와 같다.\n\n따라서 [그림]을 통해\n\n$$g(5)=4, \\quad g(10)=8, \\quad g(15)=2, \\quad g(20)=2, \\quad g(25)=1$$\n\n임을 알 수 있다.\n\n$$\\therefore k+\\sum_{n=1}^{4}g(5n)=-\\frac{14}{9}+17=\\frac{139}{9}$$\n\n---",
+    "analysis": "f(x)는 x≤1에서 |a^{x+1}-3a|, x>1에서 k(x-1)(x-a). n이 짝수이면 x^n=t의 실근 개수는 t<0이면 0, t=0이면 1, t>0이면 2. g(14)=5이고 14는 짝수이므로 f(t)=14를 만족하는 t의 개수와 부호 조합이 5가 되어야 한다. 양수 t가 2개, 음수 t가 0개, 0인 t가 1개이면 2×2+1=5. 그런데 f(x)=|...|≥0이므로 f(t)=14>0이면 t<0은 불가. 따라서 양수 t가 2개, 0인 t가 1개이면 2×2+1=5. 하지만 f(t)=14이고 t=0이면 |a^1-3a|=14 → |a-3a|=|-2a|=2a=14 → a=7. 그러면 x≤1에서 f(x)=|7^{x+1}-21|. x=0일 때 f(0)=|7-21|=14. 양수 t가 2개: x>1 구간에서 k(x-1)(x-7)=14를 만족하는 x가 2개. f(4)=k×3×(-3)=-9k=14 → k=-14/9. g(5)=f(t)=5의 실근 개수(홀수이므로). 그래프 분석으로 g(5)=4, g(10)=8, g(15)=2, g(20)=2, g(25)=1.",
+    "new_neurons": [],
+    "metadata": {
+      "unit": "함수",
+      "difficulty": "unknown",
+      "score": "4",
+      "type": "multiple choice",
+      "answer": "③ $\\frac{139}{9}$"
+    },
+    "edge_count": 20,
+    "side_count": 6,
+    "statement": "# Problem13. (Unknown Source) - 함수의 정의와 계수의 합\n\n## Problem\n\n두 실수 $a$ ($a>1$), $k$ ($k<0$)에 대하여 함수 $f(x)$를\n\n$$f(x)=\\begin{cases} |a^{x+1}-3a| & (x \\leq 1) \\\\ k(x-1)(x-a) & (x > 1) \\end{cases}$$\n\n이라 하자. 자연수 $n$에 대하여 $x$에 대한 방정식 $f(x^n)=n$의 서로 다른 실근의 개수를 $g(n)$이라 할 때, $g(14)=5$이다.\n\n$k+\\sum_{n=1}^{4}g(5n)$의 값은? [4점]",
+    "dna": {
+      "nodes": [
+        {
+          "id": "top",
+          "dna": "Q1",
+          "label": "값을 구하라",
+          "category": "발문"
+        },
+        {
+          "id": "ask_sum",
+          "dna": "E1",
+          "label": "k+시그마합",
+          "category": "수식"
+        },
+        {
+          "id": "vk",
+          "dna": "T1",
+          "label": "변수 k",
+          "category": "말단"
+        },
+        {
+          "id": "lk_neg",
+          "dna": "C2",
+          "label": "k<0",
+          "category": "조건"
+        },
+        {
+          "id": "sigma_gn",
+          "dna": "E1",
+          "label": "g(5n)합산",
+          "category": "수식"
+        },
+        {
+          "id": "g5n_1",
+          "dna": "F3",
+          "label": "g(5)",
+          "category": "함수"
+        },
+        {
+          "id": "g5n_2",
+          "dna": "F3",
+          "label": "g(10)",
+          "category": "함수"
+        },
+        {
+          "id": "g5n_3",
+          "dna": "F3",
+          "label": "g(15)",
+          "category": "함수"
+        },
+        {
+          "id": "g5n_4",
+          "dna": "F3",
+          "label": "g(20)",
+          "category": "함수"
+        },
+        {
+          "id": "c5",
+          "dna": "T2",
+          "label": "상수 5",
+          "category": "말단"
+        },
+        {
+          "id": "c10",
+          "dna": "T2",
+          "label": "상수 10",
+          "category": "말단"
+        },
+        {
+          "id": "c15",
+          "dna": "T2",
+          "label": "상수 15",
+          "category": "말단"
+        },
+        {
+          "id": "c20",
+          "dna": "T2",
+          "label": "상수 20",
+          "category": "말단"
+        },
+        {
+          "id": "fn_g",
+          "dna": "F6",
+          "label": "함수 g(n) 정의",
+          "category": "함수"
+        },
+        {
+          "id": "eq_fxn_n",
+          "dna": "C11",
+          "label": "방정식 f(x^n)=n",
+          "category": "조건"
+        },
+        {
+          "id": "eq_fxn_c1",
+          "dna": "C1",
+          "label": "f(x^n)=n 등식",
+          "category": "조건"
+        },
+        {
+          "id": "fxn_apply",
+          "dna": "F3",
+          "label": "f(x^n)",
+          "category": "함수"
+        },
+        {
+          "id": "xn_pow",
+          "dna": "E7",
+          "label": "x^n",
+          "category": "수식"
+        },
+        {
+          "id": "vx",
+          "dna": "T3",
+          "label": "독립변수 x",
+          "category": "말단"
+        },
+        {
+          "id": "vn",
+          "dna": "T3",
+          "label": "독립변수 n",
+          "category": "말단"
+        },
+        {
+          "id": "lim_n_nat",
+          "dna": "L3",
+          "label": "n은 자연수",
+          "category": "제한"
+        },
+        {
+          "id": "rootcount_def",
+          "dna": "C9",
+          "label": "실근개수=g(n)",
+          "category": "조건"
+        },
+        {
+          "id": "cond_g14",
+          "dna": "C1",
+          "label": "g(14)=5",
+          "category": "조건"
+        },
+        {
+          "id": "c14",
+          "dna": "T2",
+          "label": "상수 14",
+          "category": "말단"
+        },
+        {
+          "id": "fn_f",
+          "dna": "F1",
+          "label": "조각함수 f(x)",
+          "category": "함수"
+        },
+        {
+          "id": "piece1",
+          "dna": "F2",
+          "label": "조각1: x≤1",
+          "category": "함수"
+        },
+        {
+          "id": "piece2",
+          "dna": "F2",
+          "label": "조각2: x>1",
+          "category": "함수"
+        },
+        {
+          "id": "dom1",
+          "dna": "C2",
+          "label": "x≤1",
+          "category": "조건"
+        },
+        {
+          "id": "dom2",
+          "dna": "C2",
+          "label": "x>1",
+          "category": "조건"
+        },
+        {
+          "id": "c1v",
+          "dna": "T2",
+          "label": "상수 1",
+          "category": "말단"
+        },
+        {
+          "id": "abs_expr",
+          "dna": "F5",
+          "label": "|a^{x+1}-3a|",
+          "category": "함수"
+        },
+        {
+          "id": "inner_diff",
+          "dna": "E1",
+          "label": "a^{x+1}-3a",
+          "category": "수식"
+        },
+        {
+          "id": "exp_ax1",
+          "dna": "E4",
+          "label": "a^{x+1}",
+          "category": "수식"
+        },
+        {
+          "id": "va",
+          "dna": "T1",
+          "label": "변수 a",
+          "category": "말단"
+        },
+        {
+          "id": "la_gt1",
+          "dna": "C2",
+          "label": "a>1",
+          "category": "조건"
+        },
+        {
+          "id": "exp_inner",
+          "dna": "E1",
+          "label": "x+1 (지수)",
+          "category": "수식"
+        },
+        {
+          "id": "neg_3a",
+          "dna": "E2",
+          "label": "-(3a)",
+          "category": "수식"
+        },
+        {
+          "id": "prod_3a",
+          "dna": "E6",
+          "label": "3×a",
+          "category": "수식"
+        },
+        {
+          "id": "c3",
+          "dna": "T2",
+          "label": "상수 3",
+          "category": "말단"
+        },
+        {
+          "id": "quad_expr",
+          "dna": "E6",
+          "label": "k(x-1)(x-a)",
+          "category": "수식"
+        },
+        {
+          "id": "prod_factors",
+          "dna": "E6",
+          "label": "(x-1)(x-a)",
+          "category": "수식"
+        },
+        {
+          "id": "factor1",
+          "dna": "E1",
+          "label": "x-1",
+          "category": "수식"
+        },
+        {
+          "id": "neg_1",
+          "dna": "E2",
+          "label": "-1",
+          "category": "수식"
+        },
+        {
+          "id": "factor2",
+          "dna": "E1",
+          "label": "x-a",
+          "category": "수식"
+        },
+        {
+          "id": "neg_a",
+          "dna": "E2",
+          "label": "-a",
+          "category": "수식"
+        }
+      ],
+      "edges": [
+        {
+          "from": "ask_sum",
+          "to": "top"
+        },
+        {
+          "from": "vk",
+          "to": "ask_sum"
+        },
+        {
+          "from": "sigma_gn",
+          "to": "ask_sum"
+        },
+        {
+          "from": "g5n_1",
+          "to": "sigma_gn"
+        },
+        {
+          "from": "g5n_2",
+          "to": "sigma_gn"
+        },
+        {
+          "from": "g5n_3",
+          "to": "sigma_gn"
+        },
+        {
+          "from": "g5n_4",
+          "to": "sigma_gn"
+        },
+        {
+          "from": "c5",
+          "to": "g5n_1"
+        },
+        {
+          "from": "c10",
+          "to": "g5n_2"
+        },
+        {
+          "from": "c15",
+          "to": "g5n_3"
+        },
+        {
+          "from": "c20",
+          "to": "g5n_4"
+        },
+        {
+          "from": "fn_g",
+          "to": "g5n_1"
+        },
+        {
+          "from": "fn_g",
+          "to": "g5n_2"
+        },
+        {
+          "from": "fn_g",
+          "to": "g5n_3"
+        },
+        {
+          "from": "fn_g",
+          "to": "g5n_4"
+        },
+        {
+          "from": "lk_neg",
+          "to": "vk"
+        },
+        {
+          "from": "vk",
+          "to": "quad_expr"
+        },
+        {
+          "from": "eq_fxn_n",
+          "to": "fn_g"
+        },
+        {
+          "from": "eq_fxn_c1",
+          "to": "eq_fxn_n"
+        },
+        {
+          "from": "fxn_apply",
+          "to": "eq_fxn_c1"
+        },
+        {
+          "from": "vn",
+          "to": "eq_fxn_c1"
+        },
+        {
+          "from": "xn_pow",
+          "to": "fxn_apply"
+        },
+        {
+          "from": "vx",
+          "to": "xn_pow"
+        },
+        {
+          "from": "vn",
+          "to": "xn_pow"
+        },
+        {
+          "from": "fn_f",
+          "to": "fxn_apply"
+        },
+        {
+          "from": "lim_n_nat",
+          "to": "vn"
+        },
+        {
+          "from": "rootcount_def",
+          "to": "fn_g"
+        },
+        {
+          "from": "eq_fxn_n",
+          "to": "rootcount_def"
+        },
+        {
+          "from": "cond_g14",
+          "to": "top"
+        },
+        {
+          "from": "c14",
+          "to": "cond_g14"
+        },
+        {
+          "from": "c5",
+          "to": "cond_g14"
+        },
+        {
+          "from": "fn_g",
+          "to": "cond_g14"
+        },
+        {
+          "from": "piece1",
+          "to": "fn_f"
+        },
+        {
+          "from": "piece2",
+          "to": "fn_f"
+        },
+        {
+          "from": "dom1",
+          "to": "piece1"
+        },
+        {
+          "from": "abs_expr",
+          "to": "piece1"
+        },
+        {
+          "from": "dom2",
+          "to": "piece2"
+        },
+        {
+          "from": "quad_expr",
+          "to": "piece2"
+        },
+        {
+          "from": "c1v",
+          "to": "dom1"
+        },
+        {
+          "from": "c1v",
+          "to": "dom2"
+        },
+        {
+          "from": "vx",
+          "to": "dom1"
+        },
+        {
+          "from": "vx",
+          "to": "dom2"
+        },
+        {
+          "from": "inner_diff",
+          "to": "abs_expr"
+        },
+        {
+          "from": "exp_ax1",
+          "to": "inner_diff"
+        },
+        {
+          "from": "neg_3a",
+          "to": "inner_diff"
+        },
+        {
+          "from": "va",
+          "to": "exp_ax1"
+        },
+        {
+          "from": "exp_inner",
+          "to": "exp_ax1"
+        },
+        {
+          "from": "vx",
+          "to": "exp_inner"
+        },
+        {
+          "from": "c1v",
+          "to": "exp_inner"
+        },
+        {
+          "from": "prod_3a",
+          "to": "neg_3a"
+        },
+        {
+          "from": "c3",
+          "to": "prod_3a"
+        },
+        {
+          "from": "va",
+          "to": "prod_3a"
+        },
+        {
+          "from": "prod_factors",
+          "to": "quad_expr"
+        },
+        {
+          "from": "factor1",
+          "to": "prod_factors"
+        },
+        {
+          "from": "factor2",
+          "to": "prod_factors"
+        },
+        {
+          "from": "vx",
+          "to": "factor1"
+        },
+        {
+          "from": "neg_1",
+          "to": "factor1"
+        },
+        {
+          "from": "c1v",
+          "to": "neg_1"
+        },
+        {
+          "from": "vx",
+          "to": "factor2"
+        },
+        {
+          "from": "neg_a",
+          "to": "factor2"
+        },
+        {
+          "from": "va",
+          "to": "neg_a"
+        },
+        {
+          "from": "la_gt1",
+          "to": "va"
+        }
+      ],
+      "new_dna": []
+    },
+    "thinking_profile": null,
+    "folders": [],
+    "history": [],
+    "created_at": "2026-03-22T14:33:33.042Z"
   }
 ]
