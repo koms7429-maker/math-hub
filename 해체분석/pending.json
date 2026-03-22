@@ -1924,5 +1924,623 @@
       }
     ],
     "created_at": "2026-03-22T16:05:28.785Z"
+  },
+  {
+    "problem_id": "Problem11",
+    "content": "# Problem11. (Unknown Source) - Logarithm and Geometry\n\n## Problem\n\n주어진 두 상수 $a(a>1)$, $b(0<b<1)$에 대하여 함수\n\n$$f(x) = |\\log_a(x+b)|$$\n\n의 그래프가 $x$축, $y$축과 만나는 점을 각각 P, Q라 하자. 점 Q를 지나고 $x$축과 평행한 직선이 곡선 $y=f(x)$와 만나는 점 중 Q가 아닌 점을 R이라 할 때, 삼각형 PQR의 외접원이 점 $(3, 0)$을 지나고 $y$축과 점 Q에서만 만난다. $a \\times b$의 값은? [4점]\n\n## Choices\n① $2^{-\\frac{2}{3}}$  ② $2^{-\\frac{1}{3}}$  ③ $1$  ④ $2^{\\frac{1}{3}}$  ⑤ $2^{\\frac{2}{3}}$\n\n**Answer**: ① $2^{-\\frac{2}{3}}$\n**Difficulty**: unknown\n**Score**: 4\n**Type**: multiple choice\n\n---\n\n## Solution\n\n[FIGURE: 그래프에 원과 삼각형이 그려져 있음]\n\n문제의 조건에 의해\n\n$$f(x)=0 \\Rightarrow \\log_a(x+b)=0 \\Rightarrow x=1-b \\Rightarrow P(1-b, 0)$$\n\n이고,\n\n$$f(x)=f(0) \\Rightarrow |\\log_a(x+b)| = |\\log_a b|$$\n\n$$\\Rightarrow x=0, \\quad x=\\frac{1}{b}-b$$\n\n$$\\Rightarrow Q(0, -\\log_a b), \\quad R\\left(\\frac{1}{b}-b, -\\log_a b\\right)$$\n\n이다. 이때, 삼각형 PQR의 외접원을 $C$라 하면\n\n원 $C$가 $y$축과 $\\left\\{\\begin{array}{l}\\text{점 Q에서 접함} \\\\ \\text{점 Q에서 원 C의 접선이 } y\\text{축과 수 직 P, } (3,0)\\text{에서 만남}\\end{array}\\right\\}$ $\\Rightarrow$ 선분 QR은 원 $C$의 지름 $\\cdots$ ⑤\n\n임을 알 수 있고,\n\n$$0<b<1 \\Rightarrow 0<(\\text{점 P의 }x\\text{좌표})<1$$\n\n$$\\Rightarrow \\text{원 }C\\text{는 }x\\text{축과 두 점 P, }(3,0)\\text{에서 만남}$$\n\n을 알 수 있다.\n\n점 $(3,0)$을 S라 하고 점 S에서 선분 QR에 내린 수선의 발을 H라 하자.\n\n위 그림에서 원의 대칭성에 의해\n\n(선분 PS의 중점의 $x$좌표) = (선분 QR의 중점의 $x$좌표)\n\n$$\\Rightarrow (1-b)+3 = \\frac{1}{b}-b$$\n\n$$\\Rightarrow b=\\frac{1}{4}$$\n\n이므로\n\n$$\\begin{cases}\nQ(0, 2\\log_a 2), & R\\left(\\frac{15}{4}, 2\\log_a 2\\right) \\\\\n\\overline{SH}^2 = \\overline{QH} \\times \\overline{RH} \\quad (\\because \\text{⑤} \\Rightarrow \\angle QSR = \\frac{\\pi}{2})\n\\end{cases}$$\n\n$$\\Rightarrow (2\\log_a 2)^2 = 3 \\times \\frac{3}{4}$$\n\n$$\\Rightarrow \\log_a 2 = \\frac{3}{4} \\quad (\\because a>1)$$\n\n$$\\Rightarrow a = 2^{\\frac{4}{3}}$$\n\n을 얻는다.\n\n$$\\therefore \\quad a \\times b = 2^{\\frac{4}{3}} \\times \\frac{1}{4} = 2^{\\frac{4}{3}} \\times 2^{-2} = 2^{\\frac{1}{3}}$$\n\n---",
+    "content_source": "FileLoop",
+    "content_length": 1862,
+    "skel_status": "neuron_missing",
+    "dna_status": "ok",
+    "needed_neurons": [
+      "사실78"
+    ],
+    "needed_dna": [],
+    "previous_analysis": "핵심 논리: (1) 절댓값 함수의 영점/교점으로 P,Q,R 결정, (2) y축 접선 조건 → QR이 지름, (3) 원의 대칭성(중심의 x좌표 일치)으로 b=1/4, (4) 사영정리로 a 결정. 사영정리(직각삼각형 수선의 발 기하평균)가 뉴런 목록에 없어 차단됨.",
+    "previous_matching": "1. f(x)=0 → log_a(x+b)=0 → x=1-b: 연산2 매칭\n2. 0<b<1, a>1 → log_a b < 0 → f(0)=-log_a b > 0: 사실12 매칭\n3. Q(0,-log_a b) 결정: 사실17 매칭\n4. |log_a(x+b)|=-log_a b → 절댓값 두 경우 분리: 전략6 매칭\n5. 경우1: x=1/b-b → R 결정: 연산2 매칭\n6. 경우2: x=0 (Q) 소거: 전략20 매칭\n7. y축 접선 → 접점에서 반지름 수평: 사실8 매칭\n8. 원의 중심 y좌표 = Q의 y좌표 → 중심이 QR 위 → QR이 지름: 사실70 매칭\n9. QR이 지름 → ∠QSR=π/2: 사실11 매칭\n10. 원이 x축과 P, S(3,0)에서 만남: 사실17 매칭\n11. QR 중점 x좌표 계산: 연산12 매칭\n12. PS 중점 x좌표 계산: 연산12 매칭\n13. 두 중점 x좌표 같다 → b=1/4: 전략2 매칭\n14. b=1/4 대입 → 좌표 정리: 연산2 매칭\n15. SH²=QH×RH (사영정리): 매칭 없음 → 신규 필요\n16. (2log_a 2)²=9/4 → log_a 2=3/4: 대수 풀기 (연산 가능하나 사영정리 선행 필요)\n17. a=2^(4/3): 연산2 매칭\n18. a×b=2^(4/3)×2^(-2)=2^(-2/3): 연산4, 연산18 매칭",
+    "previous_matched": [
+      "연산2",
+      "사실12",
+      "사실17",
+      "전략6",
+      "전략20",
+      "사실8",
+      "사실11",
+      "사실70",
+      "연산12",
+      "전략2",
+      "연산4",
+      "연산18"
+    ],
+    "previous_skeleton": [],
+    "previous_new_neurons": [
+      {
+        "id": "사실78",
+        "type": "사실",
+        "statement": "직각삼각형에서 직각의 꼭짓점에서 빗변에 내린 수선의 발을 H라 하면, $\\overline{SH}^2 = \\overline{QH} \\times \\overline{RH}$가 성립한다 (기하평균 관계, 사영정리).",
+        "reason": "STEP 5에서 ∠QSR=π/2인 직각삼각형 QSR에서 S에서 빗변 QR에 내린 수선의 발 H에 대해 SH²=QH×RH를 적용해야 하는데, 이 사영정리(기하평균 관계)를 표현하는 뉴런이 목록에 없다.",
+        "blocked_edge": "note9 → note10 (∠QSR=π/2 + H의 위치 → SH²=QH×RH 적용)"
+      }
+    ],
+    "previous_partial_skeleton": [
+      {
+        "from": "단서A",
+        "to": "note1",
+        "neuron": "연산2",
+        "note": "$f(x)=0$이면 $\\log_a(x+b)=0$이므로 $x+b=1$, 즉 $x=1-b$이다. $P(1-b,\\;0)$이다.",
+        "main": true,
+        "step": 1
+      },
+      {
+        "from": [
+          "단서A",
+          "단서B"
+        ],
+        "to": "note2",
+        "neuron": "사실12",
+        "note": "$a>1$, $0<b<1$이면 $\\log_a b < 0$이다.",
+        "main": false,
+        "step": 1
+      },
+      {
+        "from": "note2",
+        "to": "note3",
+        "neuron": "전략6",
+        "note": "$f(0)=|\\log_a b|=-\\log_a b > 0$이다. $Q(0,\\;-\\log_a b)$이다.",
+        "main": true,
+        "step": 1
+      },
+      {
+        "from": [
+          "단서A",
+          "note3"
+        ],
+        "to": "note4",
+        "neuron": "전략6",
+        "note": "$|\\log_a(x+b)|=-\\log_a b$에서 $\\log_a(x+b)=-\\log_a b$ 또는 $\\log_a(x+b)=\\log_a b$의 두 경우로 나뉜다.",
+        "main": true,
+        "step": 1
+      },
+      {
+        "from": "note4",
+        "to": "note5",
+        "neuron": "연산2",
+        "note": "$\\log_a(x+b)=\\log_a b^{-1}$이면 $x+b=b^{-1}$, 즉 $x=\\frac{1}{b}-b$이다.",
+        "main": false,
+        "step": 1
+      },
+      {
+        "from": "note4",
+        "to": "note6",
+        "neuron": "연산2",
+        "note": "$\\log_a(x+b)=\\log_a b$이면 $x+b=b$, 즉 $x=0$이다. 이는 Q이다.",
+        "main": false,
+        "step": 1
+      },
+      {
+        "from": [
+          "note5",
+          "note6"
+        ],
+        "to": "note7",
+        "neuron": "전략20",
+        "note": "Q가 아닌 교점은 $R\\!\\left(\\frac{1}{b}-b,\\;-\\log_a b\\right)$이다.",
+        "main": true,
+        "step": 1
+      },
+      {
+        "from": "단서C",
+        "to": "note8",
+        "neuron": "사실8",
+        "note": "원 $C$가 $y$축에 점 Q에서 접하면, 접점 Q에서의 반지름은 $y$축에 수직, 즉 수평 방향이다. 원의 중심의 $y$좌표는 $-\\log_a b$이다.",
+        "main": true,
+        "step": 2
+      },
+      {
+        "from": [
+          "note8",
+          "note7"
+        ],
+        "to": "note9",
+        "neuron": "사실70",
+        "note": "원의 중심이 직선 $y=-\\log_a b$(QR이 놓인 직선) 위에 있고, Q와 R이 원 위에 있으므로 중심은 QR의 중점이다. 선분 QR은 원 $C$의 지름이다.",
+        "main": true,
+        "step": 2
+      },
+      {
+        "from": "note9",
+        "to": "note10",
+        "neuron": "사실11",
+        "note": "QR이 원 $C$의 지름이므로 원주각의 성질에 의해 $\\angle QSR = \\dfrac{\\pi}{2}$이다.",
+        "main": true,
+        "step": 2
+      },
+      {
+        "from": [
+          "단서B",
+          "단서C"
+        ],
+        "to": "note11",
+        "neuron": "사실17",
+        "note": "원 $C$는 $x$축 위의 점 P$(1-b,0)$와 S$(3,0)$를 지난다.",
+        "main": true,
+        "step": 3
+      },
+      {
+        "from": "note11",
+        "to": "note12",
+        "neuron": "연산12",
+        "note": "P와 S의 $x$좌표 평균(원 중심의 $x$좌표) $= \\dfrac{(1-b)+3}{2} = \\dfrac{4-b}{2}$이다.",
+        "main": true,
+        "step": 3
+      },
+      {
+        "from": "note9",
+        "to": "note13",
+        "neuron": "연산12",
+        "note": "QR의 중점(원 중심)의 $x$좌표 $= \\dfrac{0+\\left(\\frac{1}{b}-b\\right)}{2} = \\dfrac{\\frac{1}{b}-b}{2}$이다.",
+        "main": true,
+        "step": 3
+      },
+      {
+        "from": [
+          "note12",
+          "note13"
+        ],
+        "to": "note14",
+        "neuron": "전략2",
+        "note": "$\\dfrac{4-b}{2}=\\dfrac{\\frac{1}{b}-b}{2}$이므로 $4-b=\\dfrac{1}{b}-b$, 즉 $b=\\dfrac{1}{4}$이다.",
+        "main": true,
+        "step": 3
+      },
+      {
+        "from": "note14",
+        "to": "note15",
+        "neuron": "연산2",
+        "note": "$b=\\frac{1}{4}$일 때 $P\\!\\left(\\frac{3}{4},0\\right)$, $Q\\!\\left(0,\\;2\\log_a 2\\right)$, $R\\!\\left(\\frac{15}{4},\\;2\\log_a 2\\right)$, $S(3,0)$이다.",
+        "main": true,
+        "step": 4
+      }
+    ],
+    "previous_blockage_point": "note15에서 SH²=QH×RH (직각삼각형 사영정리) 결론으로 가려는데 매칭 뉴런 없음",
+    "previous_dna_nodes": [
+      {
+        "id": "top",
+        "dna": "Q1",
+        "label": "값을 구하라",
+        "category": "발문"
+      },
+      {
+        "id": "ask",
+        "dna": "E6",
+        "label": "곱(a,b)",
+        "category": "수식"
+      },
+      {
+        "id": "va",
+        "dna": "T1",
+        "label": "변수 a",
+        "category": "말단"
+      },
+      {
+        "id": "vb",
+        "dna": "T1",
+        "label": "변수 b",
+        "category": "말단"
+      },
+      {
+        "id": "lim_a",
+        "dna": "L2",
+        "label": "a > 1",
+        "category": "제한"
+      },
+      {
+        "id": "lim_b_lo",
+        "dna": "L2",
+        "label": "b > 0",
+        "category": "제한"
+      },
+      {
+        "id": "lim_b_hi",
+        "dna": "L2",
+        "label": "b < 1",
+        "category": "제한"
+      },
+      {
+        "id": "lim_ab",
+        "dna": "L3",
+        "label": "a,b는 상수",
+        "category": "제한"
+      },
+      {
+        "id": "func_f",
+        "dna": "F6",
+        "label": "함수 f 정의",
+        "category": "함수"
+      },
+      {
+        "id": "abs_wrap",
+        "dna": "F5",
+        "label": "절대값 씌움",
+        "category": "함수"
+      },
+      {
+        "id": "log_expr",
+        "dna": "E3",
+        "label": "log_a(x+b)",
+        "category": "수식"
+      },
+      {
+        "id": "inner_sum",
+        "dna": "E1",
+        "label": "합(x, b)",
+        "category": "수식"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
+      },
+      {
+        "id": "crv",
+        "dna": "G2",
+        "label": "곡선 y=f(x)",
+        "category": "기하"
+      },
+      {
+        "id": "crv_eq",
+        "dna": "C11",
+        "label": "곡선 방정식",
+        "category": "조건"
+      },
+      {
+        "id": "crv_c1",
+        "dna": "C1",
+        "label": "y = f(x) 등식",
+        "category": "조건"
+      },
+      {
+        "id": "f3_apply",
+        "dna": "F3",
+        "label": "f(x) 적용",
+        "category": "함수"
+      },
+      {
+        "id": "xaxis",
+        "dna": "G13",
+        "label": "x축",
+        "category": "기하"
+      },
+      {
+        "id": "yaxis",
+        "dna": "G13",
+        "label": "y축",
+        "category": "기하"
+      },
+      {
+        "id": "pt_p",
+        "dna": "G1",
+        "label": "점 P",
+        "category": "기하"
+      },
+      {
+        "id": "pt_q",
+        "dna": "G1",
+        "label": "점 Q",
+        "category": "기하"
+      },
+      {
+        "id": "pt_r",
+        "dna": "G1",
+        "label": "점 R",
+        "category": "기하"
+      },
+      {
+        "id": "meet_p",
+        "dna": "C3",
+        "label": "그래프∩x축=P",
+        "category": "조건"
+      },
+      {
+        "id": "meet_q",
+        "dna": "C3",
+        "label": "그래프∩y축=Q",
+        "category": "조건"
+      },
+      {
+        "id": "hline",
+        "dna": "G12",
+        "label": "Q통과 수평선",
+        "category": "기하"
+      },
+      {
+        "id": "hline_par",
+        "dna": "G19",
+        "label": "x축에 평행",
+        "category": "기하"
+      },
+      {
+        "id": "hline_pass",
+        "dna": "G16",
+        "label": "Q를 지남",
+        "category": "기하"
+      },
+      {
+        "id": "meet_r",
+        "dna": "C3",
+        "label": "수평선∩곡선=R",
+        "category": "조건"
+      },
+      {
+        "id": "r_not_q",
+        "dna": "C4",
+        "label": "Q가 아닌 점",
+        "category": "조건"
+      },
+      {
+        "id": "tri_pqr",
+        "dna": "G25",
+        "label": "삼각형 PQR",
+        "category": "기하"
+      },
+      {
+        "id": "circ",
+        "dna": "G26",
+        "label": "△PQR 외접원",
+        "category": "기하"
+      },
+      {
+        "id": "pt_s",
+        "dna": "G17",
+        "label": "점 (3,0)",
+        "category": "기하"
+      },
+      {
+        "id": "c3",
+        "dna": "T2",
+        "label": "상수 3",
+        "category": "말단"
+      },
+      {
+        "id": "c0",
+        "dna": "T2",
+        "label": "상수 0",
+        "category": "말단"
+      },
+      {
+        "id": "circ_pass_s",
+        "dna": "G16",
+        "label": "외접원이(3,0)통과",
+        "category": "기하"
+      },
+      {
+        "id": "circ_meet_y",
+        "dna": "X4",
+        "label": "y축과 Q에서만",
+        "category": "존재"
+      },
+      {
+        "id": "conds",
+        "dna": "S1",
+        "label": "전체 조건 묶음",
+        "category": "구조"
+      }
+    ],
+    "previous_dna_edges": [
+      {
+        "from": "ask",
+        "to": "top"
+      },
+      {
+        "from": "conds",
+        "to": "top"
+      },
+      {
+        "from": "va",
+        "to": "ask"
+      },
+      {
+        "from": "vb",
+        "to": "ask"
+      },
+      {
+        "from": "va",
+        "to": "lim_a"
+      },
+      {
+        "from": "vb",
+        "to": "lim_b_lo"
+      },
+      {
+        "from": "vb",
+        "to": "lim_b_hi"
+      },
+      {
+        "from": "va",
+        "to": "lim_ab"
+      },
+      {
+        "from": "vb",
+        "to": "lim_ab"
+      },
+      {
+        "from": "lim_ab",
+        "to": "conds"
+      },
+      {
+        "from": "abs_wrap",
+        "to": "func_f"
+      },
+      {
+        "from": "log_expr",
+        "to": "abs_wrap"
+      },
+      {
+        "from": "va",
+        "to": "log_expr"
+      },
+      {
+        "from": "inner_sum",
+        "to": "log_expr"
+      },
+      {
+        "from": "vx",
+        "to": "inner_sum"
+      },
+      {
+        "from": "vb",
+        "to": "inner_sum"
+      },
+      {
+        "from": "func_f",
+        "to": "crv_c1"
+      },
+      {
+        "from": "f3_apply",
+        "to": "crv_c1"
+      },
+      {
+        "from": "vx",
+        "to": "f3_apply"
+      },
+      {
+        "from": "func_f",
+        "to": "f3_apply"
+      },
+      {
+        "from": "crv_c1",
+        "to": "crv_eq"
+      },
+      {
+        "from": "crv_eq",
+        "to": "crv"
+      },
+      {
+        "from": "crv",
+        "to": "meet_p"
+      },
+      {
+        "from": "xaxis",
+        "to": "meet_p"
+      },
+      {
+        "from": "pt_p",
+        "to": "meet_p"
+      },
+      {
+        "from": "meet_p",
+        "to": "conds"
+      },
+      {
+        "from": "crv",
+        "to": "meet_q"
+      },
+      {
+        "from": "yaxis",
+        "to": "meet_q"
+      },
+      {
+        "from": "pt_q",
+        "to": "meet_q"
+      },
+      {
+        "from": "meet_q",
+        "to": "conds"
+      },
+      {
+        "from": "pt_q",
+        "to": "hline_pass"
+      },
+      {
+        "from": "hline_pass",
+        "to": "hline"
+      },
+      {
+        "from": "xaxis",
+        "to": "hline_par"
+      },
+      {
+        "from": "hline_par",
+        "to": "hline"
+      },
+      {
+        "from": "hline",
+        "to": "meet_r"
+      },
+      {
+        "from": "crv",
+        "to": "meet_r"
+      },
+      {
+        "from": "pt_r",
+        "to": "meet_r"
+      },
+      {
+        "from": "r_not_q",
+        "to": "meet_r"
+      },
+      {
+        "from": "pt_q",
+        "to": "r_not_q"
+      },
+      {
+        "from": "meet_r",
+        "to": "conds"
+      },
+      {
+        "from": "pt_p",
+        "to": "tri_pqr"
+      },
+      {
+        "from": "pt_q",
+        "to": "tri_pqr"
+      },
+      {
+        "from": "pt_r",
+        "to": "tri_pqr"
+      },
+      {
+        "from": "tri_pqr",
+        "to": "circ"
+      },
+      {
+        "from": "c3",
+        "to": "pt_s"
+      },
+      {
+        "from": "c0",
+        "to": "pt_s"
+      },
+      {
+        "from": "circ",
+        "to": "circ_pass_s"
+      },
+      {
+        "from": "pt_s",
+        "to": "circ_pass_s"
+      },
+      {
+        "from": "circ_pass_s",
+        "to": "conds"
+      },
+      {
+        "from": "circ",
+        "to": "circ_meet_y"
+      },
+      {
+        "from": "yaxis",
+        "to": "circ_meet_y"
+      },
+      {
+        "from": "pt_q",
+        "to": "circ_meet_y"
+      },
+      {
+        "from": "circ_meet_y",
+        "to": "conds"
+      }
+    ],
+    "created_at": "2026-03-22T16:43:35.609Z"
   }
 ]
