@@ -4994,5 +4994,520 @@
     "folders": [],
     "history": [],
     "created_at": "2026-03-22T13:18:27.962Z"
+  },
+  {
+    "problem_id": "Problem12",
+    "answer": "45",
+    "clues": [
+      {
+        "id": "단서A",
+        "text": "$f(x)=\\frac{1}{16}\\{(x-3)^2+n\\}$ ($n$은 $n \\neq 12$인 자연수)"
+      },
+      {
+        "id": "단서B",
+        "text": "$\\log_{f(1)}f(x) \\geq \\log_{f(1)}\\left(\\frac{n+1}{8}\\right)$의 실근 중 정수인 것의 개수가 7"
+      }
+    ],
+    "skeleton": [
+      {
+        "from": "단서A",
+        "to": "note1",
+        "neuron": "전략25",
+        "note": "$f(1)=\\frac{1}{16}(4+n)=\\frac{n+4}{16}$이다",
+        "main": true,
+        "step": 1
+      },
+      {
+        "from": "note1",
+        "to": "note2",
+        "neuron": "전략22",
+        "note": "$f(1)>1 \\Leftrightarrow n>12$ (즉 $n\\geq 13$)이고, $0<f(1)<1 \\Leftrightarrow n<12$ (즉 $1\\leq n\\leq 11$)로 경우가 나뉜다",
+        "main": true,
+        "step": 1
+      },
+      {
+        "from": "note2",
+        "to": "note3",
+        "neuron": "사실12",
+        "note": "$n\\geq 13$이면 밑 $f(1)>1$이므로 $\\log_{f(1)}$은 단조증가이다",
+        "main": false,
+        "step": 2
+      },
+      {
+        "from": "note3",
+        "to": "note4",
+        "neuron": "사실51",
+        "note": "$n\\geq 13$일 때 부등식은 $f(x)\\geq\\frac{n+1}{8}$과 동치이다",
+        "main": false,
+        "step": 2
+      },
+      {
+        "from": "note4",
+        "to": "note5",
+        "neuron": "연산21",
+        "note": "$f(x)\\geq\\frac{n+1}{8}$을 전개하면 $(x-3)^2\\geq n+2$이다",
+        "main": false,
+        "step": 2
+      },
+      {
+        "from": "note5",
+        "to": "note6",
+        "neuron": "사실35",
+        "note": "$(x-3)^2\\geq n+2$의 해는 $x\\leq 3-\\sqrt{n+2}$ 또는 $x\\geq 3+\\sqrt{n+2}$로 양 방향으로 무한히 뻗는다",
+        "main": false,
+        "step": 2
+      },
+      {
+        "from": "note6",
+        "to": "note7",
+        "neuron": "전략23",
+        "note": "경우 (i) ($n\\geq 13$)에서는 정수 근이 무한히 많으므로 개수가 7이 될 수 없다. 경우 (i)는 소거된다",
+        "main": true,
+        "step": 2
+      },
+      {
+        "from": "note2",
+        "to": "note8",
+        "neuron": "사실12",
+        "note": "$1\\leq n\\leq 11$이면 밑 $0<f(1)<1$이므로 $\\log_{f(1)}$은 단조감소이다",
+        "main": false,
+        "step": 3
+      },
+      {
+        "from": "note8",
+        "to": "note9",
+        "neuron": "사실50",
+        "note": "$1\\leq n\\leq 11$일 때 부등식은 $0<f(x)\\leq\\frac{n+1}{8}$과 동치이다",
+        "main": true,
+        "step": 3
+      },
+      {
+        "from": "note9",
+        "to": "note10",
+        "neuron": "연산21",
+        "note": "$f(x)\\leq\\frac{n+1}{8}$을 전개하면 $(x-3)^2\\leq n+2$이다",
+        "main": true,
+        "step": 3
+      },
+      {
+        "from": "note10",
+        "to": "note11",
+        "neuron": "사실19",
+        "note": "$(x-3)^2\\leq n+2$의 해 구간은 $[3-\\sqrt{n+2},\\, 3+\\sqrt{n+2}]$이다",
+        "main": true,
+        "step": 4
+      },
+      {
+        "from": "note11",
+        "to": "note12",
+        "neuron": "전략10",
+        "note": "해 구간에 속하는 정수의 개수는 $1+2\\lfloor\\sqrt{n+2}\\rfloor$이다",
+        "main": true,
+        "step": 5
+      },
+      {
+        "from": [
+          "note12",
+          "단서B"
+        ],
+        "to": "note13",
+        "neuron": "연산21",
+        "note": "$1+2\\lfloor\\sqrt{n+2}\\rfloor=7$이면 $\\lfloor\\sqrt{n+2}\\rfloor=3$이다",
+        "main": true,
+        "step": 5
+      },
+      {
+        "from": "note13",
+        "to": "note14",
+        "neuron": "연산21",
+        "note": "$\\lfloor\\sqrt{n+2}\\rfloor=3 \\Leftrightarrow 9\\leq n+2<16 \\Leftrightarrow 7\\leq n\\leq 13$이다",
+        "main": true,
+        "step": 5
+      },
+      {
+        "from": [
+          "note14",
+          "note2"
+        ],
+        "to": "note15",
+        "neuron": "전략2",
+        "note": "경우 (ii)의 조건 $1\\leq n\\leq 11$과 교집합을 취하면 $7\\leq n\\leq 11$이다",
+        "main": true,
+        "step": 6
+      },
+      {
+        "from": "note15",
+        "to": "END",
+        "neuron": "전략25",
+        "note": "조건을 만족하는 자연수 $n$은 $7,8,9,10,11$이고 합은 $7+8+9+10+11=45$이다",
+        "main": true,
+        "step": 7
+      }
+    ],
+    "solution": "STEP 1. $f(1)=\\frac{n+4}{16}$을 계산한다. $f(1)>1 \\Leftrightarrow n>12$이고 $0<f(1)<1 \\Leftrightarrow n<12$이므로 두 경우로 분류한다.\n\nSTEP 2. 경우 (i) $n\\geq 13$: 밑이 1보다 크므로 로그는 단조증가이고, 부등식은 $f(x)\\geq\\frac{n+1}{8}$, 즉 $(x-3)^2\\geq n+2$와 동치이다. 이 해는 양 방향으로 무한히 뻗으므로 정수 근이 무한히 많아 개수가 7이 될 수 없다. 경우 (i)는 소거된다.\n\nSTEP 3. 경우 (ii) $1\\leq n\\leq 11$: 밑이 0과 1 사이이므로 로그는 단조감소이고, 부등식은 $0<f(x)\\leq\\frac{n+1}{8}$, 즉 $(x-3)^2\\leq n+2$와 동치이다.\n\nSTEP 4. $(x-3)^2\\leq n+2$의 해 구간은 $[3-\\sqrt{n+2},\\, 3+\\sqrt{n+2}]$이다.\n\nSTEP 5. 이 구간에 속하는 정수의 개수는 $1+2\\lfloor\\sqrt{n+2}\\rfloor$이다. 개수가 7이 되려면 $\\lfloor\\sqrt{n+2}\\rfloor=3$이어야 하고, 이는 $7\\leq n\\leq 13$에 해당한다.\n\nSTEP 6. 경우 (ii)의 조건 $1\\leq n\\leq 11$과 교집합을 취하면 $7\\leq n\\leq 11$이다.\n\nSTEP 7. 조건을 만족하는 자연수 $n$은 $7,8,9,10,11$이고 합은 $7+8+9+10+11=\\boxed{45}$이다.",
+    "original_solution": "$f(x)=\\frac{1}{16}\\{(x-3)^2+n\\}$ ... ①\n\n이므로\n\n(i) $n$이 12보다 큰 자연수인 경우, $f(1) > 1$\n\n(ii) $n$이 12보다 작은 자연수인 경우, $0 < f(1) < 1$\n\n로 경우를 나누어 부등식\n\n$$\\log_{f(1)}f(x) \\geq \\log_{f(1)}\\left(\\frac{n+1}{8}\\right)$$ ... ②\n\n의 실근 중 정수인 것을 조사해보자.\n\n**(i)의 경우:**\n\n② $\\Leftrightarrow f(x) \\geq \\frac{n+1}{8}$\n\n$\\Leftrightarrow (x-3)^2 \\geq n+2$ ($\\because$ ①)\n\n이므로 $n > 12$인 모든 자연수 $n$에 대하여 이 부등식을 만족시키는 정수 $x$는 부수히 많음 $\\Rightarrow$ ②의 개수가 7일 수 없음을 알 수 있다.\n\n**(ii)의 경우:**\n\n② $\\Leftrightarrow 0 < f(x) \\leq \\frac{n+1}{8}$\n\n$\\Leftrightarrow -n < (x-3)^2 \\leq n+2$ ($\\because$ ①) ... ③\n\n이므로\n\n③의 개수가 7을 만족시키려면 다음 그림과 같이\n\n$x=6$이 은을 만족시키고,\n\n$x=7$이 은을 만족시지 않아야 ... ④\n\n함\n\n[FIGURE: 그래프에는 $y=(x-3)^2$ 포물선과 $y=n+2$, $y=4^2$, $y=3^2$ 수평선이 표시되어 있으며, $x$축에 0부터 7까지 눈금이 표시됨]\n\n따라서\n\n• ④ $\\Rightarrow 3^2 \\leq n+2 < 4^2 \\Rightarrow 7 \\leq n < 14$\n\n• (ii)의 경우는 $n$이 12보다 작은 자연수\n\n$\\Rightarrow 7 \\leq n \\leq 11$\n\n임을 알 수 있다.\n\n$\\therefore$ (모든 자연수 $n$의 값의 합) $= 7+8+9+10+11 = 45$\n\n---",
+    "analysis": "f(1)의 값에 따라 로그 부등식의 방향이 달라지므로 두 경우로 분류. 경우(i)는 해가 무한하여 소거. 경우(ii)에서 정수 근 개수 조건으로 n의 범위를 결정.",
+    "new_neurons": [],
+    "metadata": {
+      "unit": "지수·로그",
+      "difficulty": "중",
+      "score": "4",
+      "type": "객관식",
+      "answer": "45"
+    },
+    "edge_count": 16,
+    "side_count": 5,
+    "statement": "# Problem12. (Unknown Source) - Logarithmic Inequality\n\n## Problem\n\n함수 $f(x)=\\frac{1}{16}\\{(x-3)^2+n\\}$ ($n$은 $n \\neq 12$인 자연수)에 대하여 $x$에 관한 부등식\n\n$$\\log_{f(1)}f(x) \\geq \\log_{f(1)}\\left(\\frac{n+1}{8}\\right)$$\n\n의 실근 중에서 정수인 것의 개수가 7이도록 하는 모든 자연수 $n$의 값의 합은? [4점]",
+    "dna": {
+      "nodes": [
+        {
+          "id": "top",
+          "dna": "Q3",
+          "label": "n값의 합",
+          "category": "발문"
+        },
+        {
+          "id": "ask_sum",
+          "dna": "C19",
+          "label": "원소합 조건",
+          "category": "조건"
+        },
+        {
+          "id": "vn",
+          "dna": "T1",
+          "label": "변수 n",
+          "category": "말단"
+        },
+        {
+          "id": "n_natural",
+          "dna": "L3",
+          "label": "n은 자연수",
+          "category": "제한"
+        },
+        {
+          "id": "n_neq12",
+          "dna": "C2",
+          "label": "n≠12",
+          "category": "조건"
+        },
+        {
+          "id": "c12",
+          "dna": "T2",
+          "label": "상수 12",
+          "category": "말단"
+        },
+        {
+          "id": "fn_def",
+          "dna": "F6",
+          "label": "f(x) 정의",
+          "category": "함수"
+        },
+        {
+          "id": "fn_eq",
+          "dna": "C11",
+          "label": "f(x) 방정식",
+          "category": "조건"
+        },
+        {
+          "id": "fn_c1",
+          "dna": "C1",
+          "label": "f(x)=... 등식",
+          "category": "조건"
+        },
+        {
+          "id": "fn_rhs",
+          "dna": "E6",
+          "label": "곱(1/16, {...})",
+          "category": "수식"
+        },
+        {
+          "id": "c_inv16",
+          "dna": "T2",
+          "label": "상수 1/16",
+          "category": "말단"
+        },
+        {
+          "id": "inner_sum",
+          "dna": "E1",
+          "label": "합((x-3)², n)",
+          "category": "수식"
+        },
+        {
+          "id": "sq_term",
+          "dna": "E7",
+          "label": "(x-3)²",
+          "category": "수식"
+        },
+        {
+          "id": "x_minus3",
+          "dna": "E1",
+          "label": "합(x, -3)",
+          "category": "수식"
+        },
+        {
+          "id": "vx",
+          "dna": "T3",
+          "label": "독립변수 x",
+          "category": "말단"
+        },
+        {
+          "id": "neg3",
+          "dna": "E2",
+          "label": "부호반전(3)",
+          "category": "수식"
+        },
+        {
+          "id": "c3",
+          "dna": "T2",
+          "label": "상수 3",
+          "category": "말단"
+        },
+        {
+          "id": "c2_exp",
+          "dna": "T2",
+          "label": "상수 2(지수)",
+          "category": "말단"
+        },
+        {
+          "id": "f1_apply",
+          "dna": "F3",
+          "label": "f(1) 함수적용",
+          "category": "함수"
+        },
+        {
+          "id": "c1_const",
+          "dna": "T2",
+          "label": "상수 1",
+          "category": "말단"
+        },
+        {
+          "id": "ineq_cond",
+          "dna": "C2",
+          "label": "로그 부등식",
+          "category": "조건"
+        },
+        {
+          "id": "log_lhs",
+          "dna": "E3",
+          "label": "log_{f(1)}f(x)",
+          "category": "수식"
+        },
+        {
+          "id": "fx_apply",
+          "dna": "F3",
+          "label": "f(x) 적용",
+          "category": "함수"
+        },
+        {
+          "id": "log_rhs",
+          "dna": "E3",
+          "label": "log_{f(1)}((n+1)/8)",
+          "category": "수식"
+        },
+        {
+          "id": "rhs_frac",
+          "dna": "E6",
+          "label": "곱((n+1), 1/8)",
+          "category": "수식"
+        },
+        {
+          "id": "n_plus1",
+          "dna": "E1",
+          "label": "합(n, 1)",
+          "category": "수식"
+        },
+        {
+          "id": "inv8",
+          "dna": "E7",
+          "label": "8의 역수(8^-1)",
+          "category": "수식"
+        },
+        {
+          "id": "c8",
+          "dna": "T2",
+          "label": "상수 8",
+          "category": "말단"
+        },
+        {
+          "id": "neg1_exp",
+          "dna": "T2",
+          "label": "상수 -1(지수)",
+          "category": "말단"
+        },
+        {
+          "id": "int_count",
+          "dna": "C9",
+          "label": "정수근 개수=7",
+          "category": "조건"
+        },
+        {
+          "id": "int_filter",
+          "dna": "X3",
+          "label": "정수인 실근",
+          "category": "존재"
+        },
+        {
+          "id": "c7",
+          "dna": "T2",
+          "label": "상수 7",
+          "category": "말단"
+        }
+      ],
+      "edges": [
+        {
+          "from": "ask_sum",
+          "to": "top"
+        },
+        {
+          "from": "vn",
+          "to": "ask_sum"
+        },
+        {
+          "from": "int_count",
+          "to": "ask_sum"
+        },
+        {
+          "from": "n_natural",
+          "to": "vn"
+        },
+        {
+          "from": "n_neq12",
+          "to": "vn"
+        },
+        {
+          "from": "c12",
+          "to": "n_neq12"
+        },
+        {
+          "from": "fn_eq",
+          "to": "fn_def"
+        },
+        {
+          "from": "fn_c1",
+          "to": "fn_eq"
+        },
+        {
+          "from": "fn_rhs",
+          "to": "fn_c1"
+        },
+        {
+          "from": "c_inv16",
+          "to": "fn_rhs"
+        },
+        {
+          "from": "inner_sum",
+          "to": "fn_rhs"
+        },
+        {
+          "from": "sq_term",
+          "to": "inner_sum"
+        },
+        {
+          "from": "vn",
+          "to": "inner_sum"
+        },
+        {
+          "from": "x_minus3",
+          "to": "sq_term"
+        },
+        {
+          "from": "c2_exp",
+          "to": "sq_term"
+        },
+        {
+          "from": "vx",
+          "to": "x_minus3"
+        },
+        {
+          "from": "neg3",
+          "to": "x_minus3"
+        },
+        {
+          "from": "c3",
+          "to": "neg3"
+        },
+        {
+          "from": "fn_def",
+          "to": "f1_apply"
+        },
+        {
+          "from": "c1_const",
+          "to": "f1_apply"
+        },
+        {
+          "from": "f1_apply",
+          "to": "log_lhs"
+        },
+        {
+          "from": "fx_apply",
+          "to": "log_lhs"
+        },
+        {
+          "from": "fn_def",
+          "to": "fx_apply"
+        },
+        {
+          "from": "vx",
+          "to": "fx_apply"
+        },
+        {
+          "from": "log_lhs",
+          "to": "ineq_cond"
+        },
+        {
+          "from": "f1_apply",
+          "to": "log_rhs"
+        },
+        {
+          "from": "rhs_frac",
+          "to": "log_rhs"
+        },
+        {
+          "from": "n_plus1",
+          "to": "rhs_frac"
+        },
+        {
+          "from": "inv8",
+          "to": "rhs_frac"
+        },
+        {
+          "from": "vn",
+          "to": "n_plus1"
+        },
+        {
+          "from": "c1_const",
+          "to": "n_plus1"
+        },
+        {
+          "from": "c8",
+          "to": "inv8"
+        },
+        {
+          "from": "neg1_exp",
+          "to": "inv8"
+        },
+        {
+          "from": "log_rhs",
+          "to": "ineq_cond"
+        },
+        {
+          "from": "ineq_cond",
+          "to": "int_filter"
+        },
+        {
+          "from": "int_filter",
+          "to": "int_count"
+        },
+        {
+          "from": "c7",
+          "to": "int_count"
+        }
+      ],
+      "new_dna": []
+    },
+    "thinking_profile": null,
+    "folders": [],
+    "history": [],
+    "created_at": "2026-03-22T13:27:32.925Z"
   }
 ]
