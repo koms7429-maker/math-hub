@@ -408,21 +408,23 @@
     },
     "thinking_profile": {
       "_version": 5,
-      "total_think_tokens": 2859,
+      "total_think_tokens": 3985,
       "step_count": 10,
       "consumed_count": 5,
-      "partial_count": 2,
-      "miss_count": 3,
+      "partial_count": 1,
+      "miss_count": 4,
+      "genuine_miss_count": 1,
+      "absorbed_miss_count": 3,
       "highlight_steps": [
-        3,
-        2
+        1,
+        4
       ],
       "hardest_step": {
-        "step_num": 3,
+        "step_num": 1,
         "difficulty_score": 0.3,
         "structural_difficulty": 0.25,
         "consumed": false,
-        "correct_step": "STEP 3. $f(x)<0$인 구간이 존재하거나 $(|4^x-3|-1)(f(x)-1)<0$인 $x$가 존재하면 $A-B$에 무한히 많은 원소가 생기므로 두 경우 모두 배제한다."
+        "correct_step": "STEP 1. 집합 $B$의 원소 $x$는 진수 조건 ($4^x-3\\neq0$, $f(x)>0$)과 부호 조건 $(|4^x-3|-1)(f(x)-1)\\geq0$을 동시에 만족한다."
       },
       "steps": [
         {
@@ -430,28 +432,49 @@
           "correct_step": "STEP 1. 집합 $B$의 원소 $x$는 진수 조건 ($4^x-3\\neq0$, $f(x)>0$)과 부호 조건 $(|4^x-3|-1)(f(x)-1)\\geq0$을 동시에 만족한다.",
           "consumed": false,
           "discovered_in_round": null,
+          "partial_hits": 0,
+          "best_partial_score": null,
+          "structural_difficulty": 0.25,
+          "difficulty_score": 0.3,
+          "discovery_score": 0.5,
+          "tok_score": 0,
+          "miss_type": "absorbed",
+          "absorbed_in": "R1",
+          "absorb_reason": "R1이 x∉B가 되는 조건들(f(x)≤0, 4^x=3, 곱이 음수)을 분석함으로써 B의 원소 조건(진수 조건·부호 조건)을 동치적으로 포함한다."
+        },
+        {
+          "step_num": 2,
+          "correct_step": "STEP 2. $4^x-3=0$인 $x=\\log_4 3$은 진수 조건을 위반하여 $A-B$의 원소이다.",
+          "consumed": true,
+          "discovered_in_round": 1,
+          "partial_hits": 0,
+          "best_partial_score": null,
+          "structural_difficulty": 0.12,
+          "difficulty_score": 0.07,
+          "discovery_score": 0.02,
+          "tok_score": 0.07,
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": ""
+        },
+        {
+          "step_num": 3,
+          "correct_step": "STEP 3. $f(x)<0$인 구간이 존재하거나 $(|4^x-3|-1)(f(x)-1)<0$인 $x$가 존재하면 $A-B$에 무한히 많은 원소가 생기므로 두 경우 모두 배제한다.",
+          "consumed": false,
+          "discovered_in_round": null,
           "partial_hits": 1,
           "best_partial_score": 0.5,
           "structural_difficulty": 0.25,
           "difficulty_score": 0.23,
           "discovery_score": 0.33,
-          "tok_score": 0
+          "tok_score": 0,
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": ""
         },
         {
-          "step_num": 2,
-          "correct_step": "STEP 2. $4^x-3=0$인 $x=\\log_4 3$은 진수 조건을 위반하여 $A-B$의 원소이다.",
-          "consumed": false,
-          "discovered_in_round": null,
-          "partial_hits": 0,
-          "best_partial_score": null,
-          "structural_difficulty": 0.12,
-          "difficulty_score": 0.25,
-          "discovery_score": 0.5,
-          "tok_score": 0
-        },
-        {
-          "step_num": 3,
-          "correct_step": "STEP 3. $f(x)<0$인 구간이 존재하거나 $(|4^x-3|-1)(f(x)-1)<0$인 $x$가 존재하면 $A-B$에 무한히 많은 원소가 생기므로 두 경우 모두 배제한다.",
+          "step_num": 4,
+          "correct_step": "STEP 4. $n(A-B)=2$이려면 ① $f(x)=0$의 실근이 정확히 1개이고 그 근이 $\\log_4 3$이 아니어야 하며, ② 모든 $x$에서 $(|4^x-3|-1)(f(x)-1)\\geq0$이어야 한다.",
           "consumed": false,
           "discovered_in_round": null,
           "partial_hits": 0,
@@ -459,31 +482,25 @@
           "structural_difficulty": 0.25,
           "difficulty_score": 0.3,
           "discovery_score": 0.5,
-          "tok_score": 0
-        },
-        {
-          "step_num": 4,
-          "correct_step": "STEP 4. $n(A-B)=2$이려면 ① $f(x)=0$의 실근이 정확히 1개이고 그 근이 $\\log_4 3$이 아니어야 하며, ② 모든 $x$에서 $(|4^x-3|-1)(f(x)-1)\\geq0$이어야 한다.",
-          "consumed": false,
-          "discovered_in_round": null,
-          "partial_hits": 1,
-          "best_partial_score": 0.5,
-          "structural_difficulty": 0.25,
-          "difficulty_score": 0.23,
-          "discovery_score": 0.33,
-          "tok_score": 0
+          "tok_score": 0,
+          "miss_type": "genuine",
+          "absorbed_in": null,
+          "absorb_reason": "조건 ①(f(x)=0의 실근 정확히 1개, 근≠log_4 3)과 조건 ②(부호 부등식)를 동시에 명시한 라운드가 없다. R3은 ①의 일부, R4는 ②만 각각 다룬다."
         },
         {
           "step_num": 5,
           "correct_step": "STEP 5. 절댓값을 분리하면 $|4^x-3|\\geq1 \\Leftrightarrow x\\leq\\frac{1}{2}$ 또는 $x\\geq1$이고, $|4^x-3|<1 \\Leftrightarrow \\frac{1}{2}<x<1$이다.",
-          "consumed": true,
-          "discovered_in_round": 3,
+          "consumed": false,
+          "discovered_in_round": null,
           "partial_hits": 0,
           "best_partial_score": null,
           "structural_difficulty": 0.25,
-          "difficulty_score": 0.13,
-          "discovery_score": 0.02,
-          "tok_score": 0.13
+          "difficulty_score": 0.3,
+          "discovery_score": 0.5,
+          "tok_score": 0,
+          "miss_type": "absorbed",
+          "absorbed_in": "R4",
+          "absorb_reason": "R4가 |4^x-3|<1 ⟺ x∈(1/2,1), |4^x-3|>1 ⟺ x∈(-∞,1/2)∪(1,∞)를 명시적으로 제시하여 STEP C의 내용과 동일하다."
         },
         {
           "step_num": 6,
@@ -493,21 +510,27 @@
           "partial_hits": 0,
           "best_partial_score": null,
           "structural_difficulty": 0.25,
-          "difficulty_score": 0.1,
-          "discovery_score": 0,
-          "tok_score": 0
+          "difficulty_score": 0.11,
+          "discovery_score": 0.02,
+          "tok_score": 0,
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": ""
         },
         {
           "step_num": 7,
           "correct_step": "STEP 7. $f\\left(\\frac{1}{2}\\right)=1$, $f(1)=1$이고 $\\frac{1}{2}<x<1$에서 $f(x)<1$일 때, $f(x)=k\\left(x-\\frac{1}{2}\\right)(x-1)+1$ ($k>0$)으로 표현된다.",
           "consumed": true,
-          "discovered_in_round": 7,
+          "discovered_in_round": 4,
           "partial_hits": 0,
           "best_partial_score": null,
           "structural_difficulty": 0.12,
-          "difficulty_score": 0.05,
-          "discovery_score": 0,
-          "tok_score": 0
+          "difficulty_score": 0.07,
+          "discovery_score": 0.05,
+          "tok_score": 0.03,
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": ""
         },
         {
           "step_num": 8,
@@ -519,19 +542,25 @@
           "structural_difficulty": 0.12,
           "difficulty_score": 0.25,
           "discovery_score": 0.5,
-          "tok_score": 0
+          "tok_score": 0,
+          "miss_type": "absorbed",
+          "absorbed_in": "R5",
+          "absorb_reason": "R5가 f(x)=c(x-a)²으로 놓고 a=3/4를 도출하여 대칭축이 3/4이고 f(3/4)=0임을 내포한다."
         },
         {
           "step_num": 9,
           "correct_step": "STEP 9. $f\\left(\\frac{3}{4}\\right)=1-\\frac{k}{16}=0$을 대입하면 $k=16$이다.",
           "consumed": true,
           "discovered_in_round": 8,
-          "partial_hits": 0,
-          "best_partial_score": null,
+          "partial_hits": 1,
+          "best_partial_score": 0.5,
           "structural_difficulty": 0.25,
           "difficulty_score": 0.11,
           "discovery_score": 0.02,
-          "tok_score": 0
+          "tok_score": 0,
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": ""
         },
         {
           "step_num": 10,
@@ -543,90 +572,87 @@
           "structural_difficulty": 0.25,
           "difficulty_score": 0.1,
           "discovery_score": 0,
-          "tok_score": 0
+          "tok_score": 0,
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": ""
         }
       ],
       "rounds": [
         {
           "round": 1,
           "skipped": false,
-          "think_tokens": 415,
-          "elapsed_ms": 21217,
-          "claude_step": "## 풀이 단계 추론\n\n[증거] 단서B, 단서C를 분석하여 $A - B$의 원소 조건을 파악합니다.\n\n**STEP 1.** $x \\notin B$인 경우를 분류하면: ① $f(x) \\leq 0$ (로그 정의역 위반), ② $4^x = 3$ 즉 $x = \\log_4 3$ ($|4^x-3|=0$으로 로그 정의역 위반), ③ $\\log|4^x-3| \\cdot \\log f(x) < 0$ (두 로그값의 부호가 반대)이며, 이 세 경우의 합이 정확히 2개의 실수이어야 함을 파악한다.",
-          "matched_step_num": 1,
-          "match_score": 0.5,
-          "match_reason": "Claude의 STEP 1은 x∉B인 세 가지 경우(f(x)≤0, 4^x=3, 로그곱 부호 반대)를 분류하며, 이는 A의 집합 B의 진수 조건과 부호 조건을 보완적 관점에서 서술한 것으로 핵심 내용이 부분적으로 일치하나, Claude는 B의 원소 조건이 아닌 A-B의 원소 조건 관점으로 프레이밍하여 완전 일치는 아님",
-          "discovery_type": "partial"
+          "think_tokens": 996,
+          "elapsed_ms": 53123,
+          "claude_step": "## 풀이\n\n**STEP 1.** $x \\notin B$가 되는 조건을 분석하면: $f(x) \\leq 0$ (로그 정의 불가), $4^x = 3$ (로그 정의 불가), 또는 두 로그의 곱이 음수인 세 가지 경우이며, $4^x = 3$, 즉 $x = \\log_4 3$은 항상 $A - B$의 원소이다.",
+          "matched_step_num": 2,
+          "match_score": 0.85,
+          "match_reason": "Claude의 STEP 1 결론 중 핵심인 'x = log_4(3)이 A-B의 원소'라는 결론이 후보 B와 정확히 일치함",
+          "discovery_type": "consumed"
         },
         {
           "round": 2,
-          "skipped": false,
-          "think_tokens": 419,
-          "elapsed_ms": 22221,
-          "claude_step": "STEP 2. $x \\notin B$가 되는 경우는 (ⅰ) $4^x = 3$, 즉 $x = \\log_4 3$이어서 진수 $|4^x-3|=0$이 되는 경우, (ⅱ) $f(x) \\leq 0$이어서 $\\log f(x)$가 정의되지 않는 경우, (ⅲ) 두 로그가 모두 정의되나 $\\log|4^x-3|$와 $\\log f(x)$의 부호가 서로 반대인 경우로 분류되며, $n(A-B)=2$이므로 이 세 경우를 합산하면 정확히 2개의 실수가 나와야 한다.",
-          "matched_step_num": null,
-          "match_score": 0.35,
-          "match_reason": "Claude의 STEP 2는 x∉B가 되는 세 가지 경우((ⅰ)진수=0, (ⅱ)f(x)≤0, (ⅲ)부호 반대)를 열거하고 n(A-B)=2 조건을 제시하는 개요 단계로, 후보 B(경우ⅰ만)와 C(경우ⅱ·ⅲ 배제 결론)에 부분적으로 걸쳐 있지만, 어느 하나와도 완전히 일치하지 않음",
-          "discovery_type": "miss"
+          "skipped": true,
+          "reason": "Step 2: Round 1에서 발견됨"
         },
         {
           "round": 3,
           "skipped": false,
-          "think_tokens": 820,
-          "elapsed_ms": 41298,
-          "claude_step": "STEP 3. $|4^x-3|<1$이 되는 구간은 $2<4^x<4$, 즉 $\\frac{1}{2}<x<1$이고, $|4^x-3|>1$이 되는 구간은 $x<\\frac{1}{2}$ 또는 $x>1$이므로, 부호 조건을 구간별로 분리하면: $x\\in\\left(\\frac{1}{2},1\\right)\\setminus\\{\\log_4 3\\}$에서 $\\log|4^x-3|<0$, $x\\in\\left(-\\infty,\\frac{1}{2}\\right)\\cup(1,\\infty)$에서 $\\log|4^x-3|>0$이다.",
-          "matched_step_num": 5,
-          "match_score": 0.85,
-          "match_reason": "Claude의 답변은 |4^x-3|<1이면 1/2<x<1, |4^x-3|>1이면 x<1/2 또는 x>1임을 도출하였고, 이는 Step E의 핵심 결론(절댓값 부등식에 따른 구간 분리)과 수학적으로 동일하다.",
-          "discovery_type": "consumed"
+          "think_tokens": 1003,
+          "elapsed_ms": 45957,
+          "claude_step": "STEP 3. $n(A-B)=2$이고 $A-B$에는 이미 $x=\\log_4 3$이 포함되어 있으므로, $f(x)<0$인 구간이 존재하면 무한히 많은 점이 $A-B$에 포함되어 조건에 모순된다. 따라서 $f(x)\\geq 0$ (모든 실수)이어야 하고, $f(x)=0$인 점은 많아야 1개이어야 한다.",
+          "matched_step_num": 3,
+          "match_score": 0.5,
+          "match_reason": "Claude는 f(x)<0 구간이 존재하면 A-B에 무한히 많은 원소가 생겨 배제한다는 결론을 공유하지만, B가 추가로 요구하는 (|4^x-3|-1)(f(x)-1)<0 조건 배제는 명시하지 않아 부분 일치에 그침",
+          "discovery_type": "partial"
         },
         {
           "round": 4,
           "skipped": false,
-          "think_tokens": 602,
-          "elapsed_ms": 40342,
-          "claude_step": "STEP 4. $A-B$의 원소는 $x=\\log_4 3$ 외에 정확히 1개 더 필요하며, 그 점은 $f(x)=0$인 고립점(즉 $f(x)$의 중근)이어야 하므로, $f(x)$는 판별식이 $0$인 이차함수로 $f(x)=a(x-p)^2$ $(a>0)$ 꼴이다.",
-          "matched_step_num": 4,
-          "match_score": 0.5,
-          "match_reason": "Claude는 A-B의 원소가 2개이려면 f(x)=0의 근이 정확히 1개(중근, a(x-p)² 꼴)여야 한다고 결론 내려 D의 조건 ①과 일치하지만, D의 조건 ②((|4^x-3|-1)(f(x)-1)≥0 전역 조건)는 포함하지 않아 부분 일치",
-          "discovery_type": "partial"
+          "think_tokens": 721,
+          "elapsed_ms": 43393,
+          "claude_step": "## 풀이 흐름 파악\n\nSTEP 3에서 $(|4^x-3|-1)(f(x)-1) \\geq 0$이 (고립점 제외) 모든 $x$에서 성립해야 한다고 했습니다.\n\n이제 $|4^x-3|-1$의 부호 영역을 확인합니다:\n- $|4^x-3| < 1$ ⟺ $2 < 4^x < 4$ ⟺ $x \\in \\left(\\frac{1}{2}, 1\\right)$ → $|4^x-3|-1 < 0$\n- $|4^x-3| > 1$ ⟺ $x \\in \\left(-\\infty, \\frac{1}{2}\\right) \\cup (1, \\infty)$ → $|4^x-3|-1 > 0$\n- $|4^x-3| = 1$ ⟺ $x = \\frac{1}{2}$ 또는 $x = 1$\n\n연속인 이차함수 $f(x)$가 조건 $(|4^x-3|-1)(f(x)-1) \\geq 0$을 거의 모든 $x$에서 만족하려면, $x \\in \\left(\\frac{1}{2},1\\right)$에서 $f(x)-1 \\leq 0$, $x \\in \\left(-\\infty,\\frac{1}{2}\\right) \\cup (1,\\infty)$에서 $f(x)-1 \\geq 0$이어야 합니다.\n\n**STEP 4.** 이차함수 $f(x)-1$이 경계점 $x=\\frac{1}{2}$과 $x=1$ 양쪽에서 부호가 바뀌어야 하므로, $f\\!\\left(\\frac{1}{2}\\right)=1$이고 $f(1)=1$이어야 한다.",
+          "matched_step_num": 7,
+          "match_score": 0.7,
+          "match_reason": "Claude의 결론인 f(1/2)=1, f(1)=1은 STEP F의 핵심 조건과 일치하나, f(x)=k(x-1/2)(x-1)+1 (k>0) 형태까지는 도출하지 않아 완전 일치는 아님",
+          "discovery_type": "consumed"
         },
         {
           "round": 5,
-          "skipped": true,
-          "reason": "Step 5: Round 3에서 발견됨"
+          "skipped": false,
+          "think_tokens": 560,
+          "elapsed_ms": 30661,
+          "claude_step": "STEP 5. 조건 ②에서 $|4^x-3|=1$이 되는 경계점 $x=\\tfrac{1}{2}$($4^x=2$)과 $x=1$($4^x=4$)에서 부등식 방향이 바뀌므로 $f\\!\\left(\\tfrac{1}{2}\\right)=f(1)=1$이어야 하고, $f(x)=c(x-a)^2$ ($c>0$)으로 놓아 두 조건을 대입하면 $(a-\\tfrac{1}{2})^2=(a-1)^2$에서 $a=\\tfrac{3}{4}$, $c=16$을 얻는다.",
+          "matched_step_num": 9,
+          "match_score": 0.5,
+          "match_reason": "Claude의 결론 중 c=16(k=16)은 G와 일치하나, a=3/4(대칭축)를 함께 도출하는 전체 결론은 G만으로 완전히 포괄되지 않아 부분 일치.",
+          "discovery_type": "partial"
         },
         {
           "round": 6,
           "skipped": false,
-          "think_tokens": 142,
-          "elapsed_ms": 9941,
-          "claude_step": "STEP 6. 조건 ②에 의해 $x\\leq\\dfrac{1}{2}$ 또는 $x\\geq1$인 구간에서는 $|4^x-3|-1\\geq0$이므로 $f(x)\\geq1$이어야 하고, $\\dfrac{1}{2}<x<1$인 구간에서는 $|4^x-3|-1<0$이므로 $f(x)\\leq1$이어야 한다.",
+          "think_tokens": 263,
+          "elapsed_ms": 13865,
+          "claude_step": "STEP 6. 조건 ②에서 $x \\leq \\frac{1}{2}$ 또는 $x \\geq 1$이면 $|4^x-3|-1 \\geq 0$이므로 $f(x) \\geq 1$이어야 하고, $\\frac{1}{2} < x < 1$이면 $|4^x-3|-1 < 0$이므로 $f(x) \\leq 1$이어야 한다. 따라서 경계점에서 $f\\!\\left(\\tfrac{1}{2}\\right) = 1$이고 $f(1) = 1$이다.",
           "matched_step_num": 6,
-          "match_score": 1,
-          "match_reason": "Claude의 답변과 후보 E 모두 조건 ②에 의해 x≤1/2 또는 x≥1에서 f(x)≥1, 1/2<x<1에서 f(x)≤1이라는 동일한 결론을 도출함",
+          "match_score": 0.85,
+          "match_reason": "Claude의 답변은 조건 ②에서 x≤1/2 또는 x≥1이면 f(x)≥1, 1/2<x<1이면 f(x)≤1이라는 E의 핵심 결론과 일치하며, 추가로 경계점 f(1/2)=f(1)=1을 언급했으나 E의 결론 전체를 포함함.",
           "discovery_type": "consumed"
         },
         {
           "round": 7,
-          "skipped": false,
-          "think_tokens": 218,
-          "elapsed_ms": 11929,
-          "claude_step": "STEP 7. STEP 6의 경계조건에서 $f\\!\\left(\\tfrac{1}{2}\\right)=1$, $f(1)=1$이어야 하므로 $f(x)-1=a\\!\\left(x-\\tfrac{1}{2}\\right)(x-1)$ ($a>0$)으로 놓을 수 있다.",
-          "matched_step_num": 7,
-          "match_score": 1,
-          "match_reason": "Claude의 f(x)-1 = a(x-1/2)(x-1) (a>0)은 후보 E의 f(x) = k(x-1/2)(x-1)+1 (k>0)과 완전히 동일한 표현이다.",
-          "discovery_type": "consumed"
+          "skipped": true,
+          "reason": "Step 7: Round 4에서 발견됨"
         },
         {
           "round": 8,
           "skipped": false,
-          "think_tokens": 203,
-          "elapsed_ms": 11583,
-          "claude_step": "STEP 8. 조건 ①에서 $f(x)=0$이 정확히 1개의 실근(중근)을 가져야 하므로 $f(x)=k\\!\\left(x-\\tfrac{1}{2}\\right)(x-1)+1=kx^2-\\tfrac{3k}{2}x+\\tfrac{k}{2}+1$의 판별식을 0으로 놓으면 $\\tfrac{9k^2}{4}-4k\\!\\left(\\tfrac{k}{2}+1\\right)=\\tfrac{k^2}{4}-4k=0$에서 $k>0$이므로 $k=16$이다.",
+          "think_tokens": 395,
+          "elapsed_ms": 13016,
+          "claude_step": "STEP 8. 조건 ①에서 $f(x)=0$이 정확히 1개의 실근을 가지려면 판별식이 0이어야 하므로, $f(x)=k\\!\\left(x-\\tfrac{1}{2}\\right)(x-1)+1$의 판별식을 계산하면 $\\Delta = \\tfrac{9k^2}{4}-4k\\!\\left(\\tfrac{k}{2}+1\\right)=\\tfrac{k^2}{4}-4k=k\\!\\left(\\tfrac{k}{4}-4\\right)=0$에서 $k>0$이므로 $k=16$이다.",
           "matched_step_num": 9,
           "match_score": 0.85,
-          "match_reason": "Claude와 F 모두 최종적으로 k=16이라는 동일한 결론에 도달하며, Claude는 판별식=0으로, F는 f(3/4)=0 대입으로 방법은 다르지만 핵심 결론이 일치한다.",
+          "match_reason": "Claude와 후보 F 모두 최종적으로 k=16이라는 동일한 결론에 도달하며, 방법(판별식=0 vs f(3/4)=0 대입)만 다를 뿐 핵심 결론이 일치한다.",
           "discovery_type": "consumed"
         },
         {
@@ -637,12 +663,12 @@
         {
           "round": 10,
           "skipped": false,
-          "think_tokens": 40,
-          "elapsed_ms": 4714,
+          "think_tokens": 47,
+          "elapsed_ms": 3688,
           "claude_step": "STEP 10. $k=16$을 대입하면 $f(x)=16\\!\\left(x-\\tfrac{1}{2}\\right)(x-1)+1$이므로 $f(3)=16\\times\\tfrac{5}{2}\\times2+1=80+1=\\boxed{81}$이다.",
           "matched_step_num": 10,
           "match_score": 1,
-          "match_reason": "Claude의 답변과 후보 F 모두 f(x)=16(x-1/2)(x-1)+1에 x=3을 대입하여 f(3)=81이라는 동일한 결론에 도달함",
+          "match_reason": "Claude의 답변과 후보 F 모두 f(x)=16(x-1/2)(x-1)+1에 x=3을 대입하여 f(3)=81을 도출하는 완전히 동일한 결론",
           "discovery_type": "consumed"
         }
       ],
