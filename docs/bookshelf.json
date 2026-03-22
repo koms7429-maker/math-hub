@@ -4457,115 +4457,163 @@
       "new_dna": []
     },
     "thinking_profile": {
-      "total_think_tokens": 1561,
-      "edge_count": 9,
-      "by_type": {
-        "사실": {
-          "count": 1,
-          "total": 721,
-          "avg": 721
+      "_version": 3,
+      "total_think_tokens": 1878,
+      "step_count": 6,
+      "consumed_count": 0,
+      "partial_count": 0,
+      "miss_count": 6,
+      "highlight_steps": [
+        1,
+        2
+      ],
+      "hardest_step": {
+        "step_num": 1,
+        "difficulty_score": 0.26,
+        "structural_difficulty": 0.15,
+        "consumed": false,
+        "correct_step": "STEP 1. A의 좌표 결정"
+      },
+      "steps": [
+        {
+          "step_num": 1,
+          "correct_step": "STEP 1. A의 좌표 결정",
+          "consumed": false,
+          "discovered_in_round": null,
+          "partial_hits": 0,
+          "best_partial_score": null,
+          "structural_difficulty": 0.15,
+          "difficulty_score": 0.26,
+          "discovery_score": 0.5,
+          "tok_score": 0
         },
-        "연산": {
-          "count": 7,
-          "total": 822,
-          "avg": 117
+        {
+          "step_num": 2,
+          "correct_step": "STEP 2. B, C의 좌표 설정",
+          "consumed": false,
+          "discovered_in_round": null,
+          "partial_hits": 0,
+          "best_partial_score": null,
+          "structural_difficulty": 0.15,
+          "difficulty_score": 0.26,
+          "discovery_score": 0.5,
+          "tok_score": 0
         },
-        "전략": {
-          "count": 0,
-          "total": 0,
-          "avg": 0
+        {
+          "step_num": 3,
+          "correct_step": "STEP 3. AC:AD=2:1 조건으로 a^b 결정",
+          "consumed": false,
+          "discovered_in_round": null,
+          "partial_hits": 0,
+          "best_partial_score": null,
+          "structural_difficulty": 0.15,
+          "difficulty_score": 0.26,
+          "discovery_score": 0.5,
+          "tok_score": 0
+        },
+        {
+          "step_num": 4,
+          "correct_step": "STEP 4. BC, AB 길이 계산",
+          "consumed": false,
+          "discovered_in_round": null,
+          "partial_hits": 0,
+          "best_partial_score": null,
+          "structural_difficulty": 0.15,
+          "difficulty_score": 0.26,
+          "discovery_score": 0.5,
+          "tok_score": 0
+        },
+        {
+          "step_num": 5,
+          "correct_step": "STEP 5. 넓이 조건으로 b 결정",
+          "consumed": false,
+          "discovered_in_round": null,
+          "partial_hits": 0,
+          "best_partial_score": null,
+          "structural_difficulty": 0.15,
+          "difficulty_score": 0.26,
+          "discovery_score": 0.5,
+          "tok_score": 0
+        },
+        {
+          "step_num": 6,
+          "correct_step": "STEP 6. a^4과 최종 답 계산",
+          "consumed": false,
+          "discovered_in_round": null,
+          "partial_hits": 0,
+          "best_partial_score": null,
+          "structural_difficulty": 0.15,
+          "difficulty_score": 0.26,
+          "discovery_score": 0.5,
+          "tok_score": 0
         }
-      },
-      "hardest_edge": {
-        "edge_num": 1,
-        "from": "단서A",
-        "to": "note1",
-        "neuron": "사실18",
-        "to_type": "사실",
-        "think_tokens": 721,
-        "note": "점 A는 곡선 y=a^x와 y축의 교점이므로 A(0, a^0) = A(0, 1)"
-      },
-      "edges": [
+      ],
+      "rounds": [
         {
-          "edge_num": 1,
-          "from": "단서A",
-          "to": "note1",
-          "neuron": "사실18",
-          "to_type": "사실",
-          "note": "점 A는 곡선 y=a^x와 y축의 교점이므로 A(0, a^0) = A(0, 1)",
-          "think_tokens": 721
+          "round": 1,
+          "skipped": false,
+          "think_tokens": 324,
+          "elapsed_ms": 13506,
+          "claude_step": "[증거] 단서A를 활용합니다.\n\nSTEP 1. 곡선 $y=a^x$는 $y$축($x=0$)과 만나므로 $y=a^0=1$, 즉 **A = (0, 1)**이다.",
+          "matched_step_num": null,
+          "match_score": 0,
+          "match_reason": "match HTTP: Request failed with status code 400",
+          "discovery_type": "miss"
         },
         {
-          "edge_num": 2,
-          "from": "note1",
-          "to": "note2",
-          "neuron": "연산2",
-          "to_type": "연산",
-          "note": "점 A를 지나고 x축에 평행한 직선 y=1이 곡선 y=log_b x와 만나는 점 B는 log_b x = 1을 만족하므로 x = b^1 = b, 따라서 B(b, 1)",
-          "think_tokens": 80
+          "round": 2,
+          "skipped": false,
+          "think_tokens": 92,
+          "elapsed_ms": 3598,
+          "claude_step": "STEP 1. 점 A는 곡선 y=a^x가 y축(x=0)과 만나는 점이므로, y=a^0=1 → **A=(0, 1)**",
+          "matched_step_num": null,
+          "match_score": 0,
+          "match_reason": "match HTTP: Request failed with status code 400",
+          "discovery_type": "miss"
         },
         {
-          "edge_num": 3,
-          "from": "note2",
-          "to": "note3",
-          "neuron": "연산2",
-          "to_type": "연산",
-          "note": "점 B(b, 1)를 지나고 y축에 평행한 직선 x=b가 곡선 y=a^x와 만나는 점 C는 C(b, a^b)",
-          "think_tokens": 27
+          "round": 3,
+          "skipped": false,
+          "think_tokens": 302,
+          "elapsed_ms": 12659,
+          "claude_step": "## 풀이 흐름 확인\n\n**STEP 1 결과:** A = (0, 1) (y = a^x에서 x=0이면 y=1)\n\n**STEP 2 결과:**\n- y=1인 수평선이 y = log_b(x)와 만나는 점: log_b(x) = 1 → x = b, 따라서 **B = (b, 1)**\n- x = b인 수직선이 y = a^x와 만나는 점: **C = (b, a^b)**\n\n---\n\nSTEP 3. 직선 AC의 방정식을 구하고 AC:AD = 2:1 조건 적용",
+          "matched_step_num": null,
+          "match_score": 0,
+          "match_reason": "match HTTP: Request failed with status code 400",
+          "discovery_type": "miss"
         },
         {
-          "edge_num": 4,
-          "from": "note3",
-          "to": "note4",
-          "neuron": "연산5",
-          "to_type": "연산",
-          "note": "AC : AD = 2 : 1이고 A(0,1), D는 x축 위 점이므로 D의 y좌표는 0이다. A가 D와 C 사이에 있다면, y좌표 변화에서 A→D가 1→0 (변화량 -1), A→C는 그 2배 반대방향이므로 1→3 (변화량 +2), 따라서 C의 y좌표는 3",
-          "think_tokens": 463
+          "round": 4,
+          "skipped": false,
+          "think_tokens": 296,
+          "elapsed_ms": 11629,
+          "claude_step": "STEP 4. 삼각형 ABC의 넓이 조건으로 b값 결정 (A=(0,1), B=(b,1), C=(b,a^b=3)이므로 AB⊥BC인 직각삼각형, 넓이 = (1/2)×b×2 = b = 4)",
+          "matched_step_num": null,
+          "match_score": 0,
+          "match_reason": "match HTTP: Request failed with status code 400",
+          "discovery_type": "miss"
         },
         {
-          "edge_num": 5,
-          "from": "note4",
-          "to": "note5",
-          "neuron": "연산24",
-          "to_type": "연산",
-          "note": "C(b, a^b)에서 C의 y좌표가 3이므로 a^b = 3",
-          "think_tokens": 20
+          "round": 5,
+          "skipped": false,
+          "think_tokens": 240,
+          "elapsed_ms": 18040,
+          "claude_step": "STEP 5. 넓이 조건 적용: A=(0,1), B=(b,1), C=(b,3)이므로 넓이 = (1/2)×b×(3-1) = b = 4, 따라서 a^4=3에서 a^8=9이고 a^8+b = **13**",
+          "matched_step_num": null,
+          "match_score": 0,
+          "match_reason": "match HTTP: Request failed with status code 400",
+          "discovery_type": "miss"
         },
         {
-          "edge_num": 6,
-          "from": "note5",
-          "to": "note6",
-          "neuron": "연산13",
-          "to_type": "연산",
-          "note": "A(0,1), B(b,1), C(b,3)에서 AB는 수평선(길이 b), BC는 수직선(길이 2)이므로 삼각형 ABC의 넓이 = (1/2) × b × 2 = b",
-          "think_tokens": 121
-        },
-        {
-          "edge_num": 7,
-          "from": "note6",
-          "to": "note7",
-          "neuron": "연산24",
-          "to_type": "연산",
-          "note": "삼각형 ABC의 넓이가 4이므로 b = 4",
-          "think_tokens": 65
-        },
-        {
-          "edge_num": 8,
-          "from": "note7",
-          "to": "note8",
-          "neuron": "연산4",
-          "to_type": "연산",
-          "note": "a^b = 3이고 b = 4이므로 a^4 = 3, 따라서 a^8 = (a^4)^2 = 3^2 = 9",
-          "think_tokens": 46
-        },
-        {
-          "edge_num": 9,
-          "from": "note8",
-          "to": "END",
-          "neuron": "연산24",
-          "to_type": "END",
-          "note": "a^8 + b = 9 + 4 = 13",
-          "think_tokens": 18
+          "round": 6,
+          "skipped": false,
+          "think_tokens": 624,
+          "elapsed_ms": 26435,
+          "claude_step": "STEP 1. $y=a^x$는 $x=0$일 때 $y=a^0=1$이므로 **A = (0, 1)**",
+          "matched_step_num": null,
+          "match_score": 0,
+          "match_reason": "match HTTP: Request failed with status code 400",
+          "discovery_type": "miss"
         }
       ],
       "_debug": "OK"
