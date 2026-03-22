@@ -238,5 +238,35 @@
     "previous_dna_nodes": [],
     "previous_dna_edges": [],
     "created_at": "2026-03-22T23:41:30.843Z"
+  },
+  {
+    "problem_id": "19(수능/모의고사)-로그방정식의실근의개수",
+    "content": "# 19. (수능/모의고사) - 로그 방정식의 실근의 개수\n\n## Problem\n\n상수 $k\\ (k > 4\\sqrt{5})$와 2 이상의 자연수 $n$에 대하여 $x$에 대한 방정식\n\n$$\\frac{\\log_n (x^2-20)^n}{n} = \\frac{\\log_n (2x+k)^{n+1}}{n+1} + 1$$\n\n의 실근의 개수가 3이 되도록 하는 모든 $n$의 값이 $n_1,\\; n_2\\ (n_2 > n_1 \\geq 2)$일 때, $k + n_2 - n_1$의 값은? [4점]\n\n## Choices\n① 10 &emsp; ② 11 &emsp; ③ 12 &emsp; ④ 13 &emsp; ⑤ 14\n\n**Answer**: ①\n**Difficulty**: 상\n**Score**: 4점\n**Type**: multiple choice\n\n---\n\n## Solution\n\n문제의 방정식을 정리하면\n\n**① $n$이 홀수일 때,** $\\log_n(x^2-20) = \\log_n|2x+k| + 1$\n\n$$\\Rightarrow x^2 - 20 = 2n\\left|x+\\frac{k}{2}\\right|,\\quad x^2-20>0,\\quad x \\neq -\\frac{k}{2}$$\n\n**② $n$이 짝수일 때,** $\\log_n|x^2-20| = \\log_n(2x+k) + 1$\n\n$$\\Rightarrow |x^2-20| = 2n\\left(x+\\frac{k}{2}\\right),\\quad x^2 \\neq 20,\\quad x > -\\frac{k}{2}$$\n\n이때, $k > 4\\sqrt{5} \\Rightarrow -\\dfrac{k}{2} < -2\\sqrt{5}$\n\n임을 함께 고려하면 방정식의 실근의 개수가 3이 되는 경우를 다음 그림과 같이 나타낼 수 있다.\n\n[FIGURE: ①의 경우 — $y = x^2 - 20$과 $y = 2n\\left|x + \\frac{k}{2}\\right|$의 그래프가 $x < -2\\sqrt{5}$에서 접하는 그림. ②의 경우 — $y = |x^2 - 20|$과 $y = 2n\\left(x + \\frac{k}{2}\\right)$의 그래프가 $-2\\sqrt{5} < x < 2\\sqrt{5}$에서 접하는 그림.]\n\n**①의 경우:**\n\n$y = x^2 - 20$, $y = -2n\\!\\left(x + \\dfrac{k}{2}\\right)$이 $x < -2\\sqrt{5}$에서 접함\n\n$$\\Rightarrow x^2 + 2nx + kn - 20 = 0 \\text{이 } x < -2\\sqrt{5} \\text{인 중근을 가짐}$$\n\n$$\\Rightarrow \\begin{cases} D/4 = n^2 - kn + 20 = 0 \\cdots \\text{ⓐ} \\\\ \\text{(대칭축)} = -n < -2\\sqrt{5} \\Rightarrow n > 2\\sqrt{5}\\text{인 홀수} \\\\ \\Rightarrow n = 5,\\; 7,\\; \\cdots \\quad \\cdots \\text{ⓑ} \\end{cases}$$\n\n**②의 경우:**\n\n$y = -(x^2-20)$, $y = 2n\\!\\left(x + \\dfrac{k}{2}\\right)$이 $-2\\sqrt{5} < x < 2\\sqrt{5}$에서 접함\n\n$$\\Rightarrow x^2 + 2nx + kn - 20 = 0 \\text{이 } -2\\sqrt{5} < x < 2\\sqrt{5}\\text{인 중근을 가짐}$$\n\n$$\\Rightarrow \\begin{cases} \\text{중근을 가질 조건은 ⓐ과 동일} \\\\ -2\\sqrt{5} < -n < 2\\sqrt{5}\\ (\\because \\text{ⓑ의 과정 참고}) \\\\ \\Rightarrow n \\text{은 } -2\\sqrt{5} < n < 2\\sqrt{5}\\text{인 짝수} \\\\ \\Rightarrow n = 2,\\; 4 \\quad \\cdots \\text{ⓒ} \\end{cases}$$\n\n따라서 문제의 조건과 ⓐ에 의해\n\n$$\\begin{cases} n\\text{에 대한 이차방정식 } n^2 - kn + 20 = 0 \\text{이} \\\\ \\text{서로 다른 두 실근이 } n_1,\\; n_2\\ (n_2 > n_1 \\geq 2) \\end{cases}$$\n\n임을 알 수 있고, 이때\n\n$$n_1 \\times n_2 = 20 \\quad (\\because \\text{근과 계수의 관계})$$\n\n이므로 ⓑ, ⓒ에서\n\n$$n_1 = 4,\\quad n_2 = 5$$\n\n임을 알 수 있고,\n\n$$\\text{ⓐ} \\Rightarrow k = 9$$\n\n를 얻는다.\n\n$$\\therefore\\; k + n_2 - n_1 = 9 + 5 - 4 = \\boxed{10}$$\n\n---",
+    "content_source": "FileLoop",
+    "content_length": 2274,
+    "skel_status": "neuron_missing",
+    "dna_status": "dna_missing",
+    "needed_neurons": [
+      "???"
+    ],
+    "needed_dna": [],
+    "previous_analysis": "",
+    "previous_matching": "",
+    "previous_matched": [],
+    "previous_skeleton": [],
+    "previous_new_neurons": [
+      {
+        "id": "???",
+        "type": "???",
+        "statement": "(자동 감지) 뉴런 부족 판정이나 구체적 뉴런 제안 누락",
+        "reason": "skeleton이 비어있고 new_neurons도 비어있음 — Claude가 두 필드 모두 빈 채로 반환",
+        "blocked_edge": "N/A"
+      }
+    ],
+    "previous_partial_skeleton": [],
+    "previous_blockage_point": "",
+    "previous_dna_nodes": [],
+    "previous_dna_edges": [],
+    "created_at": "2026-03-22T23:49:50.188Z"
   }
 ]
