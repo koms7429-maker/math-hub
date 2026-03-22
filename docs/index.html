@@ -212,7 +212,9 @@ function rCon(){var el=document.getElementById('ct');
   }
   el.innerHTML=h}
 
-function diffBadge(score){if(!score&&score!==0)return'';var rank=score>=3?1:score>=2?2:score>=1.5?3:score>=1?4:5;var labels=['\ucd5c\uc0c1','\uc0c1','\uc911','\ud558','\ucd5c\ud558'];return'<span class="diff-badge diff-'+rank+'">'+labels[rank-1]+'</span>'}
+function diffBadge(score){if(!score&&score!==0)return'';var rank;if(score<=1){rank=score>=0.25?1:score>=0.2?2:score>=0.15?3:score>=0.1?4:5}else{rank=score>=3?1:score>=2?2:score>=1.5?3:score>=1?4:5}var labels=['\ucd5c\uc0c1','\uc0c1','\uc911','\ud558','\ucd5c\ud558'];return'<span class="diff-badge diff-'+rank+'">'+labels[rank-1]+'</span>'}
+
+function normalizeTP(tp){if(!tp||!tp._version||tp._version<4)return tp;if(tp._normalized)return tp;var rounds=tp.rounds||[];var steps=tp.steps||[];steps.forEach(function(s){s.match=!!s.consumed;var r=null;if(s.consumed&&s.discovered_in_round){r=rounds.find(function(rd){return rd.round===s.discovered_in_round&&!rd.skipped})}if(!r){var pr=rounds.filter(function(rd){return!rd.skipped&&rd.matched_step_num===s.step_num});if(pr.length)r=pr[0]}s.think_tokens=r?r.think_tokens||0:0;s.elapsed_ms=r?r.elapsed_ms||0:0;s.claude_step=r?r.claude_step||'':'';s.match_score=r?r.match_score||0:s.best_partial_score||0;if(!s.match&&s.partial_hits>0)s.match_score=s.best_partial_score||0});if(tp.hardest_step){var hs=tp.hardest_step;hs.match=!!hs.consumed;var hr=null;if(hs.consumed){var hsi=steps.find(function(s){return s.step_num===hs.step_num});if(hsi){hr=rounds.find(function(rd){return rd.round===hsi.discovered_in_round&&!rd.skipped})}}hs.think_tokens=hr?hr.think_tokens||0:0;hs.elapsed_ms=hr?hr.elapsed_ms||0:0}tp._normalized=true;return tp}
 
 function rSt(p){
   var h='<div class="cd" style="line-height:1.9;font-size:14px">'+rm(p.statement||'')+'</div>';
@@ -256,17 +258,18 @@ function rAn(p){
       var sideEdges=edges.filter(function(e){return e.main===false});
       var stepText=solSteps[sn-1]||('STEP '+sn);
       // thinking profile 데이터에서 해당 step 찾기
-      var tp=p.thinking_profile;
+      var tp=p.thinking_profile;if(tp)tp=normalizeTP(tp);
       var stepData=null;
       if(tp&&tp.steps){stepData=tp.steps.find(function(s){return s.step_num===sn});}
       h+='<div class="cd" style="margin-bottom:10px">';
       h+='<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">';
       h+='<div style="font-size:13px;font-weight:800;color:#7c83fd;flex:1">'+rm(stepText)+'</div>';
       if(stepData){
-        var mc=stepData.match?'#66bb6a':'#ef5350';
+        var mc=stepData.match?'#66bb6a':(stepData.partial_hits>0?'#ffa726':'#ef5350');
+        var statusLabel=stepData.match?'✓ 발견':(stepData.partial_hits>0?'◐ 부분':'✗ 미발견');
         h+='<div style="display:flex;gap:6px;align-items:center;flex-shrink:0;margin-left:8px">';
-        h+='<span style="font-size:9px;background:'+(stepData.match?'rgba(102,187,106,.15)':'rgba(239,83,80,.15)')+';color:'+mc+';padding:2px 6px;border-radius:3px;font-weight:700">'+(stepData.match?'✓ 발견':'✗ 미발견')+'</span>';
-        h+='<span style="font-size:10px;color:#a78bfa;font-variant-numeric:tabular-nums">'+stepData.think_tokens+'tok</span>';
+        h+='<span style="font-size:9px;background:'+(stepData.match?'rgba(102,187,106,.15)':(stepData.partial_hits>0?'rgba(255,167,38,.15)':'rgba(239,83,80,.15)'))+';color:'+mc+';padding:2px 6px;border-radius:3px;font-weight:700">'+statusLabel+'</span>';
+        if(stepData.think_tokens)h+='<span style="font-size:10px;color:#a78bfa;font-variant-numeric:tabular-nums">'+stepData.think_tokens+'tok</span>';
         if(stepData.difficulty_score!==undefined)h+=diffBadge(stepData.difficulty_score);
         h+='</div>';
       }
@@ -302,21 +305,23 @@ function rAn(p){
     });
   }
 
-  // Thinking Profile (새 구조: steps)
-  var tp=p.thinking_profile;
+  // Thinking Profile (v2/v3/v4 호환)
+  var tp=p.thinking_profile;if(tp)tp=normalizeTP(tp);
   if(tp&&tp.step_count>0){
     var fT=function(n){return n>=1000?(n/1000).toFixed(1)+'k':String(n)};
     var steps=tp.steps||[];
     var mE=Math.max.apply(null,steps.map(function(s){return s.think_tokens||0}).concat([1]));
-    h+='<div class="sl" style="margin-top:6px;color:#a78bfa">Thinking Profile</div><div class="cd">';
+    h+='<div class="sl" style="margin-top:6px;color:#a78bfa">Thinking Profile'+(tp._version?' v'+tp._version:'')+'</div><div class="cd">';
     // 요약 카드
     h+='<div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;margin-bottom:12px">';
-    var matchCount=steps.filter(function(s){return s.match}).length;
-    var avgMs=steps.length>0?Math.round(steps.reduce(function(a,s){return a+s.elapsed_ms},0)/steps.length):0;
+    var matchCount=tp.consumed_count!==undefined?tp.consumed_count:steps.filter(function(s){return s.match}).length;
+    var avgMs=steps.length>0?Math.round(steps.reduce(function(a,s){return a+(s.elapsed_ms||0)},0)/steps.length):0;
+    var discLabel='발견률',discVal=matchCount+'/'+tp.step_count;
+    if(tp._version>=4){discLabel='C/P/M';discVal=(tp.consumed_count||0)+'/'+(tp.partial_count||0)+'/'+(tp.miss_count||0)}
     [
       ['총 토큰',fT(tp.total_think_tokens),'#66bb6a'],
-      ['발견률',matchCount+'/'+tp.step_count,'#7c83fd'],
-      ['최고 난이도',tp.hardest_step?tp.hardest_step.difficulty_score.toFixed(1):'—','#a78bfa'],
+      [discLabel,discVal,'#7c83fd'],
+      ['최고 난이도',tp.hardest_step?tp.hardest_step.difficulty_score.toFixed(2):'—','#a78bfa'],
       ['평균 시간',avgMs+'ms','#ffa726']
     ].forEach(function(s){h+='<div style="background:var(--bg);border:1px solid var(--bd);border-radius:5px;padding:7px 10px"><div style="font-size:9px;color:#7a7f9a;letter-spacing:2px;margin-bottom:3px">'+s[0]+'</div><div style="font-size:14px;font-weight:800;color:'+s[2]+';font-variant-numeric:tabular-nums">'+s[1]+'</div></div>'});
     h+='</div>';
@@ -331,30 +336,31 @@ function rAn(p){
       var hs=tp.hardest_step;
       var mc=hs.match?'#66bb6a':'#ef5350';
       h+='<div style="border-top:1px solid var(--bd);padding-top:8px;margin-bottom:8px">';
-      h+='<div style="font-size:10px;color:#7a7f9a;margin-bottom:4px">최고 난이도 STEP '+hs.step_num+' <span style="color:#a78bfa;font-weight:700">score:'+hs.difficulty_score.toFixed(1)+'</span> <span style="color:'+mc+'">'+(hs.match?'발견':'미발견')+'</span> '+fT(hs.think_tokens)+'tok / '+hs.elapsed_ms+'ms</div>';
+      h+='<div style="font-size:10px;color:#7a7f9a;margin-bottom:4px">최고 난이도 STEP '+hs.step_num+' <span style="color:#a78bfa;font-weight:700">score:'+hs.difficulty_score.toFixed(2)+'</span> <span style="color:'+mc+'">'+(hs.match?'발견':'미발견')+'</span>'+(hs.think_tokens?' '+fT(hs.think_tokens)+'tok':'')+(hs.elapsed_ms?' / '+hs.elapsed_ms+'ms':'')+'</div>';
       h+='<div style="font-size:11px;color:#7a7f9a">'+rm(hs.correct_step)+'</div>';
       h+='</div>';
     }
     // step별 바
     h+='<div style="border-top:1px solid var(--bd);padding-top:8px">';
     steps.forEach(function(s){
-      var pct=(s.think_tokens/mE)*100;
-      var mc=s.match?'#66bb6a':'#ef5350';
+      var pct=mE>0?(s.think_tokens/mE)*100:0;
+      var mc=s.match?'#66bb6a':(s.partial_hits>0?'#ffa726':'#ef5350');
+      var statusIcon=s.match?'✓':(s.partial_hits>0?'◐':'✗');
       var isHL=tp.highlight_steps&&tp.highlight_steps.indexOf(s.step_num)>=0;
       h+='<div style="margin-bottom:8px">';
       h+='<div style="display:flex;justify-content:space-between;margin-bottom:2px;align-items:center">';
       h+='<span style="font-size:10px;color:#7a7f9a;display:flex;gap:5px;align-items:center">';
       h+='STEP '+s.step_num;
-      h+='<span style="color:'+mc+';font-size:9px">'+(s.match?'✓':'✗')+'</span>';
-      if(s.match_score!==undefined)h+='<span style="color:#7a7f9a;font-size:9px">'+Math.round(s.match_score*100)+'%</span>';
+      h+='<span style="color:'+mc+';font-size:9px">'+statusIcon+'</span>';
+      if(s.match_score!==undefined&&s.match_score>0)h+='<span style="color:#7a7f9a;font-size:9px">'+Math.round(s.match_score*100)+'%</span>';
       if(isHL)h+='<span style="color:#a78bfa;font-size:9px">★</span>';
       if(s.difficulty_score!==undefined)h+=diffBadge(s.difficulty_score);
       h+='</span>';
-      h+='<span style="font-size:10px;color:'+(isHL?'#a78bfa':'#7a7f9a')+';font-variant-numeric:tabular-nums">'+fT(s.think_tokens)+' / '+s.elapsed_ms+'ms</span>';
+      h+='<span style="font-size:10px;color:'+(isHL?'#a78bfa':'#7a7f9a')+';font-variant-numeric:tabular-nums">'+(s.think_tokens?fT(s.think_tokens)+' / ':'')+(s.elapsed_ms?s.elapsed_ms+'ms':'')+'</span>';
       h+='</div>';
-      h+='<div style="background:#252940;border-radius:2px;height:4px"><div style="background:#7c83fd;height:4px;border-radius:2px;width:'+pct+'%;opacity:.75"></div></div>';
+      h+='<div style="background:#252940;border-radius:2px;height:4px"><div style="background:'+mc+';height:4px;border-radius:2px;width:'+pct+'%;opacity:.75"></div></div>';
       h+='<div style="font-size:10px;color:#7a7f9a;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+rm(s.correct_step||'')+'</div>';
-      if(s.claude_step&&!s.match){h+='<div style="font-size:10px;color:#ef5350;margin-top:1px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding-left:8px">→ '+rm(s.claude_step)+'</div>';}
+      if(s.claude_step&&!s.match){h+='<div style="font-size:10px;color:'+mc+';margin-top:1px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding-left:8px">→ '+rm(s.claude_step)+'</div>';}
       h+='</div>';
     });
     h+='</div></div>';
