@@ -238,7 +238,7 @@ function rSt(p){
 
 function rAn(p){
   var h='';
-  var tcs={'사실':'var(--fc)','연산':'var(--op)','전략':'var(--st)'};
+  var tcs={'사실':'#4fc3f7','연산':'#ffd54f','전략':'#ef5350'};
 
   // Step별 풀이
   var sk=p.skeleton||[];
@@ -255,30 +255,44 @@ function rAn(p){
       var mainEdges=edges.filter(function(e){return e.main!==false});
       var sideEdges=edges.filter(function(e){return e.main===false});
       var stepText=solSteps[sn-1]||('STEP '+sn);
+      // thinking profile 데이터에서 해당 step 찾기
+      var tp=p.thinking_profile;
+      var stepData=null;
+      if(tp&&tp.steps){stepData=tp.steps.find(function(s){return s.step_num===sn});}
       h+='<div class="cd" style="margin-bottom:10px">';
-      h+='<div style="font-size:13px;font-weight:800;color:var(--ac);margin-bottom:8px">'+rm(stepText)+'</div>';
+      h+='<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">';
+      h+='<div style="font-size:13px;font-weight:800;color:#7c83fd;flex:1">'+rm(stepText)+'</div>';
+      if(stepData){
+        var mc=stepData.match?'#66bb6a':'#ef5350';
+        h+='<div style="display:flex;gap:6px;align-items:center;flex-shrink:0;margin-left:8px">';
+        h+='<span style="font-size:9px;background:'+(stepData.match?'rgba(102,187,106,.15)':'rgba(239,83,80,.15)')+';color:'+mc+';padding:2px 6px;border-radius:3px;font-weight:700">'+(stepData.match?'✓ 발견':'✗ 미발견')+'</span>';
+        h+='<span style="font-size:10px;color:#a78bfa;font-variant-numeric:tabular-nums">'+stepData.think_tokens+'tok</span>';
+        if(stepData.difficulty_score!==undefined)h+=diffBadge(stepData.difficulty_score);
+        h+='</div>';
+      }
+      h+='</div>';
       mainEdges.forEach(function(e){
         var fs=Array.isArray(e.from)?e.from:[e.from];
         var c=nc(bi(e.neuron||''));
         h+='<div style="display:flex;gap:6px;font-size:11px;margin-bottom:5px;align-items:flex-start">';
-        h+='<span style="color:var(--td);flex-shrink:0;padding-top:1px">'+fs.join('+')+'</span>';
-        h+='<span style="color:var(--td);flex-shrink:0">→[</span>';
+        h+='<span style="color:#7a7f9a;flex-shrink:0;padding-top:1px">'+fs.join('+')+'</span>';
+        h+='<span style="color:#7a7f9a;flex-shrink:0">→[</span>';
         h+='<span style="color:'+c+';font-weight:700;flex-shrink:0">'+rm(e.neuron||'')+'</span>';
-        h+='<span style="color:var(--td);flex-shrink:0">]→</span>';
+        h+='<span style="color:#7a7f9a;flex-shrink:0">]→</span>';
         h+='<span style="color:var(--tx);flex:1;line-height:1.6">'+rm(e.note||'')+'</span>';
         h+='</div>';
       });
       if(sideEdges.length){
         h+='<div style="margin-top:6px;padding-top:6px;border-top:1px solid var(--bd)">';
-        h+='<div style="font-size:9px;color:var(--td);letter-spacing:2px;margin-bottom:4px">SIDE</div>';
+        h+='<div style="font-size:9px;color:#7a7f9a;letter-spacing:2px;margin-bottom:4px">SIDE</div>';
         sideEdges.forEach(function(e){
           var fs=Array.isArray(e.from)?e.from:[e.from];
           var c=nc(bi(e.neuron||''));
           h+='<div style="display:flex;gap:6px;font-size:10px;margin-bottom:3px;opacity:.55;align-items:flex-start">';
-          h+='<span style="color:var(--td);flex-shrink:0">'+fs.join('+')+'</span>';
-          h+='<span style="color:var(--td);flex-shrink:0">→[</span>';
+          h+='<span style="color:#7a7f9a;flex-shrink:0">'+fs.join('+')+'</span>';
+          h+='<span style="color:#7a7f9a;flex-shrink:0">→[</span>';
           h+='<span style="color:'+c+';font-weight:700;flex-shrink:0">'+rm(e.neuron||'')+'</span>';
-          h+='<span style="color:var(--td);flex-shrink:0">]→</span>';
+          h+='<span style="color:#7a7f9a;flex-shrink:0">]→</span>';
           h+='<span style="color:var(--tx);flex:1;line-height:1.6">'+rm(e.note||'')+'</span>';
           h+='</div>';
         });
@@ -288,58 +302,229 @@ function rAn(p){
     });
   }
 
-  // 완전분석 해설
-  var src=p.recovered_solution||p.analysis;
-  if(src){
-    h+='<div class="sl" style="margin-top:6px">\uc644\uc804\ubd84\uc11d \ud574\uc124</div>';
-    h+='<div class="cd" style="line-height:1.9">';
-    src.split('\n').forEach(function(l){
+  // Thinking Profile (새 구조: steps)
+  var tp=p.thinking_profile;
+  if(tp&&tp.step_count>0){
+    var fT=function(n){return n>=1000?(n/1000).toFixed(1)+'k':String(n)};
+    var steps=tp.steps||[];
+    var mE=Math.max.apply(null,steps.map(function(s){return s.think_tokens||0}).concat([1]));
+    h+='<div class="sl" style="margin-top:6px;color:#a78bfa">Thinking Profile</div><div class="cd">';
+    // 요약 카드
+    h+='<div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;margin-bottom:12px">';
+    var matchCount=steps.filter(function(s){return s.match}).length;
+    var avgMs=steps.length>0?Math.round(steps.reduce(function(a,s){return a+s.elapsed_ms},0)/steps.length):0;
+    [
+      ['총 토큰',fT(tp.total_think_tokens),'#66bb6a'],
+      ['발견률',matchCount+'/'+tp.step_count,'#7c83fd'],
+      ['최고 난이도',tp.hardest_step?tp.hardest_step.difficulty_score.toFixed(1):'—','#a78bfa'],
+      ['평균 시간',avgMs+'ms','#ffa726']
+    ].forEach(function(s){h+='<div style="background:var(--bg);border:1px solid var(--bd);border-radius:5px;padding:7px 10px"><div style="font-size:9px;color:#7a7f9a;letter-spacing:2px;margin-bottom:3px">'+s[0]+'</div><div style="font-size:14px;font-weight:800;color:'+s[2]+';font-variant-numeric:tabular-nums">'+s[1]+'</div></div>'});
+    h+='</div>';
+    // highlight steps
+    if(tp.highlight_steps&&tp.highlight_steps.length){
+      h+='<div style="margin-bottom:10px;font-size:11px;color:#7a7f9a">하이라이트 STEP: ';
+      h+=tp.highlight_steps.map(function(sn){return'<span style="background:#a78bfa22;color:#a78bfa;padding:1px 6px;border-radius:3px;font-weight:700">STEP '+sn+'</span>'}).join(' ');
+      h+='</div>';
+    }
+    // 최고 난이도 step
+    if(tp.hardest_step){
+      var hs=tp.hardest_step;
+      var mc=hs.match?'#66bb6a':'#ef5350';
+      h+='<div style="border-top:1px solid var(--bd);padding-top:8px;margin-bottom:8px">';
+      h+='<div style="font-size:10px;color:#7a7f9a;margin-bottom:4px">최고 난이도 STEP '+hs.step_num+' <span style="color:#a78bfa;font-weight:700">score:'+hs.difficulty_score.toFixed(1)+'</span> <span style="color:'+mc+'">'+(hs.match?'발견':'미발견')+'</span> '+fT(hs.think_tokens)+'tok / '+hs.elapsed_ms+'ms</div>';
+      h+='<div style="font-size:11px;color:#7a7f9a">'+rm(hs.correct_step)+'</div>';
+      h+='</div>';
+    }
+    // step별 바
+    h+='<div style="border-top:1px solid var(--bd);padding-top:8px">';
+    steps.forEach(function(s){
+      var pct=(s.think_tokens/mE)*100;
+      var mc=s.match?'#66bb6a':'#ef5350';
+      var isHL=tp.highlight_steps&&tp.highlight_steps.indexOf(s.step_num)>=0;
+      h+='<div style="margin-bottom:8px">';
+      h+='<div style="display:flex;justify-content:space-between;margin-bottom:2px;align-items:center">';
+      h+='<span style="font-size:10px;color:#7a7f9a;display:flex;gap:5px;align-items:center">';
+      h+='STEP '+s.step_num;
+      h+='<span style="color:'+mc+';font-size:9px">'+(s.match?'✓':'✗')+'</span>';
+      if(s.match_score!==undefined)h+='<span style="color:#7a7f9a;font-size:9px">'+Math.round(s.match_score*100)+'%</span>';
+      if(isHL)h+='<span style="color:#a78bfa;font-size:9px">★</span>';
+      if(s.difficulty_score!==undefined)h+=diffBadge(s.difficulty_score);
+      h+='</span>';
+      h+='<span style="font-size:10px;color:'+(isHL?'#a78bfa':'#7a7f9a')+';font-variant-numeric:tabular-nums">'+fT(s.think_tokens)+' / '+s.elapsed_ms+'ms</span>';
+      h+='</div>';
+      h+='<div style="background:#252940;border-radius:2px;height:4px"><div style="background:#7c83fd;height:4px;border-radius:2px;width:'+pct+'%;opacity:.75"></div></div>';
+      h+='<div style="font-size:10px;color:#7a7f9a;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+rm(s.correct_step||'')+'</div>';
+      if(s.claude_step&&!s.match){h+='<div style="font-size:10px;color:#ef5350;margin-top:1px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding-left:8px">→ '+rm(s.claude_step)+'</div>';}
+      h+='</div>';
+    });
+    h+='</div></div>';
+  }
+
+  if(!h)return'<div class="empty">no analysis</div>';
+  return h;
+}
+function rMg(p)
+  var rs=p.recovered_solution||p.analysis;
+  if(rs){
+    h+='<div class="sl">완전분석 해설</div><div class="cd">';
+    rs.split('\n').forEach(function(l){
       if(/^#{1,3}\s/.test(l)){h+='<div style="margin-top:12px;margin-bottom:4px;font-weight:800;font-size:14px;color:var(--ac)">'+rm(l.replace(/^#{1,3}\s/,''))+'</div>';}
       else if(l.trim()===''){h+='<div style="height:6px"></div>';}
       else{h+='<div style="font-size:13px;line-height:1.9">'+rm(l)+'</div>';}
     });
     h+='</div>';
   }
-
-  // Thinking Profile
-  var tp=p.thinking_profile;
-  if(tp&&tp.edge_count>0){
-    var fT=function(n){return n>=1000?(n/1000).toFixed(1)+'k':String(n)};
-    var mT2=Math.max.apply(null,['사실','연산','전략'].map(function(t){return(tp.by_type[t]&&tp.by_type[t].total)||0}).concat([1]));
-    var mE=Math.max.apply(null,(tp.edges||[]).map(function(e){return e.think_tokens||0}).concat([1]));
-    h+='<div class="sl" style="margin-top:6px;color:#a78bfa">Thinking Profile</div><div class="cd">';
-    h+='<div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;margin-bottom:12px">';
-    [['총 토큰',fT(tp.total_think_tokens),'var(--ok)'],['평균/edge',fT(Math.round(tp.total_think_tokens/tp.edge_count)),'var(--ac)'],['최고 토큰',tp.hardest_edge?fT(tp.hardest_edge.think_tokens):'—','var(--st)'],['최고 난이도',tp.hardest_difficulty?tp.hardest_difficulty.difficulty_score.toFixed(1):'—','#a78bfa']].forEach(function(s){h+='<div style="background:var(--bg);border:1px solid var(--bd);border-radius:5px;padding:7px 10px"><div style="font-size:9px;color:var(--td);letter-spacing:2px;margin-bottom:3px">'+s[0]+'</div><div style="font-size:14px;font-weight:800;color:'+s[2]+';font-variant-numeric:tabular-nums">'+s[1]+'</div></div>'});
-    h+='</div>';
-    ['사실','연산','전략'].forEach(function(t){var d=tp.by_type[t]||{count:0,total:0,avg:0};var pct=(d.total/mT2)*100;var c=tcs[t];h+='<div style="margin-bottom:9px"><div style="display:flex;justify-content:space-between;margin-bottom:3px"><span style="display:flex;gap:7px;align-items:center"><span style="background:'+c+'22;color:'+c+';padding:1px 7px;border-radius:3px;font-size:10px;font-weight:700">'+t+'</span><span style="font-size:10px;color:var(--td)">'+d.count+'개 · avg '+fT(d.avg)+(d.avg_elapsed_ms?' · '+d.avg_elapsed_ms+'ms':'')+'</span></span><span style="font-size:11px;font-weight:700;color:'+c+';font-variant-numeric:tabular-nums">'+fT(d.total)+'</span></div><div style="background:var(--bl);border-radius:2px;height:5px"><div style="background:'+c+';height:5px;border-radius:2px;width:'+pct+'%;opacity:.8"></div></div></div>'});
-    if(tp.hardest_difficulty){var hd=tp.hardest_difficulty;var hdc=tcs[hd.to_type]||'var(--td)';h+='<div style="border-top:1px solid var(--bd);margin-top:8px;padding-top:8px;font-size:11px;color:var(--td)">최고 난이도 #'+hd.edge_num+' <span style="color:'+hdc+';font-weight:700">['+hd.neuron+']</span> score: <span style="color:#a78bfa;font-weight:700">'+hd.difficulty_score.toFixed(1)+'</span> (tok:'+fT(hd.think_tokens)+' / '+hd.elapsed_ms+'ms)</div><div style="font-size:11px;color:var(--td);margin-top:3px;padding-left:8px">'+rm(hd.note)+'</div>'}
-    h+='<div style="border-top:1px solid var(--bd);margin-top:10px;padding-top:8px">';
-    (tp.edges||[]).forEach(function(e){var pct=(e.think_tokens/mE)*100;var c=tcs[e.to_type]||'var(--td)';var isHard=tp.hardest_difficulty&&e.edge_num===tp.hardest_difficulty.edge_num;h+='<div style="margin-bottom:7px"><div style="display:flex;justify-content:space-between;margin-bottom:2px;align-items:center"><span style="display:flex;gap:5px;align-items:center;font-size:10px;color:var(--td)">#'+e.edge_num+' <span style="color:'+c+';font-weight:700">'+e.to+'</span> ['+e.neuron+']'+(e.difficulty_score!==undefined?diffBadge(e.difficulty_score):'')+'</span><span style="font-size:10px;color:'+(isHard?'#a78bfa':'var(--td)')+';font-variant-numeric:tabular-nums">'+fT(e.think_tokens)+(e.elapsed_ms?' / '+e.elapsed_ms+'ms':'')+'</span></div><div style="background:var(--bl);border-radius:2px;height:4px"><div style="background:'+c+';height:4px;border-radius:2px;width:'+pct+'%;opacity:.75"></div></div><div style="font-size:10px;color:var(--td);padding-left:2px;margin-top:1px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+rm(e.note)+'</div></div>'});
-    h+='</div>';
-    if(tp.profiler_skeleton&&tp.profiler_skeleton.length){var ps=tp.profiler_skeleton;var sa=p.skeleton||[];h+='<div style="border-top:1px solid var(--bd);margin-top:12px;padding-top:10px"><div style="font-size:9px;color:#a78bfa;letter-spacing:2px;margin-bottom:8px">PROFILER SKELETON (\uc2e4\uc804 \ucd94\ub860 \uacbd\ub85c)</div><div style="font-size:10px;color:var(--td);margin-bottom:6px">edges: \ud504\ub85c\ud30c\uc77c\ub7ec '+ps.length+'\uac1c / \ubcf8\ud574\uc124 '+sa.length+'\uac1c'+(ps.length!==sa.length?' <span style="color:var(--wn)">\u26a0 \uacbd\ub85c \ub2e4\ub984</span>':'')+'</div>';ps.forEach(function(e,i){var c=tcs[e.to_type]||nc(bi(e.neuron||''))||'var(--td)';var fs=Array.isArray(e.from)?e.from.join('+'):e.from;h+='<div style="padding:3px 0;border-bottom:1px solid var(--bd)"><div style="display:flex;gap:6px;font-size:10px;align-items:center"><span style="color:var(--td);min-width:18px">#'+(i+1)+'</span><span style="color:var(--td)">'+fs+'</span><span style="color:var(--td)">→[</span><span style="color:'+c+';font-weight:700">'+(e.neuron||'?')+'</span><span style="color:var(--td)">]→</span><span style="color:'+c+'">'+e.to+'</span>'+(e.difficulty_score!==undefined?diffBadge(e.difficulty_score):'')+'</div>';if(e.note)h+='<div style="font-size:10px;color:var(--td);padding-left:24px;margin-bottom:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+rm(e.note)+'</div></div>'});h+='</div>'}
+  // Skeleton solution
+  var sol=p.solution;
+  if(sol){
+    h+='<div class="sl" style="margin-top:6px">Skeleton Solution</div><div class="cd">';
+    sol.split('\n').forEach(function(l){
+      if(/^STEP\s+\d/.test(l)){h+='<div style="margin-top:12px;margin-bottom:3px;font-weight:800;font-size:14px;color:#7c83fd">'+rm(l)+'</div>';}
+      else if(l.trim()===''){h+='<div style="height:6px"></div>';}
+      else{h+='<div style="font-size:13px;line-height:1.9">'+rm(l)+'</div>';}
+    });
     h+='</div>';
   }
-
-  if(!h)return'<div class="empty">no analysis</div>';
+  if(!h)return'<div class="empty">no solution</div>';
   return h;
 }
 
-function rSo(p){
-  var src=p.solution;
-  if(!src)return'<div class="empty">no solution</div>';
-  var h='<div class="cd">';
-  src.split('\n').forEach(function(l){
-    if(/^STEP\s+\d/.test(l)){h+='<div style="margin-top:12px;margin-bottom:3px;font-weight:800;font-size:15px;color:var(--ac)">'+rm(l)+'</div>';}
-    else if(l.trim()===''){h+='<div style="height:6px"></div>';}
-    else{h+='<div style="font-size:14px;line-height:2">'+rm(l)+'</div>';}
+function mkSkDAG(sk,clues,sfx){
+  if(!sk||!sk.length)return'<div style="color:#7a7f9a;font-size:13px">no skeleton</div>';
+  var nm=buildNoteMap(sk);
+  var clueMap={};(clues||[]).forEach(function(c){clueMap[c.id]=c.text||''});
+  var nodeSet=new Set(),cIds=new Set();
+  (clues||[]).forEach(function(c){cIds.add(c.id);nodeSet.add(c.id)});
+  var dagEdges=[];
+  sk.forEach(function(e){
+    var fs=Array.isArray(e.from)?e.from:[e.from];
+    fs.forEach(function(f){if(f)nodeSet.add(f)});
+    if(e.to)nodeSet.add(e.to);
+    var nid=e.neuron||e.to||'';
+    fs.forEach(function(f){if(f&&e.to)dagEdges.push({f:f,t:e.to,m:e.main!==false,neuron:nid,note:e.note||''})});
   });
-  return h+'</div>';
+  // adjacency
+  var adj={};
+  dagEdges.forEach(function(e){if(!adj[e.f])adj[e.f]=[];if(adj[e.f].indexOf(e.t)<0)adj[e.f].push(e.t)});
+  // BFS layering
+  var layers={};var q=[];
+  cIds.forEach(function(c){layers[c]=0;q.push(c)});
+  var qi=0;
+  while(qi<q.length){var cur=q[qi++];(adj[cur]||[]).forEach(function(nx){var nl=(layers[cur]||0)+1;if(layers[nx]===undefined||layers[nx]<nl){layers[nx]=nl;q.push(nx)}})}
+  var nodeArr=Array.from(nodeSet);
+  var maxLayer=0;
+  nodeArr.forEach(function(n){if(layers[n]===undefined)layers[n]=0;if(layers[n]>maxLayer)maxLayer=layers[n]});
+  var byLayer={};
+  nodeArr.forEach(function(n){var l=layers[n];if(!byLayer[l])byLayer[l]=[];byLayer[l].push(n)});
+  var W=120,H=30,gx=30,gy=80,pos={},maxW=1;
+  for(var li=0;li<=maxLayer;li++){
+    var ln=byLayer[li]||[];if(ln.length>maxW)maxW=ln.length;
+    var rw=ln.length*W+(ln.length-1)*gx,sx=-rw/2;
+    ln.forEach(function(n,idx){pos[n]={x:sx+idx*(W+gx)+W/2,y:li*(H+gy)+H/2+20}});
+  }
+  var svgW=Math.max(560,maxW*(W+gx)+140),svgH=(maxLayer+1)*(H+gy)+50,ox=svgW/2;
+  var m1='m1'+sfx,m2='m2'+sfx;
+  // neuron colors
+  function ec(nid){var b=bi(nid);if(b.startsWith('\uc0ac\uc2e4'))return'#4fc3f7';if(b.startsWith('\uc5f0\uc0b0'))return'#ffd54f';if(b.startsWith('\uc804\ub7b5'))return'#ef5350';return'#7a7f9a'}
+  var s='<div class="dag"><svg width="'+svgW+'" height="'+svgH+'" style="display:block">';
+  s+='<defs>';
+  s+='<marker id="'+m1+'" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4.5" markerHeight="4.5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="#7a7f9a" stroke-width="1.5"/></marker>';
+  s+='<marker id="'+m2+'" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4.5" markerHeight="4.5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="#252940" stroke-width="1.5"/></marker>';
+  s+='</defs>';
+  // edges
+  dagEdges.forEach(function(e){
+    var p1=pos[e.f],p2=pos[e.t];if(!p1||!p2)return;
+    var c=ec(e.neuron);
+    var x1=p1.x+ox,y1=p1.y+H/2,x2=p2.x+ox,y2=p2.y-H/2;
+    s+='<line x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" stroke="'+(e.m?c:'#252940')+'" stroke-width="'+(e.m?1.4:.8)+'"'+(e.m?'':' stroke-dasharray="4 3"')+' marker-end="url(#'+(e.m?m1:m2)+')" opacity="'+(e.m?.65:.4)+'"/>';
+    if(e.neuron&&e.neuron!=='END'&&e.m){
+      var mx=(x1+x2)/2,my=(y1+y2)/2;
+      var lb=e.neuron.length>8?e.neuron.slice(0,7)+'…':e.neuron;
+      var tw=lb.length*6+10;
+      s+='<rect x="'+(mx-tw/2)+'" y="'+(my-8)+'" width="'+tw+'" height="14" rx="3" fill="#0a0c10" stroke="'+c+'" stroke-width=".6"/>';
+      s+='<text x="'+mx+'" y="'+my+'" text-anchor="middle" dominant-baseline="central" fill="'+c+'" font-size="9" font-family="Pretendard,sans-serif" font-weight="600">'+lb+'</text>';
+    }
+  });
+  // nodes
+  nodeArr.forEach(function(n){
+    var pp=pos[n];if(!pp)return;
+    var iC=cIds.has(n),iE=n==='END',isNote=/^note\d+$/.test(n);
+    var bg=iC?'#16203a':iE?'#16301e':isNote?'#131726':'#141520';
+    var br=iC?'#4a6aaa':iE?'#66bb6a':isNote?'#7c83fd':ec(n);
+    var tc=iC?'#8ab4f8':iE?'#66bb6a':isNote?'#7c83fd':ec(n);
+    var lb=n.length>14?n.slice(0,13)+'…':n;
+    var tip=(clueMap[n]||'')+(nm[n]?nm[n].note:'')+(iE?'최종 결론':'');
+    s+='<rect x="'+(pp.x+ox-W/2)+'" y="'+(pp.y-H/2)+'" width="'+W+'" height="'+H+'" rx="'+(iE?13:5)+'" fill="'+bg+'" stroke="'+br+'" stroke-width="1.5"/>';
+    if(tip)s+='<title>'+n+'\n'+tip+'</title>';
+    s+='<text x="'+(pp.x+ox)+'" y="'+pp.y+'" text-anchor="middle" dominant-baseline="central" fill="'+tc+'" font-size="11" font-family="Pretendard,sans-serif" font-weight="600" style="pointer-events:none">'+lb+'</text>';
+  });
+  s+='</svg></div>';
+  return s;
 }
 
-function rDAG(p){var h='';var sk=p.skeleton;var nm=buildNoteMap(sk);var clueMap={};(p.clues||[]).forEach(function(c){clueMap[c.id]=c.text||''});if(sk&&sk.length){h+='<div class="sl">Skeleton DAG</div>';var nodes=new Set,edges=[],cIds=new Set;if(p.clues)for(var i=0;i<p.clues.length;i++){cIds.add(p.clues[i].id);nodes.add(p.clues[i].id)}for(var i=0;i<sk.length;i++){var e=sk[i];var fs=Array.isArray(e.from)?e.from:[e.from];for(var j=0;j<fs.length;j++){if(fs[j])nodes.add(fs[j])}if(e.to)nodes.add(e.to);var nid=gn(e);for(var j=0;j<fs.length;j++){if(fs[j]&&e.to)edges.push({f:fs[j],t:e.to,m:e.main!==false,neuron:nid,note:e.note||''})}}var adj={};edges.forEach(function(e){if(!adj[e.f])adj[e.f]=[];adj[e.f].push(e.t)});var lay={},q=[];cIds.forEach(function(c){lay[c]=0;q.push(c)});while(q.length){var n=q.shift();(adj[n]||[]).forEach(function(x){var nl=(lay[n]||0)+1;if(lay[x]===undefined||lay[x]<nl){lay[x]=nl;q.push(x)}})}var mL=0,na=[...nodes];for(var k in lay)if(lay[k]>mL)mL=lay[k];var lN={};na.forEach(function(n){var l=lay[n]||0;if(!lN[l])lN[l]=[];lN[l].push(n)});var W=120,H=30,gx=30,gy=84,pos={};for(var l=0;l<=mL;l++){var ns=lN[l]||[];var tw=ns.length*W+(ns.length-1)*gx;var sx=-tw/2;ns.forEach(function(n,i){pos[n]={x:sx+i*(W+gx)+W/2,y:l*(H+gy)+H/2+24}})}var mNL=1;for(var k in lN)if(lN[k].length>mNL)mNL=lN[k].length;var sw=Math.max(560,mNL*(W+gx)+140),sh=(mL+1)*(H+gy)+52,ox=sw/2;var s='<div class="dag"><svg width="'+sw+'" height="'+sh+'" style="display:block"><defs><marker id="a1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4.5" markerHeight="4.5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="var(--td)" stroke-width="1.5"/></marker><marker id="a2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4.5" markerHeight="4.5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="var(--bl)" stroke-width="1.5"/></marker></defs>';edges.forEach(function(e){var p1=pos[e.f],p2=pos[e.t];if(!p1||!p2)return;var ec=nc(bi(e.neuron));var x1=p1.x+ox,y1=p1.y+H/2,x2=p2.x+ox,y2=p2.y-H/2;s+='<line x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" stroke="'+(e.m?ec:'var(--bl)')+'" stroke-width="'+(e.m?1.4:.8)+'" '+(e.m?'':'stroke-dasharray="4 3"')+' marker-end="'+(e.m?'url(#a1)':'url(#a2)')+'" opacity="'+(e.m?.6:.4)+'"><title>'+e.neuron+(nMap[bi(e.neuron)]?' — '+nMap[bi(e.neuron)].statement:'')+'</title></line>';if(e.neuron&&e.neuron!=='END'&&e.m){var mx=(x1+x2)/2,my=(y1+y2)/2;var lb=e.neuron.length>8?e.neuron.slice(0,7)+'…':e.neuron;var tw2=lb.length*6+10;s+='<rect x="'+(mx-tw2/2)+'" y="'+(my-8)+'" width="'+tw2+'" height="14" rx="3" fill="var(--bg)" stroke="'+ec+'" stroke-width=".5" opacity=".9"/><text x="'+mx+'" y="'+(my+0)+'" text-anchor="middle" dominant-baseline="central" fill="'+ec+'" font-size="9" font-family="Pretendard,sans-serif" font-weight="600"><title>'+e.neuron+(nMap[bi(e.neuron)]?' — '+nMap[bi(e.neuron)].statement:'')+'</title>'+lb+'</text>'}});na.forEach(function(n){var pp=pos[n];if(!pp)return;var iC=cIds.has(n),iE=n==='END',isNote=n.match(/^note\d+$/);var bg=iC?'#1a2340':iE?'#1a3020':isNote?'#141828':'#151720';var br=iC?'#3a5090':iE?'var(--ok)':isNote?'var(--ac)':nc(bi(n));var tc=iC?'#8ab4f8':iE?'var(--ok)':isNote?'var(--ac)':nc(bi(n));var lb=n.length>14?n.slice(0,13)+'…':n;var tip=clueMap[n]||'';if(nm[n])tip=nm[n].note;if(iE)tip='최종 결론';s+='<rect x="'+(pp.x+ox-W/2)+'" y="'+(pp.y-H/2)+'" width="'+W+'" height="'+H+'" rx="'+(iE?13:5)+'" fill="'+bg+'" stroke="'+br+'" stroke-width=".8" style="cursor:pointer"><title>'+n+(tip?'\n'+tip:'')+'</title></rect><text x="'+(pp.x+ox)+'" y="'+(pp.y+1)+'" text-anchor="middle" dominant-baseline="central" fill="'+tc+'" font-size="11" font-family="Pretendard,sans-serif" font-weight="600" style="pointer-events:none">'+lb+'</text>'});h+=s+'</svg></div>'}else{h+='<div class="sl">Skeleton DAG</div><div style="color:var(--td);font-size:13px;margin-bottom:16px">no skeleton</div>'}var d=p.dna;if(d&&d.nodes&&d.nodes.length){var catColors={'발문':'var(--st)','수식':'var(--op)','조건':'var(--fc)','제한':'var(--wn)','기하':'var(--ok)','함수':'#ce93d8','존재':'#90caf9','말단':'var(--td)','구조':'var(--ac)','연산':'var(--op)'};h+='<div class="sl" style="margin-top:18px">DNA DAG</div>';var dns=d.nodes,des=d.edges||[];var dadj={},dinD={};dns.forEach(function(n){dadj[n.id]=[];dinD[n.id]=0});des.forEach(function(e){if(dadj[e.from]!==undefined){dadj[e.from].push(e.to);dinD[e.to]=(dinD[e.to]||0)+1}});var droots=dns.filter(function(n){return!dinD[n.id]||dinD[n.id]===0}).map(function(n){return n.id});if(!droots.length)droots=[dns[0].id];var dq=[...droots],dlay={};droots.forEach(function(r){dlay[r]=0});while(dq.length){var dc=dq.shift();(dadj[dc]||[]).forEach(function(t){var nl=(dlay[dc]||0)+1;if(dlay[t]===undefined||dlay[t]<nl){dlay[t]=nl;dq.push(t)}})}var dmL=0;for(var k in dlay)if(dlay[k]>dmL)dmL=dlay[k];var dlN={};dns.forEach(function(n){var l=dlay[n.id]||0;if(!dlN[l])dlN[l]=[];dlN[l].push(n.id)});var dW=90,dH=28,dgx=20,dgy=40,dpos={};for(var l=0;l<=dmL;l++){var lns=dlN[l]||[];var tw=lns.length*dW+(lns.length-1)*dgx;var sx=-tw/2;lns.forEach(function(n,i){dpos[n]={x:sx+i*(dW+dgx)+dW/2,y:l*(dH+dgy)+dH/2+20}})}var dmNL=1;for(var k in dlN)if(dlN[k].length>dmNL)dmNL=dlN[k].length;var dsw=Math.max(480,dmNL*(dW+dgx)+100),dsh=(dmL+1)*(dH+dgy)+44,dox=dsw/2;var ds='<div class="dag"><svg width="'+dsw+'" height="'+dsh+'" style="display:block"><defs><marker id="da" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4.5" markerHeight="4.5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="var(--td)" stroke-width="1.5"/></marker></defs>';des.forEach(function(e){var p1=dpos[e.from],p2=dpos[e.to];if(!p1||!p2)return;ds+='<line x1="'+(p1.x+dox)+'" y1="'+(p1.y+dH/2)+'" x2="'+(p2.x+dox)+'" y2="'+(p2.y-dH/2)+'" stroke="var(--td)" stroke-width="0.8" opacity=".4" marker-end="url(#da)"/>'});dns.forEach(function(n){var pp=dpos[n.id];if(!pp)return;var cc=catColors[n.category||'']||'var(--td)';var lb=n.dna.length>10?n.dna.slice(0,9)+'..':n.dna;ds+='<rect x="'+(pp.x+dox-dW/2)+'" y="'+(pp.y-dH/2)+'" width="'+dW+'" height="'+dH+'" rx="4" fill="var(--cd)" stroke="'+cc+'" stroke-width=".8"/><text x="'+(pp.x+dox)+'" y="'+(pp.y+1)+'" text-anchor="middle" dominant-baseline="central" fill="'+cc+'" font-size="10" font-family="Pretendard,sans-serif" font-weight="600">'+lb+'</text>'});h+=ds+'</svg></div>'}else{h+='<div class="sl" style="margin-top:18px">DNA DAG</div><div style="color:var(--td);font-size:13px">no DNA data</div>'}if(!h)h='<div class="empty">no data</div>';return h}
+function mkDnaDAG(d,sfx){
+  if(!d||!d.nodes||!d.nodes.length)return'<div style="color:#7a7f9a;font-size:13px">no DNA data</div>';
+  var catColors={'발문':'#ef5350','수식':'#ffd54f','조건':'#4fc3f7','제한':'#ffa726','기하':'#66bb6a','함수':'#ce93d8','존재':'#90caf9','말단':'#7a7f9a','구조':'#7c83fd','연산':'#ffd54f'};
+  var dns=d.nodes,des=d.edges||[];
+  var dadj={},dinD={};
+  dns.forEach(function(n){dadj[n.id]=[];dinD[n.id]=0});
+  des.forEach(function(e){if(dadj[e.from]!==undefined){dadj[e.from].push(e.to);dinD[e.to]=(dinD[e.to]||0)+1}});
+  var droots=dns.filter(function(n){return!dinD[n.id]}).map(function(n){return n.id});
+  if(!droots.length)droots=[dns[0].id];
+  var dlay={};var dq=[...droots];droots.forEach(function(r){dlay[r]=0});
+  var dqi=0;
+  while(dqi<dq.length){var dc=dq[dqi++];(dadj[dc]||[]).forEach(function(t){var nl=(dlay[dc]||0)+1;if(dlay[t]===undefined||dlay[t]<nl){dlay[t]=nl;dq.push(t)}})}
+  dns.forEach(function(n){if(dlay[n.id]===undefined)dlay[n.id]=0});
+  var dmL=0;for(var k in dlay)if(dlay[k]>dmL)dmL=dlay[k];
+  var dlN={};dns.forEach(function(n){var l=dlay[n.id];if(!dlN[l])dlN[l]=[];dlN[l].push(n.id)});
+  var dW=90,dH=28,dgx=20,dgy=36,dpos={},dmNL=1;
+  for(var li=0;li<=dmL;li++){var lns=dlN[li]||[];if(lns.length>dmNL)dmNL=lns.length;var tw=lns.length*dW+(lns.length-1)*dgx,sx=-tw/2;lns.forEach(function(n,i){dpos[n]={x:sx+i*(dW+dgx)+dW/2,y:li*(dH+dgy)+dH/2+16}})}
+  var dsw=Math.max(480,dmNL*(dW+dgx)+100),dsh=(dmL+1)*(dH+dgy)+40,dox=dsw/2;
+  var dm='da'+sfx;
+  var s='<div class="dag"><svg width="'+dsw+'" height="'+dsh+'" style="display:block">';
+  s+='<defs><marker id="'+dm+'" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="#7a7f9a" stroke-width="1.5"/></marker></defs>';
+  des.forEach(function(e){var p1=dpos[e.from],p2=dpos[e.to];if(!p1||!p2)return;s+='<line x1="'+(p1.x+dox)+'" y1="'+(p1.y+dH/2)+'" x2="'+(p2.x+dox)+'" y2="'+(p2.y-dH/2)+'" stroke="#7a7f9a" stroke-width="0.8" opacity=".4" marker-end="url(#'+dm+')"/>'});
+  dns.forEach(function(n){var pp=dpos[n.id];if(!pp)return;var cc=catColors[n.category||'']||'#7a7f9a';var lb=n.dna.length>10?n.dna.slice(0,9)+'..':n.dna;s+='<rect x="'+(pp.x+dox-dW/2)+'" y="'+(pp.y-dH/2)+'" width="'+dW+'" height="'+dH+'" rx="4" fill="#11131a" stroke="'+cc+'" stroke-width="1"/><text x="'+(pp.x+dox)+'" y="'+pp.y+'" text-anchor="middle" dominant-baseline="central" fill="'+cc+'" font-size="10" font-family="Pretendard,sans-serif" font-weight="600">'+lb+'</text>'});
+  s+='</svg></div>';
+  return s;
+}
+
+function rDAG(p){
+  var h='';
+  // Skeleton DAG
+  h+='<div class="sl">Skeleton DAG</div>';
+  h+=mkSkDAG(p.skeleton,p.clues,'a');
+  // DNA DAG
+  h+='<div class="sl" style="margin-top:18px">DNA DAG</div>';
+  h+=mkDnaDAG(p.dna,'a');
+  return h;
+}
 
 function mT(id,lb){var b=bi(id),n=nMap[b],c=nc(b);return n?'<span class="tw"><span style="color:'+c+';cursor:pointer;font-weight:700">'+lb+'</span><span class="tp"><b style="color:'+c+'">'+b+'</b><br>'+rm(n.statement)+'</span></span>':'<span style="color:'+c+';font-weight:700">'+lb+'</span>'}
-function rSk(p){if(!p.skeleton||!p.skeleton.length)return'<div class="empty">no skeleton</div>';var nm=buildNoteMap(p.skeleton);var clueMap={};(p.clues||[]).forEach(function(c){clueMap[c.id]=c.text||''});var h='';for(var i=0;i<p.skeleton.length;i++){var e=p.skeleton[i];var fs=Array.isArray(e.from)?e.from:[e.from];var nid=gn(e);var b=bi(nid);var iS=e.main===false;var c=nc(b);var fp=[];for(var j=0;j<fs.length;j++){var fid=fs[j];var tip=nm[fid]?nm[fid].note:clueMap[fid]||'';if(tip){fp.push('<span class="tw"><span style="color:var(--td);cursor:pointer;text-decoration:underline dotted var(--bl)">'+fid+'</span><span class="tp">'+rm(tip)+'</span></span>')}else{fp.push('<span style="color:var(--td)">'+fid+'</span>')}}var neuronHtml=mT(nid,nid);var stepBadge=e.step?'<span style="font-size:9px;background:var(--bl);color:var(--td);padding:1px 5px;border-radius:3px;margin-left:4px">S'+e.step+'</span>':'';h+='<div class="er'+(iS?' side':'')+'" style="border-left:3px solid '+c+'"><div class="eh"><span style="color:var(--td);font-weight:600;min-width:20px">#'+(i+1)+'</span>'+fp.join(' <span style="color:var(--td)">+</span> ')+' <span style="color:var(--td)">--[</span>'+neuronHtml+'<span style="color:var(--td)">]--\u2192</span> '+(e.neuron?'<span style="color:var(--td)">'+e.to+'</span>':'<span style="color:'+c+';font-weight:700">'+e.to+'</span>')+stepBadge+(iS?' <span class="es">side</span>':'')+'</div>'+(e.note?'<div class="en">'+rm(e.note)+'</div>':'')+'</div>'}return h}
+function rSk(p){
+  if(!p.skeleton||!p.skeleton.length)return'<div class="empty">no skeleton</div>';
+  var nm=buildNoteMap(p.skeleton);
+  var clueMap={};(p.clues||[]).forEach(function(c){clueMap[c.id]=c.text||''});
+  var h='';
+  for(var i=0;i<p.skeleton.length;i++){
+    var e=p.skeleton[i];
+    var fs=Array.isArray(e.from)?e.from:[e.from];
+    var nid=gn(e);var b=bi(nid);var iS=e.main===false;var c=nc(b);
+    var fp=[];
+    for(var j=0;j<fs.length;j++){
+      var fid=fs[j];var tip=nm[fid]?nm[fid].note:clueMap[fid]||'';
+      if(tip){fp.push('<span class="tw"><span style="color:#7a7f9a;cursor:pointer;text-decoration:underline dotted #252940">'+fid+'</span><span class="tp">'+rm(tip)+'</span></span>')}
+      else{fp.push('<span style="color:#7a7f9a">'+fid+'</span>')}
+    }
+    var neuronHtml=mT(nid,nid);
+    var stepBadge=e.step?'<span style="font-size:9px;background:#252940;color:#7a7f9a;padding:1px 5px;border-radius:3px;margin-left:4px">S'+e.step+'</span>':'';
+    h+='<div class="er'+(iS?' side':'')+'" style="border-left:3px solid '+c+'"><div class="eh"><span style="color:#7a7f9a;font-weight:600;min-width:20px">#'+(i+1)+'</span>'+fp.join(' <span style="color:#7a7f9a">+</span> ')+' <span style="color:#7a7f9a">--[</span>'+neuronHtml+'<span style="color:#7a7f9a">]--\u2192</span> <span style="color:'+c+';font-weight:700">'+e.to+'</span>'+stepBadge+(iS?' <span class="es">side</span>':'')+'</div>'+(e.note?'<div class="en">'+rm(e.note)+'</div>':'')+'</div>';
+  }
+  // DAG below
+  h+='<div class="sl" style="margin-top:18px">DAG</div>';
+  h+=mkSkDAG(p.skeleton,p.clues,'b');
+  return h;
+}
 
 function rDNA(p){var d=p.dna;if(!d||!d.nodes||!d.nodes.length)return'<div class="empty">no DNA data</div>';var ns=d.nodes,es=d.edges||[];var cats={};ns.forEach(function(n){var c=n.category||'기타';if(!cats[c])cats[c]=[];cats[c].push(n)});var catColors={'발문':'var(--st)','수식':'var(--op)','조건':'var(--fc)','제한':'var(--wn)','기하':'var(--ok)','함수':'#ce93d8','존재':'#90caf9','말단':'var(--td)','구조':'var(--ac)','연산':'var(--op)'};var h='<div class="sl">DNA <span style="font-size:11px;font-weight:400;letter-spacing:0">'+ns.length+' nodes / '+es.length+' edges</span></div>';var ck=Object.keys(cats).sort();ck.forEach(function(cat){var items=cats[cat];var cc=catColors[cat]||'var(--td)';h+='<div class="ng"><div class="ngl" style="color:'+cc+'">'+cat+' ('+items.length+')</div>';items.forEach(function(n){var dm=dnaMap[n.dna]||{};h+='<div class="nr" style="flex-wrap:wrap"><span class="ni" style="color:'+cc+';min-width:50px">'+n.dna+'</span><span style="font-size:13px;font-weight:600;color:var(--tx)">'+(dm.name||n.dna)+'</span><span style="font-size:11px;color:var(--td);margin-left:8px">'+rm(dm.signature||'')+'</span></div>';h+='<div style="padding-left:55px;font-size:11px;color:var(--td);margin-bottom:3px">'+rm(n.label||dm.description||'')+'</div>'});h+='</div>'});if(d.new_dna&&d.new_dna.length){h+='<div class="sl" style="margin-top:14px;color:var(--wn)">New DNA Proposed ('+d.new_dna.length+')</div>';d.new_dna.forEach(function(nd){h+='<div class="nr" style="border-color:var(--wn)"><span class="ni" style="color:var(--wn)">'+nd.id+'</span><span class="ns">'+rm(nd.name)+' <span style="color:var(--td)">'+rm(nd.signature||'')+'</span></span></div>';if(nd.reason)h+='<div style="padding-left:70px;font-size:11px;color:var(--td);margin-bottom:4px">'+rm(nd.reason)+'</div>'})}h+='<div class="sl" style="margin-top:14px">DAG</div>';var nById={};ns.forEach(function(n){nById[n.id]=n});var adj={},inD={};ns.forEach(function(n){adj[n.id]=[];inD[n.id]=0});es.forEach(function(e){if(adj[e.from]!==undefined){adj[e.from].push(e.to);inD[e.to]=(inD[e.to]||0)+1}});var roots=ns.filter(function(n){return !inD[n.id]||inD[n.id]===0}).map(function(n){return n.id});if(!roots.length)roots=[ns[0].id];var q=[...roots],lay={};roots.forEach(function(r){lay[r]=0});while(q.length){var cur=q.shift();(adj[cur]||[]).forEach(function(t){var nl=(lay[cur]||0)+1;if(lay[t]===undefined||lay[t]<nl){lay[t]=nl;q.push(t)}})}var mL=0;for(var k in lay)if(lay[k]>mL)mL=lay[k];var lN={};ns.forEach(function(n){var l=lay[n.id]||0;if(!lN[l])lN[l]=[];lN[l].push(n.id)});var W=90,H=28,gx=20,gy=40,pos={};for(var l=0;l<=mL;l++){var lns=lN[l]||[];var tw=lns.length*W+(lns.length-1)*gx;var sx=-tw/2;lns.forEach(function(n,i){pos[n]={x:sx+i*(W+gx)+W/2,y:l*(H+gy)+H/2+20}})}var mNL=1;for(var k in lN)if(lN[k].length>mNL)mNL=lN[k].length;var sw=Math.max(480,mNL*(W+gx)+100),sh=(mL+1)*(H+gy)+44,ox=sw/2;var s='<div class="dag"><svg width="'+sw+'" height="'+sh+'" style="display:block"><defs><marker id="da2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4.5" markerHeight="4.5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="var(--td)" stroke-width="1.5"/></marker></defs>';es.forEach(function(e){var p1=pos[e.from],p2=pos[e.to];if(!p1||!p2)return;s+='<line x1="'+(p1.x+ox)+'" y1="'+(p1.y+H/2)+'" x2="'+(p2.x+ox)+'" y2="'+(p2.y-H/2)+'" stroke="var(--td)" stroke-width="0.8" opacity=".4" marker-end="url(#da2)"/>'});ns.forEach(function(n){var pp=pos[n.id];if(!pp)return;var cc=catColors[n.category||'']||'var(--td)';var lb=n.dna.length>10?n.dna.slice(0,9)+'..':n.dna;s+='<rect x="'+(pp.x+ox-W/2)+'" y="'+(pp.y-H/2)+'" width="'+W+'" height="'+H+'" rx="4" fill="var(--cd)" stroke="'+cc+'" stroke-width=".8"/><text x="'+(pp.x+ox)+'" y="'+(pp.y+1)+'" text-anchor="middle" dominant-baseline="central" fill="'+cc+'" font-size="10" font-family="Pretendard,sans-serif" font-weight="600">'+lb+'</text>'});h+=s+'</svg></div>';return h}
 
