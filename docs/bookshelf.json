@@ -2609,5 +2609,790 @@
     "recovery_warnings": [],
     "errata": [],
     "created_at": "2026-03-22T17:20:00.646Z"
+  },
+  {
+    "problem_id": "Problem20",
+    "answer": "③ 2^(3√2/2)",
+    "clues": [
+      {
+        "id": "단서A",
+        "text": "두 양수 $a(a>1)$, $b$에 대하여 두 로그 곡선(점근선 각각 $x=b-1$, $x=b$)의 점근선이 $x$축과 만나는 점을 각각 A, B라 하고, 점근선이 $y=(\\sqrt{2})^x$와 만나는 점을 각각 C, D라 한다"
+      },
+      {
+        "id": "단서B",
+        "text": "점 D의 $y$좌표가 점 C의 $y$좌표의 2배이다"
+      },
+      {
+        "id": "단서C",
+        "text": "네 점 A, B, C, D가 한 원 위에 있다"
+      }
+    ],
+    "skeleton": [
+      {
+        "from": "단서A",
+        "to": "note1",
+        "neuron": "전략25",
+        "note": "점근선 $x=b-1$이 $x$축($y=0$)과 만나는 점은 $A=(b-1,\\,0)$이다",
+        "main": true,
+        "step": 1
+      },
+      {
+        "from": "단서A",
+        "to": "note2",
+        "neuron": "전략25",
+        "note": "점근선 $x=b$가 $x$축($y=0$)과 만나는 점은 $B=(b,\\,0)$이다",
+        "main": true,
+        "step": 1
+      },
+      {
+        "from": "단서A",
+        "to": "note3",
+        "neuron": "전략25",
+        "note": "점근선 $x=b$를 $y=(\\sqrt{2})^x$에 대입하면 $D=(b,\\,(\\sqrt{2})^b)$이다",
+        "main": true,
+        "step": 2
+      },
+      {
+        "from": [
+          "단서B",
+          "note3"
+        ],
+        "to": "note4",
+        "neuron": "연산4",
+        "note": "점 C의 $y$좌표는 $\\dfrac{(\\sqrt{2})^b}{2}=\\dfrac{(\\sqrt{2})^b}{(\\sqrt{2})^2}=(\\sqrt{2})^{b-2}$이다",
+        "main": true,
+        "step": 2
+      },
+      {
+        "from": "note4",
+        "to": "note5",
+        "neuron": "연산2",
+        "note": "$(\\sqrt{2})^x=(\\sqrt{2})^{b-2}$이면 $x=b-2$이므로 $C=(b-2,\\,(\\sqrt{2})^{b-2})$이다",
+        "main": true,
+        "step": 2
+      },
+      {
+        "from": [
+          "note1",
+          "note2",
+          "note3"
+        ],
+        "to": "note6",
+        "neuron": "사실69",
+        "note": "$\\overrightarrow{BA}=(-1,0)$은 $x$축 방향이고 $\\overrightarrow{BD}=(0,(\\sqrt{2})^b)$는 $y$축 방향이므로 $\\angle ABD=\\dfrac{\\pi}{2}$이다",
+        "main": false,
+        "step": 3
+      },
+      {
+        "from": "note6",
+        "to": "note7",
+        "neuron": "사실11",
+        "note": "$\\angle ABD=\\dfrac{\\pi}{2}$이고 A, B, D가 원 위에 있으므로 $\\overline{AD}$는 원의 지름이다",
+        "main": true,
+        "step": 3
+      },
+      {
+        "from": [
+          "note7",
+          "note5"
+        ],
+        "to": "note8",
+        "neuron": "사실11",
+        "note": "$C$도 원 위에 있고 $\\overline{AD}$가 지름이므로 $\\angle ACD=\\dfrac{\\pi}{2}$이다",
+        "main": true,
+        "step": 3
+      },
+      {
+        "from": [
+          "note1",
+          "note5"
+        ],
+        "to": "note9",
+        "neuron": "연산10",
+        "note": "$\\overline{CA}$의 기울기는 $\\dfrac{0-(\\sqrt{2})^{b-2}}{(b-1)-(b-2)}=-(\\sqrt{2})^{b-2}$이다",
+        "main": false,
+        "step": 4
+      },
+      {
+        "from": [
+          "note3",
+          "note5"
+        ],
+        "to": "note10",
+        "neuron": "연산10",
+        "note": "$\\overline{CD}$의 기울기는 $\\dfrac{(\\sqrt{2})^b-(\\sqrt{2})^{b-2}}{b-(b-2)}=\\dfrac{(\\sqrt{2})^{b-2}}{2}$이다",
+        "main": false,
+        "step": 4
+      },
+      {
+        "from": [
+          "note8",
+          "note9",
+          "note10"
+        ],
+        "to": "note11",
+        "neuron": "사실15",
+        "note": "$\\left(-(\\sqrt{2})^{b-2}\\right)\\times\\dfrac{(\\sqrt{2})^{b-2}}{2}=-1$이므로 $(\\sqrt{2})^{2(b-2)}=2$이다",
+        "main": true,
+        "step": 4
+      },
+      {
+        "from": "note11",
+        "to": "note12",
+        "neuron": "연산4",
+        "note": "$2^{b-2}=2^1$이므로 $b=3$이다",
+        "main": true,
+        "step": 4
+      },
+      {
+        "from": "note12",
+        "to": "note13",
+        "neuron": "전략25",
+        "note": "$b=3$을 대입하면 $C=(1,\\,\\sqrt{2})$이다",
+        "main": true,
+        "step": 5
+      },
+      {
+        "from": [
+          "note13",
+          "단서A"
+        ],
+        "to": "note14",
+        "neuron": "연산2",
+        "note": "$C(1,\\sqrt{2})$가 $y=\\log_a(3-x)$ 위에 있으므로 $\\sqrt{2}=\\log_a 2$, 즉 $a^{\\sqrt{2}}=2$이다",
+        "main": true,
+        "step": 5
+      },
+      {
+        "from": "note14",
+        "to": "note15",
+        "neuron": "연산4",
+        "note": "$a=2^{\\frac{1}{\\sqrt{2}}}=2^{\\frac{\\sqrt{2}}{2}}$이다",
+        "main": true,
+        "step": 5
+      },
+      {
+        "from": [
+          "note15",
+          "note12"
+        ],
+        "to": "END",
+        "neuron": "연산4",
+        "note": "$a^b=\\left(2^{\\frac{\\sqrt{2}}{2}}\\right)^3=2^{\\frac{3\\sqrt{2}}{2}}$이다",
+        "main": true,
+        "step": 6
+      }
+    ],
+    "solution": "STEP 1. 두 로그 곡선의 점근선 $x=b-1$, $x=b$가 $x$축과 만나는 점은 각각 $A=(b-1,\\,0)$, $B=(b,\\,0)$이다.\n\nSTEP 2. 점근선 $x=b$를 $y=(\\sqrt{2})^x$에 대입하면 $D=(b,\\,(\\sqrt{2})^b)$이다. 점 D의 $y$좌표가 점 C의 $y$좌표의 2배이므로 점 C의 $y$좌표는 $(\\sqrt{2})^{b-2}$이다. 점 C는 $y=(\\sqrt{2})^x$ 위의 점이므로 $C=(b-2,\\,(\\sqrt{2})^{b-2})$이다.\n\nSTEP 3. $\\overrightarrow{BA}=(-1,0)$은 $x$축 방향이고 $\\overrightarrow{BD}=(0,(\\sqrt{2})^b)$는 $y$축 방향이므로 $\\angle ABD=\\dfrac{\\pi}{2}$이다. 따라서 $\\overline{AD}$는 원의 지름이고, $C$도 원 위에 있으므로 $\\angle ACD=\\dfrac{\\pi}{2}$이다.\n\nSTEP 4. $\\overline{CA}$의 기울기는 $-(\\sqrt{2})^{b-2}$이고 $\\overline{CD}$의 기울기는 $\\dfrac{(\\sqrt{2})^{b-2}}{2}$이다. $\\angle ACD=90°$이므로 두 기울기의 곱이 $-1$: $(\\sqrt{2})^{2(b-2)}=2$, 즉 $2^{b-2}=2^1$이므로 $b=3$이다.\n\nSTEP 5. $b=3$이면 $C=(1,\\,\\sqrt{2})$이다. $C$가 $y=\\log_a(3-x)$ 위에 있으므로 $\\sqrt{2}=\\log_a 2$, 즉 $a^{\\sqrt{2}}=2$이므로 $a=2^{\\frac{\\sqrt{2}}{2}}$이다.\n\nSTEP 6. $a^b=\\left(2^{\\frac{\\sqrt{2}}{2}}\\right)^3=2^{\\frac{3\\sqrt{2}}{2}}$이다.",
+    "original_solution": "문제의 조건에 의해\n\n$$A(b-1, 0), \\quad B(b, 0), \\quad D(b, (\\sqrt{2})^b),$$\n\n이고,\n\n점 D의 $y$좌표가 점 C의 $y$좌표의 2배\n\n$$\\Rightarrow \\text{(점 C의 } y\\text{좌표)} = \\frac{(\\sqrt{2})^b}{2} = (\\sqrt{2})^{b-2}$$\n\n$$\\Rightarrow C(b-2, (\\sqrt{2})^{b-2}) \\quad (\\because \\text{ 점 C는 곡선 } y=(\\sqrt{2})^x \\text{ 위의 점})$$\n\n이다. 이때,\n\n• 네 점 A, B, C, D가 한 원 위에 있음 $\\Rightarrow$ $\\overline{AD}$가 원의 지름\n\n• $\\angle ABD = \\frac{\\pi}{2}$\n\n이므로\n\n$$\\angle ACD = \\frac{\\pi}{2} \\Rightarrow (\\overline{AC}\\text{의 기울기}) \\times (\\overline{CD}\\text{의 기울기}) = -1$$\n\n$$\\Rightarrow \\frac{-(\\sqrt{2})^{b-2}}{(b-1)-(b-2)} \\times \\frac{(\\sqrt{2})^b - (\\sqrt{2})^{b-2}}{b-(b-2)} = -1$$\n\n$$\\Rightarrow 2^{b-2} = 2$$\n\n$$\\Rightarrow b = 3$$\n\n을 얻고,\n\n$$C(1, \\sqrt{2})\\text{가 } y=\\log_a(3-x) \\text{ 위의 점} \\Rightarrow a = 2^{\\frac{1}{\\sqrt{2}}}$$\n\n을 얻는다.\n\n$$\\therefore a^b = \\left(2^{\\frac{1}{\\sqrt{2}}}\\right)^3 = 2^{\\frac{3\\sqrt{2}}{2}}$$\n\n---",
+    "analysis": "문제에서 두 로그 곡선의 점근선이 각각 x=b-1, x=b임을 해설 좌표로부터 역산. A=(b-1,0), B=(b,0), D=(b,(√2)^b), C=(b-2,(√2)^(b-2)). BA⊥BD이므로 AD가 지름, 따라서 ∠ACD=90°. 수직 조건으로 b=3, 이후 C가 로그 곡선 위에 있는 조건으로 a 결정.",
+    "new_neurons": [],
+    "metadata": {
+      "unit": "지수·로그",
+      "difficulty": "중상",
+      "score": "4",
+      "type": "객관식",
+      "answer": "③"
+    },
+    "edge_count": 16,
+    "side_count": 3,
+    "statement": "# Problem20. (Unknown Source) - Logarithm and Exponential Functions\n\n## Problem\n\n두 양수 $a(a>1)$, $b$에 대하여 곡선 $y=\\log_a(b-x)$와 곡선 $y=\\log_a(b-x)$의 점근선이 $x$축과 만나는 점을 각각 A, B라 하자. 곡선 $y=\\log_a(b-x)$와 곡선 $y=\\log_a(b-x)$의 점근선이 곡선 $y=(\\sqrt{2})^x$과 만나는 점을 각각 C, D라 할 때, 점 D의 $y$좌표가 점 C의 $y$좌표의 2배이다.\n\n네 점 A, B, C, D가 한 원 위에 있을 때, $a^b$의 값은? [4점]\n\n[FIGURE: 좌표평면에 곡선 $y=\\log_a(b-x)$, $y=(\\sqrt{2})^x$가 그려져 있고, 원 위에 점 A, B, C, D가 표시되어 있음]",
+    "dna": {
+      "nodes": [
+        {
+          "id": "top",
+          "dna": "Q1",
+          "label": "a^b 값",
+          "category": "발문"
+        },
+        {
+          "id": "ask_pow",
+          "dna": "E7",
+          "label": "a^b",
+          "category": "수식"
+        },
+        {
+          "id": "va",
+          "dna": "T1",
+          "label": "변수 a",
+          "category": "말단"
+        },
+        {
+          "id": "vb",
+          "dna": "T1",
+          "label": "변수 b",
+          "category": "말단"
+        },
+        {
+          "id": "lim_a",
+          "dna": "C2",
+          "label": "a>1",
+          "category": "조건"
+        },
+        {
+          "id": "lim_b",
+          "dna": "C2",
+          "label": "b>0",
+          "category": "조건"
+        },
+        {
+          "id": "c0",
+          "dna": "T2",
+          "label": "상수 0",
+          "category": "말단"
+        },
+        {
+          "id": "c1",
+          "dna": "T2",
+          "label": "상수 1",
+          "category": "말단"
+        },
+        {
+          "id": "c2",
+          "dna": "T2",
+          "label": "상수 2",
+          "category": "말단"
+        },
+        {
+          "id": "vx",
+          "dna": "T3",
+          "label": "독립변수 x",
+          "category": "말단"
+        },
+        {
+          "id": "conds",
+          "dna": "S1",
+          "label": "전체 조건",
+          "category": "구조"
+        },
+        {
+          "id": "crv1",
+          "dna": "G2",
+          "label": "곡선 log_a(b-x)",
+          "category": "기하"
+        },
+        {
+          "id": "crv1_eq",
+          "dna": "C11",
+          "label": "곡선1 방정식",
+          "category": "조건"
+        },
+        {
+          "id": "crv1_c1",
+          "dna": "C1",
+          "label": "y=log_a(b-x)",
+          "category": "조건"
+        },
+        {
+          "id": "crv1_log",
+          "dna": "E3",
+          "label": "log_a(b-x)",
+          "category": "수식"
+        },
+        {
+          "id": "crv1_inner",
+          "dna": "E1",
+          "label": "b+(-x)",
+          "category": "수식"
+        },
+        {
+          "id": "neg_x",
+          "dna": "E2",
+          "label": "-x",
+          "category": "수식"
+        },
+        {
+          "id": "crv2",
+          "dna": "G2",
+          "label": "곡선 log_a(b-1-x)",
+          "category": "기하"
+        },
+        {
+          "id": "crv2_eq",
+          "dna": "C11",
+          "label": "곡선2 방정식",
+          "category": "조건"
+        },
+        {
+          "id": "crv2_c1",
+          "dna": "C1",
+          "label": "y=log_a(b-1-x)",
+          "category": "조건"
+        },
+        {
+          "id": "crv2_log",
+          "dna": "E3",
+          "label": "log_a(b-1-x)",
+          "category": "수식"
+        },
+        {
+          "id": "crv2_inner",
+          "dna": "E1",
+          "label": "b-1+(-x)",
+          "category": "수식"
+        },
+        {
+          "id": "b_minus1",
+          "dna": "E1",
+          "label": "b-1",
+          "category": "수식"
+        },
+        {
+          "id": "neg1",
+          "dna": "E2",
+          "label": "-1",
+          "category": "수식"
+        },
+        {
+          "id": "asym1",
+          "dna": "G12",
+          "label": "점근선 x=b",
+          "category": "기하"
+        },
+        {
+          "id": "asym1_eq",
+          "dna": "C11",
+          "label": "점근선1 방정식",
+          "category": "조건"
+        },
+        {
+          "id": "asym1_c1",
+          "dna": "C1",
+          "label": "x=b",
+          "category": "조건"
+        },
+        {
+          "id": "asym2",
+          "dna": "G12",
+          "label": "점근선 x=b-1",
+          "category": "기하"
+        },
+        {
+          "id": "asym2_eq",
+          "dna": "C11",
+          "label": "점근선2 방정식",
+          "category": "조건"
+        },
+        {
+          "id": "asym2_c1",
+          "dna": "C1",
+          "label": "x=b-1",
+          "category": "조건"
+        },
+        {
+          "id": "xaxis",
+          "dna": "G13",
+          "label": "x축",
+          "category": "기하"
+        },
+        {
+          "id": "pt_a",
+          "dna": "G1",
+          "label": "점 A",
+          "category": "기하"
+        },
+        {
+          "id": "pt_b",
+          "dna": "G1",
+          "label": "점 B",
+          "category": "기하"
+        },
+        {
+          "id": "meet_a",
+          "dna": "C3",
+          "label": "점근선2∩x축=A",
+          "category": "조건"
+        },
+        {
+          "id": "meet_b",
+          "dna": "C3",
+          "label": "점근선1∩x축=B",
+          "category": "조건"
+        },
+        {
+          "id": "crv_exp",
+          "dna": "G2",
+          "label": "곡선 (√2)^x",
+          "category": "기하"
+        },
+        {
+          "id": "crv_exp_eq",
+          "dna": "C11",
+          "label": "지수곡선 방정식",
+          "category": "조건"
+        },
+        {
+          "id": "crv_exp_c1",
+          "dna": "C1",
+          "label": "y=(√2)^x",
+          "category": "조건"
+        },
+        {
+          "id": "exp_expr",
+          "dna": "E4",
+          "label": "(√2)^x",
+          "category": "수식"
+        },
+        {
+          "id": "sqrt2",
+          "dna": "E8",
+          "label": "√2",
+          "category": "수식"
+        },
+        {
+          "id": "pt_c",
+          "dna": "G1",
+          "label": "점 C",
+          "category": "기하"
+        },
+        {
+          "id": "pt_d",
+          "dna": "G1",
+          "label": "점 D",
+          "category": "기하"
+        },
+        {
+          "id": "meet_c",
+          "dna": "C3",
+          "label": "점근선2∩지수곡선=C",
+          "category": "조건"
+        },
+        {
+          "id": "meet_d",
+          "dna": "C3",
+          "label": "점근선1∩지수곡선=D",
+          "category": "조건"
+        },
+        {
+          "id": "yc",
+          "dna": "G4",
+          "label": "C의 y좌표",
+          "category": "기하"
+        },
+        {
+          "id": "yd",
+          "dna": "G4",
+          "label": "D의 y좌표",
+          "category": "기하"
+        },
+        {
+          "id": "yd_eq",
+          "dna": "C1",
+          "label": "yD=2·yC",
+          "category": "조건"
+        },
+        {
+          "id": "two_yc",
+          "dna": "E6",
+          "label": "2×yC",
+          "category": "수식"
+        },
+        {
+          "id": "circle",
+          "dna": "G9",
+          "label": "원",
+          "category": "기하"
+        },
+        {
+          "id": "concyclic",
+          "dna": "C3",
+          "label": "A,B,C,D 한 원",
+          "category": "조건"
+        }
+      ],
+      "edges": [
+        {
+          "from": "ask_pow",
+          "to": "top"
+        },
+        {
+          "from": "conds",
+          "to": "top"
+        },
+        {
+          "from": "va",
+          "to": "ask_pow"
+        },
+        {
+          "from": "vb",
+          "to": "ask_pow"
+        },
+        {
+          "from": "va",
+          "to": "lim_a"
+        },
+        {
+          "from": "c1",
+          "to": "lim_a"
+        },
+        {
+          "from": "lim_a",
+          "to": "conds"
+        },
+        {
+          "from": "vb",
+          "to": "lim_b"
+        },
+        {
+          "from": "c0",
+          "to": "lim_b"
+        },
+        {
+          "from": "lim_b",
+          "to": "conds"
+        },
+        {
+          "from": "crv1_eq",
+          "to": "crv1"
+        },
+        {
+          "from": "crv1_c1",
+          "to": "crv1_eq"
+        },
+        {
+          "from": "crv1_log",
+          "to": "crv1_c1"
+        },
+        {
+          "from": "va",
+          "to": "crv1_log"
+        },
+        {
+          "from": "crv1_inner",
+          "to": "crv1_log"
+        },
+        {
+          "from": "vb",
+          "to": "crv1_inner"
+        },
+        {
+          "from": "neg_x",
+          "to": "crv1_inner"
+        },
+        {
+          "from": "vx",
+          "to": "neg_x"
+        },
+        {
+          "from": "crv2_eq",
+          "to": "crv2"
+        },
+        {
+          "from": "crv2_c1",
+          "to": "crv2_eq"
+        },
+        {
+          "from": "crv2_log",
+          "to": "crv2_c1"
+        },
+        {
+          "from": "va",
+          "to": "crv2_log"
+        },
+        {
+          "from": "crv2_inner",
+          "to": "crv2_log"
+        },
+        {
+          "from": "b_minus1",
+          "to": "crv2_inner"
+        },
+        {
+          "from": "neg_x",
+          "to": "crv2_inner"
+        },
+        {
+          "from": "vb",
+          "to": "b_minus1"
+        },
+        {
+          "from": "neg1",
+          "to": "b_minus1"
+        },
+        {
+          "from": "c1",
+          "to": "neg1"
+        },
+        {
+          "from": "asym1_eq",
+          "to": "asym1"
+        },
+        {
+          "from": "asym1_c1",
+          "to": "asym1_eq"
+        },
+        {
+          "from": "vb",
+          "to": "asym1_c1"
+        },
+        {
+          "from": "asym2_eq",
+          "to": "asym2"
+        },
+        {
+          "from": "asym2_c1",
+          "to": "asym2_eq"
+        },
+        {
+          "from": "b_minus1",
+          "to": "asym2_c1"
+        },
+        {
+          "from": "asym2",
+          "to": "meet_a"
+        },
+        {
+          "from": "xaxis",
+          "to": "meet_a"
+        },
+        {
+          "from": "pt_a",
+          "to": "meet_a"
+        },
+        {
+          "from": "meet_a",
+          "to": "conds"
+        },
+        {
+          "from": "asym1",
+          "to": "meet_b"
+        },
+        {
+          "from": "xaxis",
+          "to": "meet_b"
+        },
+        {
+          "from": "pt_b",
+          "to": "meet_b"
+        },
+        {
+          "from": "meet_b",
+          "to": "conds"
+        },
+        {
+          "from": "crv_exp_eq",
+          "to": "crv_exp"
+        },
+        {
+          "from": "crv_exp_c1",
+          "to": "crv_exp_eq"
+        },
+        {
+          "from": "exp_expr",
+          "to": "crv_exp_c1"
+        },
+        {
+          "from": "sqrt2",
+          "to": "exp_expr"
+        },
+        {
+          "from": "c2",
+          "to": "sqrt2"
+        },
+        {
+          "from": "vx",
+          "to": "exp_expr"
+        },
+        {
+          "from": "asym2",
+          "to": "meet_c"
+        },
+        {
+          "from": "crv_exp",
+          "to": "meet_c"
+        },
+        {
+          "from": "pt_c",
+          "to": "meet_c"
+        },
+        {
+          "from": "meet_c",
+          "to": "conds"
+        },
+        {
+          "from": "asym1",
+          "to": "meet_d"
+        },
+        {
+          "from": "crv_exp",
+          "to": "meet_d"
+        },
+        {
+          "from": "pt_d",
+          "to": "meet_d"
+        },
+        {
+          "from": "meet_d",
+          "to": "conds"
+        },
+        {
+          "from": "pt_c",
+          "to": "yc"
+        },
+        {
+          "from": "pt_d",
+          "to": "yd"
+        },
+        {
+          "from": "yd",
+          "to": "yd_eq"
+        },
+        {
+          "from": "two_yc",
+          "to": "yd_eq"
+        },
+        {
+          "from": "c2",
+          "to": "two_yc"
+        },
+        {
+          "from": "yc",
+          "to": "two_yc"
+        },
+        {
+          "from": "yd_eq",
+          "to": "conds"
+        },
+        {
+          "from": "pt_a",
+          "to": "concyclic"
+        },
+        {
+          "from": "pt_b",
+          "to": "concyclic"
+        },
+        {
+          "from": "pt_c",
+          "to": "concyclic"
+        },
+        {
+          "from": "pt_d",
+          "to": "concyclic"
+        },
+        {
+          "from": "circle",
+          "to": "concyclic"
+        },
+        {
+          "from": "concyclic",
+          "to": "conds"
+        },
+        {
+          "from": "crv1",
+          "to": "conds"
+        },
+        {
+          "from": "crv2",
+          "to": "conds"
+        }
+      ],
+      "new_dna": []
+    },
+    "thinking_profile": null,
+    "folders": [],
+    "history": [],
+    "recovery_warnings": [],
+    "errata": [],
+    "created_at": "2026-03-22T17:27:41.913Z"
   }
 ]
