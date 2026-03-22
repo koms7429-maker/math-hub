@@ -11767,5 +11767,1124 @@
     "folders": [],
     "history": [],
     "created_at": "2026-03-21T18:39:15.659Z"
+  },
+  {
+    "problem_id": "Problem13_3",
+    "answer": "139/9",
+    "clues": [
+      {
+        "id": "단서A",
+        "text": "$x \\leq 1$일 때 $f(x)=|a^{x+1}-3a|$"
+      },
+      {
+        "id": "단서B",
+        "text": "$x > 1$일 때 $f(x)=k(x-1)(x-a)$"
+      },
+      {
+        "id": "단서C",
+        "text": "$a>1$, $k<0$, $a$와 $k$는 실수"
+      },
+      {
+        "id": "단서D",
+        "text": "$g(14)=5$"
+      }
+    ],
+    "skeleton": [
+      {
+        "from": "단서A",
+        "to": "note1",
+        "neuron": "전략6",
+        "note": "$x \\leq 1$ 구간에서 $a^{x+1}-3a=0$이 되는 점은 $x=\\log_a 3$이고, $x \\leq \\log_a 3$이면 $f(x)=3a-a^{x+1}$, $\\log_a 3 < x \\leq 1$이면 $f(x)=a^{x+1}-3a$이다",
+        "main": true,
+        "step": 1
+      },
+      {
+        "from": "단서B",
+        "to": "note2",
+        "neuron": "사실35",
+        "note": "$x > 1$ 구간에서 $f(x)=k(x-1)(x-a)$는 $k<0$이므로 위로 볼록한 포물선이고, $x=1$과 $x=a$에서 0이며 꼭짓점 $x=\\frac{a+1}{2}$에서 최댓값 $-\\frac{k(a-1)^2}{4}$를 가진다",
+        "main": true,
+        "step": 1
+      },
+      {
+        "from": "단서C",
+        "to": "note3",
+        "neuron": "사실4",
+        "note": "$n$이 짝수일 때 $x^n=t$를 만족하는 실수 $x$의 개수는 $t<0$이면 0개, $t=0$이면 1개, $t>0$이면 2개이다",
+        "main": true,
+        "step": 2
+      },
+      {
+        "from": [
+          "note3",
+          "단서C"
+        ],
+        "to": "note4",
+        "neuron": "전략5",
+        "note": "$n$이 짝수일 때 $g(n) = [f(0)=n\\text{이면 }1] + 2\\times(f(t)=n\\text{을 만족하는 양수 }t\\text{의 개수})$이다",
+        "main": true,
+        "step": 2
+      },
+      {
+        "from": [
+          "note4",
+          "단서D"
+        ],
+        "to": "note5",
+        "neuron": "전략22",
+        "note": "$g(14)=5$이고 5는 홀수이므로, $f(0)=14$이고(기여 1) $f(t)=14$를 만족하는 양수 $t$가 정확히 2개(기여 4)인 경우만 가능하다",
+        "main": true,
+        "step": 3
+      },
+      {
+        "from": [
+          "note1",
+          "note5"
+        ],
+        "to": "note6",
+        "neuron": "연산28",
+        "note": "$f(0)=|a^1-3a|=|-2a|=2a=14$이므로 $a=7$이다",
+        "main": true,
+        "step": 3
+      },
+      {
+        "from": "note6",
+        "to": "note7",
+        "neuron": "전략6",
+        "note": "$a=7$일 때 $x \\leq \\log_7 3$이면 $f(x)=21-7^{x+1}$이고, $\\log_7 3 < x \\leq 1$이면 $f(x)=7^{x+1}-21$이다",
+        "main": true,
+        "step": 4
+      },
+      {
+        "from": "note6",
+        "to": "note8",
+        "neuron": "연산28",
+        "note": "$a=7$일 때 $x>1$ 구간에서 $f(x)=k(x-1)(x-7)$이고 꼭짓점은 $x=4$에서 최댓값 $-9k$이다",
+        "main": true,
+        "step": 4
+      },
+      {
+        "from": "note7",
+        "to": "note9",
+        "neuron": "사실5",
+        "note": "$0 < t \\leq \\log_7 3$ 구간에서 $f(t)=21-7^{t+1}$은 단조감소이고 $f(0)=14$, $f(\\log_7 3)=0$이다",
+        "main": false,
+        "step": 5
+      },
+      {
+        "from": "note7",
+        "to": "note10",
+        "neuron": "사실5",
+        "note": "$\\log_7 3 < t \\leq 1$ 구간에서 $f(t)=7^{t+1}-21$은 단조증가이고 $f(\\log_7 3)=0$, $f(1)=28$이다",
+        "main": false,
+        "step": 5
+      },
+      {
+        "from": [
+          "note9",
+          "note10",
+          "note5"
+        ],
+        "to": "note11",
+        "neuron": "사실43",
+        "note": "$0 < t \\leq 1$ 구간에서 $f(t)=14$를 만족하는 $t$는 $\\log_7 3 < t \\leq 1$ 구간에서 정확히 1개 존재한다",
+        "main": false,
+        "step": 5
+      },
+      {
+        "from": [
+          "note8",
+          "note5",
+          "note11"
+        ],
+        "to": "note12",
+        "neuron": "사실9",
+        "note": "$t>1$ 구간에서 $f(t)=14$의 해가 정확히 1개이려면 꼭짓점값이 정확히 14이어야 하므로 $-9k=14$, 즉 $k=-\\dfrac{14}{9}$이다",
+        "main": true,
+        "step": 5
+      },
+      {
+        "from": "note12",
+        "to": "note13",
+        "neuron": "전략25",
+        "note": "$k=-\\dfrac{14}{9}$이면 $f(4)=14$이고 $g(14)=1+2\\times 2=5$가 성립한다",
+        "main": false,
+        "step": 5
+      },
+      {
+        "from": "단서C",
+        "to": "note14",
+        "neuron": "사실4",
+        "note": "$n$이 홀수일 때 임의의 실수 $t$에 대해 $x^n=t$를 만족하는 실수 $x$는 정확히 1개이다",
+        "main": true,
+        "step": 6
+      },
+      {
+        "from": "note14",
+        "to": "note15",
+        "neuron": "전략5",
+        "note": "$n$이 홀수일 때 $g(n)$은 $f(t)=n$을 만족하는 실수 $t$의 개수와 같다",
+        "main": true,
+        "step": 6
+      },
+      {
+        "from": [
+          "note7",
+          "note8",
+          "note12"
+        ],
+        "to": "note16",
+        "neuron": "사실46",
+        "note": "$t \\to -\\infty$이면 $7^{t+1} \\to 0$이므로 $f(t)=21-7^{t+1} \\to 21$이고, $t<0$이면 $7^{t+1}<7$이므로 $f(t)>14$이다",
+        "main": false,
+        "step": 7
+      },
+      {
+        "from": [
+          "note15",
+          "note7",
+          "note16"
+        ],
+        "to": "note17",
+        "neuron": "사실43",
+        "note": "$t \\leq \\log_7 3$ 구간에서 $f(t)=5$의 해: $t<0$이면 $f(t)>14>5$이므로 해 없고, $0 \\leq t \\leq \\log_7 3$에서 $f$는 14에서 0으로 단조감소하므로 해 1개이다",
+        "main": false,
+        "step": 7
+      },
+      {
+        "from": [
+          "note15",
+          "note10"
+        ],
+        "to": "note18",
+        "neuron": "사실43",
+        "note": "$\\log_7 3 < t \\leq 1$ 구간에서 $f(t)=7^{t+1}-21$은 0에서 28로 단조증가하므로 $f(t)=5$의 해가 1개이다",
+        "main": false,
+        "step": 7
+      },
+      {
+        "from": [
+          "note15",
+          "note8",
+          "note12"
+        ],
+        "to": "note19",
+        "neuron": "사실43",
+        "note": "$1 < t < 7$ 구간에서 $f(t)=-\\dfrac{14}{9}(t-1)(t-7)$의 최댓값은 14이고 $0<5<14$이므로 $f(t)=5$의 해가 2개이다",
+        "main": false,
+        "step": 7
+      },
+      {
+        "from": [
+          "note17",
+          "note18",
+          "note19"
+        ],
+        "to": "note20",
+        "neuron": "전략5",
+        "note": "$g(5)=1+1+2=4$이다",
+        "main": true,
+        "step": 7
+      },
+      {
+        "from": [
+          "note4",
+          "note7",
+          "note12"
+        ],
+        "to": "note21",
+        "neuron": "사실43",
+        "note": "$f(0)=14 \\neq 10$이므로 $t=0$의 기여는 없다",
+        "main": false,
+        "step": 8
+      },
+      {
+        "from": [
+          "note9",
+          "note4"
+        ],
+        "to": "note22",
+        "neuron": "사실43",
+        "note": "$0 < t \\leq \\log_7 3$ 구간에서 $f$는 14에서 0으로 단조감소하므로 $f(t)=10$의 해가 1개이다",
+        "main": false,
+        "step": 8
+      },
+      {
+        "from": [
+          "note10",
+          "note4"
+        ],
+        "to": "note23",
+        "neuron": "사실43",
+        "note": "$\\log_7 3 < t \\leq 1$ 구간에서 $f$는 0에서 28로 단조증가하므로 $f(t)=10$의 해가 1개이다",
+        "main": false,
+        "step": 8
+      },
+      {
+        "from": [
+          "note8",
+          "note12",
+          "note4"
+        ],
+        "to": "note24",
+        "neuron": "사실43",
+        "note": "$1 < t < 7$ 구간에서 최댓값 14이고 $0<10<14$이므로 $f(t)=10$의 해가 2개이다",
+        "main": false,
+        "step": 8
+      },
+      {
+        "from": [
+          "note21",
+          "note22",
+          "note23",
+          "note24"
+        ],
+        "to": "note25",
+        "neuron": "전략5",
+        "note": "$g(10)=0+2\\times(1+1+2)=8$이다",
+        "main": true,
+        "step": 8
+      },
+      {
+        "from": [
+          "note15",
+          "note7"
+        ],
+        "to": "note26",
+        "neuron": "사실43",
+        "note": "$t \\leq \\log_7 3$ 구간에서 $f(t)=21-7^{t+1}$은 21에서 0으로 단조감소하고 $f(t)=15$이면 $7^{t+1}=6$이므로 $t=\\log_7 6-1$에서 해 1개이다",
+        "main": false,
+        "step": 9
+      },
+      {
+        "from": [
+          "note15",
+          "note10"
+        ],
+        "to": "note27",
+        "neuron": "사실43",
+        "note": "$\\log_7 3 < t \\leq 1$ 구간에서 $f$는 0에서 28로 단조증가하므로 $f(t)=15$의 해가 1개이다",
+        "main": false,
+        "step": 9
+      },
+      {
+        "from": [
+          "note15",
+          "note8",
+          "note12"
+        ],
+        "to": "note28",
+        "neuron": "사실53",
+        "note": "$t>1$ 구간에서 $f(t)$의 최댓값은 14이고 $15>14$이므로 $f(t)=15$의 해가 없다",
+        "main": false,
+        "step": 9
+      },
+      {
+        "from": [
+          "note26",
+          "note27",
+          "note28"
+        ],
+        "to": "note29",
+        "neuron": "전략5",
+        "note": "$g(15)=1+1+0=2$이다",
+        "main": true,
+        "step": 9
+      },
+      {
+        "from": [
+          "note4",
+          "note9"
+        ],
+        "to": "note30",
+        "neuron": "사실43",
+        "note": "$0 < t \\leq \\log_7 3$ 구간에서 $f$는 14에서 0으로 단조감소하므로 $f(t)=20$의 해가 없다",
+        "main": false,
+        "step": 10
+      },
+      {
+        "from": [
+          "note4",
+          "note10"
+        ],
+        "to": "note31",
+        "neuron": "사실43",
+        "note": "$\\log_7 3 < t \\leq 1$ 구간에서 $f$는 0에서 28로 단조증가하므로 $f(t)=20$의 해가 1개이다",
+        "main": false,
+        "step": 10
+      },
+      {
+        "from": [
+          "note4",
+          "note8",
+          "note12"
+        ],
+        "to": "note32",
+        "neuron": "사실53",
+        "note": "$t>1$ 구간에서 최댓값 14이고 $20>14$이므로 $f(t)=20$의 해가 없다",
+        "main": false,
+        "step": 10
+      },
+      {
+        "from": [
+          "note30",
+          "note31",
+          "note32"
+        ],
+        "to": "note33",
+        "neuron": "전략5",
+        "note": "$g(20)=0+2\\times 1=2$이다",
+        "main": true,
+        "step": 10
+      },
+      {
+        "from": [
+          "note15",
+          "note7"
+        ],
+        "to": "note34",
+        "neuron": "사실53",
+        "note": "$t \\leq \\log_7 3$ 구간에서 $f(t)=21-7^{t+1}$의 최댓값은 21이고 $25>21$이므로 $f(t)=25$의 해가 없다",
+        "main": false,
+        "step": 11
+      },
+      {
+        "from": [
+          "note15",
+          "note10"
+        ],
+        "to": "note35",
+        "neuron": "사실43",
+        "note": "$\\log_7 3 < t \\leq 1$ 구간에서 $f$는 0에서 28로 단조증가하므로 $f(t)=25$의 해가 1개이다",
+        "main": false,
+        "step": 11
+      },
+      {
+        "from": [
+          "note15",
+          "note8",
+          "note12"
+        ],
+        "to": "note36",
+        "neuron": "사실53",
+        "note": "$t>1$ 구간에서 최댓값 14이고 $25>14$이므로 $f(t)=25$의 해가 없다",
+        "main": false,
+        "step": 11
+      },
+      {
+        "from": [
+          "note34",
+          "note35",
+          "note36"
+        ],
+        "to": "note37",
+        "neuron": "전략5",
+        "note": "$g(25)=0+1+0=1$이다",
+        "main": true,
+        "step": 11
+      },
+      {
+        "from": [
+          "note20",
+          "note25",
+          "note29",
+          "note33",
+          "note37",
+          "note12"
+        ],
+        "to": "END",
+        "neuron": "연산28",
+        "note": "$\\sum_{n=1}^{5}g(5n)=4+8+2+2+1=17$이고 $k+17=-\\dfrac{14}{9}+\\dfrac{153}{9}=\\dfrac{139}{9}$이다",
+        "main": true,
+        "step": 12
+      }
+    ],
+    "solution": "STEP 1. $x \\leq 1$ 구간에서 $a^{x+1}-3a=0$이 되는 점은 $x=\\log_a 3$이므로, $x \\leq \\log_a 3$이면 $f(x)=3a-a^{x+1}$이고 $\\log_a 3 < x \\leq 1$이면 $f(x)=a^{x+1}-3a$이다. $x>1$ 구간에서 $f(x)=k(x-1)(x-a)$는 $k<0$이므로 위로 볼록한 포물선으로 꼭짓점 $x=\\frac{a+1}{2}$에서 최댓값을 가진다.\n\nSTEP 2. $n$이 짝수일 때 $x^n=t$를 만족하는 실수 $x$의 개수는 $t<0$이면 0개, $t=0$이면 1개, $t>0$이면 2개이다. 따라서 $g(n)=[f(0)=n\\text{이면 }1]+2\\times(f(t)=n\\text{을 만족하는 양수 }t\\text{의 개수})$이다.\n\nSTEP 3. $n=14$는 짝수이고 $g(14)=5$이다. 5는 홀수이므로 $f(0)=14$(기여 1)이고 $f(t)=14$를 만족하는 양수 $t$가 정확히 2개(기여 4)인 경우만 가능하다. $f(0)=|a-3a|=2a=14$이므로 $a=7$이다.\n\nSTEP 4. $a=7$일 때 $x \\leq \\log_7 3$이면 $f(x)=21-7^{x+1}$이고, $\\log_7 3 < x \\leq 1$이면 $f(x)=7^{x+1}-21$이다. $x>1$ 구간에서 $f(x)=k(x-1)(x-7)$이고 꼭짓점은 $x=4$에서 최댓값 $-9k$이다.\n\nSTEP 5. $f(t)=14$를 만족하는 양수 $t$가 정확히 2개이어야 한다. $0<t\\leq 1$ 구간에서 $\\log_7 3 < t \\leq 1$ 구간의 단조증가 부분에서 해 1개가 존재한다. $t>1$ 구간에서 위로 볼록한 포물선이 $y=14$와 정확히 1개의 교점을 가지려면 꼭짓점값이 정확히 14이어야 하므로 $-9k=14$, 즉 $k=-\\dfrac{14}{9}$이다.\n\nSTEP 6. $n$이 홀수일 때 임의의 실수 $t$에 대해 $x^n=t$를 만족하는 실수 $x$는 정확히 1개이므로, $g(n)$은 $f(t)=n$을 만족하는 실수 $t$의 개수와 같다.\n\nSTEP 7. $g(5)$: $t \\leq \\log_7 3$ 구간에서 $f$는 14에서 0으로 단조감소하므로 해 1개, $\\log_7 3 < t \\leq 1$ 구간에서 $f$는 0에서 28로 단조증가하므로 해 1개, $1<t<7$ 구간에서 최댓값 14이고 $0<5<14$이므로 해 2개. 따라서 $g(5)=1+1+2=4$이다.\n\nSTEP 8. $g(10)$: $n=10$은 짝수이고 $f(0)=14\\neq 10$이므로 $t=0$의 기여 없음. 양수 $t$에서: $0<t\\leq\\log_7 3$에서 해 1개, $\\log_7 3<t\\leq 1$에서 해 1개, $1<t<7$에서 최댓값 14이고 $0<10<14$이므로 해 2개. 따라서 $g(10)=0+2\\times(1+1+2)=8$이다.\n\nSTEP 9. $g(15)$: $t\\leq\\log_7 3$ 구간에서 해 1개, $\\log_7 3<t\\leq 1$ 구간에서 해 1개, $t>1$ 구간에서 최댓값 14이고 $15>14$이므로 해 없음. 따라서 $g(15)=1+1+0=2$이다.\n\nSTEP 10. $g(20)$: $n=20$은 짝수이고 $f(0)=14\\neq 20$이므로 기여 없음. $0<t\\leq\\log_7 3$에서 $f(0)=14<20$이므로 해 없음, $\\log_7 3<t\\leq 1$에서 해 1개, $t>1$에서 최댓값 14이고 $20>14$이므로 해 없음. 따라서 $g(20)=0+2\\times 1=2$이다.\n\nSTEP 11. $g(25)$: $t\\leq\\log_7 3$ 구간에서 최댓값 21이고 $25>21$이므로 해 없음, $\\log_7 3<t\\leq 1$ 구간에서 해 1개, $t>1$에서 최댓값 14이고 $25>14$이므로 해 없음. 따라서 $g(25)=0+1+0=1$이다.\n\nSTEP 12. $\\sum_{n=1}^{5}g(5n)=4+8+2+2+1=17$이고, $k+\\sum_{n=1}^{5}g(5n)=-\\dfrac{14}{9}+17=-\\dfrac{14}{9}+\\dfrac{153}{9}=\\dfrac{139}{9}$이다.",
+    "original_solution": "[FIGURE - 그래프 포함]\n\n**단계 1: 함수 $f(t)$ 분석**\n\n$f(t)=n$을 만족시킨다고 가정하면, $n$이 짝수일 때,\n\n$(x^n=t$인 $x$의 개수)$=\\begin{cases}\n0 & (t<0\\text{인 때})\\\\\n1 & (t=0\\text{인 때})\\\\\n2 & (t>0\\text{인 때})\n\\end{cases}$\n\n이므로 $g(n)$의 정의에 의해\n\n$n$이 짝수일 때, $g(n)=$ (다음을 만족시키는 각각의 $t$에 대하여 모든 [UNREADABLE]의 값의 합)\n\n이다. 따라서 문제의 조건에서\n\n$g(14)=5 \\Rightarrow \\begin{cases}\n\\text{① } f(0)=14\\\\\n\\text{② } f(x)=14\\text{인 양수 }x\\text{는 }2\\text{개만 존재}\n\\end{cases}$\n\n임을 알 수 있고,\n\n① $\\Rightarrow a=7$\n\n이므로 ②를 만족시키는 함수 $f(x)$의 그래프는 다음 [그림]과 같다.\n\n[그림 설명: $y=f(x)$와 $y=14$의 그래프, $x=0,1,4,7$에서의 주요 포인트 표시]\n\n따라서\n$$f(4)=k\\times 3\\times(-3)=-9k \\Rightarrow k=-\\frac{14}{9} \\quad (\\because f(4)=14)$$\n\n이다.\n\n**단계 2: $n$이 홀수일 때**\n\n모든 실수 $t$에 대하여, $(x^n=t$인 $x$의 개수)$=1$\n\n이므로 $g(n)$의 정의에 의해\n\n$n$이 홀수일 때 : $g(n)=$ (다음을 만족시키는 $t$의 개수)\n\n와 같다.\n\n따라서 [그림]을 통해\n$$g(5)=4, \\quad g(10)=8, \\quad g(15)=2, \\quad g(20)=2, \\quad g(25)=1$$\n임을 알 수 있다.\n\n$$\\therefore k+\\sum_{n=1}^{5}g(5n)=-\\frac{14}{9}+17=\\frac{139}{9}$$\n\n---",
+    "analysis": "짝수 n과 홀수 n을 분리하여 g(n)의 구조를 파악한 뒤, g(14)=5 조건으로 a=7, k=-14/9를 결정하고, 각 g(5n)을 계산하여 합산한다.",
+    "new_neurons": [],
+    "metadata": {
+      "unit": "지수·로그함수",
+      "difficulty": "고난도",
+      "score": "4",
+      "type": "객관식",
+      "answer": "③ 139/9"
+    },
+    "edge_count": 38,
+    "side_count": 21,
+    "statement": "# Problem13. (Unknown Source) - Piecewise Functions and Sums\n\n## Problem\n\n두 실수 $a(a>1)$, $k(k<0)$에 대하여 함수 $f(x)$를\n$$f(x)=\\begin{cases}\n|a^{x+1}-3a| & (x\\leq 1)\\\\\nk(x-1)(x-a) & (x>1)\n\\end{cases}$$\n이라 하자. 자연수 $n$에 대하여 $x$에 대한 방정식 $f(x^n)=n$의 서로 다른 실근의 개수를 $g(n)$이라 할 때, $g(14)=5$이다.\n$k+\\sum_{n=1}^{5}g(5n)$의 값은? [4점]",
+    "dna": {
+      "nodes": [
+        {
+          "id": "top",
+          "dna": "Q1",
+          "label": "값을 구하라",
+          "category": "발문"
+        },
+        {
+          "id": "ask",
+          "dna": "E1",
+          "label": "k+시그마합",
+          "category": "수식"
+        },
+        {
+          "id": "sigma",
+          "dna": "E1",
+          "label": "Σg(5n)",
+          "category": "수식"
+        },
+        {
+          "id": "g5n",
+          "dna": "F3",
+          "label": "g(5n)",
+          "category": "함수"
+        },
+        {
+          "id": "arg5n",
+          "dna": "E6",
+          "label": "5n",
+          "category": "수식"
+        },
+        {
+          "id": "c5",
+          "dna": "T2",
+          "label": "상수 5",
+          "category": "말단"
+        },
+        {
+          "id": "vn",
+          "dna": "T3",
+          "label": "독립변수 n",
+          "category": "말단"
+        },
+        {
+          "id": "n_range",
+          "dna": "L2",
+          "label": "n=1~5",
+          "category": "제한"
+        },
+        {
+          "id": "vk",
+          "dna": "T1",
+          "label": "변수 k",
+          "category": "말단"
+        },
+        {
+          "id": "k_neg",
+          "dna": "C2",
+          "label": "k<0",
+          "category": "조건"
+        },
+        {
+          "id": "va",
+          "dna": "T1",
+          "label": "변수 a",
+          "category": "말단"
+        },
+        {
+          "id": "a_gt1",
+          "dna": "C2",
+          "label": "a>1",
+          "category": "조건"
+        },
+        {
+          "id": "fdef",
+          "dna": "F6",
+          "label": "f(x) 정의",
+          "category": "함수"
+        },
+        {
+          "id": "fpw",
+          "dna": "F1",
+          "label": "조각함수 f",
+          "category": "함수"
+        },
+        {
+          "id": "piece1",
+          "dna": "F2",
+          "label": "조각1 x≤1",
+          "category": "함수"
+        },
+        {
+          "id": "dom1",
+          "dna": "C2",
+          "label": "x≤1",
+          "category": "조건"
+        },
+        {
+          "id": "abs_expr",
+          "dna": "F5",
+          "label": "|a^(x+1)-3a|",
+          "category": "함수"
+        },
+        {
+          "id": "inner_diff",
+          "dna": "E1",
+          "label": "a^(x+1)-3a",
+          "category": "수식"
+        },
+        {
+          "id": "exp_term",
+          "dna": "E4",
+          "label": "a^(x+1)",
+          "category": "수식"
+        },
+        {
+          "id": "xp1",
+          "dna": "E1",
+          "label": "x+1",
+          "category": "수식"
+        },
+        {
+          "id": "vx",
+          "dna": "T3",
+          "label": "독립변수 x",
+          "category": "말단"
+        },
+        {
+          "id": "c1",
+          "dna": "T2",
+          "label": "상수 1",
+          "category": "말단"
+        },
+        {
+          "id": "neg3a",
+          "dna": "E2",
+          "label": "-(3a)",
+          "category": "수식"
+        },
+        {
+          "id": "three_a",
+          "dna": "E6",
+          "label": "3a",
+          "category": "수식"
+        },
+        {
+          "id": "c3",
+          "dna": "T2",
+          "label": "상수 3",
+          "category": "말단"
+        },
+        {
+          "id": "piece2",
+          "dna": "F2",
+          "label": "조각2 x>1",
+          "category": "함수"
+        },
+        {
+          "id": "dom2",
+          "dna": "C2",
+          "label": "x>1",
+          "category": "조건"
+        },
+        {
+          "id": "quad_expr",
+          "dna": "E6",
+          "label": "k(x-1)(x-a)",
+          "category": "수식"
+        },
+        {
+          "id": "k_factor",
+          "dna": "E6",
+          "label": "k·(x-1)",
+          "category": "수식"
+        },
+        {
+          "id": "xm1",
+          "dna": "E1",
+          "label": "x-1",
+          "category": "수식"
+        },
+        {
+          "id": "neg1",
+          "dna": "E2",
+          "label": "-1",
+          "category": "수식"
+        },
+        {
+          "id": "xma",
+          "dna": "E1",
+          "label": "x-a",
+          "category": "수식"
+        },
+        {
+          "id": "neg_a",
+          "dna": "E2",
+          "label": "-a",
+          "category": "수식"
+        },
+        {
+          "id": "gdef",
+          "dna": "F6",
+          "label": "g(n) 정의",
+          "category": "함수"
+        },
+        {
+          "id": "root_eq",
+          "dna": "C11",
+          "label": "f(x^n)=n 방정식",
+          "category": "조건"
+        },
+        {
+          "id": "root_eq_c1",
+          "dna": "C1",
+          "label": "f(x^n)=n 등식",
+          "category": "조건"
+        },
+        {
+          "id": "fxn",
+          "dna": "F3",
+          "label": "f(x^n)",
+          "category": "함수"
+        },
+        {
+          "id": "xpown",
+          "dna": "E7",
+          "label": "x^n",
+          "category": "수식"
+        },
+        {
+          "id": "root_count",
+          "dna": "C9",
+          "label": "실근개수=g(n)",
+          "category": "조건"
+        },
+        {
+          "id": "nat_n",
+          "dna": "L3",
+          "label": "n은 자연수",
+          "category": "제한"
+        },
+        {
+          "id": "g14_cond",
+          "dna": "C1",
+          "label": "g(14)=5",
+          "category": "조건"
+        },
+        {
+          "id": "g14",
+          "dna": "F3",
+          "label": "g(14)",
+          "category": "함수"
+        },
+        {
+          "id": "c14",
+          "dna": "T2",
+          "label": "상수 14",
+          "category": "말단"
+        }
+      ],
+      "edges": [
+        {
+          "from": "ask",
+          "to": "top"
+        },
+        {
+          "from": "vk",
+          "to": "ask"
+        },
+        {
+          "from": "sigma",
+          "to": "ask"
+        },
+        {
+          "from": "g5n",
+          "to": "sigma"
+        },
+        {
+          "from": "arg5n",
+          "to": "g5n"
+        },
+        {
+          "from": "c5",
+          "to": "arg5n"
+        },
+        {
+          "from": "vn",
+          "to": "arg5n"
+        },
+        {
+          "from": "n_range",
+          "to": "vn"
+        },
+        {
+          "from": "c1",
+          "to": "n_range"
+        },
+        {
+          "from": "c5",
+          "to": "n_range"
+        },
+        {
+          "from": "k_neg",
+          "to": "vk"
+        },
+        {
+          "from": "a_gt1",
+          "to": "va"
+        },
+        {
+          "from": "fpw",
+          "to": "fdef"
+        },
+        {
+          "from": "va",
+          "to": "fdef"
+        },
+        {
+          "from": "vk",
+          "to": "fdef"
+        },
+        {
+          "from": "fdef",
+          "to": "gdef"
+        },
+        {
+          "from": "fdef",
+          "to": "top"
+        },
+        {
+          "from": "gdef",
+          "to": "top"
+        },
+        {
+          "from": "piece1",
+          "to": "fpw"
+        },
+        {
+          "from": "piece2",
+          "to": "fpw"
+        },
+        {
+          "from": "dom1",
+          "to": "piece1"
+        },
+        {
+          "from": "abs_expr",
+          "to": "piece1"
+        },
+        {
+          "from": "vx",
+          "to": "dom1"
+        },
+        {
+          "from": "c1",
+          "to": "dom1"
+        },
+        {
+          "from": "inner_diff",
+          "to": "abs_expr"
+        },
+        {
+          "from": "exp_term",
+          "to": "inner_diff"
+        },
+        {
+          "from": "neg3a",
+          "to": "inner_diff"
+        },
+        {
+          "from": "va",
+          "to": "exp_term"
+        },
+        {
+          "from": "xp1",
+          "to": "exp_term"
+        },
+        {
+          "from": "vx",
+          "to": "xp1"
+        },
+        {
+          "from": "c1",
+          "to": "xp1"
+        },
+        {
+          "from": "three_a",
+          "to": "neg3a"
+        },
+        {
+          "from": "c3",
+          "to": "three_a"
+        },
+        {
+          "from": "va",
+          "to": "three_a"
+        },
+        {
+          "from": "dom2",
+          "to": "piece2"
+        },
+        {
+          "from": "quad_expr",
+          "to": "piece2"
+        },
+        {
+          "from": "vx",
+          "to": "dom2"
+        },
+        {
+          "from": "c1",
+          "to": "dom2"
+        },
+        {
+          "from": "k_factor",
+          "to": "quad_expr"
+        },
+        {
+          "from": "xma",
+          "to": "quad_expr"
+        },
+        {
+          "from": "vk",
+          "to": "k_factor"
+        },
+        {
+          "from": "xm1",
+          "to": "k_factor"
+        },
+        {
+          "from": "vx",
+          "to": "xm1"
+        },
+        {
+          "from": "neg1",
+          "to": "xm1"
+        },
+        {
+          "from": "c1",
+          "to": "neg1"
+        },
+        {
+          "from": "vx",
+          "to": "xma"
+        },
+        {
+          "from": "neg_a",
+          "to": "xma"
+        },
+        {
+          "from": "va",
+          "to": "neg_a"
+        },
+        {
+          "from": "root_eq",
+          "to": "gdef"
+        },
+        {
+          "from": "root_eq_c1",
+          "to": "root_eq"
+        },
+        {
+          "from": "fxn",
+          "to": "root_eq_c1"
+        },
+        {
+          "from": "vn",
+          "to": "root_eq_c1"
+        },
+        {
+          "from": "xpown",
+          "to": "fxn"
+        },
+        {
+          "from": "vx",
+          "to": "xpown"
+        },
+        {
+          "from": "vn",
+          "to": "xpown"
+        },
+        {
+          "from": "root_count",
+          "to": "gdef"
+        },
+        {
+          "from": "nat_n",
+          "to": "vn"
+        },
+        {
+          "from": "g14_cond",
+          "to": "top"
+        },
+        {
+          "from": "g14",
+          "to": "g14_cond"
+        },
+        {
+          "from": "c14",
+          "to": "g14"
+        },
+        {
+          "from": "c5",
+          "to": "g14_cond"
+        }
+      ],
+      "new_dna": []
+    },
+    "thinking_profile": {
+      "total_think_tokens": 3686,
+      "step_count": 12,
+      "match_count": 0,
+      "avg_match_score": 0,
+      "highlight_steps": [
+        1,
+        2
+      ],
+      "hardest_step": {
+        "step_num": 1,
+        "think_tokens": 900,
+        "elapsed_ms": 51618,
+        "match": false,
+        "match_score": 0,
+        "difficulty_score": 0.3,
+        "correct_step": "STEP 1. $x \\leq 1$ 구간에서 $a^{x+1}-3a=0$이 되는 점은 $x=\\log_a 3$이므로, $x \\leq \\log_a 3$이면 $f(x)=3a-a^{x+1}$이고 $\\log_a 3 < x \\leq 1$이면 $f(x)=a^{x+1}-3a$이다. $x>1$ 구간에서 $f(x)=k(x-1)(x-a)$는 $k<0$이므로 위로 볼록한 포물선으로 꼭짓점 $x=\\frac{a+1}{2}$에서 최댓값을 가진다.",
+        "claude_step": "문제를 체계적으로 분석하기 위해 함수 $f(x)$의 구조와 조건을 파악해보겠습니다.\n\nSTEP 1. 주어진 조건 $g(14) = 5$를 이용하여 함수 $f(x)$의 매개변수 $a$와 $k$의 값을 구해야 한다."
+      },
+      "hardest_tok": {
+        "step_num": 1,
+        "think_tokens": 900,
+        "difficulty_score": 0.3,
+        "correct_step": "STEP 1. $x \\leq 1$ 구간에서 $a^{x+1}-3a=0$이 되는 점은 $x=\\log_a 3$이므로, $x \\leq \\log_a 3$이면 $f(x)=3a-a^{x+1}$이고 $\\log_a 3 < x \\leq 1$이면 $f(x)=a^{x+1}-3a$이다. $x>1$ 구간에서 $f(x)=k(x-1)(x-a)$는 $k<0$이므로 위로 볼록한 포물선으로 꼭짓점 $x=\\frac{a+1}{2}$에서 최댓값을 가진다."
+      },
+      "steps": [
+        {
+          "step_num": 1,
+          "think_tokens": 900,
+          "elapsed_ms": 51618,
+          "match": false,
+          "match_score": 0,
+          "match_reason": "",
+          "difficulty_score": 0.3,
+          "correct_step": "STEP 1. $x \\leq 1$ 구간에서 $a^{x+1}-3a=0$이 되는 점은 $x=\\log_a 3$이므로, $x \\leq \\log_a 3$이면 $f(x)=3a-a^{x+1}$이고 $\\log_a 3 < x \\leq 1$이면 $f(x)=a^{x+1}-3a$이다. $x>1$ 구간에서 $f(x)=k(x-1)(x-a)$는 $k<0$이므로 위로 볼록한 포물선으로 꼭짓점 $x=\\frac{a+1}{2}$에서 최댓값을 가진다.",
+          "claude_step": "문제를 체계적으로 분석하기 위해 함수 $f(x)$의 구조와 조건을 파악해보겠습니다.\n\nSTEP 1. 주어진 조건 $g(14) = 5$를 이용하여 함수 $f(x)$의 매개변수 $a$와 $k$의 값을 구해야 한다."
+        },
+        {
+          "step_num": 2,
+          "think_tokens": 220,
+          "elapsed_ms": 14172,
+          "match": false,
+          "match_score": 0,
+          "match_reason": "",
+          "difficulty_score": 0.3,
+          "correct_step": "STEP 2. $n$이 짝수일 때 $x^n=t$를 만족하는 실수 $x$의 개수는 $t<0$이면 0개, $t=0$이면 1개, $t>0$이면 2개이다. 따라서 $g(n)=[f(0)=n\\text{이면 }1]+2\\times(f(t)=n\\text{을 만족하는 양수 }t\\text{의 개수})$이다.",
+          "claude_step": "STEP 2. 함수의 연속성을 위해 $x=1$에서 좌극한과 우극한을 비교하면, $\\lim_{x \\to 1^-} f(x) = |a^2-3a|$이고 $\\lim_{x \\to 1^+} f(x) = 0$이므로 연속성을 위해 $a^2-3a=0$, 즉 $a=3$이어야 한다."
+        },
+        {
+          "step_num": 3,
+          "think_tokens": 109,
+          "elapsed_ms": 6948,
+          "match": false,
+          "match_score": 0,
+          "match_reason": "",
+          "difficulty_score": 0.3,
+          "correct_step": "STEP 3. $n=14$는 짝수이고 $g(14)=5$이다. 5는 홀수이므로 $f(0)=14$(기여 1)이고 $f(t)=14$를 만족하는 양수 $t$가 정확히 2개(기여 4)인 경우만 가능하다. $f(0)=|a-3a|=2a=14$이므로 $a=7$이다.",
+          "claude_step": "STEP 3. $n$이 홀수일 때 $x^n=t$를 만족하는 실수 $x$의 개수는 모든 실수 $t$에 대해 정확히 1개이므로, $g(n)=f(t)=n$을 만족하는 실수 $t$의 개수와 같다."
+        },
+        {
+          "step_num": 4,
+          "think_tokens": 327,
+          "elapsed_ms": 18544,
+          "match": false,
+          "match_score": 0,
+          "match_reason": "",
+          "difficulty_score": 0.3,
+          "correct_step": "STEP 4. $a=7$일 때 $x \\leq \\log_7 3$이면 $f(x)=21-7^{x+1}$이고, $\\log_7 3 < x \\leq 1$이면 $f(x)=7^{x+1}-21$이다. $x>1$ 구간에서 $f(x)=k(x-1)(x-7)$이고 꼭짓점은 $x=4$에서 최댓값 $-9k$이다.",
+          "claude_step": "STEP 4. $a=7$을 대입하면 $\\log_7 3 < 1$이므로, $0 < t \\leq 1$ 구간에서 $f(t)=14$의 해는 $7^{t+1}=35$에서 $t=\\log_7 5$ 하나뿐이다. 따라서 $t>1$ 구간에서 $k(t-1)(t-7)=14$가 정확히 하나의 해를 가져야 하므로, 최댓값 조건에서 $-9k=14$, 즉 $k=-\\frac{14}{9}$이다."
+        },
+        {
+          "step_num": 5,
+          "think_tokens": 249,
+          "elapsed_ms": 14674,
+          "match": false,
+          "match_score": 0,
+          "match_reason": "",
+          "difficulty_score": 0.3,
+          "correct_step": "STEP 5. $f(t)=14$를 만족하는 양수 $t$가 정확히 2개이어야 한다. $0<t\\leq 1$ 구간에서 $\\log_7 3 < t \\leq 1$ 구간의 단조증가 부분에서 해 1개가 존재한다. $t>1$ 구간에서 위로 볼록한 포물선이 $y=14$와 정확히 1개의 교점을 가지려면 꼭짓점값이 정확히 14이어야 하므로 $-9k=14$, 즉 $k=-\\dfrac{14}{9}$이다.",
+          "claude_step": "STEP 5. $f(t)=14$를 만족하는 양수 $t$가 정확히 2개 존재해야 하므로, $\\log_7 3 < t \\leq 1$ 구간에서 $7^{t+1}-21=14$의 해 $t=\\log_7 5$가 1개이고, $t>1$ 구간에서 $k(t-1)(t-7)=14$의 해가 1개 존재해야 한다. $t>1$ 구간에서 정확히 1개의 해를 가지려면 포물선의 최댓값이 14여야 하므로 $-9k=14$에서 $k=-\\frac{14}{9}$이다."
+        },
+        {
+          "step_num": 6,
+          "think_tokens": 434,
+          "elapsed_ms": 23144,
+          "match": false,
+          "match_score": 0,
+          "match_reason": "",
+          "difficulty_score": 0.3,
+          "correct_step": "STEP 6. $n$이 홀수일 때 임의의 실수 $t$에 대해 $x^n=t$를 만족하는 실수 $x$는 정확히 1개이므로, $g(n)$은 $f(t)=n$을 만족하는 실수 $t$의 개수와 같다.",
+          "claude_step": "다음 단계를 추론하면:\n\nSTEP 6. $a=7$, $k=-\\dfrac{14}{9}$를 사용하여 함수 $f(x)$의 개형을 분석하면, $f(x)=n$의 해의 개수는 $0<n<14$일 때 4개, $n=14$일 때 3개, $14<n\\leq 21$일 때 2개, $21<n\\leq 28$일 때 1개, $n>28$일 때 0개이다."
+        },
+        {
+          "step_num": 7,
+          "think_tokens": 219,
+          "elapsed_ms": 13611,
+          "match": false,
+          "match_score": 0,
+          "match_reason": "",
+          "difficulty_score": 0.3,
+          "correct_step": "STEP 7. $g(5)$: $t \\leq \\log_7 3$ 구간에서 $f$는 14에서 0으로 단조감소하므로 해 1개, $\\log_7 3 < t \\leq 1$ 구간에서 $f$는 0에서 28로 단조증가하므로 해 1개, $1<t<7$ 구간에서 최댓값 14이고 $0<5<14$이므로 해 2개. 따라서 $g(5)=1+1+2=4$이다.",
+          "claude_step": "STEP 7. 홀수 $5, 15, 25$에 대해 각각 $g(5) = f(t) = 5$, $g(15) = f(t) = 15$, $g(25) = f(t) = 25$를 만족하는 실수 $t$의 개수를 구해야 한다. $f(x)$의 치역을 분석하면 $x \\leq \\log_7 3$에서 $f(x) \\geq 21-7^2 = 21-49 = -28$, $\\log_7 3 < x \\leq 1$에서 $0 \\leq f(x) \\leq 21-21 = 0$에서 실제로는 $0 \\leq f(x) \\leq 7^2-21 = 28$, $x > 1$에서 $f(x) \\leq 14$이다."
+        },
+        {
+          "step_num": 8,
+          "think_tokens": 477,
+          "elapsed_ms": 20675,
+          "match": false,
+          "match_score": 0,
+          "match_reason": "",
+          "difficulty_score": 0.3,
+          "correct_step": "STEP 8. $g(10)$: $n=10$은 짝수이고 $f(0)=14\\neq 10$이므로 $t=0$의 기여 없음. 양수 $t$에서: $0<t\\leq\\log_7 3$에서 해 1개, $\\log_7 3<t\\leq 1$에서 해 1개, $1<t<7$에서 최댓값 14이고 $0<10<14$이므로 해 2개. 따라서 $g(10)=0+2\\times(1+1+2)=8$이다.",
+          "claude_step": "STEP 8. $g(10)$: $n=10$은 짝수이고 $f(0)=14 \\neq 10$이므로 기여 없음. $f(t)=10$을 만족하는 양수 $t$는 각 구간에서 $t \\leq \\log_7 3$에서 해 1개, $\\log_7 3 < t \\leq 1$에서 해 1개, $1 < t < 7$에서 해 2개이므로 총 4개. 따라서 $g(10)=2 \\times 4=8$이다."
+        },
+        {
+          "step_num": 9,
+          "think_tokens": 236,
+          "elapsed_ms": 13494,
+          "match": false,
+          "match_score": 0,
+          "match_reason": "",
+          "difficulty_score": 0.3,
+          "correct_step": "STEP 9. $g(15)$: $t\\leq\\log_7 3$ 구간에서 해 1개, $\\log_7 3<t\\leq 1$ 구간에서 해 1개, $t>1$ 구간에서 최댓값 14이고 $15>14$이므로 해 없음. 따라서 $g(15)=1+1+0=2$이다.",
+          "claude_step": "STEP 9. $g(15)$: $n=15$는 홀수이므로 $f(t)=15$를 만족하는 실수 $t$의 개수와 같다. $t \\leq \\log_7 3$ 구간에서 해 1개, $\\log_7 3 < t \\leq 1$ 구간에서 해 1개, $1<t<7$ 구간에서 최댓값이 14인데 $15>14$이므로 해가 없다. 따라서 $g(15)=1+1+0=2$이다."
+        },
+        {
+          "step_num": 10,
+          "think_tokens": 219,
+          "elapsed_ms": 12828,
+          "match": false,
+          "match_score": 0,
+          "match_reason": "",
+          "difficulty_score": 0.3,
+          "correct_step": "STEP 10. $g(20)$: $n=20$은 짝수이고 $f(0)=14\\neq 20$이므로 기여 없음. $0<t\\leq\\log_7 3$에서 $f(0)=14<20$이므로 해 없음, $\\log_7 3<t\\leq 1$에서 해 1개, $t>1$에서 최댓값 14이고 $20>14$이므로 해 없음. 따라서 $g(20)=0+2\\times 1=2$이다.",
+          "claude_step": "STEP 10. $g(20)$: $n=20$은 짝수이고 $f(0)=14\\neq 20$이므로 $t=0$의 기여 없음. 양수 $t$에서: $t\\leq\\log_7 3$에서 $f$의 최댓값이 14이고 $20>14$이므로 해 없음, $\\log_7 3<t\\leq 1$에서 $f$는 0에서 28로 단조증가하므로 해 1개, $t>1$에서 최댓값 14이고 $20>14$이므로 해 없음. 따라서 $g(20)=0+2\\times 1=2$이다."
+        },
+        {
+          "step_num": 11,
+          "think_tokens": 197,
+          "elapsed_ms": 11094,
+          "match": false,
+          "match_score": 0,
+          "match_reason": "",
+          "difficulty_score": 0.3,
+          "correct_step": "STEP 11. $g(25)$: $t\\leq\\log_7 3$ 구간에서 최댓값 21이고 $25>21$이므로 해 없음, $\\log_7 3<t\\leq 1$ 구간에서 해 1개, $t>1$에서 최댓값 14이고 $25>14$이므로 해 없음. 따라서 $g(25)=0+1+0=1$이다.",
+          "claude_step": "STEP 11. $g(25)$: $n=25$는 홀수이므로 $g(25)$는 $f(t)=25$를 만족하는 실수 $t$의 개수와 같다. $t\\leq\\log_7 3$에서 최댓값이 14이고 $25>14$이므로 해 없음, $\\log_7 3<t\\leq 1$에서 $f$는 0에서 28로 단조증가하고 $0<25<28$이므로 해 1개, $t>1$에서 최댓값이 14이고 $25>14$이므로 해 없음. 따라서 $g(25)=0+1+0=1$이다."
+        },
+        {
+          "step_num": 12,
+          "think_tokens": 99,
+          "elapsed_ms": 4758,
+          "match": false,
+          "match_score": 0,
+          "match_reason": "",
+          "difficulty_score": 0.3,
+          "correct_step": "STEP 12. $\\sum_{n=1}^{5}g(5n)=4+8+2+2+1=17$이고, $k+\\sum_{n=1}^{5}g(5n)=-\\dfrac{14}{9}+17=-\\dfrac{14}{9}+\\dfrac{153}{9}=\\dfrac{139}{9}$이다.",
+          "claude_step": "STEP 12. $k + \\sum_{n=1}^{5}g(5n) = -\\frac{14}{9} + (4 + 8 + 2 + 2 + 1) = -\\frac{14}{9} + 17 = -\\frac{14}{9} + \\frac{153}{9} = \\frac{139}{9}$"
+        }
+      ],
+      "_debug": "OK"
+    },
+    "folders": [],
+    "history": [],
+    "created_at": "2026-03-22T07:56:24.613Z"
   }
 ]
