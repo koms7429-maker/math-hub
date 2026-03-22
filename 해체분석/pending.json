@@ -118,5 +118,35 @@
     "previous_dna_nodes": [],
     "previous_dna_edges": [],
     "created_at": "2026-03-22T23:13:01.471Z"
+  },
+  {
+    "problem_id": "Problem11",
+    "content": "# Problem11. (Unknown Source) - Logarithm and Geometry\n\n## Problem\n\n두 상수 $a(a>1)$, $b(0<b<1)$에 대하여 함수\n\n$$f(x)=\\left|\\log_a(x+b)\\right|$$\n\n의 그래프가 $x$축, $y$축과 만나는 점을 각각 P, Q라 하자. 점 Q를 지나고 $x$축과 평행한 직선이 곡선 $y=f(x)$와 만나는 점 중 Q가 아닌 점을 R이라 할 때, 삼각형 PQR의 외접원이 점 (3, 0)을 지나고 $y$축과 점 Q에서만 만난다. $a \\times b$의 값은?\n\n## Choices\n① $2^{-\\frac{2}{3}}$  ② $2^{-\\frac{1}{3}}$  ③ $1$  ④ $2^{\\frac{1}{3}}$  ⑤ $2^{\\frac{2}{3}}$\n\n**Answer**: ① $2^{-\\frac{2}{3}}$\n**Difficulty**: unknown\n**Score**: 14점\n**Type**: multiple choice\n\n---\n\n## Solution\n\n문제의 조건에 의해\n\n$$f(x)=0 \\Rightarrow \\log_a(x+b)=0 \\Rightarrow x=1-b \\Rightarrow P(1-b, 0)$$\n\n이고,\n\n$$f(x)=f(0) \\Rightarrow \\left|\\log_a(x+b)\\right|=\\left|\\log_a b\\right|$$\n$$\\Rightarrow x=0, \\quad x=\\frac{1}{b}-b$$\n$$\\Rightarrow Q(0, -\\log_a b), \\quad R\\left(\\frac{1}{b}-b, -\\log_a b\\right)$$\n\n이다. 이때, 삼각형 PQR의 외접원을 $C$라 하면\n\n원 $C$가 $y$축과 $\\left\\{\\begin{array}{l}\\text{점 Q에서 접함}\\end{array}\\right\\} \\Rightarrow$ 선분 QR은 원 $C$의 지름 $\\cdots$ ①\n\n임을 알 수 있고,\n\n$$0<b<1 \\Rightarrow 0<(\\text{점 P의 } x\\text{좌표})<1$$\n$$\\Rightarrow \\text{원 } C\\text{는 } x\\text{축과 두 점 P, (3, 0)에서 만난다}$$\n\n를 알 수 있다.\n\n점 (3, 0)을 S라 하고 점 S에서 선분 QR에 내린 수선의 발을 H라 하자.\n\n위 그림에서 원의 대칭성에 의해\n\n$$(\\text{선분 PS의 중점의 } x\\text{좌표})=(\\text{선분 QR의 중점의 } x\\text{좌표})$$\n$$\\Rightarrow (1-b)+3=\\frac{1}{b}-b$$\n$$\\Rightarrow b=\\frac{1}{4}$$\n\n이므로\n\n$$\\begin{cases}\nQ(0, 2\\log_a 2), & R\\left(\\frac{15}{4}, 2\\log_a 2\\right) \\\\\n\\overline{SH}^2=\\overline{QH}\\times\\overline{RH} \\quad (\\because \\text{ ①} \\Rightarrow \\angle QSR=\\frac{\\pi}{2})\n\\end{cases}$$\n\n$$\\Rightarrow (2\\log_a 2)^2=3\\times\\frac{3}{4}$$\n\n$$\\Rightarrow \\log_a 2=\\frac{3}{4} \\quad (\\because a>1)$$\n\n$$\\Rightarrow a=2^{\\frac{4}{3}}$$\n\n을 얻는다.\n\n$$\\therefore a\\times b=2^{\\frac{4}{3}}\\times\\frac{1}{4}=2^{-\\frac{2}{3}}$$\n\n---",
+    "content_source": "FileLoop",
+    "content_length": 1747,
+    "skel_status": "neuron_missing",
+    "dna_status": "dna_missing",
+    "needed_neurons": [
+      "???"
+    ],
+    "needed_dna": [],
+    "previous_analysis": "",
+    "previous_matching": "",
+    "previous_matched": [],
+    "previous_skeleton": [],
+    "previous_new_neurons": [
+      {
+        "id": "???",
+        "type": "???",
+        "statement": "(자동 감지) 뉴런 부족 판정이나 구체적 뉴런 제안 누락",
+        "reason": "skeleton이 비어있고 new_neurons도 비어있음 — Claude가 두 필드 모두 빈 채로 반환",
+        "blocked_edge": "N/A"
+      }
+    ],
+    "previous_partial_skeleton": [],
+    "previous_blockage_point": "",
+    "previous_dna_nodes": [],
+    "previous_dna_edges": [],
+    "created_at": "2026-03-22T23:19:28.203Z"
   }
 ]
