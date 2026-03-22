@@ -1677,422 +1677,130 @@
   {
     "problem_id": "Problem18",
     "content": "# Problem18. (Unknown Source) - Exponents and Logarithms\n\n## Problem\n\n곡선 $y=a^{x-1}$ $(a>1)$이 직선 $y=4$와 만나는 점을 A,\n곡선 $y=\\log_a x$가 직선 $x=4$와 만나는 점을 B,\n점 A에서 직선 $y=x$에 대한 수선의 발을 C라 하자.\n삼각형 ABC의 넓이가 6일 때, $a$의 값은? [4점]\n\n## Choices\n① $2^{\\frac{1}{6}}$\n② $2^{\\frac{1}{3}}$\n③ $2^{\\frac{1}{2}}$\n④ $2^2$\n⑤ $2^{\\frac{5}{2}}$\n\n**Answer**: ② $2^{\\frac{1}{3}}$\n**Difficulty**: unknown\n**Score**: 4점\n**Type**: multiple choice\n\n---\n\n## Solution\n\n문제의 조건에 의해\n\n$\\begin{cases} y=a^{x-1}\\text{와 } y=4\\text{의 교점이 A} \\Rightarrow \\text{A}(4+2\\log_a 2, 4) \\\\ y=\\log_a x\\text{와 } x=4\\text{의 교점이 B} \\Rightarrow \\text{B}(4, 2\\log_a 2) \\end{cases}$\n\n이므로\n\n$\\overrightarrow{AC} \\perp$ (직선 $y=x$) $\\Rightarrow$ (직선 AC의 기울기) $= -1$\n\n$\\Rightarrow$ 직선 AC의 방정식 : $x+y=8+2\\log_a 2$\n\n$\\Rightarrow$ (B에서 직선 AC 까지의 거리) $= \\frac{4}{\\sqrt{2}}$\n\n임을 알 수 있다. 또한,\n\n$\\overline{AC} = \\frac{2\\log_a 2}{\\sqrt{2}}$ ($\\because$ 점 A에서 $y=x$까지의 거리)\n\n이므로\n\n(삼각형 ABC의 넓이) $= \\frac{1}{2} \\times \\frac{2\\log_a 2}{\\sqrt{2}} \\times \\frac{4}{\\sqrt{2}} = 2\\log_a 2$\n\n이고, 문제의 조건에서 이 값이 6이므로\n\n$\\log_a 2 = 3 \\Rightarrow a = 2^{\\frac{1}{3}}$\n\n을 얻는다.\n\n[다른 풀이]\n\n점 A를 직선 $y=x$에 대하여 대칭이동한 점을 D라 하면\n\n(삼각형 ABC의 넓이) $= 6 \\Rightarrow$ (삼각형 ABD의 넓이) $= 12$\n\n이므로 점 $(4, 4)$를 H라 하면\n\n$\\frac{1}{2} \\times \\overline{BD} \\times \\overline{AH} = 12$\n\n임을 이용하여 진행할 수 있다.\n\n---",
-    "content_source": "FileLoop",
+    "content_source": "CheckPending",
     "content_length": 1292,
     "skel_status": "neuron_missing",
-    "dna_status": "ok",
+    "dna_status": "dna_missing",
     "needed_neurons": [
-      "연산32"
+      "???"
     ],
-    "needed_dna": [],
-    "previous_analysis": "문제 지문의 y=a^{x-1}은 y=a^{x-4}의 오기로 판단된다. y=a^{x-4}로 풀면 원본 해설의 모든 수치(A좌표, 직선 AC 방정식, 거리, 넓이)가 완벽하게 정합하고 정답 2^{1/3}이 나온다. 이하 y=a^{x-4}를 기준으로 skeleton을 작성한다.",
-    "previous_matching": "1. a^{x-4}=4에서 x-4=log_a 4 → 연산2(로그와 지수 역함수)\n2. log_a 4 = 2log_a 2 → 연산17(로그 거듭제곱법칙)\n3. A(4+2log_a 2, 4) 결정 → 연산2 적용 결과\n4. y=log_a x와 x=4의 교점: y=log_a 4=2log_a 2 → 연산17\n5. B(4, 2log_a 2) 결정\n6. 직선 y=x의 기울기 1이므로 수선의 기울기 -1 → 사실15(수직 조건)\n7. 점 A를 지나고 기울기 -1인 직선 방정식 x+y=8+2log_a 2 → 연산30(두 점으로 직선 방정식)\n8. 점 A에서 직선 y=x까지의 거리 AC = 2log_a 2/√2 → 연산11(두 점 거리) 또는 점-직선 거리 공식\n9. a>1이므로 log_a 2>0 → 사실5(지수함수 단조성)\n10. 점 B에서 직선 AC까지의 거리 d=4/√2 → 점-직선 거리 공식\n11. 삼각형 ABC 넓이 = 1/2 × AC × d = 2log_a 2 → 연산13(삼각형 넓이)\n12. 2log_a 2=6 → log_a 2=3 → a=2^{1/3} → 연산2(로그와 지수 역함수), 전략25(대입 확인)\n\n점-직선 거리 공식: 점 (x0,y0)에서 직선 ax+by+c=0까지의 거리 = |ax0+by0+c|/√(a²+b²). 이는 연산11(두 점 거리)과 피타고라스로 유도 가능하며, 연산11로 커버 가능하다고 판단.",
-    "previous_matched": [
-      "연산2",
-      "연산17",
-      "사실15",
-      "연산30",
-      "사실5",
-      "연산13",
-      "전략25"
+    "needed_dna": [
+      {
+        "id": "O3",
+        "name": "점과 직선 사이의 거리",
+        "signature": "(점(x0,y0), 직선 ax+by+c=0) → 값",
+        "reason": "점 (x0,y0)에서 직선 ax+by+c=0까지의 거리 |ax0+by0+c|/sqrt(a²+b²) 는 G18(두 점 사이 거리)나 기존 수식 DNA로 표현 불가한 독립 공식. Problem18에서 2회 사용됨."
+      }
     ],
+    "previous_analysis": "",
+    "previous_matching": "",
+    "previous_matched": [],
     "previous_skeleton": [],
     "previous_new_neurons": [
       {
-        "id": "연산32",
-        "statement": "점 $(x_0, y_0)$에서 직선 $ax+by+c=0$까지의 거리 $= \\dfrac{|ax_0+by_0+c|}{\\sqrt{a^2+b^2}}$",
-        "type": "operation",
-        "reason": "note8과 note9에서 점에서 직선까지의 거리를 계산하는데, 기존 뉴런 목록에 점-직선 거리 공식이 없다. 연산11은 두 점 사이의 거리이고 연산19는 두 평행선 사이의 거리이므로 모두 해당하지 않는다."
+        "id": "???",
+        "type": "???",
+        "statement": "JSON 파싱 실패 — Claude 응답을 파싱할 수 없음",
+        "reason": "JSON 파싱 실패",
+        "blocked_edge": "N/A"
       }
     ],
     "previous_partial_skeleton": [],
-    "previous_blockage_point": "",
+    "previous_blockage_point": "JSON 파싱 실패. Raw 응답 앞 200자: I need to reconstruct this problem based on the previous analysis notes, since the problem text appears corrupted. Let me work from the previous analysis.\n\nFrom the previous analysis, I can reconstruc",
     "previous_dna_nodes": [
       {
         "id": "top",
         "dna": "Q1",
-        "label": "a의 값",
+        "label": "값을 구하라",
         "category": "발문"
       },
       {
-        "id": "va",
-        "dna": "T1",
-        "label": "변수 a",
-        "category": "말단"
+        "id": "dist1",
+        "dna": "O3",
+        "label": "점→직선 거리1",
+        "category": "연산"
       },
       {
-        "id": "a_gt1",
-        "dna": "C2",
-        "label": "a > 1",
-        "category": "조건"
+        "id": "dist2",
+        "dna": "O3",
+        "label": "점→직선 거리2",
+        "category": "연산"
       },
       {
-        "id": "conds",
-        "dna": "S1",
-        "label": "여러 조건",
-        "category": "구조"
-      },
-      {
-        "id": "crv1",
-        "dna": "G2",
-        "label": "곡선 y=a^{x-1}",
+        "id": "pt1",
+        "dna": "G1",
+        "label": "점 P1",
         "category": "기하"
       },
       {
-        "id": "crv1_eq",
+        "id": "pt2",
+        "dna": "G1",
+        "label": "점 P2",
+        "category": "기하"
+      },
+      {
+        "id": "line1",
+        "dna": "G12",
+        "label": "직선 l1",
+        "category": "기하"
+      },
+      {
+        "id": "line1_eq",
         "dna": "C11",
-        "label": "곡선1 방정식",
+        "label": "직선 방정식",
         "category": "조건"
       },
       {
-        "id": "crv1_c1",
+        "id": "line1_c1",
         "dna": "C1",
-        "label": "y=a^{x-1}",
+        "label": "직선 등식",
         "category": "조건"
       },
       {
-        "id": "crv1_exp",
-        "dna": "E7",
-        "label": "a^{x-1}",
-        "category": "수식"
-      },
-      {
-        "id": "crv1_xm1",
+        "id": "ask",
         "dna": "E1",
-        "label": "합(x,-1)",
+        "label": "구하는 값",
         "category": "수식"
-      },
-      {
-        "id": "vx",
-        "dna": "T3",
-        "label": "독립변수 x",
-        "category": "말단"
-      },
-      {
-        "id": "cm1",
-        "dna": "T2",
-        "label": "상수 -1",
-        "category": "말단"
-      },
-      {
-        "id": "crv2",
-        "dna": "G2",
-        "label": "곡선 y=log_a x",
-        "category": "기하"
-      },
-      {
-        "id": "crv2_eq",
-        "dna": "C11",
-        "label": "곡선2 방정식",
-        "category": "조건"
-      },
-      {
-        "id": "crv2_c1",
-        "dna": "C1",
-        "label": "y=log_a x",
-        "category": "조건"
-      },
-      {
-        "id": "crv2_log",
-        "dna": "E3",
-        "label": "log_a x",
-        "category": "수식"
-      },
-      {
-        "id": "line_y4",
-        "dna": "G12",
-        "label": "직선 y=4",
-        "category": "기하"
-      },
-      {
-        "id": "line_y4_eq",
-        "dna": "C11",
-        "label": "y=4 방정식",
-        "category": "조건"
-      },
-      {
-        "id": "line_y4_c1",
-        "dna": "C1",
-        "label": "y=4 등식",
-        "category": "조건"
-      },
-      {
-        "id": "c4",
-        "dna": "T2",
-        "label": "상수 4",
-        "category": "말단"
-      },
-      {
-        "id": "line_x4",
-        "dna": "G12",
-        "label": "직선 x=4",
-        "category": "기하"
-      },
-      {
-        "id": "line_x4_eq",
-        "dna": "C11",
-        "label": "x=4 방정식",
-        "category": "조건"
-      },
-      {
-        "id": "line_x4_c1",
-        "dna": "C1",
-        "label": "x=4 등식",
-        "category": "조건"
-      },
-      {
-        "id": "line_yx",
-        "dna": "G12",
-        "label": "직선 y=x",
-        "category": "기하"
-      },
-      {
-        "id": "line_yx_eq",
-        "dna": "C11",
-        "label": "y=x 방정식",
-        "category": "조건"
-      },
-      {
-        "id": "line_yx_c1",
-        "dna": "C1",
-        "label": "y=x 등식",
-        "category": "조건"
-      },
-      {
-        "id": "pt_a",
-        "dna": "G1",
-        "label": "점 A",
-        "category": "기하"
-      },
-      {
-        "id": "pt_b",
-        "dna": "G1",
-        "label": "점 B",
-        "category": "기하"
-      },
-      {
-        "id": "pt_c",
-        "dna": "G1",
-        "label": "점 C",
-        "category": "기하"
-      },
-      {
-        "id": "meet_a",
-        "dna": "C3",
-        "label": "crv1∩y=4",
-        "category": "조건"
-      },
-      {
-        "id": "meet_b",
-        "dna": "C3",
-        "label": "crv2∩x=4",
-        "category": "조건"
-      },
-      {
-        "id": "foot_c",
-        "dna": "G3",
-        "label": "C: y=x 위 수선발",
-        "category": "기하"
-      },
-      {
-        "id": "tri_abc",
-        "dna": "G25",
-        "label": "삼각형 ABC",
-        "category": "기하"
-      },
-      {
-        "id": "area_abc",
-        "dna": "G11",
-        "label": "넓이(△ABC)",
-        "category": "기하"
-      },
-      {
-        "id": "area_eq",
-        "dna": "C1",
-        "label": "넓이=6",
-        "category": "조건"
-      },
-      {
-        "id": "c6",
-        "dna": "T2",
-        "label": "상수 6",
-        "category": "말단"
       }
     ],
     "previous_dna_edges": [
       {
-        "from": "va",
+        "from": "dist1",
+        "to": "ask"
+      },
+      {
+        "from": "dist2",
+        "to": "ask"
+      },
+      {
+        "from": "ask",
         "to": "top"
       },
       {
-        "from": "conds",
-        "to": "top"
+        "from": "pt1",
+        "to": "dist1"
       },
       {
-        "from": "va",
-        "to": "a_gt1"
+        "from": "line1",
+        "to": "dist1"
       },
       {
-        "from": "crv1_eq",
-        "to": "crv1"
+        "from": "pt2",
+        "to": "dist2"
       },
       {
-        "from": "crv1_c1",
-        "to": "crv1_eq"
+        "from": "line1",
+        "to": "dist2"
       },
       {
-        "from": "crv1_exp",
-        "to": "crv1_c1"
+        "from": "line1_eq",
+        "to": "line1"
       },
       {
-        "from": "va",
-        "to": "crv1_exp"
-      },
-      {
-        "from": "crv1_xm1",
-        "to": "crv1_exp"
-      },
-      {
-        "from": "vx",
-        "to": "crv1_xm1"
-      },
-      {
-        "from": "cm1",
-        "to": "crv1_xm1"
-      },
-      {
-        "from": "crv2_eq",
-        "to": "crv2"
-      },
-      {
-        "from": "crv2_c1",
-        "to": "crv2_eq"
-      },
-      {
-        "from": "crv2_log",
-        "to": "crv2_c1"
-      },
-      {
-        "from": "va",
-        "to": "crv2_log"
-      },
-      {
-        "from": "vx",
-        "to": "crv2_log"
-      },
-      {
-        "from": "line_y4_eq",
-        "to": "line_y4"
-      },
-      {
-        "from": "line_y4_c1",
-        "to": "line_y4_eq"
-      },
-      {
-        "from": "c4",
-        "to": "line_y4_c1"
-      },
-      {
-        "from": "line_x4_eq",
-        "to": "line_x4"
-      },
-      {
-        "from": "line_x4_c1",
-        "to": "line_x4_eq"
-      },
-      {
-        "from": "c4",
-        "to": "line_x4_c1"
-      },
-      {
-        "from": "line_yx_eq",
-        "to": "line_yx"
-      },
-      {
-        "from": "line_yx_c1",
-        "to": "line_yx_eq"
-      },
-      {
-        "from": "vx",
-        "to": "line_yx_c1"
-      },
-      {
-        "from": "crv1",
-        "to": "meet_a"
-      },
-      {
-        "from": "line_y4",
-        "to": "meet_a"
-      },
-      {
-        "from": "pt_a",
-        "to": "meet_a"
-      },
-      {
-        "from": "meet_a",
-        "to": "conds"
-      },
-      {
-        "from": "crv2",
-        "to": "meet_b"
-      },
-      {
-        "from": "line_x4",
-        "to": "meet_b"
-      },
-      {
-        "from": "pt_b",
-        "to": "meet_b"
-      },
-      {
-        "from": "meet_b",
-        "to": "conds"
-      },
-      {
-        "from": "pt_a",
-        "to": "foot_c"
-      },
-      {
-        "from": "line_yx",
-        "to": "foot_c"
-      },
-      {
-        "from": "pt_c",
-        "to": "foot_c"
-      },
-      {
-        "from": "foot_c",
-        "to": "conds"
-      },
-      {
-        "from": "pt_a",
-        "to": "tri_abc"
-      },
-      {
-        "from": "pt_b",
-        "to": "tri_abc"
-      },
-      {
-        "from": "pt_c",
-        "to": "tri_abc"
-      },
-      {
-        "from": "tri_abc",
-        "to": "area_abc"
-      },
-      {
-        "from": "area_abc",
-        "to": "area_eq"
-      },
-      {
-        "from": "c6",
-        "to": "area_eq"
-      },
-      {
-        "from": "area_eq",
-        "to": "conds"
+        "from": "line1_c1",
+        "to": "line1_eq"
       }
     ],
-    "created_at": "2026-03-22T17:23:22.793Z"
+    "created_at": "2026-03-22T17:31:35.686Z"
   }
 ]
