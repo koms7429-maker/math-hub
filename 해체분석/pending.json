@@ -58,5 +58,35 @@
     "previous_dna_nodes": [],
     "previous_dna_edges": [],
     "created_at": "2026-03-22T22:59:56.770Z"
+  },
+  {
+    "problem_id": "Problem13",
+    "content": "# Problem13. (Unknown Source) - 함수의 개수 세기\n\n## Problem\n\n두 실수 $a(a>1)$, $k(k<0)$에 대하여 함수 $f(x)$를\n\n$$f(x)=\\begin{cases} |a^{x+1}-3a| & (x \\le 1) \\\\ k(x-1)(x-a) & (x>1) \\end{cases}$$\n\n이라 하자. 자연수 $n$에 대하여 $x$에 대한 방정식 $f(x^n)=n$의 서로 다른 실근의 개수를 $g(n)$이라 할 때, $g(14)=5$이다.\n\n$$k+\\sum_{n=1}^{5}g(5n)$$의 값은? [4점]\n\n## Choices\n① $\\frac{121}{9}$  ② $\\frac{130}{9}$  ③ $\\frac{139}{9}$  ④ $\\frac{148}{9}$  ⑤ $\\frac{157}{9}$\n\n**Answer**: ③\n**Difficulty**: unknown\n**Score**: 4점\n**Type**: multiple choice\n\n---\n\n## Solution\n\n먼저 실수 $t$가\n\n$$f(t)=n$$\n\n을 만족시킨다고 가정하면, $n$이 짝수일 때,\n\n$$(x^n=t \\text{인 } x \\text{의 개수})=\\begin{cases} 0 & (t<0 \\text{인 때}) \\\\ 1 & (t=0 \\text{인 때}) \\\\ 2 & (t>0 \\text{인 때}) \\end{cases}$$\n\n이므로 $g(n)$의 정의에 의해\n\n$n$이 짝수일 때, $g(n)=$(①을 만족시키는 각각의 $t$에 대하여 모든 ②의 값의 합)\n\n이다. 따라서 문제의 조건에서\n\n$$g(14)=5 \\Rightarrow \\begin{cases} ① \\;\\; f(t)=14 \\\\ ② \\;\\; f(x)=14 \\text{인 양수 } x \\text{는 } 2 \\text{개만 존재} \\end{cases}$$\n\n임을 알 수 있고,\n\n① $\\Rightarrow a=7$\n\n이므로 ②를 만족시키는 함수 $f(x)$의 그래프는 다음 [그림]과 같다.\n\n[FIGURE: 좌표평면에 $y=f(x)$ 그래프가 그려져 있음. $x=0$에서 출발하여 $x=1$까지 증가하다가 극댓값 21을 지나고, $x=1$ 이후 감소하여 $x=4$에서 극솟값, $x=7$에서 다시 증가. $y=14$ 수평선과 2개의 양수 교점이 표시됨. $y=28$에서 점근선.]\n\n따라서\n\n$$f(4)=k\\times 3 \\times (-3)=-9k \\Rightarrow k=-\\frac{14}{9} \\;\\; (\\because \\;\\; f(4)=14)$$\n\n이다.\n\n한편, $n$이 홀수일 때는\n\n모든 실수 $t$에 대하여, $(x^n=t \\text{인 } x \\text{의 개수})=1$\n\n이므로 $g(n)$의 정의에 의해\n\n$n$이 홀수일 때 : $g(n)=$(①을 만족시키는 $t$의 개수)\n\n와 같다.\n\n따라서 [그림]을 통해\n\n$$g(5)=4, \\; g(10)=8, \\; g(15)=2, \\; g(20)=2, \\; g(25)=1$$\n\n임을 알 수 있다.\n\n$$\\therefore \\;\\; k+\\sum_{n=1}^{5}g(5n)=-\\frac{14}{9}+17=\\frac{139}{9}$$\n\n---",
+    "content_source": "FileLoop",
+    "content_length": 1549,
+    "skel_status": "neuron_missing",
+    "dna_status": "dna_missing",
+    "needed_neurons": [
+      "???"
+    ],
+    "needed_dna": [],
+    "previous_analysis": "",
+    "previous_matching": "",
+    "previous_matched": [],
+    "previous_skeleton": [],
+    "previous_new_neurons": [
+      {
+        "id": "???",
+        "type": "???",
+        "statement": "(자동 감지) 뉴런 부족 판정이나 구체적 뉴런 제안 누락",
+        "reason": "skeleton이 비어있고 new_neurons도 비어있음 — Claude가 두 필드 모두 빈 채로 반환",
+        "blocked_edge": "N/A"
+      }
+    ],
+    "previous_partial_skeleton": [],
+    "previous_blockage_point": "",
+    "previous_dna_nodes": [],
+    "previous_dna_edges": [],
+    "created_at": "2026-03-22T23:06:56.263Z"
   }
 ]
