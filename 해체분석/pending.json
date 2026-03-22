@@ -148,5 +148,35 @@
     "previous_dna_nodes": [],
     "previous_dna_edges": [],
     "created_at": "2026-03-22T23:19:28.203Z"
+  },
+  {
+    "problem_id": "16(UnknownSource)-지수함수와로그함수의교점",
+    "content": "# 16. (Unknown Source) - 지수함수와 로그함수의 교점\n\n## Problem\n\n$1$보다 큰 두 상수 $a$, $b$에 대하여 점 $A(0, a)$를 지나고 $x$축에 평행한 직선이 곡선 $y=b^x$와 만나는 점을 $B$라 하자. 점 $A$를 지나고 기울기가 $1$인 직선이 곡선 $y=b^x$와 제$1$사분면에서 만나는 점을 $C$, 점 $C$를 지나고 기울기가 $-1$인 직선이 곡선 $y=\\log_a x$와 만나는 점을 $D$라 할 때,\n\n직선 $AD$의 기울기가 $-\\frac{1}{4}$이다. 삼각형 $ACD$의 넓이가 삼각형 $ABC$의 넓이의 $10$배일 때, $\\log_a b$의 값은? [4점]\n\n[FIGURE: 좌표평면에서 원점 $O$, 점 $A$는 $y$축 위에 위치하고, 곡선 $y=b^x$와 $y=\\log_a x$가 그려져 있다. 점 $B$는 $A$를 지나는 수평선과 $y=b^x$의 교점, 점 $C$는 $A$를 지나고 기울기 $1$인 직선과 $y=b^x$의 교점, 점 $D$는 $C$를 지나고 기울기 $-1$인 직선과 $y=\\log_a x$의 교점이다.]\n\n## Choices\n① $\\frac{\\sqrt{10}}{4}$  ② $\\frac{\\sqrt{10}}{2}$  ③ $\\frac{3\\sqrt{10}}{4}$  ④ $\\sqrt{10}$  ⑤ $\\frac{5\\sqrt{10}}{4}$\n\n**Answer**: ⑤\n**Difficulty**: unknown\n**Score**: 4점\n**Type**: multiple choice\n\n---\n\n## Solution\n\n① $A(0, a)$\n\n② $AC$의 기울기가 $1$ $\\Rightarrow$ $C(k, a+k)$ $(k>0)$\n\n으로 놓으면\n\n- $CD$의 기울기가 $-1$ ⋯ ③\n- 두 곡선 $y=b^x$, $y=\\log_a x$가 직선 $y=x$에 대하여 대칭\n\n$\\Rightarrow$ 두 점 $C$, $D$는 직선 $y=x$에 대하여 대칭\n\n$\\Rightarrow$ $D(a+k, k)$\n\n이므로\n\n$AD$의 기울기 $= -\\frac{1}{4}$, ① $\\Rightarrow$ $\\frac{k-a}{a+k} = -\\frac{1}{4}$\n\n$\\Rightarrow k = \\frac{3a}{5}$\n\n$\\Rightarrow C\\left(\\frac{3a}{5}, \\frac{8a}{5}\\right)$, $D\\left(\\frac{8a}{5}, \\frac{3a}{5}\\right)$ ⋯ ④\n\n이다. 또한, 문제의 조건에 의해\n\n- 삼각형 $ACD$의 넓이가 삼각형 $ABC$의 넓이의 $10$배\n- 두 직선 $AC$, $CD$가 서로 수직 ($\\because$ ②, ③)\n\n이므로 점 $B$에서 선분 $AC$에 내린 수선의 발을 $H$라 하면\n\n$\\Rightarrow$ $\\overline{BH} = \\frac{1}{10}\\overline{CD} = \\frac{\\sqrt{2}}{10}a$ ($\\because$ ④ $\\Rightarrow$ $\\overline{CD} = \\sqrt{2}a$)\n\n$\\Rightarrow$ $\\overline{AB} = \\frac{a}{5}$ ($\\because$ ② $\\Rightarrow$ $\\angle CAB = \\frac{\\pi}{4}$)\n\n$\\Rightarrow$ $B\\left(\\frac{a}{5}, a\\right)$ ($\\because$ ① ⋯ ⓐ\n\n위를 알 수 있다.\n\n따라서\n\n- 점 $B$는 곡선 $y=b^x$ 위의 점, ⓐ $\\Rightarrow$ $b^{\\frac{a}{5}} = a$ ⋯ ⓑ\n- 점 $C$는 곡선 $y=b^x$ 위의 점, ④ $\\Rightarrow$ $b^{\\frac{3a}{5}} = \\frac{8}{5}a$\n\n이므로 두 식을 연립하면\n\n$a^3 = \\frac{8}{5}a$ $\\Rightarrow$ $a = \\frac{2\\sqrt{2}}{\\sqrt{5}}$ ($\\because$ $a>1$)\n\n$\\Rightarrow$ $\\log_a b = \\frac{5}{a} = \\frac{5\\sqrt{10}}{4}$ ($\\because$ ⓑ)\n\n을 얻는다.\n\n---",
+    "content_source": "FileLoop",
+    "content_length": 2022,
+    "skel_status": "neuron_missing",
+    "dna_status": "dna_missing",
+    "needed_neurons": [
+      "???"
+    ],
+    "needed_dna": [],
+    "previous_analysis": "",
+    "previous_matching": "",
+    "previous_matched": [],
+    "previous_skeleton": [],
+    "previous_new_neurons": [
+      {
+        "id": "???",
+        "type": "???",
+        "statement": "(자동 감지) 뉴런 부족 판정이나 구체적 뉴런 제안 누락",
+        "reason": "skeleton이 비어있고 new_neurons도 비어있음 — Claude가 두 필드 모두 빈 채로 반환",
+        "blocked_edge": "N/A"
+      }
+    ],
+    "previous_partial_skeleton": [],
+    "previous_blockage_point": "",
+    "previous_dna_nodes": [],
+    "previous_dna_edges": [],
+    "created_at": "2026-03-22T23:27:41.773Z"
   }
 ]
