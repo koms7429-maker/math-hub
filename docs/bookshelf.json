@@ -1628,35 +1628,35 @@
       "new_dna": []
     },
     "thinking_profile": {
-      "_version": 3,
-      "total_think_tokens": 783,
+      "_version": 4,
+      "total_think_tokens": 591,
       "step_count": 6,
-      "consumed_count": 0,
+      "consumed_count": 4,
       "partial_count": 0,
-      "miss_count": 6,
+      "miss_count": 2,
       "highlight_steps": [
-        1,
-        2
+        2,
+        5
       ],
       "hardest_step": {
-        "step_num": 1,
+        "step_num": 2,
         "difficulty_score": 0.26,
         "structural_difficulty": 0.15,
         "consumed": false,
-        "correct_step": "STEP 1. 방정식을 인수분해하면 $(x+a)(x+a+1)=0$이고 실근은 $x=-a$ 또는 $x=-a-1$이다."
+        "correct_step": "STEP 2. $a$가 자연수이면 $k=-a$ 또는 $k=-a-1$은 음의 정수이다."
       },
       "steps": [
         {
           "step_num": 1,
           "correct_step": "STEP 1. 방정식을 인수분해하면 $(x+a)(x+a+1)=0$이고 실근은 $x=-a$ 또는 $x=-a-1$이다.",
-          "consumed": false,
-          "discovered_in_round": null,
+          "consumed": true,
+          "discovered_in_round": 1,
           "partial_hits": 0,
           "best_partial_score": null,
           "structural_difficulty": 0.15,
-          "difficulty_score": 0.26,
-          "discovery_score": 0.5,
-          "tok_score": 0
+          "difficulty_score": 0.07,
+          "discovery_score": 0,
+          "tok_score": 0.03
         },
         {
           "step_num": 2,
@@ -1673,25 +1673,25 @@
         {
           "step_num": 3,
           "correct_step": "STEP 3. $k$가 음의 정수이고 $k^n=64>0$이면 $n$은 짝수여야 한다.",
-          "consumed": false,
-          "discovered_in_round": null,
+          "consumed": true,
+          "discovered_in_round": 3,
           "partial_hits": 0,
           "best_partial_score": null,
           "structural_difficulty": 0.15,
-          "difficulty_score": 0.26,
-          "discovery_score": 0.5,
-          "tok_score": 0
+          "difficulty_score": 0.08,
+          "discovery_score": 0.05,
+          "tok_score": 0.02
         },
         {
           "step_num": 4,
           "correct_step": "STEP 4. $k^n=2^6$에서 $n$이 짝수인 자연수이면 $k=-2$이고 $n=6$이거나, $k=-8$이고 $n=2$이다.",
-          "consumed": false,
-          "discovered_in_round": null,
+          "consumed": true,
+          "discovered_in_round": 2,
           "partial_hits": 0,
           "best_partial_score": null,
           "structural_difficulty": 0.15,
-          "difficulty_score": 0.26,
-          "discovery_score": 0.5,
+          "difficulty_score": 0.07,
+          "discovery_score": 0.02,
           "tok_score": 0
         },
         {
@@ -1709,13 +1709,13 @@
         {
           "step_num": 6,
           "correct_step": "STEP 6. 모든 자연수 $a$의 합은 $8+7+2+1=18$이다.",
-          "consumed": false,
-          "discovered_in_round": null,
+          "consumed": true,
+          "discovered_in_round": 5,
           "partial_hits": 0,
           "best_partial_score": null,
           "structural_difficulty": 0.15,
-          "difficulty_score": 0.26,
-          "discovery_score": 0.5,
+          "difficulty_score": 0.06,
+          "discovery_score": 0.01,
           "tok_score": 0
         }
       ],
@@ -1723,68 +1723,56 @@
         {
           "round": 1,
           "skipped": false,
-          "think_tokens": 262,
-          "elapsed_ms": 11071,
-          "claude_step": "STEP 1. 이차방정식 $x^2+(2a+1)x+a^2+a=0$을 인수분해하면 $a^2+a=a(a+1)$이므로 $(x+a)(x+a+1)=0$, 즉 근은 $k=-a$ 또는 $k=-(a+1)$이다.",
-          "matched_step_num": null,
-          "match_score": 0,
-          "match_reason": "match HTTP: Request failed with status code 400",
-          "discovery_type": "miss"
+          "think_tokens": 187,
+          "elapsed_ms": 8409,
+          "claude_step": "STEP 1. 방정식 $x^2+(2a+1)x+a^2+a=0$을 인수분해하면 $(x+a)(x+a+1)=0$이므로, 실근은 $k=-a$ 또는 $k=-(a+1)$이다.",
+          "matched_step_num": 1,
+          "match_score": 1,
+          "match_reason": "인수분해 결과 (x+a)(x+a+1)=0과 실근 x=-a, x=-(a+1)=-a-1이 완전히 일치",
+          "discovery_type": "consumed"
         },
         {
           "round": 2,
           "skipped": false,
-          "think_tokens": 164,
-          "elapsed_ms": 13826,
-          "claude_step": "STEP 2. $a$는 자연수이므로 $k=-a$ 또는 $k=-a-1$은 모두 음수인데, $k^n=64>0$이 되려면 $n$이 짝수여야 하므로 $k^n=64$를 만족하는 음수 $k$의 가능한 값은 $k=-2\\ (n=6)$ 또는 $k=-8\\ (n=2)$이다.",
-          "matched_step_num": null,
-          "match_score": 0,
-          "match_reason": "match HTTP: Request failed with status code 400",
-          "discovery_type": "miss"
+          "think_tokens": 143,
+          "elapsed_ms": 8159,
+          "claude_step": "STEP 2. $a$는 자연수이므로 $k=-a$ 또는 $k=-a-1$은 음의 정수이고, $k^n=64>0$이 되려면 $n$이 짝수여야 하므로 $k$의 가능한 값은 $-2, -8$이다. ($(-2)^6=64$, $(-8)^2=64$)",
+          "matched_step_num": 4,
+          "match_score": 0.85,
+          "match_reason": "Claude의 답변은 A(k가 음의 정수)와 B(n이 짝수)를 포함하면서, 핵심 결론으로 k=-2(n=6), k=-8(n=2)를 도출하여 STEP 4(C)의 결론과 완전히 일치한다.",
+          "discovery_type": "consumed"
         },
         {
           "round": 3,
           "skipped": false,
-          "think_tokens": 112,
-          "elapsed_ms": 5505,
-          "claude_step": "STEP 3. $k^n = 64$를 만족하는 음의 정수 $k$는 $(-2)^6 = 64$, $(-8)^2 = 64$이므로 $k = -2$ 또는 $k = -8$이다.",
-          "matched_step_num": null,
-          "match_score": 0,
-          "match_reason": "match HTTP: Request failed with status code 400",
-          "discovery_type": "miss"
+          "think_tokens": 181,
+          "elapsed_ms": 10148,
+          "claude_step": "STEP 3. $k<0$이고 $k^n=64>0$이므로 $n$은 짝수이어야 하며, $|k|^n=64$를 만족하는 음의 정수 $k$는 $k=-2$ ($n=6$) 또는 $k=-8$ ($n=2$)이다.",
+          "matched_step_num": 3,
+          "match_score": 0.7,
+          "match_reason": "Claude의 답변은 'n이 짝수여야 한다'는 B의 핵심 결론을 완전히 포함하며, 추가로 k=-2(n=6), k=-8(n=2)라는 구체적 값까지 도출하여 B를 넘어선다.",
+          "discovery_type": "consumed"
         },
         {
           "round": 4,
-          "skipped": false,
-          "think_tokens": 100,
-          "elapsed_ms": 5074,
-          "claude_step": "STEP 4. $k$가 음의 정수이고 $n$이 짝수인 자연수일 때 $k^n=64$를 만족하는 경우는 $n=2, k=-8$ 또는 $n=6, k=-2$이다. ($n=4$이면 $k^4=64$에서 $k=\\pm 2\\sqrt{2}$로 정수가 아님)",
-          "matched_step_num": null,
-          "match_score": 0,
-          "match_reason": "match HTTP: Request failed with status code 400",
-          "discovery_type": "miss"
+          "skipped": true,
+          "reason": "Step 4: Round 2에서 발견됨"
         },
         {
           "round": 5,
           "skipped": false,
-          "think_tokens": 101,
-          "elapsed_ms": 5441,
-          "claude_step": "STEP 5. $k=-2$이면 $-a=-2$ 또는 $-a-1=-2$에서 $a=2$ 또는 $a=1$이고, $k=-8$이면 $-a=-8$ 또는 $-a-1=-8$에서 $a=8$ 또는 $a=7$이므로 모든 자연수 $a$의 값은 $1, 2, 7, 8$이다.",
-          "matched_step_num": null,
-          "match_score": 0,
-          "match_reason": "match HTTP: Request failed with status code 400",
-          "discovery_type": "miss"
+          "think_tokens": 80,
+          "elapsed_ms": 4813,
+          "claude_step": "STEP 5. $k=-2$이면 $-a=-2$ 또는 $-a-1=-2$에서 $a=2$ 또는 $a=1$이고, $k=-8$이면 $-a=-8$ 또는 $-a-1=-8$에서 $a=8$ 또는 $a=7$이므로 모든 자연수 $a$의 값은 1, 2, 7, 8이고 그 합은 $1+2+7+8=18$이다.",
+          "matched_step_num": 6,
+          "match_score": 0.95,
+          "match_reason": "Claude의 답변은 B의 내용(k값에 따른 a값 도출)도 포함하지만, 최종 결론인 '모든 자연수 a의 합=18'이 C와 완전히 일치한다.",
+          "discovery_type": "consumed"
         },
         {
           "round": 6,
-          "skipped": false,
-          "think_tokens": 44,
-          "elapsed_ms": 2804,
-          "claude_step": "STEP 6. 조건을 만족하는 모든 자연수 $a$의 값은 $1, 2, 7, 8$이므로 그 합은 $1+2+7+8=18$이다.",
-          "matched_step_num": null,
-          "match_score": 0,
-          "match_reason": "match HTTP: Request failed with status code 400",
-          "discovery_type": "miss"
+          "skipped": true,
+          "reason": "Step 6: Round 5에서 발견됨"
         }
       ],
       "_debug": "OK"
