@@ -1109,133 +1109,186 @@
       "new_dna": []
     },
     "thinking_profile": {
-      "total_think_tokens": 1037,
-      "edge_count": 11,
-      "by_type": {
-        "사실": {
-          "count": 3,
-          "total": 238,
-          "avg": 79
+      "_version": 3,
+      "total_think_tokens": 1581,
+      "step_count": 7,
+      "consumed_count": 0,
+      "partial_count": 0,
+      "miss_count": 7,
+      "highlight_steps": [
+        1,
+        2
+      ],
+      "hardest_step": {
+        "step_num": 1,
+        "difficulty_score": 0.26,
+        "structural_difficulty": 0.15,
+        "consumed": false,
+        "correct_step": "STEP 1. 방정식 $(x-m^n)(x^n-m)=0$은 영인자법칙에 의해 $x=m^n$ 또는 $x^n=m$으로 분리된다."
+      },
+      "steps": [
+        {
+          "step_num": 1,
+          "correct_step": "STEP 1. 방정식 $(x-m^n)(x^n-m)=0$은 영인자법칙에 의해 $x=m^n$ 또는 $x^n=m$으로 분리된다.",
+          "consumed": false,
+          "discovered_in_round": null,
+          "partial_hits": 0,
+          "best_partial_score": null,
+          "structural_difficulty": 0.15,
+          "difficulty_score": 0.26,
+          "discovery_score": 0.5,
+          "tok_score": 0
         },
-        "연산": {
-          "count": 2,
-          "total": 262,
-          "avg": 131
+        {
+          "step_num": 2,
+          "correct_step": "STEP 2. $n$의 홀짝성에 따라 $x^n=m$의 실수 해 개수가 달라지므로 $n$이 홀수($n=3,5$)인 경우와 짝수($n=2,4,6$)인 경우로 분류한다.",
+          "consumed": false,
+          "discovered_in_round": null,
+          "partial_hits": 0,
+          "best_partial_score": null,
+          "structural_difficulty": 0.15,
+          "difficulty_score": 0.26,
+          "discovery_score": 0.5,
+          "tok_score": 0
         },
-        "전략": {
-          "count": 5,
-          "total": 512,
-          "avg": 102
+        {
+          "step_num": 3,
+          "correct_step": "STEP 3. [홀수 n] $n$이 홀수일 때 $x^n=m$의 실수 해는 항상 1개($x=\\sqrt[n]{m}$)이다. 실수 근 후보는 $\\{m^n,\\, \\sqrt[n]{m}\\}$이고, 실근 개수가 1이 되려면 $m^n = \\sqrt[n]{m}$이어야 한다. 이를 만족하는 값은 $m=-1,0,1$이다. 홀수 $n$은 $n=3,5$ 2가지, $m$은 3가지로 $3 \\times 2 = 6$가지이다.",
+          "consumed": false,
+          "discovered_in_round": null,
+          "partial_hits": 0,
+          "best_partial_score": null,
+          "structural_difficulty": 0.15,
+          "difficulty_score": 0.26,
+          "discovery_score": 0.5,
+          "tok_score": 0
+        },
+        {
+          "step_num": 4,
+          "correct_step": "STEP 4. [짝수 n, m<0] $n$이 짝수이고 $m<0$일 때 $x^n=m$의 실수 해는 0개이다. 실수 근은 $x=m^n$ 1개뿐이다. $m \\in \\{-3,-2,-1\\}$ 3가지, $n \\in \\{2,4,6\\}$ 3가지로 $3 \\times 3 = 9$가지이다.",
+          "consumed": false,
+          "discovered_in_round": null,
+          "partial_hits": 0,
+          "best_partial_score": null,
+          "structural_difficulty": 0.15,
+          "difficulty_score": 0.26,
+          "discovery_score": 0.5,
+          "tok_score": 0
+        },
+        {
+          "step_num": 5,
+          "correct_step": "STEP 5. [짝수 n, m=0] $n$이 짝수이고 $m=0$일 때 $x^n=0$의 해는 $x=0$ 1개이고, $x=m^n=0$도 같은 근이다. 실수 근은 $\\{0\\}$ 1개이다. $n \\in \\{2,4,6\\}$ 3가지로 $1 \\times 3 = 3$가지이다.",
+          "consumed": false,
+          "discovered_in_round": null,
+          "partial_hits": 0,
+          "best_partial_score": null,
+          "structural_difficulty": 0.15,
+          "difficulty_score": 0.26,
+          "discovery_score": 0.5,
+          "tok_score": 0
+        },
+        {
+          "step_num": 6,
+          "correct_step": "STEP 6. [짝수 n, m>0] $n$이 짝수이고 $m>0$일 때 $x^n=m$의 실수 해는 2개이고 $x=m^n$까지 포함하면 실근 개수가 최소 2개 이상이다. 조건을 만족하지 않으므로 0가지이다.",
+          "consumed": false,
+          "discovered_in_round": null,
+          "partial_hits": 0,
+          "best_partial_score": null,
+          "structural_difficulty": 0.15,
+          "difficulty_score": 0.26,
+          "discovery_score": 0.5,
+          "tok_score": 0
+        },
+        {
+          "step_num": 7,
+          "correct_step": "STEP 7. 모든 순서쌍 $(m,n)$의 개수는 $6 + 9 + 3 + 0 = 18$이다.",
+          "consumed": false,
+          "discovered_in_round": null,
+          "partial_hits": 0,
+          "best_partial_score": null,
+          "structural_difficulty": 0.15,
+          "difficulty_score": 0.26,
+          "discovery_score": 0.5,
+          "tok_score": 0
         }
-      },
-      "hardest_edge": {
-        "edge_num": 9,
-        "from": "note8",
-        "to": "note9",
-        "neuron": "전략10",
-        "to_type": "전략",
-        "think_tokens": 193,
-        "note": "$n$이 홀수인 경우: $m \\in \\{-1, 0, 1\\}$ (3개)이고 $n \\in \\{3, 5\\}$ (2개)이므로 총 $3 \\times 2 = 6$개의 순서쌍"
-      },
-      "edges": [
+      ],
+      "rounds": [
         {
-          "edge_num": 1,
-          "from": "단서A",
-          "to": "note1",
-          "neuron": "연산9",
-          "to_type": "연산",
-          "note": "방정식 $(x-m^n)(x^n-m)=0$의 실근은 $x=m^n$ 또는 $x^n=m$을 만족하는 $x$값들",
-          "think_tokens": 107
+          "round": 1,
+          "skipped": false,
+          "think_tokens": 214,
+          "elapsed_ms": 8333,
+          "claude_step": "STEP 1. 방정식 $(x - m^n)(x^n - m) = 0$의 실근은 \"$x = m^n$\"(항상 실근 1개) 또는 \"$x^n = m$\"(n의 홀짝성과 m의 부호에 따라 실근 수 결정)에서 나오므로, 두 인수의 실근을 각각 분석한다.",
+          "matched_step_num": null,
+          "match_score": 0,
+          "match_reason": "match HTTP: Request failed with status code 400",
+          "discovery_type": "miss"
         },
         {
-          "edge_num": 2,
-          "from": "note1",
-          "to": "note2",
-          "neuron": "사실4",
-          "to_type": "사실",
-          "note": "$x^n=m$의 실근 개수: $m>0$이고 $n$홀수이면 1개, $m>0$이고 $n$짝수이면 2개, $m<0$이고 $n$홀수이면 1개, $m<0$이고 $n$짝수이면 0개, $m=0$이면 1개",
-          "think_tokens": 61
+          "round": 2,
+          "skipped": false,
+          "think_tokens": 24,
+          "elapsed_ms": 4144,
+          "claude_step": "STEP 2. $x^n = m$의 실근 개수는 n이 홀수이면 항상 실근 1개, n이 짝수이면 m>0일 때 2개, m=0일 때 1개, m<0일 때 0개이다.",
+          "matched_step_num": null,
+          "match_score": 0,
+          "match_reason": "match HTTP: Request failed with status code 400",
+          "discovery_type": "miss"
         },
         {
-          "edge_num": 3,
-          "from": "note2",
-          "to": "note3",
-          "neuron": "전략12",
-          "to_type": "전략",
-          "note": "$n$의 홀짝에 따라 경우를 분리: (1) $n$이 홀수인 경우, (2) $n$이 짝수인 경우",
-          "think_tokens": 31
+          "round": 3,
+          "skipped": false,
+          "think_tokens": 429,
+          "elapsed_ms": 17420,
+          "claude_step": "STEP 3. $n$이 짝수($n=2,4,6$)이고 $m<0$이면 $x^n=m$은 실근이 없고 $x=m^n$만 실근 1개를 주므로, 서로 다른 실근의 개수가 자동으로 1이 된다.",
+          "matched_step_num": null,
+          "match_score": 0,
+          "match_reason": "match HTTP: Request failed with status code 400",
+          "discovery_type": "miss"
         },
         {
-          "edge_num": 4,
-          "from": "note3",
-          "to": "note4",
-          "neuron": "사실4",
-          "to_type": "사실",
-          "note": "$n$이 홀수일 때: $x=m^n$ (1개)와 $x^n=m$의 실근 $x=\\sqrt[n]{m}$ (1개)가 존재",
-          "think_tokens": 78
+          "round": 4,
+          "skipped": false,
+          "think_tokens": 342,
+          "elapsed_ms": 16377,
+          "claude_step": "STEP 4. [짝수 n] $n$이 짝수일 때 $x^n=m$의 실수 해는 $m<0$이면 0개, $m=0$이면 1개($x=0$), $m>0$이면 2개($x=\\pm m^{1/n}$)이다. ① $m<0$이면 $x^n=m$의 실근이 없으므로 전체 실근은 $x=m^n$ 1개뿐이어서 조건 만족 → $m=-3,-2,-1$, $n=2,4,6$으로 $3\\times3=9$가지. ② $m=0$이면 $x=m^n=0$과 $x^n=0$이 모두 $x=0$으로 실근 1개 → $n=2,4,6$으로 3가지. ③ $m>0$이면 $x^n=m$에서 $\\pm m^{1/n}$ 두 근이 생겨 실근이 최소 2개 이상이므로 조건 불만족. 따라서 짝수 $n$의 경우 $9+3=12$가지이다.",
+          "matched_step_num": null,
+          "match_score": 0,
+          "match_reason": "match HTTP: Request failed with status code 400",
+          "discovery_type": "miss"
         },
         {
-          "edge_num": 5,
-          "from": "note4",
-          "to": "note5",
-          "neuron": "사실4",
-          "to_type": "사실",
-          "note": "$n$이 짝수일 때: $m>0$이면 $x^n=m$의 실근이 2개($\\pm\\sqrt[n]{m}$), $m<0$이면 0개, $m=0$이면 1개",
-          "think_tokens": 99
+          "round": 5,
+          "skipped": false,
+          "think_tokens": 225,
+          "elapsed_ms": 14890,
+          "claude_step": "STEP 5. [짝수 n, m=0] $n$이 짝수이고 $m=0$일 때 $x=m^n=0$이고 $x^n=0$의 해도 $x=0$으로 서로 다른 실근이 1개이다. $n \\in \\{2,4,6\\}$ 3가지로 $1 \\times 3 = 3$가지이다.",
+          "matched_step_num": null,
+          "match_score": 0,
+          "match_reason": "match HTTP: Request failed with status code 400",
+          "discovery_type": "miss"
         },
         {
-          "edge_num": 6,
-          "from": "note5",
-          "to": "note6",
-          "neuron": "전략3",
-          "to_type": "전략",
-          "note": "서로 다른 실근의 개수가 1이 되려면: $n$홀수일 때 $m^n = \\sqrt[n]{m}$, $n$짝수일 때 $m \\leq 0$",
-          "think_tokens": 112
+          "round": 6,
+          "skipped": false,
+          "think_tokens": 307,
+          "elapsed_ms": 14416,
+          "claude_step": "STEP 6. [짝수 n, m>0] $n$이 짝수이고 $m>0$일 때 $x^n=m$의 해는 $x=m^{1/n}$과 $x=-m^{1/n}$ 2개이고, $m>0$이므로 $m^{1/n} \\neq -m^{1/n}$이다. 여기에 $x=m^n$까지 합치면 실근이 최소 2개 이상이므로 실근 개수가 1인 경우는 존재하지 않아 **0가지**이다.",
+          "matched_step_num": null,
+          "match_score": 0,
+          "match_reason": "match HTTP: Request failed with status code 400",
+          "discovery_type": "miss"
         },
         {
-          "edge_num": 7,
-          "from": "note6",
-          "to": "note7",
-          "neuron": "연산24",
-          "to_type": "연산",
-          "note": "$n$이 홀수일 때 $m^n = \\sqrt[n]{m}$에서 $m^{n^2} = m$이므로 $m^{n^2-1} = 1$ ($m \\neq 0$일 때)",
-          "think_tokens": 155
-        },
-        {
-          "edge_num": 8,
-          "from": "note7",
-          "to": "note8",
-          "neuron": "전략6",
-          "to_type": "전략",
-          "note": "$m^{n^2-1} = 1$의 해: $m = 1$ (항상) 또는 $m = -1$ ($n^2-1$이 짝수일 때), $m = 0$일 때는 별도 체크하면 $0^n = \\sqrt[n]{0} = 0$으로 성립",
-          "think_tokens": 89
-        },
-        {
-          "edge_num": 9,
-          "from": "note8",
-          "to": "note9",
-          "neuron": "전략10",
-          "to_type": "전략",
-          "note": "$n$이 홀수인 경우: $m \\in \\{-1, 0, 1\\}$ (3개)이고 $n \\in \\{3, 5\\}$ (2개)이므로 총 $3 \\times 2 = 6$개의 순서쌍",
-          "think_tokens": 193
-        },
-        {
-          "edge_num": 10,
-          "from": "note9",
-          "to": "note10",
-          "neuron": "전략10",
-          "to_type": "전략",
-          "note": "$n$이 짝수인 경우: $m \\leq 0$이어야 하므로 $m \\in \\{-3, -2, -1, 0\\}$ (4개)이고 $n \\in \\{2, 4, 6\\}$ (3개)이므로 총 $4 \\times 3 = 12$개의 순서쌍",
-          "think_tokens": 87
-        },
-        {
-          "edge_num": 11,
-          "from": "note10",
-          "to": "END",
-          "neuron": "연산18",
-          "to_type": "END",
-          "note": "전체 순서쌍의 개수 = 6 + 12 = 18개",
-          "think_tokens": 25
+          "round": 7,
+          "skipped": false,
+          "think_tokens": 40,
+          "elapsed_ms": 3905,
+          "claude_step": "STEP 7. 모든 경우의 수를 합산하면 $6 + 9 + 3 + 0 = 18$가지이다.",
+          "matched_step_num": null,
+          "match_score": 0,
+          "match_reason": "match HTTP: Request failed with status code 400",
+          "discovery_type": "miss"
         }
       ],
       "_debug": "OK"
