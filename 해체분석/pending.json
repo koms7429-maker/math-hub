@@ -1,1 +1,476 @@
-[]
+[
+  {
+    "problem_id": "Problem14",
+    "content": "# Problem14. (Unknown Source) - Piecewise Function, Continuity, Derivative\n\n## Problem\n\n두 상수 $a(a>1)$, $b$에 대하여 함수 $f(x)$를\n\n$$f(x) = \\begin{cases} a^{x+b} & (a^{x+b} \\leq 2x+5) \\\\ |2x+5| & (a^{x+b} > 2x+5) \\end{cases}$$\n\n라 하자. 양수 $t$에 대하여 $x$에 대한 방정식 $f(x)=t$의 서로 다른 모든 실근의 합을 $g(t)$라 하자. $g(t)=k$(는 상수)를 만족시키는 모든 양수 $t$의 값의 범위가 $1<t<9$일 때, $f(-b)+f(0)$의 값을 구하시오. [4점]\n\n**Answer**: 18\n**Difficulty**: unknown\n**Score**: 4\n**Type**: short answer\n\n---\n\n## Solution\n\n문제의 $f(x)$의 식에서\n\n① $y=a^{x+b}$, $y=2x+5$의 교점의 개수가 1 이하인 경우,\n$f(x) = |2x+5|$\n($\\because$ 모든 실수 $x$에 대하여 $a^{x+b} > 2x+5$)\n\n② $y=a^{x+b}$, $y=2x+5$의 교점의 개수가 2인 경우,\n두 교점의 $x$좌표를 $p$, $q$라 하면\n\n$$f(x) = \\begin{cases} a^{x+b} & (p \\leq x \\leq q) \\\\ |2x+5| & (x < p, \\ x > q) \\end{cases}$$\n\n알을 수 있다.\n\n한편, 양수 $t$에 대하여\n$g(t) = -5$ (방정식 $f(x)=t$의 모든 실근의 합)\n이므로 ①의 경우,\n모든 양수 $t$에 대하여 $g(t)=-5$\n($\\because$ $y=|2x+5|$는 $x=-\\frac{5}{2}$에 대하여 대칭)\n\n알을 수 있고, ②의 경우,\n$$\\begin{cases} f(p) = t \\geq f(q)\\text{일 때 } g(t) = -5 \\\\ f(p) < t < f(q)\\text{일 때 } g(t) > -5 \\end{cases}$$\n\n알을 수 있다.\n\n따라서 문제의 조건에서\n$$\\begin{cases} g(t)=k \\text{(는 상수)를 만족시키는} \\\\ \\text{모든 양수 } t \\text{의 값의 범위가 } 1<t<9 \\end{cases}$$\n\n를 만족시키는 경우는 ②의 경우뿐이고, 이때\n\n$$k=-5$$\n\n를 얻고,\n\n$$\\begin{cases} f(p)=1 \\Rightarrow 2p+5=a^{p+b}=1 \\\\ f(q)=9 \\Rightarrow 2q+5=a^{q+b}=9 \\end{cases}$$\n\n를 얻는다.\n\n$$\\Rightarrow p=-2, \\ q=2, \\ a=\\sqrt{3}, \\ b=2$$\n\n를 얻는다.\n\n$$\\therefore f(x) = \\begin{cases} (\\sqrt{3})^{x+2} & (-2 \\leq x \\leq 2) \\\\ |2x+5| & (x < -2, \\ x > 2) \\end{cases}$$\n\n$$\\therefore f(-b)+f(0) = f(-2)+f(0) = 15+3=18$$\n\n---",
+    "content_source": "FileLoop",
+    "content_length": 1530,
+    "skel_status": "neuron_missing",
+    "dna_status": "ok",
+    "needed_neurons": [
+      "전략38"
+    ],
+    "needed_dna": [],
+    "previous_analysis": "f(x)의 구조는 y=a^(x+b)와 y=2x+5의 교점 개수에 따라 결정된다. 교점이 2개(x=p,q)인 경우에만 g(t)가 특정 구간에서 -5가 아닌 값을 가질 수 있다. 조건 g(t)=k인 범위가 (1,9)이므로 f(p)=1, f(q)=9이고, 이로부터 p=-2, q=2, b=2, a=√3을 결정한다.",
+    "previous_matching": "1. f(x) 구조를 교점 개수에 따라 경우 분리 → 전략20\n2. 경우①: f(x)=|2x+5|, y=|2x+5|는 x=-5/2 대칭 → 사실2\n3. 대칭에 의해 모든 양수 t에서 g(t)=-5 → 사실2 + 전략5\n4. 경우①은 조건 불만족(모든 t에서 상수) → 전략23(소거)\n5. 경우②: 두 교점 p<q에서 f 구조 결정 → 전략20\n6. f(p)<t<f(q)에서 g(t)≠-5, 그 외 g(t)=-5 → 사실44 + 사실43\n7. 조건: g(t)=k인 범위가 (1,9) → 경계 f(p)=1, f(q)=9 → 전략22\n8. f(p)=2p+5=1 → p=-2 → 연산28\n9. f(q)=2q+5=9 → q=2 → 연산28\n10. a^(p+b)=1, p=-2 → a^(-2+b)=1 → -2+b=0 → b=2 → 사실18+연산2\n11. a^(q+b)=9, q=2, b=2 → a^4=9 → a=√3 → 연산4\n12. f(-b)+f(0)=f(-2)+f(0) 계산 → 전략25",
+    "previous_matched": [
+      "전략20",
+      "전략23",
+      "사실2",
+      "전략5",
+      "사실44",
+      "사실43",
+      "전략22",
+      "연산28",
+      "연산2",
+      "사실18",
+      "연산4",
+      "전략25"
+    ],
+    "previous_skeleton": [],
+    "previous_new_neurons": [
+      {
+        "id": "전략38",
+        "statement": "조각함수에서 f(x)=t의 근의 합 g(t)가 상수가 되는 조건을 분석할 때, 각 조각별 근의 개수와 합이 t에 따라 어떻게 변하는지 추적하여 합이 일정해지는 구간을 특정한다",
+        "type": "strategy",
+        "reason": "조각함수의 근의 합 불변 조건 분석은 기존 뉴런으로 커버되지 않는 복합 전략이다"
+      }
+    ],
+    "previous_partial_skeleton": [],
+    "previous_blockage_point": "",
+    "previous_dna_nodes": [
+      {
+        "id": "top",
+        "dna": "Q1",
+        "label": "값을 구하라",
+        "category": "발문"
+      },
+      {
+        "id": "ask_sum",
+        "dna": "E1",
+        "label": "f(-b)+f(0)",
+        "category": "수식"
+      },
+      {
+        "id": "apply_fb",
+        "dna": "F3",
+        "label": "f(-b)",
+        "category": "함수"
+      },
+      {
+        "id": "apply_f0",
+        "dna": "F3",
+        "label": "f(0)",
+        "category": "함수"
+      },
+      {
+        "id": "neg_b",
+        "dna": "E2",
+        "label": "부호반전(b)",
+        "category": "수식"
+      },
+      {
+        "id": "c0",
+        "dna": "T2",
+        "label": "상수 0",
+        "category": "말단"
+      },
+      {
+        "id": "va",
+        "dna": "T1",
+        "label": "변수 a",
+        "category": "말단"
+      },
+      {
+        "id": "vb",
+        "dna": "T1",
+        "label": "변수 b",
+        "category": "말단"
+      },
+      {
+        "id": "lim_a",
+        "dna": "C2",
+        "label": "a>1",
+        "category": "조건"
+      },
+      {
+        "id": "lim_t_pos",
+        "dna": "C2",
+        "label": "t>0 (양수)",
+        "category": "조건"
+      },
+      {
+        "id": "func_f",
+        "dna": "F1",
+        "label": "조각함수 f(x)",
+        "category": "함수"
+      },
+      {
+        "id": "piece1",
+        "dna": "F2",
+        "label": "조각1: a^{x+b}",
+        "category": "함수"
+      },
+      {
+        "id": "piece2",
+        "dna": "F2",
+        "label": "조각2: |2x+5|",
+        "category": "함수"
+      },
+      {
+        "id": "piece1_expr",
+        "dna": "E4",
+        "label": "a^{x+b}",
+        "category": "수식"
+      },
+      {
+        "id": "exp_inner",
+        "dna": "E1",
+        "label": "x+b",
+        "category": "수식"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
+      },
+      {
+        "id": "piece2_expr",
+        "dna": "F5",
+        "label": "|2x+5|",
+        "category": "함수"
+      },
+      {
+        "id": "lin_expr",
+        "dna": "E1",
+        "label": "2x+5",
+        "category": "수식"
+      },
+      {
+        "id": "c2x",
+        "dna": "E6",
+        "label": "2x",
+        "category": "수식"
+      },
+      {
+        "id": "c2",
+        "dna": "T2",
+        "label": "상수 2",
+        "category": "말단"
+      },
+      {
+        "id": "c5",
+        "dna": "T2",
+        "label": "상수 5",
+        "category": "말단"
+      },
+      {
+        "id": "cond_piece1",
+        "dna": "C2",
+        "label": "a^{x+b}≤2x+5",
+        "category": "조건"
+      },
+      {
+        "id": "cond_piece2",
+        "dna": "C2",
+        "label": "a^{x+b}>2x+5",
+        "category": "조건"
+      },
+      {
+        "id": "vt",
+        "dna": "T3",
+        "label": "독립변수 t",
+        "category": "말단"
+      },
+      {
+        "id": "eq_ft",
+        "dna": "C1",
+        "label": "f(x)=t",
+        "category": "조건"
+      },
+      {
+        "id": "apply_fx",
+        "dna": "F3",
+        "label": "f(x) 적용",
+        "category": "함수"
+      },
+      {
+        "id": "func_g",
+        "dna": "F6",
+        "label": "함수 g(t) 정의",
+        "category": "함수"
+      },
+      {
+        "id": "g_def",
+        "dna": "C11",
+        "label": "g(t)=실근합",
+        "category": "조건"
+      },
+      {
+        "id": "vk",
+        "dna": "T1",
+        "label": "변수 k(상수)",
+        "category": "말단"
+      },
+      {
+        "id": "eq_gk",
+        "dna": "C1",
+        "label": "g(t)=k",
+        "category": "조건"
+      },
+      {
+        "id": "apply_gt",
+        "dna": "F3",
+        "label": "g(t) 적용",
+        "category": "함수"
+      },
+      {
+        "id": "range_cond",
+        "dna": "S1",
+        "label": "1<t<9 범위",
+        "category": "구조"
+      },
+      {
+        "id": "ineq_lo",
+        "dna": "C2",
+        "label": "1<t",
+        "category": "조건"
+      },
+      {
+        "id": "ineq_hi",
+        "dna": "C2",
+        "label": "t<9",
+        "category": "조건"
+      },
+      {
+        "id": "c1",
+        "dna": "T2",
+        "label": "상수 1",
+        "category": "말단"
+      },
+      {
+        "id": "c9",
+        "dna": "T2",
+        "label": "상수 9",
+        "category": "말단"
+      },
+      {
+        "id": "conds_all",
+        "dna": "S1",
+        "label": "전체 조건 묶음",
+        "category": "구조"
+      }
+    ],
+    "previous_dna_edges": [
+      {
+        "from": "ask_sum",
+        "to": "top"
+      },
+      {
+        "from": "conds_all",
+        "to": "top"
+      },
+      {
+        "from": "apply_fb",
+        "to": "ask_sum"
+      },
+      {
+        "from": "apply_f0",
+        "to": "ask_sum"
+      },
+      {
+        "from": "neg_b",
+        "to": "apply_fb"
+      },
+      {
+        "from": "vb",
+        "to": "neg_b"
+      },
+      {
+        "from": "func_f",
+        "to": "apply_fb"
+      },
+      {
+        "from": "func_f",
+        "to": "apply_f0"
+      },
+      {
+        "from": "c0",
+        "to": "apply_f0"
+      },
+      {
+        "from": "lim_a",
+        "to": "va"
+      },
+      {
+        "from": "c1",
+        "to": "lim_a"
+      },
+      {
+        "from": "va",
+        "to": "conds_all"
+      },
+      {
+        "from": "lim_t_pos",
+        "to": "vt"
+      },
+      {
+        "from": "vt",
+        "to": "conds_all"
+      },
+      {
+        "from": "piece1",
+        "to": "func_f"
+      },
+      {
+        "from": "piece2",
+        "to": "func_f"
+      },
+      {
+        "from": "piece1_expr",
+        "to": "piece1"
+      },
+      {
+        "from": "cond_piece1",
+        "to": "piece1"
+      },
+      {
+        "from": "va",
+        "to": "piece1_expr"
+      },
+      {
+        "from": "exp_inner",
+        "to": "piece1_expr"
+      },
+      {
+        "from": "vx",
+        "to": "exp_inner"
+      },
+      {
+        "from": "vb",
+        "to": "exp_inner"
+      },
+      {
+        "from": "piece2_expr",
+        "to": "piece2"
+      },
+      {
+        "from": "cond_piece2",
+        "to": "piece2"
+      },
+      {
+        "from": "lin_expr",
+        "to": "piece2_expr"
+      },
+      {
+        "from": "c2x",
+        "to": "lin_expr"
+      },
+      {
+        "from": "c5",
+        "to": "lin_expr"
+      },
+      {
+        "from": "c2",
+        "to": "c2x"
+      },
+      {
+        "from": "vx",
+        "to": "c2x"
+      },
+      {
+        "from": "piece1_expr",
+        "to": "cond_piece1"
+      },
+      {
+        "from": "lin_expr",
+        "to": "cond_piece1"
+      },
+      {
+        "from": "piece1_expr",
+        "to": "cond_piece2"
+      },
+      {
+        "from": "lin_expr",
+        "to": "cond_piece2"
+      },
+      {
+        "from": "apply_fx",
+        "to": "eq_ft"
+      },
+      {
+        "from": "vt",
+        "to": "eq_ft"
+      },
+      {
+        "from": "func_f",
+        "to": "apply_fx"
+      },
+      {
+        "from": "vx",
+        "to": "apply_fx"
+      },
+      {
+        "from": "g_def",
+        "to": "func_g"
+      },
+      {
+        "from": "eq_ft",
+        "to": "g_def"
+      },
+      {
+        "from": "func_g",
+        "to": "conds_all"
+      },
+      {
+        "from": "apply_gt",
+        "to": "eq_gk"
+      },
+      {
+        "from": "vk",
+        "to": "eq_gk"
+      },
+      {
+        "from": "func_g",
+        "to": "apply_gt"
+      },
+      {
+        "from": "vt",
+        "to": "apply_gt"
+      },
+      {
+        "from": "eq_gk",
+        "to": "conds_all"
+      },
+      {
+        "from": "ineq_lo",
+        "to": "range_cond"
+      },
+      {
+        "from": "ineq_hi",
+        "to": "range_cond"
+      },
+      {
+        "from": "c1",
+        "to": "ineq_lo"
+      },
+      {
+        "from": "vt",
+        "to": "ineq_lo"
+      },
+      {
+        "from": "vt",
+        "to": "ineq_hi"
+      },
+      {
+        "from": "c9",
+        "to": "ineq_hi"
+      },
+      {
+        "from": "range_cond",
+        "to": "conds_all"
+      }
+    ],
+    "created_at": "2026-03-22T18:27:42.370Z"
+  }
+]
