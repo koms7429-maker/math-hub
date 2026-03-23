@@ -625,14 +625,14 @@
       {
         "id": "top22",
         "dna": "Q3",
-        "label": "n합을구하라",
+        "label": "n의 합",
         "category": "발문"
       },
       {
-        "id": "ask22",
-        "dna": "E1",
-        "label": "n값들의합",
-        "category": "수식"
+        "id": "top23",
+        "dna": "Q1",
+        "label": "k의 곱",
+        "category": "발문"
       },
       {
         "id": "vn",
@@ -643,19 +643,19 @@
       {
         "id": "n_ge2",
         "dna": "L2",
-        "label": "n≥2 자연수",
+        "label": "n≥2",
         "category": "제한"
       },
       {
-        "id": "n_nat",
+        "id": "n_natural",
         "dna": "L3",
         "label": "n은 자연수",
         "category": "제한"
       },
       {
-        "id": "eq22",
+        "id": "eq22_def",
         "dna": "C11",
-        "label": "x방정식",
+        "label": "방정식 정의",
         "category": "조건"
       },
       {
@@ -667,13 +667,13 @@
       {
         "id": "prod_factors",
         "dna": "E6",
-        "label": "두인수의곱",
+        "label": "두 인수의 곱",
         "category": "수식"
       },
       {
         "id": "fac1",
         "dna": "E1",
-        "label": "x^n - 2^25",
+        "label": "x^n + (-2^25)",
         "category": "수식"
       },
       {
@@ -689,91 +689,85 @@
         "category": "말단"
       },
       {
-        "id": "neg_225",
-        "dna": "E2",
-        "label": "-2^25",
-        "category": "수식"
-      },
-      {
-        "id": "pow225",
+        "id": "c225",
         "dna": "E7",
         "label": "2^25",
         "category": "수식"
       },
       {
-        "id": "c2",
+        "id": "c2base",
         "dna": "T2",
         "label": "상수 2",
         "category": "말단"
       },
       {
-        "id": "c25",
+        "id": "c25exp",
         "dna": "T2",
         "label": "상수 25",
         "category": "말단"
       },
       {
+        "id": "neg_c225",
+        "dna": "E2",
+        "label": "-2^25",
+        "category": "수식"
+      },
+      {
         "id": "fac2",
         "dna": "E1",
-        "label": "x^2n - 2^20",
+        "label": "x^2n + (-2^20)",
         "category": "수식"
       },
       {
         "id": "x2n",
         "dna": "E7",
-        "label": "x^2n",
+        "label": "x^(2n)",
         "category": "수식"
       },
       {
-        "id": "c2n",
-        "dna": "T1",
-        "label": "지수 2n",
-        "category": "말단"
-      },
-      {
-        "id": "neg_220",
-        "dna": "E2",
-        "label": "-2^20",
+        "id": "c2n_exp",
+        "dna": "E6",
+        "label": "2n (지수)",
         "category": "수식"
       },
       {
-        "id": "pow220",
+        "id": "c220",
         "dna": "E7",
         "label": "2^20",
         "category": "수식"
       },
       {
-        "id": "c20",
+        "id": "c20exp",
         "dna": "T2",
         "label": "상수 20",
         "category": "말단"
       },
       {
-        "id": "c0",
+        "id": "neg_c220",
+        "dna": "E2",
+        "label": "-2^20",
+        "category": "수식"
+      },
+      {
+        "id": "c_zero",
         "dna": "T2",
         "label": "상수 0",
         "category": "말단"
       },
       {
-        "id": "roots_prod",
+        "id": "real_roots_prod",
         "dna": "E6",
         "label": "실근의 곱",
         "category": "수식"
       },
       {
-        "id": "cond_int",
-        "dna": "C2",
-        "label": "정수이다",
+        "id": "cond_integer",
+        "dna": "C1",
+        "label": "곱=정수",
         "category": "조건"
       },
       {
-        "id": "int_limit",
-        "dna": "L3",
-        "label": "정수 종류",
-        "category": "제한"
-      },
-      {
-        "id": "cond_gt",
+        "id": "cond_gt_neg100",
         "dna": "C2",
         "label": "곱>-100",
         "category": "조건"
@@ -787,19 +781,13 @@
       {
         "id": "conds22",
         "dna": "S1",
-        "label": "22번조건들",
+        "label": "조건묶음22",
         "category": "구조"
       },
       {
-        "id": "top23",
-        "dna": "Q1",
-        "label": "k곱을구하라",
-        "category": "발문"
-      },
-      {
-        "id": "ask23",
-        "dna": "E6",
-        "label": "양수k의곱",
+        "id": "ask22_sum",
+        "dna": "E1",
+        "label": "n값의 합",
         "category": "수식"
       },
       {
@@ -810,8 +798,8 @@
       },
       {
         "id": "k_pos",
-        "dna": "L3",
-        "label": "k는 양수",
+        "dna": "L2",
+        "label": "k>0",
         "category": "제한"
       },
       {
@@ -821,15 +809,15 @@
         "category": "기하"
       },
       {
-        "id": "line23_eq",
+        "id": "line23_def",
         "dna": "C11",
-        "label": "직선방정식",
+        "label": "직선 방정식",
         "category": "조건"
       },
       {
-        "id": "line23_c1",
+        "id": "line23_eq",
         "dna": "C1",
-        "label": "y=k 등식",
+        "label": "y=k",
         "category": "조건"
       },
       {
@@ -841,31 +829,31 @@
       {
         "id": "crv1",
         "dna": "G2",
-        "label": "곡선 y=2^(7-x)",
+        "label": "곡선 2^(7-x)",
         "category": "기하"
       },
       {
-        "id": "crv1_eq",
+        "id": "crv1_def",
         "dna": "C11",
         "label": "곡선1 방정식",
         "category": "조건"
       },
       {
-        "id": "crv1_c1",
+        "id": "crv1_eq",
         "dna": "C1",
         "label": "y=2^(7-x)",
         "category": "조건"
       },
       {
-        "id": "crv1_rhs",
+        "id": "exp1",
         "dna": "E4",
         "label": "2^(7-x)",
         "category": "수식"
       },
       {
-        "id": "exp_inner",
+        "id": "exp1_pow",
         "dna": "E1",
-        "label": "7-x",
+        "label": "7+(-x)",
         "category": "수식"
       },
       {
@@ -875,7 +863,7 @@
         "category": "말단"
       },
       {
-        "id": "neg_x",
+        "id": "neg_vx",
         "dna": "E2",
         "label": "-x",
         "category": "수식"
@@ -883,23 +871,23 @@
       {
         "id": "crv2",
         "dna": "G2",
-        "label": "곡선 y=8^x",
+        "label": "곡선 8^x",
         "category": "기하"
       },
       {
-        "id": "crv2_eq",
+        "id": "crv2_def",
         "dna": "C11",
         "label": "곡선2 방정식",
         "category": "조건"
       },
       {
-        "id": "crv2_c1",
+        "id": "crv2_eq",
         "dna": "C1",
         "label": "y=8^x",
         "category": "조건"
       },
       {
-        "id": "crv2_rhs",
+        "id": "exp2",
         "dna": "E4",
         "label": "8^x",
         "category": "수식"
@@ -923,13 +911,13 @@
         "category": "기하"
       },
       {
-        "id": "meet1",
+        "id": "meet_p",
         "dna": "C3",
         "label": "직선∩곡선1=P",
         "category": "조건"
       },
       {
-        "id": "meet2",
+        "id": "meet_q",
         "dna": "C3",
         "label": "직선∩곡선2=Q",
         "category": "조건"
@@ -937,13 +925,13 @@
       {
         "id": "dist_pq",
         "dna": "G18",
-        "label": "PQ거리",
+        "label": "PQ 거리",
         "category": "기하"
       },
       {
-        "id": "dist_eq",
+        "id": "cond_dist3",
         "dna": "C1",
-        "label": "PQ=3",
+        "label": "거리=3",
         "category": "조건"
       },
       {
@@ -955,46 +943,88 @@
       {
         "id": "conds23",
         "dna": "S1",
-        "label": "23번조건들",
+        "label": "조건묶음23",
         "category": "구조"
+      },
+      {
+        "id": "all_k_prod",
+        "dna": "E6",
+        "label": "모든 k의 곱",
+        "category": "수식"
       }
     ],
     "previous_dna_edges": [
-      {
-        "from": "ask22",
-        "to": "top22"
-      },
-      {
-        "from": "conds22",
-        "to": "top22"
-      },
-      {
-        "from": "vn",
-        "to": "ask22"
-      },
       {
         "from": "n_ge2",
         "to": "vn"
       },
       {
-        "from": "n_nat",
+        "from": "n_natural",
         "to": "vn"
       },
       {
-        "from": "eq22",
-        "to": "conds22"
+        "from": "vx",
+        "to": "xn"
       },
       {
-        "from": "eq22_eq",
-        "to": "eq22"
+        "from": "vn",
+        "to": "xn"
       },
       {
-        "from": "prod_factors",
-        "to": "eq22_eq"
+        "from": "c2base",
+        "to": "c225"
       },
       {
-        "from": "c0",
-        "to": "eq22_eq"
+        "from": "c25exp",
+        "to": "c225"
+      },
+      {
+        "from": "c225",
+        "to": "neg_c225"
+      },
+      {
+        "from": "xn",
+        "to": "fac1"
+      },
+      {
+        "from": "neg_c225",
+        "to": "fac1"
+      },
+      {
+        "from": "c2base",
+        "to": "c2n_exp"
+      },
+      {
+        "from": "vn",
+        "to": "c2n_exp"
+      },
+      {
+        "from": "vx",
+        "to": "x2n"
+      },
+      {
+        "from": "c2n_exp",
+        "to": "x2n"
+      },
+      {
+        "from": "c2base",
+        "to": "c220"
+      },
+      {
+        "from": "c20exp",
+        "to": "c220"
+      },
+      {
+        "from": "c220",
+        "to": "neg_c220"
+      },
+      {
+        "from": "x2n",
+        "to": "fac2"
+      },
+      {
+        "from": "neg_c220",
+        "to": "fac2"
       },
       {
         "from": "fac1",
@@ -1005,96 +1035,184 @@
         "to": "prod_factors"
       },
       {
-        "from": "xn",
-        "to": "fac1"
+        "from": "prod_factors",
+        "to": "eq22_eq"
       },
       {
-        "from": "neg_225",
-        "to": "fac1"
+        "from": "c_zero",
+        "to": "eq22_eq"
       },
       {
-        "from": "vx",
-        "to": "xn"
+        "from": "eq22_eq",
+        "to": "eq22_def"
       },
       {
-        "from": "vn",
-        "to": "xn"
+        "from": "eq22_def",
+        "to": "real_roots_prod"
       },
       {
-        "from": "pow225",
-        "to": "neg_225"
+        "from": "real_roots_prod",
+        "to": "cond_integer"
       },
       {
-        "from": "c2",
-        "to": "pow225"
-      },
-      {
-        "from": "c25",
-        "to": "pow225"
-      },
-      {
-        "from": "x2n",
-        "to": "fac2"
-      },
-      {
-        "from": "neg_220",
-        "to": "fac2"
-      },
-      {
-        "from": "vx",
-        "to": "x2n"
-      },
-      {
-        "from": "c2n",
-        "to": "x2n"
-      },
-      {
-        "from": "vn",
-        "to": "c2n"
-      },
-      {
-        "from": "pow220",
-        "to": "neg_220"
-      },
-      {
-        "from": "c2",
-        "to": "pow220"
-      },
-      {
-        "from": "c20",
-        "to": "pow220"
-      },
-      {
-        "from": "roots_prod",
-        "to": "conds22"
-      },
-      {
-        "from": "cond_int",
-        "to": "conds22"
-      },
-      {
-        "from": "cond_gt",
-        "to": "conds22"
-      },
-      {
-        "from": "roots_prod",
-        "to": "cond_int"
-      },
-      {
-        "from": "int_limit",
-        "to": "cond_int"
-      },
-      {
-        "from": "roots_prod",
-        "to": "cond_gt"
+        "from": "real_roots_prod",
+        "to": "cond_gt_neg100"
       },
       {
         "from": "c_neg100",
-        "to": "cond_gt"
+        "to": "cond_gt_neg100"
       },
       {
-        "from": "ask23",
-        "to": "top23"
+        "from": "cond_integer",
+        "to": "conds22"
+      },
+      {
+        "from": "cond_gt_neg100",
+        "to": "conds22"
+      },
+      {
+        "from": "conds22",
+        "to": "top22"
+      },
+      {
+        "from": "vn",
+        "to": "ask22_sum"
+      },
+      {
+        "from": "ask22_sum",
+        "to": "top22"
+      },
+      {
+        "from": "k_pos",
+        "to": "vk"
+      },
+      {
+        "from": "vy",
+        "to": "line23_eq"
+      },
+      {
+        "from": "vk",
+        "to": "line23_eq"
+      },
+      {
+        "from": "line23_eq",
+        "to": "line23_def"
+      },
+      {
+        "from": "line23_def",
+        "to": "line23"
+      },
+      {
+        "from": "vx",
+        "to": "neg_vx"
+      },
+      {
+        "from": "c7",
+        "to": "exp1_pow"
+      },
+      {
+        "from": "neg_vx",
+        "to": "exp1_pow"
+      },
+      {
+        "from": "c2base",
+        "to": "exp1"
+      },
+      {
+        "from": "exp1_pow",
+        "to": "exp1"
+      },
+      {
+        "from": "vy",
+        "to": "crv1_eq"
+      },
+      {
+        "from": "exp1",
+        "to": "crv1_eq"
+      },
+      {
+        "from": "crv1_eq",
+        "to": "crv1_def"
+      },
+      {
+        "from": "crv1_def",
+        "to": "crv1"
+      },
+      {
+        "from": "c8",
+        "to": "exp2"
+      },
+      {
+        "from": "vx",
+        "to": "exp2"
+      },
+      {
+        "from": "vy",
+        "to": "crv2_eq"
+      },
+      {
+        "from": "exp2",
+        "to": "crv2_eq"
+      },
+      {
+        "from": "crv2_eq",
+        "to": "crv2_def"
+      },
+      {
+        "from": "crv2_def",
+        "to": "crv2"
+      },
+      {
+        "from": "line23",
+        "to": "meet_p"
+      },
+      {
+        "from": "crv1",
+        "to": "meet_p"
+      },
+      {
+        "from": "pt_p",
+        "to": "meet_p"
+      },
+      {
+        "from": "line23",
+        "to": "meet_q"
+      },
+      {
+        "from": "crv2",
+        "to": "meet_q"
+      },
+      {
+        "from": "pt_q",
+        "to": "meet_q"
+      },
+      {
+        "from": "pt_p",
+        "to": "dist_pq"
+      },
+      {
+        "from": "pt_q",
+        "to": "dist_pq"
+      },
+      {
+        "from": "dist_pq",
+        "to": "cond_dist3"
+      },
+      {
+        "from": "c3",
+        "to": "cond_dist3"
+      },
+      {
+        "from": "meet_p",
+        "to": "conds23"
+      },
+      {
+        "from": "meet_q",
+        "to": "conds23"
+      },
+      {
+        "from": "cond_dist3",
+        "to": "conds23"
       },
       {
         "from": "conds23",
@@ -1102,153 +1220,13 @@
       },
       {
         "from": "vk",
-        "to": "ask23"
+        "to": "all_k_prod"
       },
       {
-        "from": "k_pos",
-        "to": "vk"
-      },
-      {
-        "from": "line23",
-        "to": "conds23"
-      },
-      {
-        "from": "line23_eq",
-        "to": "line23"
-      },
-      {
-        "from": "line23_c1",
-        "to": "line23_eq"
-      },
-      {
-        "from": "vy",
-        "to": "line23_c1"
-      },
-      {
-        "from": "vk",
-        "to": "line23_c1"
-      },
-      {
-        "from": "crv1",
-        "to": "conds23"
-      },
-      {
-        "from": "crv1_eq",
-        "to": "crv1"
-      },
-      {
-        "from": "crv1_c1",
-        "to": "crv1_eq"
-      },
-      {
-        "from": "vy",
-        "to": "crv1_c1"
-      },
-      {
-        "from": "crv1_rhs",
-        "to": "crv1_c1"
-      },
-      {
-        "from": "c2",
-        "to": "crv1_rhs"
-      },
-      {
-        "from": "exp_inner",
-        "to": "crv1_rhs"
-      },
-      {
-        "from": "c7",
-        "to": "exp_inner"
-      },
-      {
-        "from": "neg_x",
-        "to": "exp_inner"
-      },
-      {
-        "from": "vx",
-        "to": "neg_x"
-      },
-      {
-        "from": "crv2",
-        "to": "conds23"
-      },
-      {
-        "from": "crv2_eq",
-        "to": "crv2"
-      },
-      {
-        "from": "crv2_c1",
-        "to": "crv2_eq"
-      },
-      {
-        "from": "vy",
-        "to": "crv2_c1"
-      },
-      {
-        "from": "crv2_rhs",
-        "to": "crv2_c1"
-      },
-      {
-        "from": "c8",
-        "to": "crv2_rhs"
-      },
-      {
-        "from": "vx",
-        "to": "crv2_rhs"
-      },
-      {
-        "from": "pt_p",
-        "to": "meet1"
-      },
-      {
-        "from": "line23",
-        "to": "meet1"
-      },
-      {
-        "from": "crv1",
-        "to": "meet1"
-      },
-      {
-        "from": "meet1",
-        "to": "conds23"
-      },
-      {
-        "from": "pt_q",
-        "to": "meet2"
-      },
-      {
-        "from": "line23",
-        "to": "meet2"
-      },
-      {
-        "from": "crv2",
-        "to": "meet2"
-      },
-      {
-        "from": "meet2",
-        "to": "conds23"
-      },
-      {
-        "from": "dist_pq",
-        "to": "dist_eq"
-      },
-      {
-        "from": "c3",
-        "to": "dist_eq"
-      },
-      {
-        "from": "dist_eq",
-        "to": "conds23"
-      },
-      {
-        "from": "pt_p",
-        "to": "dist_pq"
-      },
-      {
-        "from": "pt_q",
-        "to": "dist_pq"
+        "from": "all_k_prod",
+        "to": "top23"
       }
     ],
-    "created_at": "2026-03-23T15:42:35.156Z"
+    "created_at": "2026-03-23T15:43:22.719Z"
   }
 ]
