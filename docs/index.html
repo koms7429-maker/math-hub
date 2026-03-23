@@ -107,6 +107,7 @@ var clipboard={pids:[],mode:null},currentFolder=null,renaming=null,lassoActive=f
 
 function d64(b){return new TextDecoder('utf-8').decode(Uint8Array.from(atob(b.replace(/\s/g,'')),function(c){return c.charCodeAt(0)}))}
 function rm(t){if(!t)return'';return String(t).split(/(\$[^$]+\$)/g).map(function(p){if(p.startsWith('$')&&p.endsWith('$')){try{return katex.renderToString(p.slice(1,-1),{throwOnError:false})}catch(e){return'<code>'+p.slice(1,-1)+'</code>'}}return p.replace(/</g,'&lt;').replace(/>/g,'&gt;')}).join('')}
+function xe(t){if(!t)return'';return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;')}
 function nc(id){if(!id)return'var(--td)';if(id.startsWith('\uc0ac\uc2e4'))return'var(--fc)';if(id.startsWith('\uc5f0\uc0b0'))return'var(--op)';if(id.startsWith('\uc804\ub7b5'))return'var(--st)';return'var(--td)'}
 function bi(to){return to?to.replace(/_\d+$/,''):''}
 function gn(e){return e.neuron||e.to||''}
@@ -463,7 +464,7 @@ function mkSkDAG(sk,clues,sfx){
     var lb=n.length>14?n.slice(0,13)+'…':n;
     var tip=(clueMap[n]||'')+(nm[n]?nm[n].note:'')+(iE?'최종 결론':'');
     s+='<rect x="'+(pp.x+ox-W/2)+'" y="'+(pp.y-H/2)+'" width="'+W+'" height="'+H+'" rx="'+(iE?13:5)+'" fill="'+bg+'" stroke="'+br+'" stroke-width="1.5"/>';
-    if(tip)s+='<title>'+n+'\n'+tip+'</title>';
+    if(tip)s+='<title>'+xe(n+'\n'+tip)+'</title>';
     s+='<text x="'+(pp.x+ox)+'" y="'+pp.y+'" text-anchor="middle" dominant-baseline="central" fill="'+tc+'" font-size="11" font-family="Pretendard,sans-serif" font-weight="600" style="pointer-events:none">'+lb+'</text>';
   });
   s+='</svg></div>';
