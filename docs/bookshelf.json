@@ -3076,5 +3076,285 @@
     "recovery_warnings": [],
     "errata": [],
     "created_at": "2026-03-23T14:23:48.936Z"
+  },
+  {
+    "problem_id": "15_UnknownSource_-n제곱근과자연수조건",
+    "answer": "150",
+    "clues": [
+      {
+        "id": "단서A",
+        "text": "$2 \\leq n \\leq 50$인 자연수 $n$이다"
+      },
+      {
+        "id": "단서B",
+        "text": "$-\\sqrt[5]{4}$이 어떤 자연수 $a$의 $n$제곱근이다"
+      }
+    ],
+    "skeleton": [
+      {
+        "from": "단서B",
+        "to": "note1",
+        "neuron": "전략12",
+        "note": "$-\\sqrt[5]{4}$이 자연수 $a$의 $n$제곱근이 되려면 $n$의 홀짝에 따라 조건이 달라진다",
+        "step": 1
+      },
+      {
+        "from": "note1",
+        "to": "note2",
+        "neuron": "사실74",
+        "note": "$a > 0$이고 $-\\sqrt[5]{4} < 0$이므로 음의 실수 $n$제곱근이 존재하려면 $n$은 짝수여야 한다",
+        "step": 1
+      },
+      {
+        "from": "note2",
+        "to": "note3",
+        "neuron": "사실4",
+        "note": "$n$이 짝수이면 $a > 0$의 $n$제곱근 중 실수인 것은 $\\pm a^{1/n}$이고, $-\\sqrt[5]{4} = -a^{1/n}$에서 $a^{1/n} = \\sqrt[5]{4}$이다",
+        "step": 2
+      },
+      {
+        "from": "note3",
+        "to": "note4",
+        "neuron": "연산4",
+        "note": "$a = (\\sqrt[5]{4})^n = (4^{1/5})^n = 4^{n/5} = 2^{2n/5}$이다",
+        "step": 2
+      },
+      {
+        "from": "note4",
+        "to": "note5",
+        "neuron": "사실64",
+        "note": "$2^{2n/5}$이 자연수이려면 $5 \\mid 2n$이어야 한다",
+        "step": 3
+      },
+      {
+        "from": "note5",
+        "to": "note6",
+        "neuron": "전략33",
+        "note": "$\\gcd(2, 5) = 1$이고 $5 \\mid 2n$이므로 $5 \\mid n$이다",
+        "step": 3
+      },
+      {
+        "from": [
+          "note2",
+          "note6"
+        ],
+        "to": "note7",
+        "neuron": "사실66",
+        "note": "$2 \\mid n$이고 $5 \\mid n$이므로 $\\text{lcm}(2, 5) = 10 \\mid n$이다",
+        "step": 4
+      },
+      {
+        "from": [
+          "note7",
+          "단서A"
+        ],
+        "to": "note8",
+        "neuron": "전략17",
+        "note": "$2 \\leq n \\leq 50$에서 $10$의 배수는 $n = 10,\\, 20,\\, 30,\\, 40,\\, 50$이다",
+        "step": 4
+      },
+      {
+        "from": "note8",
+        "to": "note9",
+        "neuron": "전략25",
+        "note": "$n=10$일 때 $a=2^4=16$, $n=20$일 때 $a=2^8=256$, $n=30$일 때 $a=2^{12}=4096$, $n=40$일 때 $a=2^{16}=65536$, $n=50$일 때 $a=2^{20}=1048576$으로 모두 자연수이다",
+        "main": false,
+        "step": 5
+      },
+      {
+        "from": "note8",
+        "to": "END",
+        "neuron": "전략17",
+        "note": "$10 + 20 + 30 + 40 + 50 = 150$이다",
+        "step": 6
+      }
+    ],
+    "solution": "STEP 1. $-\\sqrt[5]{4}$이 자연수 $a$의 $n$제곱근이 되려면, $a > 0$이고 $-\\sqrt[5]{4} < 0$이므로 사실74에 의해 $n$은 짝수여야 한다.\n\nSTEP 2. $n$이 짝수이면 $a$의 $n$제곱근 중 실수인 것은 $\\pm a^{1/n}$이다. $-\\sqrt[5]{4} = -a^{1/n}$에서 $a^{1/n} = \\sqrt[5]{4}$이고, 양변을 $n$제곱하면 $a = (\\sqrt[5]{4})^n = 4^{n/5} = 2^{2n/5}$이다.\n\nSTEP 3. $2^{2n/5}$이 자연수이려면 사실64에 의해 $5 \\mid 2n$이어야 한다. $\\gcd(2, 5) = 1$이므로 $5 \\mid n$이다.\n\nSTEP 4. $n$은 짝수이면서 5의 배수이므로 $\\text{lcm}(2, 5) = 10$의 배수여야 한다. $2 \\leq n \\leq 50$에서 10의 배수는 $n = 10, 20, 30, 40, 50$이다.\n\nSTEP 5. 각 $n$에 대해 $a$가 자연수인지 확인하면, $n=10$일 때 $a=16$, $n=20$일 때 $a=256$, $n=30$일 때 $a=4096$, $n=40$일 때 $a=65536$, $n=50$일 때 $a=1048576$으로 모두 자연수이다.\n\nSTEP 6. 모든 $n$의 값의 합은 $10 + 20 + 30 + 40 + 50 = 150$이다.",
+    "original_solution": "문제에서의 어떤 자연수를 $a$라 하면\n\n$a > 0 \\Rightarrow a$의 $n$제곱근은 $\\begin{cases} \\bullet\\, n\\text{이 홀수이면 } a^{\\frac{1}{n}}\\, (> 0) \\\\ \\bullet\\, n\\text{이 짝수이면 } \\pm a^{\\frac{1}{n}} \\end{cases}$\n\n이므로\n\n$-\\sqrt[5]{4}$이 $a$의 $n$제곱근 $\\Rightarrow \\begin{cases} \\text{① } n\\text{은 짝수 } (\\because -\\sqrt[5]{4} < 0) \\\\ \\text{② } -\\sqrt[5]{4} = -a^{\\frac{1}{n}} \\end{cases}$\n\n임을 알 수 있다.\n\n따라서\n\n② $\\Rightarrow a = (\\sqrt[5]{4})^n = (2^{\\frac{2}{5}})^n = 2^{\\frac{2n}{5}}$의 값이 자연수\n\n$\\Rightarrow \\frac{2n}{5}$가 정수, 즉 $n$은 5의 배수\n\n$\\Rightarrow n$은 짝수이면서 5의 배수, 즉 10의 배수 ($\\because$ ①)\n\n$\\Rightarrow n = 10, 20, 30, 40, 50$\n\n$\\Rightarrow \\left|\\begin{matrix} 2 \\leq n \\leq 50\\text{인 모든} \\\\ \\text{자연수 } n\\text{의 값의} \\\\ \\text{합} \\end{matrix}\\right| = 10 + 20 + 30 + 40 + 50 = 150$\n\n을 얻는다.\n\n---",
+    "analysis": "",
+    "new_neurons": [],
+    "metadata": {
+      "unit": "",
+      "difficulty": "",
+      "score": "4",
+      "type": "",
+      "answer": "150"
+    },
+    "edge_count": 10,
+    "side_count": 1,
+    "statement": "# 15. (Unknown Source) - n제곱근과 자연수 조건\n\n## Problem\n\n$2 \\leq n \\leq 50$인 자연수 $n$에 대하여 $-\\sqrt[5]{4}$이 어떤 자연수의 $n$제곱근이 되도록 하는 모든 $n$의 값의 합은? [4점]",
+    "dna": {
+      "nodes": [
+        {
+          "id": "top",
+          "dna": "Q3",
+          "label": "모든 n의 합",
+          "category": "발문"
+        },
+        {
+          "id": "vn",
+          "dna": "T1",
+          "label": "변수 n",
+          "category": "말단"
+        },
+        {
+          "id": "lim_n_range",
+          "dna": "L2",
+          "label": "2≤n≤50",
+          "category": "제한"
+        },
+        {
+          "id": "lim_n_nat",
+          "dna": "L3",
+          "label": "n은 자연수",
+          "category": "제한"
+        },
+        {
+          "id": "c2",
+          "dna": "T2",
+          "label": "상수 2",
+          "category": "말단"
+        },
+        {
+          "id": "c4",
+          "dna": "T2",
+          "label": "상수 4",
+          "category": "말단"
+        },
+        {
+          "id": "c5",
+          "dna": "T2",
+          "label": "상수 5",
+          "category": "말단"
+        },
+        {
+          "id": "c50",
+          "dna": "T2",
+          "label": "상수 50",
+          "category": "말단"
+        },
+        {
+          "id": "fifth_root_4",
+          "dna": "F7",
+          "label": "4의 5제곱근",
+          "category": "함수"
+        },
+        {
+          "id": "neg_fifth_root_4",
+          "dna": "E2",
+          "label": "-⁵√4",
+          "category": "수식"
+        },
+        {
+          "id": "va",
+          "dna": "T1",
+          "label": "변수 a",
+          "category": "말단"
+        },
+        {
+          "id": "lim_a_nat",
+          "dna": "L3",
+          "label": "a는 자연수",
+          "category": "제한"
+        },
+        {
+          "id": "nth_root_a",
+          "dna": "F7",
+          "label": "a의 n제곱근",
+          "category": "함수"
+        },
+        {
+          "id": "neg_is_nthroot",
+          "dna": "C1",
+          "label": "-⁵√4 = a의 n제곱근",
+          "category": "조건"
+        },
+        {
+          "id": "exist_a",
+          "dna": "X5",
+          "label": "a가 존재한다",
+          "category": "존재"
+        },
+        {
+          "id": "main_cond",
+          "dna": "S1",
+          "label": "전체 조건 묶음",
+          "category": "구조"
+        }
+      ],
+      "edges": [
+        {
+          "from": "lim_n_range",
+          "to": "vn"
+        },
+        {
+          "from": "lim_n_nat",
+          "to": "vn"
+        },
+        {
+          "from": "c2",
+          "to": "lim_n_range"
+        },
+        {
+          "from": "c50",
+          "to": "lim_n_range"
+        },
+        {
+          "from": "c4",
+          "to": "fifth_root_4"
+        },
+        {
+          "from": "c5",
+          "to": "fifth_root_4"
+        },
+        {
+          "from": "fifth_root_4",
+          "to": "neg_fifth_root_4"
+        },
+        {
+          "from": "lim_a_nat",
+          "to": "va"
+        },
+        {
+          "from": "va",
+          "to": "nth_root_a"
+        },
+        {
+          "from": "vn",
+          "to": "nth_root_a"
+        },
+        {
+          "from": "neg_fifth_root_4",
+          "to": "neg_is_nthroot"
+        },
+        {
+          "from": "nth_root_a",
+          "to": "neg_is_nthroot"
+        },
+        {
+          "from": "neg_is_nthroot",
+          "to": "exist_a"
+        },
+        {
+          "from": "exist_a",
+          "to": "main_cond"
+        },
+        {
+          "from": "vn",
+          "to": "main_cond"
+        },
+        {
+          "from": "main_cond",
+          "to": "top"
+        }
+      ],
+      "new_dna": []
+    },
+    "thinking_profile": null,
+    "folders": [],
+    "history": [],
+    "recovery_warnings": [],
+    "errata": [],
+    "created_at": "2026-03-23T14:27:57.852Z"
   }
 ]
