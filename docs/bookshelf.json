@@ -4801,10 +4801,6 @@
           "to": "vn"
         },
         {
-          "from": "n_neq12",
-          "to": "vn"
-        },
-        {
           "from": "vn",
           "to": "n_neq12"
         },
