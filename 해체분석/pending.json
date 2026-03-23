@@ -3235,5 +3235,591 @@
       }
     ],
     "created_at": "2026-03-23T11:51:24.872Z"
+  },
+  {
+    "problem_id": "Problem13",
+    "content": "# Problem13. (Unknown Source) - 함수의 개수 세기\n\n## Problem\n\n두 실수 $a(a>1)$, $k(k<0)$에 대하여 함수 $f(x)$를\n\n$$f(x)=\\begin{cases} |a^{x+1}-3a| & (x \\le 1) \\\\ k(x-1)(x-a) & (x>1) \\end{cases}$$\n\n이라 하자. 자연수 $n$에 대하여 $x$에 대한 방정식 $f(x^n)=n$의 서로 다른 실근의 개수를 $g(n)$이라 할 때, $g(14)=5$이다.\n\n$$k+\\sum_{n=1}^{5}g(5n)$$의 값은? [4점]\n\n## Choices\n① $\\frac{121}{9}$  ② $\\frac{130}{9}$  ③ $\\frac{139}{9}$  ④ $\\frac{148}{9}$  ⑤ $\\frac{157}{9}$\n\n**Answer**: ③\n**Difficulty**: unknown\n**Score**: 4점\n**Type**: multiple choice\n\n---\n\n## Solution\n\n먼저 실수 $t$가\n\n$$f(t)=n$$\n\n을 만족시킨다고 가정하면, $n$이 짝수일 때,\n\n$$(x^n=t \\text{인 } x \\text{의 개수})=\\begin{cases} 0 & (t<0 \\text{인 때}) \\\\ 1 & (t=0 \\text{인 때}) \\\\ 2 & (t>0 \\text{인 때}) \\end{cases}$$\n\n이므로 $g(n)$의 정의에 의해\n\n$n$이 짝수일 때, $g(n)=$(①을 만족시키는 각각의 $t$에 대하여 모든 ②의 값의 합)\n\n이다. 따라서 문제의 조건에서\n\n$$g(14)=5 \\Rightarrow \\begin{cases} ① \\;\\; f(t)=14 \\\\ ② \\;\\; f(x)=14 \\text{인 양수 } x \\text{는 } 2 \\text{개만 존재} \\end{cases}$$\n\n임을 알 수 있고,\n\n① $\\Rightarrow a=7$\n\n이므로 ②를 만족시키는 함수 $f(x)$의 그래프는 다음 [그림]과 같다.\n\n[FIGURE: 좌표평면에 $y=f(x)$ 그래프가 그려져 있음. $x=0$에서 출발하여 $x=1$까지 증가하다가 극댓값 21을 지나고, $x=1$ 이후 감소하여 $x=4$에서 극솟값, $x=7$에서 다시 증가. $y=14$ 수평선과 2개의 양수 교점이 표시됨. $y=28$에서 점근선.]\n\n따라서\n\n$$f(4)=k\\times 3 \\times (-3)=-9k \\Rightarrow k=-\\frac{14}{9} \\;\\; (\\because \\;\\; f(4)=14)$$\n\n이다.\n\n한편, $n$이 홀수일 때는\n\n모든 실수 $t$에 대하여, $(x^n=t \\text{인 } x \\text{의 개수})=1$\n\n이므로 $g(n)$의 정의에 의해\n\n$n$이 홀수일 때 : $g(n)=$(①을 만족시키는 $t$의 개수)\n\n와 같다.\n\n따라서 [그림]을 통해\n\n$$g(5)=4, \\; g(10)=8, \\; g(15)=2, \\; g(20)=2, \\; g(25)=1$$\n\n임을 알 수 있다.\n\n$$\\therefore \\;\\; k+\\sum_{n=1}^{5}g(5n)=-\\frac{14}{9}+17=\\frac{139}{9}$$\n\n---",
+    "content_source": "FileLoop",
+    "content_length": 1549,
+    "skel_status": "neuron_missing",
+    "dna_status": "ok",
+    "needed_neurons": [
+      "???"
+    ],
+    "needed_dna": [],
+    "previous_analysis": "",
+    "previous_matching": "",
+    "previous_matched": [],
+    "previous_skeleton": [],
+    "previous_solution": "",
+    "previous_clues": "[]",
+    "previous_new_neurons": [
+      {
+        "id": "???",
+        "type": "???",
+        "statement": "JSON 잘림 (max_tokens 초과 추정) — Claude 응답을 파싱할 수 없음",
+        "reason": "JSON 잘림 (max_tokens 초과 추정)",
+        "blocked_edge": "N/A"
+      }
+    ],
+    "previous_partial_skeleton": [],
+    "previous_blockage_point": "JSON 잘림 (max_tokens 초과 추정). Raw 응답 앞 200자: I need to carefully analyze each logical step and match neurons.\n\n## STEP 1: Problem identification\n\nThe problem involves a piecewise function with absolute value and quadratic parts, finding roots th",
+    "previous_dna_nodes": [
+      {
+        "id": "top",
+        "dna": "Q1",
+        "label": "값을 구하라",
+        "category": "발문"
+      },
+      {
+        "id": "ask",
+        "dna": "E1",
+        "label": "k+시그마합",
+        "category": "수식"
+      },
+      {
+        "id": "sigma",
+        "dna": "E1",
+        "label": "∑g(5n) n=1~5",
+        "category": "수식"
+      },
+      {
+        "id": "g5",
+        "dna": "F3",
+        "label": "g(5)",
+        "category": "함수"
+      },
+      {
+        "id": "g10",
+        "dna": "F3",
+        "label": "g(10)",
+        "category": "함수"
+      },
+      {
+        "id": "g15",
+        "dna": "F3",
+        "label": "g(15)",
+        "category": "함수"
+      },
+      {
+        "id": "g20",
+        "dna": "F3",
+        "label": "g(20)",
+        "category": "함수"
+      },
+      {
+        "id": "g25",
+        "dna": "F3",
+        "label": "g(25)",
+        "category": "함수"
+      },
+      {
+        "id": "va",
+        "dna": "T1",
+        "label": "변수 a",
+        "category": "말단"
+      },
+      {
+        "id": "vk",
+        "dna": "T1",
+        "label": "변수 k",
+        "category": "말단"
+      },
+      {
+        "id": "lim_a",
+        "dna": "C2",
+        "label": "a>1",
+        "category": "조건"
+      },
+      {
+        "id": "lim_k",
+        "dna": "C2",
+        "label": "k<0",
+        "category": "조건"
+      },
+      {
+        "id": "c1",
+        "dna": "T2",
+        "label": "상수 1",
+        "category": "말단"
+      },
+      {
+        "id": "c0",
+        "dna": "T2",
+        "label": "상수 0",
+        "category": "말단"
+      },
+      {
+        "id": "c3",
+        "dna": "T2",
+        "label": "상수 3",
+        "category": "말단"
+      },
+      {
+        "id": "c14",
+        "dna": "T2",
+        "label": "상수 14",
+        "category": "말단"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
+      },
+      {
+        "id": "vn",
+        "dna": "T3",
+        "label": "독립변수 n",
+        "category": "말단"
+      },
+      {
+        "id": "fdef",
+        "dna": "F6",
+        "label": "f(x) 정의",
+        "category": "함수"
+      },
+      {
+        "id": "fpf",
+        "dna": "F1",
+        "label": "f(x) 조각함수",
+        "category": "함수"
+      },
+      {
+        "id": "piece1",
+        "dna": "F2",
+        "label": "조각1: x≤1",
+        "category": "함수"
+      },
+      {
+        "id": "piece2",
+        "dna": "F2",
+        "label": "조각2: x>1",
+        "category": "함수"
+      },
+      {
+        "id": "dom1",
+        "dna": "C2",
+        "label": "x≤1",
+        "category": "조건"
+      },
+      {
+        "id": "dom2",
+        "dna": "C2",
+        "label": "x>1",
+        "category": "조건"
+      },
+      {
+        "id": "expr1",
+        "dna": "E5",
+        "label": "|a^{x+1}-3a|",
+        "category": "수식"
+      },
+      {
+        "id": "inner1",
+        "dna": "E1",
+        "label": "a^{x+1}-3a",
+        "category": "수식"
+      },
+      {
+        "id": "exp1",
+        "dna": "E4",
+        "label": "a^{x+1}",
+        "category": "수식"
+      },
+      {
+        "id": "xp1",
+        "dna": "E1",
+        "label": "x+1",
+        "category": "수식"
+      },
+      {
+        "id": "neg3a",
+        "dna": "E2",
+        "label": "-(3a)",
+        "category": "수식"
+      },
+      {
+        "id": "threeA",
+        "dna": "E6",
+        "label": "3×a",
+        "category": "수식"
+      },
+      {
+        "id": "expr2",
+        "dna": "E6",
+        "label": "k(x-1)(x-a)",
+        "category": "수식"
+      },
+      {
+        "id": "kprod",
+        "dna": "E6",
+        "label": "k×(x-1)",
+        "category": "수식"
+      },
+      {
+        "id": "xm1",
+        "dna": "E1",
+        "label": "x-1",
+        "category": "수식"
+      },
+      {
+        "id": "neg1",
+        "dna": "E2",
+        "label": "부호반전 1",
+        "category": "수식"
+      },
+      {
+        "id": "xma",
+        "dna": "E1",
+        "label": "x-a",
+        "category": "수식"
+      },
+      {
+        "id": "negA",
+        "dna": "E2",
+        "label": "부호반전 a",
+        "category": "수식"
+      },
+      {
+        "id": "gdef",
+        "dna": "F6",
+        "label": "g(n) 정의",
+        "category": "함수"
+      },
+      {
+        "id": "eq_fxn",
+        "dna": "C1",
+        "label": "f(x^n)=n",
+        "category": "조건"
+      },
+      {
+        "id": "fxn_app",
+        "dna": "F3",
+        "label": "f(x^n)",
+        "category": "함수"
+      },
+      {
+        "id": "xpown",
+        "dna": "E7",
+        "label": "x^n",
+        "category": "수식"
+      },
+      {
+        "id": "rootcount",
+        "dna": "C9",
+        "label": "실근 개수=n",
+        "category": "조건"
+      },
+      {
+        "id": "nat_n",
+        "dna": "L3",
+        "label": "n은 자연수",
+        "category": "제한"
+      },
+      {
+        "id": "cond_g14",
+        "dna": "C9",
+        "label": "g(14)=5",
+        "category": "조건"
+      },
+      {
+        "id": "g14app",
+        "dna": "F3",
+        "label": "g(14)",
+        "category": "함수"
+      },
+      {
+        "id": "c5",
+        "dna": "T2",
+        "label": "상수 5",
+        "category": "말단"
+      },
+      {
+        "id": "conds",
+        "dna": "S1",
+        "label": "조건 묶음",
+        "category": "구조"
+      }
+    ],
+    "previous_dna_edges": [
+      {
+        "from": "ask",
+        "to": "top"
+      },
+      {
+        "from": "vk",
+        "to": "ask"
+      },
+      {
+        "from": "sigma",
+        "to": "ask"
+      },
+      {
+        "from": "g5",
+        "to": "sigma"
+      },
+      {
+        "from": "g10",
+        "to": "sigma"
+      },
+      {
+        "from": "g15",
+        "to": "sigma"
+      },
+      {
+        "from": "g20",
+        "to": "sigma"
+      },
+      {
+        "from": "g25",
+        "to": "sigma"
+      },
+      {
+        "from": "gdef",
+        "to": "g5"
+      },
+      {
+        "from": "gdef",
+        "to": "g10"
+      },
+      {
+        "from": "gdef",
+        "to": "g15"
+      },
+      {
+        "from": "gdef",
+        "to": "g20"
+      },
+      {
+        "from": "gdef",
+        "to": "g25"
+      },
+      {
+        "from": "lim_a",
+        "to": "va"
+      },
+      {
+        "from": "lim_k",
+        "to": "vk"
+      },
+      {
+        "from": "va",
+        "to": "lim_a"
+      },
+      {
+        "from": "c1",
+        "to": "lim_a"
+      },
+      {
+        "from": "vk",
+        "to": "lim_k"
+      },
+      {
+        "from": "c0",
+        "to": "lim_k"
+      },
+      {
+        "from": "conds",
+        "to": "top"
+      },
+      {
+        "from": "fdef",
+        "to": "conds"
+      },
+      {
+        "from": "fpf",
+        "to": "fdef"
+      },
+      {
+        "from": "piece1",
+        "to": "fpf"
+      },
+      {
+        "from": "piece2",
+        "to": "fpf"
+      },
+      {
+        "from": "dom1",
+        "to": "piece1"
+      },
+      {
+        "from": "expr1",
+        "to": "piece1"
+      },
+      {
+        "from": "dom2",
+        "to": "piece2"
+      },
+      {
+        "from": "expr2",
+        "to": "piece2"
+      },
+      {
+        "from": "vx",
+        "to": "dom1"
+      },
+      {
+        "from": "c1",
+        "to": "dom1"
+      },
+      {
+        "from": "vx",
+        "to": "dom2"
+      },
+      {
+        "from": "c1",
+        "to": "dom2"
+      },
+      {
+        "from": "inner1",
+        "to": "expr1"
+      },
+      {
+        "from": "exp1",
+        "to": "inner1"
+      },
+      {
+        "from": "neg3a",
+        "to": "inner1"
+      },
+      {
+        "from": "va",
+        "to": "exp1"
+      },
+      {
+        "from": "xp1",
+        "to": "exp1"
+      },
+      {
+        "from": "vx",
+        "to": "xp1"
+      },
+      {
+        "from": "c1",
+        "to": "xp1"
+      },
+      {
+        "from": "threeA",
+        "to": "neg3a"
+      },
+      {
+        "from": "c3",
+        "to": "threeA"
+      },
+      {
+        "from": "va",
+        "to": "threeA"
+      },
+      {
+        "from": "kprod",
+        "to": "expr2"
+      },
+      {
+        "from": "xma",
+        "to": "expr2"
+      },
+      {
+        "from": "vk",
+        "to": "kprod"
+      },
+      {
+        "from": "xm1",
+        "to": "kprod"
+      },
+      {
+        "from": "vx",
+        "to": "xm1"
+      },
+      {
+        "from": "neg1",
+        "to": "xm1"
+      },
+      {
+        "from": "c1",
+        "to": "neg1"
+      },
+      {
+        "from": "vx",
+        "to": "xma"
+      },
+      {
+        "from": "negA",
+        "to": "xma"
+      },
+      {
+        "from": "va",
+        "to": "negA"
+      },
+      {
+        "from": "gdef",
+        "to": "conds"
+      },
+      {
+        "from": "eq_fxn",
+        "to": "gdef"
+      },
+      {
+        "from": "fxn_app",
+        "to": "eq_fxn"
+      },
+      {
+        "from": "vn",
+        "to": "eq_fxn"
+      },
+      {
+        "from": "fpf",
+        "to": "fxn_app"
+      },
+      {
+        "from": "xpown",
+        "to": "fxn_app"
+      },
+      {
+        "from": "vx",
+        "to": "xpown"
+      },
+      {
+        "from": "vn",
+        "to": "xpown"
+      },
+      {
+        "from": "rootcount",
+        "to": "gdef"
+      },
+      {
+        "from": "nat_n",
+        "to": "vn"
+      },
+      {
+        "from": "cond_g14",
+        "to": "conds"
+      },
+      {
+        "from": "g14app",
+        "to": "cond_g14"
+      },
+      {
+        "from": "c14",
+        "to": "cond_g14"
+      },
+      {
+        "from": "c5",
+        "to": "cond_g14"
+      },
+      {
+        "from": "gdef",
+        "to": "g14app"
+      },
+      {
+        "from": "c14",
+        "to": "g14app"
+      },
+      {
+        "from": "c5",
+        "to": "sigma"
+      }
+    ],
+    "created_at": "2026-03-23T11:55:47.000Z"
   }
 ]
