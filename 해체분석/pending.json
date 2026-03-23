@@ -1,1 +1,468 @@
-[]
+[
+  {
+    "problem_id": "28_수능_모의고사_-곡선위의점과직선의기울기",
+    "answer": "⑤ 2^(2/3)",
+    "content": "# 28. (수능/모의고사) - 곡선 위의 점과 직선의 기울기\n\n## Problem\n\n곡선 $y = 4^x$ 위의 두 점 A, B가 다음 조건을 만족시킨다.\n\n> (가) $2\\overline{\\rm OA} = \\overline{\\rm OB}$\n>\n> (나) $x$축 위의 모든 점 P에 대하여 $\\overline{\\rm PA} + \\overline{\\rm PB} \\geq 3\\overline{\\rm OA}$ 이다.\n\n직선 AB의 기울기는? (단, O는 원점이다.) [4점]\n\n## Choices\n① $2^{-\\frac{2}{3}}$ ② $2^{-\\frac{1}{3}}$ ③ $1$ ④ $2^{\\frac{1}{3}}$ ⑤ $2^{\\frac{2}{3}}$\n\n**Answer**: ⑤\n**Difficulty**: unknown\n**Score**: 4점\n**Type**: multiple choice\n\n---\n\n## Solution\n\n문제의 박스 조건에 의해\n\n$$\\overline{\\rm PA} + \\overline{\\rm PB} \\geq 3\\overline{\\rm OA} = \\overline{\\rm OA} + \\overline{\\rm OB}$$\n\n이고 $\\rm P = O$일 때 위 부등식에서 등호가 성립하므로\n\n$$\\rm P = O\\text{일 때 } \\overline{\\rm PA} + \\overline{\\rm PB}\\text{의 값이 최소} \\cdots \\text{①}$$\n\n이다.\n\n한편, A, B는 모두 곡선 $y = 4^x$ 위의 점이고 $y$좌표가 모두 양수이므로 점 B를 $x$축에 대하여 대칭이동한 점을 $\\rm B'$이라 하면\n\n$$\\overline{\\rm PA} + \\overline{\\rm PB} = \\overline{\\rm PA} + \\overline{\\rm PB'}$$\n\n이고, 위 식은 점 P가 선분 $\\rm AB'$와 $x$축의 교점일 때 최솟값 $\\overline{\\rm AB'}$을 가짐을 알 수 있으므로 ①을 고려하면\n\n- $\\rm P = O$일 때 $\\overline{\\rm PA} + \\overline{\\rm PB}$는 최솟값 $\\overline{\\rm AB'}$을 가짐\n- $\\Rightarrow$ 선분 $\\rm AB'$와 $x$축의 교점이 O\n- $\\Rightarrow$ 세 점 A, O, B'은 한 직선 위의 점\n\n임을 알 수 있다.\n\n[FIGURE: 곡선 $y=4^x$ 위에 점 A(제2사분면), 점 B(제1사분면)가 있고, B를 $x$축 대칭한 B'(제4사분면), 원점 O, $x$축 위의 점 P가 표시된 그래프]\n\n따라서 점 A의 좌표를 $(a,\\, 4^a)$이라 하면 (가) 조건에 의해\n\n$$\\overline{\\rm OA} : \\overline{\\rm OB'} = 1 : 2$$\n\n$$\\Rightarrow \\rm B'(-2a,\\; -2 \\times 4^a), \\quad B(-2a,\\; 2 \\times 4^a)$$\n\n이고, 점 B가 곡선 $y = 4^x$ 위의 점이므로\n\n$$2 \\times 4^a = 4^{-2a}$$\n\n$$\\Rightarrow a = -\\frac{1}{6}$$\n\n$$\\Rightarrow \\rm A\\!\\left(-\\frac{1}{6},\\; 2^{-\\frac{1}{3}}\\right),\\quad B\\!\\left(\\frac{1}{3},\\; 2^{\\frac{2}{3}}\\right)$$\n\n이다.\n\n$$\\therefore\\; (\\text{직선 AB의 기울기}) = \\frac{2^{\\frac{2}{3}} - 2^{-\\frac{1}{3}}}{\\dfrac{1}{3} - \\left(-\\dfrac{1}{6}\\right)} = 2^{\\frac{2}{3}}$$\n\n---",
+    "content_source": "FileLoop",
+    "content_length": 1804,
+    "skel_status": "neuron_missing",
+    "dna_status": "ok",
+    "previous_skeleton": [],
+    "previous_solution": "",
+    "previous_clues": "[{\"id\":\"단서A\",\"text\":\"곡선 $y=4^x$ 위의 두 점 A, B\"},{\"id\":\"단서B\",\"text\":\"$2\\\\overline{\\\\text{OA}}=\\\\overline{\\\\text{OB}}$\"},{\"id\":\"단서C\",\"text\":\"$x$축 위의 모든 점 P에 대하여 $\\\\overline{\\\\text{PA}}+\\\\overline{\\\\text{PB}} \\\\geq 3\\\\overline{\\\\text{OA}}$이다\"}]",
+    "previous_analysis": "이 문제의 핵심은 x축 위의 점 P에 대한 PA+PB 최솟값 조건을 대칭점과 삼각부등식으로 분석하는 것이다. 대칭축 위 점의 거리 보존(PB=PB')과 삼각부등식(PA+PB'≥AB')이라는 두 기본 기하 사실이 뉴런 목록에 없어 스켈레톤을 완성할 수 없다.",
+    "previous_matching": "1. STEP 1 조건정리: 단서B(OB=2OA)를 단서C에 대입하여 3OA=OA+OB 유도 → 전략11 매칭\n2. STEP 2 P=O 대입하여 등호 확인, 최솟값 위치 결정 → 전략25 매칭\n3. STEP 3 4^x>0이므로 y좌표 양수 → 사실1 매칭\n4. STEP 3 B를 x축 대칭 → 전략13, 연산27 매칭\n5. STEP 3 P가 x축 위이면 PB=PB' → 매칭 없음 (대칭축 위 점의 거리 보존 뉴런 필요) → 신규 필요\n6. STEP 3 PA+PB'≥AB', 등호조건으로 A,O,B' 공선 유도 → 매칭 없음 (삼각부등식 뉴런 필요) → 신규 필요\n7. STEP 4 OA:OB'=1:2 비율로 B' 좌표 결정 → 연산5 매칭\n8. STEP 4 B'에서 B 복원 → 연산27 매칭\n9. STEP 5 B가 곡선 위에 있는 조건 대입 → 전략25 매칭\n10. STEP 5 4^a를 2^{2a}로 변환 → 연산4 매칭\n11. STEP 5 지수 비교하여 a 결정 → 전략2 매칭\n12. STEP 6 좌표 계산 → 전략25 매칭\n13. STEP 7 기울기 계산 → 연산10 매칭",
+    "previous_matched": [
+      "사실1",
+      "전략11",
+      "전략25",
+      "전략13",
+      "연산27",
+      "연산5",
+      "연산4",
+      "전략2",
+      "연산10"
+    ],
+    "previous_new_neurons": [
+      {
+        "id": "사실92",
+        "type": "fact",
+        "statement": "점 P가 직선 l 위에 있고 Q'이 Q의 l에 대한 대칭점이면, PQ = PQ'이다 (대칭축 위의 점은 원래 점과 대칭점까지의 거리가 같다)",
+        "reason": "STEP 3에서 P가 x축 위의 점이고 B'이 B의 x축 대칭점일 때 PB = PB'이라는 사실이 핵심 논리에 사용되는데, 기존 뉴런 중 대칭변환이 거리를 보존한다는 사실을 다루는 것이 없다. 사실32는 교집합 보존이고, 연산27은 좌표 변환만 다룬다.",
+        "blocked_edge": "note4 → note5"
+      },
+      {
+        "id": "사실93",
+        "type": "fact",
+        "statement": "삼각부등식: 세 점 A, P, B에 대해 PA + PB ≥ AB이고, 등호는 P가 선분 AB 위에 있을 때(A, P, B가 한 직선 위에 이 순서로 있을 때) 성립한다",
+        "reason": "STEP 3에서 PA + PB' ≥ AB'이고 등호 조건으로부터 O가 선분 AB' 위에 있음을 유도하는데, 삼각부등식과 그 등호 조건을 표현하는 뉴런이 없다.",
+        "blocked_edge": "note5 → note6"
+      }
+    ],
+    "previous_partial_skeleton": [
+      {
+        "from": [
+          "단서B",
+          "단서C"
+        ],
+        "to": "note1",
+        "neuron": "전략11",
+        "note": "$\\overline{\\text{PA}}+\\overline{\\text{PB}} \\geq 3\\,\\overline{\\text{OA}} = \\overline{\\text{OA}}+\\overline{\\text{OB}}$이다",
+        "main": true,
+        "step": 1
+      },
+      {
+        "from": "note1",
+        "to": "note2",
+        "neuron": "전략25",
+        "note": "$\\text{P}=\\text{O}$를 대입하면 $\\overline{\\text{OA}}+\\overline{\\text{OB}} \\geq \\overline{\\text{OA}}+\\overline{\\text{OB}}$으로 등호가 성립한다. $\\text{P}=\\text{O}$에서 $\\overline{\\text{PA}}+\\overline{\\text{PB}}$는 최솟값 $\\overline{\\text{OA}}+\\overline{\\text{OB}}$를 가진다",
+        "main": true,
+        "step": 1
+      },
+      {
+        "from": "단서A",
+        "to": "note3",
+        "neuron": "사실1",
+        "note": "$4^x > 0$이고 $\\text{A}$, $\\text{B}$의 $y$좌표는 모두 양수이다",
+        "main": true,
+        "step": 2
+      },
+      {
+        "from": "note3",
+        "to": "note4",
+        "neuron": "전략13",
+        "note": "$\\text{B}$를 $x$축에 대해 대칭시킨 점을 $\\text{B}'$이라 한다. $\\text{B}'$의 $y$좌표는 음수이다",
+        "main": true,
+        "step": 2
+      }
+    ],
+    "previous_blockage_point": "note4에서 'x축 위의 점 P에 대해 PB=PB'이다'라는 결론(note5)으로 가려는데, 대칭축 위 점의 거리 보존을 표현하는 매칭 뉴런이 없음. 이어서 note5에서 '삼각부등식에 의해 PA+PB'≥AB'이고 등호 조건으로 A,O,B' 공선'이라는 결론(note6)으로 가려는데, 삼각부등식 뉴런이 없음.",
+    "previous_skel_review_notes": "해설의 계산은 정확하다. 2·4^a=4^{-2a} → 2^{1+2a}=2^{-4a} → a=-1/6. 기울기 계산에서 2^{2/3}-2^{-1/3}=2^{-1/3}(2-1)=2^{-1/3}, 분모 1/3-(-1/6)=1/2, 기울기=2·2^{-1/3}=2^{2/3} 모두 검증됨.",
+    "previous_dna_nodes": [
+      {
+        "id": "top",
+        "dna": "Q1",
+        "label": "기울기를 구하라",
+        "category": "발문"
+      },
+      {
+        "id": "ask_slope",
+        "dna": "G5",
+        "label": "직선AB 기울기",
+        "category": "기하"
+      },
+      {
+        "id": "line_ab",
+        "dna": "G12",
+        "label": "직선 AB",
+        "category": "기하"
+      },
+      {
+        "id": "pt_a",
+        "dna": "G1",
+        "label": "점 A",
+        "category": "기하"
+      },
+      {
+        "id": "pt_b",
+        "dna": "G1",
+        "label": "점 B",
+        "category": "기하"
+      },
+      {
+        "id": "pt_o",
+        "dna": "G17",
+        "label": "원점 O(0,0)",
+        "category": "기하"
+      },
+      {
+        "id": "crv",
+        "dna": "G2",
+        "label": "곡선 y=4^x",
+        "category": "기하"
+      },
+      {
+        "id": "crv_eq",
+        "dna": "C11",
+        "label": "곡선 방정식",
+        "category": "조건"
+      },
+      {
+        "id": "crv_c1",
+        "dna": "C1",
+        "label": "y=4^x 등식",
+        "category": "조건"
+      },
+      {
+        "id": "crv_exp",
+        "dna": "E4",
+        "label": "4^x",
+        "category": "수식"
+      },
+      {
+        "id": "c4",
+        "dna": "T2",
+        "label": "상수 4",
+        "category": "말단"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
+      },
+      {
+        "id": "on_crv_a",
+        "dna": "G3",
+        "label": "A는 곡선 위",
+        "category": "기하"
+      },
+      {
+        "id": "on_crv_b",
+        "dna": "G3",
+        "label": "B는 곡선 위",
+        "category": "기하"
+      },
+      {
+        "id": "cond_ga",
+        "dna": "C1",
+        "label": "2·OA=OB",
+        "category": "조건"
+      },
+      {
+        "id": "lhs_ga",
+        "dna": "E6",
+        "label": "곱(2, OA)",
+        "category": "수식"
+      },
+      {
+        "id": "c2",
+        "dna": "T2",
+        "label": "상수 2",
+        "category": "말단"
+      },
+      {
+        "id": "dist_oa",
+        "dna": "G18",
+        "label": "거리 OA",
+        "category": "기하"
+      },
+      {
+        "id": "dist_ob",
+        "dna": "G18",
+        "label": "거리 OB",
+        "category": "기하"
+      },
+      {
+        "id": "cond_gb",
+        "dna": "C18",
+        "label": "모든 P에 대해",
+        "category": "조건"
+      },
+      {
+        "id": "pt_p",
+        "dna": "G1",
+        "label": "점 P(x축위)",
+        "category": "기하"
+      },
+      {
+        "id": "p_on_xaxis",
+        "dna": "G3",
+        "label": "P는 x축 위",
+        "category": "기하"
+      },
+      {
+        "id": "xaxis",
+        "dna": "G13",
+        "label": "x축",
+        "category": "기하"
+      },
+      {
+        "id": "ineq_gb",
+        "dna": "C2",
+        "label": "PA+PB≥3·OA",
+        "category": "조건"
+      },
+      {
+        "id": "lhs_gb",
+        "dna": "E1",
+        "label": "합(PA, PB)",
+        "category": "수식"
+      },
+      {
+        "id": "dist_pa",
+        "dna": "G18",
+        "label": "거리 PA",
+        "category": "기하"
+      },
+      {
+        "id": "dist_pb",
+        "dna": "G18",
+        "label": "거리 PB",
+        "category": "기하"
+      },
+      {
+        "id": "rhs_gb",
+        "dna": "E6",
+        "label": "곱(3, OA)",
+        "category": "수식"
+      },
+      {
+        "id": "c3",
+        "dna": "T2",
+        "label": "상수 3",
+        "category": "말단"
+      },
+      {
+        "id": "conds",
+        "dna": "S1",
+        "label": "조건 묶음",
+        "category": "구조"
+      }
+    ],
+    "previous_dna_edges": [
+      {
+        "from": "ask_slope",
+        "to": "top"
+      },
+      {
+        "from": "conds",
+        "to": "top"
+      },
+      {
+        "from": "line_ab",
+        "to": "ask_slope"
+      },
+      {
+        "from": "pt_a",
+        "to": "line_ab"
+      },
+      {
+        "from": "pt_b",
+        "to": "line_ab"
+      },
+      {
+        "from": "pt_a",
+        "to": "ask_slope"
+      },
+      {
+        "from": "pt_b",
+        "to": "ask_slope"
+      },
+      {
+        "from": "crv_eq",
+        "to": "crv"
+      },
+      {
+        "from": "crv_c1",
+        "to": "crv_eq"
+      },
+      {
+        "from": "crv_exp",
+        "to": "crv_c1"
+      },
+      {
+        "from": "c4",
+        "to": "crv_exp"
+      },
+      {
+        "from": "vx",
+        "to": "crv_exp"
+      },
+      {
+        "from": "crv",
+        "to": "on_crv_a"
+      },
+      {
+        "from": "pt_a",
+        "to": "on_crv_a"
+      },
+      {
+        "from": "on_crv_a",
+        "to": "conds"
+      },
+      {
+        "from": "crv",
+        "to": "on_crv_b"
+      },
+      {
+        "from": "pt_b",
+        "to": "on_crv_b"
+      },
+      {
+        "from": "on_crv_b",
+        "to": "conds"
+      },
+      {
+        "from": "lhs_ga",
+        "to": "cond_ga"
+      },
+      {
+        "from": "dist_ob",
+        "to": "cond_ga"
+      },
+      {
+        "from": "c2",
+        "to": "lhs_ga"
+      },
+      {
+        "from": "dist_oa",
+        "to": "lhs_ga"
+      },
+      {
+        "from": "pt_o",
+        "to": "dist_oa"
+      },
+      {
+        "from": "pt_a",
+        "to": "dist_oa"
+      },
+      {
+        "from": "pt_o",
+        "to": "dist_ob"
+      },
+      {
+        "from": "pt_b",
+        "to": "dist_ob"
+      },
+      {
+        "from": "cond_ga",
+        "to": "conds"
+      },
+      {
+        "from": "ineq_gb",
+        "to": "cond_gb"
+      },
+      {
+        "from": "p_on_xaxis",
+        "to": "cond_gb"
+      },
+      {
+        "from": "pt_p",
+        "to": "p_on_xaxis"
+      },
+      {
+        "from": "xaxis",
+        "to": "p_on_xaxis"
+      },
+      {
+        "from": "cond_gb",
+        "to": "conds"
+      },
+      {
+        "from": "lhs_gb",
+        "to": "ineq_gb"
+      },
+      {
+        "from": "rhs_gb",
+        "to": "ineq_gb"
+      },
+      {
+        "from": "dist_pa",
+        "to": "lhs_gb"
+      },
+      {
+        "from": "dist_pb",
+        "to": "lhs_gb"
+      },
+      {
+        "from": "pt_p",
+        "to": "dist_pa"
+      },
+      {
+        "from": "pt_a",
+        "to": "dist_pa"
+      },
+      {
+        "from": "pt_p",
+        "to": "dist_pb"
+      },
+      {
+        "from": "pt_b",
+        "to": "dist_pb"
+      },
+      {
+        "from": "c3",
+        "to": "rhs_gb"
+      },
+      {
+        "from": "dist_oa",
+        "to": "rhs_gb"
+      }
+    ],
+    "previous_new_dna": [
+      {
+        "id": "G31",
+        "name": "거리(두 점)",
+        "signature": "(점1, 점2) → 값",
+        "reason": "OA, OB, PA, PB처럼 두 점 사이의 거리(선분 길이)를 나타내는 구조. G18(거리)이 존재하나 G18은 구체적 값(수치)과 결합된 조건 형태로 쓰이고, 여기서는 거리 자체를 수식 레벨 피연산자로 사용하는 구조가 필요함. 기존 G18로 표현 가능하다고 볼 수도 있으므로 G18 재사용으로 처리."
+      }
+    ],
+    "previous_dna_review_notes": "G18(거리)을 수식 노드 레벨의 거리값 표현에도 사용함. (가) 조건 2·OA=OB는 등식(C1)의 좌변에 곱(E6, 상수2, G18_OA), 우변에 G18_OB. (나) 조건 PA+PB≥3·OA는 모든 x축 위의 점 P(C18 구조)에 대한 부등식. 직선 AB의 기울기를 묻는 발문(Q1). new_dna는 G18로 흡수 가능하다 판단하여 needs_new_dna=false로 정정.",
+    "original_solution": "문제의 박스 조건에 의해\n\n$$\\overline{\\rm PA} + \\overline{\\rm PB} \\geq 3\\overline{\\rm OA} = \\overline{\\rm OA} + \\overline{\\rm OB}$$\n\n이고 $\\rm P = O$일 때 위 부등식에서 등호가 성립하므로\n\n$$\\rm P = O\\text{일 때 } \\overline{\\rm PA} + \\overline{\\rm PB}\\text{의 값이 최소} \\cdots \\text{①}$$\n\n이다.\n\n한편, A, B는 모두 곡선 $y = 4^x$ 위의 점이고 $y$좌표가 모두 양수이므로 점 B를 $x$축에 대하여 대칭이동한 점을 $\\rm B'$이라 하면\n\n$$\\overline{\\rm PA} + \\overline{\\rm PB} = \\overline{\\rm PA} + \\overline{\\rm PB'}$$\n\n이고, 위 식은 점 P가 선분 $\\rm AB'$와 $x$축의 교점일 때 최솟값 $\\overline{\\rm AB'}$을 가짐을 알 수 있으므로 ①을 고려하면\n\n- $\\rm P = O$일 때 $\\overline{\\rm PA} + \\overline{\\rm PB}$는 최솟값 $\\overline{\\rm AB'}$을 가짐\n- $\\Rightarrow$ 선분 $\\rm AB'$와 $x$축의 교점이 O\n- $\\Rightarrow$ 세 점 A, O, B'은 한 직선 위의 점\n\n임을 알 수 있다.\n\n[FIGURE: 곡선 $y=4^x$ 위에 점 A(제2사분면), 점 B(제1사분면)가 있고, B를 $x$축 대칭한 B'(제4사분면), 원점 O, $x$축 위의 점 P가 표시된 그래프]\n\n따라서 점 A의 좌표를 $(a,\\, 4^a)$이라 하면 (가) 조건에 의해\n\n$$\\overline{\\rm OA} : \\overline{\\rm OB'} = 1 : 2$$\n\n$$\\Rightarrow \\rm B'(-2a,\\; -2 \\times 4^a), \\quad B(-2a,\\; 2 \\times 4^a)$$\n\n이고, 점 B가 곡선 $y = 4^x$ 위의 점이므로\n\n$$2 \\times 4^a = 4^{-2a}$$\n\n$$\\Rightarrow a = -\\frac{1}{6}$$\n\n$$\\Rightarrow \\rm A\\!\\left(-\\frac{1}{6},\\; 2^{-\\frac{1}{3}}\\right),\\quad B\\!\\left(\\frac{1}{3},\\; 2^{\\frac{2}{3}}\\right)$$\n\n이다.\n\n$$\\therefore\\; (\\text{직선 AB의 기울기}) = \\frac{2^{\\frac{2}{3}} - 2^{-\\frac{1}{3}}}{\\dfrac{1}{3} - \\left(-\\dfrac{1}{6}\\right)} = 2^{\\frac{2}{3}}$$\n\n---",
+    "recovery_warnings": [],
+    "errata": [],
+    "metadata": {
+      "unit": "지수함수·기하",
+      "difficulty": "unknown",
+      "score": "4",
+      "type": "multiple choice",
+      "answer": "⑤ $2^{2/3}$"
+    },
+    "needed_neurons": [
+      "사실92",
+      "사실93"
+    ],
+    "needed_dna": [
+      {
+        "id": "G31",
+        "name": "거리(두 점)",
+        "signature": "(점1, 점2) → 값",
+        "reason": "OA, OB, PA, PB처럼 두 점 사이의 거리(선분 길이)를 나타내는 구조. G18(거리)이 존재하나 G18은 구체적 값(수치)과 결합된 조건 형태로 쓰이고, 여기서는 거리 자체를 수식 레벨 피연산자로 사용하는 구조가 필요함. 기존 G18로 표현 가능하다고 볼 수도 있으므로 G18 재사용으로 처리."
+      }
+    ],
+    "edge_count": 0,
+    "side_count": 0,
+    "created_at": "2026-03-23T17:47:56.615Z"
+  }
+]
