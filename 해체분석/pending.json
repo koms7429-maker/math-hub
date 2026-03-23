@@ -18,15 +18,15 @@
       {
         "id": "???",
         "type": "???",
-        "statement": "(자동 감지) 뉴런 부족 판정이나 구체적 뉴런 제안 누락",
-        "reason": "skeleton이 비어있고 new_neurons도 비어있음 — Claude가 두 필드 모두 빈 채로 반환",
+        "statement": "JSON 파싱 실패 — Claude 응답을 파싱할 수 없음",
+        "reason": "JSON 파싱 실패",
         "blocked_edge": "N/A"
       }
     ],
     "previous_partial_skeleton": [],
-    "previous_blockage_point": "",
+    "previous_blockage_point": "JSON 파싱 실패. Raw 응답 앞 200자: {\"data\":[{\"type\":\"thinking\",\"thinking\":\"Let me analyze this problem step by step.\\n\\n## Problem Understanding\\n\\nWe have $f(x) = |\\\\log_a(x+b)|$ where $a > 1$, $0 < b < 1$.\\n\\nThe graph meets the x-ax",
     "previous_dna_nodes": [],
     "previous_dna_edges": [],
-    "created_at": "2026-03-23T09:41:29.165Z"
+    "created_at": "2026-03-23T09:59:37.431Z"
   }
 ]
