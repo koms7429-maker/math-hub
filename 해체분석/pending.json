@@ -1969,5 +1969,609 @@
       }
     ],
     "created_at": "2026-03-23T11:43:06.615Z"
+  },
+  {
+    "problem_id": "16(UnknownSource)-지수함수와로그함수의교점",
+    "content": "# 16. (Unknown Source) - 지수함수와 로그함수의 교점\n\n## Problem\n\n$1$보다 큰 두 상수 $a$, $b$에 대하여 점 $A(0, a)$를 지나고 $x$축에 평행한 직선이 곡선 $y=b^x$와 만나는 점을 $B$라 하자. 점 $A$를 지나고 기울기가 $1$인 직선이 곡선 $y=b^x$와 제$1$사분면에서 만나는 점을 $C$, 점 $C$를 지나고 기울기가 $-1$인 직선이 곡선 $y=\\log_a x$와 만나는 점을 $D$라 할 때,\n\n직선 $AD$의 기울기가 $-\\frac{1}{4}$이다. 삼각형 $ACD$의 넓이가 삼각형 $ABC$의 넓이의 $10$배일 때, $\\log_a b$의 값은? [4점]\n\n[FIGURE: 좌표평면에서 원점 $O$, 점 $A$는 $y$축 위에 위치하고, 곡선 $y=b^x$와 $y=\\log_a x$가 그려져 있다. 점 $B$는 $A$를 지나는 수평선과 $y=b^x$의 교점, 점 $C$는 $A$를 지나고 기울기 $1$인 직선과 $y=b^x$의 교점, 점 $D$는 $C$를 지나고 기울기 $-1$인 직선과 $y=\\log_a x$의 교점이다.]\n\n## Choices\n① $\\frac{\\sqrt{10}}{4}$  ② $\\frac{\\sqrt{10}}{2}$  ③ $\\frac{3\\sqrt{10}}{4}$  ④ $\\sqrt{10}$  ⑤ $\\frac{5\\sqrt{10}}{4}$\n\n**Answer**: ⑤\n**Difficulty**: unknown\n**Score**: 4점\n**Type**: multiple choice\n\n---\n\n## Solution\n\n① $A(0, a)$\n\n② $AC$의 기울기가 $1$ $\\Rightarrow$ $C(k, a+k)$ $(k>0)$\n\n으로 놓으면\n\n- $CD$의 기울기가 $-1$ ⋯ ③\n- 두 곡선 $y=b^x$, $y=\\log_a x$가 직선 $y=x$에 대하여 대칭\n\n$\\Rightarrow$ 두 점 $C$, $D$는 직선 $y=x$에 대하여 대칭\n\n$\\Rightarrow$ $D(a+k, k)$\n\n이므로\n\n$AD$의 기울기 $= -\\frac{1}{4}$, ① $\\Rightarrow$ $\\frac{k-a}{a+k} = -\\frac{1}{4}$\n\n$\\Rightarrow k = \\frac{3a}{5}$\n\n$\\Rightarrow C\\left(\\frac{3a}{5}, \\frac{8a}{5}\\right)$, $D\\left(\\frac{8a}{5}, \\frac{3a}{5}\\right)$ ⋯ ④\n\n이다. 또한, 문제의 조건에 의해\n\n- 삼각형 $ACD$의 넓이가 삼각형 $ABC$의 넓이의 $10$배\n- 두 직선 $AC$, $CD$가 서로 수직 ($\\because$ ②, ③)\n\n이므로 점 $B$에서 선분 $AC$에 내린 수선의 발을 $H$라 하면\n\n$\\Rightarrow$ $\\overline{BH} = \\frac{1}{10}\\overline{CD} = \\frac{\\sqrt{2}}{10}a$ ($\\because$ ④ $\\Rightarrow$ $\\overline{CD} = \\sqrt{2}a$)\n\n$\\Rightarrow$ $\\overline{AB} = \\frac{a}{5}$ ($\\because$ ② $\\Rightarrow$ $\\angle CAB = \\frac{\\pi}{4}$)\n\n$\\Rightarrow$ $B\\left(\\frac{a}{5}, a\\right)$ ($\\because$ ① ⋯ ⓐ\n\n위를 알 수 있다.\n\n따라서\n\n- 점 $B$는 곡선 $y=b^x$ 위의 점, ⓐ $\\Rightarrow$ $b^{\\frac{a}{5}} = a$ ⋯ ⓑ\n- 점 $C$는 곡선 $y=b^x$ 위의 점, ④ $\\Rightarrow$ $b^{\\frac{3a}{5}} = \\frac{8}{5}a$\n\n이므로 두 식을 연립하면\n\n$a^3 = \\frac{8}{5}a$ $\\Rightarrow$ $a = \\frac{2\\sqrt{2}}{\\sqrt{5}}$ ($\\because$ $a>1$)\n\n$\\Rightarrow$ $\\log_a b = \\frac{5}{a} = \\frac{5\\sqrt{10}}{4}$ ($\\because$ ⓑ)\n\n을 얻는다.\n\n---",
+    "content_source": "FileLoop",
+    "content_length": 2022,
+    "skel_status": "neuron_missing",
+    "dna_status": "ok",
+    "needed_neurons": [
+      "???"
+    ],
+    "needed_dna": [],
+    "previous_analysis": "",
+    "previous_matching": "",
+    "previous_matched": [],
+    "previous_skeleton": [],
+    "previous_solution": "",
+    "previous_clues": "[]",
+    "previous_new_neurons": [
+      {
+        "id": "???",
+        "type": "???",
+        "statement": "JSON 파싱 실패 — Claude 응답을 파싱할 수 없음",
+        "reason": "JSON 파싱 실패",
+        "blocked_edge": "N/A"
+      }
+    ],
+    "previous_partial_skeleton": [],
+    "previous_blockage_point": "JSON 파싱 실패. Raw 응답 앞 200자: I need to carefully analyze this problem and match each logical step to neurons.\n\n## STEP 1: Problem Analysis\n\nThe problem involves points on exponential and logarithmic curves with geometric conditio",
+    "previous_dna_nodes": [
+      {
+        "id": "top",
+        "dna": "Q1",
+        "label": "log_a(b) 값",
+        "category": "발문"
+      },
+      {
+        "id": "ask_log",
+        "dna": "E3",
+        "label": "log_a(b)",
+        "category": "수식"
+      },
+      {
+        "id": "va",
+        "dna": "T1",
+        "label": "변수 a",
+        "category": "말단"
+      },
+      {
+        "id": "vb",
+        "dna": "T1",
+        "label": "변수 b",
+        "category": "말단"
+      },
+      {
+        "id": "c0",
+        "dna": "T2",
+        "label": "상수 0",
+        "category": "말단"
+      },
+      {
+        "id": "c1",
+        "dna": "T2",
+        "label": "상수 1",
+        "category": "말단"
+      },
+      {
+        "id": "cm1",
+        "dna": "T2",
+        "label": "상수 -1",
+        "category": "말단"
+      },
+      {
+        "id": "c14",
+        "dna": "T2",
+        "label": "상수 -1/4",
+        "category": "말단"
+      },
+      {
+        "id": "c10",
+        "dna": "T2",
+        "label": "상수 10",
+        "category": "말단"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
+      },
+      {
+        "id": "lim_a",
+        "dna": "C2",
+        "label": "a > 1",
+        "category": "조건"
+      },
+      {
+        "id": "lim_b",
+        "dna": "C2",
+        "label": "b > 1",
+        "category": "조건"
+      },
+      {
+        "id": "pt_a",
+        "dna": "G1",
+        "label": "점 A",
+        "category": "기하"
+      },
+      {
+        "id": "pt_b",
+        "dna": "G1",
+        "label": "점 B",
+        "category": "기하"
+      },
+      {
+        "id": "pt_c",
+        "dna": "G1",
+        "label": "점 C",
+        "category": "기하"
+      },
+      {
+        "id": "pt_d",
+        "dna": "G1",
+        "label": "점 D",
+        "category": "기하"
+      },
+      {
+        "id": "coord_a",
+        "dna": "G17",
+        "label": "A(0,a)",
+        "category": "기하"
+      },
+      {
+        "id": "crv_bx",
+        "dna": "G2",
+        "label": "곡선 y=b^x",
+        "category": "기하"
+      },
+      {
+        "id": "crv_bx_eq",
+        "dna": "C11",
+        "label": "y=b^x 방정식",
+        "category": "조건"
+      },
+      {
+        "id": "crv_bx_c1",
+        "dna": "C1",
+        "label": "y = b^x",
+        "category": "조건"
+      },
+      {
+        "id": "expr_bx",
+        "dna": "E4",
+        "label": "b^x",
+        "category": "수식"
+      },
+      {
+        "id": "crv_loga",
+        "dna": "G2",
+        "label": "곡선 y=log_ax",
+        "category": "기하"
+      },
+      {
+        "id": "crv_loga_eq",
+        "dna": "C11",
+        "label": "y=log_ax 방정식",
+        "category": "조건"
+      },
+      {
+        "id": "crv_loga_c1",
+        "dna": "C1",
+        "label": "y = log_a(x)",
+        "category": "조건"
+      },
+      {
+        "id": "expr_loga",
+        "dna": "E3",
+        "label": "log_a(x)",
+        "category": "수식"
+      },
+      {
+        "id": "line_ab",
+        "dna": "G12",
+        "label": "직선 AB(수평)",
+        "category": "기하"
+      },
+      {
+        "id": "line_ab_par",
+        "dna": "G19",
+        "label": "x축에 평행",
+        "category": "기하"
+      },
+      {
+        "id": "line_ab_pass",
+        "dna": "G16",
+        "label": "A를 지남",
+        "category": "기하"
+      },
+      {
+        "id": "meet_b",
+        "dna": "C3",
+        "label": "AB선과 b^x 교점",
+        "category": "조건"
+      },
+      {
+        "id": "line_ac",
+        "dna": "G12",
+        "label": "직선 AC(기울기1)",
+        "category": "기하"
+      },
+      {
+        "id": "slope_ac_eq",
+        "dna": "C1",
+        "label": "기울기=1",
+        "category": "조건"
+      },
+      {
+        "id": "slope_ac_val",
+        "dna": "G5",
+        "label": "기울기(A,C)",
+        "category": "기하"
+      },
+      {
+        "id": "line_ac_pass",
+        "dna": "G16",
+        "label": "A를 지남(AC)",
+        "category": "기하"
+      },
+      {
+        "id": "meet_c",
+        "dna": "C3",
+        "label": "AC선과 b^x 교점",
+        "category": "조건"
+      },
+      {
+        "id": "q1_cond",
+        "dna": "L1",
+        "label": "제1사분면",
+        "category": "제한"
+      },
+      {
+        "id": "line_cd",
+        "dna": "G12",
+        "label": "직선 CD(기울기-1)",
+        "category": "기하"
+      },
+      {
+        "id": "slope_cd_eq",
+        "dna": "C1",
+        "label": "기울기=-1",
+        "category": "조건"
+      },
+      {
+        "id": "slope_cd_val",
+        "dna": "G5",
+        "label": "기울기(C,D)",
+        "category": "기하"
+      },
+      {
+        "id": "line_cd_pass",
+        "dna": "G16",
+        "label": "C를 지남(CD)",
+        "category": "기하"
+      },
+      {
+        "id": "meet_d",
+        "dna": "C3",
+        "label": "CD선과 log_a 교점",
+        "category": "조건"
+      },
+      {
+        "id": "slope_ad_val",
+        "dna": "G5",
+        "label": "기울기(A,D)",
+        "category": "기하"
+      },
+      {
+        "id": "slope_ad_eq",
+        "dna": "C1",
+        "label": "기울기AD=-1/4",
+        "category": "조건"
+      },
+      {
+        "id": "tri_acd",
+        "dna": "G25",
+        "label": "삼각형 ACD",
+        "category": "기하"
+      },
+      {
+        "id": "tri_abc",
+        "dna": "G25",
+        "label": "삼각형 ABC",
+        "category": "기하"
+      },
+      {
+        "id": "area_acd",
+        "dna": "G11",
+        "label": "넓이(ACD)",
+        "category": "기하"
+      },
+      {
+        "id": "area_abc",
+        "dna": "G11",
+        "label": "넓이(ABC)",
+        "category": "기하"
+      },
+      {
+        "id": "area_10x",
+        "dna": "E6",
+        "label": "10×넓이(ABC)",
+        "category": "수식"
+      },
+      {
+        "id": "area_eq",
+        "dna": "C1",
+        "label": "넓이ACD=10×ABC",
+        "category": "조건"
+      },
+      {
+        "id": "conds",
+        "dna": "S1",
+        "label": "전체 조건",
+        "category": "구조"
+      }
+    ],
+    "previous_dna_edges": [
+      {
+        "from": "ask_log",
+        "to": "top"
+      },
+      {
+        "from": "va",
+        "to": "ask_log"
+      },
+      {
+        "from": "vb",
+        "to": "ask_log"
+      },
+      {
+        "from": "va",
+        "to": "lim_a"
+      },
+      {
+        "from": "c1",
+        "to": "lim_a"
+      },
+      {
+        "from": "vb",
+        "to": "lim_b"
+      },
+      {
+        "from": "c1",
+        "to": "lim_b"
+      },
+      {
+        "from": "c0",
+        "to": "coord_a"
+      },
+      {
+        "from": "va",
+        "to": "coord_a"
+      },
+      {
+        "from": "coord_a",
+        "to": "pt_a"
+      },
+      {
+        "from": "vb",
+        "to": "expr_bx"
+      },
+      {
+        "from": "vx",
+        "to": "expr_bx"
+      },
+      {
+        "from": "expr_bx",
+        "to": "crv_bx_c1"
+      },
+      {
+        "from": "crv_bx_c1",
+        "to": "crv_bx_eq"
+      },
+      {
+        "from": "crv_bx_eq",
+        "to": "crv_bx"
+      },
+      {
+        "from": "va",
+        "to": "expr_loga"
+      },
+      {
+        "from": "vx",
+        "to": "expr_loga"
+      },
+      {
+        "from": "expr_loga",
+        "to": "crv_loga_c1"
+      },
+      {
+        "from": "crv_loga_c1",
+        "to": "crv_loga_eq"
+      },
+      {
+        "from": "crv_loga_eq",
+        "to": "crv_loga"
+      },
+      {
+        "from": "pt_a",
+        "to": "line_ab_pass"
+      },
+      {
+        "from": "line_ab_pass",
+        "to": "line_ab"
+      },
+      {
+        "from": "line_ab_par",
+        "to": "line_ab"
+      },
+      {
+        "from": "line_ab",
+        "to": "meet_b"
+      },
+      {
+        "from": "crv_bx",
+        "to": "meet_b"
+      },
+      {
+        "from": "pt_b",
+        "to": "meet_b"
+      },
+      {
+        "from": "pt_a",
+        "to": "line_ac_pass"
+      },
+      {
+        "from": "line_ac_pass",
+        "to": "line_ac"
+      },
+      {
+        "from": "slope_ac_val",
+        "to": "slope_ac_eq"
+      },
+      {
+        "from": "c1",
+        "to": "slope_ac_eq"
+      },
+      {
+        "from": "slope_ac_eq",
+        "to": "line_ac"
+      },
+      {
+        "from": "pt_a",
+        "to": "slope_ac_val"
+      },
+      {
+        "from": "pt_c",
+        "to": "slope_ac_val"
+      },
+      {
+        "from": "line_ac",
+        "to": "meet_c"
+      },
+      {
+        "from": "crv_bx",
+        "to": "meet_c"
+      },
+      {
+        "from": "pt_c",
+        "to": "meet_c"
+      },
+      {
+        "from": "q1_cond",
+        "to": "meet_c"
+      },
+      {
+        "from": "pt_c",
+        "to": "line_cd_pass"
+      },
+      {
+        "from": "line_cd_pass",
+        "to": "line_cd"
+      },
+      {
+        "from": "slope_cd_val",
+        "to": "slope_cd_eq"
+      },
+      {
+        "from": "cm1",
+        "to": "slope_cd_eq"
+      },
+      {
+        "from": "slope_cd_eq",
+        "to": "line_cd"
+      },
+      {
+        "from": "pt_c",
+        "to": "slope_cd_val"
+      },
+      {
+        "from": "pt_d",
+        "to": "slope_cd_val"
+      },
+      {
+        "from": "line_cd",
+        "to": "meet_d"
+      },
+      {
+        "from": "crv_loga",
+        "to": "meet_d"
+      },
+      {
+        "from": "pt_d",
+        "to": "meet_d"
+      },
+      {
+        "from": "pt_a",
+        "to": "slope_ad_val"
+      },
+      {
+        "from": "pt_d",
+        "to": "slope_ad_val"
+      },
+      {
+        "from": "slope_ad_val",
+        "to": "slope_ad_eq"
+      },
+      {
+        "from": "c14",
+        "to": "slope_ad_eq"
+      },
+      {
+        "from": "pt_a",
+        "to": "tri_acd"
+      },
+      {
+        "from": "pt_c",
+        "to": "tri_acd"
+      },
+      {
+        "from": "pt_d",
+        "to": "tri_acd"
+      },
+      {
+        "from": "pt_a",
+        "to": "tri_abc"
+      },
+      {
+        "from": "pt_b",
+        "to": "tri_abc"
+      },
+      {
+        "from": "pt_c",
+        "to": "tri_abc"
+      },
+      {
+        "from": "tri_acd",
+        "to": "area_acd"
+      },
+      {
+        "from": "tri_abc",
+        "to": "area_abc"
+      },
+      {
+        "from": "area_abc",
+        "to": "area_10x"
+      },
+      {
+        "from": "c10",
+        "to": "area_10x"
+      },
+      {
+        "from": "area_acd",
+        "to": "area_eq"
+      },
+      {
+        "from": "area_10x",
+        "to": "area_eq"
+      },
+      {
+        "from": "meet_b",
+        "to": "conds"
+      },
+      {
+        "from": "meet_c",
+        "to": "conds"
+      },
+      {
+        "from": "meet_d",
+        "to": "conds"
+      },
+      {
+        "from": "slope_ad_eq",
+        "to": "conds"
+      },
+      {
+        "from": "area_eq",
+        "to": "conds"
+      },
+      {
+        "from": "conds",
+        "to": "top"
+      }
+    ],
+    "created_at": "2026-03-23T11:47:04.595Z"
   }
 ]
