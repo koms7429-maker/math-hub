@@ -1,1 +1,535 @@
-[]
+[
+  {
+    "problem_id": "14_SourceUnknown_-함수의연속성과미분가능성",
+    "content": "# 14. (Source Unknown) - 함수의 연속성과 미분가능성\n\n## Problem\n\n두 상수 $a(a>1)$, $b$에 대하여 함수 $f(x)$를\n\n$$f(x) = \\begin{cases} a^{x+b} & (a^{x+b} \\leq 2x+5) \\\\ |2x+5| & (a^{x+b} > 2x+5) \\end{cases}$$\n\n라 하자. 양수 $t$에 대하여 $x$에 대한 방정식 $f(x)=t$의 서로 다른 모든 실근의 합을 $g(t)$라 하자. $g(t) \\neq k$ ($k$는 상수)를 만족시키는 모든 양수 $t$의 값의 범위가 $1<t<9$일 때,\n\n$$f(-k)+f(0)$$\n\n의 값을 구하시오. [4점]\n\n## Choices\n① $18$  \n② [해설]\n\n**Answer**: $18$\n**Difficulty**: unknown\n**Score**: 4점\n**Type**: 단답형\n\n---\n\n## Solution\n\n문제의 $f(x)$의 식에서\n\n① $y=a^{x+b}$, $y=2x+5$의 교점이 개수가 1 이하인 경우,\n$f(x) = |2x+5|$\n($\\because$ 모든 실수 $x$에 대하여 $a^{x+b} \\geq 2x+5$)\n\n② $y=a^{x+b}$, $y=2x+5$의 교점이 개수가 2인 경우,\n두 교점의 $x$좌표를 $p$, $q$라 하면\n\n$$f(x) = \\begin{cases} a^{x+b} & (p \\leq x \\leq q) \\\\ |2x+5| & (x < p, \\, x > q) \\end{cases}$$\n\n임을 알 수 있다.\n\n[FIGURE: 두 개의 그래프가 제시됨]\n- ①의 경우: $y=f(x)$가 $x=-\\frac{5}{2}$에서 V자 형태\n- ②의 경우: $y=f(x)$가 두 점 $p$, $q$에서 지수함수와 직선이 만남\n\n한편, 양수 $t$에 대하여\n\n$x$에 (방정식 $f(x)=t$의 모든 실근의 합) 이므로 ①의 경우,\n\n모든 양수 $t$에 대하여 $g(t)=-5$\n\n($\\because$ $y=|2x+5|$는 $x=-\\frac{5}{2}$에 대하여 대칭)\n\n임을 알 수 있고, ②의 경우,\n\n$$\\begin{cases} t \\geq f(q)\\text{일 때 } g(t)=-5 \\\\ f(p)<t<f(q)\\text{일 때 } g(t) \\neq -5 \\end{cases}$$\n\n임을 알 수 있다.\n\n따라서 문제의 조건에서\n\n$$\\begin{cases} g(t) \\neq k \\text{(}k\\text{는 상수)}를 만족시키는 \\\\ \\text{모든 양수 } t \\text{의 값의 범위가 } 1<t<9 \\end{cases}$$\n\n를 만족시키는 경우는 ②의 경우뿐이므로, 이때\n\n$$k=-5$$\n\n를 얻고,\n\n$$\\begin{cases} f(p)=1 \\Rightarrow 2p+5=a^{p+b}=1 \\\\ f(q)=9 \\Rightarrow 2q+5=a^{q+b}=9 \\end{cases}$$\n\n을 얻는다. $\\Rightarrow p=-2$, $q=2$, $a=\\sqrt{3}$, $b=2$\n\n$$\\therefore f(x) = \\begin{cases} (\\sqrt{3})^{x+2} & (-2 \\leq x \\leq 2) \\\\ |2x+5| & (x < -2, \\, x > 2) \\end{cases}$$\n\n$$\\therefore f(-k)+f(0)=f(5)+f(0)=15+3=18$$\n\n---",
+    "content_source": "FileLoop",
+    "content_length": 1644,
+    "skel_status": "neuron_missing",
+    "dna_status": "ok",
+    "needed_neurons": [
+      "사실84",
+      "사실85"
+    ],
+    "needed_dna": [],
+    "previous_analysis": "문제의 핵심은 지수함수의 볼록성을 이용하여 두 교점 사이에서 a^{x+b}≤2x+5임을 보이는 것이다. 이 논리 단계에 해당하는 뉴런이 기존 목록에 없다. 지수함수의 볼록성(사실84)과 볼록함수-직선 대소 관계(사실85) 두 개의 새 뉴런이 필요하다.",
+    "previous_matching": "1. a>1이므로 a^{x+b}>0 → 사실1 매칭\n2. |2x+5|를 부호에 따라 분리 → 전략6 매칭\n3. x<-5/2일 때 2x+5<0<a^{x+b}이므로 f(x)=-(2x+5) → 사실1 + 전략6 매칭\n4. y=a^{x+b}는 아래로 볼록 → 매칭 없음 (볼록성 뉴런 부재)\n5. 볼록함수가 직선과 두 교점 p,q를 가지면 [p,q]에서 직선 이하 → 매칭 없음 (볼록함수-직선 대소 뉴런 부재)\n6. 교점 0~1개 → f(x)=|2x+5| → g(t)=-5 항상 → 전략20+전략23으로 소거 매칭\n7. |2x+5|가 x=-5/2 대칭 → 사실2 매칭\n8. 대칭함수의 두 근의 합 = 2×대칭축 → 사실2 + 산술 (매칭 가능)\n9. a^{x+b}는 단조증가 → 사실5 매칭\n10. [p,q]에서 a^{x+b}=t의 근 판정 → 사실43 매칭\n11. f(x)=t의 근의 개수 = 그래프와 y=t의 교점 수 → 전략5 매칭\n12. g(t)≠-5인 범위가 (f(p),f(q)) → 매칭 가능 (사실43+전략5)\n13. f(p)=1, f(q)=9 → 전략2 매칭\n14. a^0=1 → b=2 → 사실18 매칭\n15. a^4=9 → a=√3 → 연산4 매칭\n16. f(5)=15, f(0)=3 대입 확인 → 전략25 매칭",
+    "previous_matched": [
+      "사실1",
+      "사실2",
+      "사실5",
+      "사실18",
+      "사실43",
+      "사실19",
+      "전략5",
+      "전략6",
+      "전략20",
+      "전략23",
+      "전략2",
+      "전략25",
+      "연산4",
+      "연산2"
+    ],
+    "previous_skeleton": [],
+    "previous_solution": "",
+    "previous_clues": "[{\"id\":\"단서A\",\"text\":\"$f(x) = \\\\begin{cases} a^{x+b} & (a^{x+b} \\\\leq 2x+5) \\\\\\\\ |2x+5| & (a^{x+b} > 2x+5) \\\\end{cases}$\"},{\"id\":\"단서B\",\"text\":\"양수 $t$에 대하여 $x$에 대한 방정식 $f(x)=t$의 서로 다른 모든 실근의 합을 $g(t)$라 한다\"},{\"id\":\"단서C\",\"text\":\"$g(t) \\\\neq k$ ($k$는 상수)를 만족시키는 모든 양수 $t$의 값의 범위가 $1<t<9$이다\"},{\"id\":\"단서D\",\"text\":\"$a>1$이고 $a$, $b$는 상수이다\"}]",
+    "previous_new_neurons": [
+      {
+        "id": "사실84",
+        "type": "fact",
+        "statement": "지수함수 $y=a^x$ ($a>0$, $a\\neq 1$)는 아래로 볼록한(convex) 함수이다.",
+        "reason": "두 곡선 $y=a^{x+b}$와 $y=2x+5$의 교점 사이에서 지수함수가 직선 아래에 있음을 보이려면, 지수함수의 볼록성이 전제로 필요하다. 기존 뉴런 중 함수의 볼록성(convexity)을 서술하는 것이 없다.",
+        "blocked_edge": "note4 → note5"
+      },
+      {
+        "id": "사실85",
+        "type": "fact",
+        "statement": "아래로 볼록한 연속함수와 직선이 두 점 $x=p$, $x=q$ ($p<q$)에서 만나면, $p\\leq x\\leq q$에서 함수값 $\\leq$ 직선값이고, $x<p$ 또는 $x>q$에서 함수값 $\\geq$ 직선값이다.",
+        "reason": "볼록한 지수함수가 직선과 두 교점 $p$, $q$를 가질 때, $[p,q]$에서 $a^{x+b}\\leq 2x+5$이고 밖에서 $a^{x+b}>2x+5$임을 도출해야 하는데, 볼록함수와 직선의 대소 관계를 서술하는 뉴런이 없다.",
+        "blocked_edge": "note4 → note5"
+      }
+    ],
+    "previous_partial_skeleton": [
+      {
+        "from": "단서D",
+        "to": "note1",
+        "neuron": "사실1",
+        "note": "$a>1$일 때 $a^{x+b}>0$이다",
+        "main": false,
+        "step": 1
+      },
+      {
+        "from": "단서A",
+        "to": "note2",
+        "neuron": "전략6",
+        "note": "$x<-\\tfrac{5}{2}$일 때 $|2x+5|=-(2x+5)$이고, $x\\geq -\\tfrac{5}{2}$일 때 $|2x+5|=2x+5$이다",
+        "main": true,
+        "step": 1
+      },
+      {
+        "from": [
+          "note1",
+          "note2"
+        ],
+        "to": "note3",
+        "neuron": "사실1",
+        "note": "$x<-\\tfrac{5}{2}$일 때 $2x+5<0<a^{x+b}$이고 $a^{x+b}>2x+5$이다",
+        "main": true,
+        "step": 1
+      },
+      {
+        "from": "note3",
+        "to": "note4",
+        "neuron": "전략6",
+        "note": "$x<-\\tfrac{5}{2}$에서 $f(x)=|2x+5|=-(2x+5)$이다",
+        "main": true,
+        "step": 1
+      }
+    ],
+    "previous_blockage_point": "note4에서 'x≥-5/2 영역에서 a^{x+b}와 2x+5의 대소 관계를 볼록성으로 결정하여 f(x)의 조각별 구조를 확정'하려는데, 지수함수의 볼록성(사실84)과 볼록함수-직선 대소 관계(사실85)에 해당하는 매칭 뉴런이 없음",
+    "previous_dna_nodes": [
+      {
+        "id": "top",
+        "dna": "Q1",
+        "label": "값을 구하라",
+        "category": "발문"
+      },
+      {
+        "id": "ask_sum",
+        "dna": "E1",
+        "label": "f(-k)+f(0)",
+        "category": "수식"
+      },
+      {
+        "id": "ask_fk",
+        "dna": "F3",
+        "label": "f(-k) 적용",
+        "category": "함수"
+      },
+      {
+        "id": "ask_f0",
+        "dna": "F3",
+        "label": "f(0) 적용",
+        "category": "함수"
+      },
+      {
+        "id": "neg_k",
+        "dna": "E2",
+        "label": "부호반전(k)",
+        "category": "수식"
+      },
+      {
+        "id": "c0",
+        "dna": "T2",
+        "label": "상수 0",
+        "category": "말단"
+      },
+      {
+        "id": "func_def_f",
+        "dna": "F6",
+        "label": "f(x) 정의",
+        "category": "함수"
+      },
+      {
+        "id": "piecewise_f",
+        "dna": "F1",
+        "label": "조각함수 f",
+        "category": "함수"
+      },
+      {
+        "id": "piece1",
+        "dna": "F2",
+        "label": "조각1: a^(x+b) (a^(x+b)≤2x+5)",
+        "category": "함수"
+      },
+      {
+        "id": "piece2",
+        "dna": "F2",
+        "label": "조각2: |2x+5| (a^(x+b)>2x+5)",
+        "category": "함수"
+      },
+      {
+        "id": "cond_piece1",
+        "dna": "C2",
+        "label": "a^(x+b)≤2x+5",
+        "category": "조건"
+      },
+      {
+        "id": "cond_piece2",
+        "dna": "C2",
+        "label": "a^(x+b)>2x+5",
+        "category": "조건"
+      },
+      {
+        "id": "exp_expr",
+        "dna": "E4",
+        "label": "a^(x+b)",
+        "category": "수식"
+      },
+      {
+        "id": "va",
+        "dna": "T1",
+        "label": "변수 a",
+        "category": "말단"
+      },
+      {
+        "id": "a_gt1",
+        "dna": "C2",
+        "label": "a>1",
+        "category": "조건"
+      },
+      {
+        "id": "c1_const",
+        "dna": "T2",
+        "label": "상수 1",
+        "category": "말단"
+      },
+      {
+        "id": "xpb",
+        "dna": "E1",
+        "label": "x+b",
+        "category": "수식"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
+      },
+      {
+        "id": "vb",
+        "dna": "T1",
+        "label": "변수 b",
+        "category": "말단"
+      },
+      {
+        "id": "lin_expr",
+        "dna": "E1",
+        "label": "2x+5",
+        "category": "수식"
+      },
+      {
+        "id": "c2_const",
+        "dna": "T2",
+        "label": "상수 2",
+        "category": "말단"
+      },
+      {
+        "id": "two_x",
+        "dna": "E6",
+        "label": "2*x",
+        "category": "수식"
+      },
+      {
+        "id": "c5",
+        "dna": "T2",
+        "label": "상수 5",
+        "category": "말단"
+      },
+      {
+        "id": "abs_expr",
+        "dna": "E5",
+        "label": "|2x+5|",
+        "category": "수식"
+      },
+      {
+        "id": "vt",
+        "dna": "T3",
+        "label": "독립변수 t",
+        "category": "말단"
+      },
+      {
+        "id": "t_pos",
+        "dna": "C2",
+        "label": "t>0",
+        "category": "조건"
+      },
+      {
+        "id": "eq_fxt",
+        "dna": "C11",
+        "label": "방정식 f(x)=t",
+        "category": "조건"
+      },
+      {
+        "id": "eq_fxt_c1",
+        "dna": "C1",
+        "label": "f(x)=t 등식",
+        "category": "조건"
+      },
+      {
+        "id": "fxt_lhs",
+        "dna": "F3",
+        "label": "f(x) 적용",
+        "category": "함수"
+      },
+      {
+        "id": "func_g",
+        "dna": "F6",
+        "label": "g(t) 정의",
+        "category": "함수"
+      },
+      {
+        "id": "g_naming",
+        "dna": "G8",
+        "label": "g(t)=모든 실근의 합 명명",
+        "category": "기하"
+      },
+      {
+        "id": "vk",
+        "dna": "T1",
+        "label": "변수 k",
+        "category": "말단"
+      },
+      {
+        "id": "gneqk",
+        "dna": "C2",
+        "label": "g(t)≠k 만족하는 t의 범위가 1<t<9",
+        "category": "조건"
+      },
+      {
+        "id": "g_applied",
+        "dna": "F3",
+        "label": "g(t) 적용",
+        "category": "함수"
+      },
+      {
+        "id": "t_gt1",
+        "dna": "C2",
+        "label": "t>1",
+        "category": "조건"
+      },
+      {
+        "id": "t_lt9",
+        "dna": "C2",
+        "label": "t<9",
+        "category": "조건"
+      },
+      {
+        "id": "c9",
+        "dna": "T2",
+        "label": "상수 9",
+        "category": "말단"
+      },
+      {
+        "id": "all_conds",
+        "dna": "S1",
+        "label": "전체 조건",
+        "category": "구조"
+      }
+    ],
+    "previous_dna_edges": [
+      {
+        "from": "ask_sum",
+        "to": "top"
+      },
+      {
+        "from": "all_conds",
+        "to": "top"
+      },
+      {
+        "from": "ask_fk",
+        "to": "ask_sum"
+      },
+      {
+        "from": "ask_f0",
+        "to": "ask_sum"
+      },
+      {
+        "from": "neg_k",
+        "to": "ask_fk"
+      },
+      {
+        "from": "vk",
+        "to": "neg_k"
+      },
+      {
+        "from": "func_def_f",
+        "to": "ask_fk"
+      },
+      {
+        "from": "func_def_f",
+        "to": "ask_f0"
+      },
+      {
+        "from": "c0",
+        "to": "ask_f0"
+      },
+      {
+        "from": "piecewise_f",
+        "to": "func_def_f"
+      },
+      {
+        "from": "piece1",
+        "to": "piecewise_f"
+      },
+      {
+        "from": "piece2",
+        "to": "piecewise_f"
+      },
+      {
+        "from": "exp_expr",
+        "to": "piece1"
+      },
+      {
+        "from": "cond_piece1",
+        "to": "piece1"
+      },
+      {
+        "from": "abs_expr",
+        "to": "piece2"
+      },
+      {
+        "from": "cond_piece2",
+        "to": "piece2"
+      },
+      {
+        "from": "va",
+        "to": "exp_expr"
+      },
+      {
+        "from": "xpb",
+        "to": "exp_expr"
+      },
+      {
+        "from": "vx",
+        "to": "xpb"
+      },
+      {
+        "from": "vb",
+        "to": "xpb"
+      },
+      {
+        "from": "exp_expr",
+        "to": "cond_piece1"
+      },
+      {
+        "from": "lin_expr",
+        "to": "cond_piece1"
+      },
+      {
+        "from": "exp_expr",
+        "to": "cond_piece2"
+      },
+      {
+        "from": "lin_expr",
+        "to": "cond_piece2"
+      },
+      {
+        "from": "two_x",
+        "to": "lin_expr"
+      },
+      {
+        "from": "c5",
+        "to": "lin_expr"
+      },
+      {
+        "from": "c2_const",
+        "to": "two_x"
+      },
+      {
+        "from": "vx",
+        "to": "two_x"
+      },
+      {
+        "from": "lin_expr",
+        "to": "abs_expr"
+      },
+      {
+        "from": "va",
+        "to": "a_gt1"
+      },
+      {
+        "from": "c1_const",
+        "to": "a_gt1"
+      },
+      {
+        "from": "a_gt1",
+        "to": "all_conds"
+      },
+      {
+        "from": "t_pos",
+        "to": "all_conds"
+      },
+      {
+        "from": "vt",
+        "to": "t_pos"
+      },
+      {
+        "from": "eq_fxt",
+        "to": "all_conds"
+      },
+      {
+        "from": "eq_fxt_c1",
+        "to": "eq_fxt"
+      },
+      {
+        "from": "fxt_lhs",
+        "to": "eq_fxt_c1"
+      },
+      {
+        "from": "vt",
+        "to": "eq_fxt_c1"
+      },
+      {
+        "from": "func_def_f",
+        "to": "fxt_lhs"
+      },
+      {
+        "from": "vx",
+        "to": "fxt_lhs"
+      },
+      {
+        "from": "g_naming",
+        "to": "func_g"
+      },
+      {
+        "from": "eq_fxt",
+        "to": "func_g"
+      },
+      {
+        "from": "gneqk",
+        "to": "all_conds"
+      },
+      {
+        "from": "g_applied",
+        "to": "gneqk"
+      },
+      {
+        "from": "vk",
+        "to": "gneqk"
+      },
+      {
+        "from": "t_gt1",
+        "to": "gneqk"
+      },
+      {
+        "from": "t_lt9",
+        "to": "gneqk"
+      },
+      {
+        "from": "func_g",
+        "to": "g_applied"
+      },
+      {
+        "from": "vt",
+        "to": "g_applied"
+      },
+      {
+        "from": "vt",
+        "to": "t_gt1"
+      },
+      {
+        "from": "c1_const",
+        "to": "t_gt1"
+      },
+      {
+        "from": "vt",
+        "to": "t_lt9"
+      },
+      {
+        "from": "c9",
+        "to": "t_lt9"
+      }
+    ],
+    "created_at": "2026-03-23T14:33:48.984Z"
+  }
+]
