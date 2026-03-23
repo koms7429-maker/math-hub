@@ -795,5 +795,851 @@
     "recovery_warnings": [],
     "errata": [],
     "created_at": "2026-03-23T13:18:25.953Z"
+  },
+  {
+    "problem_id": "16(UnknownSource)-지수함수와로그함수의교점",
+    "answer": "⑤ 5√10/4",
+    "clues": [
+      {
+        "id": "단서A",
+        "text": "$a>1$, $b>1$인 두 상수"
+      },
+      {
+        "id": "단서B",
+        "text": "$A(0,\\,a)$"
+      },
+      {
+        "id": "단서C",
+        "text": "점 $A$를 지나고 $x$축에 평행한 직선이 곡선 $y=b^x$와 만나는 점을 $B$라 한다"
+      },
+      {
+        "id": "단서D",
+        "text": "점 $A$를 지나고 기울기가 $1$인 직선이 곡선 $y=b^x$와 제1사분면에서 만나는 점을 $C$라 한다"
+      },
+      {
+        "id": "단서E",
+        "text": "점 $C$를 지나고 기울기가 $-1$인 직선이 곡선 $y=\\log_a x$와 만나는 점을 $D$라 한다"
+      },
+      {
+        "id": "단서F",
+        "text": "직선 $AD$의 기울기가 $-\\frac{1}{4}$이다"
+      },
+      {
+        "id": "단서G",
+        "text": "$\\triangle ACD$의 넓이가 $\\triangle ABC$의 넓이의 $10$배이다"
+      }
+    ],
+    "skeleton": [
+      {
+        "from": [
+          "단서B",
+          "단서D"
+        ],
+        "to": "note1",
+        "neuron": "연산30",
+        "note": "$A(0,a)$를 지나는 기울기 $1$인 직선은 $y=x+a$이다",
+        "step": 1
+      },
+      {
+        "from": "note1",
+        "to": "note2",
+        "neuron": "전략25",
+        "note": "$y=b^x$와의 제1사분면 교점을 $C(k, a+k)$ ($k>0$)으로 놓는다",
+        "step": 1
+      },
+      {
+        "from": "단서A",
+        "to": "note3",
+        "neuron": "사실3",
+        "note": "$y=b^x$와 $y=\\log_b x$는 직선 $y=x$에 대해 대칭이다",
+        "step": 2
+      },
+      {
+        "from": "note2",
+        "to": "note4",
+        "neuron": "연산20",
+        "note": "$C(k,a+k)$를 직선 $y=x$에 대해 대칭시킨 점은 $(a+k,k)$이다",
+        "step": 2
+      },
+      {
+        "from": [
+          "note3",
+          "note4"
+        ],
+        "to": "note5",
+        "neuron": "사실32",
+        "note": "$(a+k,k)$는 $y=\\log_b x$ 위의 점이다",
+        "step": 2
+      },
+      {
+        "from": [
+          "note2",
+          "note4"
+        ],
+        "to": "note6",
+        "neuron": "연산10",
+        "note": "$C(k,a+k)$에서 $(a+k,k)$로의 기울기는 $\\frac{k-(a+k)}{(a+k)-k}=-1$이다",
+        "main": false,
+        "step": 2
+      },
+      {
+        "from": [
+          "note5",
+          "note6",
+          "단서E"
+        ],
+        "to": "note7",
+        "neuron": "전략25",
+        "note": "기울기 $-1$인 직선과 $y=\\log_a x$의 교점 조건에 부합하므로 $D(a+k,k)$이다",
+        "step": 2
+      },
+      {
+        "from": [
+          "단서B",
+          "note7"
+        ],
+        "to": "note8",
+        "neuron": "연산10",
+        "note": "직선 $AD$의 기울기는 $\\frac{k-a}{(a+k)-0}=\\frac{k-a}{a+k}$이다",
+        "step": 3
+      },
+      {
+        "from": [
+          "note8",
+          "단서F"
+        ],
+        "to": "note9",
+        "neuron": "전략2",
+        "note": "$\\frac{k-a}{a+k}=-\\frac{1}{4}$에서 $4(k-a)=-(a+k)$이므로 $5k=3a$, 즉 $k=\\frac{3a}{5}$이다",
+        "step": 3
+      },
+      {
+        "from": [
+          "note2",
+          "note9"
+        ],
+        "to": "note10",
+        "neuron": "전략25",
+        "note": "$C\\!\\left(\\frac{3a}{5},\\,\\frac{8a}{5}\\right)$이다",
+        "step": 3
+      },
+      {
+        "from": [
+          "note7",
+          "note9"
+        ],
+        "to": "note11",
+        "neuron": "전략25",
+        "note": "$D\\!\\left(\\frac{8a}{5},\\,\\frac{3a}{5}\\right)$이다",
+        "step": 3
+      },
+      {
+        "from": [
+          "note2",
+          "note6"
+        ],
+        "to": "note12",
+        "neuron": "사실15",
+        "note": "$AC$의 기울기 $1$과 $CD$의 기울기 $-1$의 곱이 $-1$이므로 $AC\\perp CD$이다",
+        "main": false,
+        "step": 4
+      },
+      {
+        "from": [
+          "단서B",
+          "note10"
+        ],
+        "to": "note13",
+        "neuron": "연산11",
+        "note": "$AC=\\sqrt{\\left(\\frac{3a}{5}\\right)^2+\\left(\\frac{3a}{5}\\right)^2}=\\frac{3a\\sqrt{2}}{5}$이다",
+        "main": false,
+        "step": 4
+      },
+      {
+        "from": [
+          "note10",
+          "note11"
+        ],
+        "to": "note14",
+        "neuron": "연산11",
+        "note": "$CD=\\sqrt{\\left(\\frac{5a}{5}\\right)^2+\\left(\\frac{5a}{5}\\right)^2}=a\\sqrt{2}$이다",
+        "main": false,
+        "step": 4
+      },
+      {
+        "from": [
+          "note12",
+          "note13",
+          "note14"
+        ],
+        "to": "note15",
+        "neuron": "연산13",
+        "note": "$S_{ACD}=\\frac{1}{2}\\cdot\\frac{3a\\sqrt{2}}{5}\\cdot a\\sqrt{2}=\\frac{3a^2}{5}$이다",
+        "step": 4
+      },
+      {
+        "from": [
+          "단서B",
+          "단서C"
+        ],
+        "to": "note16",
+        "neuron": "연산2",
+        "note": "$b^x=a$에서 $x=\\log_b a$이므로 $B(\\log_b a,\\,a)$이다",
+        "step": 4
+      },
+      {
+        "from": [
+          "단서B",
+          "note16",
+          "note10"
+        ],
+        "to": "note17",
+        "neuron": "연산13",
+        "note": "$AB$는 $x$축에 평행하고 길이 $\\log_b a$, 높이 $\\frac{8a}{5}-a=\\frac{3a}{5}$이므로 $S_{ABC}=\\frac{1}{2}\\cdot\\log_b a\\cdot\\frac{3a}{5}$이다",
+        "step": 4
+      },
+      {
+        "from": [
+          "note15",
+          "note17",
+          "단서G"
+        ],
+        "to": "note18",
+        "neuron": "전략2",
+        "note": "$\\frac{3a^2}{5}=10\\cdot\\frac{1}{2}\\cdot\\log_b a\\cdot\\frac{3a}{5}$에서 $\\log_b a=\\frac{a}{5}$이다",
+        "step": 4
+      },
+      {
+        "from": "note18",
+        "to": "note19",
+        "neuron": "연산2",
+        "note": "$b^{a/5}=a$이다",
+        "step": 4
+      },
+      {
+        "from": "note10",
+        "to": "note20",
+        "neuron": "전략25",
+        "note": "$C$는 $y=b^x$ 위의 점이므로 $b^{3a/5}=\\frac{8a}{5}$이다",
+        "step": 5
+      },
+      {
+        "from": "note19",
+        "to": "note21",
+        "neuron": "연산4",
+        "note": "$(b^{a/5})^3=a^3$이므로 $b^{3a/5}=a^3$이다",
+        "step": 5
+      },
+      {
+        "from": [
+          "note20",
+          "note21"
+        ],
+        "to": "note22",
+        "neuron": "전략2",
+        "note": "$a^3=\\frac{8a}{5}$에서 $a^2=\\frac{8}{5}$이다",
+        "step": 5
+      },
+      {
+        "from": [
+          "note22",
+          "단서A"
+        ],
+        "to": "note23",
+        "neuron": "전략25",
+        "note": "$a>1$이므로 $a=\\sqrt{\\frac{8}{5}}=\\frac{2\\sqrt{10}}{5}$이다",
+        "step": 5
+      },
+      {
+        "from": "note18",
+        "to": "note24",
+        "neuron": "연산1",
+        "note": "$\\log_a b=\\frac{1}{\\log_b a}=\\frac{5}{a}$이다",
+        "step": 6
+      },
+      {
+        "from": [
+          "note23",
+          "note24"
+        ],
+        "to": "END",
+        "neuron": "전략25",
+        "note": "$\\log_a b=\\frac{5}{\\frac{2\\sqrt{10}}{5}}=\\frac{25}{2\\sqrt{10}}=\\frac{5\\sqrt{10}}{4}$이다",
+        "step": 6
+      }
+    ],
+    "solution": "STEP 1. $A(0,a)$를 지나는 기울기 $1$인 직선은 $y=x+a$이다. $y=b^x$와의 제1사분면 교점을 $C(k, a+k)$ ($k>0$)으로 놓는다.\n\nSTEP 2. $y=b^x$와 $y=\\log_b x$는 직선 $y=x$에 대해 대칭이다. $C(k,a+k)$를 $y=x$에 대해 대칭시킨 점 $(a+k,k)$는 $y=\\log_b x$ 위의 점이다. $C$에서 $(a+k,k)$로의 기울기가 $-1$이므로 조건에 부합하여 $D(a+k,k)$이다.\n\nSTEP 3. 직선 $AD$의 기울기 조건 $\\frac{k-a}{a+k}=-\\frac{1}{4}$에서 $5k=3a$, 즉 $k=\\frac{3a}{5}$이다. $C\\!\\left(\\frac{3a}{5},\\frac{8a}{5}\\right)$, $D\\!\\left(\\frac{8a}{5},\\frac{3a}{5}\\right)$이다.\n\nSTEP 4. $AC\\perp CD$이므로 $S_{ACD}=\\frac{1}{2}\\cdot\\frac{3a\\sqrt{2}}{5}\\cdot a\\sqrt{2}=\\frac{3a^2}{5}$이다. $B(\\log_b a,a)$이고 $S_{ABC}=\\frac{1}{2}\\cdot\\log_b a\\cdot\\frac{3a}{5}$이다. 넓이 조건 $S_{ACD}=10\\,S_{ABC}$에서 $\\log_b a=\\frac{a}{5}$, 즉 $b^{a/5}=a$이다.\n\nSTEP 5. $C$가 $y=b^x$ 위에 있으므로 $b^{3a/5}=\\frac{8a}{5}$이다. $(b^{a/5})^3=a^3=b^{3a/5}$이므로 $a^3=\\frac{8a}{5}$에서 $a^2=\\frac{8}{5}$이고 $a=\\frac{2\\sqrt{10}}{5}$이다.\n\nSTEP 6. $\\log_a b=\\frac{1}{\\log_b a}=\\frac{5}{a}=\\frac{5}{\\frac{2\\sqrt{10}}{5}}=\\frac{25}{2\\sqrt{10}}=\\frac{5\\sqrt{10}}{4}$이다.",
+    "original_solution": "① $A(0, a)$\n\n② $AC$의 기울기가 $1$ $\\Rightarrow$ $C(k, a+k)$ $(k>0)$\n\n으로 놓으면\n\n- $CD$의 기울기가 $-1$ ⋯ ③\n- 두 곡선 $y=b^x$, $y=\\log_a x$가 직선 $y=x$에 대하여 대칭\n\n$\\Rightarrow$ 두 점 $C$, $D$는 직선 $y=x$에 대하여 대칭\n\n$\\Rightarrow$ $D(a+k, k)$\n\n이므로\n\n$AD$의 기울기 $= -\\frac{1}{4}$, ① $\\Rightarrow$ $\\frac{k-a}{a+k} = -\\frac{1}{4}$\n\n$\\Rightarrow k = \\frac{3a}{5}$\n\n$\\Rightarrow C\\left(\\frac{3a}{5}, \\frac{8a}{5}\\right)$, $D\\left(\\frac{8a}{5}, \\frac{3a}{5}\\right)$ ⋯ ④\n\n이다. 또한, 문제의 조건에 의해\n\n- 삼각형 $ACD$의 넓이가 삼각형 $ABC$의 넓이의 $10$배\n- 두 직선 $AC$, $CD$가 서로 수직 ($\\because$ ②, ③)\n\n이므로 점 $B$에서 선분 $AC$에 내린 수선의 발을 $H$라 하면\n\n$\\Rightarrow$ $\\overline{BH} = \\frac{1}{10}\\overline{CD} = \\frac{\\sqrt{2}}{10}a$ ($\\because$ ④ $\\Rightarrow$ $\\overline{CD} = \\sqrt{2}a$)\n\n$\\Rightarrow$ $\\overline{AB} = \\frac{a}{5}$ ($\\because$ ② $\\Rightarrow$ $\\angle CAB = \\frac{\\pi}{4}$)\n\n$\\Rightarrow$ $B\\left(\\frac{a}{5}, a\\right)$ ($\\because$ ① ⋯ ⓐ\n\n위를 알 수 있다.\n\n따라서\n\n- 점 $B$는 곡선 $y=b^x$ 위의 점, ⓐ $\\Rightarrow$ $b^{\\frac{a}{5}} = a$ ⋯ ⓑ\n- 점 $C$는 곡선 $y=b^x$ 위의 점, ④ $\\Rightarrow$ $b^{\\frac{3a}{5}} = \\frac{8}{5}a$\n\n이므로 두 식을 연립하면\n\n$a^3 = \\frac{8}{5}a$ $\\Rightarrow$ $a = \\frac{2\\sqrt{2}}{\\sqrt{5}}$ ($\\because$ $a>1$)\n\n$\\Rightarrow$ $\\log_a b = \\frac{5}{a} = \\frac{5\\sqrt{10}}{4}$ ($\\because$ ⓑ)\n\n을 얻는다.\n\n---",
+    "analysis": "",
+    "new_neurons": [],
+    "metadata": {
+      "unit": "지수와 로그",
+      "difficulty": "상",
+      "score": "4",
+      "type": "객관식",
+      "answer": "5√10/4"
+    },
+    "edge_count": 24,
+    "side_count": 4,
+    "statement": "# 16. (Unknown Source) - 지수함수와 로그함수의 교점\n\n## Problem\n\n$1$보다 큰 두 상수 $a$, $b$에 대하여 점 $A(0, a)$를 지나고 $x$축에 평행한 직선이 곡선 $y=b^x$와 만나는 점을 $B$라 하자. 점 $A$를 지나고 기울기가 $1$인 직선이 곡선 $y=b^x$와 제$1$사분면에서 만나는 점을 $C$, 점 $C$를 지나고 기울기가 $-1$인 직선이 곡선 $y=\\log_a x$와 만나는 점을 $D$라 할 때,\n\n직선 $AD$의 기울기가 $-\\frac{1}{4}$이다. 삼각형 $ACD$의 넓이가 삼각형 $ABC$의 넓이의 $10$배일 때, $\\log_a b$의 값은? [4점]\n\n[FIGURE: 좌표평면에서 원점 $O$, 점 $A$는 $y$축 위에 위치하고, 곡선 $y=b^x$와 $y=\\log_a x$가 그려져 있다. 점 $B$는 $A$를 지나는 수평선과 $y=b^x$의 교점, 점 $C$는 $A$를 지나고 기울기 $1$인 직선과 $y=b^x$의 교점, 점 $D$는 $C$를 지나고 기울기 $-1$인 직선과 $y=\\log_a x$의 교점이다.]",
+    "dna": {
+      "nodes": [
+        {
+          "id": "top",
+          "dna": "Q1",
+          "label": "값을 구하라",
+          "category": "발문"
+        },
+        {
+          "id": "ask",
+          "dna": "E3",
+          "label": "log_a(b)",
+          "category": "수식"
+        },
+        {
+          "id": "va",
+          "dna": "T1",
+          "label": "변수 a",
+          "category": "말단"
+        },
+        {
+          "id": "vb",
+          "dna": "T1",
+          "label": "변수 b",
+          "category": "말단"
+        },
+        {
+          "id": "lim_a",
+          "dna": "C2",
+          "label": "a > 1",
+          "category": "조건"
+        },
+        {
+          "id": "lim_b",
+          "dna": "C2",
+          "label": "b > 1",
+          "category": "조건"
+        },
+        {
+          "id": "c1_const",
+          "dna": "T2",
+          "label": "상수 1",
+          "category": "말단"
+        },
+        {
+          "id": "cm1_const",
+          "dna": "T2",
+          "label": "상수 -1",
+          "category": "말단"
+        },
+        {
+          "id": "c0_const",
+          "dna": "T2",
+          "label": "상수 0",
+          "category": "말단"
+        },
+        {
+          "id": "c10_const",
+          "dna": "T2",
+          "label": "상수 10",
+          "category": "말단"
+        },
+        {
+          "id": "c_slope_ad",
+          "dna": "T2",
+          "label": "상수 -1/4",
+          "category": "말단"
+        },
+        {
+          "id": "pt_a",
+          "dna": "G1",
+          "label": "점 A",
+          "category": "기하"
+        },
+        {
+          "id": "pt_b",
+          "dna": "G1",
+          "label": "점 B",
+          "category": "기하"
+        },
+        {
+          "id": "pt_c",
+          "dna": "G1",
+          "label": "점 C",
+          "category": "기하"
+        },
+        {
+          "id": "pt_d",
+          "dna": "G1",
+          "label": "점 D",
+          "category": "기하"
+        },
+        {
+          "id": "name_a",
+          "dna": "G17",
+          "label": "A(0,a) 좌표",
+          "category": "기하"
+        },
+        {
+          "id": "crv_bx",
+          "dna": "G2",
+          "label": "곡선 y=b^x",
+          "category": "기하"
+        },
+        {
+          "id": "crv_bx_eq",
+          "dna": "C11",
+          "label": "y=b^x 방정식",
+          "category": "조건"
+        },
+        {
+          "id": "crv_bx_c1",
+          "dna": "C1",
+          "label": "y=b^x 등식",
+          "category": "조건"
+        },
+        {
+          "id": "exp_bx",
+          "dna": "E4",
+          "label": "b^x",
+          "category": "수식"
+        },
+        {
+          "id": "vx",
+          "dna": "T3",
+          "label": "독립변수 x",
+          "category": "말단"
+        },
+        {
+          "id": "crv_loga",
+          "dna": "G2",
+          "label": "곡선 y=log_a(x)",
+          "category": "기하"
+        },
+        {
+          "id": "crv_loga_eq",
+          "dna": "C11",
+          "label": "y=log_a(x) 방정식",
+          "category": "조건"
+        },
+        {
+          "id": "crv_loga_c1",
+          "dna": "C1",
+          "label": "y=log_a(x) 등식",
+          "category": "조건"
+        },
+        {
+          "id": "log_ax",
+          "dna": "E3",
+          "label": "log_a(x)",
+          "category": "수식"
+        },
+        {
+          "id": "line_ab",
+          "dna": "G12",
+          "label": "직선 AB(수평)",
+          "category": "기하"
+        },
+        {
+          "id": "line_ab_para",
+          "dna": "G19",
+          "label": "x축에 평행",
+          "category": "기하"
+        },
+        {
+          "id": "axis_x",
+          "dna": "G13",
+          "label": "x축",
+          "category": "기하"
+        },
+        {
+          "id": "meet_ab",
+          "dna": "C3",
+          "label": "직선AB∩곡선bx=B",
+          "category": "조건"
+        },
+        {
+          "id": "line_ac",
+          "dna": "G12",
+          "label": "직선 AC(기울기1)",
+          "category": "기하"
+        },
+        {
+          "id": "slope_ac",
+          "dna": "G5",
+          "label": "기울기 AC",
+          "category": "기하"
+        },
+        {
+          "id": "slope_ac_eq",
+          "dna": "C1",
+          "label": "기울기AC=1 등식",
+          "category": "조건"
+        },
+        {
+          "id": "q1_cond",
+          "dna": "L1",
+          "label": "제1사분면",
+          "category": "제한"
+        },
+        {
+          "id": "meet_ac",
+          "dna": "C3",
+          "label": "직선AC∩곡선bx=C",
+          "category": "조건"
+        },
+        {
+          "id": "line_cd",
+          "dna": "G12",
+          "label": "직선 CD(기울기-1)",
+          "category": "기하"
+        },
+        {
+          "id": "slope_cd",
+          "dna": "G5",
+          "label": "기울기 CD",
+          "category": "기하"
+        },
+        {
+          "id": "slope_cd_eq",
+          "dna": "C1",
+          "label": "기울기CD=-1 등식",
+          "category": "조건"
+        },
+        {
+          "id": "meet_cd",
+          "dna": "C3",
+          "label": "직선CD∩곡선loga=D",
+          "category": "조건"
+        },
+        {
+          "id": "slope_ad",
+          "dna": "G5",
+          "label": "기울기 AD",
+          "category": "기하"
+        },
+        {
+          "id": "slope_ad_eq",
+          "dna": "C1",
+          "label": "기울기AD=-1/4",
+          "category": "조건"
+        },
+        {
+          "id": "tri_acd",
+          "dna": "G25",
+          "label": "삼각형 ACD",
+          "category": "기하"
+        },
+        {
+          "id": "tri_abc",
+          "dna": "G25",
+          "label": "삼각형 ABC",
+          "category": "기하"
+        },
+        {
+          "id": "area_acd",
+          "dna": "G11",
+          "label": "넓이 ACD",
+          "category": "기하"
+        },
+        {
+          "id": "area_abc",
+          "dna": "G11",
+          "label": "넓이 ABC",
+          "category": "기하"
+        },
+        {
+          "id": "area_10x",
+          "dna": "E6",
+          "label": "넓이ABC×10",
+          "category": "수식"
+        },
+        {
+          "id": "area_cond",
+          "dna": "C1",
+          "label": "넓이ACD=10×ABC",
+          "category": "조건"
+        },
+        {
+          "id": "conds",
+          "dna": "S1",
+          "label": "전체 조건 묶음",
+          "category": "구조"
+        }
+      ],
+      "edges": [
+        {
+          "from": "ask",
+          "to": "top"
+        },
+        {
+          "from": "va",
+          "to": "ask"
+        },
+        {
+          "from": "vb",
+          "to": "ask"
+        },
+        {
+          "from": "va",
+          "to": "lim_a"
+        },
+        {
+          "from": "c1_const",
+          "to": "lim_a"
+        },
+        {
+          "from": "vb",
+          "to": "lim_b"
+        },
+        {
+          "from": "c1_const",
+          "to": "lim_b"
+        },
+        {
+          "from": "pt_a",
+          "to": "name_a"
+        },
+        {
+          "from": "c0_const",
+          "to": "name_a"
+        },
+        {
+          "from": "va",
+          "to": "name_a"
+        },
+        {
+          "from": "name_a",
+          "to": "conds"
+        },
+        {
+          "from": "crv_bx_eq",
+          "to": "crv_bx"
+        },
+        {
+          "from": "crv_bx_c1",
+          "to": "crv_bx_eq"
+        },
+        {
+          "from": "exp_bx",
+          "to": "crv_bx_c1"
+        },
+        {
+          "from": "vb",
+          "to": "exp_bx"
+        },
+        {
+          "from": "vx",
+          "to": "exp_bx"
+        },
+        {
+          "from": "crv_loga_eq",
+          "to": "crv_loga"
+        },
+        {
+          "from": "crv_loga_c1",
+          "to": "crv_loga_eq"
+        },
+        {
+          "from": "log_ax",
+          "to": "crv_loga_c1"
+        },
+        {
+          "from": "va",
+          "to": "log_ax"
+        },
+        {
+          "from": "vx",
+          "to": "log_ax"
+        },
+        {
+          "from": "pt_a",
+          "to": "line_ab"
+        },
+        {
+          "from": "line_ab_para",
+          "to": "line_ab"
+        },
+        {
+          "from": "axis_x",
+          "to": "line_ab_para"
+        },
+        {
+          "from": "crv_bx",
+          "to": "meet_ab"
+        },
+        {
+          "from": "line_ab",
+          "to": "meet_ab"
+        },
+        {
+          "from": "pt_b",
+          "to": "meet_ab"
+        },
+        {
+          "from": "meet_ab",
+          "to": "conds"
+        },
+        {
+          "from": "pt_a",
+          "to": "line_ac"
+        },
+        {
+          "from": "slope_ac",
+          "to": "slope_ac_eq"
+        },
+        {
+          "from": "c1_const",
+          "to": "slope_ac_eq"
+        },
+        {
+          "from": "slope_ac_eq",
+          "to": "line_ac"
+        },
+        {
+          "from": "pt_a",
+          "to": "slope_ac"
+        },
+        {
+          "from": "crv_bx",
+          "to": "meet_ac"
+        },
+        {
+          "from": "line_ac",
+          "to": "meet_ac"
+        },
+        {
+          "from": "pt_c",
+          "to": "meet_ac"
+        },
+        {
+          "from": "q1_cond",
+          "to": "meet_ac"
+        },
+        {
+          "from": "meet_ac",
+          "to": "conds"
+        },
+        {
+          "from": "pt_c",
+          "to": "line_cd"
+        },
+        {
+          "from": "slope_cd",
+          "to": "slope_cd_eq"
+        },
+        {
+          "from": "cm1_const",
+          "to": "slope_cd_eq"
+        },
+        {
+          "from": "slope_cd_eq",
+          "to": "line_cd"
+        },
+        {
+          "from": "pt_c",
+          "to": "slope_cd"
+        },
+        {
+          "from": "crv_loga",
+          "to": "meet_cd"
+        },
+        {
+          "from": "line_cd",
+          "to": "meet_cd"
+        },
+        {
+          "from": "pt_d",
+          "to": "meet_cd"
+        },
+        {
+          "from": "meet_cd",
+          "to": "conds"
+        },
+        {
+          "from": "pt_a",
+          "to": "slope_ad"
+        },
+        {
+          "from": "pt_d",
+          "to": "slope_ad"
+        },
+        {
+          "from": "slope_ad",
+          "to": "slope_ad_eq"
+        },
+        {
+          "from": "c_slope_ad",
+          "to": "slope_ad_eq"
+        },
+        {
+          "from": "slope_ad_eq",
+          "to": "conds"
+        },
+        {
+          "from": "pt_a",
+          "to": "tri_acd"
+        },
+        {
+          "from": "pt_c",
+          "to": "tri_acd"
+        },
+        {
+          "from": "pt_d",
+          "to": "tri_acd"
+        },
+        {
+          "from": "pt_a",
+          "to": "tri_abc"
+        },
+        {
+          "from": "pt_b",
+          "to": "tri_abc"
+        },
+        {
+          "from": "pt_c",
+          "to": "tri_abc"
+        },
+        {
+          "from": "tri_acd",
+          "to": "area_acd"
+        },
+        {
+          "from": "tri_abc",
+          "to": "area_abc"
+        },
+        {
+          "from": "area_abc",
+          "to": "area_10x"
+        },
+        {
+          "from": "c10_const",
+          "to": "area_10x"
+        },
+        {
+          "from": "area_acd",
+          "to": "area_cond"
+        },
+        {
+          "from": "area_10x",
+          "to": "area_cond"
+        },
+        {
+          "from": "area_cond",
+          "to": "conds"
+        },
+        {
+          "from": "conds",
+          "to": "top"
+        }
+      ],
+      "new_dna": []
+    },
+    "thinking_profile": null,
+    "folders": [],
+    "history": [],
+    "recovery_warnings": [],
+    "errata": [],
+    "created_at": "2026-03-23T13:38:28.175Z"
   }
 ]
