@@ -814,5 +814,802 @@
     "recovery_warnings": [],
     "errata": [],
     "created_at": "2026-03-23T13:00:20.183Z"
+  },
+  {
+    "problem_id": "19(수능/모의고사)-로그방정식의실근의개수_2",
+    "answer": "10",
+    "clues": [
+      {
+        "id": "단서A",
+        "text": "방정식 $\\frac{\\log_n (x^2-20)^n}{n} = \\frac{\\log_n (2x+k)^{n+1}}{n+1} + 1$"
+      },
+      {
+        "id": "단서B",
+        "text": "$k > 4\\sqrt{5}$"
+      },
+      {
+        "id": "단서C",
+        "text": "$n$은 2 이상의 자연수"
+      },
+      {
+        "id": "단서D",
+        "text": "실근의 개수가 3이 되도록 하는 모든 $n$의 값이 $n_1, n_2$ ($n_2 > n_1 \\geq 2$)뿐이다"
+      }
+    ],
+    "skeleton": [
+      {
+        "from": [
+          "단서A",
+          "단서C"
+        ],
+        "to": "note1",
+        "neuron": "전략12",
+        "note": "$n$의 홀짝에 따라 $(x^2-20)^n$과 $(2x+k)^{n+1}$의 부호 조건이 달라지므로 경우를 분리한다",
+        "step": 1
+      },
+      {
+        "from": "note1",
+        "to": "note2",
+        "neuron": "사실76",
+        "note": "$n$ 홀수일 때: $(x^2-20)^n$의 부호는 $x^2-20$의 부호와 같다. 로그 정의를 위해 $(x^2-20)^n>0$이려면 $x^2-20>0$이어야 한다. $n+1$이 짝수이므로 $(2x+k)^{n+1}=|2x+k|^{n+1}\\geq 0$이다",
+        "step": 1
+      },
+      {
+        "from": "note2",
+        "to": "note3",
+        "neuron": "연산17",
+        "note": "$n$ 홀수: $\\frac{\\log_n(x^2-20)^n}{n}=\\log_n(x^2-20)$, $\\frac{\\log_n|2x+k|^{n+1}}{n+1}=\\log_n|2x+k|$이므로 방정식은 $\\log_n(x^2-20)=\\log_n|2x+k|+1$ (단 $x^2>20$, $2x+k\\neq 0$)",
+        "step": 1
+      },
+      {
+        "from": "note1",
+        "to": "note4",
+        "neuron": "사실76",
+        "note": "$n$ 짝수일 때: $(x^2-20)^n=|x^2-20|^n\\geq 0$이다. $n+1$이 홀수이므로 $(2x+k)^{n+1}$의 부호는 $2x+k$의 부호와 같다. 로그 정의를 위해 $2x+k>0$이어야 한다",
+        "step": 1
+      },
+      {
+        "from": "note4",
+        "to": "note5",
+        "neuron": "연산17",
+        "note": "$n$ 짝수: $\\frac{\\log_n|x^2-20|^n}{n}=\\log_n|x^2-20|$, $\\frac{\\log_n(2x+k)^{n+1}}{n+1}=\\log_n(2x+k)$이므로 방정식은 $\\log_n|x^2-20|=\\log_n(2x+k)+1$ (단 $x^2\\neq 20$, $2x+k>0$)",
+        "step": 1
+      },
+      {
+        "from": "note3",
+        "to": "note6",
+        "neuron": "연산16",
+        "note": "$\\log_n|2x+k|+1=\\log_n|2x+k|+\\log_n n=\\log_n(n|2x+k|)$",
+        "main": false,
+        "step": 2
+      },
+      {
+        "from": [
+          "note3",
+          "note6"
+        ],
+        "to": "note7",
+        "neuron": "연산2",
+        "note": "$n$ 홀수: $x^2-20=n|2x+k|=2n\\left|x+\\frac{k}{2}\\right|$ (단 $x^2>20$, $x\\neq -\\frac{k}{2}$)",
+        "step": 2
+      },
+      {
+        "from": "note5",
+        "to": "note8",
+        "neuron": "연산16",
+        "note": "$\\log_n(2x+k)+1=\\log_n(n(2x+k))$",
+        "main": false,
+        "step": 2
+      },
+      {
+        "from": [
+          "note5",
+          "note8"
+        ],
+        "to": "note9",
+        "neuron": "연산2",
+        "note": "$n$ 짝수: $|x^2-20|=n(2x+k)=2n\\left(x+\\frac{k}{2}\\right)$ (단 $x^2\\neq 20$, $x>-\\frac{k}{2}$)",
+        "step": 2
+      },
+      {
+        "from": "단서B",
+        "to": "note10",
+        "neuron": "연산22",
+        "note": "$k>4\\sqrt{5}$의 양변에 $-\\frac{1}{2}$를 곱하면 $-\\frac{k}{2}<-2\\sqrt{5}$이다",
+        "step": 3
+      },
+      {
+        "from": "note7",
+        "to": "note11",
+        "neuron": "전략5",
+        "note": "경우 ①($n$ 홀수): 실근의 개수는 $y=x^2-20$과 $y=2n\\left|x+\\frac{k}{2}\\right|$의 교점 수와 같다 (단 $x^2>20$인 영역, 즉 $x>2\\sqrt{5}$ 또는 $x<-2\\sqrt{5}$)",
+        "step": 4
+      },
+      {
+        "from": [
+          "note11",
+          "note10"
+        ],
+        "to": "note12",
+        "neuron": "전략6",
+        "note": "절댓값을 분리하면 세 구간: (a) $x>2\\sqrt{5}$, (b) $-\\frac{k}{2}<x<-2\\sqrt{5}$ (여기서 $x+\\frac{k}{2}>0$), (c) $x<-\\frac{k}{2}$ (여기서 $x+\\frac{k}{2}<0$). 구간 $-2\\sqrt{5}<x<2\\sqrt{5}$는 $x^2<20$이므로 제외된다",
+        "step": 4
+      },
+      {
+        "from": "note12",
+        "to": "note13",
+        "neuron": "사실79",
+        "note": "구간 (a),(b)에서 $x^2-20=2n(x+\\frac{k}{2})$, 즉 $x^2-2nx-(nk+20)=0$이다. 판별식 $D_1/4=n^2+nk+20>0$이므로 서로 다른 두 실근을 가진다. 근의 합$=2n>0$, 근의 곱$=-(nk+20)<0$이므로 양근 1개, 음근 1개이다. 양근은 (a)에, 음근은 (b)에 각각 정확히 1개 존재한다",
+        "step": 4
+      },
+      {
+        "from": "note12",
+        "to": "note14",
+        "neuron": "사실79",
+        "note": "구간 (c)에서 $x^2-20=-2n(x+\\frac{k}{2})$, 즉 $x^2+2nx+(nk-20)=0$이다. 판별식 $D_2/4=n^2-nk+20$, 대칭축 $x=-n$이다",
+        "step": 4
+      },
+      {
+        "from": [
+          "note13",
+          "note14"
+        ],
+        "to": "note15",
+        "neuron": "전략5",
+        "note": "(a)에서 1개 + (b)에서 1개 + (c)에서의 근의 개수 = 전체 실근 수. 전체가 3이 되려면 (c)에서 정확히 1개, 즉 $D_2/4=0$ (접선 조건)이어야 한다",
+        "step": 4
+      },
+      {
+        "from": "note15",
+        "to": "note16",
+        "neuron": "사실79",
+        "note": "$D_2/4=0$이면 $n^2-nk+20=0$ …ⓐ. 중근 $x=-n$이 구간 $x<-\\frac{k}{2}$에 있으려면 $-n<-\\frac{k}{2}$, 즉 $n>\\frac{k}{2}>2\\sqrt{5}\\approx 4.47$이어야 한다",
+        "step": 4
+      },
+      {
+        "from": "note16",
+        "to": "note17",
+        "neuron": "전략25",
+        "note": "$n>2\\sqrt{5}\\approx 4.47$인 홀수 자연수이므로 $n=5, 7, 9, \\ldots$ …ⓑ",
+        "step": 4
+      },
+      {
+        "from": "note9",
+        "to": "note18",
+        "neuron": "전략5",
+        "note": "경우 ②($n$ 짝수): 실근의 개수는 $y=|x^2-20|$과 $y=2n(x+\\frac{k}{2})$의 교점 수와 같다 (단 $x>-\\frac{k}{2}$, $x^2\\neq 20$)",
+        "step": 5
+      },
+      {
+        "from": [
+          "note18",
+          "note10"
+        ],
+        "to": "note19",
+        "neuron": "전략6",
+        "note": "절댓값을 분리하면 세 구간: (a) $x>2\\sqrt{5}$에서 $|x^2-20|=x^2-20$, (b) $-2\\sqrt{5}<x<2\\sqrt{5}$에서 $|x^2-20|=20-x^2$, (c) $-\\frac{k}{2}<x<-2\\sqrt{5}$에서 $|x^2-20|=x^2-20$",
+        "step": 5
+      },
+      {
+        "from": "note19",
+        "to": "note20",
+        "neuron": "사실79",
+        "note": "구간 (a)와 (c)에서 $x^2-20=2n(x+\\frac{k}{2})$, 즉 $x^2-2nx-(nk+20)=0$이다. 경우 ①の(a),(b)と同じく양근 1개(→구간(a)), 음근 1개(→구간(c))로 각 구간에 정확히 1개씩 존재한다",
+        "step": 5
+      },
+      {
+        "from": "note19",
+        "to": "note21",
+        "neuron": "사실79",
+        "note": "구간 (b)에서 $20-x^2=2n(x+\\frac{k}{2})$, 즉 $x^2+2nx+(nk-20)=0$이다. 판별식 $D_2/4=n^2-nk+20$, 대칭축 $x=-n$이다",
+        "step": 5
+      },
+      {
+        "from": [
+          "note20",
+          "note21"
+        ],
+        "to": "note22",
+        "neuron": "전략5",
+        "note": "(a)에서 1개 + (c)에서 1개 + (b)에서의 근의 개수 = 전체 실근 수. 전체가 3이 되려면 (b)에서 정확히 1개(접점), 즉 $D_2/4=0$이어야 한다",
+        "step": 5
+      },
+      {
+        "from": "note22",
+        "to": "note23",
+        "neuron": "사실79",
+        "note": "$D_2/4=0$이면 $n^2-nk+20=0$ …ⓐ(동일). 중근 $x=-n$이 구간 $(-2\\sqrt{5}, 2\\sqrt{5})$에 있으려면 $|-n|<2\\sqrt{5}$, 즉 $n<2\\sqrt{5}\\approx 4.47$이어야 한다",
+        "step": 5
+      },
+      {
+        "from": "note23",
+        "to": "note24",
+        "neuron": "전략25",
+        "note": "$2\\leq n<2\\sqrt{5}\\approx 4.47$인 짝수 자연수이므로 $n=2$ 또는 $n=4$ …ⓒ",
+        "step": 5
+      },
+      {
+        "from": [
+          "note17",
+          "note24",
+          "단서D"
+        ],
+        "to": "note25",
+        "neuron": "사실78",
+        "note": "ⓑとⓒから$n_1, n_2$は共に$n^2-kn+20=0$ …ⓐの根である。根と係数の関係により$n_1+n_2=k$, $n_1 n_2=20$",
+        "step": 6
+      },
+      {
+        "from": "note25",
+        "to": "note26",
+        "neuron": "전략17",
+        "note": "$n_1 n_2=20$, $n_2>n_1\\geq 2$を満たす自然数の組の候補: $(2, 10)$, $(4, 5)$",
+        "step": 6
+      },
+      {
+        "from": "note26",
+        "to": "note27",
+        "neuron": "전략25",
+        "note": "$(2, 10)$: $n_1=2$は짝수で$2<2\\sqrt{5}$なのでⓒを満たす。しかし$n_2=10$は짝수だが$10>2\\sqrt{5}$なのでⓒの条件$n<2\\sqrt{5}$を満たさず、またⓑ(홀수 조건)も満たさない",
+        "main": false,
+        "step": 6
+      },
+      {
+        "from": "note27",
+        "to": "note28",
+        "neuron": "전략23",
+        "note": "$(2, 10)$は배제される",
+        "main": false,
+        "step": 6
+      },
+      {
+        "from": "note26",
+        "to": "note29",
+        "neuron": "전략25",
+        "note": "$(4, 5)$: $n_1=4$は짝수이고 $4<2\\sqrt{5}$이므로 ⓒ를 만족한다. $n_2=5$는 홀수이고 $5>2\\sqrt{5}$이므로 ⓑ를 만족한다",
+        "step": 6
+      },
+      {
+        "from": [
+          "note28",
+          "note29"
+        ],
+        "to": "note30",
+        "neuron": "전략20",
+        "note": "유일한 유효 조합은 $n_1=4$, $n_2=5$이다",
+        "step": 6
+      },
+      {
+        "from": [
+          "note30",
+          "note25"
+        ],
+        "to": "note31",
+        "neuron": "사실78",
+        "note": "$k=n_1+n_2=4+5=9$이다",
+        "step": 6
+      },
+      {
+        "from": "note31",
+        "to": "note32",
+        "neuron": "전략25",
+        "note": "$k=9>4\\sqrt{5}\\approx 8.944$이므로 조건 $k>4\\sqrt{5}$를 만족한다",
+        "main": false,
+        "step": 6
+      },
+      {
+        "from": [
+          "note30",
+          "note31"
+        ],
+        "to": "END",
+        "neuron": "전략25",
+        "note": "$k+n_2-n_1=9+5-4=10$",
+        "step": 7
+      }
+    ],
+    "solution": "STEP 1. $n$의 홀짝에 따라 방정식을 정리한다. 로그 거듭제곱 법칙으로 양변을 정리하면, $n$ 홀수일 때 $(2x+k)^{n+1}=|2x+k|^{n+1}$이고, $n$ 짝수일 때 $(x^2-20)^n=|x^2-20|^n$이다. 경우 ①($n$ 홀수): $\\log_n(x^2-20) = \\log_n|2x+k|+1$ (단 $x^2>20$, $2x+k\\neq 0$). 경우 ②($n$ 짝수): $\\log_n|x^2-20| = \\log_n(2x+k)+1$ (단 $x^2\\neq 20$, $2x+k>0$).\n\nSTEP 2. 로그 방정식을 대수 방정식으로 변환한다. $\\log_n B + 1 = \\log_n(nB)$를 이용하면, 경우 ①: $x^2-20=2n|x+k/2|$, 경우 ②: $|x^2-20|=2n(x+k/2)$이다.\n\nSTEP 3. $k>4\\sqrt{5}$에서 양변에 $-1/2$를 곱하면 $-k/2<-2\\sqrt{5}$이다.\n\nSTEP 4. 경우 ①($n$ 홀수) 분석. $x^2>20$, 즉 $x>2\\sqrt{5}$ 또는 $x<-2\\sqrt{5}$ 영역에서 절댓값을 분리하면 세 구간으로 나뉜다. 구간 (a) $x>2\\sqrt{5}$와 (b) $-k/2<x<-2\\sqrt{5}$에서는 $x^2-2nx-(nk+20)=0$이고, 근의 곱$=-(nk+20)<0$이므로 양근과 음근이 각 1개씩 존재하여 (a)에 1개, (b)에 1개이다. 구간 (c) $x<-k/2$에서는 $x^2+2nx+(nk-20)=0$이고 판별식 $D_2/4=n^2-nk+20$이다. 전체 실근이 3개가 되려면 (c)에서 접점 1개, 즉 $D_2/4=0$이어야 한다. 이때 $n^2-nk+20=0$ …ⓐ이고, 중근 $x=-n$이 $x<-k/2$에 있으려면 $n>k/2>2\\sqrt{5}$이므로 $n=5,7,9,\\ldots$ …ⓑ\n\nSTEP 5. 경우 ②($n$ 짝수) 분석. $x>-k/2$, $x^2\\neq 20$ 영역에서 절댓값을 분리하면 세 구간이다. 구간 (a) $x>2\\sqrt{5}$와 (c) $-k/2<x<-2\\sqrt{5}$에서는 경우 ①과 동일한 이차방정식으로 각각 1개씩 근이 존재한다. 구간 (b) $-2\\sqrt{5}<x<2\\sqrt{5}$에서는 $x^2+2nx+(nk-20)=0$이고, 전체 실근=3이 되려면 $D_2/4=n^2-nk+20=0$ …ⓐ(동일)이어야 한다. 중근 $x=-n$이 $(-2\\sqrt{5}, 2\\sqrt{5})$에 있으려면 $n<2\\sqrt{5}\\approx 4.47$이므로 $n=2$ 또는 $4$ …ⓒ\n\nSTEP 6. ⓑ와 ⓒ에서 $n_1, n_2$는 모두 $n^2-kn+20=0$ …ⓐ의 근이다. 근과 계수의 관계에서 $n_1 n_2=20$이다. 후보 $(n_1, n_2)$: $(2,10)$은 $n_2=10$이 짝수이면서 $10>2\\sqrt{5}$이므로 ⓒ도 ⓑ(홀수)도 만족하지 않아 배제. $(4,5)$는 $n_1=4$(짝수, $4<2\\sqrt{5}$→ⓒ 만족), $n_2=5$(홀수, $5>2\\sqrt{5}$→ⓑ 만족)으로 모두 충족한다. 따라서 $n_1=4$, $n_2=5$, $k=n_1+n_2=9$이다. $k=9>4\\sqrt{5}\\approx 8.944$으로 조건도 만족한다.\n\nSTEP 7. $k+n_2-n_1=9+5-4=\\boxed{10}$",
+    "original_solution": "문제의 방정식을 정리하면\n\n**① $n$이 홀수일 때,** $\\log_n(x^2-20) = \\log_n|2x+k| + 1$\n\n$$\\Rightarrow x^2 - 20 = 2n\\left|x+\\frac{k}{2}\\right|,\\quad x^2-20>0,\\quad x \\neq -\\frac{k}{2}$$\n\n**② $n$이 짝수일 때,** $\\log_n|x^2-20| = \\log_n(2x+k) + 1$\n\n$$\\Rightarrow |x^2-20| = 2n\\left(x+\\frac{k}{2}\\right),\\quad x^2 \\neq 20,\\quad x > -\\frac{k}{2}$$\n\n이때, $k > 4\\sqrt{5} \\Rightarrow -\\dfrac{k}{2} < -2\\sqrt{5}$\n\n임을 함께 고려하면 방정식의 실근의 개수가 3이 되는 경우를 다음 그림과 같이 나타낼 수 있다.\n\n[FIGURE: ①의 경우 — $y = x^2 - 20$과 $y = 2n\\left|x + \\frac{k}{2}\\right|$의 그래프가 $x < -2\\sqrt{5}$에서 접하는 그림. ②의 경우 — $y = |x^2 - 20|$과 $y = 2n\\left(x + \\frac{k}{2}\\right)$의 그래프가 $-2\\sqrt{5} < x < 2\\sqrt{5}$에서 접하는 그림.]\n\n**①의 경우:**\n\n$y = x^2 - 20$, $y = -2n\\!\\left(x + \\dfrac{k}{2}\\right)$이 $x < -2\\sqrt{5}$에서 접함\n\n$$\\Rightarrow x^2 + 2nx + kn - 20 = 0 \\text{이 } x < -2\\sqrt{5} \\text{인 중근을 가짐}$$\n\n$$\\Rightarrow \\begin{cases} D/4 = n^2 - kn + 20 = 0 \\cdots \\text{ⓐ} \\\\ \\text{(대칭축)} = -n < -2\\sqrt{5} \\Rightarrow n > 2\\sqrt{5}\\text{인 홀수} \\\\ \\Rightarrow n = 5,\\; 7,\\; \\cdots \\quad \\cdots \\text{ⓑ} \\end{cases}$$\n\n**②의 경우:**\n\n$y = -(x^2-20)$, $y = 2n\\!\\left(x + \\dfrac{k}{2}\\right)$이 $-2\\sqrt{5} < x < 2\\sqrt{5}$에서 접함\n\n$$\\Rightarrow x^2 + 2nx + kn - 20 = 0 \\text{이 } -2\\sqrt{5} < x < 2\\sqrt{5}\\text{인 중근을 가짐}$$\n\n$$\\Rightarrow \\begin{cases} \\text{중근을 가질 조건은 ⓐ과 동일} \\\\ -2\\sqrt{5} < -n < 2\\sqrt{5}\\ (\\because \\text{ⓑ의 과정 참고}) \\\\ \\Rightarrow n \\text{은 } -2\\sqrt{5} < n < 2\\sqrt{5}\\text{인 짝수} \\\\ \\Rightarrow n = 2,\\; 4 \\quad \\cdots \\text{ⓒ} \\end{cases}$$\n\n따라서 문제의 조건과 ⓐ에 의해\n\n$$\\begin{cases} n\\text{에 대한 이차방정식 } n^2 - kn + 20 = 0 \\text{이} \\\\ \\text{서로 다른 두 실근이 } n_1,\\; n_2\\ (n_2 > n_1 \\geq 2) \\end{cases}$$\n\n임을 알 수 있고, 이때\n\n$$n_1 \\times n_2 = 20 \\quad (\\because \\text{근과 계수의 관계})$$\n\n이므로 ⓑ, ⓒ에서\n\n$$n_1 = 4,\\quad n_2 = 5$$\n\n임을 알 수 있고,\n\n$$\\text{ⓐ} \\Rightarrow k = 9$$\n\n를 얻는다.\n\n$$\\therefore\\; k + n_2 - n_1 = 9 + 5 - 4 = \\boxed{10}$$\n\n---",
+    "analysis": "방정식의 로그 거듭제곱을 정리한 뒤 n의 홀짝에 따라 절댓값 위치가 달라짐을 파악한다. 각 경우를 대수 방정식으로 변환하고, 구간별 교점 수를 판별식으로 분석하여 실근 3개 조건을 접선 조건(D=0)으로 귀결시킨다. 두 경우 모두 같은 이차방정식 n²-kn+20=0을 주고, 근과 계수의 관계와 홀짝 조건을 결합하여 n₁=4, n₂=5, k=9를 결정한다.",
+    "new_neurons": [],
+    "metadata": {
+      "unit": "로그/지수 방정식",
+      "difficulty": "상",
+      "score": "4",
+      "type": "multiple choice",
+      "answer": "① 10"
+    },
+    "edge_count": 33,
+    "side_count": 5,
+    "statement": "# 19. (수능/모의고사) - 로그 방정식의 실근의 개수\n\n## Problem\n\n상수 $k\\ (k > 4\\sqrt{5})$와 2 이상의 자연수 $n$에 대하여 $x$에 대한 방정식\n\n$$\\frac{\\log_n (x^2-20)^n}{n} = \\frac{\\log_n (2x+k)^{n+1}}{n+1} + 1$$\n\n의 실근의 개수가 3이 되도록 하는 모든 $n$의 값이 $n_1,\\; n_2\\ (n_2 > n_1 \\geq 2)$일 때, $k + n_2 - n_1$의 값은? [4점]",
+    "dna": {
+      "nodes": [
+        {
+          "id": "top",
+          "dna": "Q1",
+          "label": "값을 구하라",
+          "category": "발문"
+        },
+        {
+          "id": "ask",
+          "dna": "E1",
+          "label": "k+n2-n1",
+          "category": "수식"
+        },
+        {
+          "id": "ask_sub",
+          "dna": "E1",
+          "label": "n2-n1",
+          "category": "수식"
+        },
+        {
+          "id": "neg_n1",
+          "dna": "E2",
+          "label": "부호반전(n1)",
+          "category": "수식"
+        },
+        {
+          "id": "conds",
+          "dna": "S1",
+          "label": "조건 묶음",
+          "category": "구조"
+        },
+        {
+          "id": "vk",
+          "dna": "T1",
+          "label": "변수 k",
+          "category": "말단"
+        },
+        {
+          "id": "vn",
+          "dna": "T1",
+          "label": "변수 n",
+          "category": "말단"
+        },
+        {
+          "id": "vn1",
+          "dna": "T1",
+          "label": "변수 n1",
+          "category": "말단"
+        },
+        {
+          "id": "vn2",
+          "dna": "T1",
+          "label": "변수 n2",
+          "category": "말단"
+        },
+        {
+          "id": "vx",
+          "dna": "T3",
+          "label": "독립변수 x",
+          "category": "말단"
+        },
+        {
+          "id": "c1",
+          "dna": "T2",
+          "label": "상수 1",
+          "category": "말단"
+        },
+        {
+          "id": "c2",
+          "dna": "T2",
+          "label": "상수 2",
+          "category": "말단"
+        },
+        {
+          "id": "c20",
+          "dna": "T2",
+          "label": "상수 20",
+          "category": "말단"
+        },
+        {
+          "id": "c4sqrt5",
+          "dna": "T2",
+          "label": "상수 4√5",
+          "category": "말단"
+        },
+        {
+          "id": "c3_cnt",
+          "dna": "T2",
+          "label": "상수 3",
+          "category": "말단"
+        },
+        {
+          "id": "cneg1",
+          "dna": "T2",
+          "label": "상수 -1",
+          "category": "말단"
+        },
+        {
+          "id": "lim_k",
+          "dna": "C2",
+          "label": "k > 4√5",
+          "category": "조건"
+        },
+        {
+          "id": "lim_n_nat",
+          "dna": "L3",
+          "label": "n은 자연수",
+          "category": "제한"
+        },
+        {
+          "id": "lim_n_range",
+          "dna": "L2",
+          "label": "n≥2",
+          "category": "제한"
+        },
+        {
+          "id": "ord_n2n1",
+          "dna": "C2",
+          "label": "n2>n1",
+          "category": "조건"
+        },
+        {
+          "id": "ord_n1lb",
+          "dna": "C2",
+          "label": "n1≥2",
+          "category": "조건"
+        },
+        {
+          "id": "eq_main",
+          "dna": "C11",
+          "label": "x에 대한 방정식",
+          "category": "조건"
+        },
+        {
+          "id": "eq_c1",
+          "dna": "C1",
+          "label": "좌변=우변",
+          "category": "조건"
+        },
+        {
+          "id": "lhs",
+          "dna": "E6",
+          "label": "lhs 분수",
+          "category": "수식"
+        },
+        {
+          "id": "lhs_log",
+          "dna": "E3",
+          "label": "log_n(x²-20)^n",
+          "category": "수식"
+        },
+        {
+          "id": "lhs_logarg",
+          "dna": "E7",
+          "label": "(x²-20)^n",
+          "category": "수식"
+        },
+        {
+          "id": "lhs_inner",
+          "dna": "E1",
+          "label": "x²-20",
+          "category": "수식"
+        },
+        {
+          "id": "x_sq",
+          "dna": "E7",
+          "label": "x²",
+          "category": "수식"
+        },
+        {
+          "id": "neg20",
+          "dna": "E2",
+          "label": "부호반전(20)",
+          "category": "수식"
+        },
+        {
+          "id": "rhs",
+          "dna": "E1",
+          "label": "rhs log항+1",
+          "category": "수식"
+        },
+        {
+          "id": "rhs_frac",
+          "dna": "E6",
+          "label": "rhs 분수",
+          "category": "수식"
+        },
+        {
+          "id": "rhs_log",
+          "dna": "E3",
+          "label": "log_n(2x+k)^(n+1)",
+          "category": "수식"
+        },
+        {
+          "id": "rhs_logarg",
+          "dna": "E7",
+          "label": "(2x+k)^(n+1)",
+          "category": "수식"
+        },
+        {
+          "id": "n_plus1",
+          "dna": "E1",
+          "label": "n+1",
+          "category": "수식"
+        },
+        {
+          "id": "rhs_inner",
+          "dna": "E1",
+          "label": "2x+k",
+          "category": "수식"
+        },
+        {
+          "id": "two_x",
+          "dna": "E6",
+          "label": "2·x",
+          "category": "수식"
+        },
+        {
+          "id": "inv_n",
+          "dna": "E7",
+          "label": "n^(-1)",
+          "category": "수식"
+        },
+        {
+          "id": "inv_n1",
+          "dna": "E7",
+          "label": "(n+1)^(-1)",
+          "category": "수식"
+        },
+        {
+          "id": "root_cnt",
+          "dna": "C9",
+          "label": "실근개수=3",
+          "category": "조건"
+        },
+        {
+          "id": "n1n2_def",
+          "dna": "G8",
+          "label": "해를 n1,n2로 명명",
+          "category": "기하"
+        }
+      ],
+      "edges": [
+        {
+          "from": "ask",
+          "to": "top"
+        },
+        {
+          "from": "conds",
+          "to": "top"
+        },
+        {
+          "from": "vk",
+          "to": "ask"
+        },
+        {
+          "from": "ask_sub",
+          "to": "ask"
+        },
+        {
+          "from": "vn2",
+          "to": "ask_sub"
+        },
+        {
+          "from": "neg_n1",
+          "to": "ask_sub"
+        },
+        {
+          "from": "vn1",
+          "to": "neg_n1"
+        },
+        {
+          "from": "lim_k",
+          "to": "vk"
+        },
+        {
+          "from": "vk",
+          "to": "conds"
+        },
+        {
+          "from": "c4sqrt5",
+          "to": "lim_k"
+        },
+        {
+          "from": "lim_n_nat",
+          "to": "vn"
+        },
+        {
+          "from": "lim_n_range",
+          "to": "vn"
+        },
+        {
+          "from": "vn",
+          "to": "conds"
+        },
+        {
+          "from": "ord_n2n1",
+          "to": "conds"
+        },
+        {
+          "from": "ord_n1lb",
+          "to": "conds"
+        },
+        {
+          "from": "vn2",
+          "to": "ord_n2n1"
+        },
+        {
+          "from": "vn1",
+          "to": "ord_n2n1"
+        },
+        {
+          "from": "vn1",
+          "to": "ord_n1lb"
+        },
+        {
+          "from": "c2",
+          "to": "ord_n1lb"
+        },
+        {
+          "from": "eq_main",
+          "to": "conds"
+        },
+        {
+          "from": "eq_c1",
+          "to": "eq_main"
+        },
+        {
+          "from": "lhs",
+          "to": "eq_c1"
+        },
+        {
+          "from": "rhs",
+          "to": "eq_c1"
+        },
+        {
+          "from": "lhs_log",
+          "to": "lhs"
+        },
+        {
+          "from": "inv_n",
+          "to": "lhs"
+        },
+        {
+          "from": "vn",
+          "to": "lhs_log"
+        },
+        {
+          "from": "lhs_logarg",
+          "to": "lhs_log"
+        },
+        {
+          "from": "lhs_inner",
+          "to": "lhs_logarg"
+        },
+        {
+          "from": "vn",
+          "to": "lhs_logarg"
+        },
+        {
+          "from": "x_sq",
+          "to": "lhs_inner"
+        },
+        {
+          "from": "neg20",
+          "to": "lhs_inner"
+        },
+        {
+          "from": "vx",
+          "to": "x_sq"
+        },
+        {
+          "from": "c2",
+          "to": "x_sq"
+        },
+        {
+          "from": "c20",
+          "to": "neg20"
+        },
+        {
+          "from": "cneg1",
+          "to": "inv_n"
+        },
+        {
+          "from": "vn",
+          "to": "inv_n"
+        },
+        {
+          "from": "rhs_log",
+          "to": "rhs_frac"
+        },
+        {
+          "from": "inv_n1",
+          "to": "rhs_frac"
+        },
+        {
+          "from": "rhs_frac",
+          "to": "rhs"
+        },
+        {
+          "from": "c1",
+          "to": "rhs"
+        },
+        {
+          "from": "vn",
+          "to": "rhs_log"
+        },
+        {
+          "from": "rhs_logarg",
+          "to": "rhs_log"
+        },
+        {
+          "from": "rhs_inner",
+          "to": "rhs_logarg"
+        },
+        {
+          "from": "n_plus1",
+          "to": "rhs_logarg"
+        },
+        {
+          "from": "two_x",
+          "to": "rhs_inner"
+        },
+        {
+          "from": "vk",
+          "to": "rhs_inner"
+        },
+        {
+          "from": "c2",
+          "to": "two_x"
+        },
+        {
+          "from": "vx",
+          "to": "two_x"
+        },
+        {
+          "from": "vn",
+          "to": "n_plus1"
+        },
+        {
+          "from": "c1",
+          "to": "n_plus1"
+        },
+        {
+          "from": "n_plus1",
+          "to": "inv_n1"
+        },
+        {
+          "from": "cneg1",
+          "to": "inv_n1"
+        },
+        {
+          "from": "root_cnt",
+          "to": "conds"
+        },
+        {
+          "from": "eq_main",
+          "to": "root_cnt"
+        },
+        {
+          "from": "c3_cnt",
+          "to": "root_cnt"
+        },
+        {
+          "from": "n1n2_def",
+          "to": "conds"
+        },
+        {
+          "from": "vn1",
+          "to": "n1n2_def"
+        },
+        {
+          "from": "vn2",
+          "to": "n1n2_def"
+        },
+        {
+          "from": "eq_main",
+          "to": "n1n2_def"
+        }
+      ],
+      "new_dna": []
+    },
+    "thinking_profile": null,
+    "folders": [],
+    "history": [],
+    "recovery_warnings": [],
+    "errata": [],
+    "created_at": "2026-03-23T13:18:25.953Z"
   }
 ]
