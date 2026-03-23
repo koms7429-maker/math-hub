@@ -4291,5 +4291,535 @@
     "recovery_warnings": [],
     "errata": [],
     "created_at": "2026-03-23T14:42:34.685Z"
+  },
+  {
+    "problem_id": "Problem12",
+    "answer": "45",
+    "clues": [
+      {
+        "id": "단서A",
+        "text": "$f(x)=\\frac{1}{16}\\{(x-3)^2+n\\}$이고 $n$은 $n\\neq 12$인 자연수이다"
+      },
+      {
+        "id": "단서B",
+        "text": "$\\log_{f(1)}f(x)\\geq\\log_{f(1)}\\left(\\frac{n+1}{8}\\right)$의 실근 중 정수인 것의 개수가 7이다"
+      }
+    ],
+    "skeleton": [
+      {
+        "from": "단서A",
+        "to": "note1",
+        "neuron": "전략25",
+        "note": "$x=1$을 대입하면 $f(1)=\\frac{(1-3)^2+n}{16}=\\frac{n+4}{16}$이다",
+        "step": 1
+      },
+      {
+        "from": [
+          "note1",
+          "단서A"
+        ],
+        "to": "note2",
+        "neuron": "사실59",
+        "note": "로그의 밑 조건 $f(1)>0$, $f(1)\\neq 1$이 필요하다. $f(1)=1 \\iff n=12$이고, $n\\neq 12$이므로 밑 조건은 만족된다",
+        "step": 1
+      },
+      {
+        "from": "note1",
+        "to": "note3",
+        "neuron": "전략22",
+        "note": "$n=12$를 기준으로, $n>12$이면 $f(1)>1$이고 $1\\leq n\\leq 11$이면 $0<f(1)<1$이다",
+        "step": 2
+      },
+      {
+        "from": "note3",
+        "to": "note4",
+        "neuron": "사실12",
+        "note": "$f(1)>1$일 때 $\\log_{f(1)}$은 순증가이다",
+        "main": false,
+        "step": 3
+      },
+      {
+        "from": [
+          "note4",
+          "단서B"
+        ],
+        "to": "note5",
+        "neuron": "사실51",
+        "note": "순증가 함수에서 부등호 방향이 보존되므로 부등식은 $f(x)\\geq\\frac{n+1}{8}$과 동치이다",
+        "main": false,
+        "step": 3
+      },
+      {
+        "from": [
+          "note5",
+          "단서A"
+        ],
+        "to": "note6",
+        "neuron": "연산21",
+        "note": "$\\frac{1}{16}\\{(x-3)^2+n\\}\\geq\\frac{n+1}{8}$을 정리하면 $(x-3)^2\\geq n+2$이다",
+        "main": false,
+        "step": 3
+      },
+      {
+        "from": "note6",
+        "to": "note7",
+        "neuron": "전략27",
+        "note": "$(x-3)^2\\geq n+2$의 해는 $x\\leq 3-\\sqrt{n+2}$ 또는 $x\\geq 3+\\sqrt{n+2}$로 양방향 무한이므로 정수 해가 무한히 많다. 정수 해 7개 조건과 모순이다",
+        "main": false,
+        "step": 3
+      },
+      {
+        "from": "note7",
+        "to": "note8",
+        "neuron": "전략23",
+        "note": "$n>12$인 경우는 배제된다",
+        "step": 3
+      },
+      {
+        "from": "note3",
+        "to": "note9",
+        "neuron": "사실12",
+        "note": "$0<f(1)<1$일 때 $\\log_{f(1)}$은 순감소이다",
+        "step": 4
+      },
+      {
+        "from": "단서A",
+        "to": "note10",
+        "neuron": "사실57",
+        "note": "$n\\geq 1$이면 $(x-3)^2+n\\geq 1>0$이므로 $f(x)>0$은 항상 성립한다. 또한 $\\frac{n+1}{8}>0$이므로 진수 조건도 만족된다",
+        "main": false,
+        "step": 4
+      },
+      {
+        "from": [
+          "note9",
+          "note10",
+          "단서B"
+        ],
+        "to": "note11",
+        "neuron": "사실50",
+        "note": "순감소 함수에서 부등호가 반전되어 $f(x)\\leq\\frac{n+1}{8}$과 동치이다 ($f(x)>0$은 항상 성립하므로 추가 조건 불필요)",
+        "step": 4
+      },
+      {
+        "from": [
+          "note11",
+          "단서A"
+        ],
+        "to": "note12",
+        "neuron": "연산21",
+        "note": "$\\frac{1}{16}\\{(x-3)^2+n\\}\\leq\\frac{n+1}{8}$을 정리하면 $(x-3)^2\\leq n+2$이다",
+        "step": 4
+      },
+      {
+        "from": "note12",
+        "to": "note13",
+        "neuron": "전략31",
+        "note": "$(x-3)^2\\leq n+2$에서 $|x-3|\\leq\\sqrt{n+2}$이므로 $3-\\sqrt{n+2}\\leq x\\leq 3+\\sqrt{n+2}$이다",
+        "step": 5
+      },
+      {
+        "from": "note13",
+        "to": "note14",
+        "neuron": "사실2",
+        "note": "구간 $[3-\\sqrt{n+2},\\;3+\\sqrt{n+2}]$는 $x=3$ 대칭이고, 포함되는 정수는 $\\{3-k,\\ldots,3,\\ldots,3+k\\}$로 $2k+1$개(홀수)이다. 여기서 $k=\\lfloor\\sqrt{n+2}\\rfloor$이다",
+        "step": 5
+      },
+      {
+        "from": [
+          "note14",
+          "단서B"
+        ],
+        "to": "note15",
+        "neuron": "전략2",
+        "note": "$2k+1=7$에서 $k=3$이다. 즉 $\\sqrt{n+2}\\geq 3$이고 $\\sqrt{n+2}<4$이어야 한다",
+        "step": 6
+      },
+      {
+        "from": "note15",
+        "to": "note16",
+        "neuron": "전략26",
+        "note": "$k\\geq 3$ 조건: $\\sqrt{n+2}\\geq 3$, 즉 $n+2\\geq 9$에서 $n\\geq 7$이다",
+        "step": 6
+      },
+      {
+        "from": "note15",
+        "to": "note17",
+        "neuron": "전략26",
+        "note": "$k<4$ 조건: $\\sqrt{n+2}<4$, 즉 $n+2<16$에서 $n\\leq 13$이다. 단 $\\sqrt{n+2}=4$ ($n=14$)이면 $x=7$, $x=-1$도 포함되어 $k=4$가 되므로 $n\\leq 13$이다",
+        "step": 6
+      },
+      {
+        "from": [
+          "note16",
+          "note17",
+          "note8"
+        ],
+        "to": "note18",
+        "neuron": "전략2",
+        "note": "$7\\leq n\\leq 13$와 $1\\leq n\\leq 11$을 결합하면 $7\\leq n\\leq 11$이다",
+        "step": 7
+      },
+      {
+        "from": "note18",
+        "to": "note19",
+        "neuron": "전략25",
+        "note": "$n=7,8,9,10,11$ 각각에서 $\\sqrt{n+2}$는 $3, \\sqrt{10}, \\sqrt{11}, \\sqrt{12}, \\sqrt{13}$이고, 모두 $3\\leq\\sqrt{n+2}<4$이므로 정수 해는 $\\{0,1,2,3,4,5,6\\}$의 7개이다",
+        "main": false,
+        "step": 7
+      },
+      {
+        "from": "note18",
+        "to": "END",
+        "neuron": "전략17",
+        "note": "$n$의 합은 $7+8+9+10+11=45$이다",
+        "step": 7
+      }
+    ],
+    "solution": "STEP 1. $x=1$을 대입하면 $f(1)=\\frac{(1-3)^2+n}{16}=\\frac{n+4}{16}$이다. $f(1)=1 \\iff n=12$이고, $n\\neq 12$ 조건에 의해 로그의 밑 조건 $f(1)>0$, $f(1)\\neq 1$이 모두 만족된다.\n\nSTEP 2. $n=12$를 기준으로 경우를 분류한다. $n>12$이면 $f(1)>1$이고, $1\\leq n\\leq 11$이면 $0<f(1)<1$이다.\n\nSTEP 3. $n>12$인 경우, $\\log_{f(1)}$이 순증가이므로 부등식은 $f(x)\\geq\\frac{n+1}{8}$과 동치이다. 이를 정리하면 $(x-3)^2\\geq n+2$이고, 해는 $x\\leq 3-\\sqrt{n+2}$ 또는 $x\\geq 3+\\sqrt{n+2}$로 양방향 무한이므로 정수 해가 무한히 많아 7개 조건과 모순이다. $n>12$는 배제된다.\n\nSTEP 4. $1\\leq n\\leq 11$인 경우, $0<f(1)<1$이므로 $\\log_{f(1)}$이 순감소이고 부등호가 반전되어 $f(x)\\leq\\frac{n+1}{8}$과 동치이다. $n\\geq 1$이면 $f(x)>0$이 항상 성립하므로 진수 조건은 자동으로 만족된다. 정리하면 $(x-3)^2\\leq n+2$이다.\n\nSTEP 5. $|x-3|\\leq\\sqrt{n+2}$이므로 해는 $3-\\sqrt{n+2}\\leq x\\leq 3+\\sqrt{n+2}$이다. 이 구간은 $x=3$ 대칭이므로, $k=\\lfloor\\sqrt{n+2}\\rfloor$이라 하면 포함되는 정수는 $\\{3-k,\\ldots,3+k\\}$로 $2k+1$개이다.\n\nSTEP 6. $2k+1=7$에서 $k=3$이다. $k=3$이 되려면 $3\\leq\\sqrt{n+2}<4$, 즉 $9\\leq n+2<16$에서 $7\\leq n\\leq 13$이다.\n\nSTEP 7. $7\\leq n\\leq 13$과 $1\\leq n\\leq 11$ ($n>12$ 배제)을 결합하면 $7\\leq n\\leq 11$이다. 모든 자연수 $n$의 합은 $7+8+9+10+11=45$이다.",
+    "original_solution": "$$f(x)=\\frac{1}{16}\\{(x-3)^2+n\\} \\quad \\cdots \\text{ ①}$$\n\n이므로\n\n- (i) $n$이 12보다 큰 자연수인 경우, $f(1) > 1$\n- (ii) $n$이 12보다 작은 자연수인 경우, $0 < f(1) < 1$\n\n로 경우를 나누어 부등식\n\n$$\\log_{f(1)}f(x) \\geq \\log_{f(1)}\\left(\\frac{n+1}{8}\\right) \\quad \\cdots \\text{ ②}$$\n\n의 실근 중 정수인 것을 조사하자.\n\n**(i)의 경우:**\n\n$$\\text{②} \\Leftrightarrow f(x) \\geq \\frac{n+1}{8}$$\n\n$$\\Leftrightarrow (x-3)^2 \\geq n+2 \\text{ (∵ ①)}$$\n\n이므로 $n > 12$인 모든 자연수 $n$에 대하여 이 부등식을 만족시키는 정수 $x$는 무수히 많은 정수 $x$의 범위를 갖게 됨 $\\Rightarrow$ ②의 개수가 7일 수 없음을 알 수 있다.\n\n**(ii)의 경우:**\n\n$$\\text{②} \\Leftrightarrow 0 < f(x) \\leq \\frac{n+1}{8}$$\n\n$$\\Leftrightarrow -n < (x-3)^2 \\leq n+2 \\text{ (∵ ①)} \\quad \\cdots \\text{ ③}$$\n\n이므로\n\n③의 개수가 7을 만족시키려면 다음 그림과 같이 $x=6$이 ③을 만족시키고, $x=7$이 ③을 만족시키지 않아야 함.\n\n[FIGURE: 좌표평면에 $y=(x-3)^2$ 포물선과 $y=n+2$, $y=3^2$, $y=4^2$ 수평선이 그려져 있음. $x$축에 0부터 7까지 표시됨]\n\n따라서\n\n- ③ $\\Rightarrow 3^2 \\leq n+2 < 4^2 \\Rightarrow 7 \\leq n < 14$\n- (ii)의 경우는 $n$이 12보다 작은 자연수\n\n$$\\Rightarrow 7 \\leq n \\leq 11$$\n\n임을 알 수 있다.\n\n$$\\therefore \\text{ (모든 자연수 } n\\text{의 값의 합)} = 7+8+9+10+11 = 45$$\n\n---",
+    "analysis": "",
+    "new_neurons": [],
+    "metadata": {
+      "unit": "로그함수",
+      "difficulty": "unknown",
+      "score": "4",
+      "type": "multiple choice",
+      "answer": "45"
+    },
+    "edge_count": 20,
+    "side_count": 6,
+    "statement": "# Problem12. (Unknown Source) - 로그 부등식과 자연수의 개수\n\n## Problem\n\n함수 $f(x)=\\frac{1}{16}\\{(x-3)^2+n\\}$ ($n$은 $n \\neq 12$인 자연수)에 대하여 $x$에 대한 부등식\n\n$$\\log_{f(1)}f(x) \\geq \\log_{f(1)}\\left(\\frac{n+1}{8}\\right)$$\n\n의 실근 중에서 정수인 것의 개수가 7이도록 하는 모든 자연수 $n$의 값의 합은? [4점]",
+    "dna": {
+      "nodes": [
+        {
+          "id": "top",
+          "dna": "Q3",
+          "label": "합을 구하라",
+          "category": "발문"
+        },
+        {
+          "id": "conds",
+          "dna": "S1",
+          "label": "전체 조건묶음",
+          "category": "구조"
+        },
+        {
+          "id": "vn",
+          "dna": "T1",
+          "label": "변수 n",
+          "category": "말단"
+        },
+        {
+          "id": "vx",
+          "dna": "T3",
+          "label": "독립변수 x",
+          "category": "말단"
+        },
+        {
+          "id": "c_1_16",
+          "dna": "T2",
+          "label": "상수 1/16",
+          "category": "말단"
+        },
+        {
+          "id": "c3",
+          "dna": "T2",
+          "label": "상수 3",
+          "category": "말단"
+        },
+        {
+          "id": "c2",
+          "dna": "T2",
+          "label": "상수 2",
+          "category": "말단"
+        },
+        {
+          "id": "c1",
+          "dna": "T2",
+          "label": "상수 1",
+          "category": "말단"
+        },
+        {
+          "id": "c_1_8",
+          "dna": "T2",
+          "label": "상수 1/8",
+          "category": "말단"
+        },
+        {
+          "id": "c12",
+          "dna": "T2",
+          "label": "상수 12",
+          "category": "말단"
+        },
+        {
+          "id": "c7",
+          "dna": "T2",
+          "label": "상수 7",
+          "category": "말단"
+        },
+        {
+          "id": "fn_f",
+          "dna": "F6",
+          "label": "함수 f 정의",
+          "category": "함수"
+        },
+        {
+          "id": "fn_eq",
+          "dna": "C11",
+          "label": "f(x) 방정식",
+          "category": "조건"
+        },
+        {
+          "id": "fn_c1",
+          "dna": "C1",
+          "label": "f(x)=식 등식",
+          "category": "조건"
+        },
+        {
+          "id": "rhs_fx",
+          "dna": "E6",
+          "label": "곱(1/16, 내부)",
+          "category": "수식"
+        },
+        {
+          "id": "inner_sum",
+          "dna": "E1",
+          "label": "합((x-3)²,n)",
+          "category": "수식"
+        },
+        {
+          "id": "xm3_sq",
+          "dna": "E7",
+          "label": "(x-3)²",
+          "category": "수식"
+        },
+        {
+          "id": "xm3",
+          "dna": "E1",
+          "label": "합(x,-3)",
+          "category": "수식"
+        },
+        {
+          "id": "neg3",
+          "dna": "E2",
+          "label": "부호반전(3)",
+          "category": "수식"
+        },
+        {
+          "id": "f1_apply",
+          "dna": "F3",
+          "label": "f(1) 함수적용",
+          "category": "함수"
+        },
+        {
+          "id": "ineq_cond",
+          "dna": "C2",
+          "label": "로그 부등식",
+          "category": "조건"
+        },
+        {
+          "id": "lhs_log",
+          "dna": "E3",
+          "label": "log_{f(1)}f(x)",
+          "category": "수식"
+        },
+        {
+          "id": "fx_apply",
+          "dna": "F3",
+          "label": "f(x) 함수적용",
+          "category": "함수"
+        },
+        {
+          "id": "rhs_log",
+          "dna": "E3",
+          "label": "log_{f(1)}(n+1)/8",
+          "category": "수식"
+        },
+        {
+          "id": "frac_np1_8",
+          "dna": "E6",
+          "label": "곱(n+1, 1/8)",
+          "category": "수식"
+        },
+        {
+          "id": "np1",
+          "dna": "E1",
+          "label": "합(n,1)",
+          "category": "수식"
+        },
+        {
+          "id": "int_count",
+          "dna": "C9",
+          "label": "정수근 개수=7",
+          "category": "조건"
+        },
+        {
+          "id": "n_natural",
+          "dna": "L3",
+          "label": "n은 자연수",
+          "category": "제한"
+        },
+        {
+          "id": "n_neq12",
+          "dna": "C2",
+          "label": "n≠12",
+          "category": "조건"
+        }
+      ],
+      "edges": [
+        {
+          "from": "conds",
+          "to": "top"
+        },
+        {
+          "from": "fn_f",
+          "to": "conds"
+        },
+        {
+          "from": "fn_eq",
+          "to": "fn_f"
+        },
+        {
+          "from": "fn_c1",
+          "to": "fn_eq"
+        },
+        {
+          "from": "rhs_fx",
+          "to": "fn_c1"
+        },
+        {
+          "from": "c_1_16",
+          "to": "rhs_fx"
+        },
+        {
+          "from": "inner_sum",
+          "to": "rhs_fx"
+        },
+        {
+          "from": "xm3_sq",
+          "to": "inner_sum"
+        },
+        {
+          "from": "vn",
+          "to": "inner_sum"
+        },
+        {
+          "from": "xm3",
+          "to": "xm3_sq"
+        },
+        {
+          "from": "c2",
+          "to": "xm3_sq"
+        },
+        {
+          "from": "vx",
+          "to": "xm3"
+        },
+        {
+          "from": "neg3",
+          "to": "xm3"
+        },
+        {
+          "from": "c3",
+          "to": "neg3"
+        },
+        {
+          "from": "fn_f",
+          "to": "f1_apply"
+        },
+        {
+          "from": "c1",
+          "to": "f1_apply"
+        },
+        {
+          "from": "ineq_cond",
+          "to": "conds"
+        },
+        {
+          "from": "lhs_log",
+          "to": "ineq_cond"
+        },
+        {
+          "from": "rhs_log",
+          "to": "ineq_cond"
+        },
+        {
+          "from": "f1_apply",
+          "to": "lhs_log"
+        },
+        {
+          "from": "fx_apply",
+          "to": "lhs_log"
+        },
+        {
+          "from": "fn_f",
+          "to": "fx_apply"
+        },
+        {
+          "from": "vx",
+          "to": "fx_apply"
+        },
+        {
+          "from": "f1_apply",
+          "to": "rhs_log"
+        },
+        {
+          "from": "frac_np1_8",
+          "to": "rhs_log"
+        },
+        {
+          "from": "np1",
+          "to": "frac_np1_8"
+        },
+        {
+          "from": "c_1_8",
+          "to": "frac_np1_8"
+        },
+        {
+          "from": "vn",
+          "to": "np1"
+        },
+        {
+          "from": "c1",
+          "to": "np1"
+        },
+        {
+          "from": "int_count",
+          "to": "conds"
+        },
+        {
+          "from": "c7",
+          "to": "int_count"
+        },
+        {
+          "from": "ineq_cond",
+          "to": "int_count"
+        },
+        {
+          "from": "n_natural",
+          "to": "vn"
+        },
+        {
+          "from": "n_neq12",
+          "to": "vn"
+        },
+        {
+          "from": "vn",
+          "to": "n_neq12"
+        },
+        {
+          "from": "c12",
+          "to": "n_neq12"
+        }
+      ],
+      "new_dna": []
+    },
+    "thinking_profile": null,
+    "folders": [],
+    "history": [],
+    "recovery_warnings": [],
+    "errata": [],
+    "created_at": "2026-03-23T14:51:38.892Z"
   }
 ]
