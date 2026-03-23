@@ -1,23 +1,23 @@
 {
-  "_generated_at": "2026-03-23T16:38:50.736Z",
-  "_source_problems": 11,
+  "_generated_at": "2026-03-23T16:43:00.499Z",
+  "_source_problems": 12,
   "summary": {
-    "total_problems_scanned": 11,
+    "total_problems_scanned": 12,
     "total_neurons": 82,
-    "total_pairs": 212,
+    "total_pairs": 221,
     "max_pair_count": 5,
     "top_hubs": [
       {
         "id": "전략25",
         "connections": 41,
-        "appearances": 50,
+        "appearances": 52,
         "hub_score": 0.51
       },
       {
         "id": "전략6",
-        "connections": 15,
-        "appearances": 7,
-        "hub_score": 0.19
+        "connections": 16,
+        "appearances": 8,
+        "hub_score": 0.2
       },
       {
         "id": "전략2",
@@ -32,27 +32,27 @@
         "hub_score": 0.15
       },
       {
+        "id": "연산2",
+        "connections": 11,
+        "appearances": 13,
+        "hub_score": 0.14
+      },
+      {
+        "id": "연산18",
+        "connections": 11,
+        "appearances": 7,
+        "hub_score": 0.14
+      },
+      {
         "id": "연산21",
         "connections": 11,
         "appearances": 8,
         "hub_score": 0.14
       },
       {
-        "id": "연산18",
-        "connections": 10,
-        "appearances": 6,
-        "hub_score": 0.12
-      },
-      {
         "id": "연산17",
         "connections": 9,
         "appearances": 5,
-        "hub_score": 0.11
-      },
-      {
-        "id": "연산2",
-        "connections": 9,
-        "appearances": 9,
         "hub_score": 0.11
       },
       {
@@ -63,9 +63,9 @@
       },
       {
         "id": "연산4",
-        "connections": 8,
-        "appearances": 9,
-        "hub_score": 0.1
+        "connections": 9,
+        "appearances": 10,
+        "hub_score": 0.11
       }
     ],
     "isolated_neurons": [
@@ -218,6 +218,21 @@
       },
       {
         "pair": "전략2→전략17",
+        "count": 2,
+        "weight": 0.4
+      },
+      {
+        "pair": "전략6→연산2",
+        "count": 2,
+        "weight": 0.4
+      },
+      {
+        "pair": "사실5→사실42",
+        "count": 2,
+        "weight": 0.4
+      },
+      {
+        "pair": "사실42→사실41",
         "count": 2,
         "weight": 0.4
       }
@@ -1278,9 +1293,10 @@
     "전략6→연산2": {
       "from": "전략6",
       "to": "연산2",
-      "count": 1,
+      "count": 2,
       "problems": [
-        "Problem11"
+        "Problem11",
+        "23_수능_모의고사_-지수함수와직선의교점거리"
       ]
     },
     "연산2→사실18": {
@@ -1678,17 +1694,19 @@
     "사실5→사실42": {
       "from": "사실5",
       "to": "사실42",
-      "count": 1,
+      "count": 2,
       "problems": [
-        "21_수능_모의고사_-지수함수와곡선의교점조건"
+        "21_수능_모의고사_-지수함수와곡선의교점조건",
+        "23_수능_모의고사_-지수함수와직선의교점거리"
       ]
     },
     "사실42→사실41": {
       "from": "사실42",
       "to": "사실41",
-      "count": 1,
+      "count": 2,
       "problems": [
-        "21_수능_모의고사_-지수함수와곡선의교점조건"
+        "21_수능_모의고사_-지수함수와곡선의교점조건",
+        "23_수능_모의고사_-지수함수와직선의교점거리"
       ]
     },
     "사실84→사실88": {
@@ -1946,6 +1964,78 @@
       "problems": [
         "22_수능_모의고사_-지수방정식의실근의곱"
       ]
+    },
+    "연산4→연산2": {
+      "from": "연산4",
+      "to": "연산2",
+      "count": 1,
+      "problems": [
+        "23_수능_모의고사_-지수함수와직선의교점거리"
+      ]
+    },
+    "연산4→사실5": {
+      "from": "연산4",
+      "to": "사실5",
+      "count": 1,
+      "problems": [
+        "23_수능_모의고사_-지수함수와직선의교점거리"
+      ]
+    },
+    "사실41→사실1": {
+      "from": "사실41",
+      "to": "사실1",
+      "count": 1,
+      "problems": [
+        "23_수능_모의고사_-지수함수와직선의교점거리"
+      ]
+    },
+    "사실5→사실1": {
+      "from": "사실5",
+      "to": "사실1",
+      "count": 1,
+      "problems": [
+        "23_수능_모의고사_-지수함수와직선의교점거리"
+      ]
+    },
+    "사실1→사실43": {
+      "from": "사실1",
+      "to": "사실43",
+      "count": 1,
+      "problems": [
+        "23_수능_모의고사_-지수함수와직선의교점거리"
+      ]
+    },
+    "연산2→연산11": {
+      "from": "연산2",
+      "to": "연산11",
+      "count": 1,
+      "problems": [
+        "23_수능_모의고사_-지수함수와직선의교점거리"
+      ]
+    },
+    "연산11→전략6": {
+      "from": "연산11",
+      "to": "전략6",
+      "count": 1,
+      "problems": [
+        "23_수능_모의고사_-지수함수와직선의교점거리"
+      ]
+    },
+    "연산2→전략25": {
+      "from": "연산2",
+      "to": "전략25",
+      "count": 1,
+      "problems": [
+        "23_수능_모의고사_-지수함수와직선의교점거리"
+      ]
+    },
+    "연산2→연산18": {
+      "from": "연산2",
+      "to": "연산18",
+      "count": 1,
+      "problems": [
+        "23_수능_모의고사_-지수함수와직선의교점거리"
+      ]
     }
   },
   "matrix": {
@@ -1974,7 +2064,10 @@
       "연산13": 0.2,
       "연산4": 0.6,
       "연산17": 0.2,
-      "사실18": 0.2
+      "사실18": 0.2,
+      "연산11": 0.2,
+      "전략25": 0.2,
+      "연산18": 0.2
     },
     "전략5": {
       "전략6": 0.2,
@@ -1991,7 +2084,7 @@
       "사실46": 0.2,
       "사실19": 0.2,
       "전략5": 0.2,
-      "연산2": 0.2,
+      "연산2": 0.4,
       "사실6": 0.2,
       "사실70": 0.2,
       "연산17": 0.2,
@@ -2094,7 +2187,8 @@
       "전략25": 0.2
     },
     "연산11": {
-      "연산13": 0.2
+      "연산13": 0.2,
+      "전략6": 0.2
     },
     "연산13": {
       "전략2": 0.4
@@ -2104,7 +2198,9 @@
       "전략25": 0.6,
       "사실64": 0.2,
       "사실58": 0.2,
-      "연산18": 0.2
+      "연산18": 0.2,
+      "연산2": 0.2,
+      "사실5": 0.2
     },
     "연산1": {
       "전략25": 0.2
@@ -2146,7 +2242,8 @@
       "사실58": 0.2,
       "사실41": 0.4,
       "사실19": 0.2,
-      "사실42": 0.2
+      "사실42": 0.4,
+      "사실1": 0.2
     },
     "사실69": {
       "사실11": 0.2
@@ -2195,7 +2292,8 @@
       "사실40": 0.4,
       "사실46": 0.2,
       "사실19": 0.2,
-      "사실51": 0.2
+      "사실51": 0.2,
+      "사실1": 0.2
     },
     "사실40": {
       "사실41": 0.4
@@ -2278,7 +2376,8 @@
     },
     "사실1": {
       "전략25": 0.2,
-      "전략6": 0.2
+      "전략6": 0.2,
+      "사실43": 0.2
     },
     "사실84": {
       "사실85": 0.2,
@@ -2293,7 +2392,7 @@
       "사실44": 0.2
     },
     "사실42": {
-      "사실41": 0.2
+      "사실41": 0.4
     },
     "사실88": {
       "사실90": 0.2,
@@ -2381,17 +2480,19 @@
       ]
     },
     "연산2": {
-      "total_appearances": 9,
-      "problem_count": 5,
-      "outgoing_connections": 5,
-      "incoming_connections": 5,
-      "total_connections": 9,
-      "hub_score": 0.11,
+      "total_appearances": 13,
+      "problem_count": 6,
+      "outgoing_connections": 8,
+      "incoming_connections": 6,
+      "total_connections": 11,
+      "hub_score": 0.14,
       "connected_neurons": [
         "사실18",
+        "연산11",
         "연산13",
         "연산16",
         "연산17",
+        "연산18",
         "연산4",
         "전략2",
         "전략25",
@@ -2432,12 +2533,12 @@
       ]
     },
     "전략6": {
-      "total_appearances": 7,
-      "problem_count": 4,
+      "total_appearances": 8,
+      "problem_count": 5,
       "outgoing_connections": 12,
-      "incoming_connections": 6,
-      "total_connections": 15,
-      "hub_score": 0.19,
+      "incoming_connections": 7,
+      "total_connections": 16,
+      "hub_score": 0.2,
       "connected_neurons": [
         "사실1",
         "사실12",
@@ -2448,6 +2549,7 @@
         "사실70",
         "사실79",
         "사실85",
+        "연산11",
         "연산17",
         "연산2",
         "연산22",
@@ -2470,10 +2572,10 @@
       ]
     },
     "전략25": {
-      "total_appearances": 50,
-      "problem_count": 9,
+      "total_appearances": 52,
+      "problem_count": 10,
       "outgoing_connections": 32,
-      "incoming_connections": 27,
+      "incoming_connections": 28,
       "total_connections": 41,
       "hub_score": 0.51,
       "connected_neurons": [
@@ -2696,15 +2798,17 @@
       ]
     },
     "연산11": {
-      "total_appearances": 2,
-      "problem_count": 1,
-      "outgoing_connections": 1,
-      "incoming_connections": 1,
-      "total_connections": 2,
-      "hub_score": 0.02,
+      "total_appearances": 3,
+      "problem_count": 2,
+      "outgoing_connections": 2,
+      "incoming_connections": 2,
+      "total_connections": 4,
+      "hub_score": 0.05,
       "connected_neurons": [
         "연산13",
-        "전략25"
+        "연산2",
+        "전략25",
+        "전략6"
       ]
     },
     "연산13": {
@@ -2724,15 +2828,16 @@
       ]
     },
     "연산4": {
-      "total_appearances": 9,
-      "problem_count": 6,
-      "outgoing_connections": 5,
+      "total_appearances": 10,
+      "problem_count": 7,
+      "outgoing_connections": 7,
       "incoming_connections": 4,
-      "total_connections": 8,
-      "hub_score": 0.1,
+      "total_connections": 9,
+      "hub_score": 0.11,
       "connected_neurons": [
         "사실18",
         "사실4",
+        "사실5",
         "사실58",
         "사실64",
         "연산18",
@@ -2838,16 +2943,17 @@
       ]
     },
     "연산18": {
-      "total_appearances": 6,
-      "problem_count": 3,
+      "total_appearances": 7,
+      "problem_count": 4,
       "outgoing_connections": 7,
-      "incoming_connections": 4,
-      "total_connections": 10,
-      "hub_score": 0.12,
+      "incoming_connections": 5,
+      "total_connections": 11,
+      "hub_score": 0.14,
       "connected_neurons": [
         "사실27",
         "사실58",
         "연산10",
+        "연산2",
         "연산21",
         "연산22",
         "연산4",
@@ -2858,17 +2964,19 @@
       ]
     },
     "사실5": {
-      "total_appearances": 4,
-      "problem_count": 4,
-      "outgoing_connections": 4,
-      "incoming_connections": 0,
-      "total_connections": 4,
-      "hub_score": 0.05,
+      "total_appearances": 6,
+      "problem_count": 5,
+      "outgoing_connections": 5,
+      "incoming_connections": 1,
+      "total_connections": 6,
+      "hub_score": 0.07,
       "connected_neurons": [
+        "사실1",
         "사실19",
         "사실41",
         "사실42",
-        "사실58"
+        "사실58",
+        "연산4"
       ]
     },
     "사실58": {
@@ -3023,13 +3131,14 @@
       ]
     },
     "사실41": {
-      "total_appearances": 7,
-      "problem_count": 2,
-      "outgoing_connections": 4,
+      "total_appearances": 8,
+      "problem_count": 3,
+      "outgoing_connections": 5,
       "incoming_connections": 3,
-      "total_connections": 6,
-      "hub_score": 0.07,
+      "total_connections": 7,
+      "hub_score": 0.09,
       "connected_neurons": [
+        "사실1",
         "사실19",
         "사실40",
         "사실42",
@@ -3341,13 +3450,16 @@
       ]
     },
     "사실1": {
-      "total_appearances": 3,
-      "problem_count": 2,
-      "outgoing_connections": 2,
-      "incoming_connections": 2,
-      "total_connections": 2,
-      "hub_score": 0.02,
+      "total_appearances": 4,
+      "problem_count": 3,
+      "outgoing_connections": 3,
+      "incoming_connections": 4,
+      "total_connections": 5,
+      "hub_score": 0.06,
       "connected_neurons": [
+        "사실41",
+        "사실43",
+        "사실5",
         "전략25",
         "전략6"
       ]
@@ -3381,21 +3493,22 @@
       ]
     },
     "사실43": {
-      "total_appearances": 1,
-      "problem_count": 1,
+      "total_appearances": 2,
+      "problem_count": 2,
       "outgoing_connections": 2,
-      "incoming_connections": 1,
-      "total_connections": 3,
-      "hub_score": 0.04,
+      "incoming_connections": 2,
+      "total_connections": 4,
+      "hub_score": 0.05,
       "connected_neurons": [
+        "사실1",
         "사실19",
         "사실44",
         "전략5"
       ]
     },
     "사실42": {
-      "total_appearances": 1,
-      "problem_count": 1,
+      "total_appearances": 2,
+      "problem_count": 2,
       "outgoing_connections": 1,
       "incoming_connections": 1,
       "total_connections": 2,
