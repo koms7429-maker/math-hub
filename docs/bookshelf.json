@@ -5615,5 +5615,718 @@
     "recovery_warnings": [],
     "errata": [],
     "created_at": "2026-03-23T14:58:03.364Z"
+  },
+  {
+    "problem_id": "14_SourceUnknown_-함수의연속성과미분가능성",
+    "answer": "18",
+    "clues": [
+      {
+        "id": "단서A",
+        "text": "$f(x) = \\begin{cases} a^{x+b} & (a^{x+b} \\leq 2x+5) \\\\ |2x+5| & (a^{x+b} > 2x+5) \\end{cases}$"
+      },
+      {
+        "id": "단서B",
+        "text": "양수 $t$에 대하여 $f(x)=t$의 서로 다른 모든 실근의 합을 $g(t)$라 한다"
+      },
+      {
+        "id": "단서C",
+        "text": "$g(t) \\neq k$ ($k$는 상수)를 만족시키는 모든 양수 $t$의 값의 범위가 $1 < t < 9$이다"
+      },
+      {
+        "id": "단서D",
+        "text": "$a > 1$이고 $a$, $b$는 상수이다"
+      }
+    ],
+    "skeleton": [
+      {
+        "from": "단서D",
+        "to": "note1",
+        "neuron": "사실1",
+        "note": "$a > 1$일 때 모든 실수 $x$에 대해 $a^{x+b} > 0$이다",
+        "main": false,
+        "step": 1
+      },
+      {
+        "from": "단서A",
+        "to": "note2",
+        "neuron": "전략6",
+        "note": "$x < -\\frac{5}{2}$일 때 $|2x+5| = -(2x+5)$이고, $x \\geq -\\frac{5}{2}$일 때 $|2x+5| = 2x+5$이다",
+        "main": false,
+        "step": 1
+      },
+      {
+        "from": [
+          "note1",
+          "note2",
+          "단서A"
+        ],
+        "to": "note3",
+        "neuron": "사실1",
+        "note": "$x < -\\frac{5}{2}$에서 $a^{x+b} > 0 > 2x+5$이므로 $f(x) = |2x+5| = -(2x+5)$이다",
+        "main": true,
+        "step": 1
+      },
+      {
+        "from": "단서D",
+        "to": "note4",
+        "neuron": "사실84",
+        "note": "$y = a^{x+b}$는 아래로 볼록하다",
+        "main": false,
+        "step": 2
+      },
+      {
+        "from": "note4",
+        "to": "note5",
+        "neuron": "사실85",
+        "note": "$y = a^{x+b}$와 $y = 2x+5$가 두 점 $x = p$, $x = q$ ($p < q$)에서 만나면, $p \\leq x \\leq q$에서 $a^{x+b} \\leq 2x+5$이고 밖에서 $a^{x+b} \\geq 2x+5$이다",
+        "main": true,
+        "step": 2
+      },
+      {
+        "from": [
+          "note3",
+          "note5",
+          "단서A"
+        ],
+        "to": "note6",
+        "neuron": "전략6",
+        "note": "$f(x) = \\begin{cases} a^{x+b} & (p \\leq x \\leq q) \\\\ |2x+5| & (x < p \\text{ 또는 } x > q) \\end{cases}$이고 $p > -\\frac{5}{2}$이다",
+        "main": true,
+        "step": 2
+      },
+      {
+        "from": "note6",
+        "to": "note7",
+        "neuron": "전략20",
+        "note": "$y = a^{x+b}$와 $y = 2x+5$의 교점이 0개 또는 1개인 경우와 2개인 경우로 나눈다",
+        "main": false,
+        "step": 2
+      },
+      {
+        "from": "note7",
+        "to": "note8",
+        "neuron": "전략23",
+        "note": "교점이 0~1개이면 $f(x) = |2x+5|$이고 $g(t) = -5$ (상수)이므로 $g(t) \\neq k$인 $t$의 범위가 $(1,9)$가 될 수 없어 배제된다",
+        "main": false,
+        "step": 2
+      },
+      {
+        "from": "note6",
+        "to": "note9",
+        "neuron": "사실44",
+        "note": "$f(x) = t$의 근은 $[p,q]$에서 $a^{x+b} = t$의 근과 $(-\\infty, p) \\cup (q, \\infty)$에서 $|2x+5| = t$의 근으로 나뉜다",
+        "main": true,
+        "step": 3
+      },
+      {
+        "from": "단서A",
+        "to": "note10",
+        "neuron": "사실2",
+        "note": "$|2x+5|$는 $x = -\\frac{5}{2}$에 대해 대칭이다",
+        "main": false,
+        "step": 3
+      },
+      {
+        "from": "note10",
+        "to": "note11",
+        "neuron": "사실2",
+        "note": "$|2x+5| = t$ ($t > 0$)의 두 근은 $x = \\frac{t-5}{2}$, $x = \\frac{-t-5}{2}$이고 합은 $-5$이다",
+        "main": true,
+        "step": 3
+      },
+      {
+        "from": "단서D",
+        "to": "note12",
+        "neuron": "사실5",
+        "note": "$a > 1$일 때 $a^{x+b}$는 순증가이다",
+        "main": false,
+        "step": 3
+      },
+      {
+        "from": "note12",
+        "to": "note13",
+        "neuron": "사실19",
+        "note": "$[p,q]$에서 $a^{x+b}$의 치역은 $[a^{p+b},\\, a^{q+b}] = [2p+5,\\, 2q+5]$이다",
+        "main": false,
+        "step": 3
+      },
+      {
+        "from": "note13",
+        "to": "note14",
+        "neuron": "사실43",
+        "note": "$2p+5 < t < 2q+5$이면 $[p,q]$에서 $a^{x+b} = t$의 근은 정확히 1개이고, 그 밖이면 0개이다",
+        "main": true,
+        "step": 3
+      },
+      {
+        "from": [
+          "note9",
+          "note11",
+          "note14"
+        ],
+        "to": "note15",
+        "neuron": "전략5",
+        "note": "$t \\leq 2p+5$ 또는 $t \\geq 2q+5$이면 $[p,q]$ 내 근이 없고 유효한 $|2x+5| = t$의 두 근의 합이 $-5$이므로 $g(t) = -5$이다",
+        "main": true,
+        "step": 3
+      },
+      {
+        "from": [
+          "note9",
+          "note11",
+          "note14"
+        ],
+        "to": "note16",
+        "neuron": "사실44",
+        "note": "$2p+5 < t < 2q+5$이면 $[p,q]$ 내 근 $r$이 1개이고, $|2x+5| = t$의 근 중 $\\frac{t-5}{2} \\in (p,q)$는 해당 조각이 아니므로 무효이고 $\\frac{-t-5}{2}$만 유효하다",
+        "main": true,
+        "step": 3
+      },
+      {
+        "from": "note16",
+        "to": "note17",
+        "neuron": "전략5",
+        "note": "$2p+5 < t < 2q+5$이면 $g(t) = r + \\frac{-t-5}{2} \\neq -5$이다",
+        "main": true,
+        "step": 3
+      },
+      {
+        "from": [
+          "note15",
+          "note17",
+          "단서C"
+        ],
+        "to": "note18",
+        "neuron": "전략2",
+        "note": "$g(t) \\neq k$인 범위가 $(1,9)$이고 $g(t) = -5$인 범위가 $(0, 2p+5] \\cup [2q+5, \\infty)$이므로, $k = -5$, $2p+5 = 1$, $2q+5 = 9$이다",
+        "main": true,
+        "step": 4
+      },
+      {
+        "from": "note18",
+        "to": "note19",
+        "neuron": "전략2",
+        "note": "$p = -2$, $q = 2$이다",
+        "main": true,
+        "step": 4
+      },
+      {
+        "from": "note19",
+        "to": "note20",
+        "neuron": "전략2",
+        "note": "교점 조건 $a^{p+b} = 2p+5$에서 $a^{-2+b} = 1$이고, $a^{q+b} = 2q+5$에서 $a^{2+b} = 9$이다",
+        "main": true,
+        "step": 5
+      },
+      {
+        "from": "note20",
+        "to": "note21",
+        "neuron": "사실18",
+        "note": "$a > 1$이고 $a^{-2+b} = 1$이므로 $-2+b = 0$, $b = 2$이다",
+        "main": true,
+        "step": 5
+      },
+      {
+        "from": "note21",
+        "to": "note22",
+        "neuron": "연산4",
+        "note": "$a^{4} = 9 = 3^2$에서 $a = 9^{1/4} = 3^{1/2} = \\sqrt{3}$이다",
+        "main": true,
+        "step": 5
+      },
+      {
+        "from": [
+          "note22",
+          "note6"
+        ],
+        "to": "note23",
+        "neuron": "전략25",
+        "note": "$f(x) = \\begin{cases} (\\sqrt{3})^{x+2} & (-2 \\leq x \\leq 2) \\\\ |2x+5| & (x < -2 \\text{ 또는 } x > 2) \\end{cases}$이다",
+        "main": true,
+        "step": 5
+      },
+      {
+        "from": [
+          "note18",
+          "note23"
+        ],
+        "to": "note24",
+        "neuron": "전략25",
+        "note": "$k = -5$이므로 $-k = 5$이다. $f(5) = |2 \\cdot 5 + 5| = 15$이고, $f(0) = (\\sqrt{3})^{2} = 3$이다",
+        "main": true,
+        "step": 6
+      },
+      {
+        "from": "note24",
+        "to": "END",
+        "neuron": "전략25",
+        "note": "$f(-k) + f(0) = 15 + 3 = 18$이다",
+        "main": true,
+        "step": 6
+      }
+    ],
+    "solution": "STEP 1. $a > 1$이므로 $a^{x+b} > 0$이다. $x < -\\frac{5}{2}$에서 $2x+5 < 0 < a^{x+b}$이므로 이 영역에서는 항상 $f(x) = |2x+5| = -(2x+5)$이다.\n\nSTEP 2. $y = a^{x+b}$는 아래로 볼록하므로, $y = 2x+5$와 두 점 $x = p$, $x = q$ ($p < q$)에서 만나면 $p \\leq x \\leq q$에서 $a^{x+b} \\leq 2x+5$이고 밖에서 $a^{x+b} \\geq 2x+5$이다. 따라서 $f(x) = \\begin{cases} a^{x+b} & (p \\leq x \\leq q) \\\\ |2x+5| & (x < p \\text{ 또는 } x > q) \\end{cases}$이다.\n\nSTEP 3. 조각함수 $f(x) = t$의 근을 구간별로 분석한다. $|2x+5| = t$의 두 근의 합은 대칭축 $x = -\\frac{5}{2}$에 의해 $-5$이다. $a^{x+b}$는 순증가이므로 $[p,q]$에서의 치역은 $[2p+5, 2q+5]$이고, $2p+5 < t < 2q+5$이면 $[p,q]$에서 근이 정확히 1개이다. $t \\leq 2p+5$ 또는 $t \\geq 2q+5$이면 $[p,q]$ 내 근이 없고 유효한 $|2x+5| = t$의 두 근의 합이 $-5$이므로 $g(t) = -5$이다. $2p+5 < t < 2q+5$이면 $[p,q]$ 내 근 $r$이 1개이고, $|2x+5|=t$의 근 중 $\\frac{t-5}{2} \\in (p,q)$는 해당 조각이 아니어서 무효이고 $\\frac{-t-5}{2}$만 유효하여 $g(t) = r + \\frac{-t-5}{2} \\neq -5$이다.\n\nSTEP 4. $g(t) \\neq k$인 범위가 $(1,9)$이므로 $k = -5$, $2p+5 = 1$, $2q+5 = 9$이다. 따라서 $p = -2$, $q = 2$이다.\n\nSTEP 5. 교점 조건에서 $a^{-2+b} = 1$이고 $a > 1$이므로 $b = 2$이다. $a^{4} = 9$이므로 $a = \\sqrt{3}$이다. 따라서 $f(x) = \\begin{cases} (\\sqrt{3})^{x+2} & (-2 \\leq x \\leq 2) \\\\ |2x+5| & (x < -2 \\text{ 또는 } x > 2) \\end{cases}$이다.\n\nSTEP 6. $k = -5$이므로 $f(-k) = f(5) = |15| = 15$이고, $f(0) = (\\sqrt{3})^{2} = 3$이다. $f(-k) + f(0) = 15 + 3 = 18$이다.",
+    "original_solution": "문제의 $f(x)$의 식에서\n\n① $y=a^{x+b}$, $y=2x+5$의 교점이 개수가 1 이하인 경우,\n$f(x) = |2x+5|$\n($\\because$ 모든 실수 $x$에 대하여 $a^{x+b} \\geq 2x+5$)\n\n② $y=a^{x+b}$, $y=2x+5$의 교점이 개수가 2인 경우,\n두 교점의 $x$좌표를 $p$, $q$라 하면\n\n$$f(x) = \\begin{cases} a^{x+b} & (p \\leq x \\leq q) \\\\ |2x+5| & (x < p, \\, x > q) \\end{cases}$$\n\n임을 알 수 있다.\n\n[FIGURE: 두 개의 그래프가 제시됨]\n- ①의 경우: $y=f(x)$가 $x=-\\frac{5}{2}$에서 V자 형태\n- ②의 경우: $y=f(x)$가 두 점 $p$, $q$에서 지수함수와 직선이 만남\n\n한편, 양수 $t$에 대하여\n\n$x$에 (방정식 $f(x)=t$의 모든 실근의 합) 이므로 ①의 경우,\n\n모든 양수 $t$에 대하여 $g(t)=-5$\n\n($\\because$ $y=|2x+5|$는 $x=-\\frac{5}{2}$에 대하여 대칭)\n\n임을 알 수 있고, ②의 경우,\n\n$$\\begin{cases} t \\geq f(q)\\text{일 때 } g(t)=-5 \\\\ f(p)<t<f(q)\\text{일 때 } g(t) \\neq -5 \\end{cases}$$\n\n임을 알 수 있다.\n\n따라서 문제의 조건에서\n\n$$\\begin{cases} g(t) \\neq k \\text{(}k\\text{는 상수)}를 만족시키는 \\\\ \\text{모든 양수 } t \\text{의 값의 범위가 } 1<t<9 \\end{cases}$$\n\n를 만족시키는 경우는 ②의 경우뿐이므로, 이때\n\n$$k=-5$$\n\n를 얻고,\n\n$$\\begin{cases} f(p)=1 \\Rightarrow 2p+5=a^{p+b}=1 \\\\ f(q)=9 \\Rightarrow 2q+5=a^{q+b}=9 \\end{cases}$$\n\n을 얻는다. $\\Rightarrow p=-2$, $q=2$, $a=\\sqrt{3}$, $b=2$\n\n$$\\therefore f(x) = \\begin{cases} (\\sqrt{3})^{x+2} & (-2 \\leq x \\leq 2) \\\\ |2x+5| & (x < -2, \\, x > 2) \\end{cases}$$\n\n$$\\therefore f(-k)+f(0)=f(5)+f(0)=15+3=18$$\n\n---",
+    "analysis": "지수함수의 볼록성(사실84)과 볼록함수-직선 대소관계(사실85)가 이전 분석에서 제안되어 목록에 추가된 상태이므로, 이제 모든 논리 단계가 기존 뉴런으로 매칭된다.",
+    "new_neurons": [],
+    "metadata": {
+      "unit": "지수와 로그",
+      "difficulty": "상",
+      "score": "4",
+      "type": "주관식",
+      "answer": "18"
+    },
+    "edge_count": 25,
+    "side_count": 8,
+    "statement": "# 14. (Source Unknown) - 함수의 연속성과 미분가능성\n\n## Problem\n\n두 상수 $a(a>1)$, $b$에 대하여 함수 $f(x)$를\n\n$$f(x) = \\begin{cases} a^{x+b} & (a^{x+b} \\leq 2x+5) \\\\ |2x+5| & (a^{x+b} > 2x+5) \\end{cases}$$\n\n라 하자. 양수 $t$에 대하여 $x$에 대한 방정식 $f(x)=t$의 서로 다른 모든 실근의 합을 $g(t)$라 하자. $g(t) \\neq k$ ($k$는 상수)를 만족시키는 모든 양수 $t$의 값의 범위가 $1<t<9$일 때,\n\n$$f(-k)+f(0)$$\n\n의 값을 구하시오. [4점]",
+    "dna": {
+      "nodes": [
+        {
+          "id": "top",
+          "dna": "Q1",
+          "label": "값을 구하라",
+          "category": "발문"
+        },
+        {
+          "id": "ask_sum",
+          "dna": "E1",
+          "label": "f(-k)+f(0)",
+          "category": "수식"
+        },
+        {
+          "id": "ask_fk",
+          "dna": "F3",
+          "label": "f(-k)",
+          "category": "함수"
+        },
+        {
+          "id": "ask_f0",
+          "dna": "F3",
+          "label": "f(0)",
+          "category": "함수"
+        },
+        {
+          "id": "neg_k",
+          "dna": "E2",
+          "label": "부호반전(k)",
+          "category": "수식"
+        },
+        {
+          "id": "c0",
+          "dna": "T2",
+          "label": "상수 0",
+          "category": "말단"
+        },
+        {
+          "id": "va",
+          "dna": "T1",
+          "label": "변수 a",
+          "category": "말단"
+        },
+        {
+          "id": "vb",
+          "dna": "T1",
+          "label": "변수 b",
+          "category": "말단"
+        },
+        {
+          "id": "vk",
+          "dna": "T1",
+          "label": "변수 k",
+          "category": "말단"
+        },
+        {
+          "id": "vx",
+          "dna": "T3",
+          "label": "독립변수 x",
+          "category": "말단"
+        },
+        {
+          "id": "vt",
+          "dna": "T3",
+          "label": "독립변수 t",
+          "category": "말단"
+        },
+        {
+          "id": "lim_a",
+          "dna": "C2",
+          "label": "a>1",
+          "category": "조건"
+        },
+        {
+          "id": "c1_const",
+          "dna": "T2",
+          "label": "상수 1",
+          "category": "말단"
+        },
+        {
+          "id": "lim_t",
+          "dna": "C2",
+          "label": "t>0",
+          "category": "조건"
+        },
+        {
+          "id": "func_f",
+          "dna": "F6",
+          "label": "함수 f 정의",
+          "category": "함수"
+        },
+        {
+          "id": "piecewise",
+          "dna": "F1",
+          "label": "조각함수",
+          "category": "함수"
+        },
+        {
+          "id": "piece1",
+          "dna": "F2",
+          "label": "조각1: 지수",
+          "category": "함수"
+        },
+        {
+          "id": "piece2",
+          "dna": "F2",
+          "label": "조각2: 절대값",
+          "category": "함수"
+        },
+        {
+          "id": "exp_expr",
+          "dna": "E4",
+          "label": "a^(x+b)",
+          "category": "수식"
+        },
+        {
+          "id": "xplusb",
+          "dna": "E1",
+          "label": "합(x,b)",
+          "category": "수식"
+        },
+        {
+          "id": "lin_expr",
+          "dna": "E1",
+          "label": "2x+5",
+          "category": "수식"
+        },
+        {
+          "id": "c2_const",
+          "dna": "T2",
+          "label": "상수 2",
+          "category": "말단"
+        },
+        {
+          "id": "c5_const",
+          "dna": "T2",
+          "label": "상수 5",
+          "category": "말단"
+        },
+        {
+          "id": "two_x",
+          "dna": "E6",
+          "label": "곱(2,x)",
+          "category": "수식"
+        },
+        {
+          "id": "abs_lin",
+          "dna": "E5",
+          "label": "|2x+5|",
+          "category": "수식"
+        },
+        {
+          "id": "cond_piece1",
+          "dna": "C2",
+          "label": "지수≤선형",
+          "category": "조건"
+        },
+        {
+          "id": "cond_piece2",
+          "dna": "C2",
+          "label": "지수>선형",
+          "category": "조건"
+        },
+        {
+          "id": "func_g",
+          "dna": "F6",
+          "label": "함수 g 정의",
+          "category": "함수"
+        },
+        {
+          "id": "g_def",
+          "dna": "C19",
+          "label": "실근합=g(t)",
+          "category": "조건"
+        },
+        {
+          "id": "eq_ft",
+          "dna": "C1",
+          "label": "f(x)=t",
+          "category": "조건"
+        },
+        {
+          "id": "apply_ft",
+          "dna": "F3",
+          "label": "f(x)",
+          "category": "함수"
+        },
+        {
+          "id": "range_cond",
+          "dna": "S1",
+          "label": "g≠k 범위 조건",
+          "category": "구조"
+        },
+        {
+          "id": "gneq_k",
+          "dna": "C2",
+          "label": "g(t)≠k",
+          "category": "조건"
+        },
+        {
+          "id": "apply_gt",
+          "dna": "F3",
+          "label": "g(t)",
+          "category": "함수"
+        },
+        {
+          "id": "range_eq",
+          "dna": "C1",
+          "label": "범위=1<t<9",
+          "category": "조건"
+        },
+        {
+          "id": "lower_bd",
+          "dna": "C2",
+          "label": "t>1",
+          "category": "조건"
+        },
+        {
+          "id": "upper_bd",
+          "dna": "C2",
+          "label": "t<9",
+          "category": "조건"
+        },
+        {
+          "id": "c9_const",
+          "dna": "T2",
+          "label": "상수 9",
+          "category": "말단"
+        }
+      ],
+      "edges": [
+        {
+          "from": "ask_sum",
+          "to": "top"
+        },
+        {
+          "from": "ask_fk",
+          "to": "ask_sum"
+        },
+        {
+          "from": "ask_f0",
+          "to": "ask_sum"
+        },
+        {
+          "from": "neg_k",
+          "to": "ask_fk"
+        },
+        {
+          "from": "vk",
+          "to": "neg_k"
+        },
+        {
+          "from": "func_f",
+          "to": "ask_fk"
+        },
+        {
+          "from": "func_f",
+          "to": "ask_f0"
+        },
+        {
+          "from": "c0",
+          "to": "ask_f0"
+        },
+        {
+          "from": "va",
+          "to": "lim_a"
+        },
+        {
+          "from": "c1_const",
+          "to": "lim_a"
+        },
+        {
+          "from": "lim_a",
+          "to": "func_f"
+        },
+        {
+          "from": "piecewise",
+          "to": "func_f"
+        },
+        {
+          "from": "piece1",
+          "to": "piecewise"
+        },
+        {
+          "from": "piece2",
+          "to": "piecewise"
+        },
+        {
+          "from": "exp_expr",
+          "to": "piece1"
+        },
+        {
+          "from": "cond_piece1",
+          "to": "piece1"
+        },
+        {
+          "from": "va",
+          "to": "exp_expr"
+        },
+        {
+          "from": "xplusb",
+          "to": "exp_expr"
+        },
+        {
+          "from": "vx",
+          "to": "xplusb"
+        },
+        {
+          "from": "vb",
+          "to": "xplusb"
+        },
+        {
+          "from": "abs_lin",
+          "to": "piece2"
+        },
+        {
+          "from": "cond_piece2",
+          "to": "piece2"
+        },
+        {
+          "from": "exp_expr",
+          "to": "cond_piece1"
+        },
+        {
+          "from": "lin_expr",
+          "to": "cond_piece1"
+        },
+        {
+          "from": "exp_expr",
+          "to": "cond_piece2"
+        },
+        {
+          "from": "lin_expr",
+          "to": "cond_piece2"
+        },
+        {
+          "from": "lin_expr",
+          "to": "abs_lin"
+        },
+        {
+          "from": "two_x",
+          "to": "lin_expr"
+        },
+        {
+          "from": "c5_const",
+          "to": "lin_expr"
+        },
+        {
+          "from": "c2_const",
+          "to": "two_x"
+        },
+        {
+          "from": "vx",
+          "to": "two_x"
+        },
+        {
+          "from": "g_def",
+          "to": "func_g"
+        },
+        {
+          "from": "eq_ft",
+          "to": "g_def"
+        },
+        {
+          "from": "apply_ft",
+          "to": "eq_ft"
+        },
+        {
+          "from": "func_f",
+          "to": "apply_ft"
+        },
+        {
+          "from": "vx",
+          "to": "apply_ft"
+        },
+        {
+          "from": "vt",
+          "to": "eq_ft"
+        },
+        {
+          "from": "vt",
+          "to": "lim_t"
+        },
+        {
+          "from": "lim_t",
+          "to": "func_g"
+        },
+        {
+          "from": "range_cond",
+          "to": "top"
+        },
+        {
+          "from": "gneq_k",
+          "to": "range_cond"
+        },
+        {
+          "from": "apply_gt",
+          "to": "gneq_k"
+        },
+        {
+          "from": "func_g",
+          "to": "apply_gt"
+        },
+        {
+          "from": "vt",
+          "to": "apply_gt"
+        },
+        {
+          "from": "vk",
+          "to": "gneq_k"
+        },
+        {
+          "from": "range_eq",
+          "to": "range_cond"
+        },
+        {
+          "from": "lower_bd",
+          "to": "range_eq"
+        },
+        {
+          "from": "upper_bd",
+          "to": "range_eq"
+        },
+        {
+          "from": "c1_const",
+          "to": "lower_bd"
+        },
+        {
+          "from": "vt",
+          "to": "lower_bd"
+        },
+        {
+          "from": "vt",
+          "to": "upper_bd"
+        },
+        {
+          "from": "c9_const",
+          "to": "upper_bd"
+        }
+      ],
+      "new_dna": []
+    },
+    "thinking_profile": null,
+    "folders": [],
+    "history": [],
+    "recovery_warnings": [],
+    "errata": [],
+    "created_at": "2026-03-23T15:07:10.824Z"
   }
 ]
