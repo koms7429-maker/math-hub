@@ -13276,5 +13276,895 @@
     "recovery_warnings": [],
     "errata": [],
     "created_at": "2026-03-23T18:27:46.517Z"
+  },
+  {
+    "problem_id": "38상수_a___a_2__에대하여함수_f_x__를",
+    "answer": "②1+√2",
+    "clues": [
+      {
+        "id": "단서A",
+        "text": "$f(x)=\\begin{cases}2a^{x+1}-2a+4 & (x\\le 0)\\\\a^{-x+1}-a+1 & (x>0)\\end{cases}$"
+      },
+      {
+        "id": "단서B",
+        "text": "곡선 $y=f(x)$ 위에 있고 $y$좌표가 정수인 점 중 $x$좌표가 최소인 점이 A, 최대인 점이 B이다"
+      },
+      {
+        "id": "단서C",
+        "text": "$a>2$ ($a$는 상수)"
+      },
+      {
+        "id": "단서D",
+        "text": "직선 AB의 기울기가 $-\\dfrac{1}{4}$이다"
+      }
+    ],
+    "skeleton": [
+      {
+        "from": "단서C",
+        "to": "note1",
+        "neuron": "사실5",
+        "note": "$a>2>1$이므로 $a^x$는 순증가이다",
+        "main": false,
+        "step": 1
+      },
+      {
+        "from": "note1",
+        "to": "note2",
+        "neuron": "사실41",
+        "note": "$a^{x+1}$은 순증가이다",
+        "main": false,
+        "step": 1
+      },
+      {
+        "from": "note2",
+        "to": "note3",
+        "neuron": "사실41",
+        "note": "$2a^{x+1}$은 순증가이다",
+        "main": false,
+        "step": 1
+      },
+      {
+        "from": "note3",
+        "to": "note4",
+        "neuron": "사실41",
+        "note": "$f(x)=2a^{x+1}-2a+4$는 $x\\le 0$에서 순증가이다",
+        "main": false,
+        "step": 1
+      },
+      {
+        "from": "단서A",
+        "to": "note5",
+        "neuron": "전략25",
+        "note": "$x=0$을 대입하면 $f(0)=2a-2a+4=4$이다",
+        "main": false,
+        "step": 1
+      },
+      {
+        "from": "단서A",
+        "to": "note6",
+        "neuron": "사실46",
+        "note": "$x\\to -\\infty$일 때 $a^{x+1}\\to 0$이고 $f(x)\\to -2a+4$이다",
+        "main": false,
+        "step": 1
+      },
+      {
+        "from": [
+          "note4",
+          "note5",
+          "note6"
+        ],
+        "to": "note7",
+        "neuron": "사실19",
+        "note": "$x\\le 0$ 구간에서 $f$의 치역은 $(-2a+4,\\;4]$이다",
+        "step": 1
+      },
+      {
+        "from": "note1",
+        "to": "note8",
+        "neuron": "사실42",
+        "note": "$a^{-x}$는 순감소이다",
+        "main": false,
+        "step": 2
+      },
+      {
+        "from": "note8",
+        "to": "note9",
+        "neuron": "사실41",
+        "note": "$a^{-x+1}$은 순감소이다",
+        "main": false,
+        "step": 2
+      },
+      {
+        "from": "note9",
+        "to": "note10",
+        "neuron": "사실41",
+        "note": "$f(x)=a^{-x+1}-a+1$은 $x>0$에서 순감소이다",
+        "main": false,
+        "step": 2
+      },
+      {
+        "from": "단서A",
+        "to": "note11",
+        "neuron": "전략25",
+        "note": "$x\\to 0^+$일 때 $f(x)\\to a-a+1=1$이다 (열린 구간이므로 달성 안 됨)",
+        "main": false,
+        "step": 2
+      },
+      {
+        "from": "단서A",
+        "to": "note12",
+        "neuron": "사실46",
+        "note": "$x\\to +\\infty$일 때 $a^{-x+1}\\to 0$이고 $f(x)\\to -a+1$이다",
+        "main": false,
+        "step": 2
+      },
+      {
+        "from": [
+          "note10",
+          "note11",
+          "note12"
+        ],
+        "to": "note13",
+        "neuron": "사실19",
+        "note": "$x>0$ 구간에서 $f$의 치역은 $(-a+1,\\;1)$이다",
+        "step": 2
+      },
+      {
+        "from": [
+          "note4",
+          "note7"
+        ],
+        "to": "note14",
+        "neuron": "사실56",
+        "note": "$x\\le 0$에서 $f$가 순증가이므로 정수 $y$값 중 최소에 대응하는 $x$가 가장 작다",
+        "main": false,
+        "step": 3
+      },
+      {
+        "from": [
+          "note10",
+          "note13"
+        ],
+        "to": "note15",
+        "neuron": "사실56",
+        "note": "$x>0$에서 $f$가 순감소이므로 정수 $y$값 중 최소에 대응하는 $x$가 가장 크다",
+        "main": false,
+        "step": 3
+      },
+      {
+        "from": [
+          "note14",
+          "note15",
+          "단서B"
+        ],
+        "to": "note16",
+        "neuron": "사실44",
+        "note": "$\\mathrm{A}(x_1,y_1)$은 $x\\le 0$ 구간 위의 점이고 $\\mathrm{B}(x_2,y_2)$는 $x>0$ 구간 위의 점이다. $x_1\\le 0 < x_2$이다",
+        "step": 3
+      },
+      {
+        "from": [
+          "note16",
+          "단서D"
+        ],
+        "to": "note17",
+        "neuron": "연산10",
+        "note": "$\\dfrac{y_1-y_2}{x_1-x_2}=-\\dfrac{1}{4}$이다",
+        "step": 3
+      },
+      {
+        "from": "note17",
+        "to": "note18",
+        "neuron": "사실65",
+        "note": "$x_1-x_2<0$이고 기울기가 음수이므로 $y_1-y_2>0$, 즉 $y_1>y_2$이다",
+        "step": 3
+      },
+      {
+        "from": [
+          "note18",
+          "note7",
+          "note13"
+        ],
+        "to": "note19",
+        "neuron": "연산21",
+        "note": "$y_1>y_2$이려면 왼쪽 치역의 하한이 오른쪽보다 커야 하므로 $-2a+4>-a+1$, 즉 $a<3$이다",
+        "step": 4
+      },
+      {
+        "from": [
+          "note19",
+          "단서C"
+        ],
+        "to": "note20",
+        "neuron": "전략2",
+        "note": "$a>2$와 $a<3$을 결합하면 $2<a<3$이다",
+        "step": 4
+      },
+      {
+        "from": "note20",
+        "to": "note21",
+        "neuron": "연산21",
+        "note": "$2<a<3$일 때 $-2a+4\\in(-2,0)$이고 $-a+1\\in(-2,-1)$이다",
+        "step": 4
+      },
+      {
+        "from": [
+          "note21",
+          "note13"
+        ],
+        "to": "note22",
+        "neuron": "사실17",
+        "note": "치역 $(-a+1,1)$에서 $-a+1\\in(-2,-1)$이므로 달성 가능한 최소 정수는 $y_2=-1$이다",
+        "step": 4
+      },
+      {
+        "from": "note21",
+        "to": "note23",
+        "neuron": "전략22",
+        "note": "$-2a+4\\in(-2,0)$에서 $a<\\frac{5}{2}$이면 $-2a+4\\in(-1,0)$이고, $a\\ge\\frac{5}{2}$이면 $-2a+4\\in(-2,-1]$이다",
+        "step": 4
+      },
+      {
+        "from": [
+          "note23",
+          "note7"
+        ],
+        "to": "note24",
+        "neuron": "사실17",
+        "note": "$a\\ge\\frac{5}{2}$이면 치역 $(-2a+4,4]$에서 달성 가능한 최소 정수가 $-1$이어서 $y_1=-1=y_2$이다",
+        "main": false,
+        "step": 4
+      },
+      {
+        "from": [
+          "note24",
+          "note18"
+        ],
+        "to": "note25",
+        "neuron": "전략23",
+        "note": "$y_1=-1=y_2$는 $y_1>y_2$에 모순이므로 $a\\ge\\frac{5}{2}$는 불가이다",
+        "main": false,
+        "step": 4
+      },
+      {
+        "from": [
+          "note23",
+          "note25",
+          "note7"
+        ],
+        "to": "note26",
+        "neuron": "사실17",
+        "note": "$2<a<\\frac{5}{2}$이고 $-2a+4\\in(-1,0)$이므로 치역 $(-2a+4,4]$에서 달성 가능한 최소 정수는 $0$이다",
+        "step": 4
+      },
+      {
+        "from": [
+          "note26",
+          "note22"
+        ],
+        "to": "note27",
+        "neuron": "전략2",
+        "note": "$y_1=0$, $y_2=-1$이다",
+        "step": 4
+      },
+      {
+        "from": [
+          "note27",
+          "note17"
+        ],
+        "to": "note28",
+        "neuron": "전략25",
+        "note": "$\\dfrac{0-(-1)}{x_1-x_2}=-\\dfrac{1}{4}$에서 $x_1-x_2=-4$이다. 즉 $x_2=x_1+4$이다",
+        "step": 5
+      },
+      {
+        "from": [
+          "note27",
+          "note16",
+          "단서A"
+        ],
+        "to": "note29",
+        "neuron": "전략25",
+        "note": "$\\mathrm{A}(x_1,0)$이 $x\\le 0$ 구간 위의 점이므로 $2a^{x_1+1}-2a+4=0$, 즉 $a^{x_1+1}=a-2$이다",
+        "step": 6
+      },
+      {
+        "from": [
+          "note28",
+          "note27",
+          "단서A"
+        ],
+        "to": "note30",
+        "neuron": "전략25",
+        "note": "$\\mathrm{B}(x_1+4,-1)$이 $x>0$ 구간 위의 점이므로 $a^{-(x_1+4)+1}-a+1=-1$, 즉 $a^{-x_1-3}=a-2$이다",
+        "step": 6
+      },
+      {
+        "from": [
+          "note29",
+          "note30"
+        ],
+        "to": "note31",
+        "neuron": "전략11",
+        "note": "두 식의 우변이 모두 $a-2$이므로 $a^{x_1+1}=a^{-x_1-3}$이다",
+        "step": 7
+      },
+      {
+        "from": [
+          "note31",
+          "note1"
+        ],
+        "to": "note32",
+        "neuron": "사실58",
+        "note": "$a>1$이므로 $a^x$는 단사함수이다. 따라서 $x_1+1=-x_1-3$이다",
+        "step": 7
+      },
+      {
+        "from": "note32",
+        "to": "note33",
+        "neuron": "전략2",
+        "note": "$2x_1=-4$에서 $x_1=-2$이다",
+        "step": 7
+      },
+      {
+        "from": "note33",
+        "to": "note34",
+        "neuron": "전략25",
+        "note": "$x_1=-2\\le 0$이고 $x_2=x_1+4=2>0$이므로 각 구간 조건을 만족한다",
+        "main": false,
+        "step": 7
+      },
+      {
+        "from": [
+          "note33",
+          "note29"
+        ],
+        "to": "note35",
+        "neuron": "전략25",
+        "note": "$x_1=-2$를 대입하면 $a^{-1}=a-2$, 즉 $\\frac{1}{a}=a-2$이다",
+        "step": 8
+      },
+      {
+        "from": "note35",
+        "to": "note36",
+        "neuron": "전략29",
+        "note": "양변에 $a$를 곱하면 $1=a^2-2a$이고 정리하면 $a^2-2a-1=0$이다",
+        "step": 8
+      },
+      {
+        "from": "note36",
+        "to": "note37",
+        "neuron": "사실79",
+        "note": "$D=4+4=8>0$이므로 $a=\\frac{2\\pm 2\\sqrt{2}}{2}=1\\pm\\sqrt{2}$이다",
+        "step": 8
+      },
+      {
+        "from": [
+          "note37",
+          "단서C"
+        ],
+        "to": "END",
+        "neuron": "전략25",
+        "note": "$a>2$이므로 $a=1+\\sqrt{2}\\;(\\approx 2.414)$이다",
+        "step": 8
+      }
+    ],
+    "solution": "STEP 1. $a>2>1$이므로 $a^{x+1}$은 순증가이고, $f(x)=2a^{x+1}-2a+4$는 $x\\le 0$에서 순증가이다. $f(0)=4$이고 $x\\to-\\infty$일 때 $f(x)\\to -2a+4$이므로 이 구간의 치역은 $(-2a+4,\\;4]$이다.\n\nSTEP 2. $a^{-x+1}$은 순감소이므로 $f(x)=a^{-x+1}-a+1$은 $x>0$에서 순감소이다. $x\\to 0^+$일 때 $f(x)\\to 1$이고 $x\\to+\\infty$일 때 $f(x)\\to -a+1$이므로 이 구간의 치역은 $(-a+1,\\;1)$이다.\n\nSTEP 3. $x\\le 0$ 구간에서 $f$가 순증가이므로 정수 $y$값 중 최소에 대응하는 $x$가 가장 작고, $x>0$ 구간에서 $f$가 순감소이므로 정수 $y$값 중 최소에 대응하는 $x$가 가장 크다. 따라서 $\\mathrm{A}(x_1,y_1)$은 $x\\le 0$ 구간, $\\mathrm{B}(x_2,y_2)$는 $x>0$ 구간 위의 점이고 $x_1<x_2$이다. 기울기 조건 $\\frac{y_1-y_2}{x_1-x_2}=-\\frac{1}{4}$에서 $x_1-x_2<0$이므로 $y_1>y_2$이다.\n\nSTEP 4. $y_1>y_2$이려면 왼쪽 치역의 하한이 오른쪽보다 커야 하므로 $-2a+4>-a+1$, 즉 $a<3$이다. $a>2$와 합하면 $2<a<3$이다. 이때 $-a+1\\in(-2,-1)$이므로 $y_2=-1$이다. $-2a+4\\in(-2,0)$에서 $a<\\frac{5}{2}$이면 $-2a+4>-1$이므로 최소 정수는 $0$이고, $a\\ge\\frac{5}{2}$이면 최소 정수가 $-1=y_2$여서 $y_1>y_2$에 모순이다. 따라서 $2<a<\\frac{5}{2}$이고 $y_1=0$, $y_2=-1$이다.\n\nSTEP 5. $\\frac{0-(-1)}{x_1-x_2}=-\\frac{1}{4}$에서 $x_1-x_2=-4$이므로 $x_2=x_1+4$이다.\n\nSTEP 6. $\\mathrm{A}(x_1,0)$이 곡선 위의 점이므로 $2a^{x_1+1}-2a+4=0$, 즉 $a^{x_1+1}=a-2$이다. $\\mathrm{B}(x_1+4,-1)$이 곡선 위의 점이므로 $a^{-x_1-3}-a+1=-1$, 즉 $a^{-x_1-3}=a-2$이다.\n\nSTEP 7. 두 식의 우변이 같으므로 $a^{x_1+1}=a^{-x_1-3}$이다. $a>1$이므로 $a^x$는 단사함수이고, $x_1+1=-x_1-3$에서 $x_1=-2$이다.\n\nSTEP 8. $x_1=-2$를 대입하면 $a^{-1}=a-2$이고, $a^2-2a-1=0$에서 $a=1\\pm\\sqrt{2}$이다. $a>2$이므로 $a=1+\\sqrt{2}$이다.",
+    "original_solution": "$a>2$ … ①\n\n이므로 $\\mathrm{A}(x_1,y_1)$, $\\mathrm{B}(x_2,y_2)$라 하고 다음 그림을 참고하면\n\n방정식 $f(x)=0$은 양수인 실근과 음수인 실근을 가짐 $\\Rightarrow x_1<0,\\;x_2>0$\n\n을 알 수 있으므로\n\n직선 AB의 기울기가 $-\\dfrac{1}{4}$ $\\Rightarrow\\dfrac{y_1-y_2}{x_1-x_2}=-\\dfrac{1}{4}$ … ㉡\n\n$$\\Rightarrow y_1>y_2 \\cdots\\text{ ㉢}$$\n\n$$\\Rightarrow -2a+4>-a+1$$\n\n$$\\Rightarrow 2<a<3\\quad(\\because\\text{ ①})\\cdots\\text{ ㉣}$$\n\n따라서\n\n$$\\text{㉣}\\Rightarrow\\begin{cases}-2<-2a+4<0\\Rightarrow y_1=-1\\text{ 또는 }y_1=0\\\\-2<-a+1<-1\\Rightarrow y_2=-1\\end{cases}$$\n\n이므로\n\n$$\\text{㉢}\\Rightarrow y_1=0,\\;y_2=-1$$\n\n$$\\Rightarrow x_2=x_1+4\\quad(\\because\\text{ ㉡})$$\n\n임을 알 수 있다. 따라서\n\n- $\\mathrm{A}(x_1,0)$은 $y=f(x)\\;(x\\le 0)$ 위의 점\n$$\\Rightarrow 2a^{x_1+1}-2a+4=0\\cdots\\text{ ㉤}$$\n- $\\mathrm{B}(x_1+4,-1)$은 $y=f(x)\\;(x>0)$ 위의 점\n$$\\Rightarrow a^{-x_1-3}-a+1=-1$$\n\n$$\\Bigg\\}\\Rightarrow x_1=-2$$\n\n를 얻고, 이를 다시 ㉤에 대입하면\n\n$$2a^{-1}-2a+4=0\\Rightarrow a^2-2a-1=0$$\n\n$$\\Rightarrow a=1+\\sqrt{2}\\quad(\\because\\text{ ㉣})$$\n\n를 얻는다.\n\n**정답: ②**\n\n---",
+    "analysis": "a>2에서 조각함수의 각 구간 단조성·치역을 구하고, 정수 y값 점 중 x좌표 최소/최대인 A, B를 결정한 뒤, 기울기 조건으로 a를 구하는 문제. 핵심은 y_1>y_2 조건에서 a 범위를 좁혀 y값을 확정하고, 연립방정식에서 지수함수의 단사성을 이용해 x_1을 구하는 것이다.",
+    "new_neurons": [],
+    "metadata": {
+      "unit": "지수와 로그",
+      "difficulty": "상",
+      "score": "4",
+      "type": "객관식",
+      "answer": "1+√2"
+    },
+    "edge_count": 38,
+    "side_count": 16,
+    "statement": "38. 상수 $a\\,(a>2)$에 대하여 함수 $f(x)$를\n\n$$f(x)=\\begin{cases}2a^{x+1}-2a+4 & (x\\le 0)\\\\a^{-x+1}-a+1 & (x>0)\\end{cases}$$\n\n이라 하자. 곡선 $y=f(x)$ 위에 있고 $y$좌표가 정수인 점 중 $x$좌표가 최소인 점과 최대인 점을 각각 A, B라 하자.\n\n직선 AB의 기울기가 $-\\dfrac{1}{4}$일 때, $a$의 값은? [4점]\n\n① $-2+3\\sqrt{2}$ ② $1+\\sqrt{2}$ ③ $-1+2\\sqrt{3}$ ④ $4-\\sqrt{2}$ ⑤ $1+\\sqrt{3}$",
+    "dna": {
+      "nodes": [
+        {
+          "id": "top",
+          "dna": "Q1",
+          "label": "값을 구하라",
+          "category": "발문"
+        },
+        {
+          "id": "ask",
+          "dna": "T1",
+          "label": "변수 a",
+          "category": "말단"
+        },
+        {
+          "id": "va_limit",
+          "dna": "C2",
+          "label": "a > 2",
+          "category": "조건"
+        },
+        {
+          "id": "c2_lim",
+          "dna": "T2",
+          "label": "상수 2(제한)",
+          "category": "말단"
+        },
+        {
+          "id": "fx",
+          "dna": "F1",
+          "label": "조각함수 f(x)",
+          "category": "함수"
+        },
+        {
+          "id": "fx_def",
+          "dna": "F6",
+          "label": "f(x) 정의",
+          "category": "함수"
+        },
+        {
+          "id": "piece1",
+          "dna": "F2",
+          "label": "조각1(x≤0)",
+          "category": "함수"
+        },
+        {
+          "id": "piece2",
+          "dna": "F2",
+          "label": "조각2(x>0)",
+          "category": "함수"
+        },
+        {
+          "id": "dom1",
+          "dna": "C2",
+          "label": "x ≤ 0",
+          "category": "조건"
+        },
+        {
+          "id": "dom2",
+          "dna": "C2",
+          "label": "x > 0",
+          "category": "조건"
+        },
+        {
+          "id": "vx",
+          "dna": "T3",
+          "label": "독립변수 x",
+          "category": "말단"
+        },
+        {
+          "id": "expr1",
+          "dna": "E1",
+          "label": "합(2a^{x+1}, -2a, 4)",
+          "category": "수식"
+        },
+        {
+          "id": "term_2ax1",
+          "dna": "E6",
+          "label": "곱(2, a^{x+1})",
+          "category": "수식"
+        },
+        {
+          "id": "c2_const",
+          "dna": "T2",
+          "label": "상수 2",
+          "category": "말단"
+        },
+        {
+          "id": "pow1",
+          "dna": "E4",
+          "label": "a^{x+1}",
+          "category": "수식"
+        },
+        {
+          "id": "exp1",
+          "dna": "E1",
+          "label": "합(x,1)",
+          "category": "수식"
+        },
+        {
+          "id": "c1",
+          "dna": "T2",
+          "label": "상수 1",
+          "category": "말단"
+        },
+        {
+          "id": "term_neg2a",
+          "dna": "E2",
+          "label": "부호반전(2a)",
+          "category": "수식"
+        },
+        {
+          "id": "prod_2a",
+          "dna": "E6",
+          "label": "곱(2,a)",
+          "category": "수식"
+        },
+        {
+          "id": "c4",
+          "dna": "T2",
+          "label": "상수 4",
+          "category": "말단"
+        },
+        {
+          "id": "expr2",
+          "dna": "E1",
+          "label": "합(a^{-x+1},-a,1)",
+          "category": "수식"
+        },
+        {
+          "id": "pow2",
+          "dna": "E4",
+          "label": "a^{-x+1}",
+          "category": "수식"
+        },
+        {
+          "id": "exp2",
+          "dna": "E1",
+          "label": "합(-x,1)",
+          "category": "수식"
+        },
+        {
+          "id": "neg_x",
+          "dna": "E2",
+          "label": "부호반전(x)",
+          "category": "수식"
+        },
+        {
+          "id": "term_neg_a",
+          "dna": "E2",
+          "label": "부호반전(a)",
+          "category": "수식"
+        },
+        {
+          "id": "crv",
+          "dna": "G2",
+          "label": "곡선 y=f(x)",
+          "category": "기하"
+        },
+        {
+          "id": "crv_eq",
+          "dna": "C11",
+          "label": "곡선 방정식",
+          "category": "조건"
+        },
+        {
+          "id": "crv_c1",
+          "dna": "C1",
+          "label": "y = f(x)",
+          "category": "조건"
+        },
+        {
+          "id": "vy",
+          "dna": "T3",
+          "label": "독립변수 y",
+          "category": "말단"
+        },
+        {
+          "id": "pt_a",
+          "dna": "G1",
+          "label": "점 A",
+          "category": "기하"
+        },
+        {
+          "id": "pt_b",
+          "dna": "G1",
+          "label": "점 B",
+          "category": "기하"
+        },
+        {
+          "id": "on_crv_a",
+          "dna": "G3",
+          "label": "A는 곡선 위",
+          "category": "기하"
+        },
+        {
+          "id": "on_crv_b",
+          "dna": "G3",
+          "label": "B는 곡선 위",
+          "category": "기하"
+        },
+        {
+          "id": "y_int",
+          "dna": "L3",
+          "label": "y좌표 정수",
+          "category": "제한"
+        },
+        {
+          "id": "y_a",
+          "dna": "G4",
+          "label": "A의 y좌표",
+          "category": "기하"
+        },
+        {
+          "id": "y_b",
+          "dna": "G4",
+          "label": "B의 y좌표",
+          "category": "기하"
+        },
+        {
+          "id": "ab_order",
+          "dna": "G23",
+          "label": "A:x최소, B:x최대",
+          "category": "기하"
+        },
+        {
+          "id": "line_ab",
+          "dna": "G12",
+          "label": "직선 AB",
+          "category": "기하"
+        },
+        {
+          "id": "slope_ab",
+          "dna": "G5",
+          "label": "기울기(A,B)",
+          "category": "기하"
+        },
+        {
+          "id": "slope_cond",
+          "dna": "C1",
+          "label": "기울기 = -1/4",
+          "category": "조건"
+        },
+        {
+          "id": "c_neg14",
+          "dna": "T2",
+          "label": "상수 -1/4",
+          "category": "말단"
+        }
+      ],
+      "edges": [
+        {
+          "from": "ask",
+          "to": "top"
+        },
+        {
+          "from": "slope_cond",
+          "to": "top"
+        },
+        {
+          "from": "c2_lim",
+          "to": "va_limit"
+        },
+        {
+          "from": "ask",
+          "to": "va_limit"
+        },
+        {
+          "from": "va_limit",
+          "to": "top"
+        },
+        {
+          "from": "fx_def",
+          "to": "fx"
+        },
+        {
+          "from": "piece1",
+          "to": "fx"
+        },
+        {
+          "from": "piece2",
+          "to": "fx"
+        },
+        {
+          "from": "dom1",
+          "to": "piece1"
+        },
+        {
+          "from": "expr1",
+          "to": "piece1"
+        },
+        {
+          "from": "dom2",
+          "to": "piece2"
+        },
+        {
+          "from": "expr2",
+          "to": "piece2"
+        },
+        {
+          "from": "vx",
+          "to": "dom1"
+        },
+        {
+          "from": "vx",
+          "to": "dom2"
+        },
+        {
+          "from": "term_2ax1",
+          "to": "expr1"
+        },
+        {
+          "from": "term_neg2a",
+          "to": "expr1"
+        },
+        {
+          "from": "c4",
+          "to": "expr1"
+        },
+        {
+          "from": "c2_const",
+          "to": "term_2ax1"
+        },
+        {
+          "from": "pow1",
+          "to": "term_2ax1"
+        },
+        {
+          "from": "ask",
+          "to": "pow1"
+        },
+        {
+          "from": "exp1",
+          "to": "pow1"
+        },
+        {
+          "from": "vx",
+          "to": "exp1"
+        },
+        {
+          "from": "c1",
+          "to": "exp1"
+        },
+        {
+          "from": "prod_2a",
+          "to": "term_neg2a"
+        },
+        {
+          "from": "c2_const",
+          "to": "prod_2a"
+        },
+        {
+          "from": "ask",
+          "to": "prod_2a"
+        },
+        {
+          "from": "pow2",
+          "to": "expr2"
+        },
+        {
+          "from": "term_neg_a",
+          "to": "expr2"
+        },
+        {
+          "from": "c1",
+          "to": "expr2"
+        },
+        {
+          "from": "ask",
+          "to": "pow2"
+        },
+        {
+          "from": "exp2",
+          "to": "pow2"
+        },
+        {
+          "from": "neg_x",
+          "to": "exp2"
+        },
+        {
+          "from": "c1",
+          "to": "exp2"
+        },
+        {
+          "from": "vx",
+          "to": "neg_x"
+        },
+        {
+          "from": "ask",
+          "to": "term_neg_a"
+        },
+        {
+          "from": "crv_eq",
+          "to": "crv"
+        },
+        {
+          "from": "crv_c1",
+          "to": "crv_eq"
+        },
+        {
+          "from": "vy",
+          "to": "crv_c1"
+        },
+        {
+          "from": "fx",
+          "to": "crv_c1"
+        },
+        {
+          "from": "crv",
+          "to": "on_crv_a"
+        },
+        {
+          "from": "pt_a",
+          "to": "on_crv_a"
+        },
+        {
+          "from": "crv",
+          "to": "on_crv_b"
+        },
+        {
+          "from": "pt_b",
+          "to": "on_crv_b"
+        },
+        {
+          "from": "on_crv_a",
+          "to": "top"
+        },
+        {
+          "from": "on_crv_b",
+          "to": "top"
+        },
+        {
+          "from": "y_int",
+          "to": "y_a"
+        },
+        {
+          "from": "y_int",
+          "to": "y_b"
+        },
+        {
+          "from": "pt_a",
+          "to": "y_a"
+        },
+        {
+          "from": "pt_b",
+          "to": "y_b"
+        },
+        {
+          "from": "y_a",
+          "to": "top"
+        },
+        {
+          "from": "y_b",
+          "to": "top"
+        },
+        {
+          "from": "pt_a",
+          "to": "ab_order"
+        },
+        {
+          "from": "pt_b",
+          "to": "ab_order"
+        },
+        {
+          "from": "ab_order",
+          "to": "top"
+        },
+        {
+          "from": "pt_a",
+          "to": "line_ab"
+        },
+        {
+          "from": "pt_b",
+          "to": "line_ab"
+        },
+        {
+          "from": "slope_ab",
+          "to": "slope_cond"
+        },
+        {
+          "from": "c_neg14",
+          "to": "slope_cond"
+        },
+        {
+          "from": "pt_a",
+          "to": "slope_ab"
+        },
+        {
+          "from": "pt_b",
+          "to": "slope_ab"
+        },
+        {
+          "from": "line_ab",
+          "to": "slope_cond"
+        }
+      ],
+      "new_dna": []
+    },
+    "thinking_profile": null,
+    "folders": [],
+    "history": [],
+    "recovery_warnings": [],
+    "errata": [],
+    "created_at": "2026-03-23T18:36:01.351Z"
   }
 ]
