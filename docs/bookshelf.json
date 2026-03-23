@@ -6324,5 +6324,457 @@
     "recovery_warnings": [],
     "errata": [],
     "created_at": "2026-03-23T15:07:10.824Z"
+  },
+  {
+    "problem_id": "21_수능_모의고사_-지수함수와곡선의교점조건",
+    "answer": "5",
+    "original_solution": "곡선 $y = 2^{x-1} - 4$는 두 점 $\\left(0,\\, -\\dfrac{7}{2}\\right)$, $(3,\\, 0)$을 지나고 증가함을 알 수 있으므로\n\n$f(x) = -\\dfrac{1}{7} \\times 2^{n-x} + a$라 하고 다음 그림을 참고하면\n\n선분 AB가 $x$축과 만나지 않으면서 $y$축과 만남 $\\Rightarrow$ $f(0) \\ge -\\dfrac{7}{2}$, $f(3) < 0$ $\\cdots$ ⓐ\n\n[FIGURE: 곡선 $y = 2^{x-1} - 4$와 $y = f(x)$가 두 점 A, B에서 만나는 그래프. A는 $y$축 왼쪽 아래, B는 $y$축 오른쪽에 위치하며, 선분 AB가 $x$축과 만나지 않고 $y$축과 만나는 상황을 보여줌]\n\n따라서\n\n$$\\text{ⓐ} \\Rightarrow a - \\frac{1}{7} \\times 2^n \\ge -\\frac{7}{2}, \\quad a - \\frac{1}{7} \\times 2^{n-3} < 0$$\n\n$$\\Rightarrow \\frac{1}{7} \\times 2^n - \\frac{7}{2} \\le a < \\frac{1}{7} \\times 2^{n-3} \\quad \\cdots \\text{ⓑ}$$\n\n이고, 이때\n\n- ⓑ을 만족시키는 $a$가 존재함 $\\Rightarrow \\dfrac{1}{7} \\times 2^n - \\dfrac{7}{2} < \\dfrac{1}{7} \\times 2^{n-3}$\n  $\\Rightarrow n \\le 4$ ($\\because$ $n$은 자연수)\n\n- $n \\le 4$일 때, $0 < \\dfrac{1}{7} \\times 2^{n-3} < 1$\n\n이므로 다음 그림을 참고하면\n\nⓑ을 만족시키는 정수 $a$의 개수가 3 ($\\because$ 문제의 박스 조건)\n\n$\\Rightarrow a = 0,\\, -1,\\, -2$만 ⓑ을 만족시킴\n\nⓑ의 첫 번째 부등식이 $a = -2$일 때 성립하고, $a = -3$일 때 성립하지 않아야 함\n\n$$\\Rightarrow -3 < \\frac{1}{7} \\times 2^n - \\frac{7}{2} \\le -2$$\n\n$$\\Rightarrow n = 2,\\, 3 \\quad (\\because\\, n\\text{은 자연수})$$\n\n임을 알 수 있다.\n\n[FIGURE: $y = \\dfrac{1}{7} \\times 2^{x-3}$과 $y = \\dfrac{1}{7} \\times 2^x - \\dfrac{7}{2}$의 그래프에서 $n$의 범위를 확인하는 그림]\n\n$$\\therefore\\, (\\text{모든 자연수 } n\\text{의 값의 합}) = 2 + 3 = 5$$\n\n---",
+    "analysis": "",
+    "new_neurons": [],
+    "metadata": {},
+    "edge_count": 0,
+    "side_count": 0,
+    "statement": "# 21. (수능/모의고사) - 지수함수와 곡선의 교점 조건\n\n## Problem\n\n두 곡선 $y = 2^{x-1} - 4$, $y = -\\dfrac{1}{7} \\times 2^{n-x} + a$가 서로 다른 두 점 A, B에서 만날 때, 다음 조건이 성립하도록 하는 모든 자연수 $n$의 값의 합은? [4점]\n\n$$\\text{선분 AB가 } x\\text{축과 만나지 않으면서 } y\\text{축과 만나도록 하는 정수 } a\\text{의 개수가 3이다.}$$",
+    "dna": {
+      "nodes": [
+        {
+          "id": "top",
+          "dna": "Q3",
+          "label": "합을 구하라",
+          "category": "발문"
+        },
+        {
+          "id": "ask_sum",
+          "dna": "E1",
+          "label": "모든 n 합",
+          "category": "수식"
+        },
+        {
+          "id": "vn",
+          "dna": "T1",
+          "label": "변수 n",
+          "category": "말단"
+        },
+        {
+          "id": "n_natural",
+          "dna": "L3",
+          "label": "n은 자연수",
+          "category": "제한"
+        },
+        {
+          "id": "va",
+          "dna": "T1",
+          "label": "변수 a",
+          "category": "말단"
+        },
+        {
+          "id": "a_integer",
+          "dna": "L3",
+          "label": "a는 정수",
+          "category": "제한"
+        },
+        {
+          "id": "conds",
+          "dna": "S1",
+          "label": "조건 묶음",
+          "category": "구조"
+        },
+        {
+          "id": "meet_cond",
+          "dna": "C3",
+          "label": "두 곡선 만남",
+          "category": "조건"
+        },
+        {
+          "id": "diff2",
+          "dna": "C4",
+          "label": "서로 다른 두점",
+          "category": "조건"
+        },
+        {
+          "id": "pt_a",
+          "dna": "G1",
+          "label": "점 A",
+          "category": "기하"
+        },
+        {
+          "id": "pt_b",
+          "dna": "G1",
+          "label": "점 B",
+          "category": "기하"
+        },
+        {
+          "id": "crv1",
+          "dna": "G2",
+          "label": "곡선1",
+          "category": "기하"
+        },
+        {
+          "id": "crv1_eq",
+          "dna": "C11",
+          "label": "곡선1 방정식",
+          "category": "조건"
+        },
+        {
+          "id": "crv1_c1",
+          "dna": "C1",
+          "label": "y=2^{x-1}-4",
+          "category": "조건"
+        },
+        {
+          "id": "crv1_rhs",
+          "dna": "E1",
+          "label": "합(지수항,-4)",
+          "category": "수식"
+        },
+        {
+          "id": "crv1_exp",
+          "dna": "E4",
+          "label": "2^{x-1}",
+          "category": "수식"
+        },
+        {
+          "id": "crv1_exparg",
+          "dna": "E1",
+          "label": "x-1",
+          "category": "수식"
+        },
+        {
+          "id": "neg_c1_e2",
+          "dna": "E2",
+          "label": "부호반전(1)",
+          "category": "수식"
+        },
+        {
+          "id": "neg_c4_e2",
+          "dna": "E2",
+          "label": "부호반전(4)",
+          "category": "수식"
+        },
+        {
+          "id": "crv2",
+          "dna": "G2",
+          "label": "곡선2",
+          "category": "기하"
+        },
+        {
+          "id": "crv2_eq",
+          "dna": "C11",
+          "label": "곡선2 방정식",
+          "category": "조건"
+        },
+        {
+          "id": "crv2_c1",
+          "dna": "C1",
+          "label": "y=-1/7·2^{n-x}+a",
+          "category": "조건"
+        },
+        {
+          "id": "crv2_rhs",
+          "dna": "E1",
+          "label": "합(지수항,a)",
+          "category": "수식"
+        },
+        {
+          "id": "crv2_neg_exp",
+          "dna": "E2",
+          "label": "부호반전(지수식)",
+          "category": "수식"
+        },
+        {
+          "id": "crv2_prod",
+          "dna": "E6",
+          "label": "1/7 × 2^{n-x}",
+          "category": "수식"
+        },
+        {
+          "id": "frac17",
+          "dna": "T2",
+          "label": "상수 1/7",
+          "category": "말단"
+        },
+        {
+          "id": "crv2_exp",
+          "dna": "E4",
+          "label": "2^{n-x}",
+          "category": "수식"
+        },
+        {
+          "id": "crv2_exparg",
+          "dna": "E1",
+          "label": "n-x",
+          "category": "수식"
+        },
+        {
+          "id": "neg_vx_e2",
+          "dna": "E2",
+          "label": "부호반전(x)",
+          "category": "수식"
+        },
+        {
+          "id": "vx",
+          "dna": "T3",
+          "label": "독립변수 x",
+          "category": "말단"
+        },
+        {
+          "id": "c2",
+          "dna": "T2",
+          "label": "상수 2",
+          "category": "말단"
+        },
+        {
+          "id": "c1",
+          "dna": "T2",
+          "label": "상수 1",
+          "category": "말단"
+        },
+        {
+          "id": "c4",
+          "dna": "T2",
+          "label": "상수 4",
+          "category": "말단"
+        },
+        {
+          "id": "seg_ab",
+          "dna": "G7",
+          "label": "선분 AB",
+          "category": "기하"
+        },
+        {
+          "id": "xaxis",
+          "dna": "G13",
+          "label": "x축",
+          "category": "기하"
+        },
+        {
+          "id": "yaxis",
+          "dna": "G13",
+          "label": "y축",
+          "category": "기하"
+        },
+        {
+          "id": "no_meet_x",
+          "dna": "X4",
+          "label": "x축 안만남",
+          "category": "존재"
+        },
+        {
+          "id": "meet_y",
+          "dna": "C3",
+          "label": "y축과 만남",
+          "category": "조건"
+        },
+        {
+          "id": "cnt_a_cond",
+          "dna": "X4",
+          "label": "정수a 개수=3",
+          "category": "존재"
+        },
+        {
+          "id": "c3",
+          "dna": "T2",
+          "label": "상수 3",
+          "category": "말단"
+        }
+      ],
+      "edges": [
+        {
+          "from": "ask_sum",
+          "to": "top"
+        },
+        {
+          "from": "vn",
+          "to": "ask_sum"
+        },
+        {
+          "from": "conds",
+          "to": "top"
+        },
+        {
+          "from": "n_natural",
+          "to": "vn"
+        },
+        {
+          "from": "a_integer",
+          "to": "va"
+        },
+        {
+          "from": "meet_cond",
+          "to": "conds"
+        },
+        {
+          "from": "crv1",
+          "to": "meet_cond"
+        },
+        {
+          "from": "crv2",
+          "to": "meet_cond"
+        },
+        {
+          "from": "pt_a",
+          "to": "meet_cond"
+        },
+        {
+          "from": "pt_b",
+          "to": "meet_cond"
+        },
+        {
+          "from": "diff2",
+          "to": "meet_cond"
+        },
+        {
+          "from": "crv1_eq",
+          "to": "crv1"
+        },
+        {
+          "from": "crv1_c1",
+          "to": "crv1_eq"
+        },
+        {
+          "from": "crv1_rhs",
+          "to": "crv1_c1"
+        },
+        {
+          "from": "crv1_exp",
+          "to": "crv1_rhs"
+        },
+        {
+          "from": "neg_c4_e2",
+          "to": "crv1_rhs"
+        },
+        {
+          "from": "c4",
+          "to": "neg_c4_e2"
+        },
+        {
+          "from": "c2",
+          "to": "crv1_exp"
+        },
+        {
+          "from": "crv1_exparg",
+          "to": "crv1_exp"
+        },
+        {
+          "from": "vx",
+          "to": "crv1_exparg"
+        },
+        {
+          "from": "neg_c1_e2",
+          "to": "crv1_exparg"
+        },
+        {
+          "from": "c1",
+          "to": "neg_c1_e2"
+        },
+        {
+          "from": "crv2_eq",
+          "to": "crv2"
+        },
+        {
+          "from": "crv2_c1",
+          "to": "crv2_eq"
+        },
+        {
+          "from": "crv2_rhs",
+          "to": "crv2_c1"
+        },
+        {
+          "from": "crv2_neg_exp",
+          "to": "crv2_rhs"
+        },
+        {
+          "from": "va",
+          "to": "crv2_rhs"
+        },
+        {
+          "from": "crv2_prod",
+          "to": "crv2_neg_exp"
+        },
+        {
+          "from": "frac17",
+          "to": "crv2_prod"
+        },
+        {
+          "from": "crv2_exp",
+          "to": "crv2_prod"
+        },
+        {
+          "from": "c2",
+          "to": "crv2_exp"
+        },
+        {
+          "from": "crv2_exparg",
+          "to": "crv2_exp"
+        },
+        {
+          "from": "vn",
+          "to": "crv2_exparg"
+        },
+        {
+          "from": "neg_vx_e2",
+          "to": "crv2_exparg"
+        },
+        {
+          "from": "vx",
+          "to": "neg_vx_e2"
+        },
+        {
+          "from": "seg_ab",
+          "to": "conds"
+        },
+        {
+          "from": "pt_a",
+          "to": "seg_ab"
+        },
+        {
+          "from": "pt_b",
+          "to": "seg_ab"
+        },
+        {
+          "from": "seg_ab",
+          "to": "no_meet_x"
+        },
+        {
+          "from": "xaxis",
+          "to": "no_meet_x"
+        },
+        {
+          "from": "no_meet_x",
+          "to": "conds"
+        },
+        {
+          "from": "seg_ab",
+          "to": "meet_y"
+        },
+        {
+          "from": "yaxis",
+          "to": "meet_y"
+        },
+        {
+          "from": "meet_y",
+          "to": "conds"
+        },
+        {
+          "from": "va",
+          "to": "cnt_a_cond"
+        },
+        {
+          "from": "c3",
+          "to": "cnt_a_cond"
+        },
+        {
+          "from": "cnt_a_cond",
+          "to": "conds"
+        }
+      ],
+      "new_dna": []
+    },
+    "thinking_profile": null,
+    "folders": [],
+    "history": [],
+    "recovery_warnings": [],
+    "errata": [],
+    "created_at": "2026-03-23T16:15:17.026Z"
   }
 ]
