@@ -7,24 +7,204 @@
     "skel_status": "neuron_missing",
     "dna_status": "ok",
     "needed_neurons": [
-      "???"
+      "사실77"
     ],
     "needed_dna": [],
-    "previous_analysis": "",
-    "previous_matching": "",
-    "previous_matched": [],
+    "previous_analysis": "해설의 핵심 논리 단계 중 직각삼각형에서 빗변에 내린 수선의 기하평균 관계(SH²=QH×HR)를 사용하는 부분에 매칭되는 뉴런이 없다. 이는 피타고라스 정리(연산6)와는 별개의 독립된 기하학적 정리이다.",
+    "previous_matching": "1. log_a(x+b)=0 → x+b=1 → 사실62(log_a 1=0) + 연산2(log↔exp)\n2. 0<b<1 → 0<1-b<1 → 연산21(부등식 덧셈)\n3. a>1, 0<b<1 → log_a b<0 → 사실12(로그 단조성)\n4. |log_a b| = -log_a b → 전략6(절댓값 부호 분리)\n5. |log_a(x+b)|=-log_a b 두 경우 → 전략6 + 연산2\n6. log_a(x+b)=log_a(1/b) → x=1/b-b → 연산2\n7. 외접원이 y축과 Q에서만 만남 → y축에 접함 → 사실8(접선⊥반지름)\n8. 원의 중심이 QR 위 → QR이 지름 → 사실70(지름 중점=중심)\n9. QR이 지름이고 P가 원 위 → ∠QPR=90° → 사실11(탈레스)\n10. QR이 지름이고 S(3,0)이 원 위 → ∠QSR=90° → 사실11\n11. P,S 모두 x축 위, 원의 현 → 현의 중점과 중심의 x좌표 일치 → 사실7(원의 대칭성)\n12. (1-b+3)/2=(1/b-b)/2 → b=1/4 → 전략2(연립)\n13. SH²=QH×HR (직각삼각형 수선 성질) → ❌ 매칭 뉴런 없음\n14. log_a 2=3/4 → a=2^(4/3) → 연산2\n15. a×b=2^(4/3)×2^(-2)=2^(-2/3) → 연산18",
+    "previous_matched": [
+      "사실62",
+      "연산2",
+      "연산21",
+      "사실12",
+      "전략6",
+      "사실11",
+      "사실7",
+      "사실70",
+      "사실8",
+      "전략2",
+      "연산18",
+      "사실69",
+      "연산11",
+      "사실1",
+      "사실59"
+    ],
     "previous_skeleton": [],
     "previous_new_neurons": [
       {
-        "id": "???",
-        "type": "???",
-        "statement": "JSON 파싱 실패 — Claude 응답을 파싱할 수 없음",
-        "reason": "JSON 파싱 실패",
-        "blocked_edge": "N/A"
+        "id": "사실77",
+        "type": "fact",
+        "statement": "직각삼각형에서 빗변에 내린 수선의 발이 빗변을 $p$, $q$로 나누면, 수선의 길이 $h$는 $h^2 = p \\times q$를 만족한다 (직각삼각형의 닮음 비례 관계)",
+        "reason": "STEP 6에서 ∠QSR=90°인 삼각형의 꼭짓점 S에서 빗변 QR에 내린 수선의 발 H에 대해 SH²=QH×HR을 사용하는데, 이 기하학적 사실에 해당하는 뉴런이 목록에 없음. 피타고라스 정리(연산6)를 두 번 적용하고 연립하여 유도할 수는 있지만, 해설에서 하나의 논리 단계로 사용되는 독립된 기하학적 정리임",
+        "blocked_edge": "note18 → note19"
       }
     ],
-    "previous_partial_skeleton": [],
-    "previous_blockage_point": "JSON 파싱 실패. Raw 응답 앞 200자: ",
+    "previous_partial_skeleton": [
+      {
+        "from": "단서A",
+        "to": "note1",
+        "neuron": "사실62",
+        "note": "$\\log_a(x+b)=0$이면 $x+b=1$이다",
+        "main": true,
+        "step": 1
+      },
+      {
+        "from": "note1",
+        "to": "note2",
+        "neuron": "연산2",
+        "note": "$x=1-b$이고 $P(1-b,\\;0)$이다",
+        "main": true,
+        "step": 1
+      },
+      {
+        "from": [
+          "note2",
+          "단서C"
+        ],
+        "to": "note3",
+        "neuron": "연산21",
+        "note": "$0<b<1$이면 $0<1-b<1$이다",
+        "main": false,
+        "step": 1
+      },
+      {
+        "from": "단서A",
+        "to": "note4",
+        "neuron": "전략6",
+        "note": "$f(0)=|\\log_a b|$이다",
+        "main": true,
+        "step": 2
+      },
+      {
+        "from": [
+          "note4",
+          "단서B",
+          "단서C"
+        ],
+        "to": "note5",
+        "neuron": "사실12",
+        "note": "$a>1$이고 $0<b<1$이면 $\\log_a b<0$이다",
+        "main": true,
+        "step": 2
+      },
+      {
+        "from": "note5",
+        "to": "note6",
+        "neuron": "전략6",
+        "note": "$|\\log_a b|=-\\log_a b$이고 $Q(0,\\;-\\log_a b)$이다",
+        "main": true,
+        "step": 2
+      },
+      {
+        "from": "note6",
+        "to": "note7",
+        "neuron": "전략6",
+        "note": "$|\\log_a(x+b)|=-\\log_a b$에서 $\\log_a(x+b)=\\log_a b$ 또는 $\\log_a(x+b)=\\log_a(1/b)$이다",
+        "main": true,
+        "step": 2
+      },
+      {
+        "from": "note7",
+        "to": "note8",
+        "neuron": "연산2",
+        "note": "$x=0$ (점 Q) 또는 $x=1/b-b$이다",
+        "main": true,
+        "step": 2
+      },
+      {
+        "from": "note8",
+        "to": "note9",
+        "neuron": "연산2",
+        "note": "$R(1/b-b,\\;-\\log_a b)$이다",
+        "main": true,
+        "step": 2
+      },
+      {
+        "from": "단서D",
+        "to": "note10",
+        "neuron": "사실8",
+        "note": "외접원이 $y$축과 Q에서 접하면 반지름이 Q에서 $y$축에 수직이다",
+        "main": true,
+        "step": 4
+      },
+      {
+        "from": "note10",
+        "to": "note11",
+        "neuron": "사실70",
+        "note": "원의 중심의 $y$좌표가 $-\\log_a b$이고, 중심이 직선 QR 위에 있다",
+        "main": true,
+        "step": 4
+      },
+      {
+        "from": [
+          "note11",
+          "note9"
+        ],
+        "to": "note12",
+        "neuron": "사실70",
+        "note": "QR이 원의 지름이다",
+        "main": true,
+        "step": 4
+      },
+      {
+        "from": [
+          "note12",
+          "단서D"
+        ],
+        "to": "note13",
+        "neuron": "사실11",
+        "note": "$S(3,0)$이 원 위에 있고 QR이 지름이면 $\\angle QSR=90°$이다",
+        "main": true,
+        "step": 5
+      },
+      {
+        "from": [
+          "note12",
+          "note2"
+        ],
+        "to": "note14",
+        "neuron": "사실7",
+        "note": "P와 S가 모두 $x$축 위의 원 위의 점이면, 현 PS의 중점의 $x$좌표 = 원의 중심의 $x$좌표이다",
+        "main": true,
+        "step": 5
+      },
+      {
+        "from": "note14",
+        "to": "note15",
+        "neuron": "전략2",
+        "note": "$(1-b+3)/2=(1/b-b)/2$에서 $4-b=1/b-b$, $b=1/4$이다",
+        "main": true,
+        "step": 5
+      },
+      {
+        "from": "note15",
+        "to": "note16",
+        "neuron": "연산2",
+        "note": "$P(3/4,0)$, $Q(0,2\\log_a 2)$, $R(15/4,2\\log_a 2)$, $S(3,0)$이다",
+        "main": true,
+        "step": 6
+      },
+      {
+        "from": [
+          "note16",
+          "note13"
+        ],
+        "to": "note17",
+        "neuron": "사실69",
+        "note": "$H(3,2\\log_a 2)$이고 $SH=2\\log_a 2$, $QH=3$, $HR=3/4$이다",
+        "main": true,
+        "step": 6
+      },
+      {
+        "from": "note17",
+        "to": "note18",
+        "neuron": "연산6",
+        "note": "$\\angle QSR=90°$이고 $H$는 빗변 위의 수선의 발이다",
+        "main": true,
+        "step": 6
+      }
+    ],
+    "previous_blockage_point": "note18에서 SH²=QH×HR 결론으로 가려는데, 직각삼각형 빗변에 내린 수선의 기하평균 관계에 해당하는 뉴런이 없음",
     "previous_dna_nodes": [
       {
         "id": "top",
@@ -35,7 +215,7 @@
       {
         "id": "ask",
         "dna": "E6",
-        "label": "곱(a, b)",
+        "label": "곱(a,b)",
         "category": "수식"
       },
       {
@@ -52,15 +232,39 @@
       },
       {
         "id": "lim_a",
-        "dna": "L2",
-        "label": "a > 1",
-        "category": "제한"
+        "dna": "C2",
+        "label": "a>1",
+        "category": "조건"
       },
       {
-        "id": "lim_b",
-        "dna": "L2",
-        "label": "0 < b < 1",
-        "category": "제한"
+        "id": "lim_b_lo",
+        "dna": "C2",
+        "label": "b>0",
+        "category": "조건"
+      },
+      {
+        "id": "lim_b_hi",
+        "dna": "C2",
+        "label": "b<1",
+        "category": "조건"
+      },
+      {
+        "id": "const_0",
+        "dna": "T2",
+        "label": "상수 0",
+        "category": "말단"
+      },
+      {
+        "id": "const_1",
+        "dna": "T2",
+        "label": "상수 1",
+        "category": "말단"
+      },
+      {
+        "id": "const_3",
+        "dna": "T2",
+        "label": "상수 3",
+        "category": "말단"
       },
       {
         "id": "vx",
@@ -71,7 +275,7 @@
       {
         "id": "inner_sum",
         "dna": "E1",
-        "label": "합(x, b)",
+        "label": "x+b",
         "category": "수식"
       },
       {
@@ -81,33 +285,45 @@
         "category": "수식"
       },
       {
-        "id": "fn_abs",
+        "id": "abs_log",
         "dna": "F5",
-        "label": "절대값 씌움",
+        "label": "|log_a(x+b)|",
         "category": "함수"
       },
       {
-        "id": "fn_eq",
-        "dna": "C11",
-        "label": "f 방정식",
-        "category": "조건"
-      },
-      {
-        "id": "fn_c1",
-        "dna": "C1",
-        "label": "f(x)=|log_a(x+b)|",
-        "category": "조건"
-      },
-      {
-        "id": "fn",
+        "id": "func_f",
         "dna": "F6",
-        "label": "함수 f(x) 정의",
+        "label": "f(x) 정의",
         "category": "함수"
       },
       {
         "id": "crv",
         "dna": "G2",
         "label": "곡선 y=f(x)",
+        "category": "기하"
+      },
+      {
+        "id": "crv_eq",
+        "dna": "C11",
+        "label": "곡선 방정식",
+        "category": "조건"
+      },
+      {
+        "id": "crv_c1",
+        "dna": "C1",
+        "label": "y=f(x) 등식",
+        "category": "조건"
+      },
+      {
+        "id": "xaxis",
+        "dna": "G13",
+        "label": "x축",
+        "category": "기하"
+      },
+      {
+        "id": "yaxis",
+        "dna": "G13",
+        "label": "y축",
         "category": "기하"
       },
       {
@@ -129,75 +345,45 @@
         "category": "기하"
       },
       {
-        "id": "pt_s",
-        "dna": "G17",
-        "label": "점 (3, 0)",
-        "category": "기하"
-      },
-      {
-        "id": "c3",
-        "dna": "T2",
-        "label": "상수 3",
-        "category": "말단"
-      },
-      {
-        "id": "c0",
-        "dna": "T2",
-        "label": "상수 0",
-        "category": "말단"
-      },
-      {
-        "id": "xaxis",
-        "dna": "G13",
-        "label": "x축",
-        "category": "기하"
-      },
-      {
-        "id": "yaxis",
-        "dna": "G13",
-        "label": "y축",
-        "category": "기하"
-      },
-      {
         "id": "meet_p",
         "dna": "C3",
-        "label": "곡선∩x축 = P",
+        "label": "그래프∩x축=P",
         "category": "조건"
       },
       {
         "id": "meet_q",
         "dna": "C3",
-        "label": "곡선∩y축 = Q",
+        "label": "그래프∩y축=Q",
         "category": "조건"
       },
       {
         "id": "line_r",
         "dna": "G12",
-        "label": "Q 통과 평행직선",
-        "category": "기하"
-      },
-      {
-        "id": "par_x",
-        "dna": "G19",
-        "label": "x축에 평행",
+        "label": "Q지나 x축평행직선",
         "category": "기하"
       },
       {
         "id": "pass_q",
         "dna": "G16",
-        "label": "직선이 Q 지남",
+        "label": "직선이 Q지남",
+        "category": "기하"
+      },
+      {
+        "id": "para_x",
+        "dna": "G19",
+        "label": "x축에 평행",
         "category": "기하"
       },
       {
         "id": "meet_r",
         "dna": "C3",
-        "label": "직선∩곡선 = R",
+        "label": "직선∩곡선=R",
         "category": "조건"
       },
       {
-        "id": "diff_r",
-        "dna": "C4",
-        "label": "Q 아닌 점",
+        "id": "r_not_q",
+        "dna": "C2",
+        "label": "R≠Q",
         "category": "조건"
       },
       {
@@ -207,31 +393,51 @@
         "category": "기하"
       },
       {
-        "id": "circ",
+        "id": "circum",
         "dna": "G26",
-        "label": "외접원",
+        "label": "△PQR 외접원",
+        "category": "기하"
+      },
+      {
+        "id": "pt_s",
+        "dna": "G17",
+        "label": "점(3,0)",
         "category": "기하"
       },
       {
         "id": "pass_s",
         "dna": "G16",
-        "label": "외접원∋(3,0)",
+        "label": "외접원이(3,0)지남",
         "category": "기하"
       },
       {
-        "id": "meet_yonly",
+        "id": "meet_y",
+        "dna": "C3",
+        "label": "외접원∩y축",
+        "category": "조건"
+      },
+      {
+        "id": "only_q",
         "dna": "X4",
-        "label": "y축∩외접원=Q만",
+        "label": "Q에서만 만남",
         "category": "존재"
       },
       {
         "id": "conds",
         "dna": "S1",
-        "label": "모든 조건 묶음",
+        "label": "모든 조건",
         "category": "구조"
       }
     ],
     "previous_dna_edges": [
+      {
+        "from": "ask",
+        "to": "top"
+      },
+      {
+        "from": "conds",
+        "to": "top"
+      },
       {
         "from": "va",
         "to": "ask"
@@ -241,16 +447,28 @@
         "to": "ask"
       },
       {
-        "from": "ask",
-        "to": "top"
-      },
-      {
         "from": "lim_a",
         "to": "va"
       },
       {
-        "from": "lim_b",
+        "from": "const_1",
+        "to": "lim_a"
+      },
+      {
+        "from": "lim_b_lo",
         "to": "vb"
+      },
+      {
+        "from": "const_0",
+        "to": "lim_b_lo"
+      },
+      {
+        "from": "lim_b_hi",
+        "to": "vb"
+      },
+      {
+        "from": "const_1",
+        "to": "lim_b_hi"
       },
       {
         "from": "vx",
@@ -270,22 +488,22 @@
       },
       {
         "from": "log_expr",
-        "to": "fn_abs"
+        "to": "abs_log"
       },
       {
-        "from": "fn_abs",
-        "to": "fn_c1"
+        "from": "abs_log",
+        "to": "func_f"
       },
       {
-        "from": "fn_c1",
-        "to": "fn_eq"
+        "from": "func_f",
+        "to": "crv_c1"
       },
       {
-        "from": "fn_eq",
-        "to": "fn"
+        "from": "crv_c1",
+        "to": "crv_eq"
       },
       {
-        "from": "fn",
+        "from": "crv_eq",
         "to": "crv"
       },
       {
@@ -321,16 +539,20 @@
         "to": "conds"
       },
       {
-        "from": "par_x",
-        "to": "line_r"
+        "from": "pt_q",
+        "to": "pass_q"
       },
       {
         "from": "pass_q",
         "to": "line_r"
       },
       {
-        "from": "pt_q",
-        "to": "pass_q"
+        "from": "xaxis",
+        "to": "para_x"
+      },
+      {
+        "from": "para_x",
+        "to": "line_r"
       },
       {
         "from": "line_r",
@@ -345,12 +567,16 @@
         "to": "meet_r"
       },
       {
-        "from": "diff_r",
+        "from": "r_not_q",
         "to": "meet_r"
       },
       {
         "from": "pt_q",
-        "to": "diff_r"
+        "to": "r_not_q"
+      },
+      {
+        "from": "pt_r",
+        "to": "r_not_q"
       },
       {
         "from": "meet_r",
@@ -370,18 +596,18 @@
       },
       {
         "from": "tri_pqr",
-        "to": "circ"
+        "to": "circum"
       },
       {
-        "from": "c3",
+        "from": "const_3",
         "to": "pt_s"
       },
       {
-        "from": "c0",
+        "from": "const_0",
         "to": "pt_s"
       },
       {
-        "from": "circ",
+        "from": "circum",
         "to": "pass_s"
       },
       {
@@ -393,26 +619,26 @@
         "to": "conds"
       },
       {
-        "from": "circ",
-        "to": "meet_yonly"
+        "from": "circum",
+        "to": "meet_y"
       },
       {
         "from": "yaxis",
-        "to": "meet_yonly"
+        "to": "meet_y"
       },
       {
         "from": "pt_q",
-        "to": "meet_yonly"
+        "to": "only_q"
       },
       {
-        "from": "meet_yonly",
+        "from": "meet_y",
+        "to": "only_q"
+      },
+      {
+        "from": "only_q",
         "to": "conds"
-      },
-      {
-        "from": "conds",
-        "to": "top"
       }
     ],
-    "created_at": "2026-03-23T10:17:28.831Z"
+    "created_at": "2026-03-23T10:24:58.486Z"
   }
 ]
