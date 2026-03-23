@@ -2,171 +2,395 @@
   {
     "problem_id": "21_수능_모의고사_-지수함수와곡선의교점조건",
     "content": "# 21. (수능/모의고사) - 지수함수와 곡선의 교점 조건\n\n## Problem\n\n두 곡선 $y = 2^{x-1} - 4$, $y = -\\dfrac{1}{7} \\times 2^{n-x} + a$가 서로 다른 두 점 A, B에서 만날 때, 다음 조건이 성립하도록 하는 모든 자연수 $n$의 값의 합은? [4점]\n\n$$\\text{선분 AB가 } x\\text{축과 만나지 않으면서 } y\\text{축과 만나도록 하는 정수 } a\\text{의 개수가 3이다.}$$\n\n## Choices\n① 1 &emsp; ② 3 &emsp; ③ 5 &emsp; ④ 7 &emsp; ⑤ 9\n\n**Answer**: ③ 5\n**Difficulty**: 상\n**Score**: 4점\n**Type**: multiple choice\n\n---\n\n## Solution\n\n곡선 $y = 2^{x-1} - 4$는 두 점 $\\left(0,\\, -\\dfrac{7}{2}\\right)$, $(3,\\, 0)$을 지나고 증가함을 알 수 있으므로\n\n$f(x) = -\\dfrac{1}{7} \\times 2^{n-x} + a$라 하고 다음 그림을 참고하면\n\n선분 AB가 $x$축과 만나지 않으면서 $y$축과 만남 $\\Rightarrow$ $f(0) \\ge -\\dfrac{7}{2}$, $f(3) < 0$ $\\cdots$ ⓐ\n\n[FIGURE: 곡선 $y = 2^{x-1} - 4$와 $y = f(x)$가 두 점 A, B에서 만나는 그래프. A는 $y$축 왼쪽 아래, B는 $y$축 오른쪽에 위치하며, 선분 AB가 $x$축과 만나지 않고 $y$축과 만나는 상황을 보여줌]\n\n따라서\n\n$$\\text{ⓐ} \\Rightarrow a - \\frac{1}{7} \\times 2^n \\ge -\\frac{7}{2}, \\quad a - \\frac{1}{7} \\times 2^{n-3} < 0$$\n\n$$\\Rightarrow \\frac{1}{7} \\times 2^n - \\frac{7}{2} \\le a < \\frac{1}{7} \\times 2^{n-3} \\quad \\cdots \\text{ⓑ}$$\n\n이고, 이때\n\n- ⓑ을 만족시키는 $a$가 존재함 $\\Rightarrow \\dfrac{1}{7} \\times 2^n - \\dfrac{7}{2} < \\dfrac{1}{7} \\times 2^{n-3}$\n  $\\Rightarrow n \\le 4$ ($\\because$ $n$은 자연수)\n\n- $n \\le 4$일 때, $0 < \\dfrac{1}{7} \\times 2^{n-3} < 1$\n\n이므로 다음 그림을 참고하면\n\nⓑ을 만족시키는 정수 $a$의 개수가 3 ($\\because$ 문제의 박스 조건)\n\n$\\Rightarrow a = 0,\\, -1,\\, -2$만 ⓑ을 만족시킴\n\nⓑ의 첫 번째 부등식이 $a = -2$일 때 성립하고, $a = -3$일 때 성립하지 않아야 함\n\n$$\\Rightarrow -3 < \\frac{1}{7} \\times 2^n - \\frac{7}{2} \\le -2$$\n\n$$\\Rightarrow n = 2,\\, 3 \\quad (\\because\\, n\\text{은 자연수})$$\n\n임을 알 수 있다.\n\n[FIGURE: $y = \\dfrac{1}{7} \\times 2^{x-3}$과 $y = \\dfrac{1}{7} \\times 2^x - \\dfrac{7}{2}$의 그래프에서 $n$의 범위를 확인하는 그림]\n\n$$\\therefore\\, (\\text{모든 자연수 } n\\text{의 값의 합}) = 2 + 3 = 5$$\n\n---",
-    "content_source": "FileLoop",
+    "content_source": "CheckPending",
     "content_length": 1714,
-    "skel_status": "neuron_missing",
-    "dna_status": "ok",
-    "needed_neurons": [
-      "사실88",
-      "사실89",
-      "사실90"
+    "skel_status": "ok",
+    "dna_status": "dna_missing",
+    "needed_neurons": [],
+    "needed_dna": [
+      {
+        "id": "C20",
+        "name": "불만남 조건",
+        "signature": "(선분, 대상) → 조건",
+        "reason": "선분이 특정 대상(축 등)과 만나지 않는다는 조건. C3(만남)의 부정이지만 별도 구조로 표현되며, 기존 DNA로는 '만나지 않음'을 직접 표현하는 노드가 없음"
+      }
     ],
-    "needed_dna": [],
-    "previous_analysis": "이 문제의 핵심은 볼록함수(아래로 볼록)인 $y_1$과 오목함수(위로 볼록)인 $f$의 교점 구조를 분석하여, 선분 AB의 축 교차 조건을 $f(0) \\geq y_1(0)$, $f(3) < y_1(3)$으로 번역하는 것이다. 이 번역에는 $g = f - y_1$이 위로 볼록(오목)임을 확립한 후 사실85를 적용하는 과정이 필수적이다. 단조성 관련 뉴런은 충분하나, 볼록성의 일차변환 보존(사실88), 양의 상수배 보존(사실89), 같은 볼록성 합 보존(사실90) 세 뉴런이 없어 skeleton 조립이 차단된다.",
-    "previous_matching": "1. $y_1 = 2^{x-1}-4$ 단조증가 파악 → 사실5(지수함수 단조성), 사실41(평행이동 단조성 보존) 매칭\n2. $y_1(0) = -7/2$, $y_1(3) = 0$ 계산 → 전략25(대입 확인) 매칭\n3. $f(x) = -\\frac{1}{7}\\cdot 2^{n-x}+a$ 단조증가 파악 → 사실5, 사실42($f(-x)$ 역방향), 사실40(음수 곱 역방향), 사실41 매칭\n4. $f(x) \\to a$ as $x \\to \\infty$ → 사실46(지수 점근) 매칭\n5. $y_1$ 아래로 볼록 → 사실84($a^x$ 아래로 볼록) 매칭, 그러나 $2^{x-1}$의 볼록성 도출 → 매칭 없음 (사실88 필요)\n6. $-\\frac{1}{7}\\cdot 2^{n-x}$ 위로 볼록 → 사실84 + 사실88(변수 일차변환) + 사실89(양의 상수배) + 사실87(부호 반전) 조합 필요, 사실88·사실89 없음\n7. $g = f - y_1$ 위로 볼록 → 사실90(같은 볼록성 합) 필요, 없음\n8. $-g$ 아래로 볼록이고 두 영점 → 사실87 + 사실85(볼록함수와 직선 교점 사이 대소) 매칭\n9. $g(0)\\geq 0 \\iff x_A \\leq 0 \\leq x_B$ (y축과 만남 조건) → 사실85 적용 매칭\n10. $g(3)<0 \\iff x_B<3$ (x축과 안 만남 조건) → 사실85 적용 매칭\n11. 조건을 $a$에 대한 부등식으로 변환 → 전략2(연립) 매칭\n12. 구간이 비지 않을 조건 $2^{n-3}<3.5$ → 부등식 정리, 전략17(전수조사) 매칭\n13. 상한 $\\frac{2^{n-3}}{7}<1$에서 정수 최댓값 $a=0$ → 사실19, 전략25 매칭\n14. 정수 $a$ 개수 3 → $a=0,-1,-2$ 조건 → 전략25 매칭\n15. $-3 < \\frac{2^n}{7}-\\frac{7}{2} \\leq -2$ → $3.5<2^n\\leq 10.5$ → $n=2,3$ → 전략17 매칭\n16. 교점 검증: $t=2^x$ 치환 → 전략1(지수 치환) 매칭\n17. 이차방정식 판별식 > 0 확인 → 사실79 매칭\n18. 근의 합 > 0 확인 → 사실78 매칭\n19. $t=2^x>0$ → 사실1 매칭",
+    "previous_analysis": "",
+    "previous_matching": "1. g(0)=-7/2, g(3)=0 계산 → 전략25 매칭\n2. g 순증가 → 사실5, 사실41 매칭\n3. f 순증가 → 사실5, 사실42, 사실40, 사실41 매칭\n4. f→a (x→∞) → 사실46 매칭\n5. f→-∞ (x→-∞) → 사실21 매칭\n6. 2^x 아래로 볼록 → 사실84 매칭\n7. 2^{x-1} 아래로 볼록 → 사실88 매칭\n8. 2^{n-x} 아래로 볼록 → 사실88 매칭\n9. (1/7)·2^{n-x} 아래로 볼록 → 사실89 매칭\n10. -(1/7)·2^{n-x} 위로 볼록 → 사실87 매칭\n11. -2^{x-1} 위로 볼록 → 사실87 매칭\n12. h = f-g 위로 볼록 → 사실90 매칭\n13. 위로 볼록인 h의 두 영점 사이에서 h≥0 → 사실85 매칭\n14. h(0)≥0 → x_A≤0≤x_B → 사실85 매칭\n15. x_A≤0, g 순증가, g(0)<0 → y_A<0 → 사실51 매칭\n16. h(3)<0 → x_B<3 → 사실85 매칭\n17. x_B<3, g 순증가, g(3)=0 → y_B<0 → 사실51 매칭\n18. f(0)≥-7/2, f(3)<0 → a의 부등식 → 전략25 매칭\n19. 연립부등식 → 전략2 매칭\n20. 구간 비어있지 않을 조건 → 연산21 매칭\n21. n≤4 판정 → 사실5 매칭\n22. 상한<1 → 정수 최대값 0 → 전략25 매칭\n23. 정수 개수 3 → 하한 조건 → 전략10 매칭\n24. 3.5<2^n≤10.5 → n=2,3 → 전략17 매칭\n25. t=2^x 치환 → 전략1 매칭\n26. 판별식 확인 → 사실79 매칭\n27. 근과 계수 확인 → 사실78 매칭\n28. t>0 → 사실1 매칭\n29. 합 2+3=5 → 전략25 매칭",
     "previous_matched": [
       "사실1",
       "사실5",
-      "사실19",
+      "사실21",
       "사실40",
       "사실41",
       "사실42",
       "사실46",
+      "사실51",
       "사실78",
       "사실79",
       "사실84",
       "사실85",
       "사실87",
-      "연산18",
+      "사실88",
+      "사실89",
+      "사실90",
+      "연산21",
       "전략1",
       "전략2",
-      "전략5",
+      "전략10",
       "전략17",
       "전략25"
     ],
-    "previous_skeleton": [],
-    "previous_solution": "",
-    "previous_clues": "[{\"id\":\"단서A\",\"text\":\"$y_1 = 2^{x-1} - 4$\"},{\"id\":\"단서B\",\"text\":\"$y_2 = f(x) = -\\\\dfrac{1}{7} \\\\cdot 2^{n-x} + a$\"},{\"id\":\"단서C\",\"text\":\"두 곡선 $y_1$, $y_2$가 서로 다른 두 점 A, B에서 만난다\"},{\"id\":\"단서D\",\"text\":\"선분 AB가 $x$축과 만나지 않으면서 $y$축과 만나도록 하는 정수 $a$의 개수가 3이다\"},{\"id\":\"단서E\",\"text\":\"$n$은 자연수이다\"}]",
-    "previous_new_neurons": [
-      {
-        "id": "사실88",
-        "type": "fact",
-        "statement": "볼록성(아래로 볼록/위로 볼록)은 변수의 일차변환 $x \\mapsto ax+b$에 의해 보존된다. 즉 $f(x)$가 아래로 볼록(위로 볼록)이면 $f(ax+b)$도 아래로 볼록(위로 볼록)이다.",
-        "reason": "$2^x$가 아래로 볼록(사실84)임을 이용하여 $2^{x-1}$과 $2^{n-x}$의 볼록성을 도출해야 하는데, 변수 일차변환이 볼록성을 보존한다는 뉴런이 없어 진행 불가",
-        "blocked_edge": "note11 → note12 ($2^x$ 아래로 볼록에서 $2^{x-1}$ 아래로 볼록, $2^{n-x}$ 아래로 볼록 도출)"
-      },
-      {
-        "id": "사실89",
-        "type": "fact",
-        "statement": "볼록성은 양의 상수배에 의해 보존된다. $f(x)$가 아래로 볼록(위로 볼록)이고 $c>0$이면 $c \\cdot f(x)$도 아래로 볼록(위로 볼록)이다.",
-        "reason": "$2^{n-x}$가 아래로 볼록임을 알아도 $\\frac{1}{7} \\cdot 2^{n-x}$의 볼록성을 도출하려면 양의 상수배가 볼록성을 보존한다는 뉴런이 필요",
-        "blocked_edge": "note13 → note14 ($2^{n-x}$ 아래로 볼록에서 $\\frac{1}{7} \\cdot 2^{n-x}$ 아래로 볼록 도출)"
-      },
-      {
-        "id": "사실90",
-        "type": "fact",
-        "statement": "같은 볼록성을 가진 두 연속함수의 합도 같은 볼록성을 가진다. 아래로 볼록 + 아래로 볼록 = 아래로 볼록, 위로 볼록 + 위로 볼록 = 위로 볼록이다.",
-        "reason": "$g(x) = f(x) - y_1(x)$에서 $f$는 위로 볼록이고 $-y_1$도 위로 볼록(사실87)이므로 $g$가 위로 볼록임을 도출하려면 같은 볼록성의 합이 보존된다는 뉴런이 필요. 이것이 없으면 사실85를 적용할 $g$의 볼록성을 확립할 수 없음",
-        "blocked_edge": "note16 → note17 ($f$ 위로 볼록, $-y_1$ 위로 볼록에서 $g = f - y_1$ 위로 볼록 도출)"
-      }
-    ],
-    "previous_partial_skeleton": [
+    "previous_skeleton": [
       {
         "from": "단서A",
         "to": "note1",
-        "neuron": "사실5",
-        "note": "$2^x$는 $2>1$일 때 순증가이다",
-        "main": false,
+        "neuron": "전략25",
+        "note": "$g(0) = 2^{-1} - 4 = -\\dfrac{7}{2}$이다",
         "step": 1
       },
       {
-        "from": "note1",
+        "from": "단서A",
         "to": "note2",
+        "neuron": "전략25",
+        "note": "$g(3) = 2^2 - 4 = 0$이다",
+        "step": 1
+      },
+      {
+        "from": "단서A",
+        "to": "note3",
+        "neuron": "사실5",
+        "note": "$2 > 1$이므로 $2^x$는 순증가이다",
+        "main": false,
+        "step": 2
+      },
+      {
+        "from": "note3",
+        "to": "note4",
         "neuron": "사실41",
         "note": "$2^{x-1}$은 순증가이다",
         "main": false,
-        "step": 1
+        "step": 2
       },
       {
-        "from": "note2",
-        "to": "note3",
-        "neuron": "사실41",
-        "note": "$y_1 = 2^{x-1}-4$는 순증가이다",
-        "main": false,
-        "step": 1
-      },
-      {
-        "from": "단서A",
-        "to": "note4",
-        "neuron": "전략25",
-        "note": "$y_1(0) = 2^{-1}-4 = -\\dfrac{7}{2}$이다",
-        "step": 1
-      },
-      {
-        "from": "단서A",
+        "from": "note4",
         "to": "note5",
-        "neuron": "전략25",
-        "note": "$y_1(3) = 2^2-4 = 0$이다",
-        "step": 1
+        "neuron": "사실41",
+        "note": "$g(x) = 2^{x-1} - 4$는 순증가이다",
+        "main": false,
+        "step": 2
       },
       {
-        "from": "단서B",
+        "from": "note3",
         "to": "note6",
-        "neuron": "사실5",
-        "note": "$2^x$는 순증가이다",
+        "neuron": "사실42",
+        "note": "$2^{-x}$는 순감소이다",
         "main": false,
-        "step": 1
+        "step": 2
       },
       {
         "from": "note6",
         "to": "note7",
-        "neuron": "사실42",
-        "note": "$2^{-x}$는 순감소이다",
+        "neuron": "사실41",
+        "note": "$2^{n-x}$는 순감소이다",
         "main": false,
-        "step": 1
+        "step": 2
       },
       {
         "from": "note7",
         "to": "note8",
-        "neuron": "사실41",
-        "note": "$2^{n-x}$는 순감소이다",
+        "neuron": "사실40",
+        "note": "$-\\dfrac{1}{7} \\cdot 2^{n-x}$는 순증가이다",
         "main": false,
-        "step": 1
+        "step": 2
       },
       {
         "from": "note8",
         "to": "note9",
-        "neuron": "사실40",
-        "note": "$-\\dfrac{1}{7}\\cdot 2^{n-x}$는 순증가이다",
+        "neuron": "사실41",
+        "note": "$f(x) = -\\dfrac{1}{7} \\cdot 2^{n-x} + a$는 순증가이다",
         "main": false,
-        "step": 1
+        "step": 2
       },
       {
-        "from": "note9",
+        "from": "단서B",
         "to": "note10",
-        "neuron": "사실41",
-        "note": "$f(x) = -\\dfrac{1}{7}\\cdot 2^{n-x}+a$는 순증가이다",
+        "neuron": "사실46",
+        "note": "$x \\to +\\infty$일 때 $2^{n-x} \\to 0$이고 $f(x) \\to a$이다",
         "main": false,
-        "step": 1
+        "step": 2
+      },
+      {
+        "from": "단서B",
+        "to": "note11",
+        "neuron": "사실21",
+        "note": "$x \\to -\\infty$일 때 $2^{n-x} \\to \\infty$이고 $f(x) \\to -\\infty$이다",
+        "main": false,
+        "step": 2
       },
       {
         "from": "단서A",
-        "to": "note11",
+        "to": "note12",
         "neuron": "사실84",
         "note": "$2^x$는 아래로 볼록이다",
         "main": false,
-        "step": 1
+        "step": 3
+      },
+      {
+        "from": "note12",
+        "to": "note13",
+        "neuron": "사실88",
+        "note": "$2^{x-1}$은 아래로 볼록이다",
+        "main": false,
+        "step": 3
+      },
+      {
+        "from": "note13",
+        "to": "note14",
+        "neuron": "사실87",
+        "note": "$-2^{x-1}$은 위로 볼록이다",
+        "main": false,
+        "step": 3
+      },
+      {
+        "from": "note12",
+        "to": "note15",
+        "neuron": "사실88",
+        "note": "$2^{n-x}$는 아래로 볼록이다",
+        "main": false,
+        "step": 3
+      },
+      {
+        "from": "note15",
+        "to": "note16",
+        "neuron": "사실89",
+        "note": "$\\dfrac{1}{7} \\cdot 2^{n-x}$는 아래로 볼록이다",
+        "main": false,
+        "step": 3
+      },
+      {
+        "from": "note16",
+        "to": "note17",
+        "neuron": "사실87",
+        "note": "$-\\dfrac{1}{7} \\cdot 2^{n-x}$는 위로 볼록이다",
+        "main": false,
+        "step": 3
+      },
+      {
+        "from": [
+          "note14",
+          "note17"
+        ],
+        "to": "note18",
+        "neuron": "사실90",
+        "note": "$h(x) = f(x) - g(x) = -\\dfrac{1}{7} \\cdot 2^{n-x} - 2^{x-1} + (a+4)$는 위로 볼록이다",
+        "step": 3
+      },
+      {
+        "from": [
+          "note18",
+          "단서C"
+        ],
+        "to": "note19",
+        "neuron": "사실85",
+        "note": "$h$가 위로 볼록이고 두 영점 $x_A < x_B$를 가지면, $[x_A, x_B]$에서 $h \\geq 0$이고 밖에서 $h < 0$이다",
+        "step": 3
+      },
+      {
+        "from": "note19",
+        "to": "note20",
+        "neuron": "사실85",
+        "note": "$h(0) \\geq 0$이면 $0 \\in [x_A, x_B]$이고 $x_A \\leq 0 \\leq x_B$이다",
+        "step": 4
+      },
+      {
+        "from": [
+          "note20",
+          "note1",
+          "note5"
+        ],
+        "to": "note21",
+        "neuron": "사실51",
+        "note": "$x_A \\leq 0$이고 $g$가 순증가이면 $y_A = g(x_A) \\leq g(0) = -\\dfrac{7}{2} < 0$이다",
+        "main": false,
+        "step": 4
+      },
+      {
+        "from": "note19",
+        "to": "note22",
+        "neuron": "사실85",
+        "note": "$h(3) < 0$이면 $3 \\notin [x_A, x_B]$이고 $x_B < 3$이다",
+        "step": 5
+      },
+      {
+        "from": [
+          "note22",
+          "note2",
+          "note5"
+        ],
+        "to": "note23",
+        "neuron": "사실51",
+        "note": "$x_B < 3$이고 $g$가 순증가이면 $y_B = g(x_B) < g(3) = 0$이다",
+        "main": false,
+        "step": 5
+      },
+      {
+        "from": [
+          "note21",
+          "note23"
+        ],
+        "to": "note24",
+        "neuron": "전략25",
+        "note": "$y_A < 0$이고 $y_B < 0$이므로 선분 AB는 $x$축과 만나지 않는다",
+        "main": false,
+        "step": 5
+      },
+      {
+        "from": [
+          "note20",
+          "note1"
+        ],
+        "to": "note25",
+        "neuron": "전략25",
+        "note": "$h(0) \\geq 0$에서 $-\\dfrac{1}{7} \\cdot 2^n + a \\geq -\\dfrac{7}{2}$이고 $a \\geq \\dfrac{1}{7} \\cdot 2^n - \\dfrac{7}{2}$이다",
+        "step": 6
+      },
+      {
+        "from": [
+          "note22",
+          "note2"
+        ],
+        "to": "note26",
+        "neuron": "전략25",
+        "note": "$h(3) < 0$에서 $-\\dfrac{1}{7} \\cdot 2^{n-3} + a < 0$이고 $a < \\dfrac{1}{7} \\cdot 2^{n-3}$이다",
+        "step": 6
+      },
+      {
+        "from": [
+          "note25",
+          "note26"
+        ],
+        "to": "note27",
+        "neuron": "전략2",
+        "note": "$\\dfrac{1}{7} \\cdot 2^n - \\dfrac{7}{2} \\leq a < \\dfrac{1}{7} \\cdot 2^{n-3}$이다",
+        "step": 6
+      },
+      {
+        "from": "note27",
+        "to": "note28",
+        "neuron": "연산21",
+        "note": "구간이 비어 있지 않을 조건은 $2^{n-3} < \\dfrac{7}{2}$이다",
+        "step": 7
+      },
+      {
+        "from": "note28",
+        "to": "note29",
+        "neuron": "사실5",
+        "note": "$2^1 = 2 < \\dfrac{7}{2} < 4 = 2^2$이고 $n$이 자연수이면 $n \\leq 4$이다",
+        "step": 7
+      },
+      {
+        "from": [
+          "note29",
+          "note27"
+        ],
+        "to": "note30",
+        "neuron": "전략25",
+        "note": "$n \\leq 4$일 때 $\\dfrac{1}{7} \\cdot 2^{n-3}$의 최댓값은 $\\dfrac{2}{7} < 1$이므로 정수 $a$의 최댓값은 $0$이다",
+        "step": 7
+      },
+      {
+        "from": [
+          "note30",
+          "단서D"
+        ],
+        "to": "note31",
+        "neuron": "전략10",
+        "note": "정수 $a$가 정확히 3개이면 $a \\in \\{0, -1, -2\\}$이고 $a = -3$은 불포함이다",
+        "step": 8
+      },
+      {
+        "from": [
+          "note31",
+          "note27"
+        ],
+        "to": "note32",
+        "neuron": "전략2",
+        "note": "$-2$가 하한 이상이고 $-3$이 하한 미만인 조건은 $-3 < \\dfrac{1}{7} \\cdot 2^n - \\dfrac{7}{2} \\leq -2$이다",
+        "step": 8
+      },
+      {
+        "from": "note32",
+        "to": "note33",
+        "neuron": "연산21",
+        "note": "$\\dfrac{7}{2} < 2^n \\leq \\dfrac{21}{2}$이다",
+        "step": 8
+      },
+      {
+        "from": "note33",
+        "to": "note34",
+        "neuron": "전략17",
+        "note": "$n$이 자연수일 때 $2^n \\in \\{4, 8\\}$이고 $n \\in \\{2, 3\\}$이다",
+        "step": 8
+      },
+      {
+        "from": [
+          "note34",
+          "단서A",
+          "단서B"
+        ],
+        "to": "note35",
+        "neuron": "전략1",
+        "note": "$t = 2^x > 0$으로 치환하면 $7t^2 - 14(4+a)t + 2^{n+1} = 0$이다",
+        "main": false,
+        "step": 9
+      },
+      {
+        "from": "note35",
+        "to": "note36",
+        "neuron": "사실79",
+        "note": "$a \\in \\{-2,-1,0\\}$, $n \\in \\{2,3\\}$일 때 판별식이 양수이다",
+        "main": false,
+        "step": 9
+      },
+      {
+        "from": "note35",
+        "to": "note37",
+        "neuron": "사실78",
+        "note": "근의 합 $= 2(4+a) > 0$이고 근의 곱 $= \\dfrac{2^{n+1}}{7} > 0$이다",
+        "main": false,
+        "step": 9
+      },
+      {
+        "from": [
+          "note36",
+          "note37"
+        ],
+        "to": "note38",
+        "neuron": "사실1",
+        "note": "두 근 모두 양수이고 서로 다르므로 두 곡선은 서로 다른 두 점에서 만난다",
+        "main": false,
+        "step": 9
+      },
+      {
+        "from": "note34",
+        "to": "END",
+        "neuron": "전략25",
+        "note": "모든 자연수 $n$의 값의 합은 $2 + 3 = 5$이다",
+        "step": 10
       }
     ],
-    "previous_blockage_point": "note11에서 '$2^{x-1}$은 아래로 볼록이다'로 가려는데, 볼록성이 변수의 일차변환($x \\mapsto x-1$)에 의해 보존된다는 뉴런(사실88)이 없음. 이후 '$2^{n-x}$은 아래로 볼록이다', '$\\frac{1}{7}\\cdot 2^{n-x}$ 아래로 볼록' (사실89 필요), '$g = f - y_1$ 위로 볼록' (사실90 필요) 순서로 모두 차단됨.",
+    "previous_solution": "STEP 1. $g(x) = 2^{x-1} - 4$에 $x = 0$, $x = 3$을 대입하면 $g(0) = -\\dfrac{7}{2}$, $g(3) = 0$이다.\n\nSTEP 2. $g$는 순증가함수이고, $f(x) = -\\dfrac{1}{7} \\cdot 2^{n-x} + a$도 순증가함수이다. $x \\to +\\infty$일 때 $f(x) \\to a$이다.\n\nSTEP 3. $h(x) = f(x) - g(x) = -\\dfrac{1}{7} \\cdot 2^{n-x} - 2^{x-1} + (a+4)$는 위로 볼록이다. $h$가 두 영점 $x_A < x_B$를 가지면, 사실85에 의해 $[x_A, x_B]$에서 $h \\geq 0$이고 밖에서 $h < 0$이다.\n\nSTEP 4. $h(0) \\geq 0$이면 $0 \\in [x_A, x_B]$이므로 $x_A \\leq 0 \\leq x_B$이고, 선분 AB는 $y$축과 만난다. 이때 $y_A = g(x_A) \\leq g(0) = -\\dfrac{7}{2} < 0$이다.\n\nSTEP 5. $h(3) < 0$이면 $x_B < 3$이고, $y_B = g(x_B) < g(3) = 0$이다. 두 교점 모두 $y < 0$에 있으므로 선분 AB는 $x$축과 만나지 않는다.\n\nSTEP 6. 조건 $h(0) \\geq 0$과 $h(3) < 0$을 정리하면 $\\dfrac{1}{7} \\cdot 2^n - \\dfrac{7}{2} \\leq a < \\dfrac{1}{7} \\cdot 2^{n-3}$이다.\n\nSTEP 7. 구간이 비어 있지 않으려면 $2^{n-3} < \\dfrac{7}{2}$이고 $n$이 자연수이면 $n \\leq 4$이다. 이때 $\\dfrac{1}{7} \\cdot 2^{n-3}$의 최댓값은 $\\dfrac{2}{7} < 1$이므로 정수 $a$의 최댓값은 $0$이다.\n\nSTEP 8. 정수 $a$가 정확히 3개이면 $a \\in \\{0, -1, -2\\}$이고 $a = -3$은 불포함이어야 한다. 이를 정리하면 $-3 < \\dfrac{1}{7} \\cdot 2^n - \\dfrac{7}{2} \\leq -2$이고, $\\dfrac{7}{2} < 2^n \\leq \\dfrac{21}{2}$에서 $n = 2$ 또는 $n = 3$이다.\n\nSTEP 9. $t = 2^x > 0$ 치환으로 이차방정식 $7t^2 - 14(4+a)t + 2^{n+1} = 0$을 얻어 검증하면, $a \\in \\{-2, -1, 0\\}$, $n \\in \\{2, 3\\}$의 모든 경우에서 서로 다른 두 양의 근이 존재한다.\n\nSTEP 10. 모든 자연수 $n$의 값의 합은 $2 + 3 = 5$이다.",
+    "previous_clues": "[{\"id\":\"단서A\",\"text\":\"$g(x) = 2^{x-1} - 4$ (첫 번째 곡선)\"},{\"id\":\"단서B\",\"text\":\"$f(x) = -\\\\dfrac{1}{7} \\\\times 2^{n-x} + a$ (두 번째 곡선, $n$은 자연수)\"},{\"id\":\"단서C\",\"text\":\"두 곡선이 서로 다른 두 점 A, B에서 만난다\"},{\"id\":\"단서D\",\"text\":\"선분 AB가 $x$축과 만나지 않으면서 $y$축과 만나도록 하는 정수 $a$의 개수가 3이다\"}]",
+    "previous_new_neurons": [],
+    "previous_partial_skeleton": [],
+    "previous_blockage_point": "",
     "previous_dna_nodes": [
       {
         "id": "top",
         "dna": "Q3",
-        "label": "n값의 합",
-        "category": "발문"
-      },
-      {
-        "id": "ask_sum",
-        "dna": "E1",
         "label": "모든 n의 합",
-        "category": "수식"
-      },
-      {
-        "id": "conds",
-        "dna": "S1",
-        "label": "전체 조건",
-        "category": "구조"
+        "category": "발문"
       },
       {
         "id": "vn",
@@ -211,25 +435,25 @@
         "category": "말단"
       },
       {
-        "id": "c3",
+        "id": "c3_val",
         "dna": "T2",
         "label": "상수 3",
         "category": "말단"
       },
       {
-        "id": "cn1",
+        "id": "cm1",
         "dna": "T2",
         "label": "상수 -1",
         "category": "말단"
       },
       {
-        "id": "n_natural",
+        "id": "ln_n",
         "dna": "L3",
         "label": "n은 자연수",
         "category": "제한"
       },
       {
-        "id": "a_integer",
+        "id": "ln_a",
         "dna": "L3",
         "label": "a는 정수",
         "category": "제한"
@@ -249,29 +473,29 @@
       {
         "id": "crv1_c1",
         "dna": "C1",
-        "label": "y=2^{x-1}-4",
+        "label": "y=2^(x-1)-4",
         "category": "조건"
       },
       {
-        "id": "crv1_rhs",
+        "id": "crv1_sum",
         "dna": "E1",
-        "label": "지수항+(-4)",
+        "label": "합(지수,-4)",
         "category": "수식"
       },
       {
         "id": "crv1_exp",
         "dna": "E4",
-        "label": "2^{x-1}",
+        "label": "2^(x-1)",
         "category": "수식"
       },
       {
         "id": "crv1_exp_inner",
         "dna": "E1",
-        "label": "x+(-1)",
+        "label": "합(x,-1)",
         "category": "수식"
       },
       {
-        "id": "crv1_neg4",
+        "id": "neg4",
         "dna": "E2",
         "label": "부호반전(4)",
         "category": "수식"
@@ -291,50 +515,62 @@
       {
         "id": "crv2_c1",
         "dna": "C1",
-        "label": "y=-1/7×2^{n-x}+a",
+        "label": "y=-(1/7)·2^(n-x)+a",
         "category": "조건"
       },
       {
-        "id": "crv2_rhs",
+        "id": "crv2_sum",
         "dna": "E1",
-        "label": "(-1/7×지수)+a",
+        "label": "합(항,a)",
         "category": "수식"
       },
       {
         "id": "crv2_neg_term",
         "dna": "E2",
-        "label": "부호반전(곱항)",
+        "label": "부호반전(곱)",
         "category": "수식"
       },
       {
         "id": "crv2_prod",
         "dna": "E6",
-        "label": "1/7×2^{n-x}",
+        "label": "곱(1/7,지수)",
         "category": "수식"
       },
       {
-        "id": "crv2_inv7",
+        "id": "c7inv",
         "dna": "E7",
-        "label": "7^{-1}",
+        "label": "7의 역수(거듭제곱)",
         "category": "수식"
       },
       {
         "id": "crv2_exp",
         "dna": "E4",
-        "label": "2^{n-x}",
+        "label": "2^(n-x)",
         "category": "수식"
       },
       {
         "id": "crv2_exp_inner",
         "dna": "E1",
-        "label": "n+(-x)",
+        "label": "합(n,-x)",
         "category": "수식"
       },
       {
-        "id": "crv2_negx",
+        "id": "neg_x",
         "dna": "E2",
         "label": "부호반전(x)",
         "category": "수식"
+      },
+      {
+        "id": "meet_ab",
+        "dna": "C3",
+        "label": "두 곡선 만남",
+        "category": "조건"
+      },
+      {
+        "id": "diff2",
+        "dna": "C4",
+        "label": "서로 다른 두 점",
+        "category": "조건"
       },
       {
         "id": "pt_a",
@@ -347,18 +583,6 @@
         "dna": "G1",
         "label": "점 B",
         "category": "기하"
-      },
-      {
-        "id": "meet_cond",
-        "dna": "C3",
-        "label": "두 곡선 교점",
-        "category": "조건"
-      },
-      {
-        "id": "diff2",
-        "dna": "C4",
-        "label": "서로 다른 두 점",
-        "category": "조건"
       },
       {
         "id": "seg_ab",
@@ -379,68 +603,54 @@
         "category": "기하"
       },
       {
-        "id": "not_meet_xaxis",
-        "dna": "X4",
-        "label": "x축과 안 만남",
-        "category": "존재"
+        "id": "no_meet_x",
+        "dna": "C20",
+        "label": "선분AB x축불만남",
+        "category": "조건"
       },
       {
-        "id": "meet_yaxis",
+        "id": "meet_y",
         "dna": "C3",
-        "label": "y축과 만남",
+        "label": "선분AB y축만남",
         "category": "조건"
       },
       {
         "id": "cnt_cond",
-        "dna": "C9",
-        "label": "정수 a 개수=3",
+        "dna": "X4",
+        "label": "정수a개수=3",
+        "category": "존재"
+      },
+      {
+        "id": "sum_cond",
+        "dna": "C19",
+        "label": "n의합 조건",
         "category": "조건"
       }
     ],
     "previous_dna_edges": [
       {
-        "from": "ask_sum",
-        "to": "top"
-      },
-      {
-        "from": "conds",
-        "to": "top"
-      },
-      {
-        "from": "vn",
-        "to": "ask_sum"
-      },
-      {
-        "from": "n_natural",
+        "from": "ln_n",
         "to": "vn"
       },
       {
-        "from": "a_integer",
+        "from": "ln_a",
         "to": "va"
       },
       {
-        "from": "crv1_eq",
-        "to": "crv1"
-      },
-      {
-        "from": "crv1_c1",
-        "to": "crv1_eq"
-      },
-      {
-        "from": "crv1_rhs",
-        "to": "crv1_c1"
-      },
-      {
-        "from": "crv1_exp",
-        "to": "crv1_rhs"
-      },
-      {
-        "from": "crv1_neg4",
-        "to": "crv1_rhs"
-      },
-      {
         "from": "c4",
-        "to": "crv1_neg4"
+        "to": "neg4"
+      },
+      {
+        "from": "neg4",
+        "to": "crv1_sum"
+      },
+      {
+        "from": "vx",
+        "to": "crv1_exp_inner"
+      },
+      {
+        "from": "cm1",
+        "to": "crv1_exp_inner"
       },
       {
         "from": "c2",
@@ -451,52 +661,32 @@
         "to": "crv1_exp"
       },
       {
+        "from": "crv1_exp",
+        "to": "crv1_sum"
+      },
+      {
+        "from": "crv1_sum",
+        "to": "crv1_c1"
+      },
+      {
+        "from": "crv1_c1",
+        "to": "crv1_eq"
+      },
+      {
+        "from": "crv1_eq",
+        "to": "crv1"
+      },
+      {
         "from": "vx",
-        "to": "crv1_exp_inner"
+        "to": "neg_x"
       },
       {
-        "from": "cn1",
-        "to": "crv1_exp_inner"
+        "from": "neg_x",
+        "to": "crv2_exp_inner"
       },
       {
-        "from": "crv2_eq",
-        "to": "crv2"
-      },
-      {
-        "from": "crv2_c1",
-        "to": "crv2_eq"
-      },
-      {
-        "from": "crv2_rhs",
-        "to": "crv2_c1"
-      },
-      {
-        "from": "crv2_neg_term",
-        "to": "crv2_rhs"
-      },
-      {
-        "from": "va",
-        "to": "crv2_rhs"
-      },
-      {
-        "from": "crv2_prod",
-        "to": "crv2_neg_term"
-      },
-      {
-        "from": "crv2_inv7",
-        "to": "crv2_prod"
-      },
-      {
-        "from": "c7",
-        "to": "crv2_inv7"
-      },
-      {
-        "from": "cn1",
-        "to": "crv2_inv7"
-      },
-      {
-        "from": "crv2_exp",
-        "to": "crv2_prod"
+        "from": "vn",
+        "to": "crv2_exp_inner"
       },
       {
         "from": "c2",
@@ -507,40 +697,64 @@
         "to": "crv2_exp"
       },
       {
-        "from": "vn",
-        "to": "crv2_exp_inner"
+        "from": "c7",
+        "to": "c7inv"
       },
       {
-        "from": "crv2_negx",
-        "to": "crv2_exp_inner"
+        "from": "cm1",
+        "to": "c7inv"
       },
       {
-        "from": "vx",
-        "to": "crv2_negx"
+        "from": "c7inv",
+        "to": "crv2_prod"
+      },
+      {
+        "from": "crv2_exp",
+        "to": "crv2_prod"
+      },
+      {
+        "from": "crv2_prod",
+        "to": "crv2_neg_term"
+      },
+      {
+        "from": "crv2_neg_term",
+        "to": "crv2_sum"
+      },
+      {
+        "from": "va",
+        "to": "crv2_sum"
+      },
+      {
+        "from": "crv2_sum",
+        "to": "crv2_c1"
+      },
+      {
+        "from": "crv2_c1",
+        "to": "crv2_eq"
+      },
+      {
+        "from": "crv2_eq",
+        "to": "crv2"
       },
       {
         "from": "crv1",
-        "to": "meet_cond"
+        "to": "meet_ab"
       },
       {
         "from": "crv2",
-        "to": "meet_cond"
+        "to": "meet_ab"
       },
       {
         "from": "pt_a",
-        "to": "meet_cond"
+        "to": "meet_ab"
       },
       {
         "from": "pt_b",
-        "to": "meet_cond"
+        "to": "meet_ab"
       },
       {
         "from": "diff2",
-        "to": "meet_cond"
-      },
-      {
-        "from": "meet_cond",
-        "to": "conds"
+        "to": "meet_ab"
       },
       {
         "from": "pt_a",
@@ -552,45 +766,53 @@
       },
       {
         "from": "seg_ab",
-        "to": "not_meet_xaxis"
+        "to": "no_meet_x"
       },
       {
         "from": "xaxis",
-        "to": "not_meet_xaxis"
-      },
-      {
-        "from": "not_meet_xaxis",
-        "to": "conds"
+        "to": "no_meet_x"
       },
       {
         "from": "seg_ab",
-        "to": "meet_yaxis"
+        "to": "meet_y"
       },
       {
         "from": "yaxis",
-        "to": "meet_yaxis"
+        "to": "meet_y"
       },
       {
-        "from": "meet_yaxis",
-        "to": "conds"
+        "from": "no_meet_x",
+        "to": "cnt_cond"
+      },
+      {
+        "from": "meet_y",
+        "to": "cnt_cond"
       },
       {
         "from": "va",
         "to": "cnt_cond"
       },
       {
-        "from": "c3",
+        "from": "c3_val",
         "to": "cnt_cond"
       },
       {
-        "from": "cnt_cond",
-        "to": "conds"
+        "from": "meet_ab",
+        "to": "sum_cond"
       },
       {
-        "from": "c1",
-        "to": "crv1_exp_inner"
+        "from": "cnt_cond",
+        "to": "sum_cond"
+      },
+      {
+        "from": "vn",
+        "to": "sum_cond"
+      },
+      {
+        "from": "sum_cond",
+        "to": "top"
       }
     ],
-    "created_at": "2026-03-23T15:27:11.139Z"
+    "created_at": "2026-03-23T16:01:10.236Z"
   }
 ]
