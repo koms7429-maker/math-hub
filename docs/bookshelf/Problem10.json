@@ -349,23 +349,23 @@
     "_version": 6,
     "_unit": "note",
     "_isV6": true,
-    "total_think_tokens": 7749,
+    "total_think_tokens": 5011,
     "total_notes": 24,
     "hint_distribution": {
-      "0": 18,
-      "1": 0,
-      "2": 3,
-      "3": 0,
-      "4": 3
+      "0": 20,
+      "1": 1,
+      "2": 1,
+      "3": 1,
+      "4": 1
     },
-    "avg_hint_level": 0.75,
+    "avg_hint_level": 0.42,
     "genuine_miss_count": 0,
-    "absorbed_miss_count": 3,
-    "bonus_count": 18,
+    "absorbed_miss_count": 1,
+    "bonus_count": 19,
     "highlight_notes": [
       "note3",
-      "note9",
-      "note29"
+      "note29",
+      "note4"
     ],
     "hardest_note": {
       "note_id": "note3",
@@ -379,13 +379,13 @@
       "사실41": {
         "type": "사실",
         "appearances": 2,
-        "total_hint": 8,
+        "total_hint": 4,
         "hint_levels": [
           4,
-          4
+          0
         ],
-        "bonus_count": 0,
-        "avg_hint_level": 4
+        "bonus_count": 1,
+        "avg_hint_level": 2
       },
       "전략25": {
         "type": "전략",
@@ -403,24 +403,24 @@
       "사실51": {
         "type": "사실",
         "appearances": 2,
-        "total_hint": 4,
+        "total_hint": 3,
         "hint_levels": [
           0,
-          4
+          3
         ],
         "bonus_count": 1,
-        "avg_hint_level": 2
+        "avg_hint_level": 1.5
       },
       "사실90": {
         "type": "사실",
         "appearances": 2,
-        "total_hint": 4,
+        "total_hint": 1,
         "hint_levels": [
-          2,
-          2
+          1,
+          0
         ],
         "bonus_count": 0,
-        "avg_hint_level": 2
+        "avg_hint_level": 0.5
       },
       "사실85": {
         "type": "사실",
@@ -497,216 +497,221 @@
         "structural_difficulty": 0.12,
         "discovered_in_target": "note3",
         "miss_type": "absorbed",
-        "absorbed_in": "note3/시도0",
-        "absorb_reason": "f(x)=2^(x-1)-4가 순증가임을 전제로 x_A<0일 때 f(x_A)<0임을 사용하고 있음",
+        "absorbed_in": "note4/시도4",
+        "absorb_reason": "f(x)=2^{x-1}-4가 순증가임은 note4/시도1에서 g(x)의 단조성과 함께 다루어지고, note4/시도4에서 f(x)의 y절편 계산 등 f(x)의 성질을 직접 활용하고 있으나, 'f(x)가 순증가'라는 핵심 결론은 note4/시도3에서 두 함수 모두 순증가임을 명시적으로 서술하고 있다",
         "partial_history": [],
         "attempts": [
           {
             "attempt": 0,
-            "think_tokens": 352,
-            "discover_elapsed_ms": 19777,
-            "match_elapsed_ms": 3655,
+            "think_tokens": 70,
+            "discover_elapsed_ms": 6780,
+            "match_elapsed_ms": 6042,
             "discover_input_tokens": 736,
-            "discover_output_tokens": 1537,
-            "match_input_tokens": 2070,
-            "match_output_tokens": 120,
-            "claude_output": "[시도] 내가 해볼 것: 두 교점 A, B의 x좌표가 y축(x=0)을 사이에 두는 조건 구하기\n\n[계산]\n두 곡선의 교점에서: $2^{x-1} - 4 = -\\dfrac{1}{7} \\times 2^{n-x} + a$\n\n$t = 2^x > 0$으로 치환하면:\n$$\\frac{t}{2} - 4 = -\\frac{2^n}{7t} + a$$\n\n양변에 $14t$를 곱하면:\n$$7t^2 - (56 + 14a)t + 2^{n+1} = 0$$\n\n선분 AB가 **y축과 만나려면** $x_A < 0 < x_B$, 즉 $2^{x_A} < 1 < 2^{x_B}$이어야 하므로, 위 이차방정식의 두 근 $t_1, t_2$ 중 **하나는 1보다 작고 하나는 1보다 커야** 합니다.\n\n$f(t) = 7t^2 - (56+14a)t + 2^{n+1}$이라 하면:\n$$f(1) < 0 \\iff 7 - (56+14a) + 2^{n+1} < 0 \\iff 2^{n+1} < 49 + 14a$$\n\n[결론] 선분 AB가 y축과 만나는",
+            "discover_output_tokens": 456,
+            "match_input_tokens": 1888,
+            "match_output_tokens": 147,
+            "claude_output": "[시도] 두 곡선의 교점 조건을 구하기 위해, 두 식을 같다고 놓고 정리한다.\n\n[계산]\n$$2^{x-1} - 4 = -\\frac{1}{7} \\cdot 2^{n-x} + a$$\n\n$t = 2^x$ (단, $t > 0$)으로 치환하면:\n\n$$\\frac{t}{2} - 4 = -\\frac{2^n}{7t} + a$$\n\n양변에 $14t$를 곱하면:\n\n$$7t^2 - 56t = -2 \\cdot 2^n + 14at$$\n\n$$7t^2 - (56 + 14a)t + 2^{n+1} = 0$$\n\n[결론] 두 교점의 $x$좌표에 해당하는 $t = 2^x$ 값은 이차방정식 $7t^2 - (56+14a)t + 2^{n+1} = 0$의 두 양의 실근이다.",
+            "matches": [
+              {
+                "label": "G",
+                "score": 0.7,
+                "reason": "이차방정식의 두 양의 실근이 교점에 해당한다는 결론은, 두 교점 사이에서 g≥f라는 대소 관계(G)와 수학적으로 연결되지만, 학생의 서술은 이차방정식의 근 조건을 직접 도출한 것으로 G의 결론을 암시적으로 포함한다"
+              }
+            ],
+            "eval_summary": "MISS attempt0 dry0 | 70tok | disc 6780ms + match 6042ms | bonus 1"
+          },
+          {
+            "attempt": 1,
+            "think_tokens": 187,
+            "discover_elapsed_ms": 15937,
+            "match_elapsed_ms": 7482,
+            "discover_input_tokens": 812,
+            "discover_output_tokens": 1075,
+            "match_input_tokens": 1895,
+            "match_output_tokens": 316,
+            "claude_output": "[시도] 두 곡선을 같다고 놓고 $t = 2^x$로 치환해 교점 방정식을 정리한다.\n\n[계산]\n$$2^{x-1} - 4 = -\\frac{1}{7} \\cdot 2^{n-x} + a$$\n\n$t = 2^x$ ($t > 0$)으로 치환하면:\n\n$$\\frac{t}{2} - 4 = -\\frac{2^n}{7t} + a$$\n\n양변에 $14t$를 곱하면:\n\n$$7t^2 - 56t = -2^{n+1} + 14at$$\n\n$$7t^2 - 14(a+4)t + 2^{n+1} = 0$$\n\n[결론] 두 교점의 $x$좌표를 $x_1, x_2$라 하면 $t_i = 2^{x_i}$는 **$7t^2 - 14(a+4)t + 2^{n+1} = 0$의 두 양의 실근**이며, 근과 계수의 관계에 의해 $t_1 t_2 = \\dfrac{2^{n+1}}{7}$, $t_1 + t_2 = 2(a+4)$이다.",
+            "matches": [
+              {
+                "label": "X",
+                "score": 0,
+                "reason": "regex"
+              },
+              {
+                "label": "W",
+                "score": 0,
+                "reason": "regex"
+              }
+            ],
+            "eval_summary": "MISS attempt1 dry0 | 187tok | disc 15937ms + match 7482ms | bonus 0"
+          },
+          {
+            "attempt": 2,
+            "think_tokens": 328,
+            "discover_elapsed_ms": 22181,
+            "match_elapsed_ms": 12860,
+            "discover_input_tokens": 837,
+            "discover_output_tokens": 1488,
+            "match_input_tokens": 1853,
+            "match_output_tokens": 904,
+            "claude_output": "[시도] 선분 AB가 y축과 만나는 조건(x=0이 A, B 사이에 있는 조건)을 구한다\n\n[계산]\n두 곡선의 교점 조건: $t = 2^x$로 치환하면\n$$7t^2 - (56+14a)t + 2^{n+1} = 0 \\quad \\cdots h(t)=0$$\n이 이차방정식은 위로 볼록이 아니라 **아래로 볼록** (계수 7 > 0).\n\n$x=0$이 두 교점 사이 ↔ $t=1$이 두 근 사이 ↔ $h(1) < 0$:\n$$h(1) = 7 - (56+14a) + 2^{n+1} < 0$$\n$$2^{n+1} - 49 - 14a < 0$$\n$$a > \\frac{2^{n+1}-49}{14}$$\n\n[결론] 선분 AB가 y축과 만나는 조건은 $a > \\dfrac{2^{n+1}-49}{14}$ 이다.",
             "matches": [
               {
                 "label": "K",
                 "score": 0.85,
-                "reason": "학생의 결론 a > (2^{n+1}-49)/14 = 2^n/7 - 7/2 는 후보 K의 a ≥ 2^n/7 - 7/2 와 수학적으로 동일한 부등식 (등호 여부만 미세하게 다름)"
-              }
-            ],
-            "eval_summary": "MISS attempt0 dry0 | 352tok | disc 19777ms + match 3655ms | bonus 1"
-          },
-          {
-            "attempt": 1,
-            "think_tokens": 384,
-            "discover_elapsed_ms": 22829,
-            "match_elapsed_ms": 7382,
-            "discover_input_tokens": 780,
-            "discover_output_tokens": 1504,
-            "match_input_tokens": 1848,
-            "match_output_tokens": 291,
-            "claude_output": "[시도] 두 곡선의 교점 x좌표를 구하기 위해 교점 방정식을 $u = 2^x$로 치환하여 정리한다.\n\n[계산]\n두 곡선이 만나는 조건: $\\dfrac{u}{2} - 4 = -\\dfrac{2^n}{7u} + a$ (단, $u = 2^x > 0$)\n\n양변에 $14u$를 곱하면:\n\n$$7u^2 - 14(a+4)u + 2^{n+1} = 0$$\n\n두 근 $u_1 = 2^{x_A},\\ u_2 = 2^{x_B}$에 대해 근과 계수의 관계:\n\n$$u_1 \\cdot u_2 = \\frac{2^{n+1}}{7}$$\n\n[결론] 두 교점의 x좌표는 $x_A + x_B = n+1 - \\log_2 7$을 만족한다.",
-            "matches": [
-              {
-                "label": "J",
-                "score": 0.7,
-                "reason": "학생은 u1·u2 = 2^(n+1)/7을 구했고, 이는 g(0)과 g(3)의 계산과 관련된 2^n/7 항과 수학적으로 연결되나, 직접적 대응은 부분적임"
+                "reason": "regex"
               },
               {
-                "label": "G",
-                "score": 0.5,
-                "reason": "학생이 두 교점 A, B를 식별하고 근과 계수 관계를 구한 것은 두 교점 사이 구간 설정의 전제가 되나 명시적 언급 없음"
-              },
-              {
-                "label": "D",
-                "score": 0.4,
-                "reason": "학생의 g(x) = -2^n/(7·2^x) + a 표현은 후보 D의 g(x) = -1/7 × 2^(n-x) + a와 동일한 함수이나 단조성 결론은 없음"
+                "label": "H",
+                "score": 0.75,
+                "reason": "regex"
               }
             ],
-            "eval_summary": "MISS attempt1 dry0 | 384tok | disc 22829ms + match 7382ms | bonus 1"
-          },
-          {
-            "attempt": 2,
-            "think_tokens": 507,
-            "discover_elapsed_ms": 24067,
-            "match_elapsed_ms": 3566,
-            "discover_input_tokens": 838,
-            "discover_output_tokens": 1873,
-            "match_input_tokens": 1983,
-            "match_output_tokens": 103,
-            "claude_output": "[시도] 내가 해볼 것: 선분 AB가 x축과 만나지 않는 조건을 $t = 2^x$로 표현하기\n\n[계산]\n두 교점의 y좌표가 같은 부호여야 x축과 만나지 않음.\n\n$t_1 < 1$이므로 $f(x_1) = \\frac{t_1}{2} - 4 < 0$ (항상 음수)\n\n따라서 $f(x_2) < 0$도 필요:\n$$\\frac{t_2}{2} - 4 < 0 \\implies t_2 < 8 \\implies x_2 < 3$$\n\n또한 x축과 만나지 않으려면 두 점의 y값 부호가 같아야 하므로 $f(x_2) \\neq 0$, 즉 $t_2 \\neq 8$.\n\n이차방정식 $h(t) = t^2 - (8+2a)t + \\frac{2^{n+1}}{7} = 0$에서 $h(8) > 0$ 조건:\n$$h(8) = 64 - 8(8+2a) + \\frac{2^{n+1}}{7} = 64 - 64 - 16a + \\frac{2^{n+1}}{7} > 0$$\n$$\\frac{2^{n+1}}{7} > 16a \\implies a < \\frac{2^{",
-            "matches": [
-              {
-                "label": "L",
-                "score": 0.7,
-                "reason": "학생의 결론 a < 2^n/56 = 2^(n-3)/56×8... 실제로 2^n/56 = 2^n/(8×7) = 2^(n-3)/7이므로 수학적으로 동일한 결론"
-              }
-            ],
-            "eval_summary": "MISS attempt2 dry0 | 507tok | disc 24067ms + match 3566ms | bonus 1"
+            "eval_summary": "MISS attempt2 dry1 | 328tok | disc 22181ms + match 12860ms | bonus 2"
           },
           {
             "attempt": 3,
-            "think_tokens": 236,
-            "discover_elapsed_ms": 15540,
-            "match_elapsed_ms": 4010,
-            "discover_input_tokens": 861,
-            "discover_output_tokens": 1158,
-            "match_input_tokens": 1813,
-            "match_output_tokens": 144,
-            "claude_output": "[시도] 내가 해볼 것: 조건 1과 3에서 $a$의 범위를 하나의 부등식으로 합쳐서 구간의 길이 계산하기\n\n[계산]\n조건 1, 3을 합치면:\n$$\\frac{2^n}{7} - \\frac{7}{2} \\leq a < \\frac{2^{n-3}}{7}$$\n\n이 구간의 길이(폭)를 계산하면:\n$$\\frac{2^{n-3}}{7} - \\left(\\frac{2^n}{7} - \\frac{7}{2}\\right) = \\frac{2^{n-3} - 2^n}{7} + \\frac{7}{2}$$\n$$= \\frac{2^{n-3}(1-8)}{7} + \\frac{7}{2} = \\frac{-7 \\cdot 2^{n-3}}{7} + \\frac{7}{2} = -2^{n-3} + \\frac{7}{2}$$\n\n[결론] $a$의 범위 구간의 길이는 $\\dfrac{7}{2} - 2^{n-3}$이다.",
+            "think_tokens": 342,
+            "discover_elapsed_ms": 23586,
+            "match_elapsed_ms": 7260,
+            "discover_input_tokens": 918,
+            "discover_output_tokens": 1589,
+            "match_input_tokens": 1885,
+            "match_output_tokens": 287,
+            "claude_output": "[시도] 내가 해볼 것: 선분 AB가 x축과 만나지 않을 조건을 구하기 위해, 두 교점 A, B의 y좌표가 모두 음수인 조건 파악\n\n[계산]\n$$f(x) = 2^{x-1} - 4 = 0 \\Rightarrow 2^{x-1} = 4 \\Rightarrow x = 3$$\n\n즉 $f(x) < 0$이면 $x < 3$이고, $f(x) > 0$이면 $x > 3$이다.\n\n선분 AB가 x축을 만나지 않으려면 두 점 A, B의 y좌표가 **모두 같은 부호**여야 한다.\n두 교점에서 y값을 대입하면, 교점의 x좌표가 모두 3보다 작으면 두 y값이 모두 음수이다.\n\n따라서: **두 교점의 x좌표가 모두 3 미만**이어야 한다. 즉,\n\n$$g(3) < f(3) = 0$$\n\n$$g(3) = -\\frac{1}{7} \\cdot 2^{n-3} + a < 0 \\Rightarrow a < \\frac{2^{n-3}}{7} = \\frac{2^n}{56}$$\n\n[결론] 선분 AB가 x축과 만나지 않을 조건은 $a < \\df",
+            "matches": [
+              {
+                "label": "C",
+                "score": 1,
+                "reason": "학생이 'f(x)<0이면 x<3, f(x)>0이면 x>3'을 명시적으로 서술함 - 완전 일치"
+              },
+              {
+                "label": "I",
+                "score": 0.9,
+                "reason": "학생이 'g(3) < f(3) = 0' 조건을 명시적으로 사용함 - 거의 완전 일치"
+              },
+              {
+                "label": "J",
+                "score": 0.7,
+                "reason": "학생이 g(3) = -1/7 · 2^{n-3} + a를 계산하여 사용함. g(0)은 언급 없지만 g(3) 값은 일치"
+              },
+              {
+                "label": "L",
+                "score": 0.9,
+                "reason": "학생의 결론 a < 2^{n-3}/7이 L과 완전히 일치함 (2^n/56 = 2^{n-3}/7)"
+              }
+            ],
+            "eval_summary": "MISS attempt3 dry1 | 342tok | disc 23586ms + match 7260ms | bonus 4"
+          },
+          {
+            "attempt": 4,
+            "think_tokens": 280,
+            "discover_elapsed_ms": 20453,
+            "match_elapsed_ms": 5181,
+            "discover_input_tokens": 1079,
+            "discover_output_tokens": 1422,
+            "match_input_tokens": 1583,
+            "match_output_tokens": 261,
+            "claude_output": "[시도] 두 조건(단서 2, 7)을 연립하여 정수 $a$의 범위의 길이를 계산해볼 것\n\n[계산]\n정수 $a$가 만족해야 할 조건을 합치면:\n\n$$\\frac{2^n}{7} - \\frac{7}{2} \\leq a < \\frac{2^{n-3}}{7}$$\n\n이 구간의 길이를 계산:\n\n$$\\frac{2^{n-3}}{7} - \\left(\\frac{2^n}{7} - \\frac{7}{2}\\right) = \\frac{2^{n-3} - 2^n}{7} + \\frac{7}{2} = \\frac{-7 \\cdot 2^{n-3}}{7} + \\frac{7}{2} = \\frac{7}{2} - 2^{n-3}$$\n\n[결론] 정수 $a$의 범위의 구간 길이는 $\\dfrac{7}{2} - 2^{n-3}$이다.",
             "matches": [
               {
                 "label": "M",
                 "score": 1,
-                "reason": "학생의 결론에서 구간 부등식이 M과 완전히 일치함"
+                "reason": "학생의 결론에서 정수 a의 범위가 정확히 M의 내용과 일치한다"
               },
               {
                 "label": "N",
-                "score": 0.7,
-                "reason": "학생이 구간의 길이를 계산했는데, 이는 구간이 비어있지 않을 조건(N)을 암묵적으로 전제하고 있으며 같은 수식을 다루고 있음"
-              }
-            ],
-            "eval_summary": "MISS attempt3 dry0 | 236tok | disc 15540ms + match 4010ms | bonus 2"
-          },
-          {
-            "attempt": 4,
-            "think_tokens": 131,
-            "discover_elapsed_ms": 9372,
-            "match_elapsed_ms": 5782,
-            "discover_input_tokens": 964,
-            "discover_output_tokens": 685,
-            "match_input_tokens": 1710,
-            "match_output_tokens": 290,
-            "claude_output": "[시도] 내가 해볼 것: 구간이 비어있지 않을 조건 $\\frac{2^n}{7} - \\frac{7}{2} < \\frac{2^{n-3}}{7}$을 풀어서 $n$의 범위 구하기\n\n[계산]\n$$\\frac{2^n}{7} - \\frac{2^{n-3}}{7} < \\frac{7}{2}$$\n$$\\frac{2^{n-3}(8-1)}{7} < \\frac{7}{2}$$\n$$\\frac{7 \\cdot 2^{n-3}}{7} < \\frac{7}{2}$$\n$$2^{n-3} < \\frac{7}{2} = 3.5$$\n\n$n=4$이면 $2^1 = 2 < 3.5$ ✓, $n=5$이면 $2^2 = 4 > 3.5$ ✗\n\n[결론] 구간이 비어있지 않으려면 $n \\leq 4$이므로, 자연수 $n$의 후보는 $n \\in \\{1, 2, 3, 4\\}$이다.",
-            "matches": [
+                "score": 0.85,
+                "reason": "구간 길이 계산 과정에서 구간이 비어있지 않을 조건(분자가 양수)을 암묵적으로 다루고 있으며, 계산 구조가 N의 조건과 동일하다"
+              },
               {
                 "label": "O",
-                "score": 1,
-                "reason": "학생의 계산 과정에서 7·2^(n-3)/7 < 7/2, 즉 2^(n-3) < 7/2 를 그대로 도출하고 있어 완전 일치"
-              },
-              {
-                "label": "P",
-                "score": 0.9,
-                "reason": "학생은 n=4(2^1=2<3.5)와 n=5(2^2=4>3.5)만 확인했지만, n≤4라는 결론은 동일. 다만 n=1,2,3 확인을 생략함"
-              },
-              {
-                "label": "Q",
-                "score": 0.5,
-                "reason": "학생이 n≤4라는 결론을 내렸고 이로부터 Q의 내용이 따라오지만, 학생 서술에서 2^(n-3)/7 < 1 부분을 명시적으로 언급하지 않아 부분 일치"
+                "score": 0.7,
+                "reason": "구간 길이 7/2 - 2^{n-3}을 계산하는 과정에서 2^n = 2^3 * 2^{n-3} 변환을 사용했으며, 결론적으로 2^{n-3} < 7/2 조건과 연결된다"
               }
             ],
-            "eval_summary": "MISS attempt4 dry0 | 131tok | disc 9372ms + match 5782ms | bonus 2"
+            "eval_summary": "MISS attempt4 dry1 | 280tok | disc 20453ms + match 5181ms | bonus 3"
           },
           {
             "attempt": 5,
-            "think_tokens": 406,
-            "discover_elapsed_ms": 16923,
-            "match_elapsed_ms": 8734,
-            "discover_input_tokens": 1195,
-            "discover_output_tokens": 1638,
-            "match_input_tokens": 1686,
-            "match_output_tokens": 468,
-            "claude_output": "[시도] 내가 해볼 것: n=1, 2, 3, 4 각각에서 구간 $\\frac{2^n}{7}-\\frac{7}{2} \\leq a < \\frac{2^{n-3}}{7}$의 정수 개수 세기\n\n[계산]\n- **n=1:** 하한 $\\frac{2}{7}-\\frac{7}{2}=-\\frac{45}{14}\\approx-3.21$, 상한 $\\frac{1}{28}\\approx0.04$  \n  → 정수: $-3,\\,-2,\\,-1,\\,0$ → **4개** ✗\n\n- **n=2:** 하한 $\\frac{4}{7}-\\frac{7}{2}=-\\frac{41}{14}\\approx-2.93$, 상한 $\\frac{1}{14}\\approx0.07$  \n  → 정수: $-2,\\,-1,\\,0$ → **3개** ✓\n\n- **n=3:** 하한 $\\frac{8}{7}-\\frac{7}{2}=-\\frac{33}{14}\\approx-2.36$, 상한 $\\frac{1}{7}\\approx0.14$  \n  → 정수: $-2,\\,-1,\\,0$ → *",
+            "think_tokens": 126,
+            "discover_elapsed_ms": 7762,
+            "match_elapsed_ms": 3712,
+            "discover_input_tokens": 1270,
+            "discover_output_tokens": 571,
+            "match_input_tokens": 1351,
+            "match_output_tokens": 136,
+            "claude_output": "[시도] $2^{n-3} < \\frac{7}{2}$를 만족하는 자연수 $n$의 범위를 구해보겠습니다.\n\n[계산]\n$2^{n-3} < 3.5$를 각 자연수에 대해 확인:\n- $n=4$: $2^{4-3} = 2 < 3.5$ ✓\n- $n=5$: $2^{5-3} = 4 > 3.5$ ✗\n\n따라서 $n \\leq 4$이고, 자연수이므로 $n \\in \\{1, 2, 3, 4\\}$만 구간이 비어있지 않습니다.\n\n[결론] 구간이 비어있지 않을 조건을 만족하는 자연수 $n$은 $n = 1, 2, 3, 4$이다.",
             "matches": [
               {
-                "label": "S",
+                "label": "P",
+                "score": 0.9,
+                "reason": "학생의 계산과 결론이 P와 거의 동일: n=1,2,3,4에서 2^(n-3) < 7/2 만족, n=5에서 불만족, n≤4 결론 일치. 다만 학생은 n=1,2,3을 명시적으로 계산하지 않았지만 결론은 동일"
+              }
+            ],
+            "eval_summary": "MISS attempt5 dry1 | 126tok | disc 7762ms + match 3712ms | bonus 1"
+          },
+          {
+            "attempt": 6,
+            "think_tokens": 346,
+            "discover_elapsed_ms": 21348,
+            "match_elapsed_ms": 5978,
+            "discover_input_tokens": 1413,
+            "discover_output_tokens": 1832,
+            "match_input_tokens": 1506,
+            "match_output_tokens": 300,
+            "claude_output": "[시도] 내가 해볼 것: 각 $n$ 값(1, 2, 3, 4)에 대해 정수 $a$의 개수를 세기\n\n[계산]\n구간은 $\\dfrac{2^n}{7} - \\dfrac{7}{2} \\leq a < \\dfrac{2^{n-3}}{7}$\n\n- **n=1:** 하한 $= \\frac{2}{7}-\\frac{7}{2} = -\\frac{45}{14} \\approx -3.21$, 상한 $= \\frac{1}{28} \\approx 0.04$\n  → 정수: $-3, -2, -1, 0$ → **4개** ✗\n\n- **n=2:** 하한 $= \\frac{4}{7}-\\frac{7}{2} = -\\frac{41}{14} \\approx -2.93$, 상한 $= \\frac{1}{14} \\approx 0.07$\n  → 정수: $-2, -1, 0$ → **3개** ✓\n\n- **n=3:** 하한 $= \\frac{8}{7}-\\frac{7}{2} = -\\frac{33}{14} \\approx -2.36$, 상한 $= \\frac{1}{7} \\a",
+            "matches": [
+              {
+                "label": "R",
                 "score": 0.85,
-                "reason": "학생은 정수 a가 정확히 3개이려면 a=0,-1,-2가 포함되고 a=-3은 제외되어야 한다는 조건을 암묵적으로 사용하여 각 n에서 정수 개수를 세었으나, 이 조건을 명시적으로 서술하지는 않았다. n=1에서 4개(a=-3 포함)라 제외, n=4에서 2개라 제외한 논리가 S와 일치한다."
+                "reason": "학생이 상한이 1 미만임을 계산하여 a의 최댓값이 0임을 암묵적으로 사용함 (n=1~4 모두 상한<1이고 정수 최댓값=0)"
               },
               {
-                "label": "V",
-                "score": 0.75,
-                "reason": "학생의 계산에서 n=2일 때 2^n=4>3.5이고 n=4일 때 2^n=16>10.5임을 확인했으나, 명시적으로 3.5<2^n≤10.5라는 부등식을 쓰지는 않았다. 그러나 T와 U의 조건을 암묵적으로 사용했다."
+                "label": "S",
+                "score": 0.9,
+                "reason": "학생이 정수 3개 조건으로 a=0,-1,-2가 포함되고 a=-3은 불포함이어야 함을 직접 검증하는 방식으로 풀이함"
               },
               {
                 "label": "W",
-                "score": 0.9,
-                "reason": "학생은 n=1,2,3,4 각각을 계산하여 n=2,3만 조건을 만족함을 확인했으며, 이는 W의 내용과 완전히 일치한다."
+                "score": 0.95,
+                "reason": "학생이 n=1,2,3,4 각각에 대해 동일한 판정을 수행하여 n=2,3이 조건을 만족함을 확인함"
               },
               {
                 "label": "X",
                 "score": 1,
-                "reason": "학생의 최종 결론이 n=2와 n=3이고 합이 2+3=5라는 것으로 X와 완전히 일치한다."
+                "reason": "학생의 최종 결론이 n=2,3이고 합=5로 완전히 일치함"
               }
             ],
-            "eval_summary": "MISS attempt5 dry0 | 406tok | disc 16923ms + match 8734ms | bonus 4"
-          },
-          {
-            "attempt": 6,
-            "think_tokens": 176,
-            "discover_elapsed_ms": 12294,
-            "match_elapsed_ms": 11716,
-            "discover_input_tokens": 1424,
-            "discover_output_tokens": 661,
-            "match_input_tokens": 1236,
-            "match_output_tokens": 789,
-            "claude_output": "[시도] 내가 해볼 것: 이미 n=2, n=3이 조건을 만족함을 확인했으므로, 최종 답(합)을 구한다.\n\n[계산]\n- n=2: 구간 $\\frac{4}{7}-\\frac{7}{2} \\leq a < \\frac{1}{2}$, 즉 약 $-2.93 \\leq a < 0.5$\n  → 정수 a = -2, -1, 0 (3개) ✓\n- n=3: 구간 $\\frac{8}{7}-\\frac{7}{2} \\leq a < 1$, 즉 약 $-2.36 \\leq a < 1$\n  → 정수 a = -2, -1, 0 (3개) ✓\n- 두 경우 모두 정수 a가 정확히 3개이므로 n=2, n=3이 답\n\n$$n = 2 + 3 = 5$$\n\n[결론] 조건을 만족하는 모든 자연수 n의 값의 합은 **5**이다.",
-            "matches": [
-              {
-                "label": "R",
-                "score": 0.8,
-                "reason": "regex"
-              },
-              {
-                "label": "T",
-                "score": 0.7,
-                "reason": "regex"
-              },
-              {
-                "label": "U",
-                "score": 0.7,
-                "reason": "regex"
-              }
-            ],
-            "eval_summary": "MISS attempt6 dry0 | 176tok | disc 12294ms + match 11716ms | bonus 3"
+            "eval_summary": "MISS attempt6 dry1 | 346tok | disc 21348ms + match 5978ms | bonus 4"
           },
           {
             "attempt": 7,
-            "think_tokens": 180,
-            "discover_elapsed_ms": 9466,
-            "match_elapsed_ms": 4459,
-            "discover_input_tokens": 1613,
-            "discover_output_tokens": 514,
-            "match_input_tokens": 977,
-            "match_output_tokens": 207,
-            "claude_output": "[시도] 내가 해볼 것: 단계 13, 14의 두 조건을 합쳐서 최종 답을 확정한다\n\n[계산]\n두 조건을 동시에 만족해야 하므로:\n$$3.5 < 2^n \\leq 10.5$$\n\n- $n=2$: $2^2 = 4$, $3.5 < 4 \\leq 10.5$ ✓\n- $n=3$: $2^3 = 8$, $3.5 < 8 \\leq 10.5$ ✓\n\n따라서 조건을 만족하는 자연수 $n$은 $2$와 $3$이고, 합 $= 2 + 3 = \\mathbf{5}$\n\n[결론] 모든 자연수 $n$의 값의 합은 **5**이다.",
+            "think_tokens": 228,
+            "discover_elapsed_ms": 18989,
+            "match_elapsed_ms": 6331,
+            "discover_input_tokens": 1673,
+            "discover_output_tokens": 1273,
+            "match_input_tokens": 1189,
+            "match_output_tokens": 308,
+            "claude_output": "[시도] 내가 해볼 것: 지금까지 구한 n=2, n=3이 정말 정수 a가 정확히 3개인지 최종 확인하기\n\n[계산]\n- $n=2$: 구간은 $\\frac{4}{7}-\\frac{7}{2} \\leq a < \\frac{4/8}{7} = \\frac{1}{14}$, 즉 약 $-2.93 \\leq a < 0.071$ → 정수: $a=-2,-1,0$ (3개 ✓)\n- $n=3$: 구간은 $\\frac{8}{7}-\\frac{7}{2} \\leq a < \\frac{1}{7}$, 즉 약 $-2.36 \\leq a < 0.143$ → 정수: $a=-2,-1,0$ (3개 ✓)\n- $n=1$: 구간은 $\\frac{2}{7}-\\frac{7}{2} \\leq a < \\frac{1}{28}$, 즉 약 $-3.21 \\leq a < 0.036$ → 정수: $a=-3,-2,-1,0$ (4개 ✗)\n- $n=4$: 구간은 $\\frac{16}{7}-\\frac{7}{2} \\leq a < \\frac{2}{7}$, 즉 약 $-1.21 \\le",
             "matches": [
               {
-                "label": "H",
-                "score": 0.7,
-                "reason": "학생이 x=0 조건에서 f(0)=-7/2를 사용하여 3.5 < 2^n 조건을 도출했는데, 이는 g(0) >= f(0) = -7/2 조건과 수학적으로 동일한 내용을 포함한다"
+                "label": "T",
+                "score": 0.85,
+                "reason": "학생이 n=2,3에서 a=-2가 포함됨을 확인했고, 이는 T의 조건 2^n ≤ 10.5와 수학적으로 동일한 내용을 검증한 것임"
               },
               {
-                "label": "I",
-                "score": 0.7,
-                "reason": "학생이 x=3 조건에서 2^n <= 10.5 조건을 도출했는데, 이는 g(3) < f(3) = 0 조건과 수학적으로 동일한 내용을 포함한다"
+                "label": "U",
+                "score": 0.85,
+                "reason": "학생이 n=1에서 a=-3이 포함되어 조건 불만족임을 확인했고, 이는 U의 a=-3 불포함 조건 2^n > 3.5와 동일한 내용을 검증한 것임"
+              },
+              {
+                "label": "V",
+                "score": 0.8,
+                "reason": "학생의 결론에서 n=2,3만 만족한다는 것은 3.5 < 2^n ≤ 10.5 조건과 동일하며, n=1(2^1=2≤3.5)과 n=4(2^4=16>10.5)가 탈락함을 확인함"
               }
             ],
-            "eval_summary": "MISS attempt7 dry0 | 180tok | disc 9466ms + match 4459ms | bonus 2"
+            "eval_summary": "MISS attempt7 dry1 | 228tok | disc 18989ms + match 6331ms | bonus 3"
           }
         ]
       },
@@ -730,91 +735,94 @@
           {
             "note_id": "note4",
             "in_target": "note4",
-            "attempt": 3,
-            "score": 0.9,
-            "reason": "학생이 f(0) = 2^(-1)-4 = -3.5를 계산했고, f(x)=0의 영점이 x=3임을 구했으며 이는 f(3)=0과 동일한 결론이다"
+            "attempt": 4,
+            "score": 0.7,
+            "reason": "학생은 f(0) = -7/2를 구했고, 후보 B도 f(0) = 2^{-1}-4 = -7/2를 포함하고 있어 이 부분은 완전히 일치. 다만 후보 B는 f(3)=0도 포함하는데 학생은 이를 언급하지 않아 부분적 일치"
           }
         ],
         "attempts": [
           {
             "attempt": 0,
-            "think_tokens": 251,
-            "discover_elapsed_ms": 18192,
-            "match_elapsed_ms": 4411,
+            "think_tokens": 341,
+            "discover_elapsed_ms": 18662,
+            "match_elapsed_ms": 1037,
             "discover_input_tokens": 776,
-            "discover_output_tokens": 1266,
-            "match_input_tokens": 1035,
-            "match_output_tokens": 180,
-            "claude_output": "[시도] 내가 해볼 것: 두 곡선을 같다고 놓고, $t = 2^x$로 치환하여 교점 조건을 정리한다\n\n[계산]\n$$2^{x-1} - 4 = -\\frac{1}{7} \\cdot 2^{n-x} + a$$\n\n$t = 2^x > 0$으로 놓으면:\n$$\\frac{t}{2} - 4 = -\\frac{2^n}{7t} + a$$\n\n양변에 $14t$를 곱하면:\n$$7t^2 - 56t = -2^{n+1} + 14at$$\n$$7t^2 - (56+14a)t + 2^{n+1} = 0$$\n\n[결론] 두 교점의 $x$좌표를 $x_A, x_B$라 하면, $t_1 = 2^{x_A}$, $t_2 = 2^{x_B}$는 **$7t^2 - (56+14a)t + 2^{n+1} = 0$의 두 양의 실근**이며, 근과 계수의 관계에 의해 $t_1 t_2 = \\dfrac{2^{n+1}}{7}$, 즉 $2^{x_A+x_B} = \\dfrac{2^{n+1}}{7}$이다.",
-            "matches": [
-              {
-                "label": "G",
-                "score": 0.7,
-                "reason": "학생은 두 곡선의 교점 조건을 이차방정식으로 정리했고, 이 이차방정식의 두 양의 실근이 존재한다는 것을 전제로 하고 있어 두 교점 사이에서 한 함수가 다른 함수 이상임을 암묵적으로 내포하고 있다. 다만 명시적으로 'g(x)≥f(x)'라는 부등호 관계를 서술하지는 않았다."
-              }
-            ],
-            "eval_summary": "MISS attempt0 dry0 | 251tok | disc 18192ms + match 4411ms | bonus 1"
+            "discover_output_tokens": 1547,
+            "match_input_tokens": 853,
+            "match_output_tokens": 8,
+            "claude_output": "[시도] 내가 해볼 것: 선분 AB가 y축과 만나는 조건을 부등식으로 나타내기\n\n[계산]\n$t = 2^x$로 치환하면, 두 곡선의 교점의 $x$좌표 $x_1, x_2$에 대해 $t_i = 2^{x_i}$이므로:\n\n선분 AB가 y축과 만나려면 → $x_1 < 0 < x_2$ → $t_1 < 1 < t_2$\n\n즉, 이차방정식 $7t^2 - (56+14a)t + 2^{n+1} = 0$에서 $t = 1$이 두 근 사이에 위치해야 하므로:\n\n$$f(1) = 7 - (56+14a) + 2^{n+1} = 2^{n+1} - 49 - 14a < 0$$\n\n[결론] 선분 AB가 y축과 만나는 조건은 $a > \\dfrac{2^{n+1}-49}{14}$이다.",
+            "matches": [],
+            "eval_summary": "MISS attempt0 dry0 | 341tok | disc 18662ms + match 1037ms | bonus 0"
           },
           {
             "attempt": 1,
-            "think_tokens": 260,
-            "discover_elapsed_ms": 16230,
-            "match_elapsed_ms": 6101,
-            "discover_input_tokens": 838,
-            "discover_output_tokens": 1192,
-            "match_input_tokens": 958,
-            "match_output_tokens": 296,
-            "claude_output": "[시도] 두 곡선의 교점 방정식을 세워서 $t = 2^x$로 치환해 정리하기\n\n[계산]\n두 곡선이 만나는 조건: $2^{x-1} - 4 = -\\dfrac{1}{7} \\cdot 2^{n-x} + a$\n\n$t = 2^x > 0$으로 놓으면:\n\n$$\\frac{t}{2} - 4 = -\\frac{2^n}{7t} + a$$\n\n양변에 $14t$를 곱하면:\n\n$$7t^2 - 56t = -2^{n+1} + 14at$$\n\n$$7t^2 - (56 + 14a)t + 2^{n+1} = 0$$\n\n[결론] 두 교점의 $x$좌표를 $x_A,\\ x_B$라 하면 $t_1 = 2^{x_A},\\ t_2 = 2^{x_B}$는 **$7t^2 - (56+14a)t + 2^{n+1} = 0$의 두 양의 실근**이며, 비에타 공식에 의해 $t_1 + t_2 = 8 + 2a$, $t_1 t_2 = \\dfrac{2^{n+1}}{7}$이다.",
+            "think_tokens": 64,
+            "discover_elapsed_ms": 6511,
+            "match_elapsed_ms": 2423,
+            "discover_input_tokens": 830,
+            "discover_output_tokens": 376,
+            "match_input_tokens": 779,
+            "match_output_tokens": 65,
+            "claude_output": "[시도] 내가 해볼 것: 둘째 곡선 $g(x) = -\\dfrac{1}{7} \\times 2^{n-x} + a$의 단조성 파악\n\n[계산]\n$$g(x) = -\\frac{1}{7} \\times 2^{n-x} + a = -\\frac{2^n}{7} \\cdot 2^{-x} + a$$\n\n$x$가 증가하면 $2^{-x}$는 감소하므로, $-\\dfrac{2^n}{7} \\cdot 2^{-x}$는 증가한다.\n\n따라서 $g(x)$도 $x$에 대해 순증가이다.\n\n[결론] $g(x) = -\\dfrac{1}{7} \\times 2^{n-x} + a$ 도 순증가 함수이다.",
             "matches": [
-              {
-                "label": "A",
-                "score": 0.5,
-                "reason": "regex"
-              },
-              {
-                "label": "D",
-                "score": 0.5,
-                "reason": "regex"
-              }
-            ],
-            "eval_summary": "MISS attempt1 dry0 | 260tok | disc 16230ms + match 6101ms | bonus 0"
-          },
-          {
-            "attempt": 2,
-            "think_tokens": 244,
-            "discover_elapsed_ms": 16036,
-            "match_elapsed_ms": 1634,
-            "discover_input_tokens": 892,
-            "discover_output_tokens": 1281,
-            "match_input_tokens": 946,
-            "match_output_tokens": 8,
-            "claude_output": "[시도] 두 교점의 x좌표 합을 구하기 위해, 교점 방정식에 $u = 2^x$로 치환해 Vieta 공식을 적용한다.\n\n[계산]\n교점 조건: $\\dfrac{u}{2} - 4 = -\\dfrac{2^n}{7u} + a$ (양변에 $14u$ 곱함)\n\n$$7u^2 - (56 + 14a)u + 2^{n+1} = 0$$\n\n두 근 $u_1 = 2^{x_1},\\ u_2 = 2^{x_2}$에 Vieta 공식 적용:\n\n$$u_1 \\cdot u_2 = \\frac{2^{n+1}}{7} \\implies 2^{x_1+x_2} = \\frac{2^{n+1}}{7}$$\n\n$$\\therefore\\quad x_1 + x_2 = n + 1 - \\log_2 7$$\n\n[결론] 두 교점 A, B의 x좌표의 합은 $x_1 + x_2 = n + 1 - \\log_2 7$이므로, 선분 AB의 **중점의 x좌표**는 $\\dfrac{n+1-\\log_2 7}{2}$이다.",
-            "matches": [],
-            "eval_summary": "MISS attempt2 dry1 | 244tok | disc 16036ms + match 1634ms | bonus 0"
-          },
-          {
-            "attempt": 3,
-            "think_tokens": 299,
-            "discover_elapsed_ms": 19778,
-            "match_elapsed_ms": 4314,
-            "discover_input_tokens": 888,
-            "discover_output_tokens": 1323,
-            "match_input_tokens": 934,
-            "match_output_tokens": 171,
-            "claude_output": "[시도] 내가 해볼 것: f(x) = 2^(x-1) - 4의 영점(x절편)을 구하고, 선분 AB가 x축과 만나지 않는 조건과 연결하기\n\n[계산]\n$$f(x) = 0 \\Rightarrow 2^{x-1} = 4 = 2^2 \\Rightarrow x = 3$$\n\n즉, $f(x) < 0$ ($x < 3$), $f(x) > 0$ ($x > 3$)\n\n선분 AB가 y축과 만나려면 두 교점 A, B의 x좌표에 대해 $x_A < 0 < x_B$ 이어야 한다.\n\n이때 $x_A < 0$이므로 $f(x_A) < f(0) = 2^{-1}-4 = -3.5 < 0$ (항상 음수)\n\n선분 AB가 x축과 만나지 않으려면 $f(x_B) < 0$이어야 하므로 $x_B < 3$\n\n[결론] 두 교점의 x좌표는 반드시 $x_A < 0 < x_B < 3$ 을 만족해야 한다.",
-            "matches": [
-              {
-                "label": "B",
-                "score": 0.9,
-                "reason": "학생이 f(0) = 2^(-1)-4 = -3.5를 계산했고, f(x)=0의 영점이 x=3임을 구했으며 이는 f(3)=0과 동일한 결론이다"
-              },
               {
                 "label": "C",
                 "score": 1,
-                "reason": "학생이 정확히 'f(x)<0 (x<3), f(x)>0 (x>3)'을 명시적으로 서술하여 완전히 일치한다"
+                "reason": "학생의 결론이 'g(x)는 순증가 함수'로 후보 C와 완전히 일치한다"
               }
             ],
-            "eval_summary": "FOUND H2 | 299tok | disc 19778ms + match 4314ms | bonus 1"
+            "eval_summary": "MISS attempt1 dry1 | 64tok | disc 6511ms + match 2423ms | bonus 1"
+          },
+          {
+            "attempt": 2,
+            "think_tokens": 145,
+            "discover_elapsed_ms": 10343,
+            "match_elapsed_ms": 1153,
+            "discover_input_tokens": 867,
+            "discover_output_tokens": 676,
+            "match_input_tokens": 780,
+            "match_output_tokens": 8,
+            "claude_output": "[시도] 두 곡선을 같다고 놓고, 교점 조건을 위한 방정식을 세워볼 것\n\n[계산]\n$2^{x-1} - 4 = -\\dfrac{1}{7} \\cdot 2^{n-x} + a$\n\n$u = 2^x$로 치환하면:\n\n$$\\frac{u}{2} - 4 = -\\frac{2^n}{7u} + a$$\n\n양변에 $14u$를 곱하면:\n\n$$7u^2 - 56u = -2 \\cdot 2^n + 14au$$\n\n$$7u^2 - 14(4+a)u + 2^{n+1} = 0$$\n\n[결론] 두 교점의 $x$좌표는 $u = 2^x$로 치환 시 **$7u^2 - 14(4+a)u + 2^{n+1} = 0$** 의 두 양의 실근에 해당한다.",
+            "matches": [],
+            "eval_summary": "MISS attempt2 dry1 | 145tok | disc 10343ms + match 1153ms | bonus 0"
+          },
+          {
+            "attempt": 3,
+            "think_tokens": 439,
+            "discover_elapsed_ms": 22467,
+            "match_elapsed_ms": 3632,
+            "discover_input_tokens": 863,
+            "discover_output_tokens": 1448,
+            "match_input_tokens": 818,
+            "match_output_tokens": 132,
+            "claude_output": "[시도] 두 교점 A, B의 y좌표 대소 관계를 파악하기\n\n[계산]\n두 함수 모두 순증가이므로, 교점 A$(x_A, y_A)$, B$(x_B, y_B)$에서 $x_A < x_B$라 하면:\n\n$$f(x_A) < f(x_B) \\quad \\Rightarrow \\quad y_A < y_B$$\n\n$$g(x_A) < g(x_B) \\quad \\Rightarrow \\quad y_A < y_B$$\n\n즉, 두 교점에서 **x좌표가 작은 점의 y좌표도 더 작다**.\n\n따라서 선분 AB는 **왼쪽 아래 → 오른쪽 위** 방향이다.\n\n[결론] 두 교점을 $A(x_A, y_A)$, $B(x_B, y_B)$라 하면 $x_A < x_B$일 때 반드시 $y_A < y_B$이다 (선분 AB는 오른쪽 위 방향).",
+            "matches": [
+              {
+                "label": "A",
+                "score": 0.72,
+                "reason": "학생의 서술에서 'f(x)가 순증가'임을 명시적으로 사용하여 x_A < x_B이면 y_A < y_B임을 도출했으므로, 후보 A의 핵심 결론(f(x)=2^{x-1}-4는 순증가)과 충분히 일치한다."
+              }
+            ],
+            "eval_summary": "MISS attempt3 dry2 | 439tok | disc 22467ms + match 3632ms | bonus 1"
+          },
+          {
+            "attempt": 4,
+            "think_tokens": 171,
+            "discover_elapsed_ms": 10455,
+            "match_elapsed_ms": 4098,
+            "discover_input_tokens": 889,
+            "discover_output_tokens": 727,
+            "match_input_tokens": 613,
+            "match_output_tokens": 140,
+            "claude_output": "[시도] 내가 해볼 것: 단서A에서 $f(x) = 2^{x-1}-4$의 $y$절편(x=0일 때의 값) 구하기\n\n[계산]\n$$f(0) = 2^{0-1} - 4 = \\frac{1}{2} - 4 = -\\frac{7}{2}$$\n\n[결론] 첫째 곡선의 $y$절편은 $-\\dfrac{7}{2}$이다.",
+            "matches": [
+              {
+                "label": "B",
+                "score": 0.7,
+                "reason": "학생은 f(0) = -7/2를 구했고, 후보 B도 f(0) = 2^{-1}-4 = -7/2를 포함하고 있어 이 부분은 완전히 일치. 다만 후보 B는 f(3)=0도 포함하는데 학생은 이를 언급하지 않아 부분적 일치"
+              }
+            ],
+            "eval_summary": "FOUND H2 | 171tok | disc 10455ms + match 4098ms | bonus 0"
           }
         ]
       },
@@ -831,7 +839,7 @@
         "hint_level": 0,
         "is_bonus": true,
         "structural_difficulty": 0.12,
-        "discovered_in_target": "note4",
+        "discovered_in_target": "note3",
         "miss_type": null,
         "absorbed_in": null,
         "absorb_reason": "",
@@ -847,68 +855,15 @@
         "from": [
           "note8"
         ],
-        "hint_level": 4,
-        "is_bonus": false,
+        "hint_level": 0,
+        "is_bonus": true,
         "structural_difficulty": 0.12,
-        "discovered_in_target": "note9",
-        "miss_type": "absorbed",
-        "absorbed_in": "note3/시도0",
-        "absorb_reason": "g(x)=-1/7×2^(n-x)+a가 순증가임을 전제로 선분AB가 y축과 만나는 조건 x_A<0<x_B를 사용하고 있음",
+        "discovered_in_target": "note4",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
         "partial_history": [],
-        "attempts": [
-          {
-            "attempt": 0,
-            "think_tokens": 238,
-            "discover_elapsed_ms": 17693,
-            "match_elapsed_ms": 1525,
-            "discover_input_tokens": 868,
-            "discover_output_tokens": 1084,
-            "match_input_tokens": 800,
-            "match_output_tokens": 8,
-            "claude_output": "[시도] 두 곡선의 교점 방정식을 $t = 2^x$로 치환하여 정리해보기\n\n[계산]\n두 곡선이 만나는 조건:\n$$2^{x-1} - 4 = -\\frac{1}{7} \\times 2^{n-x} + a$$\n\n$t = 2^x > 0$으로 놓으면:\n$$\\frac{t}{2} - 4 = -\\frac{2^n}{7t} + a$$\n\n양변에 $14t$를 곱하면:\n$$7t^2 - 56t = -2 \\cdot 2^n + 14at$$\n$$7t^2 - 14(a+4)t + 2^{n+1} = 0$$\n\n[결론] 두 교점의 $x$좌표에 대응하는 $t_1 = 2^{x_A},\\ t_2 = 2^{x_B}$는 이차방정식 $7t^2 - 14(a+4)t + 2^{n+1} = 0$의 두 양의 실근이다.",
-            "matches": [],
-            "eval_summary": "MISS attempt0 dry0 | 238tok | disc 17693ms + match 1525ms | bonus 0"
-          },
-          {
-            "attempt": 1,
-            "think_tokens": 311,
-            "discover_elapsed_ms": 14424,
-            "match_elapsed_ms": 1705,
-            "discover_input_tokens": 893,
-            "discover_output_tokens": 966,
-            "match_input_tokens": 859,
-            "match_output_tokens": 8,
-            "claude_output": "[시도] 두 곡선을 같다고 놓고, $t = 2^x$로 치환하여 교점 조건을 분석한다\n\n[계산]\n$$2^{x-1} - 4 = -\\frac{1}{7} \\cdot 2^{n-x} + a$$\n\n$t = 2^x > 0$으로 놓으면 $2^{x-1} = \\dfrac{t}{2}$, $2^{n-x} = \\dfrac{2^n}{t}$이므로:\n\n$$\\frac{t}{2} - 4 = -\\frac{2^n}{7t} + a$$\n\n양변에 $14t$를 곱하면:\n\n$$7t^2 - 56t = -2^{n+1} + 14at$$\n$$7t^2 - (56 + 14a)t + 2^{n+1} = 0$$\n\n[결론] 두 곡선의 교점은 **$7t^2 - (56+14a)t + 2^{n+1} = 0$ ($t = 2^x > 0$)의 두 양의 실근**에 대응하며, 서로 다른 두 점 A, B가 존재하려면 이 이차방정식이 서로 다른 두 양의 실근을 가져야 한다.",
-            "matches": [],
-            "eval_summary": "MISS attempt1 dry1 | 311tok | disc 14424ms + match 1705ms | bonus 0"
-          },
-          {
-            "attempt": 2,
-            "think_tokens": 345,
-            "discover_elapsed_ms": 21040,
-            "match_elapsed_ms": 1753,
-            "discover_input_tokens": 916,
-            "discover_output_tokens": 1282,
-            "match_input_tokens": 863,
-            "match_output_tokens": 8,
-            "claude_output": "[시도] 두 곡선의 교점 방정식을 $t = 2^x$로 치환해 정리해보기\n\n[계산]\n두 곡선이 만나는 조건:\n$$2^{x-1} - 4 = -\\frac{1}{7} \\cdot 2^{n-x} + a$$\n\n양변에 $14 \\cdot 2^x$를 곱하면 ($t = 2^x > 0$ 으로 치환):\n\n$$7t^2 - 56t = -2 \\cdot 2^n + 14at$$\n\n$$7t^2 - (56 + 14a)t + 2^{n+1} = 0$$\n\n[결론] 두 교점의 $x$좌표를 $x_A, x_B$라 하면, $t_A = 2^{x_A}$, $t_B = 2^{x_B}$는 이차방정식 $7t^2 - 14(a+4)t + 2^{n+1} = 0$의 두 양의 실근이며, 근과 계수의 관계에 의해 $t_A \\cdot t_B = \\dfrac{2^{n+1}}{7}$, 즉 $2^{x_A + x_B} = \\dfrac{2^{n+1}}{7}$ 이다.",
-            "matches": [],
-            "eval_summary": "MISS attempt2 dry2 | 345tok | disc 21040ms + match 1753ms | bonus 0"
-          },
-          {
-            "attempt": 3,
-            "think_tokens": 498,
-            "discover_elapsed_ms": 24873,
-            "match_elapsed_ms": 4545,
-            "discover_input_tokens": 918,
-            "discover_output_tokens": 1796,
-            "match_input_tokens": 831,
-            "match_output_tokens": 8,
-            "claude_output": "[시도] 두 곡선의 교점 조건을 하나의 방정식으로 정리하기\n\n[계산]\n두 곡선이 만나는 조건:\n$$2^{x-1} - 4 = -\\frac{1}{7} \\cdot 2^{n-x} + a$$\n\n우변의 $a$를 제외한 항을 좌변으로 이항하면:\n$$2^{x-1} + \\frac{1}{7} \\cdot 2^{n-x} = a + 4$$\n\n$h(x) = 2^{x-1} + \\dfrac{1}{7} \\cdot 2^{n-x}$ 로 놓으면, 교점의 $x$좌표는 방정식\n\n$$h(x) = a+4$$\n\n의 해이다.\n\n[결론] 두 곡선의 교점 $x$좌표는 $h(x) = 2^{x-1} + \\dfrac{1}{7}\\cdot 2^{n-x} = a+4$의 해이며, 두 곡선이 서로 다른 두 점에서 만나려면 이 방정식이 서로 다른 두 실수해를 가져야 한다.",
-            "matches": [],
-            "eval_summary": "MISS attempt3 dry3 | 498tok | disc 24873ms + match 4545ms | bonus 0"
-          }
-        ]
+        "attempts": []
       },
       {
         "note_index": 5,
@@ -919,7 +874,7 @@
         "from": [
           "note11"
         ],
-        "hint_level": 2,
+        "hint_level": 1,
         "is_bonus": false,
         "structural_difficulty": 0.12,
         "discovered_in_target": "note12",
@@ -930,61 +885,43 @@
           {
             "note_id": "note12",
             "in_target": "note12",
-            "attempt": 2,
-            "score": 0.7,
-            "reason": "학생이 h(x)가 아래로 볼록한 최솟값을 가진다고 언급했는데, 이는 f(x)=2^{x-1}-4가 아래로 볼록임과 관련있다. h''(x)>0이므로 h(x)가 아래로 볼록한 것은 f(x)의 볼록성과 직접 연결된다."
+            "attempt": 1,
+            "score": 0.72,
+            "reason": "학생이 7t²-... 이차식이 아래로 볼록임을 명시적으로 언급하며 이를 이용해 t=1에서 함숫값 음수 조건을 적용했는데, 이는 f(x)=2^(x-1)-4가 아래로 볼록임과 수학적으로 연결된 결론이다"
           }
         ],
         "attempts": [
           {
             "attempt": 0,
-            "think_tokens": 255,
-            "discover_elapsed_ms": 12101,
-            "match_elapsed_ms": 1764,
+            "think_tokens": 169,
+            "discover_elapsed_ms": 12018,
+            "match_elapsed_ms": 2722,
             "discover_input_tokens": 905,
-            "discover_output_tokens": 834,
-            "match_input_tokens": 809,
+            "discover_output_tokens": 832,
+            "match_input_tokens": 781,
             "match_output_tokens": 8,
-            "claude_output": "[시도] 내가 해볼 것: 두 곡선의 교점 방정식을 $t = 2^x$로 치환하여 정리하기\n\n[계산]\n$$2^{x-1} - 4 = -\\frac{1}{7} \\cdot 2^{n-x} + a$$\n\n$t = 2^x$ (단, $t > 0$)로 놓으면:\n\n$$\\frac{t}{2} - 4 = -\\frac{2^n}{7t} + a$$\n\n양변에 $14t$를 곱하면:\n\n$$7t^2 - 56t = -2^{n+1} + 14at$$\n\n$$7t^2 - (56 + 14a)t + 2^{n+1} = 0$$\n\n[결론] 두 교점의 $x$좌표를 $x_1, x_2$라 하면, $t_1 = 2^{x_1},\\ t_2 = 2^{x_2}$는 이차방정식 $7t^2 - 14(a+4)t + 2^{n+1} = 0$의 두 양의 실근이다.",
+            "claude_output": "[시도] 두 곡선의 교점 방정식을 $t = 2^x$로 치환하여 정리해보기\n\n[계산]\n교점 조건: $2^{x-1} - 4 = -\\dfrac{1}{7} \\times 2^{n-x} + a$\n\n$t = 2^x > 0$으로 놓으면:\n\n$$\\frac{t}{2} - 4 = -\\frac{2^n}{7t} + a$$\n\n양변에 $14t$를 곱하면:\n\n$$7t^2 - 56t = -2^{n+1} + 14at$$\n\n$$7t^2 - (56 + 14a)t + 2^{n+1} = 0$$\n\n[결론] 교점의 $x$좌표에서 $t = 2^x$로 치환하면 **$7t^2 - (56+14a)t + 2^{n+1} = 0$** 이 되고, 두 양의 근 $t_1, t_2$에 대해 비에타 공식으로 $t_1 + t_2 = 8+2a$, $t_1 \\cdot t_2 = \\dfrac{2^{n+1}}{7}$임을 알 수 있다.",
             "matches": [],
-            "eval_summary": "MISS attempt0 dry0 | 255tok | disc 12101ms + match 1764ms | bonus 0"
+            "eval_summary": "MISS attempt0 dry0 | 169tok | disc 12018ms + match 2722ms | bonus 0"
           },
           {
             "attempt": 1,
-            "think_tokens": 140,
-            "discover_elapsed_ms": 12116,
-            "match_elapsed_ms": 1621,
+            "think_tokens": 356,
+            "discover_elapsed_ms": 21496,
+            "match_elapsed_ms": 4053,
             "discover_input_tokens": 930,
-            "discover_output_tokens": 784,
-            "match_input_tokens": 780,
-            "match_output_tokens": 8,
-            "claude_output": "[시도] 두 곡선의 교점 조건을 하나의 방정식으로 정리해보기\n\n[계산]\n교점에서 $f(x) = g(x)$이므로:\n$$2^{x-1} - 4 = -\\frac{1}{7} \\times 2^{n-x} + a$$\n\n$t = 2^x$ ($t > 0$)으로 치환하면:\n$$\\frac{t}{2} - 4 = -\\frac{2^n}{7t} + a$$\n\n양변에 $14t$를 곱하면:\n$$7t^2 - 56t = -2^{n+1} + 14at$$\n$$7t^2 - (56 + 14a)t + 2^{n+1} = 0$$\n\n[결론] 두 곡선의 교점은 $t = 2^x$에 대한 이차방정식 $7t^2 - 14(a+4)t + 2^{n+1} = 0$의 양의 두 근에 대응한다.",
-            "matches": [],
-            "eval_summary": "MISS attempt1 dry1 | 140tok | disc 12116ms + match 1621ms | bonus 0"
-          },
-          {
-            "attempt": 2,
-            "think_tokens": 527,
-            "discover_elapsed_ms": 24746,
-            "match_elapsed_ms": 5797,
-            "discover_input_tokens": 953,
-            "discover_output_tokens": 1759,
-            "match_input_tokens": 984,
-            "match_output_tokens": 277,
-            "claude_output": "[시도] 내가 해볼 것: 두 함수의 차 $h(x) = f(x) - g(x)$의 단조성 분석\n\n[계산]\n$$h(x) = f(x) - g(x) = 2^{x-1} + \\frac{1}{7}\\cdot 2^{n-x} - 4 - a$$\n\n$$h'(x) = 2^{x-1}\\ln 2 - \\frac{1}{7}\\cdot 2^{n-x}\\ln 2$$\n\n- $x \\to -\\infty$: $2^{x-1} \\to 0$, $\\frac{1}{7}\\cdot 2^{n-x} \\to +\\infty$ 이므로 $h'(x) \\to -\\infty < 0$\n- $x \\to +\\infty$: $2^{x-1} \\to +\\infty$, $\\frac{1}{7}\\cdot 2^{n-x} \\to 0$ 이므로 $h'(x) \\to +\\infty > 0$\n\n따라서 $h'(x)=0$인 점이 존재하고, $h(x)$는 **최솟값**을 가진다.\n\n또한 $h(x) = 2^{x-1} + \\frac{1}{7}\\cdot 2^{n-x} - 4 - a$ 에서 $x\\t",
+            "discover_output_tokens": 1467,
+            "match_input_tokens": 887,
+            "match_output_tokens": 137,
+            "claude_output": "[시도] 내가 해볼 것: 두 교점의 x좌표가 y축 양쪽에 있을 조건을 구하기 (선분 AB가 y축과 만나는 조건)\n\n[계산]\n교점의 x좌표를 구하려면 $f(x)=g(x)$를 풀어야 한다.\n$t = 2^x$로 치환하면:\n$$\\frac{t}{2} - 4 = -\\frac{2^n}{7t} + a$$\n양변에 $14t$를 곱하면:\n$$7t^2 - (56+14a)t + 2^{n+1} = 0$$\n\n선분 AB가 y축과 만나려면 두 근 $t_1, t_2$ 중 하나는 $1$보다 작고 하나는 $1$보다 커야 한다 ($x<0 \\Leftrightarrow t<1$).\n\n위로 볼록하지 않은 포물선(위로 볼록) 아니라 $7t^2 - \\cdots$는 아래로 볼록이므로, $t=1$에서 함숫값이 음수여야 한다:\n$$7(1)^2 - (56+14a)(1) + 2^{n+1} < 0$$\n$$7 - 56 - 14a + 2^{n+1} < 0$$\n$$2^{n+1} - 49 < 14a$$\n\n[결론] 선분 AB가 y축과 만나는 조건은",
             "matches": [
               {
-                "label": "C",
-                "score": 0.7,
-                "reason": "학생이 h(x)가 아래로 볼록한 최솟값을 가진다고 언급했는데, 이는 f(x)=2^{x-1}-4가 아래로 볼록임과 관련있다. h''(x)>0이므로 h(x)가 아래로 볼록한 것은 f(x)의 볼록성과 직접 연결된다."
-              },
-              {
-                "label": "D",
-                "score": 0.5,
-                "reason": "g(x)=-1/7×2^{n-x}+a가 위로 볼록이면 -g(x)는 아래로 볼록이고, h(x)=f(x)-g(x)의 아래로 볼록 성질에 기여한다. 학생이 h(x)의 볼록성을 논했으므로 간접적으로 포함된다."
+                "label": "A",
+                "score": 0.72,
+                "reason": "학생이 7t²-... 이차식이 아래로 볼록임을 명시적으로 언급하며 이를 이용해 t=1에서 함숫값 음수 조건을 적용했는데, 이는 f(x)=2^(x-1)-4가 아래로 볼록임과 수학적으로 연결된 결론이다"
               }
             ],
-            "eval_summary": "FOUND H2 | 527tok | disc 24746ms + match 5797ms | bonus 0"
+            "eval_summary": "FOUND H1 | 356tok | disc 21496ms + match 4053ms | bonus 0"
           }
         ]
       },
@@ -997,7 +934,7 @@
         "from": [
           "note15"
         ],
-        "hint_level": 2,
+        "hint_level": 0,
         "is_bonus": false,
         "structural_difficulty": 0.12,
         "discovered_in_target": "note16",
@@ -1008,74 +945,30 @@
           {
             "note_id": "note16",
             "in_target": "note16",
-            "attempt": 1,
-            "score": 0.4,
-            "reason": "regex"
-          },
-          {
-            "note_id": "note16",
-            "in_target": "note16",
-            "attempt": 2,
-            "score": 0.72,
-            "reason": "학생은 h''(x)>0이므로 h(x)가 아래로 볼록(concave up)임을 보였다. h=f-g에서 f는 아래로 볼록, g(x)=-1/7·2^{n-x}+a는 위로 볼록(concave down)이면 h=f-g가 아래로 볼록이 된다. 따라서 학생의 계산은 g(x)가 위로 볼록임을 함의하며, 후보 C의 핵심 결론과 수학적으로 일치한다."
+            "attempt": 0,
+            "score": 1,
+            "reason": "학생이 g''(x) < 0을 계산하여 g(x)가 위로 볼록(오목)임을 결론 내렸으며, 이는 후보 A의 핵심 결론과 완전히 일치한다"
           }
         ],
         "attempts": [
           {
             "attempt": 0,
-            "think_tokens": 110,
-            "discover_elapsed_ms": 11319,
-            "match_elapsed_ms": 1765,
+            "think_tokens": 120,
+            "discover_elapsed_ms": 7869,
+            "match_elapsed_ms": 3487,
             "discover_input_tokens": 935,
-            "discover_output_tokens": 746,
-            "match_input_tokens": 752,
-            "match_output_tokens": 8,
-            "claude_output": "[시도] 두 곡선의 교점 조건을 얻기 위해 $f(x) = g(x)$로 놓고 정리하기\n\n[계산]\n$$2^{x-1} - 4 = -\\frac{1}{7} \\times 2^{n-x} + a$$\n\n$t = 2^x > 0$으로 치환하면:\n$$\\frac{t}{2} - 4 = -\\frac{2^n}{7t} + a$$\n\n양변에 $14t$를 곱하면:\n$$7t^2 - 56t = -2^{n+1} + 14at$$\n$$7t^2 - 14(a+4)t + 2^{n+1} = 0$$\n\n[결론] 두 곡선의 교점의 $x$좌표(들)은 $t = 2^x$로 놓을 때, **이차방정식 $7t^2 - 14(a+4)t + 2^{n+1} = 0$의 양의 실근**에 대응한다.",
-            "matches": [],
-            "eval_summary": "MISS attempt0 dry0 | 110tok | disc 11319ms + match 1765ms | bonus 0"
-          },
-          {
-            "attempt": 1,
-            "think_tokens": 114,
-            "discover_elapsed_ms": 9153,
-            "match_elapsed_ms": 7747,
-            "discover_input_tokens": 960,
-            "discover_output_tokens": 556,
-            "match_input_tokens": 744,
-            "match_output_tokens": 368,
-            "claude_output": "[시도] 내가 해볼 것: 두 곡선을 같다고 놓고 교점 방정식을 세운다\n\n[계산]\n$$2^{x-1} - 4 = -\\frac{1}{7} \\times 2^{n-x} + a$$\n\n$t = 2^x$ ($t > 0$)으로 치환하면:\n\n$$\\frac{t}{2} - 4 = -\\frac{2^n}{7t} + a$$\n\n양변에 $14t$를 곱하면:\n\n$$7t^2 - 56t = -2 \\cdot 2^n + 14at$$\n\n$$7t^2 - (56 + 14a)t + 2^{n+1} = 0$$\n\n[결론] 교점의 $x$좌표에 대해 $t = 2^x$로 치환하면, $t$에 관한 이차방정식 $7t^2 - 14(a+4)t + 2^{n+1} = 0$이 성립한다.",
+            "discover_output_tokens": 535,
+            "match_input_tokens": 613,
+            "match_output_tokens": 100,
+            "claude_output": "[시도] 내가 해볼 것: $g(x)$의 볼록성(오목/볼록) 파악하기\n\n[계산]\n$$g(x) = -\\frac{1}{7} \\times 2^{n-x} + a$$\n$$g'(x) = -\\frac{1}{7} \\times 2^{n-x} \\times (-\\ln 2) = \\frac{\\ln 2}{7} \\times 2^{n-x} > 0$$\n$$g''(x) = \\frac{\\ln 2}{7} \\times 2^{n-x} \\times (-\\ln 2) = -\\frac{(\\ln 2)^2}{7} \\times 2^{n-x} < 0$$\n\n[결론] $g(x)$는 **위로 볼록(오목)**이다.",
             "matches": [
               {
-                "label": "B",
-                "score": 0.5,
-                "reason": "regex"
-              },
-              {
-                "label": "C",
-                "score": 0.4,
-                "reason": "regex"
+                "label": "A",
+                "score": 1,
+                "reason": "학생이 g''(x) < 0을 계산하여 g(x)가 위로 볼록(오목)임을 결론 내렸으며, 이는 후보 A의 핵심 결론과 완전히 일치한다"
               }
             ],
-            "eval_summary": "MISS attempt1 dry1 | 114tok | disc 9153ms + match 7747ms | bonus 0"
-          },
-          {
-            "attempt": 2,
-            "think_tokens": 262,
-            "discover_elapsed_ms": 17280,
-            "match_elapsed_ms": 4962,
-            "discover_input_tokens": 983,
-            "discover_output_tokens": 1142,
-            "match_input_tokens": 742,
-            "match_output_tokens": 198,
-            "claude_output": "[시도] 내가 해볼 것: h(x) = f(x) - g(x)의 이계도함수 부호 확인\n\n[계산]\n$$h(x) = f(x) - g(x) = 2^{x-1} - 4 + \\frac{1}{7}\\cdot 2^{n-x} - a$$\n\n$$h''(x) = (\\ln 2)^2 \\cdot 2^{x-1} + \\frac{(\\ln 2)^2}{7}\\cdot 2^{n-x}$$\n\n두 항 모두 양수이므로:\n\n$$h''(x) > 0 \\quad \\text{(항상)}$$\n\n[결론] $h(x) = f(x) - g(x)$는 **아래로 볼록**(concave up)이므로, 극솟값을 정확히 하나 가지며, 두 곡선이 서로 다른 두 점에서 만나려면 이 극솟값이 반드시 **음수**여야 한다.",
-            "matches": [
-              {
-                "label": "C",
-                "score": 0.72,
-                "reason": "학생은 h''(x)>0이므로 h(x)가 아래로 볼록(concave up)임을 보였다. h=f-g에서 f는 아래로 볼록, g(x)=-1/7·2^{n-x}+a는 위로 볼록(concave down)이면 h=f-g가 아래로 볼록이 된다. 따라서 학생의 계산은 g(x)가 위로 볼록임을 함의하며, 후보 C의 핵심 결론과 수학적으로 일치한다."
-              }
-            ],
-            "eval_summary": "FOUND H2 | 262tok | disc 17280ms + match 4962ms | bonus 0"
+            "eval_summary": "FOUND H0 | 120tok | disc 7869ms + match 3487ms | bonus 0"
           }
         ]
       },
@@ -1092,7 +985,7 @@
         "hint_level": 0,
         "is_bonus": true,
         "structural_difficulty": 0.12,
-        "discovered_in_target": "note4",
+        "discovered_in_target": "note3",
         "miss_type": null,
         "absorbed_in": null,
         "absorb_reason": "",
@@ -1285,80 +1178,106 @@
         "from": [
           "note28"
         ],
-        "hint_level": 4,
+        "hint_level": 3,
         "is_bonus": false,
         "structural_difficulty": 0.12,
         "discovered_in_target": "note29",
-        "miss_type": "absorbed",
-        "absorbed_in": "note3/시도4",
-        "absorb_reason": "n≤4일 때 2^(n-3)≤2<7/2임을 이용해 구간이 비어있지 않을 조건으로 n≤4를 도출하고 있음",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
         "partial_history": [
           {
             "note_id": "note29",
             "in_target": "note29",
             "attempt": 0,
-            "score": 0.55,
-            "reason": "학생이 n=1일 때 2^(n-3)/7 = 1/28 < 1임을 계산했는데, 이는 C의 결론(n≤4일 때 2^(n-3)/7 < 1)의 특수한 경우에 해당한다. 단, C의 전체 범위(n≤4)를 다루지 않고 n=1만 다뤘으므로 부분 점수."
+            "score": 0.5,
+            "reason": "학생은 n=1일 때 2^(n-3)/7 = 1/28 < 1임을 계산으로 확인했고, 이는 후보 A의 n≤4일 때 2^(n-3)/7 < 1이라는 결론과 부분적으로 일치한다. 단, 학생은 n=1 한 케이스만 다루었고 일반적인 n≤4 범위 전체를 다루지는 않았다."
+          },
+          {
+            "note_id": "note29",
+            "in_target": "note29",
+            "attempt": 1,
+            "score": 0.5,
+            "reason": "학생은 n=1일 때 상한이 1/28 < 1임을 계산했고, 후보 A는 n≤4일 때 상한이 2/7 < 1임을 언급한다. n=1은 n≤4의 부분 사례이며, 학생의 계산이 후보 A의 주장을 부분적으로 뒷받침하지만, 후보 A의 핵심 결론(n≤4 전체 범위)을 완전히 포함하지는 않는다."
+          },
+          {
+            "note_id": "note29",
+            "in_target": "note29",
+            "attempt": 3,
+            "score": 0.7,
+            "reason": "학생의 계산에서 n=1,2,3,4에 대해 상한값 2^(n-3)/7을 실제로 계산했으며(1/28, 1/14, 1/7, 2/7), 이 값들이 모두 1보다 작음을 암묵적으로 활용했다. 후보 A의 핵심 결론인 '2^(n-3)/7 < 1'은 학생 풀이에서 직접 명시되지 않았으나, 계산 과정에서 상한이 항상 1 미만임을 수치로 확인하여 사용했으므로 부분적으로 포함됨"
           }
         ],
         "attempts": [
           {
             "attempt": 0,
-            "think_tokens": 386,
-            "discover_elapsed_ms": 18058,
-            "match_elapsed_ms": 3899,
+            "think_tokens": 353,
+            "discover_elapsed_ms": 18776,
+            "match_elapsed_ms": 4342,
             "discover_input_tokens": 1574,
-            "discover_output_tokens": 1415,
-            "match_input_tokens": 685,
-            "match_output_tokens": 156,
-            "claude_output": "[시도] 내가 해볼 것: n=1일 때 조건을 만족하는 정수 a의 개수 계산\n\n[계산]\nn=1이면 조건은 $\\frac{2^1}{7} - \\frac{7}{2} \\leq a < \\frac{2^{1-3}}{7}$\n\n$$\\frac{2}{7} - \\frac{7}{2} = \\frac{4-49}{14} = -\\frac{45}{14} \\approx -3.214$$\n\n$$\\frac{2^{-2}}{7} = \\frac{1}{28} \\approx 0.036$$\n\n따라서 $-3.214 \\leq a < 0.036$이므로 정수 $a$는 $-3, -2, -1, 0$ → **4개**\n\n[결론] n=1일 때 정수 a의 개수는 4개이므로 조건(개수=3)을 만족하지 않는다.",
+            "discover_output_tokens": 1311,
+            "match_input_tokens": 613,
+            "match_output_tokens": 168,
+            "claude_output": "[시도] 내가 해볼 것: $n=1$일 때 정수 $a$의 개수를 구하기\n\n[계산]\n$$n=1: \\quad \\frac{2^1}{7} - \\frac{7}{2} = \\frac{2}{7} - \\frac{7}{2} = \\frac{4-49}{14} = -\\frac{45}{14} \\approx -3.21$$\n$$\\frac{2^{1-3}}{7} = \\frac{2^{-2}}{7} = \\frac{1}{28} \\approx 0.036$$\n$$-3.21 \\leq a < 0.036 \\implies a \\in \\{-3,\\,-2,\\,-1,\\,0\\} \\quad \\Rightarrow \\text{정수 } 4\\text{개}$$\n\n[결론] $n=1$이면 정수 $a$의 개수가 4개이므로 조건 불만족이다.",
             "matches": [
               {
-                "label": "C",
-                "score": 0.55,
-                "reason": "학생이 n=1일 때 2^(n-3)/7 = 1/28 < 1임을 계산했는데, 이는 C의 결론(n≤4일 때 2^(n-3)/7 < 1)의 특수한 경우에 해당한다. 단, C의 전체 범위(n≤4)를 다루지 않고 n=1만 다뤘으므로 부분 점수."
+                "label": "A",
+                "score": 0.5,
+                "reason": "학생은 n=1일 때 2^(n-3)/7 = 1/28 < 1임을 계산으로 확인했고, 이는 후보 A의 n≤4일 때 2^(n-3)/7 < 1이라는 결론과 부분적으로 일치한다. 단, 학생은 n=1 한 케이스만 다루었고 일반적인 n≤4 범위 전체를 다루지는 않았다."
               }
             ],
-            "eval_summary": "MISS attempt0 dry0 | 386tok | disc 18058ms + match 3899ms | bonus 0"
+            "eval_summary": "MISS attempt0 dry0 | 353tok | disc 18776ms + match 4342ms | bonus 0"
           },
           {
             "attempt": 1,
-            "think_tokens": 348,
-            "discover_elapsed_ms": 21430,
-            "match_elapsed_ms": 1800,
+            "think_tokens": 342,
+            "discover_elapsed_ms": 12183,
+            "match_elapsed_ms": 4326,
             "discover_input_tokens": 1743,
-            "discover_output_tokens": 1519,
-            "match_input_tokens": 674,
-            "match_output_tokens": 8,
-            "claude_output": "[시도] 내가 해볼 것: n=1일 때 정수 a의 개수 구하기\n\n[계산]\n$$\\frac{2^1}{7} - \\frac{7}{2} \\leq a < \\frac{2^{1-3}}{7}$$\n$$\\frac{2}{7} - \\frac{7}{2} = \\frac{4-49}{14} = -\\frac{45}{14} \\approx -3.21$$\n$$\\frac{2^{-2}}{7} = \\frac{1}{28} \\approx 0.036$$\n$$-3.21\\ldots \\leq a < 0.036\\ldots$$\n정수: $-3,\\,-2,\\,-1,\\,0$ → **4개**\n\n[결론] n=1이면 조건을 만족하는 정수 a의 개수가 4개이므로, n=1은 조건(3개)을 만족하지 않는다.",
-            "matches": [],
-            "eval_summary": "MISS attempt1 dry1 | 348tok | disc 21430ms + match 1800ms | bonus 0"
+            "discover_output_tokens": 1068,
+            "match_input_tokens": 633,
+            "match_output_tokens": 185,
+            "claude_output": "[시도] 내가 해볼 것: $n=1$일 때 조건을 만족하는 정수 $a$의 개수를 구하기\n\n[계산]\n$n=1$이면:\n- 하한: $\\frac{2^1}{7} - \\frac{7}{2} = \\frac{2}{7} - \\frac{7}{2} = \\frac{4-49}{14} = -\\frac{45}{14} \\approx -3.21$\n- 상한: $\\frac{2^{1-3}}{7} = \\frac{1/4}{7} = \\frac{1}{28} \\approx 0.036$\n\n구간 $-3.21 \\leq a < 0.036$에 속하는 정수: $-3,\\, -2,\\, -1,\\, 0$ → **4개**\n\n[결론] $n=1$일 때 정수 $a$의 개수는 4개이므로, 조건(3개)을 만족하지 않는다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 0.5,
+                "reason": "학생은 n=1일 때 상한이 1/28 < 1임을 계산했고, 후보 A는 n≤4일 때 상한이 2/7 < 1임을 언급한다. n=1은 n≤4의 부분 사례이며, 학생의 계산이 후보 A의 주장을 부분적으로 뒷받침하지만, 후보 A의 핵심 결론(n≤4 전체 범위)을 완전히 포함하지는 않는다."
+              }
+            ],
+            "eval_summary": "MISS attempt1 dry1 | 342tok | disc 12183ms + match 4326ms | bonus 0"
           },
           {
             "attempt": 2,
-            "think_tokens": 456,
-            "discover_elapsed_ms": 24535,
-            "match_elapsed_ms": 2008,
+            "think_tokens": 228,
+            "discover_elapsed_ms": 14863,
+            "match_elapsed_ms": 2021,
             "discover_input_tokens": 1626,
-            "discover_output_tokens": 1761,
-            "match_input_tokens": 848,
+            "discover_output_tokens": 1053,
+            "match_input_tokens": 614,
             "match_output_tokens": 8,
-            "claude_output": "[시도] 내가 해볼 것: 구간 $\\left[\\frac{2^n}{7}-\\frac{7}{2},\\ \\frac{2^{n-3}}{7}\\right)$의 **길이**를 계산하기\n\n[계산]\n$$\\text{길이} = \\frac{2^{n-3}}{7} - \\left(\\frac{2^n}{7} - \\frac{7}{2}\\right) = \\frac{2^{n-3} - 8\\cdot 2^{n-3}}{7} + \\frac{7}{2} = -2^{n-3} + \\frac{7}{2}$$\n\n각 $n$에 대해:\n- $n=1$: $-\\tfrac{1}{4}+\\tfrac{7}{2} = \\tfrac{13}{4} \\approx 3.25$\n- $n=2$: $-\\tfrac{1}{2}+\\tfrac{7}{2} = 3$\n- $n=3$: $-1+\\tfrac{7}{2} = \\tfrac{5}{2} = 2.5$\n- $n=4$: $-2+\\tfrac{7}{2} = \\tfrac{3}{2} = 1.5$\n\n길이가 $1.5$이면 정수가 **최대 2개**이므로 정수",
+            "claude_output": "[시도] 조건 구간 $\\frac{2^n}{7} - \\frac{7}{2} \\leq a < \\frac{2^{n-3}}{7}$의 길이를 계산해볼 것\n\n[계산]\n$$\\frac{2^{n-3}}{7} - \\left(\\frac{2^n}{7} - \\frac{7}{2}\\right) = \\frac{2^{n-3} - 2^n}{7} + \\frac{7}{2}$$\n\n$$= \\frac{2^{n-3}(1-8)}{7} + \\frac{7}{2} = \\frac{-7 \\cdot 2^{n-3}}{7} + \\frac{7}{2} = -2^{n-3} + \\frac{7}{2}$$\n\n[결론] 정수 $a$의 후보 구간의 길이는 $\\dfrac{7}{2} - 2^{n-3}$이다.",
             "matches": [],
-            "eval_summary": "MISS attempt2 dry2 | 456tok | disc 24535ms + match 2008ms | bonus 0"
+            "eval_summary": "MISS attempt2 dry2 | 228tok | disc 14863ms + match 2021ms | bonus 0"
           },
           {
             "attempt": 3,
-            "think_tokens": 333,
-            "discover_elapsed_ms": 24962,
-            "match_elapsed_ms": 2642,
+            "think_tokens": 376,
+            "discover_elapsed_ms": 21521,
+            "match_elapsed_ms": 5608,
             "discover_input_tokens": 1624,
-            "discover_output_tokens": 1703,
-            "match_input_tokens": 1089,
-            "match_output_tokens": 8,
-            "claude_output": "[시도] 내가 해볼 것: 각 $n=1,2,3,4$에 대해 구간 $\\left[\\dfrac{2^n}{7}-\\dfrac{7}{2},\\, \\dfrac{2^{n-3}}{7}\\right)$에 속하는 정수 $a$의 개수를 세기\n\n[계산]\n\n$$\\frac{2^n}{7}-\\frac{7}{2} \\leq a < \\frac{2^{n-3}}{7}$$\n\n- **$n=1$:** $\\left[\\frac{2}{7}-\\frac{7}{2},\\, \\frac{1}{4}\\right) = \\left[\\frac{4-49}{14},\\, \\frac{1}{4}\\right) = \\left[-\\frac{45}{14},\\, \\frac{1}{4}\\right) \\approx [-3.21,\\, 0.25)$\n  → 정수: $-3, -2, -1, 0$ → **4개**\n\n- **$n=2$:** $\\left[\\frac{4}{7}-\\frac{7}{2},\\, \\frac{2}{7}\\right) = \\left[\\frac{8-49}{14},\\, \\frac{",
-            "matches": [],
-            "eval_summary": "MISS attempt3 dry3 | 333tok | disc 24962ms + match 2642ms | bonus 0"
+            "discover_output_tokens": 1598,
+            "match_input_tokens": 770,
+            "match_output_tokens": 225,
+            "claude_output": "[시도] 각 $n$값(1,2,3,4)에 대해 조건 $\\frac{2^n}{7}-\\frac{7}{2} \\leq a < \\frac{2^{n-3}}{7}$을 만족하는 정수 $a$의 개수를 센다\n\n[계산]\n- $n=1$: $-\\frac{45}{14}\\approx-3.21 \\leq a < \\frac{1}{28}\\approx0.036$ → 정수: $-3,-2,-1,0$ → **4개** ✗\n- $n=2$: $-\\frac{41}{14}\\approx-2.93 \\leq a < \\frac{1}{14}\\approx0.071$ → 정수: $-2,-1,0$ → **3개** ✓\n- $n=3$: $-\\frac{33}{14}\\approx-2.36 \\leq a < \\frac{1}{7}\\approx0.143$ → 정수: $-2,-1,0$ → **3개** ✓\n- $n=4$: $-\\frac{17}{14}\\approx-1.21 \\leq a < \\frac{2}{7}\\approx0.286$ → 정수: $-1,0$ → **2개*",
+            "matches": [
+              {
+                "label": "A",
+                "score": 0.7,
+                "reason": "학생의 계산에서 n=1,2,3,4에 대해 상한값 2^(n-3)/7을 실제로 계산했으며(1/28, 1/14, 1/7, 2/7), 이 값들이 모두 1보다 작음을 암묵적으로 활용했다. 후보 A의 핵심 결론인 '2^(n-3)/7 < 1'은 학생 풀이에서 직접 명시되지 않았으나, 계산 과정에서 상한이 항상 1 미만임을 수치로 확인하여 사용했으므로 부분적으로 포함됨"
+              }
+            ],
+            "eval_summary": "FOUND H3 | 376tok | disc 21521ms + match 5608ms | bonus 0"
           }
         ]
       },
