@@ -1,6 +1,5 @@
 {
   "problem_id": "Problem34",
-  "answer": "13",
   "clues": [
     {
       "id": "단서A",
@@ -132,522 +131,482 @@
     }
   ],
   "solution": "STEP 1. 각 점의 좌표를 설정한다.\n$y = a^x$에서 $x = 0$이면 $a^0 = 1$이므로 $\\mathrm{A}(0,\\;1)$이다. 점 $\\mathrm{A}$를 지나고 $x$축에 평행한 직선 $y = 1$과 $y = \\log_b x$의 교점에서 $\\log_b x = 1$, 즉 $x = b$이므로 $\\mathrm{B}(b,\\;1)$이다. $x = b$를 $y = a^x$에 대입하면 $y = a^b$이므로 $\\mathrm{C}(b,\\;a^b)$이다.\n\nSTEP 2. 비 조건으로 $\\mathrm{C}$의 $y$좌표를 결정한다.\n$\\mathrm{D}$는 $x$축 위이므로 $y_D = 0$이고, $\\overline{\\mathrm{AC}} : \\overline{\\mathrm{AD}} = 2 : 1$에서 $\\mathrm{A}$가 선분 $\\mathrm{DC}$를 $1:2$로 내분한다. 내분점 공식에 의해 $y_A = \\frac{2 \\cdot 0 + a^b}{3} = 1$이므로 $a^b = 3$이다.\n\nSTEP 3. 삼각형 넓이 조건으로 $b$를 결정한다.\n$\\overline{\\mathrm{AB}} = b$, $\\overline{\\mathrm{BC}} = 3 - 1 = 2$이고, 삼각형 $\\mathrm{ABC}$의 넓이는 $\\frac{1}{2} \\times b \\times 2 = b$이다. 넓이가 $4$이므로 $b = 4$이다.\n\nSTEP 4. $a^4$의 값을 구한다.\n$a^b = 3$에 $b = 4$를 대입하면 $a^4 = 3$이다.\n\nSTEP 5. $a^8 + b$를 계산한다.\n$a^8 = (a^4)^2 = 9$이고, $a^8 + b = 9 + 4 = 13$이다.",
-  "original_solution": "문제의 조건에 의해\n\n$$\\overline{\\mathrm{AC}} : \\overline{\\mathrm{AD}} = 2 : 1$$\n\n- 점 $\\mathrm{D}$의 $y$좌표 $= 0$\n- 점 $\\mathrm{A}$의 $y$좌표 $= 1$ ($\\because$ $y = a^x$에서 $x=0$이면 $y=1$)\n\n$y$좌표의 변화가 직선 위에서 거리에 비례하므로:\n\n$$\\Rightarrow \\text{(점 } \\mathrm{C}\\text{의 } y\\text{좌표)} = 3$$\n\n$$\\Rightarrow \\overline{\\mathrm{BC}} = 3 - 1 = 2$$\n\n이므로\n\n$$\\text{(삼각형 ABC의 넓이)} = \\frac{1}{2} \\times \\overline{\\mathrm{AB}} \\times \\overline{\\mathrm{BC}} = \\overline{\\mathrm{AB}}$$\n\n이고, 문제의 조건에서 이 값이 $4$이므로\n\n$$\\overline{\\mathrm{AB}} = 4 \\Rightarrow \\begin{cases} \\mathrm{B}(4,\\;1) \\Rightarrow b = 4 \\quad (\\because\\; y = \\log_b x \\text{ 위의 점}) \\\\ \\mathrm{C}(4,\\;3) \\Rightarrow a^4 = 3 \\quad (\\because\\; y = a^x \\text{ 위의 점}) \\end{cases}$$\n\n을 얻는다.\n\n$$\\therefore\\; a^8 + b = (a^4)^2 + b = 3^2 + 4 = \\boxed{13}$$",
-  "analysis": "좌표 설정(사실18, 연산2) → 비례배분(연산5)으로 C의 y좌표 결정 → 넓이(연산13)로 b 결정 → 지수법칙(연산4)으로 최종 계산",
-  "new_neurons": [],
-  "metadata": {
-    "unit": "지수와 로그",
-    "difficulty": "중",
-    "score": "4",
-    "type": "단답형",
-    "answer": "13"
-  },
-  "edge_count": 10,
-  "side_count": 1,
   "statement": "# 3. (수능/모의고사) - 지수함수와 로그함수의 그래프\n\n## Problem\n\n$1$보다 큰 두 실수 $a$, $b$에 대하여 곡선 $y = a^x$이 $y$축과 만나는 점을 $\\mathrm{A}$라 하고, 점 $\\mathrm{A}$를 지나고 $x$축에 평행한 직선이 곡선 $y = \\log_b x$와 만나는 점을 $\\mathrm{B}$, 점 $\\mathrm{B}$를 지나고 $y$축에 평행한 직선이 곡선 $y = a^x$과 만나는 점을 $\\mathrm{C}$라 하자. 직선 $\\mathrm{AC}$가 $x$축과 만나는 점을 $\\mathrm{D}$라 할 때,\n\n$$\\overline{\\mathrm{AC}} : \\overline{\\mathrm{AD}} = 2 : 1$$\n\n이다. 삼각형 $\\mathrm{ABC}$의 넓이가 $4$일 때, $a^8 + b$의 값은? [4점]\n\n[FIGURE: $y = a^x$ (지수함수 곡선)과 $y = \\log_b x$ (로그함수 곡선)이 그려져 있고, 점 $\\mathrm{A}$는 $y$축 위, 점 $\\mathrm{B}$는 $x$축 위쪽 오른편, 점 $\\mathrm{C}$는 $\\mathrm{B}$ 위쪽 곡선 $y=a^x$ 위, 점 $\\mathrm{D}$는 $x$축 위 원점 왼쪽에 위치함.]",
-  "dna": {
-    "nodes": [
+  "thinking_profile": {
+    "_version": 6,
+    "_unit": "note",
+    "_isV6": true,
+    "total_think_tokens": 383,
+    "total_notes": 9,
+    "hint_distribution": {
+      "0": 9,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0
+    },
+    "avg_hint_level": 0,
+    "genuine_miss_count": 0,
+    "absorbed_miss_count": 0,
+    "bonus_count": 3,
+    "highlight_notes": [
+      "note3",
+      "note6",
+      "note7"
+    ],
+    "hardest_note": {
+      "note_id": "note3",
+      "neuron": "전략25",
+      "hint_level": 0,
+      "structural_difficulty": 0.25,
+      "miss_type": null,
+      "note_text": "$x = b$를 $y = a^x$에 대입하면 $y = a^b$이다. $\\mathrm{C}(b,\\;a^b)$이다"
+    },
+    "neuron_stats": {
+      "사실18": {
+        "type": "사실",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 0,
+        "avg_hint_level": 0
+      },
+      "연산2": {
+        "type": "연산",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 0,
+        "avg_hint_level": 0
+      },
+      "전략25": {
+        "type": "전략",
+        "appearances": 3,
+        "total_hint": 0,
+        "hint_levels": [
+          0,
+          0,
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "연산5": {
+        "type": "연산",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 0,
+        "avg_hint_level": 0
+      },
+      "연산13": {
+        "type": "연산",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 0,
+        "avg_hint_level": 0
+      },
+      "전략2": {
+        "type": "전략",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "연산4": {
+        "type": "연산",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      }
+    },
+    "notes": [
       {
-        "id": "top",
-        "dna": "Q1",
-        "label": "값을 구하라",
-        "category": "발문"
+        "note_index": 1,
+        "note_id": "note1",
+        "neuron": "사실18",
+        "neuron_type": "사실",
+        "note_text": "$y=a^x$에서 $x=0$이면 $a^0=1$이다. $\\mathrm{A}(0,\\;1)$이다",
+        "from": [
+          "단서B"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note1",
+            "in_target": "note1",
+            "attempt": 0,
+            "score": 1,
+            "reason": "학생의 결론 A=(0,1)이 후보 A의 결론 A(0,1)과 완전히 일치한다"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 32,
+            "discover_elapsed_ms": 3856,
+            "match_elapsed_ms": 2076,
+            "discover_input_tokens": 1215,
+            "discover_output_tokens": 196,
+            "match_input_tokens": 853,
+            "match_output_tokens": 67,
+            "claude_output": "[시도] 내가 해볼 것: 점 A의 좌표 구하기\n\n[계산]\n곡선 $y = a^x$이 $y$축과 만나는 점이므로 $x = 0$을 대입한다.\n$$y = a^0 = 1$$\n따라서 $\\mathrm{A} = (0, 1)$\n\n[결론] 점 A의 좌표는 $(0, 1)$이다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 1,
+                "reason": "학생의 결론 A=(0,1)이 후보 A의 결론 A(0,1)과 완전히 일치한다"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 32tok | disc 3856ms + match 2076ms | bonus 0"
+          }
+        ]
       },
       {
-        "id": "ask",
-        "dna": "E1",
-        "label": "합(a^8, b)",
-        "category": "수식"
+        "note_index": 2,
+        "note_id": "note2",
+        "neuron": "연산2",
+        "neuron_type": "연산",
+        "note_text": "$\\log_b x = 1$에서 $x = b$이다. $\\mathrm{B}(b,\\;1)$이다",
+        "from": [
+          "note1",
+          "단서C"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note2",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note2",
+            "in_target": "note2",
+            "attempt": 0,
+            "score": 1,
+            "reason": "학생의 결론 B=(b,1)과 log_b x=1에서 x=b라는 과정이 후보 A와 완전히 일치"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 51,
+            "discover_elapsed_ms": 5586,
+            "match_elapsed_ms": 2888,
+            "discover_input_tokens": 1278,
+            "discover_output_tokens": 216,
+            "match_input_tokens": 799,
+            "match_output_tokens": 73,
+            "claude_output": "[시도] 내가 해볼 것: 점 B의 좌표 구하기\n\n[계산]\n- A(0, 1)을 지나고 x축에 평행한 직선 → y = 1\n- 이 직선이 곡선 y = log_b x와 만나는 점 B를 구하려면:\n  log_b x = 1\n  x = b\n\n[결론] B = (b, 1)이다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 1,
+                "reason": "학생의 결론 B=(b,1)과 log_b x=1에서 x=b라는 과정이 후보 A와 완전히 일치"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 51tok | disc 5586ms + match 2888ms | bonus 0"
+          }
+        ]
       },
       {
-        "id": "ask_pow",
-        "dna": "E7",
-        "label": "a의 8제곱",
-        "category": "수식"
+        "note_index": 3,
+        "note_id": "note3",
+        "neuron": "전략25",
+        "neuron_type": "전략",
+        "note_text": "$x = b$를 $y = a^x$에 대입하면 $y = a^b$이다. $\\mathrm{C}(b,\\;a^b)$이다",
+        "from": [
+          "note2",
+          "단서D"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note3",
+            "in_target": "note3",
+            "attempt": 0,
+            "score": 1,
+            "reason": "학생의 결론 C(b, a^b)와 후보 A의 결론이 완전히 일치하며, x=b를 y=a^x에 대입하는 과정도 동일하다"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 43,
+            "discover_elapsed_ms": 5732,
+            "match_elapsed_ms": 3891,
+            "discover_input_tokens": 1320,
+            "discover_output_tokens": 231,
+            "match_input_tokens": 777,
+            "match_output_tokens": 88,
+            "claude_output": "[시도] 내가 해볼 것: 점 C의 좌표 구하기\n\n[계산]\n단서D에 의해, C는 점 B를 지나고 y축에 평행한 직선(즉 $x = b$)과 곡선 $y = a^x$의 교점이다.\n\n$x = b$를 $y = a^x$에 대입하면:\n\n$$y = a^b$$\n\n[결론] $\\mathrm{C}(b,\\ a^b)$이다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 1,
+                "reason": "학생의 결론 C(b, a^b)와 후보 A의 결론이 완전히 일치하며, x=b를 y=a^x에 대입하는 과정도 동일하다"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 43tok | disc 5732ms + match 3891ms | bonus 0"
+          }
+        ]
       },
       {
-        "id": "va",
-        "dna": "T1",
-        "label": "변수 a",
-        "category": "말단"
+        "note_index": 4,
+        "note_id": "note4",
+        "neuron": "연산5",
+        "neuron_type": "연산",
+        "note_text": "$\\mathrm{D}$는 $x$축 위($y_D=0$)이고 $\\mathrm{A}$가 선분 $\\mathrm{DC}$를 $1:2$로 내분하므로 $y_A = \\frac{2 \\cdot 0 + a^b}{3} = 1$에서 $a^b = 3$이다",
+        "from": [
+          "note1",
+          "note3",
+          "단서E",
+          "단서F"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note4",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note4",
+            "in_target": "note4",
+            "attempt": 0,
+            "score": 0.85,
+            "reason": "학생은 AC/AD = a^b - 1 = 2로부터 a^b = 3을 도출했고, 후보 A도 내분 조건으로부터 a^b = 3을 도출함. 접근법은 다르지만 동일한 결론에 도달했으며, D점이 x축 위에 있다는 점도 공유함"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 175,
+            "discover_elapsed_ms": 10301,
+            "match_elapsed_ms": 4939,
+            "discover_input_tokens": 1374,
+            "discover_output_tokens": 732,
+            "match_input_tokens": 902,
+            "match_output_tokens": 205,
+            "claude_output": "[시도] 내가 해볼 것: 직선 AC의 방정식으로 점 D의 좌표를 구하고, AC:AD = 2:1 조건을 적용하기\n\n[계산]\nA(0, 1), C(b, a^b)이므로 직선 AC의 기울기는 $\\dfrac{a^b - 1}{b}$\n\n직선 AC: $y = 1 + \\dfrac{a^b-1}{b} \\cdot x$\n\n$y=0$ 대입 → $x = \\dfrac{-b}{a^b - 1}$ 이므로 $\\mathrm{D}\\!\\left(\\dfrac{-b}{a^b-1},\\; 0\\right)$\n\n$$\\overline{\\mathrm{AC}} = \\sqrt{b^2 + (a^b-1)^2}, \\quad \\overline{\\mathrm{AD}} = \\frac{\\sqrt{b^2+(a^b-1)^2}}{a^b-1}$$\n\n$$\\frac{\\overline{\\mathrm{AC}}}{\\overline{\\mathrm{AD}}} = a^b - 1 = 2$$\n\n[결론] $a^b = 3$",
+            "matches": [
+              {
+                "label": "A",
+                "score": 0.85,
+                "reason": "학생은 AC/AD = a^b - 1 = 2로부터 a^b = 3을 도출했고, 후보 A도 내분 조건으로부터 a^b = 3을 도출함. 접근법은 다르지만 동일한 결론에 도달했으며, D점이 x축 위에 있다는 점도 공유함"
+              },
+              {
+                "label": "D",
+                "score": 0.4,
+                "reason": "학생의 결론 a^b = 3은 후보 D의 전제조건과 일치하나, b=4 부분은 학생 서술에 없음"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 175tok | disc 10301ms + match 4939ms | bonus 0"
+          }
+        ]
       },
       {
-        "id": "vb",
-        "dna": "T1",
-        "label": "변수 b",
-        "category": "말단"
+        "note_index": 5,
+        "note_id": "note5",
+        "neuron": "연산13",
+        "neuron_type": "연산",
+        "note_text": "$\\overline{\\mathrm{AB}} = b$, $\\overline{\\mathrm{BC}} = 3 - 1 = 2$이고 삼각형 $\\mathrm{ABC}$의 넓이는 $\\frac{1}{2} \\times b \\times 2 = b$이다",
+        "from": [
+          "note1",
+          "note2",
+          "note4"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note5",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note5",
+            "in_target": "note5",
+            "attempt": 0,
+            "score": 1,
+            "reason": "AB=b, BC=2, 넓이=b 계산이 완전히 일치"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 68,
+            "discover_elapsed_ms": 6242,
+            "match_elapsed_ms": 2108,
+            "discover_input_tokens": 1484,
+            "discover_output_tokens": 343,
+            "match_input_tokens": 675,
+            "match_output_tokens": 86,
+            "claude_output": "[시도] 내가 해볼 것: 삼각형 ABC의 넓이를 좌표로 계산하기\n\n[계산]\n꼭짓점: A(0, 1), B(b, 1), C(b, 3) (단서4에서 $a^b=3$)\n\n밑변 AB: A와 B는 같은 높이($y=1$)이므로 $\\overline{AB} = b$\n\n높이 BC: B와 C는 같은 $x=b$이므로 $\\overline{BC} = 3 - 1 = 2$\n\n넓이 $= \\frac{1}{2} \\times b \\times 2 = b = 4$\n\n[결론] $b = 4$이다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 1,
+                "reason": "AB=b, BC=2, 넓이=b 계산이 완전히 일치"
+              },
+              {
+                "label": "B",
+                "score": 1,
+                "reason": "b=4 결론이 완전히 일치"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 68tok | disc 6242ms + match 2108ms | bonus 1"
+          }
+        ]
       },
       {
-        "id": "c8",
-        "dna": "T2",
-        "label": "상수 8",
-        "category": "말단"
+        "note_index": 6,
+        "note_id": "note6",
+        "neuron": "전략2",
+        "neuron_type": "전략",
+        "note_text": "$b = 4$이다",
+        "from": [
+          "note5",
+          "단서G"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note5",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
       },
       {
-        "id": "c2_ratio",
-        "dna": "T2",
-        "label": "상수 2",
-        "category": "말단"
+        "note_index": 7,
+        "note_id": "note7",
+        "neuron": "전략25",
+        "neuron_type": "전략",
+        "note_text": "$a^b = 3$에 $b = 4$를 대입하면 $a^4 = 3$이다",
+        "from": [
+          "note4",
+          "note6"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note7",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note7",
+            "in_target": "note7",
+            "attempt": 0,
+            "score": 1,
+            "reason": "학생이 b=4를 대입하여 a^4=3을 도출하는 과정이 완전히 일치함"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 14,
+            "discover_elapsed_ms": 3985,
+            "match_elapsed_ms": 3789,
+            "discover_input_tokens": 1582,
+            "discover_output_tokens": 186,
+            "match_input_tokens": 509,
+            "match_output_tokens": 172,
+            "claude_output": "[시도] 내가 해볼 것: $a^b = 3$과 $b = 4$를 이용해 $a^8 + b$를 계산한다\n\n[계산]\n$b = 4$이므로 $a^4 = 3$\n\n$a^8 = (a^4)^2 = 3^2 = 9$\n\n$a^8 + b = 9 + 4 = 13$\n\n[결론] $a^8 + b = \\boxed{13}$이다",
+            "matches": [
+              {
+                "label": "A",
+                "score": 1,
+                "reason": "학생이 b=4를 대입하여 a^4=3을 도출하는 과정이 완전히 일치함"
+              },
+              {
+                "label": "B",
+                "score": 1,
+                "reason": "학생이 a^8=(a^4)^2=3^2=9를 동일하게 계산함"
+              },
+              {
+                "label": "C",
+                "score": 1,
+                "reason": "학생이 a^8+b=9+4=13이라는 최종 결론을 완전히 동일하게 서술함"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 14tok | disc 3985ms + match 3789ms | bonus 2"
+          }
+        ]
       },
       {
-        "id": "c1_ratio",
-        "dna": "T2",
-        "label": "상수 1",
-        "category": "말단"
+        "note_index": 8,
+        "note_id": "note9",
+        "neuron": "연산4",
+        "neuron_type": "연산",
+        "note_text": "$a^8 = (a^4)^2 = 3^2 = 9$이다",
+        "from": [
+          "note7"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note7",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
       },
       {
-        "id": "c4_area",
-        "dna": "T2",
-        "label": "상수 4",
-        "category": "말단"
-      },
-      {
-        "id": "vx",
-        "dna": "T3",
-        "label": "독립변수 x",
-        "category": "말단"
-      },
-      {
-        "id": "a_gt1",
-        "dna": "C2",
-        "label": "a > 1",
-        "category": "조건"
-      },
-      {
-        "id": "b_gt1",
-        "dna": "C2",
-        "label": "b > 1",
-        "category": "조건"
-      },
-      {
-        "id": "crv1",
-        "dna": "G2",
-        "label": "곡선 y=a^x",
-        "category": "기하"
-      },
-      {
-        "id": "crv1_eq",
-        "dna": "C11",
-        "label": "y=a^x 방정식",
-        "category": "조건"
-      },
-      {
-        "id": "crv1_c1",
-        "dna": "C1",
-        "label": "y=a^x 등식",
-        "category": "조건"
-      },
-      {
-        "id": "exp_ax",
-        "dna": "E4",
-        "label": "a^x",
-        "category": "수식"
-      },
-      {
-        "id": "crv2",
-        "dna": "G2",
-        "label": "곡선 y=log_b x",
-        "category": "기하"
-      },
-      {
-        "id": "crv2_eq",
-        "dna": "C11",
-        "label": "y=log_b x 방정식",
-        "category": "조건"
-      },
-      {
-        "id": "crv2_c1",
-        "dna": "C1",
-        "label": "y=log_b x 등식",
-        "category": "조건"
-      },
-      {
-        "id": "log_bx",
-        "dna": "E3",
-        "label": "log_b(x)",
-        "category": "수식"
-      },
-      {
-        "id": "yaxis",
-        "dna": "G13",
-        "label": "y축",
-        "category": "기하"
-      },
-      {
-        "id": "xaxis",
-        "dna": "G13",
-        "label": "x축",
-        "category": "기하"
-      },
-      {
-        "id": "pt_a",
-        "dna": "G1",
-        "label": "점 A",
-        "category": "기하"
-      },
-      {
-        "id": "meet_a",
-        "dna": "C3",
-        "label": "crv1과 y축 교점",
-        "category": "조건"
-      },
-      {
-        "id": "line_ab",
-        "dna": "G12",
-        "label": "A지나 x축평행 직선",
-        "category": "기하"
-      },
-      {
-        "id": "par_x",
-        "dna": "G19",
-        "label": "x축에 평행",
-        "category": "기하"
-      },
-      {
-        "id": "pt_b",
-        "dna": "G1",
-        "label": "점 B",
-        "category": "기하"
-      },
-      {
-        "id": "meet_b",
-        "dna": "C3",
-        "label": "line_ab와 crv2 교점",
-        "category": "조건"
-      },
-      {
-        "id": "line_bc",
-        "dna": "G12",
-        "label": "B지나 y축평행 직선",
-        "category": "기하"
-      },
-      {
-        "id": "par_y",
-        "dna": "G19",
-        "label": "y축에 평행",
-        "category": "기하"
-      },
-      {
-        "id": "pt_c",
-        "dna": "G1",
-        "label": "점 C",
-        "category": "기하"
-      },
-      {
-        "id": "meet_c",
-        "dna": "C3",
-        "label": "line_bc와 crv1 교점",
-        "category": "조건"
-      },
-      {
-        "id": "line_ac",
-        "dna": "G12",
-        "label": "직선 AC",
-        "category": "기하"
-      },
-      {
-        "id": "pt_d",
-        "dna": "G1",
-        "label": "점 D",
-        "category": "기하"
-      },
-      {
-        "id": "meet_d",
-        "dna": "C3",
-        "label": "line_ac와 x축 교점",
-        "category": "조건"
-      },
-      {
-        "id": "seg_ac",
-        "dna": "G7",
-        "label": "선분 AC",
-        "category": "기하"
-      },
-      {
-        "id": "seg_ad",
-        "dna": "G7",
-        "label": "선분 AD",
-        "category": "기하"
-      },
-      {
-        "id": "ratio_cond",
-        "dna": "C8",
-        "label": "AC:AD=2:1",
-        "category": "조건"
-      },
-      {
-        "id": "tri_abc",
-        "dna": "G25",
-        "label": "삼각형 ABC",
-        "category": "기하"
-      },
-      {
-        "id": "area_abc",
-        "dna": "G11",
-        "label": "넓이(삼각형ABC)",
-        "category": "기하"
-      },
-      {
-        "id": "area_cond",
-        "dna": "C1",
-        "label": "넓이=4",
-        "category": "조건"
-      },
-      {
-        "id": "conds",
-        "dna": "S1",
-        "label": "전체 조건 묶음",
-        "category": "구조"
+        "note_index": 9,
+        "note_id": "END",
+        "neuron": "전략25",
+        "neuron_type": "전략",
+        "note_text": "$a^8 + b = 9 + 4 = 13$이다",
+        "from": [
+          "note9",
+          "note6"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note7",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
       }
     ],
-    "edges": [
-      {
-        "from": "ask",
-        "to": "top"
-      },
-      {
-        "from": "conds",
-        "to": "top"
-      },
-      {
-        "from": "ask_pow",
-        "to": "ask"
-      },
-      {
-        "from": "vb",
-        "to": "ask"
-      },
-      {
-        "from": "va",
-        "to": "ask_pow"
-      },
-      {
-        "from": "c8",
-        "to": "ask_pow"
-      },
-      {
-        "from": "a_gt1",
-        "to": "conds"
-      },
-      {
-        "from": "b_gt1",
-        "to": "conds"
-      },
-      {
-        "from": "va",
-        "to": "a_gt1"
-      },
-      {
-        "from": "vb",
-        "to": "b_gt1"
-      },
-      {
-        "from": "crv1_eq",
-        "to": "crv1"
-      },
-      {
-        "from": "crv1_c1",
-        "to": "crv1_eq"
-      },
-      {
-        "from": "exp_ax",
-        "to": "crv1_c1"
-      },
-      {
-        "from": "va",
-        "to": "exp_ax"
-      },
-      {
-        "from": "vx",
-        "to": "exp_ax"
-      },
-      {
-        "from": "crv2_eq",
-        "to": "crv2"
-      },
-      {
-        "from": "crv2_c1",
-        "to": "crv2_eq"
-      },
-      {
-        "from": "log_bx",
-        "to": "crv2_c1"
-      },
-      {
-        "from": "vb",
-        "to": "log_bx"
-      },
-      {
-        "from": "vx",
-        "to": "log_bx"
-      },
-      {
-        "from": "crv1",
-        "to": "meet_a"
-      },
-      {
-        "from": "yaxis",
-        "to": "meet_a"
-      },
-      {
-        "from": "pt_a",
-        "to": "meet_a"
-      },
-      {
-        "from": "meet_a",
-        "to": "conds"
-      },
-      {
-        "from": "pt_a",
-        "to": "line_ab"
-      },
-      {
-        "from": "par_x",
-        "to": "line_ab"
-      },
-      {
-        "from": "xaxis",
-        "to": "par_x"
-      },
-      {
-        "from": "line_ab",
-        "to": "meet_b"
-      },
-      {
-        "from": "crv2",
-        "to": "meet_b"
-      },
-      {
-        "from": "pt_b",
-        "to": "meet_b"
-      },
-      {
-        "from": "meet_b",
-        "to": "conds"
-      },
-      {
-        "from": "pt_b",
-        "to": "line_bc"
-      },
-      {
-        "from": "par_y",
-        "to": "line_bc"
-      },
-      {
-        "from": "yaxis",
-        "to": "par_y"
-      },
-      {
-        "from": "line_bc",
-        "to": "meet_c"
-      },
-      {
-        "from": "crv1",
-        "to": "meet_c"
-      },
-      {
-        "from": "pt_c",
-        "to": "meet_c"
-      },
-      {
-        "from": "meet_c",
-        "to": "conds"
-      },
-      {
-        "from": "pt_a",
-        "to": "line_ac"
-      },
-      {
-        "from": "pt_c",
-        "to": "line_ac"
-      },
-      {
-        "from": "line_ac",
-        "to": "meet_d"
-      },
-      {
-        "from": "xaxis",
-        "to": "meet_d"
-      },
-      {
-        "from": "pt_d",
-        "to": "meet_d"
-      },
-      {
-        "from": "meet_d",
-        "to": "conds"
-      },
-      {
-        "from": "pt_a",
-        "to": "seg_ac"
-      },
-      {
-        "from": "pt_c",
-        "to": "seg_ac"
-      },
-      {
-        "from": "pt_a",
-        "to": "seg_ad"
-      },
-      {
-        "from": "pt_d",
-        "to": "seg_ad"
-      },
-      {
-        "from": "seg_ac",
-        "to": "ratio_cond"
-      },
-      {
-        "from": "seg_ad",
-        "to": "ratio_cond"
-      },
-      {
-        "from": "c2_ratio",
-        "to": "ratio_cond"
-      },
-      {
-        "from": "c1_ratio",
-        "to": "ratio_cond"
-      },
-      {
-        "from": "ratio_cond",
-        "to": "conds"
-      },
-      {
-        "from": "pt_a",
-        "to": "tri_abc"
-      },
-      {
-        "from": "pt_b",
-        "to": "tri_abc"
-      },
-      {
-        "from": "pt_c",
-        "to": "tri_abc"
-      },
-      {
-        "from": "tri_abc",
-        "to": "area_abc"
-      },
-      {
-        "from": "area_abc",
-        "to": "area_cond"
-      },
-      {
-        "from": "c4_area",
-        "to": "area_cond"
-      },
-      {
-        "from": "area_cond",
-        "to": "conds"
-      }
-    ],
-    "new_dna": []
-  },
-  "thinking_profile": null,
-  "folders": [],
-  "history": [],
-  "recovery_warnings": [],
-  "errata": [],
-  "created_at": "2026-03-24T01:33:46.378Z"
+    "_debug": "v7-split"
+  }
 }
