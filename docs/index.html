@@ -471,7 +471,7 @@ function rAn(p){
     h+='<div style="border-top:1px solid var(--bd);padding-top:8px">';
     notes.forEach(function(n,idx){
       var hc=hintColor(n.hint_level);
-      var barPct=((4-n.hint_level)/4)*100;
+      var barPct=(n.hint_level/4)*100;
       var isHL=tp.highlight_notes&&tp.highlight_notes.indexOf(n.note_id)>=0;
       var noteUid='tpn_'+idx;
       h+='<div style="margin-bottom:6px">';
@@ -517,7 +517,7 @@ function rAn(p){
       var nsList=Object.entries(tp.neuron_stats).sort(function(a,b){return b[1].avg_hint_level-a[1].avg_hint_level});
       nsList.forEach(function(pair){
         var nid=pair[0],ns=pair[1];
-        var barPct=((4-(ns.avg_hint_level||0))/4)*100;
+        var barPct=((ns.avg_hint_level||0)/4)*100;
         var hc=hintColor(Math.round(ns.avg_hint_level||0));
         h+='<div style="margin-bottom:5px">';
         h+='<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px">';
@@ -602,7 +602,7 @@ function rAn(p){
       // step 그룹 바
       sg.groups.forEach(function(g){
         var hc=g.max_hint!==null&&g.max_hint!==undefined?hintColor(g.max_hint):'#7a7f9a';
-        var barPct=g.max_hint!==null?((4-g.max_hint)/4)*100:50;
+        var barPct=g.max_hint!==null?(g.max_hint/4)*100:0;
         var sgUid='sg_'+p.problem_id+'_'+g.step_num;
         h+='<div style="margin-bottom:8px">';
         // 요약 행
