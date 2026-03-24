@@ -2775,7 +2775,70 @@
       ],
       "new_dna": []
     },
-    "thinking_profile": null,
+    "thinking_profile": {
+      "_version": 6,
+      "_unit": "note",
+      "_isV6": true,
+      "total_think_tokens": 0,
+      "total_notes": 21,
+      "hint_distribution": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 1
+      },
+      "avg_hint_level": 4,
+      "genuine_miss_count": 1,
+      "absorbed_miss_count": 0,
+      "bonus_count": 0,
+      "highlight_notes": [
+        "note1"
+      ],
+      "hardest_note": {
+        "note_id": "note1",
+        "neuron": "연산30",
+        "hint_level": 4,
+        "structural_difficulty": 0.03,
+        "miss_type": "genuine",
+        "note_text": "$A(0,a)$를 지나는 기울기 $1$인 직선은 $y=x+a$이다"
+      },
+      "neuron_stats": {
+        "연산30": {
+          "type": "연산",
+          "appearances": 1,
+          "total_hint": 4,
+          "hint_levels": [
+            4
+          ],
+          "bonus_count": 0,
+          "avg_hint_level": 4
+        }
+      },
+      "notes": [
+        {
+          "note_index": 1,
+          "note_id": "note1",
+          "neuron": "연산30",
+          "neuron_type": "연산",
+          "note_text": "$A(0,a)$를 지나는 기울기 $1$인 직선은 $y=x+a$이다",
+          "from": [
+            "단서B",
+            "단서D"
+          ],
+          "hint_level": 4,
+          "is_bonus": false,
+          "structural_difficulty": 0.03,
+          "discovered_in_target": "note1",
+          "miss_type": "genuine",
+          "absorbed_in": null,
+          "absorb_reason": "",
+          "partial_history": [],
+          "attempts": []
+        }
+      ],
+      "_debug": "v7-split"
+    },
     "folders": [],
     "history": [],
     "recovery_warnings": [],
