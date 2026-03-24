@@ -789,7 +789,1147 @@
       ],
       "new_dna": []
     },
-    "thinking_profile": null,
+    "thinking_profile": {
+      "_version": 6,
+      "_unit": "note",
+      "total_think_tokens": 11334,
+      "total_notes": 28,
+      "hint_distribution": {
+        "0": 26,
+        "1": 1,
+        "2": 0,
+        "3": 1,
+        "4": 0
+      },
+      "avg_hint_level": 0.14,
+      "genuine_miss_count": 0,
+      "absorbed_miss_count": 0,
+      "bonus_count": 25,
+      "highlight_notes": [
+        "note10",
+        "note12",
+        "note1"
+      ],
+      "hardest_note": {
+        "note_id": "note10",
+        "neuron": "연산22",
+        "hint_level": 3,
+        "structural_difficulty": 0.03,
+        "miss_type": null,
+        "note_text": "$k>4\\sqrt{5}$의 양변에 $-\\frac{1}{2}$를 곱하면 $-\\frac{k}{2}<-2\\sqrt{5}$이다"
+      },
+      "neuron_stats": {
+        "전략12": {
+          "type": "전략",
+          "appearances": 1,
+          "total_hint": 0,
+          "hint_levels": [
+            0
+          ],
+          "bonus_count": 0,
+          "avg_hint_level": 0
+        },
+        "사실76": {
+          "type": "사실",
+          "appearances": 2,
+          "total_hint": 0,
+          "hint_levels": [
+            0,
+            0
+          ],
+          "bonus_count": 2,
+          "avg_hint_level": 0
+        },
+        "연산17": {
+          "type": "연산",
+          "appearances": 2,
+          "total_hint": 0,
+          "hint_levels": [
+            0,
+            0
+          ],
+          "bonus_count": 2,
+          "avg_hint_level": 0
+        },
+        "연산2": {
+          "type": "연산",
+          "appearances": 2,
+          "total_hint": 0,
+          "hint_levels": [
+            0,
+            0
+          ],
+          "bonus_count": 2,
+          "avg_hint_level": 0
+        },
+        "연산22": {
+          "type": "연산",
+          "appearances": 1,
+          "total_hint": 3,
+          "hint_levels": [
+            3
+          ],
+          "bonus_count": 0,
+          "avg_hint_level": 3
+        },
+        "전략5": {
+          "type": "전략",
+          "appearances": 4,
+          "total_hint": 0,
+          "hint_levels": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "bonus_count": 4,
+          "avg_hint_level": 0
+        },
+        "전략6": {
+          "type": "전략",
+          "appearances": 2,
+          "total_hint": 1,
+          "hint_levels": [
+            1,
+            0
+          ],
+          "bonus_count": 1,
+          "avg_hint_level": 0.5
+        },
+        "사실79": {
+          "type": "사실",
+          "appearances": 6,
+          "total_hint": 0,
+          "hint_levels": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "bonus_count": 6,
+          "avg_hint_level": 0
+        },
+        "전략25": {
+          "type": "전략",
+          "appearances": 4,
+          "total_hint": 0,
+          "hint_levels": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "bonus_count": 4,
+          "avg_hint_level": 0
+        },
+        "사실78": {
+          "type": "사실",
+          "appearances": 2,
+          "total_hint": 0,
+          "hint_levels": [
+            0,
+            0
+          ],
+          "bonus_count": 2,
+          "avg_hint_level": 0
+        },
+        "전략17": {
+          "type": "전략",
+          "appearances": 1,
+          "total_hint": 0,
+          "hint_levels": [
+            0
+          ],
+          "bonus_count": 1,
+          "avg_hint_level": 0
+        },
+        "전략20": {
+          "type": "전략",
+          "appearances": 1,
+          "total_hint": 0,
+          "hint_levels": [
+            0
+          ],
+          "bonus_count": 1,
+          "avg_hint_level": 0
+        }
+      },
+      "notes": [
+        {
+          "note_index": 1,
+          "note_id": "note1",
+          "neuron": "전략12",
+          "neuron_type": "전략",
+          "note_text": "$n$의 홀짝에 따라 $(x^2-20)^n$과 $(2x+k)^{n+1}$의 부호 조건이 달라지므로 경우를 분리한다",
+          "from": [
+            "단서A",
+            "단서C"
+          ],
+          "hint_level": 0,
+          "is_bonus": false,
+          "structural_difficulty": 0.25,
+          "discovered_in_target": "note1",
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": "",
+          "partial_history": [
+            {
+              "in_target": "note1",
+              "attempt": 0,
+              "score": 1,
+              "reason": "n의 홀짝에 따라 부호 조건이 달라지므로 경우를 분리한다고 명시적으로 서술"
+            }
+          ],
+          "attempts": [
+            {
+              "attempt": 0,
+              "think_tokens": 1705,
+              "elapsed_ms": 95663,
+              "claude_output": "## 방정식 단순화\n\n주어진 방정식을 로그 법칙으로 정리합니다:\n\n$$\\frac{n\\log_n(x^2-20)}{n} = \\frac{(n+1)\\log_n(2x+k)}{n+1} + 1$$\n\n$$\\log_n(x^2-20) = \\log_n(2x+k) + \\log_n n = \\log_n[n(2x+k)]$$\n\n**핵심 방정식:** $x^2 - 20 = n|2x+k|$ (단, 진수 조건 고려)\n\n---\n\n## 홀수/짝수 n에 따른 경우 분류\n\n**n이 짝수일 때:** $(x^2-20)^n > 0$은 $x^2 \\neq 20$, $(2x+k)^{n+1}>0$은 $2x+k>0$ 필요\n- **경우 1** ($x^2>20$, $2x+k>0$): $x^2-2nx-nk-20=0$\n- **경우 2** ($x^2<20$, $2x+k>0$): $x^2+2nx+nk-20=0$ → 판별식 $\\Delta_2 = 4(n^2-nk+20)$\n\n**n이 홀수일 때:** $x^2>20$ 필수, $(2x+k)^{n+1}$은 부호 무관(짝수 지수)\n- **경우 1** ($x^2>20$, $2x+k>0$): $x^2-2nx-nk-20=0$\n- **경우 2** ($x^2>20$, $2x+k<0$): $x^2+2nx+nk-20=0$ → 판별식 $\\Delta_2 = 4(n^2-nk+20)$\n\n---\n\n## 실근 3개 조건 분석\n\n경우 2에서 **접선 조건** ($\\Delta_2=0$): $k = n + \\dfrac{20}{n}$\n\n| n | $n + 20/n$ |\n|---|---|\n| 2 | 12 |\n| 4 | 9 |\n| 5 | 9 |\n| 6 | ~9.33 |\n\n💡 **n=4와 n=5에서 동시에 $k=9$** (단, $k=9 > 4\\sqrt{5} \\approx 8.944$ ✓)\n\n---\n\n## k=9에서 각 n의 근 검증\n\n### n=4 (짝수), k=9:\n- **경우 2** (접선): $x^2+8x+16=(x+4)^2=0$ → $x=-4$, 검증: $(-4)^2=16<20$ ✓, $2(-4)+9=1>0$ ✓ → **1개**\n- **경우 1**: $x^2-8x-56=0$ → $x=4\\pm6\\sqrt{2}$, 두 근 모두 $x^2>20$, $2x+9>0$ ✓ → **2개**\n- **총 3개** ✓\n\n### n=5 (홀수), k=9:\n- **경우 2** (접선): $x^2+10x+25=(x+5)^2=0$ → $x=-5$, 검증: $(-5)^2=25>20$ ✓, $2(-5)+9=-1<0$ ✓ → **1개**\n- **경우 1**: $x^2-10x-65=0$ → $x=5\\pm3\\sqrt{10}$, 두 근 모두 조건 만족 ✓ → **2개**\n- **총 3개** ✓\n\n### 다른 n 검증:\n- n=2: 경우1(2개) + 경우2(2개) = **4개** ✗\n- n=3: 경우1(2개) + 경우2(도메인 불만족, 0개) = **2개** ✗\n- n=6 이상: 경우1+경우2 = **4개 또는 2개** ✗\n\n---\n\n## 최종 답\n\n$$n_1 = 4,\\quad n_2 = 5,\\quad k = 9$$\n\n$$k + n_2 - n_1 = 9 + 5 - 4 = \\boxed{10}$$",
+              "matches": [
+                {
+                  "label": "A",
+                  "score": 1,
+                  "reason": "n의 홀짝에 따라 부호 조건이 달라지므로 경우를 분리한다고 명시적으로 서술"
+                },
+                {
+                  "label": "B",
+                  "score": 0.9,
+                  "reason": "n 홀수일 때 x²-20>0 필요, n+1 짝수이므로 (2x+k)^{n+1} 부호 무관 서술"
+                },
+                {
+                  "label": "C",
+                  "score": 0.9,
+                  "reason": "n 홀수 방정식을 log_n(x²-20)=log_n|2x+k|+1 형태로 유도"
+                },
+                {
+                  "label": "D",
+                  "score": 0.9,
+                  "reason": "n 짝수일 때 2x+k>0 필요, n+1 홀수이므로 부호 조건 서술"
+                },
+                {
+                  "label": "E",
+                  "score": 0.9,
+                  "reason": "n 짝수 방정식을 log_n|x²-20|=log_n(2x+k)+1 형태로 유도"
+                },
+                {
+                  "label": "F",
+                  "score": 0.9,
+                  "reason": "n 홀수: x²-20=n|2x+k| 핵심 방정식 명시"
+                },
+                {
+                  "label": "G",
+                  "score": 0.85,
+                  "reason": "n 짝수: |x²-20|=n(2x+k) 형태를 경우1,2 분리로 포함"
+                },
+                {
+                  "label": "I",
+                  "score": 0.8,
+                  "reason": "n 홀수 경우 x²>20 영역에서 교점 수 분석 수행"
+                },
+                {
+                  "label": "K",
+                  "score": 0.8,
+                  "reason": "경우1(x²-2nx-nk-20=0)에서 판별식 항상 양수, 양근·음근 각 1개 존재 확인"
+                },
+                {
+                  "label": "L",
+                  "score": 0.85,
+                  "reason": "경우2에서 x²+2nx+(nk-20)=0, 판별식 D2/4=n²-nk+20, 대칭축 x=-n 도출"
+                },
+                {
+                  "label": "M",
+                  "score": 0.85,
+                  "reason": "전체 3개가 되려면 경우2에서 접선 조건(D2=0) 필요 서술"
+                },
+                {
+                  "label": "N",
+                  "score": 0.8,
+                  "reason": "D2=0이면 n²-nk+20=0, 중근 x=-n이 해당 구간에 있으려면 n>k/2>2√5 조건 확인"
+                },
+                {
+                  "label": "O",
+                  "score": 0.75,
+                  "reason": "n>2√5인 홀수 자연수 조건에서 n=5 도출"
+                },
+                {
+                  "label": "S",
+                  "score": 0.8,
+                  "reason": "n 짝수 경우2에서 x²+2nx+(nk-20)=0, 판별식 동일 구조 포함"
+                },
+                {
+                  "label": "T",
+                  "score": 0.8,
+                  "reason": "n 짝수도 접선 조건 D2=0으로 실근 3개 확보"
+                },
+                {
+                  "label": "U",
+                  "score": 0.75,
+                  "reason": "n 짝수에서 중근 x=-n이 구간 내에 있으려면 n<2√5 조건 포함"
+                },
+                {
+                  "label": "V",
+                  "score": 0.75,
+                  "reason": "2≤n<2√5인 짝수로 n=4 선택"
+                },
+                {
+                  "label": "Y",
+                  "score": 0.85,
+                  "reason": "n1=4(짝수,4<2√5), n2=5(홀수,5>2√5) 조건 검증 완료"
+                },
+                {
+                  "label": "Z",
+                  "score": 1,
+                  "reason": "유일한 유효 조합 n1=4, n2=5 명시"
+                },
+                {
+                  "label": "[",
+                  "score": 1,
+                  "reason": "k=9 명시"
+                },
+                {
+                  "label": "\\",
+                  "score": 1,
+                  "reason": "k+n2-n1=9+5-4=10 최종 답 일치"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "note_index": 2,
+          "note_id": "note2",
+          "neuron": "사실76",
+          "neuron_type": "사실",
+          "note_text": "$n$ 홀수일 때: $(x^2-20)^n$의 부호는 $x^2-20$의 부호와 같다. 로그 정의를 위해 $(x^2-20)^n>0$이려면 $x^2-20>0$이어야 한다. $n+1$이 짝수이므로 $(2x+k)^{n+1}=|2x+k|^{n+1}\\geq 0$이다",
+          "from": [
+            "note1"
+          ],
+          "hint_level": 0,
+          "is_bonus": true,
+          "structural_difficulty": 0.12,
+          "discovered_in_target": "note1",
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": "",
+          "partial_history": [
+            {
+              "in_target": "note1",
+              "attempt": 0,
+              "score": 0.9,
+              "reason": "n 홀수일 때 x²-20>0 필요, n+1 짝수이므로 (2x+k)^{n+1} 부호 무관 서술"
+            }
+          ],
+          "attempts": []
+        },
+        {
+          "note_index": 3,
+          "note_id": "note3",
+          "neuron": "연산17",
+          "neuron_type": "연산",
+          "note_text": "$n$ 홀수: $\\frac{\\log_n(x^2-20)^n}{n}=\\log_n(x^2-20)$, $\\frac{\\log_n|2x+k|^{n+1}}{n+1}=\\log_n|2x+k|$이므로 방정식은 $\\log_n(x^2-20)=\\log_n|2x+k|+1$ (단 $x^2>20$, $2x+k\\neq 0$)",
+          "from": [
+            "note2"
+          ],
+          "hint_level": 0,
+          "is_bonus": true,
+          "structural_difficulty": 0.03,
+          "discovered_in_target": "note1",
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": "",
+          "partial_history": [
+            {
+              "in_target": "note1",
+              "attempt": 0,
+              "score": 0.9,
+              "reason": "n 홀수 방정식을 log_n(x²-20)=log_n|2x+k|+1 형태로 유도"
+            }
+          ],
+          "attempts": []
+        },
+        {
+          "note_index": 4,
+          "note_id": "note4",
+          "neuron": "사실76",
+          "neuron_type": "사실",
+          "note_text": "$n$ 짝수일 때: $(x^2-20)^n=|x^2-20|^n\\geq 0$이다. $n+1$이 홀수이므로 $(2x+k)^{n+1}$의 부호는 $2x+k$의 부호와 같다. 로그 정의를 위해 $2x+k>0$이어야 한다",
+          "from": [
+            "note1"
+          ],
+          "hint_level": 0,
+          "is_bonus": true,
+          "structural_difficulty": 0.12,
+          "discovered_in_target": "note1",
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": "",
+          "partial_history": [
+            {
+              "in_target": "note1",
+              "attempt": 0,
+              "score": 0.9,
+              "reason": "n 짝수일 때 2x+k>0 필요, n+1 홀수이므로 부호 조건 서술"
+            }
+          ],
+          "attempts": []
+        },
+        {
+          "note_index": 5,
+          "note_id": "note5",
+          "neuron": "연산17",
+          "neuron_type": "연산",
+          "note_text": "$n$ 짝수: $\\frac{\\log_n|x^2-20|^n}{n}=\\log_n|x^2-20|$, $\\frac{\\log_n(2x+k)^{n+1}}{n+1}=\\log_n(2x+k)$이므로 방정식은 $\\log_n|x^2-20|=\\log_n(2x+k)+1$ (단 $x^2\\neq 20$, $2x+k>0$)",
+          "from": [
+            "note4"
+          ],
+          "hint_level": 0,
+          "is_bonus": true,
+          "structural_difficulty": 0.03,
+          "discovered_in_target": "note1",
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": "",
+          "partial_history": [
+            {
+              "in_target": "note1",
+              "attempt": 0,
+              "score": 0.9,
+              "reason": "n 짝수 방정식을 log_n|x²-20|=log_n(2x+k)+1 형태로 유도"
+            }
+          ],
+          "attempts": []
+        },
+        {
+          "note_index": 6,
+          "note_id": "note7",
+          "neuron": "연산2",
+          "neuron_type": "연산",
+          "note_text": "$n$ 홀수: $x^2-20=n|2x+k|=2n\\left|x+\\frac{k}{2}\\right|$ (단 $x^2>20$, $x\\neq -\\frac{k}{2}$)",
+          "from": [
+            "note3",
+            "note6"
+          ],
+          "hint_level": 0,
+          "is_bonus": true,
+          "structural_difficulty": 0.03,
+          "discovered_in_target": "note1",
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": "",
+          "partial_history": [
+            {
+              "in_target": "note1",
+              "attempt": 0,
+              "score": 0.9,
+              "reason": "n 홀수: x²-20=n|2x+k| 핵심 방정식 명시"
+            }
+          ],
+          "attempts": []
+        },
+        {
+          "note_index": 7,
+          "note_id": "note9",
+          "neuron": "연산2",
+          "neuron_type": "연산",
+          "note_text": "$n$ 짝수: $|x^2-20|=n(2x+k)=2n\\left(x+\\frac{k}{2}\\right)$ (단 $x^2\\neq 20$, $x>-\\frac{k}{2}$)",
+          "from": [
+            "note5",
+            "note8"
+          ],
+          "hint_level": 0,
+          "is_bonus": true,
+          "structural_difficulty": 0.03,
+          "discovered_in_target": "note1",
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": "",
+          "partial_history": [
+            {
+              "in_target": "note1",
+              "attempt": 0,
+              "score": 0.85,
+              "reason": "n 짝수: |x²-20|=n(2x+k) 형태를 경우1,2 분리로 포함"
+            }
+          ],
+          "attempts": []
+        },
+        {
+          "note_index": 8,
+          "note_id": "note10",
+          "neuron": "연산22",
+          "neuron_type": "연산",
+          "note_text": "$k>4\\sqrt{5}$의 양변에 $-\\frac{1}{2}$를 곱하면 $-\\frac{k}{2}<-2\\sqrt{5}$이다",
+          "from": [
+            "단서B"
+          ],
+          "hint_level": 3,
+          "is_bonus": false,
+          "structural_difficulty": 0.03,
+          "discovered_in_target": "note10",
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": "",
+          "partial_history": [
+            {
+              "in_target": "note10",
+              "attempt": 1,
+              "score": 0.45,
+              "reason": "학생이 'k > 4√5 조건 검토'와 '-k/2'를 경계값으로 반복 사용하며 k=9 > 4√5 ≈ 8.944를 최종 검증하나, '-k/2 < -2√5'라는 부등식 자체를 명시적으로 도출하지는 않음 — 암묵적 사용에 그침"
+            },
+            {
+              "in_target": "note10",
+              "attempt": 3,
+              "score": 0.8,
+              "reason": "학생이 홀수 n 소경우 B에서 'x < -k/2 < -√20'을 명시하여 k>4√5 조건으로부터 -k/2 < -2√5임을 직접 사용함"
+            }
+          ],
+          "attempts": [
+            {
+              "attempt": 0,
+              "think_tokens": 1466,
+              "elapsed_ms": 74029,
+              "claude_output": "## 풀이\n\n### n 짝수인 경우 분석\n\n**정리된 방정식:** $|x^2-20| = n(2x+k)$ (단 $x^2 \\neq 20$, $x > -k/2$)\n\n**경우 분리:**\n\n**① $x^2 > 20$ 영역:** $x^2 - 20 = n(2x+k)$\n$$x^2 - 2nx - (20+nk) = 0 \\implies x = n \\pm \\sqrt{n^2 + 20 + nk}$$\n\n$k > 4\\sqrt{5}$이면 두 근 $x_1, x_2$ 모두 조건을 만족함을 확인:\n- $x_1 = n + \\sqrt{n^2+20+nk} > 0$ → $x_1^2 > 20$ ✓\n- $x_2 = n - \\sqrt{n^2+20+nk} < 0$이고, $k > 4\\sqrt{5}$이므로 $x_2 > -k/2$이고 $x_2^2 > 20$ ✓\n\n**따라서 이 영역에서 항상 2개의 유효근 존재**\n\n**② $x^2 < 20$ 영역:** $20 - x^2 = n(2x+k)$\n$$x^2 + 2nx + (nk-20) = 0 \\implies \\Delta = 4(n^2 - nk + 20)$$\n\n$D = n^2 - nk + 20$으로 정의하면:\n- $D > 0$: 2개의 근 → 전체 **4개** (초과)\n- $D = 0$: 1개의 근 $x = -n$ → 전체 **3개** ✅\n- $D < 0$: 근 없음 → 전체 **2개** (부족)\n\n### 핵심 조건 도출\n\n**실근 3개 조건:** $D = 0$, 즉\n$$n^2 - nk + 20 = 0 \\implies \\boxed{k = n + \\frac{20}{n}}$$\n\n이 조건에서 $x = -n$이 유효한지 확인:\n- $x = -n$이면 $x^2 = n^2$, $x^2 < 20$이 필요하므로 $n < \\sqrt{20}$이어야 함\n- 하지만 $n \\geq 2$인 자연수... 실제로 $-\\sqrt{20} < -n$이면 $n < \\sqrt{20}$\n\n실제로 $n=2$이면 $|-2| = 2 < \\sqrt{20}$ ✓\n\n더 넓게 보면, 이 방정식은 $n_1 n_2 = 20$이고 $n_1 + n_2 = k$인 두 자연수 쌍을 의미합니다.\n\n### 자연수 쌍 탐색 ($n \\geq 2$, $n_1 n_2 = 20$, $k > 4\\sqrt{5}$)\n\n| $n_1$ | $n_2$ | $k = n_1 + n_2$ | 조건 확인 |\n|--------|--------|-----------------|-----------|\n| 1 | 20 | 21 | $n_1 \\geq 2$ 불만족 ❌ |\n| **2** | **10** | **12** | $12 > 4\\sqrt{5} \\approx 8.94$ ✅ |\n| 4 | 5 | 9 | $9 > 4\\sqrt{5}$ ✅, 그러나 $n=5$는 홀수 → 별도 검증 필요 |\n\n**$(n_1, n_2) = (2, 10)$, $k = 12$인 경우:**\n- $n=2$: $D = 4 - 24 + 20 = 0$ → 근 3개 ✅\n- $n=10$: $D = 100 - 120 + 20 = 0$ → 근 3개 ✅\n\n**홀수 $n$에 대해:** $n$ 홀수 방정식을 분석하면 $k > 4\\sqrt{5}$일 때 실근이 2개 또는 4개만 가능하여 3개가 되지 않음을 확인.\n\n### 최종 계산\n\n$$n_1 = 2, \\quad n_2 = 10, \\quad k = 12$$\n\n$$k + n_2 - n_1 = 12 + 10 - 2 = \\boxed{20}$$",
+              "matches": [
+                {
+                  "label": "C",
+                  "score": 0.75,
+                  "reason": "학생이 n 짝수인 경우 |x²-20|=n(2x+k) 형태로 변환하고 x>-k/2 조건을 명시적으로 다룸"
+                },
+                {
+                  "label": "D",
+                  "score": 0.7,
+                  "reason": "학생이 x²>20과 x²<20 두 영역으로 분리하여 절댓값을 풀었으며, 이는 세 구간 분리와 실질적으로 동일한 결론"
+                },
+                {
+                  "label": "E",
+                  "score": 0.8,
+                  "reason": "학생이 ① x²>20 영역에서 x²-2nx-(nk+20)=0을 도출하고 양근 1개(x₁>0), 음근 1개(x₂<0)가 각각 유효함을 확인한 것이 일치"
+                },
+                {
+                  "label": "F",
+                  "score": 0.72,
+                  "reason": "학생이 k=n+20/n에서 n₁+n₂=k, n₁n₂=20 관계를 '두 자연수 쌍을 의미한다'고 명시적으로 서술함"
+                },
+                {
+                  "label": "G",
+                  "score": 0.85,
+                  "reason": "학생의 표에서 (2,10), (4,5) 두 쌍을 후보로 탐색하여 n₁n₂=20, n₂>n₁≥2 조건과 완전히 일치"
+                }
+              ]
+            },
+            {
+              "attempt": 1,
+              "think_tokens": 1276,
+              "elapsed_ms": 71232,
+              "claude_output": "## 풀이 과정\n\n### 방정식 정리 (지금까지 알아낸 것 적용)\n\n**n 홀수:** $x^2 - 20 = n|2x+k|$, 단 $x^2 > 20$, $x \\neq -k/2$\n**n 짝수:** $|x^2-20| = n(2x+k)$, 단 $x^2 \\neq 20$, $x > -k/2$\n\n---\n\n### 두 부호 조건으로 세분화\n\n두 경우 모두 **동일한 두 방정식**이 등장합니다:\n\n| 케이스 | 방정식 | 추가 조건 |\n|--------|--------|-----------|\n| **(A)** | $x^2 - 2nx - (20+nk) = 0$ | n홀수: $x>-k/2$, $x^2>20$ / n짝수: $x>-k/2$, $x^2>20$ |\n| **(B)** | $x^2 + 2nx + (nk-20) = 0$ | n홀수: $x<-k/2$, $x^2>20$ / n짝수: $x>-k/2$, $-\\sqrt{20}<x<\\sqrt{20}$ |\n\n**케이스 (A)의 판별식:** $\\Delta_A = 4(n^2+20+nk) > 0$ → 항상 2개의 실근 존재\n\n$k > 4\\sqrt{5}$ 조건 검토 시: 두 근 $x_1, x_2$ 모두 각 경우의 추가 조건을 만족함 ✓\n\n→ **(A)에서 항상 2개의 유효한 근 확보**\n\n---\n\n### 3개의 실근이 되려면: (B)에서 정확히 1개의 유효근 필요\n\n**케이스 (B)의 판별식:** $\\Delta_B = 4(n^2 - nk + 20)$\n\n**$\\Delta_B = 0$이면 중근 1개** → 조건: $k = n + \\dfrac{20}{n}$\n\n이때 (B)의 중근은 $x = -n$\n\n---\n\n### n 홀수인 경우 ($k = n + 20/n$)\n\n중근 $x = -n$이 조건 $x < -k/2$를 만족하는지:\n$$-n < -\\frac{k}{2} = -\\frac{n}{2} - \\frac{10}{n} \\iff \\frac{n}{2} > \\frac{10}{n} \\iff n^2 > 20 \\implies n \\geq 5$$\n\n또한 $x^2 = n^2 > 20$ → $n \\geq 5$ ✓\n\n**→ 홀수 $n = 5$: $k = 5 + 4 = 9$** 이면 근 3개\n\n---\n\n### n 짝수인 경우 ($k = n + 20/n$)\n\n중근 $x = -n$이 조건 $-\\sqrt{20} < -n < \\sqrt{20}$ 및 $x > -k/2$를 만족하려면:\n$$n < \\sqrt{20} \\approx 4.47 \\implies n \\leq 4 \\text{ (짝수: } n = 2 \\text{ 또는 } n = 4\\text{)}$$\n\n- **$n = 2$:** $k = 12$, 중근 $x = -2$, 조건 만족 ✓ → 근 3개\n- **$n = 4$:** $k = 9$, 중근 $x = -4$, $-\\sqrt{20} \\approx -4.47 < -4$ ✓, 조건 만족 ✓ → 근 3개\n\n---\n\n### 단일 상수 k 결정\n\n문제에서 **k는 고정된 상수**이고, 3개의 근을 갖는 n이 정확히 두 개 존재해야 합니다.\n\n$$n=4 \\text{ 일 때 } k=9, \\quad n=5 \\text{ 일 때 } k=9$$\n\n두 경우가 **같은 k = 9**를 줍니다! ($9 > 4\\sqrt{5} \\approx 8.944$ ✓)\n\n**검증:** k=9일 때 n=2,3,6... 등은 (B)에서 0개 또는 2개의 유효근을 주어 총 근의 개수가 3이 아님을 확인.\n\n---\n\n### 최종 답\n\n$$n_1 = 4, \\quad n_2 = 5, \\quad k = 9$$\n\n$$\\boxed{k + n_2 - n_1 = 9 + 5 - 4 = 10}$$",
+              "matches": [
+                {
+                  "label": "A",
+                  "score": 0.45,
+                  "reason": "학생이 'k > 4√5 조건 검토'와 '-k/2'를 경계값으로 반복 사용하며 k=9 > 4√5 ≈ 8.944를 최종 검증하나, '-k/2 < -2√5'라는 부등식 자체를 명시적으로 도출하지는 않음 — 암묵적 사용에 그침"
+                },
+                {
+                  "label": "B",
+                  "score": 0.5,
+                  "reason": "학생의 표에서 'x > -k/2, x²>20', 'x < -k/2, x²>20', '-√20 < x < √20, x > -k/2' 세 조건 영역이 나타나고, x²<20 구간(짝수 n의 케이스B)을 별도 처리하며 사실상 세 구간 분리 구조를 사용함. 그러나 (a)(b)(c)를 명시적으로 나열하거나 '-2√5 < x < 2√5 제외' 이유를 직접 서술하지 않아 부분 일치"
+                }
+              ]
+            },
+            {
+              "attempt": 2,
+              "think_tokens": 2179,
+              "elapsed_ms": 100306,
+              "claude_output": "",
+              "matches": []
+            },
+            {
+              "attempt": 3,
+              "think_tokens": 1247,
+              "elapsed_ms": 63021,
+              "claude_output": "## 풀이\n\n### 경우 정리 (지금까지 알아낸 것 활용)\n\n**n 짝수:** $|x^2-20| = n(2x+k)$, $x > -k/2$\n\n**n 홀수:** $x^2-20 = n|2x+k|$, $x^2 > 20$\n\n---\n\n### n 짝수인 경우 분석\n\n**소경우 1** ($x^2 \\geq 20$): $x^2 - 2nx - (20+nk) = 0$\n$$x = n \\pm \\sqrt{n^2 + nk + 20}$$\n\n$k > 4\\sqrt{5}$조건 하에서 판별식 $> 0$이므로 **항상 2개의 근** $x_1, x_2$ 존재\n\n**소경우 2** ($x^2 < 20$): $x^2 + 2nx + (nk-20) = 0$\n$$x = -n \\pm \\sqrt{n^2 - nk + 20}, \\quad D = n^2 - nk + 20$$\n\n- $D > 0$: 2개 → 총 4개 (실근 3개 불가)\n- $D = 0$: 1개 → **총 3개** ✓\n- $D < 0$: 0개 → 총 2개\n\n**$D = 0$ 조건:** $k = n + \\dfrac{20}{n}$, 근 $x = -n$\n\n이때 $x > -k/2$ 조건 확인: $-n > -\\dfrac{n}{2} - \\dfrac{10}{n}$ $\\Rightarrow$ $n^2 < 20$ $\\Rightarrow$ **$n \\leq 4$**\n\n또한 $-\\sqrt{20} < -n < \\sqrt{20}$ $\\Rightarrow$ $n \\leq 4$\n\n$$\\boxed{n=4: \\; k = 4 + \\frac{20}{4} = 9}$$\n\n($k = 9 > 4\\sqrt{5} \\approx 8.944$ ✓)\n\n---\n\n### n 홀수인 경우 분석\n\n**소경우 A** ($2x+k > 0$): 동일하게 **2개의 근** 존재\n\n**소경우 B** ($2x+k < 0$, 즉 $x < -k/2 < -\\sqrt{20}$): $x^2 + 2nx + (nk-20) = 0$\n$$x = -n \\pm \\sqrt{n^2-nk+20}, \\quad D = n^2 - nk + 20$$\n\n이 경우 근이 $x < -k/2$ 조건을 만족해야 함.\n\n**$D = 0$ 조건:** $k = n + \\dfrac{20}{n}$, 근 $x = -n$\n\n이때 $x < -k/2$ 조건 확인: $-n < -\\dfrac{n}{2} - \\dfrac{10}{n}$ $\\Rightarrow$ $n^2 > 20$ $\\Rightarrow$ **$n \\geq 5$**\n\n$$\\boxed{n=5: \\; k = 5 + \\frac{20}{5} = 9}$$\n\n($k = 9 > 4\\sqrt{5}$ ✓, 근 $x = -5 < -4.5$ ✓)\n\n---\n\n### 검증\n\n$k = 9$으로 고정했을 때 실근이 정확히 3개가 되는 $n$ 값:\n\n| $n$ | 짝/홀 | $D$ | 소경우 2 (또는 B) 근의 수 | 총 실근 수 |\n|---|---|---|---|---|\n| $n=4$ (짝수) | 짝수 | $16-36+20=0$ | 1 | **3** |\n| $n=5$ (홀수) | 홀수 | $25-45+20=0$ | 1 | **3** |\n\n$n_1 = 4$, $n_2 = 5$\n\n---\n\n### 최종 답\n\n$$k + n_2 - n_1 = 9 + 5 - 4 = \\boxed{10}$$",
+              "matches": [
+                {
+                  "label": "A",
+                  "score": 0.8,
+                  "reason": "학생이 홀수 n 소경우 B에서 'x < -k/2 < -√20'을 명시하여 k>4√5 조건으로부터 -k/2 < -2√5임을 직접 사용함"
+                },
+                {
+                  "label": "B",
+                  "score": 0.45,
+                  "reason": "짝수 n에서 x²≥20·x²<20 분리, 홀수 n에서 2x+k의 부호로 분리하여 유사한 구간 분석을 수행하나, 세 구간의 명시적 나열과 '-2√5<x<2√5 제외' 결론은 직접 서술되지 않음"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "note_index": 9,
+          "note_id": "note11",
+          "neuron": "전략5",
+          "neuron_type": "전략",
+          "note_text": "경우 ①($n$ 홀수): 실근의 개수는 $y=x^2-20$과 $y=2n\\left|x+\\frac{k}{2}\\right|$의 교점 수와 같다 (단 $x^2>20$인 영역, 즉 $x>2\\sqrt{5}$ 또는 $x<-2\\sqrt{5}$)",
+          "from": [
+            "note7"
+          ],
+          "hint_level": 0,
+          "is_bonus": true,
+          "structural_difficulty": 0.25,
+          "discovered_in_target": "note1",
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": "",
+          "partial_history": [
+            {
+              "in_target": "note1",
+              "attempt": 0,
+              "score": 0.8,
+              "reason": "n 홀수 경우 x²>20 영역에서 교점 수 분석 수행"
+            }
+          ],
+          "attempts": []
+        },
+        {
+          "note_index": 10,
+          "note_id": "note12",
+          "neuron": "전략6",
+          "neuron_type": "전략",
+          "note_text": "절댓값을 분리하면 세 구간: (a) $x>2\\sqrt{5}$, (b) $-\\frac{k}{2}<x<-2\\sqrt{5}$ (여기서 $x+\\frac{k}{2}>0$), (c) $x<-\\frac{k}{2}$ (여기서 $x+\\frac{k}{2}<0$). 구간 $-2\\sqrt{5}<x<2\\sqrt{5}$는 $x^2<20$이므로 제외된다",
+          "from": [
+            "note11",
+            "note10"
+          ],
+          "hint_level": 1,
+          "is_bonus": false,
+          "structural_difficulty": 0.25,
+          "discovered_in_target": "note12",
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": "",
+          "partial_history": [
+            {
+              "in_target": "note10",
+              "attempt": 1,
+              "score": 0.5,
+              "reason": "학생의 표에서 'x > -k/2, x²>20', 'x < -k/2, x²>20', '-√20 < x < √20, x > -k/2' 세 조건 영역이 나타나고, x²<20 구간(짝수 n의 케이스B)을 별도 처리하며 사실상 세 구간 분리 구조를 사용함. 그러나 (a)(b)(c)를 명시적으로 나열하거나 '-2√5 < x < 2√5 제외' 이유를 직접 서술하지 않아 부분 일치"
+            },
+            {
+              "in_target": "note10",
+              "attempt": 3,
+              "score": 0.45,
+              "reason": "짝수 n에서 x²≥20·x²<20 분리, 홀수 n에서 2x+k의 부호로 분리하여 유사한 구간 분석을 수행하나, 세 구간의 명시적 나열과 '-2√5<x<2√5 제외' 결론은 직접 서술되지 않음"
+            },
+            {
+              "in_target": "note12",
+              "attempt": 1,
+              "score": 0.82,
+              "reason": "세 구간 (a) x>2√5, (b) -k/2<x<-2√5 (x+k/2>0), (c) x<-k/2 (x+k/2<0)를 학생이 동일하게 구분하여 분석함. 다만 -2√5<x<2√5 구간의 명시적 제외 이유(x²<20)는 홀수 n 케이스에서 직접 언급되지 않고 암묵적으로 생략됨"
+            }
+          ],
+          "attempts": [
+            {
+              "attempt": 0,
+              "think_tokens": 2661,
+              "elapsed_ms": 96232,
+              "claude_output": "",
+              "matches": []
+            },
+            {
+              "attempt": 1,
+              "think_tokens": 800,
+              "elapsed_ms": 54644,
+              "claude_output": "## 경우 분석 계속\n\n### 경우 ① (n 홀수): 교점 분석\n\n**그래프 설정:**\n- $y = x^2 - 20$: 꼭짓점 $(0, -20)$인 위로 볼록한 포물선, $x = \\pm 2\\sqrt{5}$에서 영점\n- $y = 2n\\left|x+\\frac{k}{2}\\right|$: 꼭짓점 $\\left(-\\frac{k}{2}, 0\\right)$인 V자형, 꼭짓점이 $-\\frac{k}{2} < -2\\sqrt{5}$에 위치\n\n**$x > 2\\sqrt{5}$ 영역:** 포물선은 0에서 시작해 $\\infty$로, V자형 오른쪽 선분 기울기 $2n$으로 시작값이 양수 → **정확히 1개** 교점\n\n**$-\\frac{k}{2} < x < -2\\sqrt{5}$ 영역** ($x + \\frac{k}{2} > 0$이므로):\n$$x^2 - 2nx - 20 - nk = 0 \\implies x = n - \\sqrt{n^2 + 20 + nk}$$\n이 해가 $\\left(-\\frac{k}{2}, -2\\sqrt{5}\\right)$ 안에 있으면 **1개** 교점\n\n**$x < -\\frac{k}{2}$ 영역** ($x + \\frac{k}{2} < 0$이므로):\n$$x^2 + 2nx + nk - 20 = 0 \\implies \\Delta = 4(n^2 + 20 - nk)$$\n- $k < n + \\frac{20}{n}$이면 실근 2개, $k = n + \\frac{20}{n}$이면 실근 1개 (접점), $k > n + \\frac{20}{n}$이면 실근 없음\n\n### 정수 $n$에서 $n + \\frac{20}{n}$ 계산\n\n| $n$ | $n + \\frac{20}{n}$ |\n|-----|---------------------|\n| 2 | 12 |\n| 3 | $\\frac{29}{3} \\approx 9.67$ |\n| 4 | 9 |\n| 5 | 9 |\n| 6 | $\\frac{49}{6} \\approx 9.17$ |\n\n### 경우 ② (n 짝수): 교점 분석\n\n방정식 $|x^2-20| = 2n\\left(x+\\frac{k}{2}\\right)$ ($x > -\\frac{k}{2}$)\n\n**$x^2 < 20$ 영역**에서: $20 - x^2 = 2n(x + \\frac{k}{2})$\n$$\\Delta = 4(n^2 + 20 - nk)$$\n- $k = n + \\frac{20}{n}$이면 접점 1개 → 근이 **줄어드는** 경계 조건\n\n### 실근 3개 조건 분석\n\n**n 홀수** 경우 총 교점 수:\n- $x > 2\\sqrt{5}$: 1개\n- $-\\frac{k}{2} < x < -2\\sqrt{5}$: 1개  \n- $x < -\\frac{k}{2}$: $k = n + \\frac{20}{n}$일 때 1개 (접점)\n\n→ 합 **3개** ✓ 조건: $k = n + \\frac{20}{n}$ (n 홀수)\n\n홀수 $n$에서 $k = n + \\frac{20}{n}$을 만족하고 $k > 4\\sqrt{5}$인 경우:\n- $n=3$: $k = \\frac{29}{3}$, $4\\sqrt{5} \\approx 8.944$ → $\\frac{29}{3} \\approx 9.67 > 4\\sqrt{5}$ ✓  \n- $n=5$: $k = 9 > 4\\sqrt{5}$ ✓\n\n두 경우 모두 $k$값이 다르므로, 하나의 $k$에서 실근 3개가 되는 $n_1, n_2$를 찾으면:\n\n$k=9$로 설정 시: $n=5$ (홀수)에서 $k = 5 + 4 = 9$ → 실근 3개, $n=4$ (짝수)에서도 $k = 4+5 = 9$ → 실근 3개\n\n따라서 $n_1 = 4$, $n_2 = 5$, $k = 9$\n\n## 최종 답\n\n$$k + n_2 - n_1 = 9 + 5 - 4 = \\boxed{36}$$",
+              "matches": [
+                {
+                  "label": "A",
+                  "score": 0.82,
+                  "reason": "세 구간 (a) x>2√5, (b) -k/2<x<-2√5 (x+k/2>0), (c) x<-k/2 (x+k/2<0)를 학생이 동일하게 구분하여 분석함. 다만 -2√5<x<2√5 구간의 명시적 제외 이유(x²<20)는 홀수 n 케이스에서 직접 언급되지 않고 암묵적으로 생략됨"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "note_index": 11,
+          "note_id": "note13",
+          "neuron": "사실79",
+          "neuron_type": "사실",
+          "note_text": "구간 (a),(b)에서 $x^2-20=2n(x+\\frac{k}{2})$, 즉 $x^2-2nx-(nk+20)=0$이다. 판별식 $D_1/4=n^2+nk+20>0$이므로 서로 다른 두 실근을 가진다. 근의 합$=2n>0$, 근의 곱$=-(nk+20)<0$이므로 양근 1개, 음근 1개이다. 양근은 (a)에, 음근은 (b)에 각각 정확히 1개 존재한다",
+          "from": [
+            "note12"
+          ],
+          "hint_level": 0,
+          "is_bonus": true,
+          "structural_difficulty": 0.12,
+          "discovered_in_target": "note1",
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": "",
+          "partial_history": [
+            {
+              "in_target": "note1",
+              "attempt": 0,
+              "score": 0.8,
+              "reason": "경우1(x²-2nx-nk-20=0)에서 판별식 항상 양수, 양근·음근 각 1개 존재 확인"
+            }
+          ],
+          "attempts": []
+        },
+        {
+          "note_index": 12,
+          "note_id": "note14",
+          "neuron": "사실79",
+          "neuron_type": "사실",
+          "note_text": "구간 (c)에서 $x^2-20=-2n(x+\\frac{k}{2})$, 즉 $x^2+2nx+(nk-20)=0$이다. 판별식 $D_2/4=n^2-nk+20$, 대칭축 $x=-n$이다",
+          "from": [
+            "note12"
+          ],
+          "hint_level": 0,
+          "is_bonus": true,
+          "structural_difficulty": 0.12,
+          "discovered_in_target": "note1",
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": "",
+          "partial_history": [
+            {
+              "in_target": "note1",
+              "attempt": 0,
+              "score": 0.85,
+              "reason": "경우2에서 x²+2nx+(nk-20)=0, 판별식 D2/4=n²-nk+20, 대칭축 x=-n 도출"
+            }
+          ],
+          "attempts": []
+        },
+        {
+          "note_index": 13,
+          "note_id": "note15",
+          "neuron": "전략5",
+          "neuron_type": "전략",
+          "note_text": "(a)에서 1개 + (b)에서 1개 + (c)에서의 근의 개수 = 전체 실근 수. 전체가 3이 되려면 (c)에서 정확히 1개, 즉 $D_2/4=0$ (접선 조건)이어야 한다",
+          "from": [
+            "note13",
+            "note14"
+          ],
+          "hint_level": 0,
+          "is_bonus": true,
+          "structural_difficulty": 0.25,
+          "discovered_in_target": "note1",
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": "",
+          "partial_history": [
+            {
+              "in_target": "note1",
+              "attempt": 0,
+              "score": 0.85,
+              "reason": "전체 3개가 되려면 경우2에서 접선 조건(D2=0) 필요 서술"
+            }
+          ],
+          "attempts": []
+        },
+        {
+          "note_index": 14,
+          "note_id": "note16",
+          "neuron": "사실79",
+          "neuron_type": "사실",
+          "note_text": "$D_2/4=0$이면 $n^2-nk+20=0$ …ⓐ. 중근 $x=-n$이 구간 $x<-\\frac{k}{2}$에 있으려면 $-n<-\\frac{k}{2}$, 즉 $n>\\frac{k}{2}>2\\sqrt{5}\\approx 4.47$이어야 한다",
+          "from": [
+            "note15"
+          ],
+          "hint_level": 0,
+          "is_bonus": true,
+          "structural_difficulty": 0.12,
+          "discovered_in_target": "note1",
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": "",
+          "partial_history": [
+            {
+              "in_target": "note1",
+              "attempt": 0,
+              "score": 0.8,
+              "reason": "D2=0이면 n²-nk+20=0, 중근 x=-n이 해당 구간에 있으려면 n>k/2>2√5 조건 확인"
+            }
+          ],
+          "attempts": []
+        },
+        {
+          "note_index": 15,
+          "note_id": "note17",
+          "neuron": "전략25",
+          "neuron_type": "전략",
+          "note_text": "$n>2\\sqrt{5}\\approx 4.47$인 홀수 자연수이므로 $n=5, 7, 9, \\ldots$ …ⓑ",
+          "from": [
+            "note16"
+          ],
+          "hint_level": 0,
+          "is_bonus": true,
+          "structural_difficulty": 0.25,
+          "discovered_in_target": "note1",
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": "",
+          "partial_history": [
+            {
+              "in_target": "note1",
+              "attempt": 0,
+              "score": 0.75,
+              "reason": "n>2√5인 홀수 자연수 조건에서 n=5 도출"
+            }
+          ],
+          "attempts": []
+        },
+        {
+          "note_index": 16,
+          "note_id": "note18",
+          "neuron": "전략5",
+          "neuron_type": "전략",
+          "note_text": "경우 ②($n$ 짝수): 실근의 개수는 $y=|x^2-20|$과 $y=2n(x+\\frac{k}{2})$의 교점 수와 같다 (단 $x>-\\frac{k}{2}$, $x^2\\neq 20$)",
+          "from": [
+            "note9"
+          ],
+          "hint_level": 0,
+          "is_bonus": true,
+          "structural_difficulty": 0.25,
+          "discovered_in_target": "note10",
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": "",
+          "partial_history": [
+            {
+              "in_target": "note10",
+              "attempt": 0,
+              "score": 0.75,
+              "reason": "학생이 n 짝수인 경우 |x²-20|=n(2x+k) 형태로 변환하고 x>-k/2 조건을 명시적으로 다룸"
+            }
+          ],
+          "attempts": []
+        },
+        {
+          "note_index": 17,
+          "note_id": "note19",
+          "neuron": "전략6",
+          "neuron_type": "전략",
+          "note_text": "절댓값을 분리하면 세 구간: (a) $x>2\\sqrt{5}$에서 $|x^2-20|=x^2-20$, (b) $-2\\sqrt{5}<x<2\\sqrt{5}$에서 $|x^2-20|=20-x^2$, (c) $-\\frac{k}{2}<x<-2\\sqrt{5}$에서 $|x^2-20|=x^2-20$",
+          "from": [
+            "note18",
+            "note10"
+          ],
+          "hint_level": 0,
+          "is_bonus": true,
+          "structural_difficulty": 0.25,
+          "discovered_in_target": "note10",
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": "",
+          "partial_history": [
+            {
+              "in_target": "note10",
+              "attempt": 0,
+              "score": 0.7,
+              "reason": "학생이 x²>20과 x²<20 두 영역으로 분리하여 절댓값을 풀었으며, 이는 세 구간 분리와 실질적으로 동일한 결론"
+            }
+          ],
+          "attempts": []
+        },
+        {
+          "note_index": 18,
+          "note_id": "note20",
+          "neuron": "사실79",
+          "neuron_type": "사실",
+          "note_text": "구간 (a)와 (c)에서 $x^2-20=2n(x+\\frac{k}{2})$, 즉 $x^2-2nx-(nk+20)=0$이다. 경우 ①の(a),(b)と同じく양근 1개(→구간(a)), 음근 1개(→구간(c))로 각 구간에 정확히 1개씩 존재한다",
+          "from": [
+            "note19"
+          ],
+          "hint_level": 0,
+          "is_bonus": true,
+          "structural_difficulty": 0.12,
+          "discovered_in_target": "note10",
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": "",
+          "partial_history": [
+            {
+              "in_target": "note10",
+              "attempt": 0,
+              "score": 0.8,
+              "reason": "학생이 ① x²>20 영역에서 x²-2nx-(nk+20)=0을 도출하고 양근 1개(x₁>0), 음근 1개(x₂<0)가 각각 유효함을 확인한 것이 일치"
+            }
+          ],
+          "attempts": []
+        },
+        {
+          "note_index": 19,
+          "note_id": "note21",
+          "neuron": "사실79",
+          "neuron_type": "사실",
+          "note_text": "구간 (b)에서 $20-x^2=2n(x+\\frac{k}{2})$, 즉 $x^2+2nx+(nk-20)=0$이다. 판별식 $D_2/4=n^2-nk+20$, 대칭축 $x=-n$이다",
+          "from": [
+            "note19"
+          ],
+          "hint_level": 0,
+          "is_bonus": true,
+          "structural_difficulty": 0.12,
+          "discovered_in_target": "note1",
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": "",
+          "partial_history": [
+            {
+              "in_target": "note1",
+              "attempt": 0,
+              "score": 0.8,
+              "reason": "n 짝수 경우2에서 x²+2nx+(nk-20)=0, 판별식 동일 구조 포함"
+            }
+          ],
+          "attempts": []
+        },
+        {
+          "note_index": 20,
+          "note_id": "note22",
+          "neuron": "전략5",
+          "neuron_type": "전략",
+          "note_text": "(a)에서 1개 + (c)에서 1개 + (b)에서의 근의 개수 = 전체 실근 수. 전체가 3이 되려면 (b)에서 정확히 1개(접점), 즉 $D_2/4=0$이어야 한다",
+          "from": [
+            "note20",
+            "note21"
+          ],
+          "hint_level": 0,
+          "is_bonus": true,
+          "structural_difficulty": 0.25,
+          "discovered_in_target": "note1",
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": "",
+          "partial_history": [
+            {
+              "in_target": "note1",
+              "attempt": 0,
+              "score": 0.8,
+              "reason": "n 짝수도 접선 조건 D2=0으로 실근 3개 확보"
+            }
+          ],
+          "attempts": []
+        },
+        {
+          "note_index": 21,
+          "note_id": "note23",
+          "neuron": "사실79",
+          "neuron_type": "사실",
+          "note_text": "$D_2/4=0$이면 $n^2-nk+20=0$ …ⓐ(동일). 중근 $x=-n$이 구간 $(-2\\sqrt{5}, 2\\sqrt{5})$에 있으려면 $|-n|<2\\sqrt{5}$, 즉 $n<2\\sqrt{5}\\approx 4.47$이어야 한다",
+          "from": [
+            "note22"
+          ],
+          "hint_level": 0,
+          "is_bonus": true,
+          "structural_difficulty": 0.12,
+          "discovered_in_target": "note1",
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": "",
+          "partial_history": [
+            {
+              "in_target": "note1",
+              "attempt": 0,
+              "score": 0.75,
+              "reason": "n 짝수에서 중근 x=-n이 구간 내에 있으려면 n<2√5 조건 포함"
+            }
+          ],
+          "attempts": []
+        },
+        {
+          "note_index": 22,
+          "note_id": "note24",
+          "neuron": "전략25",
+          "neuron_type": "전략",
+          "note_text": "$2\\leq n<2\\sqrt{5}\\approx 4.47$인 짝수 자연수이므로 $n=2$ 또는 $n=4$ …ⓒ",
+          "from": [
+            "note23"
+          ],
+          "hint_level": 0,
+          "is_bonus": true,
+          "structural_difficulty": 0.25,
+          "discovered_in_target": "note1",
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": "",
+          "partial_history": [
+            {
+              "in_target": "note1",
+              "attempt": 0,
+              "score": 0.75,
+              "reason": "2≤n<2√5인 짝수로 n=4 선택"
+            }
+          ],
+          "attempts": []
+        },
+        {
+          "note_index": 23,
+          "note_id": "note25",
+          "neuron": "사실78",
+          "neuron_type": "사실",
+          "note_text": "ⓑとⓒから$n_1, n_2$は共に$n^2-kn+20=0$ …ⓐの根である。根と係数の関係により$n_1+n_2=k$, $n_1 n_2=20$",
+          "from": [
+            "note17",
+            "note24",
+            "단서D"
+          ],
+          "hint_level": 0,
+          "is_bonus": true,
+          "structural_difficulty": 0.12,
+          "discovered_in_target": "note10",
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": "",
+          "partial_history": [
+            {
+              "in_target": "note10",
+              "attempt": 0,
+              "score": 0.72,
+              "reason": "학생이 k=n+20/n에서 n₁+n₂=k, n₁n₂=20 관계를 '두 자연수 쌍을 의미한다'고 명시적으로 서술함"
+            }
+          ],
+          "attempts": []
+        },
+        {
+          "note_index": 24,
+          "note_id": "note26",
+          "neuron": "전략17",
+          "neuron_type": "전략",
+          "note_text": "$n_1 n_2=20$, $n_2>n_1\\geq 2$を満たす自然数の組の候補: $(2, 10)$, $(4, 5)$",
+          "from": [
+            "note25"
+          ],
+          "hint_level": 0,
+          "is_bonus": true,
+          "structural_difficulty": 0.25,
+          "discovered_in_target": "note10",
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": "",
+          "partial_history": [
+            {
+              "in_target": "note10",
+              "attempt": 0,
+              "score": 0.85,
+              "reason": "학생의 표에서 (2,10), (4,5) 두 쌍을 후보로 탐색하여 n₁n₂=20, n₂>n₁≥2 조건과 완전히 일치"
+            }
+          ],
+          "attempts": []
+        },
+        {
+          "note_index": 25,
+          "note_id": "note29",
+          "neuron": "전략25",
+          "neuron_type": "전략",
+          "note_text": "$(4, 5)$: $n_1=4$は짝수이고 $4<2\\sqrt{5}$이므로 ⓒ를 만족한다. $n_2=5$는 홀수이고 $5>2\\sqrt{5}$이므로 ⓑ를 만족한다",
+          "from": [
+            "note26"
+          ],
+          "hint_level": 0,
+          "is_bonus": true,
+          "structural_difficulty": 0.25,
+          "discovered_in_target": "note1",
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": "",
+          "partial_history": [
+            {
+              "in_target": "note1",
+              "attempt": 0,
+              "score": 0.85,
+              "reason": "n1=4(짝수,4<2√5), n2=5(홀수,5>2√5) 조건 검증 완료"
+            }
+          ],
+          "attempts": []
+        },
+        {
+          "note_index": 26,
+          "note_id": "note30",
+          "neuron": "전략20",
+          "neuron_type": "전략",
+          "note_text": "유일한 유효 조합은 $n_1=4$, $n_2=5$이다",
+          "from": [
+            "note28",
+            "note29"
+          ],
+          "hint_level": 0,
+          "is_bonus": true,
+          "structural_difficulty": 0.25,
+          "discovered_in_target": "note1",
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": "",
+          "partial_history": [
+            {
+              "in_target": "note1",
+              "attempt": 0,
+              "score": 1,
+              "reason": "유일한 유효 조합 n1=4, n2=5 명시"
+            }
+          ],
+          "attempts": []
+        },
+        {
+          "note_index": 27,
+          "note_id": "note31",
+          "neuron": "사실78",
+          "neuron_type": "사실",
+          "note_text": "$k=n_1+n_2=4+5=9$이다",
+          "from": [
+            "note30",
+            "note25"
+          ],
+          "hint_level": 0,
+          "is_bonus": true,
+          "structural_difficulty": 0.12,
+          "discovered_in_target": "note1",
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": "",
+          "partial_history": [
+            {
+              "in_target": "note1",
+              "attempt": 0,
+              "score": 1,
+              "reason": "k=9 명시"
+            }
+          ],
+          "attempts": []
+        },
+        {
+          "note_index": 28,
+          "note_id": "END",
+          "neuron": "전략25",
+          "neuron_type": "전략",
+          "note_text": "$k+n_2-n_1=9+5-4=10$",
+          "from": [
+            "note30",
+            "note31"
+          ],
+          "hint_level": 0,
+          "is_bonus": true,
+          "structural_difficulty": 0.25,
+          "discovered_in_target": "note1",
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": "",
+          "partial_history": [
+            {
+              "in_target": "note1",
+              "attempt": 0,
+              "score": 1,
+              "reason": "k+n2-n1=9+5-4=10 최종 답 일치"
+            }
+          ],
+          "attempts": []
+        }
+      ],
+      "_debug": "OK"
+    },
     "folders": [],
     "history": [],
     "recovery_warnings": [],
