@@ -1,0 +1,784 @@
+{
+  "problem_id": "P1",
+  "answer": "2",
+  "clues": [
+    {
+      "id": "단서A",
+      "text": "최고차항의 계수가 음수인 삼차함수 $y = f(x)$"
+    },
+    {
+      "id": "단서B",
+      "text": "그래프 위의 점 $(6,\\,3)$에서의 접선을 $l$이라 한다"
+    },
+    {
+      "id": "단서C",
+      "text": "실수 $t\\;(t \\ge 0)$에 대하여 직선 $l$ 위의 점 중에서 점 $(t,\\,f(t))$와의 거리가 최소인 점의 좌표를 $(g(t),\\,h(t))$라 한다"
+    },
+    {
+      "id": "단서D",
+      "text": "함수 $g(t)$는 최솟값 $\\dfrac{9}{2}$를 갖고, 함수 $h(t)$는 최댓값 $\\dfrac{9}{2}$를 갖는다 (조건 가)"
+    },
+    {
+      "id": "단서E",
+      "text": "$g(t) = \\dfrac{9}{2}$를 만족시키는 $t$의 개수는 $2$이다 (조건 나)"
+    }
+  ],
+  "skeleton": [
+    {
+      "from": "단서C",
+      "to": "note1",
+      "neuron": "사실81",
+      "note": "$(g(t),\\,h(t))$는 점 $(t,\\,f(t))$에서 직선 $l$에 내린 수선의 발이다",
+      "step": 1
+    },
+    {
+      "from": "단서A",
+      "to": "note2",
+      "neuron": "사실112",
+      "note": "최고차항의 계수가 음수이므로 $t \\to +\\infty$일 때 $f(t) \\to -\\infty$이다",
+      "main": false,
+      "step": 2
+    },
+    {
+      "from": [
+        "note1",
+        "note2",
+        "단서D"
+      ],
+      "to": "note3",
+      "neuron": "전략23",
+      "note": "$l$의 기울기 $m > 0$이면 $(t,\\,f(t))$가 $l$ 아래로 한없이 멀어질 때 수선의 발의 $x$좌표가 $-\\infty$로 이동하여 $g(t)$에 최솟값이 존재하지 않는다. (가)에 모순이다",
+      "main": false,
+      "step": 2
+    },
+    {
+      "from": [
+        "note1",
+        "단서D"
+      ],
+      "to": "note4",
+      "neuron": "전략23",
+      "note": "$m = 0$이면 $l$이 수평이고 수선은 수직이므로 $g(t) = t$이다. $t \\ge 0$에서 $g(t)$의 최솟값은 $0 \\neq \\dfrac{9}{2}$이다. (가)에 모순이다",
+      "main": false,
+      "step": 2
+    },
+    {
+      "from": [
+        "note3",
+        "note4"
+      ],
+      "to": "note5",
+      "neuron": "전략20",
+      "note": "$m > 0$과 $m = 0$이 소거되어 $l$의 기울기 $m < 0$이다",
+      "step": 2
+    },
+    {
+      "from": "note5",
+      "to": "note6",
+      "neuron": "사실38",
+      "note": "$m < 0$이므로 직선 $l$ 위에서 $x$좌표가 최소인 점은 $y$좌표가 최대이다. 따라서 $g(t)$가 최솟값을 가지는 $t$와 $h(t)$가 최댓값을 가지는 $t$는 동일하다",
+      "step": 3
+    },
+    {
+      "from": [
+        "note6",
+        "단서D"
+      ],
+      "to": "note7",
+      "neuron": "전략2",
+      "note": "$g(t)$의 최솟값 $\\dfrac{9}{2}$와 $h(t)$의 최댓값 $\\dfrac{9}{2}$가 같은 $t$에서 달성되므로 점 $\\left(\\dfrac{9}{2},\\,\\dfrac{9}{2}\\right)$는 직선 $l$ 위의 점이다",
+      "step": 3
+    },
+    {
+      "from": [
+        "note7",
+        "단서B"
+      ],
+      "to": "note8",
+      "neuron": "연산10",
+      "note": "$l$은 $(6,\\,3)$과 $\\left(\\dfrac{9}{2},\\,\\dfrac{9}{2}\\right)$를 지나므로 기울기 $m = \\dfrac{\\frac{9}{2}-3}{\\frac{9}{2}-6} = \\dfrac{\\frac{3}{2}}{-\\frac{3}{2}} = -1$이다",
+      "step": 3
+    },
+    {
+      "from": "note8",
+      "to": "note9",
+      "neuron": "연산30",
+      "note": "직선 $l$의 방정식은 $y = -x + 9$이다",
+      "step": 3
+    },
+    {
+      "from": "note9",
+      "to": "note10",
+      "neuron": "사실15",
+      "note": "$l$의 기울기가 $-1$이므로 $l$에 수직인 직선의 기울기는 $1$이다",
+      "main": false,
+      "step": 4
+    },
+    {
+      "from": [
+        "note1",
+        "note9",
+        "note10"
+      ],
+      "to": "note11",
+      "neuron": "전략2",
+      "note": "점 $(t,\\,f(t))$를 지나고 기울기 $1$인 직선 $y = x - t + f(t)$와 $l: y = -x + 9$를 연립하면 $g(t) = \\dfrac{t + 9 - f(t)}{2}$, $h(t) = \\dfrac{9 - t + f(t)}{2}$이다",
+      "step": 4
+    },
+    {
+      "from": [
+        "note11",
+        "단서D"
+      ],
+      "to": "note12",
+      "neuron": "연산21",
+      "note": "$g(t) \\ge \\dfrac{9}{2}$에서 $\\dfrac{t + 9 - f(t)}{2} \\ge \\dfrac{9}{2}$이므로 $f(t) \\le t$이다 ($t \\ge 0$인 모든 $t$에서 성립)",
+      "step": 5
+    },
+    {
+      "from": [
+        "note11",
+        "단서E"
+      ],
+      "to": "note13",
+      "neuron": "연산21",
+      "note": "$g(t) = \\dfrac{9}{2}$이면 $f(t) = t$이다. 이를 만족시키는 $t \\ge 0$의 개수는 정확히 $2$이다",
+      "step": 5
+    },
+    {
+      "from": [
+        "note12",
+        "note13",
+        "단서A"
+      ],
+      "to": "note14",
+      "neuron": "전략28",
+      "note": "$F(x) = f(x) - x$로 놓으면 $F$는 최고차항 계수가 음수인 삼차함수이고, $x \\ge 0$에서 $F(x) \\le 0$이며, $F(x) = 0$이 $x \\ge 0$에서 정확히 $2$개의 근을 가진다",
+      "step": 6
+    },
+    {
+      "from": "note14",
+      "to": "note15",
+      "neuron": "사실112",
+      "note": "$F$의 최고차항 계수가 음수이므로 $x \\to -\\infty$일 때 $F(x) \\to +\\infty$이고 $x \\to +\\infty$일 때 $F(x) \\to -\\infty$이다",
+      "main": false,
+      "step": 6
+    },
+    {
+      "from": [
+        "note15",
+        "note14"
+      ],
+      "to": "note16",
+      "neuron": "사실22",
+      "note": "$F(x) \\to +\\infty$$(x \\to -\\infty)$이고 $F(0) \\le 0$이므로, 중간값 정리에 의해 $(-\\infty,\\,0]$에서 $F(c) = 0$인 $c$가 존재한다",
+      "main": false,
+      "step": 6
+    },
+    {
+      "from": [
+        "note16",
+        "note14"
+      ],
+      "to": "note17",
+      "neuron": "전략23",
+      "note": "$c < 0$이면 $F$는 음의 실수에서 $1$개, $[0,\\,\\infty)$에서 $2$개의 근을 가져 총 $3$개의 서로 다른 근이다. 삼차이므로 모두 단순근이고, $[0,\\,\\infty)$의 단순근에서 $F$가 부호를 바꿔 $F > 0$인 구간이 생겨 $F(x) \\le 0$ $(x \\ge 0)$에 모순이다",
+      "main": false,
+      "step": 6
+    },
+    {
+      "from": [
+        "note16",
+        "note17"
+      ],
+      "to": "note18",
+      "neuron": "전략20",
+      "note": "$c < 0$이 소거되어 $F(0) = 0$이다. $[0,\\,\\infty)$에서 $F = 0$의 근은 $x = 0$과 어떤 $b > 0$이다",
+      "step": 6
+    },
+    {
+      "from": "note18",
+      "to": "note19",
+      "neuron": "전략20",
+      "note": "삼차함수의 근의 중복도 합이 $3$이므로 가능한 구조는 (1) 단순근 $0$, 이중근 $b$ 또는 (2) 이중근 $0$, 단순근 $b$이다",
+      "main": false,
+      "step": 6
+    },
+    {
+      "from": "note19",
+      "to": "note20",
+      "neuron": "사실65",
+      "note": "$F = a x^2(x - b)$$(a < 0,\\,b > 0)$일 때 $0 < x < b$에서 $a < 0$, $x^2 > 0$, $(x - b) < 0$이므로 $F(x) > 0$이다. $F(x) \\le 0$에 모순이다",
+      "main": false,
+      "step": 6
+    },
+    {
+      "from": [
+        "note19",
+        "note20"
+      ],
+      "to": "note21",
+      "neuron": "전략23",
+      "note": "이중근 $0$ + 단순근 $b$는 불가능하다. 단순근 $0$ + 이중근 $b$만 가능하다",
+      "main": false,
+      "step": 6
+    },
+    {
+      "from": [
+        "note18",
+        "note21"
+      ],
+      "to": "note22",
+      "neuron": "전략25",
+      "note": "$F(x) = ax(x - b)^2$$(a < 0,\\,b > 0)$이다. $x > 0,\\,x \\neq b$에서 $F(x) = a \\cdot x \\cdot (x-b)^2 < 0$이므로 $F \\le 0$ 조건을 만족한다",
+      "step": 6
+    },
+    {
+      "from": "note22",
+      "to": "note23",
+      "neuron": "연산21",
+      "note": "$f(x) = F(x) + x = ax(x - b)^2 + x$이다 ($a < 0,\\,b > 0$)",
+      "step": 6
+    },
+    {
+      "from": [
+        "note23",
+        "단서B"
+      ],
+      "to": "note24",
+      "neuron": "전략25",
+      "note": "$f(6) = 3$에서 $6a(6 - b)^2 + 6 = 3$이므로 $a(6 - b)^2 = -\\dfrac{1}{2}$ ···(i)",
+      "step": 7
+    },
+    {
+      "from": "note23",
+      "to": "note25",
+      "neuron": "연산36",
+      "note": "$f'(x) = a[(x-b)^2 + 2x(x-b)] + 1 = a(x-b)(3x-b) + 1$이다",
+      "step": 7
+    },
+    {
+      "from": [
+        "note25",
+        "note8"
+      ],
+      "to": "note26",
+      "neuron": "사실100",
+      "note": "$(6,\\,3)$에서의 접선 기울기가 $-1$이므로 $f'(6) = -1$이다. $a(6-b)(18-b) + 1 = -1$에서 $a(6-b)(18-b) = -2$ ···(ii)",
+      "step": 7
+    },
+    {
+      "from": [
+        "note24",
+        "note26"
+      ],
+      "to": "note27",
+      "neuron": "전략11",
+      "note": "(ii)/(i)에서 $\\dfrac{(18-b)}{(6-b)} = \\dfrac{-2}{-1/2} = 4$이므로 $18-b = 4(6-b)$에서 $3b = 6$, $b = 2$이다",
+      "step": 7
+    },
+    {
+      "from": [
+        "note27",
+        "note24"
+      ],
+      "to": "note28",
+      "neuron": "전략25",
+      "note": "$b = 2$를 (i)에 대입하면 $16a = -\\dfrac{1}{2}$에서 $a = -\\dfrac{1}{32}$이다",
+      "step": 7
+    },
+    {
+      "from": "note28",
+      "to": "note29",
+      "neuron": "전략25",
+      "note": "$f(x) = -\\dfrac{1}{32}\\,x(x - 2)^2 + x$이다",
+      "step": 7
+    },
+    {
+      "from": "note29",
+      "to": "END",
+      "neuron": "전략25",
+      "note": "$f(-6) = -\\dfrac{1}{32} \\cdot (-6) \\cdot (-8)^2 + (-6) = -\\dfrac{1}{32} \\cdot (-384) - 6 = 12 - 6 = 6$이다",
+      "step": 8
+    }
+  ],
+  "solution": "STEP 1. $(g(t),\\,h(t))$는 점 $(t,\\,f(t))$에서 직선 $l$에 내린 수선의 발이다.\n\nSTEP 2. 접선 $l$의 기울기를 $m$이라 하자. $m > 0$이면 최고차항 계수가 음수이므로 $t \\to +\\infty$일 때 $f(t) \\to -\\infty$이고, 수선의 발이 $l$을 따라 $-\\infty$ 방향으로 이동하여 $g(t)$의 최솟값이 존재하지 않는다. $m = 0$이면 $g(t) = t$이므로 최솟값은 $0 \\neq \\dfrac{9}{2}$이다. 두 경우 모두 (가)에 모순이므로 $m < 0$이다.\n\nSTEP 3. $m < 0$이므로 직선 $l$ 위에서 $x$좌표 최소와 $y$좌표 최대가 같은 $t$에서 달성된다. (가)에서 $g$의 최솟값과 $h$의 최댓값이 모두 $\\dfrac{9}{2}$이므로 점 $\\left(\\dfrac{9}{2},\\,\\dfrac{9}{2}\\right)$가 $l$ 위에 있다. $l$은 $(6,\\,3)$과 $\\left(\\dfrac{9}{2},\\,\\dfrac{9}{2}\\right)$를 지나므로 기울기 $m = -1$이고, $l: y = -x + 9$이다.\n\nSTEP 4. $l$에 수직인 기울기가 $1$이므로, 점 $(t,\\,f(t))$를 지나는 수선과 $l$의 교점을 연립하면 $g(t) = \\dfrac{t + 9 - f(t)}{2}$, $h(t) = \\dfrac{9 - t + f(t)}{2}$이다.\n\nSTEP 5. $g(t) \\ge \\dfrac{9}{2}$에서 $f(t) \\le t$ ($t \\ge 0$). (나)에서 $f(t) = t$의 $t \\ge 0$인 근의 개수는 $2$이다.\n\nSTEP 6. $F(x) = f(x) - x$로 놓으면 $F$는 최고차항 계수 음수인 삼차함수이고, $x \\ge 0$에서 $F(x) \\le 0$이며 $F(x) = 0$의 $x \\ge 0$인 근이 정확히 $2$개이다. 근 구조를 분석하면 $F(0) = 0$이고 어떤 $b > 0$에서 이중근을 가지는 $F(x) = ax(x-b)^2$ ($a < 0$)만 가능하다. 따라서 $f(x) = ax(x-b)^2 + x$이다.\n\nSTEP 7. $f(6) = 3$에서 $a(6-b)^2 = -\\dfrac{1}{2}$ ···(i). $f'(x) = a(x-b)(3x-b)+1$이고 $f'(6) = -1$에서 $a(6-b)(18-b) = -2$ ···(ii). (ii)/(i)에서 $\\dfrac{18-b}{6-b} = 4$이므로 $b = 2$, $a = -\\dfrac{1}{32}$이다. $f(x) = -\\dfrac{1}{32}\\,x(x-2)^2 + x$이다.\n\nSTEP 8. $f(-6) = -\\dfrac{1}{32} \\cdot (-6) \\cdot (-8)^2 + (-6) = 12 - 6 = 6$이다.",
+  "original_solution": "$g(t)$, $h(t)$의 정의로부터 $t \\ge 0$인 모든 실수 $t$에 대하여 점 $(t,\\, f(t))$에서 직선 $l$에 내린 수선의 발이 $(g(t),\\, h(t))$ …①임을 알 수 있다.\n\n직선 $l$의 기울기를 $m$이라 하고, 두 그림을 예시로 그려보자.\n\n[FIGURE: $m > 0$인 경우와 $m = 0$인 경우의 삼차함수 그래프와 접선 $l$, 점 $(t,\\,f(t))$에서 $l$에 내린 수선의 발 $g(t)$의 관계를 나타낸 그림]\n\n위의 두 그림을 통해:\n\n- $m > 0$이면 $\\displaystyle\\lim_{t \\to \\infty} g(t) = -\\infty$이므로 $g(t)$의 최솟값이 존재하지 않음\n- $m = 0$이면 $g(t) = t$이므로 $g(t)$의 최솟값은 $0$ ($\\because\\; t \\ge 0$)\n\n이므로 $m \\ge 0$이면 (가) 조건을 만족시키지 않는다.\n\n따라서 (가) 조건을 만족시키려면 $m < 0$이어야 하고, 이때 $g(t)$가 $t = t_1$에서 최소 $\\Leftrightarrow$ $h(t)$가 $t = t_1$에서 최대이므로\n\n- (가) $\\Rightarrow$ $l$은 점 $\\left(\\dfrac{9}{2},\\, \\dfrac{9}{2}\\right)$를 지남\n- $l$은 $(6,\\,3)$에서의 접선 $\\Rightarrow$ $l$은 $(6,\\,3)$을 지남\n\n$$\\Rightarrow m = -1$$\n\n임을 알 수 있다. 또한, $l$과 수직이고 점 $\\left(\\dfrac{9}{2},\\, \\dfrac{9}{2}\\right)$를 지나는 직선의 방정식: $y = x$\n\n이므로\n\n$$\\text{①},\\; g(t) \\ge \\dfrac{9}{2} \\;\\Rightarrow\\; \\text{곡선 } y = f(x)\\;(x \\ge 0)\\text{은 다음의 색칠된 영역에 그려짐}$$\n\n$$\\text{(나)} \\;\\Rightarrow\\; y = f(x)\\;(x \\ge 0)\\text{와 } y = x\\text{의 교점의 개수는 } 2$$\n\n임을 고려하면 $y = f(x)\\;(x \\ge 0)$의 그래프는 다음과 같이 그려진다.\n\n[FIGURE: $y = f(x)\\;(x \\ge 0)$의 그래프가 $y = x$ 직선과 두 점에서 만나고, 점 $\\left(\\dfrac{9}{2},\\,\\dfrac{9}{2}\\right)$과 점 $(6,\\,3)$이 표시된 그림]\n\n따라서\n\n$$f(x) = ax(x - b)^2 + x \\quad (\\text{단, } a < 0,\\; b > 0)$$\n\n으로 놓으면 직선 $l$이 $y = f(x)$의 접선이므로\n\n$$\\begin{cases} f(6) = 3 \\;\\Rightarrow\\; a(6 - b)^2 = -\\dfrac{1}{2} \\\\[6pt] f'(6) = m = -1 \\;\\Rightarrow\\; a(6 - b)^2 + 12a(6 - b) = -2 \\end{cases}$$\n\n$$\\Rightarrow a(6 - b)^2 = -\\dfrac{1}{2},\\quad a(6 - b) = -\\dfrac{1}{8}$$\n\n$$\\Rightarrow 6 - b = 4$$\n\n$$\\Rightarrow b = 2,\\quad a = -\\dfrac{1}{32}$$\n\n을 얻는다.\n\n$$\\therefore\\; f(x) = -\\dfrac{1}{32}\\,x(x - 2)^2 + x$$\n\n$$f(-6) = -\\dfrac{1}{32} \\cdot (-6) \\cdot (-8)^2 + (-6) = -\\dfrac{1}{32} \\cdot (-384) - 6 = 12 - 6 = \\boxed{6}$$",
+  "analysis": "",
+  "new_neurons": [],
+  "metadata": {
+    "unit": "미적분",
+    "difficulty": "상",
+    "score": "4",
+    "type": "multiple_choice",
+    "answer": "2",
+    "year": "미상",
+    "source": "수능",
+    "topic": "사차함수와 극한",
+    "subtopic": "함수의 연속성과 극한 조건"
+  },
+  "edge_count": 30,
+  "side_count": 10,
+  "statement": "# 3. (수능) - 삼차함수의 접선과 최솟값·최댓값 조건\n\n## Problem\n\n최고차항의 계수가 음수인 삼차함수 $y = f(x)$의 그래프 위의 점 $(6,\\, 3)$에서의 접선을 $l$이라 하자. 실수 $t\\;(t \\ge 0)$에 대하여 직선 $l$ 위의 점 중에서 점 $(t,\\, f(t))$와의 거리가 최소인 점의 좌표를 $(g(t),\\, h(t))$라 할 때, 구간 $[0,\\,\\infty)$에서 두 함수 $g(t)$, $h(t)$가 다음 조건을 만족시킨다.\n\n$$\\text{(가)}\\quad \\text{함수 } g(t)\\text{는 최솟값 } \\dfrac{9}{2}\\text{를 갖고, 함수 } h(t)\\text{는 최댓값 } \\dfrac{9}{2}\\text{를 갖는다.}$$\n\n$$\\text{(나)}\\quad g(t) = \\dfrac{9}{2}\\text{를 만족시키는 } t\\text{의 개수는 } 2\\text{이다.}$$\n\n$f(-6)$의 값을 구하시오. [4점]",
+  "dna": {
+    "nodes": [
+      {
+        "id": "top",
+        "dna": "Q1",
+        "label": "f(2) 값 구하라",
+        "category": "발문"
+      },
+      {
+        "id": "ask_f2",
+        "dna": "F3",
+        "label": "f(2) 적용",
+        "category": "함수"
+      },
+      {
+        "id": "vf",
+        "dna": "F6",
+        "label": "함수 f 정의",
+        "category": "함수"
+      },
+      {
+        "id": "f_quartic",
+        "dna": "F11",
+        "label": "사차함수",
+        "category": "함수"
+      },
+      {
+        "id": "lead_coeff",
+        "dna": "L4",
+        "label": "최고차항계수=1",
+        "category": "제한"
+      },
+      {
+        "id": "c1_coeff",
+        "dna": "T2",
+        "label": "상수 1",
+        "category": "말단"
+      },
+      {
+        "id": "vg",
+        "dna": "F1",
+        "label": "조각함수 g",
+        "category": "함수"
+      },
+      {
+        "id": "piece1",
+        "dna": "F2",
+        "label": "f'(x) (f=0)",
+        "category": "함수"
+      },
+      {
+        "id": "piece2",
+        "dna": "F2",
+        "label": "f(x)-2|f|/f (f≠0)",
+        "category": "함수"
+      },
+      {
+        "id": "piece1_cond",
+        "dna": "C1",
+        "label": "f(x)=0 조건",
+        "category": "조건"
+      },
+      {
+        "id": "piece2_cond",
+        "dna": "C2",
+        "label": "f(x)≠0 조건",
+        "category": "조건"
+      },
+      {
+        "id": "piece1_expr",
+        "dna": "F3",
+        "label": "f'(x) 적용",
+        "category": "함수"
+      },
+      {
+        "id": "piece2_expr",
+        "dna": "E1",
+        "label": "합(f(x), -2|f|/f)",
+        "category": "수식"
+      },
+      {
+        "id": "piece2_term2",
+        "dna": "E6",
+        "label": "2·|f|/f",
+        "category": "수식"
+      },
+      {
+        "id": "c2_const",
+        "dna": "T2",
+        "label": "상수 2",
+        "category": "말단"
+      },
+      {
+        "id": "abs_f_over_f",
+        "dna": "E6",
+        "label": "|f(x)|/f(x)",
+        "category": "수식"
+      },
+      {
+        "id": "abs_fx",
+        "dna": "E5",
+        "label": "|f(x)|",
+        "category": "수식"
+      },
+      {
+        "id": "f_inv",
+        "dna": "E7",
+        "label": "f(x)^(-1)",
+        "category": "수식"
+      },
+      {
+        "id": "cm1",
+        "dna": "T2",
+        "label": "상수 -1",
+        "category": "말단"
+      },
+      {
+        "id": "neg_piece2",
+        "dna": "E2",
+        "label": "부호반전(2|f|/f)",
+        "category": "수식"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
+      },
+      {
+        "id": "fx_app",
+        "dna": "F3",
+        "label": "f(x) 적용",
+        "category": "함수"
+      },
+      {
+        "id": "conds",
+        "dna": "S1",
+        "label": "조건 (가)(나)",
+        "category": "구조"
+      },
+      {
+        "id": "cond_ga",
+        "dna": "C1",
+        "label": "극한-g(1)=2",
+        "category": "조건"
+      },
+      {
+        "id": "lim_g_at1",
+        "dna": "F3",
+        "label": "lim g(x) x→1",
+        "category": "함수"
+      },
+      {
+        "id": "g_at1",
+        "dna": "F3",
+        "label": "g(1) 적용",
+        "category": "함수"
+      },
+      {
+        "id": "lim_minus_g1",
+        "dna": "E1",
+        "label": "극한-g(1)",
+        "category": "수식"
+      },
+      {
+        "id": "neg_g1",
+        "dna": "E2",
+        "label": "부호반전 g(1)",
+        "category": "수식"
+      },
+      {
+        "id": "cond_na",
+        "dna": "X4",
+        "label": "t값 1,4뿐",
+        "category": "존재"
+      },
+      {
+        "id": "left_lim_neq",
+        "dna": "C2",
+        "label": "좌극한≠g(t)",
+        "category": "조건"
+      },
+      {
+        "id": "lim_g_left_t",
+        "dna": "F3",
+        "label": "lim g(x) x→t-",
+        "category": "함수"
+      },
+      {
+        "id": "g_at_t",
+        "dna": "F3",
+        "label": "g(t) 적용",
+        "category": "함수"
+      },
+      {
+        "id": "vt",
+        "dna": "T1",
+        "label": "실수 t",
+        "category": "말단"
+      },
+      {
+        "id": "t_vals",
+        "dna": "S1",
+        "label": "t=1 또는 t=4",
+        "category": "구조"
+      },
+      {
+        "id": "t_eq1",
+        "dna": "C1",
+        "label": "t=1",
+        "category": "조건"
+      },
+      {
+        "id": "t_eq4",
+        "dna": "C1",
+        "label": "t=4",
+        "category": "조건"
+      },
+      {
+        "id": "c4_const",
+        "dna": "T2",
+        "label": "상수 4",
+        "category": "말단"
+      },
+      {
+        "id": "c2_at2",
+        "dna": "T2",
+        "label": "상수 2(f(2))",
+        "category": "말단"
+      }
+    ],
+    "edges": [
+      {
+        "from": "ask_f2",
+        "to": "top"
+      },
+      {
+        "from": "conds",
+        "to": "top"
+      },
+      {
+        "from": "vf",
+        "to": "ask_f2"
+      },
+      {
+        "from": "c2_at2",
+        "to": "ask_f2"
+      },
+      {
+        "from": "f_quartic",
+        "to": "vf"
+      },
+      {
+        "from": "lead_coeff",
+        "to": "vf"
+      },
+      {
+        "from": "c1_coeff",
+        "to": "lead_coeff"
+      },
+      {
+        "from": "vg",
+        "to": "conds"
+      },
+      {
+        "from": "piece1",
+        "to": "vg"
+      },
+      {
+        "from": "piece2",
+        "to": "vg"
+      },
+      {
+        "from": "piece1_cond",
+        "to": "piece1"
+      },
+      {
+        "from": "piece1_expr",
+        "to": "piece1"
+      },
+      {
+        "from": "fx_app",
+        "to": "piece1_cond"
+      },
+      {
+        "from": "vf",
+        "to": "piece1_expr"
+      },
+      {
+        "from": "vx",
+        "to": "piece1_expr"
+      },
+      {
+        "from": "piece2_cond",
+        "to": "piece2"
+      },
+      {
+        "from": "piece2_expr",
+        "to": "piece2"
+      },
+      {
+        "from": "fx_app",
+        "to": "piece2_cond"
+      },
+      {
+        "from": "fx_app",
+        "to": "piece2_expr"
+      },
+      {
+        "from": "neg_piece2",
+        "to": "piece2_expr"
+      },
+      {
+        "from": "piece2_term2",
+        "to": "neg_piece2"
+      },
+      {
+        "from": "c2_const",
+        "to": "piece2_term2"
+      },
+      {
+        "from": "abs_f_over_f",
+        "to": "piece2_term2"
+      },
+      {
+        "from": "abs_fx",
+        "to": "abs_f_over_f"
+      },
+      {
+        "from": "f_inv",
+        "to": "abs_f_over_f"
+      },
+      {
+        "from": "fx_app",
+        "to": "abs_fx"
+      },
+      {
+        "from": "fx_app",
+        "to": "f_inv"
+      },
+      {
+        "from": "cm1",
+        "to": "f_inv"
+      },
+      {
+        "from": "vf",
+        "to": "fx_app"
+      },
+      {
+        "from": "vx",
+        "to": "fx_app"
+      },
+      {
+        "from": "cond_ga",
+        "to": "conds"
+      },
+      {
+        "from": "lim_minus_g1",
+        "to": "cond_ga"
+      },
+      {
+        "from": "c2_const",
+        "to": "cond_ga"
+      },
+      {
+        "from": "lim_g_at1",
+        "to": "lim_minus_g1"
+      },
+      {
+        "from": "neg_g1",
+        "to": "lim_minus_g1"
+      },
+      {
+        "from": "g_at1",
+        "to": "neg_g1"
+      },
+      {
+        "from": "vg",
+        "to": "lim_g_at1"
+      },
+      {
+        "from": "c1_coeff",
+        "to": "lim_g_at1"
+      },
+      {
+        "from": "vg",
+        "to": "g_at1"
+      },
+      {
+        "from": "c1_coeff",
+        "to": "g_at1"
+      },
+      {
+        "from": "cond_na",
+        "to": "conds"
+      },
+      {
+        "from": "left_lim_neq",
+        "to": "cond_na"
+      },
+      {
+        "from": "t_vals",
+        "to": "cond_na"
+      },
+      {
+        "from": "lim_g_left_t",
+        "to": "left_lim_neq"
+      },
+      {
+        "from": "g_at_t",
+        "to": "left_lim_neq"
+      },
+      {
+        "from": "vg",
+        "to": "lim_g_left_t"
+      },
+      {
+        "from": "vt",
+        "to": "lim_g_left_t"
+      },
+      {
+        "from": "vg",
+        "to": "g_at_t"
+      },
+      {
+        "from": "vt",
+        "to": "g_at_t"
+      },
+      {
+        "from": "t_eq1",
+        "to": "t_vals"
+      },
+      {
+        "from": "t_eq4",
+        "to": "t_vals"
+      },
+      {
+        "from": "vt",
+        "to": "t_eq1"
+      },
+      {
+        "from": "c1_coeff",
+        "to": "t_eq1"
+      },
+      {
+        "from": "vt",
+        "to": "t_eq4"
+      },
+      {
+        "from": "c4_const",
+        "to": "t_eq4"
+      }
+    ],
+    "new_dna": []
+  },
+  "thinking_profile": null,
+  "folders": [],
+  "history": [],
+  "recovery_warnings": [],
+  "errata": [],
+  "created_at": "2026-03-24T20:58:34.560Z"
+}
