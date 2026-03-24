@@ -1625,5 +1625,354 @@
       }
     ],
     "_debug": "v7-split"
-  }
+  },
+  "_filename": "Problem37.json",
+  "key_ideas": [
+    {
+      "note_id": "note17",
+      "neuron": "사실43",
+      "hint_level": 4,
+      "text": "$h$는 순증가이므로 교점 $c$는 유일하다",
+      "from": [
+        "note16",
+        "note14"
+      ],
+      "main": true
+    },
+    {
+      "note_id": "note20",
+      "neuron": "전략25",
+      "hint_level": 2,
+      "text": "$g(c)=a^{c-1}+1=-2c+5$이다",
+      "from": [
+        "note14"
+      ],
+      "main": true
+    },
+    {
+      "note_id": "note26",
+      "neuron": "사실43",
+      "hint_level": 3,
+      "text": "$k=g(c)=-2c+5$이면 $[0,c)$에서 0개, $t=c$에서 1개, $(c,2)$에서 0개이다",
+      "from": [
+        "note25",
+        "note20"
+      ],
+      "main": true
+    }
+  ],
+  "solving_flow": [
+    {
+      "type": "derivation",
+      "steps": [
+        {
+          "note_id": "note1",
+          "neuron": "연산7",
+          "main": true
+        },
+        {
+          "note_id": "note5",
+          "neuron": "사실51",
+          "main": true
+        },
+        {
+          "note_id": "note6",
+          "neuron": "연산21",
+          "main": true
+        },
+        {
+          "note_id": "note7",
+          "neuron": "사실44",
+          "main": true
+        },
+        {
+          "note_id": "note8",
+          "neuron": "전략28",
+          "main": true
+        },
+        {
+          "note_id": "note9",
+          "neuron": "사실44",
+          "main": true
+        },
+        {
+          "note_id": "note11",
+          "neuron": "전략25",
+          "main": true
+        },
+        {
+          "note_id": "note12",
+          "neuron": "전략25",
+          "main": true
+        },
+        {
+          "note_id": "note13",
+          "neuron": "연산21",
+          "main": true
+        },
+        {
+          "note_id": "note14",
+          "neuron": "사실22",
+          "main": true
+        }
+      ]
+    },
+    {
+      "type": "key_idea",
+      "note_id": "note17",
+      "neuron": "사실43",
+      "hint_level": 4
+    },
+    {
+      "type": "derivation",
+      "steps": [
+        {
+          "note_id": "note18",
+          "neuron": "사실68",
+          "main": true
+        },
+        {
+          "note_id": "note19",
+          "neuron": "사실44",
+          "main": true
+        }
+      ]
+    },
+    {
+      "type": "key_idea",
+      "note_id": "note20",
+      "neuron": "전략25",
+      "hint_level": 2
+    },
+    {
+      "type": "derivation",
+      "steps": [
+        {
+          "note_id": "note25",
+          "neuron": "전략5",
+          "main": true
+        }
+      ]
+    },
+    {
+      "type": "key_idea",
+      "note_id": "note26",
+      "neuron": "사실43",
+      "hint_level": 3
+    },
+    {
+      "type": "derivation",
+      "steps": [
+        {
+          "note_id": "note27",
+          "neuron": "사실43",
+          "main": true
+        },
+        {
+          "note_id": "note28",
+          "neuron": "전략5",
+          "main": true
+        },
+        {
+          "note_id": "note29",
+          "neuron": "연산21",
+          "main": true
+        },
+        {
+          "note_id": "note30",
+          "neuron": "전략25",
+          "main": true
+        },
+        {
+          "note_id": "note31",
+          "neuron": "연산21",
+          "main": true
+        },
+        {
+          "note_id": "note32",
+          "neuron": "연산21",
+          "main": true
+        },
+        {
+          "note_id": "note33",
+          "neuron": "사실58",
+          "main": true
+        },
+        {
+          "note_id": "note34",
+          "neuron": "전략2",
+          "main": true
+        },
+        {
+          "note_id": "note35",
+          "neuron": "전략2",
+          "main": true
+        },
+        {
+          "note_id": "note37",
+          "neuron": "전략2",
+          "main": true
+        },
+        {
+          "note_id": "note38",
+          "neuron": "연산4",
+          "main": true
+        },
+        {
+          "note_id": "END",
+          "neuron": "전략25",
+          "main": true
+        }
+      ]
+    }
+  ],
+  "structure_type": {
+    "type": "mid_gate",
+    "label": "중간관문",
+    "description": "풀이 중반에 핵심 발상이 집중된 문제"
+  },
+  "cognitive_steps": [
+    {
+      "step_num": 1,
+      "target": "note1",
+      "hint_level": 0,
+      "neuron": "연산7",
+      "notes": [
+        "note1",
+        "note5",
+        "note6",
+        "note7",
+        "note8",
+        "note9"
+      ],
+      "bonus_count": 5
+    },
+    {
+      "step_num": 2,
+      "target": "note11",
+      "hint_level": 0,
+      "neuron": "전략25",
+      "notes": [
+        "note11",
+        "note12",
+        "note13",
+        "note14"
+      ],
+      "bonus_count": 3
+    },
+    {
+      "step_num": 3,
+      "target": "note17",
+      "hint_level": 4,
+      "neuron": "사실43",
+      "notes": [
+        "note17",
+        "note19"
+      ],
+      "bonus_count": 1
+    },
+    {
+      "step_num": 4,
+      "target": "note18",
+      "hint_level": 0,
+      "neuron": "사실68",
+      "notes": [
+        "note18"
+      ],
+      "bonus_count": 0
+    },
+    {
+      "step_num": 5,
+      "target": "note20",
+      "hint_level": 2,
+      "neuron": "전략25",
+      "notes": [
+        "note20",
+        "note25",
+        "note27"
+      ],
+      "bonus_count": 2
+    },
+    {
+      "step_num": 6,
+      "target": "note26",
+      "hint_level": 3,
+      "neuron": "사실43",
+      "notes": [
+        "note26",
+        "note28",
+        "note29",
+        "note30",
+        "note31",
+        "note32",
+        "note33",
+        "note34",
+        "note35",
+        "note37",
+        "note38",
+        "END"
+      ],
+      "bonus_count": 11
+    }
+  ],
+  "cognitive_keys": [
+    {
+      "step_num": 3,
+      "target": "note17",
+      "hint_level": 4,
+      "neuron": "사실43",
+      "notes": [
+        "note17",
+        "note19"
+      ],
+      "bonus_count": 1
+    },
+    {
+      "step_num": 5,
+      "target": "note20",
+      "hint_level": 2,
+      "neuron": "전략25",
+      "notes": [
+        "note20",
+        "note25",
+        "note27"
+      ],
+      "bonus_count": 2
+    },
+    {
+      "step_num": 6,
+      "target": "note26",
+      "hint_level": 3,
+      "neuron": "사실43",
+      "notes": [
+        "note26",
+        "note28",
+        "note29",
+        "note30",
+        "note31",
+        "note32",
+        "note33",
+        "note34",
+        "note35",
+        "note37",
+        "note38",
+        "END"
+      ],
+      "bonus_count": 11
+    }
+  ],
+  "cognitive_type": {
+    "type": "multi_gate",
+    "label": "다관문",
+    "color": "#ffa726"
+  },
+  "tags": {
+    "source": "",
+    "theme": "",
+    "difficulty": "",
+    "custom": [
+      "전국 서바이벌 지수/로그"
+    ]
+  },
+  "metadata": {}
 }
