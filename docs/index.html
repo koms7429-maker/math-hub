@@ -143,7 +143,7 @@ function flClick(fn,ev){if(ev.target.classList.contains('fl-rename'))return;coll
 function rList(){rVW();var q=document.getElementById('sq').value.toLowerCase(),all=applyFilter(probs);var f=q?all.filter(function(p){return(p.problem_id||'').toLowerCase().indexOf(q)>=0||(p.answer||'').indexOf(q)>=0||(p.statement||'').toLowerCase().indexOf(q)>=0}):all;var el=document.getElementById('slist');rBulk();if(curV===0){f.sort(function(a,b){return natCmp(a.problem_id,b.problem_id)});el.innerHTML=f.map(function(p){return piH(p,0)}).join('');focusRename();return}var groups={};f.forEach(function(p){var t=tg(p),keys=[];if(curV===1){keys=splitField(t.source);if(!keys.length)keys=['unknown']}if(curV===2){keys=splitField(t.theme);if(!keys.length)keys=['unknown']}if(curV===3){keys=splitField(t.difficulty);if(!keys.length)keys=['unknown']}if(curV===4){keys=t.custom.length?t.custom:['(none)']}keys.forEach(function(k){if(!groups[k])groups[k]=[];groups[k].push(p)})});if(curV===4){el.innerHTML=renderFolderTree(groups,null,0);focusRename();return}var sk=Object.keys(groups).sort(),html='';sk.forEach(function(k){var key=curV+'_'+k,col=collapsed[key];html+='<div class="fl" data-folder="'+esc(k)+'" onclick="collapsed[\''+key+'\']=!collapsed[\''+key+'\'];rList()" ondragover="event.preventDefault();this.classList.add(\'fl-drop\')" ondragleave="this.classList.remove(\'fl-drop\')" ondrop="dropToFolder(\''+esc(k)+'\',event)">'+(!col?'&#9660; ':'&#9654; ')+k+' ('+groups[k].length+')</div>';if(!col)groups[k].forEach(function(p){html+=piH(p,0)})});el.innerHTML=html;focusRename()}
 function focusRename(){var ri=document.getElementById('rename-input');if(ri){ri.focus();ri.select()}}
 
-function piH(p,depth){var a=sel&&sel.problem_id===p.problem_id,m=multiSel.has(p.problem_id),dr=dragPid===p.problem_id,isCut=clipboard.mode==='cut'&&clipboard.pids.indexOf(p.problem_id)>=0,ind=depth?depth*18:0;if(renaming&&renaming.type==='problem'&&renaming.pid===p.problem_id)return'<div class="pi'+(a?' on':'')+'" style="padding-left:'+(16+ind)+'px"><input type="checkbox" class="cb"><input class="pi-rename" id="rename-input" value="'+p.problem_id+'" data-old="'+esc(p.problem_id)+'" onkeydown="rnKey(event)" onblur="rnCommit()"></div>';return'<div class="pi'+(a?' on':'')+(m?' sel-m':'')+(dr?' dragging':'')+(isCut?' cut-mark':'')+'" data-pid="'+p.problem_id+'" draggable="true" style="padding-left:'+(16+ind)+'px" ondragstart="dStart(\''+esc(p.problem_id)+'\',event)" ondragend="dEnd()" onclick="pClick(\''+esc(p.problem_id)+'\',event)" oncontextmenu="ctxProblem(\''+esc(p.problem_id)+'\',event)"><input type="checkbox" class="cb" '+(m?'checked':'')+' onclick="cbClick(\''+esc(p.problem_id)+'\',event)"><span class="nm">'+p.problem_id+'</span></div>'}
+function piH(p,depth){var a=sel&&sel.problem_id===p.problem_id,m=multiSel.has(p.problem_id),dr=dragPid===p.problem_id,isCut=clipboard.mode==='cut'&&clipboard.pids.indexOf(p.problem_id)>=0,ind=depth?depth*18:0;if(renaming&&renaming.type==='problem'&&renaming.pid===p.problem_id)return'<div class="pi'+(a?' on':'')+'" style="padding-left:'+(16+ind)+'px"><input type="checkbox" class="cb"><input class="pi-rename" id="rename-input" value="'+p.problem_id+'" data-old="'+esc(p.problem_id)+'" onkeydown="rnKey(event)" onblur="rnCommit()"></div>';return'<div class="pi'+(a?' on':'')+(m?' sel-m':'')+(dr?' dragging':'')+(isCut?' cut-mark':'')+'" data-pid="'+p.problem_id+'" draggable="true" style="padding-left:'+(16+ind)+'px" ondragstart="dStart(\''+esc(p.problem_id)+'\',event)" ondragend="dEnd()" onclick="pClick(\''+esc(p.problem_id)+'\',event)" oncontextmenu="ctxProblem(\''+esc(p.problem_id)+'\',event)"><input type="checkbox" class="cb" '+(m?'checked':'')+' onclick="cbClick(\''+esc(p.problem_id)+'\',event)"><span class="nm">'+p.problem_id+'</span>'+(p.structure_type?'<span class="inf" style="color:'+(({'linear':'#7a7f9a','single_gate':'#1D9E75','front_gate':'#7F77DD','buildup':'#D85A30','scattered':'#BA7517','mid_gate':'#378ADD'})[p.structure_type.type]||'#7a7f9a')+'">'+p.structure_type.label+'</span>':'')+'</div>'}
 
 function startRename(type,id){renaming={type:type};if(type==='problem')renaming.pid=id;else renaming.name=id;rList()}
 function rnKey(ev){if(ev.key==='Enter'){ev.preventDefault();rnCommit()}if(ev.key==='Escape'){renaming=null;rList()}}
@@ -330,6 +330,71 @@ function rAn(p){
       }
       h+='</div>';
     });
+  }
+
+  // ── Solving Flow (key_ideas + solving_flow + structure_type) ──
+  if(p.key_ideas&&p.key_ideas.length>0||p.solving_flow){
+    var stType=p.structure_type||{};
+    var stColors={'linear':'#7a7f9a','single_gate':'#1D9E75','front_gate':'#7F77DD','buildup':'#D85A30','scattered':'#BA7517','mid_gate':'#378ADD'};
+    var stC=stColors[stType.type]||'#7a7f9a';
+    h+='<div class="sl" style="margin-top:14px;color:'+stC+'">Solving Flow</div><div class="cd">';
+    // structure type badge
+    if(stType.type){
+      h+='<div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">';
+      h+='<span style="font-size:12px;padding:3px 10px;border-radius:4px;background:'+stC+'22;color:'+stC+';font-weight:700">'+stType.label+'</span>';
+      h+='<span style="font-size:11px;color:#7a7f9a">'+stType.description+'</span>';
+      h+='</div>';
+    }
+    // key ideas 요약
+    var kis=p.key_ideas||[];
+    if(kis.length>0){
+      h+='<div style="margin-bottom:12px">';
+      h+='<div style="font-size:10px;color:#7a7f9a;letter-spacing:2px;margin-bottom:6px">KEY IDEAS ('+kis.length+')</div>';
+      kis.forEach(function(ki){
+        var hc=hintColor(ki.hint_level);
+        h+='<div style="display:flex;gap:8px;align-items:flex-start;padding:7px 10px;background:var(--bg);border-left:3px solid '+hc+';border-radius:0 5px 5px 0;margin-bottom:4px">';
+        h+='<div style="flex-shrink:0;display:flex;gap:4px;align-items:center">';
+        h+=hintBadge(ki.hint_level);
+        h+='<span style="font-size:10px;color:#7a7f9a">'+ki.note_id+'</span>';
+        h+='<span style="font-size:10px;color:'+nc(ki.neuron)+';font-weight:700">'+ki.neuron+'</span>';
+        h+='</div>';
+        h+='<div style="font-size:11px;color:var(--tx);line-height:1.5;flex:1;min-width:0">'+rm(ki.text)+'</div>';
+        h+='</div>';
+      });
+      h+='</div>';
+    }
+    // solving flow phases
+    var sf=p.solving_flow||[];
+    if(sf.length>0){
+      h+='<div style="font-size:10px;color:#7a7f9a;letter-spacing:2px;margin-bottom:6px">FLOW ('+sf.length+' phases)</div>';
+      sf.forEach(function(phase,pi){
+        if(phase.type==='key_idea'){
+          var hc=hintColor(phase.hint_level);
+          h+='<div style="display:flex;align-items:center;gap:6px;padding:6px 10px;background:'+hc+'15;border-left:3px solid '+hc+';border-radius:0 4px 4px 0;margin-bottom:3px">';
+          h+='<span style="font-size:10px;color:'+hc+';font-weight:700">🔑</span>';
+          h+=hintBadge(phase.hint_level)+' ';
+          h+='<span style="font-size:10px;color:'+nc(phase.neuron)+';font-weight:600">'+phase.neuron+'</span>';
+          h+='<span style="font-size:10px;color:#7a7f9a">'+phase.note_id+'</span>';
+          h+='</div>';
+        } else {
+          var steps=phase.steps||[];
+          var auto=phase.auto||[];
+          h+='<div style="padding:5px 10px;background:var(--bg);border-radius:4px;margin-bottom:3px;border:1px solid var(--bd)">';
+          h+='<div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">';
+          if(steps.length>0)h+='<span style="font-size:10px;color:#66bb6a;font-weight:600">steps '+steps.length+'</span>';
+          if(auto.length>0)h+='<span style="font-size:10px;color:#7a7f9a">auto '+auto.length+'</span>';
+          if(steps.length>0){
+            h+=' ';
+            steps.forEach(function(s){
+              h+='<span style="font-size:9px;padding:1px 5px;border-radius:3px;background:'+nc(s.neuron)+'22;color:'+nc(s.neuron)+';margin-right:2px">'+s.neuron+'</span>';
+            });
+          }
+          h+='</div></div>';
+        }
+        if(pi<sf.length-1)h+='<div style="text-align:center;color:#7a7f9a;font-size:9px;margin:1px 0">▼</div>';
+      });
+    }
+    h+='</div>';
   }
 
   // Thinking Profile (v2/v3/v4/v5/v6 호환)
