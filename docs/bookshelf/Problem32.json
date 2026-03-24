@@ -1,6 +1,5 @@
 {
   "problem_id": "Problem32",
-  "answer": "18",
   "clues": [
     {
       "id": "단서A",
@@ -168,296 +167,623 @@
     }
   ],
   "solution": "STEP 1. 방정식 $(x-m^n)(x^n-m)=0$의 실근은 $x=m^n$ 또는 $x^n=m$의 실근의 합집합이다. $n$의 홀짝과 $m$의 부호에 따라 $x^n=m$의 실근 개수가 달라지므로 4가지 경우로 나눈다. (ⅰ) $n$ 홀수: 실근 후보 $\\{m^n,\\,\\sqrt[n]{m}\\}$, (ⅱ) $n$ 짝수·$m<0$: 실근 $\\{m^n\\}$만, (ⅲ) $n$ 짝수·$m=0$: 실근 $\\{0\\}$만, (ⅳ) $n$ 짝수·$m>0$: 실근 후보 $\\{m^n,\\,\\sqrt[n]{m},\\,-\\sqrt[n]{m}\\}$.\n\nSTEP 2. 경우 (ⅰ)에서 서로 다른 실근이 1개이려면 $m^n=\\sqrt[n]{m}$이어야 한다. 양변을 $n$제곱하면 $m^{n^2}=m$이고, $m(m^{n^2-1}-1)=0$으로 인수분해하면 $m=0$ 또는 $m^{n^2-1}=1$이다. 홀수 $n=3,5$에 대해 $n^2-1$은 각각 $8, 24$이므로, $m^{n^2-1}=1$을 만족하는 정수 $m$은 $m=\\pm1$이다. $m\\in\\{-1,0,1\\}$ 3개, $n\\in\\{3,5\\}$ 2개이므로 $6$가지이다.\n\nSTEP 3. 경우 (ⅱ)+(ⅲ)은 항상 서로 다른 실근이 1개이다. 짝수 $n\\in\\{2,4,6\\}$ 3개, $m\\in\\{-3,-2,-1,0\\}$ 4개이므로 $12$가지이다.\n\nSTEP 4. 경우 (ⅳ) $n$ 짝수·$m>0$일 때, $\\sqrt[n]{m}>0$이고 $-\\sqrt[n]{m}<0$이므로 서로 다른 실근이 최소 2개이다. 실근 1개 조건을 만족하지 못하므로 $0$가지이다.\n\nSTEP 5. 모든 순서쌍의 개수는 $6+12+0=18$이다.",
-  "original_solution": "방정식 $(x - m^n)(x^n - m) = 0$ ⋯ ⓐ 의 모든 실근은 다음과 같다.\n\n$$\\begin{cases} \\text{① } n\\text{이 홀수일 때, } x = m^n,\\; \\sqrt[n]{m} \\\\ \\text{② } n\\text{이 짝수, } m < 0\\text{일 때, } x = m^n \\\\ \\text{③ } n\\text{이 짝수, } m = 0\\text{일 때, } x = 0 \\\\ \\text{④ } n\\text{이 짝수, } m > 0\\text{일 때, } x = m^n,\\; \\sqrt[n]{m},\\; -\\sqrt[n]{m} \\end{cases}$$\n\n따라서 ⓐ의 서로 다른 실근의 개수가 $1$ (⋯ ⓑ) 이고 $2 \\leq n \\leq 6$, $-3 \\leq m \\leq 3$을 만족시키려면:\n\n**①의 경우:** $m^n = \\sqrt[n]{m}$이어야 하므로 $m = -1,\\, 0,\\, 1$.\n홀수인 $n$은 $3,\\, 5$로 $2$개, $m$은 $3$개이므로 $2 \\times 3 = 6$ (가지)\n\n**②, ③의 경우:** 실근이 $x = m^n$ 하나뿐이므로 항상 ⓑ을 만족시킨다.\n짝수인 $n$은 $2,\\, 4,\\, 6$으로 $3$개, 해당 $m$은 $\\{-3,\\,-2,\\,-1,\\,0\\}$으로 $4$개이므로 $3 \\times 4 = 12$ (가지)\n\n**④의 경우:** 서로 다른 실근이 $m^n,\\, \\sqrt[n]{m},\\, -\\sqrt[n]{m}$으로 $3$개 이상이므로 ⓑ을 만족시키지 않음 $\\Rightarrow 0$ (가지)\n\n$$\\therefore\\; \\text{모든 순서쌍 } (m,\\,n)\\text{의 개수} = 6 + 12 + 0 = \\boxed{18}$$\n\n---",
-  "analysis": "",
-  "new_neurons": [],
-  "metadata": {
-    "unit": "지수와 로그",
-    "difficulty": "중",
-    "score": "4",
-    "type": "객관식",
-    "answer": "18"
-  },
-  "edge_count": 17,
-  "side_count": 2,
   "statement": "# 1. (출처 미상) - 방정식의 서로 다른 실근의 개수\n\n## Problem\n\n$-3 \\leq m \\leq 3$인 정수 $m$과 $2 \\leq n \\leq 6$인 자연수 $n$에 대하여 $x$에 대한 방정식 $(x - m^n)(x^n - m) = 0$의 서로 다른 실근의 개수가 $1$이 되도록 하는 모든 순서쌍 $(m,\\, n)$의 개수는? [4점]",
-  "dna": {
-    "nodes": [
+  "thinking_profile": {
+    "_version": 6,
+    "_unit": "note",
+    "_isV6": true,
+    "total_think_tokens": 1147,
+    "total_notes": 15,
+    "hint_distribution": {
+      "0": 15,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0
+    },
+    "avg_hint_level": 0,
+    "genuine_miss_count": 0,
+    "absorbed_miss_count": 0,
+    "bonus_count": 12,
+    "highlight_notes": [
+      "note2",
+      "note7",
+      "note9"
+    ],
+    "hardest_note": {
+      "note_id": "note2",
+      "neuron": "전략12",
+      "hint_level": 0,
+      "structural_difficulty": 0.25,
+      "miss_type": null,
+      "note_text": "$n$의 홀짝과 $m$의 부호에 따라 (ⅰ) $n$ 홀수, (ⅱ) $n$ 짝수·$m<0$, (ⅲ) $n$ 짝수·$m=0$, (ⅳ) $n$ 짝수·$m>0$의 4가지 경우로 나눈다"
+    },
+    "neuron_stats": {
+      "연산9": {
+        "type": "연산",
+        "appearances": 2,
+        "total_hint": 0,
+        "hint_levels": [
+          0,
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "전략12": {
+        "type": "전략",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "사실4": {
+        "type": "사실",
+        "appearances": 4,
+        "total_hint": 0,
+        "hint_levels": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bonus_count": 4,
+        "avg_hint_level": 0
+      },
+      "전략2": {
+        "type": "전략",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "연산4": {
+        "type": "연산",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 0,
+        "avg_hint_level": 0
+      },
+      "전략29": {
+        "type": "전략",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "전략17": {
+        "type": "전략",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "전략10": {
+        "type": "전략",
+        "appearances": 3,
+        "total_hint": 0,
+        "hint_levels": [
+          0,
+          0,
+          0
+        ],
+        "bonus_count": 2,
+        "avg_hint_level": 0
+      },
+      "전략23": {
+        "type": "전략",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      }
+    },
+    "notes": [
       {
-        "id": "top",
-        "dna": "Q2",
-        "label": "개수를 구하라",
-        "category": "발문"
+        "note_index": 1,
+        "note_id": "note1",
+        "neuron": "연산9",
+        "neuron_type": "연산",
+        "note_text": "실근은 $x=m^n$의 근 또는 $x^n=m$의 실근의 합집합이다",
+        "from": [
+          "단서A"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note1",
+            "in_target": "note1",
+            "attempt": 3,
+            "score": 0.7,
+            "reason": "학생이 실근 후보를 {m^n, n√m}의 합집합으로 암묵적으로 다루고 있어 실질적으로 동일한 개념을 사용"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 203,
+            "discover_elapsed_ms": 9722,
+            "match_elapsed_ms": 8306,
+            "discover_input_tokens": 637,
+            "discover_output_tokens": 635,
+            "match_input_tokens": 1675,
+            "match_output_tokens": 608,
+            "claude_output": "[시도] 내가 해볼 것: 방정식의 두 인수 각각에서 나오는 실근을 파악하기\n\n[계산]\n- 첫 번째 인수 $(x - m^n) = 0$ → $x = m^n$ (항상 실근 **1개**)\n- 두 번째 인수 $x^n = m$의 실근 개수:\n  - $n$이 홀수이면: $x = m^{1/n}$ (부호 무관, 항상 실근 **1개**)\n  - $n$이 짝수이고 $m > 0$이면: $x = \\pm m^{1/n}$ (실근 **2개**)\n  - $n$이 짝수이고 $m = 0$이면: $x = 0$ (실근 **1개**)\n  - $n$이 짝수이고 $m < 0$이면: 실근 **0개**\n\n[결론] $x^n = m$의 실근 개수는 $n$의 홀짝성과 $m$의 부호에 따라 0개, 1개, 2개로 나뉜다.",
+            "matches": [
+              {
+                "label": "B",
+                "score": 1,
+                "reason": "학생이 n의 홀짝성과 m의 부호에 따라 정확히 4가지 경우(n 홀수, n 짝수·m>0, n 짝수·m=0, n 짝수·m<0)로 나누어 분석했으며, 이는 후보 B의 결론과 완전히 일치한다"
+              },
+              {
+                "label": "D",
+                "score": 0.9,
+                "reason": "학생이 'n이 짝수이고 m<0이면 실근 0개'라고 명시했으며, 이는 후보 D의 핵심 결론(x^n=m의 실근 0개)과 일치한다. 다만 전체 실근이 {m^n}뿐이라는 부분은 명시하지 않았다"
+              },
+              {
+                "label": "E",
+                "score": 0.85,
+                "reason": "학생이 'n이 짝수이고 m=0이면 x=0 실근 1개'라고 명시했으며, 이는 후보 E의 핵심 결론과 일치한다. 다만 m^n=0과의 일치 및 전체 실근 {0}이라는 부분은 명시하지 않았다"
+              },
+              {
+                "label": "F",
+                "score": 0.8,
+                "reason": "학생이 'n이 짝수이고 m>0이면 x=±m^{1/n} 실근 2개'라고 명시했으며, 이는 후보 F의 x^n=m 실근 부분과 일치한다. 다만 전체 실근 후보 집합까지는 언급하지 않았다"
+              },
+              {
+                "label": "C",
+                "score": 0.75,
+                "reason": "학생이 'n이 홀수이면 x=m^{1/n} 실근 1개'라고 명시했으며, 이는 후보 C의 핵심 내용과 일치한다. 다만 전체 실근 후보 집합 표현은 없다"
+              }
+            ],
+            "eval_summary": "MISS attempt0 dry0 | 203tok | disc 9722ms + match 8306ms | bonus 5"
+          },
+          {
+            "attempt": 1,
+            "think_tokens": 147,
+            "discover_elapsed_ms": 8944,
+            "match_elapsed_ms": 3948,
+            "discover_input_tokens": 1120,
+            "discover_output_tokens": 575,
+            "match_input_tokens": 1147,
+            "match_output_tokens": 161,
+            "claude_output": "[시도] 내가 해볼 것: (ⅱ) n 짝수, m<0 경우에서 조건을 만족하는 순서쌍의 개수 구하기\n\n[계산]\n- 이미 알아낸 것: n 짝수, m<0이면 전체 실근은 {m^n} 딱 1개뿐\n- 서로 다른 실근의 개수 = 1 → 조건 **자동 만족**\n- n 짝수: n ∈ {2, 4, 6} → 3가지\n- m < 0인 정수: m ∈ {-3, -2, -1} → 3가지\n- 순서쌍 수: 3 × 3 = **9**\n\n[결론] (ⅱ) n 짝수, m<0인 경우 조건을 만족하는 순서쌍 (m, n)은 총 **9개**이다.",
+            "matches": [
+              {
+                "label": "M",
+                "score": 0.7,
+                "reason": "학생은 n 짝수, m<0인 경우 9개라고 했고, 후보 M은 짝수 n에서 m∈{-3,-2,-1,0} 4개를 포함해 12가지라고 함. m<0 부분(3가지)은 겹치지만 m=0 포함 여부와 총 개수가 다름. 부분적으로 관련있으나 완전히 일치하지 않음"
+              }
+            ],
+            "eval_summary": "MISS attempt1 dry0 | 147tok | disc 8944ms + match 3948ms | bonus 1"
+          },
+          {
+            "attempt": 2,
+            "think_tokens": 133,
+            "discover_elapsed_ms": 12240,
+            "match_elapsed_ms": 3189,
+            "discover_input_tokens": 1206,
+            "discover_output_tokens": 787,
+            "match_input_tokens": 1101,
+            "match_output_tokens": 101,
+            "claude_output": "[시도] 내가 해볼 것: (ⅳ) $n$ 짝수·$m>0$일 때 실근의 개수가 1이 될 수 있는지 확인\n\n[계산]\n세 후보 $\\{m^n,\\; \\sqrt[n]{m},\\; -\\sqrt[n]{m}\\}$에서,  \n- $m>0$, $n$ 짝수이므로 $m^n>0$, $\\sqrt[n]{m}>0$  \n- $-\\sqrt[n]{m}<0$ (항상 음수)\n\n따라서 $-\\sqrt[n]{m}$은 나머지 두 값(모두 양수)과 절대 같아질 수 없다.  \n→ 서로 다른 실근은 항상 **최소 2개** 이상 존재한다.\n\n[결론] (ⅳ) $n$ 짝수·$m>0$인 경우는 서로 다른 실근이 항상 2개 이상이므로, 조건을 만족하는 $(m,n)$이 **0가지**이다.",
+            "matches": [
+              {
+                "label": "N",
+                "score": 1,
+                "reason": "학생의 결론과 완전히 일치: n 짝수·m>0일 때 √[n]{m}>0이고 -√[n]{m}<0이므로 서로 다른 실근이 최소 2개, 따라서 0가지"
+              }
+            ],
+            "eval_summary": "MISS attempt2 dry0 | 133tok | disc 12240ms + match 3189ms | bonus 1"
+          },
+          {
+            "attempt": 3,
+            "think_tokens": 258,
+            "discover_elapsed_ms": 15806,
+            "match_elapsed_ms": 7396,
+            "discover_input_tokens": 1301,
+            "discover_output_tokens": 1092,
+            "match_input_tokens": 1152,
+            "match_output_tokens": 407,
+            "claude_output": "[시도] (ⅰ) n 홀수일 때, 실근 후보 {m^n, ∜[n]{m}} 가 1개가 되려면 두 값이 일치해야 하므로, m^n = m^(1/n)이 되는 m을 찾는다.\n\n[계산]\n- m = 0: 0^n = 0, 0^(1/n) = 0 → 일치 ✓  \n- m = 1: 1^n = 1, 1^(1/n) = 1 → 일치 ✓  \n- m = -1: (-1)^n = -1 (n 홀수), (-1)^(1/n) = -1 (n 홀수) → 일치 ✓  \n- |m| ≥ 2: 예) m=2, n=3이면 m^n = 8, m^(1/n) = 2^(1/3) ≈ 1.26 → 불일치, 실근 2개\n\n따라서 m ∈ {-1, 0, 1}일 때만 실근 1개 조건 만족.  \nn(홀수) ∈ {3, 5} 이므로 2가지, m ∈ {-1, 0, 1} 이므로 3가지 → **2 × 3 = 6가지**\n\n[결론] (ⅰ) n 홀수인 경우, 조건을 만족하는 순서쌍은 m ∈ {-1, 0, 1}, n ∈ {3, 5}로 **6가지**이다.",
+            "matches": [
+              {
+                "label": "G",
+                "score": 1,
+                "reason": "학생이 '두 값이 일치해야 하므로 m^n = m^(1/n)'이라고 명시적으로 서술하여 완전히 일치"
+              },
+              {
+                "label": "L",
+                "score": 1,
+                "reason": "학생이 'm ∈ {-1,0,1} 3가지, n ∈ {3,5} 2가지 → 6가지'라고 동일한 결론을 명시적으로 서술"
+              },
+              {
+                "label": "K",
+                "score": 0.7,
+                "reason": "학생이 n=3,5에서 m=±1이 조건을 만족함을 확인했으나, m^(n²-1)=1 방정식을 통한 체계적 도출은 없고 직접 대입으로 확인"
+              },
+              {
+                "label": "J",
+                "score": 0.5,
+                "reason": "학생이 m=0과 m=±1을 해로 제시했으나 m(m^(n²-1)-1)=0 형태의 인수분해는 명시하지 않음"
+              },
+              {
+                "label": "A",
+                "score": 0.7,
+                "reason": "학생이 실근 후보를 {m^n, n√m}의 합집합으로 암묵적으로 다루고 있어 실질적으로 동일한 개념을 사용"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 258tok | disc 15806ms + match 7396ms | bonus 3"
+          }
+        ]
       },
       {
-        "id": "ask_pair",
-        "dna": "X2",
-        "label": "순서쌍 (m,n)",
-        "category": "존재"
+        "note_index": 2,
+        "note_id": "note2",
+        "neuron": "전략12",
+        "neuron_type": "전략",
+        "note_text": "$n$의 홀짝과 $m$의 부호에 따라 (ⅰ) $n$ 홀수, (ⅱ) $n$ 짝수·$m<0$, (ⅲ) $n$ 짝수·$m=0$, (ⅳ) $n$ 짝수·$m>0$의 4가지 경우로 나눈다",
+        "from": [
+          "note1",
+          "단서B",
+          "단서C"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
       },
       {
-        "id": "cond_root1",
-        "dna": "C9",
-        "label": "실근 개수=1",
-        "category": "조건"
+        "note_index": 3,
+        "note_id": "note3",
+        "neuron": "사실4",
+        "neuron_type": "사실",
+        "note_text": "(ⅰ) $n$ 홀수일 때: $x^n=m$의 실근은 $\\sqrt[n]{m}$ 1개이다. 전체 실근 후보는 $\\{m^n,\\;\\sqrt[n]{m}\\}$이다",
+        "from": [
+          "note2"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
       },
       {
-        "id": "c_one",
-        "dna": "T2",
-        "label": "상수 1",
-        "category": "말단"
+        "note_index": 4,
+        "note_id": "note4",
+        "neuron": "사실4",
+        "neuron_type": "사실",
+        "note_text": "(ⅱ) $n$ 짝수·$m<0$일 때: $x^n\\geq0$이므로 $x^n=m$의 실근은 0개이다. 전체 실근은 $\\{m^n\\}$뿐이다",
+        "from": [
+          "note2"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
       },
       {
-        "id": "eq_main",
-        "dna": "C11",
-        "label": "방정식",
-        "category": "조건"
+        "note_index": 5,
+        "note_id": "note5",
+        "neuron": "사실4",
+        "neuron_type": "사실",
+        "note_text": "(ⅲ) $n$ 짝수·$m=0$일 때: $x^n=0$의 실근은 $x=0$ 1개이고 $m^n=0$과 일치한다. 전체 실근은 $\\{0\\}$뿐이다",
+        "from": [
+          "note2"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
       },
       {
-        "id": "eq_c1",
-        "dna": "C1",
-        "label": "곱=0",
-        "category": "조건"
+        "note_index": 6,
+        "note_id": "note6",
+        "neuron": "사실4",
+        "neuron_type": "사실",
+        "note_text": "(ⅳ) $n$ 짝수·$m>0$일 때: $x^n=m$의 실근은 $\\sqrt[n]{m}$과 $-\\sqrt[n]{m}$의 2개이다. 전체 실근 후보는 $\\{m^n,\\;\\sqrt[n]{m},\\;-\\sqrt[n]{m}\\}$이다",
+        "from": [
+          "note2"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
       },
       {
-        "id": "lhs_prod",
-        "dna": "E6",
-        "label": "곱(인수1,인수2)",
-        "category": "수식"
+        "note_index": 7,
+        "note_id": "note7",
+        "neuron": "전략2",
+        "neuron_type": "전략",
+        "note_text": "(ⅰ)에서 서로 다른 실근이 1개이려면 $m^n=\\sqrt[n]{m}$이어야 한다",
+        "from": [
+          "note3",
+          "단서D"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
       },
       {
-        "id": "factor1",
-        "dna": "E1",
-        "label": "합(x,-m^n)",
-        "category": "수식"
+        "note_index": 8,
+        "note_id": "note8",
+        "neuron": "연산4",
+        "neuron_type": "연산",
+        "note_text": "$m^n=m^{1/n}$의 양변을 $n$제곱하면 $m^{n^2}=m$이다",
+        "from": [
+          "note7"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note8",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note8",
+            "in_target": "note8",
+            "attempt": 0,
+            "score": 1,
+            "reason": "학생이 '양변을 n제곱하면 m^{n^2}=m'을 명시적으로 도출함"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 232,
+            "discover_elapsed_ms": 16190,
+            "match_elapsed_ms": 3739,
+            "discover_input_tokens": 1208,
+            "discover_output_tokens": 1157,
+            "match_input_tokens": 767,
+            "match_output_tokens": 181,
+            "claude_output": "[시도] 내가 해볼 것: (ⅰ) n 홀수일 때, $m^n = \\sqrt[n]{m}$을 만족하는 m 값 구하기\n\n[계산]\n$m^n = \\sqrt[n]{m}$ 양변을 n제곱하면:\n\n$$m^{n^2} = m \\implies m^{n^2} - m = 0 \\implies m(m^{n^2-1}-1)=0$$\n\n따라서 $m=0$ 또는 $m^{n^2-1}=1$\n\nn=3일 때 $n^2-1=8$: $m^8=1 \\Rightarrow m=\\pm1$\n\nn=5일 때 $n^2-1=24$: $m^{24}=1 \\Rightarrow m=\\pm1$\n\n범위 내 정수 중 조건을 만족하는 것은 $m \\in \\{-1,\\, 0,\\, 1\\}$\n\n[결론] (ⅰ) n 홀수인 경우, 서로 다른 실근이 1개인 순서쌍은 $m\\in\\{-1,0,1\\}$, $n\\in\\{3,5\\}$인 **6가지**이다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 1,
+                "reason": "학생이 '양변을 n제곱하면 m^{n^2}=m'을 명시적으로 도출함"
+              },
+              {
+                "label": "B",
+                "score": 1,
+                "reason": "학생이 m^{n^2}-m=0 => m(m^{n^2-1}-1)=0을 그대로 기술함"
+              },
+              {
+                "label": "C",
+                "score": 1,
+                "reason": "학생이 'M=0 또는 m^{n^2-1}=1'을 명시적으로 결론 냄"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 232tok | disc 16190ms + match 3739ms | bonus 2"
+          }
+        ]
       },
       {
-        "id": "neg_mn",
-        "dna": "E2",
-        "label": "부호반전(m^n)",
-        "category": "수식"
+        "note_index": 9,
+        "note_id": "note9",
+        "neuron": "전략29",
+        "neuron_type": "전략",
+        "note_text": "$m^{n^2}-m=m(m^{n^2-1}-1)=0$이다",
+        "from": [
+          "note8"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note8",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
       },
       {
-        "id": "mn_pow",
-        "dna": "E7",
-        "label": "m^n",
-        "category": "수식"
+        "note_index": 10,
+        "note_id": "note10",
+        "neuron": "연산9",
+        "neuron_type": "연산",
+        "note_text": "$m=0$ 또는 $m^{n^2-1}=1$이다",
+        "from": [
+          "note9"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note8",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
       },
       {
-        "id": "factor2",
-        "dna": "E1",
-        "label": "합(x^n,-m)",
-        "category": "수식"
+        "note_index": 11,
+        "note_id": "note11",
+        "neuron": "전략17",
+        "neuron_type": "전략",
+        "note_text": "홀수 $n$은 $3,5$이다. $n=3$: $n^2-1=8$이므로 $m^8=1$을 만족하는 정수 $m$은 $m=\\pm1$. $n=5$: $n^2-1=24$이므로 $m^{24}=1$을 만족하는 정수 $m$은 $m=\\pm1$이다",
+        "from": [
+          "note10",
+          "단서B",
+          "단서C"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
       },
       {
-        "id": "neg_m",
-        "dna": "E2",
-        "label": "부호반전(m)",
-        "category": "수식"
+        "note_index": 12,
+        "note_id": "note14",
+        "neuron": "전략10",
+        "neuron_type": "전략",
+        "note_text": "(ⅰ)의 유효한 $(m,n)$: $m\\in\\{-1,0,1\\}$ 3개 $\\times$ $n\\in\\{3,5\\}$ 2개 $=6$가지이다",
+        "from": [
+          "note11"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
       },
       {
-        "id": "xn_pow",
-        "dna": "E7",
-        "label": "x^n",
-        "category": "수식"
+        "note_index": 13,
+        "note_id": "note15",
+        "neuron": "전략10",
+        "neuron_type": "전략",
+        "note_text": "(ⅱ)+(ⅲ)은 항상 실근 1개이다. 짝수 $n\\in\\{2,4,6\\}$ 3개 $\\times$ $m\\in\\{-3,-2,-1,0\\}$ 4개 $=12$가지이다",
+        "from": [
+          "note4",
+          "note5",
+          "단서D"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
       },
       {
-        "id": "rhs_zero",
-        "dna": "T2",
-        "label": "상수 0",
-        "category": "말단"
+        "note_index": 14,
+        "note_id": "note16",
+        "neuron": "전략23",
+        "neuron_type": "전략",
+        "note_text": "(ⅳ) $n$ 짝수·$m>0$일 때 $\\sqrt[n]{m}>0$이고 $-\\sqrt[n]{m}<0$이므로 서로 다른 실근이 최소 2개이다. 실근 1개 조건에 모순이므로 0가지이다",
+        "from": [
+          "note6",
+          "단서D"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
       },
       {
-        "id": "vx",
-        "dna": "T3",
-        "label": "독립변수 x",
-        "category": "말단"
-      },
-      {
-        "id": "vm",
-        "dna": "T1",
-        "label": "변수 m",
-        "category": "말단"
-      },
-      {
-        "id": "vn",
-        "dna": "T1",
-        "label": "변수 n",
-        "category": "말단"
-      },
-      {
-        "id": "lim_m_range",
-        "dna": "L2",
-        "label": "m: -3~3",
-        "category": "제한"
-      },
-      {
-        "id": "cm3",
-        "dna": "T2",
-        "label": "상수 -3",
-        "category": "말단"
-      },
-      {
-        "id": "c3",
-        "dna": "T2",
-        "label": "상수 3",
-        "category": "말단"
-      },
-      {
-        "id": "lim_m_int",
-        "dna": "L3",
-        "label": "m은 정수",
-        "category": "제한"
-      },
-      {
-        "id": "lim_n_range",
-        "dna": "L2",
-        "label": "n: 2~6",
-        "category": "제한"
-      },
-      {
-        "id": "c2",
-        "dna": "T2",
-        "label": "상수 2",
-        "category": "말단"
-      },
-      {
-        "id": "c6",
-        "dna": "T2",
-        "label": "상수 6",
-        "category": "말단"
-      },
-      {
-        "id": "lim_n_nat",
-        "dna": "L3",
-        "label": "n은 자연수",
-        "category": "제한"
+        "note_index": 15,
+        "note_id": "END",
+        "neuron": "전략10",
+        "neuron_type": "전략",
+        "note_text": "모든 순서쌍의 개수는 $6+12+0=18$이다",
+        "from": [
+          "note14",
+          "note15",
+          "note16"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "END",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "END",
+            "in_target": "END",
+            "attempt": 0,
+            "score": 1,
+            "reason": "학생의 결론 6+12+0=18과 후보 A의 결론이 완전히 일치"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 174,
+            "discover_elapsed_ms": 10259,
+            "match_elapsed_ms": 2378,
+            "discover_input_tokens": 1683,
+            "discover_output_tokens": 634,
+            "match_input_tokens": 497,
+            "match_output_tokens": 59,
+            "claude_output": "[시도] 내가 해볼 것: 각 경우의 가짓수를 모두 더해 최종 개수를 구하기\n\n[계산]\n- (ⅰ) $n$ 홀수: 6가지\n- (ⅱ)+(ⅲ) $n$ 짝수·$m\\leq0$: 12가지\n- (ⅳ) $n$ 짝수·$m>0$: 0가지\n\n$$6 + 12 + 0 = 18$$\n\n[결론] 조건을 만족하는 모든 순서쌍 $(m,n)$의 개수는 **18**개이다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 1,
+                "reason": "학생의 결론 6+12+0=18과 후보 A의 결론이 완전히 일치"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 174tok | disc 10259ms + match 2378ms | bonus 0"
+          }
+        ]
       }
     ],
-    "edges": [
-      {
-        "from": "ask_pair",
-        "to": "top"
-      },
-      {
-        "from": "cond_root1",
-        "to": "top"
-      },
-      {
-        "from": "vm",
-        "to": "ask_pair"
-      },
-      {
-        "from": "vn",
-        "to": "ask_pair"
-      },
-      {
-        "from": "eq_main",
-        "to": "cond_root1"
-      },
-      {
-        "from": "c_one",
-        "to": "cond_root1"
-      },
-      {
-        "from": "eq_c1",
-        "to": "eq_main"
-      },
-      {
-        "from": "lhs_prod",
-        "to": "eq_c1"
-      },
-      {
-        "from": "rhs_zero",
-        "to": "eq_c1"
-      },
-      {
-        "from": "factor1",
-        "to": "lhs_prod"
-      },
-      {
-        "from": "factor2",
-        "to": "lhs_prod"
-      },
-      {
-        "from": "vx",
-        "to": "factor1"
-      },
-      {
-        "from": "neg_mn",
-        "to": "factor1"
-      },
-      {
-        "from": "mn_pow",
-        "to": "neg_mn"
-      },
-      {
-        "from": "vm",
-        "to": "mn_pow"
-      },
-      {
-        "from": "vn",
-        "to": "mn_pow"
-      },
-      {
-        "from": "xn_pow",
-        "to": "factor2"
-      },
-      {
-        "from": "neg_m",
-        "to": "factor2"
-      },
-      {
-        "from": "vx",
-        "to": "xn_pow"
-      },
-      {
-        "from": "vn",
-        "to": "xn_pow"
-      },
-      {
-        "from": "vm",
-        "to": "neg_m"
-      },
-      {
-        "from": "vm",
-        "to": "lim_m_range"
-      },
-      {
-        "from": "cm3",
-        "to": "lim_m_range"
-      },
-      {
-        "from": "c3",
-        "to": "lim_m_range"
-      },
-      {
-        "from": "vm",
-        "to": "lim_m_int"
-      },
-      {
-        "from": "vn",
-        "to": "lim_n_range"
-      },
-      {
-        "from": "c2",
-        "to": "lim_n_range"
-      },
-      {
-        "from": "c6",
-        "to": "lim_n_range"
-      },
-      {
-        "from": "vn",
-        "to": "lim_n_nat"
-      }
-    ],
-    "new_dna": []
-  },
-  "thinking_profile": null,
-  "folders": [],
-  "history": [],
-  "recovery_warnings": [],
-  "errata": [],
-  "created_at": "2026-03-24T01:22:58.396Z"
+    "_debug": "v7-split"
+  }
 }
