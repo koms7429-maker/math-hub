@@ -230,7 +230,7 @@ var rounds=tp.rounds||[];var steps=tp.steps||[];steps.forEach(function(s){s.matc
 
 function hintColor(level){return level===0?'#66bb6a':level===1?'#a5d6a7':level===2?'#ffa726':level===3?'#ef5350':'#7a7f9a'}
 function hintLabel(level){return level===0?'힌트 없이':level===1?'결과 재확인':level===2?'조합 힌트':level===3?'뉴런 힌트':'정답 주입'}
-function hintBadge(level){var c=hintColor(level);return'<span style="font-size:9px;background:'+c+'22;color:'+c+';padding:1px 5px;border-radius:3px;font-weight:700">H'+level+'</span>'}
+function hintBadge(level){var c=hintColor(level);return'<span style="font-size:11px;background:'+c+'22;color:'+c+';padding:2px 6px;border-radius:3px;font-weight:700">H'+level+'</span>'}
 
 function rSt(p){
   var h='<div class="cd" style="line-height:1.9;font-size:14px">'+rm(p.statement||'')+'</div>';
@@ -343,25 +343,25 @@ function rAn(p){
     h+='<div class="sl" style="margin-top:14px;color:'+stC+'">Solving Flow</div><div class="cd">';
     // structure type badge
     if(stType.type){
-      h+='<div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">';
-      h+='<span style="font-size:12px;padding:3px 10px;border-radius:4px;background:'+stC+'22;color:'+stC+';font-weight:700">'+stType.label+'</span>';
-      h+='<span style="font-size:11px;color:#7a7f9a">'+stType.description+'</span>';
+      h+='<div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">';
+      h+='<span style="font-size:13px;padding:4px 12px;border-radius:5px;background:'+stC+'22;color:'+stC+';font-weight:700">'+stType.label+'</span>';
+      h+='<span style="font-size:13px;color:#7a7f9a">'+stType.description+'</span>';
       h+='</div>';
     }
     // key ideas 요약
     var kis=p.key_ideas||[];
     if(kis.length>0){
-      h+='<div style="margin-bottom:12px">';
-      h+='<div style="font-size:10px;color:#7a7f9a;letter-spacing:2px;margin-bottom:6px">KEY IDEAS ('+kis.length+')</div>';
+      h+='<div style="margin-bottom:14px">';
+      h+='<div style="font-size:11px;color:#7a7f9a;letter-spacing:2px;margin-bottom:8px">KEY IDEAS ('+kis.length+')</div>';
       kis.forEach(function(ki){
         var hc=hintColor(ki.hint_level);
-        h+='<div style="display:flex;gap:8px;align-items:flex-start;padding:7px 10px;background:var(--bg);border-left:3px solid '+hc+';border-radius:0 5px 5px 0;margin-bottom:4px">';
-        h+='<div style="flex-shrink:0;display:flex;gap:4px;align-items:center">';
+        h+='<div style="display:flex;gap:10px;align-items:flex-start;padding:8px 12px;background:var(--bg);border-left:3px solid '+hc+';border-radius:0 5px 5px 0;margin-bottom:5px">';
+        h+='<div style="flex-shrink:0;display:flex;gap:5px;align-items:center">';
         h+=hintBadge(ki.hint_level);
-        h+='<span style="font-size:10px;color:#7a7f9a">'+ki.note_id+'</span>';
-        h+='<span style="font-size:10px;color:'+nc(ki.neuron)+';font-weight:700">'+ki.neuron+'</span>';
+        h+='<span style="font-size:12px;color:#7a7f9a">'+ki.note_id+'</span>';
+        h+='<span style="font-size:12px;color:'+nc(ki.neuron)+';font-weight:700">'+ki.neuron+'</span>';
         h+='</div>';
-        h+='<div style="font-size:11px;color:var(--tx);line-height:1.5;flex:1;min-width:0">'+rm(ki.text)+'</div>';
+        h+='<div style="font-size:13px;color:var(--tx);line-height:1.7;flex:1;min-width:0">'+rm(ki.text)+'</div>';
         h+='</div>';
       });
       h+='</div>';
@@ -371,44 +371,44 @@ function rAn(p){
     if(sf.length>0){
       var tp2=p.thinking_profile;if(tp2)tp2=normalizeTP(tp2);
       var noteMap={};if(tp2&&tp2.notes)tp2.notes.forEach(function(n){noteMap[n.note_id]=n});
-      h+='<div style="font-size:10px;color:#7a7f9a;letter-spacing:2px;margin-bottom:6px">FLOW ('+sf.length+' phases)</div>';
-      h+='<div style="display:flex;flex-direction:column;gap:3px;padding-left:12px;border-left:2px solid var(--bd)">';
+      h+='<div style="font-size:11px;color:#7a7f9a;letter-spacing:2px;margin-bottom:8px">FLOW ('+sf.length+' phases)</div>';
+      h+='<div style="display:flex;flex-direction:column;gap:4px;padding-left:14px;border-left:2px solid var(--bd)">';
       sf.forEach(function(phase,pi){
         if(phase.type==='key_idea'){
           var hc=hintColor(phase.hint_level);
           var casc=phase.cascade||[];
           var nt=noteMap[phase.note_id];
-          h+='<div style="padding:6px 10px;background:'+hc+'12;border:1px solid '+hc+'30;border-radius:6px;max-width:100%">';
-          h+='<div style="display:flex;align-items:center;gap:5px;flex-wrap:wrap">';
+          h+='<div style="padding:8px 12px;background:'+hc+'12;border:1px solid '+hc+'30;border-radius:6px;max-width:100%">';
+          h+='<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">';
           h+=hintBadge(phase.hint_level)+' ';
-          h+='<span style="font-size:10px;color:'+nc(phase.neuron)+';font-weight:600">'+phase.neuron+'</span>';
-          h+='<span style="font-size:9px;color:#7a7f9a">'+phase.note_id+'</span>';
-          if(casc.length>0)h+='<span style="font-size:8px;color:#7a7f9a;opacity:.6">+'+casc.length+' auto</span>';
+          h+='<span style="font-size:13px;color:'+nc(phase.neuron)+';font-weight:600">'+phase.neuron+'</span>';
+          h+='<span style="font-size:12px;color:#7a7f9a">'+phase.note_id+'</span>';
+          if(casc.length>0)h+='<span style="font-size:11px;color:#7a7f9a;opacity:.6">+'+casc.length+' auto</span>';
           h+='</div>';
-          if(nt&&nt.note_text)h+='<div style="font-size:11px;color:var(--tx);margin-top:4px;line-height:1.6;opacity:.85">'+rm(nt.note_text)+'</div>';
+          if(nt&&nt.note_text)h+='<div style="font-size:13px;color:var(--tx);margin-top:5px;line-height:1.7;opacity:.85">'+rm(nt.note_text)+'</div>';
           h+='</div>';
         } else {
           var steps=phase.steps||[];
           var auto=phase.auto||[];
           var fid='sf_'+pi;
-          h+='<div style="padding:5px 10px;background:var(--bg);border-radius:5px;border:1px solid var(--bd)">';
-          h+='<div style="display:flex;gap:5px;align-items:center;flex-wrap:wrap;cursor:pointer" onclick="var el=document.getElementById(\''+fid+'\');el.style.display=el.style.display===\'none\'?\'block\':\'none\'">';
-          if(steps.length>0)h+='<span style="font-size:9px;color:#66bb6a;font-weight:600">steps '+steps.length+'</span>';
-          if(auto.length>0)h+='<span style="font-size:9px;color:#7a7f9a">auto '+auto.length+'</span>';
-          if(steps.length>0){steps.forEach(function(s){h+='<span style="font-size:8px;padding:1px 4px;border-radius:2px;background:'+nc(s.neuron)+'22;color:'+nc(s.neuron)+'">'+s.neuron+'</span>'});}
-          h+='<span style="font-size:9px;color:#7a7f9a;margin-left:auto">▼</span>';
+          h+='<div style="padding:7px 12px;background:var(--bg);border-radius:5px;border:1px solid var(--bd)">';
+          h+='<div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;cursor:pointer" onclick="var el=document.getElementById(\''+fid+'\');el.style.display=el.style.display===\'none\'?\'block\':\'none\'">';
+          if(steps.length>0)h+='<span style="font-size:12px;color:#66bb6a;font-weight:600">steps '+steps.length+'</span>';
+          if(auto.length>0)h+='<span style="font-size:12px;color:#7a7f9a">auto '+auto.length+'</span>';
+          if(steps.length>0){steps.forEach(function(s){h+='<span style="font-size:11px;padding:2px 6px;border-radius:3px;background:'+nc(s.neuron)+'22;color:'+nc(s.neuron)+'">'+s.neuron+'</span>'});}
+          h+='<span style="font-size:11px;color:#7a7f9a;margin-left:auto">▼</span>';
           h+='</div>';
-          h+='<div id="'+fid+'" style="display:none;margin-top:5px;padding-top:5px;border-top:1px solid var(--bd)">';
+          h+='<div id="'+fid+'" style="display:none;margin-top:6px;padding-top:6px;border-top:1px solid var(--bd)">';
           steps.forEach(function(s){
             var sn=noteMap[s.note_id];
-            h+='<div style="margin-bottom:3px;padding:3px 0">';
-            h+='<span style="font-size:9px;color:#7a7f9a">'+s.note_id+'</span> ';
-            h+='<span style="font-size:9px;padding:1px 4px;border-radius:2px;background:'+nc(s.neuron)+'22;color:'+nc(s.neuron)+';font-weight:600">'+s.neuron+'</span>';
-            if(sn&&sn.note_text)h+='<div style="font-size:10px;color:var(--tx);margin-top:1px;line-height:1.5;opacity:.7;padding-left:8px">'+rm(sn.note_text)+'</div>';
+            h+='<div style="margin-bottom:4px;padding:3px 0">';
+            h+='<span style="font-size:12px;color:#7a7f9a">'+s.note_id+'</span> ';
+            h+='<span style="font-size:11px;padding:2px 6px;border-radius:3px;background:'+nc(s.neuron)+'22;color:'+nc(s.neuron)+';font-weight:600">'+s.neuron+'</span>';
+            if(sn&&sn.note_text)h+='<div style="font-size:13px;color:var(--tx);margin-top:2px;line-height:1.6;opacity:.7;padding-left:8px">'+rm(sn.note_text)+'</div>';
             h+='</div>';
           });
           if(auto.length>0){
-            h+='<div style="margin-top:4px;font-size:9px;color:#7a7f9a">auto: ';
+            h+='<div style="margin-top:5px;font-size:12px;color:#7a7f9a">auto: ';
             auto.forEach(function(a,ai){
               var an=noteMap[a];
               h+=(ai>0?', ':'')+a;
