@@ -1,1 +1,554 @@
-[]
+[
+  {
+    "problem_id": "P1",
+    "answer": "2",
+    "content": "id: P1\nsource: 수능\nyear: 미상\nunit: 미적분\ntopic: 사차함수와 극한\nsubtopic: 함수의 연속성과 극한 조건\ndifficulty: 상\nscore: 4\nanswer: 2\ntype: multiple_choice\n\n# 1. (수능) - 사차함수와 함수의 연속성·극한 조건\n\n## Problem\n\n최고차항의 계수가 $1$인 사차함수 $f(x)$에 대하여 함수\n\n$$g(x) = \\begin{cases} f'(x) & (f(x) = 0) \\\\ f(x) - \\dfrac{2|f(x)|}{f(x)} & (f(x) \\neq 0) \\end{cases}$$\n\n이 다음 조건을 만족시킬 때, $f(2)$의 값은? [4점]\n\n(가) $\\displaystyle\\lim_{x \\to 1} g(x) - g(1) = 2$\n\n(나) $\\displaystyle\\lim_{x \\to t^{-}} g(x) \\neq g(t)$인 실수 $t$의 값은 $1$, $4$뿐이다.\n\n## Choices\n① $-\\dfrac{10\\sqrt{3}}{3}$ ② $-2\\sqrt{3}$ ③ $-\\dfrac{2\\sqrt{3}}{3}$ ④ $\\dfrac{2\\sqrt{3}}{3}$ ⑤ $2\\sqrt{3}$\n\n## Solution\n\n문제에 주어진 $g(x)$의 식에서 $f(x) \\neq 0$인 모든 실수 $x$에 대하여\n\n$$g(x) = f(x) - \\frac{2|f(x)|}{f(x)}$$\n\n이므로 $g(x)$는 $f(x) \\neq 0$인 모든 실수 $x$에서 연속 $\\cdots$ ㉮\n\n**조건 (가) 분석:**\n\n- $\\displaystyle\\lim_{x \\to 1} g(x) - g(1) = 2 \\neq 0$이므로 $\\displaystyle\\lim_{x \\to 1} g(x) \\neq g(1)$, 즉 $g(x)$는 $x = 1$에서 불연속이다.\n- ㉮에 의해 $f(1) = 0$ $\\cdots$ ㉯\n- $\\displaystyle\\lim_{x \\to 1} g(x)$가 존재하려면 $\\displaystyle\\lim_{x \\to 1}\\left\\{f(x) - \\frac{2|f(x)|}{f(x)}\\right\\}$이 존재해야 하므로 $\\displaystyle\\lim_{x \\to 1} \\frac{|f(x)|}{f(x)}$이 존재해야 한다.\n- 따라서 $x = 1$ 좌우에서 $f(x)$의 부호가 변하지 않으므로 $f(x)$는 $x = 1$에서 극값 $0$을 가진다.\n- $f'(1) = 0$이므로 $g(1) = f'(1) = 0$ (∵ ㉯)\n\n조건 (가)에 의해\n\n$$\\lim_{x \\to 1} g(x) = 2 \\implies \\lim_{x \\to 1}\\left\\{f(x) - \\frac{2|f(x)|}{f(x)}\\right\\} = 2$$\n\n$$\\implies \\lim_{x \\to 1} \\frac{|f(x)|}{f(x)} = -1 \\quad (\\because \\text{㉯})$$\n\n따라서 $x = 1$의 좌우에서 $f(x) < 0$이다.\n\n**조건 (나) 분석:**\n\n$$\\lim_{x \\to 4^{-}} g(x) \\neq g(4) \\implies g(x)\\text{는 } x = 4\\text{에서 불연속}$$\n\n㉮에 의해 $f(4) = 0$\n\n$f(x)$는 최고차항의 계수가 $1$인 사차함수이고, $x = 1$에서 극값 $0$을 가지며 $x = 1$ 부근에서 $f(x) < 0$이고 $f(4) = 0$이므로 $y = f(x)$의 개형은 다음과 같다.\n\n[FIGURE: $y = f(x)$의 그래프. $x = k$($k < 1$)에서 $x$축과 만나고, $x = 1$에서 $x$축에 접하며(극소), $x = 4$에서 $x$축과 만남. $k$와 $1$ 사이, $1$과 $4$ 사이에서 $f(x) < 0$]\n\n따라서\n\n$$f(x) = (x - k)(x - 1)^2(x - 4) \\quad (k < 1)$$\n\n로 놓으면 $f(k) = 0$이고 $k \\neq 1$, $k \\neq 4$이므로 조건 (나)에 의해\n\n$$\\lim_{x \\to k^{-}} g(x) = g(k) \\implies \\lim_{x \\to k^{-}}\\left\\{f(x) - \\frac{2|f(x)|}{f(x)}\\right\\} = f'(k)$$\n\n$$\\implies f'(k) = -2$$\n\n$f(x) = (x-k)(x-1)^2(x-4)$에서 $f'(k) = (k-1)^2(k-4)$이므로\n\n$$(k-1)^2(k-4) = -2$$\n\n$$\\implies (k-2)(k^2 - 4k + 1) = 0$$\n\n$k < 1$이므로\n\n$$k = 2 - \\sqrt{3}$$\n\n따라서\n\n$$f(x) = (x - 2 + \\sqrt{3})(x - 1)^2(x - 4)$$\n\n$$f(2) = (2 - 2 + \\sqrt{3})(2 - 1)^2(2 - 4) = \\sqrt{3} \\cdot 1 \\cdot (-2) = -2\\sqrt{3}$$\n\n**정답: ②**",
+    "content_source": "FileLoop",
+    "content_length": 2390,
+    "skel_status": "neuron_missing",
+    "dna_status": "ok",
+    "previous_skeleton": [],
+    "previous_solution": "",
+    "previous_clues": "[{\"id\":\"단서A\",\"text\":\"최고차항의 계수가 $1$인 사차함수 $f(x)$\"},{\"id\":\"단서B\",\"text\":\"$g(x) = \\\\begin{cases} f'(x) & (f(x) = 0) \\\\\\\\ f(x) - \\\\dfrac{2|f(x)|}{f(x)} & (f(x) \\\\neq 0) \\\\end{cases}$\"},{\"id\":\"단서C\",\"text\":\"$\\\\displaystyle\\\\lim_{x \\\\to 1} g(x) - g(1) = 2$\"},{\"id\":\"단서D\",\"text\":\"$\\\\displaystyle\\\\lim_{x \\\\to t^{-}} g(x) \\\\neq g(t)$인 실수 $t$의 값은 $1$, $4$뿐이다\"}]",
+    "previous_analysis": "이 문제는 사차함수와 조각함수의 연속성/극한 조건을 분석하는 문제이다. 핵심 논리는 (1) g의 불연속 → f=0 (대우), (2) 부호함수 극한 존재 → 짝수중복근, (3) 좌연속 조건으로 f'(k) 결정, (4) 3차 방정식 풀기이다. 기존 뉴런에는 함수의 연속 정의, 부호함수 극한, 다항함수 근의 중복도, 미분 관련 뉴런이 없어 4개의 신규 뉴런이 필요하다.",
+    "previous_matching": "1. STEP1: f(x)≠0에서 |f(x)|/f(x)를 부호별로 분리 → 전략6 매칭\n2. STEP1: f(x)≠0인 영역에서 g의 연속성 → 사실63 매칭 (연속함수의 사칙 보존)\n3. STEP2: g 불연속 + ㉮ → f(1)=0 → 전략8 매칭 (대우)\n4. STEP2: |f(x)|/f(x) 극한 존재 → 부호 불변 → 매칭 없음 → 사실95 필요\n5. STEP2: 부호 불변인 근 → 짝수 중복도 → 매칭 없음 → 사실96 필요\n6. STEP2: lim g(x) = 2에서 f<0 도출 → 전략6 + 사실95 조합\n7. STEP3: g 불연속 at x=4 → f(4)=0 → 전략8 매칭\n8. STEP3: f(x)의 구간별 부호 분석 → 사실65 매칭 (곱의 부호)\n9. STEP4: x=k에서 좌연속 → lim g(x)=g(k) → 사실94 필요 (연속의 정의)\n10. STEP4: f'(k)=h(k) 계산 → 매칭 없음 → 사실97 필요\n11. STEP5: (k-1)²(k-4)=-2 전개 → 연산28 매칭\n12. STEP5: k³-6k²+9k-2=0 인수분해 → 전략29 매칭\n13. STEP5: k=2 대입 확인 → 전략25 매칭\n14. STEP5: k²-4k+1=0 판별식 → 사실79 매칭\n15. STEP7: f(2) 대입 계산 → 전략25 매칭",
+    "previous_matched": [
+      "전략6",
+      "사실63",
+      "전략8",
+      "사실65",
+      "전략29",
+      "전략25",
+      "사실79",
+      "연산28"
+    ],
+    "previous_new_neurons": [
+      {
+        "id": "사실94",
+        "type": "fact",
+        "statement": "$\\lim_{x \\to a} f(x) = f(a)$이면 $f$는 $x=a$에서 연속이고, $\\lim_{x \\to a} f(x) \\neq f(a)$이면 $f$는 $x=a$에서 불연속이다 (연속의 정의).",
+        "reason": "조건 (가)에서 lim g(x) - g(1) = 2 ≠ 0으로부터 g(x)가 x=1에서 불연속임을 도출하는 데 필요하다. 기존 뉴런에는 함수의 연속/불연속 판정에 대한 정의가 없다.",
+        "blocked_edge": "note2 → note3"
+      },
+      {
+        "id": "사실95",
+        "type": "fact",
+        "statement": "$f(a)=0$일 때, $\\lim_{x \\to a} \\frac{|f(x)|}{f(x)}$가 존재하려면 $x=a$의 어떤 근방에서 $f(x)$의 부호가 일정해야 한다. 부호가 양(또는 음)이면 극한값은 $1$(또는 $-1$)이다.",
+        "reason": "조건 (가)에서 lim g(x)가 존재하기 위해 |f(x)|/f(x)의 극한이 존재해야 하고, 이로부터 x=1 근방에서 f(x)의 부호가 일정함을 도출하는 데 필요하다. 부호함수의 극한 존재 조건은 기존 뉴런에 없다.",
+        "blocked_edge": "note4 → note5"
+      },
+      {
+        "id": "사실96",
+        "type": "fact",
+        "statement": "다항함수 $f(x)$가 $x=a$에서 근을 갖고 $x=a$ 근방에서 부호가 변하지 않으면, $x=a$는 짝수 중복도의 근이다. 특히 $(x-a)^2 \\mid f(x)$이고 $f'(a)=0$이다.",
+        "reason": "x=1 근방에서 f(x)<0이고 f(1)=0이므로 x=1이 짝수 중복도 근이며 (x-1)²|f(x), f'(1)=0을 도출하는 데 필요하다. 다항함수 근의 중복도와 부호 변환 관계가 기존 뉴런에 없다.",
+        "blocked_edge": "note5 → note6"
+      },
+      {
+        "id": "사실97",
+        "type": "fact",
+        "statement": "$f(x) = (x-a) \\cdot h(x)$이면 $f'(a) = h(a)$이다 (곱의 미분에서 인수 분리).",
+        "reason": "f(x)=(x-k)(x-1)²(x-4)에서 f'(k)=(k-1)²(k-4)를 계산하는 데 필요하다. 기존 뉴런에 미분 관련 뉴런이 전혀 없다.",
+        "blocked_edge": "note14 → note15"
+      }
+    ],
+    "previous_partial_skeleton": [
+      {
+        "from": "단서B",
+        "to": "note1",
+        "neuron": "전략6",
+        "note": "$f(x)>0$이면 $g(x)=f(x)-2$이고, $f(x)<0$이면 $g(x)=f(x)+2$이다",
+        "main": true,
+        "step": 1
+      },
+      {
+        "from": "note1",
+        "to": "note2",
+        "neuron": "사실63",
+        "note": "$f(x) \\neq 0$인 모든 실수 $x$에서 $g(x)$는 연속이다 $\\cdots$ ㉮",
+        "main": true,
+        "step": 1
+      }
+    ],
+    "previous_blockage_point": "note2에서 '단서C(조건 가)와 결합하여 g(x)가 x=1에서 불연속이다'라는 결론으로 가려는데, 연속/불연속의 정의에 해당하는 뉴런(사실94)이 없음. 이후로도 부호함수 극한(사실95), 짝수중복근(사실96), 인수분리미분(사실97)이 연쇄적으로 필요.",
+    "previous_skel_review_notes": "해설의 계산은 모두 정확하다. (k-1)²(k-4)=-2를 전개하면 k³-6k²+9k-4=-2, k³-6k²+9k-2=0이고, k=2 대입 시 8-24+18-2=0 확인. k²-4k+1=0의 근 k=2±√3 중 k<1인 k=2-√3≈0.268 선택. f(2)=√3·1·(-2)=-2√3.",
+    "previous_dna_nodes": [
+      {
+        "id": "top",
+        "dna": "Q1",
+        "label": "f(2) 값 구하라",
+        "category": "발문"
+      },
+      {
+        "id": "ask_f2",
+        "dna": "F3",
+        "label": "f(2) 적용",
+        "category": "함수"
+      },
+      {
+        "id": "vf",
+        "dna": "F6",
+        "label": "함수 f 정의",
+        "category": "함수"
+      },
+      {
+        "id": "f_quartic",
+        "dna": "F11",
+        "label": "사차함수",
+        "category": "함수"
+      },
+      {
+        "id": "lead_coeff",
+        "dna": "L4",
+        "label": "최고차항계수=1",
+        "category": "제한"
+      },
+      {
+        "id": "c1_coeff",
+        "dna": "T2",
+        "label": "상수 1",
+        "category": "말단"
+      },
+      {
+        "id": "vg",
+        "dna": "F1",
+        "label": "조각함수 g",
+        "category": "함수"
+      },
+      {
+        "id": "piece1",
+        "dna": "F2",
+        "label": "f'(x) (f=0)",
+        "category": "함수"
+      },
+      {
+        "id": "piece2",
+        "dna": "F2",
+        "label": "f(x)-2|f|/f (f≠0)",
+        "category": "함수"
+      },
+      {
+        "id": "piece1_cond",
+        "dna": "C1",
+        "label": "f(x)=0 조건",
+        "category": "조건"
+      },
+      {
+        "id": "piece2_cond",
+        "dna": "C2",
+        "label": "f(x)≠0 조건",
+        "category": "조건"
+      },
+      {
+        "id": "piece1_expr",
+        "dna": "F3",
+        "label": "f'(x) 적용",
+        "category": "함수"
+      },
+      {
+        "id": "piece2_expr",
+        "dna": "E1",
+        "label": "합(f(x), -2|f|/f)",
+        "category": "수식"
+      },
+      {
+        "id": "piece2_term2",
+        "dna": "E6",
+        "label": "2·|f|/f",
+        "category": "수식"
+      },
+      {
+        "id": "c2_const",
+        "dna": "T2",
+        "label": "상수 2",
+        "category": "말단"
+      },
+      {
+        "id": "abs_f_over_f",
+        "dna": "E6",
+        "label": "|f(x)|/f(x)",
+        "category": "수식"
+      },
+      {
+        "id": "abs_fx",
+        "dna": "E5",
+        "label": "|f(x)|",
+        "category": "수식"
+      },
+      {
+        "id": "f_inv",
+        "dna": "E7",
+        "label": "f(x)^(-1)",
+        "category": "수식"
+      },
+      {
+        "id": "cm1",
+        "dna": "T2",
+        "label": "상수 -1",
+        "category": "말단"
+      },
+      {
+        "id": "neg_piece2",
+        "dna": "E2",
+        "label": "부호반전(2|f|/f)",
+        "category": "수식"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
+      },
+      {
+        "id": "fx_app",
+        "dna": "F3",
+        "label": "f(x) 적용",
+        "category": "함수"
+      },
+      {
+        "id": "conds",
+        "dna": "S1",
+        "label": "조건 (가)(나)",
+        "category": "구조"
+      },
+      {
+        "id": "cond_ga",
+        "dna": "C1",
+        "label": "극한-g(1)=2",
+        "category": "조건"
+      },
+      {
+        "id": "lim_g_at1",
+        "dna": "F3",
+        "label": "lim g(x) x→1",
+        "category": "함수"
+      },
+      {
+        "id": "g_at1",
+        "dna": "F3",
+        "label": "g(1) 적용",
+        "category": "함수"
+      },
+      {
+        "id": "lim_minus_g1",
+        "dna": "E1",
+        "label": "극한-g(1)",
+        "category": "수식"
+      },
+      {
+        "id": "neg_g1",
+        "dna": "E2",
+        "label": "부호반전 g(1)",
+        "category": "수식"
+      },
+      {
+        "id": "cond_na",
+        "dna": "X4",
+        "label": "t값 1,4뿐",
+        "category": "존재"
+      },
+      {
+        "id": "left_lim_neq",
+        "dna": "C2",
+        "label": "좌극한≠g(t)",
+        "category": "조건"
+      },
+      {
+        "id": "lim_g_left_t",
+        "dna": "F3",
+        "label": "lim g(x) x→t-",
+        "category": "함수"
+      },
+      {
+        "id": "g_at_t",
+        "dna": "F3",
+        "label": "g(t) 적용",
+        "category": "함수"
+      },
+      {
+        "id": "vt",
+        "dna": "T1",
+        "label": "실수 t",
+        "category": "말단"
+      },
+      {
+        "id": "t_vals",
+        "dna": "S1",
+        "label": "t=1 또는 t=4",
+        "category": "구조"
+      },
+      {
+        "id": "t_eq1",
+        "dna": "C1",
+        "label": "t=1",
+        "category": "조건"
+      },
+      {
+        "id": "t_eq4",
+        "dna": "C1",
+        "label": "t=4",
+        "category": "조건"
+      },
+      {
+        "id": "c4_const",
+        "dna": "T2",
+        "label": "상수 4",
+        "category": "말단"
+      },
+      {
+        "id": "c2_at2",
+        "dna": "T2",
+        "label": "상수 2(f(2))",
+        "category": "말단"
+      }
+    ],
+    "previous_dna_edges": [
+      {
+        "from": "ask_f2",
+        "to": "top"
+      },
+      {
+        "from": "conds",
+        "to": "top"
+      },
+      {
+        "from": "vf",
+        "to": "ask_f2"
+      },
+      {
+        "from": "c2_at2",
+        "to": "ask_f2"
+      },
+      {
+        "from": "f_quartic",
+        "to": "vf"
+      },
+      {
+        "from": "lead_coeff",
+        "to": "vf"
+      },
+      {
+        "from": "c1_coeff",
+        "to": "lead_coeff"
+      },
+      {
+        "from": "vg",
+        "to": "conds"
+      },
+      {
+        "from": "piece1",
+        "to": "vg"
+      },
+      {
+        "from": "piece2",
+        "to": "vg"
+      },
+      {
+        "from": "piece1_cond",
+        "to": "piece1"
+      },
+      {
+        "from": "piece1_expr",
+        "to": "piece1"
+      },
+      {
+        "from": "fx_app",
+        "to": "piece1_cond"
+      },
+      {
+        "from": "vf",
+        "to": "piece1_expr"
+      },
+      {
+        "from": "vx",
+        "to": "piece1_expr"
+      },
+      {
+        "from": "piece2_cond",
+        "to": "piece2"
+      },
+      {
+        "from": "piece2_expr",
+        "to": "piece2"
+      },
+      {
+        "from": "fx_app",
+        "to": "piece2_cond"
+      },
+      {
+        "from": "fx_app",
+        "to": "piece2_expr"
+      },
+      {
+        "from": "neg_piece2",
+        "to": "piece2_expr"
+      },
+      {
+        "from": "piece2_term2",
+        "to": "neg_piece2"
+      },
+      {
+        "from": "c2_const",
+        "to": "piece2_term2"
+      },
+      {
+        "from": "abs_f_over_f",
+        "to": "piece2_term2"
+      },
+      {
+        "from": "abs_fx",
+        "to": "abs_f_over_f"
+      },
+      {
+        "from": "f_inv",
+        "to": "abs_f_over_f"
+      },
+      {
+        "from": "fx_app",
+        "to": "abs_fx"
+      },
+      {
+        "from": "fx_app",
+        "to": "f_inv"
+      },
+      {
+        "from": "cm1",
+        "to": "f_inv"
+      },
+      {
+        "from": "vf",
+        "to": "fx_app"
+      },
+      {
+        "from": "vx",
+        "to": "fx_app"
+      },
+      {
+        "from": "cond_ga",
+        "to": "conds"
+      },
+      {
+        "from": "lim_minus_g1",
+        "to": "cond_ga"
+      },
+      {
+        "from": "c2_const",
+        "to": "cond_ga"
+      },
+      {
+        "from": "lim_g_at1",
+        "to": "lim_minus_g1"
+      },
+      {
+        "from": "neg_g1",
+        "to": "lim_minus_g1"
+      },
+      {
+        "from": "g_at1",
+        "to": "neg_g1"
+      },
+      {
+        "from": "vg",
+        "to": "lim_g_at1"
+      },
+      {
+        "from": "c1_coeff",
+        "to": "lim_g_at1"
+      },
+      {
+        "from": "vg",
+        "to": "g_at1"
+      },
+      {
+        "from": "c1_coeff",
+        "to": "g_at1"
+      },
+      {
+        "from": "cond_na",
+        "to": "conds"
+      },
+      {
+        "from": "left_lim_neq",
+        "to": "cond_na"
+      },
+      {
+        "from": "t_vals",
+        "to": "cond_na"
+      },
+      {
+        "from": "lim_g_left_t",
+        "to": "left_lim_neq"
+      },
+      {
+        "from": "g_at_t",
+        "to": "left_lim_neq"
+      },
+      {
+        "from": "vg",
+        "to": "lim_g_left_t"
+      },
+      {
+        "from": "vt",
+        "to": "lim_g_left_t"
+      },
+      {
+        "from": "vg",
+        "to": "g_at_t"
+      },
+      {
+        "from": "vt",
+        "to": "g_at_t"
+      },
+      {
+        "from": "t_eq1",
+        "to": "t_vals"
+      },
+      {
+        "from": "t_eq4",
+        "to": "t_vals"
+      },
+      {
+        "from": "vt",
+        "to": "t_eq1"
+      },
+      {
+        "from": "c1_coeff",
+        "to": "t_eq1"
+      },
+      {
+        "from": "vt",
+        "to": "t_eq4"
+      },
+      {
+        "from": "c4_const",
+        "to": "t_eq4"
+      }
+    ],
+    "previous_new_dna": [],
+    "previous_dna_review_notes": "주요 수정: 상수 1 노드(c1_at1, c1_coeff 두 개)와 상수 2 노드(c2_const, c2_rhs 두 개)가 각각 중복 존재. c1_coeff와 c2_const로 통합. piece2_expr(E1 합)의 첫 번째 항으로 fx_app이 연결되어야 하는데 누락되어 있었으므로 추가. 나머지 구조는 전반적으로 적절.",
+    "original_solution": "문제에 주어진 $g(x)$의 식에서 $f(x) \\neq 0$인 모든 실수 $x$에 대하여\n\n$$g(x) = f(x) - \\frac{2|f(x)|}{f(x)}$$\n\n이므로 $g(x)$는 $f(x) \\neq 0$인 모든 실수 $x$에서 연속 $\\cdots$ ㉮\n\n**조건 (가) 분석:**\n\n- $\\displaystyle\\lim_{x \\to 1} g(x) - g(1) = 2 \\neq 0$이므로 $\\displaystyle\\lim_{x \\to 1} g(x) \\neq g(1)$, 즉 $g(x)$는 $x = 1$에서 불연속이다.\n- ㉮에 의해 $f(1) = 0$ $\\cdots$ ㉯\n- $\\displaystyle\\lim_{x \\to 1} g(x)$가 존재하려면 $\\displaystyle\\lim_{x \\to 1}\\left\\{f(x) - \\frac{2|f(x)|}{f(x)}\\right\\}$이 존재해야 하므로 $\\displaystyle\\lim_{x \\to 1} \\frac{|f(x)|}{f(x)}$이 존재해야 한다.\n- 따라서 $x = 1$ 좌우에서 $f(x)$의 부호가 변하지 않으므로 $f(x)$는 $x = 1$에서 극값 $0$을 가진다.\n- $f'(1) = 0$이므로 $g(1) = f'(1) = 0$ (∵ ㉯)\n\n조건 (가)에 의해\n\n$$\\lim_{x \\to 1} g(x) = 2 \\implies \\lim_{x \\to 1}\\left\\{f(x) - \\frac{2|f(x)|}{f(x)}\\right\\} = 2$$\n\n$$\\implies \\lim_{x \\to 1} \\frac{|f(x)|}{f(x)} = -1 \\quad (\\because \\text{㉯})$$\n\n따라서 $x = 1$의 좌우에서 $f(x) < 0$이다.\n\n**조건 (나) 분석:**\n\n$$\\lim_{x \\to 4^{-}} g(x) \\neq g(4) \\implies g(x)\\text{는 } x = 4\\text{에서 불연속}$$\n\n㉮에 의해 $f(4) = 0$\n\n$f(x)$는 최고차항의 계수가 $1$인 사차함수이고, $x = 1$에서 극값 $0$을 가지며 $x = 1$ 부근에서 $f(x) < 0$이고 $f(4) = 0$이므로 $y = f(x)$의 개형은 다음과 같다.\n\n[FIGURE: $y = f(x)$의 그래프. $x = k$($k < 1$)에서 $x$축과 만나고, $x = 1$에서 $x$축에 접하며(극소), $x = 4$에서 $x$축과 만남. $k$와 $1$ 사이, $1$과 $4$ 사이에서 $f(x) < 0$]\n\n따라서\n\n$$f(x) = (x - k)(x - 1)^2(x - 4) \\quad (k < 1)$$\n\n로 놓으면 $f(k) = 0$이고 $k \\neq 1$, $k \\neq 4$이므로 조건 (나)에 의해\n\n$$\\lim_{x \\to k^{-}} g(x) = g(k) \\implies \\lim_{x \\to k^{-}}\\left\\{f(x) - \\frac{2|f(x)|}{f(x)}\\right\\} = f'(k)$$\n\n$$\\implies f'(k) = -2$$\n\n$f(x) = (x-k)(x-1)^2(x-4)$에서 $f'(k) = (k-1)^2(k-4)$이므로\n\n$$(k-1)^2(k-4) = -2$$\n\n$$\\implies (k-2)(k^2 - 4k + 1) = 0$$\n\n$k < 1$이므로\n\n$$k = 2 - \\sqrt{3}$$\n\n따라서\n\n$$f(x) = (x - 2 + \\sqrt{3})(x - 1)^2(x - 4)$$\n\n$$f(2) = (2 - 2 + \\sqrt{3})(2 - 1)^2(2 - 4) = \\sqrt{3} \\cdot 1 \\cdot (-2) = -2\\sqrt{3}$$\n\n**정답: ②**",
+    "recovery_warnings": [],
+    "errata": [],
+    "metadata": {
+      "unit": "미적분",
+      "difficulty": "상",
+      "score": "4",
+      "type": "multiple_choice",
+      "answer": "2",
+      "year": "미상",
+      "source": "수능",
+      "topic": "사차함수와 극한",
+      "subtopic": "함수의 연속성과 극한 조건"
+    },
+    "needed_neurons": [
+      "사실94",
+      "사실95",
+      "사실96",
+      "사실97"
+    ],
+    "needed_dna": [],
+    "edge_count": 0,
+    "side_count": 0,
+    "created_at": "2026-03-24T19:36:43.342Z"
+  }
+]
