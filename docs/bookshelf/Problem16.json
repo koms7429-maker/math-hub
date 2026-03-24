@@ -1,6 +1,5 @@
 {
   "problem_id": "Problem16",
-  "answer": "9",
   "clues": [
     {
       "id": "단서A",
@@ -188,280 +187,689 @@
     }
   ],
   "solution": "STEP 1. 로그 정의 조건을 확인한다. 방정식이 정의되려면 $x \\neq 0$이고 두 진수 $\\dfrac{a}{x}+a-6>0$, $3x+a-6>0$이 모두 성립해야 한다.\n\nSTEP 2. $\\log_2$는 순증가 단사함수이므로 진수끼리 같다고 놓으면 $\\dfrac{a}{x}+a-6=3x+a-6$이다. 양변에서 $a-6$을 소거하고 정리하면 $x^2=\\dfrac{a}{3}$이다.\n\nSTEP 3. $x^2=\\dfrac{a}{3}$이 실수해를 가지려면 $a>0$이어야 하고, 이때 근은 $x=\\sqrt{\\dfrac{a}{3}}$과 $x=-\\sqrt{\\dfrac{a}{3}}$의 최대 2개이다.\n\nSTEP 4. 양의 근 $x=\\sqrt{\\dfrac{a}{3}}$를 진수에 대입하면 두 진수 조건이 모두 $\\sqrt{3a}+a-6>0$으로 동일하다. $t=\\sqrt{a}>0$으로 치환하면 $t^2+\\sqrt{3}\\,t-6>0$이고, $(t-\\sqrt{3})(t+2\\sqrt{3})>0$으로 인수분해된다. $t>0$이면 $t+2\\sqrt{3}>0$이 항상 성립하므로 $t>\\sqrt{3}$, 즉 $a>3$이다.\n\nSTEP 5. 음의 근 $x=-\\sqrt{\\dfrac{a}{3}}$를 진수에 대입하면 두 진수 조건이 모두 $-\\sqrt{3a}+a-6>0$으로 동일하다. $t=\\sqrt{a}>0$으로 치환하면 $t^2-\\sqrt{3}\\,t-6>0$이고, $(t-2\\sqrt{3})(t+\\sqrt{3})>0$으로 인수분해된다. $t>0$이면 $t+\\sqrt{3}>0$이 항상 성립하므로 $t>2\\sqrt{3}$, 즉 $a>12$이다.\n\nSTEP 6. 정리하면 $0<a\\leq 3$일 때 실근 0개, $3<a\\leq 12$일 때 양의 근만 유효하여 실근 1개, $a>12$일 때 실근 2개이다. 실근이 정확히 1개인 조건은 $3<a\\leq 12$이다.\n\nSTEP 7. $3<a\\leq 12$인 0이 아닌 정수는 $4, 5, 6, 7, 8, 9, 10, 11, 12$로 총 $\\boxed{9}$개이다.",
-  "original_solution": "로그의 진수조건에 의해\n\n① $\\dfrac{a}{x}+a-6>0$, 　② $3x+a-6>0$\n\n이어야 한다.\n\n또한,\n\n$$\\log_2\\!\\left(\\frac{a}{x}+a-6\\right)=\\log_2(3x+a-6) \\cdots \\text{㉠}$$\n\n$$\\Rightarrow \\frac{a}{x}+a-6=3x+a-6$$\n\n$$\\Rightarrow x^2=\\frac{a}{3}$$\n\n이므로 방정식 ㉠의 실근이 존재하려면\n\n$$a>0 \\quad (\\because\\; a\\neq 0)$$\n\n이어야 하고\n\n방정식 ㉠의 실근으로 가능한 값은 $\\sqrt{\\dfrac{a}{3}}$ 또는 $-\\sqrt{\\dfrac{a}{3}}$ 이다.\n\n이때, $\\sqrt{\\dfrac{a}{3}}$가 방정식 ㉠의 실근이려면 ①, ②를 만족시켜야 하므로\n\n$$\\sqrt{3a}+a-6>0 \\Rightarrow (\\sqrt{a}+2\\sqrt{3})(\\sqrt{a}-\\sqrt{3})>0$$\n\n$$\\Rightarrow a>3$$\n\n이어야 하고, $-\\sqrt{\\dfrac{a}{3}}$가 방정식 ㉠의 실근이려면 마찬가지로\n\n$$-\\sqrt{3a}+a-6>0 \\Rightarrow (\\sqrt{a}+\\sqrt{3})(\\sqrt{a}-2\\sqrt{3})>0$$\n\n$$\\Rightarrow a>12$$\n\n이어야 하므로 문제의 조건에서\n\n방정식 ㉠의 실근의 개수가 $1 \\Rightarrow 3<a\\leq 12$\n\n임을 알 수 있다.\n\n$\\therefore$ (정수 $a$의 개수) $= 9$\n\n---",
-  "analysis": "로그 방정식에서 진수조건과 단사성을 이용해 대수방정식으로 변환하고, x²=a/3의 두 근 각각의 유효성을 진수 부등식으로 판정한 뒤, 정확히 1개만 유효한 a의 범위를 구하는 문제. 모든 논리 단계가 기존 뉴런으로 커버됨.",
-  "new_neurons": [],
-  "metadata": {
-    "unit": "지수와 로그",
-    "difficulty": "중상",
-    "score": "4",
-    "type": "객관식",
-    "answer": "9"
-  },
-  "edge_count": 20,
-  "side_count": 3,
   "statement": "# 27. (Unknown Source) - 로그 방정식의 실근의 개수\n\n## Problem\n\n$x$에 대한 방정식\n\n$$\\log_2\\!\\left(\\frac{a}{x}+a-6\\right)=\\log_2(3x+a-6)$$\n\n의 실근의 개수가 1이 되도록 하는 0이 아닌 정수 $a$의 개수는? [4점]",
-  "dna": {
-    "nodes": [
+  "thinking_profile": {
+    "_version": 6,
+    "_unit": "note",
+    "_isV6": true,
+    "total_think_tokens": 1756,
+    "total_notes": 17,
+    "hint_distribution": {
+      "0": 16,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 1
+    },
+    "avg_hint_level": 0.24,
+    "genuine_miss_count": 0,
+    "absorbed_miss_count": 1,
+    "bonus_count": 16,
+    "highlight_notes": [
+      "note1",
+      "note5",
+      "note7"
+    ],
+    "hardest_note": {
+      "note_id": "note1",
+      "neuron": "사실59",
+      "hint_level": 4,
+      "structural_difficulty": 0.12,
+      "miss_type": "absorbed",
+      "note_text": "$x \\neq 0$이고 $\\dfrac{a}{x}+a-6>0$이고 $3x+a-6>0$이어야 한다"
+    },
+    "neuron_stats": {
+      "사실59": {
+        "type": "사실",
+        "appearances": 1,
+        "total_hint": 4,
+        "hint_levels": [
+          4
+        ],
+        "bonus_count": 0,
+        "avg_hint_level": 4
+      },
+      "사실58": {
+        "type": "사실",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "전략11": {
+        "type": "전략",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "사실4": {
+        "type": "사실",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "전략25": {
+        "type": "전략",
+        "appearances": 2,
+        "total_hint": 0,
+        "hint_levels": [
+          0,
+          0
+        ],
+        "bonus_count": 2,
+        "avg_hint_level": 0
+      },
+      "전략1": {
+        "type": "전략",
+        "appearances": 2,
+        "total_hint": 0,
+        "hint_levels": [
+          0,
+          0
+        ],
+        "bonus_count": 2,
+        "avg_hint_level": 0
+      },
+      "전략29": {
+        "type": "전략",
+        "appearances": 2,
+        "total_hint": 0,
+        "hint_levels": [
+          0,
+          0
+        ],
+        "bonus_count": 2,
+        "avg_hint_level": 0
+      },
+      "사실35": {
+        "type": "사실",
+        "appearances": 2,
+        "total_hint": 0,
+        "hint_levels": [
+          0,
+          0
+        ],
+        "bonus_count": 2,
+        "avg_hint_level": 0
+      },
+      "사실27": {
+        "type": "사실",
+        "appearances": 2,
+        "total_hint": 0,
+        "hint_levels": [
+          0,
+          0
+        ],
+        "bonus_count": 2,
+        "avg_hint_level": 0
+      },
+      "전략22": {
+        "type": "전략",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "전략2": {
+        "type": "전략",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "전략17": {
+        "type": "전략",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      }
+    },
+    "notes": [
       {
-        "id": "top",
-        "dna": "Q2",
-        "label": "개수를 구하라",
-        "category": "발문"
+        "note_index": 1,
+        "note_id": "note1",
+        "neuron": "사실59",
+        "neuron_type": "사실",
+        "note_text": "$x \\neq 0$이고 $\\dfrac{a}{x}+a-6>0$이고 $3x+a-6>0$이어야 한다",
+        "from": [
+          "단서A"
+        ],
+        "hint_level": 4,
+        "is_bonus": false,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note1",
+        "miss_type": "absorbed",
+        "absorbed_in": "note1/시도0",
+        "absorb_reason": "x≠0 조건과 두 진수 조건(a/x+a-6>0, 3x+a-6>0)이 note1/시도0~시도3에서 명시적으로 다뤄짐",
+        "partial_history": [],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 151,
+            "discover_elapsed_ms": 8133,
+            "match_elapsed_ms": 3099,
+            "discover_input_tokens": 558,
+            "discover_output_tokens": 440,
+            "match_input_tokens": 1258,
+            "match_output_tokens": 112,
+            "claude_output": "[시도] 내가 해볼 것: 로그 밑이 같으므로 진수끼리 같다고 놓고 방정식을 단순화하기\n\n[계산]\n$$\\frac{a}{x}+a-6 = 3x+a-6$$\n\n양변에서 $(a-6)$이 소거되고:\n$$\\frac{a}{x} = 3x$$\n\n$$a = 3x^2$$\n\n[결론] 진수 조건을 제외한 핵심 방정식은 $a = 3x^2$, 즉 $x^2 = \\dfrac{a}{3}$ 이다.",
+            "matches": [
+              {
+                "label": "B",
+                "score": 1,
+                "reason": "학생이 진수끼리 같다고 놓아 정확히 같은 등식을 세웠다"
+              },
+              {
+                "label": "C",
+                "score": 1,
+                "reason": "학생의 계산 결과가 a=3x², x²=a/3로 완전히 일치한다"
+              }
+            ],
+            "eval_summary": "MISS attempt0 dry0 | 151tok | disc 8133ms + match 3099ms | bonus 2"
+          },
+          {
+            "attempt": 1,
+            "think_tokens": 176,
+            "discover_elapsed_ms": 14602,
+            "match_elapsed_ms": 3147,
+            "discover_input_tokens": 656,
+            "discover_output_tokens": 839,
+            "match_input_tokens": 1237,
+            "match_output_tokens": 129,
+            "claude_output": "[시도] x² = a/3에서 실수 해가 존재하려면 a의 부호 조건을 확인한다\n\n[계산]\nx² = a/3 이므로 x가 실수이려면 a/3 ≥ 0, 즉 a ≥ 0이어야 한다.\n그런데 a ≠ 0이므로 **a > 0** 이어야 한다.\n만약 a < 0이면 x² = a/3 < 0이 되어 실수 해 자체가 없다 (실근 0개).\n\n[결론] 실근이 존재하려면 반드시 **a > 0** (양의 정수)이어야 하며, 이때 후보 해는 x = +√(a/3)와 x = −√(a/3) 두 개이다.",
+            "matches": [
+              {
+                "label": "D",
+                "score": 0.85,
+                "reason": "학생의 결론이 'a>0일 때 근은 x=√(a/3), x=-√(a/3)의 2개이고, a<0이면 실근이 없다'와 정확히 일치함. a>0 조건, 두 후보 해의 형태, a<0일 때 실근 없음 모두 포함"
+              }
+            ],
+            "eval_summary": "MISS attempt1 dry0 | 176tok | disc 14602ms + match 3147ms | bonus 1"
+          },
+          {
+            "attempt": 2,
+            "think_tokens": 214,
+            "discover_elapsed_ms": 14869,
+            "match_elapsed_ms": 7778,
+            "discover_input_tokens": 721,
+            "discover_output_tokens": 996,
+            "match_input_tokens": 1261,
+            "match_output_tokens": 451,
+            "claude_output": "[시도] 내가 해볼 것: 두 근 중 $x = -\\sqrt{\\dfrac{a}{3}}$이 진수 조건을 만족하는지 확인하기\n\n[계산]\n$x = -\\sqrt{\\dfrac{a}{3}}$를 $3x + a - 6 > 0$에 대입하면:\n\n$$-3\\sqrt{\\dfrac{a}{3}} + a - 6 > 0 \\implies a - \\sqrt{3a} - 6 > 0$$\n\n$t = \\sqrt{3a}$ $(t>0)$로 치환하면: $\\dfrac{t^2}{3} - t - 6 > 0 \\implies t^2 - 3t - 18 > 0 \\implies (t-6)(t+3)>0$\n\n$t>0$이므로 $t>6$, 즉 $\\sqrt{3a}>6$, 즉 $a > 12$일 때만 성립.\n\n[결론] $x = -\\sqrt{\\dfrac{a}{3}}$은 $a > 12$일 때만 진수 조건을 통과하고, $0 < a \\leq 12$이면 이 근은 탈락한다.",
+            "matches": [
+              {
+                "label": "J",
+                "score": 1,
+                "reason": "학생이 x=-√(a/3)를 진수 조건에 대입하여 -√(3a)+a-6>0을 도출했으며, 이는 J의 핵심 결론과 완전히 일치한다"
+              },
+              {
+                "label": "N",
+                "score": 1,
+                "reason": "학생이 t>0 조건 하에서 a>12임을 결론으로 도출했으며, 이는 N의 핵심 결론과 완전히 일치한다"
+              },
+              {
+                "label": "K",
+                "score": 0.7,
+                "reason": "학생은 t=√(3a)로 치환하여 t²-3t-18>0을 얻었고, K는 t=√a로 치환하여 t²-√3·t-6>0을 얻는다. 치환 변수가 다르지만 수학적으로 동등한 변환이다"
+              },
+              {
+                "label": "L",
+                "score": 0.7,
+                "reason": "학생의 (t-6)(t+3)>0은 K의 치환(t=√a) 기준으로는 L의 (t-2√3)(t+√3)>0에 해당하며 수학적으로 동등하다"
+              },
+              {
+                "label": "M",
+                "score": 0.7,
+                "reason": "학생의 t>6 조건은 M의 t>2√3에 해당하며(t=√(3a) vs t=√a의 차이), 수학적으로 동등한 결론이다"
+              }
+            ],
+            "eval_summary": "MISS attempt2 dry0 | 214tok | disc 14869ms + match 7778ms | bonus 5"
+          },
+          {
+            "attempt": 3,
+            "think_tokens": 214,
+            "discover_elapsed_ms": 11933,
+            "match_elapsed_ms": 7322,
+            "discover_input_tokens": 942,
+            "discover_output_tokens": 828,
+            "match_input_tokens": 995,
+            "match_output_tokens": 379,
+            "claude_output": "[시도] 내가 해볼 것: $x=+\\sqrt{\\dfrac{a}{3}}$를 진수 조건에 대입하기\n\n[계산]\n$$\\frac{a}{x}+a-6 = \\frac{a}{\\sqrt{a/3}}+a-6 = \\sqrt{3a}+a-6$$\n$$3x+a-6 = 3\\sqrt{\\frac{a}{3}}+a-6 = \\sqrt{3a}+a-6$$\n\n두 진수 조건이 모두 $\\sqrt{3a}+a-6>0$이 된다.  \n$t=\\sqrt{a}>0$으로 치환하면 $t^2+\\sqrt{3}\\,t-6=(t+2\\sqrt{3})(t-\\sqrt{3})>0$  \n$t>0$이므로 $t>\\sqrt{3}$, 즉 $a>3$\n\n[결론] $x=+\\sqrt{\\dfrac{a}{3}}$는 $a>3$일 때 진수 조건을 만족한다.",
+            "matches": [
+              {
+                "label": "E",
+                "score": 1,
+                "reason": "학생의 계산에서 x=√(a/3)을 두 진수에 대입하면 모두 √(3a)+a-6>0이 된다고 명시적으로 서술함"
+              },
+              {
+                "label": "F",
+                "score": 1,
+                "reason": "t=√a>0으로 치환하면 t²+√3·t-6>0이라는 내용이 학생 서술에 그대로 나타남"
+              },
+              {
+                "label": "G",
+                "score": 1,
+                "reason": "t²+√3·t-6=(t+2√3)(t-√3)으로 인수분해하는 내용이 학생 서술에 포함됨"
+              },
+              {
+                "label": "H",
+                "score": 0.7,
+                "reason": "학생은 t>√3 조건만 명시하고 t<-2√3 부분은 언급하지 않았으나, (t+2√3)(t-√3)>0의 해로 t>0 조건과 결합하여 동일한 결론 도달"
+              },
+              {
+                "label": "I",
+                "score": 1,
+                "reason": "t>0이므로 t>√3, 즉 a>3이라는 결론이 학생 서술에 완전히 일치함"
+              }
+            ],
+            "eval_summary": "MISS attempt3 dry0 | 214tok | disc 11933ms + match 7322ms | bonus 5"
+          },
+          {
+            "attempt": 4,
+            "think_tokens": 376,
+            "discover_elapsed_ms": 15944,
+            "match_elapsed_ms": 5416,
+            "discover_input_tokens": 1159,
+            "discover_output_tokens": 888,
+            "match_input_tokens": 659,
+            "match_output_tokens": 240,
+            "claude_output": "[시도] x = √(a/3)만 유효하고 x = -√(a/3)은 무효인 a의 범위 결합\n\n[계산]\n- x = √(a/3)이 유효하려면: a > 3\n- x = -√(a/3)이 유효하려면: a > 12\n\n따라서 3 < a ≤ 12이면 x = √(a/3)만 유효 → 실근 1개\n\n[결론] 실근이 정확히 1개가 되는 조건은 **3 < a ≤ 12** 이다.",
+            "matches": [
+              {
+                "label": "O",
+                "score": 0.9,
+                "reason": "학생의 서술이 3 < a ≤ 12이면 양의 근만 유효하여 실근 1개라는 결론을 포함하고 있으며, 이는 후보 O의 핵심 내용과 일치한다. 단, 0 < a ≤ 3(실근 0개)와 a > 12(실근 2개) 부분은 언급되지 않아 완전 일치는 아님"
+              },
+              {
+                "label": "P",
+                "score": 1,
+                "reason": "학생의 최종 결론 '실근이 정확히 1개가 되는 조건은 3 < a ≤ 12'가 후보 P의 내용과 완전히 일치한다"
+              }
+            ],
+            "eval_summary": "MISS attempt4 dry0 | 376tok | disc 15944ms + match 5416ms | bonus 2"
+          },
+          {
+            "attempt": 5,
+            "think_tokens": 226,
+            "discover_elapsed_ms": 10308,
+            "match_elapsed_ms": 2118,
+            "discover_input_tokens": 1260,
+            "discover_output_tokens": 582,
+            "match_input_tokens": 584,
+            "match_output_tokens": 99,
+            "claude_output": "[시도] $3 < a \\leq 12$를 만족하는 0이 아닌 정수 $a$의 개수 세기\n\n[계산]\n$$3 < a \\leq 12, \\quad a \\in \\mathbb{Z}, \\quad a \\neq 0$$\n\n조건을 만족하는 정수: $a = 4, 5, 6, 7, 8, 9, 10, 11, 12$\n\n개수: $12 - 4 + 1 = \\mathbf{9}$개\n\n[결론] 조건을 만족하는 0이 아닌 정수 $a$는 4, 5, …, 12로 총 **9개**이다.",
+            "matches": [
+              {
+                "label": "Q",
+                "score": 1,
+                "reason": "학생의 결론과 후보 Q가 완전히 일치: 3<a≤12인 0이 아닌 정수가 4,5,6,7,8,9,10,11,12로 9개라는 결론이 동일함"
+              }
+            ],
+            "eval_summary": "MISS attempt5 dry0 | 226tok | disc 10308ms + match 2118ms | bonus 1"
+          },
+          {
+            "attempt": 6,
+            "think_tokens": 154,
+            "discover_elapsed_ms": 8792,
+            "match_elapsed_ms": 1757,
+            "discover_input_tokens": 1321,
+            "discover_output_tokens": 468,
+            "match_input_tokens": 523,
+            "match_output_tokens": 8,
+            "claude_output": "[시도] 지금까지의 분석을 종합하여 최종 답을 구한다.\n\n[계산]\n- 단서B(실근 1개) 조건: $3 < a \\leq 12$\n- 단서C(0이 아닌 정수): 해당 범위의 정수를 나열하면\n\n$$a = 4,\\ 5,\\ 6,\\ 7,\\ 8,\\ 9,\\ 10,\\ 11,\\ 12$$\n\n총 개수: $12 - 4 + 1 = 9$개\n\n[결론] 조건을 만족하는 0이 아닌 정수 $a$의 개수는 **9**이다.",
+            "matches": [],
+            "eval_summary": "MISS attempt6 dry0 | 154tok | disc 8792ms + match 1757ms | bonus 0"
+          },
+          {
+            "attempt": 7,
+            "think_tokens": 245,
+            "discover_elapsed_ms": 12203,
+            "match_elapsed_ms": 1172,
+            "discover_input_tokens": 1388,
+            "discover_output_tokens": 672,
+            "match_input_tokens": 547,
+            "match_output_tokens": 8,
+            "claude_output": "[시도] 지금까지의 결론을 종합하여 최종 답을 확인한다.\n\n[계산]\n- 단계 14~15에서: 실근이 1개가 되는 조건은 $3 < a \\leq 12$\n- 단계 16에서: 해당 범위의 0이 아닌 정수는 $4, 5, 6, 7, 8, 9, 10, 11, 12$\n\n$$4, 5, 6, 7, 8, 9, 10, 11, 12 \\quad \\Rightarrow \\quad 9\\text{개}$$\n\n[결론] 조건을 만족하는 0이 아닌 정수 $a$의 개수는 $\\boxed{9}$이다.",
+            "matches": [],
+            "eval_summary": "MISS attempt7 dry1 | 245tok | disc 12203ms + match 1172ms | bonus 0"
+          }
+        ]
       },
       {
-        "id": "conds",
-        "dna": "S1",
-        "label": "여러 조건",
-        "category": "구조"
+        "note_index": 2,
+        "note_id": "note4",
+        "neuron": "사실58",
+        "neuron_type": "사실",
+        "note_text": "$\\dfrac{a}{x}+a-6=3x+a-6$이다",
+        "from": [
+          "note3",
+          "note1"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
       },
       {
-        "id": "va",
-        "dna": "T1",
-        "label": "변수 a",
-        "category": "말단"
+        "note_index": 3,
+        "note_id": "note5",
+        "neuron": "전략11",
+        "neuron_type": "전략",
+        "note_text": "양변에서 $a-6$을 빼고 $x$를 곱하면 $a=3x^2$ 즉 $x^2=\\dfrac{a}{3}$이다",
+        "from": [
+          "note4"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
       },
       {
-        "id": "vx",
-        "dna": "T3",
-        "label": "독립변수 x",
-        "category": "말단"
+        "note_index": 4,
+        "note_id": "note6",
+        "neuron": "사실4",
+        "neuron_type": "사실",
+        "note_text": "$a>0$일 때 근은 $x=\\sqrt{\\dfrac{a}{3}}$, $x=-\\sqrt{\\dfrac{a}{3}}$의 2개이고, $a<0$이면 실근이 없다",
+        "from": [
+          "note5",
+          "단서C"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
       },
       {
-        "id": "c2",
-        "dna": "T2",
-        "label": "상수 2",
-        "category": "말단"
+        "note_index": 5,
+        "note_id": "note7",
+        "neuron": "전략25",
+        "neuron_type": "전략",
+        "note_text": "$x=\\sqrt{\\dfrac{a}{3}}$를 진수에 대입하면 두 조건이 모두 $\\sqrt{3a}+a-6>0$이 된다",
+        "from": [
+          "note6",
+          "note1"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
       },
       {
-        "id": "c6",
-        "dna": "T2",
-        "label": "상수 6",
-        "category": "말단"
+        "note_index": 6,
+        "note_id": "note8",
+        "neuron": "전략1",
+        "neuron_type": "전략",
+        "note_text": "$t=\\sqrt{a}>0$으로 치환하면 $t^2+\\sqrt{3}\\,t-6>0$이다",
+        "from": [
+          "note7"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
       },
       {
-        "id": "c3",
-        "dna": "T2",
-        "label": "상수 3",
-        "category": "말단"
+        "note_index": 7,
+        "note_id": "note9",
+        "neuron": "전략29",
+        "neuron_type": "전략",
+        "note_text": "$t^2+\\sqrt{3}\\,t-6=(t-\\sqrt{3})(t+2\\sqrt{3})$이다",
+        "from": [
+          "note8"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
       },
       {
-        "id": "cm1",
-        "dna": "T2",
-        "label": "상수 -1",
-        "category": "말단"
+        "note_index": 8,
+        "note_id": "note10",
+        "neuron": "사실35",
+        "neuron_type": "사실",
+        "note_text": "$(t-\\sqrt{3})(t+2\\sqrt{3})>0$이 되려면 $t<-2\\sqrt{3}$ 또는 $t>\\sqrt{3}$이다",
+        "from": [
+          "note9"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
       },
       {
-        "id": "c0",
-        "dna": "T2",
-        "label": "상수 0",
-        "category": "말단"
+        "note_index": 9,
+        "note_id": "note12",
+        "neuron": "사실27",
+        "neuron_type": "사실",
+        "note_text": "$t>0$이므로 $t>\\sqrt{3}$ 즉 $a>3$이다",
+        "from": [
+          "note10",
+          "note11"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
       },
       {
-        "id": "c1",
-        "dna": "T2",
-        "label": "상수 1",
-        "category": "말단"
+        "note_index": 10,
+        "note_id": "note13",
+        "neuron": "전략25",
+        "neuron_type": "전략",
+        "note_text": "$x=-\\sqrt{\\dfrac{a}{3}}$를 진수에 대입하면 두 조건이 모두 $-\\sqrt{3a}+a-6>0$이 된다",
+        "from": [
+          "note6",
+          "note1"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
       },
       {
-        "id": "a_int",
-        "dna": "L3",
-        "label": "정수 제한",
-        "category": "제한"
+        "note_index": 11,
+        "note_id": "note14",
+        "neuron": "전략1",
+        "neuron_type": "전략",
+        "note_text": "$t=\\sqrt{a}>0$으로 치환하면 $t^2-\\sqrt{3}\\,t-6>0$이다",
+        "from": [
+          "note13"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
       },
       {
-        "id": "a_neq0",
-        "dna": "C2",
-        "label": "a ≠ 0",
-        "category": "조건"
+        "note_index": 12,
+        "note_id": "note15",
+        "neuron": "전략29",
+        "neuron_type": "전략",
+        "note_text": "$t^2-\\sqrt{3}\\,t-6=(t-2\\sqrt{3})(t+\\sqrt{3})$이다",
+        "from": [
+          "note14"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
       },
       {
-        "id": "eq_main",
-        "dna": "C1",
-        "label": "로그 등식",
-        "category": "조건"
+        "note_index": 13,
+        "note_id": "note16",
+        "neuron": "사실35",
+        "neuron_type": "사실",
+        "note_text": "$(t-2\\sqrt{3})(t+\\sqrt{3})>0$이 되려면 $t<-\\sqrt{3}$ 또는 $t>2\\sqrt{3}$이다",
+        "from": [
+          "note15"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
       },
       {
-        "id": "lhs_log",
-        "dna": "E3",
-        "label": "log₂(진수1)",
-        "category": "수식"
+        "note_index": 14,
+        "note_id": "note17",
+        "neuron": "사실27",
+        "neuron_type": "사실",
+        "note_text": "$t>0$이므로 $t>2\\sqrt{3}$ 즉 $a>12$이다",
+        "from": [
+          "note16",
+          "note11"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
       },
       {
-        "id": "rhs_log",
-        "dna": "E3",
-        "label": "log₂(진수2)",
-        "category": "수식"
+        "note_index": 15,
+        "note_id": "note18",
+        "neuron": "전략22",
+        "neuron_type": "전략",
+        "note_text": "$0<a\\leq 3$이면 실근 0개, $3<a\\leq 12$이면 양의 근만 유효하여 실근 1개, $a>12$이면 실근 2개이다",
+        "from": [
+          "note12",
+          "note17"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
       },
       {
-        "id": "arg1",
-        "dna": "E1",
-        "label": "a/x + a-6",
-        "category": "수식"
+        "note_index": 16,
+        "note_id": "note19",
+        "neuron": "전략2",
+        "neuron_type": "전략",
+        "note_text": "실근의 개수가 1이 되는 조건은 $3<a\\leq 12$이다",
+        "from": [
+          "note18",
+          "단서B"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
       },
       {
-        "id": "ax_inv",
-        "dna": "E6",
-        "label": "a/x",
-        "category": "수식"
-      },
-      {
-        "id": "xinv",
-        "dna": "E7",
-        "label": "x^(-1)",
-        "category": "수식"
-      },
-      {
-        "id": "neg6",
-        "dna": "E2",
-        "label": "-6",
-        "category": "수식"
-      },
-      {
-        "id": "a_minus6",
-        "dna": "E1",
-        "label": "a+(-6)",
-        "category": "수식"
-      },
-      {
-        "id": "arg2",
-        "dna": "E1",
-        "label": "3x + a-6",
-        "category": "수식"
-      },
-      {
-        "id": "three_x",
-        "dna": "E6",
-        "label": "3x",
-        "category": "수식"
-      },
-      {
-        "id": "root_cnt",
-        "dna": "C9",
-        "label": "실근 개수=1",
-        "category": "조건"
+        "note_index": 17,
+        "note_id": "END",
+        "neuron": "전략17",
+        "neuron_type": "전략",
+        "note_text": "$3<a\\leq 12$인 0이 아닌 정수는 $4, 5, 6, 7, 8, 9, 10, 11, 12$로 $9$개이다",
+        "from": [
+          "note19",
+          "단서C"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
       }
     ],
-    "edges": [
-      {
-        "from": "conds",
-        "to": "top"
-      },
-      {
-        "from": "root_cnt",
-        "to": "top"
-      },
-      {
-        "from": "a_int",
-        "to": "va"
-      },
-      {
-        "from": "va",
-        "to": "a_neq0"
-      },
-      {
-        "from": "c0",
-        "to": "a_neq0"
-      },
-      {
-        "from": "a_neq0",
-        "to": "conds"
-      },
-      {
-        "from": "eq_main",
-        "to": "conds"
-      },
-      {
-        "from": "lhs_log",
-        "to": "eq_main"
-      },
-      {
-        "from": "rhs_log",
-        "to": "eq_main"
-      },
-      {
-        "from": "c2",
-        "to": "lhs_log"
-      },
-      {
-        "from": "arg1",
-        "to": "lhs_log"
-      },
-      {
-        "from": "c2",
-        "to": "rhs_log"
-      },
-      {
-        "from": "arg2",
-        "to": "rhs_log"
-      },
-      {
-        "from": "ax_inv",
-        "to": "arg1"
-      },
-      {
-        "from": "a_minus6",
-        "to": "arg1"
-      },
-      {
-        "from": "va",
-        "to": "ax_inv"
-      },
-      {
-        "from": "xinv",
-        "to": "ax_inv"
-      },
-      {
-        "from": "vx",
-        "to": "xinv"
-      },
-      {
-        "from": "cm1",
-        "to": "xinv"
-      },
-      {
-        "from": "va",
-        "to": "a_minus6"
-      },
-      {
-        "from": "neg6",
-        "to": "a_minus6"
-      },
-      {
-        "from": "c6",
-        "to": "neg6"
-      },
-      {
-        "from": "three_x",
-        "to": "arg2"
-      },
-      {
-        "from": "a_minus6",
-        "to": "arg2"
-      },
-      {
-        "from": "c3",
-        "to": "three_x"
-      },
-      {
-        "from": "vx",
-        "to": "three_x"
-      },
-      {
-        "from": "eq_main",
-        "to": "root_cnt"
-      },
-      {
-        "from": "c1",
-        "to": "root_cnt"
-      }
-    ],
-    "new_dna": []
-  },
-  "thinking_profile": null,
-  "folders": [],
-  "history": [],
-  "recovery_warnings": [],
-  "errata": [],
-  "created_at": "2026-03-23T17:44:29.173Z"
+    "_debug": "v7-split"
+  }
 }
