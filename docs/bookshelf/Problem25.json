@@ -1,13 +1,671 @@
 {
   "problem_id": "Problem25",
-  "_filename": "Problem25.json",
-  "_stub": true,
-  "tags": {
-    "source": "",
-    "theme": "",
-    "difficulty": "",
-    "custom": [
-      "2025"
-    ]
+  "clues": [
+    {
+      "id": "단서A",
+      "text": "$-3 < \\log_2 a < 5$"
+    },
+    {
+      "id": "단서B",
+      "text": "$\\log_3 a^2$은 정수이다"
+    },
+    {
+      "id": "단서C",
+      "text": "$a$는 양수이다"
+    }
+  ],
+  "skeleton": [
+    {
+      "from": "단서A",
+      "to": "note1",
+      "neuron": "연산2",
+      "note": "$\\log_2 a = t$로 놓으면 $a = 2^t$이고 $-3 < t < 5$이다",
+      "step": 1
+    },
+    {
+      "from": "note1",
+      "to": "note2",
+      "neuron": "사실5",
+      "note": "$y=2^x$는 순증가이므로 $2^{-3} < a < 2^5$, 즉 $\\frac{1}{8} < a < 32$이다",
+      "step": 1
+    },
+    {
+      "from": [
+        "note2",
+        "단서C"
+      ],
+      "to": "note3",
+      "neuron": "사실59",
+      "note": "$a > 0$이므로 $\\log_3 a$가 정의된다",
+      "main": false,
+      "step": 2
+    },
+    {
+      "from": "단서B",
+      "to": "note4",
+      "neuron": "연산17",
+      "note": "$\\log_3 a^2 = 2\\log_3 a$이다",
+      "step": 2
+    },
+    {
+      "from": "note2",
+      "to": "note5",
+      "neuron": "사실12",
+      "note": "$\\log_3$은 순증가이므로 $\\log_3 \\frac{1}{8} < \\log_3 a < \\log_3 32$이다",
+      "step": 2
+    },
+    {
+      "from": [
+        "note4",
+        "note5"
+      ],
+      "to": "note6",
+      "neuron": "연산17",
+      "note": "$2\\log_3 \\frac{1}{8} < 2\\log_3 a < 2\\log_3 32$, 즉 $\\log_3 \\frac{1}{64} < \\log_3 a^2 < \\log_3 1024$이다",
+      "step": 2
+    },
+    {
+      "from": "note6",
+      "to": "note7",
+      "neuron": "사실12",
+      "note": "$3^{-4} = \\frac{1}{81} < \\frac{1}{64} < \\frac{1}{27} = 3^{-3}$이므로 $-4 < \\log_3 \\frac{1}{64} < -3$이다",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": "note6",
+      "to": "note8",
+      "neuron": "사실12",
+      "note": "$3^6 = 729 < 1024 < 2187 = 3^7$이므로 $6 < \\log_3 1024 < 7$이다",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": [
+        "note6",
+        "note7",
+        "note8"
+      ],
+      "to": "note9",
+      "neuron": "전략17",
+      "note": "$\\log_3 a^2$이 정수이고 범위가 $(-4, -3)$과 $(6, 7)$ 사이의 열린 구간 내이므로 $\\log_3 a^2 \\in \\{-3,\\,-2,\\,-1,\\,0,\\,1,\\,2,\\,3,\\,4,\\,5,\\,6\\}$이다",
+      "step": 3
+    },
+    {
+      "from": [
+        "note9",
+        "단서C"
+      ],
+      "to": "note10",
+      "neuron": "연산2",
+      "note": "$\\log_3 a^2 = k$이면 $a^2 = 3^k$이고, $a > 0$이므로 $a = 3^{k/2}$이다",
+      "step": 4
+    },
+    {
+      "from": [
+        "note10",
+        "note2"
+      ],
+      "to": "note11",
+      "neuron": "전략25",
+      "note": "$k=-3$일 때 $a = 3^{-3/2} \\approx 0.192 > \\frac{1}{8}$이고, $k=6$일 때 $a = 27 < 32$이므로 $-3 \\le k \\le 6$인 모든 정수 10개가 적합하다",
+      "main": false,
+      "step": 4
+    },
+    {
+      "from": [
+        "note10",
+        "note11"
+      ],
+      "to": "note12",
+      "neuron": "연산18",
+      "note": "$\\prod_{k=-3}^{6} 3^{k/2} = 3^{\\frac{1}{2}\\sum_{k=-3}^{6} k}$이다",
+      "step": 5
+    },
+    {
+      "from": "note12",
+      "to": "END",
+      "neuron": "연산18",
+      "note": "$\\sum_{k=-3}^{6} k = (-3)+(-2)+(-1)+0+1+2+3+4+5+6 = 15$이므로 모든 $a$의 값의 곱은 $3^{15/2}$이다",
+      "step": 5
+    }
+  ],
+  "solution": "STEP 1. 조건 (가)에서 $a$의 범위를 구한다. $\\log_2 a = t$로 놓으면 $a = 2^t$이고 $-3 < t < 5$이다. $y = 2^x$는 순증가이므로 $2^{-3} < a < 2^5$, 즉 $\\frac{1}{8} < a < 32$이다.\n\nSTEP 2. $\\log_3 a^2$의 범위를 구한다. $\\log_3 a^2 = 2\\log_3 a$이고, $\\log_3$은 순증가이므로 $\\log_3 \\frac{1}{8} < \\log_3 a < \\log_3 32$이다. 양변에 2를 곱하면 $\\log_3 \\frac{1}{64} < \\log_3 a^2 < \\log_3 1024$이다.\n\nSTEP 3. 경계를 평가한다. $3^{-4} < \\frac{1}{64} < 3^{-3}$이므로 하한은 $-4$와 $-3$ 사이이고, $3^6 < 1024 < 3^7$이므로 상한은 $6$과 $7$ 사이이다. 조건 (나)에서 $\\log_3 a^2$이 정수이므로 $\\log_3 a^2 \\in \\{-3, -2, -1, 0, 1, 2, 3, 4, 5, 6\\}$이다.\n\nSTEP 4. $\\log_3 a^2 = k$이면 $a^2 = 3^k$이고 $a > 0$이므로 $a = 3^{k/2}$이다.\n\nSTEP 5. 모든 $a$의 값의 곱을 구한다. $\\prod_{k=-3}^{6} 3^{k/2} = 3^{\\frac{1}{2}\\sum_{k=-3}^{6} k}$이고 $\\sum_{k=-3}^{6} k = 15$이므로 곱은 $3^{\\frac{15}{2}}$이다.",
+  "statement": "# 34. (수능/모의고사) - 로그 조건을 만족하는 양수의 곱\n\n## Problem\n\n다음 조건을 만족시키는 모든 양수 $a$의 값의 곱은? [4점]\n\n(가) $-3 < \\log_2 a < 5$\n\n(나) $\\log_3 a^2$은 정수이다.",
+  "thinking_profile": {
+    "_version": 6,
+    "_unit": "note",
+    "_isV6": true,
+    "total_think_tokens": 2208,
+    "total_notes": 9,
+    "hint_distribution": {
+      "0": 6,
+      "1": 0,
+      "2": 1,
+      "3": 0,
+      "4": 2
+    },
+    "avg_hint_level": 1.11,
+    "genuine_miss_count": 1,
+    "absorbed_miss_count": 1,
+    "bonus_count": 5,
+    "highlight_notes": [
+      "note2",
+      "note1",
+      "note5"
+    ],
+    "hardest_note": {
+      "note_id": "note2",
+      "neuron": "사실5",
+      "hint_level": 4,
+      "structural_difficulty": 0.12,
+      "miss_type": "genuine",
+      "note_text": "$y=2^x$는 순증가이므로 $2^{-3} < a < 2^5$, 즉 $\\frac{1}{8} < a < 32$이다"
+    },
+    "neuron_stats": {
+      "연산2": {
+        "type": "연산",
+        "appearances": 2,
+        "total_hint": 4,
+        "hint_levels": [
+          4,
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 2
+      },
+      "사실5": {
+        "type": "사실",
+        "appearances": 1,
+        "total_hint": 4,
+        "hint_levels": [
+          4
+        ],
+        "bonus_count": 0,
+        "avg_hint_level": 4
+      },
+      "연산17": {
+        "type": "연산",
+        "appearances": 2,
+        "total_hint": 0,
+        "hint_levels": [
+          0,
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "사실12": {
+        "type": "사실",
+        "appearances": 1,
+        "total_hint": 2,
+        "hint_levels": [
+          2
+        ],
+        "bonus_count": 0,
+        "avg_hint_level": 2
+      },
+      "전략17": {
+        "type": "전략",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "연산18": {
+        "type": "연산",
+        "appearances": 2,
+        "total_hint": 0,
+        "hint_levels": [
+          0,
+          0
+        ],
+        "bonus_count": 2,
+        "avg_hint_level": 0
+      }
+    },
+    "notes": [
+      {
+        "note_index": 1,
+        "note_id": "note1",
+        "neuron": "연산2",
+        "neuron_type": "연산",
+        "note_text": "$\\log_2 a = t$로 놓으면 $a = 2^t$이고 $-3 < t < 5$이다",
+        "from": [
+          "단서A"
+        ],
+        "hint_level": 4,
+        "is_bonus": false,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note1",
+        "miss_type": "absorbed",
+        "absorbed_in": "note1/시도1",
+        "absorb_reason": "log₂a = t로 놓아 -3 < t < 5 범위를 a = 3^(k/2) 대입에 직접 활용함",
+        "partial_history": [
+          {
+            "note_id": "note1",
+            "in_target": "note1",
+            "attempt": 4,
+            "score": 0.6,
+            "reason": "학생은 -3 < log₂a < 5 범위를 암묵적으로 사용하여 k=-3, k=6이 만족하는지 확인했으나, 명시적으로 t=log₂a로 치환하는 표현은 없음. 단, -3과 5를 경계값으로 인식하고 열린 부등식임을 확인한 점에서 부분적으로 일치"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 130,
+            "discover_elapsed_ms": 8382,
+            "match_elapsed_ms": 3633,
+            "discover_input_tokens": 524,
+            "discover_output_tokens": 534,
+            "match_input_tokens": 1014,
+            "match_output_tokens": 165,
+            "claude_output": "[시도] 조건 (나)에서 $\\log_3 a^2$이 정수라는 것을 이용해 $a$의 형태를 구해보겠다.\n\n[계산]\n$$\\log_3 a^2 = 2\\log_3 a = n \\quad (n\\text{은 정수})$$\n$$\\therefore \\log_3 a = \\frac{n}{2}$$\n$$\\therefore a = 3^{n/2}$$\n\n[결론] 조건 (나)를 만족하는 양수 $a$는 **$a = 3^{n/2}$ (단, $n$은 정수)** 꼴이어야 한다.",
+            "matches": [
+              {
+                "label": "C",
+                "score": 1,
+                "reason": "학생이 log_3 a^2 = 2log_3 a 를 직접 사용했으며 이는 후보 C의 핵심 결론과 완전 일치"
+              },
+              {
+                "label": "G",
+                "score": 0.9,
+                "reason": "학생의 결론 a = 3^(n/2)는 후보 G의 결론 a = 3^(k/2)와 변수명만 다를 뿐 수학적으로 동일한 결론"
+              }
+            ],
+            "eval_summary": "MISS attempt0 dry0 | 130tok | disc 8382ms + match 3633ms | bonus 2"
+          },
+          {
+            "attempt": 1,
+            "think_tokens": 99,
+            "discover_elapsed_ms": 8971,
+            "match_elapsed_ms": 8625,
+            "discover_input_tokens": 620,
+            "discover_output_tokens": 556,
+            "match_input_tokens": 1032,
+            "match_output_tokens": 429,
+            "claude_output": "[시도] 내가 해볼 것: 조건 (가)에 a = 3^(k/2)를 대입하여 k의 범위 구하기\n\n[계산]\n$$-3 < \\log_2 a < 5$$\n$$-3 < \\log_2 3^{k/2} < 5$$\n$$-3 < \\frac{k}{2}\\log_2 3 < 5$$\n$$\\log_2 3 \\approx 1.585$$이므로 양변을 $\\frac{\\log_2 3}{2}$로 나누면:\n$$\\frac{-6}{\\log_2 3} < k < \\frac{10}{\\log_2 3}$$\n$$-3.78\\cdots < k < 6.30\\cdots$$\n\n[결론] 정수 k의 범위는 **-3 ≤ k ≤ 6** 이므로, k = -3, -2, -1, 0, 1, 2, 3, 4, 5, 6 (총 10개)이다.",
+            "matches": [
+              {
+                "label": "F",
+                "score": 0.85,
+                "reason": "학생이 정수 k의 범위를 -3 ≤ k ≤ 6으로 구하고 총 10개라고 결론냈는데, 이는 후보 F에서 log_3(a^2)이 {-3,-2,-1,0,1,2,3,4,5,6}의 10개 정수값을 가진다는 결론과 수학적으로 동일하다. k = log_3(a^2)로 대응되므로 완전히 같은 결론이다."
+              },
+              {
+                "label": "H",
+                "score": 0.7,
+                "reason": "학생이 k = -3, -2, ..., 6 (총 10개)임을 구했으므로, 이 k값들의 합산인 Σk를 계산하기 위한 준비 단계인 H의 곱 표현과 연결된다. 학생의 결론에서 k의 범위가 H의 곱셈 범위와 일치한다."
+              },
+              {
+                "label": "I",
+                "score": 0.7,
+                "reason": "학생이 k = -3부터 6까지의 정수 10개를 구했으며, 이를 합산하면 Σk=15가 되어 곱이 3^(15/2)라는 I의 결론으로 이어진다. 학생의 결론은 I의 핵심 전제를 포함한다."
+              }
+            ],
+            "eval_summary": "MISS attempt1 dry0 | 99tok | disc 8971ms + match 8625ms | bonus 3"
+          },
+          {
+            "attempt": 2,
+            "think_tokens": 153,
+            "discover_elapsed_ms": 5740,
+            "match_elapsed_ms": 1693,
+            "discover_input_tokens": 858,
+            "discover_output_tokens": 340,
+            "match_input_tokens": 632,
+            "match_output_tokens": 8,
+            "claude_output": "[시도] $3^{15/2}$을 더 간단한 형태로 정리하기\n\n[계산]\n$$3^{15/2} = 3^{7 + \\frac{1}{2}} = 3^7 \\cdot 3^{\\frac{1}{2}} = 2187\\sqrt{3}$$\n\n[결론] 모든 양수 $a$의 값의 곱은 $\\mathbf{2187\\sqrt{3}}$이다.",
+            "matches": [],
+            "eval_summary": "MISS attempt2 dry0 | 153tok | disc 5740ms + match 1693ms | bonus 0"
+          },
+          {
+            "attempt": 3,
+            "think_tokens": 225,
+            "discover_elapsed_ms": 16424,
+            "match_elapsed_ms": 999,
+            "discover_input_tokens": 903,
+            "discover_output_tokens": 1070,
+            "match_input_tokens": 645,
+            "match_output_tokens": 8,
+            "claude_output": "[시도] 내가 해볼 것: $3^{15/2}$를 더 간단한 형태로 표현하기\n\n[계산]\n$$3^{15/2} = 3^{7 + \\frac{1}{2}} = 3^7 \\times 3^{\\frac{1}{2}} = 2187\\sqrt{3}$$\n\n[결론] 모든 양수 $a$의 값의 곱은 $3^{15/2} = 2187\\sqrt{3}$이다.",
+            "matches": [],
+            "eval_summary": "MISS attempt3 dry1 | 225tok | disc 16424ms + match 999ms | bonus 0"
+          },
+          {
+            "attempt": 4,
+            "think_tokens": 358,
+            "discover_elapsed_ms": 20530,
+            "match_elapsed_ms": 4755,
+            "discover_input_tokens": 908,
+            "discover_output_tokens": 1384,
+            "match_input_tokens": 865,
+            "match_output_tokens": 153,
+            "claude_output": "[시도] 단서A의 부등식에 $a = 3^{k/2}$를 대입해서, $k = -3$과 $k = 6$이 실제로 조건을 만족하는지 확인한다.\n\n[계산]\n$a = 3^{k/2}$이므로 $\\log_2 a = \\frac{k}{2}\\log_2 3 \\approx \\frac{k}{2} \\times 1.585$\n\n- $k = -3$일 때: $\\log_2 a \\approx \\frac{-3}{2} \\times 1.585 \\approx -2.377$ → $-3 < -2.377$ ✓\n- $k = 6$일 때: $\\log_2 a \\approx \\frac{6}{2} \\times 1.585 \\approx 4.755$ → $4.755 < 5$ ✓\n\n[결론] 경계값 $k = -3$과 $k = 6$ 모두 단서A의 **열린** 부등식을 만족하므로, 유효한 $k$의 범위는 기존 10개 $\\{-3,-2,-1,0,1,2,3,4,5,6\\}$ 그대로이며, 제외되는 값은 없다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 0.6,
+                "reason": "학생은 -3 < log₂a < 5 범위를 암묵적으로 사용하여 k=-3, k=6이 만족하는지 확인했으나, 명시적으로 t=log₂a로 치환하는 표현은 없음. 단, -3과 5를 경계값으로 인식하고 열린 부등식임을 확인한 점에서 부분적으로 일치"
+              }
+            ],
+            "eval_summary": "MISS attempt4 dry2 | 358tok | disc 20530ms + match 4755ms | bonus 0"
+          },
+          {
+            "attempt": 5,
+            "think_tokens": 195,
+            "discover_elapsed_ms": 11943,
+            "match_elapsed_ms": 1500,
+            "discover_input_tokens": 908,
+            "discover_output_tokens": 655,
+            "match_input_tokens": 651,
+            "match_output_tokens": 8,
+            "claude_output": "[시도] 내가 해볼 것: $3^{15/2}$을 정수와 루트의 형태로 변환하기\n\n[계산]\n$$3^{15/2} = 3^{7 + \\frac{1}{2}} = 3^7 \\times 3^{\\frac{1}{2}} = 2187\\sqrt{3}$$\n\n[결론] 모든 양수 $a$의 값의 곱은 $3^{15/2} = \\mathbf{2187\\sqrt{3}}$이다.",
+            "matches": [],
+            "eval_summary": "MISS attempt5 dry3 | 195tok | disc 11943ms + match 1500ms | bonus 0"
+          }
+        ]
+      },
+      {
+        "note_index": 2,
+        "note_id": "note2",
+        "neuron": "사실5",
+        "neuron_type": "사실",
+        "note_text": "$y=2^x$는 순증가이므로 $2^{-3} < a < 2^5$, 즉 $\\frac{1}{8} < a < 32$이다",
+        "from": [
+          "note1"
+        ],
+        "hint_level": 4,
+        "is_bonus": false,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note2",
+        "miss_type": "genuine",
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 190,
+            "discover_elapsed_ms": 9551,
+            "match_elapsed_ms": 1606,
+            "discover_input_tokens": 581,
+            "discover_output_tokens": 564,
+            "match_input_tokens": 689,
+            "match_output_tokens": 8,
+            "claude_output": "[시도] 조건 (나)에서 $\\log_3 a^2$이 정수임을 이용해 $a$의 형태를 구해보기\n\n[계산]\n$$\\log_3 a^2 = n \\text{ (정수)}$$\n$$\\Rightarrow a^2 = 3^n$$\n$$\\Rightarrow a = 3^{n/2} \\quad (a > 0 \\text{이므로})$$\n\n[결론] 조건 (나)를 만족하는 양수 $a$는 **$a = 3^{n/2}$** (단, $n$은 정수) 꼴이어야 한다.",
+            "matches": [],
+            "eval_summary": "MISS attempt0 dry0 | 190tok | disc 9551ms + match 1606ms | bonus 0"
+          },
+          {
+            "attempt": 1,
+            "think_tokens": 126,
+            "discover_elapsed_ms": 6378,
+            "match_elapsed_ms": 1848,
+            "discover_input_tokens": 650,
+            "discover_output_tokens": 413,
+            "match_input_tokens": 638,
+            "match_output_tokens": 8,
+            "claude_output": "[시도] 단서B에서 $\\log_3 a^2 = n$ (정수)으로 놓고 $a$를 구해볼 것\n\n[계산]\n$$\\log_3 a^2 = n \\implies a^2 = 3^n \\implies a = 3^{n/2}$$\n($a$는 양수이므로 양의 제곱근)\n\n[결론] $a = 3^{n/2}$ (단, $n$은 정수)",
+            "matches": [],
+            "eval_summary": "MISS attempt1 dry1 | 126tok | disc 6378ms + match 1848ms | bonus 0"
+          },
+          {
+            "attempt": 2,
+            "think_tokens": 235,
+            "discover_elapsed_ms": 11229,
+            "match_elapsed_ms": 1047,
+            "discover_input_tokens": 633,
+            "discover_output_tokens": 870,
+            "match_input_tokens": 689,
+            "match_output_tokens": 8,
+            "claude_output": "[시도] 조건 (나)에서 $\\log_3 a^2$이 정수임을 이용해 $a$를 3의 거듭제곱 형태로 표현해보기\n\n[계산]\n$$\\log_3 a^2 = n \\quad (n \\text{은 정수})$$\n$$a^2 = 3^n$$\n$$a = 3^{n/2} \\quad (a > 0 \\text{이므로})$$\n\n[결론] 조건 (나)와 (다)에 의해 $a = 3^{n/2}$ ($n$은 정수) 형태로 나타낼 수 있다.",
+            "matches": [],
+            "eval_summary": "MISS attempt2 dry2 | 235tok | disc 11229ms + match 1047ms | bonus 0"
+          },
+          {
+            "attempt": 3,
+            "think_tokens": 131,
+            "discover_elapsed_ms": 11192,
+            "match_elapsed_ms": 1525,
+            "discover_input_tokens": 631,
+            "discover_output_tokens": 736,
+            "match_input_tokens": 670,
+            "match_output_tokens": 8,
+            "claude_output": "[시도] 조건 (나)에서 $\\log_3 a^2$이 정수임을 이용해 $a$의 형태를 구해볼 것\n\n[계산]\n$\\log_3 a^2 = n$ (정수)으로 놓으면\n\n$$a^2 = 3^n$$\n\n$$a = 3^{n/2} \\quad (a > 0 \\text{이므로})$$\n\n[결론] $a$는 반드시 $a = 3^{n/2}$ (단, $n$은 정수) 꼴이어야 한다.",
+            "matches": [],
+            "eval_summary": "MISS attempt3 dry3 | 131tok | disc 11192ms + match 1525ms | bonus 0"
+          }
+        ]
+      },
+      {
+        "note_index": 3,
+        "note_id": "note4",
+        "neuron": "연산17",
+        "neuron_type": "연산",
+        "note_text": "$\\log_3 a^2 = 2\\log_3 a$이다",
+        "from": [
+          "단서B"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 4,
+        "note_id": "note5",
+        "neuron": "사실12",
+        "neuron_type": "사실",
+        "note_text": "$\\log_3$은 순증가이므로 $\\log_3 \\frac{1}{8} < \\log_3 a < \\log_3 32$이다",
+        "from": [
+          "note2"
+        ],
+        "hint_level": 2,
+        "is_bonus": false,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note5",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note5",
+            "in_target": "note5",
+            "attempt": 2,
+            "score": 0.72,
+            "reason": "학생이 log₃(1/8)과 log₃(32)를 경계값으로 사용하여 n의 범위를 구했으며, 이는 log₃(1/8) < log₃a < log₃32라는 C의 결론과 수학적으로 동일한 내용을 포함한다."
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 70,
+            "discover_elapsed_ms": 5486,
+            "match_elapsed_ms": 917,
+            "discover_input_tokens": 662,
+            "discover_output_tokens": 290,
+            "match_input_tokens": 657,
+            "match_output_tokens": 8,
+            "claude_output": "[시도] $\\log_3 a^2 = 2\\log_3 a$가 정수이므로, 이를 정수 $n$으로 놓기\n\n[계산]\n$2\\log_3 a = n$ (단, $n$은 정수)\n\n$\\log_3 a = \\dfrac{n}{2}$\n\n$a = 3^{n/2}$\n\n[결론] $\\log_3 a^2$이 정수 $n$이면, $a = 3^{n/2}$ 형태로 표현된다.",
+            "matches": [],
+            "eval_summary": "MISS attempt0 dry0 | 70tok | disc 5486ms + match 917ms | bonus 0"
+          },
+          {
+            "attempt": 1,
+            "think_tokens": 57,
+            "discover_elapsed_ms": 4549,
+            "match_elapsed_ms": 3515,
+            "discover_input_tokens": 744,
+            "discover_output_tokens": 251,
+            "match_input_tokens": 636,
+            "match_output_tokens": 152,
+            "claude_output": "[시도] $\\log_3 a^2 = n$ (정수)으로 놓고 $a$를 $n$으로 표현하기\n\n[계산]\n$$2\\log_3 a = n \\implies \\log_3 a = \\frac{n}{2} \\implies a = 3^{n/2}$$\n\n[결론] $\\log_3 a^2 = n$ (정수)으로 놓으면 $a = 3^{n/2}$이다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 0.5,
+                "reason": "학생은 log_3 a = n/2로 놓아 a = 3^(n/2)를 구했고, 후보 A는 log_2 a = t로 놓아 a = 2^t를 구했다. 치환 방식은 유사하지만 밑이 다르고(3 vs 2) 범위 조건이 학생 서술에는 없어 부분적으로만 대응됨"
+              }
+            ],
+            "eval_summary": "MISS attempt1 dry1 | 57tok | disc 4549ms + match 3515ms | bonus 0"
+          },
+          {
+            "attempt": 2,
+            "think_tokens": 52,
+            "discover_elapsed_ms": 8665,
+            "match_elapsed_ms": 2759,
+            "discover_input_tokens": 714,
+            "discover_output_tokens": 514,
+            "match_input_tokens": 903,
+            "match_output_tokens": 123,
+            "claude_output": "[시도] `a = 3^(n/2)` 형태로 놓고, 범위 조건 `1/8 < a < 32`에 대입해보기\n\n[계산]\n`2log₃a = n` (n은 정수)으로 놓으면 `a = 3^(n/2)`\n\n범위에 대입:\n$$\\frac{1}{8} < 3^{n/2} < 32$$\n\n$$3^{-3} < \\frac{1}{8} \\quad \\text{이고} \\quad 3^3 = 27 < 32 < 3^4 = 81$$\n\n이므로 정수 n의 범위: **n/2의 지수 범위**를 정수로 좁히면\n\n$$3^{n/2} > \\frac{1}{8} \\Rightarrow n/2 > \\log_3\\frac{1}{8} \\approx -1.89 \\Rightarrow n \\geq -3$$\n$$3^{n/2} < 32 \\Rightarrow n/2 < \\log_3 32 \\approx 3.15 \\Rightarrow n \\leq 6$$\n\n[결론] n은 `-3 ≤ n ≤ 6`을 만족하는 정수이므로, **n = -3, -2, -1, 0, 1, 2, 3, 4, ",
+            "matches": [
+              {
+                "label": "C",
+                "score": 0.72,
+                "reason": "학생이 log₃(1/8)과 log₃(32)를 경계값으로 사용하여 n의 범위를 구했으며, 이는 log₃(1/8) < log₃a < log₃32라는 C의 결론과 수학적으로 동일한 내용을 포함한다."
+              }
+            ],
+            "eval_summary": "FOUND H2 | 52tok | disc 8665ms + match 2759ms | bonus 0"
+          }
+        ]
+      },
+      {
+        "note_index": 5,
+        "note_id": "note6",
+        "neuron": "연산17",
+        "neuron_type": "연산",
+        "note_text": "$2\\log_3 \\frac{1}{8} < 2\\log_3 a < 2\\log_3 32$, 즉 $\\log_3 \\frac{1}{64} < \\log_3 a^2 < \\log_3 1024$이다",
+        "from": [
+          "note4",
+          "note5"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note6",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note6",
+            "in_target": "note6",
+            "attempt": 0,
+            "score": 1,
+            "reason": "학생의 계산에서 2log₃(1/8) < 2log₃a < 2log₃32 를 명시적으로 포함하고 있으며, 이는 후보 C의 핵심 결론과 완전히 일치한다"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 187,
+            "discover_elapsed_ms": 11605,
+            "match_elapsed_ms": 2496,
+            "discover_input_tokens": 711,
+            "discover_output_tokens": 895,
+            "match_input_tokens": 728,
+            "match_output_tokens": 103,
+            "claude_output": "[시도] 4번에서 구한 $\\log_3 a$의 범위를 이용해 $2\\log_3 a$의 범위를 구하기\n\n[계산]\n$$2\\log_3 \\frac{1}{8} < 2\\log_3 a < 2\\log_3 32$$\n$$2\\log_3 2^{-3} < 2\\log_3 a < 2\\log_3 2^5$$\n$$-6\\log_3 2 < 2\\log_3 a < 10\\log_3 2$$\n\n$\\log_3 2 \\approx 0.631$이므로: $-3.785\\cdots < 2\\log_3 a < 6.309\\cdots$\n\n[결론] $\\log_3 a^2 = 2\\log_3 a$가 취할 수 있는 정수값은 $-3, -2, -1, 0, 1, 2, 3, 4, 5, 6$이다.",
+            "matches": [
+              {
+                "label": "C",
+                "score": 1,
+                "reason": "학생의 계산에서 2log₃(1/8) < 2log₃a < 2log₃32 를 명시적으로 포함하고 있으며, 이는 후보 C의 핵심 결론과 완전히 일치한다"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 187tok | disc 11605ms + match 2496ms | bonus 0"
+          }
+        ]
+      },
+      {
+        "note_index": 6,
+        "note_id": "note9",
+        "neuron": "전략17",
+        "neuron_type": "전략",
+        "note_text": "$\\log_3 a^2$이 정수이고 범위가 $(-4, -3)$과 $(6, 7)$ 사이의 열린 구간 내이므로 $\\log_3 a^2 \\in \\{-3,\\,-2,\\,-1,\\,0,\\,1,\\,2,\\,3,\\,4,\\,5,\\,6\\}$이다",
+        "from": [
+          "note6",
+          "note7",
+          "note8"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 7,
+        "note_id": "note10",
+        "neuron": "연산2",
+        "neuron_type": "연산",
+        "note_text": "$\\log_3 a^2 = k$이면 $a^2 = 3^k$이고, $a > 0$이므로 $a = 3^{k/2}$이다",
+        "from": [
+          "note9",
+          "단서C"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 8,
+        "note_id": "note12",
+        "neuron": "연산18",
+        "neuron_type": "연산",
+        "note_text": "$\\prod_{k=-3}^{6} 3^{k/2} = 3^{\\frac{1}{2}\\sum_{k=-3}^{6} k}$이다",
+        "from": [
+          "note10",
+          "note11"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 9,
+        "note_id": "END",
+        "neuron": "연산18",
+        "neuron_type": "연산",
+        "note_text": "$\\sum_{k=-3}^{6} k = (-3)+(-2)+(-1)+0+1+2+3+4+5+6 = 15$이므로 모든 $a$의 값의 곱은 $3^{15/2}$이다",
+        "from": [
+          "note12"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      }
+    ],
+    "_debug": "v7-split"
   }
 }

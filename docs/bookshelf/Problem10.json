@@ -1,14 +1,1424 @@
 {
   "problem_id": "Problem10",
-  "_filename": "Problem10.json",
-  "_stub": true,
-  "tags": {
-    "source": "",
-    "theme": "",
-    "difficulty": "",
-    "custom": [
-      "2025"
-    ]
-  },
-  "metadata": {}
+  "clues": [
+    {
+      "id": "단서A",
+      "text": "$y = 2^{x-1} - 4$ (첫째 곡선)"
+    },
+    {
+      "id": "단서B",
+      "text": "$y = -\\dfrac{1}{7} \\times 2^{n-x} + a$ (둘째 곡선)"
+    },
+    {
+      "id": "단서C",
+      "text": "두 곡선이 서로 다른 두 점 A, B에서 만난다"
+    },
+    {
+      "id": "단서D",
+      "text": "선분 AB가 $x$축과 만나지 않으면서 $y$축과 만나도록 하는 정수 $a$의 개수가 3이다"
+    },
+    {
+      "id": "단서E",
+      "text": "$n$은 자연수이다"
+    }
+  ],
+  "skeleton": [
+    {
+      "from": "단서A",
+      "to": "note1",
+      "neuron": "사실5",
+      "note": "$a=2>1$일 때 $2^x$는 순증가이다",
+      "main": false,
+      "step": 1
+    },
+    {
+      "from": "note1",
+      "to": "note2",
+      "neuron": "사실41",
+      "note": "$2^{x-1}$은 순증가이다",
+      "main": false,
+      "step": 1
+    },
+    {
+      "from": "note2",
+      "to": "note3",
+      "neuron": "사실41",
+      "note": "$f(x) = 2^{x-1}-4$는 순증가이다",
+      "step": 1
+    },
+    {
+      "from": "단서A",
+      "to": "note4",
+      "neuron": "전략25",
+      "note": "$f(0) = 2^{-1}-4 = -\\frac{7}{2}$이고 $f(3) = 2^2 - 4 = 0$이다",
+      "step": 1
+    },
+    {
+      "from": [
+        "note3",
+        "note4"
+      ],
+      "to": "note5",
+      "neuron": "사실51",
+      "note": "$x<3$이면 $f(x)<0$이고, $x>3$이면 $f(x)>0$이다",
+      "step": 1
+    },
+    {
+      "from": "note1",
+      "to": "note6",
+      "neuron": "사실42",
+      "note": "$2^{-x}$는 순감소이다",
+      "main": false,
+      "step": 2
+    },
+    {
+      "from": "note6",
+      "to": "note7",
+      "neuron": "사실41",
+      "note": "$2^{n-x}$는 순감소이다",
+      "main": false,
+      "step": 2
+    },
+    {
+      "from": "note7",
+      "to": "note8",
+      "neuron": "사실40",
+      "note": "$-\\frac{1}{7}\\times 2^{n-x}$는 순증가이다",
+      "main": false,
+      "step": 2
+    },
+    {
+      "from": "note8",
+      "to": "note9",
+      "neuron": "사실41",
+      "note": "$g(x) = -\\frac{1}{7}\\times 2^{n-x}+a$는 순증가이다",
+      "step": 2
+    },
+    {
+      "from": "단서A",
+      "to": "note10",
+      "neuron": "사실84",
+      "note": "$2^x$는 아래로 볼록이다",
+      "main": false,
+      "step": 2
+    },
+    {
+      "from": "note10",
+      "to": "note11",
+      "neuron": "사실88",
+      "note": "$2^{x-1}$은 아래로 볼록이다",
+      "main": false,
+      "step": 2
+    },
+    {
+      "from": "note11",
+      "to": "note12",
+      "neuron": "사실90",
+      "note": "$f(x) = 2^{x-1}-4$는 아래로 볼록이다",
+      "step": 2
+    },
+    {
+      "from": "note10",
+      "to": "note13",
+      "neuron": "사실88",
+      "note": "$2^{n-x}$는 아래로 볼록이다",
+      "main": false,
+      "step": 2
+    },
+    {
+      "from": "note13",
+      "to": "note14",
+      "neuron": "사실89",
+      "note": "$\\frac{1}{7}\\times 2^{n-x}$는 아래로 볼록이다",
+      "main": false,
+      "step": 2
+    },
+    {
+      "from": "note14",
+      "to": "note15",
+      "neuron": "사실87",
+      "note": "$-\\frac{1}{7}\\times 2^{n-x}$는 위로 볼록이다",
+      "main": false,
+      "step": 2
+    },
+    {
+      "from": "note15",
+      "to": "note16",
+      "neuron": "사실90",
+      "note": "$g(x) = -\\frac{1}{7}\\times 2^{n-x}+a$는 위로 볼록이다",
+      "step": 2
+    },
+    {
+      "from": "note16",
+      "to": "note17",
+      "neuron": "사실87",
+      "note": "$-g(x)$는 아래로 볼록이다",
+      "main": false,
+      "step": 2
+    },
+    {
+      "from": [
+        "note12",
+        "note17"
+      ],
+      "to": "note18",
+      "neuron": "사실90",
+      "note": "$h(x) = f(x) - g(x)$는 아래로 볼록이다",
+      "main": false,
+      "step": 2
+    },
+    {
+      "from": [
+        "note18",
+        "단서C"
+      ],
+      "to": "note19",
+      "neuron": "사실85",
+      "note": "두 교점 A, B 사이 구간에서 $g(x) \\geq f(x)$이고, 바깥 구간에서 $g(x) \\leq f(x)$이다",
+      "step": 2
+    },
+    {
+      "from": [
+        "note19",
+        "note4"
+      ],
+      "to": "note20",
+      "neuron": "사실85",
+      "note": "$x=0$이 두 교점 사이에 있을 조건은 $g(0) \\geq f(0) = -\\frac{7}{2}$이다",
+      "step": 3
+    },
+    {
+      "from": [
+        "note19",
+        "note5"
+      ],
+      "to": "note21",
+      "neuron": "사실85",
+      "note": "$x=3$이 교점 바깥에 있을 조건은 $g(3) < f(3) = 0$이다",
+      "step": 3
+    },
+    {
+      "from": "단서B",
+      "to": "note22",
+      "neuron": "전략25",
+      "note": "$g(0) = -\\frac{1}{7}\\times 2^n + a$이고 $g(3) = -\\frac{1}{7}\\times 2^{n-3}+a$이다",
+      "step": 3
+    },
+    {
+      "from": [
+        "note20",
+        "note22"
+      ],
+      "to": "note23",
+      "neuron": "연산21",
+      "note": "$a \\geq \\frac{2^n}{7} - \\frac{7}{2}$이다",
+      "step": 3
+    },
+    {
+      "from": [
+        "note21",
+        "note22"
+      ],
+      "to": "note24",
+      "neuron": "연산21",
+      "note": "$a < \\frac{2^{n-3}}{7}$이다",
+      "step": 3
+    },
+    {
+      "from": [
+        "note23",
+        "note24"
+      ],
+      "to": "note25",
+      "neuron": "전략2",
+      "note": "$\\frac{2^n}{7} - \\frac{7}{2} \\leq a < \\frac{2^{n-3}}{7}$이다",
+      "step": 3
+    },
+    {
+      "from": "note25",
+      "to": "note26",
+      "neuron": "연산21",
+      "note": "구간이 비어있지 않을 조건은 $\\frac{2^n}{7} - \\frac{7}{2} < \\frac{2^{n-3}}{7}$이다",
+      "step": 4
+    },
+    {
+      "from": "note26",
+      "to": "note27",
+      "neuron": "연산18",
+      "note": "$2^n = 2^3 \\cdot 2^{n-3}$을 대입하면 $\\frac{7 \\cdot 2^{n-3}}{7} < \\frac{7}{2}$, 즉 $2^{n-3} < \\frac{7}{2}$이다",
+      "step": 4
+    },
+    {
+      "from": [
+        "note27",
+        "단서E"
+      ],
+      "to": "note28",
+      "neuron": "전략17",
+      "note": "$n=1{:}\\,2^{-2}=\\frac{1}{4}<\\frac{7}{2}$✓, $n=2{:}\\,\\frac{1}{2}<\\frac{7}{2}$✓, $n=3{:}\\,1<\\frac{7}{2}$✓, $n=4{:}\\,2<\\frac{7}{2}$✓, $n=5{:}\\,4>\\frac{7}{2}$✗이다. $n \\leq 4$이다",
+      "step": 4
+    },
+    {
+      "from": "note28",
+      "to": "note29",
+      "neuron": "사실51",
+      "note": "$n \\leq 4$일 때 $2^{n-3} \\leq 2^1 = 2$이고 $\\frac{2^{n-3}}{7} \\leq \\frac{2}{7} < 1$이다",
+      "step": 5
+    },
+    {
+      "from": [
+        "note25",
+        "note29"
+      ],
+      "to": "note30",
+      "neuron": "전략25",
+      "note": "$a < \\frac{2^{n-3}}{7} < 1$이고 $a$는 정수이므로 $a$의 최댓값은 $0$이다",
+      "step": 5
+    },
+    {
+      "from": [
+        "note30",
+        "단서D"
+      ],
+      "to": "note31",
+      "neuron": "전략17",
+      "note": "정수 $a$가 정확히 3개이려면 $a = 0,\\,-1,\\,-2$가 구간에 포함되고 $a=-3$은 포함되지 않아야 한다",
+      "step": 6
+    },
+    {
+      "from": "note31",
+      "to": "note32",
+      "neuron": "연산21",
+      "note": "$a=-2$ 포함 조건: $-2 \\geq \\frac{2^n}{7}-\\frac{7}{2}$, 즉 $2^n \\leq \\frac{21}{2} = 10.5$이다",
+      "step": 6
+    },
+    {
+      "from": "note31",
+      "to": "note33",
+      "neuron": "연산21",
+      "note": "$a=-3$ 불포함 조건: $-3 < \\frac{2^n}{7}-\\frac{7}{2}$, 즉 $2^n > \\frac{7}{2} = 3.5$이다",
+      "step": 6
+    },
+    {
+      "from": [
+        "note32",
+        "note33"
+      ],
+      "to": "note34",
+      "neuron": "전략2",
+      "note": "$3.5 < 2^n \\leq 10.5$이다",
+      "step": 6
+    },
+    {
+      "from": [
+        "note34",
+        "note28"
+      ],
+      "to": "note35",
+      "neuron": "전략17",
+      "note": "$n=1{:}\\,2^1=2\\leq 3.5$✗, $n=2{:}\\,2^2=4$✓, $n=3{:}\\,2^3=8$✓, $n=4{:}\\,2^4=16>10.5$✗이다. $n=2,\\,3$이다",
+      "step": 6
+    },
+    {
+      "from": "note35",
+      "to": "note36",
+      "neuron": "전략1",
+      "note": "$2^x = u > 0$으로 치환하면 교점 조건은 $\\frac{u}{2}+\\frac{2^n}{7u}-4=a$이다",
+      "main": false,
+      "step": 7
+    },
+    {
+      "from": "note36",
+      "to": "note37",
+      "neuron": "전략25",
+      "note": "$n=2,\\,a\\in\\{0,-1,-2\\}$: 최솟값 $\\approx -2.93$이고 각 $a$값이 이보다 크므로 교점 2개 존재한다. $n=3,\\,a\\in\\{0,-1,-2\\}$: 최솟값 $\\approx -2.49$이고 각 $a$값이 이보다 크므로 교점 2개 존재한다",
+      "main": false,
+      "step": 7
+    },
+    {
+      "from": "note35",
+      "to": "END",
+      "neuron": "전략25",
+      "note": "조건을 만족하는 자연수 $n$은 $2$와 $3$이고, 합은 $2+3=5$이다",
+      "step": 8
+    }
+  ],
+  "solution": "STEP 1. 첫째 곡선 $f(x)=2^{x-1}-4$는 순증가이다. $f(0)=-\\frac{7}{2}$이고 $f(3)=0$이므로 $x<3$이면 $f(x)<0$이고 $x>3$이면 $f(x)>0$이다.\n\nSTEP 2. 둘째 곡선 $g(x)=-\\frac{1}{7}\\times 2^{n-x}+a$는 순증가이다. $f(x)$는 아래로 볼록이고 $g(x)$는 위로 볼록이다. 차이함수 $h(x)=f(x)-g(x)$는 아래로 볼록이므로, 두 교점 A, B 사이 구간에서 $g(x)\\geq f(x)$이고 바깥에서 $g(x)\\leq f(x)$이다.\n\nSTEP 3. 선분 AB가 $y$축과 만나려면 $x=0$이 교점 사이에 있어야 하므로 $g(0)\\geq f(0)=-\\frac{7}{2}$, 즉 $a\\geq\\frac{2^n}{7}-\\frac{7}{2}$이다. 선분 AB가 $x$축과 만나지 않으려면 두 교점 모두 $y<0$이어야 하므로 $g(3)<f(3)=0$, 즉 $a<\\frac{2^{n-3}}{7}$이다. 두 부등식을 합치면 $\\frac{2^n}{7}-\\frac{7}{2}\\leq a<\\frac{2^{n-3}}{7}$이다.\n\nSTEP 4. 구간이 비어있지 않으려면 $\\frac{2^n}{7}-\\frac{7}{2}<\\frac{2^{n-3}}{7}$이고, $2^n=8\\cdot 2^{n-3}$을 대입하면 $2^{n-3}<\\frac{7}{2}$이다. 자연수 $n$에 대해 전수조사하면 $n\\leq 4$이다.\n\nSTEP 5. $n\\leq 4$일 때 $\\frac{2^{n-3}}{7}\\leq\\frac{2}{7}<1$이므로, 정수 $a$의 최댓값은 $0$이다.\n\nSTEP 6. 정수 $a$가 정확히 3개이려면 $a=0,-1,-2$가 포함되고 $a=-3$은 포함되지 않아야 한다. $a=-2$ 포함 조건에서 $2^n\\leq 10.5$이고, $a=-3$ 불포함 조건에서 $2^n>3.5$이다. 즉 $3.5<2^n\\leq 10.5$이고, 전수조사하면 $n=2$ ($2^2=4$✓)와 $n=3$ ($2^3=8$✓)만 적합하다.\n\nSTEP 7. (검증) $n=2,3$ 각각에서 $a\\in\\{0,-1,-2\\}$일 때 $2^x=u$로 치환하여 확인하면 교점이 2개 존재한다.\n\nSTEP 8. 조건을 만족하는 모든 자연수 $n$의 값의 합은 $2+3=5$이다.",
+  "statement": "# 21. (수능/모의고사) - 지수함수와 곡선의 교점 조건\n\n## Problem\n\n두 곡선 $y = 2^{x-1} - 4$, $y = -\\dfrac{1}{7} \\times 2^{n-x} + a$가 서로 다른 두 점 A, B에서 만날 때, 다음 조건이 성립하도록 하는 모든 자연수 $n$의 값의 합은? [4점]\n\n$$\\text{선분 AB가 } x\\text{축과 만나지 않으면서 } y\\text{축과 만나도록 하는 정수 } a\\text{의 개수가 3이다.}$$",
+  "thinking_profile": {
+    "_version": 6,
+    "_unit": "note",
+    "_isV6": true,
+    "total_think_tokens": 5011,
+    "total_notes": 24,
+    "hint_distribution": {
+      "0": 20,
+      "1": 1,
+      "2": 1,
+      "3": 1,
+      "4": 1
+    },
+    "avg_hint_level": 0.42,
+    "genuine_miss_count": 0,
+    "absorbed_miss_count": 1,
+    "bonus_count": 19,
+    "highlight_notes": [
+      "note3",
+      "note29",
+      "note4"
+    ],
+    "hardest_note": {
+      "note_id": "note3",
+      "neuron": "사실41",
+      "hint_level": 4,
+      "structural_difficulty": 0.12,
+      "miss_type": "absorbed",
+      "note_text": "$f(x) = 2^{x-1}-4$는 순증가이다"
+    },
+    "neuron_stats": {
+      "사실41": {
+        "type": "사실",
+        "appearances": 2,
+        "total_hint": 4,
+        "hint_levels": [
+          4,
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 2
+      },
+      "전략25": {
+        "type": "전략",
+        "appearances": 4,
+        "total_hint": 2,
+        "hint_levels": [
+          2,
+          0,
+          0,
+          0
+        ],
+        "bonus_count": 3,
+        "avg_hint_level": 0.5
+      },
+      "사실51": {
+        "type": "사실",
+        "appearances": 2,
+        "total_hint": 3,
+        "hint_levels": [
+          0,
+          3
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 1.5
+      },
+      "사실90": {
+        "type": "사실",
+        "appearances": 2,
+        "total_hint": 1,
+        "hint_levels": [
+          1,
+          0
+        ],
+        "bonus_count": 0,
+        "avg_hint_level": 0.5
+      },
+      "사실85": {
+        "type": "사실",
+        "appearances": 3,
+        "total_hint": 0,
+        "hint_levels": [
+          0,
+          0,
+          0
+        ],
+        "bonus_count": 3,
+        "avg_hint_level": 0
+      },
+      "연산21": {
+        "type": "연산",
+        "appearances": 5,
+        "total_hint": 0,
+        "hint_levels": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "bonus_count": 5,
+        "avg_hint_level": 0
+      },
+      "전략2": {
+        "type": "전략",
+        "appearances": 2,
+        "total_hint": 0,
+        "hint_levels": [
+          0,
+          0
+        ],
+        "bonus_count": 2,
+        "avg_hint_level": 0
+      },
+      "연산18": {
+        "type": "연산",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "전략17": {
+        "type": "전략",
+        "appearances": 3,
+        "total_hint": 0,
+        "hint_levels": [
+          0,
+          0,
+          0
+        ],
+        "bonus_count": 3,
+        "avg_hint_level": 0
+      }
+    },
+    "notes": [
+      {
+        "note_index": 1,
+        "note_id": "note3",
+        "neuron": "사실41",
+        "neuron_type": "사실",
+        "note_text": "$f(x) = 2^{x-1}-4$는 순증가이다",
+        "from": [
+          "note2"
+        ],
+        "hint_level": 4,
+        "is_bonus": false,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note3",
+        "miss_type": "absorbed",
+        "absorbed_in": "note4/시도4",
+        "absorb_reason": "f(x)=2^{x-1}-4가 순증가임은 note4/시도1에서 g(x)의 단조성과 함께 다루어지고, note4/시도4에서 f(x)의 y절편 계산 등 f(x)의 성질을 직접 활용하고 있으나, 'f(x)가 순증가'라는 핵심 결론은 note4/시도3에서 두 함수 모두 순증가임을 명시적으로 서술하고 있다",
+        "partial_history": [],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 70,
+            "discover_elapsed_ms": 6780,
+            "match_elapsed_ms": 6042,
+            "discover_input_tokens": 736,
+            "discover_output_tokens": 456,
+            "match_input_tokens": 1888,
+            "match_output_tokens": 147,
+            "claude_output": "[시도] 두 곡선의 교점 조건을 구하기 위해, 두 식을 같다고 놓고 정리한다.\n\n[계산]\n$$2^{x-1} - 4 = -\\frac{1}{7} \\cdot 2^{n-x} + a$$\n\n$t = 2^x$ (단, $t > 0$)으로 치환하면:\n\n$$\\frac{t}{2} - 4 = -\\frac{2^n}{7t} + a$$\n\n양변에 $14t$를 곱하면:\n\n$$7t^2 - 56t = -2 \\cdot 2^n + 14at$$\n\n$$7t^2 - (56 + 14a)t + 2^{n+1} = 0$$\n\n[결론] 두 교점의 $x$좌표에 해당하는 $t = 2^x$ 값은 이차방정식 $7t^2 - (56+14a)t + 2^{n+1} = 0$의 두 양의 실근이다.",
+            "matches": [
+              {
+                "label": "G",
+                "score": 0.7,
+                "reason": "이차방정식의 두 양의 실근이 교점에 해당한다는 결론은, 두 교점 사이에서 g≥f라는 대소 관계(G)와 수학적으로 연결되지만, 학생의 서술은 이차방정식의 근 조건을 직접 도출한 것으로 G의 결론을 암시적으로 포함한다"
+              }
+            ],
+            "eval_summary": "MISS attempt0 dry0 | 70tok | disc 6780ms + match 6042ms | bonus 1"
+          },
+          {
+            "attempt": 1,
+            "think_tokens": 187,
+            "discover_elapsed_ms": 15937,
+            "match_elapsed_ms": 7482,
+            "discover_input_tokens": 812,
+            "discover_output_tokens": 1075,
+            "match_input_tokens": 1895,
+            "match_output_tokens": 316,
+            "claude_output": "[시도] 두 곡선을 같다고 놓고 $t = 2^x$로 치환해 교점 방정식을 정리한다.\n\n[계산]\n$$2^{x-1} - 4 = -\\frac{1}{7} \\cdot 2^{n-x} + a$$\n\n$t = 2^x$ ($t > 0$)으로 치환하면:\n\n$$\\frac{t}{2} - 4 = -\\frac{2^n}{7t} + a$$\n\n양변에 $14t$를 곱하면:\n\n$$7t^2 - 56t = -2^{n+1} + 14at$$\n\n$$7t^2 - 14(a+4)t + 2^{n+1} = 0$$\n\n[결론] 두 교점의 $x$좌표를 $x_1, x_2$라 하면 $t_i = 2^{x_i}$는 **$7t^2 - 14(a+4)t + 2^{n+1} = 0$의 두 양의 실근**이며, 근과 계수의 관계에 의해 $t_1 t_2 = \\dfrac{2^{n+1}}{7}$, $t_1 + t_2 = 2(a+4)$이다.",
+            "matches": [
+              {
+                "label": "X",
+                "score": 0,
+                "reason": "regex"
+              },
+              {
+                "label": "W",
+                "score": 0,
+                "reason": "regex"
+              }
+            ],
+            "eval_summary": "MISS attempt1 dry0 | 187tok | disc 15937ms + match 7482ms | bonus 0"
+          },
+          {
+            "attempt": 2,
+            "think_tokens": 328,
+            "discover_elapsed_ms": 22181,
+            "match_elapsed_ms": 12860,
+            "discover_input_tokens": 837,
+            "discover_output_tokens": 1488,
+            "match_input_tokens": 1853,
+            "match_output_tokens": 904,
+            "claude_output": "[시도] 선분 AB가 y축과 만나는 조건(x=0이 A, B 사이에 있는 조건)을 구한다\n\n[계산]\n두 곡선의 교점 조건: $t = 2^x$로 치환하면\n$$7t^2 - (56+14a)t + 2^{n+1} = 0 \\quad \\cdots h(t)=0$$\n이 이차방정식은 위로 볼록이 아니라 **아래로 볼록** (계수 7 > 0).\n\n$x=0$이 두 교점 사이 ↔ $t=1$이 두 근 사이 ↔ $h(1) < 0$:\n$$h(1) = 7 - (56+14a) + 2^{n+1} < 0$$\n$$2^{n+1} - 49 - 14a < 0$$\n$$a > \\frac{2^{n+1}-49}{14}$$\n\n[결론] 선분 AB가 y축과 만나는 조건은 $a > \\dfrac{2^{n+1}-49}{14}$ 이다.",
+            "matches": [
+              {
+                "label": "K",
+                "score": 0.85,
+                "reason": "regex"
+              },
+              {
+                "label": "H",
+                "score": 0.75,
+                "reason": "regex"
+              }
+            ],
+            "eval_summary": "MISS attempt2 dry1 | 328tok | disc 22181ms + match 12860ms | bonus 2"
+          },
+          {
+            "attempt": 3,
+            "think_tokens": 342,
+            "discover_elapsed_ms": 23586,
+            "match_elapsed_ms": 7260,
+            "discover_input_tokens": 918,
+            "discover_output_tokens": 1589,
+            "match_input_tokens": 1885,
+            "match_output_tokens": 287,
+            "claude_output": "[시도] 내가 해볼 것: 선분 AB가 x축과 만나지 않을 조건을 구하기 위해, 두 교점 A, B의 y좌표가 모두 음수인 조건 파악\n\n[계산]\n$$f(x) = 2^{x-1} - 4 = 0 \\Rightarrow 2^{x-1} = 4 \\Rightarrow x = 3$$\n\n즉 $f(x) < 0$이면 $x < 3$이고, $f(x) > 0$이면 $x > 3$이다.\n\n선분 AB가 x축을 만나지 않으려면 두 점 A, B의 y좌표가 **모두 같은 부호**여야 한다.\n두 교점에서 y값을 대입하면, 교점의 x좌표가 모두 3보다 작으면 두 y값이 모두 음수이다.\n\n따라서: **두 교점의 x좌표가 모두 3 미만**이어야 한다. 즉,\n\n$$g(3) < f(3) = 0$$\n\n$$g(3) = -\\frac{1}{7} \\cdot 2^{n-3} + a < 0 \\Rightarrow a < \\frac{2^{n-3}}{7} = \\frac{2^n}{56}$$\n\n[결론] 선분 AB가 x축과 만나지 않을 조건은 $a < \\df",
+            "matches": [
+              {
+                "label": "C",
+                "score": 1,
+                "reason": "학생이 'f(x)<0이면 x<3, f(x)>0이면 x>3'을 명시적으로 서술함 - 완전 일치"
+              },
+              {
+                "label": "I",
+                "score": 0.9,
+                "reason": "학생이 'g(3) < f(3) = 0' 조건을 명시적으로 사용함 - 거의 완전 일치"
+              },
+              {
+                "label": "J",
+                "score": 0.7,
+                "reason": "학생이 g(3) = -1/7 · 2^{n-3} + a를 계산하여 사용함. g(0)은 언급 없지만 g(3) 값은 일치"
+              },
+              {
+                "label": "L",
+                "score": 0.9,
+                "reason": "학생의 결론 a < 2^{n-3}/7이 L과 완전히 일치함 (2^n/56 = 2^{n-3}/7)"
+              }
+            ],
+            "eval_summary": "MISS attempt3 dry1 | 342tok | disc 23586ms + match 7260ms | bonus 4"
+          },
+          {
+            "attempt": 4,
+            "think_tokens": 280,
+            "discover_elapsed_ms": 20453,
+            "match_elapsed_ms": 5181,
+            "discover_input_tokens": 1079,
+            "discover_output_tokens": 1422,
+            "match_input_tokens": 1583,
+            "match_output_tokens": 261,
+            "claude_output": "[시도] 두 조건(단서 2, 7)을 연립하여 정수 $a$의 범위의 길이를 계산해볼 것\n\n[계산]\n정수 $a$가 만족해야 할 조건을 합치면:\n\n$$\\frac{2^n}{7} - \\frac{7}{2} \\leq a < \\frac{2^{n-3}}{7}$$\n\n이 구간의 길이를 계산:\n\n$$\\frac{2^{n-3}}{7} - \\left(\\frac{2^n}{7} - \\frac{7}{2}\\right) = \\frac{2^{n-3} - 2^n}{7} + \\frac{7}{2} = \\frac{-7 \\cdot 2^{n-3}}{7} + \\frac{7}{2} = \\frac{7}{2} - 2^{n-3}$$\n\n[결론] 정수 $a$의 범위의 구간 길이는 $\\dfrac{7}{2} - 2^{n-3}$이다.",
+            "matches": [
+              {
+                "label": "M",
+                "score": 1,
+                "reason": "학생의 결론에서 정수 a의 범위가 정확히 M의 내용과 일치한다"
+              },
+              {
+                "label": "N",
+                "score": 0.85,
+                "reason": "구간 길이 계산 과정에서 구간이 비어있지 않을 조건(분자가 양수)을 암묵적으로 다루고 있으며, 계산 구조가 N의 조건과 동일하다"
+              },
+              {
+                "label": "O",
+                "score": 0.7,
+                "reason": "구간 길이 7/2 - 2^{n-3}을 계산하는 과정에서 2^n = 2^3 * 2^{n-3} 변환을 사용했으며, 결론적으로 2^{n-3} < 7/2 조건과 연결된다"
+              }
+            ],
+            "eval_summary": "MISS attempt4 dry1 | 280tok | disc 20453ms + match 5181ms | bonus 3"
+          },
+          {
+            "attempt": 5,
+            "think_tokens": 126,
+            "discover_elapsed_ms": 7762,
+            "match_elapsed_ms": 3712,
+            "discover_input_tokens": 1270,
+            "discover_output_tokens": 571,
+            "match_input_tokens": 1351,
+            "match_output_tokens": 136,
+            "claude_output": "[시도] $2^{n-3} < \\frac{7}{2}$를 만족하는 자연수 $n$의 범위를 구해보겠습니다.\n\n[계산]\n$2^{n-3} < 3.5$를 각 자연수에 대해 확인:\n- $n=4$: $2^{4-3} = 2 < 3.5$ ✓\n- $n=5$: $2^{5-3} = 4 > 3.5$ ✗\n\n따라서 $n \\leq 4$이고, 자연수이므로 $n \\in \\{1, 2, 3, 4\\}$만 구간이 비어있지 않습니다.\n\n[결론] 구간이 비어있지 않을 조건을 만족하는 자연수 $n$은 $n = 1, 2, 3, 4$이다.",
+            "matches": [
+              {
+                "label": "P",
+                "score": 0.9,
+                "reason": "학생의 계산과 결론이 P와 거의 동일: n=1,2,3,4에서 2^(n-3) < 7/2 만족, n=5에서 불만족, n≤4 결론 일치. 다만 학생은 n=1,2,3을 명시적으로 계산하지 않았지만 결론은 동일"
+              }
+            ],
+            "eval_summary": "MISS attempt5 dry1 | 126tok | disc 7762ms + match 3712ms | bonus 1"
+          },
+          {
+            "attempt": 6,
+            "think_tokens": 346,
+            "discover_elapsed_ms": 21348,
+            "match_elapsed_ms": 5978,
+            "discover_input_tokens": 1413,
+            "discover_output_tokens": 1832,
+            "match_input_tokens": 1506,
+            "match_output_tokens": 300,
+            "claude_output": "[시도] 내가 해볼 것: 각 $n$ 값(1, 2, 3, 4)에 대해 정수 $a$의 개수를 세기\n\n[계산]\n구간은 $\\dfrac{2^n}{7} - \\dfrac{7}{2} \\leq a < \\dfrac{2^{n-3}}{7}$\n\n- **n=1:** 하한 $= \\frac{2}{7}-\\frac{7}{2} = -\\frac{45}{14} \\approx -3.21$, 상한 $= \\frac{1}{28} \\approx 0.04$\n  → 정수: $-3, -2, -1, 0$ → **4개** ✗\n\n- **n=2:** 하한 $= \\frac{4}{7}-\\frac{7}{2} = -\\frac{41}{14} \\approx -2.93$, 상한 $= \\frac{1}{14} \\approx 0.07$\n  → 정수: $-2, -1, 0$ → **3개** ✓\n\n- **n=3:** 하한 $= \\frac{8}{7}-\\frac{7}{2} = -\\frac{33}{14} \\approx -2.36$, 상한 $= \\frac{1}{7} \\a",
+            "matches": [
+              {
+                "label": "R",
+                "score": 0.85,
+                "reason": "학생이 상한이 1 미만임을 계산하여 a의 최댓값이 0임을 암묵적으로 사용함 (n=1~4 모두 상한<1이고 정수 최댓값=0)"
+              },
+              {
+                "label": "S",
+                "score": 0.9,
+                "reason": "학생이 정수 3개 조건으로 a=0,-1,-2가 포함되고 a=-3은 불포함이어야 함을 직접 검증하는 방식으로 풀이함"
+              },
+              {
+                "label": "W",
+                "score": 0.95,
+                "reason": "학생이 n=1,2,3,4 각각에 대해 동일한 판정을 수행하여 n=2,3이 조건을 만족함을 확인함"
+              },
+              {
+                "label": "X",
+                "score": 1,
+                "reason": "학생의 최종 결론이 n=2,3이고 합=5로 완전히 일치함"
+              }
+            ],
+            "eval_summary": "MISS attempt6 dry1 | 346tok | disc 21348ms + match 5978ms | bonus 4"
+          },
+          {
+            "attempt": 7,
+            "think_tokens": 228,
+            "discover_elapsed_ms": 18989,
+            "match_elapsed_ms": 6331,
+            "discover_input_tokens": 1673,
+            "discover_output_tokens": 1273,
+            "match_input_tokens": 1189,
+            "match_output_tokens": 308,
+            "claude_output": "[시도] 내가 해볼 것: 지금까지 구한 n=2, n=3이 정말 정수 a가 정확히 3개인지 최종 확인하기\n\n[계산]\n- $n=2$: 구간은 $\\frac{4}{7}-\\frac{7}{2} \\leq a < \\frac{4/8}{7} = \\frac{1}{14}$, 즉 약 $-2.93 \\leq a < 0.071$ → 정수: $a=-2,-1,0$ (3개 ✓)\n- $n=3$: 구간은 $\\frac{8}{7}-\\frac{7}{2} \\leq a < \\frac{1}{7}$, 즉 약 $-2.36 \\leq a < 0.143$ → 정수: $a=-2,-1,0$ (3개 ✓)\n- $n=1$: 구간은 $\\frac{2}{7}-\\frac{7}{2} \\leq a < \\frac{1}{28}$, 즉 약 $-3.21 \\leq a < 0.036$ → 정수: $a=-3,-2,-1,0$ (4개 ✗)\n- $n=4$: 구간은 $\\frac{16}{7}-\\frac{7}{2} \\leq a < \\frac{2}{7}$, 즉 약 $-1.21 \\le",
+            "matches": [
+              {
+                "label": "T",
+                "score": 0.85,
+                "reason": "학생이 n=2,3에서 a=-2가 포함됨을 확인했고, 이는 T의 조건 2^n ≤ 10.5와 수학적으로 동일한 내용을 검증한 것임"
+              },
+              {
+                "label": "U",
+                "score": 0.85,
+                "reason": "학생이 n=1에서 a=-3이 포함되어 조건 불만족임을 확인했고, 이는 U의 a=-3 불포함 조건 2^n > 3.5와 동일한 내용을 검증한 것임"
+              },
+              {
+                "label": "V",
+                "score": 0.8,
+                "reason": "학생의 결론에서 n=2,3만 만족한다는 것은 3.5 < 2^n ≤ 10.5 조건과 동일하며, n=1(2^1=2≤3.5)과 n=4(2^4=16>10.5)가 탈락함을 확인함"
+              }
+            ],
+            "eval_summary": "MISS attempt7 dry1 | 228tok | disc 18989ms + match 6331ms | bonus 3"
+          }
+        ]
+      },
+      {
+        "note_index": 2,
+        "note_id": "note4",
+        "neuron": "전략25",
+        "neuron_type": "전략",
+        "note_text": "$f(0) = 2^{-1}-4 = -\\frac{7}{2}$이고 $f(3) = 2^2 - 4 = 0$이다",
+        "from": [
+          "단서A"
+        ],
+        "hint_level": 2,
+        "is_bonus": false,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note4",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note4",
+            "in_target": "note4",
+            "attempt": 4,
+            "score": 0.7,
+            "reason": "학생은 f(0) = -7/2를 구했고, 후보 B도 f(0) = 2^{-1}-4 = -7/2를 포함하고 있어 이 부분은 완전히 일치. 다만 후보 B는 f(3)=0도 포함하는데 학생은 이를 언급하지 않아 부분적 일치"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 341,
+            "discover_elapsed_ms": 18662,
+            "match_elapsed_ms": 1037,
+            "discover_input_tokens": 776,
+            "discover_output_tokens": 1547,
+            "match_input_tokens": 853,
+            "match_output_tokens": 8,
+            "claude_output": "[시도] 내가 해볼 것: 선분 AB가 y축과 만나는 조건을 부등식으로 나타내기\n\n[계산]\n$t = 2^x$로 치환하면, 두 곡선의 교점의 $x$좌표 $x_1, x_2$에 대해 $t_i = 2^{x_i}$이므로:\n\n선분 AB가 y축과 만나려면 → $x_1 < 0 < x_2$ → $t_1 < 1 < t_2$\n\n즉, 이차방정식 $7t^2 - (56+14a)t + 2^{n+1} = 0$에서 $t = 1$이 두 근 사이에 위치해야 하므로:\n\n$$f(1) = 7 - (56+14a) + 2^{n+1} = 2^{n+1} - 49 - 14a < 0$$\n\n[결론] 선분 AB가 y축과 만나는 조건은 $a > \\dfrac{2^{n+1}-49}{14}$이다.",
+            "matches": [],
+            "eval_summary": "MISS attempt0 dry0 | 341tok | disc 18662ms + match 1037ms | bonus 0"
+          },
+          {
+            "attempt": 1,
+            "think_tokens": 64,
+            "discover_elapsed_ms": 6511,
+            "match_elapsed_ms": 2423,
+            "discover_input_tokens": 830,
+            "discover_output_tokens": 376,
+            "match_input_tokens": 779,
+            "match_output_tokens": 65,
+            "claude_output": "[시도] 내가 해볼 것: 둘째 곡선 $g(x) = -\\dfrac{1}{7} \\times 2^{n-x} + a$의 단조성 파악\n\n[계산]\n$$g(x) = -\\frac{1}{7} \\times 2^{n-x} + a = -\\frac{2^n}{7} \\cdot 2^{-x} + a$$\n\n$x$가 증가하면 $2^{-x}$는 감소하므로, $-\\dfrac{2^n}{7} \\cdot 2^{-x}$는 증가한다.\n\n따라서 $g(x)$도 $x$에 대해 순증가이다.\n\n[결론] $g(x) = -\\dfrac{1}{7} \\times 2^{n-x} + a$ 도 순증가 함수이다.",
+            "matches": [
+              {
+                "label": "C",
+                "score": 1,
+                "reason": "학생의 결론이 'g(x)는 순증가 함수'로 후보 C와 완전히 일치한다"
+              }
+            ],
+            "eval_summary": "MISS attempt1 dry1 | 64tok | disc 6511ms + match 2423ms | bonus 1"
+          },
+          {
+            "attempt": 2,
+            "think_tokens": 145,
+            "discover_elapsed_ms": 10343,
+            "match_elapsed_ms": 1153,
+            "discover_input_tokens": 867,
+            "discover_output_tokens": 676,
+            "match_input_tokens": 780,
+            "match_output_tokens": 8,
+            "claude_output": "[시도] 두 곡선을 같다고 놓고, 교점 조건을 위한 방정식을 세워볼 것\n\n[계산]\n$2^{x-1} - 4 = -\\dfrac{1}{7} \\cdot 2^{n-x} + a$\n\n$u = 2^x$로 치환하면:\n\n$$\\frac{u}{2} - 4 = -\\frac{2^n}{7u} + a$$\n\n양변에 $14u$를 곱하면:\n\n$$7u^2 - 56u = -2 \\cdot 2^n + 14au$$\n\n$$7u^2 - 14(4+a)u + 2^{n+1} = 0$$\n\n[결론] 두 교점의 $x$좌표는 $u = 2^x$로 치환 시 **$7u^2 - 14(4+a)u + 2^{n+1} = 0$** 의 두 양의 실근에 해당한다.",
+            "matches": [],
+            "eval_summary": "MISS attempt2 dry1 | 145tok | disc 10343ms + match 1153ms | bonus 0"
+          },
+          {
+            "attempt": 3,
+            "think_tokens": 439,
+            "discover_elapsed_ms": 22467,
+            "match_elapsed_ms": 3632,
+            "discover_input_tokens": 863,
+            "discover_output_tokens": 1448,
+            "match_input_tokens": 818,
+            "match_output_tokens": 132,
+            "claude_output": "[시도] 두 교점 A, B의 y좌표 대소 관계를 파악하기\n\n[계산]\n두 함수 모두 순증가이므로, 교점 A$(x_A, y_A)$, B$(x_B, y_B)$에서 $x_A < x_B$라 하면:\n\n$$f(x_A) < f(x_B) \\quad \\Rightarrow \\quad y_A < y_B$$\n\n$$g(x_A) < g(x_B) \\quad \\Rightarrow \\quad y_A < y_B$$\n\n즉, 두 교점에서 **x좌표가 작은 점의 y좌표도 더 작다**.\n\n따라서 선분 AB는 **왼쪽 아래 → 오른쪽 위** 방향이다.\n\n[결론] 두 교점을 $A(x_A, y_A)$, $B(x_B, y_B)$라 하면 $x_A < x_B$일 때 반드시 $y_A < y_B$이다 (선분 AB는 오른쪽 위 방향).",
+            "matches": [
+              {
+                "label": "A",
+                "score": 0.72,
+                "reason": "학생의 서술에서 'f(x)가 순증가'임을 명시적으로 사용하여 x_A < x_B이면 y_A < y_B임을 도출했으므로, 후보 A의 핵심 결론(f(x)=2^{x-1}-4는 순증가)과 충분히 일치한다."
+              }
+            ],
+            "eval_summary": "MISS attempt3 dry2 | 439tok | disc 22467ms + match 3632ms | bonus 1"
+          },
+          {
+            "attempt": 4,
+            "think_tokens": 171,
+            "discover_elapsed_ms": 10455,
+            "match_elapsed_ms": 4098,
+            "discover_input_tokens": 889,
+            "discover_output_tokens": 727,
+            "match_input_tokens": 613,
+            "match_output_tokens": 140,
+            "claude_output": "[시도] 내가 해볼 것: 단서A에서 $f(x) = 2^{x-1}-4$의 $y$절편(x=0일 때의 값) 구하기\n\n[계산]\n$$f(0) = 2^{0-1} - 4 = \\frac{1}{2} - 4 = -\\frac{7}{2}$$\n\n[결론] 첫째 곡선의 $y$절편은 $-\\dfrac{7}{2}$이다.",
+            "matches": [
+              {
+                "label": "B",
+                "score": 0.7,
+                "reason": "학생은 f(0) = -7/2를 구했고, 후보 B도 f(0) = 2^{-1}-4 = -7/2를 포함하고 있어 이 부분은 완전히 일치. 다만 후보 B는 f(3)=0도 포함하는데 학생은 이를 언급하지 않아 부분적 일치"
+              }
+            ],
+            "eval_summary": "FOUND H2 | 171tok | disc 10455ms + match 4098ms | bonus 0"
+          }
+        ]
+      },
+      {
+        "note_index": 3,
+        "note_id": "note5",
+        "neuron": "사실51",
+        "neuron_type": "사실",
+        "note_text": "$x<3$이면 $f(x)<0$이고, $x>3$이면 $f(x)>0$이다",
+        "from": [
+          "note3",
+          "note4"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 4,
+        "note_id": "note9",
+        "neuron": "사실41",
+        "neuron_type": "사실",
+        "note_text": "$g(x) = -\\frac{1}{7}\\times 2^{n-x}+a$는 순증가이다",
+        "from": [
+          "note8"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note4",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 5,
+        "note_id": "note12",
+        "neuron": "사실90",
+        "neuron_type": "사실",
+        "note_text": "$f(x) = 2^{x-1}-4$는 아래로 볼록이다",
+        "from": [
+          "note11"
+        ],
+        "hint_level": 1,
+        "is_bonus": false,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note12",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note12",
+            "in_target": "note12",
+            "attempt": 1,
+            "score": 0.72,
+            "reason": "학생이 7t²-... 이차식이 아래로 볼록임을 명시적으로 언급하며 이를 이용해 t=1에서 함숫값 음수 조건을 적용했는데, 이는 f(x)=2^(x-1)-4가 아래로 볼록임과 수학적으로 연결된 결론이다"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 169,
+            "discover_elapsed_ms": 12018,
+            "match_elapsed_ms": 2722,
+            "discover_input_tokens": 905,
+            "discover_output_tokens": 832,
+            "match_input_tokens": 781,
+            "match_output_tokens": 8,
+            "claude_output": "[시도] 두 곡선의 교점 방정식을 $t = 2^x$로 치환하여 정리해보기\n\n[계산]\n교점 조건: $2^{x-1} - 4 = -\\dfrac{1}{7} \\times 2^{n-x} + a$\n\n$t = 2^x > 0$으로 놓으면:\n\n$$\\frac{t}{2} - 4 = -\\frac{2^n}{7t} + a$$\n\n양변에 $14t$를 곱하면:\n\n$$7t^2 - 56t = -2^{n+1} + 14at$$\n\n$$7t^2 - (56 + 14a)t + 2^{n+1} = 0$$\n\n[결론] 교점의 $x$좌표에서 $t = 2^x$로 치환하면 **$7t^2 - (56+14a)t + 2^{n+1} = 0$** 이 되고, 두 양의 근 $t_1, t_2$에 대해 비에타 공식으로 $t_1 + t_2 = 8+2a$, $t_1 \\cdot t_2 = \\dfrac{2^{n+1}}{7}$임을 알 수 있다.",
+            "matches": [],
+            "eval_summary": "MISS attempt0 dry0 | 169tok | disc 12018ms + match 2722ms | bonus 0"
+          },
+          {
+            "attempt": 1,
+            "think_tokens": 356,
+            "discover_elapsed_ms": 21496,
+            "match_elapsed_ms": 4053,
+            "discover_input_tokens": 930,
+            "discover_output_tokens": 1467,
+            "match_input_tokens": 887,
+            "match_output_tokens": 137,
+            "claude_output": "[시도] 내가 해볼 것: 두 교점의 x좌표가 y축 양쪽에 있을 조건을 구하기 (선분 AB가 y축과 만나는 조건)\n\n[계산]\n교점의 x좌표를 구하려면 $f(x)=g(x)$를 풀어야 한다.\n$t = 2^x$로 치환하면:\n$$\\frac{t}{2} - 4 = -\\frac{2^n}{7t} + a$$\n양변에 $14t$를 곱하면:\n$$7t^2 - (56+14a)t + 2^{n+1} = 0$$\n\n선분 AB가 y축과 만나려면 두 근 $t_1, t_2$ 중 하나는 $1$보다 작고 하나는 $1$보다 커야 한다 ($x<0 \\Leftrightarrow t<1$).\n\n위로 볼록하지 않은 포물선(위로 볼록) 아니라 $7t^2 - \\cdots$는 아래로 볼록이므로, $t=1$에서 함숫값이 음수여야 한다:\n$$7(1)^2 - (56+14a)(1) + 2^{n+1} < 0$$\n$$7 - 56 - 14a + 2^{n+1} < 0$$\n$$2^{n+1} - 49 < 14a$$\n\n[결론] 선분 AB가 y축과 만나는 조건은",
+            "matches": [
+              {
+                "label": "A",
+                "score": 0.72,
+                "reason": "학생이 7t²-... 이차식이 아래로 볼록임을 명시적으로 언급하며 이를 이용해 t=1에서 함숫값 음수 조건을 적용했는데, 이는 f(x)=2^(x-1)-4가 아래로 볼록임과 수학적으로 연결된 결론이다"
+              }
+            ],
+            "eval_summary": "FOUND H1 | 356tok | disc 21496ms + match 4053ms | bonus 0"
+          }
+        ]
+      },
+      {
+        "note_index": 6,
+        "note_id": "note16",
+        "neuron": "사실90",
+        "neuron_type": "사실",
+        "note_text": "$g(x) = -\\frac{1}{7}\\times 2^{n-x}+a$는 위로 볼록이다",
+        "from": [
+          "note15"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note16",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note16",
+            "in_target": "note16",
+            "attempt": 0,
+            "score": 1,
+            "reason": "학생이 g''(x) < 0을 계산하여 g(x)가 위로 볼록(오목)임을 결론 내렸으며, 이는 후보 A의 핵심 결론과 완전히 일치한다"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 120,
+            "discover_elapsed_ms": 7869,
+            "match_elapsed_ms": 3487,
+            "discover_input_tokens": 935,
+            "discover_output_tokens": 535,
+            "match_input_tokens": 613,
+            "match_output_tokens": 100,
+            "claude_output": "[시도] 내가 해볼 것: $g(x)$의 볼록성(오목/볼록) 파악하기\n\n[계산]\n$$g(x) = -\\frac{1}{7} \\times 2^{n-x} + a$$\n$$g'(x) = -\\frac{1}{7} \\times 2^{n-x} \\times (-\\ln 2) = \\frac{\\ln 2}{7} \\times 2^{n-x} > 0$$\n$$g''(x) = \\frac{\\ln 2}{7} \\times 2^{n-x} \\times (-\\ln 2) = -\\frac{(\\ln 2)^2}{7} \\times 2^{n-x} < 0$$\n\n[결론] $g(x)$는 **위로 볼록(오목)**이다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 1,
+                "reason": "학생이 g''(x) < 0을 계산하여 g(x)가 위로 볼록(오목)임을 결론 내렸으며, 이는 후보 A의 핵심 결론과 완전히 일치한다"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 120tok | disc 7869ms + match 3487ms | bonus 0"
+          }
+        ]
+      },
+      {
+        "note_index": 7,
+        "note_id": "note19",
+        "neuron": "사실85",
+        "neuron_type": "사실",
+        "note_text": "두 교점 A, B 사이 구간에서 $g(x) \\geq f(x)$이고, 바깥 구간에서 $g(x) \\leq f(x)$이다",
+        "from": [
+          "note18",
+          "단서C"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 8,
+        "note_id": "note20",
+        "neuron": "사실85",
+        "neuron_type": "사실",
+        "note_text": "$x=0$이 두 교점 사이에 있을 조건은 $g(0) \\geq f(0) = -\\frac{7}{2}$이다",
+        "from": [
+          "note19",
+          "note4"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 9,
+        "note_id": "note21",
+        "neuron": "사실85",
+        "neuron_type": "사실",
+        "note_text": "$x=3$이 교점 바깥에 있을 조건은 $g(3) < f(3) = 0$이다",
+        "from": [
+          "note19",
+          "note5"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 10,
+        "note_id": "note22",
+        "neuron": "전략25",
+        "neuron_type": "전략",
+        "note_text": "$g(0) = -\\frac{1}{7}\\times 2^n + a$이고 $g(3) = -\\frac{1}{7}\\times 2^{n-3}+a$이다",
+        "from": [
+          "단서B"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 11,
+        "note_id": "note23",
+        "neuron": "연산21",
+        "neuron_type": "연산",
+        "note_text": "$a \\geq \\frac{2^n}{7} - \\frac{7}{2}$이다",
+        "from": [
+          "note20",
+          "note22"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 12,
+        "note_id": "note24",
+        "neuron": "연산21",
+        "neuron_type": "연산",
+        "note_text": "$a < \\frac{2^{n-3}}{7}$이다",
+        "from": [
+          "note21",
+          "note22"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 13,
+        "note_id": "note25",
+        "neuron": "전략2",
+        "neuron_type": "전략",
+        "note_text": "$\\frac{2^n}{7} - \\frac{7}{2} \\leq a < \\frac{2^{n-3}}{7}$이다",
+        "from": [
+          "note23",
+          "note24"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 14,
+        "note_id": "note26",
+        "neuron": "연산21",
+        "neuron_type": "연산",
+        "note_text": "구간이 비어있지 않을 조건은 $\\frac{2^n}{7} - \\frac{7}{2} < \\frac{2^{n-3}}{7}$이다",
+        "from": [
+          "note25"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 15,
+        "note_id": "note27",
+        "neuron": "연산18",
+        "neuron_type": "연산",
+        "note_text": "$2^n = 2^3 \\cdot 2^{n-3}$을 대입하면 $\\frac{7 \\cdot 2^{n-3}}{7} < \\frac{7}{2}$, 즉 $2^{n-3} < \\frac{7}{2}$이다",
+        "from": [
+          "note26"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 16,
+        "note_id": "note28",
+        "neuron": "전략17",
+        "neuron_type": "전략",
+        "note_text": "$n=1{:}\\,2^{-2}=\\frac{1}{4}<\\frac{7}{2}$✓, $n=2{:}\\,\\frac{1}{2}<\\frac{7}{2}$✓, $n=3{:}\\,1<\\frac{7}{2}$✓, $n=4{:}\\,2<\\frac{7}{2}$✓, $n=5{:}\\,4>\\frac{7}{2}$✗이다. $n \\leq 4$이다",
+        "from": [
+          "note27",
+          "단서E"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 17,
+        "note_id": "note29",
+        "neuron": "사실51",
+        "neuron_type": "사실",
+        "note_text": "$n \\leq 4$일 때 $2^{n-3} \\leq 2^1 = 2$이고 $\\frac{2^{n-3}}{7} \\leq \\frac{2}{7} < 1$이다",
+        "from": [
+          "note28"
+        ],
+        "hint_level": 3,
+        "is_bonus": false,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note29",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note29",
+            "in_target": "note29",
+            "attempt": 0,
+            "score": 0.5,
+            "reason": "학생은 n=1일 때 2^(n-3)/7 = 1/28 < 1임을 계산으로 확인했고, 이는 후보 A의 n≤4일 때 2^(n-3)/7 < 1이라는 결론과 부분적으로 일치한다. 단, 학생은 n=1 한 케이스만 다루었고 일반적인 n≤4 범위 전체를 다루지는 않았다."
+          },
+          {
+            "note_id": "note29",
+            "in_target": "note29",
+            "attempt": 1,
+            "score": 0.5,
+            "reason": "학생은 n=1일 때 상한이 1/28 < 1임을 계산했고, 후보 A는 n≤4일 때 상한이 2/7 < 1임을 언급한다. n=1은 n≤4의 부분 사례이며, 학생의 계산이 후보 A의 주장을 부분적으로 뒷받침하지만, 후보 A의 핵심 결론(n≤4 전체 범위)을 완전히 포함하지는 않는다."
+          },
+          {
+            "note_id": "note29",
+            "in_target": "note29",
+            "attempt": 3,
+            "score": 0.7,
+            "reason": "학생의 계산에서 n=1,2,3,4에 대해 상한값 2^(n-3)/7을 실제로 계산했으며(1/28, 1/14, 1/7, 2/7), 이 값들이 모두 1보다 작음을 암묵적으로 활용했다. 후보 A의 핵심 결론인 '2^(n-3)/7 < 1'은 학생 풀이에서 직접 명시되지 않았으나, 계산 과정에서 상한이 항상 1 미만임을 수치로 확인하여 사용했으므로 부분적으로 포함됨"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 353,
+            "discover_elapsed_ms": 18776,
+            "match_elapsed_ms": 4342,
+            "discover_input_tokens": 1574,
+            "discover_output_tokens": 1311,
+            "match_input_tokens": 613,
+            "match_output_tokens": 168,
+            "claude_output": "[시도] 내가 해볼 것: $n=1$일 때 정수 $a$의 개수를 구하기\n\n[계산]\n$$n=1: \\quad \\frac{2^1}{7} - \\frac{7}{2} = \\frac{2}{7} - \\frac{7}{2} = \\frac{4-49}{14} = -\\frac{45}{14} \\approx -3.21$$\n$$\\frac{2^{1-3}}{7} = \\frac{2^{-2}}{7} = \\frac{1}{28} \\approx 0.036$$\n$$-3.21 \\leq a < 0.036 \\implies a \\in \\{-3,\\,-2,\\,-1,\\,0\\} \\quad \\Rightarrow \\text{정수 } 4\\text{개}$$\n\n[결론] $n=1$이면 정수 $a$의 개수가 4개이므로 조건 불만족이다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 0.5,
+                "reason": "학생은 n=1일 때 2^(n-3)/7 = 1/28 < 1임을 계산으로 확인했고, 이는 후보 A의 n≤4일 때 2^(n-3)/7 < 1이라는 결론과 부분적으로 일치한다. 단, 학생은 n=1 한 케이스만 다루었고 일반적인 n≤4 범위 전체를 다루지는 않았다."
+              }
+            ],
+            "eval_summary": "MISS attempt0 dry0 | 353tok | disc 18776ms + match 4342ms | bonus 0"
+          },
+          {
+            "attempt": 1,
+            "think_tokens": 342,
+            "discover_elapsed_ms": 12183,
+            "match_elapsed_ms": 4326,
+            "discover_input_tokens": 1743,
+            "discover_output_tokens": 1068,
+            "match_input_tokens": 633,
+            "match_output_tokens": 185,
+            "claude_output": "[시도] 내가 해볼 것: $n=1$일 때 조건을 만족하는 정수 $a$의 개수를 구하기\n\n[계산]\n$n=1$이면:\n- 하한: $\\frac{2^1}{7} - \\frac{7}{2} = \\frac{2}{7} - \\frac{7}{2} = \\frac{4-49}{14} = -\\frac{45}{14} \\approx -3.21$\n- 상한: $\\frac{2^{1-3}}{7} = \\frac{1/4}{7} = \\frac{1}{28} \\approx 0.036$\n\n구간 $-3.21 \\leq a < 0.036$에 속하는 정수: $-3,\\, -2,\\, -1,\\, 0$ → **4개**\n\n[결론] $n=1$일 때 정수 $a$의 개수는 4개이므로, 조건(3개)을 만족하지 않는다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 0.5,
+                "reason": "학생은 n=1일 때 상한이 1/28 < 1임을 계산했고, 후보 A는 n≤4일 때 상한이 2/7 < 1임을 언급한다. n=1은 n≤4의 부분 사례이며, 학생의 계산이 후보 A의 주장을 부분적으로 뒷받침하지만, 후보 A의 핵심 결론(n≤4 전체 범위)을 완전히 포함하지는 않는다."
+              }
+            ],
+            "eval_summary": "MISS attempt1 dry1 | 342tok | disc 12183ms + match 4326ms | bonus 0"
+          },
+          {
+            "attempt": 2,
+            "think_tokens": 228,
+            "discover_elapsed_ms": 14863,
+            "match_elapsed_ms": 2021,
+            "discover_input_tokens": 1626,
+            "discover_output_tokens": 1053,
+            "match_input_tokens": 614,
+            "match_output_tokens": 8,
+            "claude_output": "[시도] 조건 구간 $\\frac{2^n}{7} - \\frac{7}{2} \\leq a < \\frac{2^{n-3}}{7}$의 길이를 계산해볼 것\n\n[계산]\n$$\\frac{2^{n-3}}{7} - \\left(\\frac{2^n}{7} - \\frac{7}{2}\\right) = \\frac{2^{n-3} - 2^n}{7} + \\frac{7}{2}$$\n\n$$= \\frac{2^{n-3}(1-8)}{7} + \\frac{7}{2} = \\frac{-7 \\cdot 2^{n-3}}{7} + \\frac{7}{2} = -2^{n-3} + \\frac{7}{2}$$\n\n[결론] 정수 $a$의 후보 구간의 길이는 $\\dfrac{7}{2} - 2^{n-3}$이다.",
+            "matches": [],
+            "eval_summary": "MISS attempt2 dry2 | 228tok | disc 14863ms + match 2021ms | bonus 0"
+          },
+          {
+            "attempt": 3,
+            "think_tokens": 376,
+            "discover_elapsed_ms": 21521,
+            "match_elapsed_ms": 5608,
+            "discover_input_tokens": 1624,
+            "discover_output_tokens": 1598,
+            "match_input_tokens": 770,
+            "match_output_tokens": 225,
+            "claude_output": "[시도] 각 $n$값(1,2,3,4)에 대해 조건 $\\frac{2^n}{7}-\\frac{7}{2} \\leq a < \\frac{2^{n-3}}{7}$을 만족하는 정수 $a$의 개수를 센다\n\n[계산]\n- $n=1$: $-\\frac{45}{14}\\approx-3.21 \\leq a < \\frac{1}{28}\\approx0.036$ → 정수: $-3,-2,-1,0$ → **4개** ✗\n- $n=2$: $-\\frac{41}{14}\\approx-2.93 \\leq a < \\frac{1}{14}\\approx0.071$ → 정수: $-2,-1,0$ → **3개** ✓\n- $n=3$: $-\\frac{33}{14}\\approx-2.36 \\leq a < \\frac{1}{7}\\approx0.143$ → 정수: $-2,-1,0$ → **3개** ✓\n- $n=4$: $-\\frac{17}{14}\\approx-1.21 \\leq a < \\frac{2}{7}\\approx0.286$ → 정수: $-1,0$ → **2개*",
+            "matches": [
+              {
+                "label": "A",
+                "score": 0.7,
+                "reason": "학생의 계산에서 n=1,2,3,4에 대해 상한값 2^(n-3)/7을 실제로 계산했으며(1/28, 1/14, 1/7, 2/7), 이 값들이 모두 1보다 작음을 암묵적으로 활용했다. 후보 A의 핵심 결론인 '2^(n-3)/7 < 1'은 학생 풀이에서 직접 명시되지 않았으나, 계산 과정에서 상한이 항상 1 미만임을 수치로 확인하여 사용했으므로 부분적으로 포함됨"
+              }
+            ],
+            "eval_summary": "FOUND H3 | 376tok | disc 21521ms + match 5608ms | bonus 0"
+          }
+        ]
+      },
+      {
+        "note_index": 18,
+        "note_id": "note30",
+        "neuron": "전략25",
+        "neuron_type": "전략",
+        "note_text": "$a < \\frac{2^{n-3}}{7} < 1$이고 $a$는 정수이므로 $a$의 최댓값은 $0$이다",
+        "from": [
+          "note25",
+          "note29"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 19,
+        "note_id": "note31",
+        "neuron": "전략17",
+        "neuron_type": "전략",
+        "note_text": "정수 $a$가 정확히 3개이려면 $a = 0,\\,-1,\\,-2$가 구간에 포함되고 $a=-3$은 포함되지 않아야 한다",
+        "from": [
+          "note30",
+          "단서D"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 20,
+        "note_id": "note32",
+        "neuron": "연산21",
+        "neuron_type": "연산",
+        "note_text": "$a=-2$ 포함 조건: $-2 \\geq \\frac{2^n}{7}-\\frac{7}{2}$, 즉 $2^n \\leq \\frac{21}{2} = 10.5$이다",
+        "from": [
+          "note31"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 21,
+        "note_id": "note33",
+        "neuron": "연산21",
+        "neuron_type": "연산",
+        "note_text": "$a=-3$ 불포함 조건: $-3 < \\frac{2^n}{7}-\\frac{7}{2}$, 즉 $2^n > \\frac{7}{2} = 3.5$이다",
+        "from": [
+          "note31"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 22,
+        "note_id": "note34",
+        "neuron": "전략2",
+        "neuron_type": "전략",
+        "note_text": "$3.5 < 2^n \\leq 10.5$이다",
+        "from": [
+          "note32",
+          "note33"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 23,
+        "note_id": "note35",
+        "neuron": "전략17",
+        "neuron_type": "전략",
+        "note_text": "$n=1{:}\\,2^1=2\\leq 3.5$✗, $n=2{:}\\,2^2=4$✓, $n=3{:}\\,2^3=8$✓, $n=4{:}\\,2^4=16>10.5$✗이다. $n=2,\\,3$이다",
+        "from": [
+          "note34",
+          "note28"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 24,
+        "note_id": "END",
+        "neuron": "전략25",
+        "neuron_type": "전략",
+        "note_text": "조건을 만족하는 자연수 $n$은 $2$와 $3$이고, 합은 $2+3=5$이다",
+        "from": [
+          "note35"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      }
+    ],
+    "_debug": "v7-split"
+  }
 }

@@ -1,14 +1,864 @@
 {
   "problem_id": "Problem31",
-  "_filename": "Problem31.json",
-  "_stub": true,
-  "tags": {
-    "source": "",
-    "theme": "",
-    "difficulty": "",
-    "custom": [
-      "전국 서바이벌 지수/로그"
-    ]
-  },
-  "metadata": {}
+  "clues": [
+    {
+      "id": "단서A",
+      "text": "$f(x) = \\begin{cases} \\log_2(8-x)+a & (-8 \\leq x < b) \\\\ \\log_2(x+8) & (b \\leq x \\leq 8) \\end{cases}$"
+    },
+    {
+      "id": "단서B",
+      "text": "$f(x)$는 일대일함수이다"
+    },
+    {
+      "id": "단서C",
+      "text": "$f(x)$의 치역은 $\\left\\{y \\;\\middle|\\; k \\leq y \\leq k + \\log_2 \\dfrac{9}{2}\\right\\}$이다"
+    },
+    {
+      "id": "단서D",
+      "text": "$0 < b < 8$이고 $a$, $b$는 상수이다"
+    }
+  ],
+  "skeleton": [
+    {
+      "from": "단서A",
+      "to": "note1",
+      "neuron": "사실38",
+      "note": "$8-x$는 $x$에 대해 순감소이다",
+      "main": false,
+      "step": 1
+    },
+    {
+      "from": "단서A",
+      "to": "note2",
+      "neuron": "사실12",
+      "note": "$\\log_2$는 밑 $2>1$이므로 순증가이다",
+      "main": false,
+      "step": 1
+    },
+    {
+      "from": [
+        "note1",
+        "note2"
+      ],
+      "to": "note3",
+      "neuron": "사실54",
+      "note": "$\\log_2(8-x)$는 순감소이다",
+      "main": false,
+      "step": 1
+    },
+    {
+      "from": "note3",
+      "to": "note4",
+      "neuron": "사실41",
+      "note": "$\\log_2(8-x)+a$는 순감소이다",
+      "main": false,
+      "step": 1
+    },
+    {
+      "from": [
+        "단서A",
+        "note4"
+      ],
+      "to": "note5",
+      "neuron": "사실19",
+      "note": "$-8 \\leq x < b$에서 치역은 $(\\log_2(8-b)+a,\\; 4+a]$이다",
+      "step": 1
+    },
+    {
+      "from": "단서A",
+      "to": "note6",
+      "neuron": "사실37",
+      "note": "$x+8$은 $x$에 대해 순증가이다",
+      "main": false,
+      "step": 1
+    },
+    {
+      "from": [
+        "note6",
+        "note2"
+      ],
+      "to": "note7",
+      "neuron": "사실54",
+      "note": "$\\log_2(x+8)$은 순증가이다",
+      "main": false,
+      "step": 1
+    },
+    {
+      "from": [
+        "단서A",
+        "note7"
+      ],
+      "to": "note8",
+      "neuron": "사실19",
+      "note": "$b \\leq x \\leq 8$에서 치역은 $[\\log_2(b+8),\\; 4]$이다",
+      "step": 1
+    },
+    {
+      "from": [
+        "note4",
+        "note7"
+      ],
+      "to": "note9",
+      "neuron": "사실58",
+      "note": "각 조각은 단사함수이다",
+      "main": false,
+      "step": 2
+    },
+    {
+      "from": [
+        "note9",
+        "단서B"
+      ],
+      "to": "note10",
+      "neuron": "전략3",
+      "note": "$f(x)$가 일대일함수이려면 두 조각의 치역이 겹치지 않아야 한다",
+      "step": 2
+    },
+    {
+      "from": [
+        "note5",
+        "note8",
+        "note10",
+        "단서C"
+      ],
+      "to": "note11",
+      "neuron": "사실26",
+      "note": "두 치역이 겹치지 않으면서 합집합이 하나의 닫힌 구간을 이루려면 $\\log_2(8-b)+a = 4$이다",
+      "step": 2
+    },
+    {
+      "from": [
+        "note5",
+        "note8",
+        "note11",
+        "단서C"
+      ],
+      "to": "note12",
+      "neuron": "전략2",
+      "note": "$k = \\log_2(b+8)$이고 $k + \\log_2\\frac{9}{2} = 4+a$이다",
+      "step": 3
+    },
+    {
+      "from": "note12",
+      "to": "note13",
+      "neuron": "전략11",
+      "note": "$\\log_2(b+8) + \\log_2\\frac{9}{2} = 4+a$이다",
+      "step": 3
+    },
+    {
+      "from": [
+        "note11",
+        "note13"
+      ],
+      "to": "note14",
+      "neuron": "전략11",
+      "note": "$\\log_2(8-b) + \\log_2(b+8) + \\log_2\\frac{9}{2} = 8$이다",
+      "step": 4
+    },
+    {
+      "from": "note14",
+      "to": "note15",
+      "neuron": "연산16",
+      "note": "$\\log_2\\!\\left[(8-b)(b+8) \\cdot \\frac{9}{2}\\right] = 8$이다",
+      "step": 4
+    },
+    {
+      "from": "note15",
+      "to": "note16",
+      "neuron": "연산2",
+      "note": "$(64-b^2) \\cdot \\frac{9}{2} = 256$이다",
+      "step": 4
+    },
+    {
+      "from": "note16",
+      "to": "note17",
+      "neuron": "전략29",
+      "note": "$b^2 = \\frac{64}{9}$이다",
+      "step": 4
+    },
+    {
+      "from": [
+        "note17",
+        "단서D"
+      ],
+      "to": "note18",
+      "neuron": "사실4",
+      "note": "$0 < b < 8$이므로 $b = \\frac{8}{3}$이다",
+      "step": 4
+    },
+    {
+      "from": [
+        "note11",
+        "note18"
+      ],
+      "to": "note19",
+      "neuron": "전략25",
+      "note": "$a = 4 - \\log_2\\!\\left(8-\\frac{8}{3}\\right) = 4 - \\log_2\\frac{16}{3}$이다",
+      "step": 5
+    },
+    {
+      "from": "note19",
+      "to": "note20",
+      "neuron": "연산3",
+      "note": "$a = 4 - (4 - \\log_2 3) = \\log_2 3$이다",
+      "step": 5
+    },
+    {
+      "from": "note20",
+      "to": "note21",
+      "neuron": "연산2",
+      "note": "$2^a = 2^{\\log_2 3} = 3$이다",
+      "step": 5
+    },
+    {
+      "from": [
+        "note21",
+        "note18"
+      ],
+      "to": "END",
+      "neuron": "전략25",
+      "note": "$2^a \\times b = 3 \\times \\frac{8}{3} = 8$이다",
+      "step": 6
+    }
+  ],
+  "solution": "STEP 1. 각 조각의 치역을 구한다. 첫째 조각 $\\log_2(8-x)+a$는 $-8 \\leq x < b$에서 순감소함수이고, $x=-8$일 때 $y=4+a$, $x \\to b^-$일 때 $y \\to \\log_2(8-b)+a$이므로 치역은 $(\\log_2(8-b)+a,\\;4+a]$이다. 둘째 조각 $\\log_2(x+8)$은 $b \\leq x \\leq 8$에서 순증가함수이고, $x=b$일 때 $y=\\log_2(b+8)$, $x=8$일 때 $y=4$이므로 치역은 $[\\log_2(b+8),\\;4]$이다.\n\nSTEP 2. $f(x)$가 일대일함수이려면 두 조각의 치역이 겹치지 않아야 한다. 두 치역이 겹치지 않으면서 합집합이 하나의 닫힌 구간을 이루려면 $\\log_2(8-b)+a = 4$이어야 한다.\n\nSTEP 3. 치역의 합집합은 $[\\log_2(b+8),\\;4+a]$이므로, 주어진 치역 조건에서 $k = \\log_2(b+8)$이고 $k+\\log_2\\frac{9}{2} = 4+a$이다. 이를 결합하면 $\\log_2(b+8)+\\log_2\\frac{9}{2} = 4+a$이다.\n\nSTEP 4. STEP 2의 등식 $\\log_2(8-b)+a=4$와 STEP 3의 등식을 결합하면 $\\log_2(8-b)+\\log_2(b+8)+\\log_2\\frac{9}{2}=8$이다. 로그 곱셈법칙으로 정리하면 $\\log_2\\!\\left[(64-b^2)\\cdot\\frac{9}{2}\\right]=8$이고, $(64-b^2)\\cdot\\frac{9}{2}=256$이므로 $b^2=\\frac{64}{9}$이다. $0<b<8$이므로 $b=\\frac{8}{3}$이다.\n\nSTEP 5. $a = 4-\\log_2\\frac{16}{3} = 4-(4-\\log_2 3) = \\log_2 3$이고, $2^a = 3$이다.\n\nSTEP 6. $2^a \\times b = 3 \\times \\frac{8}{3} = 8$이다.",
+  "statement": "9. (Unknown Source) - 로그함수의 일대일함수 조건과 치역\n\n## Problem\n\n두 상수 $a$, $b$ $(0 < b < 8)$에 대하여 $-8 \\leq x \\leq 8$에서 정의된 함수\n\n$$f(x) = \\begin{cases} \\log_2(8-x) + a & (-8 \\leq x < b) \\\\ \\log_2(x+8) & (b \\leq x \\leq 8) \\end{cases}$$\n\n이 다음 조건을 만족시킬 때, $2^{a} \\times b$의 값은? [4점]\n\n> 함수 $f(x)$는 일대일함수이고, 함수 $f(x)$의 치역은\n> $$\\left\\{y \\;\\middle|\\; k \\leq y \\leq k + \\log_2 \\dfrac{9}{2}\\right\\}$$이다.",
+  "thinking_profile": {
+    "_version": 6,
+    "_unit": "note",
+    "_isV6": true,
+    "total_think_tokens": 1129,
+    "total_notes": 15,
+    "hint_distribution": {
+      "0": 15,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0
+    },
+    "avg_hint_level": 0,
+    "genuine_miss_count": 0,
+    "absorbed_miss_count": 0,
+    "bonus_count": 10,
+    "highlight_notes": [
+      "note10",
+      "note12",
+      "note13"
+    ],
+    "hardest_note": {
+      "note_id": "note10",
+      "neuron": "전략3",
+      "hint_level": 0,
+      "structural_difficulty": 0.25,
+      "miss_type": null,
+      "note_text": "$f(x)$가 일대일함수이려면 두 조각의 치역이 겹치지 않아야 한다"
+    },
+    "neuron_stats": {
+      "사실19": {
+        "type": "사실",
+        "appearances": 2,
+        "total_hint": 0,
+        "hint_levels": [
+          0,
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "전략3": {
+        "type": "전략",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 0,
+        "avg_hint_level": 0
+      },
+      "사실26": {
+        "type": "사실",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "전략2": {
+        "type": "전략",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 0,
+        "avg_hint_level": 0
+      },
+      "전략11": {
+        "type": "전략",
+        "appearances": 2,
+        "total_hint": 0,
+        "hint_levels": [
+          0,
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "연산16": {
+        "type": "연산",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "연산2": {
+        "type": "연산",
+        "appearances": 2,
+        "total_hint": 0,
+        "hint_levels": [
+          0,
+          0
+        ],
+        "bonus_count": 2,
+        "avg_hint_level": 0
+      },
+      "전략29": {
+        "type": "전략",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "사실4": {
+        "type": "사실",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "전략25": {
+        "type": "전략",
+        "appearances": 2,
+        "total_hint": 0,
+        "hint_levels": [
+          0,
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "연산3": {
+        "type": "연산",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      }
+    },
+    "notes": [
+      {
+        "note_index": 1,
+        "note_id": "note5",
+        "neuron": "사실19",
+        "neuron_type": "사실",
+        "note_text": "$-8 \\leq x < b$에서 치역은 $(\\log_2(8-b)+a,\\; 4+a]$이다",
+        "from": [
+          "단서A",
+          "note4"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note5",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note5",
+            "in_target": "note5",
+            "attempt": 0,
+            "score": 1,
+            "reason": "첫 번째 조각의 치역 (log₂(8-b)+a, 4+a]와 완전히 일치"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 332,
+            "discover_elapsed_ms": 18921,
+            "match_elapsed_ms": 2017,
+            "discover_input_tokens": 794,
+            "discover_output_tokens": 1386,
+            "match_input_tokens": 1199,
+            "match_output_tokens": 116,
+            "claude_output": "[시도] 내가 해볼 것: 각 조각의 증감 방향과 치역 범위를 구하기\n\n[계산]\n**첫 번째 조각** (-8 ≤ x < b): f(x) = log₂(8-x) + a → **감소함수**\n- x = -8일 때: log₂(16) + a = 4 + a (최댓값, 포함)\n- x → b⁻일 때: log₂(8-b) + a (최솟값, 미포함)\n- 치역: **(log₂(8-b)+a, 4+a]**\n\n**두 번째 조각** (b ≤ x ≤ 8): f(x) = log₂(x+8) → **증가함수**\n- x = b일 때: log₂(b+8) (최솟값, 포함)\n- x = 8일 때: log₂(16) = 4 (최댓값, 포함)\n- 치역: **[log₂(b+8), 4]**\n\n[결론] 첫 번째 조각의 치역은 **(log₂(8-b)+a, 4+a]**, 두 번째 조각의 치역은 **[log₂(b+8), 4]** 이다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 1,
+                "reason": "첫 번째 조각의 치역 (log₂(8-b)+a, 4+a]와 완전히 일치"
+              },
+              {
+                "label": "B",
+                "score": 1,
+                "reason": "두 번째 조각의 치역 [log₂(b+8), 4]와 완전히 일치"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 332tok | disc 18921ms + match 2017ms | bonus 1"
+          }
+        ]
+      },
+      {
+        "note_index": 2,
+        "note_id": "note8",
+        "neuron": "사실19",
+        "neuron_type": "사실",
+        "note_text": "$b \\leq x \\leq 8$에서 치역은 $[\\log_2(b+8),\\; 4]$이다",
+        "from": [
+          "단서A",
+          "note7"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note5",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 3,
+        "note_id": "note10",
+        "neuron": "전략3",
+        "neuron_type": "전략",
+        "note_text": "$f(x)$가 일대일함수이려면 두 조각의 치역이 겹치지 않아야 한다",
+        "from": [
+          "note9",
+          "단서B"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note10",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note10",
+            "in_target": "note10",
+            "attempt": 0,
+            "score": 0.9,
+            "reason": "학생이 '일대일함수가 되려면 두 조각의 치역이 겹치지 않아야 한다'고 명시적으로 서술함"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 450,
+            "discover_elapsed_ms": 23927,
+            "match_elapsed_ms": 3053,
+            "discover_input_tokens": 891,
+            "discover_output_tokens": 1637,
+            "match_input_tokens": 1145,
+            "match_output_tokens": 177,
+            "claude_output": "[시도] 일대일함수이 되려면 두 조각의 치역이 겹치지 않아야 하고, 합쳐서 닫힌구간이 되는 조건 파악\n\n[계산]\n- 조각1의 치역: $(\\log_2(8-b)+a,\\; 4+a]$ (아래쪽이 열린 구간)\n- 조각2의 치역: $[\\log_2(b+8),\\; 4]$ (양쪽 닫힌 구간)\n\n전체 치역이 **닫힌구간**이 되려면, 조각1의 열린 끝점이 조각2의 닫힌 구간과 딱 맞닿아야 함.\n\n즉, 조각2의 최댓값 $4$가 조각1의 열린 하한과 일치해야 연결된 닫힌구간이 형성됨:\n\n$$\\log_2(8-b)+a = 4$$\n\n이때 합쳐진 치역: $[\\log_2(b+8),\\; 4] \\cup (4,\\; 4+a] = [\\log_2(b+8),\\; 4+a]$\n\n[결론] 두 조각의 치역이 연결된 닫힌구간을 이루려면 $\\log_2(8-b)+a=4$ 이어야 한다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 0.9,
+                "reason": "학생이 '일대일함수가 되려면 두 조각의 치역이 겹치지 않아야 한다'고 명시적으로 서술함"
+              },
+              {
+                "label": "B",
+                "score": 0.85,
+                "reason": "학생이 두 치역이 겹치지 않으면서 합쳐서 닫힌구간이 되는 조건으로 log_2(8-b)+a=4를 도출함. 표현은 다르지만 수학적으로 동일한 결론"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 450tok | disc 23927ms + match 3053ms | bonus 1"
+          }
+        ]
+      },
+      {
+        "note_index": 4,
+        "note_id": "note11",
+        "neuron": "사실26",
+        "neuron_type": "사실",
+        "note_text": "두 치역이 겹치지 않으면서 합집합이 하나의 닫힌 구간을 이루려면 $\\log_2(8-b)+a = 4$이다",
+        "from": [
+          "note5",
+          "note8",
+          "note10",
+          "단서C"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note10",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 5,
+        "note_id": "note12",
+        "neuron": "전략2",
+        "neuron_type": "전략",
+        "note_text": "$k = \\log_2(b+8)$이고 $k + \\log_2\\frac{9}{2} = 4+a$이다",
+        "from": [
+          "note5",
+          "note8",
+          "note11",
+          "단서C"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note12",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note12",
+            "in_target": "note12",
+            "attempt": 0,
+            "score": 1,
+            "reason": "학생의 결론 4+a - log₂(b+8) = log₂(9/2)는 log₂(b+8) + log₂(9/2) = 4+a와 동일하며, A는 k=log₂(b+8)로 치환한 동치 표현이므로 완전 일치"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 149,
+            "discover_elapsed_ms": 11573,
+            "match_elapsed_ms": 4117,
+            "discover_input_tokens": 992,
+            "discover_output_tokens": 702,
+            "match_input_tokens": 879,
+            "match_output_tokens": 207,
+            "claude_output": "[시도] 두 치역의 합집합 전체 구간의 길이를 log₂(9/2)로 놓기\n\n[계산]\n- 사실 4에 의해 piece 1의 치역은 $(4,\\; 4+a]$\n- piece 2의 치역은 $[\\log_2(b+8),\\; 4]$\n- 합집합 = $[\\log_2(b+8),\\; 4+a]$ (하나의 닫힌 구간)\n- 치역의 조건: $(4+a) - \\log_2(b+8) = \\log_2\\dfrac{9}{2}$\n\n[결론] $4 + a - \\log_2(b+8) = \\log_2\\dfrac{9}{2}$ 라는 새로운 방정식을 얻었다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 1,
+                "reason": "학생의 결론 4+a - log₂(b+8) = log₂(9/2)는 log₂(b+8) + log₂(9/2) = 4+a와 동일하며, A는 k=log₂(b+8)로 치환한 동치 표현이므로 완전 일치"
+              },
+              {
+                "label": "B",
+                "score": 1,
+                "reason": "학생의 결론 4+a - log₂(b+8) = log₂(9/2)를 정리하면 log₂(b+8) + log₂(9/2) = 4+a로 B와 완전히 동일"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 149tok | disc 11573ms + match 4117ms | bonus 1"
+          }
+        ]
+      },
+      {
+        "note_index": 6,
+        "note_id": "note13",
+        "neuron": "전략11",
+        "neuron_type": "전략",
+        "note_text": "$\\log_2(b+8) + \\log_2\\frac{9}{2} = 4+a$이다",
+        "from": [
+          "note12"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note12",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 7,
+        "note_id": "note14",
+        "neuron": "전략11",
+        "neuron_type": "전략",
+        "note_text": "$\\log_2(8-b) + \\log_2(b+8) + \\log_2\\frac{9}{2} = 8$이다",
+        "from": [
+          "note11",
+          "note13"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note14",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note14",
+            "in_target": "note14",
+            "attempt": 0,
+            "score": 1,
+            "reason": "학생의 계산에서 log₂(b+8) + log₂(8-b) + log₂(9/2) = 8이 명시적으로 등장함"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 132,
+            "discover_elapsed_ms": 8209,
+            "match_elapsed_ms": 4226,
+            "discover_input_tokens": 1068,
+            "discover_output_tokens": 626,
+            "match_input_tokens": 884,
+            "match_output_tokens": 285,
+            "claude_output": "[시도] 조건 4에서 $a$를 $b$로 표현한 뒤, 조건 6에 대입하기\n\n[계산]\n조건 4: $\\log_2(8-b) + a = 4$ → $a = 4 - \\log_2(8-b)$\n\n이를 조건 6에 대입:\n$$\\log_2(b+8) + \\log_2\\frac{9}{2} = 4 + a = 8 - \\log_2(8-b)$$\n$$\\log_2(b+8) + \\log_2(8-b) + \\log_2\\frac{9}{2} = 8$$\n$$\\log_2\\!\\left[(b+8)(8-b)\\cdot\\frac{9}{2}\\right] = 8$$\n$$(64 - b^2)\\cdot\\frac{9}{2} = 256 \\implies 64 - b^2 = \\frac{512}{9} \\implies b^2 = \\frac{64}{9}$$\n\n[결론] $b = \\dfrac{8}{3}$ (단, $0 < b < 8$이므로 양수 선택)",
+            "matches": [
+              {
+                "label": "A",
+                "score": 1,
+                "reason": "학생의 계산에서 log₂(b+8) + log₂(8-b) + log₂(9/2) = 8이 명시적으로 등장함"
+              },
+              {
+                "label": "B",
+                "score": 1,
+                "reason": "학생이 log₂[(b+8)(8-b)·(9/2)] = 8을 명시적으로 도출함"
+              },
+              {
+                "label": "C",
+                "score": 1,
+                "reason": "학생이 (64-b²)·(9/2) = 256을 명시적으로 도출함"
+              },
+              {
+                "label": "D",
+                "score": 1,
+                "reason": "학생이 b² = 64/9를 명시적으로 도출함"
+              },
+              {
+                "label": "E",
+                "score": 1,
+                "reason": "학생이 0 < b < 8 조건으로 양수 선택하여 b = 8/3을 결론으로 제시함"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 132tok | disc 8209ms + match 4226ms | bonus 4"
+          }
+        ]
+      },
+      {
+        "note_index": 8,
+        "note_id": "note15",
+        "neuron": "연산16",
+        "neuron_type": "연산",
+        "note_text": "$\\log_2\\!\\left[(8-b)(b+8) \\cdot \\frac{9}{2}\\right] = 8$이다",
+        "from": [
+          "note14"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note14",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 9,
+        "note_id": "note16",
+        "neuron": "연산2",
+        "neuron_type": "연산",
+        "note_text": "$(64-b^2) \\cdot \\frac{9}{2} = 256$이다",
+        "from": [
+          "note15"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note14",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 10,
+        "note_id": "note17",
+        "neuron": "전략29",
+        "neuron_type": "전략",
+        "note_text": "$b^2 = \\frac{64}{9}$이다",
+        "from": [
+          "note16"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note14",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 11,
+        "note_id": "note18",
+        "neuron": "사실4",
+        "neuron_type": "사실",
+        "note_text": "$0 < b < 8$이므로 $b = \\frac{8}{3}$이다",
+        "from": [
+          "note17",
+          "단서D"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note14",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 12,
+        "note_id": "note19",
+        "neuron": "전략25",
+        "neuron_type": "전략",
+        "note_text": "$a = 4 - \\log_2\\!\\left(8-\\frac{8}{3}\\right) = 4 - \\log_2\\frac{16}{3}$이다",
+        "from": [
+          "note11",
+          "note18"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note19",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note19",
+            "in_target": "note19",
+            "attempt": 0,
+            "score": 1,
+            "reason": "학생의 계산에서 a = 4 - log₂(16/3)을 명시적으로 도출하며, 이는 후보 A의 결론과 완전히 일치"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 66,
+            "discover_elapsed_ms": 6505,
+            "match_elapsed_ms": 4057,
+            "discover_input_tokens": 1226,
+            "discover_output_tokens": 389,
+            "match_input_tokens": 647,
+            "match_output_tokens": 270,
+            "claude_output": "[시도] 내가 해볼 것: 조건 4번 ($\\log_2(8-b)+a=4$)에 $b=\\frac{8}{3}$을 대입해 $a$를 구하기\n\n[계산]\n$$\\log_2\\!\\left(8 - \\tfrac{8}{3}\\right) + a = 4$$\n$$\\log_2\\!\\left(\\tfrac{16}{3}\\right) + a = 4$$\n$$a = 4 - \\log_2\\!\\tfrac{16}{3} = \\log_2 16 - \\log_2\\tfrac{16}{3} = \\log_2 3$$\n\n[결론] $a = \\log_2 3$이므로 $2^a = 3$이고, $2^a \\times b = 3 \\times \\dfrac{8}{3} = \\boxed{8}$이다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 1,
+                "reason": "학생의 계산에서 a = 4 - log₂(16/3)을 명시적으로 도출하며, 이는 후보 A의 결론과 완전히 일치"
+              },
+              {
+                "label": "B",
+                "score": 1,
+                "reason": "학생이 a = log₂3임을 결론으로 도출하였고, 이는 후보 B의 결론과 완전히 일치"
+              },
+              {
+                "label": "C",
+                "score": 1,
+                "reason": "학생이 2^a = 3임을 명시적으로 서술하여 후보 C와 완전히 일치"
+              },
+              {
+                "label": "D",
+                "score": 1,
+                "reason": "학생이 2^a × b = 3 × 8/3 = 8을 명시적으로 계산하여 후보 D와 완전히 일치"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 66tok | disc 6505ms + match 4057ms | bonus 3"
+          }
+        ]
+      },
+      {
+        "note_index": 13,
+        "note_id": "note20",
+        "neuron": "연산3",
+        "neuron_type": "연산",
+        "note_text": "$a = 4 - (4 - \\log_2 3) = \\log_2 3$이다",
+        "from": [
+          "note19"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note19",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 14,
+        "note_id": "note21",
+        "neuron": "연산2",
+        "neuron_type": "연산",
+        "note_text": "$2^a = 2^{\\log_2 3} = 3$이다",
+        "from": [
+          "note20"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note19",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 15,
+        "note_id": "END",
+        "neuron": "전략25",
+        "neuron_type": "전략",
+        "note_text": "$2^a \\times b = 3 \\times \\frac{8}{3} = 8$이다",
+        "from": [
+          "note21",
+          "note18"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note19",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      }
+    ],
+    "_debug": "v7-split"
+  }
 }

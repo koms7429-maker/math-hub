@@ -1,14 +1,541 @@
 {
   "problem_id": "Problem12",
-  "_filename": "Problem12.json",
-  "_stub": true,
-  "tags": {
-    "source": "",
-    "theme": "",
-    "difficulty": "",
-    "custom": [
-      "2025"
-    ]
-  },
-  "metadata": {}
+  "clues": [
+    {
+      "id": "단서A",
+      "text": "$y = 2^{7-x}$ (첫 번째 곡선)"
+    },
+    {
+      "id": "단서B",
+      "text": "$y = 8^x$ (두 번째 곡선)"
+    },
+    {
+      "id": "단서C",
+      "text": "직선 $y = k$가 두 곡선과 각각 두 점 P, Q에서 만난다"
+    },
+    {
+      "id": "단서D",
+      "text": "$\\overline{PQ} = 3$이고 $k > 0$이다"
+    }
+  ],
+  "skeleton": [
+    {
+      "from": "단서B",
+      "to": "note1",
+      "neuron": "연산4",
+      "note": "$8^x = (2^3)^x = 2^{3x}$이다",
+      "step": 1
+    },
+    {
+      "from": [
+        "단서A",
+        "단서C"
+      ],
+      "to": "note2",
+      "neuron": "연산2",
+      "note": "$k = 2^{7-x_P}$에서 $x_P = 7 - \\log_2 k$이다",
+      "step": 1
+    },
+    {
+      "from": [
+        "note1",
+        "단서C"
+      ],
+      "to": "note3",
+      "neuron": "연산2",
+      "note": "$k = 2^{3x_Q}$에서 $x_Q = \\dfrac{\\log_2 k}{3}$이다",
+      "step": 1
+    },
+    {
+      "from": "단서A",
+      "to": "note4",
+      "neuron": "사실5",
+      "note": "$2^x$는 순증가이다 ($2 > 1$)",
+      "main": false,
+      "step": 2
+    },
+    {
+      "from": "note4",
+      "to": "note5",
+      "neuron": "사실42",
+      "note": "$2^{-x}$는 순감소이다",
+      "main": false,
+      "step": 2
+    },
+    {
+      "from": "note5",
+      "to": "note6",
+      "neuron": "사실41",
+      "note": "$2^{7-x}$는 순감소이다",
+      "main": false,
+      "step": 2
+    },
+    {
+      "from": "note1",
+      "to": "note7",
+      "neuron": "사실5",
+      "note": "$2^{3x} = 8^x$는 순증가이다 ($8 > 1$)",
+      "main": false,
+      "step": 2
+    },
+    {
+      "from": [
+        "note6",
+        "note7"
+      ],
+      "to": "note8",
+      "neuron": "사실1",
+      "note": "$y = 2^{7-x}$와 $y = 2^{3x}$의 치역은 각각 $(0, \\infty)$이다",
+      "main": false,
+      "step": 2
+    },
+    {
+      "from": "note8",
+      "to": "note9",
+      "neuron": "사실43",
+      "note": "$k > 0$일 때 각 곡선과 $y = k$의 교점은 정확히 하나이므로 P, Q는 각각 유일하다",
+      "main": false,
+      "step": 2
+    },
+    {
+      "from": [
+        "note2",
+        "note3"
+      ],
+      "to": "note10",
+      "neuron": "연산11",
+      "note": "$\\overline{PQ} = |x_P - x_Q| = \\left|7 - \\log_2 k - \\dfrac{\\log_2 k}{3}\\right| = \\left|7 - \\dfrac{4\\log_2 k}{3}\\right|$이다",
+      "step": 2
+    },
+    {
+      "from": [
+        "note10",
+        "단서D"
+      ],
+      "to": "note11",
+      "neuron": "전략6",
+      "note": "$\\left|7 - \\dfrac{4\\log_2 k}{3}\\right| = 3$에서 $7 - \\dfrac{4\\log_2 k}{3} = 3$ 또는 $7 - \\dfrac{4\\log_2 k}{3} = -3$이다",
+      "step": 3
+    },
+    {
+      "from": "note11",
+      "to": "note12",
+      "neuron": "연산2",
+      "note": "경우 ①: $\\dfrac{4\\log_2 k}{3} = 4$에서 $\\log_2 k = 3$이고 $k = 2^3 = 8$이다",
+      "step": 3
+    },
+    {
+      "from": "note11",
+      "to": "note13",
+      "neuron": "연산2",
+      "note": "경우 ②: $\\dfrac{4\\log_2 k}{3} = 10$에서 $\\log_2 k = \\dfrac{15}{2}$이고 $k = 2^{15/2}$이다",
+      "step": 3
+    },
+    {
+      "from": "note12",
+      "to": "note14",
+      "neuron": "전략25",
+      "note": "$k = 8 > 0$이고 양수 조건을 만족한다",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": "note13",
+      "to": "note15",
+      "neuron": "전략25",
+      "note": "$k = 2^{15/2} > 0$이고 양수 조건을 만족한다",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": [
+        "note12",
+        "note13"
+      ],
+      "to": "END",
+      "neuron": "연산18",
+      "note": "모든 양수 $k$의 값의 곱은 $2^3 \\times 2^{15/2} = 2^{3 + 15/2} = 2^{21/2}$이다",
+      "step": 4
+    }
+  ],
+  "solution": "STEP 1. 각 곡선 위의 점의 $x$좌표를 $k$로 표현한다.\n$8^x = (2^3)^x = 2^{3x}$이다. 직선 $y = k$와 $y = 2^{7-x}$의 교점 P에서 $k = 2^{7-x_P}$이므로 $x_P = 7 - \\log_2 k$이다. 직선 $y = k$와 $y = 2^{3x}$의 교점 Q에서 $k = 2^{3x_Q}$이므로 $x_Q = \\dfrac{\\log_2 k}{3}$이다.\n\nSTEP 2. 두 점 사이의 거리를 $k$로 표현한다.\n두 점 P, Q의 $y$좌표는 모두 $k$이므로 $\\overline{PQ} = |x_P - x_Q| = \\left|7 - \\log_2 k - \\dfrac{\\log_2 k}{3}\\right| = \\left|7 - \\dfrac{4\\log_2 k}{3}\\right|$이다.\n\nSTEP 3. $\\overline{PQ} = 3$을 경우 분리하여 푼다.\n$\\left|7 - \\dfrac{4\\log_2 k}{3}\\right| = 3$에서 절댓값 내부의 부호에 따라 두 경우로 나뉜다.\n경우 ①: $7 - \\dfrac{4\\log_2 k}{3} = 3$에서 $\\dfrac{4\\log_2 k}{3} = 4$, $\\log_2 k = 3$이고 $k = 8$이다.\n경우 ②: $7 - \\dfrac{4\\log_2 k}{3} = -3$에서 $\\dfrac{4\\log_2 k}{3} = 10$, $\\log_2 k = \\dfrac{15}{2}$이고 $k = 2^{15/2}$이다.\n\nSTEP 4. 모든 양수 $k$의 값의 곱을 구한다.\n조건을 만족하는 양수 $k$는 $8$과 $2^{15/2}$이다. 모든 양수 $k$의 값의 곱은 $2^3 \\times 2^{15/2} = 2^{3+15/2} = 2^{21/2}$이다.",
+  "statement": "# 23. (수능/모의고사) - 지수함수와 직선의 교점 거리\n\n## Problem\n\n직선 $y = k$가 두 곡선 $y = 2^{7-x}$, $y = 8^x$과 각각 두 점 P, Q에서 만날 때, 두 점 P, Q 사이의 거리가 $3$이 되도록 하는 모든 양수 $k$의 값의 곱은? [4점]",
+  "thinking_profile": {
+    "_version": 6,
+    "_unit": "note",
+    "_isV6": true,
+    "total_think_tokens": 266,
+    "total_notes": 8,
+    "hint_distribution": {
+      "0": 8,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0
+    },
+    "avg_hint_level": 0,
+    "genuine_miss_count": 0,
+    "absorbed_miss_count": 0,
+    "bonus_count": 4,
+    "highlight_notes": [
+      "note11",
+      "note1",
+      "note2"
+    ],
+    "hardest_note": {
+      "note_id": "note11",
+      "neuron": "전략6",
+      "hint_level": 0,
+      "structural_difficulty": 0.25,
+      "miss_type": null,
+      "note_text": "$\\left|7 - \\dfrac{4\\log_2 k}{3}\\right| = 3$에서 $7 - \\dfrac{4\\log_2 k}{3} = 3$ 또는 $7 - \\dfrac{4\\log_2 k}{3} = -3$이다"
+    },
+    "neuron_stats": {
+      "연산4": {
+        "type": "연산",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 0,
+        "avg_hint_level": 0
+      },
+      "연산2": {
+        "type": "연산",
+        "appearances": 4,
+        "total_hint": 0,
+        "hint_levels": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bonus_count": 4,
+        "avg_hint_level": 0
+      },
+      "연산11": {
+        "type": "연산",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 0,
+        "avg_hint_level": 0
+      },
+      "전략6": {
+        "type": "전략",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 0,
+        "avg_hint_level": 0
+      },
+      "연산18": {
+        "type": "연산",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 0,
+        "avg_hint_level": 0
+      }
+    },
+    "notes": [
+      {
+        "note_index": 1,
+        "note_id": "note1",
+        "neuron": "연산4",
+        "neuron_type": "연산",
+        "note_text": "$8^x = (2^3)^x = 2^{3x}$이다",
+        "from": [
+          "단서B"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note1",
+            "in_target": "note1",
+            "attempt": 0,
+            "score": 1,
+            "reason": "학생이 8^x = 2^{3x}임을 명시적으로 계산에 사용함"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 197,
+            "discover_elapsed_ms": 10025,
+            "match_elapsed_ms": 2620,
+            "discover_input_tokens": 617,
+            "discover_output_tokens": 758,
+            "match_input_tokens": 929,
+            "match_output_tokens": 151,
+            "claude_output": "[시도] 직선 y = k와 각 곡선의 교점의 x좌표를 구하기\n\n[계산]\n- 점 P: $2^{7-x} = k$ → $7 - x = \\log_2 k$ → $x_P = 7 - \\log_2 k$\n- 점 Q: $8^x = 2^{3x} = k$ → $3x = \\log_2 k$ → $x_Q = \\dfrac{\\log_2 k}{3}$\n\n[결론] P의 x좌표는 $x_P = 7 - \\log_2 k$이고, Q의 x좌표는 $x_Q = \\dfrac{\\log_2 k}{3}$이다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 1,
+                "reason": "학생이 8^x = 2^{3x}임을 명시적으로 계산에 사용함"
+              },
+              {
+                "label": "B",
+                "score": 1,
+                "reason": "학생이 x_P = 7 - log_2(k)를 동일하게 도출함"
+              },
+              {
+                "label": "C",
+                "score": 1,
+                "reason": "학생이 x_Q = log_2(k)/3을 동일하게 도출함"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 197tok | disc 10025ms + match 2620ms | bonus 2"
+          }
+        ]
+      },
+      {
+        "note_index": 2,
+        "note_id": "note2",
+        "neuron": "연산2",
+        "neuron_type": "연산",
+        "note_text": "$k = 2^{7-x_P}$에서 $x_P = 7 - \\log_2 k$이다",
+        "from": [
+          "단서A",
+          "단서C"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 3,
+        "note_id": "note3",
+        "neuron": "연산2",
+        "neuron_type": "연산",
+        "note_text": "$k = 2^{3x_Q}$에서 $x_Q = \\dfrac{\\log_2 k}{3}$이다",
+        "from": [
+          "note1",
+          "단서C"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 4,
+        "note_id": "note10",
+        "neuron": "연산11",
+        "neuron_type": "연산",
+        "note_text": "$\\overline{PQ} = |x_P - x_Q| = \\left|7 - \\log_2 k - \\dfrac{\\log_2 k}{3}\\right| = \\left|7 - \\dfrac{4\\log_2 k}{3}\\right|$이다",
+        "from": [
+          "note2",
+          "note3"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note10",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note10",
+            "in_target": "note10",
+            "attempt": 0,
+            "score": 0.85,
+            "reason": "학생의 결론에서 |7 - log₂k - log₂k/3| = 3으로 표현했는데, 이는 A의 |7 - 4log₂k/3|와 동일한 식의 중간 단계를 포함하고 있음. A의 핵심 결론인 식의 전개 부분과 수학적으로 동일"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 44,
+            "discover_elapsed_ms": 5508,
+            "match_elapsed_ms": 3193,
+            "discover_input_tokens": 734,
+            "discover_output_tokens": 281,
+            "match_input_tokens": 817,
+            "match_output_tokens": 137,
+            "claude_output": "[시도] 내가 해볼 것: PQ의 길이를 x_P와 x_Q의 차이로 나타내기\n\n[계산]\n두 점 P, Q는 모두 직선 y = k 위에 있으므로, 두 점의 y좌표는 같다.\n따라서 PQ = |x_P - x_Q|\n\n$$PQ = \\left|(7 - \\log_2 k) - \\frac{\\log_2 k}{3}\\right| = 3$$\n\n[결론] PQ의 거리 조건은 $\\left|7 - \\log_2 k - \\dfrac{\\log_2 k}{3}\\right| = 3$ 이다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 0.85,
+                "reason": "학생의 결론에서 |7 - log₂k - log₂k/3| = 3으로 표현했는데, 이는 A의 |7 - 4log₂k/3|와 동일한 식의 중간 단계를 포함하고 있음. A의 핵심 결론인 식의 전개 부분과 수학적으로 동일"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 44tok | disc 5508ms + match 3193ms | bonus 0"
+          }
+        ]
+      },
+      {
+        "note_index": 5,
+        "note_id": "note11",
+        "neuron": "전략6",
+        "neuron_type": "전략",
+        "note_text": "$\\left|7 - \\dfrac{4\\log_2 k}{3}\\right| = 3$에서 $7 - \\dfrac{4\\log_2 k}{3} = 3$ 또는 $7 - \\dfrac{4\\log_2 k}{3} = -3$이다",
+        "from": [
+          "note10",
+          "단서D"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note11",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note11",
+            "in_target": "note11",
+            "attempt": 0,
+            "score": 1,
+            "reason": "절댓값 방정식을 두 경우로 나누는 과정이 완전히 일치"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 19,
+            "discover_elapsed_ms": 4039,
+            "match_elapsed_ms": 3925,
+            "discover_input_tokens": 809,
+            "discover_output_tokens": 211,
+            "match_input_tokens": 716,
+            "match_output_tokens": 241,
+            "claude_output": "[시도] |7 - (4log₂k)/3| = 3 을 풀어서 log₂k의 값 구하기\n\n[계산]\n경우 1: 7 - (4log₂k)/3 = 3\n→ (4log₂k)/3 = 4\n→ log₂k = 3\n\n경우 2: 7 - (4log₂k)/3 = -3\n→ (4log₂k)/3 = 10\n→ log₂k = 15/2\n\n[결론] log₂k = 3 또는 log₂k = 15/2이다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 1,
+                "reason": "절댓값 방정식을 두 경우로 나누는 과정이 완전히 일치"
+              },
+              {
+                "label": "B",
+                "score": 1,
+                "reason": "경우 1에서 4log₂k/3=4, log₂k=3 결론 완전 일치. k=8은 학생 서술에 없으나 핵심 결론인 log₂k=3은 포함"
+              },
+              {
+                "label": "C",
+                "score": 1,
+                "reason": "경우 2에서 4log₂k/3=10, log₂k=15/2 결론 완전 일치. k=2^(15/2)는 학생 서술에 없으나 핵심 결론인 log₂k=15/2는 포함"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 19tok | disc 4039ms + match 3925ms | bonus 2"
+          }
+        ]
+      },
+      {
+        "note_index": 6,
+        "note_id": "note12",
+        "neuron": "연산2",
+        "neuron_type": "연산",
+        "note_text": "경우 ①: $\\dfrac{4\\log_2 k}{3} = 4$에서 $\\log_2 k = 3$이고 $k = 2^3 = 8$이다",
+        "from": [
+          "note11"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note11",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 7,
+        "note_id": "note13",
+        "neuron": "연산2",
+        "neuron_type": "연산",
+        "note_text": "경우 ②: $\\dfrac{4\\log_2 k}{3} = 10$에서 $\\log_2 k = \\dfrac{15}{2}$이고 $k = 2^{15/2}$이다",
+        "from": [
+          "note11"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note11",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 8,
+        "note_id": "END",
+        "neuron": "연산18",
+        "neuron_type": "연산",
+        "note_text": "모든 양수 $k$의 값의 곱은 $2^3 \\times 2^{15/2} = 2^{3 + 15/2} = 2^{21/2}$이다",
+        "from": [
+          "note12",
+          "note13"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "END",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "END",
+            "in_target": "END",
+            "attempt": 0,
+            "score": 1,
+            "reason": "학생의 결론과 후보 A의 결론이 완전히 일치함. 두 k값(2^3과 2^{15/2})의 곱이 2^{21/2}임을 동일하게 도출"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 6,
+            "discover_elapsed_ms": 3909,
+            "match_elapsed_ms": 2820,
+            "discover_input_tokens": 1018,
+            "discover_output_tokens": 202,
+            "match_input_tokens": 506,
+            "match_output_tokens": 94,
+            "claude_output": "[시도] 두 경우에서 구한 k값을 모두 곱하기\n\n[계산]\n경우 ①: $k = 8 = 2^3$\n경우 ②: $k = 2^{15/2}$\n\n두 값의 곱: $2^3 \\times 2^{15/2} = 2^{3 + 15/2} = 2^{6/2 + 15/2} = 2^{21/2}$\n\n[결론] 모든 양수 $k$의 값의 곱은 $2^{21/2}$이다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 1,
+                "reason": "학생의 결론과 후보 A의 결론이 완전히 일치함. 두 k값(2^3과 2^{15/2})의 곱이 2^{21/2}임을 동일하게 도출"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 6tok | disc 3909ms + match 2820ms | bonus 0"
+          }
+        ]
+      }
+    ],
+    "_debug": "v7-split"
+  }
 }

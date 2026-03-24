@@ -1,14 +1,860 @@
 {
   "problem_id": "Problem22",
-  "_filename": "Problem22.json",
-  "_stub": true,
-  "tags": {
-    "source": "",
-    "theme": "",
-    "difficulty": "",
-    "custom": [
-      "2025"
-    ]
-  },
-  "metadata": {}
+  "clues": [
+    {
+      "id": "단서A",
+      "text": "$a > 1$인 실수 $a$"
+    },
+    {
+      "id": "단서B",
+      "text": "곡선 $y = |\\log_a x|$ 위의 두 점 A, B"
+    },
+    {
+      "id": "단서C",
+      "text": "곡선 $y = \\log_a(x+2)$ 위의 점 C"
+    },
+    {
+      "id": "단서D",
+      "text": "선분 AB가 $x$축과 평행하다"
+    },
+    {
+      "id": "단서E",
+      "text": "삼각형 ABC는 넓이가 $\\dfrac{\\sqrt{3}}{3}$인 정삼각형이다"
+    },
+    {
+      "id": "단서F",
+      "text": "점 C의 $y$좌표는 점 A의 $y$좌표보다 크다"
+    }
+  ],
+  "skeleton": [
+    {
+      "from": "단서E",
+      "to": "note1",
+      "neuron": "연산6",
+      "note": "정삼각형의 한 변이 $s$일 때, 높이 $h = \\sqrt{s^2 - (s/2)^2} = \\dfrac{\\sqrt{3}}{2}s$이다",
+      "step": 1
+    },
+    {
+      "from": [
+        "단서E",
+        "note1"
+      ],
+      "to": "note2",
+      "neuron": "연산13",
+      "note": "$\\dfrac{1}{2} \\cdot s \\cdot \\dfrac{\\sqrt{3}}{2}s = \\dfrac{\\sqrt{3}}{3}$에서 $s^2 = \\dfrac{4}{3}$이고 $AB = s = \\dfrac{2\\sqrt{3}}{3}$이다",
+      "step": 1
+    },
+    {
+      "from": [
+        "단서B",
+        "단서D",
+        "단서A"
+      ],
+      "to": "note3",
+      "neuron": "사실6",
+      "note": "$y = |\\log_a x|$ ($a>1$)에서 같은 $y$값을 갖는 두 점의 $x$좌표는 $k$와 $\\dfrac{1}{k}$이다 ($k > 1$, B의 $x$좌표가 $k$)",
+      "step": 2
+    },
+    {
+      "from": [
+        "note2",
+        "note3"
+      ],
+      "to": "note4",
+      "neuron": "연산11",
+      "note": "AB는 수평선분이고 $AB = k - \\dfrac{1}{k} = \\dfrac{2\\sqrt{3}}{3}$이다",
+      "step": 2
+    },
+    {
+      "from": "note4",
+      "to": "note5",
+      "neuron": "전략29",
+      "note": "$3k^2 - 2\\sqrt{3}\\,k - 3 = 0$을 인수분해하면 $\\left(k - \\sqrt{3}\\right)\\!\\left(k + \\dfrac{\\sqrt{3}}{3}\\right) = 0$이다",
+      "step": 2
+    },
+    {
+      "from": "note5",
+      "to": "note6",
+      "neuron": "전략23",
+      "note": "$k = -\\dfrac{\\sqrt{3}}{3} < 0$은 $k > 1$ 조건에 모순이다",
+      "main": false,
+      "step": 2
+    },
+    {
+      "from": [
+        "note5",
+        "note6"
+      ],
+      "to": "note7",
+      "neuron": "전략20",
+      "note": "$k = \\sqrt{3}$이다",
+      "step": 2
+    },
+    {
+      "from": [
+        "note3",
+        "note7"
+      ],
+      "to": "note8",
+      "neuron": "전략25",
+      "note": "$B = (\\sqrt{3},\\;\\log_a\\sqrt{3})$, $A = \\left(\\dfrac{\\sqrt{3}}{3},\\;\\log_a\\sqrt{3}\\right)$이다",
+      "step": 2
+    },
+    {
+      "from": "note8",
+      "to": "note9",
+      "neuron": "연산12",
+      "note": "AB의 중점은 $\\left(\\dfrac{2\\sqrt{3}}{3},\\;\\log_a\\sqrt{3}\\right)$이다",
+      "step": 3
+    },
+    {
+      "from": "단서E",
+      "to": "note10",
+      "neuron": "사실13",
+      "note": "정삼각형에서 $AC = BC$이므로 C는 AB의 수직이등분선 위에 있다",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": [
+        "note9",
+        "note10",
+        "단서D"
+      ],
+      "to": "note11",
+      "neuron": "사실13",
+      "note": "AB가 수평이고 수직이등분선은 중점을 지나는 수직선이므로 $x_C = \\dfrac{2\\sqrt{3}}{3}$이다",
+      "step": 3
+    },
+    {
+      "from": [
+        "note1",
+        "note2"
+      ],
+      "to": "note12",
+      "neuron": "전략25",
+      "note": "정삼각형의 높이 $h = \\dfrac{\\sqrt{3}}{2} \\cdot \\dfrac{2\\sqrt{3}}{3} = 1$이다",
+      "step": 3
+    },
+    {
+      "from": [
+        "note8",
+        "note12",
+        "단서F"
+      ],
+      "to": "note13",
+      "neuron": "전략25",
+      "note": "C는 AB 위쪽에 있고 $y_C = \\log_a\\sqrt{3} + 1$이다",
+      "step": 3
+    },
+    {
+      "from": [
+        "note11",
+        "note13",
+        "단서C"
+      ],
+      "to": "note14",
+      "neuron": "전략25",
+      "note": "$\\log_a\\sqrt{3} + 1 = \\log_a\\!\\left(\\dfrac{2\\sqrt{3}}{3} + 2\\right)$이다",
+      "step": 4
+    },
+    {
+      "from": "단서A",
+      "to": "note15",
+      "neuron": "연산2",
+      "note": "$1 = \\log_a a$이다",
+      "main": false,
+      "step": 4
+    },
+    {
+      "from": [
+        "note14",
+        "note15"
+      ],
+      "to": "note16",
+      "neuron": "연산16",
+      "note": "좌변 $= \\log_a\\sqrt{3} + \\log_a a = \\log_a(a\\sqrt{3})$이다",
+      "step": 4
+    },
+    {
+      "from": "단서A",
+      "to": "note17",
+      "neuron": "사실12",
+      "note": "$a > 1$일 때 $\\log_a$는 순증가한다",
+      "main": false,
+      "step": 4
+    },
+    {
+      "from": "note17",
+      "to": "note18",
+      "neuron": "사실58",
+      "note": "$\\log_a$는 단사함수이다",
+      "main": false,
+      "step": 4
+    },
+    {
+      "from": [
+        "note16",
+        "note18"
+      ],
+      "to": "note19",
+      "neuron": "사실58",
+      "note": "$a\\sqrt{3} = \\dfrac{2\\sqrt{3} + 6}{3}$이다",
+      "step": 4
+    },
+    {
+      "from": "note19",
+      "to": "END",
+      "neuron": "전략25",
+      "note": "$a = \\dfrac{2+2\\sqrt{3}}{3}$이다",
+      "step": 4
+    }
+  ],
+  "solution": "STEP 1. 정삼각형의 한 변의 길이를 구한다.\n정삼각형을 높이로 이등분하면 직각삼각형이 만들어지고, 피타고라스 정리에 의해 높이 $h = \\frac{\\sqrt{3}}{2}s$이다. 넓이 $\\frac{1}{2} \\cdot s \\cdot \\frac{\\sqrt{3}}{2}s = \\frac{\\sqrt{3}}{3}$에서 $AB = s = \\frac{2\\sqrt{3}}{3}$이다.\n\nSTEP 2. 점 A, B의 좌표를 구한다.\n$y = |\\log_a x|$ ($a>1$)에서 같은 $y$값을 갖는 두 점의 $x$좌표는 $k$와 $\\frac{1}{k}$이다. $AB = k - \\frac{1}{k} = \\frac{2\\sqrt{3}}{3}$에서 $3k^2 - 2\\sqrt{3}k - 3 = 0$이 되고, 인수분해하면 $(k-\\sqrt{3})(k+\\frac{\\sqrt{3}}{3})=0$이다. $k > 1$에서 $k = \\sqrt{3}$이고, $B = (\\sqrt{3}, \\log_a\\sqrt{3})$, $A = (\\frac{\\sqrt{3}}{3}, \\log_a\\sqrt{3})$이다.\n\nSTEP 3. 점 C의 좌표를 구한다.\nAB의 중점의 $x$좌표는 $\\frac{2\\sqrt{3}}{3}$이다. 정삼각형에서 $AC=BC$이므로 C는 AB의 수직이등분선 위에 있고, AB가 수평이므로 $x_C = \\frac{2\\sqrt{3}}{3}$이다. 정삼각형의 높이 $h = \\frac{\\sqrt{3}}{2} \\cdot \\frac{2\\sqrt{3}}{3} = 1$이고, C는 AB 위쪽에 있으므로 $y_C = \\log_a\\sqrt{3} + 1$이다.\n\nSTEP 4. $a$의 값을 구한다.\nC가 $y = \\log_a(x+2)$ 위에 있으므로 $\\log_a\\sqrt{3} + 1 = \\log_a(\\frac{2\\sqrt{3}}{3}+2)$이다. $1 = \\log_a a$이므로 좌변 $= \\log_a(a\\sqrt{3})$이다. $\\log_a$는 순증가(단사)이므로 $a\\sqrt{3} = \\frac{2\\sqrt{3}+6}{3}$이고, $a = \\frac{2+2\\sqrt{3}}{3}$이다.",
+  "statement": "# 31. (수능/모의고사) - 로그함수와 정삼각형\n\n## Problem\n\n$a > 1$인 실수 $a$에 대하여 곡선 $y = |\\log_a x|$ 위의 두 점 A, B와 곡선 $y = \\log_a(x+2)$ 위의 점 C가 있다. 선분 AB가 $x$축과 평행하고, 삼각형 ABC는 넓이가 $\\dfrac{\\sqrt{3}}{3}$인 정삼각형일 때, $a$의 값은? (단, 점 C의 $y$좌표는 점 A의 $y$좌표보다 크다.) [4점]\n\n[FIGURE: $y = \\log_a(x+2)$와 $y = |\\log_a x|$의 그래프가 그려져 있고, 곡선 위의 점 A, B(AB는 $x$축에 평행), 점 C가 표시되어 정삼각형 ABC를 이루고 있다.]",
+  "thinking_profile": {
+    "_version": 6,
+    "_unit": "note",
+    "_isV6": true,
+    "total_think_tokens": 1018,
+    "total_notes": 15,
+    "hint_distribution": {
+      "0": 15,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0
+    },
+    "avg_hint_level": 0,
+    "genuine_miss_count": 0,
+    "absorbed_miss_count": 0,
+    "bonus_count": 11,
+    "highlight_notes": [
+      "note5",
+      "note7",
+      "note8"
+    ],
+    "hardest_note": {
+      "note_id": "note5",
+      "neuron": "전략29",
+      "hint_level": 0,
+      "structural_difficulty": 0.25,
+      "miss_type": null,
+      "note_text": "$3k^2 - 2\\sqrt{3}\\,k - 3 = 0$을 인수분해하면 $\\left(k - \\sqrt{3}\\right)\\!\\left(k + \\dfrac{\\sqrt{3}}{3}\\right) = 0$이다"
+    },
+    "neuron_stats": {
+      "연산6": {
+        "type": "연산",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 0,
+        "avg_hint_level": 0
+      },
+      "연산13": {
+        "type": "연산",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "사실6": {
+        "type": "사실",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "연산11": {
+        "type": "연산",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "전략29": {
+        "type": "전략",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 0,
+        "avg_hint_level": 0
+      },
+      "전략20": {
+        "type": "전략",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "전략25": {
+        "type": "전략",
+        "appearances": 5,
+        "total_hint": 0,
+        "hint_levels": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "bonus_count": 4,
+        "avg_hint_level": 0
+      },
+      "연산12": {
+        "type": "연산",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 0,
+        "avg_hint_level": 0
+      },
+      "사실13": {
+        "type": "사실",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "연산16": {
+        "type": "연산",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "사실58": {
+        "type": "사실",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      }
+    },
+    "notes": [
+      {
+        "note_index": 1,
+        "note_id": "note1",
+        "neuron": "연산6",
+        "neuron_type": "연산",
+        "note_text": "정삼각형의 한 변이 $s$일 때, 높이 $h = \\sqrt{s^2 - (s/2)^2} = \\dfrac{\\sqrt{3}}{2}s$이다",
+        "from": [
+          "단서E"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note1",
+            "in_target": "note1",
+            "attempt": 2,
+            "score": 0.7,
+            "reason": "정삼각형 높이 공식 h = (√3/2)s를 사용하여 높이를 구하는 방법이 일치한다"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 302,
+            "discover_elapsed_ms": 13197,
+            "match_elapsed_ms": 4128,
+            "discover_input_tokens": 843,
+            "discover_output_tokens": 930,
+            "match_input_tokens": 1205,
+            "match_output_tokens": 150,
+            "claude_output": "[시도] 정삼각형의 넓이 조건으로 변의 길이(= AB의 길이)를 구한다.\n\n[계산]\n정삼각형의 한 변의 길이를 $s$라 하면, 넓이 공식:\n$$\\frac{\\sqrt{3}}{4}s^2 = \\frac{\\sqrt{3}}{3}$$\n$$s^2 = \\frac{4}{3}$$\n$$s = \\frac{2}{\\sqrt{3}}$$\n\n[결론] 정삼각형 ABC의 한 변의 길이는 $s = \\dfrac{2}{\\sqrt{3}}$이다.",
+            "matches": [
+              {
+                "label": "B",
+                "score": 0.85,
+                "reason": "학생의 결론 s=2/√3은 B의 s=2√3/3과 동일한 값(유리화 차이)이며, s²=4/3도 일치한다. 다만 학생은 넓이공식을 직접 사용했고 B는 (1/2)·s·(√3/2)s 형태로 표현했지만 수학적으로 동일한 결론이다."
+              }
+            ],
+            "eval_summary": "MISS attempt0 dry0 | 302tok | disc 13197ms + match 4128ms | bonus 1"
+          },
+          {
+            "attempt": 1,
+            "think_tokens": 174,
+            "discover_elapsed_ms": 9827,
+            "match_elapsed_ms": 5468,
+            "discover_input_tokens": 943,
+            "discover_output_tokens": 600,
+            "match_input_tokens": 1192,
+            "match_output_tokens": 231,
+            "claude_output": "[시도] A, B가 $y = |\\log_a x|$ 위의 같은 높이 $h$인 두 점이므로, x좌표를 구해본다.\n\n[계산]\n$y = |\\log_a x|$에서 높이 $h$인 점은\n$$\\log_a x = h \\Rightarrow x = a^h, \\quad \\log_a x = -h \\Rightarrow x = a^{-h}$$\n두 점의 x좌표가 $a^{-h}$, $a^h$이므로 (단, $a > 1$이면 $a^h > a^{-h}$)\n$$AB = a^h - a^{-h}$$\n\n[결론] $AB = a^h - a^{-h} = \\dfrac{2\\sqrt{3}}{3}$ (여기서 $h$는 A, B의 공통 $y$좌표)",
+            "matches": [
+              {
+                "label": "D",
+                "score": 0.85,
+                "reason": "학생의 결론 AB = a^h - a^{-h} = 2√3/3은 후보 D의 AB = k - 1/k = 2√3/3과 수학적으로 동일하다. k = a^h로 놓으면 1/k = a^{-h}이므로 표현만 다를 뿐 같은 결론이다."
+              },
+              {
+                "label": "C",
+                "score": 0.7,
+                "reason": "학생이 두 점의 x좌표를 a^{-h}와 a^h로 구한 것은 후보 C에서 k와 1/k (k=a^h)에 해당하므로 핵심 내용이 포함되어 있다."
+              }
+            ],
+            "eval_summary": "MISS attempt1 dry0 | 174tok | disc 9827ms + match 5468ms | bonus 2"
+          },
+          {
+            "attempt": 2,
+            "think_tokens": 166,
+            "discover_elapsed_ms": 10193,
+            "match_elapsed_ms": 4482,
+            "discover_input_tokens": 1075,
+            "discover_output_tokens": 520,
+            "match_input_tokens": 1019,
+            "match_output_tokens": 255,
+            "claude_output": "[시도] 정삼각형의 높이를 이용해 점 C의 y좌표를 구하기\n\n[계산]\n정삼각형의 높이 = $\\dfrac{\\sqrt{3}}{2} \\cdot s = \\dfrac{\\sqrt{3}}{2} \\cdot \\dfrac{2\\sqrt{3}}{3} = \\dfrac{3}{3} = 1$\n\n점 C의 y좌표는 점 A의 y좌표보다 크므로, AB의 y좌표인 $\\log_a k$에서 높이 1만큼 위에 있다.\n\n$$y_C = \\log_a k + 1$$\n\n[결론] 점 C의 y좌표는 $\\log_a k + 1$이다.",
+            "matches": [
+              {
+                "label": "J",
+                "score": 1,
+                "reason": "정삼각형의 높이를 계산하는 과정과 결과(h = √3/2 · 2√3/3 = 1)가 완전히 일치한다"
+              },
+              {
+                "label": "A",
+                "score": 0.7,
+                "reason": "정삼각형 높이 공식 h = (√3/2)s를 사용하여 높이를 구하는 방법이 일치한다"
+              },
+              {
+                "label": "K",
+                "score": 0.7,
+                "reason": "학생은 y_C = log_a k + 1이라고 했고, 노트는 y_C = log_a√3 + 1이라고 했다. k = √3임을 알면 동일한 결론이나, 학생은 k를 일반값으로 표현했다는 차이가 있다"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 166tok | disc 10193ms + match 4482ms | bonus 2"
+          }
+        ]
+      },
+      {
+        "note_index": 2,
+        "note_id": "note2",
+        "neuron": "연산13",
+        "neuron_type": "연산",
+        "note_text": "$\\dfrac{1}{2} \\cdot s \\cdot \\dfrac{\\sqrt{3}}{2}s = \\dfrac{\\sqrt{3}}{3}$에서 $s^2 = \\dfrac{4}{3}$이고 $AB = s = \\dfrac{2\\sqrt{3}}{3}$이다",
+        "from": [
+          "단서E",
+          "note1"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 3,
+        "note_id": "note3",
+        "neuron": "사실6",
+        "neuron_type": "사실",
+        "note_text": "$y = |\\log_a x|$ ($a>1$)에서 같은 $y$값을 갖는 두 점의 $x$좌표는 $k$와 $\\dfrac{1}{k}$이다 ($k > 1$, B의 $x$좌표가 $k$)",
+        "from": [
+          "단서B",
+          "단서D",
+          "단서A"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 4,
+        "note_id": "note4",
+        "neuron": "연산11",
+        "neuron_type": "연산",
+        "note_text": "AB는 수평선분이고 $AB = k - \\dfrac{1}{k} = \\dfrac{2\\sqrt{3}}{3}$이다",
+        "from": [
+          "note2",
+          "note3"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 5,
+        "note_id": "note5",
+        "neuron": "전략29",
+        "neuron_type": "전략",
+        "note_text": "$3k^2 - 2\\sqrt{3}\\,k - 3 = 0$을 인수분해하면 $\\left(k - \\sqrt{3}\\right)\\!\\left(k + \\dfrac{\\sqrt{3}}{3}\\right) = 0$이다",
+        "from": [
+          "note4"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note5",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note5",
+            "in_target": "note5",
+            "attempt": 0,
+            "score": 0.7,
+            "reason": "학생은 같은 이차방정식을 근의 공식으로 풀어 동일한 결과를 도출했으며, 인수분해 형태는 아니지만 수학적으로 동등한 방정식을 풀었다"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 82,
+            "discover_elapsed_ms": 7234,
+            "match_elapsed_ms": 4664,
+            "discover_input_tokens": 1137,
+            "discover_output_tokens": 587,
+            "match_input_tokens": 1004,
+            "match_output_tokens": 237,
+            "claude_output": "[시도] $k - \\dfrac{1}{k} = \\dfrac{2\\sqrt{3}}{3}$ 방정식을 풀어 $k$ 값을 구한다\n\n[계산]\n양변에 $k$를 곱하면: $k^2 - \\dfrac{2\\sqrt{3}}{3}k - 1 = 0$\n\n근의 공식 적용:\n$$k = \\frac{\\dfrac{2\\sqrt{3}}{3} \\pm \\sqrt{\\dfrac{4}{3} + 4}}{2} = \\frac{\\dfrac{2\\sqrt{3}}{3} \\pm \\sqrt{\\dfrac{16}{3}}}{2} = \\frac{\\dfrac{2\\sqrt{3}}{3} \\pm \\dfrac{4\\sqrt{3}}{3}}{2}$$\n\n$k > 1$이므로 양의 근 선택:\n$$k = \\frac{\\dfrac{6\\sqrt{3}}{3}}{2} = \\frac{2\\sqrt{3}}{2} = \\sqrt{3}$$\n\n[결론] $k = \\sqrt{3}$이므로, 점 B의 $x$좌표는 $\\sqrt{3}$, 점 A의 $x$좌표는 $\\dfrac{1}{\\sqrt{3}}$이다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 0.7,
+                "reason": "학생은 같은 이차방정식을 근의 공식으로 풀어 동일한 결과를 도출했으며, 인수분해 형태는 아니지만 수학적으로 동등한 방정식을 풀었다"
+              },
+              {
+                "label": "B",
+                "score": 1,
+                "reason": "학생의 결론이 k=√3으로 후보 B와 완전히 일치한다"
+              },
+              {
+                "label": "C",
+                "score": 0.7,
+                "reason": "학생이 B의 x좌표=√3, A의 x좌표=1/√3=√3/3임을 명시하여 후보 C의 좌표 정보와 x좌표 부분이 일치한다"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 82tok | disc 7234ms + match 4664ms | bonus 2"
+          }
+        ]
+      },
+      {
+        "note_index": 6,
+        "note_id": "note7",
+        "neuron": "전략20",
+        "neuron_type": "전략",
+        "note_text": "$k = \\sqrt{3}$이다",
+        "from": [
+          "note5",
+          "note6"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note5",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 7,
+        "note_id": "note8",
+        "neuron": "전략25",
+        "neuron_type": "전략",
+        "note_text": "$B = (\\sqrt{3},\\;\\log_a\\sqrt{3})$, $A = \\left(\\dfrac{\\sqrt{3}}{3},\\;\\log_a\\sqrt{3}\\right)$이다",
+        "from": [
+          "note3",
+          "note7"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note5",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 8,
+        "note_id": "note9",
+        "neuron": "연산12",
+        "neuron_type": "연산",
+        "note_text": "AB의 중점은 $\\left(\\dfrac{2\\sqrt{3}}{3},\\;\\log_a\\sqrt{3}\\right)$이다",
+        "from": [
+          "note8"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note9",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note9",
+            "in_target": "note9",
+            "attempt": 0,
+            "score": 0.9,
+            "reason": "학생이 AB의 중점의 x좌표를 2√3/3로 계산하고, y좌표는 log_a√3임을 암묵적으로 사용하여 C의 y좌표를 log_a√3+1로 구했으므로 AB의 중점이 (2√3/3, log_a√3)임을 포함한다"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 146,
+            "discover_elapsed_ms": 9097,
+            "match_elapsed_ms": 3624,
+            "discover_input_tokens": 1279,
+            "discover_output_tokens": 571,
+            "match_input_tokens": 809,
+            "match_output_tokens": 242,
+            "claude_output": "[시도] 정삼각형의 꼭짓점 C의 좌표를 구하기\n\n[계산]\nAB의 중점의 $x$좌표: $\\dfrac{\\sqrt{3} + \\frac{\\sqrt{3}}{3}}{2} = \\dfrac{\\frac{4\\sqrt{3}}{3}}{2} = \\dfrac{2\\sqrt{3}}{3}$\n\n정삼각형의 높이: $\\dfrac{\\sqrt{3}}{2} \\cdot s = \\dfrac{\\sqrt{3}}{2} \\cdot \\dfrac{2\\sqrt{3}}{3} = 1$\n\n점 C는 AB 위쪽에 있으므로 $y_C = \\log_a\\sqrt{3} + 1$\n\n따라서 $C = \\left(\\dfrac{2\\sqrt{3}}{3},\\ \\log_a\\sqrt{3}+1\\right)$\n\n[결론] 점 C의 좌표는 $\\left(\\dfrac{2\\sqrt{3}}{3},\\ \\log_a\\sqrt{3}+1\\right)$이다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 0.9,
+                "reason": "학생이 AB의 중점의 x좌표를 2√3/3로 계산하고, y좌표는 log_a√3임을 암묵적으로 사용하여 C의 y좌표를 log_a√3+1로 구했으므로 AB의 중점이 (2√3/3, log_a√3)임을 포함한다"
+              },
+              {
+                "label": "B",
+                "score": 0.85,
+                "reason": "학생이 AB의 중점 x좌표를 2√3/3로 구하고 C의 x좌표도 2√3/3로 설정했으므로, AB가 수평이고 수직이등분선이 중점을 지나는 수직선이라는 결론과 일치한다"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 146tok | disc 9097ms + match 3624ms | bonus 1"
+          }
+        ]
+      },
+      {
+        "note_index": 9,
+        "note_id": "note11",
+        "neuron": "사실13",
+        "neuron_type": "사실",
+        "note_text": "AB가 수평이고 수직이등분선은 중점을 지나는 수직선이므로 $x_C = \\dfrac{2\\sqrt{3}}{3}$이다",
+        "from": [
+          "note9",
+          "note10",
+          "단서D"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note9",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 10,
+        "note_id": "note12",
+        "neuron": "전략25",
+        "neuron_type": "전략",
+        "note_text": "정삼각형의 높이 $h = \\dfrac{\\sqrt{3}}{2} \\cdot \\dfrac{2\\sqrt{3}}{3} = 1$이다",
+        "from": [
+          "note1",
+          "note2"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 11,
+        "note_id": "note13",
+        "neuron": "전략25",
+        "neuron_type": "전략",
+        "note_text": "C는 AB 위쪽에 있고 $y_C = \\log_a\\sqrt{3} + 1$이다",
+        "from": [
+          "note8",
+          "note12",
+          "단서F"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 12,
+        "note_id": "note14",
+        "neuron": "전략25",
+        "neuron_type": "전략",
+        "note_text": "$\\log_a\\sqrt{3} + 1 = \\log_a\\!\\left(\\dfrac{2\\sqrt{3}}{3} + 2\\right)$이다",
+        "from": [
+          "note11",
+          "note13",
+          "단서C"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note14",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note14",
+            "in_target": "note14",
+            "attempt": 0,
+            "score": 1,
+            "reason": "학생이 C가 곡선 위에 있으므로 log_a(2√3/3 + 2) = log_a√3 + 1 이라고 명시적으로 서술함"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 148,
+            "discover_elapsed_ms": 9603,
+            "match_elapsed_ms": 4186,
+            "discover_input_tokens": 1462,
+            "discover_output_tokens": 724,
+            "match_input_tokens": 703,
+            "match_output_tokens": 253,
+            "claude_output": "[시도] 점 C가 곡선 $y = \\log_a(x+2)$ 위에 있다는 조건을 적용하기\n\n[계산]\n$$x_C = \\frac{2\\sqrt{3}}{3}, \\quad y_C = \\log_a\\sqrt{3} + 1$$\n\nC가 곡선 위에 있으므로:\n$$\\log_a\\!\\left(\\frac{2\\sqrt{3}}{3} + 2\\right) = \\log_a\\sqrt{3} + 1 = \\log_a\\sqrt{3} + \\log_a a = \\log_a(a\\sqrt{3})$$\n\n$$\\frac{2\\sqrt{3}+6}{3} = a\\sqrt{3} \\implies a = \\frac{2\\sqrt{3}+6}{3\\sqrt{3}} = \\frac{2}{3} + \\frac{2}{\\sqrt{3}} = \\frac{2+2\\sqrt{3}}{3}$$\n\n[결론] $a = \\dfrac{2+2\\sqrt{3}}{3}$이다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 1,
+                "reason": "학생이 C가 곡선 위에 있으므로 log_a(2√3/3 + 2) = log_a√3 + 1 이라고 명시적으로 서술함"
+              },
+              {
+                "label": "B",
+                "score": 1,
+                "reason": "학생이 log_a√3 + 1 = log_a√3 + log_a a = log_a(a√3)임을 명시적으로 서술함"
+              },
+              {
+                "label": "C",
+                "score": 1,
+                "reason": "학생이 (2√3+6)/3 = a√3 임을 명시적으로 도출함"
+              },
+              {
+                "label": "D",
+                "score": 1,
+                "reason": "학생의 최종 결론이 a = (2+2√3)/3 으로 완전히 일치함"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 148tok | disc 9603ms + match 4186ms | bonus 3"
+          }
+        ]
+      },
+      {
+        "note_index": 13,
+        "note_id": "note16",
+        "neuron": "연산16",
+        "neuron_type": "연산",
+        "note_text": "좌변 $= \\log_a\\sqrt{3} + \\log_a a = \\log_a(a\\sqrt{3})$이다",
+        "from": [
+          "note14",
+          "note15"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note14",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 14,
+        "note_id": "note19",
+        "neuron": "사실58",
+        "neuron_type": "사실",
+        "note_text": "$a\\sqrt{3} = \\dfrac{2\\sqrt{3} + 6}{3}$이다",
+        "from": [
+          "note16",
+          "note18"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note14",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 15,
+        "note_id": "END",
+        "neuron": "전략25",
+        "neuron_type": "전략",
+        "note_text": "$a = \\dfrac{2+2\\sqrt{3}}{3}$이다",
+        "from": [
+          "note19"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note14",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      }
+    ],
+    "_debug": "v7-split"
+  }
 }

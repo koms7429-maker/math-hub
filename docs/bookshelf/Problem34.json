@@ -1,13 +1,612 @@
 {
   "problem_id": "Problem34",
-  "_filename": "Problem34.json",
-  "_stub": true,
-  "tags": {
-    "source": "",
-    "theme": "",
-    "difficulty": "",
-    "custom": [
-      "2025"
-    ]
+  "clues": [
+    {
+      "id": "단서A",
+      "text": "$a > 1$, $b > 1$인 두 실수"
+    },
+    {
+      "id": "단서B",
+      "text": "곡선 $y = a^x$이 $y$축과 만나는 점을 $\\mathrm{A}$라 한다"
+    },
+    {
+      "id": "단서C",
+      "text": "점 $\\mathrm{A}$를 지나고 $x$축에 평행한 직선이 곡선 $y = \\log_b x$와 만나는 점을 $\\mathrm{B}$라 한다"
+    },
+    {
+      "id": "단서D",
+      "text": "점 $\\mathrm{B}$를 지나고 $y$축에 평행한 직선이 곡선 $y = a^x$과 만나는 점을 $\\mathrm{C}$라 한다"
+    },
+    {
+      "id": "단서E",
+      "text": "직선 $\\mathrm{AC}$가 $x$축과 만나는 점을 $\\mathrm{D}$라 한다"
+    },
+    {
+      "id": "단서F",
+      "text": "$\\overline{\\mathrm{AC}} : \\overline{\\mathrm{AD}} = 2 : 1$"
+    },
+    {
+      "id": "단서G",
+      "text": "삼각형 $\\mathrm{ABC}$의 넓이가 $4$이다"
+    }
+  ],
+  "skeleton": [
+    {
+      "from": "단서B",
+      "to": "note1",
+      "neuron": "사실18",
+      "note": "$y=a^x$에서 $x=0$이면 $a^0=1$이다. $\\mathrm{A}(0,\\;1)$이다",
+      "step": 1
+    },
+    {
+      "from": [
+        "note1",
+        "단서C"
+      ],
+      "to": "note2",
+      "neuron": "연산2",
+      "note": "$\\log_b x = 1$에서 $x = b$이다. $\\mathrm{B}(b,\\;1)$이다",
+      "step": 1
+    },
+    {
+      "from": [
+        "note2",
+        "단서D"
+      ],
+      "to": "note3",
+      "neuron": "전략25",
+      "note": "$x = b$를 $y = a^x$에 대입하면 $y = a^b$이다. $\\mathrm{C}(b,\\;a^b)$이다",
+      "step": 1
+    },
+    {
+      "from": [
+        "note1",
+        "note3",
+        "단서E",
+        "단서F"
+      ],
+      "to": "note4",
+      "neuron": "연산5",
+      "note": "$\\mathrm{D}$는 $x$축 위($y_D=0$)이고 $\\mathrm{A}$가 선분 $\\mathrm{DC}$를 $1:2$로 내분하므로 $y_A = \\frac{2 \\cdot 0 + a^b}{3} = 1$에서 $a^b = 3$이다",
+      "step": 2
+    },
+    {
+      "from": [
+        "note1",
+        "note2",
+        "note4"
+      ],
+      "to": "note5",
+      "neuron": "연산13",
+      "note": "$\\overline{\\mathrm{AB}} = b$, $\\overline{\\mathrm{BC}} = 3 - 1 = 2$이고 삼각형 $\\mathrm{ABC}$의 넓이는 $\\frac{1}{2} \\times b \\times 2 = b$이다",
+      "step": 3
+    },
+    {
+      "from": [
+        "note5",
+        "단서G"
+      ],
+      "to": "note6",
+      "neuron": "전략2",
+      "note": "$b = 4$이다",
+      "step": 3
+    },
+    {
+      "from": [
+        "note4",
+        "note6"
+      ],
+      "to": "note7",
+      "neuron": "전략25",
+      "note": "$a^b = 3$에 $b = 4$를 대입하면 $a^4 = 3$이다",
+      "step": 4
+    },
+    {
+      "from": [
+        "note2",
+        "note6"
+      ],
+      "to": "note8",
+      "neuron": "전략25",
+      "note": "$\\mathrm{B}(4,\\;1)$이 $y = \\log_4 x$ 위에 있어 $\\log_4 4 = 1$이 성립하고 $b = 4$와 일관된다",
+      "main": false,
+      "step": 4
+    },
+    {
+      "from": "note7",
+      "to": "note9",
+      "neuron": "연산4",
+      "note": "$a^8 = (a^4)^2 = 3^2 = 9$이다",
+      "step": 5
+    },
+    {
+      "from": [
+        "note9",
+        "note6"
+      ],
+      "to": "END",
+      "neuron": "전략25",
+      "note": "$a^8 + b = 9 + 4 = 13$이다",
+      "step": 5
+    }
+  ],
+  "solution": "STEP 1. 각 점의 좌표를 설정한다.\n$y = a^x$에서 $x = 0$이면 $a^0 = 1$이므로 $\\mathrm{A}(0,\\;1)$이다. 점 $\\mathrm{A}$를 지나고 $x$축에 평행한 직선 $y = 1$과 $y = \\log_b x$의 교점에서 $\\log_b x = 1$, 즉 $x = b$이므로 $\\mathrm{B}(b,\\;1)$이다. $x = b$를 $y = a^x$에 대입하면 $y = a^b$이므로 $\\mathrm{C}(b,\\;a^b)$이다.\n\nSTEP 2. 비 조건으로 $\\mathrm{C}$의 $y$좌표를 결정한다.\n$\\mathrm{D}$는 $x$축 위이므로 $y_D = 0$이고, $\\overline{\\mathrm{AC}} : \\overline{\\mathrm{AD}} = 2 : 1$에서 $\\mathrm{A}$가 선분 $\\mathrm{DC}$를 $1:2$로 내분한다. 내분점 공식에 의해 $y_A = \\frac{2 \\cdot 0 + a^b}{3} = 1$이므로 $a^b = 3$이다.\n\nSTEP 3. 삼각형 넓이 조건으로 $b$를 결정한다.\n$\\overline{\\mathrm{AB}} = b$, $\\overline{\\mathrm{BC}} = 3 - 1 = 2$이고, 삼각형 $\\mathrm{ABC}$의 넓이는 $\\frac{1}{2} \\times b \\times 2 = b$이다. 넓이가 $4$이므로 $b = 4$이다.\n\nSTEP 4. $a^4$의 값을 구한다.\n$a^b = 3$에 $b = 4$를 대입하면 $a^4 = 3$이다.\n\nSTEP 5. $a^8 + b$를 계산한다.\n$a^8 = (a^4)^2 = 9$이고, $a^8 + b = 9 + 4 = 13$이다.",
+  "statement": "# 3. (수능/모의고사) - 지수함수와 로그함수의 그래프\n\n## Problem\n\n$1$보다 큰 두 실수 $a$, $b$에 대하여 곡선 $y = a^x$이 $y$축과 만나는 점을 $\\mathrm{A}$라 하고, 점 $\\mathrm{A}$를 지나고 $x$축에 평행한 직선이 곡선 $y = \\log_b x$와 만나는 점을 $\\mathrm{B}$, 점 $\\mathrm{B}$를 지나고 $y$축에 평행한 직선이 곡선 $y = a^x$과 만나는 점을 $\\mathrm{C}$라 하자. 직선 $\\mathrm{AC}$가 $x$축과 만나는 점을 $\\mathrm{D}$라 할 때,\n\n$$\\overline{\\mathrm{AC}} : \\overline{\\mathrm{AD}} = 2 : 1$$\n\n이다. 삼각형 $\\mathrm{ABC}$의 넓이가 $4$일 때, $a^8 + b$의 값은? [4점]\n\n[FIGURE: $y = a^x$ (지수함수 곡선)과 $y = \\log_b x$ (로그함수 곡선)이 그려져 있고, 점 $\\mathrm{A}$는 $y$축 위, 점 $\\mathrm{B}$는 $x$축 위쪽 오른편, 점 $\\mathrm{C}$는 $\\mathrm{B}$ 위쪽 곡선 $y=a^x$ 위, 점 $\\mathrm{D}$는 $x$축 위 원점 왼쪽에 위치함.]",
+  "thinking_profile": {
+    "_version": 6,
+    "_unit": "note",
+    "_isV6": true,
+    "total_think_tokens": 383,
+    "total_notes": 9,
+    "hint_distribution": {
+      "0": 9,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0
+    },
+    "avg_hint_level": 0,
+    "genuine_miss_count": 0,
+    "absorbed_miss_count": 0,
+    "bonus_count": 3,
+    "highlight_notes": [
+      "note3",
+      "note6",
+      "note7"
+    ],
+    "hardest_note": {
+      "note_id": "note3",
+      "neuron": "전략25",
+      "hint_level": 0,
+      "structural_difficulty": 0.25,
+      "miss_type": null,
+      "note_text": "$x = b$를 $y = a^x$에 대입하면 $y = a^b$이다. $\\mathrm{C}(b,\\;a^b)$이다"
+    },
+    "neuron_stats": {
+      "사실18": {
+        "type": "사실",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 0,
+        "avg_hint_level": 0
+      },
+      "연산2": {
+        "type": "연산",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 0,
+        "avg_hint_level": 0
+      },
+      "전략25": {
+        "type": "전략",
+        "appearances": 3,
+        "total_hint": 0,
+        "hint_levels": [
+          0,
+          0,
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "연산5": {
+        "type": "연산",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 0,
+        "avg_hint_level": 0
+      },
+      "연산13": {
+        "type": "연산",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 0,
+        "avg_hint_level": 0
+      },
+      "전략2": {
+        "type": "전략",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "연산4": {
+        "type": "연산",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      }
+    },
+    "notes": [
+      {
+        "note_index": 1,
+        "note_id": "note1",
+        "neuron": "사실18",
+        "neuron_type": "사실",
+        "note_text": "$y=a^x$에서 $x=0$이면 $a^0=1$이다. $\\mathrm{A}(0,\\;1)$이다",
+        "from": [
+          "단서B"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note1",
+            "in_target": "note1",
+            "attempt": 0,
+            "score": 1,
+            "reason": "학생의 결론 A=(0,1)이 후보 A의 결론 A(0,1)과 완전히 일치한다"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 32,
+            "discover_elapsed_ms": 3856,
+            "match_elapsed_ms": 2076,
+            "discover_input_tokens": 1215,
+            "discover_output_tokens": 196,
+            "match_input_tokens": 853,
+            "match_output_tokens": 67,
+            "claude_output": "[시도] 내가 해볼 것: 점 A의 좌표 구하기\n\n[계산]\n곡선 $y = a^x$이 $y$축과 만나는 점이므로 $x = 0$을 대입한다.\n$$y = a^0 = 1$$\n따라서 $\\mathrm{A} = (0, 1)$\n\n[결론] 점 A의 좌표는 $(0, 1)$이다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 1,
+                "reason": "학생의 결론 A=(0,1)이 후보 A의 결론 A(0,1)과 완전히 일치한다"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 32tok | disc 3856ms + match 2076ms | bonus 0"
+          }
+        ]
+      },
+      {
+        "note_index": 2,
+        "note_id": "note2",
+        "neuron": "연산2",
+        "neuron_type": "연산",
+        "note_text": "$\\log_b x = 1$에서 $x = b$이다. $\\mathrm{B}(b,\\;1)$이다",
+        "from": [
+          "note1",
+          "단서C"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note2",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note2",
+            "in_target": "note2",
+            "attempt": 0,
+            "score": 1,
+            "reason": "학생의 결론 B=(b,1)과 log_b x=1에서 x=b라는 과정이 후보 A와 완전히 일치"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 51,
+            "discover_elapsed_ms": 5586,
+            "match_elapsed_ms": 2888,
+            "discover_input_tokens": 1278,
+            "discover_output_tokens": 216,
+            "match_input_tokens": 799,
+            "match_output_tokens": 73,
+            "claude_output": "[시도] 내가 해볼 것: 점 B의 좌표 구하기\n\n[계산]\n- A(0, 1)을 지나고 x축에 평행한 직선 → y = 1\n- 이 직선이 곡선 y = log_b x와 만나는 점 B를 구하려면:\n  log_b x = 1\n  x = b\n\n[결론] B = (b, 1)이다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 1,
+                "reason": "학생의 결론 B=(b,1)과 log_b x=1에서 x=b라는 과정이 후보 A와 완전히 일치"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 51tok | disc 5586ms + match 2888ms | bonus 0"
+          }
+        ]
+      },
+      {
+        "note_index": 3,
+        "note_id": "note3",
+        "neuron": "전략25",
+        "neuron_type": "전략",
+        "note_text": "$x = b$를 $y = a^x$에 대입하면 $y = a^b$이다. $\\mathrm{C}(b,\\;a^b)$이다",
+        "from": [
+          "note2",
+          "단서D"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note3",
+            "in_target": "note3",
+            "attempt": 0,
+            "score": 1,
+            "reason": "학생의 결론 C(b, a^b)와 후보 A의 결론이 완전히 일치하며, x=b를 y=a^x에 대입하는 과정도 동일하다"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 43,
+            "discover_elapsed_ms": 5732,
+            "match_elapsed_ms": 3891,
+            "discover_input_tokens": 1320,
+            "discover_output_tokens": 231,
+            "match_input_tokens": 777,
+            "match_output_tokens": 88,
+            "claude_output": "[시도] 내가 해볼 것: 점 C의 좌표 구하기\n\n[계산]\n단서D에 의해, C는 점 B를 지나고 y축에 평행한 직선(즉 $x = b$)과 곡선 $y = a^x$의 교점이다.\n\n$x = b$를 $y = a^x$에 대입하면:\n\n$$y = a^b$$\n\n[결론] $\\mathrm{C}(b,\\ a^b)$이다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 1,
+                "reason": "학생의 결론 C(b, a^b)와 후보 A의 결론이 완전히 일치하며, x=b를 y=a^x에 대입하는 과정도 동일하다"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 43tok | disc 5732ms + match 3891ms | bonus 0"
+          }
+        ]
+      },
+      {
+        "note_index": 4,
+        "note_id": "note4",
+        "neuron": "연산5",
+        "neuron_type": "연산",
+        "note_text": "$\\mathrm{D}$는 $x$축 위($y_D=0$)이고 $\\mathrm{A}$가 선분 $\\mathrm{DC}$를 $1:2$로 내분하므로 $y_A = \\frac{2 \\cdot 0 + a^b}{3} = 1$에서 $a^b = 3$이다",
+        "from": [
+          "note1",
+          "note3",
+          "단서E",
+          "단서F"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note4",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note4",
+            "in_target": "note4",
+            "attempt": 0,
+            "score": 0.85,
+            "reason": "학생은 AC/AD = a^b - 1 = 2로부터 a^b = 3을 도출했고, 후보 A도 내분 조건으로부터 a^b = 3을 도출함. 접근법은 다르지만 동일한 결론에 도달했으며, D점이 x축 위에 있다는 점도 공유함"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 175,
+            "discover_elapsed_ms": 10301,
+            "match_elapsed_ms": 4939,
+            "discover_input_tokens": 1374,
+            "discover_output_tokens": 732,
+            "match_input_tokens": 902,
+            "match_output_tokens": 205,
+            "claude_output": "[시도] 내가 해볼 것: 직선 AC의 방정식으로 점 D의 좌표를 구하고, AC:AD = 2:1 조건을 적용하기\n\n[계산]\nA(0, 1), C(b, a^b)이므로 직선 AC의 기울기는 $\\dfrac{a^b - 1}{b}$\n\n직선 AC: $y = 1 + \\dfrac{a^b-1}{b} \\cdot x$\n\n$y=0$ 대입 → $x = \\dfrac{-b}{a^b - 1}$ 이므로 $\\mathrm{D}\\!\\left(\\dfrac{-b}{a^b-1},\\; 0\\right)$\n\n$$\\overline{\\mathrm{AC}} = \\sqrt{b^2 + (a^b-1)^2}, \\quad \\overline{\\mathrm{AD}} = \\frac{\\sqrt{b^2+(a^b-1)^2}}{a^b-1}$$\n\n$$\\frac{\\overline{\\mathrm{AC}}}{\\overline{\\mathrm{AD}}} = a^b - 1 = 2$$\n\n[결론] $a^b = 3$",
+            "matches": [
+              {
+                "label": "A",
+                "score": 0.85,
+                "reason": "학생은 AC/AD = a^b - 1 = 2로부터 a^b = 3을 도출했고, 후보 A도 내분 조건으로부터 a^b = 3을 도출함. 접근법은 다르지만 동일한 결론에 도달했으며, D점이 x축 위에 있다는 점도 공유함"
+              },
+              {
+                "label": "D",
+                "score": 0.4,
+                "reason": "학생의 결론 a^b = 3은 후보 D의 전제조건과 일치하나, b=4 부분은 학생 서술에 없음"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 175tok | disc 10301ms + match 4939ms | bonus 0"
+          }
+        ]
+      },
+      {
+        "note_index": 5,
+        "note_id": "note5",
+        "neuron": "연산13",
+        "neuron_type": "연산",
+        "note_text": "$\\overline{\\mathrm{AB}} = b$, $\\overline{\\mathrm{BC}} = 3 - 1 = 2$이고 삼각형 $\\mathrm{ABC}$의 넓이는 $\\frac{1}{2} \\times b \\times 2 = b$이다",
+        "from": [
+          "note1",
+          "note2",
+          "note4"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note5",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note5",
+            "in_target": "note5",
+            "attempt": 0,
+            "score": 1,
+            "reason": "AB=b, BC=2, 넓이=b 계산이 완전히 일치"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 68,
+            "discover_elapsed_ms": 6242,
+            "match_elapsed_ms": 2108,
+            "discover_input_tokens": 1484,
+            "discover_output_tokens": 343,
+            "match_input_tokens": 675,
+            "match_output_tokens": 86,
+            "claude_output": "[시도] 내가 해볼 것: 삼각형 ABC의 넓이를 좌표로 계산하기\n\n[계산]\n꼭짓점: A(0, 1), B(b, 1), C(b, 3) (단서4에서 $a^b=3$)\n\n밑변 AB: A와 B는 같은 높이($y=1$)이므로 $\\overline{AB} = b$\n\n높이 BC: B와 C는 같은 $x=b$이므로 $\\overline{BC} = 3 - 1 = 2$\n\n넓이 $= \\frac{1}{2} \\times b \\times 2 = b = 4$\n\n[결론] $b = 4$이다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 1,
+                "reason": "AB=b, BC=2, 넓이=b 계산이 완전히 일치"
+              },
+              {
+                "label": "B",
+                "score": 1,
+                "reason": "b=4 결론이 완전히 일치"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 68tok | disc 6242ms + match 2108ms | bonus 1"
+          }
+        ]
+      },
+      {
+        "note_index": 6,
+        "note_id": "note6",
+        "neuron": "전략2",
+        "neuron_type": "전략",
+        "note_text": "$b = 4$이다",
+        "from": [
+          "note5",
+          "단서G"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note5",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 7,
+        "note_id": "note7",
+        "neuron": "전략25",
+        "neuron_type": "전략",
+        "note_text": "$a^b = 3$에 $b = 4$를 대입하면 $a^4 = 3$이다",
+        "from": [
+          "note4",
+          "note6"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note7",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note7",
+            "in_target": "note7",
+            "attempt": 0,
+            "score": 1,
+            "reason": "학생이 b=4를 대입하여 a^4=3을 도출하는 과정이 완전히 일치함"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 14,
+            "discover_elapsed_ms": 3985,
+            "match_elapsed_ms": 3789,
+            "discover_input_tokens": 1582,
+            "discover_output_tokens": 186,
+            "match_input_tokens": 509,
+            "match_output_tokens": 172,
+            "claude_output": "[시도] 내가 해볼 것: $a^b = 3$과 $b = 4$를 이용해 $a^8 + b$를 계산한다\n\n[계산]\n$b = 4$이므로 $a^4 = 3$\n\n$a^8 = (a^4)^2 = 3^2 = 9$\n\n$a^8 + b = 9 + 4 = 13$\n\n[결론] $a^8 + b = \\boxed{13}$이다",
+            "matches": [
+              {
+                "label": "A",
+                "score": 1,
+                "reason": "학생이 b=4를 대입하여 a^4=3을 도출하는 과정이 완전히 일치함"
+              },
+              {
+                "label": "B",
+                "score": 1,
+                "reason": "학생이 a^8=(a^4)^2=3^2=9를 동일하게 계산함"
+              },
+              {
+                "label": "C",
+                "score": 1,
+                "reason": "학생이 a^8+b=9+4=13이라는 최종 결론을 완전히 동일하게 서술함"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 14tok | disc 3985ms + match 3789ms | bonus 2"
+          }
+        ]
+      },
+      {
+        "note_index": 8,
+        "note_id": "note9",
+        "neuron": "연산4",
+        "neuron_type": "연산",
+        "note_text": "$a^8 = (a^4)^2 = 3^2 = 9$이다",
+        "from": [
+          "note7"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note7",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 9,
+        "note_id": "END",
+        "neuron": "전략25",
+        "neuron_type": "전략",
+        "note_text": "$a^8 + b = 9 + 4 = 13$이다",
+        "from": [
+          "note9",
+          "note6"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note7",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      }
+    ],
+    "_debug": "v7-split"
   }
 }

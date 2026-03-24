@@ -1,14 +1,962 @@
 {
   "problem_id": "Problem13",
-  "_filename": "Problem13.json",
-  "_stub": true,
-  "tags": {
-    "source": "",
-    "theme": "",
-    "difficulty": "",
-    "custom": [
-      "2025"
-    ]
-  },
-  "metadata": {}
+  "clues": [
+    {
+      "id": "단서A",
+      "text": "$x$에 대한 부등식 $4^{x-a}-2^x+b\\leq0$"
+    },
+    {
+      "id": "단서B",
+      "text": "부등식을 만족시키는 모든 $x$의 값의 범위가 $x\\leq8$이다"
+    },
+    {
+      "id": "단서C",
+      "text": "$a$는 자연수이고 $b$는 실수이다"
+    }
+  ],
+  "skeleton": [
+    {
+      "from": "단서A",
+      "to": "note1",
+      "neuron": "전략1",
+      "note": "$2^x=X$로 치환하면 $4^{x-a}=4^{-a}X^2$이고, 부등식은 $4^{-a}X^2-X+b\\leq0$이다",
+      "step": 1
+    },
+    {
+      "from": "단서A",
+      "to": "note2",
+      "neuron": "사실1",
+      "note": "$X=2^x>0$이다",
+      "main": false,
+      "step": 1
+    },
+    {
+      "from": "단서A",
+      "to": "note3",
+      "neuron": "사실5",
+      "note": "$y=2^x$는 밑이 $2>1$이므로 순증가이다",
+      "main": false,
+      "step": 1
+    },
+    {
+      "from": [
+        "note3",
+        "단서B"
+      ],
+      "to": "note4",
+      "neuron": "사실51",
+      "note": "$x\\leq8$은 $2^x\\leq2^8=256$, 즉 $X\\leq256$과 동치이다",
+      "step": 1
+    },
+    {
+      "from": [
+        "note1",
+        "note2",
+        "note4"
+      ],
+      "to": "note5",
+      "neuron": "전략2",
+      "note": "부등식 $4^{-a}X^2-X+b\\leq0$의 해가 $X>0$ 범위에서 정확히 $0<X\\leq256$이어야 한다",
+      "step": 1
+    },
+    {
+      "from": "단서C",
+      "to": "note6",
+      "neuron": "사실1",
+      "note": "$4^{-a}>0$이다",
+      "main": false,
+      "step": 2
+    },
+    {
+      "from": "note6",
+      "to": "note7",
+      "neuron": "사실35",
+      "note": "$f(X)=4^{-a}X^2-X+b$는 최고차 계수가 양수인 이차함수이고, $f(X)\\leq0$의 해는 두 근 $r_1\\leq r_2$에 대해 $r_1\\leq X\\leq r_2$이다",
+      "step": 2
+    },
+    {
+      "from": [
+        "note7",
+        "note5"
+      ],
+      "to": "note8",
+      "neuron": "전략25",
+      "note": "해 집합의 상한이 $256$이므로 $r_2=256$이다",
+      "step": 2
+    },
+    {
+      "from": [
+        "note7",
+        "note5"
+      ],
+      "to": "note9",
+      "neuron": "전략23",
+      "note": "$r_1>0$이면 $0<X<r_1$에서 $f(X)>0$이 되어 해가 $0<X\\leq256$ 전체가 아니므로 모순이다",
+      "main": false,
+      "step": 2
+    },
+    {
+      "from": "note9",
+      "to": "note10",
+      "neuron": "전략23",
+      "note": "$r_1\\leq0$이다",
+      "step": 2
+    },
+    {
+      "from": "note8",
+      "to": "note11",
+      "neuron": "전략25",
+      "note": "$f(256)=0$에 대입하면 $4^{-a}\\cdot2^{16}-2^8+b=0$, 즉 $2^{16-2a}-2^8+b=0$이다",
+      "step": 3
+    },
+    {
+      "from": "note11",
+      "to": "note12",
+      "neuron": "연산21",
+      "note": "$b=2^8-2^{16-2a}$이다",
+      "step": 3
+    },
+    {
+      "from": [
+        "note7",
+        "note8"
+      ],
+      "to": "note13",
+      "neuron": "사실78",
+      "note": "근과 계수의 관계에 의해 $r_1\\cdot r_2=\\frac{b}{4^{-a}}=b\\cdot4^a$이다",
+      "step": 4
+    },
+    {
+      "from": [
+        "note10",
+        "note8"
+      ],
+      "to": "note14",
+      "neuron": "사실65",
+      "note": "$r_2=256>0$이고 $r_1\\leq0$이므로 $r_1\\cdot r_2\\leq0$이다",
+      "main": false,
+      "step": 4
+    },
+    {
+      "from": [
+        "note13",
+        "note14"
+      ],
+      "to": "note15",
+      "neuron": "사실65",
+      "note": "$b\\cdot4^a\\leq0$이고 $4^a>0$이므로 $b\\leq0$이다",
+      "step": 4
+    },
+    {
+      "from": [
+        "note12",
+        "note15"
+      ],
+      "to": "note16",
+      "neuron": "연산21",
+      "note": "$2^8-2^{16-2a}\\leq0$, 즉 $2^8\\leq2^{16-2a}$이다",
+      "step": 5
+    },
+    {
+      "from": "note16",
+      "to": "note17",
+      "neuron": "사실51",
+      "note": "$2^x$는 순증가이므로 $8\\leq16-2a$이다",
+      "step": 5
+    },
+    {
+      "from": "note17",
+      "to": "note18",
+      "neuron": "연산21",
+      "note": "$2a\\leq8$, 즉 $a\\leq4$이다",
+      "step": 5
+    },
+    {
+      "from": [
+        "note18",
+        "단서C"
+      ],
+      "to": "note19",
+      "neuron": "전략17",
+      "note": "$a$는 자연수이고 $a\\leq4$이므로 $a\\in\\{1,2,3,4\\}$이다",
+      "step": 6
+    },
+    {
+      "from": [
+        "note19",
+        "note12"
+      ],
+      "to": "note20",
+      "neuron": "전략25",
+      "note": "$a=1$: $b=-16128$, $a=2$: $b=-3840$, $a=3$: $b=-768$, $a=4$: $b=0$이다",
+      "main": false,
+      "step": 6
+    },
+    {
+      "from": "note19",
+      "to": "END",
+      "neuron": "전략17",
+      "note": "각 $a$에 대해 $b$가 유일하게 결정되므로 순서쌍 $(a,b)$는 4개이다",
+      "step": 6
+    }
+  ],
+  "solution": "STEP 1. $2^x=X$로 치환하면 $4^{x-a}=4^{-a}X^2$이므로 부등식은 $4^{-a}X^2-X+b\\leq0$ ($X>0$)이 된다. $2^x$는 순증가이므로 $x\\leq8$은 $X\\leq256$과 동치이고, 따라서 이 부등식의 해가 $0<X\\leq256$이어야 한다.\n\nSTEP 2. $4^{-a}>0$이므로 $f(X)=4^{-a}X^2-X+b$는 아래로 볼록한 이차함수이고, $f(X)\\leq0$의 해는 두 근 $r_1\\leq r_2$에 대해 $[r_1,r_2]$이다. 해 집합의 상한이 $256$이므로 $r_2=256$이고, $r_1>0$이면 $(0,r_1)$에서 부등식이 성립하지 않아 모순이므로 $r_1\\leq0$이다.\n\nSTEP 3. $X=256$을 $f(X)=0$에 대입하면 $2^{16-2a}-2^8+b=0$이므로 $b=2^8-2^{16-2a}$이다.\n\nSTEP 4. 근과 계수의 관계에 의해 $r_1\\cdot r_2=b\\cdot4^a$이다. $r_2>0$이고 $r_1\\leq0$이므로 $r_1\\cdot r_2\\leq0$이고, $4^a>0$이므로 $b\\leq0$이다.\n\nSTEP 5. $b=2^8-2^{16-2a}\\leq0$에서 $2^8\\leq2^{16-2a}$이고, $2^x$는 순증가이므로 $8\\leq16-2a$, 즉 $a\\leq4$이다.\n\nSTEP 6. $a$는 자연수이고 $a\\leq4$이므로 $a\\in\\{1,2,3,4\\}$이고, 각 $a$에 대해 $b$가 유일하게 결정되므로 순서쌍 $(a,b)$는 $\\boxed{4}$개이다.",
+  "statement": "# 25. (수능/모의고사) - 지수 부등식과 이차방정식\n\n## Problem\n\n자연수 $a$와 실수 $b$에 대하여 $x$에 대한 부등식\n\n$$4^{x-a} - 2^x + b \\leq 0$$\n\n을 만족시키는 모든 $x$의 값의 범위가 $x \\leq 8$이 되도록 하는 $a$, $b$의 모든 순서쌍 $(a,\\, b)$의 개수는? [4점]",
+  "thinking_profile": {
+    "_version": 6,
+    "_unit": "note",
+    "_isV6": true,
+    "total_think_tokens": 2355,
+    "total_notes": 15,
+    "hint_distribution": {
+      "0": 13,
+      "1": 0,
+      "2": 2,
+      "3": 0,
+      "4": 0
+    },
+    "avg_hint_level": 0.27,
+    "genuine_miss_count": 0,
+    "absorbed_miss_count": 0,
+    "bonus_count": 9,
+    "highlight_notes": [
+      "note13",
+      "note15",
+      "note1"
+    ],
+    "hardest_note": {
+      "note_id": "note13",
+      "neuron": "사실78",
+      "hint_level": 2,
+      "structural_difficulty": 0.12,
+      "miss_type": null,
+      "note_text": "근과 계수의 관계에 의해 $r_1\\cdot r_2=\\frac{b}{4^{-a}}=b\\cdot4^a$이다"
+    },
+    "neuron_stats": {
+      "전략1": {
+        "type": "전략",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 0,
+        "avg_hint_level": 0
+      },
+      "사실51": {
+        "type": "사실",
+        "appearances": 2,
+        "total_hint": 0,
+        "hint_levels": [
+          0,
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "전략2": {
+        "type": "전략",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "사실35": {
+        "type": "사실",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 0,
+        "avg_hint_level": 0
+      },
+      "전략25": {
+        "type": "전략",
+        "appearances": 2,
+        "total_hint": 0,
+        "hint_levels": [
+          0,
+          0
+        ],
+        "bonus_count": 2,
+        "avg_hint_level": 0
+      },
+      "전략23": {
+        "type": "전략",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 0,
+        "avg_hint_level": 0
+      },
+      "연산21": {
+        "type": "연산",
+        "appearances": 3,
+        "total_hint": 0,
+        "hint_levels": [
+          0,
+          0,
+          0
+        ],
+        "bonus_count": 3,
+        "avg_hint_level": 0
+      },
+      "사실78": {
+        "type": "사실",
+        "appearances": 1,
+        "total_hint": 2,
+        "hint_levels": [
+          2
+        ],
+        "bonus_count": 0,
+        "avg_hint_level": 2
+      },
+      "사실65": {
+        "type": "사실",
+        "appearances": 1,
+        "total_hint": 2,
+        "hint_levels": [
+          2
+        ],
+        "bonus_count": 0,
+        "avg_hint_level": 2
+      },
+      "전략17": {
+        "type": "전략",
+        "appearances": 2,
+        "total_hint": 0,
+        "hint_levels": [
+          0,
+          0
+        ],
+        "bonus_count": 2,
+        "avg_hint_level": 0
+      }
+    },
+    "notes": [
+      {
+        "note_index": 1,
+        "note_id": "note1",
+        "neuron": "전략1",
+        "neuron_type": "전략",
+        "note_text": "$2^x=X$로 치환하면 $4^{x-a}=4^{-a}X^2$이고, 부등식은 $4^{-a}X^2-X+b\\leq0$이다",
+        "from": [
+          "단서A"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note1",
+            "in_target": "note1",
+            "attempt": 0,
+            "score": 0.9,
+            "reason": "학생은 t=2^x로 치환하여 4^(x-a)=t^2/4^a로 변환하고 양변에 4^a를 곱해 t^2-4^a·t+b·4^a≤0을 도출했다. 후보 A는 4^(-a)X^2-X+b≤0 형태로, 4^a를 곱하기 전 단계와 동일한 부등식이다. 수학적으로 동치인 표현이므로 높은 점수."
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 129,
+            "discover_elapsed_ms": 11419,
+            "match_elapsed_ms": 4155,
+            "discover_input_tokens": 621,
+            "discover_output_tokens": 775,
+            "match_input_tokens": 1218,
+            "match_output_tokens": 180,
+            "claude_output": "[시도] $t = 2^x$로 치환하여 부등식을 $t$에 대한 식으로 바꿔보기\n\n[계산]\n$$4^{x-a} = \\frac{4^x}{4^a} = \\frac{(2^x)^2}{4^a} = \\frac{t^2}{4^a}$$\n\n부등식에 대입하면:\n$$\\frac{t^2}{4^a} - t + b \\leq 0$$\n\n양변에 $4^a > 0$을 곱하면:\n$$t^2 - 4^a \\cdot t + b \\cdot 4^a \\leq 0$$\n\n[결론] $t = 2^x$로 치환하면 부등식은 **$t$에 대한 이차부등식 $t^2 - 4^a t + b \\cdot 4^a \\leq 0$** ($t > 0$)으로 변환된다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 0.9,
+                "reason": "학생은 t=2^x로 치환하여 4^(x-a)=t^2/4^a로 변환하고 양변에 4^a를 곱해 t^2-4^a·t+b·4^a≤0을 도출했다. 후보 A는 4^(-a)X^2-X+b≤0 형태로, 4^a를 곱하기 전 단계와 동일한 부등식이다. 수학적으로 동치인 표현이므로 높은 점수."
+              }
+            ],
+            "eval_summary": "FOUND H0 | 129tok | disc 11419ms + match 4155ms | bonus 0"
+          }
+        ]
+      },
+      {
+        "note_index": 2,
+        "note_id": "note4",
+        "neuron": "사실51",
+        "neuron_type": "사실",
+        "note_text": "$x\\leq8$은 $2^x\\leq2^8=256$, 즉 $X\\leq256$과 동치이다",
+        "from": [
+          "note3",
+          "단서B"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note4",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note4",
+            "in_target": "note4",
+            "attempt": 0,
+            "score": 0.95,
+            "reason": "학생이 x≤8이면 2^x≤256, 즉 X≤256과 동치라는 내용을 명확히 서술함"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 178,
+            "discover_elapsed_ms": 10630,
+            "match_elapsed_ms": 3560,
+            "discover_input_tokens": 701,
+            "discover_output_tokens": 609,
+            "match_input_tokens": 1199,
+            "match_output_tokens": 168,
+            "claude_output": "[시도] $x \\leq 8$이라는 조건을 $X = 2^x$ 치환 후 $X$의 범위로 변환하기\n\n[계산]\n$x \\leq 8$이면 $2^x \\leq 2^8 = 256$이고, $2^x > 0$이므로\n$$X \\in (0,\\ 256]$$\n$x > 8$이면 $X > 256$\n\n즉, 부등식의 해가 $x \\leq 8$이라는 것은 $X$ 기준으로 **$X \\in (0, 256]$일 때 성립하고, $X > 256$이면 성립하지 않는다**는 뜻이다.\n\n[결론] $x \\leq 8$이라는 해 조건은 $X = 2^x > 0$ 범위에서, $0 < X \\leq 256$이면 $4^{-a}X^2 - X + b \\leq 0$이 성립하고 $X > 256$이면 성립하지 않는 것과 동치이다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 0.95,
+                "reason": "학생이 x≤8이면 2^x≤256, 즉 X≤256과 동치라는 내용을 명확히 서술함"
+              },
+              {
+                "label": "B",
+                "score": 0.9,
+                "reason": "학생의 결론에서 0<X≤256일 때 4^{-a}X^2-X+b≤0이 성립하고 X>256이면 성립하지 않는다고 명시하여 B의 핵심 내용을 포함함"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 178tok | disc 10630ms + match 3560ms | bonus 1"
+          }
+        ]
+      },
+      {
+        "note_index": 3,
+        "note_id": "note5",
+        "neuron": "전략2",
+        "neuron_type": "전략",
+        "note_text": "부등식 $4^{-a}X^2-X+b\\leq0$의 해가 $X>0$ 범위에서 정확히 $0<X\\leq256$이어야 한다",
+        "from": [
+          "note1",
+          "note2",
+          "note4"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note4",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 4,
+        "note_id": "note7",
+        "neuron": "사실35",
+        "neuron_type": "사실",
+        "note_text": "$f(X)=4^{-a}X^2-X+b$는 최고차 계수가 양수인 이차함수이고, $f(X)\\leq0$의 해는 두 근 $r_1\\leq r_2$에 대해 $r_1\\leq X\\leq r_2$이다",
+        "from": [
+          "note6"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note7",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note7",
+            "in_target": "note7",
+            "attempt": 0,
+            "score": 1,
+            "reason": "학생이 4^{-a}>0이므로 아래로 볼록한 포물선이고 f(X)≤0의 해가 두 근 사이의 닫힌 구간임을 명시적으로 서술함"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 222,
+            "discover_elapsed_ms": 13545,
+            "match_elapsed_ms": 4676,
+            "discover_input_tokens": 806,
+            "discover_output_tokens": 910,
+            "match_input_tokens": 1096,
+            "match_output_tokens": 259,
+            "claude_output": "[시도] 이차함수 $f(X) = 4^{-a}X^2 - X + b$의 그래프 모양을 이용해 $X_2 = 256$임을 확인하기\n\n[계산]\n$4^{-a} > 0$이므로 $f(X)$는 위로 볼록하지 않고, **아래로 볼록한(위 방향) 포물선**이다.\n\n따라서 $f(X) \\leq 0$의 해는 두 근 $X_1 \\leq X_2$ 사이의 닫힌 구간 $[X_1, X_2]$이다.\n\n이 구간과 $X > 0$의 교집합이 정확히 $(0, 256]$이 되려면,\n오른쪽 끝 $X_2 = 256$이어야 한다.\n\n[결론] $f(X) \\leq 0$의 오른쪽 근이 반드시 $X_2 = 256$이어야 한다, 즉 $f(256) = 0$이다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 1,
+                "reason": "학생이 4^{-a}>0이므로 아래로 볼록한 포물선이고 f(X)≤0의 해가 두 근 사이의 닫힌 구간임을 명시적으로 서술함"
+              },
+              {
+                "label": "B",
+                "score": 1,
+                "reason": "학생이 해 구간과 X>0의 교집합이 (0,256]이 되려면 오른쪽 끝 X2=256이어야 한다고 명시적으로 서술함"
+              },
+              {
+                "label": "D",
+                "score": 0.7,
+                "reason": "학생이 f(256)=0임을 결론으로 도출했으나, 대입 후 전개한 식 2^{16-2a}-2^8+b=0까지는 명시하지 않음"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 222tok | disc 13545ms + match 4676ms | bonus 2"
+          }
+        ]
+      },
+      {
+        "note_index": 5,
+        "note_id": "note8",
+        "neuron": "전략25",
+        "neuron_type": "전략",
+        "note_text": "해 집합의 상한이 $256$이므로 $r_2=256$이다",
+        "from": [
+          "note7",
+          "note5"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note7",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 6,
+        "note_id": "note10",
+        "neuron": "전략23",
+        "neuron_type": "전략",
+        "note_text": "$r_1\\leq0$이다",
+        "from": [
+          "note9"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note10",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note10",
+            "in_target": "note10",
+            "attempt": 1,
+            "score": 1,
+            "reason": "학생이 r1≤0을 명시적으로 도출함"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 255,
+            "discover_elapsed_ms": 13631,
+            "match_elapsed_ms": 2933,
+            "discover_input_tokens": 931,
+            "discover_output_tokens": 948,
+            "match_input_tokens": 787,
+            "match_output_tokens": 113,
+            "claude_output": "[시도] 내가 해볼 것: $r_2 = 256$이므로 $f(256)=0$에 대입하여 $b$를 $a$로 표현하기\n\n[계산]\n$$f(256) = 4^{-a}\\cdot 256^2 - 256 + b = 0$$\n$$4^{-a}\\cdot 65536 - 256 + b = 0$$\n$$4^{-a}\\cdot 4^8 - 256 + b = 0$$\n$$4^{8-a} - 256 + b = 0$$\n\n[결론] $b = 256 - 4^{8-a}$ (b는 a에 의해 결정됨)",
+            "matches": [
+              {
+                "label": "B",
+                "score": 0.85,
+                "reason": "학생의 결론 b = 256 - 4^{8-a}를 변환하면: 256 = 2^8, 4^{8-a} = 2^{16-2a}이므로 b = 2^8 - 2^{16-2a}와 동일한 표현이다"
+              }
+            ],
+            "eval_summary": "MISS attempt0 dry0 | 255tok | disc 13631ms + match 2933ms | bonus 1"
+          },
+          {
+            "attempt": 1,
+            "think_tokens": 277,
+            "discover_elapsed_ms": 15163,
+            "match_elapsed_ms": 3827,
+            "discover_input_tokens": 952,
+            "discover_output_tokens": 1017,
+            "match_input_tokens": 953,
+            "match_output_tokens": 240,
+            "claude_output": "[시도] 내가 해볼 것: 하한 $r_1$이 만족해야 할 조건 구하기\n\n[계산]\n$f(X) = 4^{-a}X^2 - X + b \\leq 0$의 해는 $r_1 \\leq X \\leq 256$이다.\n\n$x$가 실수 전체에서 $x \\leq 8$이어야 하므로, $X = 2^x > 0$ 전체 범위에서 $0 < X \\leq 256$일 때 부등식이 성립해야 한다.\n\n즉, $X \\in (0, 256]$ 전체가 $[r_1, 256]$에 포함되려면:\n\n$$r_1 \\leq 0$$\n\n비에타 공식으로 $r_1 + r_2 = \\frac{1}{4^{-a}} = 4^a$이고 $r_2 = 256$이므로:\n\n$$r_1 = 4^a - 256 \\leq 0 \\implies 4^a \\leq 256 = 4^4 \\implies a \\leq 4$$\n\n[결론] $a$는 자연수이므로 $a \\in \\{1, 2, 3, 4\\}$, 즉 $a$는 4가지 값이 가능하다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 1,
+                "reason": "학생이 r1≤0을 명시적으로 도출함"
+              },
+              {
+                "label": "G",
+                "score": 1,
+                "reason": "학생이 a≤4를 명시적으로 도출함"
+              },
+              {
+                "label": "H",
+                "score": 1,
+                "reason": "학생이 a는 자연수이고 a≤4이므로 a∈{1,2,3,4}라고 명시적으로 결론냄"
+              },
+              {
+                "label": "C",
+                "score": 0.4,
+                "reason": "학생은 비에타 공식으로 r1+r2=4^a를 사용했으나 r1·r2에 대한 언급은 없음. 근과 계수의 관계를 부분적으로만 활용"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 277tok | disc 15163ms + match 3827ms | bonus 2"
+          }
+        ]
+      },
+      {
+        "note_index": 7,
+        "note_id": "note11",
+        "neuron": "전략25",
+        "neuron_type": "전략",
+        "note_text": "$f(256)=0$에 대입하면 $4^{-a}\\cdot2^{16}-2^8+b=0$, 즉 $2^{16-2a}-2^8+b=0$이다",
+        "from": [
+          "note8"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note7",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 8,
+        "note_id": "note12",
+        "neuron": "연산21",
+        "neuron_type": "연산",
+        "note_text": "$b=2^8-2^{16-2a}$이다",
+        "from": [
+          "note11"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note10",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 9,
+        "note_id": "note13",
+        "neuron": "사실78",
+        "neuron_type": "사실",
+        "note_text": "근과 계수의 관계에 의해 $r_1\\cdot r_2=\\frac{b}{4^{-a}}=b\\cdot4^a$이다",
+        "from": [
+          "note7",
+          "note8"
+        ],
+        "hint_level": 2,
+        "is_bonus": false,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note13",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note13",
+            "in_target": "note13",
+            "attempt": 0,
+            "score": 0.4,
+            "reason": "학생은 두 근의 합만 사용했고, 후보 A는 두 근의 곱에 관한 결론이다. 학생의 서술에는 근의 곱 관계식이 명시적으로 포함되어 있지 않으나, 비에타 공식을 적용하는 맥락에서 부분적으로 관련됨"
+          },
+          {
+            "note_id": "note13",
+            "in_target": "note13",
+            "attempt": 1,
+            "score": 0.4,
+            "reason": "학생은 비에타 공식을 사용했지만 합(r1+r2=4^a)만 언급하고 곱(r1·r2=b·4^a)은 명시적으로 계산하지 않았다. 그러나 비에타 공식 적용 맥락에서 부분적으로 관련됨"
+          },
+          {
+            "note_id": "note13",
+            "in_target": "note13",
+            "attempt": 3,
+            "score": 1,
+            "reason": "학생이 '비에타 공식: r1·r2 = b/4^{-a} = b·4^a'로 정확히 같은 결론을 명시함"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 204,
+            "discover_elapsed_ms": 11768,
+            "match_elapsed_ms": 2914,
+            "discover_input_tokens": 1030,
+            "discover_output_tokens": 771,
+            "match_input_tokens": 673,
+            "match_output_tokens": 137,
+            "claude_output": "[시도] 비에타 공식으로 나머지 근 $r_1$을 $a$로 표현하기\n\n[계산]\n$f(X) = 4^{-a}X^2 - X + b$의 두 근이 $r_1$, $r_2 = 256$이므로,  \n두 근의 합 = $\\dfrac{1}{4^{-a}} = 4^a$  \n\n따라서:\n$$r_1 + 256 = 4^a \\implies r_1 = 4^a - 256$$\n\n[결론] 나머지 근은 $r_1 = 4^a - 256$이다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 0.4,
+                "reason": "학생은 두 근의 합만 사용했고, 후보 A는 두 근의 곱에 관한 결론이다. 학생의 서술에는 근의 곱 관계식이 명시적으로 포함되어 있지 않으나, 비에타 공식을 적용하는 맥락에서 부분적으로 관련됨"
+              }
+            ],
+            "eval_summary": "MISS attempt0 dry0 | 204tok | disc 11768ms + match 2914ms | bonus 0"
+          },
+          {
+            "attempt": 1,
+            "think_tokens": 95,
+            "discover_elapsed_ms": 6427,
+            "match_elapsed_ms": 4849,
+            "discover_input_tokens": 1182,
+            "discover_output_tokens": 475,
+            "match_input_tokens": 737,
+            "match_output_tokens": 234,
+            "claude_output": "[시도] 비에타 공식으로 $r_1$을 $a$로 표현하기\n\n[계산]\n$f(X) = 4^{-a}X^2 - X + b$의 두 근이 $r_1, r_2 = 256$이므로, 비에타 공식에서:\n\n$$r_1 + r_2 = \\frac{1}{4^{-a}} = 4^a$$\n\n$$r_1 + 256 = 4^a \\implies r_1 = 4^a - 256$$\n\n$r_1 \\leq 0$ 조건에서: $4^a \\leq 256 = 4^4$, 즉 $a \\leq 4$\n\n[결론] $a$는 자연수이고 $a \\leq 4$이므로, $a \\in \\{1, 2, 3, 4\\}$이다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 0.4,
+                "reason": "학생은 비에타 공식을 사용했지만 합(r1+r2=4^a)만 언급하고 곱(r1·r2=b·4^a)은 명시적으로 계산하지 않았다. 그러나 비에타 공식 적용 맥락에서 부분적으로 관련됨"
+              },
+              {
+                "label": "E",
+                "score": 0.7,
+                "reason": "학생이 a∈{1,2,3,4}로 4개의 자연수 값을 구했고, 각 a에 대해 b가 결정되면 순서쌍이 4개라는 결론과 수학적으로 동일한 방향의 결론에 도달함"
+              }
+            ],
+            "eval_summary": "MISS attempt1 dry1 | 95tok | disc 6427ms + match 4849ms | bonus 1"
+          },
+          {
+            "attempt": 2,
+            "think_tokens": 99,
+            "discover_elapsed_ms": 7228,
+            "match_elapsed_ms": 1675,
+            "discover_input_tokens": 1230,
+            "discover_output_tokens": 464,
+            "match_input_tokens": 632,
+            "match_output_tokens": 8,
+            "claude_output": "[시도] 두 근의 합(비에타 공식)으로 $r_1$을 구해볼 것\n\n[계산]\n$f(X) = 4^{-a}X^2 - X + b$의 두 근 $r_1, r_2 = 256$에 대해 비에타 공식 적용:\n\n$$r_1 + r_2 = \\frac{1}{4^{-a}} = 4^a$$\n\n$$r_1 + 256 = 4^a$$\n\n$$r_1 = 4^a - 256$$\n\n[결론] 비에타 공식에 의해 $r_1 = 4^a - 256$이다.",
+            "matches": [],
+            "eval_summary": "MISS attempt2 dry1 | 99tok | disc 7228ms + match 1675ms | bonus 0"
+          },
+          {
+            "attempt": 3,
+            "think_tokens": 343,
+            "discover_elapsed_ms": 17436,
+            "match_elapsed_ms": 6184,
+            "discover_input_tokens": 1137,
+            "discover_output_tokens": 1418,
+            "match_input_tokens": 807,
+            "match_output_tokens": 330,
+            "claude_output": "[시도] 비에타 공식으로 $r_1$을 $a$로 표현하기\n\n[계산]\n$f(X) = 4^{-a}X^2 - X + b$의 두 근 $r_1, r_2$에 대해 비에타 공식:\n$$r_1 \\cdot r_2 = \\frac{b}{4^{-a}} = b \\cdot 4^a$$\n\n$r_2 = 256$이므로:\n$$r_1 = \\frac{b \\cdot 4^a}{256} = \\frac{b \\cdot 2^{2a}}{2^8}$$\n\nnote8의 $b = 2^8 - 2^{16-2a}$를 대입:\n$$r_1 = \\frac{(2^8 - 2^{16-2a}) \\cdot 2^{2a}}{2^8} = \\frac{2^{8+2a} - 2^{16}}{2^8} = 2^{2a} - 2^8$$\n\n[결론] $r_1 = 2^{2a} - 2^8$이고, 조건 $r_1 \\leq 0$에서 $2^{2a} \\leq 2^8$, 즉 **$a \\leq 4$** 이다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 1,
+                "reason": "학생이 '비에타 공식: r1·r2 = b/4^{-a} = b·4^a'로 정확히 같은 결론을 명시함"
+              },
+              {
+                "label": "C",
+                "score": 0.9,
+                "reason": "학생이 r1 = 2^{2a} - 2^8 ≤ 0에서 2^{2a} ≤ 2^8을 도출했는데, 이는 b = 2^8 - 2^{16-2a} ≤ 0 즉 2^8 ≤ 2^{16-2a}와 수학적으로 동치인 부등식임"
+              },
+              {
+                "label": "D",
+                "score": 0.85,
+                "reason": "학생이 2^{2a} ≤ 2^8에서 2a ≤ 8, 즉 a ≤ 4를 도출한 것은 2^x 순증가 성질을 적용한 것과 동일하며, C의 부등식 8 ≤ 16-2a와도 동치"
+              }
+            ],
+            "eval_summary": "FOUND H2 | 343tok | disc 17436ms + match 6184ms | bonus 2"
+          }
+        ]
+      },
+      {
+        "note_index": 10,
+        "note_id": "note15",
+        "neuron": "사실65",
+        "neuron_type": "사실",
+        "note_text": "$b\\cdot4^a\\leq0$이고 $4^a>0$이므로 $b\\leq0$이다",
+        "from": [
+          "note13",
+          "note14"
+        ],
+        "hint_level": 2,
+        "is_bonus": false,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note15",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note15",
+            "in_target": "note15",
+            "attempt": 2,
+            "score": 1,
+            "reason": "학생의 서술에서 'b·4^a ≤ 0'이고 '4^a > 0이므로 b ≤ 0'이라는 결론을 동일하게 도출함"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 259,
+            "discover_elapsed_ms": 16764,
+            "match_elapsed_ms": 1943,
+            "discover_input_tokens": 1082,
+            "discover_output_tokens": 1192,
+            "match_input_tokens": 529,
+            "match_output_tokens": 8,
+            "claude_output": "[시도] 내가 해볼 것: 근과 계수의 관계에서 $r_1$을 $a$로 나타내기\n\n[계산]\n$$r_1 \\cdot r_2 = b \\cdot 4^a \\implies r_1 \\cdot 256 = (2^8 - 2^{16-2a}) \\cdot 4^a$$\n\n$$r_1 = \\frac{(2^8 - 2^{16-2a}) \\cdot 2^{2a}}{2^8} = \\frac{2^{8+2a} - 2^{16}}{2^8} = 2^{2a} - 2^8$$\n\n[결론] $r_1 = 2^{2a} - 2^8$이다.",
+            "matches": [],
+            "eval_summary": "MISS attempt0 dry0 | 259tok | disc 16764ms + match 1943ms | bonus 0"
+          },
+          {
+            "attempt": 1,
+            "think_tokens": 122,
+            "discover_elapsed_ms": 7404,
+            "match_elapsed_ms": 1815,
+            "discover_input_tokens": 1160,
+            "discover_output_tokens": 604,
+            "match_input_tokens": 551,
+            "match_output_tokens": 8,
+            "claude_output": "[시도] $r_1 \\cdot r_2 = b \\cdot 4^a$에 $r_2 = 256$, $b = 2^8 - 2^{16-2a}$를 대입하여 $r_1$ 계산\n\n[계산]\n$$r_1 \\cdot 256 = (2^8 - 2^{16-2a}) \\cdot 4^a = (2^8 - 2^{16-2a}) \\cdot 2^{2a}$$\n$$= 2^{2a+8} - 2^{16}$$\n$$r_1 = \\frac{2^{2a+8} - 2^{16}}{2^8} = 2^{2a} - 2^8 = 4^a - 256$$\n\n[결론] $r_1 = 4^a - 256$이다.",
+            "matches": [],
+            "eval_summary": "MISS attempt1 dry1 | 122tok | disc 7404ms + match 1815ms | bonus 0"
+          },
+          {
+            "attempt": 2,
+            "think_tokens": 172,
+            "discover_elapsed_ms": 12035,
+            "match_elapsed_ms": 2244,
+            "discover_input_tokens": 1137,
+            "discover_output_tokens": 936,
+            "match_input_tokens": 630,
+            "match_output_tokens": 87,
+            "claude_output": "[시도] 내가 해볼 것: $r_1 \\leq 0$과 $r_1 \\cdot r_2 = b \\cdot 4^a$를 결합해 $b$의 부호 조건을 구하기\n\n[계산]\n- $r_2 = 256 > 0$이고 $r_1 \\leq 0$이므로\n$$r_1 \\cdot r_2 = r_1 \\cdot 256 \\leq 0$$\n- 따라서 $b \\cdot 4^a \\leq 0$\n- $4^a > 0$이므로 $b \\leq 0$\n- $b = 2^8 - 2^{16-2a} \\leq 0$에 대입하면:\n$$2^8 \\leq 2^{16-2a} \\implies 8 \\leq 16-2a \\implies a \\leq 4$$\n\n[결론] $a$는 자연수이므로 $a \\leq 4$, 즉 $a \\in \\{1, 2, 3, 4\\}$로 후보가 제한된다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 1,
+                "reason": "학생의 서술에서 'b·4^a ≤ 0'이고 '4^a > 0이므로 b ≤ 0'이라는 결론을 동일하게 도출함"
+              }
+            ],
+            "eval_summary": "FOUND H2 | 172tok | disc 12035ms + match 2244ms | bonus 0"
+          }
+        ]
+      },
+      {
+        "note_index": 11,
+        "note_id": "note16",
+        "neuron": "연산21",
+        "neuron_type": "연산",
+        "note_text": "$2^8-2^{16-2a}\\leq0$, 즉 $2^8\\leq2^{16-2a}$이다",
+        "from": [
+          "note12",
+          "note15"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note13",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 12,
+        "note_id": "note17",
+        "neuron": "사실51",
+        "neuron_type": "사실",
+        "note_text": "$2^x$는 순증가이므로 $8\\leq16-2a$이다",
+        "from": [
+          "note16"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note13",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 13,
+        "note_id": "note18",
+        "neuron": "연산21",
+        "neuron_type": "연산",
+        "note_text": "$2a\\leq8$, 즉 $a\\leq4$이다",
+        "from": [
+          "note17"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note10",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 14,
+        "note_id": "note19",
+        "neuron": "전략17",
+        "neuron_type": "전략",
+        "note_text": "$a$는 자연수이고 $a\\leq4$이므로 $a\\in\\{1,2,3,4\\}$이다",
+        "from": [
+          "note18",
+          "단서C"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note10",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 15,
+        "note_id": "END",
+        "neuron": "전략17",
+        "neuron_type": "전략",
+        "note_text": "각 $a$에 대해 $b$가 유일하게 결정되므로 순서쌍 $(a,b)$는 4개이다",
+        "from": [
+          "note19"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note13",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      }
+    ],
+    "_debug": "v7-split"
+  }
 }

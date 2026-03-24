@@ -1,14 +1,684 @@
 {
   "problem_id": "Problem17",
-  "_filename": "Problem17.json",
-  "_stub": true,
-  "tags": {
-    "source": "",
-    "theme": "",
-    "difficulty": "",
-    "custom": [
-      "2025"
-    ]
-  },
-  "metadata": {}
+  "clues": [
+    {
+      "id": "단서A",
+      "text": "점 A, B는 곡선 $y=2^x$ 위의 서로 다른 두 점이다"
+    },
+    {
+      "id": "단서B",
+      "text": "점 C, D는 곡선 $y=3^{x-4}$ 위의 서로 다른 두 점이다"
+    },
+    {
+      "id": "단서C",
+      "text": "사각형 ABDC는 평행사변형이다"
+    },
+    {
+      "id": "단서D",
+      "text": "(점 B의 $x$좌표) $-$ (점 A의 $x$좌표) $= 1$"
+    },
+    {
+      "id": "단서E",
+      "text": "(점 C의 $x$좌표) $-$ (점 A의 $x$좌표) $= 3$"
+    }
+  ],
+  "skeleton": [
+    {
+      "from": [
+        "단서A",
+        "단서D"
+      ],
+      "to": "note1",
+      "neuron": "전략2",
+      "note": "점 A의 $x$좌표를 $a$로 놓으면 $A=(a,\\,2^a)$, $B=(a+1,\\,2^{a+1})$이다",
+      "step": 1
+    },
+    {
+      "from": [
+        "단서B",
+        "단서E"
+      ],
+      "to": "note2",
+      "neuron": "전략2",
+      "note": "$C=(a+3,\\,3^{a-1})$이고, D의 $x$좌표를 $k$로 놓으면 $D=(k,\\,3^{k-4})$이다",
+      "step": 1
+    },
+    {
+      "from": [
+        "단서C",
+        "note1",
+        "note2"
+      ],
+      "to": "note3",
+      "neuron": "사실36",
+      "note": "평행사변형 ABDC에서 $\\vec{AB}=\\vec{CD}$이다",
+      "step": 2
+    },
+    {
+      "from": "note1",
+      "to": "note4",
+      "neuron": "연산18",
+      "note": "$\\vec{AB}=(1,\\,2^{a+1}-2^a)=(1,\\,2^a)$이다",
+      "main": false,
+      "step": 2
+    },
+    {
+      "from": [
+        "note3",
+        "note4"
+      ],
+      "to": "note5",
+      "neuron": "전략2",
+      "note": "$x$성분: $k-(a+3)=1$, 즉 $k=a+4$이다",
+      "step": 2
+    },
+    {
+      "from": [
+        "note5",
+        "note2"
+      ],
+      "to": "note6",
+      "neuron": "전략25",
+      "note": "$D=(a+4,\\,3^{a})$이다",
+      "step": 2
+    },
+    {
+      "from": [
+        "note6",
+        "note2"
+      ],
+      "to": "note7",
+      "neuron": "연산18",
+      "note": "$\\vec{CD}=(1,\\,3^a-3^{a-1})=(1,\\,2\\cdot3^{a-1})$이다",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": [
+        "note4",
+        "note7",
+        "note3"
+      ],
+      "to": "note8",
+      "neuron": "전략2",
+      "note": "$y$성분: $2^a=2\\cdot3^{a-1}$이다",
+      "step": 3
+    },
+    {
+      "from": "note8",
+      "to": "note9",
+      "neuron": "연산18",
+      "note": "$2^a = 2\\cdot3^{a-1}$에서 $2^{a-1}=3^{a-1}$이다",
+      "step": 3
+    },
+    {
+      "from": "note9",
+      "to": "note10",
+      "neuron": "연산4",
+      "note": "$(3/2)^{a-1}=1$이다",
+      "step": 3
+    },
+    {
+      "from": "note10",
+      "to": "note11",
+      "neuron": "사실18",
+      "note": "$a-1=0$, 즉 $a=1$이다",
+      "step": 3
+    },
+    {
+      "from": [
+        "note11",
+        "note1",
+        "note6"
+      ],
+      "to": "note12",
+      "neuron": "전략25",
+      "note": "$A=(1,\\,2)$, $B=(2,\\,4)$, $C=(4,\\,1)$, $D=(5,\\,3)$이다",
+      "step": 4
+    },
+    {
+      "from": "note12",
+      "to": "note13",
+      "neuron": "사실36",
+      "note": "$\\vec{AB}=(1,2)$, $\\vec{CD}=(1,2)$이고 $\\vec{AC}=(3,-1)$, $\\vec{BD}=(3,-1)$이다",
+      "main": false,
+      "step": 4
+    },
+    {
+      "from": "note12",
+      "to": "END",
+      "neuron": "연산11",
+      "note": "$\\overline{AD}^2=(5-1)^2+(3-2)^2=16+1=17$이다",
+      "step": 5
+    }
+  ],
+  "solution": "STEP 1. 점 A의 $x$좌표를 $a$로 놓으면 조건에 의해 $A=(a,\\,2^a)$, $B=(a+1,\\,2^{a+1})$, $C=(a+3,\\,3^{a-1})$이고, D의 $x$좌표를 $k$로 놓으면 $D=(k,\\,3^{k-4})$이다.\n\nSTEP 2. 사각형 ABDC가 평행사변형이므로 대변의 벡터가 같다: $\\vec{AB}=\\vec{CD}$. $\\vec{AB}=(1,\\,2^{a+1}-2^a)=(1,\\,2^a)$이고, $x$성분에서 $k-(a+3)=1$이므로 $k=a+4$이다. 따라서 $D=(a+4,\\,3^a)$이다.\n\nSTEP 3. $y$성분 조건 $2^a = 2\\cdot3^{a-1}$에서 $2^{a-1}=3^{a-1}$, 즉 $(3/2)^{a-1}=1$이다. $a^0=1$이므로 $a=1$이다.\n\nSTEP 4. $a=1$을 대입하면 $A=(1,\\,2)$, $B=(2,\\,4)$, $C=(4,\\,1)$, $D=(5,\\,3)$이다.\n\nSTEP 5. $\\overline{AD}^2=(5-1)^2+(3-2)^2=16+1=17$이다.",
+  "statement": "# 29. (수능/모의고사) - 지수함수와 평행사변형\n\n## Problem\n\n그림과 같이 곡선 $y = 2^x$ 위의 서로 다른 두 점 A, B와 곡선 $y = 3^{x-4}$ 위의 서로 다른 두 점 C, D에 대하여 사각형 ABDC는 평행사변형이다.\n\n$$(\\text{점 B의 } x\\text{좌표}) - (\\text{점 A의 } x\\text{좌표}) = 1$$\n\n$$(\\text{점 C의 } x\\text{좌표}) - (\\text{점 A의 } x\\text{좌표}) = 3$$\n\n일 때, $\\overline{\\text{AD}}^2$의 값을 구하시오. [4점]\n\n[FIGURE: $y = 2^x$ 곡선 위에 점 A(아래쪽), B(위쪽)가 있고, $y = 3^{x-4}$ 곡선 위에 점 C(아래쪽), D(위쪽)가 있다. 사각형 ABDC가 평행사변형을 이룬다.]",
+  "thinking_profile": {
+    "_version": 6,
+    "_unit": "note",
+    "_isV6": true,
+    "total_think_tokens": 871,
+    "total_notes": 11,
+    "hint_distribution": {
+      "0": 11,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0
+    },
+    "avg_hint_level": 0,
+    "genuine_miss_count": 0,
+    "absorbed_miss_count": 0,
+    "bonus_count": 5,
+    "highlight_notes": [
+      "note1",
+      "note2",
+      "note5"
+    ],
+    "hardest_note": {
+      "note_id": "note1",
+      "neuron": "전략2",
+      "hint_level": 0,
+      "structural_difficulty": 0.25,
+      "miss_type": null,
+      "note_text": "점 A의 $x$좌표를 $a$로 놓으면 $A=(a,\\,2^a)$, $B=(a+1,\\,2^{a+1})$이다"
+    },
+    "neuron_stats": {
+      "전략2": {
+        "type": "전략",
+        "appearances": 4,
+        "total_hint": 0,
+        "hint_levels": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bonus_count": 2,
+        "avg_hint_level": 0
+      },
+      "사실36": {
+        "type": "사실",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 0,
+        "avg_hint_level": 0
+      },
+      "전략25": {
+        "type": "전략",
+        "appearances": 2,
+        "total_hint": 0,
+        "hint_levels": [
+          0,
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "연산18": {
+        "type": "연산",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 0,
+        "avg_hint_level": 0
+      },
+      "연산4": {
+        "type": "연산",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "사실18": {
+        "type": "사실",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "연산11": {
+        "type": "연산",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 0,
+        "avg_hint_level": 0
+      }
+    },
+    "notes": [
+      {
+        "note_index": 1,
+        "note_id": "note1",
+        "neuron": "전략2",
+        "neuron_type": "전략",
+        "note_text": "점 A의 $x$좌표를 $a$로 놓으면 $A=(a,\\,2^a)$, $B=(a+1,\\,2^{a+1})$이다",
+        "from": [
+          "단서A",
+          "단서D"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note1",
+            "in_target": "note1",
+            "attempt": 0,
+            "score": 1,
+            "reason": "학생의 서술에서 A=(a,2^a), B=(a+1,2^{a+1})로 정확히 일치"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 441,
+            "discover_elapsed_ms": 21940,
+            "match_elapsed_ms": 3840,
+            "discover_input_tokens": 885,
+            "discover_output_tokens": 1449,
+            "match_input_tokens": 979,
+            "match_output_tokens": 155,
+            "claude_output": "[시도] 점 A의 x좌표를 $a$로 놓고, 각 점의 좌표를 설정해보겠다.\n\n[계산]\n- A의 x좌표 = $a$ → $A = (a,\\ 2^a)$\n- B의 x좌표 = $a+1$ → $B = (a+1,\\ 2^{a+1})$\n- C의 x좌표 = $a+3$ → $C = (a+3,\\ 3^{(a+3)-4}) = (a+3,\\ 3^{a-1})$\n- D의 x좌표는 미지수 → $D = (d,\\ 3^{d-4})$ (곡선 $y=3^{x-4}$ 위)\n\n[결론] 네 점의 좌표는 $A=(a,\\ 2^a)$, $B=(a+1,\\ 2^{a+1})$, $C=(a+3,\\ 3^{a-1})$, $D=(d,\\ 3^{d-4})$로 표현된다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 1,
+                "reason": "학생의 서술에서 A=(a,2^a), B=(a+1,2^{a+1})로 정확히 일치"
+              },
+              {
+                "label": "B",
+                "score": 0.9,
+                "reason": "C=(a+3,3^{a-1})은 완전 일치, D의 x좌표를 d(학생)vs k(후보)로 표기만 다르고 D=(d,3^{d-4})로 동일한 결론"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 441tok | disc 21940ms + match 3840ms | bonus 1"
+          }
+        ]
+      },
+      {
+        "note_index": 2,
+        "note_id": "note2",
+        "neuron": "전략2",
+        "neuron_type": "전략",
+        "note_text": "$C=(a+3,\\,3^{a-1})$이고, D의 $x$좌표를 $k$로 놓으면 $D=(k,\\,3^{k-4})$이다",
+        "from": [
+          "단서B",
+          "단서E"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 3,
+        "note_id": "note3",
+        "neuron": "사실36",
+        "neuron_type": "사실",
+        "note_text": "평행사변형 ABDC에서 $\\vec{AB}=\\vec{CD}$이다",
+        "from": [
+          "단서C",
+          "note1",
+          "note2"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note3",
+            "in_target": "note3",
+            "attempt": 0,
+            "score": 1,
+            "reason": "학생이 '평행사변형 ABDC에서 벡터 AB = 벡터 CD이어야 한다'고 명시적으로 서술함"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 282,
+            "discover_elapsed_ms": 11807,
+            "match_elapsed_ms": 3230,
+            "discover_input_tokens": 1019,
+            "discover_output_tokens": 792,
+            "match_input_tokens": 814,
+            "match_output_tokens": 180,
+            "claude_output": "[시도] 내가 해볼 것: 평행사변형 ABDC의 조건(벡터 AB = 벡터 CD)을 이용해 D의 x좌표 k를 구하기\n\n[계산]\n평행사변형 ABDC에서 꼭짓점 순서가 A→B→D→C이므로, $\\vec{AB} = \\vec{CD}$이어야 한다.\n\n$$\\vec{AB} = (1,\\ 2^{a+1}-2^a) = (1,\\ 2^a)$$\n\n$$\\vec{CD} = (k-(a+3),\\ 3^{k-4}-3^{a-1})$$\n\nx성분 비교: $k-(a+3)=1$ → $k = a+4$\n\n[결론] D의 x좌표는 $k = a+4$이므로, $D = (a+4,\\ 3^a)$이다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 1,
+                "reason": "학생이 '평행사변형 ABDC에서 벡터 AB = 벡터 CD이어야 한다'고 명시적으로 서술함"
+              },
+              {
+                "label": "B",
+                "score": 1,
+                "reason": "학생이 x성분 비교: k-(a+3)=1 → k=a+4를 정확히 계산함"
+              },
+              {
+                "label": "C",
+                "score": 1,
+                "reason": "학생의 결론에서 D=(a+4, 3^a)를 명시적으로 서술함"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 282tok | disc 11807ms + match 3230ms | bonus 2"
+          }
+        ]
+      },
+      {
+        "note_index": 4,
+        "note_id": "note5",
+        "neuron": "전략2",
+        "neuron_type": "전략",
+        "note_text": "$x$성분: $k-(a+3)=1$, 즉 $k=a+4$이다",
+        "from": [
+          "note3",
+          "note4"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 5,
+        "note_id": "note6",
+        "neuron": "전략25",
+        "neuron_type": "전략",
+        "note_text": "$D=(a+4,\\,3^{a})$이다",
+        "from": [
+          "note5",
+          "note2"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 6,
+        "note_id": "note8",
+        "neuron": "전략2",
+        "neuron_type": "전략",
+        "note_text": "$y$성분: $2^a=2\\cdot3^{a-1}$이다",
+        "from": [
+          "note4",
+          "note7",
+          "note3"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note8",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note8",
+            "in_target": "note8",
+            "attempt": 0,
+            "score": 1,
+            "reason": "regex"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 51,
+            "discover_elapsed_ms": 5160,
+            "match_elapsed_ms": 5039,
+            "discover_input_tokens": 1103,
+            "discover_output_tokens": 293,
+            "match_input_tokens": 639,
+            "match_output_tokens": 256,
+            "claude_output": "[시도] 벡터 AB와 CD의 y성분 등식을 세워볼 것\n\n[계산]\n$$\\vec{AB} = (1,\\ 2^{a+1}-2^a) = (1,\\ 2^a)$$\n$$\\vec{CD} = (1,\\ 3^a - 3^{a-1})$$\n\ny성분 등식:\n$$2^a = 3^a - 3^{a-1}$$\n\n[결론] y성분에서 $2^a = 3^a - 3^{a-1}$이라는 방정식을 얻었다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 1,
+                "reason": "regex"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 51tok | disc 5160ms + match 5039ms | bonus 0"
+          }
+        ]
+      },
+      {
+        "note_index": 7,
+        "note_id": "note9",
+        "neuron": "연산18",
+        "neuron_type": "연산",
+        "note_text": "$2^a = 2\\cdot3^{a-1}$에서 $2^{a-1}=3^{a-1}$이다",
+        "from": [
+          "note8"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note9",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note9",
+            "in_target": "note9",
+            "attempt": 0,
+            "score": 0.7,
+            "reason": "학생의 풀이에서 2^a/3^a = 2/3 단계는 2^(a-1)=3^(a-1)과 동치인 관계를 내포하고 있다"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 52,
+            "discover_elapsed_ms": 4667,
+            "match_elapsed_ms": 5180,
+            "discover_input_tokens": 1131,
+            "discover_output_tokens": 289,
+            "match_input_tokens": 606,
+            "match_output_tokens": 227,
+            "claude_output": "[시도] $y$성분 방정식 $2^a = 2 \\cdot 3^{a-1}$을 풀어 $a$의 값을 구한다\n\n[계산]\n$$2^a = 2 \\cdot 3^{a-1} = \\frac{2}{3} \\cdot 3^a$$\n$$\\frac{2^a}{3^a} = \\frac{2}{3}$$\n$$\\left(\\frac{2}{3}\\right)^a = \\left(\\frac{2}{3}\\right)^1$$\n\n[결론] $a = 1$이다",
+            "matches": [
+              {
+                "label": "C",
+                "score": 1,
+                "reason": "학생의 결론 a=1이 후보 C의 a-1=0, 즉 a=1과 완전히 일치한다"
+              },
+              {
+                "label": "B",
+                "score": 0.7,
+                "reason": "학생의 (2/3)^a = (2/3)^1 변환은 (3/2)^(a-1)=1과 수학적으로 동치인 중간 결론을 포함한다"
+              },
+              {
+                "label": "A",
+                "score": 0.7,
+                "reason": "학생의 풀이에서 2^a/3^a = 2/3 단계는 2^(a-1)=3^(a-1)과 동치인 관계를 내포하고 있다"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 52tok | disc 4667ms + match 5180ms | bonus 2"
+          }
+        ]
+      },
+      {
+        "note_index": 8,
+        "note_id": "note10",
+        "neuron": "연산4",
+        "neuron_type": "연산",
+        "note_text": "$(3/2)^{a-1}=1$이다",
+        "from": [
+          "note9"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note9",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 9,
+        "note_id": "note11",
+        "neuron": "사실18",
+        "neuron_type": "사실",
+        "note_text": "$a-1=0$, 즉 $a=1$이다",
+        "from": [
+          "note10"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note9",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 10,
+        "note_id": "note12",
+        "neuron": "전략25",
+        "neuron_type": "전략",
+        "note_text": "$A=(1,\\,2)$, $B=(2,\\,4)$, $C=(4,\\,1)$, $D=(5,\\,3)$이다",
+        "from": [
+          "note11",
+          "note1",
+          "note6"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note12",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note12",
+            "in_target": "note12",
+            "attempt": 0,
+            "score": 0.7,
+            "reason": "A=(1,2)와 D=(5,3) 두 점의 좌표가 일치하나, B=(2,4)와 C=(4,1)에 대한 언급이 없어 결론의 일부만 포함"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 16,
+            "discover_elapsed_ms": 4364,
+            "match_elapsed_ms": 4539,
+            "discover_input_tokens": 1215,
+            "discover_output_tokens": 128,
+            "match_input_tokens": 459,
+            "match_output_tokens": 173,
+            "claude_output": "[시도] a=1을 이용해 점 A와 D의 좌표를 구하기\n\n[계산]\n- a=1이므로 A=(1, 2¹)=(1, 2)\n- D=(a+4, 3^a)=(5, 3)\n\n[결론] A=(1, 2), D=(5, 3)이다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 0.7,
+                "reason": "A=(1,2)와 D=(5,3) 두 점의 좌표가 일치하나, B=(2,4)와 C=(4,1)에 대한 언급이 없어 결론의 일부만 포함"
+              },
+              {
+                "label": "B",
+                "score": 0.4,
+                "reason": "AD²계산의 출발점인 A=(1,2), D=(5,3) 좌표를 포함하고 있으나, 거리 계산 결론(=17)은 언급되지 않음"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 16tok | disc 4364ms + match 4539ms | bonus 0"
+          }
+        ]
+      },
+      {
+        "note_index": 11,
+        "note_id": "END",
+        "neuron": "연산11",
+        "neuron_type": "연산",
+        "note_text": "$\\overline{AD}^2=(5-1)^2+(3-2)^2=16+1=17$이다",
+        "from": [
+          "note12"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "END",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "END",
+            "in_target": "END",
+            "attempt": 0,
+            "score": 1,
+            "reason": "학생의 계산과 결론이 후보 A와 완전히 일치함: (5-1)²+(3-2)²=16+1=17"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 29,
+            "discover_elapsed_ms": 4245,
+            "match_elapsed_ms": 2299,
+            "discover_input_tokens": 1263,
+            "discover_output_tokens": 210,
+            "match_input_tokens": 451,
+            "match_output_tokens": 71,
+            "claude_output": "[시도] 내가 해볼 것: A와 D의 좌표로 AD²를 계산한다\n\n[계산]\n$A=(1,\\,2)$, $D=(5,\\,3)$이므로\n\n$$\\overline{AD}^2 = (5-1)^2 + (3-2)^2 = 4^2 + 1^2 = 16 + 1 = 17$$\n\n[결론] $\\overline{AD}^2 = \\boxed{17}$",
+            "matches": [
+              {
+                "label": "A",
+                "score": 1,
+                "reason": "학생의 계산과 결론이 후보 A와 완전히 일치함: (5-1)²+(3-2)²=16+1=17"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 29tok | disc 4245ms + match 2299ms | bonus 0"
+          }
+        ]
+      }
+    ],
+    "_debug": "v7-split"
+  }
 }

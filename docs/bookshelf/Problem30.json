@@ -1,13 +1,606 @@
 {
   "problem_id": "Problem30",
-  "_filename": "Problem30.json",
-  "_stub": true,
-  "tags": {
-    "source": "",
-    "theme": "",
-    "difficulty": "",
-    "custom": [
-      "2025"
-    ]
+  "clues": [
+    {
+      "id": "단서A",
+      "text": "$n$은 자연수이고 $n \\geq 2$이다"
+    },
+    {
+      "id": "단서B",
+      "text": "$2^{18}$의 $n$제곱근 중에서 $4$ 이하의 정수가 존재한다"
+    }
+  ],
+  "skeleton": [
+    {
+      "from": [
+        "단서A",
+        "단서B"
+      ],
+      "to": "note1",
+      "neuron": "전략12",
+      "note": "$n$의 홀짝에 따라 실수 $n$제곱근의 형태가 달라지므로 경우를 분리한다",
+      "step": 1
+    },
+    {
+      "from": [
+        "note1",
+        "단서A"
+      ],
+      "to": "note2",
+      "neuron": "사실4",
+      "note": "$2^{18} > 0$이고, $n$이 짝수이면 실수 $n$제곱근은 $\\pm 2^{18/n}$ (2개), $n$이 홀수이면 $2^{18/n}$ (1개)이다",
+      "step": 1
+    },
+    {
+      "from": "note2",
+      "to": "note3",
+      "neuron": "전략37",
+      "note": "$n$제곱근 중 정수가 존재하려면 $2^{18/n}$이 정수여야 한다",
+      "step": 2
+    },
+    {
+      "from": "note3",
+      "to": "note4",
+      "neuron": "사실64",
+      "note": "$2$는 소수이고, $2^{18/n}$이 정수일 조건은 $n \\mid 18$이다",
+      "step": 2
+    },
+    {
+      "from": [
+        "note4",
+        "단서A"
+      ],
+      "to": "note5",
+      "neuron": "전략33",
+      "note": "$18 = 2 \\times 3^2$이고, $n \\geq 2$인 $18$의 약수는 $\\{2, 3, 6, 9, 18\\}$이다",
+      "step": 2
+    },
+    {
+      "from": "note5",
+      "to": "note6",
+      "neuron": "전략12",
+      "note": "짝수 약수 $\\{2, 6, 18\\}$과 홀수 약수 $\\{3, 9\\}$로 나눈다",
+      "step": 2
+    },
+    {
+      "from": [
+        "note6",
+        "note2"
+      ],
+      "to": "note7",
+      "neuron": "사실74",
+      "note": "$n \\in \\{2, 6, 18\\}$ (짝수)이고 $2^{18} > 0$이므로 음의 실수 $n$제곱근 $-2^{18/n}$이 존재한다",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": "note7",
+      "to": "note8",
+      "neuron": "사실1",
+      "note": "$2^{18/n} > 0$이므로 $-2^{18/n}$은 음의 정수이다",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": "note8",
+      "to": "note9",
+      "neuron": "전략25",
+      "note": "$n=2$: $-2^9=-512 \\leq 4$ ✓, $n=6$: $-2^3=-8 \\leq 4$ ✓, $n=18$: $-2^1=-2 \\leq 4$ ✓. 짝수 약수 $\\{2, 6, 18\\}$은 모두 조건을 만족한다",
+      "step": 3
+    },
+    {
+      "from": "note2",
+      "to": "note10",
+      "neuron": "사실5",
+      "note": "$2 > 1$이므로 $2^x$는 순증가이다",
+      "main": false,
+      "step": 4
+    },
+    {
+      "from": [
+        "note10",
+        "note6"
+      ],
+      "to": "note11",
+      "neuron": "사실51",
+      "note": "$n$이 홀수이면 양의 $n$제곱근 $2^{18/n}$만 존재하고, $2^{18/n} \\leq 4 = 2^2$이면 $18/n \\leq 2$, 즉 $n \\geq 9$이다",
+      "step": 4
+    },
+    {
+      "from": [
+        "note11",
+        "note6"
+      ],
+      "to": "note12",
+      "neuron": "전략17",
+      "note": "홀수 약수 $\\{3, 9\\}$ 중 $n \\geq 9$인 후보는 $n = 9$뿐이다",
+      "step": 4
+    },
+    {
+      "from": "note12",
+      "to": "note13",
+      "neuron": "전략25",
+      "note": "$n=9$: $2^{18/9} = 2^2 = 4 \\leq 4$ ✓. $n=3$: $2^{18/3} = 2^6 = 64 > 4$ ✗",
+      "main": false,
+      "step": 4
+    },
+    {
+      "from": [
+        "note9",
+        "note12"
+      ],
+      "to": "END",
+      "neuron": "전략17",
+      "note": "조건을 만족하는 $n$은 $\\{2, 6, 9, 18\\}$이고, $2 + 6 + 9 + 18 = 35$이다",
+      "step": 5
+    }
+  ],
+  "solution": "STEP 1. $2^{18}$의 $n$제곱근을 $n$의 홀짝에 따라 분류한다.\n$2^{18} > 0$이므로, $n$이 짝수이면 실수 $n$제곱근은 $\\pm 2^{18/n}$ (2개)이고, $n$이 홀수이면 $2^{18/n}$ (1개)이다.\n\nSTEP 2. $n$제곱근 중 정수가 존재하기 위한 조건을 구한다.\n$2^{18/n}$이 정수이려면 $n \\mid 18$이어야 한다. $18 = 2 \\times 3^2$이고, $n \\geq 2$인 약수는 $\\{2, 3, 6, 9, 18\\}$이다. 이를 짝수 약수 $\\{2, 6, 18\\}$과 홀수 약수 $\\{3, 9\\}$로 나눈다.\n\nSTEP 3. 짝수인 경우를 확인한다.\n$n$이 짝수이면 음의 $n$제곱근 $-2^{18/n}$이 존재하고, 이는 음의 정수이므로 자동으로 4 이하이다. $n = 2$일 때 $-512$, $n = 6$일 때 $-8$, $n = 18$일 때 $-2$로 모두 조건을 만족한다.\n\nSTEP 4. 홀수인 경우를 확인한다.\n$n$이 홀수이면 양의 $n$제곱근 $2^{18/n}$만 존재한다. $2^x$는 순증가이므로 $2^{18/n} \\leq 4 = 2^2$이면 $18/n \\leq 2$, 즉 $n \\geq 9$이다. 홀수 약수 $\\{3, 9\\}$ 중 $n \\geq 9$인 것은 $n = 9$뿐이다.\n\nSTEP 5. 모든 $n$의 값의 합을 구한다.\n조건을 만족하는 $n$은 $\\{2, 6, 9, 18\\}$이고, $2 + 6 + 9 + 18 = 35$이다.",
+  "statement": "# 8. (수능/모의고사) - n제곱근\n\n## Problem\n\n자연수 $n(n \\geq 2)$에 대하여 $2^{18}$의 $n$제곱근 중에서 $4$ 이하의 정수가 존재하도록 하는 모든 $n$의 값의 합은? [4점]",
+  "thinking_profile": {
+    "_version": 6,
+    "_unit": "note",
+    "_isV6": true,
+    "total_think_tokens": 553,
+    "total_notes": 10,
+    "hint_distribution": {
+      "0": 10,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0
+    },
+    "avg_hint_level": 0,
+    "genuine_miss_count": 0,
+    "absorbed_miss_count": 0,
+    "bonus_count": 7,
+    "highlight_notes": [
+      "note1",
+      "note3",
+      "note5"
+    ],
+    "hardest_note": {
+      "note_id": "note1",
+      "neuron": "전략12",
+      "hint_level": 0,
+      "structural_difficulty": 0.25,
+      "miss_type": null,
+      "note_text": "$n$의 홀짝에 따라 실수 $n$제곱근의 형태가 달라지므로 경우를 분리한다"
+    },
+    "neuron_stats": {
+      "전략12": {
+        "type": "전략",
+        "appearances": 2,
+        "total_hint": 0,
+        "hint_levels": [
+          0,
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "사실4": {
+        "type": "사실",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "전략37": {
+        "type": "전략",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "사실64": {
+        "type": "사실",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "전략33": {
+        "type": "전략",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "전략25": {
+        "type": "전략",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "사실51": {
+        "type": "사실",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 0,
+        "avg_hint_level": 0
+      },
+      "전략17": {
+        "type": "전략",
+        "appearances": 2,
+        "total_hint": 0,
+        "hint_levels": [
+          0,
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      }
+    },
+    "notes": [
+      {
+        "note_index": 1,
+        "note_id": "note1",
+        "neuron": "전략12",
+        "neuron_type": "전략",
+        "note_text": "$n$의 홀짝에 따라 실수 $n$제곱근의 형태가 달라지므로 경우를 분리한다",
+        "from": [
+          "단서A",
+          "단서B"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note1",
+            "in_target": "note1",
+            "attempt": 2,
+            "score": 0.7,
+            "reason": "학생이 짝수/홀수 경우를 분리하여 분석하고 있으므로 경우 분리 원칙과 일치"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 135,
+            "discover_elapsed_ms": 7153,
+            "match_elapsed_ms": 5076,
+            "discover_input_tokens": 529,
+            "discover_output_tokens": 403,
+            "match_input_tokens": 1103,
+            "match_output_tokens": 243,
+            "claude_output": "[시도] 정수 $x$가 $2^{18}$의 $n$제곱근이 되려면 어떤 조건인지 파악하기\n\n[계산]\n$x$가 $2^{18}$의 $n$제곱근이다\n$$\\Leftrightarrow x^n = 2^{18}$$\n\n이를 만족하는 **정수** $x$가 $4$ 이하로 존재해야 한다.\n\n[결론] 조건은 \"$x \\leq 4$인 정수 $x$에 대해 $x^n = 2^{18}$을 만족하는 $n \\geq 2$가 존재한다\"는 것이다.",
+            "matches": [
+              {
+                "label": "C",
+                "score": 0.7,
+                "reason": "학생의 결론 'x^n = 2^{18}을 만족하는 정수 x'는 2^{18/n}이 정수여야 한다는 C의 결론과 수학적으로 동일한 조건을 암시한다. 단, 학생은 이를 명시적으로 서술하지 않고 조건 설정 단계에서 언급했다."
+              },
+              {
+                "label": "D",
+                "score": 0.4,
+                "reason": "학생이 x^n = 2^{18}을 만족하는 정수 x 조건을 다루고 있어 n|18 조건과 연결되지만, 학생의 서술에서는 이를 명시적으로 도출하지 않았다."
+              }
+            ],
+            "eval_summary": "MISS attempt0 dry0 | 135tok | disc 7153ms + match 5076ms | bonus 1"
+          },
+          {
+            "attempt": 1,
+            "think_tokens": 16,
+            "discover_elapsed_ms": 4372,
+            "match_elapsed_ms": 3017,
+            "discover_input_tokens": 584,
+            "discover_output_tokens": 184,
+            "match_input_tokens": 1009,
+            "match_output_tokens": 127,
+            "claude_output": "[시도] 내가 해볼 것: 2^(18/n)이 정수가 되려면 n이 18의 약수여야 하므로, n의 후보를 구하기\n\n[계산]\n18의 약수: 1, 2, 3, 6, 9, 18\nn ≥ 2이므로 후보: n = 2, 3, 6, 9, 18\n\n[결론] n은 2, 3, 6, 9, 18 중 하나여야 한다.",
+            "matches": [
+              {
+                "label": "D",
+                "score": 1,
+                "reason": "2^(18/n)이 정수가 되려면 n이 18의 약수여야 한다는 결론이 완전히 일치"
+              },
+              {
+                "label": "E",
+                "score": 1,
+                "reason": "n≥2인 18의 약수가 {2,3,6,9,18}이라는 결론이 완전히 일치"
+              }
+            ],
+            "eval_summary": "MISS attempt1 dry0 | 16tok | disc 4372ms + match 3017ms | bonus 2"
+          },
+          {
+            "attempt": 2,
+            "think_tokens": 316,
+            "discover_elapsed_ms": 16085,
+            "match_elapsed_ms": 6529,
+            "discover_input_tokens": 685,
+            "discover_output_tokens": 996,
+            "match_input_tokens": 1042,
+            "match_output_tokens": 321,
+            "claude_output": "[시도] 짝수인 $n$의 경우, 음수 $n$제곱근도 존재하는지 확인해보기\n\n[계산]\n$n$이 **짝수**이면 $2^{18}$의 실수 $n$제곱근은 $+2^{18/n}$과 $-2^{18/n}$ **두 개**가 존재한다.\n\n음수 근 $-2^{18/n}$은 항상 음수이므로 자동으로 $4$ 이하이다.\n\n따라서 $n \\mid 18$을 만족하는 짝수 $n$: $\\{2, 6, 18\\}$은 **조건 무조건 충족**.\n\n[결론] $n$이 짝수이면 음수 $n$제곱근이 자동으로 $4$ 이하이므로, $n \\in \\{2, 6, 18\\}$은 모두 조건을 만족한다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 0.7,
+                "reason": "학생이 짝수/홀수 경우를 분리하여 분석하고 있으므로 경우 분리 원칙과 일치"
+              },
+              {
+                "label": "B",
+                "score": 0.9,
+                "reason": "n이 짝수이면 실수 n제곱근이 ±2^(18/n) 두 개라는 핵심 결론을 명시적으로 서술함"
+              },
+              {
+                "label": "F",
+                "score": 0.7,
+                "reason": "짝수 약수 {2,6,18}을 명시적으로 언급하며 분류함. 홀수 약수 부분은 다루지 않아 부분적"
+              },
+              {
+                "label": "G",
+                "score": 0.85,
+                "reason": "짝수 약수 {2,6,18}이 모두 조건을 만족한다는 결론과 음수 근이 4 이하임을 확인하는 내용이 일치. 개별 수치 계산은 명시되지 않았으나 결론은 동일"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 316tok | disc 16085ms + match 6529ms | bonus 3"
+          }
+        ]
+      },
+      {
+        "note_index": 2,
+        "note_id": "note2",
+        "neuron": "사실4",
+        "neuron_type": "사실",
+        "note_text": "$2^{18} > 0$이고, $n$이 짝수이면 실수 $n$제곱근은 $\\pm 2^{18/n}$ (2개), $n$이 홀수이면 $2^{18/n}$ (1개)이다",
+        "from": [
+          "note1",
+          "단서A"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 3,
+        "note_id": "note3",
+        "neuron": "전략37",
+        "neuron_type": "전략",
+        "note_text": "$n$제곱근 중 정수가 존재하려면 $2^{18/n}$이 정수여야 한다",
+        "from": [
+          "note2"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 4,
+        "note_id": "note4",
+        "neuron": "사실64",
+        "neuron_type": "사실",
+        "note_text": "$2$는 소수이고, $2^{18/n}$이 정수일 조건은 $n \\mid 18$이다",
+        "from": [
+          "note3"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 5,
+        "note_id": "note5",
+        "neuron": "전략33",
+        "neuron_type": "전략",
+        "note_text": "$18 = 2 \\times 3^2$이고, $n \\geq 2$인 $18$의 약수는 $\\{2, 3, 6, 9, 18\\}$이다",
+        "from": [
+          "note4",
+          "단서A"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 6,
+        "note_id": "note6",
+        "neuron": "전략12",
+        "neuron_type": "전략",
+        "note_text": "짝수 약수 $\\{2, 6, 18\\}$과 홀수 약수 $\\{3, 9\\}$로 나눈다",
+        "from": [
+          "note5"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 7,
+        "note_id": "note9",
+        "neuron": "전략25",
+        "neuron_type": "전략",
+        "note_text": "$n=2$: $-2^9=-512 \\leq 4$ ✓, $n=6$: $-2^3=-8 \\leq 4$ ✓, $n=18$: $-2^1=-2 \\leq 4$ ✓. 짝수 약수 $\\{2, 6, 18\\}$은 모두 조건을 만족한다",
+        "from": [
+          "note8"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 8,
+        "note_id": "note11",
+        "neuron": "사실51",
+        "neuron_type": "사실",
+        "note_text": "$n$이 홀수이면 양의 $n$제곱근 $2^{18/n}$만 존재하고, $2^{18/n} \\leq 4 = 2^2$이면 $18/n \\leq 2$, 즉 $n \\geq 9$이다",
+        "from": [
+          "note10",
+          "note6"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note11",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note11",
+            "in_target": "note11",
+            "attempt": 0,
+            "score": 0.9,
+            "reason": "홀수 n에 대해 양의 n제곱근 2^{18/n}만 존재하고, 이 값이 4 이하인 조건(18/n ≤ 2, n ≥ 9)을 동일하게 도출함"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 55,
+            "discover_elapsed_ms": 5447,
+            "match_elapsed_ms": 3919,
+            "discover_input_tokens": 971,
+            "discover_output_tokens": 345,
+            "match_input_tokens": 684,
+            "match_output_tokens": 164,
+            "claude_output": "[시도] 홀수 약수 {3, 9}에 대해 조건 만족 여부 확인\n\n[계산]\n홀수 $n$의 경우 실수 $n$제곱근은 $2^{18/n}$ 하나뿐이므로, 이 값이 $4$ 이하인지 확인한다.\n\n- $n=3$: $2^{18/3} = 2^6 = 64 > 4$ → ✗\n- $n=9$: $2^{18/9} = 2^2 = 4 \\leq 4$ → ✓\n\n[결론] 홀수 약수 중 조건을 만족하는 것은 $n=9$뿐이다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 0.9,
+                "reason": "홀수 n에 대해 양의 n제곱근 2^{18/n}만 존재하고, 이 값이 4 이하인 조건(18/n ≤ 2, n ≥ 9)을 동일하게 도출함"
+              },
+              {
+                "label": "B",
+                "score": 1,
+                "reason": "홀수 약수 {3,9} 중 n=9만 조건을 만족한다는 결론이 완전히 일치함"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 55tok | disc 5447ms + match 3919ms | bonus 1"
+          }
+        ]
+      },
+      {
+        "note_index": 9,
+        "note_id": "note12",
+        "neuron": "전략17",
+        "neuron_type": "전략",
+        "note_text": "홀수 약수 $\\{3, 9\\}$ 중 $n \\geq 9$인 후보는 $n = 9$뿐이다",
+        "from": [
+          "note11",
+          "note6"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note11",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 10,
+        "note_id": "END",
+        "neuron": "전략17",
+        "neuron_type": "전략",
+        "note_text": "조건을 만족하는 $n$은 $\\{2, 6, 9, 18\\}$이고, $2 + 6 + 9 + 18 = 35$이다",
+        "from": [
+          "note9",
+          "note12"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "END",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "END",
+            "in_target": "END",
+            "attempt": 0,
+            "score": 1,
+            "reason": "학생의 결론과 후보 A가 완전히 일치: 조건을 만족하는 n의 집합 {2, 6, 9, 18}과 합 35가 동일하다"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 31,
+            "discover_elapsed_ms": 4258,
+            "match_elapsed_ms": 3434,
+            "discover_input_tokens": 1109,
+            "discover_output_tokens": 200,
+            "match_input_tokens": 483,
+            "match_output_tokens": 87,
+            "claude_output": "[시도] 조건을 만족하는 모든 n의 값을 합산한다\n\n[계산]\n짝수 약수에서: n = 2, 6, 18 (모두 조건 만족)\n홀수 약수에서: n = 9 (조건 만족), n = 3은 제외\n\n합 = 2 + 6 + 9 + 18 = 35\n\n[결론] 조건을 만족하는 모든 n의 값의 합은 **35**이다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 1,
+                "reason": "학생의 결론과 후보 A가 완전히 일치: 조건을 만족하는 n의 집합 {2, 6, 9, 18}과 합 35가 동일하다"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 31tok | disc 4258ms + match 3434ms | bonus 0"
+          }
+        ]
+      }
+    ],
+    "_debug": "v7-split"
   }
 }
