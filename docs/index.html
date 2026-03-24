@@ -133,7 +133,7 @@ document.addEventListener('mousemove',function(ev){document.querySelectorAll('.t
 
 async function load(){ghTk=localStorage.getItem('gh_token')||'';var RAW='https://raw.githubusercontent.com/'+OW+'/'+RP+'/'+BR+'/';var api=function(u){return'https://api.github.com/repos/'+OW+'/'+RP+'/contents/'+u+'?ref='+BR};var hd=ghTk?{headers:{'Authorization':'token '+ghTk}}:{};try{document.getElementById('meta').textContent='loading...';var all=await Promise.all([fetch(RAW+'docs/bookshelf/_index.json'),fetch(RAW+'해체분석/skeleton/neuron-list.md'),fetch(RAW+'해체분석/DNA/dna-list.md'),fetch(RAW+'docs/neuron_adjacency.json')]);if(all[0].ok){indexData=await all[0].json();var problems=indexData.problems||[];problems.forEach(function(pi){probs.push({problem_id:pi.problem_id,_filename:pi.filename,_stub:true})})}if(ghTk){try{var idxR=await fetch(api('docs/bookshelf/_index.json'),hd);if(idxR.ok){var idxJ=await idxR.json();indexSha=idxJ.sha}}catch(e){}}if(all[1].ok){var t=await all[1].text();t.split('\n').forEach(function(l){var n=pNL(l);if(n){nMap[n.id]={id:n.id,statement:n.statement};nAll.push({id:n.id,statement:n.statement,type:nTy(n.id)})}})}if(all[2].ok){var t3=await all[2].text();t3.split('\n').forEach(function(l){var d=pDL(l);if(d)dnaMap[d.id]=d})}if(all[3]&&all[3].ok){try{adjData=await all[3].json()}catch(e){adjData=null}}}catch(e){console.error(e)}document.getElementById('meta').textContent=probs.length+' problems / '+nAll.length+' neurons / '+Object.keys(dnaMap).length+' DNAs';rVW();rFilter();rList();rTabs()}
 async function loadProblem(pid){var RAW='https://raw.githubusercontent.com/'+OW+'/'+RP+'/'+BR+'/';var p=probs.find(function(x){return x.problem_id===pid});if(!p||!p._stub)return p;var fn=p._filename||pid+'.json';try{document.getElementById('ct').innerHTML='<div class="empty">loading '+pid+'...</div>';var r=await fetch(RAW+'docs/bookshelf/'+fn);if(r.ok){var full=await r.json();var idx=probs.indexOf(p);if(idx>=0){probs[idx]=full;probs[idx]._filename=fn;enrichSolvingFlow(probs[idx]);return probs[idx]}}}catch(e){console.error('load fail:'+pid,e)}return p}
-function enrichSolvingFlow(p){var tp=p.thinking_profile;if(!tp||!tp.notes||!tp.notes.length||p.key_ideas)return;var sk=p.skeleton||[];if(!sk.length)return;var em={},pm={};sk.forEach(function(e){em[e.to]=e});tp.notes.forEach(function(n){pm[n.note_id]=n});var no=sk.map(function(e){return e.to});var kis=[],kset=new Set;no.forEach(function(nid){var n=pm[nid];if(!n)return;var hl=n.hint_level||0;if(hl<1)return;kset.add(nid);kis.push({note_id:nid,neuron:n.neuron||'',hint_level:hl,text:n.note_text||'',from:n.from||[],main:(em[nid]||{}).main!==false})});var phases=[],cs=[],ca=[];no.forEach(function(nid){var n=pm[nid];if(!n)return;var hl=n.hint_level||0,bonus=n.is_bonus||false;if(kset.has(nid)){if(cs.length||ca.length){var ph={type:'derivation'};if(cs.length)ph.steps=cs;if(ca.length)ph.auto=ca.map(function(a){return a});phases.push(ph);cs=[];ca=[]}phases.push({type:'key_idea',note_id:nid,neuron:n.neuron||'',hint_level:hl})}else if(bonus){ca.push(nid)}else{cs.push({note_id:nid,neuron:n.neuron||'',main:(em[nid]||{}).main!==false})}});if(cs.length||ca.length){var ph={type:'derivation'};if(cs.length)ph.steps=cs;if(ca.length)ph.auto=ca.map(function(a){return a});phases.push(ph)}var mg=[];for(var i=0;i<phases.length;i++){var ph=phases[i];if(ph.type==='derivation'&&(!ph.steps||!ph.steps.length)&&ph.auto&&ph.auto.length<=3&&i>0&&mg.length&&mg[mg.length-1].type==='key_idea'){if(!mg[mg.length-1].cascade)mg[mg.length-1].cascade=[];mg[mg.length-1].cascade=mg[mg.length-1].cascade.concat(ph.auto);continue}mg.push(ph)}p.key_ideas=kis;p.solving_flow=mg;var kc=kis.length,kp=[];kis.forEach(function(ki){var idx=no.indexOf(ki.note_id);kp.push(idx>=0?idx/Math.max(no.length-1,1):0)});var ks=kp.length>=2?kp[kp.length-1]-kp[0]:0,kn=kp.length?kp.reduce(function(a,b){return a+b},0)/kp.length:0;p.structure_type=kc===0?{type:'linear',label:'선형',description:'키 아이디어 없이 스텝만으로 풀리는 문제'}:kc===1?{type:'single_gate',label:'단일관문',description:'하나의 핵심 발상이 풀이를 결정하는 문제'}:kn<0.4&&ks<0.3?{type:'front_gate',label:'관문형',description:'초반 핵심 발상을 통과하면 나머지가 쏟아지는 문제'}:kn>0.65&&ks<0.3?{type:'buildup',label:'축적형',description:'계산을 쌓아올린 뒤 후반에 핵심 발상이 필요한 문제'}:ks>0.4||kc>=4?{type:'scattered',label:'산재형',description:'풀이 전반에 걸쳐 여러 핵심 발상이 필요한 문제'}:{type:'mid_gate',label:'중간관문',description:'풀이 중반에 핵심 발상이 집중된 문제'}}
+function enrichSolvingFlow(p){var tp=p.thinking_profile;if(!tp||!tp.notes||!tp.notes.length||p.key_ideas)return;var sk=p.skeleton||[];if(!sk.length)return;var em={},pm={};sk.forEach(function(e){em[e.to]=e});tp.notes.forEach(function(n){pm[n.note_id]=n});var no=sk.map(function(e){return e.to});var kis=[],kset=new Set;no.forEach(function(nid){var n=pm[nid];if(!n)return;var hl=n.hint_level||0;if(hl<1)return;kset.add(nid);kis.push({note_id:nid,neuron:n.neuron||'',hint_level:hl,text:n.note_text||'',from:n.from||[],main:(em[nid]||{}).main!==false})});var phases=[],cs=[];no.forEach(function(nid){var n=pm[nid];if(!n)return;var hl=n.hint_level||0;if(kset.has(nid)){if(cs.length){phases.push({type:'derivation',steps:cs});cs=[]}phases.push({type:'key_idea',note_id:nid,neuron:n.neuron||'',hint_level:hl})}else{cs.push({note_id:nid,neuron:n.neuron||'',main:(em[nid]||{}).main!==false})}});if(cs.length)phases.push({type:'derivation',steps:cs});p.key_ideas=kis;p.solving_flow=phases;var kc=kis.length,kp=[];kis.forEach(function(ki){var idx=no.indexOf(ki.note_id);kp.push(idx>=0?idx/Math.max(no.length-1,1):0)});var ks=kp.length>=2?kp[kp.length-1]-kp[0]:0,kn=kp.length?kp.reduce(function(a,b){return a+b},0)/kp.length:0;p.structure_type=kc===0?{type:'linear',label:'선형',description:'키 아이디어 없이 스텝만으로 풀리는 문제'}:kc===1?{type:'single_gate',label:'단일관문',description:'하나의 핵심 발상이 풀이를 결정하는 문제'}:kn<0.4&&ks<0.3?{type:'front_gate',label:'관문형',description:'초반 핵심 발상을 통과하면 나머지가 쏟아지는 문제'}:kn>0.65&&ks<0.3?{type:'buildup',label:'축적형',description:'계산을 쌓아올린 뒤 후반에 핵심 발상이 필요한 문제'}:ks>0.4||kc>=4?{type:'scattered',label:'산재형',description:'풀이 전반에 걸쳐 여러 핵심 발상이 필요한 문제'}:{type:'mid_gate',label:'중간관문',description:'풀이 중반에 핵심 발상이 집중된 문제'}}
 
 function rVW(){document.getElementById('vwbar').innerHTML=VW.map(function(v,i){return'<button class="vw-btn '+(curV===i?'on':'')+'" onclick="curV='+i+';rList()">'+v+'</button>'}).join('')}
 
@@ -376,26 +376,22 @@ function rAn(p){
       sf.forEach(function(phase,pi){
         if(phase.type==='key_idea'){
           var hc=hintColor(phase.hint_level);
-          var casc=phase.cascade||[];
           var nt=noteMap[phase.note_id];
           h+='<div style="padding:8px 12px;background:'+hc+'12;border:1px solid '+hc+'30;border-radius:6px;max-width:100%">';
           h+='<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">';
           h+=hintBadge(phase.hint_level)+' ';
           h+='<span style="font-size:13px;color:'+nc(phase.neuron)+';font-weight:600">'+phase.neuron+'</span>';
           h+='<span style="font-size:12px;color:#7a7f9a">'+phase.note_id+'</span>';
-          if(casc.length>0)h+='<span style="font-size:11px;color:#7a7f9a;opacity:.6">+'+casc.length+' auto</span>';
           h+='</div>';
           if(nt&&nt.note_text)h+='<div style="font-size:13px;color:var(--tx);margin-top:5px;line-height:1.7;opacity:.85">'+rm(nt.note_text)+'</div>';
           h+='</div>';
         } else {
           var steps=phase.steps||[];
-          var auto=phase.auto||[];
           var fid='sf_'+pi;
           h+='<div style="padding:7px 12px;background:var(--bg);border-radius:5px;border:1px solid var(--bd)">';
           h+='<div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;cursor:pointer" onclick="var el=document.getElementById(\''+fid+'\');el.style.display=el.style.display===\'none\'?\'block\':\'none\'">';
-          if(steps.length>0)h+='<span style="font-size:12px;color:#66bb6a;font-weight:600">steps '+steps.length+'</span>';
-          if(auto.length>0)h+='<span style="font-size:12px;color:#7a7f9a">auto '+auto.length+'</span>';
-          if(steps.length>0){steps.forEach(function(s){h+='<span style="font-size:11px;padding:2px 6px;border-radius:3px;background:'+nc(s.neuron)+'22;color:'+nc(s.neuron)+'">'+s.neuron+'</span>'});}
+          h+='<span style="font-size:12px;color:#66bb6a;font-weight:600">steps '+steps.length+'</span>';
+          steps.forEach(function(s){h+='<span style="font-size:11px;padding:2px 6px;border-radius:3px;background:'+nc(s.neuron)+'22;color:'+nc(s.neuron)+'">'+s.neuron+'</span>'});
           h+='<span style="font-size:11px;color:#7a7f9a;margin-left:auto">▼</span>';
           h+='</div>';
           h+='<div id="'+fid+'" style="display:none;margin-top:6px;padding-top:6px;border-top:1px solid var(--bd)">';
@@ -407,15 +403,6 @@ function rAn(p){
             if(sn&&sn.note_text)h+='<div style="font-size:13px;color:var(--tx);margin-top:2px;line-height:1.6;opacity:.7;padding-left:8px">'+rm(sn.note_text)+'</div>';
             h+='</div>';
           });
-          if(auto.length>0){
-            h+='<div style="margin-top:5px;font-size:12px;color:#7a7f9a">auto: ';
-            auto.forEach(function(a,ai){
-              var an=noteMap[a];
-              h+=(ai>0?', ':'')+a;
-              if(an)h+='<span style="opacity:.5"> '+an.neuron+'</span>';
-            });
-            h+='</div>';
-          }
           h+='</div></div>';
         }
       });
