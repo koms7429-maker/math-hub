@@ -1981,11 +1981,8 @@
         "type": "key_idea",
         "note_id": "note10",
         "neuron": "연산22",
-        "hint_level": 3
-      },
-      {
-        "type": "derivation",
-        "auto": [
+        "hint_level": 3,
+        "cascade": [
           "note11"
         ]
       },
@@ -3327,11 +3324,8 @@
         "type": "key_idea",
         "note_id": "note4",
         "neuron": "연산20",
-        "hint_level": 2
-      },
-      {
-        "type": "derivation",
-        "auto": [
+        "hint_level": 2,
+        "cascade": [
           "note5"
         ]
       },
@@ -12343,11 +12337,8 @@
         "type": "key_idea",
         "note_id": "note20",
         "neuron": "연산17",
-        "hint_level": 2
-      },
-      {
-        "type": "derivation",
-        "auto": [
+        "hint_level": 2,
+        "cascade": [
           "note21"
         ]
       },
@@ -15554,11 +15545,8 @@
         "type": "key_idea",
         "note_id": "note4",
         "neuron": "전략25",
-        "hint_level": 2
-      },
-      {
-        "type": "derivation",
-        "auto": [
+        "hint_level": 2,
+        "cascade": [
           "note5",
           "note9"
         ]
@@ -27034,11 +27022,8 @@
         "type": "key_idea",
         "note_id": "note17",
         "neuron": "연산10",
-        "hint_level": 2
-      },
-      {
-        "type": "derivation",
-        "auto": [
+        "hint_level": 2,
+        "cascade": [
           "note18"
         ]
       },
@@ -27069,11 +27054,8 @@
         "type": "key_idea",
         "note_id": "note28",
         "neuron": "전략25",
-        "hint_level": 1
-      },
-      {
-        "type": "derivation",
-        "auto": [
+        "hint_level": 1,
+        "cascade": [
           "note29"
         ]
       },
@@ -30295,11 +30277,8 @@
         "type": "key_idea",
         "note_id": "note2",
         "neuron": "사실5",
-        "hint_level": 4
-      },
-      {
-        "type": "derivation",
-        "auto": [
+        "hint_level": 4,
+        "cascade": [
           "note4"
         ]
       },
@@ -38059,11 +38038,8 @@
         "type": "key_idea",
         "note_id": "note1",
         "neuron": "전략30",
-        "hint_level": 4
-      },
-      {
-        "type": "derivation",
-        "auto": [
+        "hint_level": 4,
+        "cascade": [
           "note3",
           "note4"
         ]
@@ -42994,11 +42970,8 @@
         "type": "key_idea",
         "note_id": "note20",
         "neuron": "전략25",
-        "hint_level": 2
-      },
-      {
-        "type": "derivation",
-        "auto": [
+        "hint_level": 2,
+        "cascade": [
           "note25"
         ]
       },
