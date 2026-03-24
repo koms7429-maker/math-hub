@@ -1,41 +1,41 @@
 {
-  "_generated_at": "2026-03-24T01:11:55.045Z",
-  "_source_problems": 30,
+  "_generated_at": "2026-03-24T01:18:13.372Z",
+  "_source_problems": 31,
   "summary": {
-    "total_problems_scanned": 30,
-    "total_neurons": 106,
-    "total_pairs": 440,
+    "total_problems_scanned": 31,
+    "total_neurons": 110,
+    "total_pairs": 458,
     "max_pair_count": 12,
     "top_hubs": [
       {
         "id": "전략25",
-        "connections": 56,
-        "appearances": 119,
+        "connections": 58,
+        "appearances": 121,
         "hub_score": 0.53
       },
       {
         "id": "전략2",
-        "connections": 35,
-        "appearances": 37,
-        "hub_score": 0.33
+        "connections": 37,
+        "appearances": 38,
+        "hub_score": 0.34
       },
       {
         "id": "연산2",
-        "connections": 24,
-        "appearances": 29,
+        "connections": 25,
+        "appearances": 31,
         "hub_score": 0.23
       },
       {
         "id": "연산21",
         "connections": 24,
         "appearances": 24,
-        "hub_score": 0.23
+        "hub_score": 0.22
       },
       {
         "id": "전략17",
         "connections": 20,
         "appearances": 30,
-        "hub_score": 0.19
+        "hub_score": 0.18
       },
       {
         "id": "전략6",
@@ -62,10 +62,10 @@
         "hub_score": 0.14
       },
       {
-        "id": "사실5",
-        "connections": 14,
+        "id": "사실58",
+        "connections": 15,
         "appearances": 13,
-        "hub_score": 0.13
+        "hub_score": 0.14
       }
     ],
     "isolated_neurons": [
@@ -91,6 +91,11 @@
       },
       {
         "id": "사실80",
+        "connections": 1,
+        "appearances": 1
+      },
+      {
+        "id": "사실38",
         "connections": 1,
         "appearances": 1
       }
@@ -137,6 +142,11 @@
         "weight": 0.417
       },
       {
+        "pair": "연산2→전략25",
+        "count": 5,
+        "weight": 0.417
+      },
+      {
         "pair": "전략23→전략20",
         "count": 4,
         "weight": 0.333
@@ -157,6 +167,11 @@
         "weight": 0.333
       },
       {
+        "pair": "사실4→전략25",
+        "count": 4,
+        "weight": 0.333
+      },
+      {
         "pair": "전략2→전략17",
         "count": 4,
         "weight": 0.333
@@ -173,11 +188,6 @@
       },
       {
         "pair": "전략2→연산21",
-        "count": 4,
-        "weight": 0.333
-      },
-      {
-        "pair": "연산2→전략25",
         "count": 4,
         "weight": 0.333
       },
@@ -217,7 +227,7 @@
         "weight": 0.25
       },
       {
-        "pair": "사실4→전략25",
+        "pair": "사실41→사실19",
         "count": 3,
         "weight": 0.25
       },
@@ -270,6 +280,16 @@
         "pair": "사실58→전략25",
         "count": 3,
         "weight": 0.25
+      },
+      {
+        "pair": "연산3→연산2",
+        "count": 3,
+        "weight": 0.25
+      },
+      {
+        "pair": "연산16→연산2",
+        "count": 2,
+        "weight": 0.167
       },
       {
         "pair": "사실79→전략25",
@@ -363,11 +383,6 @@
       },
       {
         "pair": "사실46→사실19",
-        "count": 2,
-        "weight": 0.167
-      },
-      {
-        "pair": "사실41→사실19",
         "count": 2,
         "weight": 0.167
       },
@@ -487,6 +502,11 @@
         "weight": 0.167
       },
       {
+        "pair": "전략2→전략11",
+        "count": 2,
+        "weight": 0.167
+      },
+      {
         "pair": "전략11→전략25",
         "count": 2,
         "weight": 0.167
@@ -523,11 +543,6 @@
       },
       {
         "pair": "전략25→연산30",
-        "count": 2,
-        "weight": 0.167
-      },
-      {
-        "pair": "연산3→연산2",
         "count": 2,
         "weight": 0.167
       },
@@ -584,9 +599,10 @@
     "연산16→연산2": {
       "from": "연산16",
       "to": "연산2",
-      "count": 1,
+      "count": 2,
       "problems": [
-        "19(수능/모의고사)-로그방정식의실근의개수"
+        "19(수능/모의고사)-로그방정식의실근의개수",
+        "9_UnknownSource_-로그함수의일대일함수조건과치역"
       ]
     },
     "연산2→전략5": {
@@ -670,7 +686,7 @@
       "problems": [
         "19(수능/모의고사)-로그방정식의실근의개수",
         "15_UnknownSource_-n제곱근과자연수조건",
-        "Problem13",
+        "13",
         "21_수능_모의고사_-지수함수와곡선의교점조건",
         "25_수능_모의고사_-지수부등식과이차방정식",
         "32두자연수_a___b___a_b__와두함수_f_x__-9_x-a__x-b____g_x__x-3_에대하여부등식",
@@ -817,8 +833,8 @@
       "count": 12,
       "problems": [
         "16(UnknownSource)-지수함수와로그함수의교점",
-        "Problem12",
-        "Problem11",
+        "12",
+        "11",
         "14_SourceUnknown_-함수의연속성과미분가능성",
         "21_수능_모의고사_-지수함수와곡선의교점조건",
         "25_수능_모의고사_-지수부등식과이차방정식",
@@ -920,7 +936,7 @@
       "problems": [
         "16(UnknownSource)-지수함수와로그함수의교점",
         "20_UnknownSource_-로그함수와원의관계",
-        "Problem11"
+        "11"
       ]
     },
     "전략25→전략2": {
@@ -974,7 +990,7 @@
       "count": 2,
       "problems": [
         "18_UnknownSource_-지수함수와로그함수의교점_삼각형의넓이",
-        "Problem12"
+        "12"
       ]
     },
     "사실51→사실62": {
@@ -1167,7 +1183,7 @@
       "count": 7,
       "problems": [
         "20_UnknownSource_-로그함수와원의관계",
-        "Problem11",
+        "11",
         "26_a_1_인실수_a_에대하여구간__-_infty___3__에서정의된함수",
         "28_수능_모의고사_-곡선위의점과직선의기울기",
         "36_수능_모의고사_-지수함수와부등식",
@@ -1181,7 +1197,7 @@
       "count": 5,
       "problems": [
         "20_UnknownSource_-로그함수와원의관계",
-        "Problem11",
+        "11",
         "14_SourceUnknown_-함수의연속성과미분가능성",
         "26_a_1_인실수_a_에대하여구간__-_infty___3__에서정의된함수",
         "35_수능_모의고사_-지수함수와로그함수의관계"
@@ -1193,7 +1209,7 @@
       "count": 2,
       "problems": [
         "20_UnknownSource_-로그함수와원의관계",
-        "Problem11"
+        "11"
       ]
     },
     "전략12→사실74": {
@@ -1269,7 +1285,7 @@
       "to": "사실4",
       "count": 1,
       "problems": [
-        "Problem13"
+        "13"
       ]
     },
     "사실4→전략10": {
@@ -1277,7 +1293,7 @@
       "to": "전략10",
       "count": 2,
       "problems": [
-        "Problem13",
+        "13",
         "24_수능_모의고사_-함수의성질과부등식"
       ]
     },
@@ -1286,7 +1302,7 @@
       "to": "전략20",
       "count": 1,
       "problems": [
-        "Problem13"
+        "13"
       ]
     },
     "전략20→전략23": {
@@ -1294,7 +1310,7 @@
       "to": "전략23",
       "count": 2,
       "problems": [
-        "Problem13",
+        "13",
         "14_SourceUnknown_-함수의연속성과미분가능성"
       ]
     },
@@ -1303,7 +1319,7 @@
       "to": "사실18",
       "count": 1,
       "problems": [
-        "Problem13"
+        "13"
       ]
     },
     "사실18→전략25": {
@@ -1311,7 +1327,7 @@
       "to": "전략25",
       "count": 3,
       "problems": [
-        "Problem13",
+        "13",
         "29_수능_모의고사_-지수함수와평행사변형",
         "37_수능_모의고사_-지수_로그함수와도형"
       ]
@@ -1321,8 +1337,8 @@
       "to": "전략6",
       "count": 2,
       "problems": [
-        "Problem13",
-        "Problem11"
+        "13",
+        "11"
       ]
     },
     "사실5→사실41": {
@@ -1330,7 +1346,7 @@
       "to": "사실41",
       "count": 4,
       "problems": [
-        "Problem13",
+        "13",
         "21_수능_모의고사_-지수함수와곡선의교점조건",
         "26_a_1_인실수_a_에대하여구간__-_infty___3__에서정의된함수",
         "38상수_a___a_2__에대하여함수_f_x__를"
@@ -1341,7 +1357,7 @@
       "to": "사실40",
       "count": 2,
       "problems": [
-        "Problem13",
+        "13",
         "21_수능_모의고사_-지수함수와곡선의교점조건"
       ]
     },
@@ -1350,7 +1366,7 @@
       "to": "사실41",
       "count": 2,
       "problems": [
-        "Problem13",
+        "13",
         "21_수능_모의고사_-지수함수와곡선의교점조건"
       ]
     },
@@ -1359,7 +1375,7 @@
       "to": "사실46",
       "count": 1,
       "problems": [
-        "Problem13"
+        "13"
       ]
     },
     "전략6→사실46": {
@@ -1367,7 +1383,7 @@
       "to": "사실46",
       "count": 1,
       "problems": [
-        "Problem13"
+        "13"
       ]
     },
     "사실46→사실19": {
@@ -1375,17 +1391,18 @@
       "to": "사실19",
       "count": 2,
       "problems": [
-        "Problem13",
+        "13",
         "38상수_a___a_2__에대하여함수_f_x__를"
       ]
     },
     "사실41→사실19": {
       "from": "사실41",
       "to": "사실19",
-      "count": 2,
+      "count": 3,
       "problems": [
-        "Problem13",
-        "38상수_a___a_2__에대하여함수_f_x__를"
+        "13",
+        "38상수_a___a_2__에대하여함수_f_x__를",
+        "9_UnknownSource_-로그함수의일대일함수조건과치역"
       ]
     },
     "전략6→사실19": {
@@ -1393,7 +1410,7 @@
       "to": "사실19",
       "count": 1,
       "problems": [
-        "Problem13"
+        "13"
       ]
     },
     "전략25→사실35": {
@@ -1401,7 +1418,7 @@
       "to": "사실35",
       "count": 1,
       "problems": [
-        "Problem13"
+        "13"
       ]
     },
     "사실35→사실71": {
@@ -1409,7 +1426,7 @@
       "to": "사실71",
       "count": 1,
       "problems": [
-        "Problem13"
+        "13"
       ]
     },
     "사실71→전략25": {
@@ -1417,7 +1434,7 @@
       "to": "전략25",
       "count": 1,
       "problems": [
-        "Problem13"
+        "13"
       ]
     },
     "사실19→전략5": {
@@ -1425,7 +1442,7 @@
       "to": "전략5",
       "count": 1,
       "problems": [
-        "Problem13"
+        "13"
       ]
     },
     "전략6→전략5": {
@@ -1433,7 +1450,7 @@
       "to": "전략5",
       "count": 1,
       "problems": [
-        "Problem13"
+        "13"
       ]
     },
     "전략5→사실4": {
@@ -1441,7 +1458,7 @@
       "to": "사실4",
       "count": 1,
       "problems": [
-        "Problem13"
+        "13"
       ]
     },
     "사실4→전략20": {
@@ -1449,7 +1466,7 @@
       "to": "전략20",
       "count": 1,
       "problems": [
-        "Problem13"
+        "13"
       ]
     },
     "전략20→사실9": {
@@ -1457,7 +1474,7 @@
       "to": "사실9",
       "count": 1,
       "problems": [
-        "Problem13"
+        "13"
       ]
     },
     "전략25→사실9": {
@@ -1465,7 +1482,7 @@
       "to": "사실9",
       "count": 1,
       "problems": [
-        "Problem13"
+        "13"
       ]
     },
     "사실9→전략25": {
@@ -1473,7 +1490,7 @@
       "to": "전략25",
       "count": 1,
       "problems": [
-        "Problem13"
+        "13"
       ]
     },
     "사실19→사실44": {
@@ -1481,7 +1498,7 @@
       "to": "사실44",
       "count": 1,
       "problems": [
-        "Problem13"
+        "13"
       ]
     },
     "사실35→사실44": {
@@ -1489,7 +1506,7 @@
       "to": "사실44",
       "count": 1,
       "problems": [
-        "Problem13"
+        "13"
       ]
     },
     "전략25→사실44": {
@@ -1497,7 +1514,7 @@
       "to": "사실44",
       "count": 1,
       "problems": [
-        "Problem13"
+        "13"
       ]
     },
     "사실44→전략17": {
@@ -1505,7 +1522,7 @@
       "to": "전략17",
       "count": 1,
       "problems": [
-        "Problem13"
+        "13"
       ]
     },
     "전략10→전략17": {
@@ -1513,7 +1530,7 @@
       "to": "전략17",
       "count": 1,
       "problems": [
-        "Problem13"
+        "13"
       ]
     },
     "전략25→사실4": {
@@ -1521,17 +1538,18 @@
       "to": "사실4",
       "count": 1,
       "problems": [
-        "Problem13"
+        "13"
       ]
     },
     "사실4→전략25": {
       "from": "사실4",
       "to": "전략25",
-      "count": 3,
+      "count": 4,
       "problems": [
-        "Problem13",
+        "13",
         "24_수능_모의고사_-함수의성질과부등식",
-        "27_UnknownSource_-로그방정식의실근의개수"
+        "27_UnknownSource_-로그방정식의실근의개수",
+        "9_UnknownSource_-로그함수의일대일함수조건과치역"
       ]
     },
     "전략25→사실59": {
@@ -1539,7 +1557,7 @@
       "to": "사실59",
       "count": 1,
       "problems": [
-        "Problem12"
+        "12"
       ]
     },
     "전략25→전략22": {
@@ -1547,7 +1565,7 @@
       "to": "전략22",
       "count": 1,
       "problems": [
-        "Problem12"
+        "12"
       ]
     },
     "전략22→사실12": {
@@ -1555,7 +1573,7 @@
       "to": "사실12",
       "count": 1,
       "problems": [
-        "Problem12"
+        "12"
       ]
     },
     "사실51→연산21": {
@@ -1563,7 +1581,7 @@
       "to": "연산21",
       "count": 2,
       "problems": [
-        "Problem12",
+        "12",
         "25_수능_모의고사_-지수부등식과이차방정식"
       ]
     },
@@ -1572,7 +1590,7 @@
       "to": "전략27",
       "count": 1,
       "problems": [
-        "Problem12"
+        "12"
       ]
     },
     "전략27→전략23": {
@@ -1580,7 +1598,7 @@
       "to": "전략23",
       "count": 1,
       "problems": [
-        "Problem12"
+        "12"
       ]
     },
     "사실12→사실50": {
@@ -1588,7 +1606,7 @@
       "to": "사실50",
       "count": 1,
       "problems": [
-        "Problem12"
+        "12"
       ]
     },
     "사실57→사실50": {
@@ -1596,7 +1614,7 @@
       "to": "사실50",
       "count": 1,
       "problems": [
-        "Problem12"
+        "12"
       ]
     },
     "사실50→연산21": {
@@ -1604,7 +1622,7 @@
       "to": "연산21",
       "count": 1,
       "problems": [
-        "Problem12"
+        "12"
       ]
     },
     "연산21→전략31": {
@@ -1612,7 +1630,7 @@
       "to": "전략31",
       "count": 1,
       "problems": [
-        "Problem12"
+        "12"
       ]
     },
     "전략31→사실2": {
@@ -1620,7 +1638,7 @@
       "to": "사실2",
       "count": 1,
       "problems": [
-        "Problem12"
+        "12"
       ]
     },
     "사실2→전략2": {
@@ -1628,7 +1646,7 @@
       "to": "전략2",
       "count": 1,
       "problems": [
-        "Problem12"
+        "12"
       ]
     },
     "전략2→전략26": {
@@ -1636,7 +1654,7 @@
       "to": "전략26",
       "count": 1,
       "problems": [
-        "Problem12"
+        "12"
       ]
     },
     "전략26→전략2": {
@@ -1644,7 +1662,7 @@
       "to": "전략2",
       "count": 2,
       "problems": [
-        "Problem12",
+        "12",
         "36_수능_모의고사_-지수함수와부등식"
       ]
     },
@@ -1653,7 +1671,7 @@
       "to": "전략2",
       "count": 2,
       "problems": [
-        "Problem12",
+        "12",
         "26_a_1_인실수_a_에대하여구간__-_infty___3__에서정의된함수"
       ]
     },
@@ -1662,7 +1680,7 @@
       "to": "전략17",
       "count": 4,
       "problems": [
-        "Problem12",
+        "12",
         "21_수능_모의고사_-지수함수와곡선의교점조건",
         "27_UnknownSource_-로그방정식의실근의개수",
         "32두자연수_a___b___a_b__와두함수_f_x__-9_x-a__x-b____g_x__x-3_에대하여부등식"
@@ -1673,7 +1691,7 @@
       "to": "연산2",
       "count": 2,
       "problems": [
-        "Problem11",
+        "11",
         "23_수능_모의고사_-지수함수와직선의교점거리"
       ]
     },
@@ -1682,7 +1700,7 @@
       "to": "사실18",
       "count": 1,
       "problems": [
-        "Problem11"
+        "11"
       ]
     },
     "사실18→연산21": {
@@ -1690,7 +1708,7 @@
       "to": "연산21",
       "count": 2,
       "problems": [
-        "Problem11",
+        "11",
         "26_a_1_인실수_a_에대하여구간__-_infty___3__에서정의된함수"
       ]
     },
@@ -1699,7 +1717,7 @@
       "to": "사실12",
       "count": 1,
       "problems": [
-        "Problem11"
+        "11"
       ]
     },
     "사실12→전략6": {
@@ -1707,7 +1725,7 @@
       "to": "전략6",
       "count": 1,
       "problems": [
-        "Problem11"
+        "11"
       ]
     },
     "전략6→사실6": {
@@ -1715,7 +1733,7 @@
       "to": "사실6",
       "count": 1,
       "problems": [
-        "Problem11"
+        "11"
       ]
     },
     "사실6→전략25": {
@@ -1723,7 +1741,7 @@
       "to": "전략25",
       "count": 2,
       "problems": [
-        "Problem11",
+        "11",
         "31_수능_모의고사_-로그함수와정삼각형"
       ]
     },
@@ -1732,7 +1750,7 @@
       "to": "사실8",
       "count": 1,
       "problems": [
-        "Problem11"
+        "11"
       ]
     },
     "사실8→사실70": {
@@ -1740,7 +1758,7 @@
       "to": "사실70",
       "count": 1,
       "problems": [
-        "Problem11"
+        "11"
       ]
     },
     "전략6→사실70": {
@@ -1748,7 +1766,7 @@
       "to": "사실70",
       "count": 1,
       "problems": [
-        "Problem11"
+        "11"
       ]
     },
     "전략25→사실70": {
@@ -1756,7 +1774,7 @@
       "to": "사실70",
       "count": 1,
       "problems": [
-        "Problem11"
+        "11"
       ]
     },
     "사실70→연산12": {
@@ -1764,7 +1782,7 @@
       "to": "연산12",
       "count": 2,
       "problems": [
-        "Problem11",
+        "11",
         "7_a_1_인실수_a_에대하여곡선_y_4-a__-x__이_x_축__y_축과만나는점을각각A_B라하자삼각형OAB의외접원이곡선_y_a__x_-1_과O가아닌점C에서만나고__overline_CO___overline_CA__일때___overline_BC___2__의값을구하시오_단_O는원점이다__4점_"
       ]
     },
@@ -1773,7 +1791,7 @@
       "to": "사실13",
       "count": 1,
       "problems": [
-        "Problem11"
+        "11"
       ]
     },
     "사실13→연산12": {
@@ -1781,7 +1799,7 @@
       "to": "연산12",
       "count": 2,
       "problems": [
-        "Problem11",
+        "11",
         "7_a_1_인실수_a_에대하여곡선_y_4-a__-x__이_x_축__y_축과만나는점을각각A_B라하자삼각형OAB의외접원이곡선_y_a__x_-1_과O가아닌점C에서만나고__overline_CO___overline_CA__일때___overline_BC___2__의값을구하시오_단_O는원점이다__4점_"
       ]
     },
@@ -1790,7 +1808,7 @@
       "to": "연산12",
       "count": 1,
       "problems": [
-        "Problem11"
+        "11"
       ]
     },
     "전략25→연산12": {
@@ -1798,7 +1816,7 @@
       "to": "연산12",
       "count": 2,
       "problems": [
-        "Problem11",
+        "11",
         "31_수능_모의고사_-로그함수와정삼각형"
       ]
     },
@@ -1807,7 +1825,7 @@
       "to": "전략2",
       "count": 1,
       "problems": [
-        "Problem11"
+        "11"
       ]
     },
     "연산21→전략25": {
@@ -1815,7 +1833,7 @@
       "to": "전략25",
       "count": 4,
       "problems": [
-        "Problem11",
+        "11",
         "25_수능_모의고사_-지수부등식과이차방정식",
         "26_a_1_인실수_a_에대하여구간__-_infty___3__에서정의된함수",
         "36_수능_모의고사_-지수함수와부등식"
@@ -1826,7 +1844,7 @@
       "to": "연산17",
       "count": 1,
       "problems": [
-        "Problem11"
+        "11"
       ]
     },
     "전략6→연산17": {
@@ -1834,7 +1852,7 @@
       "to": "연산17",
       "count": 1,
       "problems": [
-        "Problem11"
+        "11"
       ]
     },
     "사실70→사실11": {
@@ -1842,7 +1860,7 @@
       "to": "사실11",
       "count": 1,
       "problems": [
-        "Problem11"
+        "11"
       ]
     },
     "사실11→사실81": {
@@ -1850,7 +1868,7 @@
       "to": "사실81",
       "count": 1,
       "problems": [
-        "Problem11"
+        "11"
       ]
     },
     "전략25→사실81": {
@@ -1858,7 +1876,7 @@
       "to": "사실81",
       "count": 3,
       "problems": [
-        "Problem11",
+        "11",
         "26_a_1_인실수_a_에대하여구간__-_infty___3__에서정의된함수",
         "37_수능_모의고사_-지수_로그함수와도형"
       ]
@@ -1868,7 +1886,7 @@
       "to": "전략25",
       "count": 1,
       "problems": [
-        "Problem11"
+        "11"
       ]
     },
     "연산17→전략25": {
@@ -1876,7 +1894,7 @@
       "to": "전략25",
       "count": 2,
       "problems": [
-        "Problem11",
+        "11",
         "7_a_1_인실수_a_에대하여곡선_y_4-a__-x__이_x_축__y_축과만나는점을각각A_B라하자삼각형OAB의외접원이곡선_y_a__x_-1_과O가아닌점C에서만나고__overline_CO___overline_CA__일때___overline_BC___2__의값을구하시오_단_O는원점이다__4점_"
       ]
     },
@@ -1885,7 +1903,7 @@
       "to": "사실77",
       "count": 1,
       "problems": [
-        "Problem11"
+        "11"
       ]
     },
     "전략25→사실77": {
@@ -1893,7 +1911,7 @@
       "to": "사실77",
       "count": 1,
       "problems": [
-        "Problem11"
+        "11"
       ]
     },
     "사실77→전략25": {
@@ -1901,7 +1919,7 @@
       "to": "전략25",
       "count": 1,
       "problems": [
-        "Problem11"
+        "11"
       ]
     },
     "전략25→사실1": {
@@ -1909,7 +1927,7 @@
       "to": "사실1",
       "count": 1,
       "problems": [
-        "Problem11"
+        "11"
       ]
     },
     "사실1→전략25": {
@@ -1917,7 +1935,7 @@
       "to": "전략25",
       "count": 2,
       "problems": [
-        "Problem11",
+        "11",
         "8_수능_모의고사_-n제곱근"
       ]
     },
@@ -1926,7 +1944,7 @@
       "to": "전략25",
       "count": 1,
       "problems": [
-        "Problem11"
+        "11"
       ]
     },
     "전략6→사실1": {
@@ -2437,12 +2455,13 @@
     "연산2→전략25": {
       "from": "연산2",
       "to": "전략25",
-      "count": 4,
+      "count": 5,
       "problems": [
         "23_수능_모의고사_-지수함수와직선의교점거리",
         "26_a_1_인실수_a_에대하여구간__-_infty___3__에서정의된함수",
         "33_수능_모의고사_-로그계산",
-        "34_수능_모의고사_-로그조건을만족하는양수의곱"
+        "34_수능_모의고사_-로그조건을만족하는양수의곱",
+        "9_UnknownSource_-로그함수의일대일함수조건과치역"
       ]
     },
     "연산2→연산18": {
@@ -2721,9 +2740,10 @@
     "전략2→전략11": {
       "from": "전략2",
       "to": "전략11",
-      "count": 1,
+      "count": 2,
       "problems": [
-        "26_a_1_인실수_a_에대하여구간__-_infty___3__에서정의된함수"
+        "26_a_1_인실수_a_에대하여구간__-_infty___3__에서정의된함수",
+        "9_UnknownSource_-로그함수의일대일함수조건과치역"
       ]
     },
     "전략11→전략25": {
@@ -3255,10 +3275,11 @@
     "연산3→연산2": {
       "from": "연산3",
       "to": "연산2",
-      "count": 2,
+      "count": 3,
       "problems": [
         "37_수능_모의고사_-지수_로그함수와도형",
-        "32두자연수_a___b___a_b__와두함수_f_x__-9_x-a__x-b____g_x__x-3_에대하여부등식"
+        "32두자연수_a___b___a_b__와두함수_f_x__-9_x-a__x-b____g_x__x-3_에대하여부등식",
+        "9_UnknownSource_-로그함수의일대일함수조건과치역"
       ]
     },
     "전략25→사실62": {
@@ -4231,6 +4252,150 @@
       "problems": [
         "8_수능_모의고사_-n제곱근"
       ]
+    },
+    "사실38→사실54": {
+      "from": "사실38",
+      "to": "사실54",
+      "count": 1,
+      "problems": [
+        "9_UnknownSource_-로그함수의일대일함수조건과치역"
+      ]
+    },
+    "사실12→사실54": {
+      "from": "사실12",
+      "to": "사실54",
+      "count": 1,
+      "problems": [
+        "9_UnknownSource_-로그함수의일대일함수조건과치역"
+      ]
+    },
+    "사실54→사실41": {
+      "from": "사실54",
+      "to": "사실41",
+      "count": 1,
+      "problems": [
+        "9_UnknownSource_-로그함수의일대일함수조건과치역"
+      ]
+    },
+    "사실37→사실54": {
+      "from": "사실37",
+      "to": "사실54",
+      "count": 1,
+      "problems": [
+        "9_UnknownSource_-로그함수의일대일함수조건과치역"
+      ]
+    },
+    "사실54→사실19": {
+      "from": "사실54",
+      "to": "사실19",
+      "count": 1,
+      "problems": [
+        "9_UnknownSource_-로그함수의일대일함수조건과치역"
+      ]
+    },
+    "사실41→사실58": {
+      "from": "사실41",
+      "to": "사실58",
+      "count": 1,
+      "problems": [
+        "9_UnknownSource_-로그함수의일대일함수조건과치역"
+      ]
+    },
+    "사실54→사실58": {
+      "from": "사실54",
+      "to": "사실58",
+      "count": 1,
+      "problems": [
+        "9_UnknownSource_-로그함수의일대일함수조건과치역"
+      ]
+    },
+    "사실58→전략3": {
+      "from": "사실58",
+      "to": "전략3",
+      "count": 1,
+      "problems": [
+        "9_UnknownSource_-로그함수의일대일함수조건과치역"
+      ]
+    },
+    "사실19→사실26": {
+      "from": "사실19",
+      "to": "사실26",
+      "count": 1,
+      "problems": [
+        "9_UnknownSource_-로그함수의일대일함수조건과치역"
+      ]
+    },
+    "전략3→사실26": {
+      "from": "전략3",
+      "to": "사실26",
+      "count": 1,
+      "problems": [
+        "9_UnknownSource_-로그함수의일대일함수조건과치역"
+      ]
+    },
+    "사실19→전략2": {
+      "from": "사실19",
+      "to": "전략2",
+      "count": 1,
+      "problems": [
+        "9_UnknownSource_-로그함수의일대일함수조건과치역"
+      ]
+    },
+    "사실26→전략2": {
+      "from": "사실26",
+      "to": "전략2",
+      "count": 1,
+      "problems": [
+        "9_UnknownSource_-로그함수의일대일함수조건과치역"
+      ]
+    },
+    "사실26→전략11": {
+      "from": "사실26",
+      "to": "전략11",
+      "count": 1,
+      "problems": [
+        "9_UnknownSource_-로그함수의일대일함수조건과치역"
+      ]
+    },
+    "전략11→연산16": {
+      "from": "전략11",
+      "to": "연산16",
+      "count": 1,
+      "problems": [
+        "9_UnknownSource_-로그함수의일대일함수조건과치역"
+      ]
+    },
+    "연산2→전략29": {
+      "from": "연산2",
+      "to": "전략29",
+      "count": 1,
+      "problems": [
+        "9_UnknownSource_-로그함수의일대일함수조건과치역"
+      ]
+    },
+    "전략29→사실4": {
+      "from": "전략29",
+      "to": "사실4",
+      "count": 1,
+      "problems": [
+        "9_UnknownSource_-로그함수의일대일함수조건과치역"
+      ]
+    },
+    "사실26→전략25": {
+      "from": "사실26",
+      "to": "전략25",
+      "count": 1,
+      "problems": [
+        "9_UnknownSource_-로그함수의일대일함수조건과치역"
+      ]
+    },
+    "전략25→연산3": {
+      "from": "전략25",
+      "to": "연산3",
+      "count": 1,
+      "problems": [
+        "9_UnknownSource_-로그함수의일대일함수조건과치역"
+      ]
     }
   },
   "matrix": {
@@ -4259,7 +4424,7 @@
       "연산11": 0.083
     },
     "연산16": {
-      "연산2": 0.083,
+      "연산2": 0.167,
       "사실58": 0.083,
       "전략11": 0.083
     },
@@ -4270,7 +4435,7 @@
       "연산17": 0.083,
       "사실18": 0.083,
       "연산11": 0.167,
-      "전략25": 0.333,
+      "전략25": 0.417,
       "연산18": 0.25,
       "전략11": 0.083,
       "전략2": 0.167,
@@ -4283,7 +4448,8 @@
       "사실12": 0.083,
       "사실69": 0.083,
       "연산12": 0.083,
-      "연산21": 0.083
+      "연산21": 0.083,
+      "전략29": 0.083
     },
     "전략5": {
       "전략6": 0.083,
@@ -4357,7 +4523,8 @@
       "사실62": 0.083,
       "사실19": 0.083,
       "전략29": 0.083,
-      "연산16": 0.083
+      "연산16": 0.083,
+      "연산3": 0.083
     },
     "사실78": {
       "전략17": 0.083,
@@ -4424,7 +4591,7 @@
       "사실18": 0.083,
       "연산21": 0.333,
       "전략23": 0.083,
-      "전략11": 0.083,
+      "전략11": 0.167,
       "사실36": 0.083,
       "연산18": 0.083,
       "연산5": 0.083,
@@ -4478,7 +4645,8 @@
       "사실58": 0.167,
       "연산17": 0.083,
       "전략17": 0.083,
-      "전략25": 0.083
+      "전략25": 0.083,
+      "사실54": 0.083
     },
     "사실51": {
       "사실62": 0.083,
@@ -4554,7 +4722,8 @@
       "전략25": 0.25,
       "연산4": 0.083,
       "전략2": 0.083,
-      "사실44": 0.083
+      "사실44": 0.083,
+      "전략3": 0.083
     },
     "사실74": {
       "사실4": 0.083,
@@ -4565,7 +4734,7 @@
       "연산4": 0.167,
       "전략10": 0.167,
       "전략20": 0.083,
-      "전략25": 0.25,
+      "전략25": 0.333,
       "사실91": 0.083,
       "사실1": 0.083,
       "전략37": 0.083,
@@ -4606,10 +4775,11 @@
     "사실41": {
       "사실40": 0.167,
       "사실46": 0.083,
-      "사실19": 0.167,
+      "사실19": 0.25,
       "사실51": 0.167,
       "사실1": 0.083,
-      "사실56": 0.083
+      "사실56": 0.083,
+      "사실58": 0.083
     },
     "사실40": {
       "사실41": 0.167
@@ -4636,7 +4806,9 @@
       "사실43": 0.083,
       "사실56": 0.083,
       "연산21": 0.083,
-      "사실17": 0.083
+      "사실17": 0.083,
+      "사실26": 0.083,
+      "전략2": 0.083
     },
     "사실9": {
       "전략25": 0.083
@@ -4771,7 +4943,8 @@
       "사실35": 0.083,
       "사실79": 0.083,
       "전략23": 0.083,
-      "전략20": 0.083
+      "전략20": 0.083,
+      "사실4": 0.083
     },
     "연산9": {
       "전략12": 0.083,
@@ -4805,7 +4978,8 @@
       "연산5": 0.083,
       "사실58": 0.25,
       "연산3": 0.083,
-      "전략2": 0.083
+      "전략2": 0.083,
+      "연산16": 0.083
     },
     "사실59": {
       "사실58": 0.083,
@@ -4849,7 +5023,7 @@
       "사실81": 0.083
     },
     "연산3": {
-      "연산2": 0.167,
+      "연산2": 0.25,
       "연산1": 0.083,
       "전략11": 0.083
     },
@@ -4862,7 +5036,8 @@
       "연산11": 0.083
     },
     "사실37": {
-      "전략2": 0.083
+      "전략2": 0.083,
+      "사실54": 0.083
     },
     "전략28": {
       "연산28": 0.083
@@ -4885,6 +5060,22 @@
     "연산26": {
       "전략26": 0.083,
       "전략17": 0.083
+    },
+    "사실38": {
+      "사실54": 0.083
+    },
+    "사실54": {
+      "사실41": 0.083,
+      "사실19": 0.083,
+      "사실58": 0.083
+    },
+    "전략3": {
+      "사실26": 0.083
+    },
+    "사실26": {
+      "전략2": 0.083,
+      "전략11": 0.083,
+      "전략25": 0.083
     }
   },
   "neurons": {
@@ -4894,7 +5085,7 @@
       "outgoing_connections": 5,
       "incoming_connections": 2,
       "total_connections": 7,
-      "hub_score": 0.07,
+      "hub_score": 0.06,
       "connected_neurons": [
         "사실4",
         "사실51",
@@ -4945,10 +5136,10 @@
       ]
     },
     "연산16": {
-      "total_appearances": 4,
-      "problem_count": 3,
+      "total_appearances": 5,
+      "problem_count": 4,
       "outgoing_connections": 3,
-      "incoming_connections": 4,
+      "incoming_connections": 5,
       "total_connections": 6,
       "hub_score": 0.06,
       "connected_neurons": [
@@ -4961,11 +5152,11 @@
       ]
     },
     "연산2": {
-      "total_appearances": 29,
-      "problem_count": 16,
-      "outgoing_connections": 20,
+      "total_appearances": 31,
+      "problem_count": 17,
+      "outgoing_connections": 21,
       "incoming_connections": 11,
-      "total_connections": 24,
+      "total_connections": 25,
       "hub_score": 0.23,
       "connected_neurons": [
         "사실12",
@@ -4990,6 +5181,7 @@
         "전략2",
         "전략25",
         "전략28",
+        "전략29",
         "전략5",
         "전략6"
       ]
@@ -5015,7 +5207,7 @@
       "outgoing_connections": 4,
       "incoming_connections": 7,
       "total_connections": 9,
-      "hub_score": 0.09,
+      "hub_score": 0.08,
       "connected_neurons": [
         "사실19",
         "사실2",
@@ -5071,11 +5263,11 @@
       ]
     },
     "전략25": {
-      "total_appearances": 119,
-      "problem_count": 28,
-      "outgoing_connections": 42,
-      "incoming_connections": 45,
-      "total_connections": 56,
+      "total_appearances": 121,
+      "problem_count": 29,
+      "outgoing_connections": 43,
+      "incoming_connections": 46,
+      "total_connections": 58,
       "hub_score": 0.53,
       "connected_neurons": [
         "사실1",
@@ -5084,6 +5276,7 @@
         "사실15",
         "사실18",
         "사실19",
+        "사실26",
         "사실32",
         "사실35",
         "사실36",
@@ -5118,6 +5311,7 @@
         "연산20",
         "연산21",
         "연산27",
+        "연산3",
         "연산30",
         "연산4",
         "연산5",
@@ -5157,7 +5351,7 @@
       "outgoing_connections": 7,
       "incoming_connections": 18,
       "total_connections": 20,
-      "hub_score": 0.19,
+      "hub_score": 0.18,
       "connected_neurons": [
         "사실12",
         "사실24",
@@ -5231,7 +5425,7 @@
       "outgoing_connections": 4,
       "incoming_connections": 6,
       "total_connections": 9,
-      "hub_score": 0.09,
+      "hub_score": 0.08,
       "connected_neurons": [
         "사실15",
         "사실16",
@@ -5262,7 +5456,7 @@
       "outgoing_connections": 6,
       "incoming_connections": 3,
       "total_connections": 8,
-      "hub_score": 0.08,
+      "hub_score": 0.07,
       "connected_neurons": [
         "사실13",
         "사실30",
@@ -5293,7 +5487,7 @@
       "outgoing_connections": 5,
       "incoming_connections": 4,
       "total_connections": 8,
-      "hub_score": 0.08,
+      "hub_score": 0.07,
       "connected_neurons": [
         "사실15",
         "사실44",
@@ -5306,18 +5500,20 @@
       ]
     },
     "전략2": {
-      "total_appearances": 37,
-      "problem_count": 18,
+      "total_appearances": 38,
+      "problem_count": 19,
       "outgoing_connections": 15,
-      "incoming_connections": 30,
-      "total_connections": 35,
-      "hub_score": 0.33,
+      "incoming_connections": 32,
+      "total_connections": 37,
+      "hub_score": 0.34,
       "connected_neurons": [
         "사실1",
         "사실15",
         "사실17",
         "사실18",
+        "사실19",
         "사실2",
+        "사실26",
         "사실35",
         "사실36",
         "사실37",
@@ -5356,7 +5552,7 @@
       "outgoing_connections": 4,
       "incoming_connections": 5,
       "total_connections": 8,
-      "hub_score": 0.08,
+      "hub_score": 0.07,
       "connected_neurons": [
         "사실11",
         "사실16",
@@ -5396,7 +5592,7 @@
       "outgoing_connections": 4,
       "incoming_connections": 8,
       "total_connections": 10,
-      "hub_score": 0.1,
+      "hub_score": 0.09,
       "connected_neurons": [
         "사실15",
         "사실81",
@@ -5449,16 +5645,17 @@
       ]
     },
     "사실12": {
-      "total_appearances": 10,
-      "problem_count": 7,
-      "outgoing_connections": 7,
+      "total_appearances": 11,
+      "problem_count": 8,
+      "outgoing_connections": 8,
       "incoming_connections": 5,
-      "total_connections": 10,
+      "total_connections": 11,
       "hub_score": 0.1,
       "connected_neurons": [
         "사실5",
         "사실50",
         "사실51",
+        "사실54",
         "사실58",
         "연산17",
         "연산2",
@@ -5513,7 +5710,7 @@
       "outgoing_connections": 4,
       "incoming_connections": 5,
       "total_connections": 7,
-      "hub_score": 0.07,
+      "hub_score": 0.06,
       "connected_neurons": [
         "사실11",
         "사실16",
@@ -5530,7 +5727,7 @@
       "outgoing_connections": 3,
       "incoming_connections": 5,
       "total_connections": 7,
-      "hub_score": 0.07,
+      "hub_score": 0.06,
       "connected_neurons": [
         "사실62",
         "사실81",
@@ -5603,16 +5800,18 @@
       ]
     },
     "사실58": {
-      "total_appearances": 12,
-      "problem_count": 8,
-      "outgoing_connections": 6,
-      "incoming_connections": 8,
-      "total_connections": 12,
-      "hub_score": 0.11,
+      "total_appearances": 13,
+      "problem_count": 9,
+      "outgoing_connections": 7,
+      "incoming_connections": 10,
+      "total_connections": 15,
+      "hub_score": 0.14,
       "connected_neurons": [
         "사실12",
+        "사실41",
         "사실44",
         "사실5",
+        "사실54",
         "사실59",
         "연산10",
         "연산16",
@@ -5621,7 +5820,8 @@
         "연산4",
         "전략11",
         "전략2",
-        "전략25"
+        "전략25",
+        "전략3"
       ]
     },
     "사실69": {
@@ -5669,12 +5869,12 @@
       ]
     },
     "사실4": {
-      "total_appearances": 11,
-      "problem_count": 6,
+      "total_appearances": 12,
+      "problem_count": 7,
       "outgoing_connections": 9,
-      "incoming_connections": 7,
-      "total_connections": 14,
-      "hub_score": 0.13,
+      "incoming_connections": 8,
+      "total_connections": 15,
+      "hub_score": 0.14,
       "connected_neurons": [
         "사실1",
         "사실35",
@@ -5687,6 +5887,7 @@
         "전략12",
         "전략20",
         "전략25",
+        "전략29",
         "전략37",
         "전략5",
         "전략7"
@@ -5769,7 +5970,7 @@
       "outgoing_connections": 6,
       "incoming_connections": 6,
       "total_connections": 10,
-      "hub_score": 0.1,
+      "hub_score": 0.09,
       "connected_neurons": [
         "사실51",
         "사실69",
@@ -5784,12 +5985,12 @@
       ]
     },
     "사실41": {
-      "total_appearances": 14,
-      "problem_count": 5,
-      "outgoing_connections": 6,
-      "incoming_connections": 3,
-      "total_connections": 8,
-      "hub_score": 0.08,
+      "total_appearances": 15,
+      "problem_count": 6,
+      "outgoing_connections": 7,
+      "incoming_connections": 4,
+      "total_connections": 10,
+      "hub_score": 0.09,
       "connected_neurons": [
         "사실1",
         "사실19",
@@ -5798,7 +5999,9 @@
         "사실46",
         "사실5",
         "사실51",
-        "사실56"
+        "사실54",
+        "사실56",
+        "사실58"
       ]
     },
     "사실40": {
@@ -5826,21 +6029,24 @@
       ]
     },
     "사실19": {
-      "total_appearances": 5,
-      "problem_count": 3,
-      "outgoing_connections": 6,
-      "incoming_connections": 5,
-      "total_connections": 11,
-      "hub_score": 0.1,
+      "total_appearances": 7,
+      "problem_count": 4,
+      "outgoing_connections": 8,
+      "incoming_connections": 6,
+      "total_connections": 14,
+      "hub_score": 0.13,
       "connected_neurons": [
         "사실17",
+        "사실26",
         "사실41",
         "사실43",
         "사실44",
         "사실46",
         "사실5",
+        "사실54",
         "사실56",
         "연산21",
+        "전략2",
         "전략25",
         "전략5",
         "전략6"
@@ -5934,7 +6140,7 @@
       "outgoing_connections": 6,
       "incoming_connections": 4,
       "total_connections": 9,
-      "hub_score": 0.09,
+      "hub_score": 0.08,
       "connected_neurons": [
         "사실12",
         "사실17",
@@ -5953,7 +6159,7 @@
       "outgoing_connections": 14,
       "incoming_connections": 15,
       "total_connections": 24,
-      "hub_score": 0.23,
+      "hub_score": 0.22,
       "connected_neurons": [
         "사실1",
         "사실17",
@@ -6101,7 +6307,7 @@
       "outgoing_connections": 3,
       "incoming_connections": 5,
       "total_connections": 7,
-      "hub_score": 0.07,
+      "hub_score": 0.06,
       "connected_neurons": [
         "사실11",
         "사실8",
@@ -6118,7 +6324,7 @@
       "outgoing_connections": 4,
       "incoming_connections": 6,
       "total_connections": 8,
-      "hub_score": 0.08,
+      "hub_score": 0.07,
       "connected_neurons": [
         "사실13",
         "사실18",
@@ -6298,16 +6504,18 @@
       ]
     },
     "전략29": {
-      "total_appearances": 6,
-      "problem_count": 5,
-      "outgoing_connections": 5,
-      "incoming_connections": 3,
-      "total_connections": 8,
-      "hub_score": 0.08,
+      "total_appearances": 7,
+      "problem_count": 6,
+      "outgoing_connections": 6,
+      "incoming_connections": 4,
+      "total_connections": 10,
+      "hub_score": 0.09,
       "connected_neurons": [
         "사실35",
+        "사실4",
         "사실79",
         "연산11",
+        "연산2",
         "연산9",
         "전략1",
         "전략20",
@@ -6421,13 +6629,14 @@
       ]
     },
     "전략11": {
-      "total_appearances": 9,
-      "problem_count": 7,
-      "outgoing_connections": 6,
-      "incoming_connections": 9,
-      "total_connections": 11,
-      "hub_score": 0.1,
+      "total_appearances": 11,
+      "problem_count": 8,
+      "outgoing_connections": 7,
+      "incoming_connections": 10,
+      "total_connections": 12,
+      "hub_score": 0.11,
       "connected_neurons": [
+        "사실26",
         "사실4",
         "사실58",
         "사실92",
@@ -6511,7 +6720,7 @@
       "outgoing_connections": 3,
       "incoming_connections": 5,
       "total_connections": 7,
-      "hub_score": 0.07,
+      "hub_score": 0.06,
       "connected_neurons": [
         "사실19",
         "사실51",
@@ -6551,18 +6760,19 @@
       ]
     },
     "연산3": {
-      "total_appearances": 4,
-      "problem_count": 3,
+      "total_appearances": 5,
+      "problem_count": 4,
       "outgoing_connections": 3,
-      "incoming_connections": 4,
-      "total_connections": 5,
-      "hub_score": 0.05,
+      "incoming_connections": 5,
+      "total_connections": 6,
+      "hub_score": 0.06,
       "connected_neurons": [
         "사실62",
         "연산1",
         "연산17",
         "연산2",
-        "전략11"
+        "전략11",
+        "전략25"
       ]
     },
     "사실56": {
@@ -6594,13 +6804,14 @@
       ]
     },
     "사실37": {
-      "total_appearances": 1,
-      "problem_count": 1,
-      "outgoing_connections": 1,
+      "total_appearances": 2,
+      "problem_count": 2,
+      "outgoing_connections": 2,
       "incoming_connections": 1,
-      "total_connections": 2,
-      "hub_score": 0.02,
+      "total_connections": 3,
+      "hub_score": 0.03,
       "connected_neurons": [
+        "사실54",
         "사실59",
         "전략2"
       ]
@@ -6680,6 +6891,60 @@
         "사실25",
         "전략17",
         "전략26"
+      ]
+    },
+    "사실38": {
+      "total_appearances": 1,
+      "problem_count": 1,
+      "outgoing_connections": 1,
+      "incoming_connections": 0,
+      "total_connections": 1,
+      "hub_score": 0.01,
+      "connected_neurons": [
+        "사실54"
+      ]
+    },
+    "사실54": {
+      "total_appearances": 2,
+      "problem_count": 1,
+      "outgoing_connections": 3,
+      "incoming_connections": 3,
+      "total_connections": 6,
+      "hub_score": 0.06,
+      "connected_neurons": [
+        "사실12",
+        "사실19",
+        "사실37",
+        "사실38",
+        "사실41",
+        "사실58"
+      ]
+    },
+    "전략3": {
+      "total_appearances": 1,
+      "problem_count": 1,
+      "outgoing_connections": 1,
+      "incoming_connections": 1,
+      "total_connections": 2,
+      "hub_score": 0.02,
+      "connected_neurons": [
+        "사실26",
+        "사실58"
+      ]
+    },
+    "사실26": {
+      "total_appearances": 1,
+      "problem_count": 1,
+      "outgoing_connections": 3,
+      "incoming_connections": 2,
+      "total_connections": 5,
+      "hub_score": 0.05,
+      "connected_neurons": [
+        "사실19",
+        "전략11",
+        "전략2",
+        "전략25",
+        "전략3"
       ]
     }
   }
