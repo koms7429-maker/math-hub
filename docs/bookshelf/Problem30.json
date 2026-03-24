@@ -1,0 +1,286 @@
+{
+  "problem_id": "Problem30",
+  "answer": "35",
+  "clues": [
+    {
+      "id": "단서A",
+      "text": "$n$은 자연수이고 $n \\geq 2$이다"
+    },
+    {
+      "id": "단서B",
+      "text": "$2^{18}$의 $n$제곱근 중에서 $4$ 이하의 정수가 존재한다"
+    }
+  ],
+  "skeleton": [
+    {
+      "from": [
+        "단서A",
+        "단서B"
+      ],
+      "to": "note1",
+      "neuron": "전략12",
+      "note": "$n$의 홀짝에 따라 실수 $n$제곱근의 형태가 달라지므로 경우를 분리한다",
+      "step": 1
+    },
+    {
+      "from": [
+        "note1",
+        "단서A"
+      ],
+      "to": "note2",
+      "neuron": "사실4",
+      "note": "$2^{18} > 0$이고, $n$이 짝수이면 실수 $n$제곱근은 $\\pm 2^{18/n}$ (2개), $n$이 홀수이면 $2^{18/n}$ (1개)이다",
+      "step": 1
+    },
+    {
+      "from": "note2",
+      "to": "note3",
+      "neuron": "전략37",
+      "note": "$n$제곱근 중 정수가 존재하려면 $2^{18/n}$이 정수여야 한다",
+      "step": 2
+    },
+    {
+      "from": "note3",
+      "to": "note4",
+      "neuron": "사실64",
+      "note": "$2$는 소수이고, $2^{18/n}$이 정수일 조건은 $n \\mid 18$이다",
+      "step": 2
+    },
+    {
+      "from": [
+        "note4",
+        "단서A"
+      ],
+      "to": "note5",
+      "neuron": "전략33",
+      "note": "$18 = 2 \\times 3^2$이고, $n \\geq 2$인 $18$의 약수는 $\\{2, 3, 6, 9, 18\\}$이다",
+      "step": 2
+    },
+    {
+      "from": "note5",
+      "to": "note6",
+      "neuron": "전략12",
+      "note": "짝수 약수 $\\{2, 6, 18\\}$과 홀수 약수 $\\{3, 9\\}$로 나눈다",
+      "step": 2
+    },
+    {
+      "from": [
+        "note6",
+        "note2"
+      ],
+      "to": "note7",
+      "neuron": "사실74",
+      "note": "$n \\in \\{2, 6, 18\\}$ (짝수)이고 $2^{18} > 0$이므로 음의 실수 $n$제곱근 $-2^{18/n}$이 존재한다",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": "note7",
+      "to": "note8",
+      "neuron": "사실1",
+      "note": "$2^{18/n} > 0$이므로 $-2^{18/n}$은 음의 정수이다",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": "note8",
+      "to": "note9",
+      "neuron": "전략25",
+      "note": "$n=2$: $-2^9=-512 \\leq 4$ ✓, $n=6$: $-2^3=-8 \\leq 4$ ✓, $n=18$: $-2^1=-2 \\leq 4$ ✓. 짝수 약수 $\\{2, 6, 18\\}$은 모두 조건을 만족한다",
+      "step": 3
+    },
+    {
+      "from": "note2",
+      "to": "note10",
+      "neuron": "사실5",
+      "note": "$2 > 1$이므로 $2^x$는 순증가이다",
+      "main": false,
+      "step": 4
+    },
+    {
+      "from": [
+        "note10",
+        "note6"
+      ],
+      "to": "note11",
+      "neuron": "사실51",
+      "note": "$n$이 홀수이면 양의 $n$제곱근 $2^{18/n}$만 존재하고, $2^{18/n} \\leq 4 = 2^2$이면 $18/n \\leq 2$, 즉 $n \\geq 9$이다",
+      "step": 4
+    },
+    {
+      "from": [
+        "note11",
+        "note6"
+      ],
+      "to": "note12",
+      "neuron": "전략17",
+      "note": "홀수 약수 $\\{3, 9\\}$ 중 $n \\geq 9$인 후보는 $n = 9$뿐이다",
+      "step": 4
+    },
+    {
+      "from": "note12",
+      "to": "note13",
+      "neuron": "전략25",
+      "note": "$n=9$: $2^{18/9} = 2^2 = 4 \\leq 4$ ✓. $n=3$: $2^{18/3} = 2^6 = 64 > 4$ ✗",
+      "main": false,
+      "step": 4
+    },
+    {
+      "from": [
+        "note9",
+        "note12"
+      ],
+      "to": "END",
+      "neuron": "전략17",
+      "note": "조건을 만족하는 $n$은 $\\{2, 6, 9, 18\\}$이고, $2 + 6 + 9 + 18 = 35$이다",
+      "step": 5
+    }
+  ],
+  "solution": "STEP 1. $2^{18}$의 $n$제곱근을 $n$의 홀짝에 따라 분류한다.\n$2^{18} > 0$이므로, $n$이 짝수이면 실수 $n$제곱근은 $\\pm 2^{18/n}$ (2개)이고, $n$이 홀수이면 $2^{18/n}$ (1개)이다.\n\nSTEP 2. $n$제곱근 중 정수가 존재하기 위한 조건을 구한다.\n$2^{18/n}$이 정수이려면 $n \\mid 18$이어야 한다. $18 = 2 \\times 3^2$이고, $n \\geq 2$인 약수는 $\\{2, 3, 6, 9, 18\\}$이다. 이를 짝수 약수 $\\{2, 6, 18\\}$과 홀수 약수 $\\{3, 9\\}$로 나눈다.\n\nSTEP 3. 짝수인 경우를 확인한다.\n$n$이 짝수이면 음의 $n$제곱근 $-2^{18/n}$이 존재하고, 이는 음의 정수이므로 자동으로 4 이하이다. $n = 2$일 때 $-512$, $n = 6$일 때 $-8$, $n = 18$일 때 $-2$로 모두 조건을 만족한다.\n\nSTEP 4. 홀수인 경우를 확인한다.\n$n$이 홀수이면 양의 $n$제곱근 $2^{18/n}$만 존재한다. $2^x$는 순증가이므로 $2^{18/n} \\leq 4 = 2^2$이면 $18/n \\leq 2$, 즉 $n \\geq 9$이다. 홀수 약수 $\\{3, 9\\}$ 중 $n \\geq 9$인 것은 $n = 9$뿐이다.\n\nSTEP 5. 모든 $n$의 값의 합을 구한다.\n조건을 만족하는 $n$은 $\\{2, 6, 9, 18\\}$이고, $2 + 6 + 9 + 18 = 35$이다.",
+  "original_solution": "$2^{18}$의 $n\\,(n \\geq 2)$제곱근 중 실수인 것은\n\n$$\\begin{cases} n\\text{이 짝수인 경우, } \\pm\\, 2^{\\frac{18}{n}} \\\\ n\\text{이 홀수인 경우, } 2^{\\frac{18}{n}} \\end{cases}$$\n\n이므로\n\n$4$ 이하의 정수인 $2^{18}$의 $n$제곱근이 존재하려면\n\n$$\\begin{cases} \\text{① } n\\text{이 짝수이면서 } \\dfrac{18}{n}\\text{이 자연수} \\\\[6pt] \\text{② } n\\text{이 홀수이면서 } \\dfrac{18}{n}\\text{이 } 2 \\text{ 이하의 자연수} \\end{cases}$$\n\n중 하나를 만족시켜야 한다. 이때,\n\n$$\\text{① } \\Rightarrow n = 2,\\; 6,\\; 18$$\n$$\\text{② } \\Rightarrow n = 9$$\n\n$$\\Rightarrow \\text{(모든 } n \\text{의 값의 합)} = 2 + 6 + 18 + 9 = 35$$\n\n를 얻는다.",
+  "analysis": "문제의 핵심은 (1) $n$제곱근의 실수 해를 홀짝으로 분류하고, (2) 정수 조건을 약수 조건으로 번역한 뒤, (3) 짝수일 때 음의 근이 자동으로 4 이하임을 관찰하고, (4) 홀수일 때 지수함수의 단조성으로 상한 조건을 적용하는 것이다.",
+  "new_neurons": [],
+  "metadata": {
+    "unit": "지수와 로그",
+    "difficulty": "중",
+    "score": "4",
+    "type": "객관식",
+    "answer": "35"
+  },
+  "edge_count": 14,
+  "side_count": 4,
+  "statement": "# 8. (수능/모의고사) - n제곱근\n\n## Problem\n\n자연수 $n(n \\geq 2)$에 대하여 $2^{18}$의 $n$제곱근 중에서 $4$ 이하의 정수가 존재하도록 하는 모든 $n$의 값의 합은? [4점]",
+  "dna": {
+    "nodes": [
+      {
+        "id": "top",
+        "dna": "Q3",
+        "label": "모든 n의 값의 합을 구하라",
+        "category": "발문"
+      },
+      {
+        "id": "vn",
+        "dna": "T1",
+        "label": "변수 n",
+        "category": "말단"
+      },
+      {
+        "id": "c2",
+        "dna": "T2",
+        "label": "상수 2",
+        "category": "말단"
+      },
+      {
+        "id": "c18",
+        "dna": "T2",
+        "label": "상수 18",
+        "category": "말단"
+      },
+      {
+        "id": "c4",
+        "dna": "T2",
+        "label": "상수 4",
+        "category": "말단"
+      },
+      {
+        "id": "n_ge2",
+        "dna": "L2",
+        "label": "n≥2 제한",
+        "category": "제한"
+      },
+      {
+        "id": "n_nat",
+        "dna": "L3",
+        "label": "n은 자연수",
+        "category": "제한"
+      },
+      {
+        "id": "pow218",
+        "dna": "E7",
+        "label": "2의 18제곱",
+        "category": "수식"
+      },
+      {
+        "id": "nthroot",
+        "dna": "F7",
+        "label": "n제곱근",
+        "category": "함수"
+      },
+      {
+        "id": "int_cond",
+        "dna": "L3",
+        "label": "정수 조건",
+        "category": "제한"
+      },
+      {
+        "id": "leq4",
+        "dna": "C2",
+        "label": "4 이하",
+        "category": "조건"
+      },
+      {
+        "id": "exist_cond",
+        "dna": "X5",
+        "label": "존재한다",
+        "category": "존재"
+      }
+    ],
+    "edges": [
+      {
+        "from": "n_ge2",
+        "to": "vn"
+      },
+      {
+        "from": "n_nat",
+        "to": "vn"
+      },
+      {
+        "from": "c2",
+        "to": "pow218"
+      },
+      {
+        "from": "c18",
+        "to": "pow218"
+      },
+      {
+        "from": "pow218",
+        "to": "nthroot"
+      },
+      {
+        "from": "vn",
+        "to": "nthroot"
+      },
+      {
+        "from": "int_cond",
+        "to": "nthroot"
+      },
+      {
+        "from": "c4",
+        "to": "leq4"
+      },
+      {
+        "from": "nthroot",
+        "to": "leq4"
+      },
+      {
+        "from": "leq4",
+        "to": "exist_cond"
+      },
+      {
+        "from": "exist_cond",
+        "to": "top"
+      },
+      {
+        "from": "vn",
+        "to": "top"
+      }
+    ],
+    "new_dna": []
+  },
+  "thinking_profile": null,
+  "folders": [],
+  "history": [],
+  "recovery_warnings": [],
+  "errata": [],
+  "created_at": "2026-03-24T01:11:52.882Z"
+}

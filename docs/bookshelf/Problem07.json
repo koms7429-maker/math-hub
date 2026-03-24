@@ -1,0 +1,1160 @@
+{
+  "problem_id": "Problem07",
+  "answer": "45",
+  "clues": [
+    {
+      "id": "단서A",
+      "text": "$f(x)=\\frac{1}{16}\\{(x-3)^2+n\\}$이고 $n$은 $n\\neq 12$인 자연수이다"
+    },
+    {
+      "id": "단서B",
+      "text": "$\\log_{f(1)}f(x)\\geq\\log_{f(1)}\\left(\\frac{n+1}{8}\\right)$의 실근 중 정수인 것의 개수가 7이다"
+    }
+  ],
+  "skeleton": [
+    {
+      "from": "단서A",
+      "to": "note1",
+      "neuron": "전략25",
+      "note": "$x=1$을 대입하면 $f(1)=\\frac{(1-3)^2+n}{16}=\\frac{n+4}{16}$이다",
+      "step": 1
+    },
+    {
+      "from": [
+        "note1",
+        "단서A"
+      ],
+      "to": "note2",
+      "neuron": "사실59",
+      "note": "로그의 밑 조건 $f(1)>0$, $f(1)\\neq 1$이 필요하다. $f(1)=1 \\iff n=12$이고, $n\\neq 12$이므로 밑 조건은 만족된다",
+      "step": 1
+    },
+    {
+      "from": "note1",
+      "to": "note3",
+      "neuron": "전략22",
+      "note": "$n=12$를 기준으로, $n>12$이면 $f(1)>1$이고 $1\\leq n\\leq 11$이면 $0<f(1)<1$이다",
+      "step": 2
+    },
+    {
+      "from": "note3",
+      "to": "note4",
+      "neuron": "사실12",
+      "note": "$f(1)>1$일 때 $\\log_{f(1)}$은 순증가이다",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": [
+        "note4",
+        "단서B"
+      ],
+      "to": "note5",
+      "neuron": "사실51",
+      "note": "순증가 함수에서 부등호 방향이 보존되므로 부등식은 $f(x)\\geq\\frac{n+1}{8}$과 동치이다",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": [
+        "note5",
+        "단서A"
+      ],
+      "to": "note6",
+      "neuron": "연산21",
+      "note": "$\\frac{1}{16}\\{(x-3)^2+n\\}\\geq\\frac{n+1}{8}$을 정리하면 $(x-3)^2\\geq n+2$이다",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": "note6",
+      "to": "note7",
+      "neuron": "전략27",
+      "note": "$(x-3)^2\\geq n+2$의 해는 $x\\leq 3-\\sqrt{n+2}$ 또는 $x\\geq 3+\\sqrt{n+2}$로 양방향 무한이므로 정수 해가 무한히 많다. 정수 해 7개 조건과 모순이다",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": "note7",
+      "to": "note8",
+      "neuron": "전략23",
+      "note": "$n>12$인 경우는 배제된다",
+      "step": 3
+    },
+    {
+      "from": "note3",
+      "to": "note9",
+      "neuron": "사실12",
+      "note": "$0<f(1)<1$일 때 $\\log_{f(1)}$은 순감소이다",
+      "step": 4
+    },
+    {
+      "from": "단서A",
+      "to": "note10",
+      "neuron": "사실57",
+      "note": "$n\\geq 1$이면 $(x-3)^2+n\\geq 1>0$이므로 $f(x)>0$은 항상 성립한다. 또한 $\\frac{n+1}{8}>0$이므로 진수 조건도 만족된다",
+      "main": false,
+      "step": 4
+    },
+    {
+      "from": [
+        "note9",
+        "note10",
+        "단서B"
+      ],
+      "to": "note11",
+      "neuron": "사실50",
+      "note": "순감소 함수에서 부등호가 반전되어 $f(x)\\leq\\frac{n+1}{8}$과 동치이다 ($f(x)>0$은 항상 성립하므로 추가 조건 불필요)",
+      "step": 4
+    },
+    {
+      "from": [
+        "note11",
+        "단서A"
+      ],
+      "to": "note12",
+      "neuron": "연산21",
+      "note": "$\\frac{1}{16}\\{(x-3)^2+n\\}\\leq\\frac{n+1}{8}$을 정리하면 $(x-3)^2\\leq n+2$이다",
+      "step": 4
+    },
+    {
+      "from": "note12",
+      "to": "note13",
+      "neuron": "전략31",
+      "note": "$(x-3)^2\\leq n+2$에서 $|x-3|\\leq\\sqrt{n+2}$이므로 $3-\\sqrt{n+2}\\leq x\\leq 3+\\sqrt{n+2}$이다",
+      "step": 5
+    },
+    {
+      "from": "note13",
+      "to": "note14",
+      "neuron": "사실2",
+      "note": "구간 $[3-\\sqrt{n+2},\\;3+\\sqrt{n+2}]$는 $x=3$ 대칭이고, 포함되는 정수는 $\\{3-k,\\ldots,3,\\ldots,3+k\\}$로 $2k+1$개(홀수)이다. 여기서 $k=\\lfloor\\sqrt{n+2}\\rfloor$이다",
+      "step": 5
+    },
+    {
+      "from": [
+        "note14",
+        "단서B"
+      ],
+      "to": "note15",
+      "neuron": "전략2",
+      "note": "$2k+1=7$에서 $k=3$이다. 즉 $\\sqrt{n+2}\\geq 3$이고 $\\sqrt{n+2}<4$이어야 한다",
+      "step": 6
+    },
+    {
+      "from": "note15",
+      "to": "note16",
+      "neuron": "전략26",
+      "note": "$k\\geq 3$ 조건: $\\sqrt{n+2}\\geq 3$, 즉 $n+2\\geq 9$에서 $n\\geq 7$이다",
+      "step": 6
+    },
+    {
+      "from": "note15",
+      "to": "note17",
+      "neuron": "전략26",
+      "note": "$k<4$ 조건: $\\sqrt{n+2}<4$, 즉 $n+2<16$에서 $n\\leq 13$이다. 단 $\\sqrt{n+2}=4$ ($n=14$)이면 $x=7$, $x=-1$도 포함되어 $k=4$가 되므로 $n\\leq 13$이다",
+      "step": 6
+    },
+    {
+      "from": [
+        "note16",
+        "note17",
+        "note8"
+      ],
+      "to": "note18",
+      "neuron": "전략2",
+      "note": "$7\\leq n\\leq 13$와 $1\\leq n\\leq 11$을 결합하면 $7\\leq n\\leq 11$이다",
+      "step": 7
+    },
+    {
+      "from": "note18",
+      "to": "note19",
+      "neuron": "전략25",
+      "note": "$n=7,8,9,10,11$ 각각에서 $\\sqrt{n+2}$는 $3, \\sqrt{10}, \\sqrt{11}, \\sqrt{12}, \\sqrt{13}$이고, 모두 $3\\leq\\sqrt{n+2}<4$이므로 정수 해는 $\\{0,1,2,3,4,5,6\\}$의 7개이다",
+      "main": false,
+      "step": 7
+    },
+    {
+      "from": "note18",
+      "to": "END",
+      "neuron": "전략17",
+      "note": "$n$의 합은 $7+8+9+10+11=45$이다",
+      "step": 7
+    }
+  ],
+  "solution": "STEP 1. $x=1$을 대입하면 $f(1)=\\frac{(1-3)^2+n}{16}=\\frac{n+4}{16}$이다. $f(1)=1 \\iff n=12$이고, $n\\neq 12$ 조건에 의해 로그의 밑 조건 $f(1)>0$, $f(1)\\neq 1$이 모두 만족된다.\n\nSTEP 2. $n=12$를 기준으로 경우를 분류한다. $n>12$이면 $f(1)>1$이고, $1\\leq n\\leq 11$이면 $0<f(1)<1$이다.\n\nSTEP 3. $n>12$인 경우, $\\log_{f(1)}$이 순증가이므로 부등식은 $f(x)\\geq\\frac{n+1}{8}$과 동치이다. 이를 정리하면 $(x-3)^2\\geq n+2$이고, 해는 $x\\leq 3-\\sqrt{n+2}$ 또는 $x\\geq 3+\\sqrt{n+2}$로 양방향 무한이므로 정수 해가 무한히 많아 7개 조건과 모순이다. $n>12$는 배제된다.\n\nSTEP 4. $1\\leq n\\leq 11$인 경우, $0<f(1)<1$이므로 $\\log_{f(1)}$이 순감소이고 부등호가 반전되어 $f(x)\\leq\\frac{n+1}{8}$과 동치이다. $n\\geq 1$이면 $f(x)>0$이 항상 성립하므로 진수 조건은 자동으로 만족된다. 정리하면 $(x-3)^2\\leq n+2$이다.\n\nSTEP 5. $|x-3|\\leq\\sqrt{n+2}$이므로 해는 $3-\\sqrt{n+2}\\leq x\\leq 3+\\sqrt{n+2}$이다. 이 구간은 $x=3$ 대칭이므로, $k=\\lfloor\\sqrt{n+2}\\rfloor$이라 하면 포함되는 정수는 $\\{3-k,\\ldots,3+k\\}$로 $2k+1$개이다.\n\nSTEP 6. $2k+1=7$에서 $k=3$이다. $k=3$이 되려면 $3\\leq\\sqrt{n+2}<4$, 즉 $9\\leq n+2<16$에서 $7\\leq n\\leq 13$이다.\n\nSTEP 7. $7\\leq n\\leq 13$과 $1\\leq n\\leq 11$ ($n>12$ 배제)을 결합하면 $7\\leq n\\leq 11$이다. 모든 자연수 $n$의 합은 $7+8+9+10+11=45$이다.",
+  "original_solution": "$$f(x)=\\frac{1}{16}\\{(x-3)^2+n\\} \\quad \\cdots \\text{ ①}$$\n\n이므로\n\n- (i) $n$이 12보다 큰 자연수인 경우, $f(1) > 1$\n- (ii) $n$이 12보다 작은 자연수인 경우, $0 < f(1) < 1$\n\n로 경우를 나누어 부등식\n\n$$\\log_{f(1)}f(x) \\geq \\log_{f(1)}\\left(\\frac{n+1}{8}\\right) \\quad \\cdots \\text{ ②}$$\n\n의 실근 중 정수인 것을 조사하자.\n\n**(i)의 경우:**\n\n$$\\text{②} \\Leftrightarrow f(x) \\geq \\frac{n+1}{8}$$\n\n$$\\Leftrightarrow (x-3)^2 \\geq n+2 \\text{ (∵ ①)}$$\n\n이므로 $n > 12$인 모든 자연수 $n$에 대하여 이 부등식을 만족시키는 정수 $x$는 무수히 많은 정수 $x$의 범위를 갖게 됨 $\\Rightarrow$ ②의 개수가 7일 수 없음을 알 수 있다.\n\n**(ii)의 경우:**\n\n$$\\text{②} \\Leftrightarrow 0 < f(x) \\leq \\frac{n+1}{8}$$\n\n$$\\Leftrightarrow -n < (x-3)^2 \\leq n+2 \\text{ (∵ ①)} \\quad \\cdots \\text{ ③}$$\n\n이므로\n\n③의 개수가 7을 만족시키려면 다음 그림과 같이 $x=6$이 ③을 만족시키고, $x=7$이 ③을 만족시키지 않아야 함.\n\n[FIGURE: 좌표평면에 $y=(x-3)^2$ 포물선과 $y=n+2$, $y=3^2$, $y=4^2$ 수평선이 그려져 있음. $x$축에 0부터 7까지 표시됨]\n\n따라서\n\n- ③ $\\Rightarrow 3^2 \\leq n+2 < 4^2 \\Rightarrow 7 \\leq n < 14$\n- (ii)의 경우는 $n$이 12보다 작은 자연수\n\n$$\\Rightarrow 7 \\leq n \\leq 11$$\n\n임을 알 수 있다.\n\n$$\\therefore \\text{ (모든 자연수 } n\\text{의 값의 합)} = 7+8+9+10+11 = 45$$\n\n---",
+  "analysis": "",
+  "new_neurons": [],
+  "metadata": {
+    "unit": "로그함수",
+    "difficulty": "unknown",
+    "score": "4",
+    "type": "multiple choice",
+    "answer": "45"
+  },
+  "edge_count": 20,
+  "side_count": 6,
+  "statement": "# Problem12. (Unknown Source) - 로그 부등식과 자연수의 개수\n\n## Problem\n\n함수 $f(x)=\\frac{1}{16}\\{(x-3)^2+n\\}$ ($n$은 $n \\neq 12$인 자연수)에 대하여 $x$에 대한 부등식\n\n$$\\log_{f(1)}f(x) \\geq \\log_{f(1)}\\left(\\frac{n+1}{8}\\right)$$\n\n의 실근 중에서 정수인 것의 개수가 7이도록 하는 모든 자연수 $n$의 값의 합은? [4점]",
+  "dna": {
+    "nodes": [
+      {
+        "id": "top",
+        "dna": "Q3",
+        "label": "합을 구하라",
+        "category": "발문"
+      },
+      {
+        "id": "conds",
+        "dna": "S1",
+        "label": "전체 조건묶음",
+        "category": "구조"
+      },
+      {
+        "id": "vn",
+        "dna": "T1",
+        "label": "변수 n",
+        "category": "말단"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
+      },
+      {
+        "id": "c_1_16",
+        "dna": "T2",
+        "label": "상수 1/16",
+        "category": "말단"
+      },
+      {
+        "id": "c3",
+        "dna": "T2",
+        "label": "상수 3",
+        "category": "말단"
+      },
+      {
+        "id": "c2",
+        "dna": "T2",
+        "label": "상수 2",
+        "category": "말단"
+      },
+      {
+        "id": "c1",
+        "dna": "T2",
+        "label": "상수 1",
+        "category": "말단"
+      },
+      {
+        "id": "c_1_8",
+        "dna": "T2",
+        "label": "상수 1/8",
+        "category": "말단"
+      },
+      {
+        "id": "c12",
+        "dna": "T2",
+        "label": "상수 12",
+        "category": "말단"
+      },
+      {
+        "id": "c7",
+        "dna": "T2",
+        "label": "상수 7",
+        "category": "말단"
+      },
+      {
+        "id": "fn_f",
+        "dna": "F6",
+        "label": "함수 f 정의",
+        "category": "함수"
+      },
+      {
+        "id": "fn_eq",
+        "dna": "C11",
+        "label": "f(x) 방정식",
+        "category": "조건"
+      },
+      {
+        "id": "fn_c1",
+        "dna": "C1",
+        "label": "f(x)=식 등식",
+        "category": "조건"
+      },
+      {
+        "id": "rhs_fx",
+        "dna": "E6",
+        "label": "곱(1/16, 내부)",
+        "category": "수식"
+      },
+      {
+        "id": "inner_sum",
+        "dna": "E1",
+        "label": "합((x-3)²,n)",
+        "category": "수식"
+      },
+      {
+        "id": "xm3_sq",
+        "dna": "E7",
+        "label": "(x-3)²",
+        "category": "수식"
+      },
+      {
+        "id": "xm3",
+        "dna": "E1",
+        "label": "합(x,-3)",
+        "category": "수식"
+      },
+      {
+        "id": "neg3",
+        "dna": "E2",
+        "label": "부호반전(3)",
+        "category": "수식"
+      },
+      {
+        "id": "f1_apply",
+        "dna": "F3",
+        "label": "f(1) 함수적용",
+        "category": "함수"
+      },
+      {
+        "id": "ineq_cond",
+        "dna": "C2",
+        "label": "로그 부등식",
+        "category": "조건"
+      },
+      {
+        "id": "lhs_log",
+        "dna": "E3",
+        "label": "log_{f(1)}f(x)",
+        "category": "수식"
+      },
+      {
+        "id": "fx_apply",
+        "dna": "F3",
+        "label": "f(x) 함수적용",
+        "category": "함수"
+      },
+      {
+        "id": "rhs_log",
+        "dna": "E3",
+        "label": "log_{f(1)}(n+1)/8",
+        "category": "수식"
+      },
+      {
+        "id": "frac_np1_8",
+        "dna": "E6",
+        "label": "곱(n+1, 1/8)",
+        "category": "수식"
+      },
+      {
+        "id": "np1",
+        "dna": "E1",
+        "label": "합(n,1)",
+        "category": "수식"
+      },
+      {
+        "id": "int_count",
+        "dna": "C9",
+        "label": "정수근 개수=7",
+        "category": "조건"
+      },
+      {
+        "id": "n_natural",
+        "dna": "L3",
+        "label": "n은 자연수",
+        "category": "제한"
+      },
+      {
+        "id": "n_neq12",
+        "dna": "C2",
+        "label": "n≠12",
+        "category": "조건"
+      }
+    ],
+    "edges": [
+      {
+        "from": "conds",
+        "to": "top"
+      },
+      {
+        "from": "fn_f",
+        "to": "conds"
+      },
+      {
+        "from": "fn_eq",
+        "to": "fn_f"
+      },
+      {
+        "from": "fn_c1",
+        "to": "fn_eq"
+      },
+      {
+        "from": "rhs_fx",
+        "to": "fn_c1"
+      },
+      {
+        "from": "c_1_16",
+        "to": "rhs_fx"
+      },
+      {
+        "from": "inner_sum",
+        "to": "rhs_fx"
+      },
+      {
+        "from": "xm3_sq",
+        "to": "inner_sum"
+      },
+      {
+        "from": "vn",
+        "to": "inner_sum"
+      },
+      {
+        "from": "xm3",
+        "to": "xm3_sq"
+      },
+      {
+        "from": "c2",
+        "to": "xm3_sq"
+      },
+      {
+        "from": "vx",
+        "to": "xm3"
+      },
+      {
+        "from": "neg3",
+        "to": "xm3"
+      },
+      {
+        "from": "c3",
+        "to": "neg3"
+      },
+      {
+        "from": "fn_f",
+        "to": "f1_apply"
+      },
+      {
+        "from": "c1",
+        "to": "f1_apply"
+      },
+      {
+        "from": "ineq_cond",
+        "to": "conds"
+      },
+      {
+        "from": "lhs_log",
+        "to": "ineq_cond"
+      },
+      {
+        "from": "rhs_log",
+        "to": "ineq_cond"
+      },
+      {
+        "from": "f1_apply",
+        "to": "lhs_log"
+      },
+      {
+        "from": "fx_apply",
+        "to": "lhs_log"
+      },
+      {
+        "from": "fn_f",
+        "to": "fx_apply"
+      },
+      {
+        "from": "vx",
+        "to": "fx_apply"
+      },
+      {
+        "from": "f1_apply",
+        "to": "rhs_log"
+      },
+      {
+        "from": "frac_np1_8",
+        "to": "rhs_log"
+      },
+      {
+        "from": "np1",
+        "to": "frac_np1_8"
+      },
+      {
+        "from": "c_1_8",
+        "to": "frac_np1_8"
+      },
+      {
+        "from": "vn",
+        "to": "np1"
+      },
+      {
+        "from": "c1",
+        "to": "np1"
+      },
+      {
+        "from": "int_count",
+        "to": "conds"
+      },
+      {
+        "from": "c7",
+        "to": "int_count"
+      },
+      {
+        "from": "ineq_cond",
+        "to": "int_count"
+      },
+      {
+        "from": "n_natural",
+        "to": "vn"
+      },
+      {
+        "from": "vn",
+        "to": "n_neq12"
+      },
+      {
+        "from": "c12",
+        "to": "n_neq12"
+      }
+    ],
+    "new_dna": []
+  },
+  "thinking_profile": {
+    "_version": 6,
+    "_unit": "note",
+    "_isV6": true,
+    "total_think_tokens": 1398,
+    "total_notes": 14,
+    "hint_distribution": {
+      "0": 14,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0
+    },
+    "avg_hint_level": 0,
+    "genuine_miss_count": 0,
+    "absorbed_miss_count": 0,
+    "bonus_count": 10,
+    "highlight_notes": [
+      "note1",
+      "note3",
+      "note8"
+    ],
+    "hardest_note": {
+      "note_id": "note1",
+      "neuron": "전략25",
+      "hint_level": 0,
+      "structural_difficulty": 0.25,
+      "miss_type": null,
+      "note_text": "$x=1$을 대입하면 $f(1)=\\frac{(1-3)^2+n}{16}=\\frac{n+4}{16}$이다"
+    },
+    "neuron_stats": {
+      "전략25": {
+        "type": "전략",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 0,
+        "avg_hint_level": 0
+      },
+      "사실59": {
+        "type": "사실",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 0,
+        "avg_hint_level": 0
+      },
+      "전략22": {
+        "type": "전략",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "전략23": {
+        "type": "전략",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 0,
+        "avg_hint_level": 0
+      },
+      "사실12": {
+        "type": "사실",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "사실50": {
+        "type": "사실",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "연산21": {
+        "type": "연산",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "전략31": {
+        "type": "전략",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "사실2": {
+        "type": "사실",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 0,
+        "avg_hint_level": 0
+      },
+      "전략2": {
+        "type": "전략",
+        "appearances": 2,
+        "total_hint": 0,
+        "hint_levels": [
+          0,
+          0
+        ],
+        "bonus_count": 2,
+        "avg_hint_level": 0
+      },
+      "전략26": {
+        "type": "전략",
+        "appearances": 2,
+        "total_hint": 0,
+        "hint_levels": [
+          0,
+          0
+        ],
+        "bonus_count": 2,
+        "avg_hint_level": 0
+      },
+      "전략17": {
+        "type": "전략",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      }
+    },
+    "notes": [
+      {
+        "note_index": 1,
+        "note_id": "note1",
+        "neuron": "전략25",
+        "neuron_type": "전략",
+        "note_text": "$x=1$을 대입하면 $f(1)=\\frac{(1-3)^2+n}{16}=\\frac{n+4}{16}$이다",
+        "from": [
+          "단서A"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note1",
+            "in_target": "note1",
+            "attempt": 0,
+            "score": 1,
+            "reason": "학생의 계산과 결론이 후보 A와 완전히 일치: f(1) = (n+4)/16"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 20,
+            "discover_elapsed_ms": 2988,
+            "match_elapsed_ms": 2536,
+            "discover_input_tokens": 658,
+            "discover_output_tokens": 169,
+            "match_input_tokens": 1256,
+            "match_output_tokens": 63,
+            "claude_output": "[시도] f(1)의 값을 계산해보기\n\n[계산]\n$$f(1) = \\frac{1}{16}\\{(1-3)^2 + n\\} = \\frac{1}{16}(4+n) = \\frac{n+4}{16}$$\n\n[결론] 로그의 밑은 $f(1) = \\dfrac{n+4}{16}$이다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 1,
+                "reason": "학생의 계산과 결론이 후보 A와 완전히 일치: f(1) = (n+4)/16"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 20tok | disc 2988ms + match 2536ms | bonus 0"
+          }
+        ]
+      },
+      {
+        "note_index": 2,
+        "note_id": "note2",
+        "neuron": "사실59",
+        "neuron_type": "사실",
+        "note_text": "로그의 밑 조건 $f(1)>0$, $f(1)\\neq 1$이 필요하다. $f(1)=1 \\iff n=12$이고, $n\\neq 12$이므로 밑 조건은 만족된다",
+        "from": [
+          "note1",
+          "단서A"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note2",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note2",
+            "in_target": "note2",
+            "attempt": 0,
+            "score": 0.7,
+            "reason": "학생은 n≠12임을 명시하고 f(1)의 범위를 분류하였으므로, 후보 A의 밑 조건 f(1)>0, f(1)≠1 만족 및 n=12 배제에 대한 내용이 암묵적으로 포함되어 있다."
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 100,
+            "discover_elapsed_ms": 7825,
+            "match_elapsed_ms": 5775,
+            "discover_input_tokens": 723,
+            "discover_output_tokens": 549,
+            "match_input_tokens": 1353,
+            "match_output_tokens": 298,
+            "claude_output": "[시도] 로그의 밑 f(1)이 1보다 큰지 작은지 판단하기\n\n[계산]\n$$f(1) = \\frac{n+4}{16}$$\n- $f(1) > 1$ 이 되려면: $n+4 > 16$, 즉 $n > 12$\n- $0 < f(1) < 1$ 이 되려면: $n+4 < 16$, 즉 $n < 12$\n\n$n$은 자연수이고 $n \\neq 12$이므로:\n- $n \\leq 11$이면 $0 < f(1) < 1$\n- $n \\geq 13$이면 $f(1) > 1$\n\n[결론] $n \\leq 11$이면 밑이 0과 1 사이이고, $n \\geq 13$이면 밑이 1보다 크다.",
+            "matches": [
+              {
+                "label": "B",
+                "score": 0.9,
+                "reason": "학생의 결론은 n≤11이면 0<f(1)<1, n≥13이면 f(1)>1임을 명시하고 있으며, 후보 B의 핵심 결론인 n>12이면 f(1)>1, 1≤n≤11이면 0<f(1)<1과 수학적으로 동일하다. 다만 학생은 n=12 제외 이유를 별도로 언급하지 않았으나 전체적으로 충분히 일치한다."
+              },
+              {
+                "label": "A",
+                "score": 0.7,
+                "reason": "학생은 n≠12임을 명시하고 f(1)의 범위를 분류하였으므로, 후보 A의 밑 조건 f(1)>0, f(1)≠1 만족 및 n=12 배제에 대한 내용이 암묵적으로 포함되어 있다."
+              }
+            ],
+            "eval_summary": "FOUND H0 | 100tok | disc 7825ms + match 5775ms | bonus 1"
+          }
+        ]
+      },
+      {
+        "note_index": 3,
+        "note_id": "note3",
+        "neuron": "전략22",
+        "neuron_type": "전략",
+        "note_text": "$n=12$를 기준으로, $n>12$이면 $f(1)>1$이고 $1\\leq n\\leq 11$이면 $0<f(1)<1$이다",
+        "from": [
+          "note1"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note2",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 4,
+        "note_id": "note8",
+        "neuron": "전략23",
+        "neuron_type": "전략",
+        "note_text": "$n>12$인 경우는 배제된다",
+        "from": [
+          "note7"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note8",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note8",
+            "in_target": "note8",
+            "attempt": 3,
+            "score": 1,
+            "reason": "학생의 결론이 n>12인 경우 정수 실근이 무한개라 조건을 만족하지 않으므로 배제된다는 내용과 완전히 일치한다"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 64,
+            "discover_elapsed_ms": 7761,
+            "match_elapsed_ms": 4873,
+            "discover_input_tokens": 864,
+            "discover_output_tokens": 430,
+            "match_input_tokens": 1306,
+            "match_output_tokens": 270,
+            "claude_output": "[시도] 로그 부등식을 밑의 크기에 따라 두 경우로 나누어 f(x)에 대한 부등식으로 변환하기\n\n[계산]\n로그는 단조함수이므로:\n- 밑 f(1) > 1 (즉 n > 12)이면: 부등호 방향 유지 → $f(x) \\geq \\frac{n+1}{8}$, 단 f(x) > 0 필요\n- 밑 0 < f(1) < 1 (즉 1 ≤ n ≤ 11)이면: 부등호 방향 반전 → $f(x) \\leq \\frac{n+1}{8}$, 단 f(x) > 0 필요\n\n또한 로그가 정의되려면 진수 조건 $f(x) > 0$이 항상 필요하다.\n\n[결론] 부등식은 두 경우로 나뉜다: n > 12이면 $f(x) \\geq \\frac{n+1}{8}$, 1 ≤ n ≤ 11이면 $0 < f(x) \\leq \\frac{n+1}{8}$",
+            "matches": [
+              {
+                "label": "B",
+                "score": 1,
+                "reason": "학생이 '0 < f(1) < 1이면 부등호 방향 반전'이라고 명시했으며, 이는 log_{f(1)}이 순감소임을 직접 서술한 것과 동일하다"
+              },
+              {
+                "label": "C",
+                "score": 0.7,
+                "reason": "학생이 '0 < f(1) < 1이면 f(x) ≤ (n+1)/8'로 변환된다고 서술했으나, 'f(x) > 0은 항상 성립하므로 추가 조건 불필요'라는 부분은 포함되지 않고 오히려 f(x) > 0 조건을 별도로 언급했다. 핵심 변환 결론은 일치하나 f(x)>0 조건 처리 방식이 다름"
+              }
+            ],
+            "eval_summary": "MISS attempt0 dry0 | 64tok | disc 7761ms + match 4873ms | bonus 2"
+          },
+          {
+            "attempt": 1,
+            "think_tokens": 97,
+            "discover_elapsed_ms": 6309,
+            "match_elapsed_ms": 4049,
+            "discover_input_tokens": 973,
+            "discover_output_tokens": 429,
+            "match_input_tokens": 1065,
+            "match_output_tokens": 195,
+            "claude_output": "[시도] 1 ≤ n ≤ 11 (즉 0 < f(1) < 1)일 때, f(x) ≤ (n+1)/8를 x에 대해 풀기\n\n[계산]\n$$\\frac{(x-3)^2+n}{16} \\leq \\frac{n+1}{8}$$\n$$(x-3)^2 + n \\leq 2(n+1)$$\n$$(x-3)^2 \\leq n+2$$\n$$|x-3| \\leq \\sqrt{n+2}$$\n\n[결론] 1 ≤ n ≤ 11일 때, 부등식의 해는 $3-\\sqrt{n+2} \\leq x \\leq 3+\\sqrt{n+2}$이다.",
+            "matches": [
+              {
+                "label": "D",
+                "score": 1,
+                "reason": "학생이 f(x)≤(n+1)/8 부등식을 정리하여 (x-3)²≤n+2를 도출하는 과정이 후보 D와 완전히 일치한다"
+              },
+              {
+                "label": "E",
+                "score": 1,
+                "reason": "학생이 (x-3)²≤n+2에서 |x-3|≤√(n+2)를 거쳐 3-√(n+2)≤x≤3+√(n+2)를 결론으로 명시하여 후보 E와 완전히 일치한다"
+              }
+            ],
+            "eval_summary": "MISS attempt1 dry0 | 97tok | disc 6309ms + match 4049ms | bonus 2"
+          },
+          {
+            "attempt": 2,
+            "think_tokens": 483,
+            "discover_elapsed_ms": 17812,
+            "match_elapsed_ms": 5852,
+            "discover_input_tokens": 1102,
+            "discover_output_tokens": 1651,
+            "match_input_tokens": 1270,
+            "match_output_tokens": 260,
+            "claude_output": "[시도] $1\\leq n\\leq 11$일 때, 구간 $[3-\\sqrt{n+2},\\ 3+\\sqrt{n+2}]$에 속하는 정수의 개수를 $n$값별로 센다\n\n[계산]\n$$n=7:\\ \\sqrt{9}=3 \\Rightarrow [0,\\ 6] \\Rightarrow 정수: 0,1,2,3,4,5,6 \\Rightarrow 7개\\ ✓$$\n$$n=8:\\ \\sqrt{10}\\approx3.16 \\Rightarrow [-0.16,\\ 6.16] \\Rightarrow 정수: 0,1,2,3,4,5,6 \\Rightarrow 7개\\ ✓$$\n$$n=9:\\ \\sqrt{11}\\approx3.32 \\Rightarrow [-0.32,\\ 6.32] \\Rightarrow 정수: 0,1,2,3,4,5,6 \\Rightarrow 7개\\ ✓$$\n$$n=10:\\ \\sqrt{12}\\approx3.46 \\Rightarrow [-0.46,\\ 6.46] \\Rightarrow 정수: 0,1,2,3,4,5,6 \\Rightarrow 7개\\ ✓$$\n$$",
+            "matches": [
+              {
+                "label": "J",
+                "score": 1,
+                "reason": "학생의 결론 n=7,8,9,10,11이 7≤n≤11과 동일한 결론"
+              },
+              {
+                "label": "K",
+                "score": 0.7,
+                "reason": "n=7,8,9,10,11 다섯 값을 명시했으므로 합 45를 암묵적으로 포함"
+              },
+              {
+                "label": "H",
+                "score": 0.85,
+                "reason": "n=7이 하한임을 확인(n=6은 5개로 제외, n=7부터 7개)하여 n≥7 조건과 일치"
+              },
+              {
+                "label": "G",
+                "score": 0.7,
+                "reason": "7개의 정수가 되는 조건을 수치 계산으로 확인하여 k=3에 해당하는 조건을 실질적으로 검증"
+              }
+            ],
+            "eval_summary": "MISS attempt2 dry0 | 483tok | disc 17812ms + match 5852ms | bonus 4"
+          },
+          {
+            "attempt": 3,
+            "think_tokens": 392,
+            "discover_elapsed_ms": 19629,
+            "match_elapsed_ms": 2506,
+            "discover_input_tokens": 1292,
+            "discover_output_tokens": 1360,
+            "match_input_tokens": 880,
+            "match_output_tokens": 87,
+            "claude_output": "[시도] 내가 해볼 것: $f(1)>1$인 경우($n>12$)의 부등식 방향을 확인하기\n\n[계산]\n$f(1)>1$이면 $\\log_{f(1)}$은 순증가이므로 부등식 방향이 유지된다:\n$$f(x)\\geq\\frac{n+1}{8}$$\n$$\\frac{1}{16}\\{(x-3)^2+n\\}\\geq\\frac{n+1}{8}$$\n$$(x-3)^2\\geq n+2$$\n이는 $x\\leq 3-\\sqrt{n+2}$ 또는 $x\\geq 3+\\sqrt{n+2}$로 **양 끝이 무한**한 범위이므로 정수 실근이 무한히 많다.\n\n[결론] $f(1)>1$인 경우($n>12$)는 정수 실근이 무한개이므로 조건을 만족하는 $n$이 존재하지 않고, 결국 조건을 만족하는 $n$은 $0<f(1)<1$인 경우($1\\leq n\\leq 11$)에서만 찾아야 한다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 1,
+                "reason": "학생의 결론이 n>12인 경우 정수 실근이 무한개라 조건을 만족하지 않으므로 배제된다는 내용과 완전히 일치한다"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 392tok | disc 19629ms + match 2506ms | bonus 0"
+          }
+        ]
+      },
+      {
+        "note_index": 5,
+        "note_id": "note9",
+        "neuron": "사실12",
+        "neuron_type": "사실",
+        "note_text": "$0<f(1)<1$일 때 $\\log_{f(1)}$은 순감소이다",
+        "from": [
+          "note3"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note8",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 6,
+        "note_id": "note11",
+        "neuron": "사실50",
+        "neuron_type": "사실",
+        "note_text": "순감소 함수에서 부등호가 반전되어 $f(x)\\leq\\frac{n+1}{8}$과 동치이다 ($f(x)>0$은 항상 성립하므로 추가 조건 불필요)",
+        "from": [
+          "note9",
+          "note10",
+          "단서B"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note8",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 7,
+        "note_id": "note12",
+        "neuron": "연산21",
+        "neuron_type": "연산",
+        "note_text": "$\\frac{1}{16}\\{(x-3)^2+n\\}\\leq\\frac{n+1}{8}$을 정리하면 $(x-3)^2\\leq n+2$이다",
+        "from": [
+          "note11",
+          "단서A"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note8",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 8,
+        "note_id": "note13",
+        "neuron": "전략31",
+        "neuron_type": "전략",
+        "note_text": "$(x-3)^2\\leq n+2$에서 $|x-3|\\leq\\sqrt{n+2}$이므로 $3-\\sqrt{n+2}\\leq x\\leq 3+\\sqrt{n+2}$이다",
+        "from": [
+          "note12"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note8",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 9,
+        "note_id": "note14",
+        "neuron": "사실2",
+        "neuron_type": "사실",
+        "note_text": "구간 $[3-\\sqrt{n+2},\\;3+\\sqrt{n+2}]$는 $x=3$ 대칭이고, 포함되는 정수는 $\\{3-k,\\ldots,3,\\ldots,3+k\\}$로 $2k+1$개(홀수)이다. 여기서 $k=\\lfloor\\sqrt{n+2}\\rfloor$이다",
+        "from": [
+          "note13"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note14",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note14",
+            "in_target": "note14",
+            "attempt": 0,
+            "score": 0.7,
+            "reason": "구간이 x=3 대칭이고 정수 개수가 홀수로 늘어난다는 개념은 사용했으나, k=floor(sqrt(n+2))라는 명시적 공식은 없음. 대신 sqrt(n+2)의 범위로 직접 정수 개수를 세는 방식 사용"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 242,
+            "discover_elapsed_ms": 18638,
+            "match_elapsed_ms": 5672,
+            "discover_input_tokens": 1120,
+            "discover_output_tokens": 1330,
+            "match_input_tokens": 1028,
+            "match_output_tokens": 240,
+            "claude_output": "[시도] $3-\\sqrt{n+2} \\leq x \\leq 3+\\sqrt{n+2}$ 구간에 포함된 정수의 개수가 7이 되려면 $\\sqrt{n+2}$의 범위가 어떻게 되는지 파악하기\n\n[계산]\n구간의 중심이 3이므로, 포함되는 정수들은 3을 중심으로 대칭적으로 늘어난다.\n\n- $\\sqrt{n+2} = 3$이면 구간 $[0, 6]$: 정수 $0,1,2,3,4,5,6$ → **7개** ✓  \n- $3 \\leq \\sqrt{n+2} < 4$이면 구간이 $(-1, 0]$과 $[6, 7)$ 사이에서 열려 있어 정수 $0,1,2,3,4,5,6$ → **7개** ✓  \n- $\\sqrt{n+2} = 4$이면 구간 $[-1, 7]$: 정수 $-1,0,1,2,3,4,5,6,7$ → **9개** ✗\n\n따라서 $3 \\leq \\sqrt{n+2} < 4$, 즉 $9 \\leq n+2 < 16$이므로 $7 \\leq n < 14$\n\n[결론] 정수의 개수가 7이 되려면 $7 \\leq n \\leq 13$이어야 한다. 여기에",
+            "matches": [
+              {
+                "label": "A",
+                "score": 0.7,
+                "reason": "구간이 x=3 대칭이고 정수 개수가 홀수로 늘어난다는 개념은 사용했으나, k=floor(sqrt(n+2))라는 명시적 공식은 없음. 대신 sqrt(n+2)의 범위로 직접 정수 개수를 세는 방식 사용"
+              },
+              {
+                "label": "B",
+                "score": 0.85,
+                "reason": "sqrt(n+2)<4, 즉 n+2<16에서 n<=13이라는 결론이 학생의 풀이에서 동일하게 도출됨. sqrt(n+2)=4일 때 n=14이면 정수가 9개가 된다는 내용도 학생이 확인함"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 242tok | disc 18638ms + match 5672ms | bonus 1"
+          }
+        ]
+      },
+      {
+        "note_index": 10,
+        "note_id": "note15",
+        "neuron": "전략2",
+        "neuron_type": "전략",
+        "note_text": "$2k+1=7$에서 $k=3$이다. 즉 $\\sqrt{n+2}\\geq 3$이고 $\\sqrt{n+2}<4$이어야 한다",
+        "from": [
+          "note14",
+          "단서B"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note8",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 11,
+        "note_id": "note16",
+        "neuron": "전략26",
+        "neuron_type": "전략",
+        "note_text": "$k\\geq 3$ 조건: $\\sqrt{n+2}\\geq 3$, 즉 $n+2\\geq 9$에서 $n\\geq 7$이다",
+        "from": [
+          "note15"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note8",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 12,
+        "note_id": "note17",
+        "neuron": "전략26",
+        "neuron_type": "전략",
+        "note_text": "$k<4$ 조건: $\\sqrt{n+2}<4$, 즉 $n+2<16$에서 $n\\leq 13$이다. 단 $\\sqrt{n+2}=4$ ($n=14$)이면 $x=7$, $x=-1$도 포함되어 $k=4$가 되므로 $n\\leq 13$이다",
+        "from": [
+          "note15"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note14",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 13,
+        "note_id": "note18",
+        "neuron": "전략2",
+        "neuron_type": "전략",
+        "note_text": "$7\\leq n\\leq 13$와 $1\\leq n\\leq 11$을 결합하면 $7\\leq n\\leq 11$이다",
+        "from": [
+          "note16",
+          "note17",
+          "note8"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note8",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 14,
+        "note_id": "END",
+        "neuron": "전략17",
+        "neuron_type": "전략",
+        "note_text": "$n$의 합은 $7+8+9+10+11=45$이다",
+        "from": [
+          "note18"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note8",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      }
+    ],
+    "_debug": "v7-split"
+  },
+  "folders": [],
+  "history": [],
+  "recovery_warnings": [],
+  "errata": [],
+  "created_at": "2026-03-23T14:51:38.892Z"
+}

@@ -1,0 +1,653 @@
+{
+  "problem_id": "Problem34",
+  "answer": "13",
+  "clues": [
+    {
+      "id": "단서A",
+      "text": "$a > 1$, $b > 1$인 두 실수"
+    },
+    {
+      "id": "단서B",
+      "text": "곡선 $y = a^x$이 $y$축과 만나는 점을 $\\mathrm{A}$라 한다"
+    },
+    {
+      "id": "단서C",
+      "text": "점 $\\mathrm{A}$를 지나고 $x$축에 평행한 직선이 곡선 $y = \\log_b x$와 만나는 점을 $\\mathrm{B}$라 한다"
+    },
+    {
+      "id": "단서D",
+      "text": "점 $\\mathrm{B}$를 지나고 $y$축에 평행한 직선이 곡선 $y = a^x$과 만나는 점을 $\\mathrm{C}$라 한다"
+    },
+    {
+      "id": "단서E",
+      "text": "직선 $\\mathrm{AC}$가 $x$축과 만나는 점을 $\\mathrm{D}$라 한다"
+    },
+    {
+      "id": "단서F",
+      "text": "$\\overline{\\mathrm{AC}} : \\overline{\\mathrm{AD}} = 2 : 1$"
+    },
+    {
+      "id": "단서G",
+      "text": "삼각형 $\\mathrm{ABC}$의 넓이가 $4$이다"
+    }
+  ],
+  "skeleton": [
+    {
+      "from": "단서B",
+      "to": "note1",
+      "neuron": "사실18",
+      "note": "$y=a^x$에서 $x=0$이면 $a^0=1$이다. $\\mathrm{A}(0,\\;1)$이다",
+      "step": 1
+    },
+    {
+      "from": [
+        "note1",
+        "단서C"
+      ],
+      "to": "note2",
+      "neuron": "연산2",
+      "note": "$\\log_b x = 1$에서 $x = b$이다. $\\mathrm{B}(b,\\;1)$이다",
+      "step": 1
+    },
+    {
+      "from": [
+        "note2",
+        "단서D"
+      ],
+      "to": "note3",
+      "neuron": "전략25",
+      "note": "$x = b$를 $y = a^x$에 대입하면 $y = a^b$이다. $\\mathrm{C}(b,\\;a^b)$이다",
+      "step": 1
+    },
+    {
+      "from": [
+        "note1",
+        "note3",
+        "단서E",
+        "단서F"
+      ],
+      "to": "note4",
+      "neuron": "연산5",
+      "note": "$\\mathrm{D}$는 $x$축 위($y_D=0$)이고 $\\mathrm{A}$가 선분 $\\mathrm{DC}$를 $1:2$로 내분하므로 $y_A = \\frac{2 \\cdot 0 + a^b}{3} = 1$에서 $a^b = 3$이다",
+      "step": 2
+    },
+    {
+      "from": [
+        "note1",
+        "note2",
+        "note4"
+      ],
+      "to": "note5",
+      "neuron": "연산13",
+      "note": "$\\overline{\\mathrm{AB}} = b$, $\\overline{\\mathrm{BC}} = 3 - 1 = 2$이고 삼각형 $\\mathrm{ABC}$의 넓이는 $\\frac{1}{2} \\times b \\times 2 = b$이다",
+      "step": 3
+    },
+    {
+      "from": [
+        "note5",
+        "단서G"
+      ],
+      "to": "note6",
+      "neuron": "전략2",
+      "note": "$b = 4$이다",
+      "step": 3
+    },
+    {
+      "from": [
+        "note4",
+        "note6"
+      ],
+      "to": "note7",
+      "neuron": "전략25",
+      "note": "$a^b = 3$에 $b = 4$를 대입하면 $a^4 = 3$이다",
+      "step": 4
+    },
+    {
+      "from": [
+        "note2",
+        "note6"
+      ],
+      "to": "note8",
+      "neuron": "전략25",
+      "note": "$\\mathrm{B}(4,\\;1)$이 $y = \\log_4 x$ 위에 있어 $\\log_4 4 = 1$이 성립하고 $b = 4$와 일관된다",
+      "main": false,
+      "step": 4
+    },
+    {
+      "from": "note7",
+      "to": "note9",
+      "neuron": "연산4",
+      "note": "$a^8 = (a^4)^2 = 3^2 = 9$이다",
+      "step": 5
+    },
+    {
+      "from": [
+        "note9",
+        "note6"
+      ],
+      "to": "END",
+      "neuron": "전략25",
+      "note": "$a^8 + b = 9 + 4 = 13$이다",
+      "step": 5
+    }
+  ],
+  "solution": "STEP 1. 각 점의 좌표를 설정한다.\n$y = a^x$에서 $x = 0$이면 $a^0 = 1$이므로 $\\mathrm{A}(0,\\;1)$이다. 점 $\\mathrm{A}$를 지나고 $x$축에 평행한 직선 $y = 1$과 $y = \\log_b x$의 교점에서 $\\log_b x = 1$, 즉 $x = b$이므로 $\\mathrm{B}(b,\\;1)$이다. $x = b$를 $y = a^x$에 대입하면 $y = a^b$이므로 $\\mathrm{C}(b,\\;a^b)$이다.\n\nSTEP 2. 비 조건으로 $\\mathrm{C}$의 $y$좌표를 결정한다.\n$\\mathrm{D}$는 $x$축 위이므로 $y_D = 0$이고, $\\overline{\\mathrm{AC}} : \\overline{\\mathrm{AD}} = 2 : 1$에서 $\\mathrm{A}$가 선분 $\\mathrm{DC}$를 $1:2$로 내분한다. 내분점 공식에 의해 $y_A = \\frac{2 \\cdot 0 + a^b}{3} = 1$이므로 $a^b = 3$이다.\n\nSTEP 3. 삼각형 넓이 조건으로 $b$를 결정한다.\n$\\overline{\\mathrm{AB}} = b$, $\\overline{\\mathrm{BC}} = 3 - 1 = 2$이고, 삼각형 $\\mathrm{ABC}$의 넓이는 $\\frac{1}{2} \\times b \\times 2 = b$이다. 넓이가 $4$이므로 $b = 4$이다.\n\nSTEP 4. $a^4$의 값을 구한다.\n$a^b = 3$에 $b = 4$를 대입하면 $a^4 = 3$이다.\n\nSTEP 5. $a^8 + b$를 계산한다.\n$a^8 = (a^4)^2 = 9$이고, $a^8 + b = 9 + 4 = 13$이다.",
+  "original_solution": "문제의 조건에 의해\n\n$$\\overline{\\mathrm{AC}} : \\overline{\\mathrm{AD}} = 2 : 1$$\n\n- 점 $\\mathrm{D}$의 $y$좌표 $= 0$\n- 점 $\\mathrm{A}$의 $y$좌표 $= 1$ ($\\because$ $y = a^x$에서 $x=0$이면 $y=1$)\n\n$y$좌표의 변화가 직선 위에서 거리에 비례하므로:\n\n$$\\Rightarrow \\text{(점 } \\mathrm{C}\\text{의 } y\\text{좌표)} = 3$$\n\n$$\\Rightarrow \\overline{\\mathrm{BC}} = 3 - 1 = 2$$\n\n이므로\n\n$$\\text{(삼각형 ABC의 넓이)} = \\frac{1}{2} \\times \\overline{\\mathrm{AB}} \\times \\overline{\\mathrm{BC}} = \\overline{\\mathrm{AB}}$$\n\n이고, 문제의 조건에서 이 값이 $4$이므로\n\n$$\\overline{\\mathrm{AB}} = 4 \\Rightarrow \\begin{cases} \\mathrm{B}(4,\\;1) \\Rightarrow b = 4 \\quad (\\because\\; y = \\log_b x \\text{ 위의 점}) \\\\ \\mathrm{C}(4,\\;3) \\Rightarrow a^4 = 3 \\quad (\\because\\; y = a^x \\text{ 위의 점}) \\end{cases}$$\n\n을 얻는다.\n\n$$\\therefore\\; a^8 + b = (a^4)^2 + b = 3^2 + 4 = \\boxed{13}$$",
+  "analysis": "좌표 설정(사실18, 연산2) → 비례배분(연산5)으로 C의 y좌표 결정 → 넓이(연산13)로 b 결정 → 지수법칙(연산4)으로 최종 계산",
+  "new_neurons": [],
+  "metadata": {
+    "unit": "지수와 로그",
+    "difficulty": "중",
+    "score": "4",
+    "type": "단답형",
+    "answer": "13"
+  },
+  "edge_count": 10,
+  "side_count": 1,
+  "statement": "# 3. (수능/모의고사) - 지수함수와 로그함수의 그래프\n\n## Problem\n\n$1$보다 큰 두 실수 $a$, $b$에 대하여 곡선 $y = a^x$이 $y$축과 만나는 점을 $\\mathrm{A}$라 하고, 점 $\\mathrm{A}$를 지나고 $x$축에 평행한 직선이 곡선 $y = \\log_b x$와 만나는 점을 $\\mathrm{B}$, 점 $\\mathrm{B}$를 지나고 $y$축에 평행한 직선이 곡선 $y = a^x$과 만나는 점을 $\\mathrm{C}$라 하자. 직선 $\\mathrm{AC}$가 $x$축과 만나는 점을 $\\mathrm{D}$라 할 때,\n\n$$\\overline{\\mathrm{AC}} : \\overline{\\mathrm{AD}} = 2 : 1$$\n\n이다. 삼각형 $\\mathrm{ABC}$의 넓이가 $4$일 때, $a^8 + b$의 값은? [4점]\n\n[FIGURE: $y = a^x$ (지수함수 곡선)과 $y = \\log_b x$ (로그함수 곡선)이 그려져 있고, 점 $\\mathrm{A}$는 $y$축 위, 점 $\\mathrm{B}$는 $x$축 위쪽 오른편, 점 $\\mathrm{C}$는 $\\mathrm{B}$ 위쪽 곡선 $y=a^x$ 위, 점 $\\mathrm{D}$는 $x$축 위 원점 왼쪽에 위치함.]",
+  "dna": {
+    "nodes": [
+      {
+        "id": "top",
+        "dna": "Q1",
+        "label": "값을 구하라",
+        "category": "발문"
+      },
+      {
+        "id": "ask",
+        "dna": "E1",
+        "label": "합(a^8, b)",
+        "category": "수식"
+      },
+      {
+        "id": "ask_pow",
+        "dna": "E7",
+        "label": "a의 8제곱",
+        "category": "수식"
+      },
+      {
+        "id": "va",
+        "dna": "T1",
+        "label": "변수 a",
+        "category": "말단"
+      },
+      {
+        "id": "vb",
+        "dna": "T1",
+        "label": "변수 b",
+        "category": "말단"
+      },
+      {
+        "id": "c8",
+        "dna": "T2",
+        "label": "상수 8",
+        "category": "말단"
+      },
+      {
+        "id": "c2_ratio",
+        "dna": "T2",
+        "label": "상수 2",
+        "category": "말단"
+      },
+      {
+        "id": "c1_ratio",
+        "dna": "T2",
+        "label": "상수 1",
+        "category": "말단"
+      },
+      {
+        "id": "c4_area",
+        "dna": "T2",
+        "label": "상수 4",
+        "category": "말단"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
+      },
+      {
+        "id": "a_gt1",
+        "dna": "C2",
+        "label": "a > 1",
+        "category": "조건"
+      },
+      {
+        "id": "b_gt1",
+        "dna": "C2",
+        "label": "b > 1",
+        "category": "조건"
+      },
+      {
+        "id": "crv1",
+        "dna": "G2",
+        "label": "곡선 y=a^x",
+        "category": "기하"
+      },
+      {
+        "id": "crv1_eq",
+        "dna": "C11",
+        "label": "y=a^x 방정식",
+        "category": "조건"
+      },
+      {
+        "id": "crv1_c1",
+        "dna": "C1",
+        "label": "y=a^x 등식",
+        "category": "조건"
+      },
+      {
+        "id": "exp_ax",
+        "dna": "E4",
+        "label": "a^x",
+        "category": "수식"
+      },
+      {
+        "id": "crv2",
+        "dna": "G2",
+        "label": "곡선 y=log_b x",
+        "category": "기하"
+      },
+      {
+        "id": "crv2_eq",
+        "dna": "C11",
+        "label": "y=log_b x 방정식",
+        "category": "조건"
+      },
+      {
+        "id": "crv2_c1",
+        "dna": "C1",
+        "label": "y=log_b x 등식",
+        "category": "조건"
+      },
+      {
+        "id": "log_bx",
+        "dna": "E3",
+        "label": "log_b(x)",
+        "category": "수식"
+      },
+      {
+        "id": "yaxis",
+        "dna": "G13",
+        "label": "y축",
+        "category": "기하"
+      },
+      {
+        "id": "xaxis",
+        "dna": "G13",
+        "label": "x축",
+        "category": "기하"
+      },
+      {
+        "id": "pt_a",
+        "dna": "G1",
+        "label": "점 A",
+        "category": "기하"
+      },
+      {
+        "id": "meet_a",
+        "dna": "C3",
+        "label": "crv1과 y축 교점",
+        "category": "조건"
+      },
+      {
+        "id": "line_ab",
+        "dna": "G12",
+        "label": "A지나 x축평행 직선",
+        "category": "기하"
+      },
+      {
+        "id": "par_x",
+        "dna": "G19",
+        "label": "x축에 평행",
+        "category": "기하"
+      },
+      {
+        "id": "pt_b",
+        "dna": "G1",
+        "label": "점 B",
+        "category": "기하"
+      },
+      {
+        "id": "meet_b",
+        "dna": "C3",
+        "label": "line_ab와 crv2 교점",
+        "category": "조건"
+      },
+      {
+        "id": "line_bc",
+        "dna": "G12",
+        "label": "B지나 y축평행 직선",
+        "category": "기하"
+      },
+      {
+        "id": "par_y",
+        "dna": "G19",
+        "label": "y축에 평행",
+        "category": "기하"
+      },
+      {
+        "id": "pt_c",
+        "dna": "G1",
+        "label": "점 C",
+        "category": "기하"
+      },
+      {
+        "id": "meet_c",
+        "dna": "C3",
+        "label": "line_bc와 crv1 교점",
+        "category": "조건"
+      },
+      {
+        "id": "line_ac",
+        "dna": "G12",
+        "label": "직선 AC",
+        "category": "기하"
+      },
+      {
+        "id": "pt_d",
+        "dna": "G1",
+        "label": "점 D",
+        "category": "기하"
+      },
+      {
+        "id": "meet_d",
+        "dna": "C3",
+        "label": "line_ac와 x축 교점",
+        "category": "조건"
+      },
+      {
+        "id": "seg_ac",
+        "dna": "G7",
+        "label": "선분 AC",
+        "category": "기하"
+      },
+      {
+        "id": "seg_ad",
+        "dna": "G7",
+        "label": "선분 AD",
+        "category": "기하"
+      },
+      {
+        "id": "ratio_cond",
+        "dna": "C8",
+        "label": "AC:AD=2:1",
+        "category": "조건"
+      },
+      {
+        "id": "tri_abc",
+        "dna": "G25",
+        "label": "삼각형 ABC",
+        "category": "기하"
+      },
+      {
+        "id": "area_abc",
+        "dna": "G11",
+        "label": "넓이(삼각형ABC)",
+        "category": "기하"
+      },
+      {
+        "id": "area_cond",
+        "dna": "C1",
+        "label": "넓이=4",
+        "category": "조건"
+      },
+      {
+        "id": "conds",
+        "dna": "S1",
+        "label": "전체 조건 묶음",
+        "category": "구조"
+      }
+    ],
+    "edges": [
+      {
+        "from": "ask",
+        "to": "top"
+      },
+      {
+        "from": "conds",
+        "to": "top"
+      },
+      {
+        "from": "ask_pow",
+        "to": "ask"
+      },
+      {
+        "from": "vb",
+        "to": "ask"
+      },
+      {
+        "from": "va",
+        "to": "ask_pow"
+      },
+      {
+        "from": "c8",
+        "to": "ask_pow"
+      },
+      {
+        "from": "a_gt1",
+        "to": "conds"
+      },
+      {
+        "from": "b_gt1",
+        "to": "conds"
+      },
+      {
+        "from": "va",
+        "to": "a_gt1"
+      },
+      {
+        "from": "vb",
+        "to": "b_gt1"
+      },
+      {
+        "from": "crv1_eq",
+        "to": "crv1"
+      },
+      {
+        "from": "crv1_c1",
+        "to": "crv1_eq"
+      },
+      {
+        "from": "exp_ax",
+        "to": "crv1_c1"
+      },
+      {
+        "from": "va",
+        "to": "exp_ax"
+      },
+      {
+        "from": "vx",
+        "to": "exp_ax"
+      },
+      {
+        "from": "crv2_eq",
+        "to": "crv2"
+      },
+      {
+        "from": "crv2_c1",
+        "to": "crv2_eq"
+      },
+      {
+        "from": "log_bx",
+        "to": "crv2_c1"
+      },
+      {
+        "from": "vb",
+        "to": "log_bx"
+      },
+      {
+        "from": "vx",
+        "to": "log_bx"
+      },
+      {
+        "from": "crv1",
+        "to": "meet_a"
+      },
+      {
+        "from": "yaxis",
+        "to": "meet_a"
+      },
+      {
+        "from": "pt_a",
+        "to": "meet_a"
+      },
+      {
+        "from": "meet_a",
+        "to": "conds"
+      },
+      {
+        "from": "pt_a",
+        "to": "line_ab"
+      },
+      {
+        "from": "par_x",
+        "to": "line_ab"
+      },
+      {
+        "from": "xaxis",
+        "to": "par_x"
+      },
+      {
+        "from": "line_ab",
+        "to": "meet_b"
+      },
+      {
+        "from": "crv2",
+        "to": "meet_b"
+      },
+      {
+        "from": "pt_b",
+        "to": "meet_b"
+      },
+      {
+        "from": "meet_b",
+        "to": "conds"
+      },
+      {
+        "from": "pt_b",
+        "to": "line_bc"
+      },
+      {
+        "from": "par_y",
+        "to": "line_bc"
+      },
+      {
+        "from": "yaxis",
+        "to": "par_y"
+      },
+      {
+        "from": "line_bc",
+        "to": "meet_c"
+      },
+      {
+        "from": "crv1",
+        "to": "meet_c"
+      },
+      {
+        "from": "pt_c",
+        "to": "meet_c"
+      },
+      {
+        "from": "meet_c",
+        "to": "conds"
+      },
+      {
+        "from": "pt_a",
+        "to": "line_ac"
+      },
+      {
+        "from": "pt_c",
+        "to": "line_ac"
+      },
+      {
+        "from": "line_ac",
+        "to": "meet_d"
+      },
+      {
+        "from": "xaxis",
+        "to": "meet_d"
+      },
+      {
+        "from": "pt_d",
+        "to": "meet_d"
+      },
+      {
+        "from": "meet_d",
+        "to": "conds"
+      },
+      {
+        "from": "pt_a",
+        "to": "seg_ac"
+      },
+      {
+        "from": "pt_c",
+        "to": "seg_ac"
+      },
+      {
+        "from": "pt_a",
+        "to": "seg_ad"
+      },
+      {
+        "from": "pt_d",
+        "to": "seg_ad"
+      },
+      {
+        "from": "seg_ac",
+        "to": "ratio_cond"
+      },
+      {
+        "from": "seg_ad",
+        "to": "ratio_cond"
+      },
+      {
+        "from": "c2_ratio",
+        "to": "ratio_cond"
+      },
+      {
+        "from": "c1_ratio",
+        "to": "ratio_cond"
+      },
+      {
+        "from": "ratio_cond",
+        "to": "conds"
+      },
+      {
+        "from": "pt_a",
+        "to": "tri_abc"
+      },
+      {
+        "from": "pt_b",
+        "to": "tri_abc"
+      },
+      {
+        "from": "pt_c",
+        "to": "tri_abc"
+      },
+      {
+        "from": "tri_abc",
+        "to": "area_abc"
+      },
+      {
+        "from": "area_abc",
+        "to": "area_cond"
+      },
+      {
+        "from": "c4_area",
+        "to": "area_cond"
+      },
+      {
+        "from": "area_cond",
+        "to": "conds"
+      }
+    ],
+    "new_dna": []
+  },
+  "thinking_profile": null,
+  "folders": [],
+  "history": [],
+  "recovery_warnings": [],
+  "errata": [],
+  "created_at": "2026-03-24T01:33:46.378Z"
+}

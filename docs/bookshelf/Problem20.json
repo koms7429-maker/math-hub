@@ -1,0 +1,859 @@
+{
+  "problem_id": "Problem20",
+  "answer": "③ 8/3 + (1/2)log₂3",
+  "clues": [
+    {
+      "id": "단서A",
+      "text": "곡선 $y=2^{x-k}$과 직선 $y=x$가 서로 다른 두 점 A, B에서 만난다"
+    },
+    {
+      "id": "단서B",
+      "text": "점 B의 $y$좌표는 점 A의 $y$좌표의 2배이다"
+    },
+    {
+      "id": "단서C",
+      "text": "점 A를 지나고 기울기가 $-1$인 직선이 곡선 $y=p+\\log_4 x$와 A가 아닌 점 C에서 만난다"
+    },
+    {
+      "id": "단서D",
+      "text": "점 B를 지나고 기울기가 $-1$인 직선이 곡선 $y=p+\\log_4 x$와 B가 아닌 점 D에서 만난다"
+    },
+    {
+      "id": "단서E",
+      "text": "$\\overline{AB}=\\overline{CD}$이다"
+    }
+  ],
+  "skeleton": [
+    {
+      "from": [
+        "단서A",
+        "단서B"
+      ],
+      "to": "note1",
+      "neuron": "전략2",
+      "note": "A, B는 $y=x$ 위의 점이고 B의 $y$좌표가 A의 2배이므로 $\\text{A}(a,a)$, $\\text{B}(2a,2a)$로 놓는다",
+      "step": 1
+    },
+    {
+      "from": [
+        "단서A",
+        "note1"
+      ],
+      "to": "note2",
+      "neuron": "전략25",
+      "note": "$2^{a-k}=a$ ⋯(i), $2^{2a-k}=2a$ ⋯(ii)이다",
+      "step": 2
+    },
+    {
+      "from": "note2",
+      "to": "note3",
+      "neuron": "전략11",
+      "note": "(ii)를 (i)로 나누면 $2^{a}=2$이다",
+      "step": 2
+    },
+    {
+      "from": "note3",
+      "to": "note4",
+      "neuron": "사실58",
+      "note": "$a=1$이다",
+      "step": 2
+    },
+    {
+      "from": [
+        "note4",
+        "note2"
+      ],
+      "to": "note5",
+      "neuron": "전략25",
+      "note": "$a=1$을 (i)에 대입하면 $2^{1-k}=1$이다",
+      "step": 2
+    },
+    {
+      "from": "note5",
+      "to": "note6",
+      "neuron": "사실18",
+      "note": "$1-k=0$이므로 $k=1$이다",
+      "step": 2
+    },
+    {
+      "from": [
+        "note4",
+        "note6",
+        "note1"
+      ],
+      "to": "note7",
+      "neuron": "전략25",
+      "note": "$\\text{A}(1,1)$, $\\text{B}(2,2)$이다",
+      "step": 2
+    },
+    {
+      "from": "note7",
+      "to": "note8",
+      "neuron": "연산10",
+      "note": "직선 AB의 기울기는 $1$이다",
+      "step": 3
+    },
+    {
+      "from": [
+        "단서C",
+        "단서D"
+      ],
+      "to": "note9",
+      "neuron": "사실16",
+      "note": "$\\ell_A$와 $\\ell_B$는 기울기가 모두 $-1$이므로 서로 평행하다",
+      "step": 3
+    },
+    {
+      "from": [
+        "note8",
+        "note9"
+      ],
+      "to": "note10",
+      "neuron": "사실15",
+      "note": "$1 \\times (-1) = -1$이므로 $AB \\perp \\ell_A$, $AB \\perp \\ell_B$이다",
+      "step": 3
+    },
+    {
+      "from": "note7",
+      "to": "note11",
+      "neuron": "연산11",
+      "note": "$\\overline{AB}=\\sqrt{(2-1)^2+(2-1)^2}=\\sqrt{2}$이다",
+      "step": 3
+    },
+    {
+      "from": [
+        "note7",
+        "note9"
+      ],
+      "to": "note12",
+      "neuron": "연산30",
+      "note": "$\\ell_A: x+y=2$, $\\ell_B: x+y=4$이다",
+      "step": 3
+    },
+    {
+      "from": "note12",
+      "to": "note13",
+      "neuron": "연산19",
+      "note": "두 평행선 사이의 거리는 $\\frac{|4-2|}{\\sqrt{2}}=\\sqrt{2}$이다",
+      "step": 3
+    },
+    {
+      "from": [
+        "단서E",
+        "note11"
+      ],
+      "to": "note14",
+      "neuron": "전략25",
+      "note": "$\\overline{CD}=\\overline{AB}=\\sqrt{2}$이다",
+      "step": 3
+    },
+    {
+      "from": [
+        "note14",
+        "note13",
+        "note9"
+      ],
+      "to": "note15",
+      "neuron": "사실81",
+      "note": "CD는 두 평행선에 수직이고 기울기가 $1$이다",
+      "step": 3
+    },
+    {
+      "from": [
+        "note7",
+        "note15",
+        "note10"
+      ],
+      "to": "note16",
+      "neuron": "전략2",
+      "note": "$\\ell_A$ 위 $\\text{C}=(1+b,1-b)$, $\\ell_B$ 위 $\\text{D}=(2+b,2-b)$로 매개변수화하면 ABDC는 직사각형이다",
+      "step": 3
+    },
+    {
+      "from": [
+        "note16",
+        "단서C",
+        "단서D"
+      ],
+      "to": "note17",
+      "neuron": "전략25",
+      "note": "$1-b=p+\\log_4(1+b)$ ⋯(iii), $2-b=p+\\log_4(2+b)$ ⋯(iv)이다",
+      "step": 4
+    },
+    {
+      "from": "note17",
+      "to": "note18",
+      "neuron": "전략11",
+      "note": "(iv)$-$(iii): $1=\\log_4(2+b)-\\log_4(1+b)$이다",
+      "step": 4
+    },
+    {
+      "from": "note18",
+      "to": "note19",
+      "neuron": "연산3",
+      "note": "$1=\\log_4\\frac{2+b}{1+b}$이다",
+      "step": 4
+    },
+    {
+      "from": "note19",
+      "to": "note20",
+      "neuron": "연산2",
+      "note": "$\\frac{2+b}{1+b}=4$이다",
+      "step": 4
+    },
+    {
+      "from": "note20",
+      "to": "note21",
+      "neuron": "전략2",
+      "note": "$2+b=4(1+b)$에서 $b=-\\frac{2}{3}$이다",
+      "step": 4
+    },
+    {
+      "from": [
+        "note21",
+        "note17"
+      ],
+      "to": "note22",
+      "neuron": "전략25",
+      "note": "$b=-\\frac{2}{3}$을 (iii)에 대입하면 $\\frac{5}{3}=p+\\log_4\\frac{1}{3}$이다",
+      "step": 5
+    },
+    {
+      "from": "note22",
+      "to": "note23",
+      "neuron": "사실62",
+      "note": "$\\log_4 1=0$이다",
+      "main": false,
+      "step": 5
+    },
+    {
+      "from": "note23",
+      "to": "note24",
+      "neuron": "연산3",
+      "note": "$\\log_4\\frac{1}{3}=-\\log_4 3$이다",
+      "main": false,
+      "step": 5
+    },
+    {
+      "from": "note24",
+      "to": "note25",
+      "neuron": "연산1",
+      "note": "$\\log_4 3=\\frac{\\log_2 3}{2}$이다",
+      "main": false,
+      "step": 5
+    },
+    {
+      "from": [
+        "note22",
+        "note25"
+      ],
+      "to": "note26",
+      "neuron": "전략25",
+      "note": "$p=\\frac{5}{3}+\\frac{1}{2}\\log_2 3$이다",
+      "step": 5
+    },
+    {
+      "from": [
+        "note6",
+        "note26"
+      ],
+      "to": "END",
+      "neuron": "전략25",
+      "note": "$k+p=1+\\frac{5}{3}+\\frac{1}{2}\\log_2 3=\\frac{8}{3}+\\frac{1}{2}\\log_2 3$이다",
+      "step": 6
+    }
+  ],
+  "solution": "STEP 1. A, B는 $y=x$ 위의 점이고 B의 $y$좌표가 A의 2배이므로 $\\text{A}(a,a)$, $\\text{B}(2a,2a)$로 놓는다.\n\nSTEP 2. A, B를 $y=2^{x-k}$에 대입하면 $2^{a-k}=a$, $2^{2a-k}=2a$이다. 두 등식을 변끼리 나누면 $2^a=2$이다. $2^x$는 단사함수이므로 $a=1$이다. $a=1$을 대입하면 $2^{1-k}=1$이고 $a^0=1$에서 $k=1$이다. $\\text{A}(1,1)$, $\\text{B}(2,2)$이다.\n\nSTEP 3. 직선 AB의 기울기는 $1$이다. A, B를 지나는 기울기 $-1$인 직선 $\\ell_A$, $\\ell_B$는 서로 평행하고, $AB \\perp \\ell_A$, $AB \\perp \\ell_B$이다. $\\overline{AB}=\\sqrt{2}$이다. $\\ell_A: x+y=2$, $\\ell_B: x+y=4$이고 두 평행선 사이의 거리는 $\\sqrt{2}$이다. $\\overline{CD}=\\overline{AB}=\\sqrt{2}$는 두 평행선 사이의 거리와 같으므로, CD는 두 평행선에 수직이고 기울기가 $1$이다. $\\ell_A$ 위 $\\text{C}=(1+b,1-b)$, $\\ell_B$ 위 $\\text{D}=(2+b,2-b)$로 매개변수화하면 ABDC는 직사각형이다.\n\nSTEP 4. C, D를 $y=p+\\log_4 x$에 대입하면 $1-b=p+\\log_4(1+b)$, $2-b=p+\\log_4(2+b)$이다. 두 등식을 변끼리 빼면 $1=\\log_4\\frac{2+b}{1+b}$이다. $\\frac{2+b}{1+b}=4$에서 $b=-\\frac{2}{3}$이다.\n\nSTEP 5. $b=-\\frac{2}{3}$을 대입하면 $\\frac{5}{3}=p+\\log_4\\frac{1}{3}$이다. $\\log_4\\frac{1}{3}=-\\log_4 3=-\\frac{\\log_2 3}{2}$이므로 $p=\\frac{5}{3}+\\frac{1}{2}\\log_2 3$이다.\n\nSTEP 6. $k+p=1+\\frac{5}{3}+\\frac{1}{2}\\log_2 3=\\frac{8}{3}+\\frac{1}{2}\\log_2 3$이다.",
+  "original_solution": "문제의 조건에서 A, B는 직선 $y = x$ 위의 점이고, (B의 $y$좌표) $= 2 \\times$ (A의 $y$좌표)이므로\n\n$$\\text{A}(a,\\, a),\\quad \\text{B}(2a,\\, 2a) \\quad \\cdots\\; \\text{㉠}$$\n\n로 놓으면, A, B는 곡선 $y = 2^{x-k}$ 위의 점이므로\n\n$$2^{a-k} = a, \\quad 2^{2a-k} = 2a$$\n\n각 변끼리 나누면\n\n$$2^{a} = 2 \\;\\Rightarrow\\; a = 1$$\n\n$$\\Rightarrow\\; k = 1 \\quad (\\because\\; 2^{1-k} = 1)$$\n\n따라서 ㉠으로부터\n\n$$\\text{A}(1,\\,1),\\quad \\text{B}(2,\\,2) \\quad \\cdots\\; \\text{㉡}$$\n\n한편 문제의 조건에 의해\n\n$$(\\text{AB의 기울기}) = 1, \\quad (\\text{AC의 기울기}) = (\\text{BD의 기울기}) = -1 \\quad \\cdots\\; \\text{㉢}$$\n\n$\\overline{AB} \\perp \\overline{AC}$ 이므로 $\\overline{AB}$는 평행한 두 직선 AC, BD 사이의 거리이다.\n\n$\\overline{AB} = \\overline{CD}$ 이면 $\\overline{CD}$도 평행한 두 직선 AC, BD 사이의 거리이므로\n\n$$\\text{사각형 ABDC는 직사각형} \\quad \\cdots\\; \\text{㉣}$$\n\n㉡, ㉢, ㉣에 의해 $\\text{C}(1+b,\\,1-b)$, $\\text{D}(2+b,\\,2-b)$로 놓으면,\n\nC, D는 곡선 $y = p + \\log_4 x$ 위의 점이므로\n\n$$1 - b = p + \\log_4(1+b), \\quad 2 - b = p + \\log_4(2+b)$$\n\n각 변끼리 빼면\n\n$$1 = \\log_4(2+b) - \\log_4(1+b) \\;\\Rightarrow\\; 4 = \\frac{2+b}{1+b} \\;\\Rightarrow\\; b = -\\frac{2}{3}$$\n\n$$p = 1 - \\left(-\\frac{2}{3}\\right) - \\log_4\\!\\left(1 + \\left(-\\frac{2}{3}\\right)\\right) = \\frac{5}{3} - \\log_4\\frac{1}{3} = \\frac{5}{3} + \\frac{1}{2}\\log_2 3$$\n\n$$\\therefore\\; k + p = 1 + \\frac{5}{3} + \\frac{1}{2}\\log_2 3 = \\boxed{\\dfrac{8}{3} + \\dfrac{1}{2}\\log_2 3}$$\n\n[FIGURE: $y = 2^{x-k}$, $y = x$, $y = p + \\log_4 x$ 의 그래프와 점 A, B, C, D로 이루어진 직사각형 ABDC가 표시된 좌표평면]",
+  "analysis": "곡선 y=2^{x-k}와 y=x의 교점 A,B 좌표를 결정한 후, 기울기 -1인 두 평행 직선과 곡선 y=p+log_4 x의 교점 C,D를 AB=CD 조건을 통해 직사각형 구조로 매개변수화하고, 연립방정식으로 b, p를 결정하는 문제.",
+  "new_neurons": [],
+  "metadata": {
+    "unit": "지수와 로그",
+    "difficulty": "hard",
+    "score": "4",
+    "type": "short_answer",
+    "answer": "8/3 + (1/2)log_2 3"
+  },
+  "edge_count": 27,
+  "side_count": 3,
+  "statement": "# 37. (수능/모의고사) - 지수·로그 함수와 도형\n\n## Problem\n\n곡선 $y = 2^{x-k}$과 직선 $y = x$가 서로 다른 두 점 A, B에서 만나고, 점 B의 $y$좌표는 점 A의 $y$좌표의 2배이다.\n\n점 A를 지나고 기울기가 $-1$인 직선이 곡선 $y = p + \\log_4 x$와 A가 아닌 점 C에서 만나고, 점 B를 지나고 기울기가 $-1$인 직선이 곡선 $y = p + \\log_4 x$와 B가 아닌 점 D에서 만날 때,\n\n$$\\overline{AB} = \\overline{CD}$$\n\n이다. $k + p$의 값은? (단, $k$, $p$는 상수이다.) [4점]",
+  "dna": {
+    "nodes": [
+      {
+        "id": "top",
+        "dna": "Q1",
+        "label": "k+p 값",
+        "category": "발문"
+      },
+      {
+        "id": "ask_sum",
+        "dna": "E1",
+        "label": "합(k,p)",
+        "category": "수식"
+      },
+      {
+        "id": "vk",
+        "dna": "T1",
+        "label": "변수 k",
+        "category": "말단"
+      },
+      {
+        "id": "vp",
+        "dna": "T1",
+        "label": "변수 p",
+        "category": "말단"
+      },
+      {
+        "id": "conds",
+        "dna": "S1",
+        "label": "전체 조건",
+        "category": "구조"
+      },
+      {
+        "id": "pt_a",
+        "dna": "G1",
+        "label": "점 A",
+        "category": "기하"
+      },
+      {
+        "id": "pt_b",
+        "dna": "G1",
+        "label": "점 B",
+        "category": "기하"
+      },
+      {
+        "id": "pt_c",
+        "dna": "G1",
+        "label": "점 C",
+        "category": "기하"
+      },
+      {
+        "id": "pt_d",
+        "dna": "G1",
+        "label": "점 D",
+        "category": "기하"
+      },
+      {
+        "id": "crv1",
+        "dna": "G2",
+        "label": "지수 곡선",
+        "category": "기하"
+      },
+      {
+        "id": "crv1_eq",
+        "dna": "C11",
+        "label": "지수곡선 방정식",
+        "category": "조건"
+      },
+      {
+        "id": "crv1_c1",
+        "dna": "C1",
+        "label": "y=2^(x-k)",
+        "category": "조건"
+      },
+      {
+        "id": "exp_expr",
+        "dna": "E4",
+        "label": "2^(x-k)",
+        "category": "수식"
+      },
+      {
+        "id": "c2_base",
+        "dna": "T2",
+        "label": "상수 2",
+        "category": "말단"
+      },
+      {
+        "id": "x_minus_k",
+        "dna": "E1",
+        "label": "합(x,-k)",
+        "category": "수식"
+      },
+      {
+        "id": "neg_k",
+        "dna": "E2",
+        "label": "부호반전(k)",
+        "category": "수식"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
+      },
+      {
+        "id": "line_yx",
+        "dna": "G12",
+        "label": "직선 y=x",
+        "category": "기하"
+      },
+      {
+        "id": "line_yx_eq",
+        "dna": "C11",
+        "label": "y=x 방정식",
+        "category": "조건"
+      },
+      {
+        "id": "line_yx_c1",
+        "dna": "C1",
+        "label": "y=x 등식",
+        "category": "조건"
+      },
+      {
+        "id": "meet_ab",
+        "dna": "C3",
+        "label": "A,B에서 만남",
+        "category": "조건"
+      },
+      {
+        "id": "diff2_ab",
+        "dna": "C4",
+        "label": "서로 다른 두점",
+        "category": "조건"
+      },
+      {
+        "id": "yb_2ya",
+        "dna": "C1",
+        "label": "yB=2×yA",
+        "category": "조건"
+      },
+      {
+        "id": "ya_coord",
+        "dna": "G4",
+        "label": "A의 y좌표",
+        "category": "기하"
+      },
+      {
+        "id": "yb_coord",
+        "dna": "G4",
+        "label": "B의 y좌표",
+        "category": "기하"
+      },
+      {
+        "id": "two_ya",
+        "dna": "E6",
+        "label": "2×yA",
+        "category": "수식"
+      },
+      {
+        "id": "crv2",
+        "dna": "G2",
+        "label": "로그 곡선",
+        "category": "기하"
+      },
+      {
+        "id": "crv2_eq",
+        "dna": "C11",
+        "label": "로그곡선 방정식",
+        "category": "조건"
+      },
+      {
+        "id": "crv2_c1",
+        "dna": "C1",
+        "label": "y=p+log₄x",
+        "category": "조건"
+      },
+      {
+        "id": "log4x_sum",
+        "dna": "E1",
+        "label": "합(p,log₄x)",
+        "category": "수식"
+      },
+      {
+        "id": "log4x",
+        "dna": "E3",
+        "label": "log₄x",
+        "category": "수식"
+      },
+      {
+        "id": "c4_base",
+        "dna": "T2",
+        "label": "상수 4",
+        "category": "말단"
+      },
+      {
+        "id": "line_ac",
+        "dna": "G12",
+        "label": "직선 AC",
+        "category": "기하"
+      },
+      {
+        "id": "slope_ac",
+        "dna": "G5",
+        "label": "기울기(A,C)",
+        "category": "기하"
+      },
+      {
+        "id": "slope_neg1_eq",
+        "dna": "C1",
+        "label": "기울기=-1",
+        "category": "조건"
+      },
+      {
+        "id": "c_neg1",
+        "dna": "T2",
+        "label": "상수 -1",
+        "category": "말단"
+      },
+      {
+        "id": "pass_a",
+        "dna": "G16",
+        "label": "A를 지남",
+        "category": "기하"
+      },
+      {
+        "id": "meet_ac",
+        "dna": "C3",
+        "label": "C에서 만남",
+        "category": "조건"
+      },
+      {
+        "id": "diff_ac",
+        "dna": "C4",
+        "label": "A 아닌 점",
+        "category": "조건"
+      },
+      {
+        "id": "line_bd",
+        "dna": "G12",
+        "label": "직선 BD",
+        "category": "기하"
+      },
+      {
+        "id": "slope_bd",
+        "dna": "G5",
+        "label": "기울기(B,D)",
+        "category": "기하"
+      },
+      {
+        "id": "pass_b",
+        "dna": "G16",
+        "label": "B를 지남",
+        "category": "기하"
+      },
+      {
+        "id": "meet_bd",
+        "dna": "C3",
+        "label": "D에서 만남",
+        "category": "조건"
+      },
+      {
+        "id": "diff_bd",
+        "dna": "C4",
+        "label": "B 아닌 점",
+        "category": "조건"
+      },
+      {
+        "id": "seg_ab",
+        "dna": "G7",
+        "label": "선분 AB",
+        "category": "기하"
+      },
+      {
+        "id": "seg_cd",
+        "dna": "G7",
+        "label": "선분 CD",
+        "category": "기하"
+      },
+      {
+        "id": "len_eq",
+        "dna": "C16",
+        "label": "AB=CD",
+        "category": "조건"
+      },
+      {
+        "id": "len_ab",
+        "dna": "G18",
+        "label": "거리 AB",
+        "category": "기하"
+      },
+      {
+        "id": "len_cd",
+        "dna": "G18",
+        "label": "거리 CD",
+        "category": "기하"
+      }
+    ],
+    "edges": [
+      {
+        "from": "ask_sum",
+        "to": "top"
+      },
+      {
+        "from": "conds",
+        "to": "top"
+      },
+      {
+        "from": "vk",
+        "to": "ask_sum"
+      },
+      {
+        "from": "vp",
+        "to": "ask_sum"
+      },
+      {
+        "from": "crv1_eq",
+        "to": "crv1"
+      },
+      {
+        "from": "crv1_c1",
+        "to": "crv1_eq"
+      },
+      {
+        "from": "exp_expr",
+        "to": "crv1_c1"
+      },
+      {
+        "from": "c2_base",
+        "to": "exp_expr"
+      },
+      {
+        "from": "x_minus_k",
+        "to": "exp_expr"
+      },
+      {
+        "from": "vx",
+        "to": "x_minus_k"
+      },
+      {
+        "from": "neg_k",
+        "to": "x_minus_k"
+      },
+      {
+        "from": "vk",
+        "to": "neg_k"
+      },
+      {
+        "from": "line_yx_eq",
+        "to": "line_yx"
+      },
+      {
+        "from": "line_yx_c1",
+        "to": "line_yx_eq"
+      },
+      {
+        "from": "vx",
+        "to": "line_yx_c1"
+      },
+      {
+        "from": "crv1",
+        "to": "meet_ab"
+      },
+      {
+        "from": "line_yx",
+        "to": "meet_ab"
+      },
+      {
+        "from": "pt_a",
+        "to": "meet_ab"
+      },
+      {
+        "from": "pt_b",
+        "to": "meet_ab"
+      },
+      {
+        "from": "diff2_ab",
+        "to": "meet_ab"
+      },
+      {
+        "from": "meet_ab",
+        "to": "conds"
+      },
+      {
+        "from": "ya_coord",
+        "to": "yb_2ya"
+      },
+      {
+        "from": "yb_coord",
+        "to": "yb_2ya"
+      },
+      {
+        "from": "two_ya",
+        "to": "yb_2ya"
+      },
+      {
+        "from": "c2_base",
+        "to": "two_ya"
+      },
+      {
+        "from": "ya_coord",
+        "to": "two_ya"
+      },
+      {
+        "from": "pt_a",
+        "to": "ya_coord"
+      },
+      {
+        "from": "pt_b",
+        "to": "yb_coord"
+      },
+      {
+        "from": "yb_2ya",
+        "to": "conds"
+      },
+      {
+        "from": "crv2_eq",
+        "to": "crv2"
+      },
+      {
+        "from": "crv2_c1",
+        "to": "crv2_eq"
+      },
+      {
+        "from": "log4x_sum",
+        "to": "crv2_c1"
+      },
+      {
+        "from": "vp",
+        "to": "log4x_sum"
+      },
+      {
+        "from": "log4x",
+        "to": "log4x_sum"
+      },
+      {
+        "from": "c4_base",
+        "to": "log4x"
+      },
+      {
+        "from": "vx",
+        "to": "log4x"
+      },
+      {
+        "from": "slope_ac",
+        "to": "slope_neg1_eq"
+      },
+      {
+        "from": "c_neg1",
+        "to": "slope_neg1_eq"
+      },
+      {
+        "from": "pt_a",
+        "to": "slope_ac"
+      },
+      {
+        "from": "pt_c",
+        "to": "slope_ac"
+      },
+      {
+        "from": "slope_neg1_eq",
+        "to": "line_ac"
+      },
+      {
+        "from": "pt_a",
+        "to": "pass_a"
+      },
+      {
+        "from": "pass_a",
+        "to": "line_ac"
+      },
+      {
+        "from": "line_ac",
+        "to": "meet_ac"
+      },
+      {
+        "from": "crv2",
+        "to": "meet_ac"
+      },
+      {
+        "from": "pt_c",
+        "to": "meet_ac"
+      },
+      {
+        "from": "diff_ac",
+        "to": "meet_ac"
+      },
+      {
+        "from": "meet_ac",
+        "to": "conds"
+      },
+      {
+        "from": "slope_bd",
+        "to": "slope_neg1_eq"
+      },
+      {
+        "from": "pt_b",
+        "to": "slope_bd"
+      },
+      {
+        "from": "pt_d",
+        "to": "slope_bd"
+      },
+      {
+        "from": "slope_neg1_eq",
+        "to": "line_bd"
+      },
+      {
+        "from": "pt_b",
+        "to": "pass_b"
+      },
+      {
+        "from": "pass_b",
+        "to": "line_bd"
+      },
+      {
+        "from": "line_bd",
+        "to": "meet_bd"
+      },
+      {
+        "from": "crv2",
+        "to": "meet_bd"
+      },
+      {
+        "from": "pt_d",
+        "to": "meet_bd"
+      },
+      {
+        "from": "diff_bd",
+        "to": "meet_bd"
+      },
+      {
+        "from": "meet_bd",
+        "to": "conds"
+      },
+      {
+        "from": "pt_a",
+        "to": "seg_ab"
+      },
+      {
+        "from": "pt_b",
+        "to": "seg_ab"
+      },
+      {
+        "from": "pt_c",
+        "to": "seg_cd"
+      },
+      {
+        "from": "pt_d",
+        "to": "seg_cd"
+      },
+      {
+        "from": "seg_ab",
+        "to": "len_ab"
+      },
+      {
+        "from": "seg_cd",
+        "to": "len_cd"
+      },
+      {
+        "from": "len_ab",
+        "to": "len_eq"
+      },
+      {
+        "from": "len_cd",
+        "to": "len_eq"
+      },
+      {
+        "from": "len_eq",
+        "to": "conds"
+      }
+    ],
+    "new_dna": []
+  },
+  "thinking_profile": null,
+  "folders": [],
+  "history": [],
+  "recovery_warnings": [],
+  "errata": [],
+  "created_at": "2026-03-23T18:27:46.517Z"
+}

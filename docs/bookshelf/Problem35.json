@@ -1,0 +1,449 @@
+{
+  "problem_id": "Problem35",
+  "answer": "301",
+  "clues": [
+    {
+      "id": "단서A",
+      "text": "$A = 3^{540} \\times (-2)^{k}$이고 $k$는 자연수이다"
+    },
+    {
+      "id": "단서B",
+      "text": "자연수 $n$($n \\geq 2$)에 대하여 $A$의 $n$제곱근 중 음의 정수가 존재하도록 하는 모든 $n$의 값의 합이 $12$이다"
+    },
+    {
+      "id": "단서C",
+      "text": "$k \\leq 100$이다"
+    }
+  ],
+  "skeleton": [
+    {
+      "from": "단서A",
+      "to": "note1",
+      "neuron": "사실76",
+      "note": "$k$ 홀수이면 $A < 0$이고, $k$ 짝수이면 $A > 0$이다",
+      "step": 1
+    },
+    {
+      "from": "note1",
+      "to": "note2",
+      "neuron": "사실74",
+      "note": "$A$의 $n$제곱근 중 음의 실수가 존재하려면, (ⅰ) $k$와 $n$이 모두 홀수이거나 (ⅱ) $k$와 $n$이 모두 짝수이다",
+      "step": 1
+    },
+    {
+      "from": [
+        "note2",
+        "단서A"
+      ],
+      "to": "note3",
+      "neuron": "사실75",
+      "note": "$\\sqrt[n]{|A|} = 3^{540/n} \\times 2^{k/n}$이 정수이려면 $n \\mid 540$이고 $n \\mid k$이어야 한다",
+      "step": 2
+    },
+    {
+      "from": "note3",
+      "to": "note4",
+      "neuron": "전략34",
+      "note": "조건을 만족하는 $n$은 $\\gcd(540, k)$의 약수이다",
+      "step": 2
+    },
+    {
+      "from": "단서A",
+      "to": "note5",
+      "neuron": "전략33",
+      "note": "$540 = 2^2 \\times 3^3 \\times 5$이다",
+      "main": false,
+      "step": 2
+    },
+    {
+      "from": [
+        "note2",
+        "note4"
+      ],
+      "to": "note6",
+      "neuron": "전략12",
+      "note": "$k$의 홀짝에 따라 (ⅰ) $k$ 홀수, (ⅱ) $k$ 짝수로 경우를 분리한다",
+      "step": 2
+    },
+    {
+      "from": [
+        "note5",
+        "note6"
+      ],
+      "to": "note7",
+      "neuron": "전략33",
+      "note": "(ⅰ) $k$ 홀수일 때 $\\gcd(540, k)$의 홀수 약수 중 $n \\geq 2$인 것: $3, 5, 9, 15, 27, 45, 135$이다",
+      "step": 3
+    },
+    {
+      "from": [
+        "note7",
+        "단서B"
+      ],
+      "to": "note8",
+      "neuron": "전략35",
+      "note": "합이 $12$인 부분집합은 $\\{3, 9\\}$뿐이다",
+      "step": 3
+    },
+    {
+      "from": "note8",
+      "to": "note9",
+      "neuron": "전략25",
+      "note": "$\\gcd(540, k) = 9$이면 $2$ 이상인 약수가 $\\{3, 9\\}$이고 합이 $12$이다",
+      "step": 3
+    },
+    {
+      "from": "note9",
+      "to": "note10",
+      "neuron": "전략37",
+      "note": "$k$는 $9$의 배수이고 $27$의 배수가 아니며 $5$의 배수가 아닌 홀수이다",
+      "step": 3
+    },
+    {
+      "from": [
+        "note10",
+        "단서C"
+      ],
+      "to": "note11",
+      "neuron": "전략17",
+      "note": "$k = 9, 63, 99$이고 합은 $171$이다",
+      "step": 3
+    },
+    {
+      "from": [
+        "note5",
+        "note6"
+      ],
+      "to": "note12",
+      "neuron": "전략33",
+      "note": "(ⅱ) $k$ 짝수일 때 $540$의 짝수 약수 중 $n \\geq 2$인 것: $2, 4, 6, 10, 12, 18, 20, \\ldots$이다",
+      "step": 4
+    },
+    {
+      "from": [
+        "note12",
+        "단서B"
+      ],
+      "to": "note13",
+      "neuron": "전략35",
+      "note": "합이 $12$인 조합 후보: ① $\\{2,4,6\\}$, ② $\\{2,10\\}$, ③ $\\{12\\}$이다",
+      "step": 4
+    },
+    {
+      "from": "note13",
+      "to": "note14",
+      "neuron": "전략36",
+      "note": "① $\\text{lcm}(2,4,6) = 12$이다",
+      "main": false,
+      "step": 4
+    },
+    {
+      "from": "note14",
+      "to": "note15",
+      "neuron": "사실66",
+      "note": "$12 \\mid \\gcd(540, k)$이면 $12$도 짝수 약수가 되어 합이 $2+4+6+12 = 24$가 된다",
+      "main": false,
+      "step": 4
+    },
+    {
+      "from": [
+        "note15",
+        "단서B"
+      ],
+      "to": "note16",
+      "neuron": "전략23",
+      "note": "① 모순으로 배제한다. ③도 같은 이유로 배제한다",
+      "main": false,
+      "step": 4
+    },
+    {
+      "from": [
+        "note13",
+        "note16"
+      ],
+      "to": "note17",
+      "neuron": "전략36",
+      "note": "② $\\text{lcm}(2, 10) = 10$이고, $10$의 짝수 약수($\\geq 2$)는 $\\{2, 10\\}$뿐이다",
+      "step": 4
+    },
+    {
+      "from": "note17",
+      "to": "note18",
+      "neuron": "전략25",
+      "note": "$\\gcd(540, k) = 10$이면 $2$ 이상인 짝수 약수가 $\\{2, 10\\}$이고 합이 $12$이다",
+      "step": 4
+    },
+    {
+      "from": "note18",
+      "to": "note19",
+      "neuron": "전략37",
+      "note": "$k$는 $2$의 배수이고 $4$의 배수가 아니며, $3$의 배수가 아니고, $5$의 배수이다",
+      "step": 4
+    },
+    {
+      "from": [
+        "note19",
+        "단서C"
+      ],
+      "to": "note20",
+      "neuron": "전략17",
+      "note": "$k = 10, 50, 70$이고 합은 $130$이다",
+      "step": 4
+    },
+    {
+      "from": [
+        "note11",
+        "note20"
+      ],
+      "to": "END",
+      "neuron": "전략10",
+      "note": "모든 $k$의 값의 합은 $171 + 130 = 301$이다",
+      "step": 5
+    }
+  ],
+  "solution": "STEP 1. $A = 3^{540} \\times (-2)^k$로 놓으면, $k$ 홀수이면 $A < 0$이고 $k$ 짝수이면 $A > 0$이다. $A$의 $n$제곱근 중 음의 실수가 존재하려면, (ⅰ) $k$와 $n$이 모두 홀수이거나 (ⅱ) $k$와 $n$이 모두 짝수이어야 한다.\n\nSTEP 2. $\\sqrt[n]{|A|} = 3^{540/n} \\times 2^{k/n}$이 정수이려면 $n \\mid 540$이고 $n \\mid k$이어야 한다. 조건을 만족하는 $n$은 $\\gcd(540, k)$의 약수이다. $k$의 홀짝에 따라 두 경우로 분리한다.\n\nSTEP 3. (ⅰ) $k$ 홀수일 때, $540 = 2^2 \\times 3^3 \\times 5$의 홀수 약수 중 $n \\geq 2$인 것은 $3, 5, 9, 15, 27, 45, 135$이다. 합이 $12$인 부분집합은 $\\{3, 9\\}$뿐이다. $\\gcd(540, k) = 9$이면 조건을 만족한다. $k$는 $9$의 배수이고 $27$의 배수가 아니며 $5$의 배수가 아닌 홀수이다. $k = 9, 63, 99$이고 합은 $171$이다.\n\nSTEP 4. (ⅱ) $k$ 짝수일 때, $540$의 짝수 약수 중 $n \\geq 2$인 것은 $2, 4, 6, 10, 12, \\ldots$이다. 합이 $12$인 조합 후보 중, $\\{2,4,6\\}$은 $\\text{lcm}=12$이므로 $12$도 약수가 되어 합이 초과하여 모순이다. $\\{12\\}$도 같은 이유로 배제된다. $\\{2, 10\\}$은 $\\text{lcm}=10$이고 $10$의 짝수 약수($\\geq 2$)가 정확히 $\\{2, 10\\}$이므로 조건을 만족한다. $\\gcd(540, k) = 10$이면 $k$는 $2$의 배수이고 $4$의 배수가 아니며, $3$의 배수가 아니고, $5$의 배수이다. $k = 10, 50, 70$이고 합은 $130$이다.\n\nSTEP 5. 모든 $k$의 값의 합은 $171 + 130 = 301$이다.",
+  "original_solution": "$k$가 홀수이면 $3^{540} \\times (-2)^{k} < 0$, $k$가 짝수이면 $3^{540} \\times (-2)^{k} > 0$\n\n이므로 $3^{540} \\times (-2)^{k}$의 $n$ 제곱근 중 음의 정수가 존재하려면\n\n(ⅰ) $k$, $n$이 모두 홀수이거나 (ⅱ) $k$, $n$이 모두 짝수\n\n이어야 하고,\n\n$n$이 $540$과 $k$의 공약수 $\\cdots$ ⓐ\n\n이어야 한다. (ⅰ), (ⅱ)의 경우에서\n\n(ⓐ인 모든 $n$의 값의 합) $= 12$ $\\cdots$ ⓑ\n\n가 되도록 하는 $k$의 값을 구해보자.\n\n**(ⅰ) $k$가 홀수인 경우**\n\nⓐ $\\Rightarrow$ $n$은 $540 = 2^{2} \\times 3^{3} \\times 5$의 약수인 홀수\n\n이므로 $n(n \\geq 2)$로 가능한 모든 값을 작은 수부터 크기순으로 차례로 나열해보면\n\n$$3,\\ 5,\\ 9,\\ 15,\\ \\cdots$$\n\n이다. 따라서\n\nⓑ $\\Rightarrow$ $3 + 9$인 경우만 가능\n\n$$\\Rightarrow \\begin{cases} k\\text{는 } 9\\text{의 배수이고 } 27\\text{의 배수가 아님} \\\\ k\\text{는 } 5\\text{의 배수가 아님} \\end{cases}$$\n\n$$\\Rightarrow k = 9,\\ 63,\\ 99 \\quad (\\because k \\leq 100)$$\n\n$$\\Rightarrow (\\text{모든 홀수 } k\\text{의 값의 합}) = 171$$\n\n**(ⅱ) $k$가 짝수인 경우**\n\nⓐ $\\Rightarrow$ $n$은 $540 = 2^{2} \\times 3^{3} \\times 5$의 약수인 짝수\n\n이므로 $n(n \\geq 2)$로 가능한 모든 값을 작은 수부터 크기순으로 차례로 나열해보면\n\n$$2,\\ 4,\\ 6,\\ 10,\\ 12,\\ \\cdots$$\n\n이다. 따라서\n\nⓑ $\\Rightarrow$ ① $2+4+6$ 또는 ② $2+10$ 또는 ③ $12$\n\n의 경우가 가능하고, 이때\n\n①의 경우, $k$는 $2+4+6$의 공배수이므로 $k$는 $12$의 배수이고,\n이때 $12$도 가능한 $n$의 값이 되어 ⓑ에 모순이고, ③의 경우도 마찬가지로 모순임을 알 수 있다.\n\n또한, ②의 경우,\n\n$$\\begin{cases} k\\text{는 } 2\\text{의 배수이고 } 4\\text{의 배수가 아님} \\\\ k\\text{는 } 3\\text{의 배수가 아님} \\\\ k\\text{는 } 5\\text{의 배수} \\end{cases}$$\n\n$$\\Rightarrow k = 10,\\ 50,\\ 70 \\quad (\\because k \\leq 100)$$\n\n$$\\Rightarrow (\\text{모든 짝수 } k\\text{의 값의 합}) = 130$$\n\n$$\\therefore\\ (\\text{모든 } k\\text{의 값의 합}) = 171 + 130 = \\boxed{301}$$\n\n---",
+  "analysis": "",
+  "new_neurons": [],
+  "metadata": {
+    "unit": "",
+    "difficulty": "",
+    "score": "4",
+    "type": "",
+    "answer": "301"
+  },
+  "edge_count": 21,
+  "side_count": 4,
+  "statement": "4. (수능/모의고사) - 지수와 거듭제곱근\n\n## Problem\n\n다음 조건을 만족시키는 $100$ 이하의 모든 자연수 $k$의 값의 합은? [4점]\n\n자연수 $n(n \\geq 2)$에 대하여 $3^{540} \\times (-2)^{k}$의 $n$ 제곱근 중 음의 정수가 존재하도록 하는 모든 $n$의 값의 합이 $12$이다.",
+  "dna": {
+    "nodes": [
+      {
+        "id": "top",
+        "dna": "Q3",
+        "label": "합을 구하라",
+        "category": "발문"
+      },
+      {
+        "id": "ask_set",
+        "dna": "S2",
+        "label": "k의 집합",
+        "category": "구조"
+      },
+      {
+        "id": "vk",
+        "dna": "T1",
+        "label": "변수 k",
+        "category": "말단"
+      },
+      {
+        "id": "k_natural",
+        "dna": "L3",
+        "label": "k는 자연수",
+        "category": "제한"
+      },
+      {
+        "id": "k_range",
+        "dna": "L2",
+        "label": "k≤100",
+        "category": "제한"
+      },
+      {
+        "id": "c100",
+        "dna": "T2",
+        "label": "상수 100",
+        "category": "말단"
+      },
+      {
+        "id": "main_cond",
+        "dna": "C19",
+        "label": "n합=12 조건",
+        "category": "조건"
+      },
+      {
+        "id": "n_sum_val",
+        "dna": "T2",
+        "label": "상수 12",
+        "category": "말단"
+      },
+      {
+        "id": "n_set",
+        "dna": "S2",
+        "label": "n의 집합",
+        "category": "구조"
+      },
+      {
+        "id": "vn",
+        "dna": "T1",
+        "label": "변수 n",
+        "category": "말단"
+      },
+      {
+        "id": "n_natural",
+        "dna": "L3",
+        "label": "n은 자연수",
+        "category": "제한"
+      },
+      {
+        "id": "n_range",
+        "dna": "L2",
+        "label": "n≥2",
+        "category": "제한"
+      },
+      {
+        "id": "c2",
+        "dna": "T2",
+        "label": "상수 2",
+        "category": "말단"
+      },
+      {
+        "id": "exist_cond",
+        "dna": "X5",
+        "label": "음의 정수 존재",
+        "category": "존재"
+      },
+      {
+        "id": "nth_root",
+        "dna": "F7",
+        "label": "n제곱근",
+        "category": "함수"
+      },
+      {
+        "id": "base_expr",
+        "dna": "E6",
+        "label": "곱(3^540,(-2)^k)",
+        "category": "수식"
+      },
+      {
+        "id": "pow_3",
+        "dna": "E7",
+        "label": "3^540",
+        "category": "수식"
+      },
+      {
+        "id": "c3",
+        "dna": "T2",
+        "label": "상수 3",
+        "category": "말단"
+      },
+      {
+        "id": "c540",
+        "dna": "T2",
+        "label": "상수 540",
+        "category": "말단"
+      },
+      {
+        "id": "pow_m2k",
+        "dna": "E7",
+        "label": "(-2)^k",
+        "category": "수식"
+      },
+      {
+        "id": "neg2",
+        "dna": "E2",
+        "label": "부호반전(2)",
+        "category": "수식"
+      }
+    ],
+    "edges": [
+      {
+        "from": "vk",
+        "to": "k_natural"
+      },
+      {
+        "from": "vk",
+        "to": "k_range"
+      },
+      {
+        "from": "c100",
+        "to": "k_range"
+      },
+      {
+        "from": "vk",
+        "to": "ask_set"
+      },
+      {
+        "from": "main_cond",
+        "to": "ask_set"
+      },
+      {
+        "from": "ask_set",
+        "to": "top"
+      },
+      {
+        "from": "vn",
+        "to": "n_natural"
+      },
+      {
+        "from": "vn",
+        "to": "n_range"
+      },
+      {
+        "from": "c2",
+        "to": "n_range"
+      },
+      {
+        "from": "vn",
+        "to": "n_set"
+      },
+      {
+        "from": "exist_cond",
+        "to": "n_set"
+      },
+      {
+        "from": "c2",
+        "to": "neg2"
+      },
+      {
+        "from": "neg2",
+        "to": "pow_m2k"
+      },
+      {
+        "from": "vk",
+        "to": "pow_m2k"
+      },
+      {
+        "from": "c3",
+        "to": "pow_3"
+      },
+      {
+        "from": "c540",
+        "to": "pow_3"
+      },
+      {
+        "from": "pow_3",
+        "to": "base_expr"
+      },
+      {
+        "from": "pow_m2k",
+        "to": "base_expr"
+      },
+      {
+        "from": "base_expr",
+        "to": "nth_root"
+      },
+      {
+        "from": "vn",
+        "to": "nth_root"
+      },
+      {
+        "from": "nth_root",
+        "to": "exist_cond"
+      },
+      {
+        "from": "n_set",
+        "to": "main_cond"
+      },
+      {
+        "from": "n_sum_val",
+        "to": "main_cond"
+      }
+    ],
+    "new_dna": []
+  },
+  "thinking_profile": null,
+  "folders": [],
+  "history": [],
+  "recovery_warnings": [],
+  "errata": [],
+  "created_at": "2026-03-24T01:39:55.230Z"
+}

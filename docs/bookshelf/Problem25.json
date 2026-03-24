@@ -1,0 +1,343 @@
+{
+  "problem_id": "Problem25",
+  "answer": "④ 3^(15/2)",
+  "clues": [
+    {
+      "id": "단서A",
+      "text": "$-3 < \\log_2 a < 5$"
+    },
+    {
+      "id": "단서B",
+      "text": "$\\log_3 a^2$은 정수이다"
+    },
+    {
+      "id": "단서C",
+      "text": "$a$는 양수이다"
+    }
+  ],
+  "skeleton": [
+    {
+      "from": "단서A",
+      "to": "note1",
+      "neuron": "연산2",
+      "note": "$\\log_2 a = t$로 놓으면 $a = 2^t$이고 $-3 < t < 5$이다",
+      "step": 1
+    },
+    {
+      "from": "note1",
+      "to": "note2",
+      "neuron": "사실5",
+      "note": "$y=2^x$는 순증가이므로 $2^{-3} < a < 2^5$, 즉 $\\frac{1}{8} < a < 32$이다",
+      "step": 1
+    },
+    {
+      "from": [
+        "note2",
+        "단서C"
+      ],
+      "to": "note3",
+      "neuron": "사실59",
+      "note": "$a > 0$이므로 $\\log_3 a$가 정의된다",
+      "main": false,
+      "step": 2
+    },
+    {
+      "from": "단서B",
+      "to": "note4",
+      "neuron": "연산17",
+      "note": "$\\log_3 a^2 = 2\\log_3 a$이다",
+      "step": 2
+    },
+    {
+      "from": "note2",
+      "to": "note5",
+      "neuron": "사실12",
+      "note": "$\\log_3$은 순증가이므로 $\\log_3 \\frac{1}{8} < \\log_3 a < \\log_3 32$이다",
+      "step": 2
+    },
+    {
+      "from": [
+        "note4",
+        "note5"
+      ],
+      "to": "note6",
+      "neuron": "연산17",
+      "note": "$2\\log_3 \\frac{1}{8} < 2\\log_3 a < 2\\log_3 32$, 즉 $\\log_3 \\frac{1}{64} < \\log_3 a^2 < \\log_3 1024$이다",
+      "step": 2
+    },
+    {
+      "from": "note6",
+      "to": "note7",
+      "neuron": "사실12",
+      "note": "$3^{-4} = \\frac{1}{81} < \\frac{1}{64} < \\frac{1}{27} = 3^{-3}$이므로 $-4 < \\log_3 \\frac{1}{64} < -3$이다",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": "note6",
+      "to": "note8",
+      "neuron": "사실12",
+      "note": "$3^6 = 729 < 1024 < 2187 = 3^7$이므로 $6 < \\log_3 1024 < 7$이다",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": [
+        "note6",
+        "note7",
+        "note8"
+      ],
+      "to": "note9",
+      "neuron": "전략17",
+      "note": "$\\log_3 a^2$이 정수이고 범위가 $(-4, -3)$과 $(6, 7)$ 사이의 열린 구간 내이므로 $\\log_3 a^2 \\in \\{-3,\\,-2,\\,-1,\\,0,\\,1,\\,2,\\,3,\\,4,\\,5,\\,6\\}$이다",
+      "step": 3
+    },
+    {
+      "from": [
+        "note9",
+        "단서C"
+      ],
+      "to": "note10",
+      "neuron": "연산2",
+      "note": "$\\log_3 a^2 = k$이면 $a^2 = 3^k$이고, $a > 0$이므로 $a = 3^{k/2}$이다",
+      "step": 4
+    },
+    {
+      "from": [
+        "note10",
+        "note2"
+      ],
+      "to": "note11",
+      "neuron": "전략25",
+      "note": "$k=-3$일 때 $a = 3^{-3/2} \\approx 0.192 > \\frac{1}{8}$이고, $k=6$일 때 $a = 27 < 32$이므로 $-3 \\le k \\le 6$인 모든 정수 10개가 적합하다",
+      "main": false,
+      "step": 4
+    },
+    {
+      "from": [
+        "note10",
+        "note11"
+      ],
+      "to": "note12",
+      "neuron": "연산18",
+      "note": "$\\prod_{k=-3}^{6} 3^{k/2} = 3^{\\frac{1}{2}\\sum_{k=-3}^{6} k}$이다",
+      "step": 5
+    },
+    {
+      "from": "note12",
+      "to": "END",
+      "neuron": "연산18",
+      "note": "$\\sum_{k=-3}^{6} k = (-3)+(-2)+(-1)+0+1+2+3+4+5+6 = 15$이므로 모든 $a$의 값의 곱은 $3^{15/2}$이다",
+      "step": 5
+    }
+  ],
+  "solution": "STEP 1. 조건 (가)에서 $a$의 범위를 구한다. $\\log_2 a = t$로 놓으면 $a = 2^t$이고 $-3 < t < 5$이다. $y = 2^x$는 순증가이므로 $2^{-3} < a < 2^5$, 즉 $\\frac{1}{8} < a < 32$이다.\n\nSTEP 2. $\\log_3 a^2$의 범위를 구한다. $\\log_3 a^2 = 2\\log_3 a$이고, $\\log_3$은 순증가이므로 $\\log_3 \\frac{1}{8} < \\log_3 a < \\log_3 32$이다. 양변에 2를 곱하면 $\\log_3 \\frac{1}{64} < \\log_3 a^2 < \\log_3 1024$이다.\n\nSTEP 3. 경계를 평가한다. $3^{-4} < \\frac{1}{64} < 3^{-3}$이므로 하한은 $-4$와 $-3$ 사이이고, $3^6 < 1024 < 3^7$이므로 상한은 $6$과 $7$ 사이이다. 조건 (나)에서 $\\log_3 a^2$이 정수이므로 $\\log_3 a^2 \\in \\{-3, -2, -1, 0, 1, 2, 3, 4, 5, 6\\}$이다.\n\nSTEP 4. $\\log_3 a^2 = k$이면 $a^2 = 3^k$이고 $a > 0$이므로 $a = 3^{k/2}$이다.\n\nSTEP 5. 모든 $a$의 값의 곱을 구한다. $\\prod_{k=-3}^{6} 3^{k/2} = 3^{\\frac{1}{2}\\sum_{k=-3}^{6} k}$이고 $\\sum_{k=-3}^{6} k = 15$이므로 곱은 $3^{\\frac{15}{2}}$이다.",
+  "original_solution": "**(가)** 조건으로부터:\n\n$$-3 < \\log_2 a < 5 \\implies \\frac{1}{8} < a < 32$$\n\n양변을 제곱하면:\n\n$$\\frac{1}{64} < a^2 < 1024$$\n\n$\\log_3$을 취하면:\n\n$$\\log_3 \\frac{1}{64} < \\log_3 a^2 < \\log_3 1024$$\n\n이때 $3^{-4} = \\frac{1}{81} < \\frac{1}{64} < \\frac{1}{27} = 3^{-3}$ 이므로 $\\log_3 \\frac{1}{64}$는 $-4$와 $-3$ 사이이고,\n\n$3^6 = 729 < 1024 < 2187 = 3^7$ 이므로 $\\log_3 1024$는 $6$과 $7$ 사이이다.\n\n따라서:\n\n$$-3.\\text{xx} < \\log_3 a^2 < 6.\\text{xx}$$\n\n**(나)** 조건에 의해 $\\log_3 a^2$은 정수이므로:\n\n$$\\log_3 a^2 = -3,\\; -2,\\; -1,\\; 0,\\; 1,\\; 2,\\; 3,\\; 4,\\; 5,\\; 6$$\n\n$\\log_3 a^2 = k$이면 $a^2 = 3^k$, $a > 0$이므로 $a = 3^{\\frac{k}{2}}$\n\n모든 $a$의 값의 곱:\n\n$$\\prod a = 3^{\\frac{-3+(-2)+(-1)+0+1+2+3+4+5+6}{2}} = 3^{\\frac{15}{2}}$$\n\n---",
+  "analysis": "조건 (가)를 지수 범위로 변환한 뒤, 연산17로 log₃a²=2log₃a임을 이용해 log₃a²의 범위를 구한다. 범위 내 정수를 나열하고, 각 정수 k에 대해 a=3^{k/2}를 구한 뒤 곱을 계산한다.",
+  "new_neurons": [],
+  "metadata": {
+    "unit": "지수와 로그",
+    "difficulty": "중",
+    "score": "4",
+    "type": "객관식",
+    "answer": "3^{15/2}"
+  },
+  "edge_count": 13,
+  "side_count": 4,
+  "statement": "# 34. (수능/모의고사) - 로그 조건을 만족하는 양수의 곱\n\n## Problem\n\n다음 조건을 만족시키는 모든 양수 $a$의 값의 곱은? [4점]\n\n(가) $-3 < \\log_2 a < 5$\n\n(나) $\\log_3 a^2$은 정수이다.",
+  "dna": {
+    "nodes": [
+      {
+        "id": "top",
+        "dna": "Q1",
+        "label": "곱의 값",
+        "category": "발문"
+      },
+      {
+        "id": "ask_prod",
+        "dna": "E6",
+        "label": "모든 a의 곱",
+        "category": "수식"
+      },
+      {
+        "id": "conds",
+        "dna": "S1",
+        "label": "조건 (가)(나)",
+        "category": "구조"
+      },
+      {
+        "id": "va",
+        "dna": "T1",
+        "label": "변수 a",
+        "category": "말단"
+      },
+      {
+        "id": "a_pos",
+        "dna": "L3",
+        "label": "양수",
+        "category": "제한"
+      },
+      {
+        "id": "c_neg3",
+        "dna": "T2",
+        "label": "상수 -3",
+        "category": "말단"
+      },
+      {
+        "id": "c5",
+        "dna": "T2",
+        "label": "상수 5",
+        "category": "말단"
+      },
+      {
+        "id": "c2",
+        "dna": "T2",
+        "label": "상수 2",
+        "category": "말단"
+      },
+      {
+        "id": "c3",
+        "dna": "T2",
+        "label": "상수 3",
+        "category": "말단"
+      },
+      {
+        "id": "cond_a",
+        "dna": "S1",
+        "label": "조건 (가)",
+        "category": "구조"
+      },
+      {
+        "id": "log2a",
+        "dna": "E3",
+        "label": "log₂a",
+        "category": "수식"
+      },
+      {
+        "id": "ineq_lo",
+        "dna": "C2",
+        "label": "-3 < log₂a",
+        "category": "조건"
+      },
+      {
+        "id": "ineq_hi",
+        "dna": "C2",
+        "label": "log₂a < 5",
+        "category": "조건"
+      },
+      {
+        "id": "cond_b",
+        "dna": "C1",
+        "label": "log₃a² = 정수",
+        "category": "조건"
+      },
+      {
+        "id": "log3a2",
+        "dna": "E3",
+        "label": "log₃a²",
+        "category": "수식"
+      },
+      {
+        "id": "a_sq",
+        "dna": "E7",
+        "label": "a²",
+        "category": "수식"
+      },
+      {
+        "id": "int_limit",
+        "dna": "L3",
+        "label": "정수",
+        "category": "제한"
+      }
+    ],
+    "edges": [
+      {
+        "from": "ask_prod",
+        "to": "top"
+      },
+      {
+        "from": "conds",
+        "to": "top"
+      },
+      {
+        "from": "va",
+        "to": "ask_prod"
+      },
+      {
+        "from": "a_pos",
+        "to": "va"
+      },
+      {
+        "from": "cond_a",
+        "to": "conds"
+      },
+      {
+        "from": "c2",
+        "to": "log2a"
+      },
+      {
+        "from": "va",
+        "to": "log2a"
+      },
+      {
+        "from": "log2a",
+        "to": "ineq_lo"
+      },
+      {
+        "from": "c_neg3",
+        "to": "ineq_lo"
+      },
+      {
+        "from": "log2a",
+        "to": "ineq_hi"
+      },
+      {
+        "from": "c5",
+        "to": "ineq_hi"
+      },
+      {
+        "from": "ineq_lo",
+        "to": "cond_a"
+      },
+      {
+        "from": "ineq_hi",
+        "to": "cond_a"
+      },
+      {
+        "from": "cond_b",
+        "to": "conds"
+      },
+      {
+        "from": "log3a2",
+        "to": "cond_b"
+      },
+      {
+        "from": "int_limit",
+        "to": "log3a2"
+      },
+      {
+        "from": "c3",
+        "to": "log3a2"
+      },
+      {
+        "from": "a_sq",
+        "to": "log3a2"
+      },
+      {
+        "from": "va",
+        "to": "a_sq"
+      },
+      {
+        "from": "c2",
+        "to": "a_sq"
+      }
+    ],
+    "new_dna": []
+  },
+  "thinking_profile": null,
+  "folders": [],
+  "history": [],
+  "recovery_warnings": [],
+  "errata": [],
+  "created_at": "2026-03-23T18:55:12.808Z"
+}

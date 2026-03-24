@@ -1,0 +1,1245 @@
+{
+  "problem_id": "Problem02",
+  "clues": [
+    {
+      "id": "단서A",
+      "text": "$a>1$, $b>1$인 두 상수"
+    },
+    {
+      "id": "단서B",
+      "text": "$A(0,\\,a)$"
+    },
+    {
+      "id": "단서C",
+      "text": "점 $A$를 지나고 $x$축에 평행한 직선이 곡선 $y=b^x$와 만나는 점을 $B$라 한다"
+    },
+    {
+      "id": "단서D",
+      "text": "점 $A$를 지나고 기울기가 $1$인 직선이 곡선 $y=b^x$와 제1사분면에서 만나는 점을 $C$라 한다"
+    },
+    {
+      "id": "단서E",
+      "text": "점 $C$를 지나고 기울기가 $-1$인 직선이 곡선 $y=\\log_a x$와 만나는 점을 $D$라 한다"
+    },
+    {
+      "id": "단서F",
+      "text": "직선 $AD$의 기울기가 $-\\frac{1}{4}$이다"
+    },
+    {
+      "id": "단서G",
+      "text": "$\\triangle ACD$의 넓이가 $\\triangle ABC$의 넓이의 $10$배이다"
+    }
+  ],
+  "skeleton": [
+    {
+      "from": [
+        "단서B",
+        "단서D"
+      ],
+      "to": "note1",
+      "neuron": "연산30",
+      "note": "$A(0,a)$를 지나는 기울기 $1$인 직선은 $y=x+a$이다",
+      "step": 1
+    },
+    {
+      "from": "note1",
+      "to": "note2",
+      "neuron": "전략25",
+      "note": "$y=b^x$와의 제1사분면 교점을 $C(k, a+k)$ ($k>0$)으로 놓는다",
+      "step": 1
+    },
+    {
+      "from": "단서A",
+      "to": "note3",
+      "neuron": "사실3",
+      "note": "$y=b^x$와 $y=\\log_b x$는 직선 $y=x$에 대해 대칭이다",
+      "step": 2
+    },
+    {
+      "from": "note2",
+      "to": "note4",
+      "neuron": "연산20",
+      "note": "$C(k,a+k)$를 직선 $y=x$에 대해 대칭시킨 점은 $(a+k,k)$이다",
+      "step": 2
+    },
+    {
+      "from": [
+        "note3",
+        "note4"
+      ],
+      "to": "note5",
+      "neuron": "사실32",
+      "note": "$(a+k,k)$는 $y=\\log_b x$ 위의 점이다",
+      "step": 2
+    },
+    {
+      "from": [
+        "note2",
+        "note4"
+      ],
+      "to": "note6",
+      "neuron": "연산10",
+      "note": "$C(k,a+k)$에서 $(a+k,k)$로의 기울기는 $\\frac{k-(a+k)}{(a+k)-k}=-1$이다",
+      "main": false,
+      "step": 2
+    },
+    {
+      "from": [
+        "note5",
+        "note6",
+        "단서E"
+      ],
+      "to": "note7",
+      "neuron": "전략25",
+      "note": "기울기 $-1$인 직선과 $y=\\log_a x$의 교점 조건에 부합하므로 $D(a+k,k)$이다",
+      "step": 2
+    },
+    {
+      "from": [
+        "단서B",
+        "note7"
+      ],
+      "to": "note8",
+      "neuron": "연산10",
+      "note": "직선 $AD$의 기울기는 $\\frac{k-a}{(a+k)-0}=\\frac{k-a}{a+k}$이다",
+      "step": 3
+    },
+    {
+      "from": [
+        "note8",
+        "단서F"
+      ],
+      "to": "note9",
+      "neuron": "전략2",
+      "note": "$\\frac{k-a}{a+k}=-\\frac{1}{4}$에서 $4(k-a)=-(a+k)$이므로 $5k=3a$, 즉 $k=\\frac{3a}{5}$이다",
+      "step": 3
+    },
+    {
+      "from": [
+        "note2",
+        "note9"
+      ],
+      "to": "note10",
+      "neuron": "전략25",
+      "note": "$C\\!\\left(\\frac{3a}{5},\\,\\frac{8a}{5}\\right)$이다",
+      "step": 3
+    },
+    {
+      "from": [
+        "note7",
+        "note9"
+      ],
+      "to": "note11",
+      "neuron": "전략25",
+      "note": "$D\\!\\left(\\frac{8a}{5},\\,\\frac{3a}{5}\\right)$이다",
+      "step": 3
+    },
+    {
+      "from": [
+        "note2",
+        "note6"
+      ],
+      "to": "note12",
+      "neuron": "사실15",
+      "note": "$AC$의 기울기 $1$과 $CD$의 기울기 $-1$의 곱이 $-1$이므로 $AC\\perp CD$이다",
+      "main": false,
+      "step": 4
+    },
+    {
+      "from": [
+        "단서B",
+        "note10"
+      ],
+      "to": "note13",
+      "neuron": "연산11",
+      "note": "$AC=\\sqrt{\\left(\\frac{3a}{5}\\right)^2+\\left(\\frac{3a}{5}\\right)^2}=\\frac{3a\\sqrt{2}}{5}$이다",
+      "main": false,
+      "step": 4
+    },
+    {
+      "from": [
+        "note10",
+        "note11"
+      ],
+      "to": "note14",
+      "neuron": "연산11",
+      "note": "$CD=\\sqrt{\\left(\\frac{5a}{5}\\right)^2+\\left(\\frac{5a}{5}\\right)^2}=a\\sqrt{2}$이다",
+      "main": false,
+      "step": 4
+    },
+    {
+      "from": [
+        "note12",
+        "note13",
+        "note14"
+      ],
+      "to": "note15",
+      "neuron": "연산13",
+      "note": "$S_{ACD}=\\frac{1}{2}\\cdot\\frac{3a\\sqrt{2}}{5}\\cdot a\\sqrt{2}=\\frac{3a^2}{5}$이다",
+      "step": 4
+    },
+    {
+      "from": [
+        "단서B",
+        "단서C"
+      ],
+      "to": "note16",
+      "neuron": "연산2",
+      "note": "$b^x=a$에서 $x=\\log_b a$이므로 $B(\\log_b a,\\,a)$이다",
+      "step": 4
+    },
+    {
+      "from": [
+        "단서B",
+        "note16",
+        "note10"
+      ],
+      "to": "note17",
+      "neuron": "연산13",
+      "note": "$AB$는 $x$축에 평행하고 길이 $\\log_b a$, 높이 $\\frac{8a}{5}-a=\\frac{3a}{5}$이므로 $S_{ABC}=\\frac{1}{2}\\cdot\\log_b a\\cdot\\frac{3a}{5}$이다",
+      "step": 4
+    },
+    {
+      "from": [
+        "note15",
+        "note17",
+        "단서G"
+      ],
+      "to": "note18",
+      "neuron": "전략2",
+      "note": "$\\frac{3a^2}{5}=10\\cdot\\frac{1}{2}\\cdot\\log_b a\\cdot\\frac{3a}{5}$에서 $\\log_b a=\\frac{a}{5}$이다",
+      "step": 4
+    },
+    {
+      "from": "note18",
+      "to": "note19",
+      "neuron": "연산2",
+      "note": "$b^{a/5}=a$이다",
+      "step": 4
+    },
+    {
+      "from": "note10",
+      "to": "note20",
+      "neuron": "전략25",
+      "note": "$C$는 $y=b^x$ 위의 점이므로 $b^{3a/5}=\\frac{8a}{5}$이다",
+      "step": 5
+    },
+    {
+      "from": "note19",
+      "to": "note21",
+      "neuron": "연산4",
+      "note": "$(b^{a/5})^3=a^3$이므로 $b^{3a/5}=a^3$이다",
+      "step": 5
+    },
+    {
+      "from": [
+        "note20",
+        "note21"
+      ],
+      "to": "note22",
+      "neuron": "전략2",
+      "note": "$a^3=\\frac{8a}{5}$에서 $a^2=\\frac{8}{5}$이다",
+      "step": 5
+    },
+    {
+      "from": [
+        "note22",
+        "단서A"
+      ],
+      "to": "note23",
+      "neuron": "전략25",
+      "note": "$a>1$이므로 $a=\\sqrt{\\frac{8}{5}}=\\frac{2\\sqrt{10}}{5}$이다",
+      "step": 5
+    },
+    {
+      "from": "note18",
+      "to": "note24",
+      "neuron": "연산1",
+      "note": "$\\log_a b=\\frac{1}{\\log_b a}=\\frac{5}{a}$이다",
+      "step": 6
+    },
+    {
+      "from": [
+        "note23",
+        "note24"
+      ],
+      "to": "END",
+      "neuron": "전략25",
+      "note": "$\\log_a b=\\frac{5}{\\frac{2\\sqrt{10}}{5}}=\\frac{25}{2\\sqrt{10}}=\\frac{5\\sqrt{10}}{4}$이다",
+      "step": 6
+    }
+  ],
+  "solution": "STEP 1. $A(0,a)$를 지나는 기울기 $1$인 직선은 $y=x+a$이다. $y=b^x$와의 제1사분면 교점을 $C(k, a+k)$ ($k>0$)으로 놓는다.\n\nSTEP 2. $y=b^x$와 $y=\\log_b x$는 직선 $y=x$에 대해 대칭이다. $C(k,a+k)$를 $y=x$에 대해 대칭시킨 점 $(a+k,k)$는 $y=\\log_b x$ 위의 점이다. $C$에서 $(a+k,k)$로의 기울기가 $-1$이므로 조건에 부합하여 $D(a+k,k)$이다.\n\nSTEP 3. 직선 $AD$의 기울기 조건 $\\frac{k-a}{a+k}=-\\frac{1}{4}$에서 $5k=3a$, 즉 $k=\\frac{3a}{5}$이다. $C\\!\\left(\\frac{3a}{5},\\frac{8a}{5}\\right)$, $D\\!\\left(\\frac{8a}{5},\\frac{3a}{5}\\right)$이다.\n\nSTEP 4. $AC\\perp CD$이므로 $S_{ACD}=\\frac{1}{2}\\cdot\\frac{3a\\sqrt{2}}{5}\\cdot a\\sqrt{2}=\\frac{3a^2}{5}$이다. $B(\\log_b a,a)$이고 $S_{ABC}=\\frac{1}{2}\\cdot\\log_b a\\cdot\\frac{3a}{5}$이다. 넓이 조건 $S_{ACD}=10\\,S_{ABC}$에서 $\\log_b a=\\frac{a}{5}$, 즉 $b^{a/5}=a$이다.\n\nSTEP 5. $C$가 $y=b^x$ 위에 있으므로 $b^{3a/5}=\\frac{8a}{5}$이다. $(b^{a/5})^3=a^3=b^{3a/5}$이므로 $a^3=\\frac{8a}{5}$에서 $a^2=\\frac{8}{5}$이고 $a=\\frac{2\\sqrt{10}}{5}$이다.\n\nSTEP 6. $\\log_a b=\\frac{1}{\\log_b a}=\\frac{5}{a}=\\frac{5}{\\frac{2\\sqrt{10}}{5}}=\\frac{25}{2\\sqrt{10}}=\\frac{5\\sqrt{10}}{4}$이다.",
+  "statement": "# 16. (Unknown Source) - 지수함수와 로그함수의 교점\n\n## Problem\n\n$1$보다 큰 두 상수 $a$, $b$에 대하여 점 $A(0, a)$를 지나고 $x$축에 평행한 직선이 곡선 $y=b^x$와 만나는 점을 $B$라 하자. 점 $A$를 지나고 기울기가 $1$인 직선이 곡선 $y=b^x$와 제$1$사분면에서 만나는 점을 $C$, 점 $C$를 지나고 기울기가 $-1$인 직선이 곡선 $y=\\log_a x$와 만나는 점을 $D$라 할 때,\n\n직선 $AD$의 기울기가 $-\\frac{1}{4}$이다. 삼각형 $ACD$의 넓이가 삼각형 $ABC$의 넓이의 $10$배일 때, $\\log_a b$의 값은? [4점]\n\n[FIGURE: 좌표평면에서 원점 $O$, 점 $A$는 $y$축 위에 위치하고, 곡선 $y=b^x$와 $y=\\log_a x$가 그려져 있다. 점 $B$는 $A$를 지나는 수평선과 $y=b^x$의 교점, 점 $C$는 $A$를 지나고 기울기 $1$인 직선과 $y=b^x$의 교점, 점 $D$는 $C$를 지나고 기울기 $-1$인 직선과 $y=\\log_a x$의 교점이다.]",
+  "thinking_profile": {
+    "_version": 6,
+    "_unit": "note",
+    "_isV6": true,
+    "total_think_tokens": 3092,
+    "total_notes": 21,
+    "hint_distribution": {
+      "0": 18,
+      "1": 0,
+      "2": 2,
+      "3": 0,
+      "4": 1
+    },
+    "avg_hint_level": 0.38,
+    "genuine_miss_count": 0,
+    "absorbed_miss_count": 1,
+    "bonus_count": 16,
+    "highlight_notes": [
+      "note3",
+      "note7",
+      "note4"
+    ],
+    "hardest_note": {
+      "note_id": "note3",
+      "neuron": "사실3",
+      "hint_level": 4,
+      "structural_difficulty": 0.12,
+      "miss_type": "absorbed",
+      "note_text": "$y=b^x$와 $y=\\log_b x$는 직선 $y=x$에 대해 대칭이다"
+    },
+    "neuron_stats": {
+      "연산30": {
+        "type": "연산",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 0,
+        "avg_hint_level": 0
+      },
+      "전략25": {
+        "type": "전략",
+        "appearances": 7,
+        "total_hint": 2,
+        "hint_levels": [
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "bonus_count": 6,
+        "avg_hint_level": 0.29
+      },
+      "사실3": {
+        "type": "사실",
+        "appearances": 1,
+        "total_hint": 4,
+        "hint_levels": [
+          4
+        ],
+        "bonus_count": 0,
+        "avg_hint_level": 4
+      },
+      "연산20": {
+        "type": "연산",
+        "appearances": 1,
+        "total_hint": 2,
+        "hint_levels": [
+          2
+        ],
+        "bonus_count": 0,
+        "avg_hint_level": 2
+      },
+      "사실32": {
+        "type": "사실",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "연산10": {
+        "type": "연산",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 0,
+        "avg_hint_level": 0
+      },
+      "전략2": {
+        "type": "전략",
+        "appearances": 3,
+        "total_hint": 0,
+        "hint_levels": [
+          0,
+          0,
+          0
+        ],
+        "bonus_count": 3,
+        "avg_hint_level": 0
+      },
+      "연산13": {
+        "type": "연산",
+        "appearances": 2,
+        "total_hint": 0,
+        "hint_levels": [
+          0,
+          0
+        ],
+        "bonus_count": 2,
+        "avg_hint_level": 0
+      },
+      "연산2": {
+        "type": "연산",
+        "appearances": 2,
+        "total_hint": 0,
+        "hint_levels": [
+          0,
+          0
+        ],
+        "bonus_count": 2,
+        "avg_hint_level": 0
+      },
+      "연산4": {
+        "type": "연산",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "연산1": {
+        "type": "연산",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      }
+    },
+    "notes": [
+      {
+        "note_index": 1,
+        "note_id": "note1",
+        "neuron": "연산30",
+        "neuron_type": "연산",
+        "note_text": "$A(0,a)$를 지나는 기울기 $1$인 직선은 $y=x+a$이다",
+        "from": [
+          "단서B",
+          "단서D"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note1",
+            "in_target": "note1",
+            "attempt": 1,
+            "score": 1,
+            "reason": "학생이 'A(0,a)를 지나는 기울기 1인 직선 y=x+a'를 동일하게 도출함"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 116,
+            "discover_elapsed_ms": 7617,
+            "match_elapsed_ms": 2203,
+            "discover_input_tokens": 1159,
+            "discover_output_tokens": 341,
+            "match_input_tokens": 1431,
+            "match_output_tokens": 70,
+            "claude_output": "[시도] 내가 해볼 것: 점 B의 좌표를 단서B, C로부터 구하기\n\n[계산]\n점 A(0, a)를 지나고 x축에 평행한 직선은 y = a이다.\n이 직선이 곡선 y = b^x와 만나므로: b^x = a\nx = log_b(a)\n\n따라서 B의 좌표는 (log_b(a), a)이다.\n\n[결론] 점 B의 좌표는 $B\\!\\left(\\log_b a,\\ a\\right)$이다.",
+            "matches": [
+              {
+                "label": "L",
+                "score": 1,
+                "reason": "학생의 결론 B(log_b a, a)가 후보 L의 B(log_b a, a)와 완전히 일치한다"
+              }
+            ],
+            "eval_summary": "MISS attempt0 dry0 | 116tok | disc 7617ms + match 2203ms | bonus 1"
+          },
+          {
+            "attempt": 1,
+            "think_tokens": 55,
+            "discover_elapsed_ms": 6097,
+            "match_elapsed_ms": 3883,
+            "discover_input_tokens": 1214,
+            "discover_output_tokens": 301,
+            "match_input_tokens": 1420,
+            "match_output_tokens": 155,
+            "claude_output": "[시도] 점 A를 지나고 기울기 1인 직선의 방정식을 세워 점 C의 좌표를 표현해볼 것\n\n[계산]\n직선: $y = x + a$\n\n점 C는 곡선 $y = b^x$ 위의 점이므로, C의 $x$좌표를 $t$라 하면\n\n$$b^t = t + a \\quad (t > 0)$$\n\n따라서 $C = (t,\\ t+a)$\n\n[결론] 점 C의 좌표는 $C(t,\\ t+a)$ 이며, 이때 $b^t = t+a$ 를 만족한다. ($t>0$)",
+            "matches": [
+              {
+                "label": "A",
+                "score": 1,
+                "reason": "학생이 'A(0,a)를 지나는 기울기 1인 직선 y=x+a'를 동일하게 도출함"
+              },
+              {
+                "label": "B",
+                "score": 0.9,
+                "reason": "학생이 교점 C를 (t, t+a)로 표현했으며, 이는 후보의 C(k, a+k)와 수학적으로 동일하고 t>0 조건도 명시함"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 55tok | disc 6097ms + match 3883ms | bonus 1"
+          }
+        ]
+      },
+      {
+        "note_index": 2,
+        "note_id": "note2",
+        "neuron": "전략25",
+        "neuron_type": "전략",
+        "note_text": "$y=b^x$와의 제1사분면 교점을 $C(k, a+k)$ ($k>0$)으로 놓는다",
+        "from": [
+          "note1"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 3,
+        "note_id": "note3",
+        "neuron": "사실3",
+        "neuron_type": "사실",
+        "note_text": "$y=b^x$와 $y=\\log_b x$는 직선 $y=x$에 대해 대칭이다",
+        "from": [
+          "단서A"
+        ],
+        "hint_level": 4,
+        "is_bonus": false,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note3",
+        "miss_type": "absorbed",
+        "absorbed_in": "note4/시도2",
+        "absorb_reason": "y=b^x와 y=log_b x가 y=x에 대해 대칭임을 명시적으로 언급하고 활용함",
+        "partial_history": [],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 87,
+            "discover_elapsed_ms": 7255,
+            "match_elapsed_ms": 3311,
+            "discover_input_tokens": 1258,
+            "discover_output_tokens": 287,
+            "match_input_tokens": 1277,
+            "match_output_tokens": 118,
+            "claude_output": "[시도] 단서C를 이용해 점 B의 좌표를 구한다\n\n[계산]\n점 A(0, a)를 지나고 x축에 평행한 직선은 y = a\n\n이 직선이 y = b^x와 만나는 점 B:\nb^x = a → x = log_b(a)\n\n따라서 B(log_b(a), a)\n\n[결론] 점 B의 좌표는 **(log_b(a), a)** 이다.",
+            "matches": [
+              {
+                "label": "J",
+                "score": 0.7,
+                "reason": "학생은 B(log_b(a), a)를 구했고, 후보 J는 AB의 길이가 log_b(a)임을 언급한다. 학생의 결론이 J의 핵심 중간 결과인 'AB 길이 = log_b(a)'와 일치한다."
+              }
+            ],
+            "eval_summary": "MISS attempt0 dry0 | 87tok | disc 7255ms + match 3311ms | bonus 1"
+          },
+          {
+            "attempt": 1,
+            "think_tokens": 309,
+            "discover_elapsed_ms": 15351,
+            "match_elapsed_ms": 4576,
+            "discover_input_tokens": 1354,
+            "discover_output_tokens": 993,
+            "match_input_tokens": 1275,
+            "match_output_tokens": 183,
+            "claude_output": "## 다음 단계 진행\n\n[시도] 내가 해볼 것: 단서F를 이용해 직선 AD의 기울기 조건을 수식으로 표현한다\n\n[계산]\n- $A(0, a)$, $D = (d,\\ \\log_a d)$ (단, $D$는 $y = \\log_a x$ 위의 점)\n- 직선 $AD$의 기울기:\n$$\\frac{\\log_a d - a}{d - 0} = -\\frac{1}{4}$$\n- 정리하면:\n$$\\log_a d = a - \\frac{d}{4}$$\n\n[결론] 점 $D$의 $x$좌표를 $d$라 하면, **$\\log_a d = a - \\dfrac{d}{4}$** 가 성립한다.",
+            "matches": [
+              {
+                "label": "E",
+                "score": 0.5,
+                "reason": "학생은 기울기를 (log_a d - a)/d = -1/4로 표현했고, 후보 E는 (k-a)/(a+k)로 표현했다. 학생은 D의 좌표를 (d, log_a d)로 일반적으로 놓았으나, 후보 노트는 D=(a+k, k)로 구체화된 형태. 기울기 식을 세우는 동일한 접근이지만 D의 좌표 표현이 달라 부분 일치"
+              }
+            ],
+            "eval_summary": "MISS attempt1 dry0 | 309tok | disc 15351ms + match 4576ms | bonus 0"
+          },
+          {
+            "attempt": 2,
+            "think_tokens": 299,
+            "discover_elapsed_ms": 16073,
+            "match_elapsed_ms": 4685,
+            "discover_input_tokens": 1401,
+            "discover_output_tokens": 1122,
+            "match_input_tokens": 1479,
+            "match_output_tokens": 239,
+            "claude_output": "[시도] 단서F(직선 AD의 기울기 = -1/4)와 점 C를 지나는 기울기 -1인 직선의 교점 조건으로 점 D의 좌표를 구한다.\n\n[계산]\nC = (3a/5, 8a/5)이므로, C를 지나고 기울기 -1인 직선:\n$$y = -x + \\frac{3a}{5} + \\frac{8a}{5} = -x + \\frac{11a}{5}$$\n\nD = (d, log_a d)로 놓으면, 직선 AD의 기울기 조건:\n$$\\frac{\\log_a d - a}{d} = -\\frac{1}{4} \\implies \\log_a d = a - \\frac{d}{4}$$\n\nD가 위 직선 위에도 있으므로:\n$$\\log_a d = -d + \\frac{11a}{5}$$\n\n두 식을 같다고 놓으면:\n$$a - \\frac{d}{4} = -d + \\frac{11a}{5} \\implies \\frac{3d}{4} = \\frac{6a}{5} \\implies d = \\frac{8a}{5}$$\n\n따라서 $\\log_a d = a - \\frac{1}{4",
+            "matches": [
+              {
+                "label": "H",
+                "score": 1,
+                "reason": "학생의 결론 D(8a/5, 3a/5)와 후보 H의 D(8a/5, 3a/5)가 완전히 일치한다"
+              },
+              {
+                "label": "G",
+                "score": 0.9,
+                "reason": "학생이 C = (3a/5, 8a/5)를 명시적으로 사용하였으며 이는 후보 G와 동일하다"
+              },
+              {
+                "label": "F",
+                "score": 0.7,
+                "reason": "학생이 직선 AD의 기울기 -1/4 조건을 사용하여 d=8a/5를 구하는 과정에서 동일한 비율 관계(5k=3a, k=3a/5)를 활용하였다"
+              }
+            ],
+            "eval_summary": "MISS attempt2 dry1 | 299tok | disc 16073ms + match 4685ms | bonus 3"
+          },
+          {
+            "attempt": 3,
+            "think_tokens": 227,
+            "discover_elapsed_ms": 11740,
+            "match_elapsed_ms": 2914,
+            "discover_input_tokens": 1541,
+            "discover_output_tokens": 947,
+            "match_input_tokens": 1197,
+            "match_output_tokens": 98,
+            "claude_output": "[시도] 삼각형 ACD의 넓이를 좌표로 직접 계산한다\n\n[계산]\nA=(0, a), C=(3a/5, 8a/5), D=(8a/5, 3a/5)이므로\n\n$$S_{ACD} = \\frac{1}{2}\\left|\\det\\begin{pmatrix}3a/5 & 3a/5 \\\\ 8a/5 & -2a/5\\end{pmatrix}\\right|$$\n\n$$= \\frac{1}{2}\\left|\\frac{3a}{5}\\cdot\\left(-\\frac{2a}{5}\\right) - \\frac{3a}{5}\\cdot\\frac{8a}{5}\\right| = \\frac{1}{2}\\left|-\\frac{6a^2}{25} - \\frac{24a^2}{25}\\right| = \\frac{1}{2}\\cdot\\frac{30a^2}{25} = \\frac{3a^2}{5}$$\n\n[결론] 삼각형 ACD의 넓이는 $\\dfrac{3a^2}{5}$이다.",
+            "matches": [
+              {
+                "label": "I",
+                "score": 1,
+                "reason": "학생의 결론 S_ACD = 3a²/5와 노트 I의 결론이 완전히 일치하며, 노트 I는 다른 방법(밑변×높이)으로 같은 값을 도출함"
+              }
+            ],
+            "eval_summary": "MISS attempt3 dry1 | 227tok | disc 11740ms + match 2914ms | bonus 1"
+          },
+          {
+            "attempt": 4,
+            "think_tokens": 186,
+            "discover_elapsed_ms": 9826,
+            "match_elapsed_ms": 2345,
+            "discover_input_tokens": 1598,
+            "discover_output_tokens": 737,
+            "match_input_tokens": 1095,
+            "match_output_tokens": 86,
+            "claude_output": "[시도] 내가 해볼 것: $S_{ACD} = 10 \\times S_{ABC}$ 조건에 대입하여 방정식 세우기\n\n[계산]\n$$S_{ACD} = \\frac{3a^2}{5}, \\quad S_{ABC} = \\frac{1}{2} \\cdot \\log_b a \\cdot \\frac{3a}{5}$$\n\n조건 대입:\n$$\\frac{3a^2}{5} = 10 \\cdot \\frac{1}{2} \\cdot \\log_b a \\cdot \\frac{3a}{5}$$\n$$\\frac{3a^2}{5} = 5 \\cdot \\frac{3a}{5} \\cdot \\log_b a = 3a \\cdot \\log_b a$$\n$$\\frac{a}{5} = \\log_b a$$\n\n[결론] $\\log_b a = \\dfrac{a}{5}$ 이다.",
+            "matches": [
+              {
+                "label": "K",
+                "score": 1,
+                "reason": "학생의 결론 'log_b a = a/5'와 후보 K의 결론이 완전히 일치하며, 도출 과정도 동일한 방정식에서 시작함"
+              }
+            ],
+            "eval_summary": "MISS attempt4 dry1 | 186tok | disc 9826ms + match 2345ms | bonus 1"
+          },
+          {
+            "attempt": 5,
+            "think_tokens": 156,
+            "discover_elapsed_ms": 8431,
+            "match_elapsed_ms": 4253,
+            "discover_input_tokens": 1667,
+            "discover_output_tokens": 623,
+            "match_input_tokens": 1020,
+            "match_output_tokens": 236,
+            "claude_output": "[시도] 점 C가 곡선 $y=b^x$ 위에 있다는 조건을 활용한다.\n\n[계산]\n$C\\!\\left(\\frac{3a}{5},\\,\\frac{8a}{5}\\right)$가 $y=b^x$ 위의 점이므로:\n$$b^{3a/5} = \\frac{8a}{5}$$\n단계 8에서 $\\log_b a = \\frac{a}{5}$, 즉 $b^{a/5} = a$이므로:\n$$b^{3a/5} = \\left(b^{a/5}\\right)^3 = a^3$$\n따라서 $a^3 = \\dfrac{8a}{5}$, 즉 $a^2 = \\dfrac{8}{5}$\n\n[결론] $a^2 = \\dfrac{8}{5}$이다.",
+            "matches": [
+              {
+                "label": "L",
+                "score": 1,
+                "reason": "학생이 'b^{a/5} = a'를 명시적으로 사용함"
+              },
+              {
+                "label": "M",
+                "score": 1,
+                "reason": "학생이 'b^{3a/5} = 8a/5'를 명시적으로 서술함"
+              },
+              {
+                "label": "N",
+                "score": 1,
+                "reason": "학생이 '(b^{a/5})^3 = a^3이므로 b^{3a/5} = a^3'을 명시적으로 서술함"
+              },
+              {
+                "label": "O",
+                "score": 1,
+                "reason": "학생이 'a^3 = 8a/5에서 a^2 = 8/5'를 명시적으로 결론으로 서술함"
+              }
+            ],
+            "eval_summary": "MISS attempt5 dry1 | 156tok | disc 8431ms + match 4253ms | bonus 4"
+          },
+          {
+            "attempt": 6,
+            "think_tokens": 214,
+            "discover_elapsed_ms": 12608,
+            "match_elapsed_ms": 2176,
+            "discover_input_tokens": 1804,
+            "discover_output_tokens": 938,
+            "match_input_tokens": 786,
+            "match_output_tokens": 78,
+            "claude_output": "[시도] 내가 해볼 것: 단계 8의 결과로부터 $\\log_a b$를 $a$로 표현하기\n\n[계산]\n단계 8에서 $\\log_b a = \\dfrac{a}{5}$를 얻었으므로,\n\n$$\\log_a b = \\frac{1}{\\log_b a} = \\frac{1}{\\dfrac{a}{5}} = \\frac{5}{a}$$\n\n[결론] $\\log_a b = \\dfrac{5}{a}$ 이다.",
+            "matches": [
+              {
+                "label": "Q",
+                "score": 1,
+                "reason": "학생의 결론 log_a b = 5/a가 후보 Q의 log_a b = 1/log_b a = 5/a와 완전히 일치한다"
+              }
+            ],
+            "eval_summary": "MISS attempt6 dry1 | 214tok | disc 12608ms + match 2176ms | bonus 1"
+          },
+          {
+            "attempt": 7,
+            "think_tokens": 166,
+            "discover_elapsed_ms": 7690,
+            "match_elapsed_ms": 3060,
+            "discover_input_tokens": 1838,
+            "discover_output_tokens": 658,
+            "match_input_tokens": 819,
+            "match_output_tokens": 157,
+            "claude_output": "[시도] $\\log_a b = \\frac{5}{a}$와 $a^2 = \\frac{8}{5}$를 결합하여 $\\log_a b$의 값을 구한다.\n\n[계산]\n$$(\\log_a b)^2 = \\frac{25}{a^2} = \\frac{25}{\\dfrac{8}{5}} = \\frac{25 \\times 5}{8} = \\frac{125}{8}$$\n\n$$\\log_a b = \\sqrt{\\frac{125}{8}} = \\frac{5\\sqrt{5}}{2\\sqrt{2}} = \\frac{5\\sqrt{10}}{4}$$\n\n($a>1$이므로 양수값 선택)\n\n[결론] $\\log_a b = \\dfrac{5\\sqrt{10}}{4}$",
+            "matches": [
+              {
+                "label": "R",
+                "score": 1,
+                "reason": "학생의 최종 결론 log_a b = 5√10/4 와 완전히 일치하며, 계산 과정도 동일한 방식으로 도출됨"
+              },
+              {
+                "label": "P",
+                "score": 0.7,
+                "reason": "학생이 a²=8/5와 a>1 조건을 사용하여 계산했으며, a=2√10/5 임을 암묵적으로 활용하고 있음"
+              }
+            ],
+            "eval_summary": "MISS attempt7 dry1 | 166tok | disc 7690ms + match 3060ms | bonus 2"
+          }
+        ]
+      },
+      {
+        "note_index": 4,
+        "note_id": "note4",
+        "neuron": "연산20",
+        "neuron_type": "연산",
+        "note_text": "$C(k,a+k)$를 직선 $y=x$에 대해 대칭시킨 점은 $(a+k,k)$이다",
+        "from": [
+          "note2"
+        ],
+        "hint_level": 2,
+        "is_bonus": false,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note4",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note4",
+            "in_target": "note4",
+            "attempt": 2,
+            "score": 1,
+            "reason": "학생이 'C(k, a+k)를 y=x에 대해 대칭이동하면 (a+k, k)'라고 명시적으로 계산함 - 완전 일치"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 235,
+            "discover_elapsed_ms": 12134,
+            "match_elapsed_ms": 4322,
+            "discover_input_tokens": 1299,
+            "discover_output_tokens": 636,
+            "match_input_tokens": 648,
+            "match_output_tokens": 159,
+            "claude_output": "[시도] 단서C에서 B의 좌표를 구체적으로 구한다\n\n[계산]\n점 B는 $A(0, a)$를 지나는 $x$축에 평행한 직선($y = a$)과 곡선 $y = b^x$의 교점이므로:\n\n$$b^x = a \\implies x = \\log_b a$$\n\n따라서 $B = (\\log_b a,\\ a)$\n\n[결론] $B = (\\log_b a,\\ a)$이다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 0.5,
+                "reason": "학생은 b^x = a → x = log_b a를 통해 B를 구했는데, 이는 y=b^x와 y=log_b x의 대칭 관계를 암묵적으로 활용한 것이나, 직선 y=x에 대한 대칭이라는 노트 A의 핵심 명제를 명시적으로 서술하지는 않았다. 부분적 연관성만 있음"
+              }
+            ],
+            "eval_summary": "MISS attempt0 dry0 | 235tok | disc 12134ms + match 4322ms | bonus 0"
+          },
+          {
+            "attempt": 1,
+            "think_tokens": 66,
+            "discover_elapsed_ms": 4751,
+            "match_elapsed_ms": 5361,
+            "discover_input_tokens": 1371,
+            "discover_output_tokens": 225,
+            "match_input_tokens": 621,
+            "match_output_tokens": 221,
+            "claude_output": "[시도] 단서B, C를 이용해 점 B의 좌표를 구한다\n\n[계산]\n점 A(0, a)를 지나고 x축에 평행한 직선은 y = a\n\n이 직선이 곡선 y = b^x와 만나는 점 B:\n$$b^x = a \\implies x = \\log_b a$$\n\n[결론] **B = (log_b a, a)**",
+            "matches": [
+              {
+                "label": "A",
+                "score": 0.5,
+                "reason": "학생은 y=b^x와 y=a(수평선)의 교점을 구했는데, 이는 y=b^x와 y=log_b x의 대칭성을 직접 언급하진 않았지만 관련 곡선을 다루고 있다. 직접적 언급 없이 부분적 연관만 있음"
+              },
+              {
+                "label": "D",
+                "score": 0.45,
+                "reason": "학생이 구한 B=(log_b a, a)는 후보 D의 D(a+k, k) 형태와 구조적으로 유사하나, 변수 대응이 명확하지 않아 부분적 일치"
+              }
+            ],
+            "eval_summary": "MISS attempt1 dry1 | 66tok | disc 4751ms + match 5361ms | bonus 0"
+          },
+          {
+            "attempt": 2,
+            "think_tokens": 274,
+            "discover_elapsed_ms": 17844,
+            "match_elapsed_ms": 3679,
+            "discover_input_tokens": 1351,
+            "discover_output_tokens": 1167,
+            "match_input_tokens": 812,
+            "match_output_tokens": 227,
+            "claude_output": "[시도] 내가 해볼 것: C(k, a+k)가 y=b^x 위의 점이라는 사실(note2)과 y=b^x, y=log_b x의 대칭성(note3)을 결합한다.\n\n[계산]\n- note2: C(k, a+k)는 y=b^x 위에 있으므로 b^k = a+k\n- note3: y=b^x와 y=log_b x는 y=x에 대해 대칭\n- 따라서 C(k, a+k)를 y=x에 대해 대칭이동하면 (a+k, k)이고, 이 점은 y=log_b x 위에 있다\n- 즉, log_b(a+k) = k\n\n[결론] C(k, a+k)의 y=x에 대한 대칭점 **(a+k, k)는 y = log_b x 위의 점**이므로, **log_b(a+k) = k** (즉, b^k = a+k 와 동치)가 성립한다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 1,
+                "reason": "학생이 'y=b^x와 y=log_b x는 y=x에 대해 대칭'이라고 명시적으로 서술함 - 완전 일치"
+              },
+              {
+                "label": "B",
+                "score": 1,
+                "reason": "학생이 'C(k, a+k)를 y=x에 대해 대칭이동하면 (a+k, k)'라고 명시적으로 계산함 - 완전 일치"
+              },
+              {
+                "label": "C",
+                "score": 1,
+                "reason": "학생이 '(a+k, k)는 y=log_b x 위의 점'이라고 명시적으로 결론 내림 - 완전 일치"
+              }
+            ],
+            "eval_summary": "FOUND H2 | 274tok | disc 17844ms + match 3679ms | bonus 2"
+          }
+        ]
+      },
+      {
+        "note_index": 5,
+        "note_id": "note5",
+        "neuron": "사실32",
+        "neuron_type": "사실",
+        "note_text": "$(a+k,k)$는 $y=\\log_b x$ 위의 점이다",
+        "from": [
+          "note3",
+          "note4"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note4",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 6,
+        "note_id": "note7",
+        "neuron": "전략25",
+        "neuron_type": "전략",
+        "note_text": "기울기 $-1$인 직선과 $y=\\log_a x$의 교점 조건에 부합하므로 $D(a+k,k)$이다",
+        "from": [
+          "note5",
+          "note6",
+          "단서E"
+        ],
+        "hint_level": 2,
+        "is_bonus": false,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note7",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note7",
+            "in_target": "note7",
+            "attempt": 2,
+            "score": 0.75,
+            "reason": "학생은 점 (a+k, k)가 C를 지나고 기울기 -1인 직선 위에 놓임을 증명했으며, 이는 A의 결론인 D(a+k, k)가 기울기 -1 직선 조건에 부합한다는 것과 수학적으로 동일한 내용이다. 다만 학생은 D라는 명칭을 명시하지 않았고 y=log_a x 교점 조건을 언급하지 않아 완전 일치는 아님"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 165,
+            "discover_elapsed_ms": 9653,
+            "match_elapsed_ms": 1910,
+            "discover_input_tokens": 1376,
+            "discover_output_tokens": 479,
+            "match_input_tokens": 522,
+            "match_output_tokens": 8,
+            "claude_output": "[시도] 단서C를 이용해 점 B의 좌표를 구해본다\n\n[계산]\n점 $A(0, a)$를 지나고 $x$축에 평행한 직선은 $y = a$이다.\n\n이 직선이 $y = b^x$와 만나는 점 $B$에서:\n$$b^x = a \\implies x = \\log_b a$$\n\n[결론] $B\\!\\left(\\log_b a,\\ a\\right)$이다.",
+            "matches": [],
+            "eval_summary": "MISS attempt0 dry0 | 165tok | disc 9653ms + match 1910ms | bonus 0"
+          },
+          {
+            "attempt": 1,
+            "think_tokens": 239,
+            "discover_elapsed_ms": 15630,
+            "match_elapsed_ms": 2443,
+            "discover_input_tokens": 1492,
+            "discover_output_tokens": 963,
+            "match_input_tokens": 735,
+            "match_output_tokens": 8,
+            "claude_output": "[시도] 점 D의 x좌표를 k로 표현하기 위해, \"D가 직선 CD 위에 있다\"는 조건과 \"직선 AD의 기울기 = -1/4\" 조건을 연립한다.\n\n[계산]\nD = $(d,\\, \\log_a d)$ 로 놓으면,\n\n**조건1 (D가 기울기 -1인 직선 CD 위):**\n$$\\log_a d = -(d - k) + (a+k) = -d + a + 2k$$\n\n**조건2 (직선 AD의 기울기 = -1/4):**\n$$\\frac{\\log_a d - a}{d - 0} = -\\frac{1}{4} \\implies \\log_a d = a - \\frac{d}{4}$$\n\n두 식을 연립:\n$$a - \\frac{d}{4} = -d + a + 2k \\implies \\frac{3d}{4} = 2k \\implies d = \\frac{8k}{3}$$\n\n[결론] 점 D의 x좌표는 $\\dfrac{8k}{3}$ 이므로, $D\\!\\left(\\dfrac{8k}{3},\\; a - \\dfrac{2k}{3}\\right)$이다.",
+            "matches": [],
+            "eval_summary": "MISS attempt1 dry1 | 239tok | disc 15630ms + match 2443ms | bonus 0"
+          },
+          {
+            "attempt": 2,
+            "think_tokens": 254,
+            "discover_elapsed_ms": 17002,
+            "match_elapsed_ms": 4867,
+            "discover_input_tokens": 1436,
+            "discover_output_tokens": 1108,
+            "match_input_tokens": 628,
+            "match_output_tokens": 190,
+            "claude_output": "[시도] 점 $C(k, a+k)$를 지나고 기울기가 $-1$인 직선에 점 $(a+k,\\,k)$가 놓이는지 확인한다\n\n[계산]\n점 $C(k,\\,a+k)$를 지나고 기울기 $-1$인 직선의 방정식:\n$$y = -(x-k)+(a+k) = -x+a+2k$$\n$x=a+k$를 대입하면:\n$$y = -(a+k)+a+2k = k$$\n→ 점 $(a+k,\\,k)$를 대입했더니 정확히 성립한다.\n\n[결론] 점 $(a+k,\\,k)$는 점 $C$를 지나고 기울기가 $-1$인 직선 위에 놓인다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 0.75,
+                "reason": "학생은 점 (a+k, k)가 C를 지나고 기울기 -1인 직선 위에 놓임을 증명했으며, 이는 A의 결론인 D(a+k, k)가 기울기 -1 직선 조건에 부합한다는 것과 수학적으로 동일한 내용이다. 다만 학생은 D라는 명칭을 명시하지 않았고 y=log_a x 교점 조건을 언급하지 않아 완전 일치는 아님"
+              }
+            ],
+            "eval_summary": "FOUND H2 | 254tok | disc 17002ms + match 4867ms | bonus 0"
+          }
+        ]
+      },
+      {
+        "note_index": 7,
+        "note_id": "note8",
+        "neuron": "연산10",
+        "neuron_type": "연산",
+        "note_text": "직선 $AD$의 기울기는 $\\frac{k-a}{(a+k)-0}=\\frac{k-a}{a+k}$이다",
+        "from": [
+          "단서B",
+          "note7"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note8",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note8",
+            "in_target": "note8",
+            "attempt": 0,
+            "score": 1,
+            "reason": "학생의 계산에서 기울기를 (k-a)/(a+k)로 정확히 동일하게 표현함"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 44,
+            "discover_elapsed_ms": 6083,
+            "match_elapsed_ms": 4154,
+            "discover_input_tokens": 1430,
+            "discover_output_tokens": 330,
+            "match_input_tokens": 561,
+            "match_output_tokens": 65,
+            "claude_output": "[시도] 내가 해볼 것: 단서F(직선 AD의 기울기 = -1/4)를 이용해 k와 a의 관계식 구하기\n\n[계산]\n$$A(0,\\,a),\\quad D(a+k,\\,k)$$\n기울기 $= \\dfrac{k - a}{(a+k) - 0} = \\dfrac{k-a}{a+k} = -\\dfrac{1}{4}$\n\n$$4(k-a) = -(a+k)$$\n$$4k - 4a = -a - k$$\n$$5k = 3a \\quad \\Rightarrow \\quad k = \\dfrac{3a}{5}$$\n\n[결론] 직선 $AD$의 기울기 조건으로부터 $k = \\dfrac{3a}{5}$ 임을 알았다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 1,
+                "reason": "학생의 계산에서 기울기를 (k-a)/(a+k)로 정확히 동일하게 표현함"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 44tok | disc 6083ms + match 4154ms | bonus 0"
+          }
+        ]
+      },
+      {
+        "note_index": 8,
+        "note_id": "note9",
+        "neuron": "전략2",
+        "neuron_type": "전략",
+        "note_text": "$\\frac{k-a}{a+k}=-\\frac{1}{4}$에서 $4(k-a)=-(a+k)$이므로 $5k=3a$, 즉 $k=\\frac{3a}{5}$이다",
+        "from": [
+          "note8",
+          "단서F"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 9,
+        "note_id": "note10",
+        "neuron": "전략25",
+        "neuron_type": "전략",
+        "note_text": "$C\\!\\left(\\frac{3a}{5},\\,\\frac{8a}{5}\\right)$이다",
+        "from": [
+          "note2",
+          "note9"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 10,
+        "note_id": "note11",
+        "neuron": "전략25",
+        "neuron_type": "전략",
+        "note_text": "$D\\!\\left(\\frac{8a}{5},\\,\\frac{3a}{5}\\right)$이다",
+        "from": [
+          "note7",
+          "note9"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 11,
+        "note_id": "note15",
+        "neuron": "연산13",
+        "neuron_type": "연산",
+        "note_text": "$S_{ACD}=\\frac{1}{2}\\cdot\\frac{3a\\sqrt{2}}{5}\\cdot a\\sqrt{2}=\\frac{3a^2}{5}$이다",
+        "from": [
+          "note12",
+          "note13",
+          "note14"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 12,
+        "note_id": "note16",
+        "neuron": "연산2",
+        "neuron_type": "연산",
+        "note_text": "$b^x=a$에서 $x=\\log_b a$이므로 $B(\\log_b a,\\,a)$이다",
+        "from": [
+          "단서B",
+          "단서C"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 13,
+        "note_id": "note17",
+        "neuron": "연산13",
+        "neuron_type": "연산",
+        "note_text": "$AB$는 $x$축에 평행하고 길이 $\\log_b a$, 높이 $\\frac{8a}{5}-a=\\frac{3a}{5}$이므로 $S_{ABC}=\\frac{1}{2}\\cdot\\log_b a\\cdot\\frac{3a}{5}$이다",
+        "from": [
+          "단서B",
+          "note16",
+          "note10"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 14,
+        "note_id": "note18",
+        "neuron": "전략2",
+        "neuron_type": "전략",
+        "note_text": "$\\frac{3a^2}{5}=10\\cdot\\frac{1}{2}\\cdot\\log_b a\\cdot\\frac{3a}{5}$에서 $\\log_b a=\\frac{a}{5}$이다",
+        "from": [
+          "note15",
+          "note17",
+          "단서G"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 15,
+        "note_id": "note19",
+        "neuron": "연산2",
+        "neuron_type": "연산",
+        "note_text": "$b^{a/5}=a$이다",
+        "from": [
+          "note18"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 16,
+        "note_id": "note20",
+        "neuron": "전략25",
+        "neuron_type": "전략",
+        "note_text": "$C$는 $y=b^x$ 위의 점이므로 $b^{3a/5}=\\frac{8a}{5}$이다",
+        "from": [
+          "note10"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 17,
+        "note_id": "note21",
+        "neuron": "연산4",
+        "neuron_type": "연산",
+        "note_text": "$(b^{a/5})^3=a^3$이므로 $b^{3a/5}=a^3$이다",
+        "from": [
+          "note19"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 18,
+        "note_id": "note22",
+        "neuron": "전략2",
+        "neuron_type": "전략",
+        "note_text": "$a^3=\\frac{8a}{5}$에서 $a^2=\\frac{8}{5}$이다",
+        "from": [
+          "note20",
+          "note21"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 19,
+        "note_id": "note23",
+        "neuron": "전략25",
+        "neuron_type": "전략",
+        "note_text": "$a>1$이므로 $a=\\sqrt{\\frac{8}{5}}=\\frac{2\\sqrt{10}}{5}$이다",
+        "from": [
+          "note22",
+          "단서A"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 20,
+        "note_id": "note24",
+        "neuron": "연산1",
+        "neuron_type": "연산",
+        "note_text": "$\\log_a b=\\frac{1}{\\log_b a}=\\frac{5}{a}$이다",
+        "from": [
+          "note18"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 21,
+        "note_id": "END",
+        "neuron": "전략25",
+        "neuron_type": "전략",
+        "note_text": "$\\log_a b=\\frac{5}{\\frac{2\\sqrt{10}}{5}}=\\frac{25}{2\\sqrt{10}}=\\frac{5\\sqrt{10}}{4}$이다",
+        "from": [
+          "note23",
+          "note24"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      }
+    ],
+    "_debug": "v7-split"
+  }
+}

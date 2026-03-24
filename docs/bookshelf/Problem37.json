@@ -1,0 +1,873 @@
+{
+  "problem_id": "Problem37",
+  "answer": "127/27",
+  "clues": [
+    {
+      "id": "단서A",
+      "text": "$f(x) = \\begin{cases} a^{x-1}+1 & (x<2) \\\\ -2x+9 & (x \\geq 2) \\end{cases}$"
+    },
+    {
+      "id": "단서B",
+      "text": "$1 < a < 4$인 실수 $a$"
+    },
+    {
+      "id": "단서C",
+      "text": "$g(t) = \\max\\{f(t),\\, f(t+2)\\}$"
+    },
+    {
+      "id": "단서D",
+      "text": "조건 (가): $g(t)=k$를 만족시키는 실수 $t$의 개수가 3이다"
+    },
+    {
+      "id": "단서E",
+      "text": "조건 (나): $g(k-3)=k$"
+    }
+  ],
+  "skeleton": [
+    {
+      "from": "단서A",
+      "to": "note1",
+      "neuron": "연산7",
+      "note": "$f(t+2)=\\begin{cases} a^{t+1}+1 & (t<0) \\\\ -2t+5 & (t \\geq 0) \\end{cases}$이다",
+      "main": true,
+      "step": 1
+    },
+    {
+      "from": "단서B",
+      "to": "note2",
+      "neuron": "사실5",
+      "note": "$a>1$이므로 $y=a^x$는 순증가이다",
+      "main": false,
+      "step": 2
+    },
+    {
+      "from": [
+        "note2",
+        "단서A"
+      ],
+      "to": "note3",
+      "neuron": "사실41",
+      "note": "$f(t)=a^{t-1}+1$은 $t<2$에서 순증가이다",
+      "main": false,
+      "step": 2
+    },
+    {
+      "from": [
+        "note2",
+        "note1"
+      ],
+      "to": "note4",
+      "neuron": "사실41",
+      "note": "$f(t+2)=a^{t+1}+1$은 $t<0$에서 순증가이다",
+      "main": false,
+      "step": 2
+    },
+    {
+      "from": "note2",
+      "to": "note5",
+      "neuron": "사실51",
+      "note": "$t<0$에서 $t+1>t-1$이므로 $a^{t+1}>a^{t-1}$이다",
+      "main": true,
+      "step": 2
+    },
+    {
+      "from": "note5",
+      "to": "note6",
+      "neuron": "연산21",
+      "note": "$a^{t+1}+1>a^{t-1}+1$, 즉 $f(t+2)>f(t)$이다",
+      "main": true,
+      "step": 2
+    },
+    {
+      "from": "note6",
+      "to": "note7",
+      "neuron": "사실44",
+      "note": "$t<0$에서 $g(t)=f(t+2)=a^{t+1}+1$이다",
+      "main": true,
+      "step": 2
+    },
+    {
+      "from": [
+        "단서A",
+        "note1"
+      ],
+      "to": "note8",
+      "neuron": "전략28",
+      "note": "$t \\geq 2$에서 $f(t)-f(t+2)=(-2t+9)-(-2t+5)=4>0$이다",
+      "main": true,
+      "step": 2
+    },
+    {
+      "from": "note8",
+      "to": "note9",
+      "neuron": "사실44",
+      "note": "$t \\geq 2$에서 $g(t)=f(t)=-2t+9$이다",
+      "main": true,
+      "step": 2
+    },
+    {
+      "from": "note1",
+      "to": "note10",
+      "neuron": "사실38",
+      "note": "$0 \\leq t<2$에서 $f(t+2)=-2t+5$는 순감소이다",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": [
+        "note3",
+        "note10"
+      ],
+      "to": "note11",
+      "neuron": "전략25",
+      "note": "$t=1$에서 $f(1)=a^0+1=2$이고 $f(3)=-2+5=3$이므로 $f(t+2)>f(t)$이다",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": [
+        "note3",
+        "note10"
+      ],
+      "to": "note12",
+      "neuron": "전략25",
+      "note": "$t \\to 2^-$에서 $f(t) \\to a+1$이고 $f(t+2) \\to 1$이다",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": [
+        "note12",
+        "단서B"
+      ],
+      "to": "note13",
+      "neuron": "연산21",
+      "note": "$a>1$이므로 $a+1>2>1$이고 $f(t)>f(t+2)$이다",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": [
+        "note11",
+        "note13"
+      ],
+      "to": "note14",
+      "neuron": "사실22",
+      "note": "구간 $(1,2)$에서 $f(t)-f(t+2)=0$인 점 $c$가 존재한다",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": [
+        "note3",
+        "note10"
+      ],
+      "to": "note15",
+      "neuron": "전략28",
+      "note": "$h(t)=f(t)-f(t+2)=a^{t-1}+1-(-2t+5)=a^{t-1}+2t-4$이다",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": [
+        "note3",
+        "note10"
+      ],
+      "to": "note16",
+      "neuron": "사실41",
+      "note": "$a^{t-1}$은 순증가이고 $2t$도 순증가이므로 $h(t)=a^{t-1}+2t-4$는 순증가이다",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": [
+        "note16",
+        "note14"
+      ],
+      "to": "note17",
+      "neuron": "사실43",
+      "note": "$h$는 순증가이므로 교점 $c$는 유일하다",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": [
+        "note16",
+        "note17"
+      ],
+      "to": "note18",
+      "neuron": "사실68",
+      "note": "$t<c$이면 $h(t)<0$, 즉 $f(t+2)>f(t)$이고, $t>c$이면 $h(t)>0$, 즉 $f(t)>f(t+2)$이다",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": [
+        "단서C",
+        "note7",
+        "note18",
+        "note9"
+      ],
+      "to": "note19",
+      "neuron": "사실44",
+      "note": "$g(t)=\\begin{cases} a^{t+1}+1 & (t<0) \\\\ -2t+5 & (0 \\leq t<c) \\\\ a^{t-1}+1 & (c \\leq t<2) \\\\ -2t+9 & (t \\geq 2) \\end{cases}$이다",
+      "main": true,
+      "step": 4
+    },
+    {
+      "from": "note14",
+      "to": "note20",
+      "neuron": "전략25",
+      "note": "$g(c)=a^{c-1}+1=-2c+5$이다",
+      "main": true,
+      "step": 4
+    },
+    {
+      "from": [
+        "note4",
+        "note19"
+      ],
+      "to": "note21",
+      "neuron": "사실19",
+      "note": "$t<0$에서 $g(t)=a^{t+1}+1$의 치역은 $(1, a+1)$이다",
+      "main": false,
+      "step": 5
+    },
+    {
+      "from": [
+        "note10",
+        "note19"
+      ],
+      "to": "note22",
+      "neuron": "사실19",
+      "note": "$0 \\leq t<c$에서 $g(t)=-2t+5$의 치역은 $(-2c+5, 5]$이다",
+      "main": false,
+      "step": 5
+    },
+    {
+      "from": [
+        "note3",
+        "note19"
+      ],
+      "to": "note23",
+      "neuron": "사실19",
+      "note": "$c \\leq t<2$에서 $g(t)=a^{t-1}+1$의 치역은 $[a^{c-1}+1, a+1)$이다",
+      "main": false,
+      "step": 5
+    },
+    {
+      "from": "note19",
+      "to": "note24",
+      "neuron": "사실19",
+      "note": "$t \\geq 2$에서 $g(t)=-2t+9$의 치역은 $(-\\infty, 5]$이다",
+      "main": false,
+      "step": 5
+    },
+    {
+      "from": [
+        "단서D",
+        "note19",
+        "note21",
+        "note22",
+        "note23",
+        "note24"
+      ],
+      "to": "note25",
+      "neuron": "전략5",
+      "note": "$g(t)=k$의 근이 3개가 되려면 수평선 $y=k$가 각 구간에서 적절한 교점 수를 만들어야 한다",
+      "main": true,
+      "step": 5
+    },
+    {
+      "from": [
+        "note25",
+        "note20"
+      ],
+      "to": "note26",
+      "neuron": "사실43",
+      "note": "$k=g(c)=-2c+5$이면 $[0,c)$에서 0개, $t=c$에서 1개, $(c,2)$에서 0개이다",
+      "main": true,
+      "step": 5
+    },
+    {
+      "from": [
+        "note26",
+        "note21",
+        "note24"
+      ],
+      "to": "note27",
+      "neuron": "사실43",
+      "note": "$1<k<a+1$이면 $t<0$에서 1개, $k \\leq 5$이면 $t \\geq 2$에서 1개이므로 총 3개이다",
+      "main": true,
+      "step": 5
+    },
+    {
+      "from": "note27",
+      "to": "note28",
+      "neuron": "전략5",
+      "note": "조건 (가)를 만족시키려면 $k=g(c)=-2c+5$이다",
+      "main": true,
+      "step": 5
+    },
+    {
+      "from": "note28",
+      "to": "note29",
+      "neuron": "연산21",
+      "note": "$c \\in (1,2)$이므로 $k=-2c+5 \\in (1,3)$이고 $k-3 \\in (-2,0)$이다",
+      "main": true,
+      "step": 6
+    },
+    {
+      "from": [
+        "단서E",
+        "note29",
+        "note7"
+      ],
+      "to": "note30",
+      "neuron": "전략25",
+      "note": "$k-3<0$이므로 $g(k-3)=a^{(k-3)+1}+1=a^{k-2}+1=k$이다",
+      "main": true,
+      "step": 6
+    },
+    {
+      "from": "note30",
+      "to": "note31",
+      "neuron": "연산21",
+      "note": "$a^{k-2}=k-1$이다",
+      "main": true,
+      "step": 6
+    },
+    {
+      "from": "note20",
+      "to": "note32",
+      "neuron": "연산21",
+      "note": "$a^{c-1}=k-1$이다",
+      "main": true,
+      "step": 7
+    },
+    {
+      "from": [
+        "note31",
+        "note32"
+      ],
+      "to": "note33",
+      "neuron": "사실58",
+      "note": "$a^{k-2}=a^{c-1}=k-1$이고 $a>1$에서 단사이므로 $k-2=c-1$이다",
+      "main": true,
+      "step": 7
+    },
+    {
+      "from": "note33",
+      "to": "note34",
+      "neuron": "전략2",
+      "note": "$c=k-1$이다",
+      "main": true,
+      "step": 7
+    },
+    {
+      "from": [
+        "note34",
+        "note28"
+      ],
+      "to": "note35",
+      "neuron": "전략2",
+      "note": "$k=-2(k-1)+5=-2k+7$이므로 $3k=7$, $k=\\dfrac{7}{3}$이다",
+      "main": true,
+      "step": 8
+    },
+    {
+      "from": "note35",
+      "to": "note36",
+      "neuron": "전략25",
+      "note": "$c=k-1=\\dfrac{4}{3} \\in (1,2)$이다 ✓",
+      "main": false,
+      "step": 8
+    },
+    {
+      "from": [
+        "note32",
+        "note35"
+      ],
+      "to": "note37",
+      "neuron": "전략2",
+      "note": "$a^{1/3}=\\dfrac{4}{3}$이다",
+      "main": true,
+      "step": 8
+    },
+    {
+      "from": "note37",
+      "to": "note38",
+      "neuron": "연산4",
+      "note": "$a=\\left(\\dfrac{4}{3}\\right)^3=\\dfrac{64}{27}$이다",
+      "main": true,
+      "step": 8
+    },
+    {
+      "from": "note38",
+      "to": "note39",
+      "neuron": "전략25",
+      "note": "$1<\\dfrac{64}{27}<4$이다 ✓",
+      "main": false,
+      "step": 8
+    },
+    {
+      "from": [
+        "note38",
+        "note35"
+      ],
+      "to": "END",
+      "neuron": "전략25",
+      "note": "$a+k=\\dfrac{64}{27}+\\dfrac{7}{3}=\\dfrac{64}{27}+\\dfrac{63}{27}=\\dfrac{127}{27}$이다",
+      "main": true,
+      "step": 9
+    }
+  ],
+  "solution": "STEP 1. $f(t+2)$를 구간별로 정리하면 $f(t+2)=\\begin{cases} a^{t+1}+1 & (t<0) \\\\ -2t+5 & (t \\geq 0) \\end{cases}$이다.\n\nSTEP 2. 구간별로 $f(t)$와 $f(t+2)$를 비교한다. $t<0$에서 $a^x$는 순증가이고 $t+1>t-1$이므로 $a^{t+1}>a^{t-1}$, 즉 $f(t+2)>f(t)$이고 $g(t)=a^{t+1}+1$이다. $t \\geq 2$에서 $f(t)-f(t+2)=4>0$이므로 $g(t)=-2t+9$이다.\n\nSTEP 3. $0 \\leq t<2$에서 $f(t)=a^{t-1}+1$은 순증가, $f(t+2)=-2t+5$는 순감소이다. $t=1$에서 $f(1)=2<3=f(3)$이고, $t \\to 2^-$에서 $f(t) \\to a+1>2>1 \\to f(t+2)$이다. 중간값 정리에 의해 구간 $(1,2)$에서 $f(t)-f(t+2)=0$인 점 $c$가 존재한다. $h(t)=a^{t-1}+2t-4$는 순증가이므로 교점 $c$는 유일하고, $t<c$이면 $f(t+2)>f(t)$, $t>c$이면 $f(t)>f(t+2)$이다.\n\nSTEP 4. $g(t)$의 전체 구간별 공식을 정리하면 $g(t)=\\begin{cases} a^{t+1}+1 & (t<0) \\\\ -2t+5 & (0 \\leq t<c) \\\\ a^{t-1}+1 & (c \\leq t<2) \\\\ -2t+9 & (t \\geq 2) \\end{cases}$이다. 교점 정의에 의해 $g(c)=a^{c-1}+1=-2c+5$이다.\n\nSTEP 5. $g(t)=k$의 근이 정확히 3개가 되려면 $k=g(c)=-2c+5$이어야 한다. 이때 $[0,c)$에서 0개, $t=c$에서 1개, $(c,2)$에서 0개, $t<0$에서 1개, $t \\geq 2$에서 1개로 총 3개이다.\n\nSTEP 6. $c \\in (1,2)$이므로 $k \\in (1,3)$이고 $k-3<0$이다. 조건 (나)에서 $g(k-3)=a^{k-2}+1=k$이므로 $a^{k-2}=k-1$이다.\n\nSTEP 7. $g(c)=a^{c-1}+1=k$이므로 $a^{c-1}=k-1$이다. $a^{k-2}=a^{c-1}$이고 $a>1$에서 지수함수는 단사이므로 $k-2=c-1$, 즉 $c=k-1$이다.\n\nSTEP 8. $c=k-1$을 $k=-2c+5$에 대입하면 $k=-2(k-1)+5=-2k+7$이므로 $k=\\dfrac{7}{3}$, $c=\\dfrac{4}{3}$이다. $a^{1/3}=\\dfrac{4}{3}$이므로 $a=\\left(\\dfrac{4}{3}\\right)^3=\\dfrac{64}{27}$이다.\n\nSTEP 9. $a+k=\\dfrac{64}{27}+\\dfrac{7}{3}=\\dfrac{127}{27}$이다.",
+  "original_solution": "문제의 $f(x)$의 식에서\n\n- ① 곡선 $y = a^{x-1}+1$은 점 $(1,\\,2)$를 지나고 증가 ($\\because a > 1$)\n- ② 직선 $y = -2x+9$는 두 점 $(3,\\,3)$, $(4,\\,1)$을 지남\n\n이고, $y = f(x+2)$는 $y = f(x)$를 $x$축의 방향으로 $-2$만큼 평행이동시킨 곡선이므로\n\n② $\\Rightarrow$ $y = f(x+2)$는 두 점 $(1,\\,3)$, $(2,\\,1)$을 지남\n$\\Rightarrow$ $y = f(x)$와 $y = f(x+2)$는 $x = c\\;(1 < c < 2)$에서 만남\n\n($\\because$ ①)\n\n따라서 그림을 참고하면\n\n$$g(x) = \\begin{cases} f(x+2) & (x < c) \\\\ f(x) & (x \\geq c) \\end{cases} \\cdots \\text{⑦}$$\n\n[FIGURE: $y = f(x)$, $y = f(x+2)$, $y = g(x)$, $y = k$의 그래프. $x = 1, 2, 4$ 부근에서 세 교점이 생기며, $(c,\\,k)$에서 $g(x)$의 꺾이는 점이 표시됨.]\n\n이므로 $g(t) = k$를 만족시키는 실수 $t$의 개수가 $3$ $\\Rightarrow$ $g(c) = k$ $\\cdots$ ①\n$\\Rightarrow$ $2 < k < 3$ $\\cdots$ ②\n\n이때,\n\n(나) $\\Rightarrow$ $g(t) = k$의 세 실근 중 가장 작은 근이 $k - 3$\n\n($\\because$ ② $\\Rightarrow$ $k - 3 < 0$)\n\n$$\\Rightarrow c = (k-3) + 2 = k - 1 \\quad (\\because \\text{평행이동})$$\n\n이므로 ⑦, ①에서\n\n$$\\begin{cases} -2(k-1) + 5 = k \\\\ a^{k-2} + 1 = k \\end{cases}$$\n\n첫 번째 식에서: $-2k + 2 + 5 = k \\Rightarrow 7 = 3k$\n\n$$\\Rightarrow k = \\dfrac{7}{3}$$\n\n두 번째 식에서: $a^{\\frac{7}{3}-2} + 1 = \\dfrac{7}{3} \\Rightarrow a^{\\frac{1}{3}} = \\dfrac{4}{3}$\n\n$$\\Rightarrow a = \\dfrac{64}{27}$$\n\n$$\\therefore\\; a + k = \\dfrac{64}{27} + \\dfrac{7}{3} = \\dfrac{64}{27} + \\dfrac{63}{27} = \\boxed{\\dfrac{127}{27}}$$\n\n---",
+  "analysis": "",
+  "new_neurons": [],
+  "metadata": {
+    "unit": "지수와 로그",
+    "difficulty": "상",
+    "score": "4",
+    "type": "객관식",
+    "answer": "127/27"
+  },
+  "edge_count": 40,
+  "side_count": 12,
+  "statement": "# 17. (수능/모의고사) - 함수의 최댓값과 방정식의 실근 개수\n\n## Problem\n\n$1 < a < 4$인 실수 $a$에 대하여 함수 $f(x)$는\n\n$$f(x) = \\begin{cases} a^{x-1} + 1 & (x < 2) \\\\ -2x + 9 & (x \\geq 2) \\end{cases}$$\n\n이다. 실수 $t$에 대하여 $f(t)$와 $f(t+2)$ 중 작지 않은 값을 $g(t)$라 하자. 함수 $g(t)$가 다음 조건을 만족시킬 때, $a+k$의 값은? (단, $k$는 상수이다.) [4점]\n\n> (가) $g(t) = k$를 만족시키는 실수 $t$의 개수가 3이다.\n> (나) $g(k-3) = k$",
+  "dna": {
+    "nodes": [
+      {
+        "id": "top",
+        "dna": "Q1",
+        "label": "값을 구하라",
+        "category": "발문"
+      },
+      {
+        "id": "ask",
+        "dna": "E1",
+        "label": "합(a, k)",
+        "category": "수식"
+      },
+      {
+        "id": "va",
+        "dna": "T1",
+        "label": "변수 a",
+        "category": "말단"
+      },
+      {
+        "id": "vk",
+        "dna": "T1",
+        "label": "변수 k",
+        "category": "말단"
+      },
+      {
+        "id": "a_range",
+        "dna": "L2",
+        "label": "1<a<4",
+        "category": "제한"
+      },
+      {
+        "id": "k_const",
+        "dna": "L3",
+        "label": "k는 상수",
+        "category": "제한"
+      },
+      {
+        "id": "vt",
+        "dna": "T3",
+        "label": "독립변수 t",
+        "category": "말단"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
+      },
+      {
+        "id": "c1",
+        "dna": "T2",
+        "label": "상수 1",
+        "category": "말단"
+      },
+      {
+        "id": "c2",
+        "dna": "T2",
+        "label": "상수 2",
+        "category": "말단"
+      },
+      {
+        "id": "c9_val",
+        "dna": "T2",
+        "label": "상수 9",
+        "category": "말단"
+      },
+      {
+        "id": "c3_cnt",
+        "dna": "T2",
+        "label": "상수 3(개수)",
+        "category": "말단"
+      },
+      {
+        "id": "c2_neg",
+        "dna": "T2",
+        "label": "상수 -2",
+        "category": "말단"
+      },
+      {
+        "id": "fx_def",
+        "dna": "F1",
+        "label": "f(x) 조각함수",
+        "category": "함수"
+      },
+      {
+        "id": "piece1",
+        "dna": "F2",
+        "label": "조각1: x<2",
+        "category": "함수"
+      },
+      {
+        "id": "piece2",
+        "dna": "F2",
+        "label": "조각2: x≥2",
+        "category": "함수"
+      },
+      {
+        "id": "dom1",
+        "dna": "C2",
+        "label": "x < 2",
+        "category": "조건"
+      },
+      {
+        "id": "dom2",
+        "dna": "C2",
+        "label": "x ≥ 2",
+        "category": "조건"
+      },
+      {
+        "id": "expr1",
+        "dna": "E1",
+        "label": "합(지수항, 1)",
+        "category": "수식"
+      },
+      {
+        "id": "exp_part",
+        "dna": "E4",
+        "label": "a^(x-1)",
+        "category": "수식"
+      },
+      {
+        "id": "x_minus1",
+        "dna": "E1",
+        "label": "합(x, -1)",
+        "category": "수식"
+      },
+      {
+        "id": "neg1",
+        "dna": "E2",
+        "label": "부호반전(1)",
+        "category": "수식"
+      },
+      {
+        "id": "expr2",
+        "dna": "E1",
+        "label": "합(-2x, 9)",
+        "category": "수식"
+      },
+      {
+        "id": "neg2x",
+        "dna": "E6",
+        "label": "곱(-2, x)",
+        "category": "수식"
+      },
+      {
+        "id": "gt_def",
+        "dna": "F13",
+        "label": "g(t)=max(ft,ft2)",
+        "category": "함수"
+      },
+      {
+        "id": "ft",
+        "dna": "F3",
+        "label": "f(t)",
+        "category": "함수"
+      },
+      {
+        "id": "ft2",
+        "dna": "F3",
+        "label": "f(t+2)",
+        "category": "함수"
+      },
+      {
+        "id": "t_plus2",
+        "dna": "E1",
+        "label": "합(t, 2)",
+        "category": "수식"
+      },
+      {
+        "id": "cond_ga",
+        "dna": "C9",
+        "label": "g(t)=k 실근 3개",
+        "category": "조건"
+      },
+      {
+        "id": "gk_eq",
+        "dna": "C1",
+        "label": "g(t)=k 등식",
+        "category": "조건"
+      },
+      {
+        "id": "gt_apply",
+        "dna": "F3",
+        "label": "g(t) 적용",
+        "category": "함수"
+      },
+      {
+        "id": "cond_na",
+        "dna": "C1",
+        "label": "g(k-3)=k",
+        "category": "조건"
+      },
+      {
+        "id": "gk3_apply",
+        "dna": "F3",
+        "label": "g(k-3) 적용",
+        "category": "함수"
+      },
+      {
+        "id": "k_minus3",
+        "dna": "E1",
+        "label": "합(k, -3)",
+        "category": "수식"
+      },
+      {
+        "id": "neg3",
+        "dna": "E2",
+        "label": "부호반전(3)",
+        "category": "수식"
+      },
+      {
+        "id": "c3",
+        "dna": "T2",
+        "label": "상수 3",
+        "category": "말단"
+      },
+      {
+        "id": "conds",
+        "dna": "S1",
+        "label": "조건 (가)(나)",
+        "category": "구조"
+      }
+    ],
+    "edges": [
+      {
+        "from": "ask",
+        "to": "top"
+      },
+      {
+        "from": "conds",
+        "to": "top"
+      },
+      {
+        "from": "va",
+        "to": "ask"
+      },
+      {
+        "from": "vk",
+        "to": "ask"
+      },
+      {
+        "from": "a_range",
+        "to": "va"
+      },
+      {
+        "from": "k_const",
+        "to": "vk"
+      },
+      {
+        "from": "fx_def",
+        "to": "gt_def"
+      },
+      {
+        "from": "piece1",
+        "to": "fx_def"
+      },
+      {
+        "from": "piece2",
+        "to": "fx_def"
+      },
+      {
+        "from": "dom1",
+        "to": "piece1"
+      },
+      {
+        "from": "expr1",
+        "to": "piece1"
+      },
+      {
+        "from": "dom2",
+        "to": "piece2"
+      },
+      {
+        "from": "expr2",
+        "to": "piece2"
+      },
+      {
+        "from": "vx",
+        "to": "dom1"
+      },
+      {
+        "from": "c2",
+        "to": "dom1"
+      },
+      {
+        "from": "vx",
+        "to": "dom2"
+      },
+      {
+        "from": "c2",
+        "to": "dom2"
+      },
+      {
+        "from": "exp_part",
+        "to": "expr1"
+      },
+      {
+        "from": "c1",
+        "to": "expr1"
+      },
+      {
+        "from": "va",
+        "to": "exp_part"
+      },
+      {
+        "from": "x_minus1",
+        "to": "exp_part"
+      },
+      {
+        "from": "vx",
+        "to": "x_minus1"
+      },
+      {
+        "from": "neg1",
+        "to": "x_minus1"
+      },
+      {
+        "from": "c1",
+        "to": "neg1"
+      },
+      {
+        "from": "neg2x",
+        "to": "expr2"
+      },
+      {
+        "from": "c9_val",
+        "to": "expr2"
+      },
+      {
+        "from": "c2_neg",
+        "to": "neg2x"
+      },
+      {
+        "from": "vx",
+        "to": "neg2x"
+      },
+      {
+        "from": "ft",
+        "to": "gt_def"
+      },
+      {
+        "from": "ft2",
+        "to": "gt_def"
+      },
+      {
+        "from": "vt",
+        "to": "ft"
+      },
+      {
+        "from": "t_plus2",
+        "to": "ft2"
+      },
+      {
+        "from": "vt",
+        "to": "t_plus2"
+      },
+      {
+        "from": "c2",
+        "to": "t_plus2"
+      },
+      {
+        "from": "gt_def",
+        "to": "cond_ga"
+      },
+      {
+        "from": "cond_ga",
+        "to": "conds"
+      },
+      {
+        "from": "gk_eq",
+        "to": "cond_ga"
+      },
+      {
+        "from": "gt_apply",
+        "to": "gk_eq"
+      },
+      {
+        "from": "vk",
+        "to": "gk_eq"
+      },
+      {
+        "from": "vt",
+        "to": "gt_apply"
+      },
+      {
+        "from": "c3_cnt",
+        "to": "cond_ga"
+      },
+      {
+        "from": "cond_na",
+        "to": "conds"
+      },
+      {
+        "from": "gk3_apply",
+        "to": "cond_na"
+      },
+      {
+        "from": "vk",
+        "to": "cond_na"
+      },
+      {
+        "from": "k_minus3",
+        "to": "gk3_apply"
+      },
+      {
+        "from": "vk",
+        "to": "k_minus3"
+      },
+      {
+        "from": "neg3",
+        "to": "k_minus3"
+      },
+      {
+        "from": "c3",
+        "to": "neg3"
+      }
+    ],
+    "new_dna": [
+      {
+        "id": "F13",
+        "name": "최댓값 함수",
+        "signature": "(함수1, 함수2) → 함수",
+        "reason": "두 함수 f(t), f(t+2) 중 크지 않은 값(max)을 택하는 구조. 기존 DNA에 두 함수값의 최댓값을 취하는 연산을 표현하는 DNA가 없음."
+      }
+    ]
+  },
+  "thinking_profile": null,
+  "folders": [],
+  "history": [],
+  "recovery_warnings": [],
+  "errata": [],
+  "created_at": "2026-03-24T02:09:15.556Z"
+}

@@ -1,0 +1,528 @@
+{
+  "problem_id": "Problem14",
+  "answer": "11",
+  "clues": [
+    {
+      "id": "단서A",
+      "text": "2 이상의 자연수 $n$에 대하여 $(n-p)(n-p-8)$의 $n$제곱근 중 실수인 것의 개수를 $f(n)$이라 한다"
+    },
+    {
+      "id": "단서B",
+      "text": "2 이상의 모든 자연수 $m$에 대하여 $\\sum_{n=2}^{m}\\{f(n)-1\\} \\geq 1$이다"
+    },
+    {
+      "id": "단서C",
+      "text": "$p$는 20 이하의 자연수이다"
+    }
+  ],
+  "skeleton": [
+    {
+      "from": "단서A",
+      "to": "note1",
+      "neuron": "전략12",
+      "note": "$n$의 홀짝에 따라 $n$제곱근의 실수 개수가 달라지므로 경우를 나눈다",
+      "step": 1
+    },
+    {
+      "from": "note1",
+      "to": "note2",
+      "neuron": "사실4",
+      "note": "$n$이 홀수이면 $f(n)=1$이다. $n$이 짝수이면 $(n-p)(n-p-8)>0$일 때 $f(n)=2$, $=0$일 때 $f(n)=1$, $<0$일 때 $f(n)=0$이다",
+      "step": 1
+    },
+    {
+      "from": "단서A",
+      "to": "note3",
+      "neuron": "사실35",
+      "note": "$(n-p)(n-p-8)$은 $n<p$ 또는 $n>p+8$이면 양수, $p<n<p+8$이면 음수, $n=p$ 또는 $n=p+8$이면 $0$이다",
+      "step": 1
+    },
+    {
+      "from": [
+        "note2",
+        "note3"
+      ],
+      "to": "note4",
+      "neuron": "사실4",
+      "note": "$f(n)-1 = 1$ ($n$ 짝수, $n<p$ 또는 $n>p+8$), $f(n)-1 = -1$ ($n$ 짝수, $p<n<p+8$), $f(n)-1 = 0$ (나머지)",
+      "step": 1
+    },
+    {
+      "from": [
+        "note4",
+        "단서B"
+      ],
+      "to": "note5",
+      "neuron": "전략25",
+      "note": "$m=2$를 대입하면 $S_2 = f(2)-1 \\geq 1$이어야 한다",
+      "step": 2
+    },
+    {
+      "from": [
+        "note5",
+        "note4"
+      ],
+      "to": "note6",
+      "neuron": "전략25",
+      "note": "$n=2$는 짝수이고, $f(2)-1=1$이 되려면 $(2-p)(2-p-8)>0$이어야 한다",
+      "main": false,
+      "step": 2
+    },
+    {
+      "from": [
+        "note6",
+        "note3"
+      ],
+      "to": "note7",
+      "neuron": "전략25",
+      "note": "$2<p$이므로 $p \\geq 3$이다",
+      "step": 2
+    },
+    {
+      "from": "note4",
+      "to": "note8",
+      "neuron": "사실91",
+      "note": "$2 \\leq n \\leq p$인 구간에서 $f(n)-1 \\geq 0$이고 $S_m$은 비감소이다",
+      "main": false,
+      "step": 2
+    },
+    {
+      "from": "note4",
+      "to": "note9",
+      "neuron": "사실91",
+      "note": "$p < n \\leq p+8$인 구간에서 $f(n)-1 \\leq 0$이고 $S_m$은 비증가이다",
+      "main": false,
+      "step": 2
+    },
+    {
+      "from": "note4",
+      "to": "note10",
+      "neuron": "사실91",
+      "note": "$n > p+8$인 구간에서 $f(n)-1 \\geq 0$이고 $S_m$은 비감소이다",
+      "main": false,
+      "step": 2
+    },
+    {
+      "from": [
+        "note8",
+        "note9",
+        "note10"
+      ],
+      "to": "note11",
+      "neuron": "사실53",
+      "note": "$S_m$은 비감소→비증가→비감소이므로 $m \\geq 2$에서 최솟값은 $\\min(S_2, S_{p+8})$에서 달성된다",
+      "step": 2
+    },
+    {
+      "from": [
+        "note7",
+        "note11",
+        "단서B"
+      ],
+      "to": "note12",
+      "neuron": "전략2",
+      "note": "조건 $(\\bigstar)$의 필요충분조건은 $p \\geq 3$이고 $S_{p+8} \\geq 1$이다",
+      "step": 2
+    },
+    {
+      "from": "note4",
+      "to": "note13",
+      "neuron": "전략10",
+      "note": "$S_{p+8} = (2 \\leq n < p\\text{인 짝수 개수}) - (p < n < p+8\\text{인 짝수 개수})$이다",
+      "step": 3
+    },
+    {
+      "from": "note13",
+      "to": "note14",
+      "neuron": "전략22",
+      "note": "$p$의 홀짝에 따라 짝수 개수가 달라진다",
+      "step": 3
+    },
+    {
+      "from": "note14",
+      "to": "note15",
+      "neuron": "전략10",
+      "note": "$p$가 홀수이면: 증가분 $\\frac{p-1}{2}$개, 감소분 $4$개, $S_{p+8} = \\frac{p-9}{2}$이다",
+      "step": 3
+    },
+    {
+      "from": [
+        "note15",
+        "note12"
+      ],
+      "to": "note16",
+      "neuron": "연산21",
+      "note": "$\\frac{p-9}{2} \\geq 1$에서 $p \\geq 11$이다 ($p$ 홀수)",
+      "step": 3
+    },
+    {
+      "from": "note14",
+      "to": "note17",
+      "neuron": "전략10",
+      "note": "$p$가 짝수이면: 증가분 $\\frac{p-2}{2}$개, 감소분 $3$개, $S_{p+8} = \\frac{p-8}{2}$이다",
+      "step": 3
+    },
+    {
+      "from": [
+        "note17",
+        "note12"
+      ],
+      "to": "note18",
+      "neuron": "연산21",
+      "note": "$\\frac{p-8}{2} \\geq 1$에서 $p \\geq 10$이다 ($p$ 짝수)",
+      "step": 3
+    },
+    {
+      "from": [
+        "note16",
+        "note18",
+        "단서C"
+      ],
+      "to": "END",
+      "neuron": "전략17",
+      "note": "$p$ 홀수, $11 \\leq p \\leq 20$: $\\{11,13,15,17,19\\}$로 5개. $p$ 짝수, $10 \\leq p \\leq 20$: $\\{10,12,14,16,18,20\\}$으로 6개. 합계 $5+6=11$이다",
+      "step": 4
+    }
+  ],
+  "solution": "STEP 1. $n$의 홀짝에 따라 $n$제곱근의 실수 개수가 달라지므로 경우를 나누어 $f(n)$을 분석한다. $n$이 홀수이면 $f(n)=1$이고, $n$이 짝수이면 $(n-p)(n-p-8)$의 부호에 따라 $f(n) \\in \\{0,1,2\\}$이다. 이차식 $(n-p)(n-p-8)$의 부호를 분석하면 $n<p$ 또는 $n>p+8$이면 양수, $p<n<p+8$이면 음수, $n=p$ 또는 $n=p+8$이면 $0$이다. 이를 결합하면 $f(n)-1 = 1$ ($n$ 짝수, $n<p$ 또는 $n>p+8$), $f(n)-1 = -1$ ($n$ 짝수, $p<n<p+8$), $f(n)-1 = 0$ (나머지)이다.\n\nSTEP 2. $S_m = \\sum_{n=2}^{m}\\{f(n)-1\\}$이라 하자. $m=2$를 대입하면 $S_2 \\geq 1$이어야 하고, 이로부터 $p \\geq 3$이다. 부분합의 단조성을 분석하면 $S_m$은 $[2,p]$에서 비감소, $[p,p+8]$에서 비증가, $[p+8,\\infty)$에서 비감소이다. 따라서 $S_m$의 최솟값은 $\\min(S_2, S_{p+8})$에서 달성된다. 조건 $(\\bigstar)$의 필요충분조건은 $p \\geq 3$이고 $S_{p+8} \\geq 1$이다.\n\nSTEP 3. $S_{p+8} = (2 \\leq n < p\\text{인 짝수 개수}) - (p < n < p+8\\text{인 짝수 개수})$이다. $p$의 홀짝에 따라 나누면, $p$가 홀수이면 $S_{p+8} = \\frac{p-9}{2}$이고 $S_{p+8} \\geq 1$에서 $p \\geq 11$이다. $p$가 짝수이면 $S_{p+8} = \\frac{p-8}{2}$이고 $S_{p+8} \\geq 1$에서 $p \\geq 10$이다.\n\nSTEP 4. $p$ 홀수이고 $11 \\leq p \\leq 20$인 자연수: $\\{11,13,15,17,19\\}$로 5개이다. $p$ 짝수이고 $10 \\leq p \\leq 20$인 자연수: $\\{10,12,14,16,18,20\\}$으로 6개이다. 합계 $5+6=11$이다.",
+  "original_solution": "$(n-p)(n-p-8)$의 부호를 고려하면\n\n$$f(n)-1 = \\begin{cases} 1 & (n\\text{은 짝수},\\ n < p \\text{ 또는 } n > p+8) \\\\ -1 & (n\\text{은 짝수}, \\ p < n < p+8) \\\\ 0 & (\\text{나머지 경우}) \\end{cases}$$\n\n이므로 문제의 박스 조건의 부등식\n\n$$\\sum_{n=2}^{m} \\{f(n)-1\\} \\geq 1 \\quad \\cdots\\ (\\bigstar)$$\n\n에서\n\n$(\\bigstar)$이 $m=2$일 때 성립함 $\\Rightarrow f(2)-1=1 \\Rightarrow p > 2$ ($\\because$ $p$는 자연수)\n\n임을 알 수 있고, $S_m = \\displaystyle\\sum_{n=2}^{m} \\{f(n)-1\\}$이라 하면\n\n- $n \\leq p$일 때 $f(n)-1 \\geq 0 \\Rightarrow S_2 = 1 \\leq S_2 \\leq \\cdots \\leq S_p$\n$\\Rightarrow 2 \\leq m \\leq p$일 때 $(\\bigstar)$이 성립함\n\n이고,\n\n$$\\begin{cases} p < n \\leq p+8 \\text{일 때 } f(n)-1 \\leq 0 \\Rightarrow S_p \\geq \\cdots \\geq S_{p+8} \\\\ n > p+8 \\text{일 때 } f(n)-1 \\geq 0 \\Rightarrow S_{p+8} \\leq S_{p+9} \\leq \\cdots \\end{cases}$$\n\n$\\Rightarrow S_{p+8} \\geq 1$이면 $m \\geq p$일 때 $(\\bigstar)$이 성립함\n\n을 알 수 있다.\n\n이때,\n\n$$S_{p+8} = \\sum_{n=2}^{p+8} \\{f(n)-1\\}$$\n$$= (2 \\leq n < p \\text{인 짝수 } n\\text{의 개수}) - (p < n < p+8 \\text{인 짝수 } n\\text{의 개수})$$\n\n이므로\n\n① $p$가 홀수인 경우\n\n$$S_{p+8} = \\frac{p-1}{2} - 4 = \\frac{p-9}{2} \\Rightarrow S_{p+8} \\geq 1 \\text{이려면 } p \\geq 11$$\n\n② $p$가 짝수인 경우\n\n$$S_{p+8} = \\frac{p-2}{2} - 3 = \\frac{p-8}{2} \\Rightarrow S_{p+8} \\geq 1 \\text{이려면 } p \\geq 10$$\n\n이어야 한다.\n\n따라서 ①, ②에 의해\n\n$$(20 \\text{ 이하의 자연수 } p\\text{의 개수}) = 11$$\n\n이다.",
+  "analysis": "",
+  "new_neurons": [],
+  "metadata": {
+    "unit": "지수와 로그",
+    "difficulty": "상",
+    "score": "4",
+    "type": "주관식",
+    "answer": "11"
+  },
+  "edge_count": 19,
+  "side_count": 4,
+  "statement": "# 24. (수능/모의고사) - 함수의 성질과 부등식\n\n## Problem\n\n2 이상의 자연수 $n$에 대하여 $(n-p)(n-p-8)$의 $n$제곱근 중 실수인 것의 개수를 $f(n)$이라 하자. 함수 $f(n)$이 다음 조건을 만족시키도록 하는 20 이하의 자연수 $p$의 개수를 구하시오. [4점]\n\n$$\\text{2 이상의 모든 자연수 } m \\text{에 대하여 } \\sum_{n=2}^{m} \\{f(n)-1\\} \\geq 1 \\text{이다.}$$",
+  "dna": {
+    "nodes": [
+      {
+        "id": "top",
+        "dna": "Q2",
+        "label": "p의 개수",
+        "category": "발문"
+      },
+      {
+        "id": "vp",
+        "dna": "T1",
+        "label": "변수 p",
+        "category": "말단"
+      },
+      {
+        "id": "vn",
+        "dna": "T3",
+        "label": "독립변수 n",
+        "category": "말단"
+      },
+      {
+        "id": "vm",
+        "dna": "T1",
+        "label": "변수 m",
+        "category": "말단"
+      },
+      {
+        "id": "c2",
+        "dna": "T2",
+        "label": "상수 2",
+        "category": "말단"
+      },
+      {
+        "id": "c8",
+        "dna": "T2",
+        "label": "상수 8",
+        "category": "말단"
+      },
+      {
+        "id": "c1",
+        "dna": "T2",
+        "label": "상수 1",
+        "category": "말단"
+      },
+      {
+        "id": "c20",
+        "dna": "T2",
+        "label": "상수 20",
+        "category": "말단"
+      },
+      {
+        "id": "p_nat",
+        "dna": "L3",
+        "label": "p는 자연수",
+        "category": "제한"
+      },
+      {
+        "id": "p_le20",
+        "dna": "L2",
+        "label": "p≤20 제한",
+        "category": "제한"
+      },
+      {
+        "id": "n_nat_ge2",
+        "dna": "L2",
+        "label": "n≥2 제한",
+        "category": "제한"
+      },
+      {
+        "id": "m_nat_ge2",
+        "dna": "L2",
+        "label": "m≥2 제한",
+        "category": "제한"
+      },
+      {
+        "id": "neg_p",
+        "dna": "E2",
+        "label": "부호반전(p)",
+        "category": "수식"
+      },
+      {
+        "id": "n_minus_p",
+        "dna": "E1",
+        "label": "n-p",
+        "category": "수식"
+      },
+      {
+        "id": "p_plus_8",
+        "dna": "E1",
+        "label": "p+8",
+        "category": "수식"
+      },
+      {
+        "id": "neg_p8",
+        "dna": "E2",
+        "label": "부호반전(p+8)",
+        "category": "수식"
+      },
+      {
+        "id": "n_minus_p8",
+        "dna": "E1",
+        "label": "n-(p+8)",
+        "category": "수식"
+      },
+      {
+        "id": "product",
+        "dna": "E6",
+        "label": "(n-p)(n-p-8)",
+        "category": "수식"
+      },
+      {
+        "id": "real_root_count",
+        "dna": "O1",
+        "label": "실수n제곱근수",
+        "category": "연산"
+      },
+      {
+        "id": "fn_def",
+        "dna": "F6",
+        "label": "f(n) 정의",
+        "category": "함수"
+      },
+      {
+        "id": "fn_apply",
+        "dna": "F3",
+        "label": "f(n) 적용",
+        "category": "함수"
+      },
+      {
+        "id": "neg1",
+        "dna": "E2",
+        "label": "부호반전(1)",
+        "category": "수식"
+      },
+      {
+        "id": "fn_minus1",
+        "dna": "E1",
+        "label": "f(n)-1",
+        "category": "수식"
+      },
+      {
+        "id": "sigma_sum",
+        "dna": "E1",
+        "label": "Σ{f(n)-1}",
+        "category": "수식"
+      },
+      {
+        "id": "sigma_ge1",
+        "dna": "C2",
+        "label": "Σ≥1",
+        "category": "조건"
+      },
+      {
+        "id": "forall_m",
+        "dna": "C18",
+        "label": "모든m에 대해",
+        "category": "조건"
+      },
+      {
+        "id": "p_count_cond",
+        "dna": "S1",
+        "label": "p 조건 묶음",
+        "category": "구조"
+      }
+    ],
+    "edges": [
+      {
+        "from": "vp",
+        "to": "p_nat"
+      },
+      {
+        "from": "vp",
+        "to": "p_le20"
+      },
+      {
+        "from": "c20",
+        "to": "p_le20"
+      },
+      {
+        "from": "vn",
+        "to": "n_nat_ge2"
+      },
+      {
+        "from": "c2",
+        "to": "n_nat_ge2"
+      },
+      {
+        "from": "vm",
+        "to": "m_nat_ge2"
+      },
+      {
+        "from": "c2",
+        "to": "m_nat_ge2"
+      },
+      {
+        "from": "vp",
+        "to": "neg_p"
+      },
+      {
+        "from": "vn",
+        "to": "n_minus_p"
+      },
+      {
+        "from": "neg_p",
+        "to": "n_minus_p"
+      },
+      {
+        "from": "vp",
+        "to": "p_plus_8"
+      },
+      {
+        "from": "c8",
+        "to": "p_plus_8"
+      },
+      {
+        "from": "p_plus_8",
+        "to": "neg_p8"
+      },
+      {
+        "from": "vn",
+        "to": "n_minus_p8"
+      },
+      {
+        "from": "neg_p8",
+        "to": "n_minus_p8"
+      },
+      {
+        "from": "n_minus_p",
+        "to": "product"
+      },
+      {
+        "from": "n_minus_p8",
+        "to": "product"
+      },
+      {
+        "from": "product",
+        "to": "real_root_count"
+      },
+      {
+        "from": "vn",
+        "to": "real_root_count"
+      },
+      {
+        "from": "real_root_count",
+        "to": "fn_def"
+      },
+      {
+        "from": "fn_def",
+        "to": "fn_apply"
+      },
+      {
+        "from": "vn",
+        "to": "fn_apply"
+      },
+      {
+        "from": "c1",
+        "to": "neg1"
+      },
+      {
+        "from": "fn_apply",
+        "to": "fn_minus1"
+      },
+      {
+        "from": "neg1",
+        "to": "fn_minus1"
+      },
+      {
+        "from": "fn_minus1",
+        "to": "sigma_sum"
+      },
+      {
+        "from": "vm",
+        "to": "sigma_sum"
+      },
+      {
+        "from": "c2",
+        "to": "sigma_sum"
+      },
+      {
+        "from": "sigma_sum",
+        "to": "sigma_ge1"
+      },
+      {
+        "from": "c1",
+        "to": "sigma_ge1"
+      },
+      {
+        "from": "sigma_ge1",
+        "to": "forall_m"
+      },
+      {
+        "from": "m_nat_ge2",
+        "to": "forall_m"
+      },
+      {
+        "from": "forall_m",
+        "to": "p_count_cond"
+      },
+      {
+        "from": "p_nat",
+        "to": "p_count_cond"
+      },
+      {
+        "from": "p_le20",
+        "to": "p_count_cond"
+      },
+      {
+        "from": "n_nat_ge2",
+        "to": "p_count_cond"
+      },
+      {
+        "from": "vp",
+        "to": "p_count_cond"
+      },
+      {
+        "from": "p_count_cond",
+        "to": "top"
+      }
+    ],
+    "new_dna": []
+  },
+  "thinking_profile": null,
+  "folders": [],
+  "history": [],
+  "recovery_warnings": [],
+  "errata": [],
+  "created_at": "2026-03-23T17:14:54.385Z"
+}
