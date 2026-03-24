@@ -1,16 +1,16 @@
 {
-  "_generated_at": "2026-03-24T01:02:58.346Z",
-  "_source_problems": 28,
+  "_generated_at": "2026-03-24T01:07:47.546Z",
+  "_source_problems": 29,
   "summary": {
-    "total_problems_scanned": 28,
+    "total_problems_scanned": 29,
     "total_neurons": 106,
-    "total_pairs": 418,
+    "total_pairs": 432,
     "max_pair_count": 12,
     "top_hubs": [
       {
         "id": "전략25",
         "connections": 56,
-        "appearances": 116,
+        "appearances": 117,
         "hub_score": 0.53
       },
       {
@@ -20,16 +20,16 @@
         "hub_score": 0.33
       },
       {
-        "id": "연산21",
-        "connections": 23,
-        "appearances": 23,
-        "hub_score": 0.22
+        "id": "연산2",
+        "connections": 24,
+        "appearances": 29,
+        "hub_score": 0.23
       },
       {
-        "id": "연산2",
-        "connections": 22,
-        "appearances": 27,
-        "hub_score": 0.21
+        "id": "연산21",
+        "connections": 24,
+        "appearances": 24,
+        "hub_score": 0.23
       },
       {
         "id": "전략17",
@@ -50,16 +50,16 @@
         "hub_score": 0.15
       },
       {
+        "id": "연산17",
+        "connections": 15,
+        "appearances": 10,
+        "hub_score": 0.14
+      },
+      {
         "id": "사실51",
         "connections": 14,
         "appearances": 9,
         "hub_score": 0.13
-      },
-      {
-        "id": "연산17",
-        "connections": 13,
-        "appearances": 8,
-        "hub_score": 0.12
       },
       {
         "id": "사실5",
@@ -108,8 +108,8 @@
       },
       {
         "pair": "전략25→연산4",
-        "count": 6,
-        "weight": 0.5
+        "count": 7,
+        "weight": 0.583
       },
       {
         "pair": "전략25→연산11",
@@ -302,6 +302,11 @@
         "weight": 0.167
       },
       {
+        "pair": "사실69→사실11",
+        "count": 2,
+        "weight": 0.167
+      },
+      {
         "pair": "전략25→연산2",
         "count": 2,
         "weight": 0.167
@@ -382,7 +387,22 @@
         "weight": 0.167
       },
       {
+        "pair": "사실70→연산12",
+        "count": 2,
+        "weight": 0.167
+      },
+      {
+        "pair": "사실13→연산12",
+        "count": 2,
+        "weight": 0.167
+      },
+      {
         "pair": "전략25→연산12",
+        "count": 2,
+        "weight": 0.167
+      },
+      {
+        "pair": "연산17→전략25",
         "count": 2,
         "weight": 0.167
       },
@@ -408,6 +428,16 @@
       },
       {
         "pair": "연산4→연산18",
+        "count": 2,
+        "weight": 0.167
+      },
+      {
+        "pair": "연산4→연산2",
+        "count": 2,
+        "weight": 0.167
+      },
+      {
+        "pair": "연산2→연산11",
         "count": 2,
         "weight": 0.167
       },
@@ -1069,9 +1099,10 @@
     "사실69→사실11": {
       "from": "사실69",
       "to": "사실11",
-      "count": 1,
+      "count": 2,
       "problems": [
-        "20_UnknownSource_-로그함수와원의관계"
+        "20_UnknownSource_-로그함수와원의관계",
+        "7_a_1_인실수_a_에대하여곡선_y_4-a__-x__이_x_축__y_축과만나는점을각각A_B라하자삼각형OAB의외접원이곡선_y_a__x_-1_과O가아닌점C에서만나고__overline_CO___overline_CA__일때___overline_BC___2__의값을구하시오_단_O는원점이다__4점_"
       ]
     },
     "사실11→사실15": {
@@ -1117,14 +1148,15 @@
     "전략25→연산4": {
       "from": "전략25",
       "to": "연산4",
-      "count": 6,
+      "count": 7,
       "problems": [
         "20_UnknownSource_-로그함수와원의관계",
         "Problem11",
         "26_a_1_인실수_a_에대하여구간__-_infty___3__에서정의된함수",
         "28_수능_모의고사_-곡선위의점과직선의기울기",
         "36_수능_모의고사_-지수함수와부등식",
-        "35_수능_모의고사_-지수함수와로그함수의관계"
+        "35_수능_모의고사_-지수함수와로그함수의관계",
+        "7_a_1_인실수_a_에대하여곡선_y_4-a__-x__이_x_축__y_축과만나는점을각각A_B라하자삼각형OAB의외접원이곡선_y_a__x_-1_과O가아닌점C에서만나고__overline_CO___overline_CA__일때___overline_BC___2__의값을구하시오_단_O는원점이다__4점_"
       ]
     },
     "연산4→전략25": {
@@ -1712,9 +1744,10 @@
     "사실70→연산12": {
       "from": "사실70",
       "to": "연산12",
-      "count": 1,
+      "count": 2,
       "problems": [
-        "Problem11"
+        "Problem11",
+        "7_a_1_인실수_a_에대하여곡선_y_4-a__-x__이_x_축__y_축과만나는점을각각A_B라하자삼각형OAB의외접원이곡선_y_a__x_-1_과O가아닌점C에서만나고__overline_CO___overline_CA__일때___overline_BC___2__의값을구하시오_단_O는원점이다__4점_"
       ]
     },
     "전략25→사실13": {
@@ -1728,9 +1761,10 @@
     "사실13→연산12": {
       "from": "사실13",
       "to": "연산12",
-      "count": 1,
+      "count": 2,
       "problems": [
-        "Problem11"
+        "Problem11",
+        "7_a_1_인실수_a_에대하여곡선_y_4-a__-x__이_x_축__y_축과만나는점을각각A_B라하자삼각형OAB의외접원이곡선_y_a__x_-1_과O가아닌점C에서만나고__overline_CO___overline_CA__일때___overline_BC___2__의값을구하시오_단_O는원점이다__4점_"
       ]
     },
     "연산21→연산12": {
@@ -1822,9 +1856,10 @@
     "연산17→전략25": {
       "from": "연산17",
       "to": "전략25",
-      "count": 1,
+      "count": 2,
       "problems": [
-        "Problem11"
+        "Problem11",
+        "7_a_1_인실수_a_에대하여곡선_y_4-a__-x__이_x_축__y_축과만나는점을각각A_B라하자삼각형OAB의외접원이곡선_y_a__x_-1_과O가아닌점C에서만나고__overline_CO___overline_CA__일때___overline_BC___2__의값을구하시오_단_O는원점이다__4점_"
       ]
     },
     "사실11→사실77": {
@@ -2322,9 +2357,10 @@
     "연산4→연산2": {
       "from": "연산4",
       "to": "연산2",
-      "count": 1,
+      "count": 2,
       "problems": [
-        "23_수능_모의고사_-지수함수와직선의교점거리"
+        "23_수능_모의고사_-지수함수와직선의교점거리",
+        "7_a_1_인실수_a_에대하여곡선_y_4-a__-x__이_x_축__y_축과만나는점을각각A_B라하자삼각형OAB의외접원이곡선_y_a__x_-1_과O가아닌점C에서만나고__overline_CO___overline_CA__일때___overline_BC___2__의값을구하시오_단_O는원점이다__4점_"
       ]
     },
     "연산4→사실5": {
@@ -2362,9 +2398,10 @@
     "연산2→연산11": {
       "from": "연산2",
       "to": "연산11",
-      "count": 1,
+      "count": 2,
       "problems": [
-        "23_수능_모의고사_-지수함수와직선의교점거리"
+        "23_수능_모의고사_-지수함수와직선의교점거리",
+        "7_a_1_인실수_a_에대하여곡선_y_4-a__-x__이_x_축__y_축과만나는점을각각A_B라하자삼각형OAB의외접원이곡선_y_a__x_-1_과O가아닌점C에서만나고__overline_CO___overline_CA__일때___overline_BC___2__의값을구하시오_단_O는원점이다__4점_"
       ]
     },
     "연산11→전략6": {
@@ -3995,6 +4032,118 @@
       "problems": [
         "6_출처미상_-이차방정식의실근과거듭제곱조건"
       ]
+    },
+    "연산2→사실69": {
+      "from": "연산2",
+      "to": "사실69",
+      "count": 1,
+      "problems": [
+        "7_a_1_인실수_a_에대하여곡선_y_4-a__-x__이_x_축__y_축과만나는점을각각A_B라하자삼각형OAB의외접원이곡선_y_a__x_-1_과O가아닌점C에서만나고__overline_CO___overline_CA__일때___overline_BC___2__의값을구하시오_단_O는원점이다__4점_"
+      ]
+    },
+    "사실18→사실69": {
+      "from": "사실18",
+      "to": "사실69",
+      "count": 1,
+      "problems": [
+        "7_a_1_인실수_a_에대하여곡선_y_4-a__-x__이_x_축__y_축과만나는점을각각A_B라하자삼각형OAB의외접원이곡선_y_a__x_-1_과O가아닌점C에서만나고__overline_CO___overline_CA__일때___overline_BC___2__의값을구하시오_단_O는원점이다__4점_"
+      ]
+    },
+    "사실11→사실70": {
+      "from": "사실11",
+      "to": "사실70",
+      "count": 1,
+      "problems": [
+        "7_a_1_인실수_a_에대하여곡선_y_4-a__-x__이_x_축__y_축과만나는점을각각A_B라하자삼각형OAB의외접원이곡선_y_a__x_-1_과O가아닌점C에서만나고__overline_CO___overline_CA__일때___overline_BC___2__의값을구하시오_단_O는원점이다__4점_"
+      ]
+    },
+    "연산2→연산12": {
+      "from": "연산2",
+      "to": "연산12",
+      "count": 1,
+      "problems": [
+        "7_a_1_인실수_a_에대하여곡선_y_4-a__-x__이_x_축__y_축과만나는점을각각A_B라하자삼각형OAB의외접원이곡선_y_a__x_-1_과O가아닌점C에서만나고__overline_CO___overline_CA__일때___overline_BC___2__의값을구하시오_단_O는원점이다__4점_"
+      ]
+    },
+    "사실18→연산12": {
+      "from": "사실18",
+      "to": "연산12",
+      "count": 1,
+      "problems": [
+        "7_a_1_인실수_a_에대하여곡선_y_4-a__-x__이_x_축__y_축과만나는점을각각A_B라하자삼각형OAB의외접원이곡선_y_a__x_-1_과O가아닌점C에서만나고__overline_CO___overline_CA__일때___overline_BC___2__의값을구하시오_단_O는원점이다__4점_"
+      ]
+    },
+    "연산12→연산17": {
+      "from": "연산12",
+      "to": "연산17",
+      "count": 1,
+      "problems": [
+        "7_a_1_인실수_a_에대하여곡선_y_4-a__-x__이_x_축__y_축과만나는점을각각A_B라하자삼각형OAB의외접원이곡선_y_a__x_-1_과O가아닌점C에서만나고__overline_CO___overline_CA__일때___overline_BC___2__의값을구하시오_단_O는원점이다__4점_"
+      ]
+    },
+    "연산2→연산21": {
+      "from": "연산2",
+      "to": "연산21",
+      "count": 1,
+      "problems": [
+        "7_a_1_인실수_a_에대하여곡선_y_4-a__-x__이_x_축__y_축과만나는점을각각A_B라하자삼각형OAB의외접원이곡선_y_a__x_-1_과O가아닌점C에서만나고__overline_CO___overline_CA__일때___overline_BC___2__의값을구하시오_단_O는원점이다__4점_"
+      ]
+    },
+    "연산17→연산11": {
+      "from": "연산17",
+      "to": "연산11",
+      "count": 1,
+      "problems": [
+        "7_a_1_인실수_a_에대하여곡선_y_4-a__-x__이_x_축__y_축과만나는점을각각A_B라하자삼각형OAB의외접원이곡선_y_a__x_-1_과O가아닌점C에서만나고__overline_CO___overline_CA__일때___overline_BC___2__의값을구하시오_단_O는원점이다__4점_"
+      ]
+    },
+    "연산21→연산11": {
+      "from": "연산21",
+      "to": "연산11",
+      "count": 1,
+      "problems": [
+        "7_a_1_인실수_a_에대하여곡선_y_4-a__-x__이_x_축__y_축과만나는점을각각A_B라하자삼각형OAB의외접원이곡선_y_a__x_-1_과O가아닌점C에서만나고__overline_CO___overline_CA__일때___overline_BC___2__의값을구하시오_단_O는원점이다__4점_"
+      ]
+    },
+    "연산11→사실70": {
+      "from": "연산11",
+      "to": "사실70",
+      "count": 1,
+      "problems": [
+        "7_a_1_인실수_a_에대하여곡선_y_4-a__-x__이_x_축__y_축과만나는점을각각A_B라하자삼각형OAB의외접원이곡선_y_a__x_-1_과O가아닌점C에서만나고__overline_CO___overline_CA__일때___overline_BC___2__의값을구하시오_단_O는원점이다__4점_"
+      ]
+    },
+    "사실70→연산6": {
+      "from": "사실70",
+      "to": "연산6",
+      "count": 1,
+      "problems": [
+        "7_a_1_인실수_a_에대하여곡선_y_4-a__-x__이_x_축__y_축과만나는점을각각A_B라하자삼각형OAB의외접원이곡선_y_a__x_-1_과O가아닌점C에서만나고__overline_CO___overline_CA__일때___overline_BC___2__의값을구하시오_단_O는원점이다__4점_"
+      ]
+    },
+    "사실69→연산6": {
+      "from": "사실69",
+      "to": "연산6",
+      "count": 1,
+      "problems": [
+        "7_a_1_인실수_a_에대하여곡선_y_4-a__-x__이_x_축__y_축과만나는점을각각A_B라하자삼각형OAB의외접원이곡선_y_a__x_-1_과O가아닌점C에서만나고__overline_CO___overline_CA__일때___overline_BC___2__의값을구하시오_단_O는원점이다__4점_"
+      ]
+    },
+    "연산6→연산11": {
+      "from": "연산6",
+      "to": "연산11",
+      "count": 1,
+      "problems": [
+        "7_a_1_인실수_a_에대하여곡선_y_4-a__-x__이_x_축__y_축과만나는점을각각A_B라하자삼각형OAB의외접원이곡선_y_a__x_-1_과O가아닌점C에서만나고__overline_CO___overline_CA__일때___overline_BC___2__의값을구하시오_단_O는원점이다__4점_"
+      ]
+    },
+    "사실18→연산11": {
+      "from": "사실18",
+      "to": "연산11",
+      "count": 1,
+      "problems": [
+        "7_a_1_인실수_a_에대하여곡선_y_4-a__-x__이_x_축__y_축과만나는점을각각A_B라하자삼각형OAB의외접원이곡선_y_a__x_-1_과O가아닌점C에서만나고__overline_CO___overline_CA__일때___overline_BC___2__의값을구하시오_단_O는원점이다__4점_"
+      ]
     }
   },
   "matrix": {
@@ -4014,10 +4163,11 @@
       "사실15": 0.083,
       "연산30": 0.083,
       "연산19": 0.083,
-      "전략25": 0.083,
+      "전략25": 0.167,
       "연산3": 0.083,
       "사실12": 0.083,
-      "전략17": 0.083
+      "전략17": 0.083,
+      "연산11": 0.083
     },
     "연산16": {
       "연산2": 0.083,
@@ -4030,7 +4180,7 @@
       "연산4": 0.25,
       "연산17": 0.083,
       "사실18": 0.083,
-      "연산11": 0.083,
+      "연산11": 0.167,
       "전략25": 0.333,
       "연산18": 0.25,
       "전략11": 0.083,
@@ -4041,7 +4191,10 @@
       "사실5": 0.083,
       "연산19": 0.083,
       "사실58": 0.083,
-      "사실12": 0.083
+      "사실12": 0.083,
+      "사실69": 0.083,
+      "연산12": 0.083,
+      "연산21": 0.083
     },
     "전략5": {
       "전략6": 0.083,
@@ -4085,7 +4238,7 @@
       "전략2": 0.417,
       "연산18": 0.417,
       "사실69": 0.083,
-      "연산4": 0.5,
+      "연산4": 0.583,
       "연산2": 0.167,
       "전략6": 0.167,
       "사실35": 0.083,
@@ -4201,7 +4354,8 @@
       "전략6": 0.083,
       "전략25": 0.083,
       "전략29": 0.083,
-      "전략2": 0.083
+      "전략2": 0.083,
+      "사실70": 0.083
     },
     "연산13": {
       "전략2": 0.25,
@@ -4215,7 +4369,7 @@
       "사실64": 0.083,
       "사실58": 0.083,
       "연산18": 0.167,
-      "연산2": 0.083,
+      "연산2": 0.167,
       "사실5": 0.083,
       "연산21": 0.083,
       "사실18": 0.083,
@@ -4295,12 +4449,14 @@
       "사실30": 0.083
     },
     "사실69": {
-      "사실11": 0.083
+      "사실11": 0.167,
+      "연산6": 0.083
     },
     "사실11": {
       "사실15": 0.083,
       "사실81": 0.083,
-      "사실77": 0.083
+      "사실77": 0.083,
+      "사실70": 0.083
     },
     "사실58": {
       "연산10": 0.083,
@@ -4347,7 +4503,10 @@
     "사실18": {
       "전략25": 0.25,
       "연산21": 0.167,
-      "연산4": 0.083
+      "연산4": 0.083,
+      "사실69": 0.083,
+      "연산12": 0.083,
+      "연산11": 0.083
     },
     "사실41": {
       "사실40": 0.167,
@@ -4414,7 +4573,8 @@
       "사실17": 0.167,
       "전략20": 0.083,
       "전략11": 0.083,
-      "전략22": 0.083
+      "전략22": 0.083,
+      "연산11": 0.083
     },
     "전략27": {
       "전략23": 0.083
@@ -4448,18 +4608,20 @@
       "사실70": 0.083
     },
     "사실70": {
-      "연산12": 0.083,
-      "사실11": 0.083
+      "연산12": 0.167,
+      "사실11": 0.083,
+      "연산6": 0.083
     },
     "사실13": {
-      "연산12": 0.083,
+      "연산12": 0.167,
       "연산20": 0.083,
       "전략25": 0.167
     },
     "연산12": {
       "전략2": 0.083,
       "전략25": 0.083,
-      "사실13": 0.083
+      "사실13": 0.083,
+      "연산17": 0.083
     },
     "사실77": {
       "전략25": 0.083
@@ -4601,7 +4763,8 @@
     },
     "연산6": {
       "연산13": 0.083,
-      "전략25": 0.083
+      "전략25": 0.083,
+      "연산11": 0.083
     },
     "사실37": {
       "전략2": 0.083
@@ -4659,18 +4822,20 @@
       ]
     },
     "연산17": {
-      "total_appearances": 8,
-      "problem_count": 5,
-      "outgoing_connections": 10,
-      "incoming_connections": 6,
-      "total_connections": 13,
-      "hub_score": 0.12,
+      "total_appearances": 10,
+      "problem_count": 6,
+      "outgoing_connections": 11,
+      "incoming_connections": 7,
+      "total_connections": 15,
+      "hub_score": 0.14,
       "connected_neurons": [
         "사실12",
         "사실15",
         "사실76",
         "사실81",
         "연산1",
+        "연산11",
+        "연산12",
         "연산16",
         "연산19",
         "연산2",
@@ -4698,19 +4863,21 @@
       ]
     },
     "연산2": {
-      "total_appearances": 27,
-      "problem_count": 15,
-      "outgoing_connections": 17,
+      "total_appearances": 29,
+      "problem_count": 16,
+      "outgoing_connections": 20,
       "incoming_connections": 11,
-      "total_connections": 22,
-      "hub_score": 0.21,
+      "total_connections": 24,
+      "hub_score": 0.23,
       "connected_neurons": [
         "사실12",
         "사실18",
         "사실5",
         "사실58",
         "사실64",
+        "사실69",
         "연산11",
+        "연산12",
         "연산13",
         "연산16",
         "연산17",
@@ -4806,8 +4973,8 @@
       ]
     },
     "전략25": {
-      "total_appearances": 116,
-      "problem_count": 26,
+      "total_appearances": 117,
+      "problem_count": 27,
       "outgoing_connections": 42,
       "incoming_connections": 45,
       "total_connections": 56,
@@ -5103,16 +5270,21 @@
       ]
     },
     "연산11": {
-      "total_appearances": 8,
-      "problem_count": 7,
-      "outgoing_connections": 5,
-      "incoming_connections": 4,
-      "total_connections": 7,
-      "hub_score": 0.07,
+      "total_appearances": 11,
+      "problem_count": 8,
+      "outgoing_connections": 6,
+      "incoming_connections": 8,
+      "total_connections": 12,
+      "hub_score": 0.11,
       "connected_neurons": [
+        "사실18",
         "사실6",
+        "사실70",
         "연산13",
+        "연산17",
         "연산2",
+        "연산21",
+        "연산6",
         "전략2",
         "전략25",
         "전략29",
@@ -5140,8 +5312,8 @@
       ]
     },
     "연산4": {
-      "total_appearances": 18,
-      "problem_count": 12,
+      "total_appearances": 19,
+      "problem_count": 13,
       "outgoing_connections": 10,
       "incoming_connections": 8,
       "total_connections": 12,
@@ -5352,21 +5524,24 @@
       ]
     },
     "사실69": {
-      "total_appearances": 1,
-      "problem_count": 1,
-      "outgoing_connections": 1,
-      "incoming_connections": 1,
-      "total_connections": 2,
-      "hub_score": 0.02,
+      "total_appearances": 2,
+      "problem_count": 2,
+      "outgoing_connections": 2,
+      "incoming_connections": 3,
+      "total_connections": 5,
+      "hub_score": 0.05,
       "connected_neurons": [
         "사실11",
+        "사실18",
+        "연산2",
+        "연산6",
         "전략25"
       ]
     },
     "사실11": {
-      "total_appearances": 3,
-      "problem_count": 2,
-      "outgoing_connections": 3,
+      "total_appearances": 4,
+      "problem_count": 3,
+      "outgoing_connections": 4,
       "incoming_connections": 2,
       "total_connections": 5,
       "hub_score": 0.05,
@@ -5484,14 +5659,17 @@
       ]
     },
     "사실18": {
-      "total_appearances": 6,
-      "problem_count": 6,
-      "outgoing_connections": 3,
+      "total_appearances": 7,
+      "problem_count": 7,
+      "outgoing_connections": 6,
       "incoming_connections": 6,
-      "total_connections": 7,
-      "hub_score": 0.07,
+      "total_connections": 10,
+      "hub_score": 0.1,
       "connected_neurons": [
         "사실51",
+        "사실69",
+        "연산11",
+        "연산12",
         "연산2",
         "연산21",
         "연산4",
@@ -5665,12 +5843,12 @@
       ]
     },
     "연산21": {
-      "total_appearances": 23,
-      "problem_count": 8,
-      "outgoing_connections": 13,
-      "incoming_connections": 14,
-      "total_connections": 23,
-      "hub_score": 0.22,
+      "total_appearances": 24,
+      "problem_count": 9,
+      "outgoing_connections": 14,
+      "incoming_connections": 15,
+      "total_connections": 24,
+      "hub_score": 0.23,
       "connected_neurons": [
         "사실1",
         "사실17",
@@ -5680,6 +5858,7 @@
         "사실51",
         "사실65",
         "사실85",
+        "연산11",
         "연산12",
         "연산13",
         "연산18",
@@ -5812,38 +5991,43 @@
       ]
     },
     "사실70": {
-      "total_appearances": 1,
-      "problem_count": 1,
-      "outgoing_connections": 2,
-      "incoming_connections": 3,
-      "total_connections": 5,
-      "hub_score": 0.05,
+      "total_appearances": 3,
+      "problem_count": 2,
+      "outgoing_connections": 3,
+      "incoming_connections": 5,
+      "total_connections": 7,
+      "hub_score": 0.07,
       "connected_neurons": [
         "사실11",
         "사실8",
+        "연산11",
         "연산12",
+        "연산6",
         "전략25",
         "전략6"
       ]
     },
     "연산12": {
-      "total_appearances": 3,
-      "problem_count": 2,
-      "outgoing_connections": 3,
-      "incoming_connections": 4,
-      "total_connections": 5,
-      "hub_score": 0.05,
+      "total_appearances": 5,
+      "problem_count": 3,
+      "outgoing_connections": 4,
+      "incoming_connections": 6,
+      "total_connections": 8,
+      "hub_score": 0.08,
       "connected_neurons": [
         "사실13",
+        "사실18",
         "사실70",
+        "연산17",
+        "연산2",
         "연산21",
         "전략2",
         "전략25"
       ]
     },
     "사실13": {
-      "total_appearances": 5,
-      "problem_count": 3,
+      "total_appearances": 6,
+      "problem_count": 4,
       "outgoing_connections": 3,
       "incoming_connections": 2,
       "total_connections": 3,
@@ -6288,13 +6472,16 @@
       ]
     },
     "연산6": {
-      "total_appearances": 1,
-      "problem_count": 1,
-      "outgoing_connections": 2,
-      "incoming_connections": 0,
-      "total_connections": 2,
-      "hub_score": 0.02,
+      "total_appearances": 2,
+      "problem_count": 2,
+      "outgoing_connections": 3,
+      "incoming_connections": 2,
+      "total_connections": 5,
+      "hub_score": 0.05,
       "connected_neurons": [
+        "사실69",
+        "사실70",
+        "연산11",
         "연산13",
         "전략25"
       ]
