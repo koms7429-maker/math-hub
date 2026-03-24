@@ -367,32 +367,28 @@ function rAn(p){
     var sf=p.solving_flow||[];
     if(sf.length>0){
       h+='<div style="font-size:10px;color:#7a7f9a;letter-spacing:2px;margin-bottom:6px">FLOW ('+sf.length+' phases)</div>';
+      h+='<div style="display:flex;flex-direction:column;gap:2px;padding-left:12px;border-left:2px solid var(--bd)">';
       sf.forEach(function(phase,pi){
         if(phase.type==='key_idea'){
           var hc=hintColor(phase.hint_level);
-          h+='<div style="display:flex;align-items:center;gap:6px;padding:6px 10px;background:'+hc+'15;border-left:3px solid '+hc+';border-radius:0 4px 4px 0;margin-bottom:3px">';
-          h+='<span style="font-size:10px;color:'+hc+';font-weight:700">🔑</span>';
+          var casc=phase.cascade||[];
+          h+='<div style="display:inline-flex;align-items:center;gap:5px;padding:4px 10px;background:'+hc+'18;border:1px solid '+hc+'40;border-radius:5px;width:fit-content">';
           h+=hintBadge(phase.hint_level)+' ';
           h+='<span style="font-size:10px;color:'+nc(phase.neuron)+';font-weight:600">'+phase.neuron+'</span>';
-          h+='<span style="font-size:10px;color:#7a7f9a">'+phase.note_id+'</span>';
+          h+='<span style="font-size:9px;color:#7a7f9a">'+phase.note_id+'</span>';
+          if(casc.length>0)h+='<span style="font-size:8px;color:#7a7f9a;opacity:.6">+'+casc.length+'</span>';
           h+='</div>';
         } else {
           var steps=phase.steps||[];
           var auto=phase.auto||[];
-          h+='<div style="padding:5px 10px;background:var(--bg);border-radius:4px;margin-bottom:3px;border:1px solid var(--bd)">';
-          h+='<div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">';
-          if(steps.length>0)h+='<span style="font-size:10px;color:#66bb6a;font-weight:600">steps '+steps.length+'</span>';
-          if(auto.length>0)h+='<span style="font-size:10px;color:#7a7f9a">auto '+auto.length+'</span>';
-          if(steps.length>0){
-            h+=' ';
-            steps.forEach(function(s){
-              h+='<span style="font-size:9px;padding:1px 5px;border-radius:3px;background:'+nc(s.neuron)+'22;color:'+nc(s.neuron)+';margin-right:2px">'+s.neuron+'</span>';
-            });
-          }
-          h+='</div></div>';
+          h+='<div style="display:inline-flex;gap:5px;align-items:center;padding:3px 8px;background:var(--bg);border-radius:4px;border:1px solid var(--bd);width:fit-content;flex-wrap:wrap">';
+          if(steps.length>0)h+='<span style="font-size:9px;color:#66bb6a;font-weight:600">steps '+steps.length+'</span>';
+          if(auto.length>0)h+='<span style="font-size:9px;color:#7a7f9a">auto '+auto.length+'</span>';
+          if(steps.length>0){steps.forEach(function(s){h+='<span style="font-size:8px;padding:1px 4px;border-radius:2px;background:'+nc(s.neuron)+'22;color:'+nc(s.neuron)+'">'+s.neuron+'</span>'});}
+          h+='</div>';
         }
-        if(pi<sf.length-1)h+='<div style="text-align:center;color:#7a7f9a;font-size:9px;margin:1px 0">▼</div>';
       });
+      h+='</div>';
     }
     h+='</div>';
   }
