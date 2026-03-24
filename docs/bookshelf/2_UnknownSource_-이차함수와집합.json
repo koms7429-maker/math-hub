@@ -1,0 +1,552 @@
+{
+  "problem_id": "2_UnknownSource_-이차함수와집합",
+  "answer": "81",
+  "clues": [
+    {
+      "id": "단서A",
+      "text": "$f(x)$는 이차함수이다"
+    },
+    {
+      "id": "단서B",
+      "text": "$B = \\{x \\mid \\log|4^x - 3| \\times \\log f(x) \\geq 0\\}$"
+    },
+    {
+      "id": "단서C",
+      "text": "$A = \\{x \\mid x \\text{는 실수}\\} = \\mathbb{R}$"
+    },
+    {
+      "id": "단서D",
+      "text": "$n(A - B) = 2$"
+    }
+  ],
+  "skeleton": [
+    {
+      "from": "단서B",
+      "to": "note1",
+      "neuron": "전략30",
+      "note": "$x \\in B$이려면 $|4^x-3|>0$, $f(x)>0$이고 $(|4^x-3|-1)(f(x)-1) \\geq 0$이어야 한다",
+      "step": 1
+    },
+    {
+      "from": "note1",
+      "to": "note2",
+      "neuron": "사실59",
+      "note": "$|4^x-3|>0 \\iff 4^x \\neq 3$이다",
+      "main": false,
+      "step": 1
+    },
+    {
+      "from": "note2",
+      "to": "note3",
+      "neuron": "연산2",
+      "note": "$4^x=3 \\iff x=\\log_4 3$이다",
+      "step": 1
+    },
+    {
+      "from": [
+        "note1",
+        "note3",
+        "단서C"
+      ],
+      "to": "note4",
+      "neuron": "전략22",
+      "note": "$x \\notin B$인 경우는 (가) $x=\\log_4 3$, (나) $f(x) \\leq 0$, (다) $(|4^x-3|-1)(f(x)-1)<0$의 세 가지이다",
+      "step": 2
+    },
+    {
+      "from": [
+        "단서A",
+        "note4"
+      ],
+      "to": "note5",
+      "neuron": "사실35",
+      "note": "$f(x)$가 이차함수이고 $f(x)<0$인 $x$가 존재하면 해집합은 열린 구간이다",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": "note5",
+      "to": "note6",
+      "neuron": "사실67",
+      "note": "열린 구간에는 무한히 많은 실수가 있다",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": [
+        "note6",
+        "단서D"
+      ],
+      "to": "note7",
+      "neuron": "전략23",
+      "note": "$n(A-B)=2$에 모순이므로 모든 $x$에서 $f(x) \\geq 0$이다",
+      "step": 3
+    },
+    {
+      "from": [
+        "단서A",
+        "note1"
+      ],
+      "to": "note8",
+      "neuron": "사실63",
+      "note": "$(|4^x-3|-1)(f(x)-1)$은 연속함수의 곱이므로 연속함수이다",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": [
+        "note8",
+        "note4"
+      ],
+      "to": "note9",
+      "neuron": "사실61",
+      "note": "$(|4^x-3|-1)(f(x)-1)<0$인 점이 존재하면 그 근방 열린 구간에서도 성립한다",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": "note9",
+      "to": "note10",
+      "neuron": "사실67",
+      "note": "해당 해집합은 무한집합이다",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": [
+        "note10",
+        "단서D"
+      ],
+      "to": "note11",
+      "neuron": "전략23",
+      "note": "$n(A-B)=2$에 모순이므로 모든 $x$에서 $(|4^x-3|-1)(f(x)-1) \\geq 0$이다",
+      "step": 3
+    },
+    {
+      "from": [
+        "note7",
+        "note11",
+        "note3",
+        "단서D"
+      ],
+      "to": "note12",
+      "neuron": "전략2",
+      "note": "$A-B$의 원소는 $x=\\log_4 3$과 $f(x)=0$인 점뿐이고, $f(x)=0$의 해는 정확히 1개이며 $\\log_4 3$과 다르다",
+      "step": 3
+    },
+    {
+      "from": "note11",
+      "to": "note13",
+      "neuron": "전략6",
+      "note": "$|4^x-3|=1$이면 $4^x-3=1$ 또는 $4^x-3=-1$이다",
+      "step": 4
+    },
+    {
+      "from": "note13",
+      "to": "note14",
+      "neuron": "연산2",
+      "note": "$4^x=4$이면 $x=1$이고 $4^x=2$이면 $x=\\frac{1}{2}$이다",
+      "step": 4
+    },
+    {
+      "from": "단서B",
+      "to": "note15",
+      "neuron": "사실5",
+      "note": "$4^x$는 순증가한다",
+      "main": false,
+      "step": 4
+    },
+    {
+      "from": [
+        "note15",
+        "note14"
+      ],
+      "to": "note16",
+      "neuron": "사실51",
+      "note": "$x<\\frac{1}{2}$이면 $4^x<2$이고, $\\frac{1}{2}<x<1$이면 $2<4^x<4$이고, $x>1$이면 $4^x>4$이다",
+      "main": false,
+      "step": 4
+    },
+    {
+      "from": "note16",
+      "to": "note17",
+      "neuron": "전략6",
+      "note": "$x<\\frac{1}{2}$이면 $|4^x-3|-1>0$이고, $\\frac{1}{2}<x<1$이면 $|4^x-3|-1<0$이고, $x>1$이면 $|4^x-3|-1>0$이다",
+      "step": 4
+    },
+    {
+      "from": [
+        "note17",
+        "note11"
+      ],
+      "to": "note18",
+      "neuron": "사실65",
+      "note": "$x \\leq \\frac{1}{2}$ 또는 $x \\geq 1$에서 $f(x) \\geq 1$이고, $\\frac{1}{2} < x < 1$에서 $f(x) \\leq 1$이다",
+      "step": 4
+    },
+    {
+      "from": "note18",
+      "to": "note19",
+      "neuron": "사실61",
+      "note": "$f(\\frac{1}{2}) \\neq 1$이면 $f(x)-1$이 $\\frac{1}{2}$ 근방에서 한쪽 부호를 유지한다",
+      "main": false,
+      "step": 5
+    },
+    {
+      "from": [
+        "note19",
+        "note18"
+      ],
+      "to": "note20",
+      "neuron": "전략23",
+      "note": "$f(\\frac{1}{2})=1$이다",
+      "main": false,
+      "step": 5
+    },
+    {
+      "from": "note18",
+      "to": "note21",
+      "neuron": "사실61",
+      "note": "$f(1) \\neq 1$이면 $f(x)-1$이 $1$ 근방에서 한쪽 부호를 유지한다",
+      "main": false,
+      "step": 5
+    },
+    {
+      "from": [
+        "note21",
+        "note18"
+      ],
+      "to": "note22",
+      "neuron": "전략23",
+      "note": "$f(1)=1$이다",
+      "main": false,
+      "step": 5
+    },
+    {
+      "from": [
+        "note20",
+        "note22",
+        "단서A"
+      ],
+      "to": "note23",
+      "neuron": "사실72",
+      "note": "$f(\\frac{1}{2})=f(1)=1$이고 $f(x)$가 이차함수이므로 $f(x)=k\\left(x-\\frac{1}{2}\\right)(x-1)+1$ ($k>0$)이다",
+      "step": 5
+    },
+    {
+      "from": [
+        "note23",
+        "note12"
+      ],
+      "to": "note24",
+      "neuron": "사실9",
+      "note": "$f(x)=0$의 해가 정확히 1개이면 $f$의 최솟값이 $0$이고, 대칭축 $x=\\frac{3}{4}$에서 $f\\left(\\frac{3}{4}\\right)=0$이다",
+      "step": 6
+    },
+    {
+      "from": "note24",
+      "to": "note25",
+      "neuron": "전략2",
+      "note": "$-\\frac{k}{16}+1=0$에서 $k=16$이다",
+      "step": 6
+    },
+    {
+      "from": "note25",
+      "to": "note26",
+      "neuron": "전략25",
+      "note": "$4^{3/4}=2\\sqrt{2} \\neq 3$이므로 $\\frac{3}{4} \\neq \\log_4 3$이고 $n(A-B)=2$을 만족한다",
+      "main": false,
+      "step": 6
+    },
+    {
+      "from": "note25",
+      "to": "END",
+      "neuron": "전략25",
+      "note": "$f(x)=16\\left(x-\\frac{1}{2}\\right)(x-1)+1$에 $x=3$을 대입하면 $f(3)=16 \\cdot \\frac{5}{2} \\cdot 2+1=81$이다",
+      "step": 7
+    }
+  ],
+  "solution": "STEP 1. 집합 $B$의 정의조건과 부호조건을 분리한다.\n$x \\in B$이려면 $|4^x-3|>0$, $f(x)>0$이고 $(|4^x-3|-1)(f(x)-1) \\geq 0$이어야 한다. $|4^x-3|>0 \\iff 4^x \\neq 3 \\iff x \\neq \\log_4 3$이다.\n\nSTEP 2. $x \\notin B$인 경우를 분류한다.\n$A=\\mathbb{R}$이므로 $x \\notin B$인 경우는 (가) $x=\\log_4 3$, (나) $f(x) \\leq 0$, (다) $(|4^x-3|-1)(f(x)-1)<0$의 세 가지이다.\n\nSTEP 3. $n(A-B)=2$이므로 (나)와 (다)는 유한해야 한다.\n$f(x)<0$인 $x$가 존재하면 이차함수의 성질에 의해 해집합이 열린 구간(무한집합)이 되어 모순이므로, 모든 $x$에서 $f(x) \\geq 0$이다. $(|4^x-3|-1)(f(x)-1)<0$인 점이 존재하면 연속성에 의해 근방 구간에서도 성립하여 무한집합이 되므로, 모든 $x$에서 $(|4^x-3|-1)(f(x)-1) \\geq 0$이다. 따라서 $A-B$의 원소는 $x=\\log_4 3$과 $f(x)=0$인 점뿐이고, $f(x)=0$의 해는 정확히 1개이며 $\\log_4 3$과 다르다.\n\nSTEP 4. $|4^x-3|-1$의 부호를 구간별로 분석한다.\n$|4^x-3|=1$의 해는 $x=\\frac{1}{2}$, $x=1$이다. $4^x$가 순증가이므로 $x<\\frac{1}{2}$에서 $|4^x-3|-1>0$, $\\frac{1}{2}<x<1$에서 $|4^x-3|-1<0$, $x>1$에서 $|4^x-3|-1>0$이다. 곱의 부호 조건에 의해 $x \\leq \\frac{1}{2}$ 또는 $x \\geq 1$에서 $f(x) \\geq 1$이고, $\\frac{1}{2}<x<1$에서 $f(x) \\leq 1$이다.\n\nSTEP 5. 이차함수 $f(x)$의 형태를 결정한다.\n연속성과 양측 부호 조건에 의해 $f(\\frac{1}{2})=1$, $f(1)=1$이다. $f(x)$가 이차함수이고 두 점에서 같은 값 1을 가지므로 $f(x)=k(x-\\frac{1}{2})(x-1)+1$ ($k>0$)이다.\n\nSTEP 6. $f(x)=0$의 해가 정확히 1개인 조건으로 $k$를 결정한다.\n$f(x)=0$의 해가 정확히 1개이면 $f$의 최솟값이 0이고, 대칭축 $x=\\frac{3}{4}$에서 $f(\\frac{3}{4})=-\\frac{k}{16}+1=0$이므로 $k=16$이다.\n\nSTEP 7. $f(3)$을 계산한다.\n$f(3)=16(3-\\frac{1}{2})(3-1)+1=16 \\cdot \\frac{5}{2} \\cdot 2+1=81$이다.",
+  "original_solution": "집합 $B$의 원소인 $x$는\n\n$$\\begin{cases} \\bullet\\ 4^x - 3 \\neq 0 \\text{이고, } f(x) > 0 \\quad (\\because \\text{ 진수조건}) \\\\ \\bullet\\ (|4^x - 3| - 1) \\times \\{f(x) - 1\\} \\geq 0 \\end{cases}$$\n\n을 모두 만족시켜야 한다. 따라서\n\n$$4^x - 3 = 0 \\Leftrightarrow x = \\log_4 3 \\text{은 집합 } A - B \\text{의 원소}$$\n\n이고, 이때\n\n$$\\begin{cases} \\bullet\\ f(x) < 0 \\text{인 } x \\text{는 없거나 무수히 많음} \\\\ \\bullet\\ (|4^x - 3| - 1) \\times \\{f(x) - 1\\} < 0 \\text{인 } x \\text{는 없거나 무수히 많음} \\end{cases}$$\n\n을 참고하면\n\n$$n(A - B) = 2$$\n\n를 만족시키기 위해서는\n\n$$\\begin{cases} ① \\ f(x) = 0 \\text{인 } x \\text{의 개수는 1이고, 이때의 } x \\neq \\log_4 3 \\\\ ② \\ \\text{모든 } x \\text{에 대하여 } (|4^x - 3| - 1) \\times \\{f(x) - 1\\} \\geq 0 \\end{cases}$$\n\n임을 알 수 있다.\n\n한편,\n\n$$|4^x - 3| \\geq 1 \\Leftrightarrow x \\leq \\frac{1}{2},\\ x \\geq 1$$\n\n이므로\n\n$$② \\Rightarrow \\begin{cases} \\bullet\\ x \\leq \\dfrac{1}{2},\\ x \\geq 1 \\text{에서 } f(x) \\geq 1 \\\\ \\bullet\\ \\dfrac{1}{2} < x < 1 \\text{에서 } f(x) < 1 \\end{cases}$$\n\n$$\\Rightarrow f(x) = k\\left(x - \\frac{1}{2}\\right)(x - 1) + 1 \\quad (\\text{단, } k > 0)$$\n\n로 놓으면\n\n$$① \\Rightarrow f\\left(\\frac{3}{4}\\right) = 0 \\quad (\\because \\text{ 이차함수의 대칭축})$$\n\n$$\\Rightarrow k = 16$$\n\n을 얻는다.\n\n$$\\therefore\\ f(x) = 16\\left(x - \\frac{1}{2}\\right)(x - 1) + 1 \\Rightarrow f(3) = 81$$\n\n---",
+  "analysis": "로그 부등식의 정의조건과 부호조건을 분리(전략30)한 후, A-B의 원소가 유한개임을 이용하여 이차함수의 비음수 조건과 곱 비음수 조건을 유도한다. |4^x-3|-1의 부호 변화 경계(x=1/2, x=1)에서 연속성으로 f의 값을 결정하고, 사실72로 이차함수의 형태를 세운 뒤 사실9로 계수를 결정한다.",
+  "new_neurons": [],
+  "metadata": {
+    "unit": "지수·로그",
+    "difficulty": "상",
+    "score": "4",
+    "type": "주관식",
+    "answer": "81"
+  },
+  "edge_count": 27,
+  "side_count": 13,
+  "statement": "# 2. (Unknown Source) - 이차함수와 집합\n\n## Problem\n\n이차함수 $f(x)$에 대하여 두 집합\n\n$$A = \\{x \\mid x \\text{는 실수}\\},$$\n\n$$B = \\{x \\mid \\log|4^x - 3| \\times \\log f(x) \\geq 0\\}$$\n\n이 있다. $n(A - B) = 2$일 때, $f(3)$의 값을 구하시오. [4점]",
+  "dna": {
+    "nodes": [
+      {
+        "id": "top",
+        "dna": "Q1",
+        "label": "값을 구하라",
+        "category": "발문"
+      },
+      {
+        "id": "ask",
+        "dna": "F3",
+        "label": "f(3)",
+        "category": "함수"
+      },
+      {
+        "id": "c3_val",
+        "dna": "T2",
+        "label": "상수 3",
+        "category": "말단"
+      },
+      {
+        "id": "set_a",
+        "dna": "S2",
+        "label": "집합 A = {x | x는 실수}",
+        "category": "구조"
+      },
+      {
+        "id": "set_b",
+        "dna": "S2",
+        "label": "집합 B",
+        "category": "구조"
+      },
+      {
+        "id": "set_diff",
+        "dna": "S3",
+        "label": "A-B",
+        "category": "구조"
+      },
+      {
+        "id": "n_diff",
+        "dna": "S4",
+        "label": "n(A-B)",
+        "category": "구조"
+      },
+      {
+        "id": "n_eq_2",
+        "dna": "C1",
+        "label": "n(A-B)=2",
+        "category": "조건"
+      },
+      {
+        "id": "c2_val",
+        "dna": "T2",
+        "label": "상수 2",
+        "category": "말단"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
+      },
+      {
+        "id": "vf",
+        "dna": "T1",
+        "label": "변수 f",
+        "category": "말단"
+      },
+      {
+        "id": "f_quad",
+        "dna": "F11",
+        "label": "이차함수 f",
+        "category": "함수"
+      },
+      {
+        "id": "b_cond",
+        "dna": "C2",
+        "label": "B의 부등식 ≥ 0",
+        "category": "조건"
+      },
+      {
+        "id": "prod_logs",
+        "dna": "E6",
+        "label": "곱(log1, log2)",
+        "category": "수식"
+      },
+      {
+        "id": "c0_val",
+        "dna": "T2",
+        "label": "상수 0",
+        "category": "말단"
+      },
+      {
+        "id": "log1",
+        "dna": "E3",
+        "label": "log|4^x-3|",
+        "category": "수식"
+      },
+      {
+        "id": "abs_expr",
+        "dna": "E5",
+        "label": "|4^x-3|",
+        "category": "수식"
+      },
+      {
+        "id": "inner_diff",
+        "dna": "E1",
+        "label": "합(4^x, -3)",
+        "category": "수식"
+      },
+      {
+        "id": "exp4x",
+        "dna": "E4",
+        "label": "4^x",
+        "category": "수식"
+      },
+      {
+        "id": "c4",
+        "dna": "T2",
+        "label": "상수 4",
+        "category": "말단"
+      },
+      {
+        "id": "neg3",
+        "dna": "E2",
+        "label": "부호반전(3)",
+        "category": "수식"
+      },
+      {
+        "id": "log2",
+        "dna": "E3",
+        "label": "log f(x)",
+        "category": "수식"
+      },
+      {
+        "id": "fx_apply",
+        "dna": "F3",
+        "label": "f(x)",
+        "category": "함수"
+      },
+      {
+        "id": "log_base",
+        "dna": "T2",
+        "label": "상수 10(밑)",
+        "category": "말단"
+      }
+    ],
+    "edges": [
+      {
+        "from": "ask",
+        "to": "top"
+      },
+      {
+        "from": "vf",
+        "to": "ask"
+      },
+      {
+        "from": "c3_val",
+        "to": "ask"
+      },
+      {
+        "from": "n_eq_2",
+        "to": "top"
+      },
+      {
+        "from": "n_diff",
+        "to": "n_eq_2"
+      },
+      {
+        "from": "c2_val",
+        "to": "n_eq_2"
+      },
+      {
+        "from": "set_diff",
+        "to": "n_diff"
+      },
+      {
+        "from": "set_a",
+        "to": "set_diff"
+      },
+      {
+        "from": "set_b",
+        "to": "set_diff"
+      },
+      {
+        "from": "vx",
+        "to": "set_a"
+      },
+      {
+        "from": "b_cond",
+        "to": "set_b"
+      },
+      {
+        "from": "prod_logs",
+        "to": "b_cond"
+      },
+      {
+        "from": "c0_val",
+        "to": "b_cond"
+      },
+      {
+        "from": "log1",
+        "to": "prod_logs"
+      },
+      {
+        "from": "log2",
+        "to": "prod_logs"
+      },
+      {
+        "from": "log_base",
+        "to": "log1"
+      },
+      {
+        "from": "abs_expr",
+        "to": "log1"
+      },
+      {
+        "from": "inner_diff",
+        "to": "abs_expr"
+      },
+      {
+        "from": "exp4x",
+        "to": "inner_diff"
+      },
+      {
+        "from": "neg3",
+        "to": "inner_diff"
+      },
+      {
+        "from": "c4",
+        "to": "exp4x"
+      },
+      {
+        "from": "vx",
+        "to": "exp4x"
+      },
+      {
+        "from": "c3_val",
+        "to": "neg3"
+      },
+      {
+        "from": "log_base",
+        "to": "log2"
+      },
+      {
+        "from": "fx_apply",
+        "to": "log2"
+      },
+      {
+        "from": "vf",
+        "to": "fx_apply"
+      },
+      {
+        "from": "vx",
+        "to": "fx_apply"
+      },
+      {
+        "from": "f_quad",
+        "to": "vf"
+      }
+    ],
+    "new_dna": []
+  },
+  "thinking_profile": null,
+  "folders": [],
+  "history": [],
+  "recovery_warnings": [],
+  "errata": [],
+  "created_at": "2026-03-24T01:29:12.641Z"
+}

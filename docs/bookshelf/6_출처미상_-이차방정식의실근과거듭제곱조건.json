@@ -1,0 +1,443 @@
+{
+  "problem_id": "6_출처미상_-이차방정식의실근과거듭제곱조건",
+  "answer": "18",
+  "clues": [
+    {
+      "id": "단서A",
+      "text": "$x^2 + (2a+1)x + a^2 + a = 0$의 한 실근이 $k$이다"
+    },
+    {
+      "id": "단서B",
+      "text": "어떤 자연수 $n$에 대하여 $k^n = 64$이다"
+    },
+    {
+      "id": "단서C",
+      "text": "$a$는 자연수이다"
+    }
+  ],
+  "skeleton": [
+    {
+      "from": "단서A",
+      "to": "note1",
+      "neuron": "전략29",
+      "note": "$x^2+(2a+1)x+a^2+a = (x+a)(x+a+1)$로 인수분해된다",
+      "step": 1
+    },
+    {
+      "from": "note1",
+      "to": "note2",
+      "neuron": "연산9",
+      "note": "$k = -a$ 또는 $k = -a-1$이다",
+      "step": 1
+    },
+    {
+      "from": [
+        "note2",
+        "단서C"
+      ],
+      "to": "note3",
+      "neuron": "연산22",
+      "note": "$a \\geq 1$이므로 $-a \\leq -1$이고 $-a-1 \\leq -2$이다",
+      "main": false,
+      "step": 2
+    },
+    {
+      "from": "note3",
+      "to": "note4",
+      "neuron": "사실76",
+      "note": "$k$는 음의 정수이다",
+      "step": 2
+    },
+    {
+      "from": [
+        "note4",
+        "단서B"
+      ],
+      "to": "note5",
+      "neuron": "사실76",
+      "note": "$k < 0$이고 $k^n = 64 > 0$이므로 $n$은 짝수이다",
+      "step": 2
+    },
+    {
+      "from": "단서B",
+      "to": "note6",
+      "neuron": "전략33",
+      "note": "$64 = 2^6$이다",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": [
+        "note4",
+        "note5"
+      ],
+      "to": "note7",
+      "neuron": "사실76",
+      "note": "$n$이 짝수이고 $k < 0$이므로 $|k|^n = k^n = 64$이다",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": [
+        "note6",
+        "note7"
+      ],
+      "to": "note8",
+      "neuron": "사실64",
+      "note": "$|k|^n = 2^6$에서 $|k| = 2^{6/n}$이 자연수이려면 $n \\mid 6$이어야 한다",
+      "step": 3
+    },
+    {
+      "from": "note8",
+      "to": "note9",
+      "neuron": "전략17",
+      "note": "$n$이 짝수이고 $n \\mid 6$인 자연수는 $n = 2$ 또는 $n = 6$이다",
+      "step": 3
+    },
+    {
+      "from": "note9",
+      "to": "note10",
+      "neuron": "전략25",
+      "note": "$n=2$이면 $|k|=2^3=8$이므로 $k=-8$이고, $n=6$이면 $|k|=2^1=2$이므로 $k=-2$이다",
+      "step": 3
+    },
+    {
+      "from": [
+        "note10",
+        "note2"
+      ],
+      "to": "note11",
+      "neuron": "전략25",
+      "note": "$k=-8$이면 $a=8$ 또는 $a=7$이고, $k=-2$이면 $a=2$ 또는 $a=1$이다",
+      "step": 4
+    },
+    {
+      "from": "note11",
+      "to": "END",
+      "neuron": "전략17",
+      "note": "가능한 $a$의 값은 $1, 2, 7, 8$이고 합은 $1+2+7+8=18$이다",
+      "step": 5
+    }
+  ],
+  "solution": "STEP 1. 주어진 이차방정식 $x^2+(2a+1)x+a^2+a=0$을 인수분해하면 $(x+a)(x+a+1)=0$이다. 영인자법칙에 의해 $k=-a$ 또는 $k=-a-1$이다.\n\nSTEP 2. $a$가 자연수이므로 $a \\geq 1$이고, $-a \\leq -1$, $-a-1 \\leq -2$이다. 따라서 $k$는 음의 정수이다. $k<0$이고 $k^n=64>0$이므로 $n$은 짝수이다.\n\nSTEP 3. $n$이 짝수이고 $k<0$이므로 $|k|^n=64=2^6$이다. $|k|=2^{6/n}$이 자연수이려면 $n \\mid 6$이어야 한다. $n$이 짝수이고 $n \\mid 6$인 자연수는 $n=2$ 또는 $n=6$이다. $n=2$이면 $|k|=8$이므로 $k=-8$이고, $n=6$이면 $|k|=2$이므로 $k=-2$이다.\n\nSTEP 4. $k=-8$일 때: $-a=-8$에서 $a=8$, 또는 $-a-1=-8$에서 $a=7$이다. $k=-2$일 때: $-a=-2$에서 $a=2$, 또는 $-a-1=-2$에서 $a=1$이다.\n\nSTEP 5. 가능한 $a$의 값은 $1, 2, 7, 8$이고, 모든 자연수 $a$의 값의 합은 $1+2+7+8=18$이다.",
+  "original_solution": "주어진 이차방정식을 인수분해하면\n\n$$x^2 + (2a+1)x + a^2 + a = 0 \\iff (x+a)(x+a+1) = 0$$\n\n$$\\iff x = -a \\quad \\text{또는} \\quad x = -a-1$$\n\n이므로\n\n$$k = -a \\quad \\text{또는} \\quad k = -a-1 \\quad \\cdots \\; ㉠$$\n\n이때, $a$가 자연수이면 $k$는 음의 정수이다.\n\n문제의 조건을 만족시키려면, $k$는 음의 정수이고 $k^n = 64 = 2^6$이므로 $n$은 **짝수**이고 **6의 약수**여야 한다.\n\n짝수인 6의 약수는 $n = 2$와 $n = 6$이다.\n\n$$\\Rightarrow \\begin{cases} \\text{① } n = 2 \\text{이고, } k = -8 \\\\ \\text{② } n = 6 \\text{이고, } k = -2 \\end{cases}$$\n\n따라서 ㉠에 의해\n\n$$\\begin{cases} \\text{①의 경우 } a = 8 \\text{ 또는 } a = 7 \\\\ \\text{②의 경우 } a = 2 \\text{ 또는 } a = 1 \\end{cases}$$\n\n$$\\Rightarrow (\\text{모든 자연수 } a \\text{의 값의 합}) = 8 + 7 + 2 + 1 = \\boxed{18}$$",
+  "analysis": "이차방정식을 인수분해하여 근을 구하고, $k$가 음의 정수임을 확인한 뒤 $k^n=64$에서 $n$이 짝수여야 함을 도출한다. $|k|^n=2^6$에서 정수 조건으로 $n\\mid 6$을 얻고, $n$ 짝수와 결합하여 $(n,k)$ 후보를 전수조사한 뒤 대응하는 $a$를 구한다.",
+  "new_neurons": [],
+  "metadata": {
+    "unit": "",
+    "difficulty": "",
+    "score": "4",
+    "type": "",
+    "answer": "18"
+  },
+  "edge_count": 12,
+  "side_count": 3,
+  "statement": "# 6. (출처 미상) - 이차방정식의 실근과 거듭제곱 조건\n\n## Problem\n\n$x$에 대한 방정식 $x^2 + (2a+1)x + a^2 + a = 0$의 한 실근 $k$가 다음 조건을 만족시키도록 하는 모든 자연수 $a$의 값의 합은? [4점]\n\n$$\\text{어떤 자연수 } n \\text{에 대하여 } k^n = 64 \\text{이다.}$$",
+  "dna": {
+    "nodes": [
+      {
+        "id": "top",
+        "dna": "Q3",
+        "label": "합을 구하라",
+        "category": "발문"
+      },
+      {
+        "id": "ask_sum",
+        "dna": "E1",
+        "label": "모든 a의 합",
+        "category": "수식"
+      },
+      {
+        "id": "va",
+        "dna": "T1",
+        "label": "변수 a",
+        "category": "말단"
+      },
+      {
+        "id": "a_natural",
+        "dna": "L3",
+        "label": "a는 자연수",
+        "category": "제한"
+      },
+      {
+        "id": "conds",
+        "dna": "S1",
+        "label": "조건 묶음",
+        "category": "구조"
+      },
+      {
+        "id": "eq_def",
+        "dna": "C11",
+        "label": "방정식 정의",
+        "category": "조건"
+      },
+      {
+        "id": "eq_c1",
+        "dna": "C1",
+        "label": "x²+(2a+1)x+a²+a=0",
+        "category": "조건"
+      },
+      {
+        "id": "lhs",
+        "dna": "E1",
+        "label": "좌변 합",
+        "category": "수식"
+      },
+      {
+        "id": "lhs_xsq",
+        "dna": "E7",
+        "label": "x²",
+        "category": "수식"
+      },
+      {
+        "id": "lhs_mid",
+        "dna": "E6",
+        "label": "(2a+1)x",
+        "category": "수식"
+      },
+      {
+        "id": "coeff",
+        "dna": "E1",
+        "label": "2a+1",
+        "category": "수식"
+      },
+      {
+        "id": "two_a",
+        "dna": "E6",
+        "label": "2a",
+        "category": "수식"
+      },
+      {
+        "id": "c2",
+        "dna": "T2",
+        "label": "상수 2",
+        "category": "말단"
+      },
+      {
+        "id": "c1",
+        "dna": "T2",
+        "label": "상수 1",
+        "category": "말단"
+      },
+      {
+        "id": "lhs_const",
+        "dna": "E1",
+        "label": "a²+a",
+        "category": "수식"
+      },
+      {
+        "id": "a_sq",
+        "dna": "E7",
+        "label": "a²",
+        "category": "수식"
+      },
+      {
+        "id": "rhs_zero",
+        "dna": "T2",
+        "label": "상수 0",
+        "category": "말단"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
+      },
+      {
+        "id": "c_exp2",
+        "dna": "T2",
+        "label": "지수 2",
+        "category": "말단"
+      },
+      {
+        "id": "vk",
+        "dna": "T1",
+        "label": "변수 k",
+        "category": "말단"
+      },
+      {
+        "id": "real_root",
+        "dna": "C15",
+        "label": "한 실근 k 조건",
+        "category": "조건"
+      },
+      {
+        "id": "k_cond",
+        "dna": "X5",
+        "label": "어떤 자연수 n 존재",
+        "category": "존재"
+      },
+      {
+        "id": "vn",
+        "dna": "T1",
+        "label": "변수 n",
+        "category": "말단"
+      },
+      {
+        "id": "n_natural",
+        "dna": "L3",
+        "label": "n은 자연수",
+        "category": "제한"
+      },
+      {
+        "id": "kn_eq",
+        "dna": "C1",
+        "label": "k^n=64",
+        "category": "조건"
+      },
+      {
+        "id": "kn_pow",
+        "dna": "E7",
+        "label": "k^n",
+        "category": "수식"
+      },
+      {
+        "id": "c64",
+        "dna": "T2",
+        "label": "상수 64",
+        "category": "말단"
+      }
+    ],
+    "edges": [
+      {
+        "from": "ask_sum",
+        "to": "top"
+      },
+      {
+        "from": "va",
+        "to": "ask_sum"
+      },
+      {
+        "from": "conds",
+        "to": "top"
+      },
+      {
+        "from": "a_natural",
+        "to": "va"
+      },
+      {
+        "from": "eq_def",
+        "to": "conds"
+      },
+      {
+        "from": "eq_c1",
+        "to": "eq_def"
+      },
+      {
+        "from": "lhs",
+        "to": "eq_c1"
+      },
+      {
+        "from": "rhs_zero",
+        "to": "eq_c1"
+      },
+      {
+        "from": "lhs_xsq",
+        "to": "lhs"
+      },
+      {
+        "from": "lhs_mid",
+        "to": "lhs"
+      },
+      {
+        "from": "lhs_const",
+        "to": "lhs"
+      },
+      {
+        "from": "vx",
+        "to": "lhs_xsq"
+      },
+      {
+        "from": "c_exp2",
+        "to": "lhs_xsq"
+      },
+      {
+        "from": "coeff",
+        "to": "lhs_mid"
+      },
+      {
+        "from": "vx",
+        "to": "lhs_mid"
+      },
+      {
+        "from": "two_a",
+        "to": "coeff"
+      },
+      {
+        "from": "c1",
+        "to": "coeff"
+      },
+      {
+        "from": "c2",
+        "to": "two_a"
+      },
+      {
+        "from": "va",
+        "to": "two_a"
+      },
+      {
+        "from": "a_sq",
+        "to": "lhs_const"
+      },
+      {
+        "from": "va",
+        "to": "lhs_const"
+      },
+      {
+        "from": "va",
+        "to": "a_sq"
+      },
+      {
+        "from": "c_exp2",
+        "to": "a_sq"
+      },
+      {
+        "from": "real_root",
+        "to": "conds"
+      },
+      {
+        "from": "vk",
+        "to": "real_root"
+      },
+      {
+        "from": "k_cond",
+        "to": "real_root"
+      },
+      {
+        "from": "n_natural",
+        "to": "vn"
+      },
+      {
+        "from": "vn",
+        "to": "k_cond"
+      },
+      {
+        "from": "kn_eq",
+        "to": "k_cond"
+      },
+      {
+        "from": "kn_pow",
+        "to": "kn_eq"
+      },
+      {
+        "from": "c64",
+        "to": "kn_eq"
+      },
+      {
+        "from": "vk",
+        "to": "kn_pow"
+      },
+      {
+        "from": "vn",
+        "to": "kn_pow"
+      }
+    ],
+    "new_dna": []
+  },
+  "thinking_profile": null,
+  "folders": [],
+  "history": [],
+  "recovery_warnings": [],
+  "errata": [],
+  "created_at": "2026-03-24T01:02:56.307Z"
+}

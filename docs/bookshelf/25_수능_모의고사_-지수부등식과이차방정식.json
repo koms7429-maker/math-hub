@@ -1,0 +1,453 @@
+{
+  "problem_id": "25_수능_모의고사_-지수부등식과이차방정식",
+  "answer": "④ 4",
+  "clues": [
+    {
+      "id": "단서A",
+      "text": "$x$에 대한 부등식 $4^{x-a}-2^x+b\\leq0$"
+    },
+    {
+      "id": "단서B",
+      "text": "부등식을 만족시키는 모든 $x$의 값의 범위가 $x\\leq8$이다"
+    },
+    {
+      "id": "단서C",
+      "text": "$a$는 자연수이고 $b$는 실수이다"
+    }
+  ],
+  "skeleton": [
+    {
+      "from": "단서A",
+      "to": "note1",
+      "neuron": "전략1",
+      "note": "$2^x=X$로 치환하면 $4^{x-a}=4^{-a}X^2$이고, 부등식은 $4^{-a}X^2-X+b\\leq0$이다",
+      "step": 1
+    },
+    {
+      "from": "단서A",
+      "to": "note2",
+      "neuron": "사실1",
+      "note": "$X=2^x>0$이다",
+      "main": false,
+      "step": 1
+    },
+    {
+      "from": "단서A",
+      "to": "note3",
+      "neuron": "사실5",
+      "note": "$y=2^x$는 밑이 $2>1$이므로 순증가이다",
+      "main": false,
+      "step": 1
+    },
+    {
+      "from": [
+        "note3",
+        "단서B"
+      ],
+      "to": "note4",
+      "neuron": "사실51",
+      "note": "$x\\leq8$은 $2^x\\leq2^8=256$, 즉 $X\\leq256$과 동치이다",
+      "step": 1
+    },
+    {
+      "from": [
+        "note1",
+        "note2",
+        "note4"
+      ],
+      "to": "note5",
+      "neuron": "전략2",
+      "note": "부등식 $4^{-a}X^2-X+b\\leq0$의 해가 $X>0$ 범위에서 정확히 $0<X\\leq256$이어야 한다",
+      "step": 1
+    },
+    {
+      "from": "단서C",
+      "to": "note6",
+      "neuron": "사실1",
+      "note": "$4^{-a}>0$이다",
+      "main": false,
+      "step": 2
+    },
+    {
+      "from": "note6",
+      "to": "note7",
+      "neuron": "사실35",
+      "note": "$f(X)=4^{-a}X^2-X+b$는 최고차 계수가 양수인 이차함수이고, $f(X)\\leq0$의 해는 두 근 $r_1\\leq r_2$에 대해 $r_1\\leq X\\leq r_2$이다",
+      "step": 2
+    },
+    {
+      "from": [
+        "note7",
+        "note5"
+      ],
+      "to": "note8",
+      "neuron": "전략25",
+      "note": "해 집합의 상한이 $256$이므로 $r_2=256$이다",
+      "step": 2
+    },
+    {
+      "from": [
+        "note7",
+        "note5"
+      ],
+      "to": "note9",
+      "neuron": "전략23",
+      "note": "$r_1>0$이면 $0<X<r_1$에서 $f(X)>0$이 되어 해가 $0<X\\leq256$ 전체가 아니므로 모순이다",
+      "main": false,
+      "step": 2
+    },
+    {
+      "from": "note9",
+      "to": "note10",
+      "neuron": "전략23",
+      "note": "$r_1\\leq0$이다",
+      "step": 2
+    },
+    {
+      "from": "note8",
+      "to": "note11",
+      "neuron": "전략25",
+      "note": "$f(256)=0$에 대입하면 $4^{-a}\\cdot2^{16}-2^8+b=0$, 즉 $2^{16-2a}-2^8+b=0$이다",
+      "step": 3
+    },
+    {
+      "from": "note11",
+      "to": "note12",
+      "neuron": "연산21",
+      "note": "$b=2^8-2^{16-2a}$이다",
+      "step": 3
+    },
+    {
+      "from": [
+        "note7",
+        "note8"
+      ],
+      "to": "note13",
+      "neuron": "사실78",
+      "note": "근과 계수의 관계에 의해 $r_1\\cdot r_2=\\frac{b}{4^{-a}}=b\\cdot4^a$이다",
+      "step": 4
+    },
+    {
+      "from": [
+        "note10",
+        "note8"
+      ],
+      "to": "note14",
+      "neuron": "사실65",
+      "note": "$r_2=256>0$이고 $r_1\\leq0$이므로 $r_1\\cdot r_2\\leq0$이다",
+      "main": false,
+      "step": 4
+    },
+    {
+      "from": [
+        "note13",
+        "note14"
+      ],
+      "to": "note15",
+      "neuron": "사실65",
+      "note": "$b\\cdot4^a\\leq0$이고 $4^a>0$이므로 $b\\leq0$이다",
+      "step": 4
+    },
+    {
+      "from": [
+        "note12",
+        "note15"
+      ],
+      "to": "note16",
+      "neuron": "연산21",
+      "note": "$2^8-2^{16-2a}\\leq0$, 즉 $2^8\\leq2^{16-2a}$이다",
+      "step": 5
+    },
+    {
+      "from": "note16",
+      "to": "note17",
+      "neuron": "사실51",
+      "note": "$2^x$는 순증가이므로 $8\\leq16-2a$이다",
+      "step": 5
+    },
+    {
+      "from": "note17",
+      "to": "note18",
+      "neuron": "연산21",
+      "note": "$2a\\leq8$, 즉 $a\\leq4$이다",
+      "step": 5
+    },
+    {
+      "from": [
+        "note18",
+        "단서C"
+      ],
+      "to": "note19",
+      "neuron": "전략17",
+      "note": "$a$는 자연수이고 $a\\leq4$이므로 $a\\in\\{1,2,3,4\\}$이다",
+      "step": 6
+    },
+    {
+      "from": [
+        "note19",
+        "note12"
+      ],
+      "to": "note20",
+      "neuron": "전략25",
+      "note": "$a=1$: $b=-16128$, $a=2$: $b=-3840$, $a=3$: $b=-768$, $a=4$: $b=0$이다",
+      "main": false,
+      "step": 6
+    },
+    {
+      "from": "note19",
+      "to": "END",
+      "neuron": "전략17",
+      "note": "각 $a$에 대해 $b$가 유일하게 결정되므로 순서쌍 $(a,b)$는 4개이다",
+      "step": 6
+    }
+  ],
+  "solution": "STEP 1. $2^x=X$로 치환하면 $4^{x-a}=4^{-a}X^2$이므로 부등식은 $4^{-a}X^2-X+b\\leq0$ ($X>0$)이 된다. $2^x$는 순증가이므로 $x\\leq8$은 $X\\leq256$과 동치이고, 따라서 이 부등식의 해가 $0<X\\leq256$이어야 한다.\n\nSTEP 2. $4^{-a}>0$이므로 $f(X)=4^{-a}X^2-X+b$는 아래로 볼록한 이차함수이고, $f(X)\\leq0$의 해는 두 근 $r_1\\leq r_2$에 대해 $[r_1,r_2]$이다. 해 집합의 상한이 $256$이므로 $r_2=256$이고, $r_1>0$이면 $(0,r_1)$에서 부등식이 성립하지 않아 모순이므로 $r_1\\leq0$이다.\n\nSTEP 3. $X=256$을 $f(X)=0$에 대입하면 $2^{16-2a}-2^8+b=0$이므로 $b=2^8-2^{16-2a}$이다.\n\nSTEP 4. 근과 계수의 관계에 의해 $r_1\\cdot r_2=b\\cdot4^a$이다. $r_2>0$이고 $r_1\\leq0$이므로 $r_1\\cdot r_2\\leq0$이고, $4^a>0$이므로 $b\\leq0$이다.\n\nSTEP 5. $b=2^8-2^{16-2a}\\leq0$에서 $2^8\\leq2^{16-2a}$이고, $2^x$는 순증가이므로 $8\\leq16-2a$, 즉 $a\\leq4$이다.\n\nSTEP 6. $a$는 자연수이고 $a\\leq4$이므로 $a\\in\\{1,2,3,4\\}$이고, 각 $a$에 대해 $b$가 유일하게 결정되므로 순서쌍 $(a,b)$는 $\\boxed{4}$개이다.",
+  "original_solution": "문제의 부등식에서 $2^x = X$ ($X > 0$)으로 치환하면\n\n$$4^{-a}X^2 - X + b \\leq 0$$\n\n이므로 문제의 조건은\n\n$$\\begin{cases} X\\text{에 대한 이차방정식} \\\\ \\quad 4^{-a}X^2 - X + b = 0 \\quad \\cdots\\; \\text{ⓐ} \\\\ \\text{이 } X = 2^8 \\text{과 } X = k\\;(k \\text{는 } k \\leq 0\\text{인 상수})\\text{를 두 실근으로} \\\\ \\text{가짐} \\end{cases}$$\n\n과 같음을 알 수 있다.\n\n따라서\n\n$X = 2^8$이 ⓐ의 실근이므로\n\n$$2^{16-2a} - 2^8 + b = 0 \\quad \\cdots\\; \\text{ⓑ}$$\n\n이고, 이때 근과 계수의 관계에 의해\n\n$$\\text{ⓐ의 한 실근이 양수이고, 다른 실근은 } 0\\text{보다 작거나 같음} \\;\\Rightarrow\\; b \\leq 0$$\n\n이므로\n\n$$\\text{ⓑ} \\;\\Rightarrow\\; 2^8 - 2^{16-2a} \\leq 0$$\n\n$$\\Rightarrow\\; a \\leq 4$$\n\n$$\\Rightarrow\\; a = 1,\\, 2,\\, 3,\\, 4 \\quad (\\because\\; a\\text{는 자연수})$$\n\n$$\\Rightarrow\\; (a,\\, b)\\text{의 모든 순서쌍 } (a,\\, b)\\text{의 개수} = 4$$\n\n($\\because$ $a$의 값에 따라 ⓑ에서 실수 $b$가 결정됨)\n\n임을 알 수 있다.\n\n---",
+  "analysis": "지수 부등식을 치환으로 이차부등식으로 변환하고, 해 집합 매칭 조건을 근과 계수의 관계로 풀어내는 문제. 모든 단계가 기존 뉴런으로 커버됨.",
+  "new_neurons": [],
+  "metadata": {
+    "unit": "지수와 로그",
+    "difficulty": "중상",
+    "score": "4",
+    "type": "객관식",
+    "answer": "4"
+  },
+  "edge_count": 21,
+  "side_count": 6,
+  "statement": "# 25. (수능/모의고사) - 지수 부등식과 이차방정식\n\n## Problem\n\n자연수 $a$와 실수 $b$에 대하여 $x$에 대한 부등식\n\n$$4^{x-a} - 2^x + b \\leq 0$$\n\n을 만족시키는 모든 $x$의 값의 범위가 $x \\leq 8$이 되도록 하는 $a$, $b$의 모든 순서쌍 $(a,\\, b)$의 개수는? [4점]",
+  "dna": {
+    "nodes": [
+      {
+        "id": "top",
+        "dna": "Q2",
+        "label": "개수를 구하라",
+        "category": "발문"
+      },
+      {
+        "id": "ask",
+        "dna": "X2",
+        "label": "순서쌍(a,b)",
+        "category": "존재"
+      },
+      {
+        "id": "va",
+        "dna": "T1",
+        "label": "변수 a",
+        "category": "말단"
+      },
+      {
+        "id": "vb",
+        "dna": "T1",
+        "label": "변수 b",
+        "category": "말단"
+      },
+      {
+        "id": "a_nat",
+        "dna": "L3",
+        "label": "a는 자연수",
+        "category": "제한"
+      },
+      {
+        "id": "b_real",
+        "dna": "L3",
+        "label": "b는 실수",
+        "category": "제한"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
+      },
+      {
+        "id": "c4",
+        "dna": "T2",
+        "label": "상수 4",
+        "category": "말단"
+      },
+      {
+        "id": "c2",
+        "dna": "T2",
+        "label": "상수 2",
+        "category": "말단"
+      },
+      {
+        "id": "c8",
+        "dna": "T2",
+        "label": "상수 8",
+        "category": "말단"
+      },
+      {
+        "id": "c0",
+        "dna": "T2",
+        "label": "상수 0",
+        "category": "말단"
+      },
+      {
+        "id": "neg_a",
+        "dna": "E2",
+        "label": "부호반전(a)",
+        "category": "수식"
+      },
+      {
+        "id": "exp_xa",
+        "dna": "E1",
+        "label": "x + (-a)",
+        "category": "수식"
+      },
+      {
+        "id": "term1",
+        "dna": "E4",
+        "label": "4^{x-a}",
+        "category": "수식"
+      },
+      {
+        "id": "term2",
+        "dna": "E4",
+        "label": "2^x",
+        "category": "수식"
+      },
+      {
+        "id": "neg_term2",
+        "dna": "E2",
+        "label": "부호반전(2^x)",
+        "category": "수식"
+      },
+      {
+        "id": "lhs_sum2",
+        "dna": "E1",
+        "label": "합(term1+(-2^x))",
+        "category": "수식"
+      },
+      {
+        "id": "lhs_sum",
+        "dna": "E1",
+        "label": "4^{x-a}-2^x+b",
+        "category": "수식"
+      },
+      {
+        "id": "ineq",
+        "dna": "C2",
+        "label": "≤0 부등식",
+        "category": "조건"
+      },
+      {
+        "id": "range_cond",
+        "dna": "C2",
+        "label": "x≤8 범위조건",
+        "category": "조건"
+      },
+      {
+        "id": "conds",
+        "dna": "S1",
+        "label": "조건 묶음",
+        "category": "구조"
+      }
+    ],
+    "edges": [
+      {
+        "from": "a_nat",
+        "to": "va"
+      },
+      {
+        "from": "b_real",
+        "to": "vb"
+      },
+      {
+        "from": "va",
+        "to": "ask"
+      },
+      {
+        "from": "vb",
+        "to": "ask"
+      },
+      {
+        "from": "conds",
+        "to": "ask"
+      },
+      {
+        "from": "ask",
+        "to": "top"
+      },
+      {
+        "from": "va",
+        "to": "neg_a"
+      },
+      {
+        "from": "neg_a",
+        "to": "exp_xa"
+      },
+      {
+        "from": "vx",
+        "to": "exp_xa"
+      },
+      {
+        "from": "c4",
+        "to": "term1"
+      },
+      {
+        "from": "exp_xa",
+        "to": "term1"
+      },
+      {
+        "from": "c2",
+        "to": "term2"
+      },
+      {
+        "from": "vx",
+        "to": "term2"
+      },
+      {
+        "from": "term2",
+        "to": "neg_term2"
+      },
+      {
+        "from": "term1",
+        "to": "lhs_sum2"
+      },
+      {
+        "from": "neg_term2",
+        "to": "lhs_sum2"
+      },
+      {
+        "from": "lhs_sum2",
+        "to": "lhs_sum"
+      },
+      {
+        "from": "vb",
+        "to": "lhs_sum"
+      },
+      {
+        "from": "lhs_sum",
+        "to": "ineq"
+      },
+      {
+        "from": "c0",
+        "to": "ineq"
+      },
+      {
+        "from": "ineq",
+        "to": "conds"
+      },
+      {
+        "from": "vx",
+        "to": "range_cond"
+      },
+      {
+        "from": "c8",
+        "to": "range_cond"
+      },
+      {
+        "from": "range_cond",
+        "to": "conds"
+      }
+    ],
+    "new_dna": []
+  },
+  "thinking_profile": null,
+  "folders": [],
+  "history": [],
+  "recovery_warnings": [],
+  "errata": [],
+  "created_at": "2026-03-23T16:52:10.426Z"
+}

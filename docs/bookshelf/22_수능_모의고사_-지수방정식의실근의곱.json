@@ -1,0 +1,528 @@
+{
+  "problem_id": "22_수능_모의고사_-지수방정식의실근의곱",
+  "answer": "165",
+  "clues": [
+    {
+      "id": "단서A",
+      "text": "$x$에 대한 방정식 $(x^n-2^{25})(x^{2n}-2^{20})=0$"
+    },
+    {
+      "id": "단서B",
+      "text": "서로 다른 모든 실근의 곱은 $-100$보다 큰 정수이다"
+    },
+    {
+      "id": "단서C",
+      "text": "$n$은 $2$ 이상의 자연수이다"
+    }
+  ],
+  "skeleton": [
+    {
+      "from": "단서A",
+      "to": "note1",
+      "neuron": "전략29",
+      "note": "$x^{2n}-2^{20}=(x^n)^2-(2^{10})^2=(x^n-2^{10})(x^n+2^{10})$으로 인수분해된다",
+      "step": 1
+    },
+    {
+      "from": "note1",
+      "to": "note2",
+      "neuron": "연산9",
+      "note": "$(x^n-2^{25})(x^n-2^{10})(x^n+2^{10})=0$에서 $x^n=2^{25}$ 또는 $x^n=2^{10}$ 또는 $x^n=-2^{10}$이다",
+      "step": 1
+    },
+    {
+      "from": [
+        "note2",
+        "단서C"
+      ],
+      "to": "note3",
+      "neuron": "전략12",
+      "note": "$n$이 홀수인 경우와 짝수인 경우로 나누어 실근을 구한다",
+      "step": 2
+    },
+    {
+      "from": "note3",
+      "to": "note4",
+      "neuron": "사실4",
+      "note": "$n$이 홀수일 때 $x^n=c$는 임의의 실수 $c$에 대해 실근을 정확히 1개 가진다",
+      "step": 2
+    },
+    {
+      "from": "note4",
+      "to": "note5",
+      "neuron": "연산4",
+      "note": "세 실근은 $x=2^{25/n}$, $x=2^{10/n}$, $x=-2^{10/n}$이다",
+      "step": 2
+    },
+    {
+      "from": "note5",
+      "to": "note6",
+      "neuron": "사실58",
+      "note": "$2^{25}\\neq 2^{10}\\neq -2^{10}$이고 $x\\mapsto x^n$이 단사이므로 세 근은 서로 다르다",
+      "main": false,
+      "step": 2
+    },
+    {
+      "from": "note5",
+      "to": "note7",
+      "neuron": "연산18",
+      "note": "모든 실근의 곱은 $2^{25/n}\\cdot 2^{10/n}\\cdot(-2^{10/n})=-2^{45/n}$이다",
+      "step": 2
+    },
+    {
+      "from": [
+        "note7",
+        "단서B"
+      ],
+      "to": "note8",
+      "neuron": "전략37",
+      "note": "$-2^{45/n}$이 정수이려면 $2^{45/n}$이 정수여야 하고, $45/n$이 양의 정수여야 한다",
+      "step": 2
+    },
+    {
+      "from": "note8",
+      "to": "note9",
+      "neuron": "사실64",
+      "note": "$n\\mid 45$이어야 한다",
+      "step": 2
+    },
+    {
+      "from": [
+        "note9",
+        "단서C"
+      ],
+      "to": "note10",
+      "neuron": "전략33",
+      "note": "$45=3^2\\times 5$의 약수 중 $2$ 이상인 홀수는 $3,5,9,15,45$이다",
+      "step": 2
+    },
+    {
+      "from": [
+        "note7",
+        "단서B"
+      ],
+      "to": "note11",
+      "neuron": "연산22",
+      "note": "$-2^{45/n}>-100$에서 $2^{45/n}<100$이다",
+      "step": 2
+    },
+    {
+      "from": [
+        "note10",
+        "note11"
+      ],
+      "to": "note12",
+      "neuron": "전략17",
+      "note": "$n=3$: $2^{15}=32768>100$ ❌, $n=5$: $2^9=512>100$ ❌, $n=9$: $2^5=32<100$ ✅, $n=15$: $2^3=8<100$ ✅, $n=45$: $2^1=2<100$ ✅이다. 홀수 $n=9,15,45$이다",
+      "step": 2
+    },
+    {
+      "from": "note3",
+      "to": "note13",
+      "neuron": "사실4",
+      "note": "$n$이 짝수일 때 $x^n=c$는 $c>0$이면 실근 2개, $c<0$이면 실근 0개이다",
+      "step": 3
+    },
+    {
+      "from": "note13",
+      "to": "note14",
+      "neuron": "연산4",
+      "note": "$x^n=2^{25}$에서 $x=\\pm 2^{25/n}$, $x^n=2^{10}$에서 $x=\\pm 2^{10/n}$이고, $x^n=-2^{10}$은 실근이 없다",
+      "step": 3
+    },
+    {
+      "from": "note14",
+      "to": "note15",
+      "neuron": "사실58",
+      "note": "$2^{25/n}\\neq 2^{10/n}$이므로 네 근 $\\pm 2^{25/n},\\pm 2^{10/n}$은 모두 서로 다르다",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": "note14",
+      "to": "note16",
+      "neuron": "연산18",
+      "note": "모든 실근의 곱은 $(-2^{25/n})\\cdot 2^{25/n}\\cdot(-2^{10/n})\\cdot 2^{10/n}=2^{70/n}$이다",
+      "step": 3
+    },
+    {
+      "from": [
+        "note16",
+        "단서B"
+      ],
+      "to": "note17",
+      "neuron": "전략37",
+      "note": "$2^{70/n}$이 정수이려면 $70/n$이 양의 정수여야 한다",
+      "step": 3
+    },
+    {
+      "from": "note17",
+      "to": "note18",
+      "neuron": "사실64",
+      "note": "$n\\mid 70$이어야 한다",
+      "step": 3
+    },
+    {
+      "from": [
+        "note18",
+        "단서C"
+      ],
+      "to": "note19",
+      "neuron": "전략33",
+      "note": "$70=2\\times 5\\times 7$의 약수 중 $2$ 이상인 짝수는 $2,10,14,70$이다",
+      "step": 3
+    },
+    {
+      "from": [
+        "note16",
+        "단서B"
+      ],
+      "to": "note20",
+      "neuron": "사실27",
+      "note": "$2^{70/n}>0>-100$이므로 $>-100$ 조건은 자동으로 만족된다",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": [
+        "note12",
+        "note19"
+      ],
+      "to": "END",
+      "neuron": "전략17",
+      "note": "조건을 만족하는 모든 $n$의 합은 $(9+15+45)+(2+10+14+70)=69+96=165$이다",
+      "step": 4
+    }
+  ],
+  "solution": "STEP 1. 주어진 방정식에서 $x^{2n}-2^{20}=(x^n)^2-(2^{10})^2=(x^n-2^{10})(x^n+2^{10})$으로 인수분해하면 $(x^n-2^{25})(x^n-2^{10})(x^n+2^{10})=0$이다. 이로부터 $x^n=2^{25}$ 또는 $x^n=2^{10}$ 또는 $x^n=-2^{10}$이다.\n\nSTEP 2. $n$이 홀수인 경우: 각 방정식 $x^n=c$는 실근을 정확히 1개 가지므로 세 실근은 $x=2^{25/n}$, $x=2^{10/n}$, $x=-2^{10/n}$이다. 모든 실근의 곱은 $-2^{45/n}$이다. 이 값이 정수이려면 $2^{45/n}$이 정수여야 하므로 $45/n$이 양의 정수, 즉 $n\\mid 45$이다. $45=3^2\\times 5$의 약수 중 2 이상인 홀수는 $3,5,9,15,45$이다. 또한 $-2^{45/n}>-100$에서 $2^{45/n}<100$이어야 한다. 각 후보를 확인하면 $n=3$: $2^{15}=32768>100$ ❌, $n=5$: $2^9=512>100$ ❌, $n=9$: $2^5=32<100$ ✅, $n=15$: $2^3=8<100$ ✅, $n=45$: $2^1=2<100$ ✅이다. 홀수 $n=9,15,45$이다.\n\nSTEP 3. $n$이 짝수인 경우: $x^n=c$는 $c>0$이면 실근 2개, $c<0$이면 실근 0개이므로 네 실근은 $\\pm 2^{25/n}$, $\\pm 2^{10/n}$이다. 모든 실근의 곱은 $2^{70/n}$이다. 이 값이 정수이려면 $n\\mid 70$이다. $70=2\\times 5\\times 7$의 약수 중 2 이상인 짝수는 $2,10,14,70$이다. $2^{70/n}>0>-100$이므로 부등식 조건은 자동으로 만족된다.\n\nSTEP 4. 조건을 만족하는 모든 $n$의 합은 $(9+15+45)+(2+10+14+70)=69+96=165$이다.",
+  "original_solution": "주어진 방정식을 인수분해하면\n\n$$(x^n - 2^{25})(x^n - 2^{10})(x^n + 2^{10}) = 0$$\n\n**( i ) $n$이 홀수일 때:**\n\n$$x^n - 2^{25} = 0 \\Rightarrow x = 2^{\\frac{25}{n}}$$\n$$x^n - 2^{10} = 0 \\Rightarrow x = 2^{\\frac{10}{n}}$$\n$$x^n + 2^{10} = 0 \\Rightarrow x = -2^{\\frac{10}{n}}$$\n\n모든 실근의 곱 $= 2^{\\frac{25}{n}} \\cdot 2^{\\frac{10}{n}} \\cdot \\left(-2^{\\frac{10}{n}}\\right) = -2^{\\frac{45}{n}}$\n\n이 값이 정수이려면 $\\frac{45}{n}$이 음이 아닌 정수, 즉 $n \\mid 45$이어야 한다.\n\n$-100$보다 큰 조건: $-2^{\\frac{45}{n}} > -100$이므로 $2^{\\frac{45}{n}} < 100$\n\n$45$의 홀수 약수 중 $2$ 이상: $3,\\; 5,\\; 9,\\; 15,\\; 45$\n\n- $n = 3$: $2^{15} = 32768 > 100$ ❌\n- $n = 5$: $2^{9} = 512 > 100$ ❌\n- $n = 9$: $2^{5} = 32 < 100$ ✅\n- $n = 15$: $2^{3} = 8 < 100$ ✅\n- $n = 45$: $2^{1} = 2 < 100$ ✅\n\n$\\Rightarrow n = 9,\\; 15,\\; 45$\n\n**( ii ) $n$이 짝수일 때:**\n\n$$x^n - 2^{25} = 0 \\Rightarrow x = \\pm\\, 2^{\\frac{25}{n}}$$\n$$x^n - 2^{10} = 0 \\Rightarrow x = \\pm\\, 2^{\\frac{10}{n}}$$\n$$x^n + 2^{10} = 0 \\Rightarrow \\text{실수 } x \\text{는 없음}$$\n\n모든 실근의 곱 $= \\left(-2^{\\frac{25}{n}}\\right)\\cdot 2^{\\frac{25}{n}} \\cdot \\left(-2^{\\frac{10}{n}}\\right)\\cdot 2^{\\frac{10}{n}} = 2^{\\frac{70}{n}}$\n\n이 값이 정수이려면 $n \\mid 70$이어야 한다. 곱이 양수이므로 $> -100$ 조건은 자동 충족.\n\n$70$의 짝수 약수 중 $2$ 이상: $2,\\; 10,\\; 14,\\; 70$\n\n$\\Rightarrow n = 2,\\; 10,\\; 14,\\; 70$\n\n**따라서 모든 자연수 $n$의 값의 합:**\n\n$$(9 + 15 + 45) + (2 + 10 + 14 + 70) = 69 + 96 = \\boxed{165}$$\n\n---",
+  "analysis": "",
+  "new_neurons": [],
+  "metadata": {
+    "unit": "지수와 로그",
+    "difficulty": "중상",
+    "score": "4",
+    "type": "객관식",
+    "answer": "165"
+  },
+  "edge_count": 21,
+  "side_count": 3,
+  "statement": "# 22. (수능/모의고사) - 지수 방정식의 실근의 곱\n\n## Problem\n\n다음 조건을 만족시키는 $2$ 이상의 모든 자연수 $n$의 값의 합은? [4점]\n\n$x$에 대한 방정식\n$$(x^n - 2^{25})(x^{2n} - 2^{20}) = 0$$\n의 서로 다른 모든 실근의 곱은 $-100$보다 큰 정수이다.",
+  "dna": {
+    "nodes": [
+      {
+        "id": "top",
+        "dna": "Q3",
+        "label": "합을 구하라",
+        "category": "발문"
+      },
+      {
+        "id": "ask_sum",
+        "dna": "E1",
+        "label": "모든 n의 합",
+        "category": "수식"
+      },
+      {
+        "id": "vn",
+        "dna": "T1",
+        "label": "변수 n",
+        "category": "말단"
+      },
+      {
+        "id": "n_natural",
+        "dna": "L3",
+        "label": "n은 자연수",
+        "category": "제한"
+      },
+      {
+        "id": "n_ge2",
+        "dna": "L2",
+        "label": "n≥2 제한",
+        "category": "제한"
+      },
+      {
+        "id": "conds",
+        "dna": "S1",
+        "label": "조건 묶음",
+        "category": "구조"
+      },
+      {
+        "id": "eq_main",
+        "dna": "C11",
+        "label": "주어진 방정식",
+        "category": "조건"
+      },
+      {
+        "id": "eq_c1",
+        "dna": "C1",
+        "label": "방정식=0",
+        "category": "조건"
+      },
+      {
+        "id": "prod_factors",
+        "dna": "E6",
+        "label": "두 인수의 곱",
+        "category": "수식"
+      },
+      {
+        "id": "factor1",
+        "dna": "E1",
+        "label": "x^n - 2^25",
+        "category": "수식"
+      },
+      {
+        "id": "factor2",
+        "dna": "E1",
+        "label": "x^2n - 2^20",
+        "category": "수식"
+      },
+      {
+        "id": "xn",
+        "dna": "E7",
+        "label": "x^n",
+        "category": "수식"
+      },
+      {
+        "id": "x2n",
+        "dna": "E7",
+        "label": "x^2n",
+        "category": "수식"
+      },
+      {
+        "id": "two_pow_25",
+        "dna": "E7",
+        "label": "2^25",
+        "category": "수식"
+      },
+      {
+        "id": "two_pow_20",
+        "dna": "E7",
+        "label": "2^20",
+        "category": "수식"
+      },
+      {
+        "id": "neg_two25",
+        "dna": "E2",
+        "label": "-2^25",
+        "category": "수식"
+      },
+      {
+        "id": "neg_two20",
+        "dna": "E2",
+        "label": "-2^20",
+        "category": "수식"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
+      },
+      {
+        "id": "c2",
+        "dna": "T2",
+        "label": "상수 2",
+        "category": "말단"
+      },
+      {
+        "id": "c25",
+        "dna": "T2",
+        "label": "상수 25",
+        "category": "말단"
+      },
+      {
+        "id": "c20",
+        "dna": "T2",
+        "label": "상수 20",
+        "category": "말단"
+      },
+      {
+        "id": "c0",
+        "dna": "T2",
+        "label": "상수 0",
+        "category": "말단"
+      },
+      {
+        "id": "root_prod_cond",
+        "dna": "S1",
+        "label": "실근의 곱 조건",
+        "category": "구조"
+      },
+      {
+        "id": "root_prod",
+        "dna": "E6",
+        "label": "실근의 곱",
+        "category": "수식"
+      },
+      {
+        "id": "diff_roots",
+        "dna": "C4",
+        "label": "서로 다른 실근",
+        "category": "조건"
+      },
+      {
+        "id": "gt_neg100",
+        "dna": "C2",
+        "label": ">-100 조건",
+        "category": "조건"
+      },
+      {
+        "id": "neg100",
+        "dna": "T2",
+        "label": "상수 -100",
+        "category": "말단"
+      },
+      {
+        "id": "is_integer",
+        "dna": "L3",
+        "label": "정수 조건",
+        "category": "제한"
+      }
+    ],
+    "edges": [
+      {
+        "from": "ask_sum",
+        "to": "top"
+      },
+      {
+        "from": "vn",
+        "to": "ask_sum"
+      },
+      {
+        "from": "conds",
+        "to": "top"
+      },
+      {
+        "from": "n_natural",
+        "to": "vn"
+      },
+      {
+        "from": "n_ge2",
+        "to": "vn"
+      },
+      {
+        "from": "eq_main",
+        "to": "conds"
+      },
+      {
+        "from": "eq_c1",
+        "to": "eq_main"
+      },
+      {
+        "from": "prod_factors",
+        "to": "eq_c1"
+      },
+      {
+        "from": "c0",
+        "to": "eq_c1"
+      },
+      {
+        "from": "factor1",
+        "to": "prod_factors"
+      },
+      {
+        "from": "factor2",
+        "to": "prod_factors"
+      },
+      {
+        "from": "xn",
+        "to": "factor1"
+      },
+      {
+        "from": "neg_two25",
+        "to": "factor1"
+      },
+      {
+        "from": "two_pow_25",
+        "to": "neg_two25"
+      },
+      {
+        "from": "c2",
+        "to": "two_pow_25"
+      },
+      {
+        "from": "c25",
+        "to": "two_pow_25"
+      },
+      {
+        "from": "x2n",
+        "to": "factor2"
+      },
+      {
+        "from": "neg_two20",
+        "to": "factor2"
+      },
+      {
+        "from": "two_pow_20",
+        "to": "neg_two20"
+      },
+      {
+        "from": "c2",
+        "to": "two_pow_20"
+      },
+      {
+        "from": "c20",
+        "to": "two_pow_20"
+      },
+      {
+        "from": "vx",
+        "to": "xn"
+      },
+      {
+        "from": "vn",
+        "to": "xn"
+      },
+      {
+        "from": "vx",
+        "to": "x2n"
+      },
+      {
+        "from": "xn",
+        "to": "x2n"
+      },
+      {
+        "from": "c2",
+        "to": "x2n"
+      },
+      {
+        "from": "root_prod_cond",
+        "to": "conds"
+      },
+      {
+        "from": "diff_roots",
+        "to": "root_prod_cond"
+      },
+      {
+        "from": "root_prod",
+        "to": "root_prod_cond"
+      },
+      {
+        "from": "gt_neg100",
+        "to": "root_prod_cond"
+      },
+      {
+        "from": "is_integer",
+        "to": "root_prod_cond"
+      },
+      {
+        "from": "eq_main",
+        "to": "diff_roots"
+      },
+      {
+        "from": "root_prod",
+        "to": "gt_neg100"
+      },
+      {
+        "from": "neg100",
+        "to": "gt_neg100"
+      }
+    ],
+    "new_dna": []
+  },
+  "thinking_profile": null,
+  "folders": [],
+  "history": [],
+  "recovery_warnings": [],
+  "errata": [],
+  "created_at": "2026-03-23T16:38:44.800Z"
+}

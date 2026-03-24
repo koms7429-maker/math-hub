@@ -1,0 +1,1617 @@
+{
+  "problem_id": "14_SourceUnknown_-함수의연속성과미분가능성",
+  "answer": "18",
+  "clues": [
+    {
+      "id": "단서A",
+      "text": "$f(x) = \\begin{cases} a^{x+b} & (a^{x+b} \\leq 2x+5) \\\\ |2x+5| & (a^{x+b} > 2x+5) \\end{cases}$"
+    },
+    {
+      "id": "단서B",
+      "text": "양수 $t$에 대하여 $f(x)=t$의 서로 다른 모든 실근의 합을 $g(t)$라 한다"
+    },
+    {
+      "id": "단서C",
+      "text": "$g(t) \\neq k$ ($k$는 상수)를 만족시키는 모든 양수 $t$의 값의 범위가 $1 < t < 9$이다"
+    },
+    {
+      "id": "단서D",
+      "text": "$a > 1$이고 $a$, $b$는 상수이다"
+    }
+  ],
+  "skeleton": [
+    {
+      "from": "단서D",
+      "to": "note1",
+      "neuron": "사실1",
+      "note": "$a > 1$일 때 모든 실수 $x$에 대해 $a^{x+b} > 0$이다",
+      "main": false,
+      "step": 1
+    },
+    {
+      "from": "단서A",
+      "to": "note2",
+      "neuron": "전략6",
+      "note": "$x < -\\frac{5}{2}$일 때 $|2x+5| = -(2x+5)$이고, $x \\geq -\\frac{5}{2}$일 때 $|2x+5| = 2x+5$이다",
+      "main": false,
+      "step": 1
+    },
+    {
+      "from": [
+        "note1",
+        "note2",
+        "단서A"
+      ],
+      "to": "note3",
+      "neuron": "사실1",
+      "note": "$x < -\\frac{5}{2}$에서 $a^{x+b} > 0 > 2x+5$이므로 $f(x) = |2x+5| = -(2x+5)$이다",
+      "main": true,
+      "step": 1
+    },
+    {
+      "from": "단서D",
+      "to": "note4",
+      "neuron": "사실84",
+      "note": "$y = a^{x+b}$는 아래로 볼록하다",
+      "main": false,
+      "step": 2
+    },
+    {
+      "from": "note4",
+      "to": "note5",
+      "neuron": "사실85",
+      "note": "$y = a^{x+b}$와 $y = 2x+5$가 두 점 $x = p$, $x = q$ ($p < q$)에서 만나면, $p \\leq x \\leq q$에서 $a^{x+b} \\leq 2x+5$이고 밖에서 $a^{x+b} \\geq 2x+5$이다",
+      "main": true,
+      "step": 2
+    },
+    {
+      "from": [
+        "note3",
+        "note5",
+        "단서A"
+      ],
+      "to": "note6",
+      "neuron": "전략6",
+      "note": "$f(x) = \\begin{cases} a^{x+b} & (p \\leq x \\leq q) \\\\ |2x+5| & (x < p \\text{ 또는 } x > q) \\end{cases}$이고 $p > -\\frac{5}{2}$이다",
+      "main": true,
+      "step": 2
+    },
+    {
+      "from": "note6",
+      "to": "note7",
+      "neuron": "전략20",
+      "note": "$y = a^{x+b}$와 $y = 2x+5$의 교점이 0개 또는 1개인 경우와 2개인 경우로 나눈다",
+      "main": false,
+      "step": 2
+    },
+    {
+      "from": "note7",
+      "to": "note8",
+      "neuron": "전략23",
+      "note": "교점이 0~1개이면 $f(x) = |2x+5|$이고 $g(t) = -5$ (상수)이므로 $g(t) \\neq k$인 $t$의 범위가 $(1,9)$가 될 수 없어 배제된다",
+      "main": false,
+      "step": 2
+    },
+    {
+      "from": "note6",
+      "to": "note9",
+      "neuron": "사실44",
+      "note": "$f(x) = t$의 근은 $[p,q]$에서 $a^{x+b} = t$의 근과 $(-\\infty, p) \\cup (q, \\infty)$에서 $|2x+5| = t$의 근으로 나뉜다",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": "단서A",
+      "to": "note10",
+      "neuron": "사실2",
+      "note": "$|2x+5|$는 $x = -\\frac{5}{2}$에 대해 대칭이다",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": "note10",
+      "to": "note11",
+      "neuron": "사실2",
+      "note": "$|2x+5| = t$ ($t > 0$)의 두 근은 $x = \\frac{t-5}{2}$, $x = \\frac{-t-5}{2}$이고 합은 $-5$이다",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": "단서D",
+      "to": "note12",
+      "neuron": "사실5",
+      "note": "$a > 1$일 때 $a^{x+b}$는 순증가이다",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": "note12",
+      "to": "note13",
+      "neuron": "사실19",
+      "note": "$[p,q]$에서 $a^{x+b}$의 치역은 $[a^{p+b},\\, a^{q+b}] = [2p+5,\\, 2q+5]$이다",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": "note13",
+      "to": "note14",
+      "neuron": "사실43",
+      "note": "$2p+5 < t < 2q+5$이면 $[p,q]$에서 $a^{x+b} = t$의 근은 정확히 1개이고, 그 밖이면 0개이다",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": [
+        "note9",
+        "note11",
+        "note14"
+      ],
+      "to": "note15",
+      "neuron": "전략5",
+      "note": "$t \\leq 2p+5$ 또는 $t \\geq 2q+5$이면 $[p,q]$ 내 근이 없고 유효한 $|2x+5| = t$의 두 근의 합이 $-5$이므로 $g(t) = -5$이다",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": [
+        "note9",
+        "note11",
+        "note14"
+      ],
+      "to": "note16",
+      "neuron": "사실44",
+      "note": "$2p+5 < t < 2q+5$이면 $[p,q]$ 내 근 $r$이 1개이고, $|2x+5| = t$의 근 중 $\\frac{t-5}{2} \\in (p,q)$는 해당 조각이 아니므로 무효이고 $\\frac{-t-5}{2}$만 유효하다",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": "note16",
+      "to": "note17",
+      "neuron": "전략5",
+      "note": "$2p+5 < t < 2q+5$이면 $g(t) = r + \\frac{-t-5}{2} \\neq -5$이다",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": [
+        "note15",
+        "note17",
+        "단서C"
+      ],
+      "to": "note18",
+      "neuron": "전략2",
+      "note": "$g(t) \\neq k$인 범위가 $(1,9)$이고 $g(t) = -5$인 범위가 $(0, 2p+5] \\cup [2q+5, \\infty)$이므로, $k = -5$, $2p+5 = 1$, $2q+5 = 9$이다",
+      "main": true,
+      "step": 4
+    },
+    {
+      "from": "note18",
+      "to": "note19",
+      "neuron": "전략2",
+      "note": "$p = -2$, $q = 2$이다",
+      "main": true,
+      "step": 4
+    },
+    {
+      "from": "note19",
+      "to": "note20",
+      "neuron": "전략2",
+      "note": "교점 조건 $a^{p+b} = 2p+5$에서 $a^{-2+b} = 1$이고, $a^{q+b} = 2q+5$에서 $a^{2+b} = 9$이다",
+      "main": true,
+      "step": 5
+    },
+    {
+      "from": "note20",
+      "to": "note21",
+      "neuron": "사실18",
+      "note": "$a > 1$이고 $a^{-2+b} = 1$이므로 $-2+b = 0$, $b = 2$이다",
+      "main": true,
+      "step": 5
+    },
+    {
+      "from": "note21",
+      "to": "note22",
+      "neuron": "연산4",
+      "note": "$a^{4} = 9 = 3^2$에서 $a = 9^{1/4} = 3^{1/2} = \\sqrt{3}$이다",
+      "main": true,
+      "step": 5
+    },
+    {
+      "from": [
+        "note22",
+        "note6"
+      ],
+      "to": "note23",
+      "neuron": "전략25",
+      "note": "$f(x) = \\begin{cases} (\\sqrt{3})^{x+2} & (-2 \\leq x \\leq 2) \\\\ |2x+5| & (x < -2 \\text{ 또는 } x > 2) \\end{cases}$이다",
+      "main": true,
+      "step": 5
+    },
+    {
+      "from": [
+        "note18",
+        "note23"
+      ],
+      "to": "note24",
+      "neuron": "전략25",
+      "note": "$k = -5$이므로 $-k = 5$이다. $f(5) = |2 \\cdot 5 + 5| = 15$이고, $f(0) = (\\sqrt{3})^{2} = 3$이다",
+      "main": true,
+      "step": 6
+    },
+    {
+      "from": "note24",
+      "to": "END",
+      "neuron": "전략25",
+      "note": "$f(-k) + f(0) = 15 + 3 = 18$이다",
+      "main": true,
+      "step": 6
+    }
+  ],
+  "solution": "STEP 1. $a > 1$이므로 $a^{x+b} > 0$이다. $x < -\\frac{5}{2}$에서 $2x+5 < 0 < a^{x+b}$이므로 이 영역에서는 항상 $f(x) = |2x+5| = -(2x+5)$이다.\n\nSTEP 2. $y = a^{x+b}$는 아래로 볼록하므로, $y = 2x+5$와 두 점 $x = p$, $x = q$ ($p < q$)에서 만나면 $p \\leq x \\leq q$에서 $a^{x+b} \\leq 2x+5$이고 밖에서 $a^{x+b} \\geq 2x+5$이다. 따라서 $f(x) = \\begin{cases} a^{x+b} & (p \\leq x \\leq q) \\\\ |2x+5| & (x < p \\text{ 또는 } x > q) \\end{cases}$이다.\n\nSTEP 3. 조각함수 $f(x) = t$의 근을 구간별로 분석한다. $|2x+5| = t$의 두 근의 합은 대칭축 $x = -\\frac{5}{2}$에 의해 $-5$이다. $a^{x+b}$는 순증가이므로 $[p,q]$에서의 치역은 $[2p+5, 2q+5]$이고, $2p+5 < t < 2q+5$이면 $[p,q]$에서 근이 정확히 1개이다. $t \\leq 2p+5$ 또는 $t \\geq 2q+5$이면 $[p,q]$ 내 근이 없고 유효한 $|2x+5| = t$의 두 근의 합이 $-5$이므로 $g(t) = -5$이다. $2p+5 < t < 2q+5$이면 $[p,q]$ 내 근 $r$이 1개이고, $|2x+5|=t$의 근 중 $\\frac{t-5}{2} \\in (p,q)$는 해당 조각이 아니어서 무효이고 $\\frac{-t-5}{2}$만 유효하여 $g(t) = r + \\frac{-t-5}{2} \\neq -5$이다.\n\nSTEP 4. $g(t) \\neq k$인 범위가 $(1,9)$이므로 $k = -5$, $2p+5 = 1$, $2q+5 = 9$이다. 따라서 $p = -2$, $q = 2$이다.\n\nSTEP 5. 교점 조건에서 $a^{-2+b} = 1$이고 $a > 1$이므로 $b = 2$이다. $a^{4} = 9$이므로 $a = \\sqrt{3}$이다. 따라서 $f(x) = \\begin{cases} (\\sqrt{3})^{x+2} & (-2 \\leq x \\leq 2) \\\\ |2x+5| & (x < -2 \\text{ 또는 } x > 2) \\end{cases}$이다.\n\nSTEP 6. $k = -5$이므로 $f(-k) = f(5) = |15| = 15$이고, $f(0) = (\\sqrt{3})^{2} = 3$이다. $f(-k) + f(0) = 15 + 3 = 18$이다.",
+  "original_solution": "문제의 $f(x)$의 식에서\n\n① $y=a^{x+b}$, $y=2x+5$의 교점이 개수가 1 이하인 경우,\n$f(x) = |2x+5|$\n($\\because$ 모든 실수 $x$에 대하여 $a^{x+b} \\geq 2x+5$)\n\n② $y=a^{x+b}$, $y=2x+5$의 교점이 개수가 2인 경우,\n두 교점의 $x$좌표를 $p$, $q$라 하면\n\n$$f(x) = \\begin{cases} a^{x+b} & (p \\leq x \\leq q) \\\\ |2x+5| & (x < p, \\, x > q) \\end{cases}$$\n\n임을 알 수 있다.\n\n[FIGURE: 두 개의 그래프가 제시됨]\n- ①의 경우: $y=f(x)$가 $x=-\\frac{5}{2}$에서 V자 형태\n- ②의 경우: $y=f(x)$가 두 점 $p$, $q$에서 지수함수와 직선이 만남\n\n한편, 양수 $t$에 대하여\n\n$x$에 (방정식 $f(x)=t$의 모든 실근의 합) 이므로 ①의 경우,\n\n모든 양수 $t$에 대하여 $g(t)=-5$\n\n($\\because$ $y=|2x+5|$는 $x=-\\frac{5}{2}$에 대하여 대칭)\n\n임을 알 수 있고, ②의 경우,\n\n$$\\begin{cases} t \\geq f(q)\\text{일 때 } g(t)=-5 \\\\ f(p)<t<f(q)\\text{일 때 } g(t) \\neq -5 \\end{cases}$$\n\n임을 알 수 있다.\n\n따라서 문제의 조건에서\n\n$$\\begin{cases} g(t) \\neq k \\text{(}k\\text{는 상수)}를 만족시키는 \\\\ \\text{모든 양수 } t \\text{의 값의 범위가 } 1<t<9 \\end{cases}$$\n\n를 만족시키는 경우는 ②의 경우뿐이므로, 이때\n\n$$k=-5$$\n\n를 얻고,\n\n$$\\begin{cases} f(p)=1 \\Rightarrow 2p+5=a^{p+b}=1 \\\\ f(q)=9 \\Rightarrow 2q+5=a^{q+b}=9 \\end{cases}$$\n\n을 얻는다. $\\Rightarrow p=-2$, $q=2$, $a=\\sqrt{3}$, $b=2$\n\n$$\\therefore f(x) = \\begin{cases} (\\sqrt{3})^{x+2} & (-2 \\leq x \\leq 2) \\\\ |2x+5| & (x < -2, \\, x > 2) \\end{cases}$$\n\n$$\\therefore f(-k)+f(0)=f(5)+f(0)=15+3=18$$\n\n---",
+  "analysis": "지수함수의 볼록성(사실84)과 볼록함수-직선 대소관계(사실85)가 이전 분석에서 제안되어 목록에 추가된 상태이므로, 이제 모든 논리 단계가 기존 뉴런으로 매칭된다.",
+  "new_neurons": [],
+  "metadata": {
+    "unit": "지수와 로그",
+    "difficulty": "상",
+    "score": "4",
+    "type": "주관식",
+    "answer": "18"
+  },
+  "edge_count": 25,
+  "side_count": 8,
+  "statement": "# 14. (Source Unknown) - 함수의 연속성과 미분가능성\n\n## Problem\n\n두 상수 $a(a>1)$, $b$에 대하여 함수 $f(x)$를\n\n$$f(x) = \\begin{cases} a^{x+b} & (a^{x+b} \\leq 2x+5) \\\\ |2x+5| & (a^{x+b} > 2x+5) \\end{cases}$$\n\n라 하자. 양수 $t$에 대하여 $x$에 대한 방정식 $f(x)=t$의 서로 다른 모든 실근의 합을 $g(t)$라 하자. $g(t) \\neq k$ ($k$는 상수)를 만족시키는 모든 양수 $t$의 값의 범위가 $1<t<9$일 때,\n\n$$f(-k)+f(0)$$\n\n의 값을 구하시오. [4점]",
+  "dna": {
+    "nodes": [
+      {
+        "id": "top",
+        "dna": "Q1",
+        "label": "값을 구하라",
+        "category": "발문"
+      },
+      {
+        "id": "ask_sum",
+        "dna": "E1",
+        "label": "f(-k)+f(0)",
+        "category": "수식"
+      },
+      {
+        "id": "ask_fk",
+        "dna": "F3",
+        "label": "f(-k)",
+        "category": "함수"
+      },
+      {
+        "id": "ask_f0",
+        "dna": "F3",
+        "label": "f(0)",
+        "category": "함수"
+      },
+      {
+        "id": "neg_k",
+        "dna": "E2",
+        "label": "부호반전(k)",
+        "category": "수식"
+      },
+      {
+        "id": "c0",
+        "dna": "T2",
+        "label": "상수 0",
+        "category": "말단"
+      },
+      {
+        "id": "va",
+        "dna": "T1",
+        "label": "변수 a",
+        "category": "말단"
+      },
+      {
+        "id": "vb",
+        "dna": "T1",
+        "label": "변수 b",
+        "category": "말단"
+      },
+      {
+        "id": "vk",
+        "dna": "T1",
+        "label": "변수 k",
+        "category": "말단"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
+      },
+      {
+        "id": "vt",
+        "dna": "T3",
+        "label": "독립변수 t",
+        "category": "말단"
+      },
+      {
+        "id": "lim_a",
+        "dna": "C2",
+        "label": "a>1",
+        "category": "조건"
+      },
+      {
+        "id": "c1_const",
+        "dna": "T2",
+        "label": "상수 1",
+        "category": "말단"
+      },
+      {
+        "id": "lim_t",
+        "dna": "C2",
+        "label": "t>0",
+        "category": "조건"
+      },
+      {
+        "id": "func_f",
+        "dna": "F6",
+        "label": "함수 f 정의",
+        "category": "함수"
+      },
+      {
+        "id": "piecewise",
+        "dna": "F1",
+        "label": "조각함수",
+        "category": "함수"
+      },
+      {
+        "id": "piece1",
+        "dna": "F2",
+        "label": "조각1: 지수",
+        "category": "함수"
+      },
+      {
+        "id": "piece2",
+        "dna": "F2",
+        "label": "조각2: 절대값",
+        "category": "함수"
+      },
+      {
+        "id": "exp_expr",
+        "dna": "E4",
+        "label": "a^(x+b)",
+        "category": "수식"
+      },
+      {
+        "id": "xplusb",
+        "dna": "E1",
+        "label": "합(x,b)",
+        "category": "수식"
+      },
+      {
+        "id": "lin_expr",
+        "dna": "E1",
+        "label": "2x+5",
+        "category": "수식"
+      },
+      {
+        "id": "c2_const",
+        "dna": "T2",
+        "label": "상수 2",
+        "category": "말단"
+      },
+      {
+        "id": "c5_const",
+        "dna": "T2",
+        "label": "상수 5",
+        "category": "말단"
+      },
+      {
+        "id": "two_x",
+        "dna": "E6",
+        "label": "곱(2,x)",
+        "category": "수식"
+      },
+      {
+        "id": "abs_lin",
+        "dna": "E5",
+        "label": "|2x+5|",
+        "category": "수식"
+      },
+      {
+        "id": "cond_piece1",
+        "dna": "C2",
+        "label": "지수≤선형",
+        "category": "조건"
+      },
+      {
+        "id": "cond_piece2",
+        "dna": "C2",
+        "label": "지수>선형",
+        "category": "조건"
+      },
+      {
+        "id": "func_g",
+        "dna": "F6",
+        "label": "함수 g 정의",
+        "category": "함수"
+      },
+      {
+        "id": "g_def",
+        "dna": "C19",
+        "label": "실근합=g(t)",
+        "category": "조건"
+      },
+      {
+        "id": "eq_ft",
+        "dna": "C1",
+        "label": "f(x)=t",
+        "category": "조건"
+      },
+      {
+        "id": "apply_ft",
+        "dna": "F3",
+        "label": "f(x)",
+        "category": "함수"
+      },
+      {
+        "id": "range_cond",
+        "dna": "S1",
+        "label": "g≠k 범위 조건",
+        "category": "구조"
+      },
+      {
+        "id": "gneq_k",
+        "dna": "C2",
+        "label": "g(t)≠k",
+        "category": "조건"
+      },
+      {
+        "id": "apply_gt",
+        "dna": "F3",
+        "label": "g(t)",
+        "category": "함수"
+      },
+      {
+        "id": "range_eq",
+        "dna": "C1",
+        "label": "범위=1<t<9",
+        "category": "조건"
+      },
+      {
+        "id": "lower_bd",
+        "dna": "C2",
+        "label": "t>1",
+        "category": "조건"
+      },
+      {
+        "id": "upper_bd",
+        "dna": "C2",
+        "label": "t<9",
+        "category": "조건"
+      },
+      {
+        "id": "c9_const",
+        "dna": "T2",
+        "label": "상수 9",
+        "category": "말단"
+      }
+    ],
+    "edges": [
+      {
+        "from": "ask_sum",
+        "to": "top"
+      },
+      {
+        "from": "ask_fk",
+        "to": "ask_sum"
+      },
+      {
+        "from": "ask_f0",
+        "to": "ask_sum"
+      },
+      {
+        "from": "neg_k",
+        "to": "ask_fk"
+      },
+      {
+        "from": "vk",
+        "to": "neg_k"
+      },
+      {
+        "from": "func_f",
+        "to": "ask_fk"
+      },
+      {
+        "from": "func_f",
+        "to": "ask_f0"
+      },
+      {
+        "from": "c0",
+        "to": "ask_f0"
+      },
+      {
+        "from": "va",
+        "to": "lim_a"
+      },
+      {
+        "from": "c1_const",
+        "to": "lim_a"
+      },
+      {
+        "from": "lim_a",
+        "to": "func_f"
+      },
+      {
+        "from": "piecewise",
+        "to": "func_f"
+      },
+      {
+        "from": "piece1",
+        "to": "piecewise"
+      },
+      {
+        "from": "piece2",
+        "to": "piecewise"
+      },
+      {
+        "from": "exp_expr",
+        "to": "piece1"
+      },
+      {
+        "from": "cond_piece1",
+        "to": "piece1"
+      },
+      {
+        "from": "va",
+        "to": "exp_expr"
+      },
+      {
+        "from": "xplusb",
+        "to": "exp_expr"
+      },
+      {
+        "from": "vx",
+        "to": "xplusb"
+      },
+      {
+        "from": "vb",
+        "to": "xplusb"
+      },
+      {
+        "from": "abs_lin",
+        "to": "piece2"
+      },
+      {
+        "from": "cond_piece2",
+        "to": "piece2"
+      },
+      {
+        "from": "exp_expr",
+        "to": "cond_piece1"
+      },
+      {
+        "from": "lin_expr",
+        "to": "cond_piece1"
+      },
+      {
+        "from": "exp_expr",
+        "to": "cond_piece2"
+      },
+      {
+        "from": "lin_expr",
+        "to": "cond_piece2"
+      },
+      {
+        "from": "lin_expr",
+        "to": "abs_lin"
+      },
+      {
+        "from": "two_x",
+        "to": "lin_expr"
+      },
+      {
+        "from": "c5_const",
+        "to": "lin_expr"
+      },
+      {
+        "from": "c2_const",
+        "to": "two_x"
+      },
+      {
+        "from": "vx",
+        "to": "two_x"
+      },
+      {
+        "from": "g_def",
+        "to": "func_g"
+      },
+      {
+        "from": "eq_ft",
+        "to": "g_def"
+      },
+      {
+        "from": "apply_ft",
+        "to": "eq_ft"
+      },
+      {
+        "from": "func_f",
+        "to": "apply_ft"
+      },
+      {
+        "from": "vx",
+        "to": "apply_ft"
+      },
+      {
+        "from": "vt",
+        "to": "eq_ft"
+      },
+      {
+        "from": "vt",
+        "to": "lim_t"
+      },
+      {
+        "from": "lim_t",
+        "to": "func_g"
+      },
+      {
+        "from": "range_cond",
+        "to": "top"
+      },
+      {
+        "from": "gneq_k",
+        "to": "range_cond"
+      },
+      {
+        "from": "apply_gt",
+        "to": "gneq_k"
+      },
+      {
+        "from": "func_g",
+        "to": "apply_gt"
+      },
+      {
+        "from": "vt",
+        "to": "apply_gt"
+      },
+      {
+        "from": "vk",
+        "to": "gneq_k"
+      },
+      {
+        "from": "range_eq",
+        "to": "range_cond"
+      },
+      {
+        "from": "lower_bd",
+        "to": "range_eq"
+      },
+      {
+        "from": "upper_bd",
+        "to": "range_eq"
+      },
+      {
+        "from": "c1_const",
+        "to": "lower_bd"
+      },
+      {
+        "from": "vt",
+        "to": "lower_bd"
+      },
+      {
+        "from": "vt",
+        "to": "upper_bd"
+      },
+      {
+        "from": "c9_const",
+        "to": "upper_bd"
+      }
+    ],
+    "new_dna": []
+  },
+  "thinking_profile": {
+    "_version": 6,
+    "_unit": "note",
+    "_isV6": true,
+    "total_think_tokens": 5307,
+    "total_notes": 17,
+    "hint_distribution": {
+      "0": 14,
+      "1": 1,
+      "2": 0,
+      "3": 0,
+      "4": 2
+    },
+    "avg_hint_level": 0.53,
+    "genuine_miss_count": 0,
+    "absorbed_miss_count": 2,
+    "bonus_count": 14,
+    "highlight_notes": [
+      "note6",
+      "note3",
+      "note5"
+    ],
+    "hardest_note": {
+      "note_id": "note6",
+      "neuron": "전략6",
+      "hint_level": 4,
+      "structural_difficulty": 0.25,
+      "miss_type": "absorbed",
+      "note_text": "$f(x) = \\begin{cases} a^{x+b} & (p \\leq x \\leq q) \\\\ |2x+5| & (x < p \\text{ 또는 } x > q) \\end{cases}$이고 $p > -\\frac{5}{2}$이다"
+    },
+    "neuron_stats": {
+      "사실1": {
+        "type": "사실",
+        "appearances": 1,
+        "total_hint": 4,
+        "hint_levels": [
+          4
+        ],
+        "bonus_count": 0,
+        "avg_hint_level": 4
+      },
+      "사실85": {
+        "type": "사실",
+        "appearances": 1,
+        "total_hint": 1,
+        "hint_levels": [
+          1
+        ],
+        "bonus_count": 0,
+        "avg_hint_level": 1
+      },
+      "전략6": {
+        "type": "전략",
+        "appearances": 1,
+        "total_hint": 4,
+        "hint_levels": [
+          4
+        ],
+        "bonus_count": 0,
+        "avg_hint_level": 4
+      },
+      "사실44": {
+        "type": "사실",
+        "appearances": 2,
+        "total_hint": 0,
+        "hint_levels": [
+          0,
+          0
+        ],
+        "bonus_count": 2,
+        "avg_hint_level": 0
+      },
+      "사실2": {
+        "type": "사실",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "사실43": {
+        "type": "사실",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "전략5": {
+        "type": "전략",
+        "appearances": 2,
+        "total_hint": 0,
+        "hint_levels": [
+          0,
+          0
+        ],
+        "bonus_count": 2,
+        "avg_hint_level": 0
+      },
+      "전략2": {
+        "type": "전략",
+        "appearances": 3,
+        "total_hint": 0,
+        "hint_levels": [
+          0,
+          0,
+          0
+        ],
+        "bonus_count": 3,
+        "avg_hint_level": 0
+      },
+      "사실18": {
+        "type": "사실",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "연산4": {
+        "type": "연산",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "전략25": {
+        "type": "전략",
+        "appearances": 3,
+        "total_hint": 0,
+        "hint_levels": [
+          0,
+          0,
+          0
+        ],
+        "bonus_count": 3,
+        "avg_hint_level": 0
+      }
+    },
+    "notes": [
+      {
+        "note_index": 1,
+        "note_id": "note3",
+        "neuron": "사실1",
+        "neuron_type": "사실",
+        "note_text": "$x < -\\frac{5}{2}$에서 $a^{x+b} > 0 > 2x+5$이므로 $f(x) = |2x+5| = -(2x+5)$이다",
+        "from": [
+          "note1",
+          "note2",
+          "단서A"
+        ],
+        "hint_level": 4,
+        "is_bonus": false,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note3",
+        "miss_type": "absorbed",
+        "absorbed_in": "note5/시도0",
+        "absorb_reason": "x < -5/2에서 f(x) = -(2x+5)임을 명시적으로 사용하여 근을 구함",
+        "partial_history": [],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 360,
+            "discover_elapsed_ms": 15240,
+            "match_elapsed_ms": 4256,
+            "discover_input_tokens": 846,
+            "discover_output_tokens": 1043,
+            "match_input_tokens": 1799,
+            "match_output_tokens": 203,
+            "claude_output": "[시도] f(x)의 구조를 파악하기 위해, |2x+5|의 분기점과 f(x)=t의 근들의 합을 분석한다.\n\n[계산]\n|2x+5| = t (t > 0)의 두 근:\n- 오른쪽 가지: x = (t-5)/2\n- 왼쪽 가지: x = (-t-5)/2\n\n이 두 근의 합 = (t-5)/2 + (-t-5)/2 = -5\n\n즉 |2x+5|=t 만으로 나오는 두 근의 합은 항상 **-5** (t에 무관한 상수).\n\n[결론] f(x)=t에서 |2x+5|=t에 해당하는 두 근의 합은 항상 -5이므로, g(t)가 상수 k가 되려면 k = -5이고, a^(x+b)=t에 해당하는 근이 추가되거나 사라질 때 g(t) ≠ -5가 발생함을 알 수 있다.",
+            "matches": [
+              {
+                "label": "E",
+                "score": 1,
+                "reason": "학생의 계산과 결론이 후보 E와 완전히 일치: |2x+5|=t의 두 근이 (t-5)/2와 (-t-5)/2이고 합이 -5임을 명시적으로 도출"
+              },
+              {
+                "label": "J",
+                "score": 0.6,
+                "reason": "학생이 k=-5임을 결론으로 도출했으며, g(t)≠-5가 발생하는 구간과 g(t)=-5인 구간의 존재를 언급했으나 구체적인 수치(1,9)는 제시하지 않음"
+              }
+            ],
+            "eval_summary": "MISS attempt0 dry0 | 360tok | disc 15240ms + match 4256ms | bonus 1"
+          },
+          {
+            "attempt": 1,
+            "think_tokens": 299,
+            "discover_elapsed_ms": 14241,
+            "match_elapsed_ms": 5658,
+            "discover_input_tokens": 929,
+            "discover_output_tokens": 874,
+            "match_input_tokens": 1703,
+            "match_output_tokens": 265,
+            "claude_output": "[시도] 내가 해볼 것: $t$가 충분히 클 때 $g(t)$가 어떤 값인지 파악하여 $k$를 구하기\n\n[계산]\n$t$가 충분히 크면, $a^{x+b}$의 값보다 $|2x+5|=t$를 만족하는 두 근에서 $f(x)=t$가 성립한다.\n\n이때 두 근 $x = \\dfrac{t-5}{2}$, $x = \\dfrac{-t-5}{2}$ 모두에서 $a^{x+b} > 2x+5$ 조건이 성립한다면(즉 $|2x+5|$ 분기에서 나온 근이라면), 그 합은 $-5$이다.\n\n단서C에서 $t > 9$이면 $g(t) = k$이므로, $t$가 큰 경우 $g(t) = -5$\n\n[결론] $k = -5$",
+            "matches": [
+              {
+                "label": "G",
+                "score": 0.85,
+                "reason": "학생은 t가 충분히 클 때 두 근의 합이 -5이고, 단서C(t>9이면 g(t)=k)를 이용해 k=-5를 도출했다. G는 t≥2q+5이면 |2x+5|=t의 두 근의 합이 -5이므로 g(t)=-5라고 명시하며, 학생의 결론과 수학적으로 일치한다."
+              },
+              {
+                "label": "J",
+                "score": 0.5,
+                "reason": "학생은 k=-5라는 결론만 도출했고, J는 k=-5, 2p+5=1, 2q+5=9까지 명시한다. k=-5 부분은 일치하지만 p,q 값 결정 부분은 학생 서술에 없다."
+              }
+            ],
+            "eval_summary": "MISS attempt1 dry0 | 299tok | disc 14241ms + match 5658ms | bonus 1"
+          },
+          {
+            "attempt": 2,
+            "think_tokens": 394,
+            "discover_elapsed_ms": 20619,
+            "match_elapsed_ms": 4624,
+            "discover_input_tokens": 1020,
+            "discover_output_tokens": 1293,
+            "match_input_tokens": 1605,
+            "match_output_tokens": 226,
+            "claude_output": "## [시도] 내가 해볼 것: $g(t) = k$인 구간(상수 구간)에서 $k$의 값 파악\n\n## [계산]\n\n$g(t) \\neq k$인 범위가 $1 < t < 9$이므로,  \n**$t \\leq 1$ 또는 $t \\geq 9$인 양수 $t$에서는 $g(t) = k$ (상수)**\n\n지수함수가 간섭하지 않는 구간에서는 $f(x) = |2x+5|$만 작동하고,  \n이때 $f(x) = t$의 두 근의 합은 항상 $-5$이다. (지금까지 알아낸 것 1번)\n\n따라서 $t \\leq 1$ 또는 $t \\geq 9$에서 $g(t) = -5$이므로:\n\n$$k = -5$$\n\n## [결론] 상수 $k = -5$이다.",
+            "matches": [
+              {
+                "label": "J",
+                "score": 1,
+                "reason": "학생이 k=-5, g(t)≠k인 범위가 (1,9)이고 나머지 구간에서 g(t)=-5임을 정확히 도출했으며, 이는 J의 핵심 결론인 k=-5, 2p+5=1, 2q+5=9와 완전히 일치한다"
+              },
+              {
+                "label": "K",
+                "score": 0.7,
+                "reason": "학생이 2p+5=1, 2q+5=9를 암묵적으로 도출했으므로 p=-2, q=2도 함께 도출된 것으로 볼 수 있으나 명시적으로 언급하지는 않았다"
+              }
+            ],
+            "eval_summary": "MISS attempt2 dry0 | 394tok | disc 20619ms + match 4624ms | bonus 2"
+          },
+          {
+            "attempt": 3,
+            "think_tokens": 168,
+            "discover_elapsed_ms": 10674,
+            "match_elapsed_ms": 4627,
+            "discover_input_tokens": 1137,
+            "discover_output_tokens": 821,
+            "match_input_tokens": 1413,
+            "match_output_tokens": 236,
+            "claude_output": "[시도] 내가 해볼 것: $x = p = -2$와 $x = q = 2$에서 $a^{x+b} = 2x+5$ 조건을 적용하기\n\n[계산]\n$x = -2$에서: $a^{-2+b} = 2(-2)+5 = 1$\n\n$a > 1$이고 $a^{b-2} = 1$이므로: $b - 2 = 0$ → $b = 2$\n\n$x = 2$에서: $a^{2+2} = 2(2)+5 = 9$\n\n$a^4 = 9$ → $a = \\sqrt{3}$\n\n[결론] $b = 2$, $a = \\sqrt{3}$이다.",
+            "matches": [
+              {
+                "label": "L",
+                "score": 1,
+                "reason": "학생이 x=-2에서 a^{-2+b}=1, x=2에서 a^{2+b}=9를 정확히 도출했으며, 이는 L의 핵심 결론과 완전히 일치한다"
+              },
+              {
+                "label": "M",
+                "score": 1,
+                "reason": "학생이 a>1이고 a^{b-2}=1이므로 b-2=0, b=2라고 정확히 서술하여 M과 완전히 일치한다"
+              },
+              {
+                "label": "N",
+                "score": 1,
+                "reason": "학생이 a^4=9에서 a=√3을 도출했으며, 이는 N의 결론과 완전히 일치한다"
+              }
+            ],
+            "eval_summary": "MISS attempt3 dry0 | 168tok | disc 10674ms + match 4627ms | bonus 3"
+          },
+          {
+            "attempt": 4,
+            "think_tokens": 80,
+            "discover_elapsed_ms": 10262,
+            "match_elapsed_ms": 3919,
+            "discover_input_tokens": 1311,
+            "discover_output_tokens": 575,
+            "match_input_tokens": 1325,
+            "match_output_tokens": 201,
+            "claude_output": "[시도] 내가 해볼 것: $a = \\sqrt{3}$, $b = 2$, $k = -5$를 이용해 $f(-k) + f(0) = f(5) + f(0)$을 계산한다\n\n[계산]\n**f(5) 계산:**\n$a^{5+b} = (\\sqrt{3})^{5+2} = (\\sqrt{3})^7 = 3^{7/2} = 27\\sqrt{3} \\approx 46.8$\n$2(5)+5 = 15$\n$27\\sqrt{3} > 15$ 이므로 $f(5) = |2(5)+5| = 15$\n\n**f(0) 계산:**\n$a^{0+b} = (\\sqrt{3})^2 = 3$\n$2(0)+5 = 5$\n$3 \\leq 5$ 이므로 $f(0) = 3$\n\n[결론] $f(-k) + f(0) = f(5) + f(0) = 15 + 3 = \\boxed{18}$",
+            "matches": [
+              {
+                "label": "P",
+                "score": 1,
+                "reason": "학생의 f(5)=15, f(0)=3 계산이 노트 P와 완전히 일치"
+              },
+              {
+                "label": "Q",
+                "score": 1,
+                "reason": "학생의 최종 결론 f(-k)+f(0)=18이 노트 Q와 완전히 일치"
+              },
+              {
+                "label": "O",
+                "score": 0.85,
+                "reason": "학생이 a=√3, b=2를 사용하여 f(5)=|2·5+5|, f(0)=(√3)²을 계산한 것이 노트 O의 구간별 정의와 일치"
+              }
+            ],
+            "eval_summary": "MISS attempt4 dry0 | 80tok | disc 10262ms + match 3919ms | bonus 3"
+          },
+          {
+            "attempt": 5,
+            "think_tokens": 73,
+            "discover_elapsed_ms": 6709,
+            "match_elapsed_ms": 1317,
+            "discover_input_tokens": 1485,
+            "discover_output_tokens": 411,
+            "match_input_tokens": 1079,
+            "match_output_tokens": 8,
+            "claude_output": "[시도] 내가 해볼 것: 지금까지 구한 $k=-5$, $a=\\sqrt{3}$, $b=2$를 이용해 $f(-k)+f(0)$을 계산하기\n\n[계산]\n- $-k = -(-5) = 5$이고, $x=5>2$이므로 $f(5) = |2(5)+5| = |15| = 15$\n- $x=0$은 $-2 \\leq 0 \\leq 2$이므로 $f(0) = (\\sqrt{3})^{0+2} = (\\sqrt{3})^2 = 3$\n- $f(-k)+f(0) = 15 + 3 = 18$\n\n[결론] $f(-k)+f(0) = \\boxed{18}$",
+            "matches": [],
+            "eval_summary": "MISS attempt5 dry0 | 73tok | disc 6709ms + match 1317ms | bonus 0"
+          },
+          {
+            "attempt": 6,
+            "think_tokens": 73,
+            "discover_elapsed_ms": 5717,
+            "match_elapsed_ms": 1987,
+            "discover_input_tokens": 1581,
+            "discover_output_tokens": 367,
+            "match_input_tokens": 1024,
+            "match_output_tokens": 8,
+            "claude_output": "[시도] 내가 해볼 것: f(-k) + f(0)의 최종 값 확인\n\n[계산]\n- k = -5이므로 -k = 5\n- x = 5 > 2이므로: f(5) = |2(5)+5| = |15| = 15\n- x = 0 ∈ [-2, 2]이므로: f(0) = (√3)^(0+2) = (√3)² = 3\n- f(-k) + f(0) = 15 + 3 = **18**\n\n[결론] f(-k) + f(0) = **18**",
+            "matches": [],
+            "eval_summary": "MISS attempt6 dry1 | 73tok | disc 5717ms + match 1987ms | bonus 0"
+          },
+          {
+            "attempt": 7,
+            "think_tokens": 247,
+            "discover_elapsed_ms": 18645,
+            "match_elapsed_ms": 904,
+            "discover_input_tokens": 1541,
+            "discover_output_tokens": 1256,
+            "match_input_tokens": 1179,
+            "match_output_tokens": 8,
+            "claude_output": "[시도] 내가 해볼 것: $f(0)$의 값 계산 시 단서A의 조건 $a^{x+b} \\leq 2x+5$를 직접 확인하기\n\n[계산]\n$a = \\sqrt{3}$, $b = 2$이므로 $x = 0$에서:\n$$a^{0+2} = (\\sqrt{3})^2 = 3, \\quad 2(0)+5 = 5$$\n$$3 \\leq 5 \\quad \\checkmark$$\n\n조건 $a^{x+b} \\leq 2x+5$가 성립하므로, 단서A에 의해:\n$$f(0) = a^{0+2} = 3$$\n\n[결론] $x=0$은 $a^{x+b} \\leq 2x+5$ 조건을 만족하므로 $f(0) = (\\sqrt{3})^2 = 3$이 확정된다. (앞서 계산한 $f(-k) = f(5) = 15$와 합산하면 $f(-k)+f(0) = 15+3 = \\boxed{18}$)",
+            "matches": [],
+            "eval_summary": "MISS attempt7 dry2 | 247tok | disc 18645ms + match 904ms | bonus 0"
+          }
+        ]
+      },
+      {
+        "note_index": 2,
+        "note_id": "note5",
+        "neuron": "사실85",
+        "neuron_type": "사실",
+        "note_text": "$y = a^{x+b}$와 $y = 2x+5$가 두 점 $x = p$, $x = q$ ($p < q$)에서 만나면, $p \\leq x \\leq q$에서 $a^{x+b} \\leq 2x+5$이고 밖에서 $a^{x+b} \\geq 2x+5$이다",
+        "from": [
+          "note4"
+        ],
+        "hint_level": 1,
+        "is_bonus": false,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note5",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note5",
+            "in_target": "note5",
+            "attempt": 3,
+            "score": 0.7,
+            "reason": "학생은 t > 2q+5일 때 지수함수가 [p,q] 밖에서 2x+5보다 크다고 언급하며, 이는 후보 B의 핵심 내용(밖에서 a^{x+b} ≥ 2x+5)과 수학적으로 동일한 결론을 담고 있음"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 231,
+            "discover_elapsed_ms": 12922,
+            "match_elapsed_ms": 5628,
+            "discover_input_tokens": 925,
+            "discover_output_tokens": 893,
+            "match_input_tokens": 1162,
+            "match_output_tokens": 299,
+            "claude_output": "[시도] 내가 해볼 것: $x < -\\frac{5}{2}$에서 $f(x) = t$의 근을 구해서 $g(t)$에 기여하는 항 파악\n\n[계산]\n$x < -\\frac{5}{2}$에서 $f(x) = -(2x+5) = t$ ($t > 0$)이면\n\n$$x = -\\frac{t+5}{2}$$\n\n이 값이 실제로 $x < -\\frac{5}{2}$를 만족하는지 확인:\n$$-\\frac{t+5}{2} < -\\frac{5}{2} \\iff t+5 > 5 \\iff t > 0$$\n\n모든 양수 $t$에 대해 성립.\n\n[결론] 모든 양수 $t$에 대해 $x = -\\dfrac{t+5}{2}$는 항상 $f(x)=t$의 근이며, 이 근은 $g(t)$에 $-\\dfrac{t+5}{2}$를 기여한다.",
+            "matches": [
+              {
+                "label": "D",
+                "score": 0.7,
+                "reason": "학생은 f(x)=t의 근을 x<-5/2 구간에서 |2x+5|=t의 근으로 분리하여 구하고 있으며, 이는 후보 D의 '(-∞,p)∪(q,∞)에서 |2x+5|=t의 근' 부분과 수학적으로 일치한다. 단, [p,q] 구간의 근에 대한 언급은 없어 부분적 일치."
+              },
+              {
+                "label": "F",
+                "score": 0.5,
+                "reason": "학생이 구한 근 x=-(t+5)/2는 후보 F의 '-(t+5)/2만 유효'한 근과 동일한 결론이다. 단, 학생은 이 근이 유효한 이유(다른 근의 무효성)를 설명하지 않고 단순히 계산만 했으므로 부분 일치."
+              }
+            ],
+            "eval_summary": "MISS attempt0 dry0 | 231tok | disc 12922ms + match 5628ms | bonus 1"
+          },
+          {
+            "attempt": 1,
+            "think_tokens": 460,
+            "discover_elapsed_ms": 21823,
+            "match_elapsed_ms": 4981,
+            "discover_input_tokens": 1009,
+            "discover_output_tokens": 1561,
+            "match_input_tokens": 1197,
+            "match_output_tokens": 271,
+            "claude_output": "## 시도\n$f(x) = t$의 근들의 합에서 $|2x+5| = t$ 부분의 기여를 계산해보자.\n\n## 계산\n\n$f(x) = |2x+5| = t$의 근:\n- $x < -\\frac{5}{2}$에서: $-(2x+5) = t$ → $x = -\\frac{t+5}{2}$\n- $x > -\\frac{5}{2}$이고 지수 구간 밖에서: $2x+5 = t$ → $x = \\frac{t-5}{2}$\n\n이 두 근의 합:\n$$-\\frac{t+5}{2} + \\frac{t-5}{2} = \\frac{-(t+5)+(t-5)}{2} = \\frac{-10}{2} = -5$$\n\n즉, $|2x+5| = t$에서 나오는 두 근의 합은 $t$에 무관하게 항상 $-5$이다.\n\n만약 $a^{x+b} = t$가 $[p, q]$에서 추가 근을 제공하지 않으면, $g(t) = -5$로 상수이다.\n\n## 결론\n\n**$k = -5$** 이다. ($g(t) \\neq -5$를 만족하는 구간이 $1 < t < 9$이므로, 이 범위에서만 지수",
+            "matches": [
+              {
+                "label": "F",
+                "score": 0.5,
+                "reason": "학생이 |2x+5|=t의 두 근의 합이 -5임을 계산했고, 지수 구간에서 추가 근이 제공될 때 g(t)≠-5가 된다고 언급했는데, F의 핵심인 (t-5)/2가 [p,q] 내에 있을 때 무효가 되고 (-t-5)/2만 유효하다는 내용을 부분적으로 포함함"
+              },
+              {
+                "label": "G",
+                "score": 0.6,
+                "reason": "학생이 '1<t<9에서 g(t)≠-5'라고 명시적으로 결론지었는데, 이는 G의 핵심 결론인 2p+5<t<2q+5이면 g(t)≠-5와 수학적으로 대응됨"
+              }
+            ],
+            "eval_summary": "MISS attempt1 dry0 | 460tok | disc 21823ms + match 4981ms | bonus 0"
+          },
+          {
+            "attempt": 2,
+            "think_tokens": 419,
+            "discover_elapsed_ms": 19266,
+            "match_elapsed_ms": 4199,
+            "discover_input_tokens": 1034,
+            "discover_output_tokens": 1337,
+            "match_input_tokens": 1165,
+            "match_output_tokens": 188,
+            "claude_output": "[시도] 내가 해볼 것: $g(t) = k$ (상수)가 되는 구간의 경계값 $t=1$, $t=9$가 어느 점에 해당하는지 파악하기\n\n[계산]\n$g(t) \\neq k$인 양수 $t$의 범위가 $1 < t < 9$이므로,  \n$t \\leq 1$ 또는 $t \\geq 9$일 때 $g(t) = k$ (상수)가 된다.\n\n$t=1$과 $t=9$는 $g(t)$가 상수에서 비상수로 바뀌는 경계값이므로,  \n$a^{x+b} = 2x+5$의 두 교점 $p$, $q$에서의 함수값이 각각 $t=1$, $t=9$에 해당한다.\n\n$$2p + 5 = 1 \\Rightarrow p = -2$$\n$$2q + 5 = 9 \\Rightarrow q = 2$$\n\n[결론] $a^{x+b} = 2x+5$의 두 교점의 $x$좌표는 $p = -2$, $q = 2$이고, 이 점들에서의 함수값은 각각 $f(-2) = 1$, $f(2) = 9$이다.",
+            "matches": [
+              {
+                "label": "E",
+                "score": 0.7,
+                "reason": "학생은 t=1과 t=9가 경계값임을 파악하고 p=-2, q=2를 구했으므로, 2p+5=1, 2q+5=9라는 경계값 구조를 암묵적으로 사용했다. E는 2p+5 < t < 2q+5 구간에서 근이 정확히 1개라고 하는데, 학생은 이 구간의 경계값만 계산했고 내부 구조는 명시하지 않았다. 부분적 일치."
+              }
+            ],
+            "eval_summary": "MISS attempt2 dry1 | 419tok | disc 19266ms + match 4199ms | bonus 1"
+          },
+          {
+            "attempt": 3,
+            "think_tokens": 382,
+            "discover_elapsed_ms": 21932,
+            "match_elapsed_ms": 4407,
+            "discover_input_tokens": 1102,
+            "discover_output_tokens": 1541,
+            "match_input_tokens": 1065,
+            "match_output_tokens": 247,
+            "claude_output": "## [시도] 내가 해볼 것: $t > 2q+5$일 때 $g(t)$가 상수가 되는지 확인\n\n## [계산]\n\n$t > 2q+5$이면:\n- $x < -5/2$에서: $-(2x+5) = t$ → $x = -\\dfrac{t+5}{2}$ (근 1개)\n- $x > q$에서: $2x+5 = t$ → $x = \\dfrac{t-5}{2}$ (근 1개)  \n- $[p,q]$에서는 $a^{x+b} = t$의 해가 없음 ($t > 2q+5 = a^{q+b}$이고 지수함수는 $[p,q]$밖에서 $2x+5$보다 큼)\n\n따라서 두 근의 합:\n$$g(t) = -\\frac{t+5}{2} + \\frac{t-5}{2} = \\frac{-t-5+t-5}{2} = -5$$\n\n## [결론]\n\n$t > 2q+5$이면 $g(t) = -5$ (상수)이므로, $k = -5$이고 $2q+5 = 9$, 즉 $q = 2$이다.",
+            "matches": [
+              {
+                "label": "B",
+                "score": 0.7,
+                "reason": "학생은 t > 2q+5일 때 지수함수가 [p,q] 밖에서 2x+5보다 크다고 언급하며, 이는 후보 B의 핵심 내용(밖에서 a^{x+b} ≥ 2x+5)과 수학적으로 동일한 결론을 담고 있음"
+              },
+              {
+                "label": "A",
+                "score": 0.5,
+                "reason": "학생이 x < -5/2에서 f(x) = -(2x+5)로 계산하고 있으며, 이는 후보 A의 결론과 일치하지만 명시적으로 a^{x+b} > 0 > 2x+5 조건을 서술하지는 않음"
+              }
+            ],
+            "eval_summary": "FOUND H1 | 382tok | disc 21932ms + match 4407ms | bonus 0"
+          }
+        ]
+      },
+      {
+        "note_index": 3,
+        "note_id": "note6",
+        "neuron": "전략6",
+        "neuron_type": "전략",
+        "note_text": "$f(x) = \\begin{cases} a^{x+b} & (p \\leq x \\leq q) \\\\ |2x+5| & (x < p \\text{ 또는 } x > q) \\end{cases}$이고 $p > -\\frac{5}{2}$이다",
+        "from": [
+          "note3",
+          "note5",
+          "단서A"
+        ],
+        "hint_level": 4,
+        "is_bonus": false,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note6",
+        "miss_type": "absorbed",
+        "absorbed_in": "note5/시도2",
+        "absorb_reason": "f(x)가 지수함수 구간 [p,q]와 |2x+5| 구간으로 나뉘며 p > -5/2 (p=-2)임을 도출함",
+        "partial_history": [
+          {
+            "note_id": "note6",
+            "in_target": "note6",
+            "attempt": 0,
+            "score": 0.4,
+            "reason": "학생의 풀이에서 x > q 영역에서 f(x) = 2x+5를 사용하고 있어 구간 밖에서 |2x+5|를 쓰는 구조를 암묵적으로 사용하나, p > -5/2 조건은 명시하지 않았다."
+          },
+          {
+            "note_id": "note6",
+            "in_target": "note6",
+            "attempt": 3,
+            "score": 0.42,
+            "reason": "학생의 결론에서 교점 p=-2, q=2를 구했고 이 범위에서 a^{x+b}가 관여함을 암시하나, p>-5/2 조건(p=-2>-2.5 성립)은 명시적으로 언급하지 않았고 f(x)의 정의 형태도 직접 서술하지 않음."
+          },
+          {
+            "note_id": "note6",
+            "in_target": "note6",
+            "attempt": 6,
+            "score": 0.5,
+            "reason": "학생은 p=-2, q=2를 구했으므로 p > -5/2 (-2 > -2.5) 조건은 성립하지만, 학생의 서술에서 이 부등식 조건을 명시적으로 언급하지 않았고 f(x)의 정의도 직접 서술되지 않았음. 다만 p=-2 결론으로부터 p > -5/2 임을 수학적으로 확인 가능하므로 부분 점수 부여"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 341,
+            "discover_elapsed_ms": 17486,
+            "match_elapsed_ms": 6063,
+            "discover_input_tokens": 1038,
+            "discover_output_tokens": 1150,
+            "match_input_tokens": 915,
+            "match_output_tokens": 242,
+            "claude_output": "[시도] 내가 해볼 것: t ≥ 9일 때 g(t) = k(상수)이므로, 그 구간에서 f(x) = t의 근들의 합을 계산해서 k를 구한다.\n\n[계산]\nt가 충분히 클 때, f(x) = t의 해는 두 곳에서 발생한다.\n- x < −5/2 영역: f(x) = −(2x+5) = t → x = −(t+5)/2\n- x > q 영역(지금까지의 분석에서 a^{x+b} > 2x+5이므로): f(x) = 2x+5 = t → x = (t−5)/2\n\n두 근의 합:\n$$-\\frac{t+5}{2} + \\frac{t-5}{2} = \\frac{-t-5+t-5}{2} = \\frac{-10}{2} = -5$$\n\n이 합은 t와 무관하게 항상 −5이므로 t ≥ 9에서 g(t) = −5 (상수)\n\n[결론] **k = −5**",
+            "matches": [
+              {
+                "label": "A",
+                "score": 0.75,
+                "reason": "학생이 x < -5/2 영역에서 f(x) = -(2x+5)를 사용했으며, 이는 후보 A의 핵심 결론과 일치한다. 다만 학생은 a^{x+b} > 0 > 2x+5라는 조건을 명시하지 않았다."
+              },
+              {
+                "label": "B",
+                "score": 0.4,
+                "reason": "학생의 풀이에서 x > q 영역에서 f(x) = 2x+5를 사용하고 있어 구간 밖에서 |2x+5|를 쓰는 구조를 암묵적으로 사용하나, p > -5/2 조건은 명시하지 않았다."
+              }
+            ],
+            "eval_summary": "MISS attempt0 dry0 | 341tok | disc 17486ms + match 6063ms | bonus 1"
+          },
+          {
+            "attempt": 1,
+            "think_tokens": 380,
+            "discover_elapsed_ms": 17248,
+            "match_elapsed_ms": 1799,
+            "discover_input_tokens": 1103,
+            "discover_output_tokens": 1112,
+            "match_input_tokens": 871,
+            "match_output_tokens": 8,
+            "claude_output": "[시도] 내가 해볼 것: $f(x) = t$의 근 중, 선형 부분(|2x+5|)에서 나오는 두 근의 합을 계산한다.\n\n[계산]\n- $x < -\\frac{5}{2}$에서 $f(x) = -(2x+5) = t$ → $x = -\\frac{t+5}{2}$ (근 ①)\n- $x \\geq -\\frac{5}{2}$에서 $f(x) = 2x+5 = t$ (지수함수가 선형 아래에 있을 때) → $x = \\frac{t-5}{2}$ (근 ②)\n\n두 근의 합:\n$$-\\frac{t+5}{2} + \\frac{t-5}{2} = \\frac{-t-5+t-5}{2} = \\frac{-10}{2} = -5$$\n\n이 두 근만 존재할 때 g(t) = -5로 **t에 무관하게 상수**이다.\n\n[결론] 선형 부분에서 나오는 두 근의 합은 항상 $-5$이므로, 상수 $k = -5$이다.",
+            "matches": [],
+            "eval_summary": "MISS attempt1 dry0 | 380tok | disc 17248ms + match 1799ms | bonus 0"
+          },
+          {
+            "attempt": 2,
+            "think_tokens": 359,
+            "discover_elapsed_ms": 16142,
+            "match_elapsed_ms": 3651,
+            "discover_input_tokens": 1379,
+            "discover_output_tokens": 1160,
+            "match_input_tokens": 853,
+            "match_output_tokens": 178,
+            "claude_output": "[시도] $x < -\\frac{5}{2}$ 영역에서 $f(x) = t$의 근을 구하기\n\n[계산]\n$x < -\\frac{5}{2}$에서 $f(x) = -(2x+5)$이고, 이 함수는 감소함수  \n$f(x) = t > 0$으로 놓으면:\n$$-(2x+5) = t \\implies x = -\\frac{t+5}{2}$$\n$x < -\\frac{5}{2}$인지 확인: $-\\frac{t+5}{2} < -\\frac{5}{2} \\iff t > 0$ ✓  \n따라서 모든 양수 $t$에 대해 이 영역에서 근이 항상 존재하고, 그 값은 $-\\frac{t+5}{2}$\n\n[결론] $x < -\\frac{5}{2}$에서 $f(x) = t$의 유일한 근은 $x = -\\dfrac{t+5}{2}$이며, 이 근은 모든 양수 $t$에 대해 항상 존재한다.",
+            "matches": [
+              {
+                "label": "C",
+                "score": 0.7,
+                "reason": "학생의 결론에서 x < -5/2 영역의 근이 x = -(t+5)/2 = (-t-5)/2임을 도출했고, 이는 후보 C의 핵심 결론인 '(-t-5)/2만 유효하다'와 수학적으로 일치한다. 다만 학생은 구간 조건(2p+5 < t < 2q+5)이나 다른 근의 무효성에 대한 논의는 포함하지 않았다."
+              }
+            ],
+            "eval_summary": "MISS attempt2 dry1 | 359tok | disc 16142ms + match 3651ms | bonus 1"
+          },
+          {
+            "attempt": 3,
+            "think_tokens": 272,
+            "discover_elapsed_ms": 16797,
+            "match_elapsed_ms": 6465,
+            "discover_input_tokens": 1495,
+            "discover_output_tokens": 1036,
+            "match_input_tokens": 801,
+            "match_output_tokens": 295,
+            "claude_output": "[시도] g(t)가 t→∞일 때 상수값 k를 구하고, 경계 t=1, t=9에서 p, q 값을 결정하기\n\n[계산]\nt가 매우 크면 $f(x)=t$의 근은 $|2x+5|=t$에서 오는 $x=\\frac{t-5}{2}$, $x=\\frac{-t-5}{2}$만 존재하므로:\n$$g(t) = \\frac{t-5}{2} + \\frac{-t-5}{2} = -5$$\n따라서 $k = -5$.\n\n$g(t) \\neq -5$인 범위가 $1 < t < 9$이므로, 변화가 시작/끝나는 경계는 $t=1$, $t=9$.\n이 경계는 $a^{x+b} = 2x+5$의 교점 $x=p$, $x=q$에서의 함숫값이므로:\n$$2p+5 = 1 \\Rightarrow p = -2, \\quad 2q+5 = 9 \\Rightarrow q = 2$$\n\n[결론] 교점의 x좌표는 $p = -2$, $q = 2$이고, 이때 $a^{p+b}=1$, $a^{q+b}=9$이다.",
+            "matches": [
+              {
+                "label": "D",
+                "score": 0.72,
+                "reason": "학생은 g(t)≠-5인 범위가 1<t<9임을 밝히고, 경계값 2p+5=1, 2q+5=9를 사용했는데, 이는 D의 2p+5<t<2q+5 범위에서 g(t)≠-5라는 결론과 수학적으로 일치한다. 단, D의 r 항은 학생 서술에 명시적으로 없음."
+              },
+              {
+                "label": "B",
+                "score": 0.42,
+                "reason": "학생의 결론에서 교점 p=-2, q=2를 구했고 이 범위에서 a^{x+b}가 관여함을 암시하나, p>-5/2 조건(p=-2>-2.5 성립)은 명시적으로 언급하지 않았고 f(x)의 정의 형태도 직접 서술하지 않음."
+              }
+            ],
+            "eval_summary": "MISS attempt3 dry1 | 272tok | disc 16797ms + match 6465ms | bonus 1"
+          },
+          {
+            "attempt": 4,
+            "think_tokens": 159,
+            "discover_elapsed_ms": 11150,
+            "match_elapsed_ms": 939,
+            "discover_input_tokens": 1543,
+            "discover_output_tokens": 737,
+            "match_input_tokens": 576,
+            "match_output_tokens": 8,
+            "claude_output": "[시도] $g(t)$가 상수가 아닌 구간의 경계 $t=1$, $t=9$를 $p$, $q$와 연결하기\n\n[계산]\n$2p+5 < t < 2q+5$인 구간에서 $g(t)$가 변하므로, 이 구간이 $1 < t < 9$와 일치해야 한다.\n\n$$2p + 5 = 1 \\implies p = -2$$\n$$2q + 5 = 9 \\implies q = 2$$\n\n[결론] $y = a^{x+b}$와 $y = 2x+5$의 두 교점의 $x$좌표는 $p = -2$, $q = 2$이다.",
+            "matches": [],
+            "eval_summary": "MISS attempt4 dry1 | 159tok | disc 11150ms + match 939ms | bonus 0"
+          },
+          {
+            "attempt": 5,
+            "think_tokens": 225,
+            "discover_elapsed_ms": 20301,
+            "match_elapsed_ms": 1779,
+            "discover_input_tokens": 1331,
+            "discover_output_tokens": 1373,
+            "match_input_tokens": 774,
+            "match_output_tokens": 8,
+            "claude_output": "## [시도] 내가 해볼 것: $0 < t \\leq 1$ 범위에서 g(t)가 상수 k임을 이용해 k의 값 구하기\n\n## [계산]\n\n단서C에서 \"$g(t) \\neq k$를 만족하는 양수 t의 범위가 $1 < t < 9$\"이므로,  \n**$0 < t \\leq 1$에서는 $g(t) = k$ (상수)** 이다.\n\n$t$가 충분히 작을 때(예: $0 < t \\leq 1$), $f(x) = t$의 근을 단서A로 분석하면:\n\n- **note3**: $x < -\\frac{5}{2}$에서 $f(x) = -(2x+5)$이므로, $-(2x+5) = t$ → 근: $x = \\dfrac{-t-5}{2}$\n- $x > -\\frac{5}{2}$ 영역에서 $a^{x+b} > 2x+5$이면 $f(x) = 2x+5$이므로, $2x+5 = t$ → 근: $x = \\dfrac{t-5}{2}$\n\n이 두 근의 합:\n\n$$g(t) = \\frac{-t-5}{2} + \\frac{t-5}{2} = \\frac{-10}{2} = -",
+            "matches": [],
+            "eval_summary": "MISS attempt5 dry2 | 225tok | disc 20301ms + match 1779ms | bonus 0"
+          },
+          {
+            "attempt": 6,
+            "think_tokens": 385,
+            "discover_elapsed_ms": 18994,
+            "match_elapsed_ms": 3557,
+            "discover_input_tokens": 1317,
+            "discover_output_tokens": 1291,
+            "match_input_tokens": 800,
+            "match_output_tokens": 178,
+            "claude_output": "[시도] 내가 해볼 것: $t$가 작을 때 ($t < 2p+5$) $g(t)$가 상수인지 확인하고, 경계값 $t=1$, $t=9$의 의미를 파악하기\n\n[계산]\n$t < 2p+5$이면, $[p,q]$ 구간 내에서 $a^{x+b}=t$인 근이 없고,\n$|2x+5|=t$의 두 근 $x = \\frac{t-5}{2}$, $x = \\frac{-t-5}{2}$ 모두 $[p,q]$ 밖에 있으므로\n\n$$g(t) = \\frac{t-5}{2} + \\frac{-t-5}{2} = \\frac{-10}{2} = -5$$\n\n즉 $t < 2p+5$에서 $g(t) = -5$ (상수). 따라서 $k = -5$.\n\n조건에 의해 $g(t) = k$인 구간이 $0 < t \\leq 1$과 $t \\geq 9$이므로:\n$$2p+5 = 1 \\Rightarrow p = -2$$\n$$2q+5 = 9 \\Rightarrow q = 2$$\n\n[결론] $y = a^{x+b}$와 $y = 2x+5$의 두 교점의 $x$좌표는 $p = -2$,",
+            "matches": [
+              {
+                "label": "B",
+                "score": 0.5,
+                "reason": "학생은 p=-2, q=2를 구했으므로 p > -5/2 (-2 > -2.5) 조건은 성립하지만, 학생의 서술에서 이 부등식 조건을 명시적으로 언급하지 않았고 f(x)의 정의도 직접 서술되지 않았음. 다만 p=-2 결론으로부터 p > -5/2 임을 수학적으로 확인 가능하므로 부분 점수 부여"
+              }
+            ],
+            "eval_summary": "MISS attempt6 dry3 | 385tok | disc 18994ms + match 3557ms | bonus 0"
+          }
+        ]
+      },
+      {
+        "note_index": 4,
+        "note_id": "note9",
+        "neuron": "사실44",
+        "neuron_type": "사실",
+        "note_text": "$f(x) = t$의 근은 $[p,q]$에서 $a^{x+b} = t$의 근과 $(-\\infty, p) \\cup (q, \\infty)$에서 $|2x+5| = t$의 근으로 나뉜다",
+        "from": [
+          "note6"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note5",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 5,
+        "note_id": "note11",
+        "neuron": "사실2",
+        "neuron_type": "사실",
+        "note_text": "$|2x+5| = t$ ($t > 0$)의 두 근은 $x = \\frac{t-5}{2}$, $x = \\frac{-t-5}{2}$이고 합은 $-5$이다",
+        "from": [
+          "note10"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 6,
+        "note_id": "note14",
+        "neuron": "사실43",
+        "neuron_type": "사실",
+        "note_text": "$2p+5 < t < 2q+5$이면 $[p,q]$에서 $a^{x+b} = t$의 근은 정확히 1개이고, 그 밖이면 0개이다",
+        "from": [
+          "note13"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note5",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 7,
+        "note_id": "note15",
+        "neuron": "전략5",
+        "neuron_type": "전략",
+        "note_text": "$t \\leq 2p+5$ 또는 $t \\geq 2q+5$이면 $[p,q]$ 내 근이 없고 유효한 $|2x+5| = t$의 두 근의 합이 $-5$이므로 $g(t) = -5$이다",
+        "from": [
+          "note9",
+          "note11",
+          "note14"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 8,
+        "note_id": "note16",
+        "neuron": "사실44",
+        "neuron_type": "사실",
+        "note_text": "$2p+5 < t < 2q+5$이면 $[p,q]$ 내 근 $r$이 1개이고, $|2x+5| = t$의 근 중 $\\frac{t-5}{2} \\in (p,q)$는 해당 조각이 아니므로 무효이고 $\\frac{-t-5}{2}$만 유효하다",
+        "from": [
+          "note9",
+          "note11",
+          "note14"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note6",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 9,
+        "note_id": "note17",
+        "neuron": "전략5",
+        "neuron_type": "전략",
+        "note_text": "$2p+5 < t < 2q+5$이면 $g(t) = r + \\frac{-t-5}{2} \\neq -5$이다",
+        "from": [
+          "note16"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note6",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 10,
+        "note_id": "note18",
+        "neuron": "전략2",
+        "neuron_type": "전략",
+        "note_text": "$g(t) \\neq k$인 범위가 $(1,9)$이고 $g(t) = -5$인 범위가 $(0, 2p+5] \\cup [2q+5, \\infty)$이므로, $k = -5$, $2p+5 = 1$, $2q+5 = 9$이다",
+        "from": [
+          "note15",
+          "note17",
+          "단서C"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 11,
+        "note_id": "note19",
+        "neuron": "전략2",
+        "neuron_type": "전략",
+        "note_text": "$p = -2$, $q = 2$이다",
+        "from": [
+          "note18"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 12,
+        "note_id": "note20",
+        "neuron": "전략2",
+        "neuron_type": "전략",
+        "note_text": "교점 조건 $a^{p+b} = 2p+5$에서 $a^{-2+b} = 1$이고, $a^{q+b} = 2q+5$에서 $a^{2+b} = 9$이다",
+        "from": [
+          "note19"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 13,
+        "note_id": "note21",
+        "neuron": "사실18",
+        "neuron_type": "사실",
+        "note_text": "$a > 1$이고 $a^{-2+b} = 1$이므로 $-2+b = 0$, $b = 2$이다",
+        "from": [
+          "note20"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 14,
+        "note_id": "note22",
+        "neuron": "연산4",
+        "neuron_type": "연산",
+        "note_text": "$a^{4} = 9 = 3^2$에서 $a = 9^{1/4} = 3^{1/2} = \\sqrt{3}$이다",
+        "from": [
+          "note21"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 15,
+        "note_id": "note23",
+        "neuron": "전략25",
+        "neuron_type": "전략",
+        "note_text": "$f(x) = \\begin{cases} (\\sqrt{3})^{x+2} & (-2 \\leq x \\leq 2) \\\\ |2x+5| & (x < -2 \\text{ 또는 } x > 2) \\end{cases}$이다",
+        "from": [
+          "note22",
+          "note6"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 16,
+        "note_id": "note24",
+        "neuron": "전략25",
+        "neuron_type": "전략",
+        "note_text": "$k = -5$이므로 $-k = 5$이다. $f(5) = |2 \\cdot 5 + 5| = 15$이고, $f(0) = (\\sqrt{3})^{2} = 3$이다",
+        "from": [
+          "note18",
+          "note23"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 17,
+        "note_id": "END",
+        "neuron": "전략25",
+        "neuron_type": "전략",
+        "note_text": "$f(-k) + f(0) = 15 + 3 = 18$이다",
+        "from": [
+          "note24"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      }
+    ],
+    "_debug": "v7-split"
+  },
+  "folders": [],
+  "history": [],
+  "recovery_warnings": [],
+  "errata": [],
+  "created_at": "2026-03-23T15:07:10.824Z"
+}

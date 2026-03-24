@@ -1,0 +1,467 @@
+{
+  "problem_id": "27_UnknownSource_-로그방정식의실근의개수",
+  "answer": "9",
+  "clues": [
+    {
+      "id": "단서A",
+      "text": "$\\log_2\\!\\left(\\dfrac{a}{x}+a-6\\right)=\\log_2(3x+a-6)$"
+    },
+    {
+      "id": "단서B",
+      "text": "실근의 개수가 1이다"
+    },
+    {
+      "id": "단서C",
+      "text": "$a$는 0이 아닌 정수이다"
+    }
+  ],
+  "skeleton": [
+    {
+      "from": "단서A",
+      "to": "note1",
+      "neuron": "사실59",
+      "note": "$x \\neq 0$이고 $\\dfrac{a}{x}+a-6>0$이고 $3x+a-6>0$이어야 한다",
+      "step": 1
+    },
+    {
+      "from": "단서A",
+      "to": "note2",
+      "neuron": "사실12",
+      "note": "$\\log_2$는 순증가이다",
+      "main": false,
+      "step": 2
+    },
+    {
+      "from": "note2",
+      "to": "note3",
+      "neuron": "사실58",
+      "note": "$\\log_2$는 단사함수이다",
+      "main": false,
+      "step": 2
+    },
+    {
+      "from": [
+        "note3",
+        "note1"
+      ],
+      "to": "note4",
+      "neuron": "사실58",
+      "note": "$\\dfrac{a}{x}+a-6=3x+a-6$이다",
+      "step": 2
+    },
+    {
+      "from": "note4",
+      "to": "note5",
+      "neuron": "전략11",
+      "note": "양변에서 $a-6$을 빼고 $x$를 곱하면 $a=3x^2$ 즉 $x^2=\\dfrac{a}{3}$이다",
+      "step": 2
+    },
+    {
+      "from": [
+        "note5",
+        "단서C"
+      ],
+      "to": "note6",
+      "neuron": "사실4",
+      "note": "$a>0$일 때 근은 $x=\\sqrt{\\dfrac{a}{3}}$, $x=-\\sqrt{\\dfrac{a}{3}}$의 2개이고, $a<0$이면 실근이 없다",
+      "step": 3
+    },
+    {
+      "from": [
+        "note6",
+        "note1"
+      ],
+      "to": "note7",
+      "neuron": "전략25",
+      "note": "$x=\\sqrt{\\dfrac{a}{3}}$를 진수에 대입하면 두 조건이 모두 $\\sqrt{3a}+a-6>0$이 된다",
+      "step": 4
+    },
+    {
+      "from": "note7",
+      "to": "note8",
+      "neuron": "전략1",
+      "note": "$t=\\sqrt{a}>0$으로 치환하면 $t^2+\\sqrt{3}\\,t-6>0$이다",
+      "step": 4
+    },
+    {
+      "from": "note8",
+      "to": "note9",
+      "neuron": "전략29",
+      "note": "$t^2+\\sqrt{3}\\,t-6=(t-\\sqrt{3})(t+2\\sqrt{3})$이다",
+      "step": 4
+    },
+    {
+      "from": "note9",
+      "to": "note10",
+      "neuron": "사실35",
+      "note": "$(t-\\sqrt{3})(t+2\\sqrt{3})>0$이 되려면 $t<-2\\sqrt{3}$ 또는 $t>\\sqrt{3}$이다",
+      "step": 4
+    },
+    {
+      "from": "note6",
+      "to": "note11",
+      "neuron": "사실1",
+      "note": "$t=\\sqrt{a}>0$이다",
+      "main": false,
+      "step": 4
+    },
+    {
+      "from": [
+        "note10",
+        "note11"
+      ],
+      "to": "note12",
+      "neuron": "사실27",
+      "note": "$t>0$이므로 $t>\\sqrt{3}$ 즉 $a>3$이다",
+      "step": 4
+    },
+    {
+      "from": [
+        "note6",
+        "note1"
+      ],
+      "to": "note13",
+      "neuron": "전략25",
+      "note": "$x=-\\sqrt{\\dfrac{a}{3}}$를 진수에 대입하면 두 조건이 모두 $-\\sqrt{3a}+a-6>0$이 된다",
+      "step": 5
+    },
+    {
+      "from": "note13",
+      "to": "note14",
+      "neuron": "전략1",
+      "note": "$t=\\sqrt{a}>0$으로 치환하면 $t^2-\\sqrt{3}\\,t-6>0$이다",
+      "step": 5
+    },
+    {
+      "from": "note14",
+      "to": "note15",
+      "neuron": "전략29",
+      "note": "$t^2-\\sqrt{3}\\,t-6=(t-2\\sqrt{3})(t+\\sqrt{3})$이다",
+      "step": 5
+    },
+    {
+      "from": "note15",
+      "to": "note16",
+      "neuron": "사실35",
+      "note": "$(t-2\\sqrt{3})(t+\\sqrt{3})>0$이 되려면 $t<-\\sqrt{3}$ 또는 $t>2\\sqrt{3}$이다",
+      "step": 5
+    },
+    {
+      "from": [
+        "note16",
+        "note11"
+      ],
+      "to": "note17",
+      "neuron": "사실27",
+      "note": "$t>0$이므로 $t>2\\sqrt{3}$ 즉 $a>12$이다",
+      "step": 5
+    },
+    {
+      "from": [
+        "note12",
+        "note17"
+      ],
+      "to": "note18",
+      "neuron": "전략22",
+      "note": "$0<a\\leq 3$이면 실근 0개, $3<a\\leq 12$이면 양의 근만 유효하여 실근 1개, $a>12$이면 실근 2개이다",
+      "step": 6
+    },
+    {
+      "from": [
+        "note18",
+        "단서B"
+      ],
+      "to": "note19",
+      "neuron": "전략2",
+      "note": "실근의 개수가 1이 되는 조건은 $3<a\\leq 12$이다",
+      "step": 6
+    },
+    {
+      "from": [
+        "note19",
+        "단서C"
+      ],
+      "to": "END",
+      "neuron": "전략17",
+      "note": "$3<a\\leq 12$인 0이 아닌 정수는 $4, 5, 6, 7, 8, 9, 10, 11, 12$로 $9$개이다",
+      "step": 7
+    }
+  ],
+  "solution": "STEP 1. 로그 정의 조건을 확인한다. 방정식이 정의되려면 $x \\neq 0$이고 두 진수 $\\dfrac{a}{x}+a-6>0$, $3x+a-6>0$이 모두 성립해야 한다.\n\nSTEP 2. $\\log_2$는 순증가 단사함수이므로 진수끼리 같다고 놓으면 $\\dfrac{a}{x}+a-6=3x+a-6$이다. 양변에서 $a-6$을 소거하고 정리하면 $x^2=\\dfrac{a}{3}$이다.\n\nSTEP 3. $x^2=\\dfrac{a}{3}$이 실수해를 가지려면 $a>0$이어야 하고, 이때 근은 $x=\\sqrt{\\dfrac{a}{3}}$과 $x=-\\sqrt{\\dfrac{a}{3}}$의 최대 2개이다.\n\nSTEP 4. 양의 근 $x=\\sqrt{\\dfrac{a}{3}}$를 진수에 대입하면 두 진수 조건이 모두 $\\sqrt{3a}+a-6>0$으로 동일하다. $t=\\sqrt{a}>0$으로 치환하면 $t^2+\\sqrt{3}\\,t-6>0$이고, $(t-\\sqrt{3})(t+2\\sqrt{3})>0$으로 인수분해된다. $t>0$이면 $t+2\\sqrt{3}>0$이 항상 성립하므로 $t>\\sqrt{3}$, 즉 $a>3$이다.\n\nSTEP 5. 음의 근 $x=-\\sqrt{\\dfrac{a}{3}}$를 진수에 대입하면 두 진수 조건이 모두 $-\\sqrt{3a}+a-6>0$으로 동일하다. $t=\\sqrt{a}>0$으로 치환하면 $t^2-\\sqrt{3}\\,t-6>0$이고, $(t-2\\sqrt{3})(t+\\sqrt{3})>0$으로 인수분해된다. $t>0$이면 $t+\\sqrt{3}>0$이 항상 성립하므로 $t>2\\sqrt{3}$, 즉 $a>12$이다.\n\nSTEP 6. 정리하면 $0<a\\leq 3$일 때 실근 0개, $3<a\\leq 12$일 때 양의 근만 유효하여 실근 1개, $a>12$일 때 실근 2개이다. 실근이 정확히 1개인 조건은 $3<a\\leq 12$이다.\n\nSTEP 7. $3<a\\leq 12$인 0이 아닌 정수는 $4, 5, 6, 7, 8, 9, 10, 11, 12$로 총 $\\boxed{9}$개이다.",
+  "original_solution": "로그의 진수조건에 의해\n\n① $\\dfrac{a}{x}+a-6>0$, 　② $3x+a-6>0$\n\n이어야 한다.\n\n또한,\n\n$$\\log_2\\!\\left(\\frac{a}{x}+a-6\\right)=\\log_2(3x+a-6) \\cdots \\text{㉠}$$\n\n$$\\Rightarrow \\frac{a}{x}+a-6=3x+a-6$$\n\n$$\\Rightarrow x^2=\\frac{a}{3}$$\n\n이므로 방정식 ㉠의 실근이 존재하려면\n\n$$a>0 \\quad (\\because\\; a\\neq 0)$$\n\n이어야 하고\n\n방정식 ㉠의 실근으로 가능한 값은 $\\sqrt{\\dfrac{a}{3}}$ 또는 $-\\sqrt{\\dfrac{a}{3}}$ 이다.\n\n이때, $\\sqrt{\\dfrac{a}{3}}$가 방정식 ㉠의 실근이려면 ①, ②를 만족시켜야 하므로\n\n$$\\sqrt{3a}+a-6>0 \\Rightarrow (\\sqrt{a}+2\\sqrt{3})(\\sqrt{a}-\\sqrt{3})>0$$\n\n$$\\Rightarrow a>3$$\n\n이어야 하고, $-\\sqrt{\\dfrac{a}{3}}$가 방정식 ㉠의 실근이려면 마찬가지로\n\n$$-\\sqrt{3a}+a-6>0 \\Rightarrow (\\sqrt{a}+\\sqrt{3})(\\sqrt{a}-2\\sqrt{3})>0$$\n\n$$\\Rightarrow a>12$$\n\n이어야 하므로 문제의 조건에서\n\n방정식 ㉠의 실근의 개수가 $1 \\Rightarrow 3<a\\leq 12$\n\n임을 알 수 있다.\n\n$\\therefore$ (정수 $a$의 개수) $= 9$\n\n---",
+  "analysis": "로그 방정식에서 진수조건과 단사성을 이용해 대수방정식으로 변환하고, x²=a/3의 두 근 각각의 유효성을 진수 부등식으로 판정한 뒤, 정확히 1개만 유효한 a의 범위를 구하는 문제. 모든 논리 단계가 기존 뉴런으로 커버됨.",
+  "new_neurons": [],
+  "metadata": {
+    "unit": "지수와 로그",
+    "difficulty": "중상",
+    "score": "4",
+    "type": "객관식",
+    "answer": "9"
+  },
+  "edge_count": 20,
+  "side_count": 3,
+  "statement": "# 27. (Unknown Source) - 로그 방정식의 실근의 개수\n\n## Problem\n\n$x$에 대한 방정식\n\n$$\\log_2\\!\\left(\\frac{a}{x}+a-6\\right)=\\log_2(3x+a-6)$$\n\n의 실근의 개수가 1이 되도록 하는 0이 아닌 정수 $a$의 개수는? [4점]",
+  "dna": {
+    "nodes": [
+      {
+        "id": "top",
+        "dna": "Q2",
+        "label": "개수를 구하라",
+        "category": "발문"
+      },
+      {
+        "id": "conds",
+        "dna": "S1",
+        "label": "여러 조건",
+        "category": "구조"
+      },
+      {
+        "id": "va",
+        "dna": "T1",
+        "label": "변수 a",
+        "category": "말단"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
+      },
+      {
+        "id": "c2",
+        "dna": "T2",
+        "label": "상수 2",
+        "category": "말단"
+      },
+      {
+        "id": "c6",
+        "dna": "T2",
+        "label": "상수 6",
+        "category": "말단"
+      },
+      {
+        "id": "c3",
+        "dna": "T2",
+        "label": "상수 3",
+        "category": "말단"
+      },
+      {
+        "id": "cm1",
+        "dna": "T2",
+        "label": "상수 -1",
+        "category": "말단"
+      },
+      {
+        "id": "c0",
+        "dna": "T2",
+        "label": "상수 0",
+        "category": "말단"
+      },
+      {
+        "id": "c1",
+        "dna": "T2",
+        "label": "상수 1",
+        "category": "말단"
+      },
+      {
+        "id": "a_int",
+        "dna": "L3",
+        "label": "정수 제한",
+        "category": "제한"
+      },
+      {
+        "id": "a_neq0",
+        "dna": "C2",
+        "label": "a ≠ 0",
+        "category": "조건"
+      },
+      {
+        "id": "eq_main",
+        "dna": "C1",
+        "label": "로그 등식",
+        "category": "조건"
+      },
+      {
+        "id": "lhs_log",
+        "dna": "E3",
+        "label": "log₂(진수1)",
+        "category": "수식"
+      },
+      {
+        "id": "rhs_log",
+        "dna": "E3",
+        "label": "log₂(진수2)",
+        "category": "수식"
+      },
+      {
+        "id": "arg1",
+        "dna": "E1",
+        "label": "a/x + a-6",
+        "category": "수식"
+      },
+      {
+        "id": "ax_inv",
+        "dna": "E6",
+        "label": "a/x",
+        "category": "수식"
+      },
+      {
+        "id": "xinv",
+        "dna": "E7",
+        "label": "x^(-1)",
+        "category": "수식"
+      },
+      {
+        "id": "neg6",
+        "dna": "E2",
+        "label": "-6",
+        "category": "수식"
+      },
+      {
+        "id": "a_minus6",
+        "dna": "E1",
+        "label": "a+(-6)",
+        "category": "수식"
+      },
+      {
+        "id": "arg2",
+        "dna": "E1",
+        "label": "3x + a-6",
+        "category": "수식"
+      },
+      {
+        "id": "three_x",
+        "dna": "E6",
+        "label": "3x",
+        "category": "수식"
+      },
+      {
+        "id": "root_cnt",
+        "dna": "C9",
+        "label": "실근 개수=1",
+        "category": "조건"
+      }
+    ],
+    "edges": [
+      {
+        "from": "conds",
+        "to": "top"
+      },
+      {
+        "from": "root_cnt",
+        "to": "top"
+      },
+      {
+        "from": "a_int",
+        "to": "va"
+      },
+      {
+        "from": "va",
+        "to": "a_neq0"
+      },
+      {
+        "from": "c0",
+        "to": "a_neq0"
+      },
+      {
+        "from": "a_neq0",
+        "to": "conds"
+      },
+      {
+        "from": "eq_main",
+        "to": "conds"
+      },
+      {
+        "from": "lhs_log",
+        "to": "eq_main"
+      },
+      {
+        "from": "rhs_log",
+        "to": "eq_main"
+      },
+      {
+        "from": "c2",
+        "to": "lhs_log"
+      },
+      {
+        "from": "arg1",
+        "to": "lhs_log"
+      },
+      {
+        "from": "c2",
+        "to": "rhs_log"
+      },
+      {
+        "from": "arg2",
+        "to": "rhs_log"
+      },
+      {
+        "from": "ax_inv",
+        "to": "arg1"
+      },
+      {
+        "from": "a_minus6",
+        "to": "arg1"
+      },
+      {
+        "from": "va",
+        "to": "ax_inv"
+      },
+      {
+        "from": "xinv",
+        "to": "ax_inv"
+      },
+      {
+        "from": "vx",
+        "to": "xinv"
+      },
+      {
+        "from": "cm1",
+        "to": "xinv"
+      },
+      {
+        "from": "va",
+        "to": "a_minus6"
+      },
+      {
+        "from": "neg6",
+        "to": "a_minus6"
+      },
+      {
+        "from": "c6",
+        "to": "neg6"
+      },
+      {
+        "from": "three_x",
+        "to": "arg2"
+      },
+      {
+        "from": "a_minus6",
+        "to": "arg2"
+      },
+      {
+        "from": "c3",
+        "to": "three_x"
+      },
+      {
+        "from": "vx",
+        "to": "three_x"
+      },
+      {
+        "from": "eq_main",
+        "to": "root_cnt"
+      },
+      {
+        "from": "c1",
+        "to": "root_cnt"
+      }
+    ],
+    "new_dna": []
+  },
+  "thinking_profile": null,
+  "folders": [],
+  "history": [],
+  "recovery_warnings": [],
+  "errata": [],
+  "created_at": "2026-03-23T17:44:29.173Z"
+}

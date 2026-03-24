@@ -1,0 +1,339 @@
+{
+  "version": 1,
+  "count": 37,
+  "problems": [
+    {
+      "problem_id": "19(수능/모의고사)-로그방정식의실근의개수",
+      "filename": "19(수능_모의고사)-로그방정식의실근의개수.json",
+      "has_skeleton": true,
+      "has_clues": true,
+      "has_solution": true,
+      "has_profile": true,
+      "profile_version": 6
+    },
+    {
+      "problem_id": "16(UnknownSource)-지수함수와로그함수의교점",
+      "filename": "16(UnknownSource)-지수함수와로그함수의교점.json",
+      "has_skeleton": true,
+      "has_clues": true,
+      "has_solution": true,
+      "has_profile": true,
+      "profile_version": 6
+    },
+    {
+      "problem_id": "18_UnknownSource_-지수함수와로그함수의교점_삼각형의넓이",
+      "filename": "18_UnknownSource_-지수함수와로그함수의교점_삼각형의넓이.json",
+      "has_skeleton": true,
+      "has_clues": true,
+      "has_solution": true,
+      "has_profile": true,
+      "profile_version": 6
+    },
+    {
+      "problem_id": "20_UnknownSource_-로그함수와원의관계",
+      "filename": "20_UnknownSource_-로그함수와원의관계.json",
+      "has_skeleton": true,
+      "has_clues": true,
+      "has_solution": true,
+      "has_profile": true,
+      "profile_version": 6
+    },
+    {
+      "problem_id": "15_UnknownSource_-n제곱근과자연수조건",
+      "filename": "15_UnknownSource_-n제곱근과자연수조건.json",
+      "has_skeleton": true,
+      "has_clues": true,
+      "has_solution": true,
+      "has_profile": true,
+      "profile_version": 6
+    },
+    {
+      "problem_id": "13",
+      "filename": "13.json",
+      "has_skeleton": true,
+      "has_clues": true,
+      "has_solution": true,
+      "has_profile": true,
+      "profile_version": 6
+    },
+    {
+      "problem_id": "12",
+      "filename": "12.json",
+      "has_skeleton": true,
+      "has_clues": true,
+      "has_solution": true,
+      "has_profile": true,
+      "profile_version": 6
+    },
+    {
+      "problem_id": "11",
+      "filename": "11.json",
+      "has_skeleton": true,
+      "has_clues": true,
+      "has_solution": true,
+      "has_profile": true,
+      "profile_version": 6
+    },
+    {
+      "problem_id": "14_SourceUnknown_-함수의연속성과미분가능성",
+      "filename": "14_SourceUnknown_-함수의연속성과미분가능성.json",
+      "has_skeleton": true,
+      "has_clues": true,
+      "has_solution": true,
+      "has_profile": true,
+      "profile_version": 6
+    },
+    {
+      "problem_id": "21_수능_모의고사_-지수함수와곡선의교점조건",
+      "filename": "21_수능_모의고사_-지수함수와곡선의교점조건.json",
+      "has_skeleton": true,
+      "has_clues": true,
+      "has_solution": true,
+      "has_profile": false,
+      "profile_version": 0
+    },
+    {
+      "problem_id": "22_수능_모의고사_-지수방정식의실근의곱",
+      "filename": "22_수능_모의고사_-지수방정식의실근의곱.json",
+      "has_skeleton": true,
+      "has_clues": true,
+      "has_solution": true,
+      "has_profile": false,
+      "profile_version": 0
+    },
+    {
+      "problem_id": "23_수능_모의고사_-지수함수와직선의교점거리",
+      "filename": "23_수능_모의고사_-지수함수와직선의교점거리.json",
+      "has_skeleton": true,
+      "has_clues": true,
+      "has_solution": true,
+      "has_profile": false,
+      "profile_version": 0
+    },
+    {
+      "problem_id": "25_수능_모의고사_-지수부등식과이차방정식",
+      "filename": "25_수능_모의고사_-지수부등식과이차방정식.json",
+      "has_skeleton": true,
+      "has_clues": true,
+      "has_solution": true,
+      "has_profile": false,
+      "profile_version": 0
+    },
+    {
+      "problem_id": "24_수능_모의고사_-함수의성질과부등식",
+      "filename": "24_수능_모의고사_-함수의성질과부등식.json",
+      "has_skeleton": true,
+      "has_clues": true,
+      "has_solution": true,
+      "has_profile": false,
+      "profile_version": 0
+    },
+    {
+      "problem_id": "26_a_1_인실수_a_에대하여구간__-_infty___3__에서정의된함수",
+      "filename": "26_a_1_인실수_a_에대하여구간__-_infty___3__에서정의된함수.json",
+      "has_skeleton": true,
+      "has_clues": true,
+      "has_solution": true,
+      "has_profile": false,
+      "profile_version": 0
+    },
+    {
+      "problem_id": "27_UnknownSource_-로그방정식의실근의개수",
+      "filename": "27_UnknownSource_-로그방정식의실근의개수.json",
+      "has_skeleton": true,
+      "has_clues": true,
+      "has_solution": true,
+      "has_profile": false,
+      "profile_version": 0
+    },
+    {
+      "problem_id": "29_수능_모의고사_-지수함수와평행사변형",
+      "filename": "29_수능_모의고사_-지수함수와평행사변형.json",
+      "has_skeleton": true,
+      "has_clues": true,
+      "has_solution": true,
+      "has_profile": false,
+      "profile_version": 0
+    },
+    {
+      "problem_id": "28_수능_모의고사_-곡선위의점과직선의기울기",
+      "filename": "28_수능_모의고사_-곡선위의점과직선의기울기.json",
+      "has_skeleton": true,
+      "has_clues": true,
+      "has_solution": true,
+      "has_profile": false,
+      "profile_version": 0
+    },
+    {
+      "problem_id": "36_수능_모의고사_-지수함수와부등식",
+      "filename": "36_수능_모의고사_-지수함수와부등식.json",
+      "has_skeleton": true,
+      "has_clues": true,
+      "has_solution": true,
+      "has_profile": false,
+      "profile_version": 0
+    },
+    {
+      "problem_id": "37_수능_모의고사_-지수_로그함수와도형",
+      "filename": "37_수능_모의고사_-지수_로그함수와도형.json",
+      "has_skeleton": true,
+      "has_clues": true,
+      "has_solution": true,
+      "has_profile": false,
+      "profile_version": 0
+    },
+    {
+      "problem_id": "38상수_a___a_2__에대하여함수_f_x__를",
+      "filename": "38상수_a___a_2__에대하여함수_f_x__를.json",
+      "has_skeleton": true,
+      "has_clues": true,
+      "has_solution": true,
+      "has_profile": false,
+      "profile_version": 0
+    },
+    {
+      "problem_id": "31_수능_모의고사_-로그함수와정삼각형",
+      "filename": "31_수능_모의고사_-로그함수와정삼각형.json",
+      "has_skeleton": true,
+      "has_clues": true,
+      "has_solution": true,
+      "has_profile": false,
+      "profile_version": 0
+    },
+    {
+      "problem_id": "32두자연수_a___b___a_b__와두함수_f_x__-9_x-a__x-b____g_x__x-3_에대하여부등식",
+      "filename": "32두자연수_a___b___a_b__와두함수_f_x__-9_x-a__x-b____g_x__x-3_에대하여부등식.json",
+      "has_skeleton": true,
+      "has_clues": true,
+      "has_solution": true,
+      "has_profile": false,
+      "profile_version": 0
+    },
+    {
+      "problem_id": "33_수능_모의고사_-로그계산",
+      "filename": "33_수능_모의고사_-로그계산.json",
+      "has_skeleton": true,
+      "has_clues": true,
+      "has_solution": true,
+      "has_profile": false,
+      "profile_version": 0
+    },
+    {
+      "problem_id": "34_수능_모의고사_-로그조건을만족하는양수의곱",
+      "filename": "34_수능_모의고사_-로그조건을만족하는양수의곱.json",
+      "has_skeleton": true,
+      "has_clues": true,
+      "has_solution": true,
+      "has_profile": false,
+      "profile_version": 0
+    },
+    {
+      "problem_id": "35_수능_모의고사_-지수함수와로그함수의관계",
+      "filename": "35_수능_모의고사_-지수함수와로그함수의관계.json",
+      "has_skeleton": true,
+      "has_clues": true,
+      "has_solution": true,
+      "has_profile": false,
+      "profile_version": 0
+    },
+    {
+      "problem_id": "10_출처미상_-함수의조건을만족시키는자연수의합",
+      "filename": "10_출처미상_-함수의조건을만족시키는자연수의합.json",
+      "has_skeleton": true,
+      "has_clues": true,
+      "has_solution": true,
+      "has_profile": false,
+      "profile_version": 0
+    },
+    {
+      "problem_id": "6_출처미상_-이차방정식의실근과거듭제곱조건",
+      "filename": "6_출처미상_-이차방정식의실근과거듭제곱조건.json",
+      "has_skeleton": true,
+      "has_clues": true,
+      "has_solution": true,
+      "has_profile": false,
+      "profile_version": 0
+    },
+    {
+      "problem_id": "7_a_1_인실수_a_에대하여곡선_y_4-a__-x__이_x_축__y_축과만나는점을각각A_B라하자삼각형OAB의외접원이곡선_y_a__x_-1_과O가아닌점C에서만나고__overline_CO___overline_CA__일때___overline_BC___2__의값을구하시오_단_O는원점이다__4점_",
+      "filename": "7_a_1_인실수_a_에대하여곡선_y_4-a__-x__이_x_축__y_축과만나는점을각각A_B라하자삼각형OAB의외접원이곡선_y_a__x_-1_과O가아닌점C에서만나고__overline_CO___overline_CA__일때___overline_BC___2__의값을구하시오_단_O는원점이다__4점_.json",
+      "has_skeleton": true,
+      "has_clues": true,
+      "has_solution": true,
+      "has_profile": false,
+      "profile_version": 0
+    },
+    {
+      "problem_id": "8_수능_모의고사_-n제곱근",
+      "filename": "8_수능_모의고사_-n제곱근.json",
+      "has_skeleton": true,
+      "has_clues": true,
+      "has_solution": true,
+      "has_profile": false,
+      "profile_version": 0
+    },
+    {
+      "problem_id": "9_UnknownSource_-로그함수의일대일함수조건과치역",
+      "filename": "9_UnknownSource_-로그함수의일대일함수조건과치역.json",
+      "has_skeleton": true,
+      "has_clues": true,
+      "has_solution": true,
+      "has_profile": false,
+      "profile_version": 0
+    },
+    {
+      "problem_id": "1_출처미상_-방정식의서로다른실근의개수",
+      "filename": "1_출처미상_-방정식의서로다른실근의개수.json",
+      "has_skeleton": true,
+      "has_clues": true,
+      "has_solution": true,
+      "has_profile": false,
+      "profile_version": 0
+    },
+    {
+      "problem_id": "2_UnknownSource_-이차함수와집합",
+      "filename": "2_UnknownSource_-이차함수와집합.json",
+      "has_skeleton": true,
+      "has_clues": true,
+      "has_solution": true,
+      "has_profile": false,
+      "profile_version": 0
+    },
+    {
+      "problem_id": "3_수능_모의고사_-지수함수와로그함수의그래프",
+      "filename": "3_수능_모의고사_-지수함수와로그함수의그래프.json",
+      "has_skeleton": true,
+      "has_clues": true,
+      "has_solution": true,
+      "has_profile": false,
+      "profile_version": 0
+    },
+    {
+      "problem_id": "4_수능_모의고사_-지수와거듭제곱근",
+      "filename": "4_수능_모의고사_-지수와거듭제곱근.json",
+      "has_skeleton": true,
+      "has_clues": true,
+      "has_solution": true,
+      "has_profile": false,
+      "profile_version": 0
+    },
+    {
+      "problem_id": "5_UnknownSource_-로그부등식과자연수해의개수",
+      "filename": "5_UnknownSource_-로그부등식과자연수해의개수.json",
+      "has_skeleton": true,
+      "has_clues": true,
+      "has_solution": true,
+      "has_profile": false,
+      "profile_version": 0
+    },
+    {
+      "problem_id": "17_수능_모의고사_-함수의최댓값과방정식의실근개수",
+      "filename": "17_수능_모의고사_-함수의최댓값과방정식의실근개수.json",
+      "has_skeleton": true,
+      "has_clues": true,
+      "has_solution": true,
+      "has_profile": false,
+      "profile_version": 0
+    }
+  ]
+}
