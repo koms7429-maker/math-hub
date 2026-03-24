@@ -1,6 +1,5 @@
 {
   "problem_id": "Problem26",
-  "answer": "②",
   "clues": [
     {
       "id": "단서A",
@@ -257,686 +256,845 @@
     }
   ],
   "solution": "STEP 1. $y=a^x$와 $y=\\log_a x$는 $y=x$에 대해 대칭인 역함수 관계이고, $a>1$이면 $y=a^x$는 순증가이다. 점 A$(t, a^t)$를 지나고 기울기가 $-1$인 직선이 $y=\\log_a x$와 만나는 점 B는 A와 $y=x$에 대해 대칭이므로 B $= (a^t, t)$이다. 직선 AB의 방정식은 $y = -x + k$이고 $k = t + a^t$이다.\n\nSTEP 2. B의 $x$좌표 $a^t$에서 $5\\log_a(a^t) = 5t$이므로 D $= (a^t, 5t)$이다. $\\triangle ABO$와 $\\triangle ABD$는 밑변 AB를 공유하고 넓이가 같으므로, O와 D에서 직선 AB까지의 거리가 같다. O에서의 거리는 $\\frac{k}{\\sqrt{2}}$이고 D에서의 거리는 $\\frac{4t}{\\sqrt{2}}$이다. 이를 같다고 놓으면 $k = 4t$이고 $a^t = 3t$이다. 따라서 B $= (3t, t)$이고 D $= (3t, 5t)$이다.\n\nSTEP 3. 직선 $y = -x + 4t$의 $x$절편은 C $= (4t, 0)$이다. D$(3t, 5t)$를 지나고 기울기 $-1$인 직선은 $y = -x + 8t$이다. $BC = \\sqrt{(4t-3t)^2 + (0-t)^2} = t\\sqrt{2}$이다.\n\nSTEP 4. E $= (e, -e+8t)$로 놓으면 $DE = |3t-e|\\sqrt{2}$이다. $BC = DE$에서 $|3t-e| = t$이므로 $e = 2t$ 또는 $e = 4t$이다. $e = 4t$이면 E $= (4t, 4t)$이고, 이 경우 E와 A가 같은 기울기 $-1$의 직선 위에 놓여 두 곡선 $y=a^x$와 $y=5\\log_a x$가 만나게 되어 단서G에 모순이므로 기각한다. $e = 2t$일 때 E $= (2t, 6t)$이다.\n\nSTEP 5. $a^t = 3t$이고 $a^{2t} = 6t$이다. $a^{2t} = (a^t)^2 = (3t)^2 = 9t^2 = 6t$에서 $t = \\frac{2}{3}$이다. $a^{2/3} = 2$에서 $a = 2^{3/2}$이다.",
-  "original_solution": "문제의 조건에서\n\n$$(\\triangle ABD\\text{의 넓이}) = \\frac{1}{2}\\overline{AB} \\times (\\text{점 D에서 직선 AB까지의 거리})$$\n\n$$(\\triangle ABO\\text{의 넓이}) = \\frac{1}{2}\\overline{AB} \\times (\\text{점 O에서 직선 AB까지의 거리})$$\n\n의 값이 서로 같으므로 두 점 D, O에서 직선 AB까지의 거리가 같음을 알 수 있고,\n\n두 직선 ED, AB의 기울기가 모두 $-1$이므로 다음 그림을 참고하면\n\n$$(\\text{직선 ED의 } x\\text{절편}) = 2 \\times (\\text{직선 AB의 } x\\text{절편})$$\n\n임을 알 수 있다.\n\n이때, 두 직선 AB, ED의 방정식을 각각 $y = -x + k$, $y = -x + 2k$로 놓고, 점 B의 $x$좌표를 $p$라 하면\n\n$$(\\text{D의 } y\\text{좌표}) = 5 \\times (\\text{B의 } y\\text{좌표})$$\n\n($\\because$ B, D는 각각 $y = \\log_a x$, $y = 5\\log_a x$ 위의 점)\n\n$$\\Rightarrow (-p + 2k) = 5(-p + k)$$\n\n$$\\Rightarrow p = \\frac{3k}{4}$$\n\n$$\\Rightarrow \\text{B}\\!\\left(\\frac{3k}{4},\\;\\frac{k}{4}\\right)$$\n\n이고\n\n$$\\begin{cases} (\\text{C의 } x\\text{좌표}) - (\\text{B의 } x\\text{좌표}) = \\frac{k}{4} \\\\ \\overline{BC} = \\overline{DE},\\quad \\overline{BC} \\parallel \\overline{DE} \\end{cases}$$\n\n$$\\Rightarrow (\\text{D의 } x\\text{좌표}) - (\\text{E의 } x\\text{좌표}) = \\frac{k}{4}$$\n\n$$\\Rightarrow (\\text{E의 } x\\text{좌표}) = \\frac{k}{2}$$\n\n$$\\Rightarrow \\text{E}\\!\\left(\\frac{k}{2},\\;\\frac{3k}{2}\\right)$$\n\n이다.\n\n따라서\n\n$$\\text{B}\\!\\left(\\frac{3k}{4},\\;\\frac{k}{4}\\right)\\text{가 곡선 } y = \\log_a x \\text{ 위의 점} \\Rightarrow a^{\\frac{k}{4}} = \\frac{3k}{4}$$\n\n$$\\text{E}\\!\\left(\\frac{k}{2},\\;\\frac{3k}{2}\\right)\\text{가 곡선 } y = a^x \\text{ 위의 점} \\Rightarrow a^{\\frac{k}{2}} = \\frac{3k}{2}$$\n\n$$\\Rightarrow k = \\frac{8}{3},\\quad a^{\\frac{4}{3}} = 4$$\n\n$$\\Rightarrow a = 2^{\\frac{3}{2}}$$\n\n을 얻는다.\n\n---",
-  "analysis": "대칭성(사실3, 사실30, 연산20)으로 A와 B 좌표를 설정하고, 넓이 조건(연산13, 연산19)으로 k=4t를 도출한 뒤, BC=DE 조건(연산11)으로 경우 분리(전략20)하고, 연립방정식(전략2, 연산4)으로 a를 결정한다.",
-  "new_neurons": [],
-  "metadata": {
-    "unit": "지수와 로그",
-    "difficulty": "상",
-    "score": "4",
-    "type": "객관식",
-    "answer": "②"
-  },
-  "edge_count": 25,
-  "side_count": 8,
   "statement": "# 35. (수능/모의고사) - 지수함수와 로그함수의 관계\n\n## Problem\n\n$a > 1$인 실수 $a$에 대하여 곡선 $y = a^x$ 위의 제1사분면에 있는 점 A를 지나고 기울기가 $-1$인 직선이 곡선 $y = \\log_a x$와 만나는 점을 B, $x$축과 만나는 점을 C라 하자. 점 B를 지나고 $y$축에 평행한 직선이 곡선 $y = 5\\log_a x$와 만나는 점을 D, 점 D를 지나고 기울기가 $-1$인 직선이 곡선 $y = a^x$와 만나는 점을 E라 하자. 삼각형 ABO의 넓이와 삼각형 ABD의 넓이가 같고 $\\overline{BC} = \\overline{DE}$일 때, $a$의 값은? (단, O는 원점이고, 두 곡선 $y = a^x$, $y = 5\\log_a x$는 서로 만나지 않는다.) [4점]\n\n[FIGURE: $y = a^x$, $y = \\log_a x$, $y = 5\\log_a x$ 세 곡선과 점 A, B, C, D, E 및 원점 O가 표시된 좌표평면]",
-  "dna": {
-    "nodes": [
+  "thinking_profile": {
+    "_version": 6,
+    "_unit": "note",
+    "_isV6": true,
+    "total_think_tokens": 2696,
+    "total_notes": 17,
+    "hint_distribution": {
+      "0": 15,
+      "1": 1,
+      "2": 1,
+      "3": 0,
+      "4": 0
+    },
+    "avg_hint_level": 0.18,
+    "genuine_miss_count": 0,
+    "absorbed_miss_count": 0,
+    "bonus_count": 10,
+    "highlight_notes": [
+      "note12",
+      "note11",
+      "note10"
+    ],
+    "hardest_note": {
+      "note_id": "note12",
+      "neuron": "연산30",
+      "hint_level": 2,
+      "structural_difficulty": 0.03,
+      "miss_type": null,
+      "note_text": "D$(3t,5t)$를 지나고 기울기 $-1$인 직선: $y = -x + 8t$이다"
+    },
+    "neuron_stats": {
+      "사실30": {
+        "type": "사실",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 0,
+        "avg_hint_level": 0
+      },
+      "연산20": {
+        "type": "연산",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "연산30": {
+        "type": "연산",
+        "appearances": 2,
+        "total_hint": 2,
+        "hint_levels": [
+          0,
+          2
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 1
+      },
+      "연산2": {
+        "type": "연산",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 0,
+        "avg_hint_level": 0
+      },
+      "연산13": {
+        "type": "연산",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 0,
+        "avg_hint_level": 0
+      },
+      "전략2": {
+        "type": "전략",
+        "appearances": 3,
+        "total_hint": 0,
+        "hint_levels": [
+          0,
+          0,
+          0
+        ],
+        "bonus_count": 2,
+        "avg_hint_level": 0
+      },
+      "전략25": {
+        "type": "전략",
+        "appearances": 3,
+        "total_hint": 1,
+        "hint_levels": [
+          1,
+          0,
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0.33
+      },
+      "연산11": {
+        "type": "연산",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "전략20": {
+        "type": "전략",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "전략21": {
+        "type": "전략",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "연산4": {
+        "type": "연산",
+        "appearances": 2,
+        "total_hint": 0,
+        "hint_levels": [
+          0,
+          0
+        ],
+        "bonus_count": 2,
+        "avg_hint_level": 0
+      }
+    },
+    "notes": [
       {
-        "id": "top",
-        "dna": "Q1",
-        "label": "a의 값",
-        "category": "발문"
+        "note_index": 1,
+        "note_id": "note3",
+        "neuron": "사실30",
+        "neuron_type": "사실",
+        "note_text": "A$(t, a^t)$와 B는 $y=x$에 대해 대칭이다",
+        "from": [
+          "note1",
+          "note2",
+          "단서A",
+          "단서B"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note3",
+            "in_target": "note3",
+            "attempt": 0,
+            "score": 0.85,
+            "reason": "학생이 y=x에 대한 대칭성을 명시적으로 언급하고 A=(t,a^t)의 대칭점이 B=(a^t,t)임을 도출함"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 248,
+            "discover_elapsed_ms": 11676,
+            "match_elapsed_ms": 3688,
+            "discover_input_tokens": 1153,
+            "discover_output_tokens": 733,
+            "match_input_tokens": 1166,
+            "match_output_tokens": 203,
+            "claude_output": "[시도] 기울기 -1인 직선과 곡선 y = log_a x의 교점 B의 좌표 구하기\n\n[계산]\n점 A = (t, a^t)를 지나고 기울기 -1인 직선의 방정식:\n$$y = -x + t + a^t$$\n\ny = a^x와 y = log_a x는 역함수 관계이므로 y = x에 대해 대칭.\nA = (t, a^t)의 y = x에 대한 대칭점은 (a^t, t)이며, 이 점이 y = log_a x 위에 있음.\n\n직선 위인지 확인: $y = -(a^t) + t + a^t = t$ ✓\n\n[결론] **B = (a^t, t)**",
+            "matches": [
+              {
+                "label": "B",
+                "score": 1,
+                "reason": "학생의 결론 B = (a^t, t)와 완전히 일치"
+              },
+              {
+                "label": "A",
+                "score": 0.85,
+                "reason": "학생이 y=x에 대한 대칭성을 명시적으로 언급하고 A=(t,a^t)의 대칭점이 B=(a^t,t)임을 도출함"
+              },
+              {
+                "label": "C",
+                "score": 0.9,
+                "reason": "학생이 직선 방정식 y = -x + t + a^t를 명시적으로 구했으며, 이는 k = t + a^t와 동일한 결론"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 248tok | disc 11676ms + match 3688ms | bonus 2"
+          }
+        ]
       },
       {
-        "id": "conds",
-        "dna": "S1",
-        "label": "여러 조건",
-        "category": "구조"
+        "note_index": 2,
+        "note_id": "note4",
+        "neuron": "연산20",
+        "neuron_type": "연산",
+        "note_text": "B $= (a^t,\\, t)$이다",
+        "from": [
+          "note3"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
       },
       {
-        "id": "va",
-        "dna": "T1",
-        "label": "변수 a",
-        "category": "말단"
+        "note_index": 3,
+        "note_id": "note5",
+        "neuron": "연산30",
+        "neuron_type": "연산",
+        "note_text": "직선 AB의 방정식은 $y = -x + k$이고 $k = t + a^t$이다",
+        "from": [
+          "note3",
+          "note4"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
       },
       {
-        "id": "a_real",
-        "dna": "L3",
-        "label": "a는 실수",
-        "category": "제한"
+        "note_index": 4,
+        "note_id": "note6",
+        "neuron": "연산2",
+        "neuron_type": "연산",
+        "note_text": "B의 $x$좌표 $a^t$에서 $5\\log_a(a^t) = 5t$이므로 D $= (a^t,\\, 5t)$이다",
+        "from": [
+          "note4",
+          "단서C"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note6",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note6",
+            "in_target": "note6",
+            "attempt": 2,
+            "score": 1,
+            "reason": "학생의 결론 D=(a^t, 5t)와 후보 A의 결론이 완전히 일치하며, 도출 과정도 동일함"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 63,
+            "discover_elapsed_ms": 5648,
+            "match_elapsed_ms": 5593,
+            "discover_input_tokens": 1254,
+            "discover_output_tokens": 294,
+            "match_input_tokens": 1002,
+            "match_output_tokens": 238,
+            "claude_output": "[시도] 직선 AB와 x축의 교점 C의 좌표 구하기\n\n[계산]\n직선 AB의 방정식: $y = -x + (t + a^t)$\n\nx축과의 교점은 $y = 0$일 때:\n$$0 = -x + (t + a^t) \\implies x = t + a^t$$\n\n따라서 $C = (t + a^t,\\ 0)$\n\n[결론] 점 C의 좌표는 $C = (t + a^t,\\ 0)$이다.",
+            "matches": [
+              {
+                "label": "F",
+                "score": 0.7,
+                "reason": "학생은 직선 y = -x + (t + a^t)에서 C = (t + a^t, 0)을 구했고, 후보 F는 직선 y = -x + 4t에서 C = (4t, 0)을 구했다. 두 결론 모두 x축과의 교점을 구하는 같은 방법이나, 학생의 결론은 t + a^t이고 F는 4t로 a^t = 3t 조건이 적용된 특수한 경우이다. 구조적으로 동일한 계산 방식이지만 학생의 결론은 일반형이고 F는 특수형이므로 부분 일치로 판단한다."
+              }
+            ],
+            "eval_summary": "MISS attempt0 dry0 | 63tok | disc 5648ms + match 5593ms | bonus 1"
+          },
+          {
+            "attempt": 1,
+            "think_tokens": 204,
+            "discover_elapsed_ms": 13203,
+            "match_elapsed_ms": 3814,
+            "discover_input_tokens": 1300,
+            "discover_output_tokens": 763,
+            "match_input_tokens": 973,
+            "match_output_tokens": 130,
+            "claude_output": "[시도] 내가 해볼 것: B와 C의 좌표를 이용해 선분 BC의 길이를 구한다\n\n[계산]\n- B = $(a^t,\\ t)$, C = $(t + a^t,\\ 0)$\n- BC 벡터: $(t + a^t - a^t,\\ 0 - t) = (t,\\ -t)$\n- $\\overline{BC} = \\sqrt{t^2 + (-t)^2} = \\sqrt{2t^2} = t\\sqrt{2}$\n\n[결론] $\\overline{BC} = t\\sqrt{2}$이다.",
+            "matches": [
+              {
+                "label": "G",
+                "score": 0.85,
+                "reason": "G 노트는 BC = √((4t-3t)²+(0-t)²) = t√2로 계산하여 동일한 결론 BC = t√2를 도출. 좌표값은 다르지만(학생은 일반적 a^t 사용, G는 구체적 3t, 4t 사용) 결론은 동일"
+              }
+            ],
+            "eval_summary": "MISS attempt1 dry0 | 204tok | disc 13203ms + match 3814ms | bonus 1"
+          },
+          {
+            "attempt": 2,
+            "think_tokens": 146,
+            "discover_elapsed_ms": 8868,
+            "match_elapsed_ms": 4097,
+            "discover_input_tokens": 1336,
+            "discover_output_tokens": 524,
+            "match_input_tokens": 916,
+            "match_output_tokens": 157,
+            "claude_output": "[시도] 내가 해볼 것: 점 D의 좌표 구하기\n\n[계산]\n점 D는 B에서 $y$축에 평행한 직선(즉, $x = a^t$)과 곡선 $y = 5\\log_a x$의 교점이다.\n\n$$D = \\left(a^t,\\ 5\\log_a(a^t)\\right) = \\left(a^t,\\ 5t\\right)$$\n\n[결론] D $= (a^t,\\ 5t)$이다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 1,
+                "reason": "학생의 결론 D=(a^t, 5t)와 후보 A의 결론이 완전히 일치하며, 도출 과정도 동일함"
+              },
+              {
+                "label": "D",
+                "score": 0.5,
+                "reason": "후보 D는 D=(3t, 5t)로 x좌표가 3t로 특정화되어 있으나, 학생은 a^t로 표현하여 부분적으로만 일치"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 146tok | disc 8868ms + match 4097ms | bonus 0"
+          }
+        ]
       },
       {
-        "id": "a_gt1",
-        "dna": "C2",
-        "label": "a > 1",
-        "category": "조건"
+        "note_index": 5,
+        "note_id": "note7",
+        "neuron": "연산13",
+        "neuron_type": "연산",
+        "note_text": "$\\triangle ABO$와 $\\triangle ABD$는 밑변 AB를 공유하고 넓이가 같으므로 O와 D에서 직선 AB까지의 거리가 같다",
+        "from": [
+          "단서E",
+          "note5"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note7",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note7",
+            "in_target": "note7",
+            "attempt": 2,
+            "score": 0.9,
+            "reason": "학생이 AB를 공통 밑변으로 하여 O와 D까지의 거리가 같아야 한다는 동일한 논리를 사용함"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 94,
+            "discover_elapsed_ms": 6489,
+            "match_elapsed_ms": 3091,
+            "discover_input_tokens": 1312,
+            "discover_output_tokens": 422,
+            "match_input_tokens": 912,
+            "match_output_tokens": 110,
+            "claude_output": "[시도] 내가 해볼 것: C의 좌표를 구해서 BC의 길이를 계산한다\n\n[계산]\n직선의 방정식: $y = -x + (t + a^t)$\n\n$y = 0$으로 놓으면: $x = t + a^t$\n\n따라서 C $= (t + a^t,\\ 0)$\n\n$\\overline{BC} = \\sqrt{(t+a^t - a^t)^2 + (0 - t)^2} = \\sqrt{t^2 + t^2} = t\\sqrt{2}$\n\n[결론] C $= (t+a^t,\\ 0)$이고, $\\overline{BC} = t\\sqrt{2}$이다.",
+            "matches": [
+              {
+                "label": "E",
+                "score": 0.72,
+                "reason": "학생은 BC = t√2를 구했고, 후보 E는 t√2 = |3t-e|√2 형태로 BC의 길이를 사용한다. 학생의 결론 BC = t√2가 E의 좌변과 직접 대응된다."
+              }
+            ],
+            "eval_summary": "MISS attempt0 dry0 | 94tok | disc 6489ms + match 3091ms | bonus 1"
+          },
+          {
+            "attempt": 1,
+            "think_tokens": 371,
+            "discover_elapsed_ms": 19619,
+            "match_elapsed_ms": 2284,
+            "discover_input_tokens": 1349,
+            "discover_output_tokens": 1244,
+            "match_input_tokens": 865,
+            "match_output_tokens": 98,
+            "claude_output": "[시도] BC = DE 조건에서 나온 |s - 3t| = t를 풀어 E의 x좌표 후보를 구하기\n\n[계산]\nE의 x좌표를 $s$라 하면 step 5에서 $|s - 3t| = t$이므로\n\n$$s - 3t = t \\quad \\Rightarrow \\quad s = 4t$$\n$$s - 3t = -t \\quad \\Rightarrow \\quad s = 2t$$\n\n두 후보: $s = 4t$ 또는 $s = 2t$\n\n[결론] E의 x좌표는 $s = 4t$ 또는 $s = 2t$이다.",
+            "matches": [
+              {
+                "label": "F",
+                "score": 1,
+                "reason": "학생의 결론 s=4t 또는 s=2t는 후보 F의 e=2t 또는 e=4t와 변수명만 다를 뿐 수학적으로 완전히 동일한 결론이다"
+              }
+            ],
+            "eval_summary": "MISS attempt1 dry0 | 371tok | disc 19619ms + match 2284ms | bonus 1"
+          },
+          {
+            "attempt": 2,
+            "think_tokens": 425,
+            "discover_elapsed_ms": 19156,
+            "match_elapsed_ms": 5409,
+            "discover_input_tokens": 1372,
+            "discover_output_tokens": 1215,
+            "match_input_tokens": 922,
+            "match_output_tokens": 240,
+            "claude_output": "[시도] 삼각형 ABO와 삼각형 ABD의 넓이가 같다는 조건(단서E)에서 O와 D의 직선 AB까지의 거리를 비교한다\n\n[계산]\n직선 AB: $x + y = t + a^t$\n\n원점 O$(0,0)$에서 직선까지의 거리: $\\dfrac{t + a^t}{\\sqrt{2}}$\n\nD$=(a^t,\\ 5t)$에서 직선까지의 거리: $\\dfrac{|a^t + 5t - (t+a^t)|}{\\sqrt{2}} = \\dfrac{4t}{\\sqrt{2}}$\n\n넓이가 같으려면 AB를 공통 밑변으로 할 때 높이가 같아야 하므로:\n$$\\frac{t + a^t}{\\sqrt{2}} = \\frac{4t}{\\sqrt{2}}$$\n\n[결론] $a^t = 3t$",
+            "matches": [
+              {
+                "label": "A",
+                "score": 0.9,
+                "reason": "학생이 AB를 공통 밑변으로 하여 O와 D까지의 거리가 같아야 한다는 동일한 논리를 사용함"
+              },
+              {
+                "label": "B",
+                "score": 0.75,
+                "reason": "학생의 계산에서 t+a^t = 4t (즉 k=4t에 해당)를 도출하고 a^t=3t 결론도 일치함. k의 정의가 명시적이지 않아 완전일치는 아님"
+              },
+              {
+                "label": "H",
+                "score": 0.5,
+                "reason": "a^t=3t 결론(①)은 완전히 포함되나 a^{2t}=6t(②)는 학생 서술에 없음"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 425tok | disc 19156ms + match 5409ms | bonus 1"
+          }
+        ]
       },
       {
-        "id": "vx",
-        "dna": "T3",
-        "label": "독립변수 x",
-        "category": "말단"
+        "note_index": 6,
+        "note_id": "note10",
+        "neuron": "전략2",
+        "neuron_type": "전략",
+        "note_text": "$\\frac{k}{\\sqrt{2}} = \\frac{4t}{\\sqrt{2}}$에서 $k=4t$이고 $a^t = 3t$이다",
+        "from": [
+          "note7",
+          "note8",
+          "note9"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note7",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
       },
       {
-        "id": "c5",
-        "dna": "T2",
-        "label": "상수 5",
-        "category": "말단"
+        "note_index": 7,
+        "note_id": "note11",
+        "neuron": "전략25",
+        "neuron_type": "전략",
+        "note_text": "B $= (3t,\\, t)$이고 D $= (3t,\\, 5t)$이다",
+        "from": [
+          "note10"
+        ],
+        "hint_level": 1,
+        "is_bonus": false,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note11",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note11",
+            "in_target": "note11",
+            "attempt": 1,
+            "score": 0.7,
+            "reason": "학생이 B=(3t,t)임을 명시적으로 사용했으며, 이는 후보 A의 B=(3t,t) 부분과 일치한다. 단, D=(3t,5t)에 대한 언급은 없어 부분 일치."
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 161,
+            "discover_elapsed_ms": 12673,
+            "match_elapsed_ms": 1850,
+            "discover_input_tokens": 1426,
+            "discover_output_tokens": 820,
+            "match_input_tokens": 783,
+            "match_output_tokens": 8,
+            "claude_output": "[시도] 내가 해볼 것: C의 좌표를 구해서 BC의 길이를 계산하기\n\n[계산]\n- 직선 AB: $y = -x + 4t$ (∵ $k=4t$), $x$축과 만나는 점 C는 $y=0$ 대입\n- $0 = -x + 4t$ → $x = 4t$ 이므로 C $= (4t,\\ 0)$\n- B $= (3t,\\ t)$ (∵ $a^t = 3t$)\n- $\\overline{BC} = \\sqrt{(4t-3t)^2 + (0-t)^2} = \\sqrt{t^2 + t^2} = \\sqrt{2}\\,t$\n\n[결론] C $= (4t,\\ 0)$이고, $\\overline{BC} = \\sqrt{2}\\,t$이다.",
+            "matches": [],
+            "eval_summary": "MISS attempt0 dry0 | 161tok | disc 12673ms + match 1850ms | bonus 0"
+          },
+          {
+            "attempt": 1,
+            "think_tokens": 276,
+            "discover_elapsed_ms": 14987,
+            "match_elapsed_ms": 4059,
+            "discover_input_tokens": 1504,
+            "discover_output_tokens": 1051,
+            "match_input_tokens": 764,
+            "match_output_tokens": 109,
+            "claude_output": "[시도] 단서F($\\overline{BC} = \\overline{DE}$)를 사용하기 위해 먼저 BC의 길이를 구한다.\n\n[계산]\n- C는 직선 $y = -x + 4t$가 $x$축과 만나는 점: $y=0$이면 $x=4t$, 즉 C $= (4t, 0)$\n- B $= (3t, t)$ (∵ $a^t = 3t$)\n\n$$\\overline{BC} = \\sqrt{(4t-3t)^2 + (0-t)^2} = \\sqrt{t^2 + t^2} = t\\sqrt{2}$$\n\n[결론] C $= (4t,\\, 0)$이고, $\\overline{BC} = t\\sqrt{2}$이다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 0.7,
+                "reason": "학생이 B=(3t,t)임을 명시적으로 사용했으며, 이는 후보 A의 B=(3t,t) 부분과 일치한다. 단, D=(3t,5t)에 대한 언급은 없어 부분 일치."
+              }
+            ],
+            "eval_summary": "FOUND H1 | 276tok | disc 14987ms + match 4059ms | bonus 0"
+          }
+        ]
       },
       {
-        "id": "c_neg1",
-        "dna": "T2",
-        "label": "상수 -1",
-        "category": "말단"
+        "note_index": 8,
+        "note_id": "note12",
+        "neuron": "연산30",
+        "neuron_type": "연산",
+        "note_text": "D$(3t,5t)$를 지나고 기울기 $-1$인 직선: $y = -x + 8t$이다",
+        "from": [
+          "note11",
+          "단서D"
+        ],
+        "hint_level": 2,
+        "is_bonus": false,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note12",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note12",
+            "in_target": "note12",
+            "attempt": 2,
+            "score": 1,
+            "reason": "학생이 'D = (3t, 5t)를 지나고 기울기 -1인 직선: y = -x + 8t'라고 명시적으로 계산하여 후보 A와 완전히 일치"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 162,
+            "discover_elapsed_ms": 9331,
+            "match_elapsed_ms": 1476,
+            "discover_input_tokens": 1460,
+            "discover_output_tokens": 591,
+            "match_input_tokens": 730,
+            "match_output_tokens": 8,
+            "claude_output": "[시도] 내가 해볼 것: 점 C의 좌표를 구해서 BC의 길이를 계산하기\n\n[계산]\n직선 AB의 방정식: $y = -x + 4t$\n\n점 C는 이 직선과 $x$축의 교점이므로 $y = 0$을 대입:\n$$0 = -x + 4t \\implies x = 4t$$\n따라서 C $= (4t,\\, 0)$\n\n$$\\overline{BC} = \\sqrt{(4t - 3t)^2 + (0 - t)^2} = \\sqrt{t^2 + t^2} = \\sqrt{2}\\,t$$\n\n[결론] C $= (4t,\\, 0)$이고 $\\overline{BC} = \\sqrt{2}\\,t$이다.",
+            "matches": [],
+            "eval_summary": "MISS attempt0 dry0 | 162tok | disc 9331ms + match 1476ms | bonus 0"
+          },
+          {
+            "attempt": 1,
+            "think_tokens": 171,
+            "discover_elapsed_ms": 10070,
+            "match_elapsed_ms": 1615,
+            "discover_input_tokens": 1575,
+            "discover_output_tokens": 658,
+            "match_input_tokens": 729,
+            "match_output_tokens": 8,
+            "claude_output": "[시도] 내가 해볼 것: C의 좌표를 구하여 BC의 길이를 계산하기\n\n[계산]\n직선 AB의 방정식: $y = -x + 4t$\n\nC는 이 직선과 $x$축($y=0$)의 교점:\n$$0 = -x + 4t \\Rightarrow x = 4t$$\n$$C = (4t,\\, 0)$$\n\nB $= (3t,\\, t)$이므로:\n$$\\overline{BC} = \\sqrt{(4t-3t)^2 + (0-t)^2} = \\sqrt{t^2 + t^2} = t\\sqrt{2}$$\n\n[결론] C $= (4t,\\, 0)$이고 $\\overline{BC} = t\\sqrt{2}$이다.",
+            "matches": [],
+            "eval_summary": "MISS attempt1 dry1 | 171tok | disc 10070ms + match 1615ms | bonus 0"
+          },
+          {
+            "attempt": 2,
+            "think_tokens": 142,
+            "discover_elapsed_ms": 11782,
+            "match_elapsed_ms": 4254,
+            "discover_input_tokens": 1517,
+            "discover_output_tokens": 729,
+            "match_input_tokens": 845,
+            "match_output_tokens": 241,
+            "claude_output": "[시도] 단서D의 직선(기울기 -1, D를 지남)의 방정식을 구하고, E의 x좌표 조건을 세워보겠다.\n\n[계산]\nD = (3t, 5t)를 지나고 기울기 -1인 직선: $y = -x + 8t$\n\nBC를 계산: C는 직선 $y=-x+4t$와 $x$축의 교점이므로 C = $(4t, 0)$\n\n$$\\overline{BC} = \\sqrt{(4t-3t)^2+(0-t)^2} = t\\sqrt{2}$$\n\nE는 직선 $y=-x+8t$ 위에 있으므로 D에서 E까지의 거리:\n\n$$\\overline{DE} = |s - 3t|\\cdot\\sqrt{2}$$\n\n$\\overline{BC} = \\overline{DE}$에서 $t\\sqrt{2} = |s-3t|\\cdot\\sqrt{2}$이므로 $|s-3t| = t$\n\n[결론] $s = 4t$ 또는 $s = 2t$ (단, E의 $x$좌표 $s$는 이 두 값 중 하나)",
+            "matches": [
+              {
+                "label": "A",
+                "score": 1,
+                "reason": "학생이 'D = (3t, 5t)를 지나고 기울기 -1인 직선: y = -x + 8t'라고 명시적으로 계산하여 후보 A와 완전히 일치"
+              },
+              {
+                "label": "B",
+                "score": 0.7,
+                "reason": "학생의 결론에서 s = 2t가 도출되었고, E가 직선 y = -x + 8t 위에 있으므로 s = 2t일 때 E = (2t, 6t)임을 암묵적으로 포함. 단, E의 좌표를 명시적으로 (2t, 6t)로 쓰지는 않았으나 수학적으로 동등한 결론"
+              }
+            ],
+            "eval_summary": "FOUND H2 | 142tok | disc 11782ms + match 4254ms | bonus 1"
+          }
+        ]
       },
       {
-        "id": "exp_ax",
-        "dna": "E4",
-        "label": "aˣ",
-        "category": "수식"
+        "note_index": 9,
+        "note_id": "note13",
+        "neuron": "전략25",
+        "neuron_type": "전략",
+        "note_text": "직선 $y=-x+4t$에서 $y=0$으로 놓으면 C $= (4t,\\, 0)$이다",
+        "from": [
+          "note5",
+          "note10"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note6",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
       },
       {
-        "id": "log_ax",
-        "dna": "E3",
-        "label": "logₐx",
-        "category": "수식"
+        "note_index": 10,
+        "note_id": "note14",
+        "neuron": "연산11",
+        "neuron_type": "연산",
+        "note_text": "$BC = \\sqrt{(4t-3t)^2+(0-t)^2} = t\\sqrt{2}$이다",
+        "from": [
+          "note11",
+          "note13"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note6",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
       },
       {
-        "id": "five_log",
-        "dna": "E6",
-        "label": "5·logₐx",
-        "category": "수식"
+        "note_index": 11,
+        "note_id": "note16",
+        "neuron": "전략2",
+        "neuron_type": "전략",
+        "note_text": "$t\\sqrt{2} = |3t-e|\\sqrt{2}$에서 $|3t-e| = t$이다",
+        "from": [
+          "note14",
+          "note15",
+          "단서F"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note7",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
       },
       {
-        "id": "crv1_c1",
-        "dna": "C1",
-        "label": "y=aˣ 등식",
-        "category": "조건"
+        "note_index": 12,
+        "note_id": "note17",
+        "neuron": "전략20",
+        "neuron_type": "전략",
+        "note_text": "$e = 2t$ 또는 $e = 4t$이다",
+        "from": [
+          "note16"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note7",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
       },
       {
-        "id": "crv1_eq",
-        "dna": "C11",
-        "label": "aˣ 방정식",
-        "category": "조건"
+        "note_index": 13,
+        "note_id": "note21",
+        "neuron": "전략21",
+        "neuron_type": "전략",
+        "note_text": "$e = 2t$일 때 E $= (2t,\\, 6t)$이다",
+        "from": [
+          "note17"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note12",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
       },
       {
-        "id": "crv1",
-        "dna": "G2",
-        "label": "곡선 y=aˣ",
-        "category": "기하"
+        "note_index": 14,
+        "note_id": "note22",
+        "neuron": "전략2",
+        "neuron_type": "전략",
+        "note_text": "$a^t = 3t$ ①이고 $a^{2t} = 6t$ ②이다",
+        "from": [
+          "note10",
+          "note21"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note22",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note22",
+            "in_target": "note22",
+            "attempt": 0,
+            "score": 0.7,
+            "reason": "학생은 a^t = 3t와 a^{2t} = 6t 두 조건을 모두 사용했으므로 A의 핵심 결론을 포함"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 127,
+            "discover_elapsed_ms": 8646,
+            "match_elapsed_ms": 3724,
+            "discover_input_tokens": 1675,
+            "discover_output_tokens": 612,
+            "match_input_tokens": 631,
+            "match_output_tokens": 165,
+            "claude_output": "[시도] E = (2t, 6t)가 곡선 y = aˣ 위의 점이어야 하므로 대입하기\n\n[계산]\nE가 y = aˣ 위에 있으므로: $a^{2t} = 6t$\n\n$a^{2t} = (a^t)^2$이고, 이미 $a^t = 3t$임을 알고 있으므로:\n\n$(3t)^2 = 6t$\n\n$9t^2 = 6t \\Rightarrow 9t = 6 \\Rightarrow t = \\dfrac{2}{3}$\n\n[결론] $e = 2t$인 경우, $t = \\dfrac{2}{3}$이다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 0.7,
+                "reason": "학생은 a^t = 3t와 a^{2t} = 6t 두 조건을 모두 사용했으므로 A의 핵심 결론을 포함"
+              },
+              {
+                "label": "B",
+                "score": 1,
+                "reason": "학생의 계산 과정이 B와 완전히 일치: a^{2t}=(a^t)^2=(3t)^2=9t^2, 9t^2=6t에서 t=2/3 도출"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 127tok | disc 8646ms + match 3724ms | bonus 1"
+          }
+        ]
       },
       {
-        "id": "crv2_c1",
-        "dna": "C1",
-        "label": "y=logₐx 등식",
-        "category": "조건"
+        "note_index": 15,
+        "note_id": "note23",
+        "neuron": "연산4",
+        "neuron_type": "연산",
+        "note_text": "$a^{2t} = (a^t)^2 = (3t)^2 = 9t^2$이고 $9t^2 = 6t$에서 $t = \\frac{2}{3}$이다",
+        "from": [
+          "note22"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note22",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
       },
       {
-        "id": "crv2_eq",
-        "dna": "C11",
-        "label": "logₐx 방정식",
-        "category": "조건"
+        "note_index": 16,
+        "note_id": "note24",
+        "neuron": "전략25",
+        "neuron_type": "전략",
+        "note_text": "$a^{2/3} = 3 \\cdot \\frac{2}{3} = 2$이다",
+        "from": [
+          "note23"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note24",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note24",
+            "in_target": "note24",
+            "attempt": 0,
+            "score": 1,
+            "reason": "학생의 계산에서 a^{2/3} = 3·(2/3) = 2가 명시적으로 동일하게 나타남"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 106,
+            "discover_elapsed_ms": 7507,
+            "match_elapsed_ms": 3254,
+            "discover_input_tokens": 1773,
+            "discover_output_tokens": 344,
+            "match_input_tokens": 480,
+            "match_output_tokens": 129,
+            "claude_output": "[시도] $t = \\frac{2}{3}$을 $a^t = 3t$에 대입하여 $a$ 구하기\n\n[계산]\n$$a^t = 3t \\Rightarrow a^{2/3} = 3 \\cdot \\frac{2}{3} = 2$$\n\n$$a = 2^{3/2} = 2\\sqrt{2}$$\n\n[결론] $e = 2t$ 경우에서 $t = \\frac{2}{3}$이고 $a = 2\\sqrt{2}$이다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 1,
+                "reason": "학생의 계산에서 a^{2/3} = 3·(2/3) = 2가 명시적으로 동일하게 나타남"
+              },
+              {
+                "label": "B",
+                "score": 1,
+                "reason": "학생의 결론에서 a = 2^{3/2} = 2√2로 동일한 표현이 명시됨"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 106tok | disc 7507ms + match 3254ms | bonus 1"
+          }
+        ]
       },
       {
-        "id": "crv2",
-        "dna": "G2",
-        "label": "곡선 y=logₐx",
-        "category": "기하"
-      },
-      {
-        "id": "crv3_c1",
-        "dna": "C1",
-        "label": "y=5logₐx 등식",
-        "category": "조건"
-      },
-      {
-        "id": "crv3_eq",
-        "dna": "C11",
-        "label": "5logₐx 방정식",
-        "category": "조건"
-      },
-      {
-        "id": "crv3",
-        "dna": "G2",
-        "label": "곡선 y=5logₐx",
-        "category": "기하"
-      },
-      {
-        "id": "pt_a",
-        "dna": "G1",
-        "label": "점 A",
-        "category": "기하"
-      },
-      {
-        "id": "pt_b",
-        "dna": "G1",
-        "label": "점 B",
-        "category": "기하"
-      },
-      {
-        "id": "pt_c",
-        "dna": "G1",
-        "label": "점 C",
-        "category": "기하"
-      },
-      {
-        "id": "pt_d",
-        "dna": "G1",
-        "label": "점 D",
-        "category": "기하"
-      },
-      {
-        "id": "pt_e",
-        "dna": "G1",
-        "label": "점 E",
-        "category": "기하"
-      },
-      {
-        "id": "pt_o",
-        "dna": "G17",
-        "label": "원점 O(0,0)",
-        "category": "기하"
-      },
-      {
-        "id": "a_q1",
-        "dna": "L1",
-        "label": "A는 1사분면",
-        "category": "제한"
-      },
-      {
-        "id": "a_on_crv1",
-        "dna": "G3",
-        "label": "A는 aˣ 위",
-        "category": "기하"
-      },
-      {
-        "id": "slope_neg1",
-        "dna": "C1",
-        "label": "기울기=-1",
-        "category": "조건"
-      },
-      {
-        "id": "line1",
-        "dna": "G12",
-        "label": "직선 AB(기울기-1)",
-        "category": "기하"
-      },
-      {
-        "id": "line1_pass_a",
-        "dna": "G16",
-        "label": "직선이 A 지남",
-        "category": "기하"
-      },
-      {
-        "id": "b_on_crv2",
-        "dna": "G3",
-        "label": "B는 logₐx 위",
-        "category": "기하"
-      },
-      {
-        "id": "b_meet_line1",
-        "dna": "C3",
-        "label": "직선∩logₐx=B",
-        "category": "조건"
-      },
-      {
-        "id": "xaxis",
-        "dna": "G13",
-        "label": "x축",
-        "category": "기하"
-      },
-      {
-        "id": "c_meet_xaxis",
-        "dna": "C3",
-        "label": "직선∩x축=C",
-        "category": "조건"
-      },
-      {
-        "id": "c_on_xaxis",
-        "dna": "G3",
-        "label": "C는 x축 위",
-        "category": "기하"
-      },
-      {
-        "id": "line2",
-        "dna": "G12",
-        "label": "직선 BD(수직선)",
-        "category": "기하"
-      },
-      {
-        "id": "line2_pass_b",
-        "dna": "G16",
-        "label": "직선이 B 지남",
-        "category": "기하"
-      },
-      {
-        "id": "line2_par_y",
-        "dna": "G19",
-        "label": "y축에 평행",
-        "category": "기하"
-      },
-      {
-        "id": "d_meet_line2",
-        "dna": "C3",
-        "label": "수직선∩5logₐx=D",
-        "category": "조건"
-      },
-      {
-        "id": "d_on_crv3",
-        "dna": "G3",
-        "label": "D는 5logₐx 위",
-        "category": "기하"
-      },
-      {
-        "id": "line3",
-        "dna": "G12",
-        "label": "직선 DE(기울기-1)",
-        "category": "기하"
-      },
-      {
-        "id": "line3_pass_d",
-        "dna": "G16",
-        "label": "직선이 D 지남",
-        "category": "기하"
-      },
-      {
-        "id": "e_meet_line3",
-        "dna": "C3",
-        "label": "직선∩aˣ=E",
-        "category": "조건"
-      },
-      {
-        "id": "e_on_crv1",
-        "dna": "G3",
-        "label": "E는 aˣ 위",
-        "category": "기하"
-      },
-      {
-        "id": "tri_abo",
-        "dna": "G25",
-        "label": "삼각형 ABO",
-        "category": "기하"
-      },
-      {
-        "id": "area_abo",
-        "dna": "G11",
-        "label": "△ABO 넓이",
-        "category": "기하"
-      },
-      {
-        "id": "tri_abd",
-        "dna": "G25",
-        "label": "삼각형 ABD",
-        "category": "기하"
-      },
-      {
-        "id": "area_abd",
-        "dna": "G11",
-        "label": "△ABD 넓이",
-        "category": "기하"
-      },
-      {
-        "id": "area_eq",
-        "dna": "C1",
-        "label": "넓이 같음",
-        "category": "조건"
-      },
-      {
-        "id": "seg_bc",
-        "dna": "G7",
-        "label": "선분 BC",
-        "category": "기하"
-      },
-      {
-        "id": "seg_de",
-        "dna": "G7",
-        "label": "선분 DE",
-        "category": "기하"
-      },
-      {
-        "id": "bc_len",
-        "dna": "G18",
-        "label": "BC 길이",
-        "category": "기하"
-      },
-      {
-        "id": "de_len",
-        "dna": "G18",
-        "label": "DE 길이",
-        "category": "기하"
-      },
-      {
-        "id": "len_eq",
-        "dna": "C16",
-        "label": "BC=DE",
-        "category": "조건"
-      },
-      {
-        "id": "no_meet",
-        "dna": "C20",
-        "label": "두 곡선 불만남",
-        "category": "조건"
+        "note_index": 17,
+        "note_id": "END",
+        "neuron": "연산4",
+        "neuron_type": "연산",
+        "note_text": "$a = 2^{3/2}$이다",
+        "from": [
+          "note24"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note24",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
       }
     ],
-    "edges": [
-      {
-        "from": "a_real",
-        "to": "va"
-      },
-      {
-        "from": "a_gt1",
-        "to": "conds"
-      },
-      {
-        "from": "va",
-        "to": "a_gt1"
-      },
-      {
-        "from": "va",
-        "to": "exp_ax"
-      },
-      {
-        "from": "vx",
-        "to": "exp_ax"
-      },
-      {
-        "from": "exp_ax",
-        "to": "crv1_c1"
-      },
-      {
-        "from": "crv1_c1",
-        "to": "crv1_eq"
-      },
-      {
-        "from": "crv1_eq",
-        "to": "crv1"
-      },
-      {
-        "from": "va",
-        "to": "log_ax"
-      },
-      {
-        "from": "vx",
-        "to": "log_ax"
-      },
-      {
-        "from": "log_ax",
-        "to": "crv2_c1"
-      },
-      {
-        "from": "crv2_c1",
-        "to": "crv2_eq"
-      },
-      {
-        "from": "crv2_eq",
-        "to": "crv2"
-      },
-      {
-        "from": "log_ax",
-        "to": "five_log"
-      },
-      {
-        "from": "c5",
-        "to": "five_log"
-      },
-      {
-        "from": "five_log",
-        "to": "crv3_c1"
-      },
-      {
-        "from": "crv3_c1",
-        "to": "crv3_eq"
-      },
-      {
-        "from": "crv3_eq",
-        "to": "crv3"
-      },
-      {
-        "from": "pt_a",
-        "to": "a_on_crv1"
-      },
-      {
-        "from": "crv1",
-        "to": "a_on_crv1"
-      },
-      {
-        "from": "a_q1",
-        "to": "pt_a"
-      },
-      {
-        "from": "a_on_crv1",
-        "to": "conds"
-      },
-      {
-        "from": "c_neg1",
-        "to": "slope_neg1"
-      },
-      {
-        "from": "slope_neg1",
-        "to": "line1"
-      },
-      {
-        "from": "slope_neg1",
-        "to": "line3"
-      },
-      {
-        "from": "pt_a",
-        "to": "line1_pass_a"
-      },
-      {
-        "from": "line1",
-        "to": "line1_pass_a"
-      },
-      {
-        "from": "line1_pass_a",
-        "to": "conds"
-      },
-      {
-        "from": "line1",
-        "to": "b_meet_line1"
-      },
-      {
-        "from": "crv2",
-        "to": "b_meet_line1"
-      },
-      {
-        "from": "pt_b",
-        "to": "b_meet_line1"
-      },
-      {
-        "from": "b_meet_line1",
-        "to": "b_on_crv2"
-      },
-      {
-        "from": "b_on_crv2",
-        "to": "conds"
-      },
-      {
-        "from": "line1",
-        "to": "c_meet_xaxis"
-      },
-      {
-        "from": "xaxis",
-        "to": "c_meet_xaxis"
-      },
-      {
-        "from": "pt_c",
-        "to": "c_meet_xaxis"
-      },
-      {
-        "from": "c_meet_xaxis",
-        "to": "c_on_xaxis"
-      },
-      {
-        "from": "c_on_xaxis",
-        "to": "conds"
-      },
-      {
-        "from": "pt_b",
-        "to": "line2_pass_b"
-      },
-      {
-        "from": "line2",
-        "to": "line2_pass_b"
-      },
-      {
-        "from": "line2_pass_b",
-        "to": "conds"
-      },
-      {
-        "from": "line2",
-        "to": "line2_par_y"
-      },
-      {
-        "from": "line2_par_y",
-        "to": "conds"
-      },
-      {
-        "from": "line2",
-        "to": "d_meet_line2"
-      },
-      {
-        "from": "crv3",
-        "to": "d_meet_line2"
-      },
-      {
-        "from": "pt_d",
-        "to": "d_meet_line2"
-      },
-      {
-        "from": "d_meet_line2",
-        "to": "d_on_crv3"
-      },
-      {
-        "from": "d_on_crv3",
-        "to": "conds"
-      },
-      {
-        "from": "pt_d",
-        "to": "line3_pass_d"
-      },
-      {
-        "from": "line3",
-        "to": "line3_pass_d"
-      },
-      {
-        "from": "line3_pass_d",
-        "to": "conds"
-      },
-      {
-        "from": "line3",
-        "to": "e_meet_line3"
-      },
-      {
-        "from": "crv1",
-        "to": "e_meet_line3"
-      },
-      {
-        "from": "pt_e",
-        "to": "e_meet_line3"
-      },
-      {
-        "from": "e_meet_line3",
-        "to": "e_on_crv1"
-      },
-      {
-        "from": "e_on_crv1",
-        "to": "conds"
-      },
-      {
-        "from": "pt_a",
-        "to": "tri_abo"
-      },
-      {
-        "from": "pt_b",
-        "to": "tri_abo"
-      },
-      {
-        "from": "pt_o",
-        "to": "tri_abo"
-      },
-      {
-        "from": "tri_abo",
-        "to": "area_abo"
-      },
-      {
-        "from": "pt_a",
-        "to": "tri_abd"
-      },
-      {
-        "from": "pt_b",
-        "to": "tri_abd"
-      },
-      {
-        "from": "pt_d",
-        "to": "tri_abd"
-      },
-      {
-        "from": "tri_abd",
-        "to": "area_abd"
-      },
-      {
-        "from": "area_abo",
-        "to": "area_eq"
-      },
-      {
-        "from": "area_abd",
-        "to": "area_eq"
-      },
-      {
-        "from": "area_eq",
-        "to": "conds"
-      },
-      {
-        "from": "pt_b",
-        "to": "seg_bc"
-      },
-      {
-        "from": "pt_c",
-        "to": "seg_bc"
-      },
-      {
-        "from": "seg_bc",
-        "to": "bc_len"
-      },
-      {
-        "from": "pt_d",
-        "to": "seg_de"
-      },
-      {
-        "from": "pt_e",
-        "to": "seg_de"
-      },
-      {
-        "from": "seg_de",
-        "to": "de_len"
-      },
-      {
-        "from": "bc_len",
-        "to": "len_eq"
-      },
-      {
-        "from": "de_len",
-        "to": "len_eq"
-      },
-      {
-        "from": "len_eq",
-        "to": "conds"
-      },
-      {
-        "from": "crv1",
-        "to": "no_meet"
-      },
-      {
-        "from": "crv3",
-        "to": "no_meet"
-      },
-      {
-        "from": "no_meet",
-        "to": "conds"
-      },
-      {
-        "from": "conds",
-        "to": "top"
-      }
-    ],
-    "new_dna": []
-  },
-  "thinking_profile": null,
-  "folders": [],
-  "history": [],
-  "recovery_warnings": [],
-  "errata": [],
-  "created_at": "2026-03-23T19:04:01.410Z"
+    "_debug": "v7-split"
+  }
 }
