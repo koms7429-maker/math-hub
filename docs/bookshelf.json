@@ -2779,17 +2779,17 @@
       "_version": 6,
       "_unit": "note",
       "_isV6": true,
-      "total_think_tokens": 85,
+      "total_think_tokens": 0,
       "total_notes": 21,
       "hint_distribution": {
-        "0": 1,
+        "0": 0,
         "1": 0,
         "2": 0,
         "3": 0,
-        "4": 0
+        "4": 1
       },
-      "avg_hint_level": 0,
-      "genuine_miss_count": 0,
+      "avg_hint_level": 4,
+      "genuine_miss_count": 1,
       "absorbed_miss_count": 0,
       "bonus_count": 0,
       "highlight_notes": [
@@ -2798,21 +2798,21 @@
       "hardest_note": {
         "note_id": "note1",
         "neuron": "연산30",
-        "hint_level": 0,
+        "hint_level": 4,
         "structural_difficulty": 0.03,
-        "miss_type": null,
+        "miss_type": "genuine",
         "note_text": "$A(0,a)$를 지나는 기울기 $1$인 직선은 $y=x+a$이다"
       },
       "neuron_stats": {
         "연산30": {
           "type": "연산",
           "appearances": 1,
-          "total_hint": 0,
+          "total_hint": 4,
           "hint_levels": [
-            0
+            4
           ],
           "bonus_count": 0,
-          "avg_hint_level": 0
+          "avg_hint_level": 4
         }
       },
       "notes": [
@@ -2826,53 +2826,15 @@
             "단서B",
             "단서D"
           ],
-          "hint_level": 0,
+          "hint_level": 4,
           "is_bonus": false,
           "structural_difficulty": 0.03,
           "discovered_in_target": "note1",
-          "miss_type": null,
+          "miss_type": "genuine",
           "absorbed_in": null,
           "absorb_reason": "",
-          "partial_history": [
-            {
-              "note_id": "note1",
-              "in_target": "note1",
-              "attempt": 0,
-              "score": 1,
-              "reason": "학생이 'A(0, a)를 지나고 기울기 1인 직선 → y = x + a'라고 명시적으로 서술하여 완전히 일치"
-            }
-          ],
-          "attempts": [
-            {
-              "attempt": 0,
-              "think_tokens": 85,
-              "discover_elapsed_ms": 7263,
-              "match_elapsed_ms": 4018,
-              "discover_input_tokens": 1159,
-              "discover_output_tokens": 428,
-              "match_input_tokens": 1540,
-              "match_output_tokens": 231,
-              "claude_output": "[시도] 내가 해볼 것: 단서B, C, D를 이용해 점 B, C의 좌표를 문자로 표현하기\n\n[계산]\n- **점 B**: A(0, a)를 지나고 x축에 평행한 직선 → y = a가 y = b^x와 만나므로  \n  b^x = a → x = log_b a  \n  따라서 **B = (log_b a, a)**\n\n- **점 C**: A(0, a)를 지나고 기울기 1인 직선 → y = x + a가 y = b^x와 만나므로  \n  C의 x좌표를 p라 하면: b^p = p + a  \n  따라서 **C = (p, p + a)** (단, b^p = p + a)\n\n[결론] B = (log_b a, a), C = (p, p+a) (b^p = p+a 만족하는 제1사분면의 점)",
-              "matches": [
-                {
-                  "label": "A",
-                  "score": 1,
-                  "reason": "학생이 'A(0, a)를 지나고 기울기 1인 직선 → y = x + a'라고 명시적으로 서술하여 완전히 일치"
-                },
-                {
-                  "label": "B",
-                  "score": 0.85,
-                  "reason": "학생이 C = (p, p+a)로 표현했고, 후보는 C(k, a+k)로 표현. 변수명만 다를 뿐 수학적으로 동일한 결론"
-                },
-                {
-                  "label": "L",
-                  "score": 1,
-                  "reason": "학생이 'b^x = a → x = log_b a, 따라서 B = (log_b a, a)'라고 명시하여 완전히 일치"
-                }
-              ],
-              "eval_summary": "FOUND H0 | 85tok | disc 7263ms + match 4018ms | bonus 2"
-            }
-          ]
+          "partial_history": [],
+          "attempts": []
         }
       ],
       "_debug": "v7-split"
