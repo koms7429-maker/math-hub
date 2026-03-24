@@ -352,6 +352,15 @@
       "has_solution": true,
       "has_profile": false,
       "profile_version": 0
+    },
+    {
+      "problem_id": "P2",
+      "filename": "P2.json",
+      "has_skeleton": true,
+      "has_clues": true,
+      "has_solution": true,
+      "has_profile": false,
+      "profile_version": 0
     }
   ]
 }
