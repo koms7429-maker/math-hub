@@ -1,6 +1,5 @@
 {
   "problem_id": "Problem11",
-  "answer": "165",
   "clues": [
     {
       "id": "단서A",
@@ -195,334 +194,837 @@
     }
   ],
   "solution": "STEP 1. 주어진 방정식에서 $x^{2n}-2^{20}=(x^n)^2-(2^{10})^2=(x^n-2^{10})(x^n+2^{10})$으로 인수분해하면 $(x^n-2^{25})(x^n-2^{10})(x^n+2^{10})=0$이다. 이로부터 $x^n=2^{25}$ 또는 $x^n=2^{10}$ 또는 $x^n=-2^{10}$이다.\n\nSTEP 2. $n$이 홀수인 경우: 각 방정식 $x^n=c$는 실근을 정확히 1개 가지므로 세 실근은 $x=2^{25/n}$, $x=2^{10/n}$, $x=-2^{10/n}$이다. 모든 실근의 곱은 $-2^{45/n}$이다. 이 값이 정수이려면 $2^{45/n}$이 정수여야 하므로 $45/n$이 양의 정수, 즉 $n\\mid 45$이다. $45=3^2\\times 5$의 약수 중 2 이상인 홀수는 $3,5,9,15,45$이다. 또한 $-2^{45/n}>-100$에서 $2^{45/n}<100$이어야 한다. 각 후보를 확인하면 $n=3$: $2^{15}=32768>100$ ❌, $n=5$: $2^9=512>100$ ❌, $n=9$: $2^5=32<100$ ✅, $n=15$: $2^3=8<100$ ✅, $n=45$: $2^1=2<100$ ✅이다. 홀수 $n=9,15,45$이다.\n\nSTEP 3. $n$이 짝수인 경우: $x^n=c$는 $c>0$이면 실근 2개, $c<0$이면 실근 0개이므로 네 실근은 $\\pm 2^{25/n}$, $\\pm 2^{10/n}$이다. 모든 실근의 곱은 $2^{70/n}$이다. 이 값이 정수이려면 $n\\mid 70$이다. $70=2\\times 5\\times 7$의 약수 중 2 이상인 짝수는 $2,10,14,70$이다. $2^{70/n}>0>-100$이므로 부등식 조건은 자동으로 만족된다.\n\nSTEP 4. 조건을 만족하는 모든 $n$의 합은 $(9+15+45)+(2+10+14+70)=69+96=165$이다.",
-  "original_solution": "주어진 방정식을 인수분해하면\n\n$$(x^n - 2^{25})(x^n - 2^{10})(x^n + 2^{10}) = 0$$\n\n**( i ) $n$이 홀수일 때:**\n\n$$x^n - 2^{25} = 0 \\Rightarrow x = 2^{\\frac{25}{n}}$$\n$$x^n - 2^{10} = 0 \\Rightarrow x = 2^{\\frac{10}{n}}$$\n$$x^n + 2^{10} = 0 \\Rightarrow x = -2^{\\frac{10}{n}}$$\n\n모든 실근의 곱 $= 2^{\\frac{25}{n}} \\cdot 2^{\\frac{10}{n}} \\cdot \\left(-2^{\\frac{10}{n}}\\right) = -2^{\\frac{45}{n}}$\n\n이 값이 정수이려면 $\\frac{45}{n}$이 음이 아닌 정수, 즉 $n \\mid 45$이어야 한다.\n\n$-100$보다 큰 조건: $-2^{\\frac{45}{n}} > -100$이므로 $2^{\\frac{45}{n}} < 100$\n\n$45$의 홀수 약수 중 $2$ 이상: $3,\\; 5,\\; 9,\\; 15,\\; 45$\n\n- $n = 3$: $2^{15} = 32768 > 100$ ❌\n- $n = 5$: $2^{9} = 512 > 100$ ❌\n- $n = 9$: $2^{5} = 32 < 100$ ✅\n- $n = 15$: $2^{3} = 8 < 100$ ✅\n- $n = 45$: $2^{1} = 2 < 100$ ✅\n\n$\\Rightarrow n = 9,\\; 15,\\; 45$\n\n**( ii ) $n$이 짝수일 때:**\n\n$$x^n - 2^{25} = 0 \\Rightarrow x = \\pm\\, 2^{\\frac{25}{n}}$$\n$$x^n - 2^{10} = 0 \\Rightarrow x = \\pm\\, 2^{\\frac{10}{n}}$$\n$$x^n + 2^{10} = 0 \\Rightarrow \\text{실수 } x \\text{는 없음}$$\n\n모든 실근의 곱 $= \\left(-2^{\\frac{25}{n}}\\right)\\cdot 2^{\\frac{25}{n}} \\cdot \\left(-2^{\\frac{10}{n}}\\right)\\cdot 2^{\\frac{10}{n}} = 2^{\\frac{70}{n}}$\n\n이 값이 정수이려면 $n \\mid 70$이어야 한다. 곱이 양수이므로 $> -100$ 조건은 자동 충족.\n\n$70$의 짝수 약수 중 $2$ 이상: $2,\\; 10,\\; 14,\\; 70$\n\n$\\Rightarrow n = 2,\\; 10,\\; 14,\\; 70$\n\n**따라서 모든 자연수 $n$의 값의 합:**\n\n$$(9 + 15 + 45) + (2 + 10 + 14 + 70) = 69 + 96 = \\boxed{165}$$\n\n---",
-  "analysis": "",
-  "new_neurons": [],
-  "metadata": {
-    "unit": "지수와 로그",
-    "difficulty": "중상",
-    "score": "4",
-    "type": "객관식",
-    "answer": "165"
-  },
-  "edge_count": 21,
-  "side_count": 3,
   "statement": "# 22. (수능/모의고사) - 지수 방정식의 실근의 곱\n\n## Problem\n\n다음 조건을 만족시키는 $2$ 이상의 모든 자연수 $n$의 값의 합은? [4점]\n\n$x$에 대한 방정식\n$$(x^n - 2^{25})(x^{2n} - 2^{20}) = 0$$\n의 서로 다른 모든 실근의 곱은 $-100$보다 큰 정수이다.",
-  "dna": {
-    "nodes": [
+  "thinking_profile": {
+    "_version": 6,
+    "_unit": "note",
+    "_isV6": true,
+    "total_think_tokens": 1693,
+    "total_notes": 18,
+    "hint_distribution": {
+      "0": 17,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 1
+    },
+    "avg_hint_level": 0.22,
+    "genuine_miss_count": 0,
+    "absorbed_miss_count": 1,
+    "bonus_count": 11,
+    "highlight_notes": [
+      "END",
+      "note1",
+      "note3"
+    ],
+    "hardest_note": {
+      "note_id": "END",
+      "neuron": "전략17",
+      "hint_level": 4,
+      "structural_difficulty": 0.25,
+      "miss_type": "absorbed",
+      "note_text": "조건을 만족하는 모든 $n$의 합은 $(9+15+45)+(2+10+14+70)=69+96=165$이다"
+    },
+    "neuron_stats": {
+      "전략29": {
+        "type": "전략",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 0,
+        "avg_hint_level": 0
+      },
+      "연산9": {
+        "type": "연산",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "전략12": {
+        "type": "전략",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "사실4": {
+        "type": "사실",
+        "appearances": 2,
+        "total_hint": 0,
+        "hint_levels": [
+          0,
+          0
+        ],
+        "bonus_count": 2,
+        "avg_hint_level": 0
+      },
+      "연산4": {
+        "type": "연산",
+        "appearances": 2,
+        "total_hint": 0,
+        "hint_levels": [
+          0,
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "연산18": {
+        "type": "연산",
+        "appearances": 2,
+        "total_hint": 0,
+        "hint_levels": [
+          0,
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "전략37": {
+        "type": "전략",
+        "appearances": 2,
+        "total_hint": 0,
+        "hint_levels": [
+          0,
+          0
+        ],
+        "bonus_count": 0,
+        "avg_hint_level": 0
+      },
+      "사실64": {
+        "type": "사실",
+        "appearances": 2,
+        "total_hint": 0,
+        "hint_levels": [
+          0,
+          0
+        ],
+        "bonus_count": 2,
+        "avg_hint_level": 0
+      },
+      "전략33": {
+        "type": "전략",
+        "appearances": 2,
+        "total_hint": 0,
+        "hint_levels": [
+          0,
+          0
+        ],
+        "bonus_count": 2,
+        "avg_hint_level": 0
+      },
+      "연산22": {
+        "type": "연산",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 0,
+        "avg_hint_level": 0
+      },
+      "전략17": {
+        "type": "전략",
+        "appearances": 2,
+        "total_hint": 4,
+        "hint_levels": [
+          0,
+          4
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 2
+      }
+    },
+    "notes": [
       {
-        "id": "top",
-        "dna": "Q3",
-        "label": "합을 구하라",
-        "category": "발문"
+        "note_index": 1,
+        "note_id": "note1",
+        "neuron": "전략29",
+        "neuron_type": "전략",
+        "note_text": "$x^{2n}-2^{20}=(x^n)^2-(2^{10})^2=(x^n-2^{10})(x^n+2^{10})$으로 인수분해된다",
+        "from": [
+          "단서A"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note1",
+            "in_target": "note1",
+            "attempt": 0,
+            "score": 0.7,
+            "reason": "학생이 x^{2n} = 2^{20}을 (x^n)^2 = 2^{20}으로 변환하여 x^n = ±2^{10}을 구하는 과정이 인수분해 결과와 동일"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 245,
+            "discover_elapsed_ms": 15693,
+            "match_elapsed_ms": 7628,
+            "discover_input_tokens": 613,
+            "discover_output_tokens": 1152,
+            "match_input_tokens": 1711,
+            "match_output_tokens": 545,
+            "claude_output": "[시도] 각 인수에서 나오는 실근을 n의 홀짝성에 따라 정리하기\n\n[계산]\n**$x^n = 2^{25}$의 실근:**\n- n이 홀수: $x = 2^{25/n}$ (1개)\n- n이 짝수: $x = \\pm 2^{25/n}$ (2개)\n\n**$x^{2n} = 2^{20}$의 실근** → $(x^n)^2 = 2^{20}$이므로 $x^n = \\pm 2^{10}$\n- $x^n = 2^{10}$: n 홀수 → $x = 2^{10/n}$, n 짝수 → $x = \\pm 2^{10/n}$\n- $x^n = -2^{10}$: n 홀수 → $x = -2^{10/n}$, n 짝수 → 실근 없음\n\n따라서 $x^{2n} = 2^{20}$의 실근:\n- n이 홀수: $x = 2^{10/n},\\ -2^{10/n}$ (2개)\n- n이 짝수: $x = \\pm 2^{10/n}$ (2개, 동일)\n\n[결론] n의 홀짝성에 따라 실근 목록이 달라지며, n이 홀수이면 실근은 $\\{2^{25/n},\\ 2^{10/n},\\ -2^{10",
+            "matches": [
+              {
+                "label": "C",
+                "score": 1,
+                "reason": "학생의 서술은 n의 홀짝성에 따라 실근을 구하는 것을 핵심 전략으로 사용하고 있어 완전히 일치"
+              },
+              {
+                "label": "D",
+                "score": 0.9,
+                "reason": "학생이 'n이 홀수: x = 2^{25/n} (1개)', 'x^n = -2^{10}: n 홀수 → x = -2^{10/n}'으로 홀수일 때 실근이 정확히 1개임을 명시적으로 사용"
+              },
+              {
+                "label": "L",
+                "score": 0.9,
+                "reason": "학생이 'n이 짝수: x = ±2^{25/n} (2개)', 'x^n = -2^{10}: n 짝수 → 실근 없음'으로 짝수일 때의 실근 조건을 정확히 서술"
+              },
+              {
+                "label": "E",
+                "score": 0.85,
+                "reason": "학생의 결론에서 n이 홀수일 때 실근이 {2^{25/n}, 2^{10/n}, -2^{10/n}}임을 명시하여 일치"
+              },
+              {
+                "label": "A",
+                "score": 0.7,
+                "reason": "학생이 x^{2n} = 2^{20}을 (x^n)^2 = 2^{20}으로 변환하여 x^n = ±2^{10}을 구하는 과정이 인수분해 결과와 동일"
+              },
+              {
+                "label": "B",
+                "score": 0.7,
+                "reason": "학생의 계산에서 x^n = 2^{25}, x^n = 2^{10}, x^n = -2^{10}의 세 경우를 모두 다루고 있어 실질적으로 동일한 결론"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 245tok | disc 15693ms + match 7628ms | bonus 5"
+          }
+        ]
       },
       {
-        "id": "ask_sum",
-        "dna": "E1",
-        "label": "모든 n의 합",
-        "category": "수식"
+        "note_index": 2,
+        "note_id": "note2",
+        "neuron": "연산9",
+        "neuron_type": "연산",
+        "note_text": "$(x^n-2^{25})(x^n-2^{10})(x^n+2^{10})=0$에서 $x^n=2^{25}$ 또는 $x^n=2^{10}$ 또는 $x^n=-2^{10}$이다",
+        "from": [
+          "note1"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
       },
       {
-        "id": "vn",
-        "dna": "T1",
-        "label": "변수 n",
-        "category": "말단"
+        "note_index": 3,
+        "note_id": "note3",
+        "neuron": "전략12",
+        "neuron_type": "전략",
+        "note_text": "$n$이 홀수인 경우와 짝수인 경우로 나누어 실근을 구한다",
+        "from": [
+          "note2",
+          "단서C"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
       },
       {
-        "id": "n_natural",
-        "dna": "L3",
-        "label": "n은 자연수",
-        "category": "제한"
+        "note_index": 4,
+        "note_id": "note4",
+        "neuron": "사실4",
+        "neuron_type": "사실",
+        "note_text": "$n$이 홀수일 때 $x^n=c$는 임의의 실수 $c$에 대해 실근을 정확히 1개 가진다",
+        "from": [
+          "note3"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
       },
       {
-        "id": "n_ge2",
-        "dna": "L2",
-        "label": "n≥2 제한",
-        "category": "제한"
+        "note_index": 5,
+        "note_id": "note5",
+        "neuron": "연산4",
+        "neuron_type": "연산",
+        "note_text": "세 실근은 $x=2^{25/n}$, $x=2^{10/n}$, $x=-2^{10/n}$이다",
+        "from": [
+          "note4"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
       },
       {
-        "id": "conds",
-        "dna": "S1",
-        "label": "조건 묶음",
-        "category": "구조"
+        "note_index": 6,
+        "note_id": "note7",
+        "neuron": "연산18",
+        "neuron_type": "연산",
+        "note_text": "모든 실근의 곱은 $2^{25/n}\\cdot 2^{10/n}\\cdot(-2^{10/n})=-2^{45/n}$이다",
+        "from": [
+          "note5"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note7",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note7",
+            "in_target": "note7",
+            "attempt": 0,
+            "score": 1,
+            "reason": "학생의 결론과 후보 A가 완전히 일치: 세 실근의 곱 = -2^{45/n}"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 209,
+            "discover_elapsed_ms": 12539,
+            "match_elapsed_ms": 3069,
+            "discover_input_tokens": 906,
+            "discover_output_tokens": 869,
+            "match_input_tokens": 1157,
+            "match_output_tokens": 67,
+            "claude_output": "[시도] $n$이 홀수일 때 세 실근의 곱을 계산한다\n\n[계산]\n세 실근: $x = 2^{25/n}$, $x = 2^{10/n}$, $x = -2^{10/n}$\n\n이 세 값이 서로 다른지 확인: $2^{25/n} \\neq 2^{10/n}$ (∵ $25/n \\neq 10/n$), 나머지도 모두 다름\n\n세 실근의 곱 $= 2^{25/n} \\cdot 2^{10/n} \\cdot (-2^{10/n}) = -2^{(25+10+10)/n} = -2^{45/n}$\n\n[결론] $n$이 홀수일 때, 서로 다른 모든 실근의 곱은 $-2^{45/n}$이다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 1,
+                "reason": "학생의 결론과 후보 A가 완전히 일치: 세 실근의 곱 = -2^{45/n}"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 209tok | disc 12539ms + match 3069ms | bonus 0"
+          }
+        ]
       },
       {
-        "id": "eq_main",
-        "dna": "C11",
-        "label": "주어진 방정식",
-        "category": "조건"
+        "note_index": 7,
+        "note_id": "note8",
+        "neuron": "전략37",
+        "neuron_type": "전략",
+        "note_text": "$-2^{45/n}$이 정수이려면 $2^{45/n}$이 정수여야 하고, $45/n$이 양의 정수여야 한다",
+        "from": [
+          "note7",
+          "단서B"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note8",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note8",
+            "in_target": "note8",
+            "attempt": 0,
+            "score": 0.9,
+            "reason": "학생도 45/n이 양의 정수여야 한다고 명시적으로 서술함"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 163,
+            "discover_elapsed_ms": 10069,
+            "match_elapsed_ms": 3587,
+            "discover_input_tokens": 960,
+            "discover_output_tokens": 680,
+            "match_input_tokens": 1115,
+            "match_output_tokens": 172,
+            "claude_output": "[시도] 홀수 $n$일 때, 실근의 곱 $-2^{45/n}$이 정수가 되려면 $n$이 $45$의 약수여야 한다.\n\n[계산]\n$-2^{45/n}$이 정수이려면 $45/n$이 양의 정수(또는 0)이어야 한다.\n즉, $n \\mid 45$이어야 한다.\n$45 = 3^2 \\times 5$이므로 양의 약수: $1, 3, 5, 9, 15, 45$\n$n \\geq 2$이고 홀수인 약수: $n = 3, 5, 9, 15, 45$\n\n[결론] 홀수 $n$의 경우, 실근의 곱이 정수가 되는 $n$의 후보는 $3, 5, 9, 15, 45$이다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 0.9,
+                "reason": "학생도 45/n이 양의 정수여야 한다고 명시적으로 서술함"
+              },
+              {
+                "label": "B",
+                "score": 1,
+                "reason": "학생이 'n∣45이어야 한다'고 동일하게 결론냄"
+              },
+              {
+                "label": "C",
+                "score": 1,
+                "reason": "학생이 45=3²×5의 약수 중 2 이상인 홀수가 3,5,9,15,45임을 동일하게 도출함"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 163tok | disc 10069ms + match 3587ms | bonus 2"
+          }
+        ]
       },
       {
-        "id": "eq_c1",
-        "dna": "C1",
-        "label": "방정식=0",
-        "category": "조건"
+        "note_index": 8,
+        "note_id": "note9",
+        "neuron": "사실64",
+        "neuron_type": "사실",
+        "note_text": "$n\\mid 45$이어야 한다",
+        "from": [
+          "note8"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note8",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
       },
       {
-        "id": "prod_factors",
-        "dna": "E6",
-        "label": "두 인수의 곱",
-        "category": "수식"
+        "note_index": 9,
+        "note_id": "note10",
+        "neuron": "전략33",
+        "neuron_type": "전략",
+        "note_text": "$45=3^2\\times 5$의 약수 중 $2$ 이상인 홀수는 $3,5,9,15,45$이다",
+        "from": [
+          "note9",
+          "단서C"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note8",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
       },
       {
-        "id": "factor1",
-        "dna": "E1",
-        "label": "x^n - 2^25",
-        "category": "수식"
+        "note_index": 10,
+        "note_id": "note11",
+        "neuron": "연산22",
+        "neuron_type": "연산",
+        "note_text": "$-2^{45/n}>-100$에서 $2^{45/n}<100$이다",
+        "from": [
+          "note7",
+          "단서B"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note11",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note11",
+            "in_target": "note11",
+            "attempt": 0,
+            "score": 1,
+            "reason": "학생의 조건 '-2^{45/n} > -100'은 수학적으로 '2^{45/n} < 100'과 동일하며, 이것이 노트 A의 핵심 결론이다"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 85,
+            "discover_elapsed_ms": 6872,
+            "match_elapsed_ms": 3868,
+            "discover_input_tokens": 1080,
+            "discover_output_tokens": 464,
+            "match_input_tokens": 995,
+            "match_output_tokens": 188,
+            "claude_output": "[시도] 홀수 n의 후보 {3, 5, 9, 15, 45}에서 실근의 곱 $-2^{45/n} > -100$ 조건을 각각 확인\n\n[계산]\n- $n=3$: $-2^{15} = -32768$ → $-100$보다 작음 ❌\n- $n=5$: $-2^{9} = -512$ → $-100$보다 작음 ❌\n- $n=9$: $-2^{5} = -32$ → $-32 > -100$ ✓\n- $n=15$: $-2^{3} = -8$ → $-8 > -100$ ✓\n- $n=45$: $-2^{1} = -2$ → $-2 > -100$ ✓\n\n[결론] 홀수 $n$ 중 조건을 만족하는 값은 $n = 9, 15, 45$이다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 1,
+                "reason": "학생의 조건 '-2^{45/n} > -100'은 수학적으로 '2^{45/n} < 100'과 동일하며, 이것이 노트 A의 핵심 결론이다"
+              },
+              {
+                "label": "B",
+                "score": 1,
+                "reason": "학생의 각 n값에 대한 계산 결과(n=3,5 불만족, n=9,15,45 만족)와 최종 결론(홀수 n=9,15,45)이 노트 B와 완전히 일치한다"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 85tok | disc 6872ms + match 3868ms | bonus 1"
+          }
+        ]
       },
       {
-        "id": "factor2",
-        "dna": "E1",
-        "label": "x^2n - 2^20",
-        "category": "수식"
+        "note_index": 11,
+        "note_id": "note12",
+        "neuron": "전략17",
+        "neuron_type": "전략",
+        "note_text": "$n=3$: $2^{15}=32768>100$ ❌, $n=5$: $2^9=512>100$ ❌, $n=9$: $2^5=32<100$ ✅, $n=15$: $2^3=8<100$ ✅, $n=45$: $2^1=2<100$ ✅이다. 홀수 $n=9,15,45$이다",
+        "from": [
+          "note10",
+          "note11"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note11",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
       },
       {
-        "id": "xn",
-        "dna": "E7",
-        "label": "x^n",
-        "category": "수식"
+        "note_index": 12,
+        "note_id": "note13",
+        "neuron": "사실4",
+        "neuron_type": "사실",
+        "note_text": "$n$이 짝수일 때 $x^n=c$는 $c>0$이면 실근 2개, $c<0$이면 실근 0개이다",
+        "from": [
+          "note3"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
       },
       {
-        "id": "x2n",
-        "dna": "E7",
-        "label": "x^2n",
-        "category": "수식"
+        "note_index": 13,
+        "note_id": "note14",
+        "neuron": "연산4",
+        "neuron_type": "연산",
+        "note_text": "$x^n=2^{25}$에서 $x=\\pm 2^{25/n}$, $x^n=2^{10}$에서 $x=\\pm 2^{10/n}$이고, $x^n=-2^{10}$은 실근이 없다",
+        "from": [
+          "note13"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note14",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note14",
+            "in_target": "note14",
+            "attempt": 0,
+            "score": 1,
+            "reason": "학생이 x^n=2^25에서 ±2^(25/n), x^n=2^10에서 ±2^(10/n), x^n=-2^10은 실근 없음을 명시적으로 서술함"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 106,
+            "discover_elapsed_ms": 12258,
+            "match_elapsed_ms": 3538,
+            "discover_input_tokens": 1282,
+            "discover_output_tokens": 713,
+            "match_input_tokens": 861,
+            "match_output_tokens": 161,
+            "claude_output": "[시도] 내가 해볼 것: $n$이 짝수일 때 서로 다른 실근 전부를 구하고 그 곱을 계산하기\n\n[계산]\n$n$이 짝수이면 $x^n = -2^{10}$은 실근 없음, $x^n = 2^{25}$과 $x^n = 2^{10}$은 각각 실근 2개:\n\n$$x = \\pm 2^{25/n}, \\quad x = \\pm 2^{10/n}$$\n\n이 네 근의 곱:\n\n$$2^{25/n} \\cdot (-2^{25/n}) \\cdot 2^{10/n} \\cdot (-2^{10/n}) = (-2^{50/n}) \\cdot (-2^{20/n}) = 2^{70/n}$$\n\n[결론] $n$이 짝수일 때, 서로 다른 모든 실근의 곱은 $2^{70/n}$이다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 1,
+                "reason": "학생이 x^n=2^25에서 ±2^(25/n), x^n=2^10에서 ±2^(10/n), x^n=-2^10은 실근 없음을 명시적으로 서술함"
+              },
+              {
+                "label": "B",
+                "score": 1,
+                "reason": "학생이 네 근의 곱을 계산하여 2^(70/n)임을 도출했으며, 곱셈 과정도 동일함"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 106tok | disc 12258ms + match 3538ms | bonus 1"
+          }
+        ]
       },
       {
-        "id": "two_pow_25",
-        "dna": "E7",
-        "label": "2^25",
-        "category": "수식"
+        "note_index": 14,
+        "note_id": "note16",
+        "neuron": "연산18",
+        "neuron_type": "연산",
+        "note_text": "모든 실근의 곱은 $(-2^{25/n})\\cdot 2^{25/n}\\cdot(-2^{10/n})\\cdot 2^{10/n}=2^{70/n}$이다",
+        "from": [
+          "note14"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note14",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
       },
       {
-        "id": "two_pow_20",
-        "dna": "E7",
-        "label": "2^20",
-        "category": "수식"
+        "note_index": 15,
+        "note_id": "note17",
+        "neuron": "전략37",
+        "neuron_type": "전략",
+        "note_text": "$2^{70/n}$이 정수이려면 $70/n$이 양의 정수여야 한다",
+        "from": [
+          "note16",
+          "단서B"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note17",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note17",
+            "in_target": "note17",
+            "attempt": 0,
+            "score": 1,
+            "reason": "학생이 '2^{70/n}이 정수이려면 70/n이 양의 정수여야 하므로'라고 명시적으로 서술함"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 180,
+            "discover_elapsed_ms": 9567,
+            "match_elapsed_ms": 3940,
+            "discover_input_tokens": 1431,
+            "discover_output_tokens": 625,
+            "match_input_tokens": 690,
+            "match_output_tokens": 201,
+            "claude_output": "[시도] 짝수 $n$일 때, 실근의 곱 $2^{70/n}$이 정수가 되는 조건 구하기\n\n[계산]\n$2^{70/n}$이 정수이려면 $\\frac{70}{n}$이 양의 정수여야 하므로 $n \\mid 70$이어야 한다.\n\n$70 = 2 \\times 5 \\times 7$의 약수 중 **2 이상인 짝수**:\n\n$$n = 2, 10, 14, 70$$\n\n또한 $2^{70/n} > 0 > -100$이므로 조건 \"$-100$보다 큰 정수\"는 이 경우 **자동으로 만족**된다.\n\n[결론] 짝수 $n$의 경우 유효한 값은 $n = 2, 10, 14, 70$이다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 1,
+                "reason": "학생이 '2^{70/n}이 정수이려면 70/n이 양의 정수여야 하므로'라고 명시적으로 서술함"
+              },
+              {
+                "label": "B",
+                "score": 1,
+                "reason": "학생이 'n|70이어야 한다'고 명시적으로 서술함"
+              },
+              {
+                "label": "C",
+                "score": 1,
+                "reason": "학생이 '70=2×5×7의 약수 중 2 이상인 짝수: n=2,10,14,70'이라고 완전히 일치하는 결론을 서술함"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 180tok | disc 9567ms + match 3940ms | bonus 2"
+          }
+        ]
       },
       {
-        "id": "neg_two25",
-        "dna": "E2",
-        "label": "-2^25",
-        "category": "수식"
+        "note_index": 16,
+        "note_id": "note18",
+        "neuron": "사실64",
+        "neuron_type": "사실",
+        "note_text": "$n\\mid 70$이어야 한다",
+        "from": [
+          "note17"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note17",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
       },
       {
-        "id": "neg_two20",
-        "dna": "E2",
-        "label": "-2^20",
-        "category": "수식"
+        "note_index": 17,
+        "note_id": "note19",
+        "neuron": "전략33",
+        "neuron_type": "전략",
+        "note_text": "$70=2\\times 5\\times 7$의 약수 중 $2$ 이상인 짝수는 $2,10,14,70$이다",
+        "from": [
+          "note18",
+          "단서C"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note17",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
       },
       {
-        "id": "vx",
-        "dna": "T3",
-        "label": "독립변수 x",
-        "category": "말단"
-      },
-      {
-        "id": "c2",
-        "dna": "T2",
-        "label": "상수 2",
-        "category": "말단"
-      },
-      {
-        "id": "c25",
-        "dna": "T2",
-        "label": "상수 25",
-        "category": "말단"
-      },
-      {
-        "id": "c20",
-        "dna": "T2",
-        "label": "상수 20",
-        "category": "말단"
-      },
-      {
-        "id": "c0",
-        "dna": "T2",
-        "label": "상수 0",
-        "category": "말단"
-      },
-      {
-        "id": "root_prod_cond",
-        "dna": "S1",
-        "label": "실근의 곱 조건",
-        "category": "구조"
-      },
-      {
-        "id": "root_prod",
-        "dna": "E6",
-        "label": "실근의 곱",
-        "category": "수식"
-      },
-      {
-        "id": "diff_roots",
-        "dna": "C4",
-        "label": "서로 다른 실근",
-        "category": "조건"
-      },
-      {
-        "id": "gt_neg100",
-        "dna": "C2",
-        "label": ">-100 조건",
-        "category": "조건"
-      },
-      {
-        "id": "neg100",
-        "dna": "T2",
-        "label": "상수 -100",
-        "category": "말단"
-      },
-      {
-        "id": "is_integer",
-        "dna": "L3",
-        "label": "정수 조건",
-        "category": "제한"
+        "note_index": 18,
+        "note_id": "END",
+        "neuron": "전략17",
+        "neuron_type": "전략",
+        "note_text": "조건을 만족하는 모든 $n$의 합은 $(9+15+45)+(2+10+14+70)=69+96=165$이다",
+        "from": [
+          "note12",
+          "note19"
+        ],
+        "hint_level": 4,
+        "is_bonus": false,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "END",
+        "miss_type": "absorbed",
+        "absorbed_in": "END/시도1",
+        "absorb_reason": "홀수 합 9+15+45=69, 짝수 합 2+10+14+70=96, 전체 165라는 핵심 결론이 note11과 END/시도1의 조합으로 도출되며, END/시도1에서 짝수 후보 2,10,14,70 확정 + note11에서 홀수 후보 9,15,45 확정으로 165가 암묵적으로 포함됨",
+        "partial_history": [
+          {
+            "note_id": "END",
+            "in_target": "END",
+            "attempt": 0,
+            "score": 0.5,
+            "reason": "학생은 짝수 n = 2, 10, 14, 70을 구했고, 이들의 합 96은 A의 결론에서 짝수 부분 합과 일치한다. 그러나 홀수 부분(9+15+45=69)은 언급되지 않아 최종 합 165에는 도달하지 못했으므로 부분 점수 적용."
+          },
+          {
+            "note_id": "END",
+            "in_target": "END",
+            "attempt": 1,
+            "score": 0.5,
+            "reason": "학생은 짝수인 경우 n=2,10,14,70이 조건을 만족한다고 올바르게 결론지었고, 이들의 합 96은 후보 A의 최종 합 165의 일부(96)와 일치한다. 그러나 홀수 경우(n=9,15,45)는 다루지 않아 전체 결론의 절반만 포함됨."
+          },
+          {
+            "note_id": "END",
+            "in_target": "END",
+            "attempt": 2,
+            "score": 0.5,
+            "reason": "학생은 짝수 n={2,10,14,70}이 조건을 만족한다고 결론내려 합계 96을 부분적으로 확인했으나, 홀수 n의 경우(9+15+45=69)는 다루지 않아 전체 합 165에는 도달하지 못함"
+          },
+          {
+            "note_id": "END",
+            "in_target": "END",
+            "attempt": 3,
+            "score": 0.5,
+            "reason": "학생은 짝수 후보 2, 10, 14, 70이 모두 조건을 만족한다고 결론지었으며, 이는 후보 A의 합산에서 짝수 부분 합(2+10+14+70=96)과 일치한다. 그러나 홀수 후보(9+15+45=69) 부분은 다루지 않아 최종 합 165는 포함되지 않음. 부분적으로만 일치."
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 179,
+            "discover_elapsed_ms": 9348,
+            "match_elapsed_ms": 7899,
+            "discover_input_tokens": 1531,
+            "discover_output_tokens": 535,
+            "match_input_tokens": 518,
+            "match_output_tokens": 146,
+            "claude_output": "[시도] 짝수 $n$에서 조건 $2^{70/n}$이 $-100$보다 큰지 확인하기\n\n[계산]\n$2^{70/n}$은 항상 양수이므로, $-100$보다 큰 조건은 자동으로 만족된다.\n\n따라서 $n \\mid 70$이고 $2$ 이상인 짝수인 $n = 2, 10, 14, 70$ 모두 조건을 만족한다.\n\n[결론] 짝수인 경우 $n = 2, 10, 14, 70$ 모두 조건을 만족한다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 0.5,
+                "reason": "학생은 짝수 n = 2, 10, 14, 70을 구했고, 이들의 합 96은 A의 결론에서 짝수 부분 합과 일치한다. 그러나 홀수 부분(9+15+45=69)은 언급되지 않아 최종 합 165에는 도달하지 못했으므로 부분 점수 적용."
+              }
+            ],
+            "eval_summary": "MISS attempt0 dry0 | 179tok | disc 9348ms + match 7899ms | bonus 0"
+          },
+          {
+            "attempt": 1,
+            "think_tokens": 153,
+            "discover_elapsed_ms": 10858,
+            "match_elapsed_ms": 3504,
+            "discover_input_tokens": 1724,
+            "discover_output_tokens": 647,
+            "match_input_tokens": 571,
+            "match_output_tokens": 152,
+            "claude_output": "[시도] 짝수 $n$에서 $2^{70/n}$이 정수이고 $-100$보다 큰지 조건 확인\n\n[계산]\n$2^{70/n}$은 항상 양수이므로 자동으로 $-100$보다 크다.\n따라서 $2^{70/n}$이 정수이기만 하면 조건을 만족한다.\n- $n=2$: $2^{35}$ (매우 큰 양의 정수) ✅\n- $n=10$: $2^7=128$ ✅\n- $n=14$: $2^5=32$ ✅\n- $n=70$: $2^1=2$ ✅\n\n[결론] 짝수인 경우 $n=2,10,14,70$ 모두 조건을 만족한다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 0.5,
+                "reason": "학생은 짝수인 경우 n=2,10,14,70이 조건을 만족한다고 올바르게 결론지었고, 이들의 합 96은 후보 A의 최종 합 165의 일부(96)와 일치한다. 그러나 홀수 경우(n=9,15,45)는 다루지 않아 전체 결론의 절반만 포함됨."
+              }
+            ],
+            "eval_summary": "MISS attempt1 dry1 | 153tok | disc 10858ms + match 3504ms | bonus 0"
+          },
+          {
+            "attempt": 2,
+            "think_tokens": 142,
+            "discover_elapsed_ms": 9820,
+            "match_elapsed_ms": 3585,
+            "discover_input_tokens": 1590,
+            "discover_output_tokens": 516,
+            "match_input_tokens": 619,
+            "match_output_tokens": 124,
+            "claude_output": "[시도] 짝수 $n$일 때 실근의 곱 $2^{70/n}$이 $-100$보다 큰지 확인하기\n\n[계산]\n$2^{70/n}$은 $n$이 어떤 짝수이든 항상 **양수**이다.\n양수는 항상 $-100$보다 크므로, 조건 \"$-100$보다 큰 정수\"에서 $>-100$ 부분은 자동으로 만족된다.\n따라서 짝수인 경우, $n \\mid 70$이기만 하면 모두 조건을 만족한다.\n유효한 짝수 $n$: $2, 10, 14, 70$ (모두 ✅)\n\n[결론] 짝수 $n$의 경우 $2^{70/n}>0>-100$이 항상 성립하므로, $n=2,10,14,70$ 네 가지 모두 조건을 만족한다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 0.5,
+                "reason": "학생은 짝수 n={2,10,14,70}이 조건을 만족한다고 결론내려 합계 96을 부분적으로 확인했으나, 홀수 n의 경우(9+15+45=69)는 다루지 않아 전체 합 165에는 도달하지 못함"
+              }
+            ],
+            "eval_summary": "MISS attempt2 dry2 | 142tok | disc 9820ms + match 3585ms | bonus 0"
+          },
+          {
+            "attempt": 3,
+            "think_tokens": 231,
+            "discover_elapsed_ms": 12023,
+            "match_elapsed_ms": 4051,
+            "discover_input_tokens": 1581,
+            "discover_output_tokens": 725,
+            "match_input_tokens": 612,
+            "match_output_tokens": 170,
+            "claude_output": "[시도] 짝수 $n$ 후보 $2, 10, 14, 70$에 대해 $-100$보다 크다는 조건 확인\n\n[계산]\n짝수일 때 실근의 곱은 $2^{70/n}$이며, 이는 항상 **양수**이다.\n\n양수는 자동으로 $-100$보다 크므로, $n \\mid 70$을 만족하는 짝수 후보 $n=2, 10, 14, 70$ 모두 조건을 통과한다.\n\n각각 확인: $n=2$: $2^{35}$ ✅, $n=10$: $2^7=128$ ✅, $n=14$: $2^5=32$ ✅, $n=70$: $2^1=2$ ✅\n\n[결론] 짝수 $n$의 후보는 $n=2, 10, 14, 70$ **모두** 조건을 만족한다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 0.5,
+                "reason": "학생은 짝수 후보 2, 10, 14, 70이 모두 조건을 만족한다고 결론지었으며, 이는 후보 A의 합산에서 짝수 부분 합(2+10+14+70=96)과 일치한다. 그러나 홀수 후보(9+15+45=69) 부분은 다루지 않아 최종 합 165는 포함되지 않음. 부분적으로만 일치."
+              }
+            ],
+            "eval_summary": "MISS attempt3 dry3 | 231tok | disc 12023ms + match 4051ms | bonus 0"
+          }
+        ]
       }
     ],
-    "edges": [
-      {
-        "from": "ask_sum",
-        "to": "top"
-      },
-      {
-        "from": "vn",
-        "to": "ask_sum"
-      },
-      {
-        "from": "conds",
-        "to": "top"
-      },
-      {
-        "from": "n_natural",
-        "to": "vn"
-      },
-      {
-        "from": "n_ge2",
-        "to": "vn"
-      },
-      {
-        "from": "eq_main",
-        "to": "conds"
-      },
-      {
-        "from": "eq_c1",
-        "to": "eq_main"
-      },
-      {
-        "from": "prod_factors",
-        "to": "eq_c1"
-      },
-      {
-        "from": "c0",
-        "to": "eq_c1"
-      },
-      {
-        "from": "factor1",
-        "to": "prod_factors"
-      },
-      {
-        "from": "factor2",
-        "to": "prod_factors"
-      },
-      {
-        "from": "xn",
-        "to": "factor1"
-      },
-      {
-        "from": "neg_two25",
-        "to": "factor1"
-      },
-      {
-        "from": "two_pow_25",
-        "to": "neg_two25"
-      },
-      {
-        "from": "c2",
-        "to": "two_pow_25"
-      },
-      {
-        "from": "c25",
-        "to": "two_pow_25"
-      },
-      {
-        "from": "x2n",
-        "to": "factor2"
-      },
-      {
-        "from": "neg_two20",
-        "to": "factor2"
-      },
-      {
-        "from": "two_pow_20",
-        "to": "neg_two20"
-      },
-      {
-        "from": "c2",
-        "to": "two_pow_20"
-      },
-      {
-        "from": "c20",
-        "to": "two_pow_20"
-      },
-      {
-        "from": "vx",
-        "to": "xn"
-      },
-      {
-        "from": "vn",
-        "to": "xn"
-      },
-      {
-        "from": "vx",
-        "to": "x2n"
-      },
-      {
-        "from": "xn",
-        "to": "x2n"
-      },
-      {
-        "from": "c2",
-        "to": "x2n"
-      },
-      {
-        "from": "root_prod_cond",
-        "to": "conds"
-      },
-      {
-        "from": "diff_roots",
-        "to": "root_prod_cond"
-      },
-      {
-        "from": "root_prod",
-        "to": "root_prod_cond"
-      },
-      {
-        "from": "gt_neg100",
-        "to": "root_prod_cond"
-      },
-      {
-        "from": "is_integer",
-        "to": "root_prod_cond"
-      },
-      {
-        "from": "eq_main",
-        "to": "diff_roots"
-      },
-      {
-        "from": "root_prod",
-        "to": "gt_neg100"
-      },
-      {
-        "from": "neg100",
-        "to": "gt_neg100"
-      }
-    ],
-    "new_dna": []
-  },
-  "thinking_profile": null,
-  "folders": [],
-  "history": [],
-  "recovery_warnings": [],
-  "errata": [],
-  "created_at": "2026-03-23T16:38:44.800Z"
+    "_debug": "v7-split"
+  }
 }
