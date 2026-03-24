@@ -458,9 +458,10 @@ function rAn(p){
     h+='<div style="border-top:1px solid var(--bd);padding-top:8px">';
     notes.forEach(function(n,idx){
       var hc=hintColor(n.hint_level);
-      var sd=n.structural_difficulty||0;
-      var barPct=Math.min(sd/0.25*100,100);
-      var barColor=sd>=0.2?'#ef5350':sd>=0.1?'#ffa726':'#66bb6a';
+      var att=(n.attempts||[]).length;
+      var compScore=((n.hint_level||0)/4)*0.6+(Math.min(att,8)/8)*0.4;
+      var barPct=Math.round(compScore*100);
+      var barColor=compScore>=0.6?'#ef5350':compScore>=0.3?'#ffa726':'#66bb6a';
       var isHL=tp.highlight_notes&&tp.highlight_notes.indexOf(n.note_id)>=0;
       var noteUid='tpn_'+idx;
       h+='<div style="margin-bottom:6px">';
@@ -476,7 +477,7 @@ function rAn(p){
       h+='</span>';
       h+='<span style="font-size:9px;color:#7a7f9a">▼</span>';
       h+='</div>';
-      // structural difficulty bar
+      // composite difficulty bar (hint_level×0.6 + attempts×0.4)
       h+='<div style="background:#252940;border-radius:2px;height:4px;margin-bottom:2px"><div style="background:'+barColor+';height:4px;border-radius:2px;width:'+barPct+'%;opacity:.85"></div></div>';
       // note text (한 줄)
       h+='<div style="font-size:10px;color:#7a7f9a;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+rm(n.note_text||'')+'</div>';
