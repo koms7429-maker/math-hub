@@ -455,11 +455,20 @@ function rAn(p){
       h+='</div>';
     }
     // note별 바 (클릭으로 펼침)
+    var _nmap={};notes.forEach(function(nn){_nmap[nn.note_id]=nn});
     h+='<div style="border-top:1px solid var(--bd);padding-top:8px">';
     notes.forEach(function(n,idx){
       var hc=hintColor(n.hint_level);
-      var att=(n.attempts||[]).length;
-      var compScore=((n.hint_level||0)/4)*0.6+(Math.min(att,8)/8)*0.4;
+      var compScore;
+      if(n.is_bonus){
+        var ph=n.partial_history||[];
+        var bestScore=ph.length?Math.max.apply(null,ph.map(function(h){return h.score||0})):1.0;
+        var parentHL=0;var pn=_nmap[n.discovered_in_target];if(pn)parentHL=pn.hint_level||0;
+        compScore=(1-bestScore)*0.5+(parentHL/4)*0.5;
+      } else {
+        var att=(n.attempts||[]).length;
+        compScore=((n.hint_level||0)/4)*0.6+(Math.min(att,8)/8)*0.4;
+      }
       var barPct=Math.round(compScore*100);
       var barColor=compScore>=0.6?'#ef5350':compScore>=0.3?'#ffa726':'#66bb6a';
       var isHL=tp.highlight_notes&&tp.highlight_notes.indexOf(n.note_id)>=0;
@@ -484,7 +493,21 @@ function rAn(p){
       h+='<div style="font-size:10px;color:#7a7f9a;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+rm(n.note_text||'')+'</div>';
       // 펼침 영역 (시도 상세)
       h+='<div id="'+noteUid+'" style="display:none;margin-top:6px;padding:8px;background:var(--pn);border-radius:5px;border:1px solid var(--bd)">';
-      if(n.is_bonus){h+='<div style="font-size:10px;color:#4fc3f7;margin-bottom:4px;padding:4px 8px;background:#4fc3f710;border-radius:4px">다른 노트('+(n.discovered_in_target||'?')+') 프로파일링 중 부산물로 발견됨</div>';}
+      if(n.is_bonus){
+        h+='<div style="font-size:10px;color:#4fc3f7;margin-bottom:6px;padding:5px 8px;background:#4fc3f710;border-radius:4px">';
+        h+='다른 노트('+(n.discovered_in_target||'?')+') 프로파일링 중 부산물로 발견됨';
+        if(n.partial_history&&n.partial_history.length){
+          n.partial_history.forEach(function(ph){
+            h+='<div style="margin-top:4px;padding-left:8px;border-left:2px solid #4fc3f744">';
+            h+='<span style="color:#66bb6a;font-weight:600">match '+Math.round((ph.score||0)*100)+'%</span>';
+            h+=' in <span style="color:#7a7f9a">'+(ph.in_target||'?')+'</span>';
+            h+=' 시도'+(ph.attempt||0);
+            if(ph.reason)h+='<div style="font-size:9px;color:#7a7f9a;margin-top:2px;font-style:italic">'+ph.reason+'</div>';
+            h+='</div>';
+          });
+        }
+        h+='</div>';
+      }
       h+='<div style="font-size:10px;color:#7a7f9a;margin-bottom:4px">from: '+(n.from||[]).join(', ')+'</div>';
       if(n.attempts&&n.attempts.length){
         n.attempts.forEach(function(a){
