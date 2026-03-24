@@ -1,603 +1,5 @@
 [
   {
-    "problem_id": "P2",
-    "answer": "36",
-    "content": "id: P2\nsource: 수능\nyear: 미상\nunit: 미적분\ntopic: 미분가능성과 도함수\nsubtopic: 사차함수와 미분가능성 조건\ndifficulty: 상\nscore: 4\nanswer: 36\ntype: short_answer\n\n# 2. (수능) - 사차함수의 미분가능성과 도함수 조건\n\n## Problem\n양수 $a$와 최고차항의 계수가 $1$인 사차함수 $f(x)$에 대하여 함수\n\n$$g(x) = \\begin{cases} -f(x) & (x < 0) \\\\ f(x) - ax^4 + 3x^3 - x^2 & (x \\geq 0) \\end{cases}$$\n\n이 실수 전체의 집합에서 미분가능하고 다음 조건을 만족시킨다.\n\n> 부등식 $g'(x) \\leq 0$의 해는 $1-a \\leq x \\leq 1+a$이다.\n\n$g'(4)$의 값이 정수일 때, 모든 $g'(4)$의 값의 합을 구하시오. [4점]\n\n## Solution\n문제에 주어진 조건에서\n\n$$g'(x) = \\begin{cases} -f'(x) & (x < 0) \\\\ f'(x) - 4ax^3 + 9x^2 - 2x & (x > 0) \\end{cases}$$\n\n이고 $g(x)$가 실수 전체의 집합에서 미분가능하므로\n\n($x=0$에서의 좌미분계수) $=$ ($x=0$에서의 우미분계수)\n\n$$\\Rightarrow f'(0) = 0 \\quad \\cdots \\ ㉠$$\n\n임을 알 수 있다. 이때 문제의 박스 조건에 의해\n\n$$g'(x) \\leq 0 \\Leftrightarrow 1-a \\leq x \\leq 1+a \\quad \\cdots \\ (\\bigstar)$$\n\n이므로 ㉠을 고려하면\n\n$$g'(0) = 0 \\Rightarrow 1-a \\leq 0 \\leq 1+a$$\n$$\\Rightarrow a \\geq 1 \\quad \\cdots \\ ㉡$$\n\n이다.\n\n한편, $(\\bigstar)$에 의해\n\n$$\\lim_{x \\to \\infty} g'(x) > 0 \\Rightarrow \\lim_{x \\to \\infty} \\{f'(x) - 4ax^3 + 9x^2 - 2x\\} > 0$$\n\n이어야 하므로 $f'(x)$가 최고차항의 계수가 $4$인 삼차함수임을 고려하면\n\n$$4 - 4a \\geq 0 \\Rightarrow a \\leq 1$$\n\n이고, ㉡에 의해 $a = 1$임을 알 수 있다. 따라서\n\n$$g'(x) = \\begin{cases} -f'(x) & (x < 0) \\\\ f'(x) - 4x^3 + 9x^2 - 2x & (x \\geq 0) \\end{cases}$$\n\n$$= \\begin{cases} -f'(x) & (x < 0) \\\\ f'(x) - x(x-2)(4x-1) & (x \\geq 0) \\end{cases}$$\n\n이고 $(\\bigstar)$을 다시 쓰면\n\n$$g'(x) \\leq 0 \\Leftrightarrow 0 \\leq x \\leq 2 \\quad \\cdots \\ ㉢$$\n\n이므로\n\n$$x > 2 \\text{일 때 } g'(x) > 0, \\quad 0 \\leq x \\leq 2 \\text{일 때 } g'(x) \\leq 0 \\Bigg\\} \\Rightarrow g'(2) = 0$$\n\n$$\\Rightarrow f'(2) = 0 \\quad \\cdots \\ ㉣$$\n\n임을 알 수 있다.\n\n따라서 ㉠, ㉣에 의해\n\n$$f'(x) = 4x(x-2)(x-p)$$\n\n로 놓을 수 있고 이때,\n\n$$g'(x) = \\begin{cases} -4x(x-2)(x-p) & (x < 0) \\\\ (1-4p)x(x-2) & (x \\geq 0) \\end{cases}$$\n\n이므로 ㉢을 만족시키려면\n\n$$\\begin{cases} p \\geq 0 \\quad (\\because \\ x < 0 \\text{에서 } g'(x) > 0) \\\\ (1-4p)x(x-2) \\leq 0 \\text{인 } x \\text{의 값의 범위가 } 0 \\leq x \\leq 2 \\end{cases}$$\n\n$$\\Rightarrow 0 \\leq p < \\dfrac{1}{4}$$\n\n이어야 한다. 따라서\n\n$$g'(4) = 8(1-4p) \\Rightarrow 0 < g'(4) \\leq 8$$\n\n이고 문제에 주어진 조건에서 $g'(4)$의 값이 정수이므로\n\n$$(\\text{모든 } g'(4) \\text{의 값의 합}) = 1 + 2 + \\cdots + 7 + 8 = \\boxed{36}$$\n\n이다.",
-    "content_source": "FileLoop",
-    "content_length": 2127,
-    "skel_status": "neuron_missing",
-    "dna_status": "ok",
-    "previous_skeleton": [],
-    "previous_solution": "",
-    "previous_clues": "[{\"id\":\"단서A\",\"text\":\"$a$는 양수이고 $f(x)$는 최고차항의 계수가 $1$인 사차함수이다\"},{\"id\":\"단서B\",\"text\":\"$g(x) = \\\\begin{cases} -f(x) & (x < 0) \\\\\\\\ f(x) - ax^4 + 3x^3 - x^2 & (x \\\\geq 0) \\\\end{cases}$\"},{\"id\":\"단서C\",\"text\":\"$g(x)$는 실수 전체의 집합에서 미분가능하다\"},{\"id\":\"단서D\",\"text\":\"부등식 $g'(x) \\\\leq 0$의 해는 $1-a \\\\leq x \\\\leq 1+a$이다\"},{\"id\":\"단서E\",\"text\":\"$g'(4)$의 값이 정수이다\"}]",
-    "previous_analysis": "이 문제는 조각함수의 미분가능성, 다항함수의 극한 거동, 다항식 인수분해(근으로부터), 부등식 해집합 경계 조건 등 미적분·대수의 핵심 개념을 요구한다. 기존 뉴런 목록은 지수/로그/기하 중심으로 구성되어 있어, 미적분(미분가능성 조건)과 다항함수(극한 거동, 근→인수분해) 관련 뉴런이 전면적으로 부족하다. 6개의 신규 뉴런이 필요하다.",
-    "previous_matching": "1. STEP 1 연속 조건: 조각함수 경계점 연속 → 매칭 없음 (사실94 신규 필요)\n2. STEP 1 미분가능 조건: 좌미분계수=우미분계수 → 매칭 없음 (사실95 신규 필요)\n3. STEP 2 g'(0)=0이 구간 [1-a,1+a]에 속함 → 전략25 (대입 확인)\n4. STEP 3 x→∞에서 다항함수 부호 판정 → 매칭 없음 (사실96 신규 필요)\n5. STEP 3 a≥1과 a≤1 결합하여 a=1 → 전략2 (연립)\n6. STEP 4 a=1 대입 후 다항식 정리 → 연산28 (전개), 전략29 (인수분해)\n7. STEP 5 해집합 경계에서 등호 → 매칭 없음 (전략38 신규 필요)\n8. STEP 6 f'(0)=0, f'(2)=0으로부터 인수분해 → 매칭 없음 (사실97 신규 필요)\n9. STEP 6 g'(x) 정리 (공통인수 추출) → 전략29 (인수분해)\n10. STEP 7 x<0에서 -4x(x-2)(x-p)의 부호 분석 → 사실65 (곱의 부호)\n11. STEP 7 x≥0에서 (1-4p)x(x-2)의 부호 분석 → 사실35 (이차식 부호)\n12. STEP 8 g'(4) 계산 → 전략25 (대입)\n13. STEP 8 정수값 전수조사 → 전략17 (전수조사)\n14. STEP 8 합 계산 1+…+8 → 매칭 없음 (연산32 신규 필요)",
-    "previous_matched": [
-      "전략2",
-      "전략29",
-      "전략25",
-      "전략17",
-      "사실35",
-      "사실65",
-      "연산28"
-    ],
-    "previous_new_neurons": [
-      {
-        "id": "사실94",
-        "type": "fact",
-        "statement": "조각함수가 경계점 $x=c$에서 연속이려면 $\\lim_{x \\to c^-} f(x) = \\lim_{x \\to c^+} f(x) = f(c)$이어야 한다",
-        "reason": "STEP 1에서 g(x)의 x=0에서의 연속 조건 -f(0)=f(0)을 유도하는 데 필요하다. 조각함수의 경계점 연속 조건은 기존 뉴런 중 어디에도 없다.",
-        "blocked_edge": "단서A → note1 (f(0)=0 도출)"
-      },
-      {
-        "id": "사실95",
-        "type": "fact",
-        "statement": "조각함수가 경계점 $x=c$에서 미분가능하려면 $x=c$에서 연속이고 좌미분계수와 우미분계수가 같아야 한다",
-        "reason": "STEP 1에서 g'(0⁻)=-f'(0)과 g'(0⁺)=f'(0)이 같아야 하므로 f'(0)=0을 유도하는 데 필요하다. 조각함수 미분가능 조건은 기존 뉴런에 없다.",
-        "blocked_edge": "note1 → note2 (f'(0)=0 도출)"
-      },
-      {
-        "id": "사실96",
-        "type": "fact",
-        "statement": "다항함수 $p(x) = a_n x^n + \\cdots$에서 $x \\to +\\infty$일 때 부호는 최고차항 계수 $a_n$의 부호와 같고, $x \\to -\\infty$일 때 부호는 $(-1)^n a_n$의 부호와 같다",
-        "reason": "STEP 3에서 g'(x)의 최고차항 계수 4-4a가 음수이면 x→+∞에서 g'(x)→-∞가 되어 모순임을 보이는 데 필요하다. 다항함수의 극한 부호 판정은 기존 뉴런에 없다(사실21, 사실46 등은 지수함수 전용).",
-        "blocked_edge": "note4 → note5 (4-4a≥0, 즉 a≤1 도출)"
-      },
-      {
-        "id": "사실97",
-        "type": "fact",
-        "statement": "최고차항의 계수가 $a_n$인 $n$차 다항식 $f(x)$가 $f(\\alpha_1)=f(\\alpha_2)=\\cdots=f(\\alpha_k)=0$을 만족하면 $f(x)=a_n(x-\\alpha_1)(x-\\alpha_2)\\cdots(x-\\alpha_k)q(x)$로 인수분해된다 ($q$는 다항식)",
-        "reason": "STEP 6에서 f'(0)=0, f'(2)=0으로부터 f'(x)=4x(x-2)(x-p)로 쓰는 데 필요하다. 다항식의 근과 인수분해 관계는 기존 뉴런에 없다(사실78은 이차방정식 근과 계수의 관계이지 인수분해가 아님).",
-        "blocked_edge": "note8 → note9 (f'(x)=4x(x-2)(x-p) 도출)"
-      },
-      {
-        "id": "전략38",
-        "type": "strategy",
-        "statement": "연속함수에 대한 부등식 $h(x) \\leq 0$의 해집합이 정확히 닫힌구간 $[a,b]$이면 $h(a)=0$이고 $h(b)=0$이다 (경계에서 등호 성립)",
-        "reason": "STEP 5에서 g'(x)≤0의 해가 [0,2]이므로 g'(2)=0을 유도하는 데 필요하다. 부등식 해집합의 경계 조건을 다루는 뉴런이 기존 목록에 없다.",
-        "blocked_edge": "note7 → note8 (g'(2)=0, 즉 f'(2)=0 도출)"
-      },
-      {
-        "id": "연산32",
-        "type": "operation",
-        "statement": "$1 + 2 + \\cdots + n = \\frac{n(n+1)}{2}$ (자연수의 합 공식)",
-        "reason": "STEP 8에서 정수값 1+2+…+8=36을 계산하는 데 필요하다. 등차수열/자연수 합 공식이 기존 뉴런에 없다.",
-        "blocked_edge": "note15 → END (합 36 계산)"
-      }
-    ],
-    "previous_partial_skeleton": [],
-    "previous_blockage_point": "단서A에서 note1(f(0)=0)으로 가려는데 '조각함수 경계점 연속 조건' 매칭 뉴런 없음. 이후 note1에서 note2(f'(0)=0)로 가려는데 '조각함수 미분가능 조건' 매칭 뉴런 없음. STEP 3에서 다항함수 극한 거동 뉴런 없음. STEP 5에서 부등식 경계 등호 뉴런 없음. STEP 6에서 근→인수분해 뉴런 없음. STEP 8에서 자연수 합 공식 없음.",
-    "previous_skel_review_notes": "해설의 계산은 정확하다. 특히 -4x³+9x²-2x = -x(4x-1)(x-2) 인수분해와, g'(x)에서 x(x-2) 공통인수 추출 후 (1-4p)x(x-2)로 정리되는 과정이 핵심이다. p=1/4일 때 g'(x)=0이 x≥0 전체에서 성립하므로 p<1/4이 필요하고, p=0일 때 g'(4)=8이 최대임도 확인됨.",
-    "previous_dna_nodes": [
-      {
-        "id": "top",
-        "dna": "Q3",
-        "label": "합을 구하라",
-        "category": "발문"
-      },
-      {
-        "id": "ask_sum",
-        "dna": "E1",
-        "label": "모든g'(4)의합",
-        "category": "수식"
-      },
-      {
-        "id": "gp4",
-        "dna": "F3",
-        "label": "g'(4)",
-        "category": "함수"
-      },
-      {
-        "id": "gp",
-        "dna": "F13",
-        "label": "도함수g'",
-        "category": "함수"
-      },
-      {
-        "id": "int_cond",
-        "dna": "L3",
-        "label": "정수 조건",
-        "category": "제한"
-      },
-      {
-        "id": "c4_val",
-        "dna": "T2",
-        "label": "상수 4",
-        "category": "말단"
-      },
-      {
-        "id": "gx_def",
-        "dna": "F1",
-        "label": "조각함수g(x)",
-        "category": "함수"
-      },
-      {
-        "id": "piece_neg",
-        "dna": "F2",
-        "label": "x<0 조각",
-        "category": "함수"
-      },
-      {
-        "id": "piece_pos",
-        "dna": "F2",
-        "label": "x>=0 조각",
-        "category": "함수"
-      },
-      {
-        "id": "neg_fx",
-        "dna": "E2",
-        "label": "부호반전f(x)",
-        "category": "수식"
-      },
-      {
-        "id": "fx_apply",
-        "dna": "F3",
-        "label": "f(x)",
-        "category": "함수"
-      },
-      {
-        "id": "vf",
-        "dna": "F6",
-        "label": "함수f",
-        "category": "함수"
-      },
-      {
-        "id": "vx",
-        "dna": "T3",
-        "label": "독립변수x",
-        "category": "말단"
-      },
-      {
-        "id": "pos_expr",
-        "dna": "E1",
-        "label": "f(x)-ax^4+...",
-        "category": "수식"
-      },
-      {
-        "id": "fx_apply2",
-        "dna": "F3",
-        "label": "f(x)(x>=0)",
-        "category": "함수"
-      },
-      {
-        "id": "neg_ax4",
-        "dna": "E2",
-        "label": "-ax^4",
-        "category": "수식"
-      },
-      {
-        "id": "ax4",
-        "dna": "E6",
-        "label": "곱(a,x^4)",
-        "category": "수식"
-      },
-      {
-        "id": "va",
-        "dna": "T1",
-        "label": "변수a",
-        "category": "말단"
-      },
-      {
-        "id": "x4",
-        "dna": "E7",
-        "label": "x^4",
-        "category": "수식"
-      },
-      {
-        "id": "c4e",
-        "dna": "T2",
-        "label": "지수4",
-        "category": "말단"
-      },
-      {
-        "id": "term_3x3",
-        "dna": "E6",
-        "label": "3x^3",
-        "category": "수식"
-      },
-      {
-        "id": "c3",
-        "dna": "T2",
-        "label": "상수3",
-        "category": "말단"
-      },
-      {
-        "id": "x3",
-        "dna": "E7",
-        "label": "x^3",
-        "category": "수식"
-      },
-      {
-        "id": "c3e",
-        "dna": "T2",
-        "label": "지수3",
-        "category": "말단"
-      },
-      {
-        "id": "neg_x2",
-        "dna": "E2",
-        "label": "-x^2",
-        "category": "수식"
-      },
-      {
-        "id": "x2",
-        "dna": "E7",
-        "label": "x^2",
-        "category": "수식"
-      },
-      {
-        "id": "c2e",
-        "dna": "T2",
-        "label": "지수2",
-        "category": "말단"
-      },
-      {
-        "id": "pos_sum1",
-        "dna": "E1",
-        "label": "합(f,-ax4)",
-        "category": "수식"
-      },
-      {
-        "id": "pos_sum2",
-        "dna": "E1",
-        "label": "합(+3x3)",
-        "category": "수식"
-      },
-      {
-        "id": "diff_cond",
-        "dna": "C22",
-        "label": "실수전체미분가능",
-        "category": "조건"
-      },
-      {
-        "id": "real_domain",
-        "dna": "F8",
-        "label": "실수전체정의역",
-        "category": "함수"
-      },
-      {
-        "id": "sol_cond",
-        "dna": "C21",
-        "label": "g'<=0 해조건",
-        "category": "조건"
-      },
-      {
-        "id": "ineq_gp",
-        "dna": "C2",
-        "label": "g'(x)<=0",
-        "category": "조건"
-      },
-      {
-        "id": "sol_interval",
-        "dna": "C2",
-        "label": "1-a<=x<=1+a",
-        "category": "조건"
-      },
-      {
-        "id": "bound_lo",
-        "dna": "E1",
-        "label": "합(1,-a)",
-        "category": "수식"
-      },
-      {
-        "id": "neg_a",
-        "dna": "E2",
-        "label": "부호반전a",
-        "category": "수식"
-      },
-      {
-        "id": "bound_hi",
-        "dna": "E1",
-        "label": "합(1,a)",
-        "category": "수식"
-      },
-      {
-        "id": "c1",
-        "dna": "T2",
-        "label": "상수1",
-        "category": "말단"
-      },
-      {
-        "id": "a_pos",
-        "dna": "C2",
-        "label": "a>0",
-        "category": "조건"
-      },
-      {
-        "id": "lead_coef",
-        "dna": "L4",
-        "label": "최고차항계수1",
-        "category": "제한"
-      },
-      {
-        "id": "quartic",
-        "dna": "F11",
-        "label": "사차함수f",
-        "category": "함수"
-      }
-    ],
-    "previous_dna_edges": [
-      {
-        "from": "ask_sum",
-        "to": "top"
-      },
-      {
-        "from": "gp4",
-        "to": "ask_sum"
-      },
-      {
-        "from": "int_cond",
-        "to": "gp4"
-      },
-      {
-        "from": "gp",
-        "to": "gp4"
-      },
-      {
-        "from": "c4_val",
-        "to": "gp4"
-      },
-      {
-        "from": "gx_def",
-        "to": "gp"
-      },
-      {
-        "from": "piece_neg",
-        "to": "gx_def"
-      },
-      {
-        "from": "piece_pos",
-        "to": "gx_def"
-      },
-      {
-        "from": "neg_fx",
-        "to": "piece_neg"
-      },
-      {
-        "from": "fx_apply",
-        "to": "neg_fx"
-      },
-      {
-        "from": "vf",
-        "to": "fx_apply"
-      },
-      {
-        "from": "vx",
-        "to": "fx_apply"
-      },
-      {
-        "from": "pos_sum2",
-        "to": "piece_pos"
-      },
-      {
-        "from": "fx_apply2",
-        "to": "pos_sum1"
-      },
-      {
-        "from": "vf",
-        "to": "fx_apply2"
-      },
-      {
-        "from": "vx",
-        "to": "fx_apply2"
-      },
-      {
-        "from": "neg_ax4",
-        "to": "pos_sum1"
-      },
-      {
-        "from": "ax4",
-        "to": "neg_ax4"
-      },
-      {
-        "from": "va",
-        "to": "ax4"
-      },
-      {
-        "from": "x4",
-        "to": "ax4"
-      },
-      {
-        "from": "vx",
-        "to": "x4"
-      },
-      {
-        "from": "c4e",
-        "to": "x4"
-      },
-      {
-        "from": "pos_sum1",
-        "to": "pos_sum2"
-      },
-      {
-        "from": "term_3x3",
-        "to": "pos_sum2"
-      },
-      {
-        "from": "c3",
-        "to": "term_3x3"
-      },
-      {
-        "from": "x3",
-        "to": "term_3x3"
-      },
-      {
-        "from": "vx",
-        "to": "x3"
-      },
-      {
-        "from": "c3e",
-        "to": "x3"
-      },
-      {
-        "from": "neg_x2",
-        "to": "pos_expr"
-      },
-      {
-        "from": "x2",
-        "to": "neg_x2"
-      },
-      {
-        "from": "vx",
-        "to": "x2"
-      },
-      {
-        "from": "c2e",
-        "to": "x2"
-      },
-      {
-        "from": "pos_sum2",
-        "to": "pos_expr"
-      },
-      {
-        "from": "pos_expr",
-        "to": "piece_pos"
-      },
-      {
-        "from": "diff_cond",
-        "to": "top"
-      },
-      {
-        "from": "gx_def",
-        "to": "diff_cond"
-      },
-      {
-        "from": "real_domain",
-        "to": "diff_cond"
-      },
-      {
-        "from": "sol_cond",
-        "to": "top"
-      },
-      {
-        "from": "ineq_gp",
-        "to": "sol_cond"
-      },
-      {
-        "from": "gp",
-        "to": "ineq_gp"
-      },
-      {
-        "from": "vx",
-        "to": "ineq_gp"
-      },
-      {
-        "from": "sol_interval",
-        "to": "sol_cond"
-      },
-      {
-        "from": "bound_lo",
-        "to": "sol_interval"
-      },
-      {
-        "from": "bound_hi",
-        "to": "sol_interval"
-      },
-      {
-        "from": "c1",
-        "to": "bound_lo"
-      },
-      {
-        "from": "neg_a",
-        "to": "bound_lo"
-      },
-      {
-        "from": "va",
-        "to": "neg_a"
-      },
-      {
-        "from": "c1",
-        "to": "bound_hi"
-      },
-      {
-        "from": "va",
-        "to": "bound_hi"
-      },
-      {
-        "from": "a_pos",
-        "to": "top"
-      },
-      {
-        "from": "va",
-        "to": "a_pos"
-      },
-      {
-        "from": "lead_coef",
-        "to": "vf"
-      },
-      {
-        "from": "quartic",
-        "to": "vf"
-      }
-    ],
-    "previous_new_dna": [
-      {
-        "id": "C21",
-        "name": "부등식의 해 조건",
-        "signature": "(부등식, 해집합) → 조건",
-        "reason": "부등식 g'(x)<=0의 해가 특정 구간 [1-a, 1+a]임을 나타내는 구조. 단순 부등식(C2)나 범위제한(L2)으로 표현 불가. 부등식 전체의 해집합이 지정된 구간과 일치한다는 조건이다."
-      },
-      {
-        "id": "C22",
-        "name": "미분가능 조건",
-        "signature": "(함수, 정의역) → 조건",
-        "reason": "함수가 주어진 집합(실수 전체)에서 미분가능하다는 조건. 기존 DNA로 표현 불가."
-      },
-      {
-        "id": "F13",
-        "name": "도함수",
-        "signature": "(함수) → 함수",
-        "reason": "f'(x), g'(x) 등 도함수를 나타내는 연산. 기존 DNA 목록에 도함수 개념이 없다."
-      }
-    ],
-    "previous_dna_review_notes": "g'(x)는 도함수로 F13 제안. 미분가능 조건은 C22 제안. 부등식의 해 조건(해집합이 특정 구간)은 C21 제안. g'(4)는 도함수의 특정점 함수적용(F3)으로 처리. 조각함수 g(x)의 각 조각은 F1/F2로 처리. x>=0 조각의 수식: f(x)-ax^4+3x^3-x^2을 합/부호반전/곱/거듭제곱으로 분해. 최고차항의 계수=1 조건은 L4. a는 양수(C2). 구하는 것은 모든 g'(4)의 합(Q3)이되, 정수 조건이 붙음. 1-a와 1+a는 a를 공유하는 수식 노드.",
-    "original_solution": "문제에 주어진 조건에서\n\n$$g'(x) = \\begin{cases} -f'(x) & (x < 0) \\\\ f'(x) - 4ax^3 + 9x^2 - 2x & (x > 0) \\end{cases}$$\n\n이고 $g(x)$가 실수 전체의 집합에서 미분가능하므로\n\n($x=0$에서의 좌미분계수) $=$ ($x=0$에서의 우미분계수)\n\n$$\\Rightarrow f'(0) = 0 \\quad \\cdots \\ ㉠$$\n\n임을 알 수 있다. 이때 문제의 박스 조건에 의해\n\n$$g'(x) \\leq 0 \\Leftrightarrow 1-a \\leq x \\leq 1+a \\quad \\cdots \\ (\\bigstar)$$\n\n이므로 ㉠을 고려하면\n\n$$g'(0) = 0 \\Rightarrow 1-a \\leq 0 \\leq 1+a$$\n$$\\Rightarrow a \\geq 1 \\quad \\cdots \\ ㉡$$\n\n이다.\n\n한편, $(\\bigstar)$에 의해\n\n$$\\lim_{x \\to \\infty} g'(x) > 0 \\Rightarrow \\lim_{x \\to \\infty} \\{f'(x) - 4ax^3 + 9x^2 - 2x\\} > 0$$\n\n이어야 하므로 $f'(x)$가 최고차항의 계수가 $4$인 삼차함수임을 고려하면\n\n$$4 - 4a \\geq 0 \\Rightarrow a \\leq 1$$\n\n이고, ㉡에 의해 $a = 1$임을 알 수 있다. 따라서\n\n$$g'(x) = \\begin{cases} -f'(x) & (x < 0) \\\\ f'(x) - 4x^3 + 9x^2 - 2x & (x \\geq 0) \\end{cases}$$\n\n$$= \\begin{cases} -f'(x) & (x < 0) \\\\ f'(x) - x(x-2)(4x-1) & (x \\geq 0) \\end{cases}$$\n\n이고 $(\\bigstar)$을 다시 쓰면\n\n$$g'(x) \\leq 0 \\Leftrightarrow 0 \\leq x \\leq 2 \\quad \\cdots \\ ㉢$$\n\n이므로\n\n$$x > 2 \\text{일 때 } g'(x) > 0, \\quad 0 \\leq x \\leq 2 \\text{일 때 } g'(x) \\leq 0 \\Bigg\\} \\Rightarrow g'(2) = 0$$\n\n$$\\Rightarrow f'(2) = 0 \\quad \\cdots \\ ㉣$$\n\n임을 알 수 있다.\n\n따라서 ㉠, ㉣에 의해\n\n$$f'(x) = 4x(x-2)(x-p)$$\n\n로 놓을 수 있고 이때,\n\n$$g'(x) = \\begin{cases} -4x(x-2)(x-p) & (x < 0) \\\\ (1-4p)x(x-2) & (x \\geq 0) \\end{cases}$$\n\n이므로 ㉢을 만족시키려면\n\n$$\\begin{cases} p \\geq 0 \\quad (\\because \\ x < 0 \\text{에서 } g'(x) > 0) \\\\ (1-4p)x(x-2) \\leq 0 \\text{인 } x \\text{의 값의 범위가 } 0 \\leq x \\leq 2 \\end{cases}$$\n\n$$\\Rightarrow 0 \\leq p < \\dfrac{1}{4}$$\n\n이어야 한다. 따라서\n\n$$g'(4) = 8(1-4p) \\Rightarrow 0 < g'(4) \\leq 8$$\n\n이고 문제에 주어진 조건에서 $g'(4)$의 값이 정수이므로\n\n$$(\\text{모든 } g'(4) \\text{의 값의 합}) = 1 + 2 + \\cdots + 7 + 8 = \\boxed{36}$$\n\n이다.",
-    "recovery_warnings": [],
-    "errata": [],
-    "metadata": {
-      "unit": "미적분",
-      "difficulty": "상",
-      "score": "4",
-      "type": "short_answer",
-      "answer": "36",
-      "year": "미상",
-      "source": "수능",
-      "topic": "미분가능성과 도함수",
-      "subtopic": "사차함수와 미분가능성 조건"
-    },
-    "needed_neurons": [
-      "사실94",
-      "사실95",
-      "사실96",
-      "사실97",
-      "전략38",
-      "연산32"
-    ],
-    "needed_dna": [
-      {
-        "id": "C21",
-        "name": "부등식의 해 조건",
-        "signature": "(부등식, 해집합) → 조건",
-        "reason": "부등식 g'(x)<=0의 해가 특정 구간 [1-a, 1+a]임을 나타내는 구조. 단순 부등식(C2)나 범위제한(L2)으로 표현 불가. 부등식 전체의 해집합이 지정된 구간과 일치한다는 조건이다."
-      },
-      {
-        "id": "C22",
-        "name": "미분가능 조건",
-        "signature": "(함수, 정의역) → 조건",
-        "reason": "함수가 주어진 집합(실수 전체)에서 미분가능하다는 조건. 기존 DNA로 표현 불가."
-      },
-      {
-        "id": "F13",
-        "name": "도함수",
-        "signature": "(함수) → 함수",
-        "reason": "f'(x), g'(x) 등 도함수를 나타내는 연산. 기존 DNA 목록에 도함수 개념이 없다."
-      }
-    ],
-    "edge_count": 0,
-    "side_count": 0,
-    "created_at": "2026-03-24T19:40:57.463Z"
-  },
-  {
     "problem_id": "P3",
     "answer": "6",
     "content": "id: P3\nsource: 수능\nyear: 미상\nunit: 미적분\ntopic: 삼차함수와 접선\nsubtopic: 최솟값·최댓값 조건을 이용한 함수 결정\ndifficulty: 상\nscore: 4\nanswer: 6\ntype: short_answer\n\n# 3. (수능) - 삼차함수의 접선과 최솟값·최댓값 조건\n\n## Problem\n\n최고차항의 계수가 음수인 삼차함수 $y = f(x)$의 그래프 위의 점 $(6,\\, 3)$에서의 접선을 $l$이라 하자. 실수 $t\\;(t \\ge 0)$에 대하여 직선 $l$ 위의 점 중에서 점 $(t,\\, f(t))$와의 거리가 최소인 점의 좌표를 $(g(t),\\, h(t))$라 할 때, 구간 $[0,\\,\\infty)$에서 두 함수 $g(t)$, $h(t)$가 다음 조건을 만족시킨다.\n\n$$\\text{(가)}\\quad \\text{함수 } g(t)\\text{는 최솟값 } \\dfrac{9}{2}\\text{를 갖고, 함수 } h(t)\\text{는 최댓값 } \\dfrac{9}{2}\\text{를 갖는다.}$$\n\n$$\\text{(나)}\\quad g(t) = \\dfrac{9}{2}\\text{를 만족시키는 } t\\text{의 개수는 } 2\\text{이다.}$$\n\n$f(-6)$의 값을 구하시오. [4점]\n\n## Solution\n\n$g(t)$, $h(t)$의 정의로부터 $t \\ge 0$인 모든 실수 $t$에 대하여 점 $(t,\\, f(t))$에서 직선 $l$에 내린 수선의 발이 $(g(t),\\, h(t))$ …①임을 알 수 있다.\n\n직선 $l$의 기울기를 $m$이라 하고, 두 그림을 예시로 그려보자.\n\n[FIGURE: $m > 0$인 경우와 $m = 0$인 경우의 삼차함수 그래프와 접선 $l$, 점 $(t,\\,f(t))$에서 $l$에 내린 수선의 발 $g(t)$의 관계를 나타낸 그림]\n\n위의 두 그림을 통해:\n\n- $m > 0$이면 $\\displaystyle\\lim_{t \\to \\infty} g(t) = -\\infty$이므로 $g(t)$의 최솟값이 존재하지 않음\n- $m = 0$이면 $g(t) = t$이므로 $g(t)$의 최솟값은 $0$ ($\\because\\; t \\ge 0$)\n\n이므로 $m \\ge 0$이면 (가) 조건을 만족시키지 않는다.\n\n따라서 (가) 조건을 만족시키려면 $m < 0$이어야 하고, 이때 $g(t)$가 $t = t_1$에서 최소 $\\Leftrightarrow$ $h(t)$가 $t = t_1$에서 최대이므로\n\n- (가) $\\Rightarrow$ $l$은 점 $\\left(\\dfrac{9}{2},\\, \\dfrac{9}{2}\\right)$를 지남\n- $l$은 $(6,\\,3)$에서의 접선 $\\Rightarrow$ $l$은 $(6,\\,3)$을 지남\n\n$$\\Rightarrow m = -1$$\n\n임을 알 수 있다. 또한, $l$과 수직이고 점 $\\left(\\dfrac{9}{2},\\, \\dfrac{9}{2}\\right)$를 지나는 직선의 방정식: $y = x$\n\n이므로\n\n$$\\text{①},\\; g(t) \\ge \\dfrac{9}{2} \\;\\Rightarrow\\; \\text{곡선 } y = f(x)\\;(x \\ge 0)\\text{은 다음의 색칠된 영역에 그려짐}$$\n\n$$\\text{(나)} \\;\\Rightarrow\\; y = f(x)\\;(x \\ge 0)\\text{와 } y = x\\text{의 교점의 개수는 } 2$$\n\n임을 고려하면 $y = f(x)\\;(x \\ge 0)$의 그래프는 다음과 같이 그려진다.\n\n[FIGURE: $y = f(x)\\;(x \\ge 0)$의 그래프가 $y = x$ 직선과 두 점에서 만나고, 점 $\\left(\\dfrac{9}{2},\\,\\dfrac{9}{2}\\right)$과 점 $(6,\\,3)$이 표시된 그림]\n\n따라서\n\n$$f(x) = ax(x - b)^2 + x \\quad (\\text{단, } a < 0,\\; b > 0)$$\n\n으로 놓으면 직선 $l$이 $y = f(x)$의 접선이므로\n\n$$\\begin{cases} f(6) = 3 \\;\\Rightarrow\\; a(6 - b)^2 = -\\dfrac{1}{2} \\\\[6pt] f'(6) = m = -1 \\;\\Rightarrow\\; a(6 - b)^2 + 12a(6 - b) = -2 \\end{cases}$$\n\n$$\\Rightarrow a(6 - b)^2 = -\\dfrac{1}{2},\\quad a(6 - b) = -\\dfrac{1}{8}$$\n\n$$\\Rightarrow 6 - b = 4$$\n\n$$\\Rightarrow b = 2,\\quad a = -\\dfrac{1}{32}$$\n\n을 얻는다.\n\n$$\\therefore\\; f(x) = -\\dfrac{1}{32}\\,x(x - 2)^2 + x$$\n\n$$f(-6) = -\\dfrac{1}{32} \\cdot (-6) \\cdot (-8)^2 + (-6) = -\\dfrac{1}{32} \\cdot (-384) - 6 = 12 - 6 = \\boxed{6}$$",
@@ -1585,5 +987,570 @@
     "edge_count": 0,
     "side_count": 0,
     "created_at": "2026-03-24T20:09:54.089Z"
+  },
+  {
+    "problem_id": "P2",
+    "answer": "36",
+    "content": "id: P3\nsource: 수능\nyear: 미상\nunit: 미적분\ntopic: 삼차함수와 접선\nsubtopic: 최솟값·최댓값 조건을 이용한 함수 결정\ndifficulty: 상\nscore: 4\nanswer: 6\ntype: short_answer\n\n# 3. (수능) - 삼차함수의 접선과 최솟값·최댓값 조건\n\n## Problem\n\n최고차항의 계수가 음수인 삼차함수 $y = f(x)$의 그래프 위의 점 $(6,\\, 3)$에서의 접선을 $l$이라 하자. 실수 $t\\;(t \\ge 0)$에 대하여 직선 $l$ 위의 점 중에서 점 $(t,\\, f(t))$와의 거리가 최소인 점의 좌표를 $(g(t),\\, h(t))$라 할 때, 구간 $[0,\\,\\infty)$에서 두 함수 $g(t)$, $h(t)$가 다음 조건을 만족시킨다.\n\n$$\\text{(가)}\\quad \\text{함수 } g(t)\\text{는 최솟값 } \\dfrac{9}{2}\\text{를 갖고, 함수 } h(t)\\text{는 최댓값 } \\dfrac{9}{2}\\text{를 갖는다.}$$\n\n$$\\text{(나)}\\quad g(t) = \\dfrac{9}{2}\\text{를 만족시키는 } t\\text{의 개수는 } 2\\text{이다.}$$\n\n$f(-6)$의 값을 구하시오. [4점]\n\n## Solution\n\n$g(t)$, $h(t)$의 정의로부터 $t \\ge 0$인 모든 실수 $t$에 대하여 점 $(t,\\, f(t))$에서 직선 $l$에 내린 수선의 발이 $(g(t),\\, h(t))$ …①임을 알 수 있다.\n\n직선 $l$의 기울기를 $m$이라 하고, 두 그림을 예시로 그려보자.\n\n[FIGURE: $m > 0$인 경우와 $m = 0$인 경우의 삼차함수 그래프와 접선 $l$, 점 $(t,\\,f(t))$에서 $l$에 내린 수선의 발 $g(t)$의 관계를 나타낸 그림]\n\n위의 두 그림을 통해:\n\n- $m > 0$이면 $\\displaystyle\\lim_{t \\to \\infty} g(t) = -\\infty$이므로 $g(t)$의 최솟값이 존재하지 않음\n- $m = 0$이면 $g(t) = t$이므로 $g(t)$의 최솟값은 $0$ ($\\because\\; t \\ge 0$)\n\n이므로 $m \\ge 0$이면 (가) 조건을 만족시키지 않는다.\n\n따라서 (가) 조건을 만족시키려면 $m < 0$이어야 하고, 이때 $g(t)$가 $t = t_1$에서 최소 $\\Leftrightarrow$ $h(t)$가 $t = t_1$에서 최대이므로\n\n- (가) $\\Rightarrow$ $l$은 점 $\\left(\\dfrac{9}{2},\\, \\dfrac{9}{2}\\right)$를 지남\n- $l$은 $(6,\\,3)$에서의 접선 $\\Rightarrow$ $l$은 $(6,\\,3)$을 지남\n\n$$\\Rightarrow m = -1$$\n\n임을 알 수 있다. 또한, $l$과 수직이고 점 $\\left(\\dfrac{9}{2},\\, \\dfrac{9}{2}\\right)$를 지나는 직선의 방정식: $y = x$\n\n이므로\n\n$$\\text{①},\\; g(t) \\ge \\dfrac{9}{2} \\;\\Rightarrow\\; \\text{곡선 } y = f(x)\\;(x \\ge 0)\\text{은 다음의 색칠된 영역에 그려짐}$$\n\n$$\\text{(나)} \\;\\Rightarrow\\; y = f(x)\\;(x \\ge 0)\\text{와 } y = x\\text{의 교점의 개수는 } 2$$\n\n임을 고려하면 $y = f(x)\\;(x \\ge 0)$의 그래프는 다음과 같이 그려진다.\n\n[FIGURE: $y = f(x)\\;(x \\ge 0)$의 그래프가 $y = x$ 직선과 두 점에서 만나고, 점 $\\left(\\dfrac{9}{2},\\,\\dfrac{9}{2}\\right)$과 점 $(6,\\,3)$이 표시된 그림]\n\n따라서\n\n$$f(x) = ax(x - b)^2 + x \\quad (\\text{단, } a < 0,\\; b > 0)$$\n\n으로 놓으면 직선 $l$이 $y = f(x)$의 접선이므로\n\n$$\\begin{cases} f(6) = 3 \\;\\Rightarrow\\; a(6 - b)^2 = -\\dfrac{1}{2} \\\\[6pt] f'(6) = m = -1 \\;\\Rightarrow\\; a(6 - b)^2 + 12a(6 - b) = -2 \\end{cases}$$\n\n$$\\Rightarrow a(6 - b)^2 = -\\dfrac{1}{2},\\quad a(6 - b) = -\\dfrac{1}{8}$$\n\n$$\\Rightarrow 6 - b = 4$$\n\n$$\\Rightarrow b = 2,\\quad a = -\\dfrac{1}{32}$$\n\n을 얻는다.\n\n$$\\therefore\\; f(x) = -\\dfrac{1}{32}\\,x(x - 2)^2 + x$$\n\n$$f(-6) = -\\dfrac{1}{32} \\cdot (-6) \\cdot (-8)^2 + (-6) = -\\dfrac{1}{32} \\cdot (-384) - 6 = 12 - 6 = \\boxed{6}$$",
+    "content_source": "CheckPending",
+    "content_length": 2421,
+    "skel_status": "neuron_missing",
+    "dna_status": "ok",
+    "previous_skeleton": [],
+    "previous_solution": "",
+    "previous_clues": "[{\"id\":\"단서A\",\"text\":\"$g(x) = \\\\begin{cases} -f(x) & (x < 0) \\\\\\\\ f(x) - ax^4 + 3x^3 - x^2 & (x \\\\geq 0) \\\\end{cases}$이고 $g(x)$는 실수 전체에서 미분가능하다\"},{\"id\":\"단서B\",\"text\":\"부등식 $g'(x) \\\\leq 0$의 해는 $1-a \\\\leq x \\\\leq 1+a$이다\"},{\"id\":\"단서C\",\"text\":\"$a$는 양수이고 $f(x)$는 최고차항의 계수가 $1$인 사차함수이다\"}]",
+    "previous_analysis": "이 문제는 조각함수의 미분가능성(연속+좌우미분계수 일치), 다항함수의 극한 거동(최고차항 부호), 인수정리(근→인수분해), 부등식 해집합 경계 조건 등을 요구한다. 기존 뉴런 목록은 지수/로그/기하 중심으로 구성되어 있어, 미적분(조각함수 미분가능성 조건)과 다항함수(극한 거동, 인수정리) 관련 뉴런이 전면적으로 부족하다. 사실97~104가 추가되어 극값/도함수 관련 뉴런은 일부 있으나, 조각함수 경계점 처리와 다항함수 고유 성질에 대한 뉴런 6개가 추가로 필요하다.",
+    "previous_matching": "1. g(x)가 x=0에서 연속 → -f(0)=f(0) → f(0)=0: 매칭 없음 (사실105 신규 필요)\n2. g(x)가 x=0에서 미분가능 → 좌미분계수=우미분계수 → -f'(0)=f'(0) → f'(0)=0: 매칭 없음 (사실106 신규 필요)\n3. g'(x) 각 조각별 도함수 계산: 연산33(거듭제곱 미분), 연산34(합/차 미분), 연산35(상수배 미분)\n4. g'(0)=0이므로 0∈[1-a,1+a] → 1-a≤0 → a≥1: 전략25(대입 확인), 연산21(부등식 이항)\n5. f'(x)는 최고차항 계수 4인 삼차함수 → g'(x)(x≥0)의 최고차항 계수 4-4a: 연산34\n6. 4-4a<0이면 g'(x)→-∞(x→+∞)으로 유계해집합 조건에 모순 → a≤1: 매칭 없음 (사실107 신규 필요) + 전략23(모순 배제)\n7. a≥1, a≤1 결합 → a=1: 전략2(연립)\n8. a=1 대입 후 -4x³+9x²-2x 인수분해: 전략25(대입), 전략29(인수분해), 연산28(전개/정리)\n9. g'(x)≤0의 해가 [0,2] → g'(2)=0: 매칭 없음 (전략38 신규 필요)\n10. g'(2)=f'(2)=0 도출: 전략25(대입)\n11. f'(0)=0, f'(2)=0으로부터 f'(x)=4x(x-2)(x-p): 매칭 없음 (사실108 신규 필요)\n12. g'(x) 정리: x<0에서 -4x(x-2)(x-p), x≥0에서 (1-4p)x(x-2): 연산28(전개/정리)\n13. x<0에서 -4x(x-2)(x-p)>0 부호분석 → p≥0: 사실65(곱의 부호)\n14. (1-4p)x(x-2)≤0이 [0,2]에서 성립 → 1-4p>0 → p<1/4: 사실35(이차식 부호)\n15. g'(4)=8(1-4p), 0<g'(4)≤8: 기본 대수\n16. 정수값 전수조사 1,2,...,8: 전략17(전수조사)\n17. 합 1+2+...+8=36: 매칭 없음 (연산47 신규 필요)",
+    "previous_matched": [
+      "전략2",
+      "전략17",
+      "전략23",
+      "전략25",
+      "전략29",
+      "사실35",
+      "사실65",
+      "연산21",
+      "연산28",
+      "연산33",
+      "연산34",
+      "연산35"
+    ],
+    "previous_new_neurons": [
+      {
+        "id": "사실105",
+        "type": "fact",
+        "statement": "조각함수가 경계점 $x=c$에서 연속이려면 $\\lim_{x \\to c^-} f(x) = \\lim_{x \\to c^+} f(x) = f(c)$이어야 한다",
+        "reason": "STEP 1에서 g(x)의 x=0에서 연속 조건으로 -f(0)=f(0), 즉 f(0)=0을 유도하는 데 필요하다. 조각함수의 경계점 연속 조건은 기존 뉴런 어디에도 없다.",
+        "blocked_edge": "단서A → note1 (f(0)=0 도출)"
+      },
+      {
+        "id": "사실106",
+        "type": "fact",
+        "statement": "조각함수가 경계점 $x=c$에서 미분가능이려면 $x=c$에서 연속이고 좌미분계수와 우미분계수가 같아야 한다: $\\lim_{x \\to c^-} \\frac{f(x)-f(c)}{x-c} = \\lim_{x \\to c^+} \\frac{f(x)-f(c)}{x-c}$",
+        "reason": "STEP 1에서 g'(0⁻)=-f'(0)과 g'(0⁺)=f'(0)이 같아야 하므로 f'(0)=0을 유도하는 데 필요하다. 조각함수의 미분가능 조건(좌·우미분계수 일치)은 기존 뉴런에 없다.",
+        "blocked_edge": "note1 → note2 (f'(0)=0 도출)"
+      },
+      {
+        "id": "사실107",
+        "type": "fact",
+        "statement": "다항함수 $p(x)=a_n x^n + \\cdots$에서 $x \\to +\\infty$일 때 부호는 최고차항 계수 $a_n$의 부호와 같고, $x \\to -\\infty$일 때 부호는 $(-1)^n a_n$의 부호와 같다",
+        "reason": "STEP 2에서 g'(x)의 x≥0 부분의 최고차항 계수 4-4a가 음수이면 x→+∞에서 g'(x)→-∞가 되어, 해가 유계구간뿐이라는 조건에 모순임을 보이는 데 필요하다. 사실21, 사실46 등은 지수함수 전용이며 다항함수의 극한 거동 뉴런이 없다.",
+        "blocked_edge": "note4 → note5 (4-4a≥0, 즉 a≤1 도출)"
+      },
+      {
+        "id": "사실108",
+        "type": "fact",
+        "statement": "다항식 $f(x)$에서 $f(\\alpha)=0$이면 $(x-\\alpha)$가 $f(x)$의 인수이다 (인수정리). 따라서 근 $\\alpha_1, \\ldots, \\alpha_k$가 알려진 $n$차 다항식은 $a_n(x-\\alpha_1)\\cdots(x-\\alpha_k)q(x)$로 인수분해된다",
+        "reason": "STEP 4에서 f'(0)=0, f'(2)=0인 최고차항 계수 4의 삼차함수 f'(x)를 f'(x)=4x(x-2)(x-p)로 쓰는 데 필요하다. 전략29는 '인수분해를 시도하라'는 전략일 뿐, 근이 주어졌을 때 인수로 분해되는 수학적 사실(인수정리)이 없다.",
+        "blocked_edge": "note8 → note9 (f'(x)=4x(x-2)(x-p) 도출)"
+      },
+      {
+        "id": "전략38",
+        "type": "strategy",
+        "statement": "연속함수 $h$에 대해 $h(x) \\leq 0$의 해집합이 정확히 닫힌구간 $[a,b]$이면, 경계에서 $h(a)=0$이고 $h(b)=0$이다",
+        "reason": "STEP 3에서 g'(x)≤0의 해가 정확히 [0,2]이므로 g'(2)=0을 유도하는 데 필요하다. 부등식 해집합의 경계에서 등호가 성립함을 다루는 뉴런이 기존 목록에 없다.",
+        "blocked_edge": "note6 → note7 (g'(2)=0 도출)"
+      },
+      {
+        "id": "연산47",
+        "type": "operation",
+        "statement": "$1 + 2 + \\cdots + n = \\dfrac{n(n+1)}{2}$ (자연수의 합 공식)",
+        "reason": "STEP 6에서 정수값 1+2+…+8=36을 계산하는 데 필요하다. 등차수열/자연수 합 공식이 기존 뉴런에 없다.",
+        "blocked_edge": "note15 → END (합 36 계산)"
+      }
+    ],
+    "previous_partial_skeleton": [],
+    "previous_blockage_point": "단서A에서 note1(f(0)=0)으로 가려는데 '조각함수 경계점 연속 조건(사실105)' 매칭 뉴런 없음. 이어서 note1에서 note2(f'(0)=0)로 가려는데 '조각함수 미분가능 조건(사실106)' 매칭 뉴런 없음. STEP 2에서 다항함수 극한 거동(사실107) 없음. STEP 3에서 해집합 경계 등호 조건(전략38) 없음. STEP 4에서 인수정리(사실108) 없음. STEP 6에서 자연수 합 공식(연산47) 없음.",
+    "previous_skel_review_notes": "해설의 STEP 3에서 -4x³+9x²-2x를 인수분해할 때 -x(4x²-9x+2)=-x(4x-1)(x-2)로 분해하는데, 4x²-9x+2=(4x-1)(x-2)임을 확인: (4x-1)(x-2)=4x²-8x-x+2=4x²-9x+2 ✓. STEP 4에서 g'(x)=4x(x-2)(x-p)-x(4x-1)(x-2)=x(x-2)[4(x-p)-(4x-1)]=x(x-2)(1-4p)로 정리: 4(x-p)-(4x-1)=4x-4p-4x+1=1-4p ✓.",
+    "previous_dna_nodes": [
+      {
+        "id": "top",
+        "dna": "Q3",
+        "label": "합을 구하라",
+        "category": "발문"
+      },
+      {
+        "id": "ask_sum",
+        "dna": "E1",
+        "label": "모든g'(4)의합",
+        "category": "수식"
+      },
+      {
+        "id": "gp4",
+        "dna": "F3",
+        "label": "g'(4)",
+        "category": "함수"
+      },
+      {
+        "id": "gp",
+        "dna": "F13",
+        "label": "도함수g'",
+        "category": "함수"
+      },
+      {
+        "id": "int_cond",
+        "dna": "L3",
+        "label": "정수 조건",
+        "category": "제한"
+      },
+      {
+        "id": "c4_val",
+        "dna": "T2",
+        "label": "상수 4",
+        "category": "말단"
+      },
+      {
+        "id": "gx_def",
+        "dna": "F1",
+        "label": "조각함수g(x)",
+        "category": "함수"
+      },
+      {
+        "id": "piece_neg",
+        "dna": "F2",
+        "label": "x<0 조각",
+        "category": "함수"
+      },
+      {
+        "id": "piece_pos",
+        "dna": "F2",
+        "label": "x>=0 조각",
+        "category": "함수"
+      },
+      {
+        "id": "neg_fx",
+        "dna": "E2",
+        "label": "부호반전f(x)",
+        "category": "수식"
+      },
+      {
+        "id": "fx_apply",
+        "dna": "F3",
+        "label": "f(x)",
+        "category": "함수"
+      },
+      {
+        "id": "vf",
+        "dna": "F6",
+        "label": "함수f",
+        "category": "함수"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수x",
+        "category": "말단"
+      },
+      {
+        "id": "pos_expr",
+        "dna": "E1",
+        "label": "f(x)-ax^4+...",
+        "category": "수식"
+      },
+      {
+        "id": "fx_apply2",
+        "dna": "F3",
+        "label": "f(x)(x>=0)",
+        "category": "함수"
+      },
+      {
+        "id": "neg_ax4",
+        "dna": "E2",
+        "label": "-ax^4",
+        "category": "수식"
+      },
+      {
+        "id": "ax4",
+        "dna": "E6",
+        "label": "곱(a,x^4)",
+        "category": "수식"
+      },
+      {
+        "id": "va",
+        "dna": "T1",
+        "label": "변수a",
+        "category": "말단"
+      },
+      {
+        "id": "x4",
+        "dna": "E7",
+        "label": "x^4",
+        "category": "수식"
+      },
+      {
+        "id": "c4e",
+        "dna": "T2",
+        "label": "지수4",
+        "category": "말단"
+      },
+      {
+        "id": "term_3x3",
+        "dna": "E6",
+        "label": "3x^3",
+        "category": "수식"
+      },
+      {
+        "id": "c3",
+        "dna": "T2",
+        "label": "상수3",
+        "category": "말단"
+      },
+      {
+        "id": "x3",
+        "dna": "E7",
+        "label": "x^3",
+        "category": "수식"
+      },
+      {
+        "id": "c3e",
+        "dna": "T2",
+        "label": "지수3",
+        "category": "말단"
+      },
+      {
+        "id": "neg_x2",
+        "dna": "E2",
+        "label": "-x^2",
+        "category": "수식"
+      },
+      {
+        "id": "x2",
+        "dna": "E7",
+        "label": "x^2",
+        "category": "수식"
+      },
+      {
+        "id": "c2e",
+        "dna": "T2",
+        "label": "지수2",
+        "category": "말단"
+      },
+      {
+        "id": "pos_sum1",
+        "dna": "E1",
+        "label": "합(f,-ax4)",
+        "category": "수식"
+      },
+      {
+        "id": "pos_sum2",
+        "dna": "E1",
+        "label": "합(+3x3)",
+        "category": "수식"
+      },
+      {
+        "id": "diff_cond",
+        "dna": "C22",
+        "label": "실수전체미분가능",
+        "category": "조건"
+      },
+      {
+        "id": "real_domain",
+        "dna": "F8",
+        "label": "실수전체정의역",
+        "category": "함수"
+      },
+      {
+        "id": "sol_cond",
+        "dna": "C21",
+        "label": "g'<=0 해조건",
+        "category": "조건"
+      },
+      {
+        "id": "ineq_gp",
+        "dna": "C2",
+        "label": "g'(x)<=0",
+        "category": "조건"
+      },
+      {
+        "id": "sol_interval",
+        "dna": "C2",
+        "label": "1-a<=x<=1+a",
+        "category": "조건"
+      },
+      {
+        "id": "bound_lo",
+        "dna": "E1",
+        "label": "합(1,-a)",
+        "category": "수식"
+      },
+      {
+        "id": "neg_a",
+        "dna": "E2",
+        "label": "부호반전a",
+        "category": "수식"
+      },
+      {
+        "id": "bound_hi",
+        "dna": "E1",
+        "label": "합(1,a)",
+        "category": "수식"
+      },
+      {
+        "id": "c1",
+        "dna": "T2",
+        "label": "상수1",
+        "category": "말단"
+      },
+      {
+        "id": "a_pos",
+        "dna": "C2",
+        "label": "a>0",
+        "category": "조건"
+      },
+      {
+        "id": "lead_coef",
+        "dna": "L4",
+        "label": "최고차항계수1",
+        "category": "제한"
+      },
+      {
+        "id": "quartic",
+        "dna": "F11",
+        "label": "사차함수f",
+        "category": "함수"
+      }
+    ],
+    "previous_dna_edges": [
+      {
+        "from": "ask_sum",
+        "to": "top"
+      },
+      {
+        "from": "gp4",
+        "to": "ask_sum"
+      },
+      {
+        "from": "int_cond",
+        "to": "gp4"
+      },
+      {
+        "from": "gp",
+        "to": "gp4"
+      },
+      {
+        "from": "c4_val",
+        "to": "gp4"
+      },
+      {
+        "from": "gx_def",
+        "to": "gp"
+      },
+      {
+        "from": "piece_neg",
+        "to": "gx_def"
+      },
+      {
+        "from": "piece_pos",
+        "to": "gx_def"
+      },
+      {
+        "from": "neg_fx",
+        "to": "piece_neg"
+      },
+      {
+        "from": "fx_apply",
+        "to": "neg_fx"
+      },
+      {
+        "from": "vf",
+        "to": "fx_apply"
+      },
+      {
+        "from": "vx",
+        "to": "fx_apply"
+      },
+      {
+        "from": "pos_sum2",
+        "to": "piece_pos"
+      },
+      {
+        "from": "fx_apply2",
+        "to": "pos_sum1"
+      },
+      {
+        "from": "vf",
+        "to": "fx_apply2"
+      },
+      {
+        "from": "vx",
+        "to": "fx_apply2"
+      },
+      {
+        "from": "neg_ax4",
+        "to": "pos_sum1"
+      },
+      {
+        "from": "ax4",
+        "to": "neg_ax4"
+      },
+      {
+        "from": "va",
+        "to": "ax4"
+      },
+      {
+        "from": "x4",
+        "to": "ax4"
+      },
+      {
+        "from": "vx",
+        "to": "x4"
+      },
+      {
+        "from": "c4e",
+        "to": "x4"
+      },
+      {
+        "from": "pos_sum1",
+        "to": "pos_sum2"
+      },
+      {
+        "from": "term_3x3",
+        "to": "pos_sum2"
+      },
+      {
+        "from": "c3",
+        "to": "term_3x3"
+      },
+      {
+        "from": "x3",
+        "to": "term_3x3"
+      },
+      {
+        "from": "vx",
+        "to": "x3"
+      },
+      {
+        "from": "c3e",
+        "to": "x3"
+      },
+      {
+        "from": "neg_x2",
+        "to": "pos_expr"
+      },
+      {
+        "from": "x2",
+        "to": "neg_x2"
+      },
+      {
+        "from": "vx",
+        "to": "x2"
+      },
+      {
+        "from": "c2e",
+        "to": "x2"
+      },
+      {
+        "from": "pos_sum2",
+        "to": "pos_expr"
+      },
+      {
+        "from": "pos_expr",
+        "to": "piece_pos"
+      },
+      {
+        "from": "diff_cond",
+        "to": "top"
+      },
+      {
+        "from": "gx_def",
+        "to": "diff_cond"
+      },
+      {
+        "from": "real_domain",
+        "to": "diff_cond"
+      },
+      {
+        "from": "sol_cond",
+        "to": "top"
+      },
+      {
+        "from": "ineq_gp",
+        "to": "sol_cond"
+      },
+      {
+        "from": "gp",
+        "to": "ineq_gp"
+      },
+      {
+        "from": "vx",
+        "to": "ineq_gp"
+      },
+      {
+        "from": "sol_interval",
+        "to": "sol_cond"
+      },
+      {
+        "from": "bound_lo",
+        "to": "sol_interval"
+      },
+      {
+        "from": "bound_hi",
+        "to": "sol_interval"
+      },
+      {
+        "from": "c1",
+        "to": "bound_lo"
+      },
+      {
+        "from": "neg_a",
+        "to": "bound_lo"
+      },
+      {
+        "from": "va",
+        "to": "neg_a"
+      },
+      {
+        "from": "c1",
+        "to": "bound_hi"
+      },
+      {
+        "from": "va",
+        "to": "bound_hi"
+      },
+      {
+        "from": "a_pos",
+        "to": "top"
+      },
+      {
+        "from": "va",
+        "to": "a_pos"
+      },
+      {
+        "from": "lead_coef",
+        "to": "vf"
+      },
+      {
+        "from": "quartic",
+        "to": "vf"
+      }
+    ],
+    "previous_new_dna": [],
+    "previous_dna_review_notes": "",
+    "original_solution": "$g(t)$, $h(t)$의 정의로부터 $t \\ge 0$인 모든 실수 $t$에 대하여 점 $(t,\\, f(t))$에서 직선 $l$에 내린 수선의 발이 $(g(t),\\, h(t))$ …①임을 알 수 있다.\n\n직선 $l$의 기울기를 $m$이라 하고, 두 그림을 예시로 그려보자.\n\n[FIGURE: $m > 0$인 경우와 $m = 0$인 경우의 삼차함수 그래프와 접선 $l$, 점 $(t,\\,f(t))$에서 $l$에 내린 수선의 발 $g(t)$의 관계를 나타낸 그림]\n\n위의 두 그림을 통해:\n\n- $m > 0$이면 $\\displaystyle\\lim_{t \\to \\infty} g(t) = -\\infty$이므로 $g(t)$의 최솟값이 존재하지 않음\n- $m = 0$이면 $g(t) = t$이므로 $g(t)$의 최솟값은 $0$ ($\\because\\; t \\ge 0$)\n\n이므로 $m \\ge 0$이면 (가) 조건을 만족시키지 않는다.\n\n따라서 (가) 조건을 만족시키려면 $m < 0$이어야 하고, 이때 $g(t)$가 $t = t_1$에서 최소 $\\Leftrightarrow$ $h(t)$가 $t = t_1$에서 최대이므로\n\n- (가) $\\Rightarrow$ $l$은 점 $\\left(\\dfrac{9}{2},\\, \\dfrac{9}{2}\\right)$를 지남\n- $l$은 $(6,\\,3)$에서의 접선 $\\Rightarrow$ $l$은 $(6,\\,3)$을 지남\n\n$$\\Rightarrow m = -1$$\n\n임을 알 수 있다. 또한, $l$과 수직이고 점 $\\left(\\dfrac{9}{2},\\, \\dfrac{9}{2}\\right)$를 지나는 직선의 방정식: $y = x$\n\n이므로\n\n$$\\text{①},\\; g(t) \\ge \\dfrac{9}{2} \\;\\Rightarrow\\; \\text{곡선 } y = f(x)\\;(x \\ge 0)\\text{은 다음의 색칠된 영역에 그려짐}$$\n\n$$\\text{(나)} \\;\\Rightarrow\\; y = f(x)\\;(x \\ge 0)\\text{와 } y = x\\text{의 교점의 개수는 } 2$$\n\n임을 고려하면 $y = f(x)\\;(x \\ge 0)$의 그래프는 다음과 같이 그려진다.\n\n[FIGURE: $y = f(x)\\;(x \\ge 0)$의 그래프가 $y = x$ 직선과 두 점에서 만나고, 점 $\\left(\\dfrac{9}{2},\\,\\dfrac{9}{2}\\right)$과 점 $(6,\\,3)$이 표시된 그림]\n\n따라서\n\n$$f(x) = ax(x - b)^2 + x \\quad (\\text{단, } a < 0,\\; b > 0)$$\n\n으로 놓으면 직선 $l$이 $y = f(x)$의 접선이므로\n\n$$\\begin{cases} f(6) = 3 \\;\\Rightarrow\\; a(6 - b)^2 = -\\dfrac{1}{2} \\\\[6pt] f'(6) = m = -1 \\;\\Rightarrow\\; a(6 - b)^2 + 12a(6 - b) = -2 \\end{cases}$$\n\n$$\\Rightarrow a(6 - b)^2 = -\\dfrac{1}{2},\\quad a(6 - b) = -\\dfrac{1}{8}$$\n\n$$\\Rightarrow 6 - b = 4$$\n\n$$\\Rightarrow b = 2,\\quad a = -\\dfrac{1}{32}$$\n\n을 얻는다.\n\n$$\\therefore\\; f(x) = -\\dfrac{1}{32}\\,x(x - 2)^2 + x$$\n\n$$f(-6) = -\\dfrac{1}{32} \\cdot (-6) \\cdot (-8)^2 + (-6) = -\\dfrac{1}{32} \\cdot (-384) - 6 = 12 - 6 = \\boxed{6}$$",
+    "recovery_warnings": [],
+    "errata": [],
+    "metadata": {
+      "unit": "미적분",
+      "difficulty": "상",
+      "score": "4",
+      "type": "short_answer",
+      "answer": "36",
+      "year": "미상",
+      "source": "수능",
+      "topic": "미분가능성과 도함수",
+      "subtopic": "사차함수와 미분가능성 조건"
+    },
+    "needed_neurons": [
+      "사실94",
+      "사실95",
+      "사실96",
+      "사실97",
+      "전략38",
+      "연산32"
+    ],
+    "needed_dna": [],
+    "edge_count": 0,
+    "side_count": 0,
+    "created_at": "2026-03-24T20:14:46.414Z"
   }
 ]
