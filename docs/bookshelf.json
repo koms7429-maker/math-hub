@@ -8667,7 +8667,1077 @@
       ],
       "new_dna": []
     },
-    "thinking_profile": null,
+    "thinking_profile": {
+      "_version": 6,
+      "_unit": "note",
+      "_isV6": true,
+      "total_think_tokens": 4341,
+      "total_notes": 26,
+      "hint_distribution": {
+        "0": 24,
+        "1": 1,
+        "2": 0,
+        "3": 0,
+        "4": 1
+      },
+      "avg_hint_level": 0.19,
+      "genuine_miss_count": 0,
+      "absorbed_miss_count": 1,
+      "bonus_count": 23,
+      "highlight_notes": [
+        "note15",
+        "note3",
+        "note1"
+      ],
+      "hardest_note": {
+        "note_id": "note15",
+        "neuron": "사실19",
+        "hint_level": 4,
+        "structural_difficulty": 0.12,
+        "miss_type": "absorbed",
+        "note_text": "$x<\\log_7 3$에서 $f$는 순감소이고 치역은 $(0,21)$이다"
+      },
+      "neuron_stats": {
+        "전략7": {
+          "type": "전략",
+          "appearances": 1,
+          "total_hint": 0,
+          "hint_levels": [
+            0
+          ],
+          "bonus_count": 0,
+          "avg_hint_level": 0
+        },
+        "사실4": {
+          "type": "사실",
+          "appearances": 4,
+          "total_hint": 1,
+          "hint_levels": [
+            0,
+            1,
+            0,
+            0
+          ],
+          "bonus_count": 3,
+          "avg_hint_level": 0.25
+        },
+        "전략10": {
+          "type": "전략",
+          "appearances": 1,
+          "total_hint": 0,
+          "hint_levels": [
+            0
+          ],
+          "bonus_count": 1,
+          "avg_hint_level": 0
+        },
+        "사실18": {
+          "type": "사실",
+          "appearances": 1,
+          "total_hint": 0,
+          "hint_levels": [
+            0
+          ],
+          "bonus_count": 1,
+          "avg_hint_level": 0
+        },
+        "전략25": {
+          "type": "전략",
+          "appearances": 4,
+          "total_hint": 0,
+          "hint_levels": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "bonus_count": 4,
+          "avg_hint_level": 0
+        },
+        "전략6": {
+          "type": "전략",
+          "appearances": 1,
+          "total_hint": 0,
+          "hint_levels": [
+            0
+          ],
+          "bonus_count": 1,
+          "avg_hint_level": 0
+        },
+        "사실46": {
+          "type": "사실",
+          "appearances": 1,
+          "total_hint": 0,
+          "hint_levels": [
+            0
+          ],
+          "bonus_count": 1,
+          "avg_hint_level": 0
+        },
+        "사실19": {
+          "type": "사실",
+          "appearances": 2,
+          "total_hint": 4,
+          "hint_levels": [
+            4,
+            0
+          ],
+          "bonus_count": 1,
+          "avg_hint_level": 2
+        },
+        "사실35": {
+          "type": "사실",
+          "appearances": 1,
+          "total_hint": 0,
+          "hint_levels": [
+            0
+          ],
+          "bonus_count": 1,
+          "avg_hint_level": 0
+        },
+        "사실71": {
+          "type": "사실",
+          "appearances": 1,
+          "total_hint": 0,
+          "hint_levels": [
+            0
+          ],
+          "bonus_count": 1,
+          "avg_hint_level": 0
+        },
+        "전략5": {
+          "type": "전략",
+          "appearances": 1,
+          "total_hint": 0,
+          "hint_levels": [
+            0
+          ],
+          "bonus_count": 1,
+          "avg_hint_level": 0
+        },
+        "전략20": {
+          "type": "전략",
+          "appearances": 1,
+          "total_hint": 0,
+          "hint_levels": [
+            0
+          ],
+          "bonus_count": 1,
+          "avg_hint_level": 0
+        },
+        "사실9": {
+          "type": "사실",
+          "appearances": 1,
+          "total_hint": 0,
+          "hint_levels": [
+            0
+          ],
+          "bonus_count": 1,
+          "avg_hint_level": 0
+        },
+        "사실44": {
+          "type": "사실",
+          "appearances": 1,
+          "total_hint": 0,
+          "hint_levels": [
+            0
+          ],
+          "bonus_count": 1,
+          "avg_hint_level": 0
+        },
+        "전략17": {
+          "type": "전략",
+          "appearances": 5,
+          "total_hint": 0,
+          "hint_levels": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "bonus_count": 5,
+          "avg_hint_level": 0
+        }
+      },
+      "notes": [
+        {
+          "note_index": 1,
+          "note_id": "note1",
+          "neuron": "전략7",
+          "neuron_type": "전략",
+          "note_text": "$f(x^n)=n$에서 $t=x^n$으로 치환하면 $f(t)=n$인 각 $t$에 대해 $x^n=t$의 실근을 세는 구조이다",
+          "from": [
+            "단서B"
+          ],
+          "hint_level": 0,
+          "is_bonus": false,
+          "structural_difficulty": 0.25,
+          "discovered_in_target": "note1",
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": "",
+          "partial_history": [
+            {
+              "note_id": "note1",
+              "in_target": "note1",
+              "attempt": 0,
+              "score": 0.7,
+              "reason": "학생은 t=x^14로 치환하여 f(t)=14인 t에 대해 x의 해 개수를 세는 구조를 사용했음"
+            }
+          ],
+          "attempts": [
+            {
+              "attempt": 0,
+              "think_tokens": 360,
+              "discover_elapsed_ms": 16904,
+              "match_elapsed_ms": 6164,
+              "discover_input_tokens": 725,
+              "discover_output_tokens": 1196,
+              "match_input_tokens": 2292,
+              "match_output_tokens": 257,
+              "claude_output": "## 분석 시작\n\n[시도] g(14) = 5 조건에서, n=14(짝수)일 때 x^14 = t로 치환하여 t의 개수를 분석\n\n[계산]\nn=14은 짝수이므로 x^14 = t의 실수 해의 개수:\n- t > 0: x = ±t^(1/14) → **2개**\n- t = 0: x = 0 → **1개**\n- t < 0: 해 없음 → **0개**\n\ng(14) = 5가 되려면:\n$$(\\text{양수 }t \\text{의 개수}) \\times 2 + (\\text{t=0 포함 여부}) = 5$$\n\n유일한 경우: **양수 t 2개** + **t = 0** → 2×2 + 1 = **5** ✓\n\nt = 0에서 f(0) = 14이어야 하므로:\n$$f(0) = |a^{0+1} - 3a| = |a - 3a| = |-2a| = 2a = 14$$\n\n[결론] **a = 7**",
+              "matches": [
+                {
+                  "label": "A",
+                  "score": 0.7,
+                  "reason": "학생은 t=x^14로 치환하여 f(t)=14인 t에 대해 x의 해 개수를 세는 구조를 사용했음"
+                },
+                {
+                  "label": "B",
+                  "score": 1,
+                  "reason": "학생이 n=14 짝수일 때 t>0이면 2개, t=0이면 1개, t<0이면 0개라고 정확히 서술함"
+                },
+                {
+                  "label": "E",
+                  "score": 1,
+                  "reason": "학생이 f(0)=|a^(0+1)-3a|=|a-3a|=|-2a|=2a를 정확히 계산함"
+                },
+                {
+                  "label": "F",
+                  "score": 1,
+                  "reason": "학생이 2a=14에서 a=7이라는 결론을 도출함"
+                }
+              ],
+              "eval_summary": "FOUND H0 | 360tok | disc 16904ms + match 6164ms | bonus 3"
+            }
+          ]
+        },
+        {
+          "note_index": 2,
+          "note_id": "note2",
+          "neuron": "사실4",
+          "neuron_type": "사실",
+          "note_text": "$n$이 짝수일 때 $x^n=t$의 서로 다른 실근 개수는 $t<0$이면 0개, $t=0$이면 1개, $t>0$이면 2개이다",
+          "from": [
+            "note1"
+          ],
+          "hint_level": 0,
+          "is_bonus": true,
+          "structural_difficulty": 0.12,
+          "discovered_in_target": "note1",
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": "",
+          "partial_history": [],
+          "attempts": []
+        },
+        {
+          "note_index": 3,
+          "note_id": "note3",
+          "neuron": "사실4",
+          "neuron_type": "사실",
+          "note_text": "$n$이 홀수일 때 모든 실수 $t$에 대하여 $x^n=t$의 실근은 정확히 1개이다",
+          "from": [
+            "note1"
+          ],
+          "hint_level": 1,
+          "is_bonus": false,
+          "structural_difficulty": 0.12,
+          "discovered_in_target": "note3",
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": "",
+          "partial_history": [
+            {
+              "note_id": "note3",
+              "in_target": "note3",
+              "attempt": 6,
+              "score": 0.9,
+              "reason": "n이 홀수일 때 x^n=t의 실근이 정확히 1개라는 핵심 명제를 학생이 명시적으로 서술함"
+            }
+          ],
+          "attempts": [
+            {
+              "attempt": 0,
+              "think_tokens": 204,
+              "discover_elapsed_ms": 14868,
+              "match_elapsed_ms": 12881,
+              "discover_input_tokens": 881,
+              "discover_output_tokens": 884,
+              "match_input_tokens": 2095,
+              "match_output_tokens": 768,
+              "claude_output": "[시도] n=14이 짝수이므로 g(14)=5(홀수)가 되려면 어떤 t값이 반드시 필요한지 파악한다.\n\n[계산]\n- n=14(짝수)일 때, x¹⁴=t의 실근 수: t>0이면 2개, t=0이면 1개, t<0이면 0개\n- g(14) = (f(t)=14를 만족하는 양수 t의 개수)×2 + (f(0)=14이면 1)\n- 이 합이 5(홀수)가 되려면, 반드시 t=0이 f(t)=14의 해여야 함\n- (양수 t 2개)×2 + 1 = 5 ✓ → 이 경우만 가능\n\n[결론] **t=0이 f(t)=14의 해**여야 하므로, f(0)=14이고 이를 계산하면 f(0)=|a^(0+1)−3a|=|a−3a|=2a=14, 즉 **a=7**이다.",
+              "matches": [
+                {
+                  "label": "B",
+                  "score": 0.55,
+                  "reason": "regex"
+                }
+              ],
+              "eval_summary": "MISS attempt0 dry0 | 204tok | disc 14868ms + match 12881ms | bonus 0"
+            },
+            {
+              "attempt": 1,
+              "think_tokens": 223,
+              "discover_elapsed_ms": 13636,
+              "match_elapsed_ms": 6036,
+              "discover_input_tokens": 978,
+              "discover_output_tokens": 790,
+              "match_input_tokens": 2087,
+              "match_output_tokens": 266,
+              "claude_output": "[시도] n=14(짝수)일 때 g(14)=5가 되려면 양의 해와 영의 해가 몇 개인지 파악\n\n[계산]\nn=14(짝수)이므로 f(t)=14의 각 해 t에 대해:\n- t>0이면 x^14=t의 실근 2개 기여\n- t=0이면 x^14=0의 실근 1개 기여\n- t<0이면 실근 0개 기여\n\n양의 해의 수를 p, t=0인 해의 수를 q(=0 또는 1)라 하면:\n\n$$2p + q = 5$$\n\n5는 홀수이고 2p는 짝수이므로 → q=1 (t=0이 반드시 해)이어야 하고, p=2\n\n[결론] g(14)=5가 되려면 **f(0)=14**이어야 하고(t=0이 해), 추가로 f(t)=14의 양의 실수 해가 정확히 2개 존재해야 한다.",
+              "matches": [
+                {
+                  "label": "K",
+                  "score": 0.85,
+                  "reason": "학생의 결론(f(0)=14이어야 하고 양의 실수 해가 정확히 2개)과 K의 내용(t=0 기여 1, t=log_7 5>0 기여 2, 합 3)은 수학적으로 같은 맥락이나, 학생은 일반적 조건을 논하고 K는 구체적 해를 다루므로 부분적 일치"
+                },
+                {
+                  "label": "L",
+                  "score": 0.7,
+                  "reason": "학생의 결론(양의 실수 해가 정확히 2개 존재해야 한다)과 L의 내용(우측 기여 2가 필요, x>1에서 양수 해 1개가 기여 2를 만든다)은 수학적으로 연결되는 결론"
+                }
+              ],
+              "eval_summary": "MISS attempt1 dry1 | 223tok | disc 13636ms + match 6036ms | bonus 2"
+            },
+            {
+              "attempt": 2,
+              "think_tokens": 294,
+              "discover_elapsed_ms": 19753,
+              "match_elapsed_ms": 13156,
+              "discover_input_tokens": 1113,
+              "discover_output_tokens": 1301,
+              "match_input_tokens": 2086,
+              "match_output_tokens": 750,
+              "claude_output": "[시도] 우측($t>1$)에서 $f(t)=14$가 정확히 1개의 해를 가지는 조건을 구한다\n\n[계산]\n$t>1$일 때 $f(t)=k(t-1)(t-a)$이고 $k<0$이므로,\n\n- $1 < t < a$ 구간에서 $(t-1)>0$, $(t-a)<0$ → $f(t)>0$ (양수)\n- $t>a$에서 $f(t)<0$\n\n즉 $f(t)=14>0$의 해는 오직 $(1,a)$ 안에만 존재할 수 있다.\n\n이 구간에서 $f(t)$는 꼭짓점 $t=\\frac{1+a}{2}$에서 최댓값을 갖고:\n\n$$f\\!\\left(\\frac{1+a}{2}\\right)=k\\cdot\\frac{a-1}{2}\\cdot\\left(-\\frac{a-1}{2}\\right)=-\\frac{k(a-1)^2}{4}$$\n\n\"정확히 1개\"이려면 **최댓값 $= 14$** 이어야 하므로:\n\n$$-\\frac{k(a-1)^2}{4}=14 \\implies k(a-1)^2=-56$$\n\n[결론] $x>1$ 구간에서 $f(t)=14$의 해가 정확히 1개(최댓",
+              "matches": [
+                {
+                  "label": "G",
+                  "score": 0.75,
+                  "reason": "regex"
+                },
+                {
+                  "label": "M",
+                  "score": 0.85,
+                  "reason": "regex"
+                },
+                {
+                  "label": "I",
+                  "score": 0.7,
+                  "reason": "regex"
+                }
+              ],
+              "eval_summary": "MISS attempt2 dry1 | 294tok | disc 19753ms + match 13156ms | bonus 3"
+            },
+            {
+              "attempt": 3,
+              "think_tokens": 181,
+              "discover_elapsed_ms": 7733,
+              "match_elapsed_ms": 2591,
+              "discover_input_tokens": 1286,
+              "discover_output_tokens": 462,
+              "match_input_tokens": 1550,
+              "match_output_tokens": 74,
+              "claude_output": "[시도] 6단계의 꼭짓점 조건 $-9k=14$에서 $k$의 값을 구한다\n\n[계산]\n$$-9k = 14$$\n$$k = -\\frac{14}{9}$$\n\n[결론] $k = -\\dfrac{14}{9}$이다.",
+              "matches": [
+                {
+                  "label": "N",
+                  "score": 1,
+                  "reason": "학생의 결론 k = -14/9가 후보 N의 결론 -9k=14에서 k=-14/9와 완전히 일치한다"
+                }
+              ],
+              "eval_summary": "MISS attempt3 dry1 | 181tok | disc 7733ms + match 2591ms | bonus 1"
+            },
+            {
+              "attempt": 4,
+              "think_tokens": 269,
+              "discover_elapsed_ms": 17214,
+              "match_elapsed_ms": 4909,
+              "discover_input_tokens": 1313,
+              "discover_output_tokens": 1089,
+              "match_input_tokens": 1790,
+              "match_output_tokens": 327,
+              "claude_output": "[시도] 내가 해볼 것: $a=7$임을 확인하고, $x \\le 1$ 구간에서 $f(x) = |7^{x+1} - 21|$의 $x=1$에서의 값을 구한다\n\n[계산]\n$$f(1) = |7^{1+1} - 3 \\cdot 7| = |49 - 21| = 28$$\n\n또한 $7^{x+1} = 21$이 되는 점은 $x+1 = \\log_7 21$, 즉 $x = \\log_7 3$이고,  \n$\\log_7 3 < 1$ ($\\because 7^1 = 7 > 3$)이므로 이 영점은 $x \\le 1$ 구간 안에 존재한다.\n\n[결론] $a=7$일 때 왼쪽 구간 $f(x)=|7^{x+1}-21|$에서 $f(1)=28$이고, $x=\\log_7 3$에서 영점(최솟값 0)을 가지며 $x \\to -\\infty$일수록 $f(x) \\to 21$에 수렴하는 형태임을 확인했다.",
+              "matches": [
+                {
+                  "label": "C",
+                  "score": 0.9,
+                  "reason": "학생이 x=log₇3을 기준으로 구간을 나누어 f(x)=21-7^{x+1}과 f(x)=7^{x+1}-21임을 확인했으며, 이는 C의 핵심 결론과 일치한다"
+                },
+                {
+                  "label": "D",
+                  "score": 0.85,
+                  "reason": "학생이 x→-∞일 때 f(x)→21에 수렴하고 x=log₇3에서 영점(최솟값 0)을 가진다고 명시했으며, 이는 D의 결론과 일치한다"
+                },
+                {
+                  "label": "F",
+                  "score": 0.95,
+                  "reason": "학생이 f(1)=|49-21|=28임을 계산하고, log₇3≤x≤1 구간에서 f(x)=7^{x+1}-21이며 f(log₇3)=0, f(1)=28임을 확인했으며, 이는 F의 핵심 결론과 완전히 일치한다"
+                }
+              ],
+              "eval_summary": "MISS attempt4 dry1 | 269tok | disc 17214ms + match 4909ms | bonus 3"
+            },
+            {
+              "attempt": 5,
+              "think_tokens": 336,
+              "discover_elapsed_ms": 20588,
+              "match_elapsed_ms": 4330,
+              "discover_input_tokens": 1573,
+              "discover_output_tokens": 1376,
+              "match_input_tokens": 1586,
+              "match_output_tokens": 196,
+              "claude_output": "[시도] 내가 해볼 것: $a=7$, $k=-\\dfrac{14}{9}$이 확정되었으니, $x>1$ 구간에서 $f$의 최댓값을 확인한다.\n\n[계산]\n$x>1$에서 $f(x)=-\\dfrac{14}{9}(x-1)(x-7)$이고, 꼭짓점은 $x=\\dfrac{1+7}{2}=4$이다.\n\n$$f(4)=-\\dfrac{14}{9}(4-1)(4-7)=-\\dfrac{14}{9}\\cdot3\\cdot(-3)=\\dfrac{14\\cdot9}{9}=14$$\n\n따라서 $x>1$ 구간에서 $f$의 **최댓값은 14**이고, $x\\to1^+$ 또는 $x\\to\\infty$일 때 $f\\to0$ (또는 $-\\infty$).\n\n(참고로 $f(x)>0$인 구간은 $1<x<7$이고, $x>7$이면 $f<0$.)\n\n[결론] $x>1$ 구간에서 $f(x)$의 최댓값은 $14$이므로, $f(t)=c$가 $t>1$에서 해를 갖려면 $0<c\\leq14$이어야 하고, $c>14$이면 $t>1$인 해는 없다.",
+              "matches": [
+                {
+                  "label": "H",
+                  "score": 1,
+                  "reason": "학생이 k(x-1)(x-7)의 대칭축이 x=(1+7)/2=4임을 명시적으로 계산함"
+                },
+                {
+                  "label": "O",
+                  "score": 0.7,
+                  "reason": "학생이 x>1 구간에서 최댓값 14, 0<c≤14일 때 해 존재, c>14이면 해 없음을 언급하여 O의 우측 해 개수 분류의 핵심 임계값 c=14를 도출함. 단 전체 해 개수 분류는 서술하지 않음"
+                }
+              ],
+              "eval_summary": "MISS attempt5 dry1 | 336tok | disc 20588ms + match 4330ms | bonus 2"
+            },
+            {
+              "attempt": 6,
+              "think_tokens": 132,
+              "discover_elapsed_ms": 8907,
+              "match_elapsed_ms": 3806,
+              "discover_input_tokens": 1784,
+              "discover_output_tokens": 501,
+              "match_input_tokens": 1224,
+              "match_output_tokens": 214,
+              "claude_output": "[시도] $n=5$(홀수)일 때 $g(5)$를 구하기\n\n[계산]\n$n=5$는 홀수이므로 $x^5=t$는 모든 실수 $t$에 대해 정확히 **1개**의 실근을 가진다.\n\n따라서 $g(5)$ = $f(t)=5$의 서로 다른 실근의 개수와 같다.\n\n단서 13번에서: $0 < 5 < 14$이면 $f(t)=c$의 해는 4개 (좌측 음수 $t$ 1개, 좌측 양수 $t$ 1개, 우측 양수 $t$ 2개)\n\n각 $t$마다 $x^5=t$의 실근은 1개씩이므로 $g(5)=4$\n\n[결론] $g(5)=4$",
+              "matches": [
+                {
+                  "label": "A",
+                  "score": 0.9,
+                  "reason": "n이 홀수일 때 x^n=t의 실근이 정확히 1개라는 핵심 명제를 학생이 명시적으로 서술함"
+                },
+                {
+                  "label": "B",
+                  "score": 0.8,
+                  "reason": "n 홀수일 때 g(n)이 f(t)=n의 해 개수와 같다는 결론을 학생이 동일하게 적용함"
+                },
+                {
+                  "label": "P",
+                  "score": 1,
+                  "reason": "g(5)=4, n=5 홀수, c=5∈(0,14)이므로 해 4개라는 결론이 완전히 일치함"
+                }
+              ],
+              "eval_summary": "FOUND H1 | 132tok | disc 8907ms + match 3806ms | bonus 2"
+            }
+          ]
+        },
+        {
+          "note_index": 4,
+          "note_id": "note4",
+          "neuron": "전략10",
+          "neuron_type": "전략",
+          "note_text": "$n$ 짝수일 때 $g(n)=\\sum_{f(t)=n}(\\text{$t$의 부호별 기여})$이고, $n$ 홀수일 때 $g(n)=(f(t)=n\\text{의 해 개수})$이다",
+          "from": [
+            "note2",
+            "note3"
+          ],
+          "hint_level": 0,
+          "is_bonus": true,
+          "structural_difficulty": 0.25,
+          "discovered_in_target": "note3",
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": "",
+          "partial_history": [],
+          "attempts": []
+        },
+        {
+          "note_index": 5,
+          "note_id": "note7",
+          "neuron": "사실18",
+          "neuron_type": "사실",
+          "note_text": "$f(0)=|a^{0+1}-3a|=|a-3a|=|-2a|=2a$이다",
+          "from": [
+            "note6",
+            "단서A"
+          ],
+          "hint_level": 0,
+          "is_bonus": true,
+          "structural_difficulty": 0.12,
+          "discovered_in_target": "note1",
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": "",
+          "partial_history": [],
+          "attempts": []
+        },
+        {
+          "note_index": 6,
+          "note_id": "note8",
+          "neuron": "전략25",
+          "neuron_type": "전략",
+          "note_text": "$2a=14$에서 $a=7$이다",
+          "from": [
+            "note7",
+            "단서C"
+          ],
+          "hint_level": 0,
+          "is_bonus": true,
+          "structural_difficulty": 0.25,
+          "discovered_in_target": "note1",
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": "",
+          "partial_history": [],
+          "attempts": []
+        },
+        {
+          "note_index": 7,
+          "note_id": "note9",
+          "neuron": "전략6",
+          "neuron_type": "전략",
+          "note_text": "$|7^{x+1}-21|$에서 $7^{x+1}=21$인 점 $x=\\log_7 3$ 기준으로 $x<\\log_7 3$이면 $f(x)=21-7^{x+1}$, $\\log_7 3\\le x\\le 1$이면 $f(x)=7^{x+1}-21$이다",
+          "from": [
+            "단서A",
+            "note8"
+          ],
+          "hint_level": 0,
+          "is_bonus": true,
+          "structural_difficulty": 0.25,
+          "discovered_in_target": "note3",
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": "",
+          "partial_history": [],
+          "attempts": []
+        },
+        {
+          "note_index": 8,
+          "note_id": "note14",
+          "neuron": "사실46",
+          "neuron_type": "사실",
+          "note_text": "$x<\\log_7 3$에서 $f=21-7^{x+1}$이고 $x\\to-\\infty$일 때 $f\\to 21$이고 $f(\\log_7 3)=0$이다",
+          "from": [
+            "note13",
+            "note9"
+          ],
+          "hint_level": 0,
+          "is_bonus": true,
+          "structural_difficulty": 0.12,
+          "discovered_in_target": "note3",
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": "",
+          "partial_history": [],
+          "attempts": []
+        },
+        {
+          "note_index": 9,
+          "note_id": "note15",
+          "neuron": "사실19",
+          "neuron_type": "사실",
+          "note_text": "$x<\\log_7 3$에서 $f$는 순감소이고 치역은 $(0,21)$이다",
+          "from": [
+            "note14"
+          ],
+          "hint_level": 4,
+          "is_bonus": false,
+          "structural_difficulty": 0.12,
+          "discovered_in_target": "note15",
+          "miss_type": "absorbed",
+          "absorbed_in": "note3/시도4",
+          "absorb_reason": "x<log_7(3)에서 7^(x+1)<21이므로 f=21-7^(x+1)이 순감소이고 x→-∞일 때 f→21, x=log_7(3)에서 f=0임을 명시하여 치역 (0,21)과 순감소를 포함함",
+          "partial_history": [],
+          "attempts": [
+            {
+              "attempt": 0,
+              "think_tokens": 345,
+              "discover_elapsed_ms": 21912,
+              "match_elapsed_ms": 3630,
+              "discover_input_tokens": 1257,
+              "discover_output_tokens": 1455,
+              "match_input_tokens": 1080,
+              "match_output_tokens": 173,
+              "claude_output": "[시도] $n=14$(짝수)일 때 $g(14)=5$로부터 $f(t)=14$의 양의 실근 개수를 구하기\n\n[계산]\n$x^{14} \\ge 0$이므로 $t = x^{14} \\ge 0$만 고려한다.\n\n$$g(14) = \\underbrace{1}_{t=0 \\text{ 기여(}f(0)=14\\text{)}} + 2 \\times (\\text{$t>0$에서 $f(t)=14$인 해의 수})$$\n\n$g(14)=5$이므로:\n$$5 = 1 + 2 \\times (\\text{$t>0$에서 $f(t)=14$인 해의 수})$$\n$$\\Rightarrow \\text{$t>0$에서 $f(t)=14$인 해의 수} = 2$$\n\n[결론] $t>0$에서 $f(t)=14$를 만족하는 해가 정확히 **2개** 존재해야 한다.",
+              "matches": [
+                {
+                  "label": "B",
+                  "score": 0.72,
+                  "reason": "학생의 결론(t>0에서 f(t)=14의 해가 2개)과 노트 B의 결론(t=0과 t=log_7 5>0으로 해 2개)이 수학적으로 일치한다. 다만 학생은 t>0에서 2개라고 했고, 노트 B는 t=0 포함 총 2개(t>0에서는 1개)로 약간 차이가 있어 완전일치는 아니다."
+                }
+              ],
+              "eval_summary": "MISS attempt0 dry0 | 345tok | disc 21912ms + match 3630ms | bonus 1"
+            },
+            {
+              "attempt": 1,
+              "think_tokens": 396,
+              "discover_elapsed_ms": 20212,
+              "match_elapsed_ms": 3048,
+              "discover_input_tokens": 1362,
+              "discover_output_tokens": 1198,
+              "match_input_tokens": 1081,
+              "match_output_tokens": 93,
+              "claude_output": "[시도] $t>1$ 구간에서 $f(t)=14$의 해 개수를 $g(14)=5$ 조건으로 결정하기\n\n[계산]\n$t \\leq 1$에서 $f(t)=14$의 해: $t=0$ (기여: 1개), $t=\\log_7 5 > 0$ (기여: 2개) → 합 3개\n\n$g(14)=5$이므로 $t>1$에서 추가로 **2개**가 필요 → 양의 $t$가 **정확히 1개** 존재해야 함\n\n$t>1$에서 $f(t)=k(t-1)(t-7)$는 $k<0$인 아래로 볼록 포물선, 꼭짓점은 $t=4$\n\n$$f(4)=k(4-1)(4-7)=k\\cdot3\\cdot(-3)=-9k$$\n\n$f(t)=14$가 $t>1$에서 정확히 1개의 해를 가지려면 꼭짓점값이 14와 같아야 함:\n\n$$-9k=14 \\implies k=-\\dfrac{14}{9}$$\n\n[결론] $k(t-1)(t-7)=14$가 $t>1$에서 정확히 1개의 해를 가지는 조건으로 $k = -\\dfrac{14}{9}$이다.",
+              "matches": [
+                {
+                  "label": "H",
+                  "score": 0.85,
+                  "reason": "학생의 결론 k=-14/9가 H의 최종 합산식에서 k값으로 직접 사용되고 있으며, 학생의 핵심 결론이 H에 포함되어 있음"
+                }
+              ],
+              "eval_summary": "MISS attempt1 dry0 | 396tok | disc 20212ms + match 3048ms | bonus 1"
+            },
+            {
+              "attempt": 2,
+              "think_tokens": 455,
+              "discover_elapsed_ms": 23611,
+              "match_elapsed_ms": 1600,
+              "discover_input_tokens": 1427,
+              "discover_output_tokens": 1394,
+              "match_input_tokens": 1031,
+              "match_output_tokens": 8,
+              "claude_output": "[시도] 내가 해볼 것: $g(14)=5$ 조건으로부터 $k$ 값을 결정한다\n\n[계산]\n$n=14$ (짝수)이므로 $g(14) = \\sum_{f(t)=14} (\\text{각 }t\\text{에 대한 근의 수})$\n\n단계 9에서 $x \\le 1$ 구간의 해: $t=0$ (기여 1개), $t=\\log_7 5 > 0$ (기여 2개) → 소계 **3개**\n\n$g(14)=5$가 되려면 $x>1$ 구간에서 **2개**가 추가로 필요하다.\n\n$x>1$에서 $f(x)=k(x-1)(x-7)$, $k<0$이므로 위로 볼록 포물선 ($x=4$에서 최댓값 $-9k>0$)\n\n$f(t)=14$의 해가 $x>1$에서 **정확히 1개** (접선 조건) → 그 값은 양수이므로 $x^{14}=t$의 실근 2개 추가\n\n접선 조건: 최댓값 $= 14$\n\n$$-9k = 14 \\implies k = -\\dfrac{14}{9}$$\n\n[결론] $g(14)=5$를 만족하는 $k$의 값은 $k = -\\dfrac{14}{9}$이다.",
+              "matches": [],
+              "eval_summary": "MISS attempt2 dry0 | 455tok | disc 23611ms + match 1600ms | bonus 0"
+            },
+            {
+              "attempt": 3,
+              "think_tokens": 179,
+              "discover_elapsed_ms": 12820,
+              "match_elapsed_ms": 4847,
+              "discover_input_tokens": 1522,
+              "discover_output_tokens": 686,
+              "match_input_tokens": 831,
+              "match_output_tokens": 311,
+              "claude_output": "[시도] 지금까지 구한 모든 값을 종합하여 최종 답을 확인한다.\n\n[계산]\n단계 10에서 이미 계산된 결과:\n$$k + \\sum_{n=1}^{5} g(5n) = -\\frac{14}{9} + (g(5) + g(10) + g(15) + g(20) + g(25))$$\n$$= -\\frac{14}{9} + (4 + 8 + 2 + 2 + 1) = -\\frac{14}{9} + 17 = \\frac{-14 + 153}{9} = \\frac{139}{9}$$\n\n[결론] $k+\\displaystyle\\sum_{n=1}^{5}g(5n) = \\dfrac{139}{9}$이다.",
+              "matches": [
+                {
+                  "label": "C",
+                  "score": 1,
+                  "reason": "학생의 서술에서 g(10)=8로 명시적으로 계산됨 - 완전 일치"
+                },
+                {
+                  "label": "D",
+                  "score": 1,
+                  "reason": "학생의 서술에서 g(15)=2로 명시적으로 계산됨 - 완전 일치"
+                },
+                {
+                  "label": "E",
+                  "score": 0.8,
+                  "reason": "학생의 서술에서 g(20)=2로 계산됨. E는 해 2개까지만 언급하고 값 2는 F에서 확정되나 g(20)=2는 포함됨"
+                },
+                {
+                  "label": "F",
+                  "score": 1,
+                  "reason": "학생의 서술에서 g(20)=2로 명시됨 - F의 결론과 완전 일치"
+                },
+                {
+                  "label": "G",
+                  "score": 1,
+                  "reason": "학생의 서술에서 g(25)=1로 명시적으로 계산됨 - 완전 일치"
+                }
+              ],
+              "eval_summary": "MISS attempt3 dry1 | 179tok | disc 12820ms + match 4847ms | bonus 5"
+            },
+            {
+              "attempt": 4,
+              "think_tokens": 327,
+              "discover_elapsed_ms": 22952,
+              "match_elapsed_ms": 822,
+              "discover_input_tokens": 1811,
+              "discover_output_tokens": 1406,
+              "match_input_tokens": 552,
+              "match_output_tokens": 8,
+              "claude_output": "[시도] 내가 해볼 것: 지금까지 구한 값들을 모두 합산하여 최종 답을 계산한다.\n\n[계산]\n$$k = -\\frac{14}{9}, \\quad g(5)=4,\\ g(10)=8,\\ g(15)=2,\\ g(20)=2,\\ g(25)=1$$\n\n$$\\sum_{n=1}^{5}g(5n) = 4+8+2+2+1 = 17$$\n\n$$k + \\sum_{n=1}^{5}g(5n) = -\\frac{14}{9} + 17 = \\frac{-14+153}{9} = \\frac{139}{9}$$\n\n[결론] $k+\\displaystyle\\sum_{n=1}^{5}g(5n) = \\dfrac{139}{9}$이다.",
+              "matches": [],
+              "eval_summary": "MISS attempt4 dry1 | 327tok | disc 22952ms + match 822ms | bonus 0"
+            },
+            {
+              "attempt": 5,
+              "think_tokens": 149,
+              "discover_elapsed_ms": 9943,
+              "match_elapsed_ms": 809,
+              "discover_input_tokens": 1768,
+              "discover_output_tokens": 611,
+              "match_input_tokens": 488,
+              "match_output_tokens": 8,
+              "claude_output": "[시도] g(5), g(10), g(15), g(20), g(25)를 모두 합산하기\n\n[계산]\n지금까지 구한 값들을 정리하면:\n- $g(5)=4$, $g(10)=8$, $g(15)=2$, $g(20)=2$ (note 14), $g(25)=1$\n\n$$\\sum_{n=1}^{5}g(5n) = 4+8+2+2+1 = 17$$\n\n[결론] $\\displaystyle\\sum_{n=1}^{5}g(5n)=17$이다.",
+              "matches": [],
+              "eval_summary": "MISS attempt5 dry2 | 149tok | disc 9943ms + match 809ms | bonus 0"
+            },
+            {
+              "attempt": 6,
+              "think_tokens": 491,
+              "discover_elapsed_ms": 26619,
+              "match_elapsed_ms": 1531,
+              "discover_input_tokens": 1766,
+              "discover_output_tokens": 1642,
+              "match_input_tokens": 584,
+              "match_output_tokens": 8,
+              "claude_output": "[시도] 사실19(k = -14/9)를 이용해 g(5)를 구하기\n\n[계산]\nk = -14/9이면 t>1 구간에서 f(t) = k(t-1)(t-7)의 최댓값은 -9k = 14이다.\n\nc = 5 < 14이므로 k(t-1)(t-7) = 5는 t>1에서 **2개**의 양수 해를 갖는다.\n\nn = 5는 **홀수**이므로 각 t에 대해 x^5 = t의 실근은 정확히 1개 → 기여 2개\n\nx ≤ 1 구간에서 f(t) = 5의 해(단계9 구조 동일): **2개** → 기여 2개\n\n총 g(5) = 2 + 2 = **4**\n\n[결론] g(5) = 4이다.",
+              "matches": [],
+              "eval_summary": "MISS attempt6 dry3 | 491tok | disc 26619ms + match 1531ms | bonus 0"
+            }
+          ]
+        },
+        {
+          "note_index": 10,
+          "note_id": "note17",
+          "neuron": "사실19",
+          "neuron_type": "사실",
+          "note_text": "$\\log_7 3\\le x\\le 1$에서 $f=7^{x+1}-21$이고 $f(\\log_7 3)=0$, $f(1)=49-21=28$이며 치역은 $[0,28]$이다",
+          "from": [
+            "note16",
+            "note9"
+          ],
+          "hint_level": 0,
+          "is_bonus": true,
+          "structural_difficulty": 0.12,
+          "discovered_in_target": "note3",
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": "",
+          "partial_history": [],
+          "attempts": []
+        },
+        {
+          "note_index": 11,
+          "note_id": "note18",
+          "neuron": "사실35",
+          "neuron_type": "사실",
+          "note_text": "$x>1$에서 $f(x)=k(x-1)(x-7)$이고 $k<0$이므로 $1<x<7$에서 $f>0$이고 $x>7$에서 $f<0$이다",
+          "from": [
+            "단서A",
+            "note8"
+          ],
+          "hint_level": 0,
+          "is_bonus": true,
+          "structural_difficulty": 0.12,
+          "discovered_in_target": "note3",
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": "",
+          "partial_history": [],
+          "attempts": []
+        },
+        {
+          "note_index": 12,
+          "note_id": "note19",
+          "neuron": "사실71",
+          "neuron_type": "사실",
+          "note_text": "$k(x-1)(x-7)$의 대칭축은 $x=(1+7)/2=4$이다",
+          "from": [
+            "note18"
+          ],
+          "hint_level": 0,
+          "is_bonus": true,
+          "structural_difficulty": 0.12,
+          "discovered_in_target": "note3",
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": "",
+          "partial_history": [],
+          "attempts": []
+        },
+        {
+          "note_index": 13,
+          "note_id": "note20",
+          "neuron": "전략25",
+          "neuron_type": "전략",
+          "note_text": "$f(4)=k(4-1)(4-7)=k\\cdot3\\cdot(-3)=-9k$이다",
+          "from": [
+            "note19"
+          ],
+          "hint_level": 0,
+          "is_bonus": true,
+          "structural_difficulty": 0.25,
+          "discovered_in_target": "note3",
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": "",
+          "partial_history": [],
+          "attempts": []
+        },
+        {
+          "note_index": 14,
+          "note_id": "note21",
+          "neuron": "전략5",
+          "neuron_type": "전략",
+          "note_text": "$x\\le 1$에서 $f(t)=14$의 해: $21-7^{x+1}=14$에서 $x=0$, $7^{x+1}-21=14$에서 $x=\\log_7 5$이다. 해는 $t=0$과 $t=\\log_7 5>0$으로 2개이다",
+          "from": [
+            "note15",
+            "note17",
+            "note9"
+          ],
+          "hint_level": 0,
+          "is_bonus": true,
+          "structural_difficulty": 0.25,
+          "discovered_in_target": "note15",
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": "",
+          "partial_history": [],
+          "attempts": []
+        },
+        {
+          "note_index": 15,
+          "note_id": "note22",
+          "neuron": "사실4",
+          "neuron_type": "사실",
+          "note_text": "$n=14$ 짝수이므로 $t=0$의 기여는 1이고, $t=\\log_7 5>0$의 기여는 2이다. 좌측 기여 합은 3이다",
+          "from": [
+            "note21"
+          ],
+          "hint_level": 0,
+          "is_bonus": true,
+          "structural_difficulty": 0.12,
+          "discovered_in_target": "note3",
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": "",
+          "partial_history": [],
+          "attempts": []
+        },
+        {
+          "note_index": 16,
+          "note_id": "note23",
+          "neuron": "전략20",
+          "neuron_type": "전략",
+          "note_text": "$g(14)=5$에서 좌측 기여 3을 빼면 우측 기여는 2여야 한다. $x>1$에서 양수 해 1개가 기여 2를 만든다",
+          "from": [
+            "note22",
+            "단서C"
+          ],
+          "hint_level": 0,
+          "is_bonus": true,
+          "structural_difficulty": 0.25,
+          "discovered_in_target": "note3",
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": "",
+          "partial_history": [],
+          "attempts": []
+        },
+        {
+          "note_index": 17,
+          "note_id": "note24",
+          "neuron": "사실9",
+          "neuron_type": "사실",
+          "note_text": "$k(x-1)(x-7)=14$가 $x>1$에서 정확히 1개 해를 가지려면 꼭짓점값 $-9k=14$이어야 한다",
+          "from": [
+            "note23",
+            "note20"
+          ],
+          "hint_level": 0,
+          "is_bonus": true,
+          "structural_difficulty": 0.12,
+          "discovered_in_target": "note3",
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": "",
+          "partial_history": [],
+          "attempts": []
+        },
+        {
+          "note_index": 18,
+          "note_id": "note25",
+          "neuron": "전략25",
+          "neuron_type": "전략",
+          "note_text": "$-9k=14$에서 $k=-\\dfrac{14}{9}$이다",
+          "from": [
+            "note24"
+          ],
+          "hint_level": 0,
+          "is_bonus": true,
+          "structural_difficulty": 0.25,
+          "discovered_in_target": "note3",
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": "",
+          "partial_history": [],
+          "attempts": []
+        },
+        {
+          "note_index": 19,
+          "note_id": "note26",
+          "neuron": "사실44",
+          "neuron_type": "사실",
+          "note_text": "$f(t)=c$의 전체 해 개수: $c<0$→우측 해 1개(음수), $c=0$→2개($\\log_7 3$과 1), $0<c<14$→4개(좌측2+우측2, 모두 양수), $c=14$→3개(좌측2+우측1), $14<c<21$→2개(좌측 음수1+좌측 양수1), $c=21$→1개(좌측 양수), $21<c\\le28$→1개(좌측 양수), $c>28$→0개이다",
+          "from": [
+            "note15",
+            "note17",
+            "note18",
+            "note20",
+            "note25"
+          ],
+          "hint_level": 0,
+          "is_bonus": true,
+          "structural_difficulty": 0.12,
+          "discovered_in_target": "note3",
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": "",
+          "partial_history": [],
+          "attempts": []
+        },
+        {
+          "note_index": 20,
+          "note_id": "note27",
+          "neuron": "전략17",
+          "neuron_type": "전략",
+          "note_text": "$g(5)$: $n=5$ 홀수, $c=5\\in(0,14)$이므로 해 4개, $g(5)=4$이다",
+          "from": [
+            "note26",
+            "note4"
+          ],
+          "hint_level": 0,
+          "is_bonus": true,
+          "structural_difficulty": 0.25,
+          "discovered_in_target": "note3",
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": "",
+          "partial_history": [],
+          "attempts": []
+        },
+        {
+          "note_index": 21,
+          "note_id": "note28",
+          "neuron": "전략17",
+          "neuron_type": "전략",
+          "note_text": "$g(10)$: $n=10$ 짝수, $c=10\\in(0,14)$이므로 해 4개이고 모두 양수이다. 기여 $2\\times4=8$, $g(10)=8$이다",
+          "from": [
+            "note26",
+            "note4"
+          ],
+          "hint_level": 0,
+          "is_bonus": true,
+          "structural_difficulty": 0.25,
+          "discovered_in_target": "note15",
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": "",
+          "partial_history": [],
+          "attempts": []
+        },
+        {
+          "note_index": 22,
+          "note_id": "note30",
+          "neuron": "전략17",
+          "neuron_type": "전략",
+          "note_text": "$g(15)$: $n=15$ 홀수, $c=15\\in(14,21)$이므로 해 2개, $g(15)=2$이다",
+          "from": [
+            "note26",
+            "note4"
+          ],
+          "hint_level": 0,
+          "is_bonus": true,
+          "structural_difficulty": 0.25,
+          "discovered_in_target": "note15",
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": "",
+          "partial_history": [],
+          "attempts": []
+        },
+        {
+          "note_index": 23,
+          "note_id": "note31",
+          "neuron": "전략17",
+          "neuron_type": "전략",
+          "note_text": "$g(20)$: $n=20$ 짝수, $c=20\\in(14,21)$이므로 해 2개이다",
+          "from": [
+            "note26",
+            "note4"
+          ],
+          "hint_level": 0,
+          "is_bonus": true,
+          "structural_difficulty": 0.25,
+          "discovered_in_target": "note15",
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": "",
+          "partial_history": [],
+          "attempts": []
+        },
+        {
+          "note_index": 24,
+          "note_id": "note33",
+          "neuron": "사실4",
+          "neuron_type": "사실",
+          "note_text": "$n=20$ 짝수이므로 $t=-1<0$의 기여는 0이고, $t=\\log_7 41-1>0$의 기여는 2이다. $g(20)=0+2=2$이다",
+          "from": [
+            "note32"
+          ],
+          "hint_level": 0,
+          "is_bonus": true,
+          "structural_difficulty": 0.12,
+          "discovered_in_target": "note15",
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": "",
+          "partial_history": [],
+          "attempts": []
+        },
+        {
+          "note_index": 25,
+          "note_id": "note34",
+          "neuron": "전략17",
+          "neuron_type": "전략",
+          "note_text": "$g(25)$: $n=25$ 홀수, $c=25\\in(21,28]$이므로 해 1개, $g(25)=1$이다",
+          "from": [
+            "note26",
+            "note4"
+          ],
+          "hint_level": 0,
+          "is_bonus": true,
+          "structural_difficulty": 0.25,
+          "discovered_in_target": "note15",
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": "",
+          "partial_history": [],
+          "attempts": []
+        },
+        {
+          "note_index": 26,
+          "note_id": "END",
+          "neuron": "전략25",
+          "neuron_type": "전략",
+          "note_text": "$k+\\sum_{n=1}^{5}g(5n)=-\\dfrac{14}{9}+(4+8+2+2+1)=-\\dfrac{14}{9}+17=\\dfrac{139}{9}$이다",
+          "from": [
+            "note25",
+            "note27",
+            "note28",
+            "note30",
+            "note33",
+            "note34"
+          ],
+          "hint_level": 0,
+          "is_bonus": true,
+          "structural_difficulty": 0.25,
+          "discovered_in_target": "note15",
+          "miss_type": null,
+          "absorbed_in": null,
+          "absorb_reason": "",
+          "partial_history": [],
+          "attempts": []
+        }
+      ],
+      "_debug": "v7-split"
+    },
     "folders": [],
     "history": [],
     "recovery_warnings": [],
