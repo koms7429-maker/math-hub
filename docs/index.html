@@ -133,7 +133,24 @@ document.addEventListener('mousemove',function(ev){document.querySelectorAll('.t
 
 async function load(){ghTk=localStorage.getItem('gh_token')||'';var RAW='https://raw.githubusercontent.com/'+OW+'/'+RP+'/'+BR+'/';var api=function(u){return'https://api.github.com/repos/'+OW+'/'+RP+'/contents/'+u+'?ref='+BR};var hd=ghTk?{headers:{'Authorization':'token '+ghTk}}:{};try{document.getElementById('meta').textContent='loading...';var all=await Promise.all([fetch(RAW+'docs/bookshelf/_index.json'),fetch(RAW+'해체분석/skeleton/neuron-list.md'),fetch(RAW+'해체분석/DNA/dna-list.md'),fetch(RAW+'docs/neuron_adjacency.json')]);if(all[0].ok){indexData=await all[0].json();var problems=indexData.problems||[];problems.forEach(function(pi){probs.push({problem_id:pi.problem_id,_filename:pi.filename,_stub:true})})}if(ghTk){try{var idxR=await fetch(api('docs/bookshelf/_index.json'),hd);if(idxR.ok){var idxJ=await idxR.json();indexSha=idxJ.sha}}catch(e){}}if(all[1].ok){var t=await all[1].text();t.split('\n').forEach(function(l){var n=pNL(l);if(n){nMap[n.id]={id:n.id,statement:n.statement};nAll.push({id:n.id,statement:n.statement,type:nTy(n.id)})}})}if(all[2].ok){var t3=await all[2].text();t3.split('\n').forEach(function(l){var d=pDL(l);if(d)dnaMap[d.id]=d})}if(all[3]&&all[3].ok){try{adjData=await all[3].json()}catch(e){adjData=null}}}catch(e){console.error(e)}document.getElementById('meta').textContent=probs.length+' problems / '+nAll.length+' neurons / '+Object.keys(dnaMap).length+' DNAs';rVW();rFilter();rList();rTabs()}
 async function loadProblem(pid){var RAW='https://raw.githubusercontent.com/'+OW+'/'+RP+'/'+BR+'/';var p=probs.find(function(x){return x.problem_id===pid});if(!p||!p._stub)return p;var fn=p._filename||pid+'.json';try{document.getElementById('ct').innerHTML='<div class="empty">loading '+pid+'...</div>';var r=await fetch(RAW+'docs/bookshelf/'+fn);if(r.ok){var full=await r.json();var idx=probs.indexOf(p);if(idx>=0){probs[idx]=full;probs[idx]._filename=fn;enrichSolvingFlow(probs[idx]);return probs[idx]}}}catch(e){console.error('load fail:'+pid,e)}return p}
-function enrichSolvingFlow(p){var tp=p.thinking_profile;if(!tp||!tp.notes||!tp.notes.length||p.key_ideas)return;var sk=p.skeleton||[];if(!sk.length)return;var em={},pm={};sk.forEach(function(e){em[e.to]=e});tp.notes.forEach(function(n){pm[n.note_id]=n});var no=sk.map(function(e){return e.to});var kis=[],kset=new Set;no.forEach(function(nid){var n=pm[nid];if(!n)return;var hl=n.hint_level||0;if(hl<1)return;kset.add(nid);kis.push({note_id:nid,neuron:n.neuron||'',hint_level:hl,text:n.note_text||'',from:n.from||[],main:(em[nid]||{}).main!==false})});var phases=[],cs=[];no.forEach(function(nid){var n=pm[nid];if(!n)return;var hl=n.hint_level||0;if(kset.has(nid)){if(cs.length){phases.push({type:'derivation',steps:cs});cs=[]}phases.push({type:'key_idea',note_id:nid,neuron:n.neuron||'',hint_level:hl})}else{cs.push({note_id:nid,neuron:n.neuron||'',main:(em[nid]||{}).main!==false})}});if(cs.length)phases.push({type:'derivation',steps:cs});p.key_ideas=kis;p.solving_flow=phases;var kc=kis.length,kp=[];kis.forEach(function(ki){var idx=no.indexOf(ki.note_id);kp.push(idx>=0?idx/Math.max(no.length-1,1):0)});var ks=kp.length>=2?kp[kp.length-1]-kp[0]:0,kn=kp.length?kp.reduce(function(a,b){return a+b},0)/kp.length:0;p.structure_type=kc===0?{type:'linear',label:'선형',description:'키 아이디어 없이 스텝만으로 풀리는 문제'}:kc===1?{type:'single_gate',label:'단일관문',description:'하나의 핵심 발상이 풀이를 결정하는 문제'}:kn<0.4&&ks<0.3?{type:'front_gate',label:'관문형',description:'초반 핵심 발상을 통과하면 나머지가 쏟아지는 문제'}:kn>0.65&&ks<0.3?{type:'buildup',label:'축적형',description:'계산을 쌓아올린 뒤 후반에 핵심 발상이 필요한 문제'}:ks>0.4||kc>=4?{type:'scattered',label:'산재형',description:'풀이 전반에 걸쳐 여러 핵심 발상이 필요한 문제'}:{type:'mid_gate',label:'중간관문',description:'풀이 중반에 핵심 발상이 집중된 문제'}}
+function enrichSolvingFlow(p){var tp=p.thinking_profile;if(!tp||!tp.notes||!tp.notes.length||p.key_ideas)return;var sk=p.skeleton||[];if(!sk.length)return;var em={},pm={};sk.forEach(function(e){em[e.to]=e});tp.notes.forEach(function(n){pm[n.note_id]=n});var no=sk.map(function(e){return e.to});var kis=[],kset=new Set;no.forEach(function(nid){var n=pm[nid];if(!n)return;var hl=n.hint_level||0;if(hl<1)return;kset.add(nid);kis.push({note_id:nid,neuron:n.neuron||'',hint_level:hl,text:n.note_text||'',from:n.from||[],main:(em[nid]||{}).main!==false})});var phases=[],cs=[];no.forEach(function(nid){var n=pm[nid];if(!n)return;var hl=n.hint_level||0;if(kset.has(nid)){if(cs.length){phases.push({type:'derivation',steps:cs});cs=[]}phases.push({type:'key_idea',note_id:nid,neuron:n.neuron||'',hint_level:hl})}else{cs.push({note_id:nid,neuron:n.neuron||'',main:(em[nid]||{}).main!==false})}});if(cs.length)phases.push({type:'derivation',steps:cs});p.key_ideas=kis;p.solving_flow=phases;var kc=kis.length,kp=[];kis.forEach(function(ki){var idx=no.indexOf(ki.note_id);kp.push(idx>=0?idx/Math.max(no.length-1,1):0)});var ks=kp.length>=2?kp[kp.length-1]-kp[0]:0,kn=kp.length?kp.reduce(function(a,b){return a+b},0)/kp.length:0;p.structure_type=kc===0?{type:'linear',label:'선형',description:'키 아이디어 없이 스텝만으로 풀리는 문제'}:kc===1?{type:'single_gate',label:'단일관문',description:'하나의 핵심 발상이 풀이를 결정하는 문제'}:kn<0.4&&ks<0.3?{type:'front_gate',label:'관문형',description:'초반 핵심 발상을 통과하면 나머지가 쏟아지는 문제'}:kn>0.65&&ks<0.3?{type:'buildup',label:'축적형',description:'계산을 쌓아올린 뒤 후반에 핵심 발상이 필요한 문제'}:ks>0.4||kc>=4?{type:'scattered',label:'산재형',description:'풀이 전반에 걸쳐 여러 핵심 발상이 필요한 문제'}:{type:'mid_gate',label:'중간관문',description:'풀이 중반에 핵심 발상이 집중된 문제'};
+// ═══ Cognitive Steps (TARGET + bonus grouping) ═══
+var mainOnly=no.filter(function(nid){return(em[nid]||{}).main!==false});
+var clusters={};tp.notes.forEach(function(n){var t=n.discovered_in_target||n.note_id;if(!clusters[t])clusters[t]=[];clusters[t].push(n.note_id)});
+var targetOrder=[];mainOnly.forEach(function(nid){var n=pm[nid];if(n&&!n.is_bonus)targetOrder.push(nid)});
+var cogSteps=[],assigned=new Set();
+targetOrder.forEach(function(tid){
+  var members=clusters[tid]||[tid];
+  var stepNotes=[];mainOnly.forEach(function(nid){if(members.indexOf(nid)>=0&&!assigned.has(nid)){stepNotes.push(nid);assigned.add(nid)}});
+  if(!stepNotes.length)return;
+  var tn=pm[tid]||{};
+  cogSteps.push({step_num:cogSteps.length+1,target:tid,hint_level:tn.hint_level||0,neuron:tn.neuron||'',notes:stepNotes,bonus_count:stepNotes.filter(function(n){return(pm[n]||{}).is_bonus}).length})
+});
+p.cognitive_steps=cogSteps;
+var cogKeys=cogSteps.filter(function(s){return s.hint_level>=2});
+p.cognitive_keys=cogKeys;
+var nCog=cogSteps.length,nKey=cogKeys.length;
+p.cognitive_type=nCog<=1?{type:'one_punch',label:'원펀치',color:'#ef5350'}:nKey===0?{type:'linear',label:'선형',color:'#7a7f9a'}:nKey>=3?{type:'multi_gate',label:'다관문',color:'#ffa726'}:cogKeys.every(function(k){return cogSteps.indexOf(k)>=nCog-2})?{type:'late_gate',label:'후반관문',color:'#7F77DD'}:{type:'buildup',label:'축적형',color:'#D85A30'}}
 
 function rVW(){document.getElementById('vwbar').innerHTML=VW.map(function(v,i){return'<button class="vw-btn '+(curV===i?'on':'')+'" onclick="curV='+i+';rList()">'+v+'</button>'}).join('')}
 
@@ -145,7 +162,7 @@ function flClick(fn,ev){if(ev.target.classList.contains('fl-rename'))return;coll
 function rList(){rVW();var q=document.getElementById('sq').value.toLowerCase(),all=applyFilter(probs);var f=q?all.filter(function(p){return(p.problem_id||'').toLowerCase().indexOf(q)>=0||(p.answer||'').indexOf(q)>=0||(p.statement||'').toLowerCase().indexOf(q)>=0}):all;var el=document.getElementById('slist');rBulk();if(curV===0){f.sort(function(a,b){return natCmp(a.problem_id,b.problem_id)});el.innerHTML=f.map(function(p){return piH(p,0)}).join('');focusRename();return}var groups={};f.forEach(function(p){var t=tg(p),keys=[];if(curV===1){keys=splitField(t.source);if(!keys.length)keys=['unknown']}if(curV===2){keys=splitField(t.theme);if(!keys.length)keys=['unknown']}if(curV===3){keys=splitField(t.difficulty);if(!keys.length)keys=['unknown']}if(curV===4){keys=t.custom.length?t.custom:['(none)']}keys.forEach(function(k){if(!groups[k])groups[k]=[];groups[k].push(p)})});if(curV===4){el.innerHTML=renderFolderTree(groups,null,0);focusRename();return}var sk=Object.keys(groups).sort(),html='';sk.forEach(function(k){var key=curV+'_'+k,col=collapsed[key];html+='<div class="fl" data-folder="'+esc(k)+'" onclick="collapsed[\''+key+'\']=!collapsed[\''+key+'\'];rList()" ondragover="event.preventDefault();this.classList.add(\'fl-drop\')" ondragleave="this.classList.remove(\'fl-drop\')" ondrop="dropToFolder(\''+esc(k)+'\',event)">'+(!col?'&#9660; ':'&#9654; ')+k+' ('+groups[k].length+')</div>';if(!col)groups[k].forEach(function(p){html+=piH(p,0)})});el.innerHTML=html;focusRename()}
 function focusRename(){var ri=document.getElementById('rename-input');if(ri){ri.focus();ri.select()}}
 
-function piH(p,depth){var a=sel&&sel.problem_id===p.problem_id,m=multiSel.has(p.problem_id),dr=dragPid===p.problem_id,isCut=clipboard.mode==='cut'&&clipboard.pids.indexOf(p.problem_id)>=0,ind=depth?depth*18:0;if(renaming&&renaming.type==='problem'&&renaming.pid===p.problem_id)return'<div class="pi'+(a?' on':'')+'" style="padding-left:'+(16+ind)+'px"><input type="checkbox" class="cb"><input class="pi-rename" id="rename-input" value="'+p.problem_id+'" data-old="'+esc(p.problem_id)+'" onkeydown="rnKey(event)" onblur="rnCommit()"></div>';return'<div class="pi'+(a?' on':'')+(m?' sel-m':'')+(dr?' dragging':'')+(isCut?' cut-mark':'')+'" data-pid="'+p.problem_id+'" draggable="true" style="padding-left:'+(16+ind)+'px" ondragstart="dStart(\''+esc(p.problem_id)+'\',event)" ondragend="dEnd()" onclick="pClick(\''+esc(p.problem_id)+'\',event)" oncontextmenu="ctxProblem(\''+esc(p.problem_id)+'\',event)"><input type="checkbox" class="cb" '+(m?'checked':'')+' onclick="cbClick(\''+esc(p.problem_id)+'\',event)"><span class="nm">'+p.problem_id+'</span>'+(p.structure_type?'<span class="inf" style="color:'+(({'linear':'#7a7f9a','single_gate':'#1D9E75','front_gate':'#7F77DD','buildup':'#D85A30','scattered':'#BA7517','mid_gate':'#378ADD'})[p.structure_type.type]||'#7a7f9a')+'">'+p.structure_type.label+'</span>':'')+'</div>'}
+function piH(p,depth){var a=sel&&sel.problem_id===p.problem_id,m=multiSel.has(p.problem_id),dr=dragPid===p.problem_id,isCut=clipboard.mode==='cut'&&clipboard.pids.indexOf(p.problem_id)>=0,ind=depth?depth*18:0;if(renaming&&renaming.type==='problem'&&renaming.pid===p.problem_id)return'<div class="pi'+(a?' on':'')+'" style="padding-left:'+(16+ind)+'px"><input type="checkbox" class="cb"><input class="pi-rename" id="rename-input" value="'+p.problem_id+'" data-old="'+esc(p.problem_id)+'" onkeydown="rnKey(event)" onblur="rnCommit()"></div>';return'<div class="pi'+(a?' on':'')+(m?' sel-m':'')+(dr?' dragging':'')+(isCut?' cut-mark':'')+'" data-pid="'+p.problem_id+'" draggable="true" style="padding-left:'+(16+ind)+'px" ondragstart="dStart(\''+esc(p.problem_id)+'\',event)" ondragend="dEnd()" onclick="pClick(\''+esc(p.problem_id)+'\',event)" oncontextmenu="ctxProblem(\''+esc(p.problem_id)+'\',event)"><input type="checkbox" class="cb" '+(m?'checked':'')+' onclick="cbClick(\''+esc(p.problem_id)+'\',event)"><span class="nm">'+p.problem_id+'</span>'+(p.cognitive_type?'<span class="inf" style="color:'+p.cognitive_type.color+'">'+p.cognitive_type.label+'</span>':(p.structure_type?'<span class="inf" style="color:'+(({'linear':'#7a7f9a','single_gate':'#1D9E75','front_gate':'#7F77DD','buildup':'#D85A30','scattered':'#BA7517','mid_gate':'#378ADD'})[p.structure_type.type]||'#7a7f9a')+'">'+p.structure_type.label+'</span>':''))+'</div>'}
 
 function startRename(type,id){renaming={type:type};if(type==='problem')renaming.pid=id;else renaming.name=id;rList()}
 function rnKey(ev){if(ev.key==='Enter'){ev.preventDefault();rnCommit()}if(ev.key==='Escape'){renaming=null;rList()}}
@@ -257,6 +274,103 @@ function rSt(p){
 function rAn(p){
   var h='';
   var tcs={'사실':'#4fc3f7','연산':'#ffd54f','전략':'#ef5350'};
+
+  // ═══ Cognitive Steps View ═══
+  var cogs=p.cognitive_steps;
+  if(cogs&&cogs.length>0){
+    var tp2=p.thinking_profile;var pm2={};if(tp2&&tp2.notes)tp2.notes.forEach(function(n){pm2[n.note_id]=n});
+    var ct=p.cognitive_type||{};
+    var cogKeys=p.cognitive_keys||[];
+    var hColors={0:'#5DCAA5',1:'#a5d6a7',2:'#ffa726',3:'#ef5350',4:'#ef5350'};
+    var hBgs={0:'rgba(93,202,165,.12)',1:'rgba(165,214,167,.12)',2:'rgba(255,167,38,.12)',3:'rgba(239,83,80,.12)',4:'rgba(239,83,80,.12)'};
+    var hLabels={0:'스스로',1:'재확인',2:'조합힌트',3:'뉴런힌트',4:'정답주입'};
+
+    // Header
+    h+='<div class="sl" style="color:'+(ct.color||'var(--ac)')+'">Cognitive Steps';
+    h+=' <span style="font-size:11px;font-weight:400;letter-spacing:0;padding:2px 8px;border-radius:4px;background:'+(ct.color||'var(--ac)')+'22;color:'+(ct.color||'var(--ac)')+'">'+ct.label+'</span>';
+    h+=' <span style="font-size:10px;color:var(--td);font-weight:400">'+cogs.length+' steps, '+(cogKeys.length)+' key ideas</span>';
+    h+='</div>';
+
+    // Structure diagram (horizontal)
+    var nc2=cogs.length;
+    var bW=Math.min(90,Math.max(55,Math.floor(560/nc2)));
+    var gap=Math.min(16,Math.max(4,Math.floor((580-bW*nc2)/Math.max(nc2-1,1))));
+    var tw=bW*nc2+gap*(nc2-1);var sx=Math.max(10,Math.floor((680-tw)/2));
+    h+='<div class="cd" style="overflow-x:auto;padding:10px"><svg width="100%" viewBox="0 0 680 '+(nc2>8?90:75)+'">';
+    h+='<defs><marker id="ca" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M2 2L8 5L2 8" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round"/></marker></defs>';
+    cogs.forEach(function(s,i){
+      var x=sx+i*(bW+gap);var hv=s.hint_level;
+      var fc=hColors[hv]||'#5DCAA5';var bg=hv>=2?'#1f1a0c':'#11201b';
+      if(i>0){var px=sx+(i-1)*(bW+gap)+bW;h+='<line x1="'+px+'" y1="30" x2="'+x+'" y2="30" stroke="'+fc+'" stroke-width="1" opacity=".3" marker-end="url(#ca)"/>';}
+      h+='<rect x="'+x+'" y="10" width="'+bW+'" height="38" rx="6" fill="'+bg+'" stroke="'+fc+'" stroke-width="'+(hv>=2?'1.5':'1')+'"/>';
+      h+='<text x="'+(x+bW/2)+'" y="25" text-anchor="middle" fill="'+fc+'" font-size="10" font-weight="700">C'+(i+1)+(hv>=2?' ★':'')+'</text>';
+      var nLabel=s.neuron.length>6?s.neuron.slice(0,5)+'…':s.neuron;
+      h+='<text x="'+(x+bW/2)+'" y="40" text-anchor="middle" fill="#d8dce8" font-size="9">'+nLabel+'</text>';
+      if(s.bonus_count>0)h+='<text x="'+(x+bW/2)+'" y="60" text-anchor="middle" fill="#7a7f9a" font-size="9">×'+(s.notes.length)+'</text>';
+    });
+    h+='</svg></div>';
+
+    // Key Ideas
+    h+='<div class="sl" style="margin-top:4px">Key Ideas</div>';
+    if(cogKeys.length===0){
+      h+='<div style="font-size:12px;color:var(--td);padding:6px 0;margin-bottom:10px">키 아이디어 없음 — 모두 스스로 발견 가능</div>';
+    } else {
+      cogKeys.forEach(function(ki){
+        var ci=ki.step_num;var hv=ki.hint_level;var fc=hColors[hv]||'#ffa726';var bg2=hBgs[hv]||'rgba(255,167,38,.08)';
+        var tn=pm2[ki.target]||{};var txt=tn.note_text||'';if(txt.length>120)txt=txt.slice(0,117)+'...';
+        var lev=ki.bonus_count>0?' → '+(ki.bonus_count)+'개 추가 해금':'';
+        h+='<div style="background:'+bg2+';border-left:3px solid '+fc+';border-radius:0 6px 6px 0;padding:8px 12px;margin-bottom:5px">';
+        h+='<div style="display:flex;align-items:center;gap:8px;margin-bottom:3px;flex-wrap:wrap">';
+        h+='<span style="font-size:11px;font-weight:800;color:'+fc+'">C'+ci+' H'+hv+'</span>';
+        h+='<span style="font-size:10px;padding:1px 6px;border-radius:3px;background:rgba(124,131,253,.1);color:var(--ac);font-weight:600">'+ki.neuron+'</span>';
+        h+='<span style="font-size:10px;color:'+fc+';font-weight:600">'+(hLabels[hv]||'')+'</span>';
+        if(lev)h+='<span style="font-size:10px;color:var(--td)">'+lev+'</span>';
+        h+='</div>';
+        h+='<div style="font-size:12px;line-height:1.7;color:var(--tx)">'+rm(txt)+'</div>';
+        h+='</div>';
+      });
+    }
+
+    // Solution with C badges
+    var sol=p.solution||'';var solSteps=[];var cur2=null;
+    sol.split('\n').forEach(function(l){l=l.trim();if(!l)return;if(l.startsWith('STEP ')){if(cur2)solSteps.push(cur2);cur2=l}else if(cur2){cur2+=' '+l}});
+    if(cur2)solSteps.push(cur2);
+
+    if(solSteps.length>0){
+      var sk=p.skeleton||[];var edgeStepMap={};
+      sk.forEach(function(e){if(e.to&&e.step)edgeStepMap[e.to]=e.step});
+      // note→cognitive step mapping
+      var noteToCog={};cogs.forEach(function(s){s.notes.forEach(function(nid){noteToCog[nid]=s})});
+      h+='<div class="sl" style="margin-top:8px">Solution</div>';
+      solSteps.forEach(function(stxt,si){
+        var sn=si+1;
+        // find which C-steps contribute to this solution step
+        var cBadges={};var hasKey=false;
+        sk.forEach(function(e){if(e.step===sn&&e.main!==false){var cs=noteToCog[e.to];if(cs){var k=cs.step_num;if(!cBadges[k])cBadges[k]={ci:cs.step_num,h:cs.hint_level,gate:false};if(e.to===cs.target)cBadges[k].gate=true;if(cs.hint_level>=2)hasKey=true}}});
+        var bdgs=Object.values(cBadges).sort(function(a,b){return a.ci-b.ci});
+        var bgStyle=hasKey?'background:rgba(255,167,38,.04);margin:0 -8px;padding:10px 8px;border-radius:6px;border-left:3px solid #ffa726':'';
+        var txt=stxt;var dot=txt.indexOf('.');if(dot>0&&dot<12)txt=txt.slice(dot+1).trim();
+        h+='<div class="cd" style="margin-bottom:8px;'+bgStyle+'">';
+        h+='<div style="display:flex;align-items:center;gap:6px;margin-bottom:5px;flex-wrap:wrap">';
+        h+='<span style="font-size:13px;font-weight:800;color:var(--ac)">STEP '+sn+'</span>';
+        bdgs.forEach(function(b){
+          var fc2=hColors[b.h]||'#5DCAA5';var bg3=hBgs[b.h]||'rgba(93,202,165,.12)';
+          var border=b.gate?';border:1px solid '+fc2:'';
+          h+='<span style="font-size:10px;font-weight:700;padding:1px 6px;border-radius:3px;background:'+bg3+';color:'+fc2+border+'">C'+b.ci+(b.gate?' ★':'')+(b.h>=2?' H'+b.h:'')+'</span>';
+        });
+        h+='</div>';
+        h+='<div style="font-size:13px;line-height:1.9">'+rm(txt)+'</div>';
+        h+='</div>';
+      });
+      // Answer
+      if(p.answer){
+        h+='<div style="background:linear-gradient(135deg,rgba(124,131,253,.07),rgba(124,131,253,.02));border:1px solid rgba(124,131,253,.2);border-radius:8px;padding:12px 16px;margin-top:4px">';
+        h+='<span style="font-size:11px;color:var(--ac);font-weight:700;letter-spacing:2px">ANSWER</span> ';
+        h+='<span style="font-size:15px;font-weight:600">'+rm('$'+p.answer+'$')+'</span></div>';
+      }
+    }
+    h+='<div style="height:20px"></div>';
+  }
 
   // Step별 풀이
   var sk=p.skeleton||[];
