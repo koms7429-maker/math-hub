@@ -381,15 +381,6 @@
       "profile_version": 0
     },
     {
-      "problem_id": "P10",
-      "filename": "P10.json",
-      "has_skeleton": true,
-      "has_clues": true,
-      "has_solution": true,
-      "has_profile": false,
-      "profile_version": 0
-    },
-    {
       "problem_id": "P4",
       "filename": "P4.json",
       "has_skeleton": true,
