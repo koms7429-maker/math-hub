@@ -33,7 +33,7 @@
         "note": "$|f(1)|=2>0$이므로 $f(1) \\neq 0$이다",
         "main": true,
         "step": 2,
-        "_keep_neuron": false
+        "_keep_neuron": true
       },
       {
         "from": "note2",
@@ -324,16 +324,15 @@
       {
         "id": "사실??",
         "type": "사실",
-        "statement": "함수 $f$가 구간 $I$에서 부호가 일정하면, $|f(x)|$는 $I$에서 $f(x)$ 또는 $-f(x)$와 같으므로, $|f(x)| \\cdot g(x)$의 극값은 $f(x) \\cdot g(x)$ (또는 $-f(x) \\cdot g(x)$)의 극값과 동치이다.",
+        "statement": "함수 $f$가 $x=a$를 포함하는 열린 구간에서 부호가 일정(즉 $f(x)>0$ 또는 $f(x)<0$)하고 $g$가 그 구간에서 정의되어 있으면, $|f(x)|g(x)$의 $x=a$에서의 극값 존재 여부 및 극대/극소 구분은 $f(x)g(x)$ (또는 $-f(x)g(x)$)의 극값과 동치이다.",
         "description": "부호 일정 구간에서 |f|g의 극값은 fg의 극값과 동치",
         "note": "$|f(x)|g(x)$가 $x=1$에서 극대이면 $f(x)g(x)$도 $x=1$에서 극값을 가지고 $(f(x)g(x))'\\big|_{x=1}=0$이다",
-        "reason": "사실95는 f(a)=0인 점에서의 극한 존재 조건을 다루고, 사실97은 극값의 필요조건(f'=0)을 다룬다. 그러나 어떤 후보도 '부호가 일정한 구간에서 |f|g의 극값이 fg의 극값과 동치'라는 원리, 즉 절댓값 합성함수의 극값이 내부 함수의 극값으로 환원된다는 내용을 직접 서술하지 않는다.",
+        "reason": "사실97~99는 극값의 필요/충분조건을 다루지만 '|f|g의 극값 ↔ fg의 극값'이라는 절댓값 합성 함수의 극값 동치 원리를 직접 서술하는 뉴런이 없다. 사실95~96은 절댓값과 부호 관련이나 극값 동치가 아닌 극한/중복도를 다룬다. 사실61(부호 보존)은 연속성만 다룬다.",
         "blocked_edge": "note3+단서C → note4",
         "domain_hint": "FUNC, DIFF, ABS",
         "domain": [
-          "ABS",
           "FUNC",
-          "DIFF"
+          "ABS"
         ],
         "action_hint": "",
         "step": 2,
@@ -347,7 +346,7 @@
     ],
     "previous_partial_skeleton": [],
     "previous_blockage_point": "",
-    "previous_skel_review_notes": "parse fail: Unexpected token 'I', \"I'll syste\"... is not valid JSON",
+    "previous_skel_review_notes": "",
     "previous_dna_nodes": [
       {
         "id": "top",
@@ -811,7 +810,7 @@
       }
     ],
     "previous_new_dna": [],
-    "previous_dna_review_notes": "parse fail: Unexpected token 'I', \"I'll syste\"... is not valid JSON",
+    "previous_dna_review_notes": "",
     "original_solution": "$f(x)$, $g(x)$가 각각 이차함수이므로 $a \\neq 0$이고,\n\n$|f(1)| = 2$ $\\Rightarrow$ 함수 $|f(x)|g(x)$는 $x = 1$에서 미분가능하므로\n\n(나) $\\Rightarrow$ $f(x)g(x)$는 $x = 1$에서 극값을 가짐\n\n$\\Rightarrow$ $x = 1$일 때 $(f(x)g(x))' = 0$\n\n$\\Rightarrow$ $b = -\\dfrac{5}{3}a$ $(\\because$ (가))\n\n를 얻는다.\n\n따라서\n\n$$f(x)g(x) = ax^2(x-3)\\left(x - \\dfrac{5}{3}\\right)$$\n\n$$\\Rightarrow (f(x)g(x))' = 2ax(x-1)(2x-5)$$\n\n이므로 다음의 두 함수 $f(x)g(x)$, $-f(x)g(x)$의 그래프의 개형을 참고하면\n\n$$(\\text{나}) \\Rightarrow \\begin{cases} ① \\ |f(x)|g(x) \\text{는 } x = 1 \\text{에서 극대} \\\\ ② \\ |f(x)|g(x) \\text{는 } x = \\dfrac{5}{2} \\text{에서 극소} \\\\ ③ \\ |f(x)|g(x) \\text{는 } x = 3 \\text{에서 극값을 갖지 않음} \\\\ ④ \\ \\displaystyle\\lim_{x \\to -\\infty} |f(x)|g(x) = \\infty \\Rightarrow \\lim_{x \\to \\infty} |f(x)|g(x) = \\infty \\end{cases}$$\n\n의 순서로 함수 $|f(x)|g(x)$의 그래프의 개형을 파악할 수 있다.\n\n[FIGURE: y = |f(x)|g(x)의 그래프. x = 0과 x = 5/3 사이에서 극대(①), x = 5/3과 x = 3 사이에서 극소(②), x > 3에서 다시 증가(③). x축과 x = 0, 5/3, 3에서 만남.]\n\n따라서\n\n$$f(x) = mx^2, \\quad g(x) = n\\left(x - \\dfrac{5}{3}\\right)(x - 3) \\quad (n > 0)$$\n\n으로 놓을 수 있다.\n\n이때,\n$$m > 0 \\text{인 경우, 모든 실수 } x \\text{에 대하여}$$\n$$f(x)|g(x)| \\geq 0 \\text{이므로 (다)에 모순}$$\n\n이므로\n\n$$m < 0, \\quad |f(1)| = 2 \\Rightarrow m = -2$$\n\n를 얻고,\n\n$$f(1)|g(1)| = -\\dfrac{8n}{3}, \\quad f\\!\\left(\\dfrac{5}{2}\\right)\\left|g\\!\\left(\\dfrac{5}{2}\\right)\\right| = -\\dfrac{125n}{24}$$\n\n이므로 다음 그림을 참고하면\n\n$$(\\text{다}) \\Rightarrow -\\dfrac{125n}{24} = -\\dfrac{125}{8} \\Rightarrow n = 3$$\n\n을 얻는다.\n\n[FIGURE: y = f(x)|g(x)|의 그래프. x = 5/2에서 극솟값 y = -125/8을 가지며, y = -125/8 직선과 3개의 교점을 가짐.]\n\n$$\\therefore f(x) = -2x^2, \\quad g(x) = 3\\left(x - \\dfrac{5}{3}\\right)(x - 3)$$\n\n$$\\therefore f(-2) + g(-2) = (-8) + 55 = \\boxed{47}$$",
     "recovery_warnings": [],
     "errata": [],
@@ -833,6 +832,6 @@
     "needed_dna": [],
     "edge_count": 22,
     "side_count": 3,
-    "created_at": "2026-03-25T21:02:33.991Z"
+    "created_at": "2026-03-25T21:05:57.348Z"
   }
 ]
