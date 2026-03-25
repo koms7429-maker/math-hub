@@ -693,11 +693,442 @@
     "created_at": "2026-03-25T17:56:14.840Z"
   },
   {
+    "problem_id": "P4",
+    "answer": "6",
+    "content": "id: P4\nsource: 수능\nyear: 미상\nunit: 미적분\ntopic: 다항함수의 극값\nsubtopic: 극솟값 조건을 이용한 상수 결정\ndifficulty: 중\nscore: 4\nanswer: 3\ntype: multiple_choice\n\n# 4. 다항함수의 극솟값 조건을 이용한 상수 결정\n\n## Problem\n두 상수 $a$, $b$에 대하여 함수 $f(x) = ax^3 + (a^2 - 4)x + b$가 $x = -1$에서 극솟값 $2$를 가질 때, $a + b$의 값은? [4점]\n\n## Choices\n① 2\n② 4\n③ 6\n④ 8\n⑤ 10\n\n## Solution\n$f(x) = ax^3 + (a^2 - 4)x + b$이므로\n\n$$f'(x) = 3ax^2 + a^2 - 4$$\n\n이고, 문제에 주어진 조건에 의해\n\n$$\\begin{cases} \\text{① } f(x)\\text{가 } x = -1\\text{에서 극소} \\\\ \\text{② } f(-1) = 2 \\end{cases}$$\n\n이어야 한다.\n\n따라서 ①에 의해\n\n$$f'(-1) = 0 \\Rightarrow 3a + a^2 - 4 = 0$$\n$$\\Rightarrow (a-1)(a+4) = 0$$\n$$\\Rightarrow a = 1 \\text{ 또는 } a = -4$$\n\n이고, 이때\n\n- $a = 1$인 경우, $f'(x) = 3x^2 - 3 = 3(x+1)(x-1)$이므로 $f(x)$는 $x = -1$에서 **극대**\n- $a = -4$인 경우, $f'(x) = -12x^2 + 12 = -12(x+1)(x-1)$이므로 $f(x)$는 $x = -1$에서 **극소**\n\n이므로\n\n$$\\text{①} \\Rightarrow a = -4$$\n$$\\Rightarrow f(x) = -4x^3 + 12x + b$$\n\n이고,\n\n$$\\text{②} \\Rightarrow f(-1) = -4(-1)^3 + 12(-1) + b = 4 - 12 + b = b - 8 = 2$$\n$$\\Rightarrow b = 10$$\n\n을 얻는다.\n\n$$\\therefore\\; a + b = (-4) + 10 = 6$$",
+    "content_source": "FileLoop",
+    "content_length": 1041,
+    "skel_status": "ok",
+    "dna_status": "dna_missing",
+    "previous_skeleton": [
+      {
+        "from": "단서A",
+        "to": "note1",
+        "neuron": "연산33",
+        "note": "$f'(x) = 3ax^2 + (a^2 - 4)$이다",
+        "step": 1
+      },
+      {
+        "from": "단서B",
+        "to": "note2",
+        "neuron": "사실97",
+        "note": "$f'(-1) = 0$이다",
+        "step": 2
+      },
+      {
+        "from": [
+          "note1",
+          "note2"
+        ],
+        "to": "note3",
+        "neuron": "전략25",
+        "note": "$3a + a^2 - 4 = 0$이다",
+        "step": 2
+      },
+      {
+        "from": "note3",
+        "to": "note4",
+        "neuron": "전략29",
+        "note": "$(a-1)(a+4) = 0$이다",
+        "step": 2
+      },
+      {
+        "from": "note4",
+        "to": "note5",
+        "neuron": "연산9",
+        "note": "$a = 1$ 또는 $a = -4$이다",
+        "step": 2
+      },
+      {
+        "from": [
+          "note5",
+          "note1"
+        ],
+        "to": "note6",
+        "neuron": "사실99",
+        "note": "$a = 1$일 때 $f'(x) = 3(x+1)(x-1)$이고 $x = -1$ 전후에서 부호가 양에서 음으로 변하여 극대점이다",
+        "main": false,
+        "step": 3
+      },
+      {
+        "from": [
+          "note6",
+          "단서B"
+        ],
+        "to": "note7",
+        "neuron": "전략23",
+        "note": "$a = 1$은 극소 조건에 모순이므로 기각한다",
+        "main": false,
+        "step": 3
+      },
+      {
+        "from": [
+          "note5",
+          "note1"
+        ],
+        "to": "note8",
+        "neuron": "사실99",
+        "note": "$a = -4$일 때 $f'(x) = -12(x+1)(x-1)$이고 $x = -1$ 전후에서 부호가 음에서 양으로 변하여 극소점이다",
+        "main": false,
+        "step": 3
+      },
+      {
+        "from": [
+          "note7",
+          "note8"
+        ],
+        "to": "note9",
+        "neuron": "전략20",
+        "note": "$a = -4$이다",
+        "step": 3
+      },
+      {
+        "from": [
+          "note9",
+          "단서A"
+        ],
+        "to": "note10",
+        "neuron": "전략25",
+        "note": "$f(x) = -4x^3 + 12x + b$이다",
+        "step": 4
+      },
+      {
+        "from": [
+          "note10",
+          "단서B"
+        ],
+        "to": "note11",
+        "neuron": "전략25",
+        "note": "$f(-1) = 4 - 12 + b = b - 8 = 2$이므로 $b = 10$이다",
+        "step": 5
+      },
+      {
+        "from": [
+          "note9",
+          "note11"
+        ],
+        "to": "END",
+        "neuron": "연산28",
+        "note": "$a + b = -4 + 10 = 6$이다",
+        "step": 5
+      }
+    ],
+    "previous_solution": "STEP 1. $f(x) = ax^3 + (a^2-4)x + b$를 미분하면 $f'(x) = 3ax^2 + (a^2-4)$이다.\nSTEP 2. $x=-1$에서 극값을 가지므로 $f'(-1)=0$이다. $3a + a^2 - 4 = 0$을 인수분해하면 $(a-1)(a+4)=0$이고 $a=1$ 또는 $a=-4$이다.\nSTEP 3. $a=1$이면 $f'(x)=3(x+1)(x-1)$이고 $x=-1$ 전후에서 부호가 양→음이므로 극대점이다. 극소 조건에 모순이므로 기각한다. $a=-4$이면 $f'(x)=-12(x+1)(x-1)$이고 $x=-1$ 전후에서 부호가 음→양이므로 극소점이다. 따라서 $a=-4$이다.\nSTEP 4. $f(x) = -4x^3 + 12x + b$이다.\nSTEP 5. $f(-1) = 4 - 12 + b = b - 8 = 2$이므로 $b = 10$이다. $a + b = -4 + 10 = 6$이다.",
+    "previous_clues": "[{\"id\":\"단서A\",\"text\":\"$f(x) = ax^3 + (a^2 - 4)x + b$이다\"},{\"id\":\"단서B\",\"text\":\"$f(x)$가 $x = -1$에서 극솟값 $2$를 가진다\"}]",
+    "previous_analysis": "f(x)를 미분하여 f'(-1)=0 조건으로 a의 후보를 구하고, 도함수의 부호 변화를 확인하여 극소 조건을 만족하는 a=-4를 선별한다. 이후 f(-1)=2로 b=10을 결정하여 a+b=6을 얻는다.",
+    "previous_matching": "",
+    "previous_matched": [
+      "연산33",
+      "사실97",
+      "전략25",
+      "전략29",
+      "연산9",
+      "사실99",
+      "전략23",
+      "전략20"
+    ],
+    "previous_new_neurons": [],
+    "previous_partial_skeleton": [],
+    "previous_blockage_point": "",
+    "previous_skel_review_notes": "극솟값 조건은 두 가지: (1) x=-1에서 극소(극값 위치 조건), (2) f(-1)=2(극값 조건). 극소 조건은 f'(-1)=0이고 해당 점에서 극대가 아닌 극소임을 포함하지만, 문제 텍스트 레벨에서는 '극솟값 2를 가진다'는 단일 조건으로 제시됨. C13(최댓값 조건)이 가장 유사하지만 극솟값 조건에 정확히 맞지 않아 needs_new_dna 검토 → C13은 최댓값/최솟값 조건이므로 극솟값도 유사하게 처리 가능하나, '극솟값'은 최솟값과 다름. 그러나 기존 DNA 중 별도의 극값 조건 DNA가 없으므로 새 DNA 제안. 또한 a²는 E7(거듭제곱), (a²-4)는 E1+E2로 표현. f(x)의 각 항은 곱(E6)과 합(E1)으로 분해.",
+    "previous_dna_nodes": [
+      {
+        "id": "top",
+        "dna": "Q1",
+        "label": "값을 구하라",
+        "category": "발문"
+      },
+      {
+        "id": "ask",
+        "dna": "E1",
+        "label": "합(a, b)",
+        "category": "수식"
+      },
+      {
+        "id": "va",
+        "dna": "T1",
+        "label": "변수 a",
+        "category": "말단"
+      },
+      {
+        "id": "vb",
+        "dna": "T1",
+        "label": "변수 b",
+        "category": "말단"
+      },
+      {
+        "id": "conds",
+        "dna": "S1",
+        "label": "조건 묶음",
+        "category": "구조"
+      },
+      {
+        "id": "fdef",
+        "dna": "F6",
+        "label": "함수 f 정의",
+        "category": "함수"
+      },
+      {
+        "id": "feq",
+        "dna": "C11",
+        "label": "f(x) 방정식",
+        "category": "조건"
+      },
+      {
+        "id": "fc1",
+        "dna": "C1",
+        "label": "f(x)=ax³+…+b",
+        "category": "조건"
+      },
+      {
+        "id": "rhs",
+        "dna": "E1",
+        "label": "합(항1,항2,b)",
+        "category": "수식"
+      },
+      {
+        "id": "term1",
+        "dna": "E6",
+        "label": "곱(a, x³)",
+        "category": "수식"
+      },
+      {
+        "id": "x3",
+        "dna": "E7",
+        "label": "x의 3제곱",
+        "category": "수식"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
+      },
+      {
+        "id": "c3",
+        "dna": "T2",
+        "label": "상수 3",
+        "category": "말단"
+      },
+      {
+        "id": "term2",
+        "dna": "E6",
+        "label": "곱(a²-4, x)",
+        "category": "수식"
+      },
+      {
+        "id": "coeff",
+        "dna": "E1",
+        "label": "합(a², -4)",
+        "category": "수식"
+      },
+      {
+        "id": "a2",
+        "dna": "E7",
+        "label": "a의 2제곱",
+        "category": "수식"
+      },
+      {
+        "id": "c2_const",
+        "dna": "T2",
+        "label": "상수 2",
+        "category": "말단"
+      },
+      {
+        "id": "neg4",
+        "dna": "E2",
+        "label": "부호반전(4)",
+        "category": "수식"
+      },
+      {
+        "id": "c4",
+        "dna": "T2",
+        "label": "상수 4",
+        "category": "말단"
+      },
+      {
+        "id": "minval_cond",
+        "dna": "???",
+        "label": "극솟값 조건",
+        "category": "조건"
+      },
+      {
+        "id": "xval",
+        "dna": "T2",
+        "label": "상수 -1",
+        "category": "말단"
+      },
+      {
+        "id": "neg1",
+        "dna": "E2",
+        "label": "부호반전(1)",
+        "category": "수식"
+      },
+      {
+        "id": "c1_const",
+        "dna": "T2",
+        "label": "상수 1",
+        "category": "말단"
+      },
+      {
+        "id": "minv2",
+        "dna": "T2",
+        "label": "극솟값 2",
+        "category": "말단"
+      }
+    ],
+    "previous_dna_edges": [
+      {
+        "from": "ask",
+        "to": "top"
+      },
+      {
+        "from": "conds",
+        "to": "top"
+      },
+      {
+        "from": "va",
+        "to": "ask"
+      },
+      {
+        "from": "vb",
+        "to": "ask"
+      },
+      {
+        "from": "fdef",
+        "to": "conds"
+      },
+      {
+        "from": "feq",
+        "to": "fdef"
+      },
+      {
+        "from": "fc1",
+        "to": "feq"
+      },
+      {
+        "from": "rhs",
+        "to": "fc1"
+      },
+      {
+        "from": "term1",
+        "to": "rhs"
+      },
+      {
+        "from": "term2",
+        "to": "rhs"
+      },
+      {
+        "from": "vb",
+        "to": "rhs"
+      },
+      {
+        "from": "va",
+        "to": "term1"
+      },
+      {
+        "from": "x3",
+        "to": "term1"
+      },
+      {
+        "from": "vx",
+        "to": "x3"
+      },
+      {
+        "from": "c3",
+        "to": "x3"
+      },
+      {
+        "from": "coeff",
+        "to": "term2"
+      },
+      {
+        "from": "vx",
+        "to": "term2"
+      },
+      {
+        "from": "a2",
+        "to": "coeff"
+      },
+      {
+        "from": "neg4",
+        "to": "coeff"
+      },
+      {
+        "from": "va",
+        "to": "a2"
+      },
+      {
+        "from": "c2_const",
+        "to": "a2"
+      },
+      {
+        "from": "c4",
+        "to": "neg4"
+      },
+      {
+        "from": "minval_cond",
+        "to": "conds"
+      },
+      {
+        "from": "fdef",
+        "to": "minval_cond"
+      },
+      {
+        "from": "neg1",
+        "to": "minval_cond"
+      },
+      {
+        "from": "c1_const",
+        "to": "neg1"
+      },
+      {
+        "from": "minv2",
+        "to": "minval_cond"
+      }
+    ],
+    "previous_new_dna": [
+      {
+        "id": "C23",
+        "name": "극값 조건",
+        "signature": "(함수, 점, 극대/극소, 값) → 조건",
+        "reason": "함수가 특정 x값에서 극댓값 또는 극솟값을 가진다는 조건. C13(최댓값 조건)은 구간 전체의 최댓값/최솟값이고, 극값은 국소적 개념으로 다르다. 기존 DNA로 표현 불가."
+      }
+    ],
+    "previous_dna_review_notes": "극솟값 조건은 두 가지: (1) x=-1에서 극소(극값 위치 조건), (2) f(-1)=2(극값 조건). 극소 조건은 f'(-1)=0이고 해당 점에서 극대가 아닌 극소임을 포함하지만, 문제 텍스트 레벨에서는 '극솟값 2를 가진다'는 단일 조건으로 제시됨. C13(최댓값 조건)이 가장 유사하지만 극솟값 조건에 정확히 맞지 않아 needs_new_dna 검토 → C13은 최댓값/최솟값 조건이므로 극솟값도 유사하게 처리 가능하나, '극솟값'은 최솟값과 다름. 그러나 기존 DNA 중 별도의 극값 조건 DNA가 없으므로 새 DNA 제안. 또한 a²는 E7(거듭제곱), (a²-4)는 E1+E2로 표현. f(x)의 각 항은 곱(E6)과 합(E1)으로 분해.",
+    "original_solution": "$f(x) = ax^3 + (a^2 - 4)x + b$이므로\n\n$$f'(x) = 3ax^2 + a^2 - 4$$\n\n이고, 문제에 주어진 조건에 의해\n\n$$\\begin{cases} \\text{① } f(x)\\text{가 } x = -1\\text{에서 극소} \\\\ \\text{② } f(-1) = 2 \\end{cases}$$\n\n이어야 한다.\n\n따라서 ①에 의해\n\n$$f'(-1) = 0 \\Rightarrow 3a + a^2 - 4 = 0$$\n$$\\Rightarrow (a-1)(a+4) = 0$$\n$$\\Rightarrow a = 1 \\text{ 또는 } a = -4$$\n\n이고, 이때\n\n- $a = 1$인 경우, $f'(x) = 3x^2 - 3 = 3(x+1)(x-1)$이므로 $f(x)$는 $x = -1$에서 **극대**\n- $a = -4$인 경우, $f'(x) = -12x^2 + 12 = -12(x+1)(x-1)$이므로 $f(x)$는 $x = -1$에서 **극소**\n\n이므로\n\n$$\\text{①} \\Rightarrow a = -4$$\n$$\\Rightarrow f(x) = -4x^3 + 12x + b$$\n\n이고,\n\n$$\\text{②} \\Rightarrow f(-1) = -4(-1)^3 + 12(-1) + b = 4 - 12 + b = b - 8 = 2$$\n$$\\Rightarrow b = 10$$\n\n을 얻는다.\n\n$$\\therefore\\; a + b = (-4) + 10 = 6$$",
+    "recovery_warnings": [],
+    "errata": [],
+    "metadata": {
+      "unit": "미적분",
+      "difficulty": "중",
+      "score": "4",
+      "type": "multiple_choice",
+      "answer": "3",
+      "year": "미상",
+      "source": "수능",
+      "topic": "다항함수의 극값",
+      "subtopic": "극솟값 조건을 이용한 상수 결정"
+    },
+    "needed_neurons": [],
+    "needed_dna": [
+      {
+        "id": "C23",
+        "name": "극값 조건",
+        "signature": "(함수, 점, 극대/극소, 값) → 조건",
+        "reason": "함수가 특정 x값에서 극댓값 또는 극솟값을 가진다는 조건. C13(최댓값 조건)은 구간 전체의 최댓값/최솟값이고, 극값은 국소적 개념으로 다르다. 기존 DNA로 표현 불가."
+      }
+    ],
+    "edge_count": 12,
+    "side_count": 3,
+    "created_at": "2026-03-25T19:29:21.908Z"
+  },
+  {
     "problem_id": "P10",
     "answer": "47",
-    "content": "id: P10\nsource: 수능\nyear: 미정\nunit: 미적분\ntopic: 이차함수와 절댓값 함수의 극값\nsubtopic: 극값 조건과 실근의 개수\ndifficulty: 상\nscore: 4\nanswer: 47\ntype: short_answer\n\n# 10. (수능) - 이차함수와 절댓값 함수의 극값 및 실근의 개수\n\n## Problem\n상수 $a$, $b$와 두 이차함수 $f(x)$, $g(x)$가 다음 조건을 만족시킨다.\n\n(가) 모든 실수 $x$에 대하여 $f(x)g(x) = x^2(x-3)(ax+b)$ 이다.\n\n(나) 함수 $|f(x)|g(x)$는 $x = 1$에서만 극댓값을 갖는다.\n\n(다) 방정식 $f(x)|g(x)| = -\\dfrac{125}{8}$의 서로 다른 실근의 개수는 3이다.\n\n$|f(1)| = 2$일 때, $f(-2) + g(-2)$의 값을 구하시오. [4점]\n\n## Solution\n$f(x)$, $g(x)$가 각각 이차함수이므로 $a \\neq 0$이고,\n\n$|f(1)| = 2$ $\\Rightarrow$ 함수 $|f(x)|g(x)$는 $x = 1$에서 미분가능하므로\n\n(나) $\\Rightarrow$ $f(x)g(x)$는 $x = 1$에서 극값을 가짐\n\n$\\Rightarrow$ $x = 1$일 때 $(f(x)g(x))' = 0$\n\n$\\Rightarrow$ $b = -\\dfrac{5}{3}a$ $(\\because$ (가))\n\n를 얻는다.\n\n따라서\n\n$$f(x)g(x) = ax^2(x-3)\\left(x - \\dfrac{5}{3}\\right)$$\n\n$$\\Rightarrow (f(x)g(x))' = 2ax(x-1)(2x-5)$$\n\n이므로 다음의 두 함수 $f(x)g(x)$, $-f(x)g(x)$의 그래프의 개형을 참고하면\n\n$$(\\text{나}) \\Rightarrow \\begin{cases} ① \\ |f(x)|g(x) \\text{는 } x = 1 \\text{에서 극대} \\\\ ② \\ |f(x)|g(x) \\text{는 } x = \\dfrac{5}{2} \\text{에서 극소} \\\\ ③ \\ |f(x)|g(x) \\text{는 } x = 3 \\text{에서 극값을 갖지 않음} \\\\ ④ \\ \\displaystyle\\lim_{x \\to -\\infty} |f(x)|g(x) = \\infty \\Rightarrow \\lim_{x \\to \\infty} |f(x)|g(x) = \\infty \\end{cases}$$\n\n의 순서로 함수 $|f(x)|g(x)$의 그래프의 개형을 파악할 수 있다.\n\n[FIGURE: y = |f(x)|g(x)의 그래프. x = 0과 x = 5/3 사이에서 극대(①), x = 5/3과 x = 3 사이에서 극소(②), x > 3에서 다시 증가(③). x축과 x = 0, 5/3, 3에서 만남.]\n\n따라서\n\n$$f(x) = mx^2, \\quad g(x) = n\\left(x - \\dfrac{5}{3}\\right)(x - 3) \\quad (n > 0)$$\n\n으로 놓을 수 있다.\n\n이때,\n$$m > 0 \\text{인 경우, 모든 실수 } x \\text{에 대하여}$$\n$$f(x)|g(x)| \\geq 0 \\text{이므로 (다)에 모순}$$\n\n이므로\n\n$$m < 0, \\quad |f(1)| = 2 \\Rightarrow m = -2$$\n\n를 얻고,\n\n$$f(1)|g(1)| = -\\dfrac{8n}{3}, \\quad f\\!\\left(\\dfrac{5}{2}\\right)\\left|g\\!\\left(\\dfrac{5}{2}\\right)\\right| = -\\dfrac{125n}{24}$$\n\n이므로 다음 그림을 참고하면\n\n$$(\\text{다}) \\Rightarrow -\\dfrac{125n}{24} = -\\dfrac{125}{8} \\Rightarrow n = 3$$\n\n을 얻는다.\n\n[FIGURE: y = f(x)|g(x)|의 그래프. x = 5/2에서 극솟값 y = -125/8을 가지며, y = -125/8 직선과 3개의 교점을 가짐.]\n\n$$\\therefore f(x) = -2x^2, \\quad g(x) = 3\\left(x - \\dfrac{5}{3}\\right)(x - 3)$$\n\n$$\\therefore f(-2) + g(-2) = (-8) + 55 = \\boxed{47}$$",
-    "content_source": "FileLoop",
-    "content_length": 2082,
+    "content": "id: P4\nsource: 수능\nyear: 미상\nunit: 미적분\ntopic: 다항함수의 극값\nsubtopic: 극솟값 조건을 이용한 상수 결정\ndifficulty: 중\nscore: 4\nanswer: 3\ntype: multiple_choice\n\n# 4. 다항함수의 극솟값 조건을 이용한 상수 결정\n\n## Problem\n두 상수 $a$, $b$에 대하여 함수 $f(x) = ax^3 + (a^2 - 4)x + b$가 $x = -1$에서 극솟값 $2$를 가질 때, $a + b$의 값은? [4점]\n\n## Choices\n① 2\n② 4\n③ 6\n④ 8\n⑤ 10\n\n## Solution\n$f(x) = ax^3 + (a^2 - 4)x + b$이므로\n\n$$f'(x) = 3ax^2 + a^2 - 4$$\n\n이고, 문제에 주어진 조건에 의해\n\n$$\\begin{cases} \\text{① } f(x)\\text{가 } x = -1\\text{에서 극소} \\\\ \\text{② } f(-1) = 2 \\end{cases}$$\n\n이어야 한다.\n\n따라서 ①에 의해\n\n$$f'(-1) = 0 \\Rightarrow 3a + a^2 - 4 = 0$$\n$$\\Rightarrow (a-1)(a+4) = 0$$\n$$\\Rightarrow a = 1 \\text{ 또는 } a = -4$$\n\n이고, 이때\n\n- $a = 1$인 경우, $f'(x) = 3x^2 - 3 = 3(x+1)(x-1)$이므로 $f(x)$는 $x = -1$에서 **극대**\n- $a = -4$인 경우, $f'(x) = -12x^2 + 12 = -12(x+1)(x-1)$이므로 $f(x)$는 $x = -1$에서 **극소**\n\n이므로\n\n$$\\text{①} \\Rightarrow a = -4$$\n$$\\Rightarrow f(x) = -4x^3 + 12x + b$$\n\n이고,\n\n$$\\text{②} \\Rightarrow f(-1) = -4(-1)^3 + 12(-1) + b = 4 - 12 + b = b - 8 = 2$$\n$$\\Rightarrow b = 10$$\n\n을 얻는다.\n\n$$\\therefore\\; a + b = (-4) + 10 = 6$$",
+    "content_source": "CheckPending",
+    "content_length": 1041,
     "skel_status": "neuron_missing",
     "dna_status": "ok",
     "previous_skeleton": [
@@ -713,18 +1144,20 @@
         "description": "이차×이차=사차이므로 최고차 계수 a≠0 확인",
         "note": "$f(x)g(x) = ax^2(x-3)(x+b/a)$는 사차함수이고 $a \\neq 0$이다",
         "main": true,
-        "step": 1
+        "step": 1,
+        "_keep_neuron": false
       },
       {
         "from": "단서E",
         "to": "note2",
-        "neuron": "NEW_note2",
+        "neuron": "사실57",
         "type": "사실",
         "domain_hint": "ABS",
         "description": "절댓값이 양수이면 원래값은 0이 아님",
         "note": "$|f(1)| = 2 \\neq 0$이므로 $f(1) \\neq 0$이다",
         "main": true,
-        "step": 2
+        "step": 2,
+        "_keep_neuron": false
       },
       {
         "from": "note2",
@@ -735,7 +1168,8 @@
         "description": "연속함수가 0이 아닌 점 근방에서 부호 불변",
         "note": "$x=1$ 근방에서 $f(x)$는 부호가 불변이므로 $|f(x)|g(x) = \\pm f(x)g(x)$이고 $x=1$에서 미분가능하다",
         "main": true,
-        "step": 2
+        "step": 2,
+        "_keep_neuron": true
       },
       {
         "from": [
@@ -749,7 +1183,8 @@
         "description": "미분가능한 극값점에서 도함수는 0",
         "note": "$|f(x)|g(x)$가 $x=1$에서 극대이고 미분가능하므로 $(f(x)g(x))'\\big|_{x=1} = 0$이다",
         "main": true,
-        "step": 2
+        "step": 2,
+        "_keep_neuron": true
       },
       {
         "from": [
@@ -763,7 +1198,8 @@
         "description": "사차식 도함수에 x=1 대입하여 b를 a로 표현",
         "note": "$h'(1) = -5a - 3b = 0$에서 $b = -\\dfrac{5}{3}a$이다",
         "main": true,
-        "step": 2
+        "step": 2,
+        "_keep_neuron": true
       },
       {
         "from": [
@@ -777,7 +1213,8 @@
         "description": "b=-5a/3을 대입하여 인수 정리",
         "note": "$f(x)g(x) = ax^2(x-3)\\!\\left(x - \\dfrac{5}{3}\\right)$이다",
         "main": true,
-        "step": 3
+        "step": 3,
+        "_keep_neuron": true
       },
       {
         "from": "note6",
@@ -788,7 +1225,8 @@
         "description": "사차식의 도함수 계산 및 인수분해",
         "note": "$h'(x) = 2ax(2x-5)(x-1)$이고 $h'(x)=0$의 근은 $x=0,\\;1,\\;\\dfrac{5}{2}$이다",
         "main": true,
-        "step": 3
+        "step": 3,
+        "_keep_neuron": true
       },
       {
         "from": [
@@ -802,7 +1240,8 @@
         "description": "임계점 및 영점에서의 함수값 계산",
         "note": "$h(0)=0$, $h(1)=\\dfrac{4a}{3}$, $h\\!\\left(\\dfrac{5}{2}\\right)=-\\dfrac{125a}{48}$, $h\\!\\left(\\dfrac{5}{3}\\right)=0$, $h(3)=0$이다",
         "main": true,
-        "step": 3
+        "step": 3,
+        "_keep_neuron": true
       },
       {
         "from": "note6",
@@ -813,7 +1252,8 @@
         "description": "각 인수의 영점과 중복도 식별",
         "note": "$f(x)g(x)$의 영점은 $x=0$(이중근), $x=\\dfrac{5}{3}$, $x=3$이다",
         "main": true,
-        "step": 4
+        "step": 4,
+        "_keep_neuron": true
       },
       {
         "from": [
@@ -827,7 +1267,8 @@
         "description": "사차식 영점을 두 이차식에 분배하여 인수 설정",
         "note": "$f(x) = mx^2$, $g(x) = n\\!\\left(x-\\dfrac{5}{3}\\right)(x-3)$ ($mn=a$)으로 놓는다",
         "main": true,
-        "step": 4
+        "step": 4,
+        "_keep_neuron": true
       },
       {
         "from": "note10",
@@ -838,7 +1279,8 @@
         "description": "|f(x)|g(x)를 계산하고 임계점 확인",
         "note": "$|f(x)|g(x) = |m|\\cdot n \\cdot x^2\\!\\left(x-\\dfrac{5}{3}\\right)(x-3)$이고 임계점은 $x=0,\\;1,\\;\\dfrac{5}{2}$이다",
         "main": true,
-        "step": 4
+        "step": 4,
+        "_keep_neuron": true
       },
       {
         "from": [
@@ -852,7 +1294,8 @@
         "description": "조건 (나)와 비교하여 분해 유일성 확인",
         "note": "$n>0$이면 $x=1$에서만 극댓값을 가져 (나)를 만족한다. $f(x)$가 $x=\\dfrac{5}{3}$ 또는 $x=3$을 영점으로 가지면 $|f(x)|$의 꺾임이 추가 극대를 만들어 (나)에 위배되므로 위 분해가 유일하다",
         "main": false,
-        "step": 4
+        "step": 4,
+        "_keep_neuron": true
       },
       {
         "from": "note10",
@@ -863,7 +1306,8 @@
         "description": "양의 이차식 곱하기 절댓값은 비음수",
         "note": "$m>0$이면 $f(x)|g(x)| = mx^2|g(x)| \\geq 0$이다",
         "main": false,
-        "step": 5
+        "step": 5,
+        "_keep_neuron": true
       },
       {
         "from": [
@@ -877,7 +1321,8 @@
         "description": "비음수 함수가 음수값을 가질 수 없어 모순으로 소거",
         "note": "$f(x)|g(x)| = -\\dfrac{125}{8} < 0$의 실근이 없어 (다)에 모순이므로 $m < 0$이다",
         "main": true,
-        "step": 5
+        "step": 5,
+        "_keep_neuron": true
       },
       {
         "from": [
@@ -891,7 +1336,8 @@
         "description": "m<0과 |f(1)|=2에서 m의 값 결정",
         "note": "$|f(1)| = |m| \\cdot 1 = 2$이고 $m < 0$에서 $m = -2$이다",
         "main": true,
-        "step": 5
+        "step": 5,
+        "_keep_neuron": true
       },
       {
         "from": [
@@ -905,7 +1351,8 @@
         "description": "m=-2를 대입하여 f, g 표현 정리",
         "note": "$f(x) = -2x^2$, $g(x) = n\\!\\left(x-\\dfrac{5}{3}\\right)(x-3)$ ($n>0$)이다",
         "main": true,
-        "step": 6
+        "step": 6,
+        "_keep_neuron": true
       },
       {
         "from": "note16",
@@ -916,7 +1363,8 @@
         "description": "이차함수의 부호를 구간별로 분석",
         "note": "$g(x) > 0$ ($x < \\dfrac{5}{3}$ 또는 $x > 3$), $g(x) < 0$ ($\\dfrac{5}{3} < x < 3$)이다",
         "main": true,
-        "step": 6
+        "step": 6,
+        "_keep_neuron": true
       },
       {
         "from": [
@@ -930,7 +1378,8 @@
         "description": "f(x)|g(x)|를 구간별로 표현하고 극솟값 계산",
         "note": "$f(x)|g(x)|$의 극솟값은 $x=1$에서 $-\\dfrac{8n}{3}$, $x=\\dfrac{5}{2}$에서 $-\\dfrac{125n}{24}$이다",
         "main": true,
-        "step": 6
+        "step": 6,
+        "_keep_neuron": true
       },
       {
         "from": [
@@ -944,7 +1393,8 @@
         "description": "구간별 교점 수 분석으로 접선 조건 도출",
         "note": "$x<0$에서 1개, $x>3$에서 1개 교점이 존재하고 나머지에서 정확히 1개가 필요하므로 두 골짜기 중 하나에서 접해야 한다",
         "main": true,
-        "step": 7
+        "step": 7,
+        "_keep_neuron": true
       },
       {
         "from": "note19",
@@ -955,7 +1405,8 @@
         "description": "접선 조건 방정식에서 n 결정",
         "note": "$-\\dfrac{125n}{24} = -\\dfrac{125}{8}$에서 $n = 3$이다",
         "main": true,
-        "step": 7
+        "step": 7,
+        "_keep_neuron": true
       },
       {
         "from": "note20",
@@ -966,7 +1417,8 @@
         "description": "n=3이 유일한 해임을 교점 수 변화로 확인",
         "note": "$n>3$이면 교점 4개 이상, $n<3$이면 교점 2개뿐이므로 $n=3$이 유일하다",
         "main": false,
-        "step": 7
+        "step": 7,
+        "_keep_neuron": true
       },
       {
         "from": [
@@ -980,7 +1432,8 @@
         "description": "n=3 대입하여 최종 f, g 확정",
         "note": "$f(x) = -2x^2$, $g(x) = 3\\!\\left(x-\\dfrac{5}{3}\\right)(x-3) = 3x^2 - 14x + 15$이다",
         "main": true,
-        "step": 8
+        "step": 8,
+        "_keep_neuron": true
       },
       {
         "from": "note22",
@@ -991,22 +1444,23 @@
         "description": "x=-2를 대입하여 f(-2)+g(-2) 계산",
         "note": "$f(-2) = -8$, $g(-2) = 55$이고 $f(-2)+g(-2) = 47$이다",
         "main": true,
-        "step": 8
+        "step": 8,
+        "_keep_neuron": true
       }
     ],
     "previous_solution": "$f(x)g(x) = ax^2(x-3)(x+b/a)$는 사차함수이고 $a \\neq 0$이다 $|f(1)| = 2 \\neq 0$이므로 $f(1) \\neq 0$이다 $x=1$ 근방에서 $f(x)$는 부호가 불변이므로 $|f(x)|g(x) = \\pm f(x)g(x)$이고 $x=1$에서 미분가능하다 $|f(x)|g(x)$가 $x=1$에서 극대이고 미분가능하므로 $(f(x)g(x))'\\big|_{x=1} = 0$이다 $h'(1) = -5a - 3b = 0$에서 $b = -\\dfrac{5}{3}a$이다 $f(x)g(x) = ax^2(x-3)\\!\\left(x - \\dfrac{5}{3}\\right)$이다 $h'(x) = 2ax(2x-5)(x-1)$이고 $h'(x)=0$의 근은 $x=0,\\;1,\\;\\dfrac{5}{2}$이다 $h(0)=0$, $h(1)=\\dfrac{4a}{3}$, $h\\!\\left(\\dfrac{5}{2}\\right)=-\\dfrac{125a}{48}$, $h\\!\\left(\\dfrac{5}{3}\\right)=0$, $h(3)=0$이다 $f(x)g(x)$의 영점은 $x=0$(이중근), $x=\\dfrac{5}{3}$, $x=3$이다 $f(x) = mx^2$, $g(x) = n\\!\\left(x-\\dfrac{5}{3}\\right)(x-3)$ ($mn=a$)으로 놓는다 $|f(x)|g(x) = |m|\\cdot n \\cdot x^2\\!\\left(x-\\dfrac{5}{3}\\right)(x-3)$이고 임계점은 $x=0,\\;1,\\;\\dfrac{5}{2}$이다 $f(x)|g(x)| = -\\dfrac{125}{8} < 0$의 실근이 없어 (다)에 모순이므로 $m < 0$이다 $|f(1)| = |m| \\cdot 1 = 2$이고 $m < 0$에서 $m = -2$이다 $f(x) = -2x^2$, $g(x) = n\\!\\left(x-\\dfrac{5}{3}\\right)(x-3)$ ($n>0$)이다 $g(x) > 0$ ($x < \\dfrac{5}{3}$ 또는 $x > 3$), $g(x) < 0$ ($\\dfrac{5}{3} < x < 3$)이다 $f(x)|g(x)|$의 극솟값은 $x=1$에서 $-\\dfrac{8n}{3}$, $x=\\dfrac{5}{2}$에서 $-\\dfrac{125n}{24}$이다 $x<0$에서 1개, $x>3$에서 1개 교점이 존재하고 나머지에서 정확히 1개가 필요하므로 두 골짜기 중 하나에서 접해야 한다 $-\\dfrac{125n}{24} = -\\dfrac{125}{8}$에서 $n = 3$이다 $f(x) = -2x^2$, $g(x) = 3\\!\\left(x-\\dfrac{5}{3}\\right)(x-3) = 3x^2 - 14x + 15$이다 $f(-2) = -8$, $g(-2) = 55$이고 $f(-2)+g(-2) = 47$이다",
     "previous_clues": "[{\"id\":\"단서A\",\"text\":\"$f(x)$, $g(x)$는 이차함수이고 $a$, $b$는 상수이다\"},{\"id\":\"단서B\",\"text\":\"(가) 모든 실수 $x$에 대하여 $f(x)g(x) = x^2(x-3)(ax+b)$이다\"},{\"id\":\"단서C\",\"text\":\"(나) 함수 $|f(x)|g(x)$는 $x=1$에서만 극댓값을 갖는다\"},{\"id\":\"단서D\",\"text\":\"(다) 방정식 $f(x)|g(x)| = -\\\\dfrac{125}{8}$의 서로 다른 실근의 개수는 3이다\"},{\"id\":\"단서E\",\"text\":\"$|f(1)| = 2$이다\"}]",
-    "previous_analysis": "f(x)g(x)가 사차식이므로 |f(1)|≠0에서 x=1 근방 미분가능성을 이용해 h'(1)=0으로 b=-5a/3을 결정한다. 영점 분배로 f(x)=mx², g(x)=n(x-5/3)(x-3)을 설정한 뒤, m>0이면 f(x)|g(x)|≥0으로 (다)에 모순이므로 m=-2를 얻고, f(x)|g(x)|의 극솟값 접선 조건에서 n=3을 결정하여 f(-2)+g(-2)=47을 구한다.",
+    "previous_analysis": "",
     "previous_matching": "",
     "previous_matched": [],
     "previous_new_neurons": [
       {
         "id": "사실??",
         "type": "사실",
-        "statement": "차수 $m$인 다항식과 차수 $n$인 다항식의 곱은 차수 $m+n$인 다항식이며, 최고차항 계수는 두 다항식의 최고차항 계수의 곱이다.",
+        "statement": "두 다항식 $f(x)$, $g(x)$의 차수가 각각 $m$, $n$이면 $f(x) \\cdot g(x)$의 차수는 $m+n$이고, 최고차항 계수는 $f$와 $g$의 최고차항 계수의 곱이다.",
         "description": "이차×이차=사차이므로 최고차 계수 a≠0 확인",
         "note": "$f(x)g(x) = ax^2(x-3)(x+b/a)$는 사차함수이고 $a \\neq 0$이다",
-        "reason": "후보 중 연산28(다항식 전개)이 가장 가깝지만, 이 description은 두 이차식의 곱이 사차식이 됨을 확인하는 것, 즉 다항식 곱의 차수 결정 원리이다. 연산28은 전개 자체를 다루고, 나머지 후보들은 인수분해·근·치환 등 무관한 내용이다.",
+        "reason": "연산28(전개), 연산29(완전제곱), 연산33(미분), 전략29(인수분해), 전략38(근→인수), 전략1(치환), 전략2(연립), 전략5(그래프-교점), 전략7(매개변수 분리), 전략11(등식 조합), 연산9(영인자법칙) 모두 '곱셈 결과의 차수가 인수들의 차수의 합이다'는 원리를 직접 서술하지 않는다.",
         "blocked_edge": "단서A+단서B → note1",
         "domain_hint": "POLY",
         "domain": [
@@ -1020,32 +1474,11 @@
           "사실35: 이차함수 $f(x)=a(x-p)(x-q)$에서 $a>0$이면 $p<x<q",
           "사실78: 이차방정식 $ax^2+bx+c=0$의 두 근을 $\\alpha, \\beta"
         ]
-      },
-      {
-        "id": "사실??",
-        "type": "사실",
-        "statement": "$|a| > 0 \\iff a \\neq 0$. 즉 절댓값이 양수인 것과 원래 값이 0이 아닌 것은 동치이다.",
-        "description": "절댓값이 양수이면 원래값은 0이 아님",
-        "note": "$|f(1)| = 2 \\neq 0$이므로 $f(1) \\neq 0$이다",
-        "reason": "후보 중 사실57(최솟값이 양수이면 모든 함수값이 양수)은 범위 전체에 대한 것이고, 사실61(부호 보존)은 근방에 대한 것이다. description은 단지 '절댓값 > 0 ⟺ 원래값 ≠ 0'이라는 절댓값의 기본 성질로, 어떤 후보와도 일치하지 않는다.",
-        "blocked_edge": "단서E → note2",
-        "domain_hint": "ABS",
-        "domain": [
-          "ABS"
-        ],
-        "action_hint": "",
-        "step": 2,
-        "main": true,
-        "near_miss": [
-          "사실2: $y = f(|x - c|)$는 직선 $x = c$에 대해 대칭이다 ($",
-          "사실6: $y=|\\log_a x|$ ($a>1$)에서 같은 $y$값을 주는 두 양",
-          "사실28: $a + b = 0$이고 $a < 0$, $b > 0$이면 $|a| = "
-        ]
       }
     ],
     "previous_partial_skeleton": [],
     "previous_blockage_point": "",
-    "previous_skel_review_notes": "F11을 f(x)와 g(x) 각각에 적용. 극댓값 조건은 기존 DNA에 없어 C23 신규 제안. '~에서만'이라는 유일성 조건은 X4(정확히 n개)로 보조 표현. |f(x)|g(x)는 F5(절대값 씌움)와 E6(곱)의 조합으로 표현. f(x)|g(x)|도 동일 패턴. 공유 노드: va(변수 a), vb(변수 b)는 조건 (가)에서 등장. |f(1)|=2 조건에서 f(x)와 점 x=1이 공유됨.",
+    "previous_skel_review_notes": "",
     "previous_dna_nodes": [
       {
         "id": "top",
@@ -1480,28 +1913,9 @@
         "to": "f1_val"
       }
     ],
-    "previous_new_dna": [
-      {
-        "id": "F14",
-        "name": "이차함수 조건",
-        "signature": "(함수이름) → 이차함수",
-        "reason": "f(x), g(x)가 이차함수라는 형태 제약. F11은 단일 이차함수를 표현하지만, 두 함수가 각각 이차함수라는 다중 형태 제약을 묶어 표현할 때 반복 적용 구조가 필요. F11을 두 번 사용하는 것으로 처리 가능하므로 F11로 흡수."
-      },
-      {
-        "id": "E9",
-        "name": "극댓값",
-        "signature": "(함수, 점) → 값",
-        "reason": "함수가 특정 점에서 극댓값을 갖는다는 조건. 기존 DNA에 극값/극댓값 개념이 없음."
-      },
-      {
-        "id": "C23",
-        "name": "극값 조건",
-        "signature": "(함수, 점, 극값종류) → 조건",
-        "reason": "함수가 특정 점에서만 극댓값을 갖는다는 조건. C13(최댓값 조건)과 다르며, 기존 DNA로 표현 불가."
-      }
-    ],
-    "previous_dna_review_notes": "F11을 f(x)와 g(x) 각각에 적용. 극댓값 조건은 기존 DNA에 없어 C23 신규 제안. '~에서만'이라는 유일성 조건은 X4(정확히 n개)로 보조 표현. |f(x)|g(x)는 F5(절대값 씌움)와 E6(곱)의 조합으로 표현. f(x)|g(x)|도 동일 패턴. 공유 노드: va(변수 a), vb(변수 b)는 조건 (가)에서 등장. |f(1)|=2 조건에서 f(x)와 점 x=1이 공유됨.",
-    "original_solution": "$f(x)$, $g(x)$가 각각 이차함수이므로 $a \\neq 0$이고,\n\n$|f(1)| = 2$ $\\Rightarrow$ 함수 $|f(x)|g(x)$는 $x = 1$에서 미분가능하므로\n\n(나) $\\Rightarrow$ $f(x)g(x)$는 $x = 1$에서 극값을 가짐\n\n$\\Rightarrow$ $x = 1$일 때 $(f(x)g(x))' = 0$\n\n$\\Rightarrow$ $b = -\\dfrac{5}{3}a$ $(\\because$ (가))\n\n를 얻는다.\n\n따라서\n\n$$f(x)g(x) = ax^2(x-3)\\left(x - \\dfrac{5}{3}\\right)$$\n\n$$\\Rightarrow (f(x)g(x))' = 2ax(x-1)(2x-5)$$\n\n이므로 다음의 두 함수 $f(x)g(x)$, $-f(x)g(x)$의 그래프의 개형을 참고하면\n\n$$(\\text{나}) \\Rightarrow \\begin{cases} ① \\ |f(x)|g(x) \\text{는 } x = 1 \\text{에서 극대} \\\\ ② \\ |f(x)|g(x) \\text{는 } x = \\dfrac{5}{2} \\text{에서 극소} \\\\ ③ \\ |f(x)|g(x) \\text{는 } x = 3 \\text{에서 극값을 갖지 않음} \\\\ ④ \\ \\displaystyle\\lim_{x \\to -\\infty} |f(x)|g(x) = \\infty \\Rightarrow \\lim_{x \\to \\infty} |f(x)|g(x) = \\infty \\end{cases}$$\n\n의 순서로 함수 $|f(x)|g(x)$의 그래프의 개형을 파악할 수 있다.\n\n[FIGURE: y = |f(x)|g(x)의 그래프. x = 0과 x = 5/3 사이에서 극대(①), x = 5/3과 x = 3 사이에서 극소(②), x > 3에서 다시 증가(③). x축과 x = 0, 5/3, 3에서 만남.]\n\n따라서\n\n$$f(x) = mx^2, \\quad g(x) = n\\left(x - \\dfrac{5}{3}\\right)(x - 3) \\quad (n > 0)$$\n\n으로 놓을 수 있다.\n\n이때,\n$$m > 0 \\text{인 경우, 모든 실수 } x \\text{에 대하여}$$\n$$f(x)|g(x)| \\geq 0 \\text{이므로 (다)에 모순}$$\n\n이므로\n\n$$m < 0, \\quad |f(1)| = 2 \\Rightarrow m = -2$$\n\n를 얻고,\n\n$$f(1)|g(1)| = -\\dfrac{8n}{3}, \\quad f\\!\\left(\\dfrac{5}{2}\\right)\\left|g\\!\\left(\\dfrac{5}{2}\\right)\\right| = -\\dfrac{125n}{24}$$\n\n이므로 다음 그림을 참고하면\n\n$$(\\text{다}) \\Rightarrow -\\dfrac{125n}{24} = -\\dfrac{125}{8} \\Rightarrow n = 3$$\n\n을 얻는다.\n\n[FIGURE: y = f(x)|g(x)|의 그래프. x = 5/2에서 극솟값 y = -125/8을 가지며, y = -125/8 직선과 3개의 교점을 가짐.]\n\n$$\\therefore f(x) = -2x^2, \\quad g(x) = 3\\left(x - \\dfrac{5}{3}\\right)(x - 3)$$\n\n$$\\therefore f(-2) + g(-2) = (-8) + 55 = \\boxed{47}$$",
+    "previous_new_dna": [],
+    "previous_dna_review_notes": "",
+    "original_solution": "$f(x) = ax^3 + (a^2 - 4)x + b$이므로\n\n$$f'(x) = 3ax^2 + a^2 - 4$$\n\n이고, 문제에 주어진 조건에 의해\n\n$$\\begin{cases} \\text{① } f(x)\\text{가 } x = -1\\text{에서 극소} \\\\ \\text{② } f(-1) = 2 \\end{cases}$$\n\n이어야 한다.\n\n따라서 ①에 의해\n\n$$f'(-1) = 0 \\Rightarrow 3a + a^2 - 4 = 0$$\n$$\\Rightarrow (a-1)(a+4) = 0$$\n$$\\Rightarrow a = 1 \\text{ 또는 } a = -4$$\n\n이고, 이때\n\n- $a = 1$인 경우, $f'(x) = 3x^2 - 3 = 3(x+1)(x-1)$이므로 $f(x)$는 $x = -1$에서 **극대**\n- $a = -4$인 경우, $f'(x) = -12x^2 + 12 = -12(x+1)(x-1)$이므로 $f(x)$는 $x = -1$에서 **극소**\n\n이므로\n\n$$\\text{①} \\Rightarrow a = -4$$\n$$\\Rightarrow f(x) = -4x^3 + 12x + b$$\n\n이고,\n\n$$\\text{②} \\Rightarrow f(-1) = -4(-1)^3 + 12(-1) + b = 4 - 12 + b = b - 8 = 2$$\n$$\\Rightarrow b = 10$$\n\n을 얻는다.\n\n$$\\therefore\\; a + b = (-4) + 10 = 6$$",
     "recovery_warnings": [],
     "errata": [],
     "metadata": {
@@ -1519,459 +1933,9 @@
       "사실??",
       "사실??"
     ],
-    "needed_dna": [
-      {
-        "id": "F14",
-        "name": "이차함수 조건",
-        "signature": "(함수이름) → 이차함수",
-        "reason": "f(x), g(x)가 이차함수라는 형태 제약. F11은 단일 이차함수를 표현하지만, 두 함수가 각각 이차함수라는 다중 형태 제약을 묶어 표현할 때 반복 적용 구조가 필요. F11을 두 번 사용하는 것으로 처리 가능하므로 F11로 흡수."
-      },
-      {
-        "id": "E9",
-        "name": "극댓값",
-        "signature": "(함수, 점) → 값",
-        "reason": "함수가 특정 점에서 극댓값을 갖는다는 조건. 기존 DNA에 극값/극댓값 개념이 없음."
-      },
-      {
-        "id": "C23",
-        "name": "극값 조건",
-        "signature": "(함수, 점, 극값종류) → 조건",
-        "reason": "함수가 특정 점에서만 극댓값을 갖는다는 조건. C13(최댓값 조건)과 다르며, 기존 DNA로 표현 불가."
-      }
-    ],
+    "needed_dna": [],
     "edge_count": 23,
     "side_count": 3,
-    "created_at": "2026-03-25T19:26:34.837Z"
-  },
-  {
-    "problem_id": "P4",
-    "answer": "6",
-    "content": "id: P4\nsource: 수능\nyear: 미상\nunit: 미적분\ntopic: 다항함수의 극값\nsubtopic: 극솟값 조건을 이용한 상수 결정\ndifficulty: 중\nscore: 4\nanswer: 3\ntype: multiple_choice\n\n# 4. 다항함수의 극솟값 조건을 이용한 상수 결정\n\n## Problem\n두 상수 $a$, $b$에 대하여 함수 $f(x) = ax^3 + (a^2 - 4)x + b$가 $x = -1$에서 극솟값 $2$를 가질 때, $a + b$의 값은? [4점]\n\n## Choices\n① 2\n② 4\n③ 6\n④ 8\n⑤ 10\n\n## Solution\n$f(x) = ax^3 + (a^2 - 4)x + b$이므로\n\n$$f'(x) = 3ax^2 + a^2 - 4$$\n\n이고, 문제에 주어진 조건에 의해\n\n$$\\begin{cases} \\text{① } f(x)\\text{가 } x = -1\\text{에서 극소} \\\\ \\text{② } f(-1) = 2 \\end{cases}$$\n\n이어야 한다.\n\n따라서 ①에 의해\n\n$$f'(-1) = 0 \\Rightarrow 3a + a^2 - 4 = 0$$\n$$\\Rightarrow (a-1)(a+4) = 0$$\n$$\\Rightarrow a = 1 \\text{ 또는 } a = -4$$\n\n이고, 이때\n\n- $a = 1$인 경우, $f'(x) = 3x^2 - 3 = 3(x+1)(x-1)$이므로 $f(x)$는 $x = -1$에서 **극대**\n- $a = -4$인 경우, $f'(x) = -12x^2 + 12 = -12(x+1)(x-1)$이므로 $f(x)$는 $x = -1$에서 **극소**\n\n이므로\n\n$$\\text{①} \\Rightarrow a = -4$$\n$$\\Rightarrow f(x) = -4x^3 + 12x + b$$\n\n이고,\n\n$$\\text{②} \\Rightarrow f(-1) = -4(-1)^3 + 12(-1) + b = 4 - 12 + b = b - 8 = 2$$\n$$\\Rightarrow b = 10$$\n\n을 얻는다.\n\n$$\\therefore\\; a + b = (-4) + 10 = 6$$",
-    "content_source": "FileLoop",
-    "content_length": 1041,
-    "skel_status": "ok",
-    "dna_status": "dna_missing",
-    "previous_skeleton": [
-      {
-        "from": "단서A",
-        "to": "note1",
-        "neuron": "연산33",
-        "note": "$f'(x) = 3ax^2 + (a^2 - 4)$이다",
-        "step": 1
-      },
-      {
-        "from": "단서B",
-        "to": "note2",
-        "neuron": "사실97",
-        "note": "$f'(-1) = 0$이다",
-        "step": 2
-      },
-      {
-        "from": [
-          "note1",
-          "note2"
-        ],
-        "to": "note3",
-        "neuron": "전략25",
-        "note": "$3a + a^2 - 4 = 0$이다",
-        "step": 2
-      },
-      {
-        "from": "note3",
-        "to": "note4",
-        "neuron": "전략29",
-        "note": "$(a-1)(a+4) = 0$이다",
-        "step": 2
-      },
-      {
-        "from": "note4",
-        "to": "note5",
-        "neuron": "연산9",
-        "note": "$a = 1$ 또는 $a = -4$이다",
-        "step": 2
-      },
-      {
-        "from": [
-          "note5",
-          "note1"
-        ],
-        "to": "note6",
-        "neuron": "사실99",
-        "note": "$a = 1$일 때 $f'(x) = 3(x+1)(x-1)$이고 $x = -1$ 전후에서 부호가 양에서 음으로 변하여 극대점이다",
-        "main": false,
-        "step": 3
-      },
-      {
-        "from": [
-          "note6",
-          "단서B"
-        ],
-        "to": "note7",
-        "neuron": "전략23",
-        "note": "$a = 1$은 극소 조건에 모순이므로 기각한다",
-        "main": false,
-        "step": 3
-      },
-      {
-        "from": [
-          "note5",
-          "note1"
-        ],
-        "to": "note8",
-        "neuron": "사실99",
-        "note": "$a = -4$일 때 $f'(x) = -12(x+1)(x-1)$이고 $x = -1$ 전후에서 부호가 음에서 양으로 변하여 극소점이다",
-        "main": false,
-        "step": 3
-      },
-      {
-        "from": [
-          "note7",
-          "note8"
-        ],
-        "to": "note9",
-        "neuron": "전략20",
-        "note": "$a = -4$이다",
-        "step": 3
-      },
-      {
-        "from": [
-          "note9",
-          "단서A"
-        ],
-        "to": "note10",
-        "neuron": "전략25",
-        "note": "$f(x) = -4x^3 + 12x + b$이다",
-        "step": 4
-      },
-      {
-        "from": [
-          "note10",
-          "단서B"
-        ],
-        "to": "note11",
-        "neuron": "전략25",
-        "note": "$f(-1) = 4 - 12 + b = b - 8 = 2$이므로 $b = 10$이다",
-        "step": 5
-      },
-      {
-        "from": [
-          "note9",
-          "note11"
-        ],
-        "to": "END",
-        "neuron": "연산28",
-        "note": "$a + b = -4 + 10 = 6$이다",
-        "step": 5
-      }
-    ],
-    "previous_solution": "STEP 1. $f(x) = ax^3 + (a^2-4)x + b$를 미분하면 $f'(x) = 3ax^2 + (a^2-4)$이다.\nSTEP 2. $x=-1$에서 극값을 가지므로 $f'(-1)=0$이다. $3a + a^2 - 4 = 0$을 인수분해하면 $(a-1)(a+4)=0$이고 $a=1$ 또는 $a=-4$이다.\nSTEP 3. $a=1$이면 $f'(x)=3(x+1)(x-1)$이고 $x=-1$ 전후에서 부호가 양→음이므로 극대점이다. 극소 조건에 모순이므로 기각한다. $a=-4$이면 $f'(x)=-12(x+1)(x-1)$이고 $x=-1$ 전후에서 부호가 음→양이므로 극소점이다. 따라서 $a=-4$이다.\nSTEP 4. $f(x) = -4x^3 + 12x + b$이다.\nSTEP 5. $f(-1) = 4 - 12 + b = b - 8 = 2$이므로 $b = 10$이다. $a + b = -4 + 10 = 6$이다.",
-    "previous_clues": "[{\"id\":\"단서A\",\"text\":\"$f(x) = ax^3 + (a^2 - 4)x + b$이다\"},{\"id\":\"단서B\",\"text\":\"$f(x)$가 $x = -1$에서 극솟값 $2$를 가진다\"}]",
-    "previous_analysis": "f(x)를 미분하여 f'(-1)=0 조건으로 a의 후보를 구하고, 도함수의 부호 변화를 확인하여 극소 조건을 만족하는 a=-4를 선별한다. 이후 f(-1)=2로 b=10을 결정하여 a+b=6을 얻는다.",
-    "previous_matching": "",
-    "previous_matched": [
-      "연산33",
-      "사실97",
-      "전략25",
-      "전략29",
-      "연산9",
-      "사실99",
-      "전략23",
-      "전략20"
-    ],
-    "previous_new_neurons": [],
-    "previous_partial_skeleton": [],
-    "previous_blockage_point": "",
-    "previous_skel_review_notes": "극솟값 조건은 두 가지: (1) x=-1에서 극소(극값 위치 조건), (2) f(-1)=2(극값 조건). 극소 조건은 f'(-1)=0이고 해당 점에서 극대가 아닌 극소임을 포함하지만, 문제 텍스트 레벨에서는 '극솟값 2를 가진다'는 단일 조건으로 제시됨. C13(최댓값 조건)이 가장 유사하지만 극솟값 조건에 정확히 맞지 않아 needs_new_dna 검토 → C13은 최댓값/최솟값 조건이므로 극솟값도 유사하게 처리 가능하나, '극솟값'은 최솟값과 다름. 그러나 기존 DNA 중 별도의 극값 조건 DNA가 없으므로 새 DNA 제안. 또한 a²는 E7(거듭제곱), (a²-4)는 E1+E2로 표현. f(x)의 각 항은 곱(E6)과 합(E1)으로 분해.",
-    "previous_dna_nodes": [
-      {
-        "id": "top",
-        "dna": "Q1",
-        "label": "값을 구하라",
-        "category": "발문"
-      },
-      {
-        "id": "ask",
-        "dna": "E1",
-        "label": "합(a, b)",
-        "category": "수식"
-      },
-      {
-        "id": "va",
-        "dna": "T1",
-        "label": "변수 a",
-        "category": "말단"
-      },
-      {
-        "id": "vb",
-        "dna": "T1",
-        "label": "변수 b",
-        "category": "말단"
-      },
-      {
-        "id": "conds",
-        "dna": "S1",
-        "label": "조건 묶음",
-        "category": "구조"
-      },
-      {
-        "id": "fdef",
-        "dna": "F6",
-        "label": "함수 f 정의",
-        "category": "함수"
-      },
-      {
-        "id": "feq",
-        "dna": "C11",
-        "label": "f(x) 방정식",
-        "category": "조건"
-      },
-      {
-        "id": "fc1",
-        "dna": "C1",
-        "label": "f(x)=ax³+…+b",
-        "category": "조건"
-      },
-      {
-        "id": "rhs",
-        "dna": "E1",
-        "label": "합(항1,항2,b)",
-        "category": "수식"
-      },
-      {
-        "id": "term1",
-        "dna": "E6",
-        "label": "곱(a, x³)",
-        "category": "수식"
-      },
-      {
-        "id": "x3",
-        "dna": "E7",
-        "label": "x의 3제곱",
-        "category": "수식"
-      },
-      {
-        "id": "vx",
-        "dna": "T3",
-        "label": "독립변수 x",
-        "category": "말단"
-      },
-      {
-        "id": "c3",
-        "dna": "T2",
-        "label": "상수 3",
-        "category": "말단"
-      },
-      {
-        "id": "term2",
-        "dna": "E6",
-        "label": "곱(a²-4, x)",
-        "category": "수식"
-      },
-      {
-        "id": "coeff",
-        "dna": "E1",
-        "label": "합(a², -4)",
-        "category": "수식"
-      },
-      {
-        "id": "a2",
-        "dna": "E7",
-        "label": "a의 2제곱",
-        "category": "수식"
-      },
-      {
-        "id": "c2_const",
-        "dna": "T2",
-        "label": "상수 2",
-        "category": "말단"
-      },
-      {
-        "id": "neg4",
-        "dna": "E2",
-        "label": "부호반전(4)",
-        "category": "수식"
-      },
-      {
-        "id": "c4",
-        "dna": "T2",
-        "label": "상수 4",
-        "category": "말단"
-      },
-      {
-        "id": "minval_cond",
-        "dna": "???",
-        "label": "극솟값 조건",
-        "category": "조건"
-      },
-      {
-        "id": "xval",
-        "dna": "T2",
-        "label": "상수 -1",
-        "category": "말단"
-      },
-      {
-        "id": "neg1",
-        "dna": "E2",
-        "label": "부호반전(1)",
-        "category": "수식"
-      },
-      {
-        "id": "c1_const",
-        "dna": "T2",
-        "label": "상수 1",
-        "category": "말단"
-      },
-      {
-        "id": "minv2",
-        "dna": "T2",
-        "label": "극솟값 2",
-        "category": "말단"
-      }
-    ],
-    "previous_dna_edges": [
-      {
-        "from": "ask",
-        "to": "top"
-      },
-      {
-        "from": "conds",
-        "to": "top"
-      },
-      {
-        "from": "va",
-        "to": "ask"
-      },
-      {
-        "from": "vb",
-        "to": "ask"
-      },
-      {
-        "from": "fdef",
-        "to": "conds"
-      },
-      {
-        "from": "feq",
-        "to": "fdef"
-      },
-      {
-        "from": "fc1",
-        "to": "feq"
-      },
-      {
-        "from": "rhs",
-        "to": "fc1"
-      },
-      {
-        "from": "term1",
-        "to": "rhs"
-      },
-      {
-        "from": "term2",
-        "to": "rhs"
-      },
-      {
-        "from": "vb",
-        "to": "rhs"
-      },
-      {
-        "from": "va",
-        "to": "term1"
-      },
-      {
-        "from": "x3",
-        "to": "term1"
-      },
-      {
-        "from": "vx",
-        "to": "x3"
-      },
-      {
-        "from": "c3",
-        "to": "x3"
-      },
-      {
-        "from": "coeff",
-        "to": "term2"
-      },
-      {
-        "from": "vx",
-        "to": "term2"
-      },
-      {
-        "from": "a2",
-        "to": "coeff"
-      },
-      {
-        "from": "neg4",
-        "to": "coeff"
-      },
-      {
-        "from": "va",
-        "to": "a2"
-      },
-      {
-        "from": "c2_const",
-        "to": "a2"
-      },
-      {
-        "from": "c4",
-        "to": "neg4"
-      },
-      {
-        "from": "minval_cond",
-        "to": "conds"
-      },
-      {
-        "from": "fdef",
-        "to": "minval_cond"
-      },
-      {
-        "from": "neg1",
-        "to": "minval_cond"
-      },
-      {
-        "from": "c1_const",
-        "to": "neg1"
-      },
-      {
-        "from": "minv2",
-        "to": "minval_cond"
-      }
-    ],
-    "previous_new_dna": [
-      {
-        "id": "C23",
-        "name": "극값 조건",
-        "signature": "(함수, 점, 극대/극소, 값) → 조건",
-        "reason": "함수가 특정 x값에서 극댓값 또는 극솟값을 가진다는 조건. C13(최댓값 조건)은 구간 전체의 최댓값/최솟값이고, 극값은 국소적 개념으로 다르다. 기존 DNA로 표현 불가."
-      }
-    ],
-    "previous_dna_review_notes": "극솟값 조건은 두 가지: (1) x=-1에서 극소(극값 위치 조건), (2) f(-1)=2(극값 조건). 극소 조건은 f'(-1)=0이고 해당 점에서 극대가 아닌 극소임을 포함하지만, 문제 텍스트 레벨에서는 '극솟값 2를 가진다'는 단일 조건으로 제시됨. C13(최댓값 조건)이 가장 유사하지만 극솟값 조건에 정확히 맞지 않아 needs_new_dna 검토 → C13은 최댓값/최솟값 조건이므로 극솟값도 유사하게 처리 가능하나, '극솟값'은 최솟값과 다름. 그러나 기존 DNA 중 별도의 극값 조건 DNA가 없으므로 새 DNA 제안. 또한 a²는 E7(거듭제곱), (a²-4)는 E1+E2로 표현. f(x)의 각 항은 곱(E6)과 합(E1)으로 분해.",
-    "original_solution": "$f(x) = ax^3 + (a^2 - 4)x + b$이므로\n\n$$f'(x) = 3ax^2 + a^2 - 4$$\n\n이고, 문제에 주어진 조건에 의해\n\n$$\\begin{cases} \\text{① } f(x)\\text{가 } x = -1\\text{에서 극소} \\\\ \\text{② } f(-1) = 2 \\end{cases}$$\n\n이어야 한다.\n\n따라서 ①에 의해\n\n$$f'(-1) = 0 \\Rightarrow 3a + a^2 - 4 = 0$$\n$$\\Rightarrow (a-1)(a+4) = 0$$\n$$\\Rightarrow a = 1 \\text{ 또는 } a = -4$$\n\n이고, 이때\n\n- $a = 1$인 경우, $f'(x) = 3x^2 - 3 = 3(x+1)(x-1)$이므로 $f(x)$는 $x = -1$에서 **극대**\n- $a = -4$인 경우, $f'(x) = -12x^2 + 12 = -12(x+1)(x-1)$이므로 $f(x)$는 $x = -1$에서 **극소**\n\n이므로\n\n$$\\text{①} \\Rightarrow a = -4$$\n$$\\Rightarrow f(x) = -4x^3 + 12x + b$$\n\n이고,\n\n$$\\text{②} \\Rightarrow f(-1) = -4(-1)^3 + 12(-1) + b = 4 - 12 + b = b - 8 = 2$$\n$$\\Rightarrow b = 10$$\n\n을 얻는다.\n\n$$\\therefore\\; a + b = (-4) + 10 = 6$$",
-    "recovery_warnings": [],
-    "errata": [],
-    "metadata": {
-      "unit": "미적분",
-      "difficulty": "중",
-      "score": "4",
-      "type": "multiple_choice",
-      "answer": "3",
-      "year": "미상",
-      "source": "수능",
-      "topic": "다항함수의 극값",
-      "subtopic": "극솟값 조건을 이용한 상수 결정"
-    },
-    "needed_neurons": [],
-    "needed_dna": [
-      {
-        "id": "C23",
-        "name": "극값 조건",
-        "signature": "(함수, 점, 극대/극소, 값) → 조건",
-        "reason": "함수가 특정 x값에서 극댓값 또는 극솟값을 가진다는 조건. C13(최댓값 조건)은 구간 전체의 최댓값/최솟값이고, 극값은 국소적 개념으로 다르다. 기존 DNA로 표현 불가."
-      }
-    ],
-    "edge_count": 12,
-    "side_count": 3,
-    "created_at": "2026-03-25T19:29:21.908Z"
+    "created_at": "2026-03-25T19:48:00.948Z"
   }
 ]
