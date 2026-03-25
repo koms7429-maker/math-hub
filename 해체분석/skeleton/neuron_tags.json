@@ -9,7 +9,9 @@
   {
     "id": "사실2",
     "domain": [
-      "FUNC"
+      "FUNC",
+      "SYM",
+      "ABS"
     ],
     "action": "SYMMETRY"
   },
@@ -17,7 +19,8 @@
     "id": "사실3",
     "domain": [
       "EXP",
-      "LOG"
+      "LOG",
+      "SYM"
     ],
     "action": "SYMMETRY"
   },
@@ -33,7 +36,8 @@
     "id": "사실5",
     "domain": [
       "EXP",
-      "FUNC"
+      "FUNC",
+      "MONO"
     ],
     "action": "PROP"
   },
@@ -41,21 +45,24 @@
     "id": "사실6",
     "domain": [
       "LOG",
-      "ABS"
+      "ABS",
+      "SYM"
     ],
     "action": "SYMMETRY"
   },
   {
     "id": "사실7",
     "domain": [
-      "CIRCLE"
+      "CIRCLE",
+      "SYM"
     ],
     "action": "SYMMETRY"
   },
   {
     "id": "사실8",
     "domain": [
-      "CIRCLE"
+      "CIRCLE",
+      "COORD"
     ],
     "action": "PROP"
   },
@@ -63,7 +70,8 @@
     "id": "사실9",
     "domain": [
       "EQN",
-      "FUNC"
+      "FUNC",
+      "POLY"
     ],
     "action": "PROP"
   },
@@ -77,7 +85,8 @@
   {
     "id": "사실11",
     "domain": [
-      "CIRCLE"
+      "CIRCLE",
+      "COORD"
     ],
     "action": "PROP"
   },
@@ -85,14 +94,16 @@
     "id": "사실12",
     "domain": [
       "LOG",
-      "FUNC"
+      "FUNC",
+      "MONO"
     ],
     "action": "PROP"
   },
   {
     "id": "사실13",
     "domain": [
-      "COORD"
+      "COORD",
+      "SYM"
     ],
     "action": "PROP"
   },
@@ -127,22 +138,16 @@
   {
     "id": "사실18",
     "domain": [
-      "EXP"
+      "EXP",
+      "NUM"
     ],
     "action": "DEFINE"
   },
   {
     "id": "사실19",
     "domain": [
-      "FUNC"
-    ],
-    "action": "PROP"
-  },
-  {
-    "id": "사실46",
-    "domain": [
-      "EXP",
-      "FUNC"
+      "FUNC",
+      "MONO"
     ],
     "action": "PROP"
   },
@@ -150,14 +155,16 @@
     "id": "사실21",
     "domain": [
       "EXP",
-      "FUNC"
+      "FUNC",
+      "LIM"
     ],
     "action": "PROP"
   },
   {
     "id": "사실22",
     "domain": [
-      "FUNC"
+      "FUNC",
+      "LIM"
     ],
     "action": "PROP"
   },
@@ -174,7 +181,8 @@
     "id": "사실24",
     "domain": [
       "EXP",
-      "FUNC"
+      "FUNC",
+      "MONO"
     ],
     "action": "PROP"
   },
@@ -182,14 +190,16 @@
     "id": "사실25",
     "domain": [
       "EXP",
-      "FUNC"
+      "FUNC",
+      "MONO"
     ],
     "action": "PROP"
   },
   {
     "id": "사실26",
     "domain": [
-      "INEQ"
+      "INEQ",
+      "SET"
     ],
     "action": "PROP"
   },
@@ -203,6 +213,7 @@
   {
     "id": "사실28",
     "domain": [
+      "NUM",
       "ABS"
     ],
     "action": "PROP"
@@ -218,7 +229,8 @@
     "id": "사실30",
     "domain": [
       "FUNC",
-      "COORD"
+      "COORD",
+      "SYM"
     ],
     "action": "SYMMETRY"
   },
@@ -226,13 +238,16 @@
     "id": "사실31",
     "domain": [
       "ABS",
-      "FUNC"
+      "FUNC",
+      "SYM"
     ],
     "action": "PROP"
   },
   {
     "id": "사실32",
     "domain": [
+      "SYM",
+      "TRANSF",
       "COORD"
     ],
     "action": "PROP"
@@ -240,6 +255,7 @@
   {
     "id": "사실33",
     "domain": [
+      "TRANSF",
       "COORD"
     ],
     "action": "PROP"
@@ -247,6 +263,7 @@
   {
     "id": "사실34",
     "domain": [
+      "TRANSF",
       "COORD"
     ],
     "action": "PROP"
@@ -254,8 +271,9 @@
   {
     "id": "사실35",
     "domain": [
-      "EQN",
-      "INEQ"
+      "POLY",
+      "INEQ",
+      "EQN"
     ],
     "action": "PROP"
   },
@@ -270,14 +288,18 @@
   {
     "id": "사실37",
     "domain": [
-      "FUNC"
+      "COORD",
+      "FUNC",
+      "MONO"
     ],
     "action": "PROP"
   },
   {
     "id": "사실38",
     "domain": [
-      "FUNC"
+      "COORD",
+      "FUNC",
+      "MONO"
     ],
     "action": "PROP"
   },
@@ -291,28 +313,35 @@
   {
     "id": "사실40",
     "domain": [
-      "FUNC"
+      "FUNC",
+      "MONO"
     ],
     "action": "PROP"
   },
   {
     "id": "사실41",
     "domain": [
-      "FUNC"
+      "FUNC",
+      "TRANSF",
+      "MONO"
     ],
     "action": "PROP"
   },
   {
     "id": "사실42",
     "domain": [
-      "FUNC"
+      "FUNC",
+      "SYM",
+      "MONO"
     ],
     "action": "PROP"
   },
   {
     "id": "사실43",
     "domain": [
-      "FUNC"
+      "FUNC",
+      "MONO",
+      "EQN"
     ],
     "action": "PROP"
   },
@@ -327,15 +356,18 @@
     "id": "사실45",
     "domain": [
       "SEQ",
+      "LIM",
       "FUNC"
     ],
     "action": "PROP"
   },
   {
-    "id": "사실52",
+    "id": "사실46",
     "domain": [
-      "SEQ",
-      "FUNC"
+      "EXP",
+      "FUNC",
+      "LIM",
+      "MONO"
     ],
     "action": "PROP"
   },
@@ -351,6 +383,7 @@
     "id": "사실48",
     "domain": [
       "SEQ",
+      "LIM",
       "FUNC"
     ],
     "action": "BOUND"
@@ -358,20 +391,34 @@
   {
     "id": "사실49",
     "domain": [
-      "SEQ"
+      "SEQ",
+      "LIM"
     ],
     "action": "BOUND"
   },
   {
     "id": "사실50",
     "domain": [
-      "FUNC"
+      "FUNC",
+      "MONO",
+      "INEQ"
     ],
     "action": "PROP"
   },
   {
     "id": "사실51",
     "domain": [
+      "FUNC",
+      "MONO",
+      "INEQ"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실52",
+    "domain": [
+      "SEQ",
+      "LIM",
       "FUNC"
     ],
     "action": "PROP"
@@ -379,28 +426,32 @@
   {
     "id": "사실53",
     "domain": [
-      "FUNC"
+      "FUNC",
+      "MONO"
     ],
     "action": "PROP"
   },
   {
     "id": "사실54",
     "domain": [
-      "FUNC"
+      "FUNC",
+      "MONO"
     ],
     "action": "PROP"
   },
   {
     "id": "사실55",
     "domain": [
-      "FUNC"
+      "FUNC",
+      "LIM"
     ],
     "action": "PROP"
   },
   {
     "id": "사실56",
     "domain": [
-      "FUNC"
+      "FUNC",
+      "MONO"
     ],
     "action": "PROP"
   },
@@ -415,7 +466,8 @@
   {
     "id": "사실58",
     "domain": [
-      "FUNC"
+      "FUNC",
+      "MONO"
     ],
     "action": "PROP"
   },
@@ -429,7 +481,8 @@
   {
     "id": "사실61",
     "domain": [
-      "FUNC"
+      "FUNC",
+      "LIM"
     ],
     "action": "PROP"
   },
@@ -443,7 +496,8 @@
   {
     "id": "사실63",
     "domain": [
-      "FUNC"
+      "FUNC",
+      "LIM"
     ],
     "action": "PROP"
   },
@@ -472,14 +526,16 @@
   {
     "id": "사실67",
     "domain": [
-      "INEQ"
+      "INEQ",
+      "NUM"
     ],
     "action": "PROP"
   },
   {
     "id": "사실68",
     "domain": [
-      "FUNC"
+      "FUNC",
+      "MONO"
     ],
     "action": "PROP"
   },
@@ -493,7 +549,8 @@
   {
     "id": "사실70",
     "domain": [
-      "CIRCLE"
+      "CIRCLE",
+      "COORD"
     ],
     "action": "PROP"
   },
@@ -501,7 +558,8 @@
     "id": "사실71",
     "domain": [
       "EQN",
-      "FUNC"
+      "FUNC",
+      "SYM"
     ],
     "action": "PROP"
   },
@@ -516,7 +574,8 @@
   {
     "id": "사실73",
     "domain": [
-      "FUNC"
+      "FUNC",
+      "LIM"
     ],
     "action": "PROP"
   },
@@ -545,13 +604,6 @@
     "action": "PROP"
   },
   {
-    "id": "사실78",
-    "domain": [
-      "EQN"
-    ],
-    "action": "PROP"
-  },
-  {
     "id": "사실77",
     "domain": [
       "COORD"
@@ -559,9 +611,18 @@
     "action": "PROP"
   },
   {
+    "id": "사실78",
+    "domain": [
+      "EQN",
+      "POLY"
+    ],
+    "action": "PROP"
+  },
+  {
     "id": "사실79",
     "domain": [
-      "EQN"
+      "EQN",
+      "POLY"
     ],
     "action": "PROP"
   },
@@ -583,7 +644,8 @@
   {
     "id": "사실82",
     "domain": [
-      "FUNC"
+      "FUNC",
+      "LIM"
     ],
     "action": "DEFINE"
   },
@@ -606,7 +668,8 @@
     "id": "사실85",
     "domain": [
       "FUNC",
-      "INEQ"
+      "INEQ",
+      "COORD"
     ],
     "action": "PROP"
   },
@@ -628,7 +691,8 @@
   {
     "id": "사실88",
     "domain": [
-      "FUNC"
+      "FUNC",
+      "TRANSF"
     ],
     "action": "PROP"
   },
@@ -649,21 +713,50 @@
   {
     "id": "사실91",
     "domain": [
-      "SEQ"
+      "SEQ",
+      "MONO"
     ],
     "action": "PROP"
   },
   {
     "id": "사실92",
     "domain": [
-      "COORD"
+      "COORD",
+      "SYM"
     ],
     "action": "SYMMETRY"
   },
   {
     "id": "사실93",
     "domain": [
-      "COORD"
+      "COORD",
+      "INEQ"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실94",
+    "domain": [
+      "LIM",
+      "FUNC"
+    ],
+    "action": "DEFINE"
+  },
+  {
+    "id": "사실95",
+    "domain": [
+      "ABS",
+      "LIM",
+      "FUNC"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실96",
+    "domain": [
+      "POLY",
+      "EQN",
+      "DIFF"
     ],
     "action": "PROP"
   },
@@ -678,7 +771,8 @@
     "id": "사실98",
     "domain": [
       "DIFF",
-      "FUNC"
+      "FUNC",
+      "MONO"
     ],
     "action": "PROP"
   },
@@ -739,7 +833,8 @@
     "id": "사실106",
     "domain": [
       "TRIG",
-      "FUNC"
+      "FUNC",
+      "SYM"
     ],
     "action": "SYMMETRY"
   },
@@ -774,35 +869,11 @@
     "action": "PROP"
   },
   {
-    "id": "사실94",
-    "domain": [
-      "LIM",
-      "FUNC"
-    ],
-    "action": "DEFINE"
-  },
-  {
-    "id": "사실95",
-    "domain": [
-      "ABS",
-      "LIM"
-    ],
-    "action": "PROP"
-  },
-  {
-    "id": "사실96",
-    "domain": [
-      "POLY",
-      "EQN",
-      "DIFF"
-    ],
-    "action": "PROP"
-  },
-  {
     "id": "사실111",
     "domain": [
       "DIFF",
-      "FUNC"
+      "FUNC",
+      "LIM"
     ],
     "action": "DEFINE"
   },
@@ -810,7 +881,8 @@
     "id": "사실112",
     "domain": [
       "POLY",
-      "FUNC"
+      "FUNC",
+      "LIM"
     ],
     "action": "PROP"
   },
@@ -821,6 +893,13 @@
       "INEQ"
     ],
     "action": "PROP"
+  },
+  {
+    "id": "사실114",
+    "domain": [
+      "COORD",
+      "SYM"
+    ]
   },
   {
     "id": "연산1",
@@ -869,7 +948,8 @@
     "id": "연산7",
     "domain": [
       "COORD",
-      "FUNC"
+      "FUNC",
+      "TRANSF"
     ],
     "action": "CONVERT"
   },
@@ -883,7 +963,8 @@
   {
     "id": "연산9",
     "domain": [
-      "EQN"
+      "EQN",
+      "POLY"
     ],
     "action": "FACTOR"
   },
@@ -960,7 +1041,9 @@
   {
     "id": "연산20",
     "domain": [
-      "COORD"
+      "COORD",
+      "SYM",
+      "TRANSF"
     ],
     "action": "CONVERT"
   },
@@ -981,7 +1064,8 @@
   {
     "id": "연산23",
     "domain": [
-      "FUNC"
+      "FUNC",
+      "TRANSF"
     ],
     "action": "CONVERT"
   },
@@ -1002,7 +1086,9 @@
   {
     "id": "연산27",
     "domain": [
-      "COORD"
+      "COORD",
+      "SYM",
+      "TRANSF"
     ],
     "action": "CONVERT"
   },
@@ -1038,7 +1124,8 @@
   {
     "id": "연산33",
     "domain": [
-      "DIFF"
+      "DIFF",
+      "POLY"
     ],
     "action": "CALC"
   },
@@ -1167,13 +1254,16 @@
   },
   {
     "id": "전략2",
-    "domain": [],
+    "domain": [
+      "EQN"
+    ],
     "action": "SUBST"
   },
   {
     "id": "전략3",
     "domain": [
-      "FUNC"
+      "FUNC",
+      "MONO"
     ],
     "action": "CLASSIFY"
   },
@@ -1189,7 +1279,8 @@
     "id": "전략5",
     "domain": [
       "FUNC",
-      "EQN"
+      "EQN",
+      "COORD"
     ],
     "action": "CONVERT"
   },
@@ -1224,7 +1315,8 @@
   {
     "id": "전략10",
     "domain": [
-      "COMB"
+      "COMB",
+      "NUM"
     ],
     "action": "ENUM"
   },
@@ -1247,7 +1339,9 @@
     "id": "전략13",
     "domain": [
       "FUNC",
-      "COORD"
+      "COORD",
+      "SYM",
+      "TRANSF"
     ],
     "action": "SYMMETRY"
   },
@@ -1255,7 +1349,8 @@
     "id": "전략14",
     "domain": [
       "COORD",
-      "FUNC"
+      "FUNC",
+      "SYM"
     ],
     "action": "SYMMETRY"
   },
@@ -1263,14 +1358,16 @@
     "id": "전략15",
     "domain": [
       "COORD",
-      "FUNC"
+      "FUNC",
+      "TRANSF"
     ],
     "action": "SETUP"
   },
   {
     "id": "전략16",
     "domain": [
-      "COORD"
+      "COORD",
+      "TRANSF"
     ],
     "action": "SETUP"
   },
@@ -1289,7 +1386,8 @@
   {
     "id": "전략19",
     "domain": [
-      "FUNC"
+      "FUNC",
+      "MONO"
     ],
     "action": "SETUP"
   },
@@ -1316,6 +1414,7 @@
   {
     "id": "전략24",
     "domain": [
+      "LIM",
       "FUNC"
     ],
     "action": "SETUP"
@@ -1329,7 +1428,8 @@
     "id": "전략26",
     "domain": [
       "FUNC",
-      "INEQ"
+      "INEQ",
+      "MONO"
     ],
     "action": "BOUND"
   },
@@ -1375,7 +1475,8 @@
   {
     "id": "전략32",
     "domain": [
-      "SEQ"
+      "SEQ",
+      "NUM"
     ],
     "action": "ENUM"
   },
