@@ -361,24 +361,6 @@
       "has_solution": true,
       "has_profile": false,
       "profile_version": 0
-    },
-    {
-      "problem_id": "P9",
-      "filename": "P9.json",
-      "has_skeleton": true,
-      "has_clues": true,
-      "has_solution": true,
-      "has_profile": false,
-      "profile_version": 0
-    },
-    {
-      "problem_id": "P9_2",
-      "filename": "P9_2.json",
-      "has_skeleton": true,
-      "has_clues": true,
-      "has_solution": true,
-      "has_profile": false,
-      "profile_version": 0
     }
   ]
 }
