@@ -1,0 +1,780 @@
+{
+  "problem_id": "P9",
+  "answer": "-10",
+  "clues": [
+    {
+      "id": "단서A",
+      "text": "$f(x) = ax^3 + bx^2 - x$ ($a$, $b$는 실수)"
+    },
+    {
+      "id": "단서B",
+      "text": "$g(x) = \\frac{1}{2}x^2 - x$"
+    },
+    {
+      "id": "단서C",
+      "text": "곡선 $y=f(x)$ 위의 점 $(-1,\\,f(-1))$에서의 접선과 곡선 $y=g(x)$ 위의 점 $(2,\\,g(2))$에서의 접선이 $y$축에 대하여 대칭이다"
+    },
+    {
+      "id": "단서D",
+      "text": "구하는 값: $a+b$"
+    }
+  ],
+  "skeleton": [
+    {
+      "from": [
+        "단서B"
+      ],
+      "to": "note1",
+      "neuron": "NEW_note1",
+      "type": "연산",
+      "domain_hint": "POLY",
+      "description": "함수에 x=2를 대입하여 함숫값 계산",
+      "note": "$g(2) = \\frac{1}{2}\\cdot 4 - 2 = 0$이다",
+      "main": true,
+      "step": 1
+    },
+    {
+      "from": [
+        "단서B"
+      ],
+      "to": "note2",
+      "neuron": "연산33",
+      "type": "연산",
+      "domain_hint": "DIFF, POLY",
+      "description": "다항함수를 미분하여 도함수 계산",
+      "note": "$g'(x) = x - 1$이다",
+      "main": true,
+      "step": 1
+    },
+    {
+      "from": [
+        "note2"
+      ],
+      "to": "note3",
+      "neuron": "NEW_note3",
+      "type": "연산",
+      "domain_hint": "POLY",
+      "description": "도함수에 x=2를 대입하여 기울기 계산",
+      "note": "$g'(2) = 1$이다",
+      "main": true,
+      "step": 1
+    },
+    {
+      "from": [
+        "note1",
+        "note3"
+      ],
+      "to": "note4",
+      "neuron": "사실100",
+      "type": "사실",
+      "domain_hint": "DIFF",
+      "description": "접점과 기울기로 접선의 방정식 작성",
+      "note": "곡선 $y=g(x)$ 위의 점 $(2,\\,0)$에서의 접선은 $y = x - 2$이다",
+      "main": true,
+      "step": 1
+    },
+    {
+      "from": [
+        "note4"
+      ],
+      "to": "note5",
+      "neuron": "NEW_note5",
+      "type": "사실",
+      "domain_hint": "COORD",
+      "description": "직선을 y축 대칭 이동하면 x를 -x로 치환",
+      "note": "$y = x - 2$를 $y$축 대칭하면 $y = -x - 2$이다",
+      "main": true,
+      "step": 2
+    },
+    {
+      "from": [
+        "단서C",
+        "note5"
+      ],
+      "to": "note6",
+      "neuron": "전략13",
+      "type": "전략",
+      "domain_hint": "DIFF, COORD",
+      "description": "y축 대칭 조건을 접선 일치 조건으로 해석",
+      "note": "곡선 $y=f(x)$ 위의 점 $(-1,\\,f(-1))$에서의 접선은 $y = -x - 2$이다",
+      "main": true,
+      "step": 2
+    },
+    {
+      "from": [
+        "단서A"
+      ],
+      "to": "note7",
+      "neuron": "연산33",
+      "type": "연산",
+      "domain_hint": "DIFF, POLY",
+      "description": "다항함수를 미분하여 도함수 계산",
+      "note": "$f'(x) = 3ax^2 + 2bx - 1$이다",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": [
+        "note7"
+      ],
+      "to": "note8",
+      "neuron": "NEW_note8",
+      "type": "연산",
+      "domain_hint": "POLY",
+      "description": "도함수에 x=-1을 대입하여 식 정리",
+      "note": "$f'(-1) = 3a - 2b - 1$이다",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": [
+        "단서A"
+      ],
+      "to": "note9",
+      "neuron": "NEW_note9",
+      "type": "연산",
+      "domain_hint": "POLY",
+      "description": "함수에 x=-1을 대입하여 식 정리",
+      "note": "$f(-1) = -a + b + 1$이다",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": [
+        "note6"
+      ],
+      "to": "note10",
+      "neuron": "사실100",
+      "type": "사실",
+      "domain_hint": "DIFF",
+      "description": "접선의 기울기는 접점에서의 미분값과 같다",
+      "note": "$f'(-1) = -1$이다",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": [
+        "note10",
+        "note8"
+      ],
+      "to": "note11",
+      "neuron": "NEW_note11",
+      "type": "연산",
+      "domain_hint": "EQN",
+      "description": "미분값과 기울기를 등치하여 방정식 수립",
+      "note": "$3a - 2b - 1 = -1$, 즉 $3a - 2b = 0$이다",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": [
+        "note6"
+      ],
+      "to": "note12",
+      "neuron": "NEW_note12",
+      "type": "사실",
+      "domain_hint": "DIFF",
+      "description": "접점은 접선 위의 점이다",
+      "note": "점 $(-1,\\,f(-1))$은 직선 $y = -x - 2$ 위의 점이다",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": [
+        "note12"
+      ],
+      "to": "note13",
+      "neuron": "NEW_note13",
+      "type": "연산",
+      "domain_hint": "POLY",
+      "description": "직선에 x=-1을 대입하여 y값 계산",
+      "note": "$f(-1) = -(-1) - 2 = -1$이다",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": [
+        "note13",
+        "note9"
+      ],
+      "to": "note14",
+      "neuron": "NEW_note14",
+      "type": "연산",
+      "domain_hint": "EQN",
+      "description": "함숫값과 계산값을 등치하여 방정식 수립",
+      "note": "$-a + b + 1 = -1$, 즉 $-a + b = -2$이다",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": [
+        "note11",
+        "note14"
+      ],
+      "to": "note15",
+      "neuron": "NEW_note15",
+      "type": "연산",
+      "domain_hint": "EQN",
+      "description": "이원일차연립방정식을 풀어 미지수 결정",
+      "note": "$a = -4$, $b = -6$이다",
+      "main": true,
+      "step": 4
+    },
+    {
+      "from": [
+        "note15",
+        "단서D"
+      ],
+      "to": "END",
+      "neuron": "NEW_END",
+      "type": "연산",
+      "domain_hint": "POLY",
+      "description": "a와 b를 더하여 최종 답 계산",
+      "note": "$a + b = -4 + (-6) = -10$이다",
+      "main": true,
+      "step": 5
+    }
+  ],
+  "solution": "$g(2) = \\frac{1}{2}\\cdot 4 - 2 = 0$이다 $g'(x) = x - 1$이다 $g'(2) = 1$이다 곡선 $y=g(x)$ 위의 점 $(2,\\,0)$에서의 접선은 $y = x - 2$이다 $y = x - 2$를 $y$축 대칭하면 $y = -x - 2$이다 곡선 $y=f(x)$ 위의 점 $(-1,\\,f(-1))$에서의 접선은 $y = -x - 2$이다 $f'(x) = 3ax^2 + 2bx - 1$이다 $f'(-1) = 3a - 2b - 1$이다 $f(-1) = -a + b + 1$이다 $f'(-1) = -1$이다 $3a - 2b - 1 = -1$, 즉 $3a - 2b = 0$이다 점 $(-1,\\,f(-1))$은 직선 $y = -x - 2$ 위의 점이다 $f(-1) = -(-1) - 2 = -1$이다 $-a + b + 1 = -1$, 즉 $-a + b = -2$이다 $a = -4$, $b = -6$이다 $a + b = -4 + (-6) = -10$이다",
+  "original_solution": "$g(x) = \\frac{1}{2}x^2 - x$이므로\n\n$$g(2) = 0, \\quad g'(2) = 1$$\n\n따라서 $y = g(x)$ 위의 점 $(2,\\, g(2))$에서의 접선은\n\n$$y = x - 2$$\n\n이 직선과 $y$축에 대하여 대칭인 직선은\n\n$$y = -x - 2 \\quad \\cdots \\; \\text{㉠}$$\n\n이다.\n\n한편,\n\n$$f(x) = ax^3 + bx^2 - x \\;\\Rightarrow\\; f'(x) = 3ax^2 + 2bx - 1$$\n\n이고, 문제의 조건에 의해 ㉠이 $y = f(x)$ 위의 점 $(-1,\\, f(-1))$에서의 접선이므로\n\n$$f(-1) = -1 \\;\\Rightarrow\\; -a + b + 1 = -1$$\n\n$$f'(-1) = -1 \\;\\Rightarrow\\; 3a - 2b - 1 = -1$$\n\n이를 정리하면\n\n$$-a + b = -2, \\quad 3a - 2b = 0$$\n\n연립하면 $a = -4$, $b = -6$을 얻는다.\n\n$$\\therefore\\; a + b = -10$$\n\n**정답: ①**",
+  "analysis": "g(x)를 미분하여 (2, g(2))에서의 접선 y=x-2를 구한 뒤, y축 대칭인 직선 y=-x-2를 얻는다. 이 직선이 f(x) 위의 점 (-1, f(-1))에서의 접선과 일치하는 조건으로 기울기·접점 두 방정식을 세워 a=-4, b=-6을 구하고 a+b=-10을 얻는다.",
+  "new_neurons": [
+    {
+      "id": "연산??",
+      "type": "연산",
+      "statement": "함수에 x=2를 대입하여 함숫값 계산",
+      "reason": "Tag filter + LLM 매칭에서 기존 뉴런 없음",
+      "blocked_edge": "단서B → note1",
+      "domain_hint": "POLY",
+      "action_hint": ""
+    },
+    {
+      "id": "연산??",
+      "type": "연산",
+      "statement": "도함수에 x=2를 대입하여 기울기 계산",
+      "reason": "Tag filter + LLM 매칭에서 기존 뉴런 없음",
+      "blocked_edge": "note2 → note3",
+      "domain_hint": "POLY",
+      "action_hint": ""
+    },
+    {
+      "id": "사실??",
+      "type": "사실",
+      "statement": "직선을 y축 대칭 이동하면 x를 -x로 치환",
+      "reason": "Tag filter + LLM 매칭에서 기존 뉴런 없음",
+      "blocked_edge": "note4 → note5",
+      "domain_hint": "COORD",
+      "action_hint": ""
+    },
+    {
+      "id": "연산??",
+      "type": "연산",
+      "statement": "도함수에 x=-1을 대입하여 식 정리",
+      "reason": "Tag filter + LLM 매칭에서 기존 뉴런 없음",
+      "blocked_edge": "note7 → note8",
+      "domain_hint": "POLY",
+      "action_hint": ""
+    },
+    {
+      "id": "연산??",
+      "type": "연산",
+      "statement": "함수에 x=-1을 대입하여 식 정리",
+      "reason": "Tag filter + LLM 매칭에서 기존 뉴런 없음",
+      "blocked_edge": "단서A → note9",
+      "domain_hint": "POLY",
+      "action_hint": ""
+    },
+    {
+      "id": "연산??",
+      "type": "연산",
+      "statement": "미분값과 기울기를 등치하여 방정식 수립",
+      "reason": "Tag filter + LLM 매칭에서 기존 뉴런 없음",
+      "blocked_edge": "note10+note8 → note11",
+      "domain_hint": "EQN",
+      "action_hint": ""
+    },
+    {
+      "id": "사실??",
+      "type": "사실",
+      "statement": "접점은 접선 위의 점이다",
+      "reason": "Tag filter + LLM 매칭에서 기존 뉴런 없음",
+      "blocked_edge": "note6 → note12",
+      "domain_hint": "DIFF",
+      "action_hint": ""
+    },
+    {
+      "id": "연산??",
+      "type": "연산",
+      "statement": "직선에 x=-1을 대입하여 y값 계산",
+      "reason": "Tag filter + LLM 매칭에서 기존 뉴런 없음",
+      "blocked_edge": "note12 → note13",
+      "domain_hint": "POLY",
+      "action_hint": ""
+    },
+    {
+      "id": "연산??",
+      "type": "연산",
+      "statement": "함숫값과 계산값을 등치하여 방정식 수립",
+      "reason": "Tag filter + LLM 매칭에서 기존 뉴런 없음",
+      "blocked_edge": "note13+note9 → note14",
+      "domain_hint": "EQN",
+      "action_hint": ""
+    },
+    {
+      "id": "연산??",
+      "type": "연산",
+      "statement": "이원일차연립방정식을 풀어 미지수 결정",
+      "reason": "Tag filter + LLM 매칭에서 기존 뉴런 없음",
+      "blocked_edge": "note11+note14 → note15",
+      "domain_hint": "EQN",
+      "action_hint": ""
+    },
+    {
+      "id": "연산??",
+      "type": "연산",
+      "statement": "a와 b를 더하여 최종 답 계산",
+      "reason": "Tag filter + LLM 매칭에서 기존 뉴런 없음",
+      "blocked_edge": "note15+단서D → END",
+      "domain_hint": "POLY",
+      "action_hint": ""
+    }
+  ],
+  "metadata": {
+    "unit": "미분법",
+    "difficulty": "중상",
+    "score": "4",
+    "type": "multiple_choice",
+    "answer": "1",
+    "year": "미상",
+    "source": "수능",
+    "topic": "접선의 방정식",
+    "subtopic": "y축 대칭 접선 조건"
+  },
+  "edge_count": 16,
+  "side_count": 0,
+  "statement": "# 9. (수능) - y축 대칭인 두 접선 조건으로 계수 구하기\n\n## Problem\n두 실수 $a$, $b$에 대하여 두 함수\n\n$$f(x) = ax^3 + bx^2 - x, \\quad g(x) = \\frac{1}{2}x^2 - x$$\n\n가 있다. 곡선 $y = f(x)$ 위의 점 $(-1,\\, f(-1))$에서의 접선과 곡선 $y = g(x)$ 위의 점 $(2,\\, g(2))$에서의 접선이 $y$축에 대하여 대칭일 때, $a + b$의 값은? [4점]",
+  "dna": {
+    "nodes": [
+      {
+        "id": "top",
+        "dna": "Q1",
+        "label": "a+b 값 구하기",
+        "category": "발문"
+      },
+      {
+        "id": "ask",
+        "dna": "E1",
+        "label": "합(a, b)",
+        "category": "수식"
+      },
+      {
+        "id": "va",
+        "dna": "T1",
+        "label": "변수 a",
+        "category": "말단"
+      },
+      {
+        "id": "vb",
+        "dna": "T1",
+        "label": "변수 b",
+        "category": "말단"
+      },
+      {
+        "id": "conds",
+        "dna": "S1",
+        "label": "조건 묶음",
+        "category": "구조"
+      },
+      {
+        "id": "fn_f",
+        "dna": "F6",
+        "label": "함수 f 정의",
+        "category": "함수"
+      },
+      {
+        "id": "crv_f",
+        "dna": "G2",
+        "label": "곡선 y=f(x)",
+        "category": "기하"
+      },
+      {
+        "id": "eq_f",
+        "dna": "C11",
+        "label": "f 방정식",
+        "category": "조건"
+      },
+      {
+        "id": "c1_f",
+        "dna": "C1",
+        "label": "f(x)=ax³+bx²-x",
+        "category": "조건"
+      },
+      {
+        "id": "sum_f",
+        "dna": "E1",
+        "label": "합(ax³, bx²-x)",
+        "category": "수식"
+      },
+      {
+        "id": "term_ax3",
+        "dna": "E6",
+        "label": "곱(a, x³)",
+        "category": "수식"
+      },
+      {
+        "id": "x3",
+        "dna": "E7",
+        "label": "x의 3제곱",
+        "category": "수식"
+      },
+      {
+        "id": "c3",
+        "dna": "T2",
+        "label": "상수 3",
+        "category": "말단"
+      },
+      {
+        "id": "sum_bx2mx",
+        "dna": "E1",
+        "label": "합(bx², -x)",
+        "category": "수식"
+      },
+      {
+        "id": "term_bx2",
+        "dna": "E6",
+        "label": "곱(b, x²)",
+        "category": "수식"
+      },
+      {
+        "id": "x2",
+        "dna": "E7",
+        "label": "x의 2제곱",
+        "category": "수식"
+      },
+      {
+        "id": "c2",
+        "dna": "T2",
+        "label": "상수 2",
+        "category": "말단"
+      },
+      {
+        "id": "neg_x",
+        "dna": "E2",
+        "label": "부호반전(x)",
+        "category": "수식"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
+      },
+      {
+        "id": "fn_g",
+        "dna": "F6",
+        "label": "함수 g 정의",
+        "category": "함수"
+      },
+      {
+        "id": "crv_g",
+        "dna": "G2",
+        "label": "곡선 y=g(x)",
+        "category": "기하"
+      },
+      {
+        "id": "eq_g",
+        "dna": "C11",
+        "label": "g 방정식",
+        "category": "조건"
+      },
+      {
+        "id": "c1_g",
+        "dna": "C1",
+        "label": "g(x)=x²/2-x",
+        "category": "조건"
+      },
+      {
+        "id": "sum_g",
+        "dna": "E1",
+        "label": "합(x²/2, -x)",
+        "category": "수식"
+      },
+      {
+        "id": "half_x2",
+        "dna": "E6",
+        "label": "곱(1/2, x²)",
+        "category": "수식"
+      },
+      {
+        "id": "c_half",
+        "dna": "T2",
+        "label": "상수 1/2",
+        "category": "말단"
+      },
+      {
+        "id": "neg_x2",
+        "dna": "E2",
+        "label": "부호반전(x)",
+        "category": "수식"
+      },
+      {
+        "id": "pt_f",
+        "dna": "G1",
+        "label": "점(-1,f(-1))",
+        "category": "기하"
+      },
+      {
+        "id": "on_f",
+        "dna": "G3",
+        "label": "점이 f 위에",
+        "category": "기하"
+      },
+      {
+        "id": "tan_f",
+        "dna": "G15",
+        "label": "f 위 접선",
+        "category": "기하"
+      },
+      {
+        "id": "pt_g",
+        "dna": "G1",
+        "label": "점(2,g(2))",
+        "category": "기하"
+      },
+      {
+        "id": "on_g",
+        "dna": "G3",
+        "label": "점이 g 위에",
+        "category": "기하"
+      },
+      {
+        "id": "tan_g",
+        "dna": "G15",
+        "label": "g 위 접선",
+        "category": "기하"
+      },
+      {
+        "id": "cm1",
+        "dna": "T2",
+        "label": "상수 -1",
+        "category": "말단"
+      },
+      {
+        "id": "cpos2",
+        "dna": "T2",
+        "label": "상수 2",
+        "category": "말단"
+      },
+      {
+        "id": "y_sym",
+        "dna": "???",
+        "label": "y축 대칭 조건",
+        "category": "기하"
+      },
+      {
+        "id": "yaxis",
+        "dna": "G13",
+        "label": "y축",
+        "category": "기하"
+      },
+      {
+        "id": "real_ab",
+        "dna": "L3",
+        "label": "a,b는 실수",
+        "category": "제한"
+      }
+    ],
+    "edges": [
+      {
+        "from": "ask",
+        "to": "top"
+      },
+      {
+        "from": "conds",
+        "to": "top"
+      },
+      {
+        "from": "va",
+        "to": "ask"
+      },
+      {
+        "from": "vb",
+        "to": "ask"
+      },
+      {
+        "from": "real_ab",
+        "to": "va"
+      },
+      {
+        "from": "real_ab",
+        "to": "vb"
+      },
+      {
+        "from": "fn_f",
+        "to": "crv_f"
+      },
+      {
+        "from": "eq_f",
+        "to": "fn_f"
+      },
+      {
+        "from": "c1_f",
+        "to": "eq_f"
+      },
+      {
+        "from": "sum_f",
+        "to": "c1_f"
+      },
+      {
+        "from": "term_ax3",
+        "to": "sum_f"
+      },
+      {
+        "from": "sum_bx2mx",
+        "to": "sum_f"
+      },
+      {
+        "from": "va",
+        "to": "term_ax3"
+      },
+      {
+        "from": "x3",
+        "to": "term_ax3"
+      },
+      {
+        "from": "vx",
+        "to": "x3"
+      },
+      {
+        "from": "c3",
+        "to": "x3"
+      },
+      {
+        "from": "vb",
+        "to": "term_bx2"
+      },
+      {
+        "from": "x2",
+        "to": "term_bx2"
+      },
+      {
+        "from": "vx",
+        "to": "x2"
+      },
+      {
+        "from": "c2",
+        "to": "x2"
+      },
+      {
+        "from": "term_bx2",
+        "to": "sum_bx2mx"
+      },
+      {
+        "from": "neg_x",
+        "to": "sum_bx2mx"
+      },
+      {
+        "from": "vx",
+        "to": "neg_x"
+      },
+      {
+        "from": "fn_g",
+        "to": "crv_g"
+      },
+      {
+        "from": "eq_g",
+        "to": "fn_g"
+      },
+      {
+        "from": "c1_g",
+        "to": "eq_g"
+      },
+      {
+        "from": "sum_g",
+        "to": "c1_g"
+      },
+      {
+        "from": "half_x2",
+        "to": "sum_g"
+      },
+      {
+        "from": "neg_x2",
+        "to": "sum_g"
+      },
+      {
+        "from": "c_half",
+        "to": "half_x2"
+      },
+      {
+        "from": "x2",
+        "to": "half_x2"
+      },
+      {
+        "from": "vx",
+        "to": "neg_x2"
+      },
+      {
+        "from": "pt_f",
+        "to": "on_f"
+      },
+      {
+        "from": "crv_f",
+        "to": "on_f"
+      },
+      {
+        "from": "cm1",
+        "to": "pt_f"
+      },
+      {
+        "from": "on_f",
+        "to": "tan_f"
+      },
+      {
+        "from": "pt_g",
+        "to": "on_g"
+      },
+      {
+        "from": "crv_g",
+        "to": "on_g"
+      },
+      {
+        "from": "cpos2",
+        "to": "pt_g"
+      },
+      {
+        "from": "on_g",
+        "to": "tan_g"
+      },
+      {
+        "from": "tan_f",
+        "to": "y_sym"
+      },
+      {
+        "from": "tan_g",
+        "to": "y_sym"
+      },
+      {
+        "from": "yaxis",
+        "to": "y_sym"
+      },
+      {
+        "from": "y_sym",
+        "to": "conds"
+      }
+    ],
+    "new_dna": [
+      {
+        "id": "G31",
+        "name": "y축 대칭",
+        "signature": "(직선1, 직선2) → 조건",
+        "reason": "두 직선이 y축에 대하여 대칭이라는 기하 조건을 표현하는 DNA가 목록에 없다. G4(좌표 같음), G19(평행) 등으로 표현 불가."
+      }
+    ]
+  },
+  "thinking_profile": null,
+  "folders": [],
+  "history": [],
+  "recovery_warnings": [],
+  "errata": [],
+  "created_at": "2026-03-25T12:53:29.374Z"
+}
