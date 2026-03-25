@@ -1524,5 +1524,12 @@
       "EQN"
     ],
     "action": "FACTOR"
+  },
+  {
+    "id": "사실115",
+    "domain": [
+      "POLY"
+    ],
+    "action": ""
   }
 ]
