@@ -1530,13 +1530,13 @@
     "domain": [
       "POLY"
     ],
-    "action": ""
+    "action": "DEGREE_PRODUCT"
   },
   {
     "id": "사실116",
     "domain": [
       "ABS"
     ],
-    "action": ""
+    "action": "ABS_NONZERO"
   }
 ]
