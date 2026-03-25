@@ -3,10 +3,10 @@
     "problem_id": "P10",
     "answer": "47",
     "content": "id: P10\nsource: 수능\nyear: 미정\nunit: 미적분\ntopic: 이차함수와 절댓값 함수의 극값\nsubtopic: 극값 조건과 실근의 개수\ndifficulty: 상\nscore: 4\nanswer: 47\ntype: short_answer\n\n# 10. (수능) - 이차함수와 절댓값 함수의 극값 및 실근의 개수\n\n## Problem\n상수 $a$, $b$와 두 이차함수 $f(x)$, $g(x)$가 다음 조건을 만족시킨다.\n\n(가) 모든 실수 $x$에 대하여 $f(x)g(x) = x^2(x-3)(ax+b)$ 이다.\n\n(나) 함수 $|f(x)|g(x)$는 $x = 1$에서만 극댓값을 갖는다.\n\n(다) 방정식 $f(x)|g(x)| = -\\dfrac{125}{8}$의 서로 다른 실근의 개수는 3이다.\n\n$|f(1)| = 2$일 때, $f(-2) + g(-2)$의 값을 구하시오. [4점]\n\n## Solution\n$f(x)$, $g(x)$가 각각 이차함수이므로 $a \\neq 0$이고,\n\n$|f(1)| = 2$ $\\Rightarrow$ 함수 $|f(x)|g(x)$는 $x = 1$에서 미분가능하므로\n\n(나) $\\Rightarrow$ $f(x)g(x)$는 $x = 1$에서 극값을 가짐\n\n$\\Rightarrow$ $x = 1$일 때 $(f(x)g(x))' = 0$\n\n$\\Rightarrow$ $b = -\\dfrac{5}{3}a$ $(\\because$ (가))\n\n를 얻는다.\n\n따라서\n\n$$f(x)g(x) = ax^2(x-3)\\left(x - \\dfrac{5}{3}\\right)$$\n\n$$\\Rightarrow (f(x)g(x))' = 2ax(x-1)(2x-5)$$\n\n이므로 다음의 두 함수 $f(x)g(x)$, $-f(x)g(x)$의 그래프의 개형을 참고하면\n\n$$(\\text{나}) \\Rightarrow \\begin{cases} ① \\ |f(x)|g(x) \\text{는 } x = 1 \\text{에서 극대} \\\\ ② \\ |f(x)|g(x) \\text{는 } x = \\dfrac{5}{2} \\text{에서 극소} \\\\ ③ \\ |f(x)|g(x) \\text{는 } x = 3 \\text{에서 극값을 갖지 않음} \\\\ ④ \\ \\displaystyle\\lim_{x \\to -\\infty} |f(x)|g(x) = \\infty \\Rightarrow \\lim_{x \\to \\infty} |f(x)|g(x) = \\infty \\end{cases}$$\n\n의 순서로 함수 $|f(x)|g(x)$의 그래프의 개형을 파악할 수 있다.\n\n[FIGURE: y = |f(x)|g(x)의 그래프. x = 0과 x = 5/3 사이에서 극대(①), x = 5/3과 x = 3 사이에서 극소(②), x > 3에서 다시 증가(③). x축과 x = 0, 5/3, 3에서 만남.]\n\n따라서\n\n$$f(x) = mx^2, \\quad g(x) = n\\left(x - \\dfrac{5}{3}\\right)(x - 3) \\quad (n > 0)$$\n\n으로 놓을 수 있다.\n\n이때,\n$$m > 0 \\text{인 경우, 모든 실수 } x \\text{에 대하여}$$\n$$f(x)|g(x)| \\geq 0 \\text{이므로 (다)에 모순}$$\n\n이므로\n\n$$m < 0, \\quad |f(1)| = 2 \\Rightarrow m = -2$$\n\n를 얻고,\n\n$$f(1)|g(1)| = -\\dfrac{8n}{3}, \\quad f\\!\\left(\\dfrac{5}{2}\\right)\\left|g\\!\\left(\\dfrac{5}{2}\\right)\\right| = -\\dfrac{125n}{24}$$\n\n이므로 다음 그림을 참고하면\n\n$$(\\text{다}) \\Rightarrow -\\dfrac{125n}{24} = -\\dfrac{125}{8} \\Rightarrow n = 3$$\n\n을 얻는다.\n\n[FIGURE: y = f(x)|g(x)|의 그래프. x = 5/2에서 극솟값 y = -125/8을 가지며, y = -125/8 직선과 3개의 교점을 가짐.]\n\n$$\\therefore f(x) = -2x^2, \\quad g(x) = 3\\left(x - \\dfrac{5}{3}\\right)(x - 3)$$\n\n$$\\therefore f(-2) + g(-2) = (-8) + 55 = \\boxed{47}$$",
-    "content_source": "FileLoop",
+    "content_source": "CheckPending",
     "content_length": 2082,
     "skel_status": "neuron_missing",
-    "dna_status": "dna_missing",
+    "dna_status": "ok",
     "previous_skeleton": [
       {
         "from": [
@@ -20,18 +20,20 @@
         "description": "이차×이차=사차이므로 최고차 계수 a≠0",
         "note": "$f(x)g(x)$는 사차식이고 $a \\neq 0$이다",
         "main": true,
-        "step": 1
+        "step": 1,
+        "_keep_neuron": true
       },
       {
         "from": "단서E",
         "to": "note2",
-        "neuron": "NEW_note2",
+        "neuron": "사실116",
         "type": "사실",
         "domain_hint": "ABS, NUM",
         "description": "절댓값이 양수이면 원래 값은 0이 아님",
         "note": "$|f(1)|=2>0$이므로 $f(1) \\neq 0$이다",
         "main": true,
-        "step": 2
+        "step": 2,
+        "_keep_neuron": false
       },
       {
         "from": "note2",
@@ -42,7 +44,8 @@
         "description": "연속함수가 0이 아닌 점 근방에서 부호 일정",
         "note": "$x=1$ 근방에서 $f(x)$는 부호가 일정하여 $|f(x)| = \\pm f(x)$이다",
         "main": true,
-        "step": 2
+        "step": 2,
+        "_keep_neuron": true
       },
       {
         "from": [
@@ -56,7 +59,8 @@
         "description": "부호 일정 구간에서 |f|g의 극값은 fg의 극값과 동치",
         "note": "$|f(x)|g(x)$가 $x=1$에서 극대이면 $f(x)g(x)$도 $x=1$에서 극값을 가지고 $(f(x)g(x))'\\big|_{x=1}=0$이다",
         "main": true,
-        "step": 2
+        "step": 2,
+        "_keep_neuron": false
       },
       {
         "from": [
@@ -70,7 +74,8 @@
         "description": "사차식의 도함수를 계산하고 x=1 대입",
         "note": "$(f(x)g(x))' = 4ax^3+3(b-3a)x^2-6bx$에 $x=1$ 대입하면 $-5a-3b=0$, 즉 $b = -\\dfrac{5a}{3}$이다",
         "main": true,
-        "step": 2
+        "step": 2,
+        "_keep_neuron": true
       },
       {
         "from": [
@@ -84,7 +89,8 @@
         "description": "b값을 대입하여 곱 함수를 인수분해",
         "note": "$f(x)g(x) = ax^2(x-3)\\!\\left(x-\\dfrac{5}{3}\\right)$이다",
         "main": true,
-        "step": 3
+        "step": 3,
+        "_keep_neuron": true
       },
       {
         "from": "note6",
@@ -95,7 +101,8 @@
         "description": "사차식의 도함수를 인수분해하여 임계점 도출",
         "note": "$(f(x)g(x))' = 2ax(2x-5)(x-1)$이고 임계점은 $x=0,\\;1,\\;\\dfrac{5}{2}$이다",
         "main": true,
-        "step": 3
+        "step": 3,
+        "_keep_neuron": true
       },
       {
         "from": [
@@ -109,7 +116,8 @@
         "description": "사차식의 근을 두 이차식에 자연스럽게 분배",
         "note": "$f(x)=mx^2$, $g(x)=n\\!\\left(x-\\dfrac{5}{3}\\right)\\!(x-3)$ ($mn=a$)으로 놓는다",
         "main": true,
-        "step": 4
+        "step": 4,
+        "_keep_neuron": true
       },
       {
         "from": "note8",
@@ -120,7 +128,8 @@
         "description": "f에 절댓값 적용하여 |f|g를 정리",
         "note": "$|f(x)|g(x) = |m|\\,n\\,x^2\\!\\left(x-\\dfrac{5}{3}\\right)\\!(x-3)$이다",
         "main": true,
-        "step": 4
+        "step": 4,
+        "_keep_neuron": true
       },
       {
         "from": [
@@ -134,7 +143,8 @@
         "description": "도함수 부호 분석으로 극값 위치 판별",
         "note": "$n>0$이면 $|f(x)|g(x)$는 $x=0$에서 극소, $x=1$에서 극대, $x=\\dfrac{5}{2}$에서 극소이다",
         "main": true,
-        "step": 4
+        "step": 4,
+        "_keep_neuron": true
       },
       {
         "from": [
@@ -148,7 +158,8 @@
         "description": "극대가 x=1에서만 발생하는 조건 확인",
         "note": "$n>0$이면 극대는 $x=1$에서만 발생하여 조건 (나)를 만족하고, $n>0$이다",
         "main": true,
-        "step": 4
+        "step": 4,
+        "_keep_neuron": true
       },
       {
         "from": "note8",
@@ -159,7 +170,8 @@
         "description": "g에 절댓값 적용하여 f|g|를 정리",
         "note": "$f(x)|g(x)| = mx^2 \\cdot |n| \\cdot \\left|x-\\dfrac{5}{3}\\right|\\!\\left|x-3\\right|$이다",
         "main": true,
-        "step": 5
+        "step": 5,
+        "_keep_neuron": true
       },
       {
         "from": "note12",
@@ -170,7 +182,8 @@
         "description": "양수×절댓값들의 곱은 비음수",
         "note": "$m>0$이면 $f(x)|g(x)| \\geq 0$이다",
         "main": false,
-        "step": 5
+        "step": 5,
+        "_keep_neuron": true
       },
       {
         "from": [
@@ -184,7 +197,8 @@
         "description": "우변이 음수인 방정식에 해가 존재하려면 좌변이 음수 가능해야 함",
         "note": "$f(x)|g(x)| = -\\dfrac{125}{8} < 0$의 근이 존재해야 하므로 $m>0$은 모순이고 $m<0$이다",
         "main": true,
-        "step": 5
+        "step": 5,
+        "_keep_neuron": true
       },
       {
         "from": [
@@ -198,7 +212,8 @@
         "description": "|f(1)|에 m<0 조건 대입하여 m 결정",
         "note": "$|f(1)| = |m| \\cdot 1 = -m = 2$이고 $m = -2$이다",
         "main": true,
-        "step": 5
+        "step": 5,
+        "_keep_neuron": true
       },
       {
         "from": [
@@ -213,7 +228,8 @@
         "description": "m=-2, n>0을 대입하여 f|g| 확정",
         "note": "$f(x)|g(x)| = -2n\\,x^2\\left|x-\\dfrac{5}{3}\\right|\\!\\left|x-3\\right|$이고 모든 $x$에서 $\\leq 0$이다",
         "main": true,
-        "step": 6
+        "step": 6,
+        "_keep_neuron": true
       },
       {
         "from": "note16",
@@ -224,7 +240,8 @@
         "description": "x=5/2에서 함숫값 계산",
         "note": "$f\\!\\left(\\dfrac{5}{2}\\right)\\!\\left|g\\!\\left(\\dfrac{5}{2}\\right)\\right| = -\\dfrac{125n}{24}$이다",
         "main": true,
-        "step": 6
+        "step": 6,
+        "_keep_neuron": true
       },
       {
         "from": "note16",
@@ -235,7 +252,8 @@
         "description": "x=1에서 함숫값 계산",
         "note": "$f(1)|g(1)| = -\\dfrac{8n}{3}$이다",
         "main": false,
-        "step": 6
+        "step": 6,
+        "_keep_neuron": true
       },
       {
         "from": [
@@ -250,7 +268,8 @@
         "description": "구간별 근 개수 분석으로 접선 조건 도출",
         "note": "$x<0$에서 1개, $\\left(\\dfrac{5}{3},3\\right)$에서 접선 1개, $x>3$에서 1개로 총 3개가 되려면 $-\\dfrac{125n}{24} = -\\dfrac{125}{8}$이고 $n=3$이다",
         "main": true,
-        "step": 7
+        "step": 7,
+        "_keep_neuron": true
       },
       {
         "from": [
@@ -264,7 +283,8 @@
         "description": "구간 최솟값과 목표값 비교로 근 부재 확인",
         "note": "$\\left(0,\\dfrac{5}{3}\\right)$ 구간의 최솟값 $-\\dfrac{8 \\cdot 3}{3}=-8 > -\\dfrac{125}{8}$이므로 이 구간에서 근이 없고 총 근의 수 $1+1+1=3$ 확인",
         "main": false,
-        "step": 7
+        "step": 7,
+        "_keep_neuron": true
       },
       {
         "from": [
@@ -279,7 +299,8 @@
         "description": "m, n 값을 대입하여 최종 함수 확정",
         "note": "$f(x)=-2x^2$, $g(x)=3\\!\\left(x-\\dfrac{5}{3}\\right)\\!(x-3)=3x^2-14x+15$이다",
         "main": true,
-        "step": 8
+        "step": 8,
+        "_keep_neuron": true
       },
       {
         "from": "note21",
@@ -290,44 +311,23 @@
         "description": "x=-2 대입하여 최종 답 계산",
         "note": "$f(-2)=-8$, $g(-2)=55$이고 $f(-2)+g(-2)=47$이다",
         "main": true,
-        "step": 8
+        "step": 8,
+        "_keep_neuron": true
       }
     ],
     "previous_solution": "$f(x)g(x)$는 사차식이고 $a \\neq 0$이다 $|f(1)|=2>0$이므로 $f(1) \\neq 0$이다 $x=1$ 근방에서 $f(x)$는 부호가 일정하여 $|f(x)| = \\pm f(x)$이다 $|f(x)|g(x)$가 $x=1$에서 극대이면 $f(x)g(x)$도 $x=1$에서 극값을 가지고 $(f(x)g(x))'\\big|_{x=1}=0$이다 $(f(x)g(x))' = 4ax^3+3(b-3a)x^2-6bx$에 $x=1$ 대입하면 $-5a-3b=0$, 즉 $b = -\\dfrac{5a}{3}$이다 $f(x)g(x) = ax^2(x-3)\\!\\left(x-\\dfrac{5}{3}\\right)$이다 $(f(x)g(x))' = 2ax(2x-5)(x-1)$이고 임계점은 $x=0,\\;1,\\;\\dfrac{5}{2}$이다 $f(x)=mx^2$, $g(x)=n\\!\\left(x-\\dfrac{5}{3}\\right)\\!(x-3)$ ($mn=a$)으로 놓는다 $|f(x)|g(x) = |m|\\,n\\,x^2\\!\\left(x-\\dfrac{5}{3}\\right)\\!(x-3)$이다 $n>0$이면 $|f(x)|g(x)$는 $x=0$에서 극소, $x=1$에서 극대, $x=\\dfrac{5}{2}$에서 극소이다 $n>0$이면 극대는 $x=1$에서만 발생하여 조건 (나)를 만족하고, $n>0$이다 $f(x)|g(x)| = mx^2 \\cdot |n| \\cdot \\left|x-\\dfrac{5}{3}\\right|\\!\\left|x-3\\right|$이다 $f(x)|g(x)| = -\\dfrac{125}{8} < 0$의 근이 존재해야 하므로 $m>0$은 모순이고 $m<0$이다 $|f(1)| = |m| \\cdot 1 = -m = 2$이고 $m = -2$이다 $f(x)|g(x)| = -2n\\,x^2\\left|x-\\dfrac{5}{3}\\right|\\!\\left|x-3\\right|$이고 모든 $x$에서 $\\leq 0$이다 $f\\!\\left(\\dfrac{5}{2}\\right)\\!\\left|g\\!\\left(\\dfrac{5}{2}\\right)\\right| = -\\dfrac{125n}{24}$이다 $x<0$에서 1개, $\\left(\\dfrac{5}{3},3\\right)$에서 접선 1개, $x>3$에서 1개로 총 3개가 되려면 $-\\dfrac{125n}{24} = -\\dfrac{125}{8}$이고 $n=3$이다 $f(x)=-2x^2$, $g(x)=3\\!\\left(x-\\dfrac{5}{3}\\right)\\!(x-3)=3x^2-14x+15$이다 $f(-2)=-8$, $g(-2)=55$이고 $f(-2)+g(-2)=47$이다",
     "previous_clues": "[{\"id\":\"단서A\",\"text\":\"$f(x)$, $g(x)$는 이차함수이다\"},{\"id\":\"단서B\",\"text\":\"모든 실수 $x$에 대하여 $f(x)g(x) = x^2(x-3)(ax+b)$이다\"},{\"id\":\"단서C\",\"text\":\"함수 $|f(x)|g(x)$는 $x=1$에서만 극댓값을 갖는다\"},{\"id\":\"단서D\",\"text\":\"방정식 $f(x)|g(x)| = -\\\\dfrac{125}{8}$의 서로 다른 실근의 개수는 3이다\"},{\"id\":\"단서E\",\"text\":\"$|f(1)| = 2$이다\"}]",
-    "previous_analysis": "f(x)g(x)가 사차식인 점과 |f(x)|g(x)의 극대 조건으로부터 b=-5a/3을 얻고, 사차식의 근을 두 이차함수에 분배하여 f(x)=mx², g(x)=n(x-5/3)(x-3)으로 설정한다. 부호 분석과 |f(1)|=2로 m=-2를 결정하고, f(x)|g(x)|의 구간별 근 개수 분석으로 n=3을 결정하여 최종 답 f(-2)+g(-2)=47을 얻는다.",
+    "previous_analysis": "",
     "previous_matching": "",
     "previous_matched": [],
     "previous_new_neurons": [
       {
         "id": "사실??",
         "type": "사실",
-        "statement": "$|a| > 0$이면 $a \\neq 0$이고, $|a| = 0$이면 $a = 0$이다. 즉, 절댓값이 양수인 것과 원래 수가 0이 아닌 것은 동치이다.",
-        "description": "절댓값이 양수이면 원래 값은 0이 아님",
-        "note": "$|f(1)|=2>0$이므로 $f(1) \\neq 0$이다",
-        "reason": "사실57(최솟값 양수→모든 값 양수)은 절댓값이 양수일 때 원래 값이 0이 아님이라는 직접적 원리와 다르다. 후보 중 절댓값의 양수성과 원래 값의 비영성의 동치를 직접 서술한 사실이 없다.",
-        "blocked_edge": "단서E → note2",
-        "domain_hint": "ABS, NUM",
-        "domain": [
-          "ABS",
-          "NUM"
-        ],
-        "action_hint": "",
-        "step": 2,
-        "main": true,
-        "near_miss": [
-          "사실2: $y = f(|x - c|)$는 직선 $x = c$에 대해 대칭이다 ($",
-          "사실6: $y=|\\log_a x|$ ($a>1$)에서 같은 $y$값을 주는 두 양",
-          "사실28: $a + b = 0$이고 $a < 0$, $b > 0$이면 $|a| = "
-        ]
-      },
-      {
-        "id": "사실??",
-        "type": "사실",
-        "statement": "함수 $f(x)$가 $x=a$의 근방에서 부호가 일정할 때, $|f(x)| \\cdot g(x)$가 $x=a$에서 극값을 갖는 것은 $f(x) \\cdot g(x)$가 $x=a$에서 극값을 갖는 것과 동치이다.",
+        "statement": "함수 $f$가 구간 $I$에서 부호가 일정하면, $|f(x)|$는 $I$에서 $f(x)$ 또는 $-f(x)$와 같으므로, $|f(x)| \\cdot g(x)$의 극값은 $f(x) \\cdot g(x)$ (또는 $-f(x) \\cdot g(x)$)의 극값과 동치이다.",
         "description": "부호 일정 구간에서 |f|g의 극값은 fg의 극값과 동치",
         "note": "$|f(x)|g(x)$가 $x=1$에서 극대이면 $f(x)g(x)$도 $x=1$에서 극값을 가지고 $(f(x)g(x))'\\big|_{x=1}=0$이다",
-        "reason": "사실61(부호 보존)은 부호 일정 근방의 존재를 말하지만, '부호 일정 구간에서 |f|g의 극값이 fg의 극값과 동치'라는 원리는 후보에 없다. 사실68, 사실98 등도 이 동치 관계를 직접 서술하지 않는다.",
+        "reason": "사실95는 f(a)=0인 점에서의 극한 존재 조건을 다루고, 사실97은 극값의 필요조건(f'=0)을 다룬다. 그러나 어떤 후보도 '부호가 일정한 구간에서 |f|g의 극값이 fg의 극값과 동치'라는 원리, 즉 절댓값 합성함수의 극값이 내부 함수의 극값으로 환원된다는 내용을 직접 서술하지 않는다.",
         "blocked_edge": "note3+단서C → note4",
         "domain_hint": "FUNC, DIFF, ABS",
         "domain": [
@@ -347,7 +347,7 @@
     ],
     "previous_partial_skeleton": [],
     "previous_blockage_point": "",
-    "previous_skel_review_notes": "극값(극댓값) 조건을 표현하는 DNA가 목록에 없음. C13은 최댓값(global max)이고 극댓값(local max)은 다른 개념. '~에서만'이라는 유일성은 X4로 처리 가능하나 극댓값 자체 개념 DNA 필요. 절댓값 씌움(F5)은 함수 레벨이므로 |f(x)|g(x), f(x)|g(x)에 사용. f(x)g(x) 곱은 E6으로 처리. 두 이차함수라는 조건은 F11으로 처리.",
+    "previous_skel_review_notes": "parse fail: Unexpected token 'I', \"I'll syste\"... is not valid JSON",
     "previous_dna_nodes": [
       {
         "id": "top",
@@ -362,73 +362,79 @@
         "category": "수식"
       },
       {
-        "id": "f_at_m2",
+        "id": "ask_f",
         "dna": "F3",
         "label": "f(-2)",
         "category": "함수"
       },
       {
-        "id": "g_at_m2",
+        "id": "ask_g",
         "dna": "F3",
         "label": "g(-2)",
         "category": "함수"
       },
       {
-        "id": "c_m2",
+        "id": "c_neg2",
         "dna": "T2",
         "label": "상수 -2",
         "category": "말단"
       },
       {
-        "id": "va",
-        "dna": "T1",
-        "label": "변수 a",
-        "category": "말단"
-      },
-      {
-        "id": "vb",
-        "dna": "T1",
-        "label": "변수 b",
-        "category": "말단"
-      },
-      {
-        "id": "vfx",
+        "id": "vf",
         "dna": "F6",
         "label": "함수 f(x)",
         "category": "함수"
       },
       {
-        "id": "vgx",
+        "id": "vg",
         "dna": "F6",
         "label": "함수 g(x)",
         "category": "함수"
       },
       {
-        "id": "f11_f",
+        "id": "f11",
         "dna": "F11",
-        "label": "f 이차함수",
+        "label": "f는 이차함수",
         "category": "함수"
       },
       {
-        "id": "f11_g",
+        "id": "f11g",
         "dna": "F11",
-        "label": "g 이차함수",
+        "label": "g는 이차함수",
         "category": "함수"
+      },
+      {
+        "id": "va",
+        "dna": "T1",
+        "label": "상수 a",
+        "category": "말단"
+      },
+      {
+        "id": "vb",
+        "dna": "T1",
+        "label": "상수 b",
+        "category": "말단"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
       },
       {
         "id": "conds",
         "dna": "S1",
-        "label": "여러 조건",
+        "label": "조건 묶음",
         "category": "구조"
       },
       {
         "id": "cond_ga",
         "dna": "C18",
-        "label": "조건(가)",
+        "label": "조건 (가)",
         "category": "조건"
       },
       {
-        "id": "ga_eq",
+        "id": "eq_ga",
         "dna": "C1",
         "label": "fg=x²(x-3)(ax+b)",
         "category": "조건"
@@ -436,13 +442,13 @@
       {
         "id": "lhs_ga",
         "dna": "E6",
-        "label": "곱(f,g)",
+        "label": "곱(f(x),g(x))",
         "category": "수식"
       },
       {
         "id": "rhs_ga",
         "dna": "E6",
-        "label": "곱(x²,…)",
+        "label": "x²(x-3)(ax+b)",
         "category": "수식"
       },
       {
@@ -452,28 +458,28 @@
         "category": "수식"
       },
       {
-        "id": "vx",
-        "dna": "T3",
-        "label": "독립변수 x",
-        "category": "말단"
-      },
-      {
-        "id": "c2",
-        "dna": "T2",
-        "label": "상수 2",
-        "category": "말단"
-      },
-      {
-        "id": "rhs_fac1",
+        "id": "rhs_x3",
         "dna": "E1",
         "label": "x-3",
         "category": "수식"
       },
       {
-        "id": "c3_neg",
-        "dna": "E2",
-        "label": "부호반전(3)",
+        "id": "rhs_axb",
+        "dna": "E1",
+        "label": "ax+b",
         "category": "수식"
+      },
+      {
+        "id": "rhs_ax",
+        "dna": "E6",
+        "label": "ax",
+        "category": "수식"
+      },
+      {
+        "id": "c2_exp",
+        "dna": "T2",
+        "label": "지수 2",
+        "category": "말단"
       },
       {
         "id": "c3",
@@ -482,34 +488,34 @@
         "category": "말단"
       },
       {
-        "id": "rhs_fac2",
-        "dna": "E1",
-        "label": "ax+b",
+        "id": "neg3",
+        "dna": "E2",
+        "label": "부호반전(3)",
         "category": "수식"
       },
       {
-        "id": "ax_term",
-        "dna": "E6",
-        "label": "곱(a,x)",
-        "category": "수식"
+        "id": "fx_apply",
+        "dna": "F3",
+        "label": "f(x)",
+        "category": "함수"
       },
       {
-        "id": "rhs_mid",
-        "dna": "E6",
-        "label": "곱(x-3,ax+b)",
-        "category": "수식"
+        "id": "gx_apply",
+        "dna": "F3",
+        "label": "g(x)",
+        "category": "함수"
       },
       {
-        "id": "cond_nb",
-        "dna": "???",
-        "label": "조건(나)",
-        "category": "조건"
+        "id": "cond_na",
+        "dna": "X4",
+        "label": "x=1에서만 극대",
+        "category": "존재"
       },
       {
         "id": "abs_fg",
-        "dna": "F5",
+        "dna": "E6",
         "label": "|f(x)|g(x)",
-        "category": "함수"
+        "category": "수식"
       },
       {
         "id": "abs_f",
@@ -518,13 +524,13 @@
         "category": "함수"
       },
       {
-        "id": "nb_only",
-        "dna": "X4",
-        "label": "x=1에서만",
-        "category": "존재"
+        "id": "ext_max",
+        "dna": "F14",
+        "label": "x=1에서 극대",
+        "category": "함수"
       },
       {
-        "id": "c1_val",
+        "id": "c1_pt",
         "dna": "T2",
         "label": "상수 1",
         "category": "말단"
@@ -532,17 +538,11 @@
       {
         "id": "cond_da",
         "dna": "C9",
-        "label": "조건(다)",
+        "label": "실근 개수=3",
         "category": "조건"
       },
       {
         "id": "eq_da",
-        "dna": "C11",
-        "label": "방정식 f|g|=-125/8",
-        "category": "조건"
-      },
-      {
-        "id": "eq_da_c1",
         "dna": "C1",
         "label": "f|g|=-125/8",
         "category": "조건"
@@ -550,7 +550,7 @@
       {
         "id": "lhs_da",
         "dna": "E6",
-        "label": "곱(f,|g|)",
+        "label": "f(x)|g(x)|",
         "category": "수식"
       },
       {
@@ -560,25 +560,19 @@
         "category": "함수"
       },
       {
-        "id": "c125_8_neg",
-        "dna": "E2",
-        "label": "부호반전(125/8)",
-        "category": "수식"
-      },
-      {
-        "id": "c125_8",
+        "id": "c_125_8",
         "dna": "T2",
-        "label": "상수 125/8",
+        "label": "상수 -125/8",
         "category": "말단"
       },
       {
-        "id": "c3_roots",
+        "id": "c3_val",
         "dna": "T2",
-        "label": "상수 3(개수)",
+        "label": "개수 3",
         "category": "말단"
       },
       {
-        "id": "cond_f1",
+        "id": "add_cond",
         "dna": "C1",
         "label": "|f(1)|=2",
         "category": "조건"
@@ -590,15 +584,15 @@
         "category": "수식"
       },
       {
-        "id": "f_at_1",
+        "id": "f1_apply",
         "dna": "F3",
         "label": "f(1)",
         "category": "함수"
       },
       {
-        "id": "c2_val2",
+        "id": "c2_val",
         "dna": "T2",
-        "label": "상수 2(값)",
+        "label": "상수 2",
         "category": "말단"
       }
     ],
@@ -608,83 +602,91 @@
         "to": "top"
       },
       {
+        "from": "ask_f",
+        "to": "ask"
+      },
+      {
+        "from": "ask_g",
+        "to": "ask"
+      },
+      {
+        "from": "vf",
+        "to": "ask_f"
+      },
+      {
+        "from": "c_neg2",
+        "to": "ask_f"
+      },
+      {
+        "from": "vg",
+        "to": "ask_g"
+      },
+      {
+        "from": "c_neg2",
+        "to": "ask_g"
+      },
+      {
+        "from": "f11",
+        "to": "vf"
+      },
+      {
+        "from": "f11g",
+        "to": "vg"
+      },
+      {
         "from": "conds",
         "to": "top"
-      },
-      {
-        "from": "f_at_m2",
-        "to": "ask"
-      },
-      {
-        "from": "g_at_m2",
-        "to": "ask"
-      },
-      {
-        "from": "vfx",
-        "to": "f_at_m2"
-      },
-      {
-        "from": "c_m2",
-        "to": "f_at_m2"
-      },
-      {
-        "from": "vgx",
-        "to": "g_at_m2"
-      },
-      {
-        "from": "c_m2",
-        "to": "g_at_m2"
-      },
-      {
-        "from": "f11_f",
-        "to": "vfx"
-      },
-      {
-        "from": "f11_g",
-        "to": "vgx"
       },
       {
         "from": "cond_ga",
         "to": "conds"
       },
       {
-        "from": "cond_nb",
-        "to": "conds"
-      },
-      {
-        "from": "cond_da",
-        "to": "conds"
-      },
-      {
-        "from": "cond_f1",
-        "to": "conds"
-      },
-      {
-        "from": "ga_eq",
+        "from": "eq_ga",
         "to": "cond_ga"
       },
       {
         "from": "lhs_ga",
-        "to": "ga_eq"
+        "to": "eq_ga"
       },
       {
         "from": "rhs_ga",
-        "to": "ga_eq"
+        "to": "eq_ga"
       },
       {
-        "from": "vfx",
+        "from": "fx_apply",
         "to": "lhs_ga"
       },
       {
-        "from": "vgx",
+        "from": "gx_apply",
         "to": "lhs_ga"
+      },
+      {
+        "from": "vf",
+        "to": "fx_apply"
+      },
+      {
+        "from": "vx",
+        "to": "fx_apply"
+      },
+      {
+        "from": "vg",
+        "to": "gx_apply"
+      },
+      {
+        "from": "vx",
+        "to": "gx_apply"
       },
       {
         "from": "rhs_x2",
         "to": "rhs_ga"
       },
       {
-        "from": "rhs_mid",
+        "from": "rhs_x3",
+        "to": "rhs_ga"
+      },
+      {
+        "from": "rhs_axb",
         "to": "rhs_ga"
       },
       {
@@ -692,91 +694,87 @@
         "to": "rhs_x2"
       },
       {
-        "from": "c2",
+        "from": "c2_exp",
         "to": "rhs_x2"
       },
       {
         "from": "vx",
-        "to": "rhs_fac1"
+        "to": "rhs_x3"
       },
       {
-        "from": "c3_neg",
-        "to": "rhs_fac1"
+        "from": "neg3",
+        "to": "rhs_x3"
       },
       {
         "from": "c3",
-        "to": "c3_neg"
+        "to": "neg3"
       },
       {
-        "from": "ax_term",
-        "to": "rhs_fac2"
+        "from": "rhs_ax",
+        "to": "rhs_axb"
       },
       {
         "from": "vb",
-        "to": "rhs_fac2"
+        "to": "rhs_axb"
       },
       {
         "from": "va",
-        "to": "ax_term"
+        "to": "rhs_ax"
       },
       {
         "from": "vx",
-        "to": "ax_term"
+        "to": "rhs_ax"
       },
       {
-        "from": "rhs_fac1",
-        "to": "rhs_mid"
+        "from": "cond_na",
+        "to": "conds"
       },
       {
-        "from": "rhs_fac2",
-        "to": "rhs_mid"
+        "from": "ext_max",
+        "to": "cond_na"
       },
       {
         "from": "abs_fg",
-        "to": "cond_nb"
+        "to": "ext_max"
       },
       {
-        "from": "nb_only",
-        "to": "cond_nb"
+        "from": "c1_pt",
+        "to": "ext_max"
       },
       {
         "from": "abs_f",
         "to": "abs_fg"
       },
       {
-        "from": "vgx",
+        "from": "gx_apply",
         "to": "abs_fg"
       },
       {
-        "from": "vfx",
+        "from": "vf",
         "to": "abs_f"
       },
       {
-        "from": "c1_val",
-        "to": "nb_only"
+        "from": "cond_da",
+        "to": "conds"
       },
       {
         "from": "eq_da",
         "to": "cond_da"
       },
       {
-        "from": "c3_roots",
+        "from": "c3_val",
         "to": "cond_da"
       },
       {
-        "from": "eq_da_c1",
+        "from": "lhs_da",
         "to": "eq_da"
       },
       {
-        "from": "lhs_da",
-        "to": "eq_da_c1"
+        "from": "c_125_8",
+        "to": "eq_da"
       },
       {
-        "from": "c125_8_neg",
-        "to": "eq_da_c1"
-      },
-      {
-        "from": "vfx",
+        "from": "fx_apply",
         "to": "lhs_da"
       },
       {
@@ -784,49 +782,36 @@
         "to": "lhs_da"
       },
       {
-        "from": "vgx",
+        "from": "vg",
         "to": "abs_g"
       },
       {
-        "from": "c125_8",
-        "to": "c125_8_neg"
+        "from": "add_cond",
+        "to": "conds"
       },
       {
         "from": "abs_f1",
-        "to": "cond_f1"
+        "to": "add_cond"
       },
       {
-        "from": "c2_val2",
-        "to": "cond_f1"
+        "from": "c2_val",
+        "to": "add_cond"
       },
       {
-        "from": "f_at_1",
+        "from": "f1_apply",
         "to": "abs_f1"
       },
       {
-        "from": "vfx",
-        "to": "f_at_1"
+        "from": "vf",
+        "to": "f1_apply"
       },
       {
-        "from": "c1_val",
-        "to": "f_at_1"
+        "from": "c1_pt",
+        "to": "f1_apply"
       }
     ],
-    "previous_new_dna": [
-      {
-        "id": "F14",
-        "name": "극댓값 조건",
-        "signature": "(함수, 점) → 조건",
-        "reason": "함수가 특정 x값에서만 극댓값을 갖는다는 조건. C13은 최댓값 조건이고, 극값(local max)을 표현하는 DNA가 목록에 없음."
-      },
-      {
-        "id": "C23",
-        "name": "유일 극댓값 조건",
-        "signature": "(함수, 점) → 조건",
-        "reason": "'x=1에서만 극댓값을 갖는다'는 유일성 조건. X4(정확히 n개)와 결합 가능하나 극값 자체를 표현하는 DNA가 없어 신규 제안."
-      }
-    ],
-    "previous_dna_review_notes": "극값(극댓값) 조건을 표현하는 DNA가 목록에 없음. C13은 최댓값(global max)이고 극댓값(local max)은 다른 개념. '~에서만'이라는 유일성은 X4로 처리 가능하나 극댓값 자체 개념 DNA 필요. 절댓값 씌움(F5)은 함수 레벨이므로 |f(x)|g(x), f(x)|g(x)에 사용. f(x)g(x) 곱은 E6으로 처리. 두 이차함수라는 조건은 F11으로 처리.",
+    "previous_new_dna": [],
+    "previous_dna_review_notes": "parse fail: Unexpected token 'I', \"I'll syste\"... is not valid JSON",
     "original_solution": "$f(x)$, $g(x)$가 각각 이차함수이므로 $a \\neq 0$이고,\n\n$|f(1)| = 2$ $\\Rightarrow$ 함수 $|f(x)|g(x)$는 $x = 1$에서 미분가능하므로\n\n(나) $\\Rightarrow$ $f(x)g(x)$는 $x = 1$에서 극값을 가짐\n\n$\\Rightarrow$ $x = 1$일 때 $(f(x)g(x))' = 0$\n\n$\\Rightarrow$ $b = -\\dfrac{5}{3}a$ $(\\because$ (가))\n\n를 얻는다.\n\n따라서\n\n$$f(x)g(x) = ax^2(x-3)\\left(x - \\dfrac{5}{3}\\right)$$\n\n$$\\Rightarrow (f(x)g(x))' = 2ax(x-1)(2x-5)$$\n\n이므로 다음의 두 함수 $f(x)g(x)$, $-f(x)g(x)$의 그래프의 개형을 참고하면\n\n$$(\\text{나}) \\Rightarrow \\begin{cases} ① \\ |f(x)|g(x) \\text{는 } x = 1 \\text{에서 극대} \\\\ ② \\ |f(x)|g(x) \\text{는 } x = \\dfrac{5}{2} \\text{에서 극소} \\\\ ③ \\ |f(x)|g(x) \\text{는 } x = 3 \\text{에서 극값을 갖지 않음} \\\\ ④ \\ \\displaystyle\\lim_{x \\to -\\infty} |f(x)|g(x) = \\infty \\Rightarrow \\lim_{x \\to \\infty} |f(x)|g(x) = \\infty \\end{cases}$$\n\n의 순서로 함수 $|f(x)|g(x)$의 그래프의 개형을 파악할 수 있다.\n\n[FIGURE: y = |f(x)|g(x)의 그래프. x = 0과 x = 5/3 사이에서 극대(①), x = 5/3과 x = 3 사이에서 극소(②), x > 3에서 다시 증가(③). x축과 x = 0, 5/3, 3에서 만남.]\n\n따라서\n\n$$f(x) = mx^2, \\quad g(x) = n\\left(x - \\dfrac{5}{3}\\right)(x - 3) \\quad (n > 0)$$\n\n으로 놓을 수 있다.\n\n이때,\n$$m > 0 \\text{인 경우, 모든 실수 } x \\text{에 대하여}$$\n$$f(x)|g(x)| \\geq 0 \\text{이므로 (다)에 모순}$$\n\n이므로\n\n$$m < 0, \\quad |f(1)| = 2 \\Rightarrow m = -2$$\n\n를 얻고,\n\n$$f(1)|g(1)| = -\\dfrac{8n}{3}, \\quad f\\!\\left(\\dfrac{5}{2}\\right)\\left|g\\!\\left(\\dfrac{5}{2}\\right)\\right| = -\\dfrac{125n}{24}$$\n\n이므로 다음 그림을 참고하면\n\n$$(\\text{다}) \\Rightarrow -\\dfrac{125n}{24} = -\\dfrac{125}{8} \\Rightarrow n = 3$$\n\n을 얻는다.\n\n[FIGURE: y = f(x)|g(x)|의 그래프. x = 5/2에서 극솟값 y = -125/8을 가지며, y = -125/8 직선과 3개의 교점을 가짐.]\n\n$$\\therefore f(x) = -2x^2, \\quad g(x) = 3\\left(x - \\dfrac{5}{3}\\right)(x - 3)$$\n\n$$\\therefore f(-2) + g(-2) = (-8) + 55 = \\boxed{47}$$",
     "recovery_warnings": [],
     "errata": [],
@@ -845,22 +830,9 @@
       "사실??",
       "사실??"
     ],
-    "needed_dna": [
-      {
-        "id": "F14",
-        "name": "극댓값 조건",
-        "signature": "(함수, 점) → 조건",
-        "reason": "함수가 특정 x값에서만 극댓값을 갖는다는 조건. C13은 최댓값 조건이고, 극값(local max)을 표현하는 DNA가 목록에 없음."
-      },
-      {
-        "id": "C23",
-        "name": "유일 극댓값 조건",
-        "signature": "(함수, 점) → 조건",
-        "reason": "'x=1에서만 극댓값을 갖는다'는 유일성 조건. X4(정확히 n개)와 결합 가능하나 극값 자체를 표현하는 DNA가 없어 신규 제안."
-      }
-    ],
+    "needed_dna": [],
     "edge_count": 22,
     "side_count": 3,
-    "created_at": "2026-03-25T20:38:54.948Z"
+    "created_at": "2026-03-25T21:02:33.991Z"
   }
 ]
