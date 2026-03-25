@@ -1,81 +1,81 @@
 {
-  "_generated_at": "2026-03-25T13:09:12.933Z",
+  "_generated_at": "2026-03-25T16:15:01.620Z",
   "_source_problems": 41,
   "_connection_threshold": 0.4,
   "summary": {
     "total_problems_scanned": 41,
-    "total_neurons": 139,
-    "total_pairs": 610,
+    "total_neurons": 130,
+    "total_pairs": 601,
     "max_pair_count": 17,
     "top_hubs": [
       {
         "id": "전략25",
-        "connections": 71,
-        "appearances": 156,
-        "hub_score": 0.51,
-        "idf": 0.18
+        "connections": 72,
+        "appearances": 160,
+        "hub_score": 0.56,
+        "idf": 0.15
       },
       {
         "id": "전략2",
-        "connections": 42,
-        "appearances": 51,
-        "hub_score": 0.3,
-        "idf": 0.52
+        "connections": 44,
+        "appearances": 54,
+        "hub_score": 0.34,
+        "idf": 0.48
       },
       {
         "id": "연산2",
         "connections": 30,
         "appearances": 40,
-        "hub_score": 0.22,
+        "hub_score": 0.23,
         "idf": 0.82
       },
       {
         "id": "연산21",
         "connections": 30,
         "appearances": 33,
-        "hub_score": 0.22,
+        "hub_score": 0.23,
         "idf": 1.33
       },
       {
         "id": "전략23",
         "connections": 27,
         "appearances": 28,
-        "hub_score": 0.2,
+        "hub_score": 0.21,
         "idf": 0.92
       },
       {
         "id": "전략17",
         "connections": 23,
         "appearances": 33,
-        "hub_score": 0.17,
+        "hub_score": 0.18,
         "idf": 0.98
       },
       {
         "id": "전략6",
         "connections": 21,
         "appearances": 11,
-        "hub_score": 0.15,
+        "hub_score": 0.16,
         "idf": 1.87
       },
       {
         "id": "전략20",
         "connections": 21,
         "appearances": 17,
-        "hub_score": 0.15,
+        "hub_score": 0.16,
         "idf": 1.42
       },
       {
         "id": "사실51",
         "connections": 20,
         "appearances": 17,
-        "hub_score": 0.14,
+        "hub_score": 0.16,
         "idf": 1.51
       },
       {
         "id": "전략28",
         "connections": 18,
         "appearances": 10,
-        "hub_score": 0.13,
+        "hub_score": 0.14,
         "idf": 2.02
       }
     ],
@@ -106,14 +106,9 @@
         "appearances": 1
       },
       {
-        "id": "NEW_note1",
+        "id": "연산33",
         "connections": 1,
-        "appearances": 1
-      },
-      {
-        "id": "NEW_note9",
-        "connections": 1,
-        "appearances": 1
+        "appearances": 2
       },
       {
         "id": "NEW_END",
@@ -195,12 +190,6 @@
         "avg_hint": 0
       },
       {
-        "pair": "사실112→전략21",
-        "count": 2,
-        "weight": 0.775,
-        "avg_hint": null
-      },
-      {
         "pair": "전략12→사실4",
         "count": 4,
         "weight": 0.762,
@@ -211,6 +200,12 @@
         "count": 3,
         "weight": 0.743,
         "avg_hint": 0
+      },
+      {
+        "pair": "전략28→사실96",
+        "count": 2,
+        "weight": 0.742,
+        "avg_hint": null
       }
     ],
     "hard_transitions": [
@@ -1677,7 +1672,7 @@
       "to": "전략25",
       "count": 2,
       "raw_weight": 0.118,
-      "adjusted_weight": 0.065,
+      "adjusted_weight": 0.055,
       "avg_hint": 0,
       "hint_count": 3,
       "hints": [
@@ -1703,7 +1698,7 @@
       "to": "사실78",
       "count": 2,
       "raw_weight": 0.118,
-      "adjusted_weight": 0.065,
+      "adjusted_weight": 0.055,
       "avg_hint": 0.67,
       "hint_count": 3,
       "hints": [
@@ -1745,7 +1740,7 @@
       "to": "전략25",
       "count": 10,
       "raw_weight": 0.588,
-      "adjusted_weight": 0.101,
+      "adjusted_weight": 0.087,
       "avg_hint": 0,
       "hint_count": 9,
       "hints": [
@@ -1801,7 +1796,7 @@
       "to": "전략23",
       "count": 3,
       "raw_weight": 0.176,
-      "adjusted_weight": 0.029,
+      "adjusted_weight": 0.024,
       "avg_hint": null,
       "hint_count": 0,
       "hints": []
@@ -1837,7 +1832,7 @@
       "to": "전략20",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.015,
+      "adjusted_weight": 0.012,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -1869,7 +1864,7 @@
       "to": "전략25",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.032,
+      "adjusted_weight": 0.028,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -1885,7 +1880,7 @@
       "to": "전략25",
       "count": 5,
       "raw_weight": 0.294,
-      "adjusted_weight": 0.073,
+      "adjusted_weight": 0.062,
       "avg_hint": 0,
       "hint_count": 4,
       "hints": [
@@ -1916,7 +1911,7 @@
       "to": "전략25",
       "count": 2,
       "raw_weight": 0.118,
-      "adjusted_weight": 0.039,
+      "adjusted_weight": 0.033,
       "avg_hint": 0,
       "hint_count": 2,
       "hints": [
@@ -1937,7 +1932,7 @@
       "to": "연산20",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.028,
+      "adjusted_weight": 0.024,
       "avg_hint": 2,
       "hint_count": 1,
       "hints": [
@@ -1985,7 +1980,7 @@
       "to": "연산10",
       "count": 5,
       "raw_weight": 0.294,
-      "adjusted_weight": 0.09,
+      "adjusted_weight": 0.077,
       "avg_hint": 0,
       "hint_count": 5,
       "hints": [
@@ -2031,7 +2026,7 @@
       "to": "전략25",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.039,
+      "adjusted_weight": 0.034,
       "avg_hint": 2,
       "hint_count": 1,
       "hints": [
@@ -2047,7 +2042,7 @@
       "to": "전략25",
       "count": 3,
       "raw_weight": 0.176,
-      "adjusted_weight": 0.054,
+      "adjusted_weight": 0.046,
       "avg_hint": 1,
       "hint_count": 3,
       "hints": [
@@ -2073,7 +2068,7 @@
       "to": "전략2",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.053,
+      "adjusted_weight": 0.049,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -2089,7 +2084,7 @@
       "to": "전략25",
       "count": 17,
       "raw_weight": 1,
-      "adjusted_weight": 0.091,
+      "adjusted_weight": 0.072,
       "avg_hint": 0.11,
       "hint_count": 27,
       "hints": [
@@ -2235,7 +2230,7 @@
       "to": "사실15",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.019,
+      "adjusted_weight": 0.016,
       "avg_hint": null,
       "hint_count": 0,
       "hints": []
@@ -2261,7 +2256,7 @@
       "to": "연산11",
       "count": 5,
       "raw_weight": 0.294,
-      "adjusted_weight": 0.09,
+      "adjusted_weight": 0.077,
       "avg_hint": 0,
       "hint_count": 5,
       "hints": [
@@ -2360,7 +2355,7 @@
       "to": "연산13",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.021,
+      "adjusted_weight": 0.018,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -2376,7 +2371,7 @@
       "to": "전략2",
       "count": 4,
       "raw_weight": 0.235,
-      "adjusted_weight": 0.246,
+      "adjusted_weight": 0.229,
       "avg_hint": 0,
       "hint_count": 4,
       "hints": [
@@ -2407,7 +2402,7 @@
       "to": "연산2",
       "count": 4,
       "raw_weight": 0.235,
-      "adjusted_weight": 0.1,
+      "adjusted_weight": 0.093,
       "avg_hint": 0,
       "hint_count": 4,
       "hints": [
@@ -2472,9 +2467,9 @@
     "전략25→전략2": {
       "from": "전략25",
       "to": "전략2",
-      "count": 6,
-      "raw_weight": 0.353,
-      "adjusted_weight": 0.032,
+      "count": 7,
+      "raw_weight": 0.412,
+      "adjusted_weight": 0.03,
       "avg_hint": 0,
       "hint_count": 5,
       "hints": [
@@ -2510,7 +2505,7 @@
       "to": "전략2",
       "count": 2,
       "raw_weight": 0.118,
-      "adjusted_weight": 0.06,
+      "adjusted_weight": 0.056,
       "avg_hint": 0,
       "hint_count": 3,
       "hints": [
@@ -2536,7 +2531,7 @@
       "to": "연산1",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.074,
+      "adjusted_weight": 0.069,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -2552,7 +2547,7 @@
       "to": "전략25",
       "count": 2,
       "raw_weight": 0.118,
-      "adjusted_weight": 0.05,
+      "adjusted_weight": 0.043,
       "avg_hint": 0,
       "hint_count": 2,
       "hints": [
@@ -2710,7 +2705,7 @@
       "to": "전략25",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.039,
+      "adjusted_weight": 0.034,
       "avg_hint": 0,
       "hint_count": 2,
       "hints": [
@@ -2731,7 +2726,7 @@
       "to": "연산18",
       "count": 5,
       "raw_weight": 0.294,
-      "adjusted_weight": 0.084,
+      "adjusted_weight": 0.071,
       "avg_hint": 0.75,
       "hint_count": 4,
       "hints": [
@@ -2804,7 +2799,7 @@
       "to": "사실69",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.032,
+      "adjusted_weight": 0.028,
       "avg_hint": 0,
       "hint_count": 2,
       "hints": [
@@ -2899,7 +2894,7 @@
       "to": "전략25",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.019,
+      "adjusted_weight": 0.016,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -2915,7 +2910,7 @@
       "to": "전략25",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.017,
+      "adjusted_weight": 0.014,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -2931,7 +2926,7 @@
       "to": "연산4",
       "count": 8,
       "raw_weight": 0.471,
-      "adjusted_weight": 0.081,
+      "adjusted_weight": 0.069,
       "avg_hint": 0,
       "hint_count": 7,
       "hints": [
@@ -2977,7 +2972,7 @@
       "to": "전략25",
       "count": 7,
       "raw_weight": 0.412,
-      "adjusted_weight": 0.071,
+      "adjusted_weight": 0.061,
       "avg_hint": 0,
       "hint_count": 5,
       "hints": [
@@ -3013,7 +3008,7 @@
       "to": "연산2",
       "count": 3,
       "raw_weight": 0.176,
-      "adjusted_weight": 0.025,
+      "adjusted_weight": 0.022,
       "avg_hint": 0,
       "hint_count": 4,
       "hints": [
@@ -3290,7 +3285,7 @@
       "to": "전략25",
       "count": 3,
       "raw_weight": 0.176,
-      "adjusted_weight": 0.054,
+      "adjusted_weight": 0.046,
       "avg_hint": 0,
       "hint_count": 4,
       "hints": [
@@ -3321,7 +3316,7 @@
       "to": "전략6",
       "count": 2,
       "raw_weight": 0.118,
-      "adjusted_weight": 0.039,
+      "adjusted_weight": 0.033,
       "avg_hint": 0,
       "hint_count": 2,
       "hints": [
@@ -3483,7 +3478,7 @@
       "to": "사실35",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.021,
+      "adjusted_weight": 0.018,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -3515,7 +3510,7 @@
       "to": "전략25",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.039,
+      "adjusted_weight": 0.034,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -3636,7 +3631,7 @@
       "to": "사실9",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.032,
+      "adjusted_weight": 0.028,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -3652,7 +3647,7 @@
       "to": "전략25",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.032,
+      "adjusted_weight": 0.028,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -3705,7 +3700,7 @@
       "to": "사실44",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.023,
+      "adjusted_weight": 0.019,
       "avg_hint": 0,
       "hint_count": 2,
       "hints": [
@@ -3798,7 +3793,7 @@
       "to": "사실4",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.018,
+      "adjusted_weight": 0.015,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -3814,7 +3809,7 @@
       "to": "전략25",
       "count": 4,
       "raw_weight": 0.235,
-      "adjusted_weight": 0.072,
+      "adjusted_weight": 0.061,
       "avg_hint": 0,
       "hint_count": 6,
       "hints": [
@@ -3855,7 +3850,7 @@
       "to": "사실59",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.023,
+      "adjusted_weight": 0.019,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -3871,7 +3866,7 @@
       "to": "전략22",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.019,
+      "adjusted_weight": 0.016,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -4030,7 +4025,7 @@
       "to": "전략2",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.083,
+      "adjusted_weight": 0.077,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -4046,7 +4041,7 @@
       "to": "전략26",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.083,
+      "adjusted_weight": 0.077,
       "avg_hint": 0,
       "hint_count": 2,
       "hints": [
@@ -4067,7 +4062,7 @@
       "to": "전략2",
       "count": 2,
       "raw_weight": 0.118,
-      "adjusted_weight": 0.165,
+      "adjusted_weight": 0.154,
       "avg_hint": 0,
       "hint_count": 4,
       "hints": [
@@ -4098,7 +4093,7 @@
       "to": "전략2",
       "count": 3,
       "raw_weight": 0.176,
-      "adjusted_weight": 0.084,
+      "adjusted_weight": 0.078,
       "avg_hint": 0,
       "hint_count": 4,
       "hints": [
@@ -4129,7 +4124,7 @@
       "to": "전략17",
       "count": 4,
       "raw_weight": 0.235,
-      "adjusted_weight": 0.119,
+      "adjusted_weight": 0.111,
       "avg_hint": 0,
       "hint_count": 4,
       "hints": [
@@ -4223,7 +4218,7 @@
       "to": "사실12",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.017,
+      "adjusted_weight": 0.014,
       "avg_hint": null,
       "hint_count": 0,
       "hints": []
@@ -4265,7 +4260,7 @@
       "to": "전략25",
       "count": 2,
       "raw_weight": 0.118,
-      "adjusted_weight": 0.065,
+      "adjusted_weight": 0.055,
       "avg_hint": 0,
       "hint_count": 2,
       "hints": [
@@ -4334,7 +4329,7 @@
       "to": "사실70",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.032,
+      "adjusted_weight": 0.028,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -4371,7 +4366,7 @@
       "to": "사실13",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.025,
+      "adjusted_weight": 0.021,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -4424,7 +4419,7 @@
       "to": "연산12",
       "count": 2,
       "raw_weight": 0.118,
-      "adjusted_weight": 0.056,
+      "adjusted_weight": 0.048,
       "avg_hint": 0,
       "hint_count": 2,
       "hints": [
@@ -4445,7 +4440,7 @@
       "to": "전략2",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.083,
+      "adjusted_weight": 0.077,
       "avg_hint": 0,
       "hint_count": 2,
       "hints": [
@@ -4466,7 +4461,7 @@
       "to": "전략25",
       "count": 6,
       "raw_weight": 0.353,
-      "adjusted_weight": 0.083,
+      "adjusted_weight": 0.07,
       "avg_hint": 0,
       "hint_count": 3,
       "hints": [
@@ -4492,7 +4487,7 @@
       "to": "연산17",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.021,
+      "adjusted_weight": 0.018,
       "avg_hint": 2,
       "hint_count": 1,
       "hints": [
@@ -4556,7 +4551,7 @@
       "to": "사실81",
       "count": 3,
       "raw_weight": 0.176,
-      "adjusted_weight": 0.058,
+      "adjusted_weight": 0.049,
       "avg_hint": 1.33,
       "hint_count": 3,
       "hints": [
@@ -4582,7 +4577,7 @@
       "to": "전략25",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.019,
+      "adjusted_weight": 0.016,
       "avg_hint": null,
       "hint_count": 0,
       "hints": []
@@ -4592,7 +4587,7 @@
       "to": "전략25",
       "count": 2,
       "raw_weight": 0.118,
-      "adjusted_weight": 0.042,
+      "adjusted_weight": 0.036,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -4624,7 +4619,7 @@
       "to": "사실77",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.039,
+      "adjusted_weight": 0.034,
       "avg_hint": 0,
       "hint_count": 2,
       "hints": [
@@ -4645,7 +4640,7 @@
       "to": "전략25",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.039,
+      "adjusted_weight": 0.034,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -4661,7 +4656,7 @@
       "to": "사실1",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.017,
+      "adjusted_weight": 0.014,
       "avg_hint": null,
       "hint_count": 0,
       "hints": []
@@ -4671,7 +4666,7 @@
       "to": "전략25",
       "count": 2,
       "raw_weight": 0.118,
-      "adjusted_weight": 0.033,
+      "adjusted_weight": 0.029,
       "avg_hint": 0,
       "hint_count": 2,
       "hints": [
@@ -4692,7 +4687,7 @@
       "to": "전략25",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.028,
+      "adjusted_weight": 0.024,
       "avg_hint": null,
       "hint_count": 0,
       "hints": []
@@ -4923,7 +4918,7 @@
       "to": "전략2",
       "count": 2,
       "raw_weight": 0.118,
-      "adjusted_weight": 0.134,
+      "adjusted_weight": 0.125,
       "avg_hint": 0,
       "hint_count": 3,
       "hints": [
@@ -4949,7 +4944,7 @@
       "to": "사실18",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.053,
+      "adjusted_weight": 0.049,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -4981,7 +4976,7 @@
       "to": "전략25",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.019,
+      "adjusted_weight": 0.016,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -5013,7 +5008,7 @@
       "to": "사실51",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.016,
+      "adjusted_weight": 0.013,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -5137,7 +5132,7 @@
       "to": "사실85",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.032,
+      "adjusted_weight": 0.028,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -5190,7 +5185,7 @@
       "to": "연산21",
       "count": 6,
       "raw_weight": 0.353,
-      "adjusted_weight": 0.083,
+      "adjusted_weight": 0.07,
       "avg_hint": 0.25,
       "hint_count": 8,
       "hints": [
@@ -5241,7 +5236,7 @@
       "to": "전략2",
       "count": 4,
       "raw_weight": 0.235,
-      "adjusted_weight": 0.162,
+      "adjusted_weight": 0.15,
       "avg_hint": 0,
       "hint_count": 9,
       "hints": [
@@ -5297,7 +5292,7 @@
       "to": "연산21",
       "count": 6,
       "raw_weight": 0.353,
-      "adjusted_weight": 0.243,
+      "adjusted_weight": 0.226,
       "avg_hint": 0,
       "hint_count": 6,
       "hints": [
@@ -5386,7 +5381,7 @@
       "to": "전략25",
       "count": 2,
       "raw_weight": 0.118,
-      "adjusted_weight": 0.031,
+      "adjusted_weight": 0.027,
       "avg_hint": 0,
       "hint_count": 2,
       "hints": [
@@ -5407,7 +5402,7 @@
       "to": "전략17",
       "count": 5,
       "raw_weight": 0.294,
-      "adjusted_weight": 0.051,
+      "adjusted_weight": 0.043,
       "avg_hint": 1.71,
       "hint_count": 7,
       "hints": [
@@ -5484,7 +5479,7 @@
       "to": "전략25",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.028,
+      "adjusted_weight": 0.024,
       "avg_hint": null,
       "hint_count": 0,
       "hints": []
@@ -5836,7 +5831,7 @@
       "to": "전략25",
       "count": 6,
       "raw_weight": 0.353,
-      "adjusted_weight": 0.051,
+      "adjusted_weight": 0.043,
       "avg_hint": 0,
       "hint_count": 4,
       "hints": [
@@ -5934,7 +5929,7 @@
       "to": "전략2",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.083,
+      "adjusted_weight": 0.077,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -5950,7 +5945,7 @@
       "to": "전략2",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.049,
+      "adjusted_weight": 0.046,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -5966,7 +5961,7 @@
       "to": "전략2",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.046,
+      "adjusted_weight": 0.043,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -5998,7 +5993,7 @@
       "to": "전략25",
       "count": 2,
       "raw_weight": 0.118,
-      "adjusted_weight": 0.042,
+      "adjusted_weight": 0.036,
       "avg_hint": 0,
       "hint_count": 2,
       "hints": [
@@ -6029,7 +6024,7 @@
       "to": "전략23",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.028,
+      "adjusted_weight": 0.026,
       "avg_hint": null,
       "hint_count": 0,
       "hints": []
@@ -6071,7 +6066,7 @@
       "to": "사실65",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.021,
+      "adjusted_weight": 0.018,
       "avg_hint": null,
       "hint_count": 0,
       "hints": []
@@ -6212,7 +6207,7 @@
       "to": "전략2",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.116,
+      "adjusted_weight": 0.108,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -6322,7 +6317,7 @@
       "to": "전략25",
       "count": 2,
       "raw_weight": 0.118,
-      "adjusted_weight": 0.05,
+      "adjusted_weight": 0.043,
       "avg_hint": 0,
       "hint_count": 2,
       "hints": [
@@ -6343,7 +6338,7 @@
       "to": "전략25",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.032,
+      "adjusted_weight": 0.028,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -6438,7 +6433,7 @@
       "to": "전략11",
       "count": 2,
       "raw_weight": 0.118,
-      "adjusted_weight": 0.086,
+      "adjusted_weight": 0.08,
       "avg_hint": 0,
       "hint_count": 2,
       "hints": [
@@ -6459,7 +6454,7 @@
       "to": "전략25",
       "count": 4,
       "raw_weight": 0.235,
-      "adjusted_weight": 0.059,
+      "adjusted_weight": 0.05,
       "avg_hint": 0,
       "hint_count": 3,
       "hints": [
@@ -6485,7 +6480,7 @@
       "to": "전략25",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.028,
+      "adjusted_weight": 0.024,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -6607,7 +6602,7 @@
       "to": "전략25",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.023,
+      "adjusted_weight": 0.019,
       "avg_hint": 0,
       "hint_count": 2,
       "hints": [
@@ -6628,7 +6623,7 @@
       "to": "전략1",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.028,
+      "adjusted_weight": 0.024,
       "avg_hint": 0,
       "hint_count": 2,
       "hints": [
@@ -6764,7 +6759,7 @@
       "to": "전략2",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.057,
+      "adjusted_weight": 0.053,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -6780,7 +6775,7 @@
       "to": "사실36",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.116,
+      "adjusted_weight": 0.108,
       "avg_hint": 0,
       "hint_count": 2,
       "hints": [
@@ -6801,7 +6796,7 @@
       "to": "연산18",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.049,
+      "adjusted_weight": 0.046,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -6817,7 +6812,7 @@
       "to": "전략2",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.116,
+      "adjusted_weight": 0.108,
       "avg_hint": 0,
       "hint_count": 2,
       "hints": [
@@ -6838,7 +6833,7 @@
       "to": "전략2",
       "count": 2,
       "raw_weight": 0.118,
-      "adjusted_weight": 0.098,
+      "adjusted_weight": 0.092,
       "avg_hint": 0,
       "hint_count": 4,
       "hints": [
@@ -6901,7 +6896,7 @@
       "to": "사실36",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.039,
+      "adjusted_weight": 0.034,
       "avg_hint": null,
       "hint_count": 0,
       "hints": []
@@ -6911,7 +6906,7 @@
       "to": "전략13",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.297,
+      "adjusted_weight": 0.363,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -6927,7 +6922,7 @@
       "to": "사실92",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.7,
+      "adjusted_weight": 0.855,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -6975,7 +6970,7 @@
       "to": "전략2",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.116,
+      "adjusted_weight": 0.108,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -7001,7 +6996,7 @@
       "to": "연산5",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.095,
+      "adjusted_weight": 0.088,
       "avg_hint": 2,
       "hint_count": 1,
       "hints": [
@@ -7049,7 +7044,7 @@
       "to": "전략25",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.032,
+      "adjusted_weight": 0.028,
       "avg_hint": 0,
       "hint_count": 2,
       "hints": [
@@ -7070,7 +7065,7 @@
       "to": "전략25",
       "count": 2,
       "raw_weight": 0.118,
-      "adjusted_weight": 0.065,
+      "adjusted_weight": 0.055,
       "avg_hint": 0,
       "hint_count": 2,
       "hints": [
@@ -7185,7 +7180,7 @@
       "to": "전략2",
       "count": 3,
       "raw_weight": 0.176,
-      "adjusted_weight": 0.075,
+      "adjusted_weight": 0.069,
       "avg_hint": 0,
       "hint_count": 4,
       "hints": [
@@ -7216,7 +7211,7 @@
       "to": "전략20",
       "count": 2,
       "raw_weight": 0.118,
-      "adjusted_weight": 0.086,
+      "adjusted_weight": 0.08,
       "avg_hint": 0,
       "hint_count": 2,
       "hints": [
@@ -7269,7 +7264,7 @@
       "to": "전략21",
       "count": 2,
       "raw_weight": 0.118,
-      "adjusted_weight": 0.404,
+      "adjusted_weight": 0.367,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -7285,7 +7280,7 @@
       "to": "전략21",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.216,
+      "adjusted_weight": 0.196,
       "avg_hint": null,
       "hint_count": 0,
       "hints": []
@@ -7295,7 +7290,7 @@
       "to": "전략23",
       "count": 2,
       "raw_weight": 0.118,
-      "adjusted_weight": 0.264,
+      "adjusted_weight": 0.239,
       "avg_hint": null,
       "hint_count": 0,
       "hints": []
@@ -7321,7 +7316,7 @@
       "to": "전략11",
       "count": 6,
       "raw_weight": 0.353,
-      "adjusted_weight": 0.088,
+      "adjusted_weight": 0.075,
       "avg_hint": 0,
       "hint_count": 5,
       "hints": [
@@ -7383,7 +7378,7 @@
       "to": "전략25",
       "count": 3,
       "raw_weight": 0.176,
-      "adjusted_weight": 0.047,
+      "adjusted_weight": 0.04,
       "avg_hint": 0,
       "hint_count": 4,
       "hints": [
@@ -7430,7 +7425,7 @@
       "to": "사실18",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.018,
+      "adjusted_weight": 0.015,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -7462,7 +7457,7 @@
       "to": "연산30",
       "count": 2,
       "raw_weight": 0.118,
-      "adjusted_weight": 0.039,
+      "adjusted_weight": 0.033,
       "avg_hint": 1,
       "hint_count": 2,
       "hints": [
@@ -7499,7 +7494,7 @@
       "to": "전략25",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.018,
+      "adjusted_weight": 0.015,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -7547,7 +7542,7 @@
       "to": "전략2",
       "count": 4,
       "raw_weight": 0.235,
-      "adjusted_weight": 0.228,
+      "adjusted_weight": 0.212,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -7563,7 +7558,7 @@
       "to": "전략2",
       "count": 4,
       "raw_weight": 0.235,
-      "adjusted_weight": 0.228,
+      "adjusted_weight": 0.212,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -7621,7 +7616,7 @@
       "to": "사실62",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.028,
+      "adjusted_weight": 0.024,
       "avg_hint": null,
       "hint_count": 0,
       "hints": []
@@ -7651,7 +7646,7 @@
       "to": "사실19",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.023,
+      "adjusted_weight": 0.019,
       "avg_hint": 0,
       "hint_count": 2,
       "hints": [
@@ -7855,7 +7850,7 @@
       "to": "전략2",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.095,
+      "adjusted_weight": 0.088,
       "avg_hint": 0,
       "hint_count": 2,
       "hints": [
@@ -7876,7 +7871,7 @@
       "to": "전략25",
       "count": 3,
       "raw_weight": 0.176,
-      "adjusted_weight": 0.068,
+      "adjusted_weight": 0.058,
       "avg_hint": 0,
       "hint_count": 5,
       "hints": [
@@ -7912,7 +7907,7 @@
       "to": "전략2",
       "count": 2,
       "raw_weight": 0.118,
-      "adjusted_weight": 0.092,
+      "adjusted_weight": 0.086,
       "avg_hint": 0,
       "hint_count": 2,
       "hints": [
@@ -7933,7 +7928,7 @@
       "to": "전략29",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.019,
+      "adjusted_weight": 0.016,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -8071,7 +8066,7 @@
       "to": "전략25",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.032,
+      "adjusted_weight": 0.028,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -8087,7 +8082,7 @@
       "to": "전략25",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.021,
+      "adjusted_weight": 0.018,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -8103,7 +8098,7 @@
       "to": "연산16",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.025,
+      "adjusted_weight": 0.021,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -8209,7 +8204,7 @@
       "to": "전략2",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.062,
+      "adjusted_weight": 0.057,
       "avg_hint": 0,
       "hint_count": 2,
       "hints": [
@@ -8230,7 +8225,7 @@
       "to": "전략2",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.083,
+      "adjusted_weight": 0.077,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -8362,7 +8357,7 @@
       "to": "전략2",
       "count": 2,
       "raw_weight": 0.118,
-      "adjusted_weight": 0.086,
+      "adjusted_weight": 0.08,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -8567,7 +8562,7 @@
       "to": "전략25",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.012,
+      "adjusted_weight": 0.01,
       "avg_hint": null,
       "hint_count": 0,
       "hints": []
@@ -8683,7 +8678,7 @@
       "to": "전략2",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.083,
+      "adjusted_weight": 0.077,
       "avg_hint": 0,
       "hint_count": 2,
       "hints": [
@@ -8714,7 +8709,7 @@
       "to": "전략2",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.053,
+      "adjusted_weight": 0.049,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -8730,7 +8725,7 @@
       "to": "전략2",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.057,
+      "adjusted_weight": 0.053,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -8746,7 +8741,7 @@
       "to": "전략21",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.074,
+      "adjusted_weight": 0.062,
       "avg_hint": null,
       "hint_count": 0,
       "hints": []
@@ -8756,7 +8751,7 @@
       "to": "연산4",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.14,
+      "adjusted_weight": 0.127,
       "avg_hint": null,
       "hint_count": 0,
       "hints": []
@@ -8776,7 +8771,7 @@
       "to": "전략2",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.074,
+      "adjusted_weight": 0.062,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -8792,7 +8787,7 @@
       "to": "연산4",
       "count": 3,
       "raw_weight": 0.176,
-      "adjusted_weight": 0.09,
+      "adjusted_weight": 0.083,
       "avg_hint": 0,
       "hint_count": 3,
       "hints": [
@@ -9088,7 +9083,7 @@
       "to": "전략25",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.021,
+      "adjusted_weight": 0.018,
       "avg_hint": 0,
       "hint_count": 4,
       "hints": [
@@ -9119,7 +9114,7 @@
       "to": "전략25",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.017,
+      "adjusted_weight": 0.014,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -9193,7 +9188,7 @@
       "to": "전략25",
       "count": 2,
       "raw_weight": 0.118,
-      "adjusted_weight": 0.056,
+      "adjusted_weight": 0.048,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -9682,7 +9677,7 @@
       "to": "전략2",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.067,
+      "adjusted_weight": 0.062,
       "avg_hint": 0,
       "hint_count": 2,
       "hints": [
@@ -9703,7 +9698,7 @@
       "to": "전략2",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.116,
+      "adjusted_weight": 0.108,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -9783,7 +9778,7 @@
       "to": "전략25",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.039,
+      "adjusted_weight": 0.034,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -9799,7 +9794,7 @@
       "to": "연산3",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.025,
+      "adjusted_weight": 0.021,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -9815,7 +9810,7 @@
       "to": "전략2",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.053,
+      "adjusted_weight": 0.049,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -10185,7 +10180,7 @@
       "to": "사실9",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.095,
+      "adjusted_weight": 0.088,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -10201,7 +10196,7 @@
       "to": "전략2",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.095,
+      "adjusted_weight": 0.088,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -10249,7 +10244,7 @@
       "to": "연산5",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.032,
+      "adjusted_weight": 0.028,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -10419,7 +10414,7 @@
       "to": "전략25",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.039,
+      "adjusted_weight": 0.034,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -10435,7 +10430,7 @@
       "to": "전략37",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.028,
+      "adjusted_weight": 0.024,
       "avg_hint": 0,
       "hint_count": 2,
       "hints": [
@@ -10529,7 +10524,7 @@
       "to": "전략25",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.039,
+      "adjusted_weight": 0.034,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -10561,7 +10556,7 @@
       "to": "전략25",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.028,
+      "adjusted_weight": 0.024,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -10577,7 +10572,7 @@
       "to": "연산26",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.032,
+      "adjusted_weight": 0.028,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -10824,7 +10819,7 @@
       "to": "전략25",
       "count": 2,
       "raw_weight": 0.118,
-      "adjusted_weight": 0.019,
+      "adjusted_weight": 0.016,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -10908,7 +10903,7 @@
       "to": "전략25",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.019,
+      "adjusted_weight": 0.016,
       "avg_hint": 0,
       "hint_count": 2,
       "hints": [
@@ -10929,7 +10924,7 @@
       "to": "전략25",
       "count": 2,
       "raw_weight": 0.118,
-      "adjusted_weight": 0.046,
+      "adjusted_weight": 0.039,
       "avg_hint": 0,
       "hint_count": 2,
       "hints": [
@@ -10950,7 +10945,7 @@
       "to": "사실22",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.032,
+      "adjusted_weight": 0.028,
       "avg_hint": 0,
       "hint_count": 1,
       "hints": [
@@ -11092,7 +11087,7 @@
       "to": "전략25",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.032,
+      "adjusted_weight": 0.028,
       "avg_hint": 2,
       "hint_count": 1,
       "hints": [
@@ -11144,7 +11139,7 @@
       "to": "사실43",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.028,
+      "adjusted_weight": 0.024,
       "avg_hint": 3,
       "hint_count": 1,
       "hints": [
@@ -11217,7 +11212,7 @@
       "to": "사실37",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.028,
+      "adjusted_weight": 0.024,
       "avg_hint": null,
       "hint_count": 0,
       "hints": []
@@ -11247,7 +11242,7 @@
       "to": "전략21",
       "count": 2,
       "raw_weight": 0.118,
-      "adjusted_weight": 0.775,
+      "adjusted_weight": 0.704,
       "avg_hint": null,
       "hint_count": 0,
       "hints": []
@@ -11257,7 +11252,7 @@
       "to": "전략21",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.267,
+      "adjusted_weight": 0.242,
       "avg_hint": null,
       "hint_count": 0,
       "hints": []
@@ -11327,7 +11322,7 @@
       "to": "전략28",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.062,
+      "adjusted_weight": 0.057,
       "avg_hint": null,
       "hint_count": 0,
       "hints": []
@@ -11427,7 +11422,7 @@
       "to": "전략25",
       "count": 2,
       "raw_weight": 0.118,
-      "adjusted_weight": 0.065,
+      "adjusted_weight": 0.055,
       "avg_hint": null,
       "hint_count": 0,
       "hints": []
@@ -11467,7 +11462,7 @@
       "to": "전략25",
       "count": 2,
       "raw_weight": 0.118,
-      "adjusted_weight": 0.05,
+      "adjusted_weight": 0.043,
       "avg_hint": null,
       "hint_count": 0,
       "hints": []
@@ -11497,7 +11492,7 @@
       "to": "전략2",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.067,
+      "adjusted_weight": 0.062,
       "avg_hint": null,
       "hint_count": 0,
       "hints": []
@@ -11507,7 +11502,7 @@
       "to": "연산10",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.053,
+      "adjusted_weight": 0.049,
       "avg_hint": null,
       "hint_count": 0,
       "hints": []
@@ -11517,7 +11512,7 @@
       "to": "전략2",
       "count": 2,
       "raw_weight": 0.118,
-      "adjusted_weight": 0.114,
+      "adjusted_weight": 0.106,
       "avg_hint": null,
       "hint_count": 0,
       "hints": []
@@ -11597,7 +11592,7 @@
       "to": "사실65",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.289,
+      "adjusted_weight": 0.262,
       "avg_hint": null,
       "hint_count": 0,
       "hints": []
@@ -11607,7 +11602,7 @@
       "to": "전략25",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.025,
+      "adjusted_weight": 0.019,
       "avg_hint": null,
       "hint_count": 0,
       "hints": []
@@ -11617,7 +11612,7 @@
       "to": "전략5",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.067,
+      "adjusted_weight": 0.062,
       "avg_hint": null,
       "hint_count": 0,
       "hints": []
@@ -11652,32 +11647,22 @@
       "hint_count": 0,
       "hints": []
     },
-    "연산33→NEW_note3": {
+    "연산33→전략25": {
       "from": "연산33",
-      "to": "NEW_note3",
+      "to": "전략25",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.855,
+      "adjusted_weight": 0.034,
       "avg_hint": null,
       "hint_count": 0,
       "hints": []
     },
-    "NEW_note1→사실100": {
-      "from": "NEW_note1",
+    "전략25→사실100": {
+      "from": "전략25",
       "to": "사실100",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.545,
-      "avg_hint": null,
-      "hint_count": 0,
-      "hints": []
-    },
-    "NEW_note3→사실100": {
-      "from": "NEW_note3",
-      "to": "사실100",
-      "count": 1,
-      "raw_weight": 0.059,
-      "adjusted_weight": 0.545,
+      "adjusted_weight": 0.021,
       "avg_hint": null,
       "hint_count": 0,
       "hints": []
@@ -11692,122 +11677,42 @@
       "hint_count": 0,
       "hints": []
     },
-    "NEW_note5→전략13": {
+    "NEW_note5→전략21": {
       "from": "NEW_note5",
-      "to": "전략13",
+      "to": "전략21",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.7,
+      "adjusted_weight": 0.494,
       "avg_hint": null,
       "hint_count": 0,
       "hints": []
     },
-    "연산33→NEW_note8": {
-      "from": "연산33",
-      "to": "NEW_note8",
-      "count": 1,
-      "raw_weight": 0.059,
-      "adjusted_weight": 0.855,
-      "avg_hint": null,
-      "hint_count": 0,
-      "hints": []
-    },
-    "전략13→사실100": {
-      "from": "전략13",
+    "전략21→사실100": {
+      "from": "전략21",
       "to": "사실100",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.446,
+      "adjusted_weight": 0.315,
       "avg_hint": null,
       "hint_count": 0,
       "hints": []
     },
-    "사실100→NEW_note11": {
+    "사실100→전략2": {
       "from": "사실100",
-      "to": "NEW_note11",
+      "to": "전략2",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.545,
+      "adjusted_weight": 0.069,
       "avg_hint": null,
       "hint_count": 0,
       "hints": []
     },
-    "NEW_note8→NEW_note11": {
-      "from": "NEW_note8",
-      "to": "NEW_note11",
-      "count": 1,
-      "raw_weight": 0.059,
-      "adjusted_weight": 0.855,
-      "avg_hint": null,
-      "hint_count": 0,
-      "hints": []
-    },
-    "전략13→NEW_note12": {
-      "from": "전략13",
-      "to": "NEW_note12",
-      "count": 1,
-      "raw_weight": 0.059,
-      "adjusted_weight": 0.7,
-      "avg_hint": null,
-      "hint_count": 0,
-      "hints": []
-    },
-    "NEW_note12→NEW_note13": {
-      "from": "NEW_note12",
-      "to": "NEW_note13",
-      "count": 1,
-      "raw_weight": 0.059,
-      "adjusted_weight": 0.855,
-      "avg_hint": null,
-      "hint_count": 0,
-      "hints": []
-    },
-    "NEW_note13→NEW_note14": {
-      "from": "NEW_note13",
-      "to": "NEW_note14",
-      "count": 1,
-      "raw_weight": 0.059,
-      "adjusted_weight": 0.855,
-      "avg_hint": null,
-      "hint_count": 0,
-      "hints": []
-    },
-    "NEW_note9→NEW_note14": {
-      "from": "NEW_note9",
-      "to": "NEW_note14",
-      "count": 1,
-      "raw_weight": 0.059,
-      "adjusted_weight": 0.855,
-      "avg_hint": null,
-      "hint_count": 0,
-      "hints": []
-    },
-    "NEW_note11→NEW_note15": {
-      "from": "NEW_note11",
-      "to": "NEW_note15",
-      "count": 1,
-      "raw_weight": 0.059,
-      "adjusted_weight": 0.855,
-      "avg_hint": null,
-      "hint_count": 0,
-      "hints": []
-    },
-    "NEW_note14→NEW_note15": {
-      "from": "NEW_note14",
-      "to": "NEW_note15",
-      "count": 1,
-      "raw_weight": 0.059,
-      "adjusted_weight": 0.855,
-      "avg_hint": null,
-      "hint_count": 0,
-      "hints": []
-    },
-    "NEW_note15→NEW_END": {
-      "from": "NEW_note15",
+    "전략2→NEW_END": {
+      "from": "전략2",
       "to": "NEW_END",
       "count": 1,
       "raw_weight": 0.059,
-      "adjusted_weight": 0.855,
+      "adjusted_weight": 0.108,
       "avg_hint": null,
       "hint_count": 0,
       "hints": []
@@ -11834,7 +11739,7 @@
       "사실15": 0.222,
       "연산30": 0.222,
       "연산19": 0.323,
-      "전략25": 0.042,
+      "전략25": 0.036,
       "연산3": 0.289,
       "사실12": 0.192,
       "전략17": 0.117,
@@ -11852,10 +11757,10 @@
       "연산17": 0.097,
       "사실18": 0.083,
       "연산11": 0.167,
-      "전략25": 0.051,
+      "전략25": 0.043,
       "연산18": 0.233,
       "전략11": 0.068,
-      "전략2": 0.075,
+      "전략2": 0.069,
       "연산16": 0.117,
       "전략28": 0.097,
       "사실64": 0.106,
@@ -11875,7 +11780,7 @@
       "전략6": 0.242,
       "사실79": 0.405,
       "사실4": 0.225,
-      "전략2": 0.134,
+      "전략2": 0.125,
       "사실43": 0.352,
       "연산21": 0.172,
       "사실96": 0.405
@@ -11897,72 +11802,73 @@
       "사실1": 0.178,
       "전략20": 0.156,
       "사실44": 0.242,
-      "전략25": 0.019,
-      "전략2": 0.057,
+      "전략25": 0.016,
+      "전략2": 0.053,
       "사실65": 0.222
     },
     "사실79": {
       "전략5": 0.405,
-      "전략25": 0.065
+      "전략25": 0.055
     },
     "전략25": {
-      "사실78": 0.065,
-      "전략23": 0.029,
-      "전략20": 0.015,
-      "연산20": 0.028,
-      "연산10": 0.09,
-      "사실15": 0.019,
-      "연산11": 0.09,
-      "연산13": 0.021,
-      "전략2": 0.032,
-      "연산18": 0.084,
-      "사실69": 0.032,
-      "연산4": 0.081,
-      "연산2": 0.025,
-      "전략6": 0.039,
-      "사실35": 0.021,
-      "사실9": 0.032,
-      "사실44": 0.023,
-      "사실4": 0.018,
-      "사실59": 0.023,
-      "전략22": 0.019,
-      "사실12": 0.017,
-      "사실70": 0.032,
-      "사실13": 0.025,
-      "연산12": 0.056,
-      "연산17": 0.021,
-      "사실81": 0.058,
-      "사실77": 0.039,
-      "사실1": 0.017,
-      "사실51": 0.016,
-      "사실85": 0.032,
-      "연산21": 0.083,
-      "전략17": 0.051,
-      "사실65": 0.021,
-      "전략1": 0.028,
-      "사실36": 0.039,
-      "전략11": 0.088,
-      "사실18": 0.018,
-      "연산30": 0.039,
-      "사실62": 0.028,
-      "사실19": 0.023,
-      "전략29": 0.019,
-      "연산16": 0.025,
-      "연산3": 0.025,
-      "연산5": 0.032,
-      "전략37": 0.028,
-      "연산26": 0.032,
-      "사실22": 0.032,
-      "사실43": 0.028,
-      "사실37": 0.028
+      "사실78": 0.055,
+      "전략23": 0.024,
+      "전략20": 0.012,
+      "연산20": 0.024,
+      "연산10": 0.077,
+      "사실15": 0.016,
+      "연산11": 0.077,
+      "연산13": 0.018,
+      "전략2": 0.03,
+      "연산18": 0.071,
+      "사실69": 0.028,
+      "연산4": 0.069,
+      "연산2": 0.022,
+      "전략6": 0.033,
+      "사실35": 0.018,
+      "사실9": 0.028,
+      "사실44": 0.019,
+      "사실4": 0.015,
+      "사실59": 0.019,
+      "전략22": 0.016,
+      "사실12": 0.014,
+      "사실70": 0.028,
+      "사실13": 0.021,
+      "연산12": 0.048,
+      "연산17": 0.018,
+      "사실81": 0.049,
+      "사실77": 0.034,
+      "사실1": 0.014,
+      "사실51": 0.013,
+      "사실85": 0.028,
+      "연산21": 0.07,
+      "전략17": 0.043,
+      "사실65": 0.018,
+      "전략1": 0.024,
+      "사실36": 0.034,
+      "전략11": 0.075,
+      "사실18": 0.015,
+      "연산30": 0.033,
+      "사실62": 0.024,
+      "사실19": 0.019,
+      "전략29": 0.016,
+      "연산16": 0.021,
+      "연산3": 0.021,
+      "연산5": 0.028,
+      "전략37": 0.024,
+      "연산26": 0.028,
+      "사실22": 0.028,
+      "사실43": 0.024,
+      "사실37": 0.024,
+      "사실100": 0.021
     },
     "사실78": {
       "전략17": 0.18,
-      "전략25": 0.032,
+      "전략25": 0.028,
       "사실65": 0.371
     },
     "전략17": {
-      "전략25": 0.101,
+      "전략25": 0.087,
       "사실51": 0.087,
       "연산21": 0.077,
       "전략1": 0.157,
@@ -11975,34 +11881,34 @@
     "전략23": {
       "전략20": 0.538,
       "사실18": 0.094,
-      "전략2": 0.084,
+      "전략2": 0.078,
       "사실65": 0.22,
       "사실17": 0.169,
       "전략10": 0.132,
       "전략6": 0.101,
       "사실72": 0.207,
       "전략36": 0.207,
-      "전략25": 0.019,
+      "전략25": 0.016,
       "전략38": 0.169
     },
     "전략20": {
       "사실78": 0.26,
-      "전략25": 0.073,
+      "전략25": 0.062,
       "전략23": 0.231,
       "사실9": 0.26,
-      "전략21": 0.404,
+      "전략21": 0.367,
       "연산2": 0.068,
       "사실112": 0.226,
       "사실38": 0.551,
       "사실65": 0.337
     },
     "연산30": {
-      "전략25": 0.039,
+      "전략25": 0.033,
       "연산19": 0.895,
       "연산13": 0.222,
       "전략6": 0.205,
       "사실15": 0.41,
-      "전략2": 0.114
+      "전략2": 0.106
     },
     "사실3": {
       "사실32": 0.7,
@@ -12013,15 +11919,15 @@
       "연산10": 0.277,
       "연산21": 0.212,
       "연산2": 0.261,
-      "전략25": 0.028,
+      "전략25": 0.024,
       "연산30": 0.298
     },
     "사실32": {
-      "전략25": 0.039
+      "전략25": 0.034
     },
     "연산10": {
-      "전략25": 0.054,
-      "전략2": 0.053,
+      "전략25": 0.046,
+      "전략2": 0.049,
       "사실15": 0.572,
       "연산18": 0.165,
       "사실65": 0.206,
@@ -12029,49 +11935,50 @@
       "사실100": 0.495
     },
     "전략2": {
-      "전략25": 0.091,
-      "연산2": 0.1,
-      "연산1": 0.074,
-      "전략26": 0.083,
-      "전략17": 0.119,
-      "사실18": 0.053,
-      "연산21": 0.243,
-      "전략23": 0.028,
-      "전략11": 0.086,
-      "사실36": 0.116,
-      "연산18": 0.049,
-      "연산5": 0.095,
-      "전략20": 0.086,
-      "전략21": 0.074,
-      "연산4": 0.09,
-      "사실9": 0.095,
-      "전략28": 0.062,
-      "연산10": 0.053,
-      "전략5": 0.067
+      "전략25": 0.072,
+      "연산2": 0.093,
+      "연산1": 0.069,
+      "전략26": 0.077,
+      "전략17": 0.111,
+      "사실18": 0.049,
+      "연산21": 0.226,
+      "전략23": 0.026,
+      "전략11": 0.08,
+      "사실36": 0.108,
+      "연산18": 0.046,
+      "연산5": 0.088,
+      "전략20": 0.08,
+      "전략21": 0.062,
+      "연산4": 0.083,
+      "사실9": 0.088,
+      "전략28": 0.057,
+      "연산10": 0.049,
+      "전략5": 0.062,
+      "NEW_END": 0.108
     },
     "사실15": {
       "연산13": 0.222,
       "연산30": 0.205,
-      "전략25": 0.019,
-      "전략2": 0.228
+      "전략25": 0.016,
+      "전략2": 0.212
     },
     "연산11": {
       "연산13": 0.412,
       "전략6": 0.191,
-      "전략25": 0.018,
+      "전략25": 0.015,
       "전략29": 0.191,
-      "전략2": 0.053,
+      "전략2": 0.049,
       "사실70": 0.318
     },
     "연산13": {
-      "전략2": 0.246,
+      "전략2": 0.229,
       "연산21": 0.158,
       "연산11": 0.206,
-      "전략25": 0.021
+      "전략25": 0.018
     },
     "연산4": {
-      "전략2": 0.06,
-      "전략25": 0.071,
+      "전략2": 0.056,
+      "전략25": 0.061,
       "사실64": 0.127,
       "사실58": 0.087,
       "연산18": 0.186,
@@ -12083,7 +11990,7 @@
       "전략29": 0.108
     },
     "연산1": {
-      "전략25": 0.05,
+      "전략25": 0.043,
       "연산17": 0.289,
       "연산16": 0.347,
       "연산3": 0.347,
@@ -12096,7 +12003,7 @@
       "사실58": 0.287,
       "연산17": 0.192,
       "전략17": 0.093,
-      "전략25": 0.017,
+      "전략25": 0.014,
       "사실54": 0.363,
       "사실62": 0.258,
       "연산2": 0.078
@@ -12105,13 +12012,13 @@
       "사실62": 0.241,
       "연산21": 0.354,
       "사실85": 0.277,
-      "전략25": 0.031,
-      "전략2": 0.046,
+      "전략25": 0.027,
+      "전략2": 0.043,
       "사실18": 0.154,
       "사실1": 0.144,
       "사실17": 0.277,
       "전략20": 0.126,
-      "전략21": 0.216,
+      "전략21": 0.196,
       "전략17": 0.087,
       "전략6": 0.166,
       "연산26": 0.277,
@@ -12119,11 +12026,11 @@
     },
     "사실81": {
       "연산19": 0.298,
-      "전략25": 0.019,
+      "전략25": 0.016,
       "연산13": 0.222,
-      "전략2": 0.228,
+      "전략2": 0.212,
       "전략20": 0.156,
-      "전략21": 0.267,
+      "전략21": 0.242,
       "전략23": 0.101
     },
     "사실62": {
@@ -12134,20 +12041,20 @@
     "연산19": {
       "연산13": 0.323,
       "사실81": 0.298,
-      "전략2": 0.083
+      "전략2": 0.077
     },
     "사실82": {
-      "전략25": 0.039
+      "전략25": 0.034
     },
     "연산18": {
       "전략23": 0.088,
       "사실58": 0.144,
-      "전략25": 0.017,
+      "전략25": 0.014,
       "전략17": 0.093,
       "전략37": 0.258,
       "연산22": 0.258,
       "사실27": 0.297,
-      "전략2": 0.098,
+      "전략2": 0.092,
       "연산4": 0.093,
       "연산2": 0.078,
       "전략33": 0.192,
@@ -12163,7 +12070,7 @@
       "전략26": 0.188,
       "사실59": 0.152,
       "사실12": 0.112,
-      "전략25": 0.012,
+      "전략25": 0.01,
       "사실30": 0.263
     },
     "사실69": {
@@ -12179,9 +12086,9 @@
     "사실58": {
       "연산10": 0.154,
       "전략11": 0.126,
-      "전략25": 0.047,
+      "전략25": 0.04,
       "연산4": 0.087,
-      "전략2": 0.092,
+      "전략2": 0.086,
       "사실44": 0.196,
       "전략3": 0.339
     },
@@ -12196,13 +12103,13 @@
       "연산4": 0.2,
       "전략10": 0.743,
       "전략20": 0.144,
-      "전략25": 0.072,
+      "전략25": 0.061,
       "사실91": 0.389,
       "사실1": 0.165,
       "전략37": 0.277,
       "사실74": 0.277,
       "사실5": 0.12,
-      "전략2": 0.053,
+      "전략2": 0.049,
       "전략23": 0.094
     },
     "사실64": {
@@ -12212,7 +12119,7 @@
     "전략33": {
       "사실66": 0.371,
       "전략17": 0.117,
-      "전략25": 0.021,
+      "전략25": 0.018,
       "사실64": 0.262,
       "전략12": 0.222,
       "전략35": 0.454
@@ -12231,7 +12138,7 @@
       "연산21": 0.19
     },
     "사실18": {
-      "전략25": 0.054,
+      "전략25": 0.046,
       "연산21": 0.271,
       "연산4": 0.1,
       "사실69": 0.318,
@@ -12249,7 +12156,7 @@
       "사실1": 0.178,
       "사실56": 0.419,
       "사실58": 0.166,
-      "전략25": 0.019,
+      "전략25": 0.016,
       "전략28": 0.222,
       "사실43": 0.298,
       "사실68": 0.419
@@ -12263,16 +12170,16 @@
     "사실35": {
       "사실71": 0.454,
       "사실44": 0.262,
-      "전략25": 0.042,
+      "전략25": 0.036,
       "전략23": 0.11,
       "사실78": 0.371,
       "사실4": 0.206,
       "사실27": 0.371,
-      "전략2": 0.062,
+      "전략2": 0.057,
       "사실67": 0.454
     },
     "사실71": {
-      "전략25": 0.039
+      "전략25": 0.034
     },
     "사실19": {
       "전략5": 0.572,
@@ -12282,23 +12189,23 @@
       "연산21": 0.172,
       "사실17": 0.405,
       "사실26": 0.494,
-      "전략2": 0.067
+      "전략2": 0.062
     },
     "사실9": {
-      "전략25": 0.032,
-      "전략2": 0.095
+      "전략25": 0.028,
+      "전략2": 0.088
     },
     "사실44": {
       "전략17": 0.127,
       "전략5": 0.572,
       "연산10": 0.225,
-      "전략25": 0.068,
+      "전략25": 0.058,
       "사실19": 0.286
     },
     "전략22": {
       "사실12": 0.178,
       "전략10": 0.267,
-      "전략2": 0.057,
+      "전략2": 0.053,
       "사실17": 0.343,
       "사실24": 0.419,
       "연산18": 0.178,
@@ -12310,8 +12217,8 @@
       "전략27": 0.298,
       "전략31": 0.298,
       "연산12": 0.212,
-      "전략25": 0.083,
-      "전략2": 0.162,
+      "전략25": 0.07,
+      "전략2": 0.15,
       "연산18": 0.126,
       "사실51": 0.118,
       "전략17": 0.153,
@@ -12341,18 +12248,18 @@
       "사실2": 0.609
     },
     "사실2": {
-      "전략2": 0.083,
+      "전략2": 0.077,
       "전략5": 0.352,
       "사실44": 0.352,
-      "전략25": 0.028,
+      "전략25": 0.024,
       "사실51": 0.241
     },
     "전략26": {
-      "전략2": 0.165,
+      "전략2": 0.154,
       "전략17": 0.157
     },
     "사실6": {
-      "전략25": 0.065,
+      "전략25": 0.055,
       "연산11": 0.318
     },
     "사실80": {
@@ -12369,25 +12276,25 @@
     "사실13": {
       "연산12": 0.775,
       "연산20": 0.388,
-      "전략25": 0.05
+      "전략25": 0.043
     },
     "연산12": {
-      "전략2": 0.083,
-      "전략25": 0.028,
+      "전략2": 0.077,
+      "전략25": 0.024,
       "사실13": 0.388,
       "연산17": 0.323
     },
     "사실77": {
-      "전략25": 0.039
+      "전략25": 0.034
     },
     "사실1": {
-      "전략25": 0.033,
+      "전략25": 0.029,
       "전략6": 0.178,
       "사실43": 0.258,
-      "전략2": 0.049,
+      "전략2": 0.046,
       "사실35": 0.192,
       "사실27": 0.297,
-      "전략13": 0.297,
+      "전략13": 0.363,
       "사실93": 0.363,
       "연산21": 0.126,
       "전략28": 0.192
@@ -12423,8 +12330,8 @@
       "사실85": 0.7
     },
     "전략1": {
-      "전략25": 0.028,
-      "전략2": 0.083,
+      "전략25": 0.024,
+      "전략2": 0.077,
       "전략29": 0.298
     },
     "전략29": {
@@ -12438,7 +12345,7 @@
     "연산9": {
       "전략12": 0.597,
       "연산22": 0.434,
-      "전략25": 0.056,
+      "전략25": 0.048,
       "전략17": 0.157
     },
     "전략37": {
@@ -12455,31 +12362,31 @@
       "사실53": 0.855
     },
     "사실53": {
-      "전략2": 0.116
+      "전략2": 0.108
     },
     "연산7": {
       "연산27": 0.573,
-      "전략25": 0.032,
+      "전략25": 0.028,
       "사실41": 0.343,
       "전략28": 0.371,
       "사실38": 0.405
     },
     "연산27": {
       "연산7": 0.573,
-      "전략25": 0.032
+      "전략25": 0.028
     },
     "전략11": {
-      "전략25": 0.059,
+      "전략25": 0.05,
       "사실4": 0.144,
       "연산5": 0.26,
       "사실58": 0.377,
       "연산3": 0.202,
-      "전략2": 0.086,
+      "전략2": 0.08,
       "연산16": 0.202
     },
     "사실59": {
       "사실58": 0.196,
-      "전략25": 0.023,
+      "전략25": 0.019,
       "사실35": 0.262,
       "사실37": 0.352,
       "연산2": 0.106
@@ -12488,36 +12395,35 @@
       "전략22": 0.343
     },
     "사실36": {
-      "전략2": 0.116
+      "전략2": 0.108
     },
     "전략13": {
-      "사실92": 0.7,
-      "사실100": 0.446,
-      "NEW_note12": 0.7
+      "사실92": 0.855
     },
     "사실92": {
       "사실93": 0.855,
       "전략11": 0.318
     },
     "사실93": {
-      "전략2": 0.116
+      "전략2": 0.108
     },
     "연산5": {
       "연산27": 0.573,
-      "전략25": 0.065,
+      "전략25": 0.055,
       "연산13": 0.371
     },
     "사실17": {
       "전략26": 0.498,
       "전략23": 0.169,
-      "전략2": 0.095
+      "전략2": 0.088
     },
     "전략21": {
-      "전략23": 0.264,
-      "연산4": 0.14,
-      "전략2": 0.074,
-      "사실65": 0.289,
-      "전략25": 0.025
+      "전략23": 0.239,
+      "연산4": 0.127,
+      "전략2": 0.062,
+      "사실65": 0.262,
+      "전략25": 0.019,
+      "사실100": 0.315
     },
     "사실16": {
       "사실15": 0.419,
@@ -12534,11 +12440,11 @@
     },
     "연산6": {
       "연산13": 0.371,
-      "전략25": 0.032,
+      "전략25": 0.028,
       "연산11": 0.318
     },
     "사실37": {
-      "전략2": 0.083,
+      "전략2": 0.077,
       "사실54": 0.609,
       "전략23": 0.147
     },
@@ -12577,12 +12483,12 @@
     },
     "사실38": {
       "사실54": 0.494,
-      "전략25": 0.046,
+      "전략25": 0.039,
       "전략28": 0.262,
       "사실41": 0.242,
       "사실19": 0.286,
       "사실50": 0.405,
-      "전략2": 0.067
+      "전략2": 0.062
     },
     "사실54": {
       "사실41": 0.419,
@@ -12593,9 +12499,9 @@
       "사실26": 0.855
     },
     "사실26": {
-      "전략2": 0.116,
+      "전략2": 0.108,
       "전략11": 0.318,
-      "전략25": 0.039
+      "전략25": 0.034
     },
     "전략30": {
       "사실59": 0.494,
@@ -12622,16 +12528,16 @@
       "전략12": 0.419
     },
     "전략35": {
-      "전략25": 0.039,
+      "전략25": 0.034,
       "전략36": 0.855
     },
     "전략36": {
       "사실66": 0.7,
-      "전략25": 0.039
+      "전략25": 0.034
     },
     "사실22": {
       "사실43": 0.498,
-      "전략25": 0.032,
+      "전략25": 0.028,
       "전략23": 0.169,
       "전략20": 0.26
     },
@@ -12640,13 +12546,13 @@
     },
     "사실100": {
       "전략20": 0.202,
-      "전략25": 0.05,
+      "전략25": 0.043,
       "전략11": 0.202,
       "NEW_note5": 0.545,
-      "NEW_note11": 0.545
+      "전략2": 0.069
     },
     "사실112": {
-      "전략21": 0.775,
+      "전략21": 0.704,
       "전략20": 0.226,
       "전략23": 0.147,
       "사실22": 0.498
@@ -12660,45 +12566,17 @@
       "전략38": 0.573
     },
     "전략38": {
-      "전략25": 0.065,
+      "전략25": 0.055,
       "연산36": 0.997
     },
     "연산36": {
       "사실100": 1
     },
     "연산33": {
-      "NEW_note3": 0.855,
-      "NEW_note8": 0.855
-    },
-    "NEW_note1": {
-      "사실100": 0.545
-    },
-    "NEW_note3": {
-      "사실100": 0.545
+      "전략25": 0.034
     },
     "NEW_note5": {
-      "전략13": 0.7
-    },
-    "NEW_note8": {
-      "NEW_note11": 0.855
-    },
-    "NEW_note12": {
-      "NEW_note13": 0.855
-    },
-    "NEW_note13": {
-      "NEW_note14": 0.855
-    },
-    "NEW_note9": {
-      "NEW_note14": 0.855
-    },
-    "NEW_note11": {
-      "NEW_note15": 0.855
-    },
-    "NEW_note14": {
-      "NEW_note15": 0.855
-    },
-    "NEW_note15": {
-      "NEW_END": 0.855
+      "전략21": 0.494
     }
   },
   "neurons": {
@@ -12730,7 +12608,7 @@
       "outgoing_connections": 3,
       "incoming_connections": 3,
       "total_connections": 6,
-      "hub_score": 0.04,
+      "hub_score": 0.05,
       "connected_neurons": [
         "사실64",
         "사실74",
@@ -12748,7 +12626,7 @@
       "outgoing_connections": 11,
       "incoming_connections": 7,
       "total_connections": 15,
-      "hub_score": 0.11,
+      "hub_score": 0.12,
       "connected_neurons": [
         "사실12",
         "사실15",
@@ -12775,7 +12653,7 @@
       "outgoing_connections": 3,
       "incoming_connections": 5,
       "total_connections": 6,
-      "hub_score": 0.04,
+      "hub_score": 0.05,
       "connected_neurons": [
         "사실58",
         "연산1",
@@ -12793,7 +12671,7 @@
       "outgoing_connections": 24,
       "incoming_connections": 15,
       "total_connections": 30,
-      "hub_score": 0.22,
+      "hub_score": 0.23,
       "connected_neurons": [
         "사실12",
         "사실18",
@@ -12852,7 +12730,7 @@
       "outgoing_connections": 7,
       "incoming_connections": 8,
       "total_connections": 11,
-      "hub_score": 0.08,
+      "hub_score": 0.09,
       "connected_neurons": [
         "사실19",
         "사실2",
@@ -12875,7 +12753,7 @@
       "outgoing_connections": 14,
       "incoming_connections": 10,
       "total_connections": 21,
-      "hub_score": 0.15,
+      "hub_score": 0.16,
       "connected_neurons": [
         "사실1",
         "사실12",
@@ -12918,13 +12796,13 @@
     },
     "전략25": {
       "type": "전략",
-      "total_appearances": 156,
-      "problem_count": 38,
-      "idf": 0.18,
-      "outgoing_connections": 49,
-      "incoming_connections": 56,
-      "total_connections": 71,
-      "hub_score": 0.51,
+      "total_appearances": 160,
+      "problem_count": 39,
+      "idf": 0.15,
+      "outgoing_connections": 50,
+      "incoming_connections": 57,
+      "total_connections": 72,
+      "hub_score": 0.56,
       "connected_neurons": [
         "사실1",
         "사실100",
@@ -12977,6 +12855,7 @@
         "연산27",
         "연산3",
         "연산30",
+        "연산33",
         "연산4",
         "연산5",
         "연산6",
@@ -13024,7 +12903,7 @@
       "outgoing_connections": 9,
       "incoming_connections": 20,
       "total_connections": 23,
-      "hub_score": 0.17,
+      "hub_score": 0.18,
       "connected_neurons": [
         "사실12",
         "사실24",
@@ -13059,7 +12938,7 @@
       "outgoing_connections": 11,
       "incoming_connections": 21,
       "total_connections": 27,
-      "hub_score": 0.2,
+      "hub_score": 0.21,
       "connected_neurons": [
         "사실112",
         "사실17",
@@ -13098,7 +12977,7 @@
       "outgoing_connections": 9,
       "incoming_connections": 15,
       "total_connections": 21,
-      "hub_score": 0.15,
+      "hub_score": 0.16,
       "connected_neurons": [
         "사실100",
         "사실112",
@@ -13131,7 +13010,7 @@
       "outgoing_connections": 6,
       "incoming_connections": 7,
       "total_connections": 11,
-      "hub_score": 0.08,
+      "hub_score": 0.09,
       "connected_neurons": [
         "사실15",
         "사실16",
@@ -13154,7 +13033,7 @@
       "outgoing_connections": 2,
       "incoming_connections": 0,
       "total_connections": 2,
-      "hub_score": 0.01,
+      "hub_score": 0.02,
       "connected_neurons": [
         "사실30",
         "사실32"
@@ -13203,7 +13082,7 @@
       "outgoing_connections": 7,
       "incoming_connections": 6,
       "total_connections": 11,
-      "hub_score": 0.08,
+      "hub_score": 0.09,
       "connected_neurons": [
         "사실100",
         "사실15",
@@ -13220,15 +13099,17 @@
     },
     "전략2": {
       "type": "전략",
-      "total_appearances": 51,
-      "problem_count": 27,
-      "idf": 0.52,
-      "outgoing_connections": 19,
-      "incoming_connections": 36,
-      "total_connections": 42,
-      "hub_score": 0.3,
+      "total_appearances": 54,
+      "problem_count": 28,
+      "idf": 0.48,
+      "outgoing_connections": 20,
+      "incoming_connections": 37,
+      "total_connections": 44,
+      "hub_score": 0.34,
       "connected_neurons": [
+        "NEW_END",
         "사실1",
+        "사실100",
         "사실15",
         "사실17",
         "사실18",
@@ -13348,7 +13229,7 @@
       "outgoing_connections": 11,
       "incoming_connections": 8,
       "total_connections": 13,
-      "hub_score": 0.09,
+      "hub_score": 0.1,
       "connected_neurons": [
         "사실18",
         "사실4",
@@ -13373,7 +13254,7 @@
       "outgoing_connections": 5,
       "incoming_connections": 2,
       "total_connections": 6,
-      "hub_score": 0.04,
+      "hub_score": 0.05,
       "connected_neurons": [
         "연산16",
         "연산17",
@@ -13391,7 +13272,7 @@
       "outgoing_connections": 10,
       "incoming_connections": 6,
       "total_connections": 13,
-      "hub_score": 0.09,
+      "hub_score": 0.1,
       "connected_neurons": [
         "사실5",
         "사실50",
@@ -13416,7 +13297,7 @@
       "outgoing_connections": 14,
       "incoming_connections": 10,
       "total_connections": 20,
-      "hub_score": 0.14,
+      "hub_score": 0.16,
       "connected_neurons": [
         "사실1",
         "사실12",
@@ -13465,7 +13346,7 @@
       "outgoing_connections": 7,
       "incoming_connections": 5,
       "total_connections": 10,
-      "hub_score": 0.07,
+      "hub_score": 0.08,
       "connected_neurons": [
         "사실11",
         "사실16",
@@ -13547,7 +13428,7 @@
       "outgoing_connections": 11,
       "incoming_connections": 3,
       "total_connections": 14,
-      "hub_score": 0.1,
+      "hub_score": 0.11,
       "connected_neurons": [
         "사실1",
         "사실12",
@@ -13635,7 +13516,7 @@
       "outgoing_connections": 5,
       "incoming_connections": 3,
       "total_connections": 6,
-      "hub_score": 0.04,
+      "hub_score": 0.05,
       "connected_neurons": [
         "사실1",
         "사실4",
@@ -13653,7 +13534,7 @@
       "outgoing_connections": 11,
       "incoming_connections": 8,
       "total_connections": 17,
-      "hub_score": 0.12,
+      "hub_score": 0.13,
       "connected_neurons": [
         "사실1",
         "사실35",
@@ -13682,7 +13563,7 @@
       "outgoing_connections": 2,
       "incoming_connections": 5,
       "total_connections": 6,
-      "hub_score": 0.04,
+      "hub_score": 0.05,
       "connected_neurons": [
         "사실76",
         "연산2",
@@ -13749,7 +13630,7 @@
       "outgoing_connections": 4,
       "incoming_connections": 4,
       "total_connections": 6,
-      "hub_score": 0.04,
+      "hub_score": 0.05,
       "connected_neurons": [
         "사실4",
         "연산21",
@@ -13847,7 +13728,7 @@
       "outgoing_connections": 8,
       "incoming_connections": 8,
       "total_connections": 15,
-      "hub_score": 0.11,
+      "hub_score": 0.12,
       "connected_neurons": [
         "사실17",
         "사실26",
@@ -13874,7 +13755,7 @@
       "outgoing_connections": 9,
       "incoming_connections": 6,
       "total_connections": 14,
-      "hub_score": 0.1,
+      "hub_score": 0.11,
       "connected_neurons": [
         "사실1",
         "사실27",
@@ -13900,7 +13781,7 @@
       "outgoing_connections": 1,
       "incoming_connections": 1,
       "total_connections": 2,
-      "hub_score": 0.01,
+      "hub_score": 0.02,
       "connected_neurons": [
         "사실35",
         "전략25"
@@ -13930,7 +13811,7 @@
       "outgoing_connections": 5,
       "incoming_connections": 11,
       "total_connections": 14,
-      "hub_score": 0.1,
+      "hub_score": 0.11,
       "connected_neurons": [
         "사실19",
         "사실2",
@@ -14003,7 +13884,7 @@
       "outgoing_connections": 19,
       "incoming_connections": 16,
       "total_connections": 30,
-      "hub_score": 0.22,
+      "hub_score": 0.23,
       "connected_neurons": [
         "사실1",
         "사실17",
@@ -14045,7 +13926,7 @@
       "outgoing_connections": 1,
       "incoming_connections": 1,
       "total_connections": 2,
-      "hub_score": 0.01,
+      "hub_score": 0.02,
       "connected_neurons": [
         "연산21",
         "전략23"
@@ -14089,7 +13970,7 @@
       "outgoing_connections": 1,
       "incoming_connections": 1,
       "total_connections": 2,
-      "hub_score": 0.01,
+      "hub_score": 0.02,
       "connected_neurons": [
         "사실2",
         "연산21"
@@ -14122,7 +14003,7 @@
       "outgoing_connections": 2,
       "incoming_connections": 5,
       "total_connections": 6,
-      "hub_score": 0.04,
+      "hub_score": 0.05,
       "connected_neurons": [
         "사실17",
         "사실24",
@@ -14168,7 +14049,7 @@
       "outgoing_connections": 1,
       "incoming_connections": 1,
       "total_connections": 2,
-      "hub_score": 0.01,
+      "hub_score": 0.02,
       "connected_neurons": [
         "사실70",
         "사실80"
@@ -14236,7 +14117,7 @@
       "outgoing_connections": 1,
       "incoming_connections": 2,
       "total_connections": 2,
-      "hub_score": 0.01,
+      "hub_score": 0.02,
       "connected_neurons": [
         "사실11",
         "전략25"
@@ -14250,7 +14131,7 @@
       "outgoing_connections": 10,
       "incoming_connections": 8,
       "total_connections": 15,
-      "hub_score": 0.11,
+      "hub_score": 0.12,
       "connected_neurons": [
         "사실27",
         "사실35",
@@ -14277,7 +14158,7 @@
       "outgoing_connections": 2,
       "incoming_connections": 0,
       "total_connections": 2,
-      "hub_score": 0.01,
+      "hub_score": 0.02,
       "connected_neurons": [
         "사실85",
         "사실88"
@@ -14291,7 +14172,7 @@
       "outgoing_connections": 2,
       "incoming_connections": 4,
       "total_connections": 6,
-      "hub_score": 0.04,
+      "hub_score": 0.05,
       "connected_neurons": [
         "사실51",
         "사실84",
@@ -14329,7 +14210,7 @@
       "outgoing_connections": 1,
       "incoming_connections": 1,
       "total_connections": 2,
-      "hub_score": 0.01,
+      "hub_score": 0.02,
       "connected_neurons": [
         "사실41",
         "사실5"
@@ -14373,7 +14254,7 @@
       "outgoing_connections": 1,
       "incoming_connections": 1,
       "total_connections": 2,
-      "hub_score": 0.01,
+      "hub_score": 0.02,
       "connected_neurons": [
         "사실87",
         "사실88"
@@ -14387,7 +14268,7 @@
       "outgoing_connections": 1,
       "incoming_connections": 2,
       "total_connections": 2,
-      "hub_score": 0.01,
+      "hub_score": 0.02,
       "connected_neurons": [
         "사실89",
         "사실90"
@@ -14417,7 +14298,7 @@
       "outgoing_connections": 6,
       "incoming_connections": 5,
       "total_connections": 11,
-      "hub_score": 0.08,
+      "hub_score": 0.09,
       "connected_neurons": [
         "사실35",
         "사실4",
@@ -14490,7 +14371,7 @@
       "outgoing_connections": 4,
       "incoming_connections": 8,
       "total_connections": 11,
-      "hub_score": 0.08,
+      "hub_score": 0.09,
       "connected_neurons": [
         "사실61",
         "사실78",
@@ -14513,7 +14394,7 @@
       "outgoing_connections": 1,
       "incoming_connections": 1,
       "total_connections": 2,
-      "hub_score": 0.01,
+      "hub_score": 0.02,
       "connected_neurons": [
         "사실4",
         "사실53"
@@ -14527,7 +14408,7 @@
       "outgoing_connections": 1,
       "incoming_connections": 1,
       "total_connections": 2,
-      "hub_score": 0.01,
+      "hub_score": 0.02,
       "connected_neurons": [
         "사실91",
         "전략2"
@@ -14573,7 +14454,7 @@
       "outgoing_connections": 7,
       "incoming_connections": 11,
       "total_connections": 13,
-      "hub_score": 0.09,
+      "hub_score": 0.1,
       "connected_neurons": [
         "사실100",
         "사실26",
@@ -14598,7 +14479,7 @@
       "outgoing_connections": 1,
       "incoming_connections": 2,
       "total_connections": 2,
-      "hub_score": 0.01,
+      "hub_score": 0.02,
       "connected_neurons": [
         "전략2",
         "전략25"
@@ -14606,18 +14487,15 @@
     },
     "전략13": {
       "type": "전략",
-      "total_appearances": 2,
-      "problem_count": 2,
-      "idf": 3.12,
-      "outgoing_connections": 3,
-      "incoming_connections": 2,
-      "total_connections": 5,
-      "hub_score": 0.04,
+      "total_appearances": 1,
+      "problem_count": 1,
+      "idf": 3.81,
+      "outgoing_connections": 1,
+      "incoming_connections": 1,
+      "total_connections": 2,
+      "hub_score": 0.02,
       "connected_neurons": [
-        "NEW_note12",
-        "NEW_note5",
         "사실1",
-        "사실100",
         "사실92"
       ]
     },
@@ -14659,7 +14537,7 @@
       "outgoing_connections": 3,
       "incoming_connections": 4,
       "total_connections": 6,
-      "hub_score": 0.04,
+      "hub_score": 0.05,
       "connected_neurons": [
         "사실18",
         "연산13",
@@ -14690,14 +14568,16 @@
     },
     "전략21": {
       "type": "전략",
-      "total_appearances": 6,
-      "problem_count": 4,
-      "idf": 2.43,
-      "outgoing_connections": 5,
-      "incoming_connections": 5,
-      "total_connections": 9,
-      "hub_score": 0.07,
+      "total_appearances": 7,
+      "problem_count": 5,
+      "idf": 2.2,
+      "outgoing_connections": 6,
+      "incoming_connections": 6,
+      "total_connections": 11,
+      "hub_score": 0.09,
       "connected_neurons": [
+        "NEW_note5",
+        "사실100",
         "사실112",
         "사실51",
         "사실65",
@@ -14732,7 +14612,7 @@
       "outgoing_connections": 3,
       "incoming_connections": 5,
       "total_connections": 6,
-      "hub_score": 0.04,
+      "hub_score": 0.05,
       "connected_neurons": [
         "사실62",
         "연산1",
@@ -14799,7 +14679,7 @@
       "outgoing_connections": 11,
       "incoming_connections": 8,
       "total_connections": 18,
-      "hub_score": 0.13,
+      "hub_score": 0.14,
       "connected_neurons": [
         "사실1",
         "사실112",
@@ -14829,7 +14709,7 @@
       "outgoing_connections": 1,
       "incoming_connections": 1,
       "total_connections": 2,
-      "hub_score": 0.01,
+      "hub_score": 0.02,
       "connected_neurons": [
         "사실35",
         "전략28"
@@ -14875,7 +14755,7 @@
       "outgoing_connections": 1,
       "incoming_connections": 1,
       "total_connections": 2,
-      "hub_score": 0.01,
+      "hub_score": 0.02,
       "connected_neurons": [
         "연산18",
         "연산26"
@@ -14889,7 +14769,7 @@
       "outgoing_connections": 3,
       "incoming_connections": 4,
       "total_connections": 6,
-      "hub_score": 0.04,
+      "hub_score": 0.05,
       "connected_neurons": [
         "사실25",
         "사실51",
@@ -14928,7 +14808,7 @@
       "outgoing_connections": 3,
       "incoming_connections": 3,
       "total_connections": 6,
-      "hub_score": 0.04,
+      "hub_score": 0.05,
       "connected_neurons": [
         "사실12",
         "사실19",
@@ -14946,7 +14826,7 @@
       "outgoing_connections": 1,
       "incoming_connections": 1,
       "total_connections": 2,
-      "hub_score": 0.01,
+      "hub_score": 0.02,
       "connected_neurons": [
         "사실26",
         "사실58"
@@ -15007,7 +14887,7 @@
       "outgoing_connections": 1,
       "incoming_connections": 1,
       "total_connections": 2,
-      "hub_score": 0.01,
+      "hub_score": 0.02,
       "connected_neurons": [
         "사실61",
         "전략30"
@@ -15038,7 +14918,7 @@
       "outgoing_connections": 1,
       "incoming_connections": 1,
       "total_connections": 2,
-      "hub_score": 0.01,
+      "hub_score": 0.02,
       "connected_neurons": [
         "사실9",
         "전략23"
@@ -15052,7 +14932,7 @@
       "outgoing_connections": 1,
       "incoming_connections": 1,
       "total_connections": 2,
-      "hub_score": 0.01,
+      "hub_score": 0.02,
       "connected_neurons": [
         "사실74",
         "전략34"
@@ -15066,7 +14946,7 @@
       "outgoing_connections": 1,
       "incoming_connections": 1,
       "total_connections": 2,
-      "hub_score": 0.01,
+      "hub_score": 0.02,
       "connected_neurons": [
         "사실75",
         "전략12"
@@ -15139,23 +15019,21 @@
     },
     "사실100": {
       "type": "사실",
-      "total_appearances": 6,
+      "total_appearances": 7,
       "problem_count": 4,
       "idf": 2.43,
       "outgoing_connections": 5,
-      "incoming_connections": 5,
-      "total_connections": 10,
-      "hub_score": 0.07,
+      "incoming_connections": 4,
+      "total_connections": 8,
+      "hub_score": 0.06,
       "connected_neurons": [
-        "NEW_note1",
-        "NEW_note11",
-        "NEW_note3",
         "NEW_note5",
         "연산10",
         "연산36",
         "전략11",
-        "전략13",
+        "전략2",
         "전략20",
+        "전략21",
         "전략25"
       ]
     },
@@ -15184,7 +15062,7 @@
       "outgoing_connections": 1,
       "incoming_connections": 1,
       "total_connections": 2,
-      "hub_score": 0.01,
+      "hub_score": 0.02,
       "connected_neurons": [
         "사실50",
         "연산10"
@@ -15215,7 +15093,7 @@
       "outgoing_connections": 2,
       "incoming_connections": 4,
       "total_connections": 6,
-      "hub_score": 0.04,
+      "hub_score": 0.05,
       "connected_neurons": [
         "사실65",
         "사실96",
@@ -15240,9 +15118,9 @@
         "전략38"
       ]
     },
-    "NEW_note1": {
-      "type": "불명",
-      "total_appearances": 1,
+    "연산33": {
+      "type": "연산",
+      "total_appearances": 2,
       "problem_count": 1,
       "idf": 3.81,
       "outgoing_connections": 1,
@@ -15250,35 +15128,7 @@
       "total_connections": 1,
       "hub_score": 0.01,
       "connected_neurons": [
-        "사실100"
-      ]
-    },
-    "연산33": {
-      "type": "연산",
-      "total_appearances": 2,
-      "problem_count": 1,
-      "idf": 3.81,
-      "outgoing_connections": 2,
-      "incoming_connections": 0,
-      "total_connections": 2,
-      "hub_score": 0.01,
-      "connected_neurons": [
-        "NEW_note3",
-        "NEW_note8"
-      ]
-    },
-    "NEW_note3": {
-      "type": "불명",
-      "total_appearances": 1,
-      "problem_count": 1,
-      "idf": 3.81,
-      "outgoing_connections": 1,
-      "incoming_connections": 1,
-      "total_connections": 2,
-      "hub_score": 0.01,
-      "connected_neurons": [
-        "사실100",
-        "연산33"
+        "전략25"
       ]
     },
     "NEW_note5": {
@@ -15289,110 +15139,10 @@
       "outgoing_connections": 1,
       "incoming_connections": 1,
       "total_connections": 2,
-      "hub_score": 0.01,
+      "hub_score": 0.02,
       "connected_neurons": [
         "사실100",
-        "전략13"
-      ]
-    },
-    "NEW_note8": {
-      "type": "불명",
-      "total_appearances": 1,
-      "problem_count": 1,
-      "idf": 3.81,
-      "outgoing_connections": 1,
-      "incoming_connections": 1,
-      "total_connections": 2,
-      "hub_score": 0.01,
-      "connected_neurons": [
-        "NEW_note11",
-        "연산33"
-      ]
-    },
-    "NEW_note9": {
-      "type": "불명",
-      "total_appearances": 1,
-      "problem_count": 1,
-      "idf": 3.81,
-      "outgoing_connections": 1,
-      "incoming_connections": 0,
-      "total_connections": 1,
-      "hub_score": 0.01,
-      "connected_neurons": [
-        "NEW_note14"
-      ]
-    },
-    "NEW_note11": {
-      "type": "불명",
-      "total_appearances": 1,
-      "problem_count": 1,
-      "idf": 3.81,
-      "outgoing_connections": 1,
-      "incoming_connections": 2,
-      "total_connections": 3,
-      "hub_score": 0.02,
-      "connected_neurons": [
-        "NEW_note15",
-        "NEW_note8",
-        "사실100"
-      ]
-    },
-    "NEW_note12": {
-      "type": "불명",
-      "total_appearances": 1,
-      "problem_count": 1,
-      "idf": 3.81,
-      "outgoing_connections": 1,
-      "incoming_connections": 1,
-      "total_connections": 2,
-      "hub_score": 0.01,
-      "connected_neurons": [
-        "NEW_note13",
-        "전략13"
-      ]
-    },
-    "NEW_note13": {
-      "type": "불명",
-      "total_appearances": 1,
-      "problem_count": 1,
-      "idf": 3.81,
-      "outgoing_connections": 1,
-      "incoming_connections": 1,
-      "total_connections": 2,
-      "hub_score": 0.01,
-      "connected_neurons": [
-        "NEW_note12",
-        "NEW_note14"
-      ]
-    },
-    "NEW_note14": {
-      "type": "불명",
-      "total_appearances": 1,
-      "problem_count": 1,
-      "idf": 3.81,
-      "outgoing_connections": 1,
-      "incoming_connections": 2,
-      "total_connections": 3,
-      "hub_score": 0.02,
-      "connected_neurons": [
-        "NEW_note13",
-        "NEW_note15",
-        "NEW_note9"
-      ]
-    },
-    "NEW_note15": {
-      "type": "불명",
-      "total_appearances": 1,
-      "problem_count": 1,
-      "idf": 3.81,
-      "outgoing_connections": 1,
-      "incoming_connections": 2,
-      "total_connections": 3,
-      "hub_score": 0.02,
-      "connected_neurons": [
-        "NEW_END",
-        "NEW_note11",
-        "NEW_note14"
+        "전략21"
       ]
     },
     "NEW_END": {
@@ -15405,7 +15155,7 @@
       "total_connections": 1,
       "hub_score": 0.01,
       "connected_neurons": [
-        "NEW_note15"
+        "전략2"
       ]
     }
   },
