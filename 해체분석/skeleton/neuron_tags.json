@@ -1538,13 +1538,5 @@
       "ABS"
     ],
     "action": "ABS_NONZERO"
-  },
-  {
-    "id": "사실117",
-    "domain": [
-      "ABS",
-      "DIFF"
-    ],
-    "action": ""
   }
 ]
