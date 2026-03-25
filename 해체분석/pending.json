@@ -6,7 +6,7 @@
     "content_source": "CheckPending",
     "content_length": 986,
     "skel_status": "neuron_missing",
-    "dna_status": "ok",
+    "dna_status": "DNA_missing",
     "previous_skeleton": [
       {
         "from": [
