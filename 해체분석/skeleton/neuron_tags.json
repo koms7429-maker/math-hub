@@ -1,0 +1,1427 @@
+[
+  {
+    "id": "사실1",
+    "domain": [
+      "EXP"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실2",
+    "domain": [
+      "FUNC"
+    ],
+    "action": "SYMMETRY"
+  },
+  {
+    "id": "사실3",
+    "domain": [
+      "EXP",
+      "LOG"
+    ],
+    "action": "SYMMETRY"
+  },
+  {
+    "id": "사실4",
+    "domain": [
+      "EXP",
+      "NUM"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실5",
+    "domain": [
+      "EXP",
+      "FUNC"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실6",
+    "domain": [
+      "LOG",
+      "ABS"
+    ],
+    "action": "SYMMETRY"
+  },
+  {
+    "id": "사실7",
+    "domain": [
+      "CIRCLE"
+    ],
+    "action": "SYMMETRY"
+  },
+  {
+    "id": "사실8",
+    "domain": [
+      "CIRCLE"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실9",
+    "domain": [
+      "EQN",
+      "FUNC"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실10",
+    "domain": [
+      "COORD"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실11",
+    "domain": [
+      "CIRCLE"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실12",
+    "domain": [
+      "LOG",
+      "FUNC"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실13",
+    "domain": [
+      "COORD"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실14",
+    "domain": [
+      "COORD"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실15",
+    "domain": [
+      "COORD"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실16",
+    "domain": [
+      "COORD"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실17",
+    "domain": [
+      "FUNC"
+    ],
+    "action": "DEFINE"
+  },
+  {
+    "id": "사실18",
+    "domain": [
+      "EXP"
+    ],
+    "action": "DEFINE"
+  },
+  {
+    "id": "사실19",
+    "domain": [
+      "FUNC"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실46",
+    "domain": [
+      "EXP",
+      "FUNC"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실21",
+    "domain": [
+      "EXP",
+      "FUNC"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실22",
+    "domain": [
+      "FUNC"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실23",
+    "domain": [
+      "EXP",
+      "LOG",
+      "FUNC"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실24",
+    "domain": [
+      "EXP",
+      "FUNC"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실25",
+    "domain": [
+      "EXP",
+      "FUNC"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실26",
+    "domain": [
+      "INEQ"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실27",
+    "domain": [
+      "INEQ"
+    ],
+    "action": "BOUND"
+  },
+  {
+    "id": "사실28",
+    "domain": [
+      "ABS"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실29",
+    "domain": [
+      "NUM"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실30",
+    "domain": [
+      "FUNC",
+      "COORD"
+    ],
+    "action": "SYMMETRY"
+  },
+  {
+    "id": "사실31",
+    "domain": [
+      "ABS",
+      "FUNC"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실32",
+    "domain": [
+      "COORD"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실33",
+    "domain": [
+      "COORD"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실34",
+    "domain": [
+      "COORD"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실35",
+    "domain": [
+      "EQN",
+      "INEQ"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실36",
+    "domain": [
+      "COORD",
+      "VEC"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실37",
+    "domain": [
+      "FUNC"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실38",
+    "domain": [
+      "FUNC"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실39",
+    "domain": [
+      "COORD"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실40",
+    "domain": [
+      "FUNC"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실41",
+    "domain": [
+      "FUNC"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실42",
+    "domain": [
+      "FUNC"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실43",
+    "domain": [
+      "FUNC"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실44",
+    "domain": [
+      "FUNC"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실45",
+    "domain": [
+      "SEQ",
+      "FUNC"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실52",
+    "domain": [
+      "SEQ",
+      "FUNC"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실47",
+    "domain": [
+      "EXP",
+      "FUNC"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실48",
+    "domain": [
+      "SEQ",
+      "FUNC"
+    ],
+    "action": "BOUND"
+  },
+  {
+    "id": "사실49",
+    "domain": [
+      "SEQ"
+    ],
+    "action": "BOUND"
+  },
+  {
+    "id": "사실50",
+    "domain": [
+      "FUNC"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실51",
+    "domain": [
+      "FUNC"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실53",
+    "domain": [
+      "FUNC"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실54",
+    "domain": [
+      "FUNC"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실55",
+    "domain": [
+      "FUNC"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실56",
+    "domain": [
+      "FUNC"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실57",
+    "domain": [
+      "INEQ",
+      "FUNC"
+    ],
+    "action": "BOUND"
+  },
+  {
+    "id": "사실58",
+    "domain": [
+      "FUNC"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실59",
+    "domain": [
+      "LOG"
+    ],
+    "action": "DEFINE"
+  },
+  {
+    "id": "사실61",
+    "domain": [
+      "FUNC"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실62",
+    "domain": [
+      "LOG"
+    ],
+    "action": "DEFINE"
+  },
+  {
+    "id": "사실63",
+    "domain": [
+      "FUNC"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실64",
+    "domain": [
+      "NUM",
+      "EXP"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실65",
+    "domain": [
+      "NUM"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실66",
+    "domain": [
+      "NUM"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실67",
+    "domain": [
+      "INEQ"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실68",
+    "domain": [
+      "FUNC"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실69",
+    "domain": [
+      "COORD"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실70",
+    "domain": [
+      "CIRCLE"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실71",
+    "domain": [
+      "EQN",
+      "FUNC"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실72",
+    "domain": [
+      "EQN",
+      "FUNC"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실73",
+    "domain": [
+      "FUNC"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실74",
+    "domain": [
+      "EXP",
+      "NUM"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실75",
+    "domain": [
+      "NUM",
+      "EXP"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실76",
+    "domain": [
+      "NUM",
+      "EXP"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실78",
+    "domain": [
+      "EQN"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실77",
+    "domain": [
+      "COORD"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실79",
+    "domain": [
+      "EQN"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실80",
+    "domain": [
+      "CIRCLE",
+      "COORD"
+    ],
+    "action": "DEFINE"
+  },
+  {
+    "id": "사실81",
+    "domain": [
+      "COORD"
+    ],
+    "action": "DEFINE"
+  },
+  {
+    "id": "사실82",
+    "domain": [
+      "FUNC"
+    ],
+    "action": "DEFINE"
+  },
+  {
+    "id": "사실83",
+    "domain": [
+      "CIRCLE"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실84",
+    "domain": [
+      "EXP",
+      "FUNC"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실85",
+    "domain": [
+      "FUNC",
+      "INEQ"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실86",
+    "domain": [
+      "LOG",
+      "FUNC"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실87",
+    "domain": [
+      "FUNC"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실88",
+    "domain": [
+      "FUNC"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실89",
+    "domain": [
+      "FUNC"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실90",
+    "domain": [
+      "FUNC"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실91",
+    "domain": [
+      "SEQ"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실92",
+    "domain": [
+      "COORD"
+    ],
+    "action": "SYMMETRY"
+  },
+  {
+    "id": "사실93",
+    "domain": [
+      "COORD"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실97",
+    "domain": [
+      "DIFF"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실98",
+    "domain": [
+      "DIFF",
+      "FUNC"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실99",
+    "domain": [
+      "DIFF"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실100",
+    "domain": [
+      "DIFF",
+      "COORD"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실101",
+    "domain": [
+      "DIFF",
+      "FUNC"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실102",
+    "domain": [
+      "DIFF",
+      "FUNC"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실103",
+    "domain": [
+      "DIFF",
+      "FUNC"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실104",
+    "domain": [
+      "DIFF"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실105",
+    "domain": [
+      "TRIG"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실106",
+    "domain": [
+      "TRIG",
+      "FUNC"
+    ],
+    "action": "SYMMETRY"
+  },
+  {
+    "id": "사실107",
+    "domain": [
+      "TRIG",
+      "FUNC"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실108",
+    "domain": [
+      "TRIG"
+    ],
+    "action": "DEFINE"
+  },
+  {
+    "id": "사실109",
+    "domain": [
+      "TRIG",
+      "LIM"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실110",
+    "domain": [
+      "TRIG"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실94",
+    "domain": [
+      "LIM",
+      "FUNC"
+    ],
+    "action": "DEFINE"
+  },
+  {
+    "id": "사실95",
+    "domain": [
+      "ABS",
+      "LIM"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실96",
+    "domain": [
+      "POLY",
+      "EQN",
+      "DIFF"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실111",
+    "domain": [
+      "DIFF",
+      "FUNC"
+    ],
+    "action": "DEFINE"
+  },
+  {
+    "id": "사실112",
+    "domain": [
+      "POLY",
+      "FUNC"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "사실113",
+    "domain": [
+      "FUNC",
+      "INEQ"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "연산1",
+    "domain": [
+      "LOG"
+    ],
+    "action": "CALC"
+  },
+  {
+    "id": "연산2",
+    "domain": [
+      "LOG",
+      "EXP"
+    ],
+    "action": "CONVERT"
+  },
+  {
+    "id": "연산3",
+    "domain": [
+      "LOG"
+    ],
+    "action": "CALC"
+  },
+  {
+    "id": "연산4",
+    "domain": [
+      "EXP"
+    ],
+    "action": "CALC"
+  },
+  {
+    "id": "연산5",
+    "domain": [
+      "COORD"
+    ],
+    "action": "CALC"
+  },
+  {
+    "id": "연산6",
+    "domain": [
+      "COORD"
+    ],
+    "action": "CALC"
+  },
+  {
+    "id": "연산7",
+    "domain": [
+      "COORD",
+      "FUNC"
+    ],
+    "action": "CONVERT"
+  },
+  {
+    "id": "연산8",
+    "domain": [
+      "COORD"
+    ],
+    "action": "CALC"
+  },
+  {
+    "id": "연산9",
+    "domain": [
+      "EQN"
+    ],
+    "action": "FACTOR"
+  },
+  {
+    "id": "연산10",
+    "domain": [
+      "COORD"
+    ],
+    "action": "CALC"
+  },
+  {
+    "id": "연산11",
+    "domain": [
+      "COORD"
+    ],
+    "action": "CALC"
+  },
+  {
+    "id": "연산12",
+    "domain": [
+      "COORD"
+    ],
+    "action": "CALC"
+  },
+  {
+    "id": "연산13",
+    "domain": [
+      "COORD"
+    ],
+    "action": "CALC"
+  },
+  {
+    "id": "연산14",
+    "domain": [
+      "COORD"
+    ],
+    "action": "CALC"
+  },
+  {
+    "id": "연산15",
+    "domain": [
+      "COORD"
+    ],
+    "action": "CALC"
+  },
+  {
+    "id": "연산16",
+    "domain": [
+      "LOG"
+    ],
+    "action": "CALC"
+  },
+  {
+    "id": "연산17",
+    "domain": [
+      "LOG"
+    ],
+    "action": "CALC"
+  },
+  {
+    "id": "연산18",
+    "domain": [
+      "EXP"
+    ],
+    "action": "CALC"
+  },
+  {
+    "id": "연산19",
+    "domain": [
+      "COORD"
+    ],
+    "action": "CALC"
+  },
+  {
+    "id": "연산20",
+    "domain": [
+      "COORD"
+    ],
+    "action": "CONVERT"
+  },
+  {
+    "id": "연산21",
+    "domain": [
+      "INEQ"
+    ],
+    "action": "CALC"
+  },
+  {
+    "id": "연산22",
+    "domain": [
+      "INEQ"
+    ],
+    "action": "CALC"
+  },
+  {
+    "id": "연산23",
+    "domain": [
+      "FUNC"
+    ],
+    "action": "CONVERT"
+  },
+  {
+    "id": "연산25",
+    "domain": [
+      "INEQ"
+    ],
+    "action": "CALC"
+  },
+  {
+    "id": "연산26",
+    "domain": [
+      "FUNC"
+    ],
+    "action": "CONVERT"
+  },
+  {
+    "id": "연산27",
+    "domain": [
+      "COORD"
+    ],
+    "action": "CONVERT"
+  },
+  {
+    "id": "연산28",
+    "domain": [
+      "POLY"
+    ],
+    "action": "CALC"
+  },
+  {
+    "id": "연산29",
+    "domain": [
+      "POLY",
+      "EQN"
+    ],
+    "action": "CONVERT"
+  },
+  {
+    "id": "연산30",
+    "domain": [
+      "COORD"
+    ],
+    "action": "CALC"
+  },
+  {
+    "id": "연산31",
+    "domain": [
+      "LOG"
+    ],
+    "action": "CALC"
+  },
+  {
+    "id": "연산33",
+    "domain": [
+      "DIFF"
+    ],
+    "action": "CALC"
+  },
+  {
+    "id": "연산34",
+    "domain": [
+      "DIFF"
+    ],
+    "action": "CALC"
+  },
+  {
+    "id": "연산35",
+    "domain": [
+      "DIFF"
+    ],
+    "action": "CALC"
+  },
+  {
+    "id": "연산36",
+    "domain": [
+      "DIFF"
+    ],
+    "action": "CALC"
+  },
+  {
+    "id": "연산37",
+    "domain": [
+      "DIFF"
+    ],
+    "action": "CALC"
+  },
+  {
+    "id": "연산38",
+    "domain": [
+      "DIFF"
+    ],
+    "action": "CALC"
+  },
+  {
+    "id": "연산39",
+    "domain": [
+      "DIFF",
+      "EXP",
+      "TRANS"
+    ],
+    "action": "CALC"
+  },
+  {
+    "id": "연산40",
+    "domain": [
+      "DIFF",
+      "LOG",
+      "TRANS"
+    ],
+    "action": "CALC"
+  },
+  {
+    "id": "연산41",
+    "domain": [
+      "DIFF",
+      "TRIG",
+      "TRANS"
+    ],
+    "action": "CALC"
+  },
+  {
+    "id": "연산42",
+    "domain": [
+      "DIFF",
+      "TRIG",
+      "TRANS"
+    ],
+    "action": "CALC"
+  },
+  {
+    "id": "연산43",
+    "domain": [
+      "DIFF",
+      "TRIG",
+      "TRANS"
+    ],
+    "action": "CALC"
+  },
+  {
+    "id": "연산44",
+    "domain": [
+      "DIFF",
+      "TRIG",
+      "TRANS"
+    ],
+    "action": "CALC"
+  },
+  {
+    "id": "연산45",
+    "domain": [
+      "DIFF",
+      "TRIG",
+      "TRANS"
+    ],
+    "action": "CALC"
+  },
+  {
+    "id": "연산46",
+    "domain": [
+      "DIFF",
+      "TRIG",
+      "TRANS"
+    ],
+    "action": "CALC"
+  },
+  {
+    "id": "연산47",
+    "domain": [
+      "SEQ",
+      "NUM"
+    ],
+    "action": "CALC"
+  },
+  {
+    "id": "전략1",
+    "domain": [
+      "EXP",
+      "EQN"
+    ],
+    "action": "SUBST"
+  },
+  {
+    "id": "전략2",
+    "domain": [],
+    "action": "SUBST"
+  },
+  {
+    "id": "전략3",
+    "domain": [
+      "FUNC"
+    ],
+    "action": "CLASSIFY"
+  },
+  {
+    "id": "전략4",
+    "domain": [
+      "FUNC",
+      "NUM"
+    ],
+    "action": "BOUND"
+  },
+  {
+    "id": "전략5",
+    "domain": [
+      "FUNC",
+      "EQN"
+    ],
+    "action": "CONVERT"
+  },
+  {
+    "id": "전략6",
+    "domain": [
+      "ABS",
+      "FUNC"
+    ],
+    "action": "CLASSIFY"
+  },
+  {
+    "id": "전략7",
+    "domain": [
+      "FUNC",
+      "EQN"
+    ],
+    "action": "SETUP"
+  },
+  {
+    "id": "전략8",
+    "domain": [
+      "SET"
+    ],
+    "action": "CONVERT"
+  },
+  {
+    "id": "전략9",
+    "domain": [],
+    "action": "SUBST"
+  },
+  {
+    "id": "전략10",
+    "domain": [
+      "COMB"
+    ],
+    "action": "ENUM"
+  },
+  {
+    "id": "전략11",
+    "domain": [
+      "EQN"
+    ],
+    "action": "ELIMINATE"
+  },
+  {
+    "id": "전략12",
+    "domain": [
+      "EXP",
+      "NUM"
+    ],
+    "action": "CLASSIFY"
+  },
+  {
+    "id": "전략13",
+    "domain": [
+      "FUNC",
+      "COORD"
+    ],
+    "action": "SYMMETRY"
+  },
+  {
+    "id": "전략14",
+    "domain": [
+      "COORD",
+      "FUNC"
+    ],
+    "action": "SYMMETRY"
+  },
+  {
+    "id": "전략15",
+    "domain": [
+      "COORD",
+      "FUNC"
+    ],
+    "action": "SETUP"
+  },
+  {
+    "id": "전략16",
+    "domain": [
+      "COORD"
+    ],
+    "action": "SETUP"
+  },
+  {
+    "id": "전략17",
+    "domain": [],
+    "action": "ENUM"
+  },
+  {
+    "id": "전략18",
+    "domain": [
+      "COORD"
+    ],
+    "action": "SETUP"
+  },
+  {
+    "id": "전략19",
+    "domain": [
+      "FUNC"
+    ],
+    "action": "SETUP"
+  },
+  {
+    "id": "전략20",
+    "domain": [],
+    "action": "ELIMINATE"
+  },
+  {
+    "id": "전략21",
+    "domain": [],
+    "action": "SUBST"
+  },
+  {
+    "id": "전략22",
+    "domain": [],
+    "action": "CLASSIFY"
+  },
+  {
+    "id": "전략23",
+    "domain": [],
+    "action": "ELIMINATE"
+  },
+  {
+    "id": "전략24",
+    "domain": [
+      "FUNC"
+    ],
+    "action": "SETUP"
+  },
+  {
+    "id": "전략25",
+    "domain": [],
+    "action": "SUBST"
+  },
+  {
+    "id": "전략26",
+    "domain": [
+      "FUNC",
+      "INEQ"
+    ],
+    "action": "BOUND"
+  },
+  {
+    "id": "전략27",
+    "domain": [
+      "SET",
+      "NUM"
+    ],
+    "action": "ELIMINATE"
+  },
+  {
+    "id": "전략28",
+    "domain": [
+      "INEQ"
+    ],
+    "action": "CONVERT"
+  },
+  {
+    "id": "전략29",
+    "domain": [
+      "POLY",
+      "EQN"
+    ],
+    "action": "FACTOR"
+  },
+  {
+    "id": "전략30",
+    "domain": [
+      "LOG",
+      "INEQ"
+    ],
+    "action": "CLASSIFY"
+  },
+  {
+    "id": "전략31",
+    "domain": [
+      "ABS",
+      "INEQ"
+    ],
+    "action": "CLASSIFY"
+  },
+  {
+    "id": "전략32",
+    "domain": [
+      "SEQ"
+    ],
+    "action": "ENUM"
+  },
+  {
+    "id": "전략33",
+    "domain": [
+      "NUM"
+    ],
+    "action": "FACTOR"
+  },
+  {
+    "id": "전략34",
+    "domain": [
+      "NUM"
+    ],
+    "action": "PROP"
+  },
+  {
+    "id": "전략35",
+    "domain": [
+      "COMB",
+      "NUM"
+    ],
+    "action": "ENUM"
+  },
+  {
+    "id": "전략36",
+    "domain": [
+      "NUM"
+    ],
+    "action": "CALC"
+  },
+  {
+    "id": "전략37",
+    "domain": [
+      "EXP",
+      "NUM"
+    ],
+    "action": "CONVERT"
+  },
+  {
+    "id": "전략38",
+    "domain": [
+      "POLY",
+      "EQN"
+    ],
+    "action": "FACTOR"
+  }
+]
