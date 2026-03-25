@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "count": 42,
+  "count": 41,
   "problems": [
     {
       "problem_id": "Problem01",
@@ -356,6 +356,15 @@
     {
       "problem_id": "P2",
       "filename": "P2.json",
+      "has_skeleton": true,
+      "has_clues": true,
+      "has_solution": true,
+      "has_profile": false,
+      "profile_version": 0
+    },
+    {
+      "problem_id": "P9",
+      "filename": "P9.json",
       "has_skeleton": true,
       "has_clues": true,
       "has_solution": true,
