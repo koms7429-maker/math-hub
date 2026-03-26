@@ -1275,11 +1275,14 @@
     ],
     "action": "BOUND"
   },
-{
-  "id": "전략40",
-  "domain": ["FUNC", "DIFF"],
-  "action": "SHAPE_FROM_EXTREMA"
-},
+  {
+    "id": "전략40",
+    "domain": [
+      "FUNC",
+      "DIFF"
+    ],
+    "action": "SHAPE_FROM_EXTREMA"
+  },
   {
     "id": "전략6",
     "domain": [
@@ -1536,8 +1539,34 @@
     "action": "ABS_SOLVE"
   },
   {
-  "id": "연산24",
-  "domain": ["EQN"],
-  "action": "REARRANGE"
-}
+    "id": "연산24",
+    "domain": [
+      "EQN"
+    ],
+    "action": "REARRANGE"
+  },
+  {
+    "id": "전략41",
+    "domain": [
+      "POLY",
+      "EQN"
+    ],
+    "action": "SET_GENERAL_FORM"
+  },
+  {
+    "id": "사실118",
+    "domain": [
+      "FUNC",
+      "POLY"
+    ],
+    "action": "LINEAR_UNBOUNDED"
+  },
+  {
+    "id": "사실119",
+    "domain": [
+      "POLY",
+      "FUNC"
+    ],
+    "action": "QUAD_MONOTONE"
+  }
 ]
