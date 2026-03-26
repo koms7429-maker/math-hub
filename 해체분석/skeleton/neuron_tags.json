@@ -1615,5 +1615,12 @@
       "POLY"
     ],
     "action": "LEADING_CANCEL_DEGREE_DROP"
+  },
+  {
+    "id": "연산48",
+    "domain": [
+      "COORD"
+    ],
+    "action": "POINT_SLOPE_LINE"
   }
 ]
