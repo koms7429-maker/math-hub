@@ -5696,5 +5696,680 @@
     "edge_count": 29,
     "side_count": 5,
     "created_at": "2026-03-26T14:11:10.104Z"
+  },
+  {
+    "problem_id": "P17",
+    "answer": "36",
+    "content": "id: P17\nsource: 수능\nyear: 미상\nunit: 함수의 극한\ntopic: 삼차함수와 구간별 정의 함수의 극한\nsubtopic: 극한 조건을 이용한 함수 결정\ndifficulty: 상\nscore: 4\nanswer: 5\ntype: multiple_choice\n\n# 17. (수능) - 삼차함수와 구간별 정의 함수의 극한\n\n## Problem\n최고차항의 계수가 $1$인 삼차함수 $f(x)$에 대하여 함수\n\n$$g(x) = \\begin{cases} x & (f(x) < 0) \\\\ x - 2 & (f(x) \\geq 0) \\end{cases}$$\n\n이 $\\displaystyle\\lim_{x \\to 1^+} g(x) = f(1) + \\displaystyle\\lim_{x \\to 1^-} g(x) = f(3)$ 을 만족시킬 때,\n\n$f(5)$의 값은? [4점]\n\n## Choices\n① 28\n② 30\n③ 32\n④ 34\n⑤ 36\n\n## Solution\n문제의 조건에서\n\n$$g(x) = \\begin{cases} x & (f(x) < 0) \\\\ x - 2 & (f(x) \\geq 0) \\end{cases} \\cdots \\text{㉠}$$\n\n이고, 두 조건은\n\n- ① $\\displaystyle\\lim_{x \\to 1^+} g(x) = f(1) + \\displaystyle\\lim_{x \\to 1^-} g(x)$\n- ② $\\displaystyle\\lim_{x \\to 1^+} g(x) = f(3)$\n\n이다.\n\n**$f(1) \\neq 0$인 경우 검토:**\n\n$f(1) \\neq 0$이면 ①에서 $\\displaystyle\\lim_{x \\to 1^+} g(x) \\neq \\displaystyle\\lim_{x \\to 1^-} g(x)$이므로 $x = 1$에서 $f(x)$의 양음이 변한다 ($\\because$ ㉠). 그런데 $f(x)$의 양음이 변하면 $f(1) = 0$이어야 하므로 ($\\because$ $f(x)$는 삼차함수) 모순이다.\n\n따라서 $f(1) = 0$이고, 이때 ①에서 $\\displaystyle\\lim_{x \\to 1^+} g(x) = \\displaystyle\\lim_{x \\to 1^-} g(x)$이므로 $f(x)$는 $x = 1$에서 극값 $0$을 가짐을 알 수 있다 ($\\because$ ㉠).\n\n**$x = 1$에서 극소인 경우:**\n\n[FIGURE: $y = f(x)$ 그래프가 $x = 1$에서 극소이며 극솟값이 $0$인 그래프]\n\n$x > 1$에서 $f(x) \\geq 0$이므로\n\n$$\\lim_{x \\to 1^+} g(x) = \\lim_{x \\to 1^+} (x - 2) = -1 \\Rightarrow f(3) = -1 \\quad (\\because \\text{②})$$\n\n그런데 $f(3) > 0$이어야 하므로 모순이다.\n\n**$x = 1$에서 극대인 경우:**\n\n[FIGURE: $y = f(x)$ 그래프가 $x = 1$에서 극대이며 극댓값이 $0$인 그래프]\n\n$f(x) = (x - 1)^2(x - \\alpha) \\quad (\\alpha > 1) \\cdots \\text{ⓒ}$\n\n으로 놓을 수 있고, $x \\to 1^+$에서 $f(x) < 0$이므로\n\n$$\\lim_{x \\to 1^+} g(x) = \\lim_{x \\to 1^+} x = 1 \\Rightarrow f(3) = 1 \\quad (\\because \\text{②})$$\n\n이어야 하므로\n\n$$f(3) = (3 - 1)^2(3 - \\alpha) = 4(3 - \\alpha) = 1$$\n\n$$\\Rightarrow \\alpha = \\frac{11}{4}$$\n\n$$\\therefore\\ f(x) = (x - 1)^2\\!\\left(x - \\frac{11}{4}\\right) \\Rightarrow f(5) = (5 - 1)^2\\!\\left(5 - \\frac{11}{4}\\right) = 16 \\times \\frac{9}{4} = \\boxed{36}$$\n\n**정답: ⑤**",
+    "content_source": "FileLoop",
+    "content_length": 1930,
+    "skel_status": "neuron_missing",
+    "dna_status": "ok",
+    "previous_skeleton": [
+      {
+        "from": [
+          "단서C"
+        ],
+        "to": "note1",
+        "neuron": "NEW_1",
+        "type": "전략",
+        "domain_hint": "EQN",
+        "description": "연쇄 등식 A=B=C에서 A=B, A=C 두 조건 분리",
+        "note": "조건①: $\\lim_{x \\to 1^+} g(x) = f(1) + \\lim_{x \\to 1^-} g(x)$, 조건②: $\\lim_{x \\to 1^+} g(x) = f(3)$이다",
+        "main": true,
+        "step": 1
+      },
+      {
+        "from": [
+          "note1",
+          "단서B"
+        ],
+        "to": "note2",
+        "neuron": "전략21",
+        "type": "전략",
+        "domain_hint": "LIM, FUNC",
+        "description": "귀류법으로 f(1)≠0 가정",
+        "note": "$f(1) \\neq 0$이면 조건①에서 $\\lim_{x \\to 1^+} g(x) \\neq \\lim_{x \\to 1^-} g(x)$이다",
+        "main": true,
+        "step": 2
+      },
+      {
+        "from": [
+          "note2",
+          "단서B"
+        ],
+        "to": "note3",
+        "neuron": "사실94",
+        "type": "사실",
+        "domain_hint": "FUNC, LIM",
+        "description": "구간별 정의 함수의 좌우극한이 다르면 분기 조건 부호가 변한다",
+        "note": "$x=1$ 좌우에서 $g(x)$에 적용되는 식이 달라야 하고, $f(x)$의 부호가 $x=1$ 전후로 바뀌어야 한다",
+        "main": true,
+        "step": 2
+      },
+      {
+        "from": [
+          "note3",
+          "단서A"
+        ],
+        "to": "note4",
+        "neuron": "사실22",
+        "type": "사실",
+        "domain_hint": "FUNC, POLY",
+        "description": "연속함수가 부호 변하면 중간값정리에 의해 영점 존재",
+        "note": "$f$는 연속(삼차함수)이고 부호가 바뀌면 $f(1) = 0$이어야 하나 $f(1) \\neq 0$ 가정과 모순이다",
+        "main": true,
+        "step": 2
+      },
+      {
+        "from": [
+          "note4"
+        ],
+        "to": "note5",
+        "neuron": "전략23",
+        "type": "전략",
+        "domain_hint": "EQN",
+        "description": "귀류법 가정에서 모순이 발생하였으므로, f(1)≠0 가정을 배제한다.",
+        "note": "귀류법 가정에서 모순이 발생하였으므로, f(1)≠0 가정을 배제한다.",
+        "main": true,
+        "step": 2,
+        "_keep_neuron": true
+      },
+      {
+        "from": "note5",
+        "to": "note6",
+        "neuron": "전략20",
+        "type": "전략",
+        "domain_hint": "EQN",
+        "description": "배제되지 않은 유일한 경우인 f(1)=0이 원래 명제로 확정된다.",
+        "note": "배제되지 않은 유일한 경우인 f(1)=0이 원래 명제로 확정된다.",
+        "main": true,
+        "step": 2,
+        "_keep_neuron": true
+      },
+      {
+        "from": [
+          "note6",
+          "note1"
+        ],
+        "to": "note7",
+        "neuron": "전략25",
+        "type": "연산",
+        "domain_hint": "LIM, EQN",
+        "description": "f(1)=0을 조건①에 대입하여 좌우극한 일치 도출",
+        "note": "조건①에 $f(1)=0$ 대입하면 $\\lim_{x \\to 1^+} g(x) = \\lim_{x \\to 1^-} g(x)$이다",
+        "main": true,
+        "step": 3
+      },
+      {
+        "from": [
+          "note7",
+          "단서B"
+        ],
+        "to": "note8",
+        "neuron": "사실94",
+        "type": "사실",
+        "domain_hint": "FUNC, LIM",
+        "description": "구간별 정의 함수에서 좌우극한이 같으면 근방에서 같은 식 적용",
+        "note": "$g(x)$에서 $x$와 $x-2$는 $x=1$에서 각각 $1$, $-1$이고 다르므로, 좌우극한이 같으려면 $x=1$ 근방 양측에서 같은 식이 적용되어야 하고, $f(x)$의 부호가 $x=1$ 근방에서 동일하다",
+        "main": true,
+        "step": 3
+      },
+      {
+        "from": [
+          "note8",
+          "note6",
+          "단서A"
+        ],
+        "to": "note9",
+        "neuron": "사실96",
+        "type": "사실",
+        "domain_hint": "POLY, NUM",
+        "description": "연속함수의 영점에서 부호 안 바뀌면 짝수 중복도 근",
+        "note": "$f(1)=0$이고 $x=1$ 근방에서 부호 불변이고, 단근이면 부호가 바뀌고 삼중근 $(x-1)^3$도 부호가 바뀌므로, $x=1$은 정확히 이중근이다",
+        "main": true,
+        "step": 3
+      },
+      {
+        "from": [
+          "note9",
+          "단서A"
+        ],
+        "to": "note10",
+        "neuron": "전략38",
+        "type": "사실",
+        "domain_hint": "POLY",
+        "description": "이중근 α에 대해 f(α)=0이므로 (x-α) | f(x)이고, 중복도 2이므로 (x-α)^2 | f(x)임을 확인한다.",
+        "note": "이중근 α에 대해 f(α)=0이므로 (x-α) | f(x)이고, 중복도 2이므로 (x-α)^2 | f(x)임을 확인한다.",
+        "main": true,
+        "step": 3,
+        "_keep_neuron": true
+      },
+      {
+        "from": "note10",
+        "to": "note11",
+        "neuron": "전략29",
+        "type": "사실",
+        "domain_hint": "POLY",
+        "description": "최고차계수 1인 삼차함수 f(x)는 이중근 α와 단순근 β를 이용하여 f(x)=(x-α)^2(x-β)로 인수분해된다.",
+        "note": "최고차계수 1인 삼차함수 f(x)는 이중근 α와 단순근 β를 이용하여 f(x)=(x-α)^2(x-β)로 인수분해된다.",
+        "main": true,
+        "step": 3,
+        "_keep_neuron": true
+      },
+      {
+        "from": [
+          "note11",
+          "단서B"
+        ],
+        "to": "note12",
+        "neuron": "NEW_2",
+        "type": "연산",
+        "domain_hint": "POLY, LIM",
+        "description": "α<1일 때 x=1 근방 부호 판정 및 우극한 계산",
+        "note": "$\\alpha < 1$이면 $x=1$ 근방에서 $(x-1)^2 \\geq 0$이고 $(x-\\alpha)>0$이어서 $f(x) \\geq 0$이고, $g(x)=x-2$가 적용되어 $\\lim_{x \\to 1^+} g(x) = -1$이다",
+        "main": false,
+        "step": 4
+      },
+      {
+        "from": [
+          "note12",
+          "note1",
+          "note11"
+        ],
+        "to": "note13",
+        "neuron": "전략23",
+        "type": "전략",
+        "domain_hint": "EQN, INEQ",
+        "description": "조건②와 비교하여 모순 확인, 경우 기각",
+        "note": "조건②에서 $f(3)=-1$이 필요하나, $\\alpha<1$이면 $f(3)=4(3-\\alpha)>8>0$이고 모순이다. $\\alpha < 1$ 기각",
+        "main": false,
+        "step": 4
+      },
+      {
+        "from": [
+          "note11",
+          "단서B"
+        ],
+        "to": "note14",
+        "neuron": "NEW_3",
+        "type": "연산",
+        "domain_hint": "POLY, LIM",
+        "description": "α>1일 때 x=1 근방 부호 판정 및 우극한 계산",
+        "note": "$\\alpha > 1$이면 $x=1$ 근방에서 $(x-1)^2>0$($x \\neq 1$)이고 $(x-\\alpha)<0$이어서 $f(x)<0$이고, $g(x)=x$가 적용되어 $\\lim_{x \\to 1^+} g(x) = 1$이다",
+        "main": true,
+        "step": 5
+      },
+      {
+        "from": [
+          "note14",
+          "note1"
+        ],
+        "to": "note15",
+        "neuron": "전략25",
+        "type": "연산",
+        "domain_hint": "EQN",
+        "description": "조건②에 우극한값 대입하여 f(3)=1 도출",
+        "note": "조건②에서 $f(3) = 1$이다",
+        "main": true,
+        "step": 5
+      },
+      {
+        "from": [
+          "note15",
+          "note11"
+        ],
+        "to": "note16",
+        "neuron": "전략25",
+        "type": "연산",
+        "domain_hint": "EQN, POLY",
+        "description": "f(3)=1 방정식을 풀어 α 결정",
+        "note": "$f(3) = 4(3-\\alpha) = 1$에서 $\\alpha = \\dfrac{11}{4}$이다",
+        "main": true,
+        "step": 6
+      },
+      {
+        "from": [
+          "note16"
+        ],
+        "to": "note17",
+        "neuron": "전략25",
+        "type": "사실",
+        "domain_hint": "INEQ",
+        "description": "구한 α값이 α>1 조건 충족 확인",
+        "note": "$\\alpha = \\dfrac{11}{4} > 1$이고 $\\alpha > 1$ 조건을 만족한다",
+        "main": false,
+        "step": 6
+      },
+      {
+        "from": [
+          "note16",
+          "note6",
+          "note1"
+        ],
+        "to": "note18",
+        "neuron": "전략25",
+        "type": "연산",
+        "domain_hint": "LIM, FUNC",
+        "description": "조건① 성립 검증",
+        "note": "$f(1)=0$이고 $x=1$ 근방에서 $g(x)=x$이고 $\\lim_{x \\to 1^-} g(x) = 1$이고 조건① $1 = 0 + 1$ 성립한다",
+        "main": false,
+        "step": 7
+      },
+      {
+        "from": [
+          "note16"
+        ],
+        "to": "END",
+        "neuron": "전략25",
+        "type": "연산",
+        "domain_hint": "POLY",
+        "description": "f(5) 대입 계산",
+        "note": "$f(5) = (5-1)^2\\left(5 - \\dfrac{11}{4}\\right) = 16 \\times \\dfrac{9}{4} = 36$이다",
+        "main": true,
+        "step": 8
+      }
+    ],
+    "previous_solution": "조건①: $\\lim_{x \\to 1^+} g(x) = f(1) + \\lim_{x \\to 1^-} g(x)$, 조건②: $\\lim_{x \\to 1^+} g(x) = f(3)$이다 $f(1) \\neq 0$이면 조건①에서 $\\lim_{x \\to 1^+} g(x) \\neq \\lim_{x \\to 1^-} g(x)$이다 $x=1$ 좌우에서 $g(x)$에 적용되는 식이 달라야 하고, $f(x)$의 부호가 $x=1$ 전후로 바뀌어야 한다 $f$는 연속(삼차함수)이고 부호가 바뀌면 $f(1) = 0$이어야 하나 $f(1) \\neq 0$ 가정과 모순이다 귀류법 가정에서 모순이 발생하였으므로, f(1)≠0 가정을 배제한다. 배제되지 않은 유일한 경우인 f(1)=0이 원래 명제로 확정된다. 조건①에 $f(1)=0$ 대입하면 $\\lim_{x \\to 1^+} g(x) = \\lim_{x \\to 1^-} g(x)$이다 $g(x)$에서 $x$와 $x-2$는 $x=1$에서 각각 $1$, $-1$이고 다르므로, 좌우극한이 같으려면 $x=1$ 근방 양측에서 같은 식이 적용되어야 하고, $f(x)$의 부호가 $x=1$ 근방에서 동일하다 $f(1)=0$이고 $x=1$ 근방에서 부호 불변이고, 단근이면 부호가 바뀌고 삼중근 $(x-1)^3$도 부호가 바뀌므로, $x=1$은 정확히 이중근이다 이중근 α에 대해 f(α)=0이므로 (x-α) | f(x)이고, 중복도 2이므로 (x-α)^2 | f(x)임을 확인한다. 최고차계수 1인 삼차함수 f(x)는 이중근 α와 단순근 β를 이용하여 f(x)=(x-α)^2(x-β)로 인수분해된다. $\\alpha > 1$이면 $x=1$ 근방에서 $(x-1)^2>0$($x \\neq 1$)이고 $(x-\\alpha)<0$이어서 $f(x)<0$이고, $g(x)=x$가 적용되어 $\\lim_{x \\to 1^+} g(x) = 1$이다 조건②에서 $f(3) = 1$이다 $f(3) = 4(3-\\alpha) = 1$에서 $\\alpha = \\dfrac{11}{4}$이다 $f(5) = (5-1)^2\\left(5 - \\dfrac{11}{4}\\right) = 16 \\times \\dfrac{9}{4} = 36$이다",
+    "previous_clues": "[{\"id\":\"단서A\",\"text\":\"최고차항의 계수가 $1$인 삼차함수 $f(x)$이다\"},{\"id\":\"단서B\",\"text\":\"$g(x) = \\\\begin{cases} x & (f(x) < 0) \\\\\\\\ x - 2 & (f(x) \\\\geq 0) \\\\end{cases}$이다\"},{\"id\":\"단서C\",\"text\":\"$\\\\displaystyle\\\\lim_{x \\\\to 1^+} g(x) = f(1) + \\\\displaystyle\\\\lim_{x \\\\to 1^-} g(x) = f(3)$이다\"}]",
+    "previous_analysis": "연쇄 등식에서 조건 두 개를 분리한 뒤, 귀류법으로 f(1)=0을 보이고 좌우극한 일치 조건으로 x=1이 이중근임을 유도한다. α<1은 모순으로 기각하고 α>1 경우에서 f(3)=1 조건으로 α=11/4를 결정하여 f(5)=36을 구한다.",
+    "previous_matching": "",
+    "previous_matched": [],
+    "previous_new_neurons": [
+      {
+        "id": "전략??",
+        "type": "전략",
+        "statement": "연쇄 등식 $A = B = C$는 $A = B$이고 $A = C$인 두 조건의 연립으로 분리하여 각각 처리할 수 있다.",
+        "description": "연쇄 등식 A=B=C에서 A=B, A=C 두 조건 분리",
+        "note": "조건①: $\\lim_{x \\to 1^+} g(x) = f(1) + \\lim_{x \\to 1^-} g(x)$, 조건②: $\\lim_{x \\to 1^+} g(x) = f(3)$이다",
+        "reason": "연산24(구조적 이항), 사실72(이차함수 표현), 사실78(근과 계수), 연산9(영인자) 등을 검토했으나, 어떤 후보도 'A=B=C 연쇄 등식을 A=B, A=C 두 조건으로 분리한다'는 전략 자체를 표현하지 않는다. 이는 등식 분해 전략이며 별도 원리이다.",
+        "blocked_edge": "단서C → note1",
+        "domain_hint": "EQN",
+        "domain": [
+          "EQN",
+          "SYM"
+        ],
+        "action_hint": "",
+        "step": 1,
+        "main": true,
+        "near_miss": [
+          "전략1: $a^{f(x)}$를 하나의 변수로 치환하면 지수방정식을 다항방정식으로 ",
+          "전략2: 두 조건식을 연립하면 미지수를 결정할 수 있다 |",
+          "전략7: $f(x_1)=g(x_2)$인 실수쌍 $x_1, x_2$가 존재 $\\if"
+        ]
+      },
+      {
+        "id": "사실??",
+        "type": "사실",
+        "statement": "로그함수 $y = \\log_\\alpha x$에서 $0 < \\alpha < 1$이면 $x > 1$일 때 $\\log_\\alpha x < 0$이고, $0 < x < 1$일 때 $\\log_\\alpha x > 0$이다. 따라서 $x = 1$ 우측 근방에서 $\\log_\\alpha x < 0$이다.",
+        "description": "α<1일 때 x=1 근방 부호 판정 및 우극한 계산",
+        "note": "$\\alpha < 1$이면 $x=1$ 근방에서 $(x-1)^2 \\geq 0$이고 $(x-\\alpha)>0$이어서 $f(x) \\geq 0$이고, $g(x)=x-2$가 적용되어 $\\lim_{x \\to 1^+} g(x) = -1$이다",
+        "reason": "연산2(로그-지수 역함수), 연산39(지수함수 미분), 연산40(로그함수 미분) 등을 검토했으나, 어떤 후보도 'α<1일 때 x=1 근방에서 log_α(x)의 부호 판정 및 우극한 계산'이라는 로그함수의 부호 변화 원리를 직접 표현하지 않는다. 이는 로그함수의 단조성과 부호에 관한 사실이다.",
+        "blocked_edge": "note18+단서B → note11",
+        "domain_hint": "POLY, LIM",
+        "domain": [
+          "LOG",
+          "FUNC"
+        ],
+        "action_hint": "",
+        "step": 4,
+        "main": false,
+        "near_miss": []
+      },
+      {
+        "id": "사실??",
+        "type": "사실",
+        "statement": "로그함수 $y = \\log_\\alpha x$에서 $\\alpha > 1$이면 $x > 1$일 때 $\\log_\\alpha x > 0$이고, $0 < x < 1$일 때 $\\log_\\alpha x < 0$이다. 따라서 $x = 1$ 우측 근방에서 $\\log_\\alpha x > 0$이다.",
+        "description": "α>1일 때 x=1 근방 부호 판정 및 우극한 계산",
+        "note": "$\\alpha > 1$이면 $x=1$ 근방에서 $(x-1)^2>0$($x \\neq 1$)이고 $(x-\\alpha)<0$이어서 $f(x)<0$이고, $g(x)=x$가 적용되어 $\\lim_{x \\to 1^+} g(x) = 1$이다",
+        "reason": "연산2(로그-지수 역함수), 연산39(지수함수 미분), 연산40(로그함수 미분) 등을 검토했으나, 어떤 후보도 'α>1일 때 x=1 근방에서 log_α(x)의 부호 판정 및 우극한 계산'이라는 로그함수의 부호 원리를 직접 표현하지 않는다.",
+        "blocked_edge": "note18+단서B → note13",
+        "domain_hint": "POLY, LIM",
+        "domain": [
+          "LOG",
+          "FUNC"
+        ],
+        "action_hint": "",
+        "step": 5,
+        "main": true,
+        "near_miss": []
+      }
+    ],
+    "previous_partial_skeleton": [],
+    "previous_blockage_point": "",
+    "previous_skel_review_notes": "검토 1~7 모두 통과. 공유 노드(piece1_expr, vf, c0, c1_pt, vg 등)가 올바르게 단일 노드로 여러 엣지를 공유. 3단 구조(F6→F1→F2→E1/T3) 유지. 조건 누락 없음. 제한 노드 위치 적절(lc4→vf). 엣지 방향 모두 하위→상위. DNA 타입 정확. category 일관성 유지.",
+    "previous_dna_nodes": [
+      {
+        "id": "top",
+        "dna": "Q1",
+        "label": "f(5) 값",
+        "category": "발문"
+      },
+      {
+        "id": "ask_f5",
+        "dna": "F3",
+        "label": "f(5)",
+        "category": "함수"
+      },
+      {
+        "id": "c5",
+        "dna": "T2",
+        "label": "상수 5",
+        "category": "말단"
+      },
+      {
+        "id": "vf",
+        "dna": "F6",
+        "label": "함수 f(x)",
+        "category": "함수"
+      },
+      {
+        "id": "lc4",
+        "dna": "L4",
+        "label": "최고차항계수1",
+        "category": "제한"
+      },
+      {
+        "id": "f11",
+        "dna": "F11",
+        "label": "삼차함수",
+        "category": "함수"
+      },
+      {
+        "id": "vg",
+        "dna": "F1",
+        "label": "조각함수 g(x)",
+        "category": "함수"
+      },
+      {
+        "id": "piece1",
+        "dna": "F2",
+        "label": "조각1: x",
+        "category": "함수"
+      },
+      {
+        "id": "piece2",
+        "dna": "F2",
+        "label": "조각2: x-2",
+        "category": "함수"
+      },
+      {
+        "id": "piece1_expr",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
+      },
+      {
+        "id": "piece2_expr",
+        "dna": "E1",
+        "label": "x + (-2)",
+        "category": "수식"
+      },
+      {
+        "id": "c_neg2",
+        "dna": "T2",
+        "label": "상수 -2",
+        "category": "말단"
+      },
+      {
+        "id": "dom1",
+        "dna": "C2",
+        "label": "f(x)<0",
+        "category": "조건"
+      },
+      {
+        "id": "dom2",
+        "dna": "C2",
+        "label": "f(x)≥0",
+        "category": "조건"
+      },
+      {
+        "id": "fx_val",
+        "dna": "F3",
+        "label": "f(x) 값",
+        "category": "함수"
+      },
+      {
+        "id": "c0",
+        "dna": "T2",
+        "label": "상수 0",
+        "category": "말단"
+      },
+      {
+        "id": "conds",
+        "dna": "S1",
+        "label": "연쇄등식 조건",
+        "category": "구조"
+      },
+      {
+        "id": "eq1",
+        "dna": "C1",
+        "label": "우극한=f(1)+좌극한",
+        "category": "조건"
+      },
+      {
+        "id": "eq2",
+        "dna": "C1",
+        "label": "우극한=f(3)",
+        "category": "조건"
+      },
+      {
+        "id": "lim_right",
+        "dna": "F3",
+        "label": "lim_{1+}g(x)",
+        "category": "함수"
+      },
+      {
+        "id": "lim_left",
+        "dna": "F3",
+        "label": "lim_{1-}g(x)",
+        "category": "함수"
+      },
+      {
+        "id": "f1_val",
+        "dna": "F3",
+        "label": "f(1)",
+        "category": "함수"
+      },
+      {
+        "id": "f3_val",
+        "dna": "F3",
+        "label": "f(3)",
+        "category": "함수"
+      },
+      {
+        "id": "sum_f1_limleft",
+        "dna": "E1",
+        "label": "f(1)+좌극한",
+        "category": "수식"
+      },
+      {
+        "id": "c1_pt",
+        "dna": "T2",
+        "label": "상수 1",
+        "category": "말단"
+      },
+      {
+        "id": "c3_pt",
+        "dna": "T2",
+        "label": "상수 3",
+        "category": "말단"
+      }
+    ],
+    "previous_dna_edges": [
+      {
+        "from": "ask_f5",
+        "to": "top"
+      },
+      {
+        "from": "conds",
+        "to": "top"
+      },
+      {
+        "from": "c5",
+        "to": "ask_f5"
+      },
+      {
+        "from": "vf",
+        "to": "ask_f5"
+      },
+      {
+        "from": "lc4",
+        "to": "vf"
+      },
+      {
+        "from": "f11",
+        "to": "vf"
+      },
+      {
+        "from": "vg",
+        "to": "conds"
+      },
+      {
+        "from": "piece1",
+        "to": "vg"
+      },
+      {
+        "from": "piece2",
+        "to": "vg"
+      },
+      {
+        "from": "piece1_expr",
+        "to": "piece1"
+      },
+      {
+        "from": "dom1",
+        "to": "piece1"
+      },
+      {
+        "from": "piece2_expr",
+        "to": "piece2"
+      },
+      {
+        "from": "dom2",
+        "to": "piece2"
+      },
+      {
+        "from": "piece1_expr",
+        "to": "piece2_expr"
+      },
+      {
+        "from": "c_neg2",
+        "to": "piece2_expr"
+      },
+      {
+        "from": "fx_val",
+        "to": "dom1"
+      },
+      {
+        "from": "c0",
+        "to": "dom1"
+      },
+      {
+        "from": "fx_val",
+        "to": "dom2"
+      },
+      {
+        "from": "c0",
+        "to": "dom2"
+      },
+      {
+        "from": "vf",
+        "to": "fx_val"
+      },
+      {
+        "from": "piece1_expr",
+        "to": "fx_val"
+      },
+      {
+        "from": "eq1",
+        "to": "conds"
+      },
+      {
+        "from": "eq2",
+        "to": "conds"
+      },
+      {
+        "from": "lim_right",
+        "to": "eq1"
+      },
+      {
+        "from": "sum_f1_limleft",
+        "to": "eq1"
+      },
+      {
+        "from": "lim_right",
+        "to": "eq2"
+      },
+      {
+        "from": "f3_val",
+        "to": "eq2"
+      },
+      {
+        "from": "f1_val",
+        "to": "sum_f1_limleft"
+      },
+      {
+        "from": "lim_left",
+        "to": "sum_f1_limleft"
+      },
+      {
+        "from": "vg",
+        "to": "lim_right"
+      },
+      {
+        "from": "c1_pt",
+        "to": "lim_right"
+      },
+      {
+        "from": "vg",
+        "to": "lim_left"
+      },
+      {
+        "from": "c1_pt",
+        "to": "lim_left"
+      },
+      {
+        "from": "vf",
+        "to": "f1_val"
+      },
+      {
+        "from": "c1_pt",
+        "to": "f1_val"
+      },
+      {
+        "from": "vf",
+        "to": "f3_val"
+      },
+      {
+        "from": "c3_pt",
+        "to": "f3_val"
+      }
+    ],
+    "previous_new_dna": [],
+    "previous_dna_review_notes": "검토 1~7 모두 통과. 공유 노드(piece1_expr, vf, c0, c1_pt, vg 등)가 올바르게 단일 노드로 여러 엣지를 공유. 3단 구조(F6→F1→F2→E1/T3) 유지. 조건 누락 없음. 제한 노드 위치 적절(lc4→vf). 엣지 방향 모두 하위→상위. DNA 타입 정확. category 일관성 유지.",
+    "original_solution": "문제의 조건에서\n\n$$g(x) = \\begin{cases} x & (f(x) < 0) \\\\ x - 2 & (f(x) \\geq 0) \\end{cases} \\cdots \\text{㉠}$$\n\n이고, 두 조건은\n\n- ① $\\displaystyle\\lim_{x \\to 1^+} g(x) = f(1) + \\displaystyle\\lim_{x \\to 1^-} g(x)$\n- ② $\\displaystyle\\lim_{x \\to 1^+} g(x) = f(3)$\n\n이다.\n\n**$f(1) \\neq 0$인 경우 검토:**\n\n$f(1) \\neq 0$이면 ①에서 $\\displaystyle\\lim_{x \\to 1^+} g(x) \\neq \\displaystyle\\lim_{x \\to 1^-} g(x)$이므로 $x = 1$에서 $f(x)$의 양음이 변한다 ($\\because$ ㉠). 그런데 $f(x)$의 양음이 변하면 $f(1) = 0$이어야 하므로 ($\\because$ $f(x)$는 삼차함수) 모순이다.\n\n따라서 $f(1) = 0$이고, 이때 ①에서 $\\displaystyle\\lim_{x \\to 1^+} g(x) = \\displaystyle\\lim_{x \\to 1^-} g(x)$이므로 $f(x)$는 $x = 1$에서 극값 $0$을 가짐을 알 수 있다 ($\\because$ ㉠).\n\n**$x = 1$에서 극소인 경우:**\n\n[FIGURE: $y = f(x)$ 그래프가 $x = 1$에서 극소이며 극솟값이 $0$인 그래프]\n\n$x > 1$에서 $f(x) \\geq 0$이므로\n\n$$\\lim_{x \\to 1^+} g(x) = \\lim_{x \\to 1^+} (x - 2) = -1 \\Rightarrow f(3) = -1 \\quad (\\because \\text{②})$$\n\n그런데 $f(3) > 0$이어야 하므로 모순이다.\n\n**$x = 1$에서 극대인 경우:**\n\n[FIGURE: $y = f(x)$ 그래프가 $x = 1$에서 극대이며 극댓값이 $0$인 그래프]\n\n$f(x) = (x - 1)^2(x - \\alpha) \\quad (\\alpha > 1) \\cdots \\text{ⓒ}$\n\n으로 놓을 수 있고, $x \\to 1^+$에서 $f(x) < 0$이므로\n\n$$\\lim_{x \\to 1^+} g(x) = \\lim_{x \\to 1^+} x = 1 \\Rightarrow f(3) = 1 \\quad (\\because \\text{②})$$\n\n이어야 하므로\n\n$$f(3) = (3 - 1)^2(3 - \\alpha) = 4(3 - \\alpha) = 1$$\n\n$$\\Rightarrow \\alpha = \\frac{11}{4}$$\n\n$$\\therefore\\ f(x) = (x - 1)^2\\!\\left(x - \\frac{11}{4}\\right) \\Rightarrow f(5) = (5 - 1)^2\\!\\left(5 - \\frac{11}{4}\\right) = 16 \\times \\frac{9}{4} = \\boxed{36}$$\n\n**정답: ⑤**",
+    "recovery_warnings": [],
+    "errata": [],
+    "metadata": {
+      "unit": "함수의 극한",
+      "difficulty": "상",
+      "score": "4",
+      "type": "multiple_choice",
+      "answer": "5",
+      "year": "미상",
+      "source": "수능",
+      "topic": "삼차함수와 구간별 정의 함수의 극한",
+      "subtopic": "극한 조건을 이용한 함수 결정"
+    },
+    "needed_neurons": [
+      "전략??",
+      "사실??",
+      "사실??"
+    ],
+    "needed_dna": [],
+    "edge_count": 19,
+    "side_count": 4,
+    "created_at": "2026-03-26T14:17:16.309Z"
   }
 ]
