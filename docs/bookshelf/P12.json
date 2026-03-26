@@ -621,7 +621,955 @@
     ],
     "new_dna": []
   },
-  "thinking_profile": null,
+  "thinking_profile": {
+    "_version": 6,
+    "_unit": "note",
+    "_isV6": true,
+    "total_think_tokens": 2520,
+    "total_notes": 21,
+    "hint_distribution": {
+      "0": 20,
+      "1": 1,
+      "2": 0,
+      "3": 0,
+      "4": 0
+    },
+    "avg_hint_level": 0.05,
+    "genuine_miss_count": 0,
+    "absorbed_miss_count": 0,
+    "bonus_count": 14,
+    "highlight_notes": [
+      "note4",
+      "note1",
+      "note10"
+    ],
+    "hardest_note": {
+      "note_id": "note4",
+      "neuron": "전략22",
+      "hint_level": 1,
+      "structural_difficulty": 0.25,
+      "miss_type": null,
+      "note_text": "$g(1)=0$인 경우(Case 1)와 $f(1)=-1$인 경우(Case 2)로 나눈다"
+    },
+    "neuron_stats": {
+      "전략41": {
+        "type": "전략",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 0,
+        "avg_hint_level": 0
+      },
+      "사실111": {
+        "type": "사실",
+        "appearances": 2,
+        "total_hint": 0,
+        "hint_levels": [
+          0,
+          0
+        ],
+        "bonus_count": 2,
+        "avg_hint_level": 0
+      },
+      "연산9": {
+        "type": "연산",
+        "appearances": 2,
+        "total_hint": 0,
+        "hint_levels": [
+          0,
+          0
+        ],
+        "bonus_count": 2,
+        "avg_hint_level": 0
+      },
+      "전략22": {
+        "type": "전략",
+        "appearances": 2,
+        "total_hint": 1,
+        "hint_levels": [
+          1,
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0.5
+      },
+      "전략20": {
+        "type": "전략",
+        "appearances": 2,
+        "total_hint": 0,
+        "hint_levels": [
+          0,
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "전략25": {
+        "type": "전략",
+        "appearances": 7,
+        "total_hint": 0,
+        "hint_levels": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "bonus_count": 4,
+        "avg_hint_level": 0
+      },
+      "사실117": {
+        "type": "사실",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "연산36": {
+        "type": "연산",
+        "appearances": 2,
+        "total_hint": 0,
+        "hint_levels": [
+          0,
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "전략2": {
+        "type": "전략",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "사실96": {
+        "type": "사실",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      }
+    },
+    "notes": [
+      {
+        "note_index": 1,
+        "note_id": "note1",
+        "neuron": "전략41",
+        "neuron_type": "전략",
+        "note_text": "$f(x)=x^2+ax+b$, $g(x)=x+c$로 놓는다",
+        "from": [
+          "단서A",
+          "단서B"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note1",
+            "in_target": "note1",
+            "attempt": 1,
+            "score": 0.7,
+            "reason": "학생이 g(x)=x+c 형태로 놓는 것을 사용했으며, 이는 후보 A의 핵심 내용인 g(x)=x+c로 놓는 것과 일치한다"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 54,
+            "discover_elapsed_ms": 5523,
+            "match_elapsed_ms": 3327,
+            "discover_input_tokens": 738,
+            "discover_output_tokens": 329,
+            "match_input_tokens": 1468,
+            "match_output_tokens": 150,
+            "claude_output": "[시도] 내가 해볼 것: x = 1에서 h(x)의 연속 조건 적용하기\n\n[계산]\nx = 1에서 연속이려면 좌극한 = 우극한 = 함숫값이어야 한다.\n\n$$f(1)g(1) = -g(1)$$\n\n$$f(1)g(1) + g(1) = 0$$\n\n$$g(1)\\bigl(f(1) + 1\\bigr) = 0$$\n\n[결론] x = 1에서의 연속 조건으로부터 **g(1) = 0** 또는 **f(1) = -1** 이다.",
+            "matches": [
+              {
+                "label": "B",
+                "score": 0.9,
+                "reason": "학생이 f(1)g(1) = -g(1)을 도출했으며, 이는 후보 B의 핵심 결론과 동일하다"
+              },
+              {
+                "label": "C",
+                "score": 1,
+                "reason": "학생의 결론 g(1)(f(1)+1)=0이므로 g(1)=0 또는 f(1)=-1이 후보 C와 완전히 일치한다"
+              }
+            ],
+            "eval_summary": "MISS attempt0 dry0 | 54tok | disc 5523ms + match 3327ms | bonus 2"
+          },
+          {
+            "attempt": 1,
+            "think_tokens": 51,
+            "discover_elapsed_ms": 5310,
+            "match_elapsed_ms": 5141,
+            "discover_input_tokens": 880,
+            "discover_output_tokens": 266,
+            "match_input_tokens": 1323,
+            "match_output_tokens": 246,
+            "claude_output": "[시도] 내가 해볼 것: $g(1)=0$인 경우, $g(x)$의 식을 결정하기\n\n[계산]\n$g(x)$는 최고차항의 계수가 $1$인 일차함수이므로 $g(x) = x + c$ 형태이다.\n\n$g(1) = 0$이면:\n$$1 + c = 0 \\implies c = -1$$\n\n따라서 $g(x) = x - 1$\n\n[결론] $g(1)=0$인 경우, $g(x) = x-1$이다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 0.7,
+                "reason": "학생이 g(x)=x+c 형태로 놓는 것을 사용했으며, 이는 후보 A의 핵심 내용인 g(x)=x+c로 놓는 것과 일치한다"
+              },
+              {
+                "label": "D",
+                "score": 0.5,
+                "reason": "학생이 g(1)=0인 경우를 Case로 분리하여 다루고 있어 후보 D의 케이스 분류 중 일부와 부합한다"
+              },
+              {
+                "label": "M",
+                "score": 0.5,
+                "reason": "학생이 c=-1 즉 g(1)=0인 경우를 분석하고 있어 후보 M의 c=-1인 경우와 부분적으로 일치한다"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 51tok | disc 5310ms + match 5141ms | bonus 0"
+          }
+        ]
+      },
+      {
+        "note_index": 2,
+        "note_id": "note2",
+        "neuron": "사실111",
+        "neuron_type": "사실",
+        "note_text": "$h(x)$가 $x=1$에서 연속이면 $\\lim_{x\\to 1^-}f(x)g(x)=\\lim_{x\\to 1^+}(-g(x))$이므로 $f(1)g(1)=-g(1)$이다",
+        "from": [
+          "단서C",
+          "단서D"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 3,
+        "note_id": "note3",
+        "neuron": "연산9",
+        "neuron_type": "연산",
+        "note_text": "$g(1)(f(1)+1)=0$이므로 $g(1)=0$ 또는 $f(1)=-1$이다",
+        "from": [
+          "note2"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 4,
+        "note_id": "note4",
+        "neuron": "전략22",
+        "neuron_type": "전략",
+        "note_text": "$g(1)=0$인 경우(Case 1)와 $f(1)=-1$인 경우(Case 2)로 나눈다",
+        "from": [
+          "note3"
+        ],
+        "hint_level": 1,
+        "is_bonus": false,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note4",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note4",
+            "in_target": "note4",
+            "attempt": 1,
+            "score": 0.42,
+            "reason": "regex"
+          },
+          {
+            "note_id": "note4",
+            "in_target": "note4",
+            "attempt": 2,
+            "score": 0.7,
+            "reason": "학생이 g(1)=0인 경우를 Case 1로 분석하고 있어 케이스 분류의 일부와 일치하나, f(1)=-1인 Case 2는 언급하지 않음"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 72,
+            "discover_elapsed_ms": 5293,
+            "match_elapsed_ms": 4442,
+            "discover_input_tokens": 914,
+            "discover_output_tokens": 263,
+            "match_input_tokens": 1252,
+            "match_output_tokens": 231,
+            "claude_output": "[시도] 내가 해볼 것: Case 1로 $g(1)=0$일 때 $g(x)$ 구하기\n\n[계산]\n$g(x) = x + c$이고 $g(1) = 0$이면\n$$1 + c = 0 \\implies c = -1$$\n따라서 $g(x) = x - 1$\n\n[결론] $g(1)=0$인 경우, $g(x) = x-1$이다.",
+            "matches": [
+              {
+                "label": "I",
+                "score": 0.7,
+                "reason": "학생은 c=-1, 즉 g(1)=0인 경우를 다루고 있으며, 이는 후보 I의 '1+c=0' 조건과 수학적으로 동일하다. 단, a=-2 경우는 언급하지 않음"
+              },
+              {
+                "label": "J",
+                "score": 0.6,
+                "reason": "학생은 g(1)=0인 경우(c=-1)를 Case 1로 명시적으로 설정하고 있으며, 이는 후보 J의 'c=-1(즉 g(1)=0)인 경우'와 일치한다. 단, a=-2인 경우의 분기는 언급하지 않음"
+              }
+            ],
+            "eval_summary": "MISS attempt0 dry0 | 72tok | disc 5293ms + match 4442ms | bonus 1"
+          },
+          {
+            "attempt": 1,
+            "think_tokens": 410,
+            "discover_elapsed_ms": 19298,
+            "match_elapsed_ms": 14728,
+            "discover_input_tokens": 937,
+            "discover_output_tokens": 1463,
+            "match_input_tokens": 1646,
+            "match_output_tokens": 875,
+            "claude_output": "[시도] 내가 해볼 것: Case 1인 $g(1) = 0$ 즉 $c = -1$, $g(x) = x-1$일 때 $x=1$에서 $|h(x)|$의 미분가능성을 확인한다\n\n[계산]\n$g(x) = x-1$이면 $x=1$에서 $h(1) = f(1)\\cdot g(1) = 0$\n\n$x > 1$이면 $h(x) = -(x-1) < 0$ (단, $x$가 1 근방) → $|h(x)| = x-1$\n\n우미분: $\\lim_{x \\to 1^+} \\dfrac{|h(x)|-0}{x-1} = \\lim_{x \\to 1^+} \\dfrac{x-1}{x-1} = 1$\n\n$x < 1$이면 $h(x) = f(x)(x-1)$이고, $|h(x)| = |f(x)| \\cdot |x-1| = |f(x)|(1-x)$\n\n좌미분: $\\lim_{x \\to 1^-} \\dfrac{|f(x)|(1-x)}{x-1} = \\lim_{x \\to 1^-} |f(x)| \\cdot \\dfrac{1-x}{x-1} = -|f(1)|$\n\n미분가능하려면 $-|f(1)",
+            "matches": [
+              {
+                "label": "A",
+                "score": 0.42,
+                "reason": "regex"
+              }
+            ],
+            "eval_summary": "MISS attempt1 dry0 | 410tok | disc 19298ms + match 14728ms | bonus 0"
+          },
+          {
+            "attempt": 2,
+            "think_tokens": 113,
+            "discover_elapsed_ms": 8899,
+            "match_elapsed_ms": 4293,
+            "discover_input_tokens": 1006,
+            "discover_output_tokens": 504,
+            "match_input_tokens": 1360,
+            "match_output_tokens": 182,
+            "claude_output": "[시도] 내가 해볼 것: Case 1로 g(1) = 0인 경우를 분석하여 g(x)를 구체화하기\n\n[계산]\ng(1) = 0이면 1 + c = 0이므로 c = -1\n\n따라서 g(x) = x - 1\n\n이때 x > 1에서 -g(x) = -(x-1) = 1 - x이고,\nx ≤ 1에서 h(x) = f(x)(x-1)\n\nx = 1 근방에서 연속 조건은 이미 만족 (g(1) = 0이면 양쪽 모두 0)\n\n[결론] Case 1에서 g(1) = 0이면 **g(x) = x - 1**이고, h(1) = 0이 되어 x = 1에서의 연속 조건이 자동으로 성립한다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 0.7,
+                "reason": "학생이 g(1)=0인 경우를 Case 1로 분석하고 있어 케이스 분류의 일부와 일치하나, f(1)=-1인 Case 2는 언급하지 않음"
+              },
+              {
+                "label": "J",
+                "score": 0.4,
+                "reason": "학생이 c=-1 즉 g(1)=0인 경우를 분석하고 있어 J의 c=-1 케이스와 부분적으로 일치하나, a=-2인 경우는 다루지 않음"
+              }
+            ],
+            "eval_summary": "FOUND H1 | 113tok | disc 8899ms + match 4293ms | bonus 0"
+          }
+        ]
+      },
+      {
+        "note_index": 5,
+        "note_id": "note10",
+        "neuron": "전략20",
+        "neuron_type": "전략",
+        "note_text": "Case 2가 성립한다: $f(1)=-1$이다",
+        "from": [
+          "note4",
+          "note9"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note10",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note10",
+            "in_target": "note10",
+            "attempt": 1,
+            "score": 0.95,
+            "reason": "학생의 결론이 f(1)=-1이어야 한다는 것으로, 후보 A의 f(1)=-1과 완전히 일치한다"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 57,
+            "discover_elapsed_ms": 5335,
+            "match_elapsed_ms": 4023,
+            "discover_input_tokens": 959,
+            "discover_output_tokens": 289,
+            "match_input_tokens": 1224,
+            "match_output_tokens": 148,
+            "claude_output": "[시도] Case 1에서 g(1) = 0 조건을 g(x)에 적용하기\n\n[계산]\n$g(x) = x + c$이고 $g(1) = 0$이면  \n$1 + c = 0$  \n$c = -1$  \n따라서 $g(x) = x - 1$\n\n[결론] Case 1에서 $g(x) = x-1$이므로, $h(x) = \\begin{cases} f(x)(x-1) & (x \\leq 1) \\\\ -(x-1) & (x > 1) \\end{cases}$이다.",
+            "matches": [
+              {
+                "label": "H",
+                "score": 0.7,
+                "reason": "학생은 g(1)=0인 경우(c=-1)를 Case 1로 분류하고 있으며, 이는 H에서 언급된 c=-1인 경우에 해당함. 다만 H는 두 경우(c=-1과 a=-2)로 나눈다는 전체 구조를 설명하는데, 학생은 c=-1 경우만 다루고 있음"
+              }
+            ],
+            "eval_summary": "MISS attempt0 dry0 | 57tok | disc 5335ms + match 4023ms | bonus 1"
+          },
+          {
+            "attempt": 1,
+            "think_tokens": 424,
+            "discover_elapsed_ms": 19936,
+            "match_elapsed_ms": 2459,
+            "discover_input_tokens": 1000,
+            "discover_output_tokens": 1404,
+            "match_input_tokens": 1360,
+            "match_output_tokens": 76,
+            "claude_output": "[시도] Case 1(g(x) = x-1)에서 x=1에서 |h(x)|의 좌미분과 우미분을 구한다.\n\n[계산]\n- x > 1일 때: h(x) = -(x-1) < 0이므로 |h(x)| = x-1\n  → 우미분: $\\lim_{x \\to 1^+} \\frac{(x-1)-0}{x-1} = 1$\n\n- x ≤ 1일 때: h(x) = f(x)(x-1)이고, x=1 근방 좌측에서 (x-1) < 0\n  - f(1) > 0이면 h(x) < 0 → |h(x)| = -f(x)(x-1)\n  - 좌미분: $\\left[-f'(x)(x-1) - f(x)\\right]_{x=1} = -f(1)$\n  - 우미분=1과 같으려면: $-f(1) = 1$ → $f(1) = -1$\n\n[결론] Case 1(g(x)=x-1)에서 x=1의 미분가능 조건을 적용하면 **f(1) = -1**이어야 한다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 0.95,
+                "reason": "학생의 결론이 f(1)=-1이어야 한다는 것으로, 후보 A의 f(1)=-1과 완전히 일치한다"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 424tok | disc 19936ms + match 2459ms | bonus 0"
+          }
+        ]
+      },
+      {
+        "note_index": 6,
+        "note_id": "note11",
+        "neuron": "전략25",
+        "neuron_type": "전략",
+        "note_text": "$f(1)=1+a+b=-1$이므로 $a+b=-2$이다",
+        "from": [
+          "note10",
+          "note1"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note11",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note11",
+            "in_target": "note11",
+            "attempt": 2,
+            "score": 0.7,
+            "reason": "학생이 f(1)=1+a+b=-1 조건을 사용하여 b를 구하는 과정에서 A의 핵심 결론 a+b=-2를 암묵적으로 활용하고 있다"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 295,
+            "discover_elapsed_ms": 17054,
+            "match_elapsed_ms": 12710,
+            "discover_input_tokens": 982,
+            "discover_output_tokens": 1247,
+            "match_input_tokens": 1361,
+            "match_output_tokens": 821,
+            "claude_output": "[시도] Case 2(f(1)=-1, g(1)≠0)에서 x=1에서의 h(x) 미분가능성 조건을 구한다\n\n[계산]\nh(1) = f(1)g(1) = -g(1) ≠ 0이므로, x=1 근방에서 h(x)≠0\n→ |h(x)|가 x=1에서 미분가능하려면 h(x)가 x=1에서 미분가능해야 한다\n\n좌미분: $\\lim_{x\\to 1^-}\\frac{f(x)g(x)-f(1)g(1)}{x-1} = [f(x)g(x)]'|_{x=1} = f'(1)g(1)+f(1)g'(1) = f'(1)g(1)-1$\n\n우미분: $\\lim_{x\\to 1^+}\\frac{-g(x)-(-g(1))}{x-1} = -g'(1) = -1$\n\n좌미분=우미분이므로: $f'(1)g(1)-1 = -1$ → $f'(1)g(1)=0$\n\ng(1)≠0이므로 반드시 $f'(1)=0$\n\n[결론] Case 2에서 $f'(1)=0$이다.",
+            "matches": [
+              {
+                "label": "B",
+                "score": 0.8,
+                "reason": "regex"
+              },
+              {
+                "label": "C",
+                "score": 0.95,
+                "reason": "regex"
+              },
+              {
+                "label": "D",
+                "score": 0.85,
+                "reason": "regex"
+              },
+              {
+                "label": "E",
+                "score": 0.6,
+                "reason": "regex"
+              },
+              {
+                "label": "F",
+                "score": 0.7,
+                "reason": "regex"
+              }
+            ],
+            "eval_summary": "MISS attempt0 dry0 | 295tok | disc 17054ms + match 12710ms | bonus 4"
+          },
+          {
+            "attempt": 1,
+            "think_tokens": 121,
+            "discover_elapsed_ms": 11056,
+            "match_elapsed_ms": 3353,
+            "discover_input_tokens": 1203,
+            "discover_output_tokens": 728,
+            "match_input_tokens": 1167,
+            "match_output_tokens": 143,
+            "claude_output": "[시도] $(2+a)(1+c)=0$에서 $a=-2$ 또는 $c=-1$인 두 소케이스로 나눈다\n\n[계산]\n- $(2+a)(1+c)=0$이므로\n  - Sub-case 2-1: $a=-2$ → $g(1)=1+c$는 자유\n  - Sub-case 2-2: $c=-1$ → $g(1)=1+c=0$\n\n그런데 Sub-case 2-2에서 $c=-1$이면 $g(1)=0$이고, 이는 Case 1($g(1)=0$)과 동일한 상황이 된다.\n\n따라서 실질적으로 구분되는 경우는:\n- **Sub-case 2-1**: $a=-2$, $c\\neq -1$ (즉 $g(1)\\neq 0$)\n- **Sub-case 2-2**: $c=-1$ (즉 $g(1)=0$, Case 1과 합류)\n\n[결론] $(2+a)(1+c)=0$에서 $a=-2$이거나 $c=-1$이며, $c=-1$이면 $g(1)=0$이 되어 Case 1과 동일해지므로 이후 분석은 **$a=-2$인 경우**와 **$c=-1$인 경우(=Case 1)**로 나뉜다.",
+            "matches": [
+              {
+                "label": "G",
+                "score": 0.7,
+                "reason": "학생이 (2+a)(1+c)=0에서 a=-2인 경우를 핵심 케이스로 식별하고 있으며, 이는 후보 G의 결론 a=-2와 부분적으로 일치. 단, 학생은 a=-2를 조건부(c≠-1일 때)로 다루고 있어 완전 일치는 아님"
+              }
+            ],
+            "eval_summary": "MISS attempt1 dry0 | 121tok | disc 11056ms + match 3353ms | bonus 1"
+          },
+          {
+            "attempt": 2,
+            "think_tokens": 464,
+            "discover_elapsed_ms": 24899,
+            "match_elapsed_ms": 4383,
+            "discover_input_tokens": 1213,
+            "discover_output_tokens": 1596,
+            "match_input_tokens": 906,
+            "match_output_tokens": 180,
+            "claude_output": "[시도] $f(1) = -1$ 조건에 $a = -2$를 대입하여 $b$를 구한다\n\n[계산]\n$$f(1) = 1^2 + a \\cdot 1 + b = 1 + (-2) + b = -1 + b$$\n\n$f(1) = -1$이어야 하므로:\n$$-1 + b = -1$$\n$$b = 0$$\n\n[결론] $b = 0$이므로 $f(x) = x^2 - 2x$이다.",
+            "matches": [
+              {
+                "label": "H",
+                "score": 1,
+                "reason": "학생의 결론 b=0, f(x)=x²-2x와 완전히 일치하며, a=-2와 a+b=-2로부터 b=0을 도출하는 과정도 동일하다"
+              },
+              {
+                "label": "A",
+                "score": 0.7,
+                "reason": "학생이 f(1)=1+a+b=-1 조건을 사용하여 b를 구하는 과정에서 A의 핵심 결론 a+b=-2를 암묵적으로 활용하고 있다"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 464tok | disc 24899ms + match 4383ms | bonus 1"
+          }
+        ]
+      },
+      {
+        "note_index": 7,
+        "note_id": "note12",
+        "neuron": "전략25",
+        "neuron_type": "전략",
+        "note_text": "$f(1)=-1\\neq 0$이고 $g(1)(f(1)+1)=0$에서 $g(1)$은 임의이므로 $g(1)\\neq 0$도 가능하다. $h(1)=-g(1)\\neq 0$이다",
+        "from": [
+          "note10",
+          "note3"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note11",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 8,
+        "note_id": "note13",
+        "neuron": "사실117",
+        "neuron_type": "사실",
+        "note_text": "$h(1)\\neq 0$이므로 $|h(x)|$가 $x=1$에서 미분가능이면 $h(x)$ 자체가 $x=1$에서 미분가능하다",
+        "from": [
+          "note12",
+          "단서E"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note11",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 9,
+        "note_id": "note14",
+        "neuron": "사실111",
+        "neuron_type": "사실",
+        "note_text": "$h(x)$가 $x=1$에서 미분가능이면 좌미분$=$우미분이다",
+        "from": [
+          "note13",
+          "단서C"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note11",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 10,
+        "note_id": "note15",
+        "neuron": "연산36",
+        "neuron_type": "연산",
+        "note_text": "좌미분 $=f'(1)g(1)+f(1)g'(1)=(2+a)(1+c)+(-1)(1)=(2+a)(1+c)-1$이고 우미분 $=-g'(1)=-1$이다",
+        "from": [
+          "note14",
+          "note1"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note15",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note15",
+            "in_target": "note15",
+            "attempt": 0,
+            "score": 0.7,
+            "reason": "regex"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 100,
+            "discover_elapsed_ms": 7040,
+            "match_elapsed_ms": 8034,
+            "discover_input_tokens": 1199,
+            "discover_output_tokens": 476,
+            "match_input_tokens": 934,
+            "match_output_tokens": 502,
+            "claude_output": "[시도] x=1에서 h(x)의 좌미분과 우미분을 계산해서 같다고 놓기\n\n[계산]\n- 좌미분: $[f(x)g(x)]'|_{x=1} = f'(1)g(1) + f(1)g'(1)$\n- $g'(x)=1$이고 $f(1)=-1$이므로: $f'(1)g(1) + (-1)\\cdot 1 = f'(1)g(1) - 1$\n- 우미분: $[-g(x)]'|_{x=1} = -g'(1) = -1$\n- 좌미분 = 우미분: $f'(1)g(1) - 1 = -1$\n- $\\Rightarrow f'(1)g(1) = 0$\n\n[결론] $f'(1)=0$ 또는 $g(1)=0$이다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 0.7,
+                "reason": "regex"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 100tok | disc 7040ms + match 8034ms | bonus 0"
+          }
+        ]
+      },
+      {
+        "note_index": 11,
+        "note_id": "note16",
+        "neuron": "전략2",
+        "neuron_type": "전략",
+        "note_text": "$(2+a)(1+c)-1=-1$이므로 $(2+a)(1+c)=0$이다",
+        "from": [
+          "note15"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note11",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 12,
+        "note_id": "note17",
+        "neuron": "연산9",
+        "neuron_type": "연산",
+        "note_text": "$2+a=0$ 또는 $1+c=0$이다",
+        "from": [
+          "note16"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note4",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 13,
+        "note_id": "note18",
+        "neuron": "전략22",
+        "neuron_type": "전략",
+        "note_text": "$c=-1$(즉 $g(1)=0$)인 경우와 $a=-2$인 경우로 나눈다",
+        "from": [
+          "note17"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note10",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 14,
+        "note_id": "note20",
+        "neuron": "전략20",
+        "neuron_type": "전략",
+        "note_text": "$a=-2$이다",
+        "from": [
+          "note18",
+          "note19"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note11",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 15,
+        "note_id": "note21",
+        "neuron": "전략25",
+        "neuron_type": "전략",
+        "note_text": "$a=-2$이고 $a+b=-2$이므로 $b=0$이다. $f(x)=x^2-2x=x(x-2)$이다",
+        "from": [
+          "note20",
+          "note11"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note11",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 16,
+        "note_id": "note22",
+        "neuron": "전략25",
+        "neuron_type": "전략",
+        "note_text": "$x\\leq 1$에서 $h(x)=x(x-2)(x+c)$이다. $h(0)=0$이다",
+        "from": [
+          "note21",
+          "note1",
+          "단서C"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note22",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note22",
+            "in_target": "note22",
+            "attempt": 0,
+            "score": 1,
+            "reason": "학생이 x≤1에서 h(x)=x(x-2)(x+c)이고 h(0)=0임을 명시적으로 서술함"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 295,
+            "discover_elapsed_ms": 18633,
+            "match_elapsed_ms": 4579,
+            "discover_input_tokens": 1432,
+            "discover_output_tokens": 1213,
+            "match_input_tokens": 881,
+            "match_output_tokens": 304,
+            "claude_output": "[시도] $f(x)=x(x-2)$, $g(x)=x+c$일 때, $x=0$에서 $|h(x)|$의 미분가능성 조건 적용\n\n[계산]\n$x \\leq 1$에서 $h(x) = x(x-2)(x+c)$이므로 $h(0)=0$, 즉 $x=0$은 $h$의 영점이다.\n\n$|h(x)|$가 $x=0$에서 미분가능하려면 반드시 $h'(0)=0$이어야 한다.\n\n$h'(x) = (x+c)(2x-2) + (x^2-2x) \\cdot 1$ (곱의 미분)\n\n$h'(0) = (c)(-2) + 0 = -2c$\n\n$-2c = 0 \\Rightarrow c = 0$\n\n[결론] $c=0$이므로 $g(x)=x$이다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 1,
+                "reason": "학생이 x≤1에서 h(x)=x(x-2)(x+c)이고 h(0)=0임을 명시적으로 서술함"
+              },
+              {
+                "label": "B",
+                "score": 0.8,
+                "reason": "학생이 h(0)=0이고 |h(x)|가 x=0에서 미분가능하려면 h'(0)=0이어야 한다고 서술함. 짝수 중복도 근 언급은 없지만 핵심 조건인 h'(0)=0은 포함"
+              },
+              {
+                "label": "C",
+                "score": 1,
+                "reason": "학생이 곱의 미분을 적용하여 h'(0)=(-2)(c)+0=-2c를 동일하게 계산함"
+              },
+              {
+                "label": "D",
+                "score": 1,
+                "reason": "학생이 -2c=0이므로 c=0, g(x)=x라는 동일한 결론에 도달함"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 295tok | disc 18633ms + match 4579ms | bonus 3"
+          }
+        ]
+      },
+      {
+        "note_index": 17,
+        "note_id": "note23",
+        "neuron": "사실96",
+        "neuron_type": "사실",
+        "note_text": "$h(0)=0$이고 $|h(x)|$가 $x=0$에서 미분가능이므로 $x=0$은 $h(x)$의 짝수 중복도 근이고 $h'(0)=0$이다",
+        "from": [
+          "note22",
+          "단서E"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note22",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 18,
+        "note_id": "note24",
+        "neuron": "연산36",
+        "neuron_type": "연산",
+        "note_text": "$h'(x)=f'(x)g(x)+f(x)g'(x)$이고 $h'(0)=f'(0)g(0)+f(0)g'(0)=(-2)(c)+0=-2c$이다",
+        "from": [
+          "note23",
+          "note22"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note22",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 19,
+        "note_id": "note25",
+        "neuron": "전략25",
+        "neuron_type": "전략",
+        "note_text": "$-2c=0$이므로 $c=0$이고 $g(x)=x$이다",
+        "from": [
+          "note24"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note22",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 20,
+        "note_id": "note26",
+        "neuron": "전략25",
+        "neuron_type": "전략",
+        "note_text": "$h(x)=\\begin{cases} x^2(x-2) & (x\\leq 1) \\\\ -x & (x>1) \\end{cases}$이다",
+        "from": [
+          "note25",
+          "note21",
+          "단서C"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note26",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note26",
+            "in_target": "note26",
+            "attempt": 0,
+            "score": 1,
+            "reason": "학생의 h(x) 정의가 후보 A와 완전히 일치함"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 64,
+            "discover_elapsed_ms": 5764,
+            "match_elapsed_ms": 2825,
+            "discover_input_tokens": 1655,
+            "discover_output_tokens": 407,
+            "match_input_tokens": 613,
+            "match_output_tokens": 102,
+            "claude_output": "[시도] 내가 해볼 것: $f(x)=x(x-2)$, $g(x)=x$를 $h(x)$에 대입하여 $h(-2)+h(2)$ 계산하기\n\n[계산]\n$$h(x) = \\begin{cases} x^2(x-2) & (x \\leq 1) \\\\ -x & (x > 1) \\end{cases}$$\n\n$h(-2)$: $-2 \\leq 1$이므로 $h(-2)=(-2)^2(-2-2)=4\\times(-4)=-16$\n\n$h(2)$: $2>1$이므로 $h(2)=-2$\n\n$$h(-2)+h(2) = -16+(-2) = -18$$\n\n[결론] $h(-2)+h(2) = \\boxed{-18}$이다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 1,
+                "reason": "학생의 h(x) 정의가 후보 A와 완전히 일치함"
+              },
+              {
+                "label": "B",
+                "score": 1,
+                "reason": "h(-2)=-16, h(2)=-2, 합=-18 모두 완전히 일치함"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 64tok | disc 5764ms + match 2825ms | bonus 1"
+          }
+        ]
+      },
+      {
+        "note_index": 21,
+        "note_id": "END",
+        "neuron": "전략25",
+        "neuron_type": "전략",
+        "note_text": "$h(-2)=(-2)^2\\cdot(-4)=-16$, $h(2)=-2$이므로 $h(-2)+h(2)=-18$이다",
+        "from": [
+          "note26"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note26",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      }
+    ],
+    "_debug": "v7-split"
+  },
   "folders": [],
   "history": [],
   "recovery_warnings": [],
