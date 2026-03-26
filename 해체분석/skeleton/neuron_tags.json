@@ -1275,15 +1275,11 @@
     ],
     "action": "BOUND"
   },
-  {
-    "id": "전략5",
-    "domain": [
-      "FUNC",
-      "EQN",
-      "COORD"
-    ],
-    "action": "CONVERT"
-  },
+{
+  "id": "전략40",
+  "domain": ["FUNC", "DIFF"],
+  "action": "SHAPE_FROM_EXTREMA"
+},
   {
     "id": "전략6",
     "domain": [
