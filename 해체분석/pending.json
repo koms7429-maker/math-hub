@@ -1,788 +1,5 @@
 [
   {
-    "problem_id": "P6",
-    "answer": "198",
-    "content": "id: P6\nsource: 수능\nyear: 미상\nunit: 다항함수의 미분\ntopic: 삼차함수와 접선 조건\nsubtopic: 정수 조건을 만족하는 삼차함수 결정\ndifficulty: 상\nscore: 4\nanswer: 2\ntype: multiple_choice\n\n# 6. (수능) - 삼차함수와 접선의 정수 조건\n\n## Problem\n\n최고차항의 계수가 $\\dfrac{1}{6}$이고 $f(0)=0$인 삼차함수 $f(x)$가 다음 조건을 만족시킨다.\n\n> $f(t)=0$인 모든 실수 $t$에 대하여 직선 $y=f'(t)(x-t)$ 위의 점 중 $y$좌표가 정수인 모든 점의 $x$좌표는 정수이다.\n\n$f(2)<0$일 때, $f(12)$의 값은? [4점]\n\n## Choices\n\n① 178\n② 198\n③ 218\n④ 238\n⑤ 258\n\n## Solution\n\n$f(t)=0$인 $t$에 대하여 $f'(t)=0$이면 직선 $y=f'(t)(x-t) \\Leftrightarrow y=0$ 위에 $y$좌표가 $0$이고 $x$좌표가 정수가 아닌 점이 존재하므로 문제의 박스 조건에 모순이다.\n\n이므로 $f(t)=0$인 모든 $t$에 대하여 $f'(t)\\neq 0$ $\\cdots$ ⓐ 임을 알 수 있다.\n\n또한, 정수 $k$에 대하여\n\n$$\\left(\\text{직선 } y=f'(t)(x-t) \\text{ 위의 점 중 } y\\text{좌표가 } k\\text{인 점의 } x\\text{좌표}\\right) = t + \\dfrac{k}{f'(t)}$$\n\n이므로 문제의 박스 조건을 만족시키려면\n\n$$f(t)=0\\text{인 모든 } t\\text{에 대하여 } t\\text{와 } \\dfrac{1}{f'(t)} \\text{은 각각 정수} \\cdots (\\bigstar)$$\n\n이어야 한다.\n\n한편, ⓐ을 참고하여 문제의 조건에서\n\n$$f(0)=0, \\quad f(2)<0$$\n\n$$\\Rightarrow f(x)=0 \\text{은 } x=0\\text{과 } 0\\text{이 아닌 서로 다른 두 실근을 가짐}$$\n\n$$\\Rightarrow f(x)=\\dfrac{1}{6}x(x-p)(x-q) \\quad (\\text{단, } p\\neq 0, \\; p < 2 < q \\cdots \\text{ⓒ})$$\n\n로 놓으면\n\n$$(\\bigstar) \\Rightarrow \\begin{cases} \\text{① } p, \\; q\\text{는 정수} \\\\ \\text{② } \\dfrac{1}{f'(0)}=\\dfrac{6}{pq} \\text{ 은 정수} \\\\ \\text{③ } \\dfrac{1}{f'(p)}=\\dfrac{6}{p(p-q)}, \\; \\dfrac{1}{f'(q)}=\\dfrac{6}{q(q-p)} \\text{ 은 정수} \\end{cases}$$\n\n이어야 한다.\n\n따라서 ② $\\Rightarrow$ $|pq|$는 $6$의 약수이므로\n\n$$\\text{①, ⓒ} \\Rightarrow \\begin{cases} q=3\\text{일 때, } p=\\pm 1 \\text{ 또는 } p=-2 \\\\ q=6\\text{일 때, } p=\\pm 1 \\end{cases}$$\n\n이고, 이 중에서 ③을 만족시키는 경우는\n\n$$q=3, \\quad p=1$$\n\n인 경우뿐임을 알 수 있다.\n\n$$\\therefore \\; f(x)=\\dfrac{1}{6}x(x-1)(x-3) \\Rightarrow f(12)=198$$",
-    "content_source": "FileLoop",
-    "content_length": 1655,
-    "skel_status": "neuron_missing",
-    "dna_status": "ok",
-    "previous_skeleton": [
-      {
-        "from": "단서B",
-        "to": "note1",
-        "neuron": "NEW_1",
-        "type": "사실",
-        "domain_hint": "FUNC",
-        "description": "f'(t)=0이면 직선이 y=0이 되는 것을 관찰",
-        "note": "$f'(t)=0$이면 직선 $y=f'(t)(x-t)$는 $y=0$이 되고, $y=0$ 위에 $y$좌표가 정수(0)이고 $x$좌표가 비정수인 점이 존재한다",
-        "main": false,
-        "step": 1
-      },
-      {
-        "from": [
-          "note1",
-          "단서B"
-        ],
-        "to": "note2",
-        "neuron": "전략23",
-        "type": "전략",
-        "domain_hint": "FUNC",
-        "description": "귀류법으로 모순을 이끌어 결론 도출",
-        "note": "$f(t)=0$인 모든 실수 $t$에 대하여 $f'(t)\\neq 0$이다",
-        "main": true,
-        "step": 1
-      },
-      {
-        "from": [
-          "단서B",
-          "note2"
-        ],
-        "to": "note3",
-        "neuron": "NEW_2",
-        "type": "연산",
-        "domain_hint": "FUNC, EQN",
-        "description": "직선 위 y좌표가 k인 점의 x좌표를 계산",
-        "note": "직선 $y=f'(t)(x-t)$ 위에서 $y$좌표가 정수 $k$인 점의 $x$좌표는 $x=t+\\frac{k}{f'(t)}$이다",
-        "main": true,
-        "step": 2
-      },
-      {
-        "from": "note3",
-        "to": "note4",
-        "neuron": "NEW_3",
-        "type": "전략",
-        "domain_hint": "NUM, FUNC",
-        "description": "정수 조건을 t와 1/f'(t)의 정수 조건으로 동치 변환",
-        "note": "$f(t)=0$인 모든 $t$에 대하여 $t$는 정수이고 $\\frac{1}{f'(t)}$은 정수이다 $(\\bigstar)$",
-        "main": true,
-        "step": 2
-      },
-      {
-        "from": "단서A",
-        "to": "note5",
-        "neuron": "전략25",
-        "type": "사실",
-        "domain_hint": "POLY",
-        "description": "f(0)=0을 확인하여 x=0이 f의 근임을 대입으로 확인한다.",
-        "note": "f(0)=0을 확인하여 x=0이 f의 근임을 대입으로 확인한다.",
-        "main": true,
-        "step": 3,
-        "_keep_neuron": true
-      },
-      {
-        "from": "note5",
-        "to": "note6",
-        "neuron": "전략38",
-        "type": "사실",
-        "domain_hint": "POLY",
-        "description": "x=0이 근이므로 인수정리에 의해 x가 f(x)의 인수임을 적용하여 f(x)=x·g(x)로 분리한다.",
-        "note": "x=0이 근이므로 인수정리에 의해 x가 f(x)의 인수임을 적용하여 f(x)=x·g(x)로 분리한다.",
-        "main": true,
-        "step": 3,
-        "_keep_neuron": true
-      },
-      {
-        "from": [
-          "note6",
-          "단서C"
-        ],
-        "to": "note7",
-        "neuron": "전략25",
-        "type": "전략",
-        "domain_hint": "POLY, INEQ",
-        "description": "x²+bx+c가 항양이라는 가정 아래 x=2를 대입하면 f(2)=4+2b+c>0임을 확인한다.",
-        "note": "x²+bx+c가 항양이라는 가정 아래 x=2를 대입하면 f(2)=4+2b+c>0임을 확인한다.",
-        "main": false,
-        "step": 3,
-        "_keep_neuron": true
-      },
-      {
-        "from": "note7",
-        "to": "note8",
-        "neuron": "전략23",
-        "type": "전략",
-        "domain_hint": "POLY, INEQ",
-        "description": "f(2)>0은 기존 조건 f(2)<0과 모순이므로 x²+bx+c가 항양인 경우를 배제한다.",
-        "note": "f(2)>0은 기존 조건 f(2)<0과 모순이므로 x²+bx+c가 항양인 경우를 배제한다.",
-        "main": false,
-        "step": 3,
-        "_keep_neuron": true
-      },
-      {
-        "from": [
-          "note8",
-          "note2"
-        ],
-        "to": "note9",
-        "neuron": "연산9",
-        "type": "사실",
-        "domain_hint": "POLY",
-        "description": "방정식 F(x)=0을 f(x)=0 또는 g(x)=0으로 분리하여 각각의 근을 독립적으로 구한다.",
-        "note": "방정식 F(x)=0을 f(x)=0 또는 g(x)=0으로 분리하여 각각의 근을 독립적으로 구한다.",
-        "main": true,
-        "step": 3,
-        "_keep_neuron": true
-      },
-      {
-        "from": "note9",
-        "to": "note10",
-        "neuron": "전략38",
-        "type": "사실",
-        "domain_hint": "POLY",
-        "description": "각 인수에서 단근 조건(f'(α)≠0)과 실근 존재 조건을 확인하여, 세 근이 서로 다른 실근임을 검증한다.",
-        "note": "각 인수에서 단근 조건(f'(α)≠0)과 실근 존재 조건을 확인하여, 세 근이 서로 다른 실근임을 검증한다.",
-        "main": true,
-        "step": 3,
-        "_keep_neuron": true
-      },
-      {
-        "from": [
-          "note10",
-          "단서C"
-        ],
-        "to": "note11",
-        "neuron": "전략25",
-        "type": "연산",
-        "domain_hint": "POLY, INEQ",
-        "description": "f(2)<0에 대입하여 p, q의 범위 결정",
-        "note": "$f(2)=\\frac{1}{6}\\cdot 2(2-p)(2-q)<0$에서 $(2-p)(2-q)<0$이고 $p<2<q$이다",
-        "main": true,
-        "step": 3
-      },
-      {
-        "from": "note10",
-        "to": "note12",
-        "neuron": "NEW_4",
-        "type": "사실",
-        "domain_hint": "POLY",
-        "description": "삼차함수를 근의 곱 형태로 표현",
-        "note": "$f(x)=\\frac{1}{6}x(x-p)(x-q)$이고 $p\\neq 0$이다",
-        "main": true,
-        "step": 3
-      },
-      {
-        "from": "note12",
-        "to": "note13",
-        "neuron": "연산28",
-        "type": "연산",
-        "domain_hint": "POLY, DIFF",
-        "description": "f(x)=x(x-p)(x-q)를 전개하여 f(x)=x³-(p+q)x²+pqx 형태로 풀어 쓴다.",
-        "note": "f(x)=x(x-p)(x-q)를 전개하여 f(x)=x³-(p+q)x²+pqx 형태로 풀어 쓴다.",
-        "main": true,
-        "step": 4,
-        "_keep_neuron": true
-      },
-      {
-        "from": "note13",
-        "to": "note14",
-        "neuron": "연산33",
-        "type": "연산",
-        "domain_hint": "POLY, DIFF",
-        "description": "f(x)=x³-(p+q)x²+pqx를 항별로 미분하여 f'(x)=3x²-2(p+q)x+pq를 구한다.",
-        "note": "f(x)=x³-(p+q)x²+pqx를 항별로 미분하여 f'(x)=3x²-2(p+q)x+pq를 구한다.",
-        "main": true,
-        "step": 4,
-        "_keep_neuron": true
-      },
-      {
-        "from": "note14",
-        "to": "note15",
-        "neuron": "전략25",
-        "type": "연산",
-        "domain_hint": "POLY",
-        "description": "각 근 0, p, q를 f'에 대입",
-        "note": "$f'(0)=\\frac{pq}{6}$, $f'(p)=\\frac{p(p-q)}{6}$, $f'(q)=\\frac{q(q-p)}{6}$이다",
-        "main": true,
-        "step": 4
-      },
-      {
-        "from": "note15",
-        "to": "note16",
-        "neuron": "전략25",
-        "type": "연산",
-        "domain_hint": "RAT",
-        "description": "역수를 취하여 1/f'(t) 계산",
-        "note": "$\\frac{1}{f'(0)}=\\frac{6}{pq}$, $\\frac{1}{f'(p)}=\\frac{6}{p(p-q)}$, $\\frac{1}{f'(q)}=\\frac{6}{q(q-p)}$이다",
-        "main": true,
-        "step": 4
-      },
-      {
-        "from": [
-          "note4",
-          "note11",
-          "note16"
-        ],
-        "to": "note17",
-        "neuron": "전략33",
-        "type": "전략",
-        "domain_hint": "NUM, EQN",
-        "description": "모든 정수 조건을 종합하여 약수 조건으로 정리",
-        "note": "$p,\\,q$는 정수, $p<2<q$, $p\\neq 0$이고, $|pq|$는 $6$의 약수이며, $|p(p-q)|$와 $|q(q-p)|$는 $6$의 약수이다",
-        "main": true,
-        "step": 5
-      },
-      {
-        "from": "note17",
-        "to": "note18",
-        "neuron": "전략33",
-        "type": "전략",
-        "domain_hint": "NUM",
-        "description": "약수 조건을 소인수 분해로 정리하여 가능한 약수 후보 목록을 도출한다.",
-        "note": "약수 조건을 소인수 분해로 정리하여 가능한 약수 후보 목록을 도출한다.",
-        "main": true,
-        "step": 5,
-        "_keep_neuron": true
-      },
-      {
-        "from": "note18",
-        "to": "note19",
-        "neuron": "전략17",
-        "type": "전략",
-        "domain_hint": "NUM",
-        "description": "부등식으로 범위가 제한된 약수 후보를 전수 열거하여 최종 후보 목록을 확정한다.",
-        "note": "부등식으로 범위가 제한된 약수 후보를 전수 열거하여 최종 후보 목록을 확정한다.",
-        "main": true,
-        "step": 5,
-        "_keep_neuron": true
-      },
-      {
-        "from": "note19",
-        "to": "note20",
-        "neuron": "전략25",
-        "type": "연산",
-        "domain_hint": "NUM",
-        "description": "(1,3)에서 조건 (iii) 대입 검산",
-        "note": "$(p,q)=(1,3)$: $p(p-q)=-2$, $\\frac{6}{-2}=-3$ (정수 ✓), $q(q-p)=6$, $\\frac{6}{6}=1$ (정수 ✓)",
-        "main": false,
-        "step": 6
-      },
-      {
-        "from": "note19",
-        "to": "note21",
-        "neuron": "전략25",
-        "type": "연산",
-        "domain_hint": "NUM",
-        "description": "(-1,3)에서 조건 (iii) 대입 검산",
-        "note": "$(p,q)=(-1,3)$: $p(p-q)=4$, $\\frac{6}{4}=\\frac{3}{2}$ (비정수 ✗)",
-        "main": false,
-        "step": 6
-      },
-      {
-        "from": "note19",
-        "to": "note22",
-        "neuron": "전략25",
-        "type": "연산",
-        "domain_hint": "NUM",
-        "description": "(1,6)에서 조건 (iii) 대입 검산",
-        "note": "$(p,q)=(1,6)$: $p(p-q)=-5$, $\\frac{6}{-5}$ (비정수 ✗)",
-        "main": false,
-        "step": 6
-      },
-      {
-        "from": "note19",
-        "to": "note23",
-        "neuron": "전략25",
-        "type": "연산",
-        "domain_hint": "NUM",
-        "description": "(-1,6)에서 조건 (iii) 대입 검산",
-        "note": "$(p,q)=(-1,6)$: $p(p-q)=7$, $\\frac{6}{7}$ (비정수 ✗)",
-        "main": false,
-        "step": 6
-      },
-      {
-        "from": "note19",
-        "to": "note24",
-        "neuron": "전략25",
-        "type": "연산",
-        "domain_hint": "NUM",
-        "description": "(-2,3)에서 조건 (iii) 대입 검산",
-        "note": "$(p,q)=(-2,3)$: $p(p-q)=10$, $\\frac{6}{10}$ (비정수 ✗)",
-        "main": false,
-        "step": 6
-      },
-      {
-        "from": [
-          "note20",
-          "note21",
-          "note22",
-          "note23",
-          "note24"
-        ],
-        "to": "note25",
-        "neuron": "전략20",
-        "type": "전략",
-        "domain_hint": "NUM",
-        "description": "소거법으로 유일한 해 선택",
-        "note": "유일한 해는 $(p,q)=(1,3)$이다",
-        "main": true,
-        "step": 6
-      },
-      {
-        "from": [
-          "note25",
-          "note12"
-        ],
-        "to": "note26",
-        "neuron": "전략25",
-        "type": "연산",
-        "domain_hint": "POLY",
-        "description": "p,q 값을 대입하여 f(x) 확정",
-        "note": "$f(x)=\\frac{1}{6}x(x-1)(x-3)$이다",
-        "main": true,
-        "step": 7
-      },
-      {
-        "from": "note26",
-        "to": "note27",
-        "neuron": "전략25",
-        "type": "연산",
-        "domain_hint": "POLY",
-        "description": "f(2) 검증",
-        "note": "$f(2)=\\frac{1}{6}\\cdot 2\\cdot 1\\cdot(-1)=-\\frac{1}{3}<0$ ✓",
-        "main": false,
-        "step": 7
-      },
-      {
-        "from": "note26",
-        "to": "END",
-        "neuron": "전략25",
-        "type": "연산",
-        "domain_hint": "POLY",
-        "description": "x=12를 대입하여 f(12) 계산",
-        "note": "$f(12)=\\frac{1}{6}\\cdot 12\\cdot 11\\cdot 9 = 198$이다",
-        "main": true,
-        "step": 7
-      }
-    ],
-    "previous_solution": "$f(t)=0$인 모든 실수 $t$에 대하여 $f'(t)\\neq 0$이다 직선 $y=f'(t)(x-t)$ 위에서 $y$좌표가 정수 $k$인 점의 $x$좌표는 $x=t+\\frac{k}{f'(t)}$이다 $f(t)=0$인 모든 $t$에 대하여 $t$는 정수이고 $\\frac{1}{f'(t)}$은 정수이다 $(\\bigstar)$ f(0)=0을 확인하여 x=0이 f의 근임을 대입으로 확인한다. x=0이 근이므로 인수정리에 의해 x가 f(x)의 인수임을 적용하여 f(x)=x·g(x)로 분리한다. 방정식 F(x)=0을 f(x)=0 또는 g(x)=0으로 분리하여 각각의 근을 독립적으로 구한다. 각 인수에서 단근 조건(f'(α)≠0)과 실근 존재 조건을 확인하여, 세 근이 서로 다른 실근임을 검증한다. $f(2)=\\frac{1}{6}\\cdot 2(2-p)(2-q)<0$에서 $(2-p)(2-q)<0$이고 $p<2<q$이다 $f(x)=\\frac{1}{6}x(x-p)(x-q)$이고 $p\\neq 0$이다 f(x)=x(x-p)(x-q)를 전개하여 f(x)=x³-(p+q)x²+pqx 형태로 풀어 쓴다. f(x)=x³-(p+q)x²+pqx를 항별로 미분하여 f'(x)=3x²-2(p+q)x+pq를 구한다. $f'(0)=\\frac{pq}{6}$, $f'(p)=\\frac{p(p-q)}{6}$, $f'(q)=\\frac{q(q-p)}{6}$이다 $\\frac{1}{f'(0)}=\\frac{6}{pq}$, $\\frac{1}{f'(p)}=\\frac{6}{p(p-q)}$, $\\frac{1}{f'(q)}=\\frac{6}{q(q-p)}$이다 $p,\\,q$는 정수, $p<2<q$, $p\\neq 0$이고, $|pq|$는 $6$의 약수이며, $|p(p-q)|$와 $|q(q-p)|$는 $6$의 약수이다 약수 조건을 소인수 분해로 정리하여 가능한 약수 후보 목록을 도출한다. 부등식으로 범위가 제한된 약수 후보를 전수 열거하여 최종 후보 목록을 확정한다. 유일한 해는 $(p,q)=(1,3)$이다 $f(x)=\\frac{1}{6}x(x-1)(x-3)$이다 $f(12)=\\frac{1}{6}\\cdot 12\\cdot 11\\cdot 9 = 198$이다",
-    "previous_clues": "[{\"id\":\"단서A\",\"text\":\"최고차항의 계수가 $\\\\frac{1}{6}$이고 $f(0)=0$인 삼차함수 $f(x)$\"},{\"id\":\"단서B\",\"text\":\"$f(t)=0$인 모든 실수 $t$에 대하여 직선 $y=f'(t)(x-t)$ 위의 점 중 $y$좌표가 정수인 모든 점의 $x$좌표는 정수이다\"},{\"id\":\"단서C\",\"text\":\"$f(2)<0$\"}]",
-    "previous_analysis": "f(t)=0인 근에서 f'(t)≠0임을 귀류법으로 보인 뒤, 접선 위 정수 좌표 조건을 't가 정수이고 1/f'(t)이 정수'인 조건으로 변환한다. f(x)=(1/6)x(x-p)(x-q)로 설정하고 약수 조건으로 후보를 열거한 후 소거하여 (p,q)=(1,3)을 얻고 f(12)=198을 계산한다.",
-    "previous_matching": "",
-    "previous_matched": [],
-    "previous_new_neurons": [
-      {
-        "id": "사실??",
-        "type": "사실",
-        "statement": "미분가능한 함수 $f$에서 $f'(t)=0$이면 $x=t$에서의 접선은 수평선 $y=f(t)$이다.",
-        "description": "f'(t)=0이면 직선이 y=0이 되는 것을 관찰",
-        "note": "$f'(t)=0$이면 직선 $y=f'(t)(x-t)$는 $y=0$이 되고, $y=0$ 위에 $y$좌표가 정수(0)이고 $x$좌표가 비정수인 점이 존재한다",
-        "reason": "사실100(접선 기울기=f'(a))은 기울기가 0임을 말할 뿐, 접선이 y=0(x축)이 됨을 직접 서술하지 않는다. 사실97(극값 필요조건 f'(a)=0)도 마찬가지로 기울기=0만 다룬다. f'(t)=0이면 접선의 기울기가 0이고, 동시에 접선이 점 (t, f(t))를 지나므로 접선 방정식이 y=f(t)가 된다는 원리가 필요하다. 이는 기울기 정보와 점 정보를 결합해 접선 방정식을 구성하는 원리로, 기존 뉴런에 없다.",
-        "blocked_edge": "단서B → note1",
-        "domain_hint": "FUNC",
-        "domain": [
-          "DIFF",
-          "FUNC"
-        ],
-        "action_hint": "",
-        "step": 1,
-        "main": false,
-        "near_miss": [
-          "사실2: $y = f(|x - c|)$는 직선 $x = c$에 대해 대칭이다 ($",
-          "사실5: 지수함수 $y=a^x$는 $a>1$이면 순증가, $0<a<1$이면 순감소",
-          "사실9: 이차함수 $f(x)=a(x-p)^2+q$에서 $f(x)=c$의 실근이 정"
-        ]
-      },
-      {
-        "id": "연산??",
-        "type": "연산",
-        "statement": "직선의 방정식 $y = mx + b$에서 $y = k$를 대입하면 $x = \\dfrac{k - b}{m}$이다.",
-        "description": "직선 위 y좌표가 k인 점의 x좌표를 계산",
-        "note": "직선 $y=f'(t)(x-t)$ 위에서 $y$좌표가 정수 $k$인 점의 $x$좌표는 $x=t+\\frac{k}{f'(t)}$이다",
-        "reason": "연산30(두 점으로 직선 방정식 결정)은 직선 방정식 도출을 다루지만, 주어진 직선 방정식에서 y=k를 대입해 x좌표를 역산하는 연산은 별도 원리이다. 연산10(기울기 계산)도 이에 해당하지 않는다. 직선의 방정식 y=mx+b에서 y값이 주어질 때 x=(y-b)/m으로 역산하는 것은 일차방정식의 역산이며, 사칙연산의 범주에 속하므로 NEW로 제안하지 않는다. 가장 가까운 기존 뉴런을 재검토하면 연산30이 '직선의 방정식을 구할 수 있다'는 원리를 포함하고, 직선 방정식이 주어진 상태에서 y=k 대입은 단순 사칙연산이다.",
-        "blocked_edge": "단서B+note2 → note3",
-        "domain_hint": "FUNC, EQN",
-        "domain": [
-          "COORD"
-        ],
-        "action_hint": "",
-        "step": 2,
-        "main": true,
-        "near_miss": [
-          "연산7: $y=f(x)$를 벡터 $(p,q)$만큼 평행이동하면 $y-q=f(x-p",
-          "연산23: $y=f(x)+c$의 치역은 $f(x)$의 치역을 $c$만큼 평행이동한 ",
-          "연산26: $y=c \\cdot f(x)$의 치역은 $f(x)$의 치역에 $c$를 곱"
-        ]
-      },
-      {
-        "id": "전략??",
-        "type": "전략",
-        "statement": "정수 조건을 만족시키기 위해, 합성된 식이 정수가 되는 조건을 그것을 구성하는 각 부분(예: $t$와 $\\frac{1}{f'(t)}$)이 각각 정수인 조건으로 동치 변환하여 경우를 분류한다.",
-        "description": "정수 조건을 t와 1/f'(t)의 정수 조건으로 동치 변환",
-        "note": "$f(t)=0$인 모든 $t$에 대하여 $t$는 정수이고 $\\frac{1}{f'(t)}$은 정수이다 $(\\bigstar)$",
-        "reason": "전략23(모순 배제), 전략25(대입 검증), 전략16·18은 모두 정수 조건의 동치 변환과 무관하다. 이 edge는 어떤 식이 정수가 되는 조건을 '각 인수/구성요소가 정수인 조건'으로 분해하는 전략이다. 기존 후보 중 이 원리를 직접 서술하는 뉴런이 없다.",
-        "blocked_edge": "note3 → note4",
-        "domain_hint": "NUM, FUNC",
-        "domain": [
-          "NUM",
-          "FUNC",
-          "DIFF"
-        ],
-        "action_hint": "",
-        "step": 2,
-        "main": true,
-        "near_miss": [
-          "전략4: 연속함수의 치역 $[a,b]$에 정수가 포함되지 않으려면 구간 전체가 두",
-          "전략10: 한 변수를 고정하고 나머지 변수의 가능한 값을 세어 합산한다 (변수 고정",
-          "전략12: 거듭제곱근 문제에서 $n$의 홀짝에 따라 실수 근의 존재 조건이 달라지므"
-        ]
-      },
-      {
-        "id": "사실??",
-        "type": "사실",
-        "statement": "최고차항의 계수가 $a$인 $n$차 다항함수가 근 $\\alpha_1, \\alpha_2, \\ldots, \\alpha_n$을 가지면 $f(x) = a(x-\\alpha_1)(x-\\alpha_2)\\cdots(x-\\alpha_n)$으로 표현된다.",
-        "description": "삼차함수를 근의 곱 형태로 표현",
-        "note": "$f(x)=\\frac{1}{6}x(x-p)(x-q)$이고 $p\\neq 0$이다",
-        "reason": "전략38(근을 알면 인수분해)은 알려진 근으로부터 인수를 추출하는 것이고, 전략29(인수분해 시도)는 전략적 판단이다. 삼차함수를 세 근 α, β, γ를 이용해 f(x)=a(x-α)(x-β)(x-γ)로 표현하는 것은 '다항함수의 근-인수 표준형' 사실로, 기존 뉴런 중 이를 직접 서술하는 것이 없다.",
-        "blocked_edge": "note27 → note11",
-        "domain_hint": "POLY",
-        "domain": [
-          "POLY",
-          "EQN"
-        ],
-        "action_hint": "",
-        "step": 3,
-        "main": true,
-        "near_miss": []
-      }
-    ],
-    "previous_partial_skeleton": [],
-    "previous_blockage_point": "",
-    "previous_skel_review_notes": "전체적으로 구조가 잘 잡혀 있음. 공유 노드(vfx, vt, c0, vx 등) 적절히 통합됨. 3단 구조(G12→C11→C1→E6) 준수. f0_eq의 경우 좌변 f0_apply와 우변 c0 모두 연결 필요하여 현행 유지. f2_ineq 우변 c0 연결도 적절. 고립 노드 없음. DAG 순환 없음. DNA 타입 전반 적절. 미세 수정 없이 ok에 가깝지만 구조 재검토 후 동일 출력.",
-    "previous_dna_nodes": [
-      {
-        "id": "top",
-        "dna": "Q1",
-        "label": "값을 구하라",
-        "category": "발문"
-      },
-      {
-        "id": "ask",
-        "dna": "F3",
-        "label": "f(12)",
-        "category": "함수"
-      },
-      {
-        "id": "c12",
-        "dna": "T2",
-        "label": "상수 12",
-        "category": "말단"
-      },
-      {
-        "id": "vfx",
-        "dna": "F6",
-        "label": "함수 f(x)",
-        "category": "함수"
-      },
-      {
-        "id": "lc_cond",
-        "dna": "L4",
-        "label": "최고차계수 1/6",
-        "category": "제한"
-      },
-      {
-        "id": "c16",
-        "dna": "T2",
-        "label": "상수 1/6",
-        "category": "말단"
-      },
-      {
-        "id": "cubic_cond",
-        "dna": "F11",
-        "label": "삼차함수",
-        "category": "함수"
-      },
-      {
-        "id": "f0_eq",
-        "dna": "C1",
-        "label": "f(0)=0",
-        "category": "조건"
-      },
-      {
-        "id": "f0_apply",
-        "dna": "F3",
-        "label": "f(0)",
-        "category": "함수"
-      },
-      {
-        "id": "c0",
-        "dna": "T2",
-        "label": "상수 0",
-        "category": "말단"
-      },
-      {
-        "id": "vt",
-        "dna": "T3",
-        "label": "실수 t",
-        "category": "말단"
-      },
-      {
-        "id": "ft_eq0",
-        "dna": "C1",
-        "label": "f(t)=0",
-        "category": "조건"
-      },
-      {
-        "id": "ft_apply",
-        "dna": "F3",
-        "label": "f(t)",
-        "category": "함수"
-      },
-      {
-        "id": "tangent_line",
-        "dna": "G12",
-        "label": "직선 y=f'(t)(x-t)",
-        "category": "기하"
-      },
-      {
-        "id": "tangent_eq",
-        "dna": "C11",
-        "label": "직선 방정식",
-        "category": "조건"
-      },
-      {
-        "id": "tangent_c1",
-        "dna": "C1",
-        "label": "y=f'(t)(x-t)",
-        "category": "조건"
-      },
-      {
-        "id": "rhs_prod",
-        "dna": "E6",
-        "label": "f'(t)·(x-t)",
-        "category": "수식"
-      },
-      {
-        "id": "fpt_apply",
-        "dna": "F3",
-        "label": "f'(t)",
-        "category": "함수"
-      },
-      {
-        "id": "fderiv",
-        "dna": "F13",
-        "label": "도함수 f'",
-        "category": "함수"
-      },
-      {
-        "id": "x_minus_t",
-        "dna": "E1",
-        "label": "x+(-t)",
-        "category": "수식"
-      },
-      {
-        "id": "neg_t",
-        "dna": "E2",
-        "label": "-t",
-        "category": "수식"
-      },
-      {
-        "id": "vx",
-        "dna": "T3",
-        "label": "독립변수 x",
-        "category": "말단"
-      },
-      {
-        "id": "int_cond",
-        "dna": "C23",
-        "label": "y정수→x정수",
-        "category": "조건"
-      },
-      {
-        "id": "all_t_cond",
-        "dna": "C18",
-        "label": "모든 t에 대해",
-        "category": "조건"
-      },
-      {
-        "id": "f2_ineq",
-        "dna": "C2",
-        "label": "f(2)<0",
-        "category": "조건"
-      },
-      {
-        "id": "f2_apply",
-        "dna": "F3",
-        "label": "f(2)",
-        "category": "함수"
-      },
-      {
-        "id": "c2",
-        "dna": "T2",
-        "label": "상수 2",
-        "category": "말단"
-      }
-    ],
-    "previous_dna_edges": [
-      {
-        "from": "ask",
-        "to": "top"
-      },
-      {
-        "from": "c12",
-        "to": "ask"
-      },
-      {
-        "from": "vfx",
-        "to": "ask"
-      },
-      {
-        "from": "cubic_cond",
-        "to": "vfx"
-      },
-      {
-        "from": "lc_cond",
-        "to": "vfx"
-      },
-      {
-        "from": "c16",
-        "to": "lc_cond"
-      },
-      {
-        "from": "f0_eq",
-        "to": "top"
-      },
-      {
-        "from": "f0_apply",
-        "to": "f0_eq"
-      },
-      {
-        "from": "vfx",
-        "to": "f0_apply"
-      },
-      {
-        "from": "c0",
-        "to": "f0_apply"
-      },
-      {
-        "from": "c0",
-        "to": "f0_eq"
-      },
-      {
-        "from": "all_t_cond",
-        "to": "top"
-      },
-      {
-        "from": "ft_eq0",
-        "to": "all_t_cond"
-      },
-      {
-        "from": "int_cond",
-        "to": "all_t_cond"
-      },
-      {
-        "from": "ft_apply",
-        "to": "ft_eq0"
-      },
-      {
-        "from": "vfx",
-        "to": "ft_apply"
-      },
-      {
-        "from": "vt",
-        "to": "ft_apply"
-      },
-      {
-        "from": "c0",
-        "to": "ft_eq0"
-      },
-      {
-        "from": "tangent_line",
-        "to": "int_cond"
-      },
-      {
-        "from": "tangent_eq",
-        "to": "tangent_line"
-      },
-      {
-        "from": "tangent_c1",
-        "to": "tangent_eq"
-      },
-      {
-        "from": "rhs_prod",
-        "to": "tangent_c1"
-      },
-      {
-        "from": "fpt_apply",
-        "to": "rhs_prod"
-      },
-      {
-        "from": "x_minus_t",
-        "to": "rhs_prod"
-      },
-      {
-        "from": "fderiv",
-        "to": "fpt_apply"
-      },
-      {
-        "from": "vfx",
-        "to": "fderiv"
-      },
-      {
-        "from": "vt",
-        "to": "fpt_apply"
-      },
-      {
-        "from": "vx",
-        "to": "x_minus_t"
-      },
-      {
-        "from": "neg_t",
-        "to": "x_minus_t"
-      },
-      {
-        "from": "vt",
-        "to": "neg_t"
-      },
-      {
-        "from": "f2_ineq",
-        "to": "top"
-      },
-      {
-        "from": "f2_apply",
-        "to": "f2_ineq"
-      },
-      {
-        "from": "vfx",
-        "to": "f2_apply"
-      },
-      {
-        "from": "c2",
-        "to": "f2_apply"
-      },
-      {
-        "from": "c0",
-        "to": "f2_ineq"
-      }
-    ],
-    "previous_new_dna": [],
-    "previous_dna_review_notes": "전체적으로 구조가 잘 잡혀 있음. 공유 노드(vfx, vt, c0, vx 등) 적절히 통합됨. 3단 구조(G12→C11→C1→E6) 준수. f0_eq의 경우 좌변 f0_apply와 우변 c0 모두 연결 필요하여 현행 유지. f2_ineq 우변 c0 연결도 적절. 고립 노드 없음. DAG 순환 없음. DNA 타입 전반 적절. 미세 수정 없이 ok에 가깝지만 구조 재검토 후 동일 출력.",
-    "original_solution": "$f(t)=0$인 $t$에 대하여 $f'(t)=0$이면 직선 $y=f'(t)(x-t) \\Leftrightarrow y=0$ 위에 $y$좌표가 $0$이고 $x$좌표가 정수가 아닌 점이 존재하므로 문제의 박스 조건에 모순이다.\n\n이므로 $f(t)=0$인 모든 $t$에 대하여 $f'(t)\\neq 0$ $\\cdots$ ⓐ 임을 알 수 있다.\n\n또한, 정수 $k$에 대하여\n\n$$\\left(\\text{직선 } y=f'(t)(x-t) \\text{ 위의 점 중 } y\\text{좌표가 } k\\text{인 점의 } x\\text{좌표}\\right) = t + \\dfrac{k}{f'(t)}$$\n\n이므로 문제의 박스 조건을 만족시키려면\n\n$$f(t)=0\\text{인 모든 } t\\text{에 대하여 } t\\text{와 } \\dfrac{1}{f'(t)} \\text{은 각각 정수} \\cdots (\\bigstar)$$\n\n이어야 한다.\n\n한편, ⓐ을 참고하여 문제의 조건에서\n\n$$f(0)=0, \\quad f(2)<0$$\n\n$$\\Rightarrow f(x)=0 \\text{은 } x=0\\text{과 } 0\\text{이 아닌 서로 다른 두 실근을 가짐}$$\n\n$$\\Rightarrow f(x)=\\dfrac{1}{6}x(x-p)(x-q) \\quad (\\text{단, } p\\neq 0, \\; p < 2 < q \\cdots \\text{ⓒ})$$\n\n로 놓으면\n\n$$(\\bigstar) \\Rightarrow \\begin{cases} \\text{① } p, \\; q\\text{는 정수} \\\\ \\text{② } \\dfrac{1}{f'(0)}=\\dfrac{6}{pq} \\text{ 은 정수} \\\\ \\text{③ } \\dfrac{1}{f'(p)}=\\dfrac{6}{p(p-q)}, \\; \\dfrac{1}{f'(q)}=\\dfrac{6}{q(q-p)} \\text{ 은 정수} \\end{cases}$$\n\n이어야 한다.\n\n따라서 ② $\\Rightarrow$ $|pq|$는 $6$의 약수이므로\n\n$$\\text{①, ⓒ} \\Rightarrow \\begin{cases} q=3\\text{일 때, } p=\\pm 1 \\text{ 또는 } p=-2 \\\\ q=6\\text{일 때, } p=\\pm 1 \\end{cases}$$\n\n이고, 이 중에서 ③을 만족시키는 경우는\n\n$$q=3, \\quad p=1$$\n\n인 경우뿐임을 알 수 있다.\n\n$$\\therefore \\; f(x)=\\dfrac{1}{6}x(x-1)(x-3) \\Rightarrow f(12)=198$$",
-    "recovery_warnings": [],
-    "errata": [],
-    "metadata": {
-      "unit": "다항함수의 미분",
-      "difficulty": "상",
-      "score": "4",
-      "type": "multiple_choice",
-      "answer": "2",
-      "year": "미상",
-      "source": "수능",
-      "topic": "삼차함수와 접선 조건",
-      "subtopic": "정수 조건을 만족하는 삼차함수 결정"
-    },
-    "needed_neurons": [
-      "사실??",
-      "연산??",
-      "전략??",
-      "사실??"
-    ],
-    "needed_dna": [],
-    "edge_count": 28,
-    "side_count": 9,
-    "created_at": "2026-03-26T10:04:11.561Z"
-  },
-  {
     "problem_id": "P7",
     "answer": "25",
     "content": "id: P7\nsource: 수능\nyear: 미상\nunit: 미적분\ntopic: 접선의 방정식\nsubtopic: 이차함수와 접선 조건\ndifficulty: 상\nscore: 4\nanswer: 5\ntype: multiple_choice\n\n# 7. (수능) - 이차함수의 접선과 부등식 조건\n\n## Problem\n최고차항의 계수가 $1$인 이차함수 $f(x)$에 대하여 곡선 $y = f(x)$ 위의 점 $(1,\\, 4)$에서의 접선의 방정식을 $y = g(x)$, 곡선 $y = (x-1)f(x)$ 위의 점 $(1,\\, 0)$에서의 접선의 방정식을 $y = h(x)$라 하자. 모든 실수 $x$에 대하여 $g(x) - h(x) \\leq a$를 만족시키는 실수 $a$가 존재할 때, $f(a)$의 최솟값은? [4점]\n\n## Choices\n① 17\n② 19\n③ 21\n④ 23\n⑤ 25\n\n## Solution\n$y = g(x)$와 $y = h(x)$가 모두 직선이므로 $y = g(x) - h(x)$는 직선이다.\n\n모든 실수 $x$에 대하여 $g(x) - h(x) \\leq a$ $\\cdots$ ㉠\n\n이 성립하려면 $y = g(x) - h(x)$의 기울기가 $0$이어야 한다.\n\n$$\\Rightarrow (y = g(x) \\text{의 기울기}) = (y = h(x) \\text{의 기울기})$$\n\n$g(x)$는 $y = f(x)$ 위의 점 $(1, 4)$에서의 접선이므로:\n\n$$g(x) = f'(1)(x - 1) + f(1)$$\n\n$h(x)$는 $y = (x-1)f(x)$ 위의 점 $(1, 0)$에서의 접선이다. $F(x) = (x-1)f(x)$로 놓으면:\n\n$$F'(x) = f(x) + (x-1)f'(x)$$\n$$F'(1) = f(1) = 4$$\n\n따라서 $h(x) = 4(x - 1)$이고, $h(x)$의 기울기는 $4$이다.\n\n기울기가 같으려면 $f'(1) = 4$이다.\n\n$f(x)$는 최고차항의 계수가 $1$인 이차식이므로:\n\n$$f(x) = 4x + (x - 1)^2 = x^2 + 2x + 1 \\cdots \\text{㉡}$$\n\n이를 확인하면:\n- $f(1) = 1 + 2 + 1 = 4$ ✓\n- $f'(x) = 2x + 2$이므로 $f'(1) = 4$ ✓\n\n접선을 구하면:\n\n$$g(x) = f'(1)(x-1) + f(1) = 4(x-1) + 4 = 4x$$\n$$h(x) = 4(x-1) = 4x - 4$$\n\n$$\\Rightarrow g(x) - h(x) = 4x - (4x - 4) = 4$$\n\n㉠으로부터:\n\n$$a \\geq 4 \\cdots \\text{㉢}$$\n\n한편, ㉡에 $x = a$를 대입하면:\n\n$$f(a) = 4a + (a-1)^2 = (a+1)^2$$\n\n㉢에 의해 $a \\geq 4$이므로:\n\n$$f(a) = (a+1)^2 \\text{의 최솟값} = (4+1)^2 = \\boxed{25}$$",
@@ -3427,5 +2644,789 @@
     "edge_count": 24,
     "side_count": 3,
     "created_at": "2026-03-26T10:26:39.774Z"
+  },
+  {
+    "problem_id": "P6",
+    "answer": "198",
+    "content": "id: P8\nsource: 수능/모의고사\nyear: 미상\nunit: 다항함수의 미분\ntopic: 삼차함수의 조건 분석\nsubtopic: 실근의 개수와 접선 조건\ndifficulty: 상\nscore: 4\nanswer: 173\ntype: short_answer\n\n# 8. 삼차함수의 조건을 만족시키는 $|f(7)|$의 값\n\n## Problem\n\n$f(1) = f'(1)$인 삼차함수 $f(x)$가 다음 조건을 만족시킨다.\n\n(가) $f(k) = f(0)$인 임의의 실수 $k$에 대하여\n$$f(f(k) - f(1)k) = f(0)$$\n이다.\n\n(나) 방정식 $f(f(x) - f(1)x) = f(0)$의 서로 다른 실근의 개수는 3이다.\n\n$f(0) > 0$일 때, $|f(7)|$의 값을 구하시오. [4점]\n\n## Solution\n\n방정식 $f(x) = f(0)$의 실근의 집합을 $A$, 방정식 $f(f(x) - f(1)x) = f(0)$의 실근의 집합을 $B$라 하면 $0 \\in A$, $1 \\in B$이고,\n\n$$\\begin{cases} \\text{(가)} \\Leftrightarrow A \\subset B \\\\ \\text{(나)} \\Leftrightarrow n(B) = 3 \\end{cases}$$\n\n이므로 $B = \\{0,\\, 1,\\, \\alpha\\}$ (단, $\\alpha \\neq 0$, $\\alpha \\neq 1$)로 놓을 수 있다.\n\n또한, $0 \\in B \\Rightarrow f(f(0)) = f(0) \\Rightarrow f(0) \\in A$이므로\n\n$$\\{0,\\, f(0)\\} \\subset A \\subset \\{0,\\, 1,\\, \\alpha\\} \\quad (\\text{단, } f(0) = 1 \\text{ 또는 } f(0) = \\alpha)$$\n\n따라서 (i) $A = \\{0, 1, \\alpha\\}$, (ii) $A = \\{0, f(0)\\}$ 인 경우로 나누어 생각한다.\n\n**(i) $A = \\{0, 1, \\alpha\\}$인 경우**\n\n$f(f(x) - f(1)x) = f(0)$은 다음 세 방정식으로 분해된다:\n- ① $f(x) = f(1)x$\n- ② $f(x) = f(1)x + 1$\n- ③ $f(x) = f(1)x + \\alpha$\n\n각각의 실근은 모두 $B$의 원소이고, 각각 적어도 하나의 실근을 가지며($f(x)$가 삼차함수), 서로 같은 실근을 갖지 않으므로($\\alpha \\neq 0$, $\\alpha \\neq 1$), 각각의 실근의 개수 $= 1$ ($\\because n(B) = 3$).\n\n이때 $f(0) = f(1) = f(\\alpha) > 0$이고, $f(1) = f'(1)$이므로 직선 $y = f(1)x$는 곡선 $y = f(x)$ 위의 점 $(1, f(1))$에서의 접선이다. … ⓐ\n\n[FIGURE: 삼차함수 $y = f(x)$와 직선 $y = f(1)x$, $y = f(0)$의 관계를 보여주는 그래프]\n\n그림을 참고하면 점 $(\\alpha, f(0))$이 직선 $y = f(1)x$보다 아래쪽에 위치하므로 $\\alpha$는 ①, ②, ③의 실근이 아님 → $\\alpha \\in B$에 **모순**.\n\n**(ii) $A = \\{0, f(0)\\}$인 경우**\n\n곡선 $y = f(x)$와 직선 $y = f(0)$는 $x = 0$, $x = f(0)$에서만 만난다.\n\n$f(f(x) - f(1)x) = f(0)$은 다음으로 분해된다:\n- ⓐ $f(x) = f(1)x$\n- ⓑ $f(x) = f(1)x + f(0)$\n\nⓐ의 실근이 1뿐이라면 ⓑ의 실근의 개수 $= 1$이므로 $n(B) = 2$가 되어 모순.\n\n따라서 곡선 $y = f(x)$와 직선 $y = f(1)x$는 $x = 1$에서 접하고 $x = a$에서 만난다.\n\n[FIGURE: $f(0) = 1$인 경우와 $f(0) = a$인 경우의 두 그래프]\n\n그림을 참고하면 ⓑ의 실근이 0뿐이어야 하므로 $f(0) = a$이다.\n$\\Rightarrow y = f(1)x$가 $(0, f(0))$, $(f(0), f(0))$을 지남\n$\\Rightarrow f(1) = 1$\n\n삼차함수의 비율관계에 의해 $\\alpha = 2$이므로\n\n$$f(x) = px(x - 2)^2 + 2$$\n\n$f(1) = 1$에서 $p \\cdot 1 \\cdot (1-2)^2 + 2 = 1$이므로 $p = -1$.\n\n$$\\therefore f(x) = -x(x-2)^2 + 2$$\n\n$$|f(7)| = |-7 \\cdot 25 + 2| = |-175 + 2| = 173$$\n\n$$\\boxed{173}$$",
+    "content_source": "CheckPending",
+    "content_length": 2232,
+    "skel_status": "neuron_missing",
+    "dna_status": "ok",
+    "previous_skeleton": [
+      {
+        "from": "단서B",
+        "to": "note1",
+        "neuron": "사실100",
+        "type": "사실",
+        "domain_hint": "FUNC",
+        "description": "f'(t)=0이면 직선이 y=0이 되는 것을 관찰",
+        "note": "$f'(t)=0$이면 직선 $y=f'(t)(x-t)$는 $y=0$이 되고, $y=0$ 위에 $y$좌표가 정수(0)이고 $x$좌표가 비정수인 점이 존재한다",
+        "main": false,
+        "step": 1,
+        "_keep_neuron": false
+      },
+      {
+        "from": [
+          "note1",
+          "단서B"
+        ],
+        "to": "note2",
+        "neuron": "전략21",
+        "type": "전략",
+        "domain_hint": "FUNC",
+        "description": "특정 가능성을 가정하고 그 결과를 추적한다.",
+        "note": "특정 가능성을 가정하고 그 결과를 추적한다.",
+        "main": true,
+        "step": 1,
+        "_keep_neuron": true
+      },
+      {
+        "from": "note2",
+        "to": "note3",
+        "neuron": "전략23",
+        "type": "전략",
+        "domain_hint": "FUNC",
+        "description": "가정으로부터 모순이 발생하므로 해당 가능성을 배제한다.",
+        "note": "가정으로부터 모순이 발생하므로 해당 가능성을 배제한다.",
+        "main": true,
+        "step": 1,
+        "_keep_neuron": true
+      },
+      {
+        "from": [
+          "단서B",
+          "note3"
+        ],
+        "to": "note4",
+        "neuron": "연산30",
+        "type": "연산",
+        "domain_hint": "FUNC, EQN",
+        "description": "두 점으로부터 직선의 방정식을 구한다",
+        "note": "두 점으로부터 직선의 방정식을 구한다",
+        "main": true,
+        "step": 2,
+        "_keep_neuron": true
+      },
+      {
+        "from": "note4",
+        "to": "note5",
+        "neuron": "연산10",
+        "type": "연산",
+        "domain_hint": "FUNC, EQN",
+        "description": "기울기와 한 점을 이용해 y=k인 점의 x좌표를 역산한다",
+        "note": "기울기와 한 점을 이용해 y=k인 점의 x좌표를 역산한다",
+        "main": true,
+        "step": 2,
+        "_keep_neuron": true
+      },
+      {
+        "from": "note5",
+        "to": "note6",
+        "neuron": "NEW_1",
+        "type": "전략",
+        "domain_hint": "NUM, FUNC",
+        "description": "정수 조건을 t와 1/f'(t)의 정수 조건으로 동치 변환",
+        "note": "$f(t)=0$인 모든 $t$에 대하여 $t$는 정수이고 $\\frac{1}{f'(t)}$은 정수이다 $(\\bigstar)$",
+        "main": true,
+        "step": 2,
+        "_keep_neuron": false
+      },
+      {
+        "from": "단서A",
+        "to": "note7",
+        "neuron": "전략25",
+        "type": "사실",
+        "domain_hint": "POLY",
+        "description": "f(0)=0을 확인하여 x=0이 f의 근임을 대입으로 확인한다.",
+        "note": "f(0)=0을 확인하여 x=0이 f의 근임을 대입으로 확인한다.",
+        "main": true,
+        "step": 3,
+        "_keep_neuron": true
+      },
+      {
+        "from": "note7",
+        "to": "note8",
+        "neuron": "전략38",
+        "type": "사실",
+        "domain_hint": "POLY",
+        "description": "x=0이 근이므로 인수정리에 의해 x가 f(x)의 인수임을 적용하여 f(x)=x·g(x)로 분리한다.",
+        "note": "x=0이 근이므로 인수정리에 의해 x가 f(x)의 인수임을 적용하여 f(x)=x·g(x)로 분리한다.",
+        "main": true,
+        "step": 3,
+        "_keep_neuron": true
+      },
+      {
+        "from": [
+          "note8",
+          "단서C"
+        ],
+        "to": "note9",
+        "neuron": "전략25",
+        "type": "전략",
+        "domain_hint": "POLY, INEQ",
+        "description": "x²+bx+c가 항양이라는 가정 아래 x=2를 대입하면 f(2)=4+2b+c>0임을 확인한다.",
+        "note": "x²+bx+c가 항양이라는 가정 아래 x=2를 대입하면 f(2)=4+2b+c>0임을 확인한다.",
+        "main": false,
+        "step": 3,
+        "_keep_neuron": true
+      },
+      {
+        "from": "note9",
+        "to": "note10",
+        "neuron": "전략23",
+        "type": "전략",
+        "domain_hint": "POLY, INEQ",
+        "description": "f(2)>0은 기존 조건 f(2)<0과 모순이므로 x²+bx+c가 항양인 경우를 배제한다.",
+        "note": "f(2)>0은 기존 조건 f(2)<0과 모순이므로 x²+bx+c가 항양인 경우를 배제한다.",
+        "main": false,
+        "step": 3,
+        "_keep_neuron": true
+      },
+      {
+        "from": [
+          "note10",
+          "note3"
+        ],
+        "to": "note11",
+        "neuron": "연산9",
+        "type": "사실",
+        "domain_hint": "POLY",
+        "description": "방정식 F(x)=0을 f(x)=0 또는 g(x)=0으로 분리하여 각각의 근을 독립적으로 구한다.",
+        "note": "방정식 F(x)=0을 f(x)=0 또는 g(x)=0으로 분리하여 각각의 근을 독립적으로 구한다.",
+        "main": true,
+        "step": 3,
+        "_keep_neuron": true
+      },
+      {
+        "from": "note11",
+        "to": "note12",
+        "neuron": "사실79",
+        "type": "사실",
+        "domain_hint": "POLY",
+        "description": "이차 인수의 판별식 D>0이면 서로 다른 두 실근이 존재함을 확인한다.",
+        "note": "이차 인수의 판별식 D>0이면 서로 다른 두 실근이 존재함을 확인한다.",
+        "main": true,
+        "step": 3,
+        "_keep_neuron": true
+      },
+      {
+        "from": "note12",
+        "to": "note13",
+        "neuron": "사실96",
+        "type": "사실",
+        "domain_hint": "POLY",
+        "description": "각 근에서 f'(α)≠0이면 단근(홀수 중복도)임을 확인하여 세 근이 모두 서로 다른 단근임을 검증한다.",
+        "note": "각 근에서 f'(α)≠0이면 단근(홀수 중복도)임을 확인하여 세 근이 모두 서로 다른 단근임을 검증한다.",
+        "main": true,
+        "step": 3,
+        "_keep_neuron": true
+      },
+      {
+        "from": [
+          "note13",
+          "단서C"
+        ],
+        "to": "note14",
+        "neuron": "전략25",
+        "type": "연산",
+        "domain_hint": "POLY, INEQ",
+        "description": "f(2)<0에 대입하여 p, q의 범위 결정",
+        "note": "$f(2)=\\frac{1}{6}\\cdot 2(2-p)(2-q)<0$에서 $(2-p)(2-q)<0$이고 $p<2<q$이다",
+        "main": true,
+        "step": 3,
+        "_keep_neuron": true
+      },
+      {
+        "from": "note13",
+        "to": "note15",
+        "neuron": "전략41",
+        "type": "사실",
+        "domain_hint": "POLY",
+        "description": "삼차함수를 근의 곱 형태로 표현",
+        "note": "$f(x)=\\frac{1}{6}x(x-p)(x-q)$이고 $p\\neq 0$이다",
+        "main": true,
+        "step": 3,
+        "_keep_neuron": false
+      },
+      {
+        "from": "note15",
+        "to": "note16",
+        "neuron": "연산28",
+        "type": "연산",
+        "domain_hint": "POLY, DIFF",
+        "description": "f(x)=x(x-p)(x-q)를 전개하여 f(x)=x³-(p+q)x²+pqx 형태로 풀어 쓴다.",
+        "note": "f(x)=x(x-p)(x-q)를 전개하여 f(x)=x³-(p+q)x²+pqx 형태로 풀어 쓴다.",
+        "main": true,
+        "step": 4,
+        "_keep_neuron": true
+      },
+      {
+        "from": "note16",
+        "to": "note17",
+        "neuron": "연산33",
+        "type": "연산",
+        "domain_hint": "POLY, DIFF",
+        "description": "각 항 x^n을 nx^(n-1)로 미분한다.",
+        "note": "각 항 x^n을 nx^(n-1)로 미분한다.",
+        "main": true,
+        "step": 4,
+        "_keep_neuron": true
+      },
+      {
+        "from": "note17",
+        "to": "note18",
+        "neuron": "연산34",
+        "type": "연산",
+        "domain_hint": "POLY, DIFF",
+        "description": "합/차 형태의 다항식을 항별로 미분하여 f'(x)=3x²-2(p+q)x+pq를 구한다.",
+        "note": "합/차 형태의 다항식을 항별로 미분하여 f'(x)=3x²-2(p+q)x+pq를 구한다.",
+        "main": true,
+        "step": 4,
+        "_keep_neuron": true
+      },
+      {
+        "from": "note18",
+        "to": "note19",
+        "neuron": "전략25",
+        "type": "연산",
+        "domain_hint": "POLY",
+        "description": "각 근 0, p, q를 f'에 대입",
+        "note": "$f'(0)=\\frac{pq}{6}$, $f'(p)=\\frac{p(p-q)}{6}$, $f'(q)=\\frac{q(q-p)}{6}$이다",
+        "main": true,
+        "step": 4,
+        "_keep_neuron": true
+      },
+      {
+        "from": "note19",
+        "to": "note20",
+        "neuron": "전략25",
+        "type": "연산",
+        "domain_hint": "RAT",
+        "description": "역수를 취하여 1/f'(t) 계산",
+        "note": "$\\frac{1}{f'(0)}=\\frac{6}{pq}$, $\\frac{1}{f'(p)}=\\frac{6}{p(p-q)}$, $\\frac{1}{f'(q)}=\\frac{6}{q(q-p)}$이다",
+        "main": true,
+        "step": 4,
+        "_keep_neuron": true
+      },
+      {
+        "from": [
+          "note6",
+          "note14",
+          "note20"
+        ],
+        "to": "note21",
+        "neuron": "전략33",
+        "type": "전략",
+        "domain_hint": "NUM, EQN",
+        "description": "모든 정수 조건을 종합하여 약수 조건으로 정리",
+        "note": "$p,\\,q$는 정수, $p<2<q$, $p\\neq 0$이고, $|pq|$는 $6$의 약수이며, $|p(p-q)|$와 $|q(q-p)|$는 $6$의 약수이다",
+        "main": true,
+        "step": 5,
+        "_keep_neuron": true
+      },
+      {
+        "from": "note21",
+        "to": "note22",
+        "neuron": "전략33",
+        "type": "전략",
+        "domain_hint": "NUM",
+        "description": "약수 조건을 소인수 분해로 정리하여 가능한 약수 후보 목록을 도출한다.",
+        "note": "약수 조건을 소인수 분해로 정리하여 가능한 약수 후보 목록을 도출한다.",
+        "main": true,
+        "step": 5,
+        "_keep_neuron": true
+      },
+      {
+        "from": "note22",
+        "to": "note23",
+        "neuron": "전략17",
+        "type": "전략",
+        "domain_hint": "NUM",
+        "description": "부등식으로 범위가 제한된 약수 후보를 전수 열거하여 최종 후보 목록을 확정한다.",
+        "note": "부등식으로 범위가 제한된 약수 후보를 전수 열거하여 최종 후보 목록을 확정한다.",
+        "main": true,
+        "step": 5,
+        "_keep_neuron": true
+      },
+      {
+        "from": "note23",
+        "to": "note24",
+        "neuron": "전략25",
+        "type": "연산",
+        "domain_hint": "NUM",
+        "description": "(1,3)에서 조건 (iii) 대입 검산",
+        "note": "$(p,q)=(1,3)$: $p(p-q)=-2$, $\\frac{6}{-2}=-3$ (정수 ✓), $q(q-p)=6$, $\\frac{6}{6}=1$ (정수 ✓)",
+        "main": false,
+        "step": 6,
+        "_keep_neuron": true
+      },
+      {
+        "from": "note23",
+        "to": "note25",
+        "neuron": "전략25",
+        "type": "연산",
+        "domain_hint": "NUM",
+        "description": "(-1,3)에서 조건 (iii) 대입 검산",
+        "note": "$(p,q)=(-1,3)$: $p(p-q)=4$, $\\frac{6}{4}=\\frac{3}{2}$ (비정수 ✗)",
+        "main": false,
+        "step": 6,
+        "_keep_neuron": true
+      },
+      {
+        "from": "note23",
+        "to": "note26",
+        "neuron": "전략25",
+        "type": "연산",
+        "domain_hint": "NUM",
+        "description": "(1,6)에서 조건 (iii) 대입 검산",
+        "note": "$(p,q)=(1,6)$: $p(p-q)=-5$, $\\frac{6}{-5}$ (비정수 ✗)",
+        "main": false,
+        "step": 6,
+        "_keep_neuron": true
+      },
+      {
+        "from": "note23",
+        "to": "note27",
+        "neuron": "전략25",
+        "type": "연산",
+        "domain_hint": "NUM",
+        "description": "(-1,6)에서 조건 (iii) 대입 검산",
+        "note": "$(p,q)=(-1,6)$: $p(p-q)=7$, $\\frac{6}{7}$ (비정수 ✗)",
+        "main": false,
+        "step": 6,
+        "_keep_neuron": true
+      },
+      {
+        "from": "note23",
+        "to": "note28",
+        "neuron": "전략25",
+        "type": "연산",
+        "domain_hint": "NUM",
+        "description": "(-2,3)에서 조건 (iii) 대입 검산",
+        "note": "$(p,q)=(-2,3)$: $p(p-q)=10$, $\\frac{6}{10}$ (비정수 ✗)",
+        "main": false,
+        "step": 6,
+        "_keep_neuron": true
+      },
+      {
+        "from": [
+          "note24",
+          "note25",
+          "note26",
+          "note27",
+          "note28"
+        ],
+        "to": "note29",
+        "neuron": "전략20",
+        "type": "전략",
+        "domain_hint": "NUM",
+        "description": "소거법으로 유일한 해 선택",
+        "note": "유일한 해는 $(p,q)=(1,3)$이다",
+        "main": true,
+        "step": 6,
+        "_keep_neuron": true
+      },
+      {
+        "from": [
+          "note29",
+          "note15"
+        ],
+        "to": "note30",
+        "neuron": "전략25",
+        "type": "연산",
+        "domain_hint": "POLY",
+        "description": "p,q 값을 대입하여 f(x) 확정",
+        "note": "$f(x)=\\frac{1}{6}x(x-1)(x-3)$이다",
+        "main": true,
+        "step": 7,
+        "_keep_neuron": true
+      },
+      {
+        "from": "note30",
+        "to": "note31",
+        "neuron": "전략25",
+        "type": "연산",
+        "domain_hint": "POLY",
+        "description": "f(2) 검증",
+        "note": "$f(2)=\\frac{1}{6}\\cdot 2\\cdot 1\\cdot(-1)=-\\frac{1}{3}<0$ ✓",
+        "main": false,
+        "step": 7,
+        "_keep_neuron": true
+      },
+      {
+        "from": "note30",
+        "to": "END",
+        "neuron": "전략25",
+        "type": "연산",
+        "domain_hint": "POLY",
+        "description": "x=12를 대입하여 f(12) 계산",
+        "note": "$f(12)=\\frac{1}{6}\\cdot 12\\cdot 11\\cdot 9 = 198$이다",
+        "main": true,
+        "step": 7,
+        "_keep_neuron": true
+      }
+    ],
+    "previous_solution": "특정 가능성을 가정하고 그 결과를 추적한다. 가정으로부터 모순이 발생하므로 해당 가능성을 배제한다. 두 점으로부터 직선의 방정식을 구한다 기울기와 한 점을 이용해 y=k인 점의 x좌표를 역산한다 $f(t)=0$인 모든 $t$에 대하여 $t$는 정수이고 $\\frac{1}{f'(t)}$은 정수이다 $(\\bigstar)$ f(0)=0을 확인하여 x=0이 f의 근임을 대입으로 확인한다. x=0이 근이므로 인수정리에 의해 x가 f(x)의 인수임을 적용하여 f(x)=x·g(x)로 분리한다. 방정식 F(x)=0을 f(x)=0 또는 g(x)=0으로 분리하여 각각의 근을 독립적으로 구한다. 이차 인수의 판별식 D>0이면 서로 다른 두 실근이 존재함을 확인한다. 각 근에서 f'(α)≠0이면 단근(홀수 중복도)임을 확인하여 세 근이 모두 서로 다른 단근임을 검증한다. $f(2)=\\frac{1}{6}\\cdot 2(2-p)(2-q)<0$에서 $(2-p)(2-q)<0$이고 $p<2<q$이다 $f(x)=\\frac{1}{6}x(x-p)(x-q)$이고 $p\\neq 0$이다 f(x)=x(x-p)(x-q)를 전개하여 f(x)=x³-(p+q)x²+pqx 형태로 풀어 쓴다. 각 항 x^n을 nx^(n-1)로 미분한다. 합/차 형태의 다항식을 항별로 미분하여 f'(x)=3x²-2(p+q)x+pq를 구한다. $f'(0)=\\frac{pq}{6}$, $f'(p)=\\frac{p(p-q)}{6}$, $f'(q)=\\frac{q(q-p)}{6}$이다 $\\frac{1}{f'(0)}=\\frac{6}{pq}$, $\\frac{1}{f'(p)}=\\frac{6}{p(p-q)}$, $\\frac{1}{f'(q)}=\\frac{6}{q(q-p)}$이다 $p,\\,q$는 정수, $p<2<q$, $p\\neq 0$이고, $|pq|$는 $6$의 약수이며, $|p(p-q)|$와 $|q(q-p)|$는 $6$의 약수이다 약수 조건을 소인수 분해로 정리하여 가능한 약수 후보 목록을 도출한다. 부등식으로 범위가 제한된 약수 후보를 전수 열거하여 최종 후보 목록을 확정한다. 유일한 해는 $(p,q)=(1,3)$이다 $f(x)=\\frac{1}{6}x(x-1)(x-3)$이다 $f(12)=\\frac{1}{6}\\cdot 12\\cdot 11\\cdot 9 = 198$이다",
+    "previous_clues": "[{\"id\":\"단서A\",\"text\":\"최고차항의 계수가 $\\\\frac{1}{6}$이고 $f(0)=0$인 삼차함수 $f(x)$\"},{\"id\":\"단서B\",\"text\":\"$f(t)=0$인 모든 실수 $t$에 대하여 직선 $y=f'(t)(x-t)$ 위의 점 중 $y$좌표가 정수인 모든 점의 $x$좌표는 정수이다\"},{\"id\":\"단서C\",\"text\":\"$f(2)<0$\"}]",
+    "previous_analysis": "",
+    "previous_matching": "",
+    "previous_matched": [],
+    "previous_new_neurons": [
+      {
+        "id": "전략??",
+        "type": "전략",
+        "statement": "주어진 조건이 복합식의 정수 조건일 때, 이를 각 구성 변수의 정수 조건으로 동치 분해하여 분석한다.",
+        "description": "정수 조건을 t와 1/f'(t)의 정수 조건으로 동치 변환",
+        "note": "$f(t)=0$인 모든 $t$에 대하여 $t$는 정수이고 $\\frac{1}{f'(t)}$은 정수이다 $(\\bigstar)$",
+        "reason": "전략16(회전 구조), 전략18(삼각형 분할), 전략23(모순 배제), 전략25(대입 검증) 모두 '정수 조건을 동치 변환'하는 원리를 담고 있지 않다. 이 edge는 조건식을 동치인 다른 변수(t와 1/f'(t))의 정수 조건으로 재표현하는 전략이다.",
+        "blocked_edge": "note31 → note5",
+        "domain_hint": "NUM, FUNC",
+        "domain": [
+          "NUM",
+          "FUNC",
+          "DIFF"
+        ],
+        "action_hint": "",
+        "step": 2,
+        "main": true,
+        "near_miss": []
+      }
+    ],
+    "previous_partial_skeleton": [],
+    "previous_blockage_point": "",
+    "previous_skel_review_notes": "",
+    "previous_dna_nodes": [
+      {
+        "id": "top",
+        "dna": "Q1",
+        "label": "값을 구하라",
+        "category": "발문"
+      },
+      {
+        "id": "ask",
+        "dna": "F3",
+        "label": "f(12)",
+        "category": "함수"
+      },
+      {
+        "id": "c12",
+        "dna": "T2",
+        "label": "상수 12",
+        "category": "말단"
+      },
+      {
+        "id": "vfx",
+        "dna": "F6",
+        "label": "함수 f(x)",
+        "category": "함수"
+      },
+      {
+        "id": "lc_cond",
+        "dna": "L4",
+        "label": "최고차계수 1/6",
+        "category": "제한"
+      },
+      {
+        "id": "c16",
+        "dna": "T2",
+        "label": "상수 1/6",
+        "category": "말단"
+      },
+      {
+        "id": "cubic_cond",
+        "dna": "F11",
+        "label": "삼차함수",
+        "category": "함수"
+      },
+      {
+        "id": "f0_eq",
+        "dna": "C1",
+        "label": "f(0)=0",
+        "category": "조건"
+      },
+      {
+        "id": "f0_apply",
+        "dna": "F3",
+        "label": "f(0)",
+        "category": "함수"
+      },
+      {
+        "id": "c0",
+        "dna": "T2",
+        "label": "상수 0",
+        "category": "말단"
+      },
+      {
+        "id": "vt",
+        "dna": "T3",
+        "label": "실수 t",
+        "category": "말단"
+      },
+      {
+        "id": "ft_eq0",
+        "dna": "C1",
+        "label": "f(t)=0",
+        "category": "조건"
+      },
+      {
+        "id": "ft_apply",
+        "dna": "F3",
+        "label": "f(t)",
+        "category": "함수"
+      },
+      {
+        "id": "tangent_line",
+        "dna": "G12",
+        "label": "직선 y=f'(t)(x-t)",
+        "category": "기하"
+      },
+      {
+        "id": "tangent_eq",
+        "dna": "C11",
+        "label": "직선 방정식",
+        "category": "조건"
+      },
+      {
+        "id": "tangent_c1",
+        "dna": "C1",
+        "label": "y=f'(t)(x-t)",
+        "category": "조건"
+      },
+      {
+        "id": "rhs_prod",
+        "dna": "E6",
+        "label": "f'(t)·(x-t)",
+        "category": "수식"
+      },
+      {
+        "id": "fpt_apply",
+        "dna": "F3",
+        "label": "f'(t)",
+        "category": "함수"
+      },
+      {
+        "id": "fderiv",
+        "dna": "F13",
+        "label": "도함수 f'",
+        "category": "함수"
+      },
+      {
+        "id": "x_minus_t",
+        "dna": "E1",
+        "label": "x+(-t)",
+        "category": "수식"
+      },
+      {
+        "id": "neg_t",
+        "dna": "E2",
+        "label": "-t",
+        "category": "수식"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
+      },
+      {
+        "id": "int_cond",
+        "dna": "C23",
+        "label": "y정수→x정수",
+        "category": "조건"
+      },
+      {
+        "id": "all_t_cond",
+        "dna": "C18",
+        "label": "모든 t에 대해",
+        "category": "조건"
+      },
+      {
+        "id": "f2_ineq",
+        "dna": "C2",
+        "label": "f(2)<0",
+        "category": "조건"
+      },
+      {
+        "id": "f2_apply",
+        "dna": "F3",
+        "label": "f(2)",
+        "category": "함수"
+      },
+      {
+        "id": "c2",
+        "dna": "T2",
+        "label": "상수 2",
+        "category": "말단"
+      }
+    ],
+    "previous_dna_edges": [
+      {
+        "from": "ask",
+        "to": "top"
+      },
+      {
+        "from": "c12",
+        "to": "ask"
+      },
+      {
+        "from": "vfx",
+        "to": "ask"
+      },
+      {
+        "from": "cubic_cond",
+        "to": "vfx"
+      },
+      {
+        "from": "lc_cond",
+        "to": "vfx"
+      },
+      {
+        "from": "c16",
+        "to": "lc_cond"
+      },
+      {
+        "from": "f0_eq",
+        "to": "top"
+      },
+      {
+        "from": "f0_apply",
+        "to": "f0_eq"
+      },
+      {
+        "from": "vfx",
+        "to": "f0_apply"
+      },
+      {
+        "from": "c0",
+        "to": "f0_apply"
+      },
+      {
+        "from": "c0",
+        "to": "f0_eq"
+      },
+      {
+        "from": "all_t_cond",
+        "to": "top"
+      },
+      {
+        "from": "ft_eq0",
+        "to": "all_t_cond"
+      },
+      {
+        "from": "int_cond",
+        "to": "all_t_cond"
+      },
+      {
+        "from": "ft_apply",
+        "to": "ft_eq0"
+      },
+      {
+        "from": "vfx",
+        "to": "ft_apply"
+      },
+      {
+        "from": "vt",
+        "to": "ft_apply"
+      },
+      {
+        "from": "c0",
+        "to": "ft_eq0"
+      },
+      {
+        "from": "tangent_line",
+        "to": "int_cond"
+      },
+      {
+        "from": "tangent_eq",
+        "to": "tangent_line"
+      },
+      {
+        "from": "tangent_c1",
+        "to": "tangent_eq"
+      },
+      {
+        "from": "rhs_prod",
+        "to": "tangent_c1"
+      },
+      {
+        "from": "fpt_apply",
+        "to": "rhs_prod"
+      },
+      {
+        "from": "x_minus_t",
+        "to": "rhs_prod"
+      },
+      {
+        "from": "fderiv",
+        "to": "fpt_apply"
+      },
+      {
+        "from": "vfx",
+        "to": "fderiv"
+      },
+      {
+        "from": "vt",
+        "to": "fpt_apply"
+      },
+      {
+        "from": "vx",
+        "to": "x_minus_t"
+      },
+      {
+        "from": "neg_t",
+        "to": "x_minus_t"
+      },
+      {
+        "from": "vt",
+        "to": "neg_t"
+      },
+      {
+        "from": "f2_ineq",
+        "to": "top"
+      },
+      {
+        "from": "f2_apply",
+        "to": "f2_ineq"
+      },
+      {
+        "from": "vfx",
+        "to": "f2_apply"
+      },
+      {
+        "from": "c2",
+        "to": "f2_apply"
+      },
+      {
+        "from": "c0",
+        "to": "f2_ineq"
+      }
+    ],
+    "previous_new_dna": [],
+    "previous_dna_review_notes": "",
+    "original_solution": "방정식 $f(x) = f(0)$의 실근의 집합을 $A$, 방정식 $f(f(x) - f(1)x) = f(0)$의 실근의 집합을 $B$라 하면 $0 \\in A$, $1 \\in B$이고,\n\n$$\\begin{cases} \\text{(가)} \\Leftrightarrow A \\subset B \\\\ \\text{(나)} \\Leftrightarrow n(B) = 3 \\end{cases}$$\n\n이므로 $B = \\{0,\\, 1,\\, \\alpha\\}$ (단, $\\alpha \\neq 0$, $\\alpha \\neq 1$)로 놓을 수 있다.\n\n또한, $0 \\in B \\Rightarrow f(f(0)) = f(0) \\Rightarrow f(0) \\in A$이므로\n\n$$\\{0,\\, f(0)\\} \\subset A \\subset \\{0,\\, 1,\\, \\alpha\\} \\quad (\\text{단, } f(0) = 1 \\text{ 또는 } f(0) = \\alpha)$$\n\n따라서 (i) $A = \\{0, 1, \\alpha\\}$, (ii) $A = \\{0, f(0)\\}$ 인 경우로 나누어 생각한다.\n\n**(i) $A = \\{0, 1, \\alpha\\}$인 경우**\n\n$f(f(x) - f(1)x) = f(0)$은 다음 세 방정식으로 분해된다:\n- ① $f(x) = f(1)x$\n- ② $f(x) = f(1)x + 1$\n- ③ $f(x) = f(1)x + \\alpha$\n\n각각의 실근은 모두 $B$의 원소이고, 각각 적어도 하나의 실근을 가지며($f(x)$가 삼차함수), 서로 같은 실근을 갖지 않으므로($\\alpha \\neq 0$, $\\alpha \\neq 1$), 각각의 실근의 개수 $= 1$ ($\\because n(B) = 3$).\n\n이때 $f(0) = f(1) = f(\\alpha) > 0$이고, $f(1) = f'(1)$이므로 직선 $y = f(1)x$는 곡선 $y = f(x)$ 위의 점 $(1, f(1))$에서의 접선이다. … ⓐ\n\n[FIGURE: 삼차함수 $y = f(x)$와 직선 $y = f(1)x$, $y = f(0)$의 관계를 보여주는 그래프]\n\n그림을 참고하면 점 $(\\alpha, f(0))$이 직선 $y = f(1)x$보다 아래쪽에 위치하므로 $\\alpha$는 ①, ②, ③의 실근이 아님 → $\\alpha \\in B$에 **모순**.\n\n**(ii) $A = \\{0, f(0)\\}$인 경우**\n\n곡선 $y = f(x)$와 직선 $y = f(0)$는 $x = 0$, $x = f(0)$에서만 만난다.\n\n$f(f(x) - f(1)x) = f(0)$은 다음으로 분해된다:\n- ⓐ $f(x) = f(1)x$\n- ⓑ $f(x) = f(1)x + f(0)$\n\nⓐ의 실근이 1뿐이라면 ⓑ의 실근의 개수 $= 1$이므로 $n(B) = 2$가 되어 모순.\n\n따라서 곡선 $y = f(x)$와 직선 $y = f(1)x$는 $x = 1$에서 접하고 $x = a$에서 만난다.\n\n[FIGURE: $f(0) = 1$인 경우와 $f(0) = a$인 경우의 두 그래프]\n\n그림을 참고하면 ⓑ의 실근이 0뿐이어야 하므로 $f(0) = a$이다.\n$\\Rightarrow y = f(1)x$가 $(0, f(0))$, $(f(0), f(0))$을 지남\n$\\Rightarrow f(1) = 1$\n\n삼차함수의 비율관계에 의해 $\\alpha = 2$이므로\n\n$$f(x) = px(x - 2)^2 + 2$$\n\n$f(1) = 1$에서 $p \\cdot 1 \\cdot (1-2)^2 + 2 = 1$이므로 $p = -1$.\n\n$$\\therefore f(x) = -x(x-2)^2 + 2$$\n\n$$|f(7)| = |-7 \\cdot 25 + 2| = |-175 + 2| = 173$$\n\n$$\\boxed{173}$$",
+    "recovery_warnings": [],
+    "errata": [],
+    "metadata": {
+      "unit": "다항함수의 미분",
+      "difficulty": "상",
+      "score": "4",
+      "type": "multiple_choice",
+      "answer": "2",
+      "year": "미상",
+      "source": "수능",
+      "topic": "삼차함수와 접선 조건",
+      "subtopic": "정수 조건을 만족하는 삼차함수 결정"
+    },
+    "needed_neurons": [
+      "사실??",
+      "연산??",
+      "전략??",
+      "사실??"
+    ],
+    "needed_dna": [],
+    "edge_count": 32,
+    "side_count": 9,
+    "created_at": "2026-03-26T10:27:55.431Z"
   }
 ]
