@@ -902,6 +902,52 @@
     ]
   },
   {
+    "id": "사실115",
+    "domain": [
+      "POLY"
+    ],
+    "action": "DEGREE_PRODUCT"
+  },
+  {
+    "id": "사실116",
+    "domain": [
+      "ABS"
+    ],
+    "action": "ABS_SOLVE"
+  },
+  {
+    "id": "사실117",
+    "domain": [
+      "ABS",
+      "DIFF"
+    ],
+    "action": "ABS_DIFF"
+  },
+  {
+    "id": "사실118",
+    "domain": [
+      "FUNC",
+      "POLY"
+    ],
+    "action": "LINEAR_UNBOUNDED"
+  },
+  {
+    "id": "사실119",
+    "domain": [
+      "POLY",
+      "FUNC"
+    ],
+    "action": "QUAD_MONOTONE"
+  },
+  {
+    "id": "사실120",
+    "domain": [
+      "ABS",
+      "DIFF"
+    ],
+    "action": "ABS_ROOT_NONDIFF"
+  },
+  {
     "id": "연산1",
     "domain": [
       "LOG"
@@ -1068,6 +1114,13 @@
       "TRANSF"
     ],
     "action": "CONVERT"
+  },
+  {
+    "id": "연산24",
+    "domain": [
+      "EQN"
+    ],
+    "action": "REARRANGE"
   },
   {
     "id": "연산25",
@@ -1274,14 +1327,6 @@
       "NUM"
     ],
     "action": "BOUND"
-  },
-  {
-    "id": "전략40",
-    "domain": [
-      "FUNC",
-      "DIFF"
-    ],
-    "action": "SHAPE_FROM_EXTREMA"
   },
   {
     "id": "전략6",
@@ -1525,25 +1570,20 @@
     "action": "FACTOR"
   },
   {
-    "id": "사실115",
+    "id": "전략39",
     "domain": [
-      "POLY"
+      "EQN",
+      "FUNC"
     ],
-    "action": "DEGREE_PRODUCT"
+    "action": "DETERMINE_FROM_RELATION"
   },
   {
-    "id": "사실116",
+    "id": "전략40",
     "domain": [
-      "ABS"
+      "FUNC",
+      "DIFF"
     ],
-    "action": "ABS_SOLVE"
-  },
-  {
-    "id": "연산24",
-    "domain": [
-      "EQN"
-    ],
-    "action": "REARRANGE"
+    "action": "SHAPE_FROM_EXTREMA"
   },
   {
     "id": "전략41",
@@ -1552,26 +1592,5 @@
       "EQN"
     ],
     "action": "SET_GENERAL_FORM"
-  },
-  {
-    "id": "사실118",
-    "domain": [
-      "FUNC",
-      "POLY"
-    ],
-    "action": "LINEAR_UNBOUNDED"
-  },
-  {
-    "id": "사실119",
-    "domain": [
-      "POLY",
-      "FUNC"
-    ],
-    "action": "QUAD_MONOTONE"
-  },
-  {
-  "id": "사실120",
-  "domain": ["ABS", "DIFF"],
-  "action": "ABS_ROOT_NONDIFF"
-}
+  }
 ]
