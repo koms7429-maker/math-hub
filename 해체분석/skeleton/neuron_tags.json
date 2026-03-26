@@ -1622,5 +1622,13 @@
       "COORD"
     ],
     "action": "POINT_SLOPE_LINE"
+  },
+  {
+    "id": "전략43",
+    "domain": [
+      "EQN",
+      "SET"
+    ],
+    "action": "PREIMAGE_DECOMPOSITION"
   }
 ]
