@@ -1534,5 +1534,10 @@
       "ABS"
     ],
     "action": "ABS_SOLVE"
-  }
+  },
+  {
+  "id": "연산24",
+  "domain": ["EQN"],
+  "action": "REARRANGE"
+}
 ]
