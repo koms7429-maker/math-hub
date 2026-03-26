@@ -1533,6 +1533,6 @@
     "domain": [
       "ABS"
     ],
-    "action": "ABS_NONZERO"
+    "action": "ABS_SOLVE"
   }
 ]
