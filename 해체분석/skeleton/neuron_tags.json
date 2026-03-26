@@ -1646,5 +1646,13 @@
       "LIM"
     ],
     "action": "PIECEWISE_BOUNDARY_OBSERVE"
+  },
+  {
+    "id": "사실124",
+    "domain": [
+      "FUNC",
+      "INEQ"
+    ],
+    "action": "INFIMUM_APPROACHABILITY"
   }
 ]
