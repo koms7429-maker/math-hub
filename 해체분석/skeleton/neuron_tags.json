@@ -1600,5 +1600,20 @@
       "EQN"
     ],
     "action": "CONDITION_TO_SET_INCLUSION"
+  },
+  {
+    "id": "사실121",
+    "domain": [
+      "DIFF",
+      "FUNC"
+    ],
+    "action": "CONSTANT_DIFF_IFF_EQUAL_DERIVATIVE"
+  },
+  {
+    "id": "사실122",
+    "domain": [
+      "POLY"
+    ],
+    "action": "LEADING_CANCEL_DEGREE_DROP"
   }
 ]
