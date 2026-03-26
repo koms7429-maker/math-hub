@@ -916,7 +916,956 @@
     ],
     "new_dna": []
   },
-  "thinking_profile": null,
+  "thinking_profile": {
+    "_version": 6,
+    "_unit": "note",
+    "_isV6": true,
+    "total_think_tokens": 4930,
+    "total_notes": 18,
+    "hint_distribution": {
+      "0": 14,
+      "1": 2,
+      "2": 0,
+      "3": 1,
+      "4": 1
+    },
+    "avg_hint_level": 0.5,
+    "genuine_miss_count": 1,
+    "absorbed_miss_count": 0,
+    "bonus_count": 11,
+    "highlight_notes": [
+      "note3",
+      "note15",
+      "note13"
+    ],
+    "hardest_note": {
+      "note_id": "note3",
+      "neuron": "사실65",
+      "hint_level": 4,
+      "structural_difficulty": 0.12,
+      "miss_type": "genuine",
+      "note_text": "$b>0$이므로 $f(7)$과 $f(0)$은 같은 부호이다"
+    },
+    "neuron_stats": {
+      "전략41": {
+        "type": "전략",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 0,
+        "avg_hint_level": 0
+      },
+      "사실94": {
+        "type": "사실",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 0,
+        "avg_hint_level": 0
+      },
+      "사실65": {
+        "type": "사실",
+        "appearances": 1,
+        "total_hint": 4,
+        "hint_levels": [
+          4
+        ],
+        "bonus_count": 0,
+        "avg_hint_level": 4
+      },
+      "전략25": {
+        "type": "전략",
+        "appearances": 4,
+        "total_hint": 0,
+        "hint_levels": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bonus_count": 4,
+        "avg_hint_level": 0
+      },
+      "사실125": {
+        "type": "사실",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 0,
+        "avg_hint_level": 0
+      },
+      "사실126": {
+        "type": "사실",
+        "appearances": 2,
+        "total_hint": 1,
+        "hint_levels": [
+          1,
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0.5
+      },
+      "전략23": {
+        "type": "전략",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "연산28": {
+        "type": "연산",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "연산33": {
+        "type": "연산",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "연산36": {
+        "type": "연산",
+        "appearances": 2,
+        "total_hint": 0,
+        "hint_levels": [
+          0,
+          0
+        ],
+        "bonus_count": 2,
+        "avg_hint_level": 0
+      },
+      "전략44": {
+        "type": "전략",
+        "appearances": 1,
+        "total_hint": 1,
+        "hint_levels": [
+          1
+        ],
+        "bonus_count": 0,
+        "avg_hint_level": 1
+      },
+      "연산24": {
+        "type": "연산",
+        "appearances": 1,
+        "total_hint": 0,
+        "hint_levels": [
+          0
+        ],
+        "bonus_count": 1,
+        "avg_hint_level": 0
+      },
+      "전략29": {
+        "type": "전략",
+        "appearances": 1,
+        "total_hint": 3,
+        "hint_levels": [
+          3
+        ],
+        "bonus_count": 0,
+        "avg_hint_level": 3
+      }
+    },
+    "notes": [
+      {
+        "note_index": 1,
+        "note_id": "note1",
+        "neuron": "전략41",
+        "neuron_type": "전략",
+        "note_text": "$f(3)=0$이므로 $f(x)=(x-3)(x-c)$로 놓는다",
+        "from": [
+          "단서A",
+          "단서D"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note1",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note1",
+            "in_target": "note1",
+            "attempt": 0,
+            "score": 1,
+            "reason": "학생의 결론 'f(3)=0이므로 f(x)=(x-3)(x-α)로 표현된다'는 후보 A의 'f(3)=0이므로 f(x)=(x-3)(x-c)로 놓는다'와 수학적으로 완전히 동일한 내용이다."
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 113,
+            "discover_elapsed_ms": 6057,
+            "match_elapsed_ms": 3322,
+            "discover_input_tokens": 970,
+            "discover_output_tokens": 353,
+            "match_input_tokens": 1484,
+            "match_output_tokens": 125,
+            "claude_output": "[시도] 단서D를 이용해 f(x)의 근을 파악한다.\n\n[계산]\n단서D: g(3) = 0이고, x = 3 ≥ 0이므로 g(3) = f(3)\n따라서 f(3) = 0\n\nf(x)는 최고차항의 계수가 1인 이차함수이므로\nf(x) = (x - 3)(x - α) (단, α는 실수)로 쓸 수 있다.\n\n[결론] f(3) = 0이므로 f(x) = (x-3)(x-α)로 표현된다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 1,
+                "reason": "학생의 결론 'f(3)=0이므로 f(x)=(x-3)(x-α)로 표현된다'는 후보 A의 'f(3)=0이므로 f(x)=(x-3)(x-c)로 놓는다'와 수학적으로 완전히 동일한 내용이다."
+              }
+            ],
+            "eval_summary": "FOUND H0 | 113tok | disc 6057ms + match 3322ms | bonus 0"
+          }
+        ]
+      },
+      {
+        "note_index": 2,
+        "note_id": "note2",
+        "neuron": "사실94",
+        "neuron_type": "사실",
+        "note_text": "$g(x)$가 $x=0$에서 연속이므로 $\\lim_{x\\to 0^-}(ax+b)f(x+7)=f(0)$, 즉 $bf(7)=f(0)$이다",
+        "from": [
+          "note1",
+          "단서B"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note2",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note2",
+            "in_target": "note2",
+            "attempt": 0,
+            "score": 1,
+            "reason": "학생의 결론 bf(7)=f(0)은 후보 A의 핵심 결론과 완전히 일치하며, x=0 연속 조건 적용 방식도 동일하다"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 207,
+            "discover_elapsed_ms": 13552,
+            "match_elapsed_ms": 4439,
+            "discover_input_tokens": 1020,
+            "discover_output_tokens": 881,
+            "match_input_tokens": 1474,
+            "match_output_tokens": 195,
+            "claude_output": "[시도] 내가 해볼 것: g(x)가 x=0에서 연속이므로 연속 조건을 적용한다\n\n[계산]\n$$\\lim_{x \\to 0^-} g(x) = g(0)$$\n$$b \\cdot f(0+7) = f(0)$$\n$$b \\cdot f(7) = f(0)$$\n\n$f(x) = (x-3)(x-c)$를 대입하면:\n$$b \\cdot (7-3)(7-c) = (0-3)(0-c)$$\n$$4b(7-c) = 3c$$\n\n[결론] x=0 연속 조건으로부터 **4b(7-c) = 3c** 가 성립한다.",
+            "matches": [
+              {
+                "label": "A",
+                "score": 1,
+                "reason": "학생의 결론 bf(7)=f(0)은 후보 A의 핵심 결론과 완전히 일치하며, x=0 연속 조건 적용 방식도 동일하다"
+              },
+              {
+                "label": "C",
+                "score": 0.7,
+                "reason": "학생이 f(0)=3c, f(7)=4(7-c)를 계산하여 4b(7-c)=3c를 도출했는데, 이는 후보 C의 f(0)=3c, f(7)=4(7-c) 부분을 포함한다"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 207tok | disc 13552ms + match 4439ms | bonus 1"
+          }
+        ]
+      },
+      {
+        "note_index": 3,
+        "note_id": "note3",
+        "neuron": "사실65",
+        "neuron_type": "사실",
+        "note_text": "$b>0$이므로 $f(7)$과 $f(0)$은 같은 부호이다",
+        "from": [
+          "note2",
+          "단서F"
+        ],
+        "hint_level": 4,
+        "is_bonus": false,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note3",
+        "miss_type": "genuine",
+        "absorbed_in": null,
+        "absorb_reason": "어떤 출력에서도 b>0이므로 f(7)과 f(0)이 같은 부호라는 결론을 명시적으로 도출하지 않았다",
+        "partial_history": [],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 172,
+            "discover_elapsed_ms": 10939,
+            "match_elapsed_ms": 1571,
+            "discover_input_tokens": 1093,
+            "discover_output_tokens": 634,
+            "match_input_tokens": 1357,
+            "match_output_tokens": 8,
+            "claude_output": "[시도] 연속 조건에서 얻은 등식 $bf(7) = f(0)$을 $f(x) = (x-3)(x-c)$로 구체적으로 계산하기\n\n[계산]\n$$f(7) = (7-3)(7-c) = 4(7-c)$$\n$$f(0) = (0-3)(0-c) = 3c$$\n$$\\therefore b \\cdot 4(7-c) = 3c$$\n$$4b(7-c) = 3c$$\n\n[결론] $f(x) = (x-3)(x-c)$로 놓으면 $x=0$ 연속 조건으로부터 **$4b(7-c) = 3c$** 가 성립한다.",
+            "matches": [],
+            "eval_summary": "MISS attempt0 dry0 | 172tok | disc 10939ms + match 1571ms | bonus 0"
+          },
+          {
+            "attempt": 1,
+            "think_tokens": 138,
+            "discover_elapsed_ms": 9099,
+            "match_elapsed_ms": 4321,
+            "discover_input_tokens": 1212,
+            "discover_output_tokens": 470,
+            "match_input_tokens": 1320,
+            "match_output_tokens": 148,
+            "claude_output": "[시도] bf(7) = f(0) 조건에 c를 이용하여 식을 전개하기\n\n[계산]\nf(x) = (x-3)(x-c)이므로\n\nf(7) = (7-3)(7-c) = 4(7-c)\n\nf(0) = (0-3)(0-c) = 3c\n\n따라서 bf(7) = f(0)에 대입하면:\n\n$$b \\cdot 4(7-c) = 3c$$\n\n[결론] b와 c 사이의 관계식 **4b(7-c) = 3c** 를 얻는다.",
+            "matches": [
+              {
+                "label": "F",
+                "score": 0.7,
+                "reason": "학생의 결론 4b(7-c)=3c에서 c=3(노트 E의 결론)을 대입하면 4b(7-3)=3·3 → 16b=9가 되어 노트 F의 결론과 연결된다. 학생은 c=3을 아직 대입하지 않았지만 이 관계식은 F의 전단계에 해당한다."
+              }
+            ],
+            "eval_summary": "MISS attempt1 dry1 | 138tok | disc 9099ms + match 4321ms | bonus 1"
+          },
+          {
+            "attempt": 2,
+            "think_tokens": 115,
+            "discover_elapsed_ms": 12044,
+            "match_elapsed_ms": 5191,
+            "discover_input_tokens": 1238,
+            "discover_output_tokens": 929,
+            "match_input_tokens": 1377,
+            "match_output_tokens": 177,
+            "claude_output": "[시도] 내가 해볼 것: $b = \\frac{9}{16}$을 $bf(7) = f(0)$ 조건에 대입하여 $c$를 구한다\n\n[계산]\n$f(x) = (x-3)(x-c)$이므로:\n$$f(7) = 4(7-c), \\quad f(0) = 3c$$\n\n조건 $bf(7) = f(0)$에 $b = \\frac{9}{16}$ 대입:\n$$\\frac{9}{16} \\cdot 4(7-c) = 3c$$\n$$\\frac{9}{4}(7-c) = 3c \\implies \\frac{63}{4} = 3c + \\frac{9c}{4} = \\frac{21c}{4}$$\n$$c = 3$$\n\n[결론] $c = 3$이므로 $f(x) = (x-3)^2$이다.",
+            "matches": [
+              {
+                "label": "E",
+                "score": 1,
+                "reason": "학생이 'f(x) = (x-3)^2이다'라고 명시적으로 결론을 내려 완전히 일치함"
+              },
+              {
+                "label": "D",
+                "score": 0.7,
+                "reason": "학생이 c=3을 계산으로 도출했으나, D는 '극한이 발산하면 모순'이라는 논리로 c=3을 얻는 방식으로 접근이 다름. 그러나 결론 c=3은 동일하게 포함됨"
+              }
+            ],
+            "eval_summary": "MISS attempt2 dry1 | 115tok | disc 12044ms + match 5191ms | bonus 2"
+          },
+          {
+            "attempt": 3,
+            "think_tokens": 285,
+            "discover_elapsed_ms": 16873,
+            "match_elapsed_ms": 3077,
+            "discover_input_tokens": 1298,
+            "discover_output_tokens": 961,
+            "match_input_tokens": 1309,
+            "match_output_tokens": 96,
+            "claude_output": "## [시도] 내가 해볼 것: $f(x) = (x-3)^2$, $b = \\frac{9}{16}$을 이용해 $x < 0$일 때 $g(x)$를 명시적으로 표현하기\n\n## [계산]\n\n$f(x) = (x-3)^2$이므로 $f(x+7) = (x+7-3)^2 = (x+4)^2$\n\n따라서 $x < 0$일 때:\n\n$$g(x) = \\left(ax + \\frac{9}{16}\\right)(x+4)^2$$\n\n$x \\geq 0$일 때는 $g(x) = (x-3)^2$\n\n## [결론]\n\n$x < 0$에서 $g(x) = \\left(ax + \\dfrac{9}{16}\\right)(x+4)^2$로 확정된다.",
+            "matches": [
+              {
+                "label": "G",
+                "score": 1,
+                "reason": "학생의 결론 'x<0에서 g(x)=(ax+9/16)(x+4)^2'는 후보 G의 'p(x)=(ax+9/16)(x+4)^2'와 완전히 일치한다"
+              }
+            ],
+            "eval_summary": "MISS attempt3 dry1 | 285tok | disc 16873ms + match 3077ms | bonus 1"
+          },
+          {
+            "attempt": 4,
+            "think_tokens": 274,
+            "discover_elapsed_ms": 21308,
+            "match_elapsed_ms": 6585,
+            "discover_input_tokens": 1346,
+            "discover_output_tokens": 1446,
+            "match_input_tokens": 1296,
+            "match_output_tokens": 268,
+            "claude_output": "[시도] $x < 0$ 구간에서 $h(x)$가 $0$이 되는 점들을 파악하기\n\n[계산]\n$x < 0$에서 $g(x) = \\left(ax + \\dfrac{9}{16}\\right)(x+4)^2$이므로\n\n$$h(x) = g'(x) = a(x+4)^2 + \\left(ax+\\frac{9}{16}\\right)\\cdot 2(x+4)$$\n$$= (x+4)\\left[3ax + 4a + \\frac{9}{8}\\right]$$\n\n$h(x) = 0$이 되는 점: $x = -4$ 또는 $x = -\\dfrac{4a + \\frac{9}{8}}{3a}$\n\n[결론] $x < 0$에서 $h(x) = 0$이 되는 후보점은 $x = -4$와 $x = -\\dfrac{4a + \\frac{9}{8}}{3a}$ 두 곳이다.",
+            "matches": [
+              {
+                "label": "I",
+                "score": 0.9,
+                "reason": "학생의 계산에서 p'(x) = a(x+4)² + (ax+9/16)·2(x+4)를 구했고, 이를 x=0에 대입하면 p'(0) = 16a + 9/2임을 확인할 수 있다. 후보 I의 핵심 결론과 일치한다."
+              },
+              {
+                "label": "M",
+                "score": 0.5,
+                "reason": "학생이 h(x)=0의 근으로 x=-4와 x=-(4a+9/8)/(3a)를 구했는데, 후보 M에서는 a=3/32 대입 후 x=-4, x=-16/3을 구한다. 학생의 결론은 일반적인 형태로 x=-4를 포함하고 있어 부분적으로 일치한다."
+              }
+            ],
+            "eval_summary": "MISS attempt4 dry1 | 274tok | disc 21308ms + match 6585ms | bonus 1"
+          },
+          {
+            "attempt": 5,
+            "think_tokens": 201,
+            "discover_elapsed_ms": 16737,
+            "match_elapsed_ms": 4525,
+            "discover_input_tokens": 1411,
+            "discover_output_tokens": 1121,
+            "match_input_tokens": 1225,
+            "match_output_tokens": 219,
+            "claude_output": "[시도] $x < 0$일 때 $h(x) = p'(x)$를 인수분해하여 영점을 파악하기\n\n[계산]\n$$p'(x) = a(x+4)^2 + 2\\left(ax+\\frac{9}{16}\\right)(x+4)$$\n$$= (x+4)\\left[a(x+4) + 2\\left(ax+\\frac{9}{16}\\right)\\right]$$\n$$= (x+4)\\left[ax+4a+2ax+\\frac{9}{8}\\right]$$\n$$= (x+4)\\left[3ax+4a+\\frac{9}{8}\\right]$$\n\n[결론] $x < 0$일 때 $h(x) = (x+4)\\!\\left(3ax+4a+\\dfrac{9}{8}\\right)$이므로, $h(x)=0$이 되는 점은 $x=-4$와 $x=-\\dfrac{4a+\\frac{9}{8}}{3a}$이다.",
+            "matches": [
+              {
+                "label": "M",
+                "score": 0.85,
+                "reason": "학생의 결론에서 p'(x)=0의 근이 x=-4와 x=-(4a+9/8)/(3a)임을 구했고, M에서 a=3/32를 대입하면 -(4·3/32+9/8)/(3·3/32)=-(3/8+9/8)/(9/32)=-(12/8)/(9/32)=-(3/2)·(32/9)=-16/3로 일치함. 인수분해 형태 (x+4)(3ax+4a+9/8)도 M의 (x+4)(3x+16)과 a=3/32 대입시 동일하므로 높은 일치"
+              }
+            ],
+            "eval_summary": "MISS attempt5 dry1 | 201tok | disc 16737ms + match 4525ms | bonus 1"
+          },
+          {
+            "attempt": 6,
+            "think_tokens": 241,
+            "discover_elapsed_ms": 21099,
+            "match_elapsed_ms": 4902,
+            "discover_input_tokens": 1508,
+            "discover_output_tokens": 1472,
+            "match_input_tokens": 1321,
+            "match_output_tokens": 218,
+            "claude_output": "[시도] $h(x) = 0$이 되는 $x < 0$의 점들을 확인하여 극한이 존재하지 않는 후보를 파악한다\n\n[계산]\n$x < 0$일 때 $h(x) = p'(x) = \\frac{3}{32}(x+4)(3x+16)$이므로\n$h(x) = 0$인 점: $x = -4$, $x = -\\frac{16}{3}$\n\n각 점에서 $g(x)$ 값 확인:\n- $x = -4$: $p(-4) = (a \\cdot (-4) + \\frac{9}{16})(-4+4)^2 = 0$\n- $x = -\\frac{16}{3}$: $p\\!\\left(-\\frac{16}{3}\\right) = \\left(a\\cdot\\left(-\\frac{16}{3}\\right)+\\frac{9}{16}\\right)\\left(-\\frac{16}{3}+4\\right)^2 = \\left(-\\frac{16a}{3}+\\frac{9}{16}\\right)\\cdot\\frac{16}{9}$\n\n[결론] $x = -4$에서는 $h(-4) = 0$이지만 $g(-4) = 0$",
+            "matches": [
+              {
+                "label": "N",
+                "score": 0.85,
+                "reason": "학생의 결론에서 x=-16/3에서 h=0이면서 g≠0일 가능성을 언급하며 k의 후보로 x=-16/3을 제시했고, 후보 노트 N은 p(-16/3)≠0이고 p'(-16/3)=0이므로 극한이 존재하지 않아 k=-16/3이라고 결론짓고 있어 수학적으로 같은 방향의 결론을 포함한다. 다만 학생은 아직 최종 결론을 내리지 않고 후보로만 언급했으므로 완전일치는 아님"
+              }
+            ],
+            "eval_summary": "MISS attempt6 dry1 | 241tok | disc 21099ms + match 4902ms | bonus 1"
+          },
+          {
+            "attempt": 7,
+            "think_tokens": 92,
+            "discover_elapsed_ms": 6604,
+            "match_elapsed_ms": 4572,
+            "discover_input_tokens": 1610,
+            "discover_output_tokens": 463,
+            "match_input_tokens": 980,
+            "match_output_tokens": 226,
+            "claude_output": "[시도] 내가 해볼 것: $g(-8)$을 직접 계산하기\n\n[계산]  \n$a = \\frac{3}{32}$, $b = \\frac{9}{16}$, $f(x) = (x-3)^2$이므로  \n\n$$g(-8) = \\left(-8a + b\\right)f(-8+7) = \\left(-\\frac{24}{32} + \\frac{18}{32}\\right)f(-1)$$\n\n$$= -\\frac{6}{32} \\times (-1-3)^2 = -\\frac{3}{16} \\times 16 = -3$$\n\n따라서 $k \\times g(-8) = \\left(-\\frac{16}{3}\\right) \\times (-3) = \\mathbf{16}$\n\n[결론] $k \\times g(-8) = \\boxed{16}$",
+            "matches": [
+              {
+                "label": "O",
+                "score": 1,
+                "reason": "학생의 결론 g(-8)=-3, k×g(-8)=16이 노트 O와 완전히 일치"
+              },
+              {
+                "label": "K",
+                "score": 0.9,
+                "reason": "학생이 a=3/32을 사용하였으며, 노트 K의 16a=3/2에서 a=3/32 도출과 일치"
+              },
+              {
+                "label": "H",
+                "score": 0.7,
+                "reason": "학생이 f(x)=(x-3)^2을 사용하여 f'(0)=-6을 암묵적으로 활용하고 있으며, 노트 H의 f'(x)=2(x-3), f'(0)=-6과 부합"
+              }
+            ],
+            "eval_summary": "MISS attempt7 dry1 | 92tok | disc 6604ms + match 4572ms | bonus 3"
+          }
+        ]
+      },
+      {
+        "note_index": 4,
+        "note_id": "note4",
+        "neuron": "전략25",
+        "neuron_type": "전략",
+        "note_text": "$f(0)=3c$, $f(7)=4(7-c)$이고 동부호 조건에서 $0<c<7$이다",
+        "from": [
+          "note1",
+          "note3"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note2",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 5,
+        "note_id": "note5",
+        "neuron": "사실125",
+        "neuron_type": "사실",
+        "note_text": "$x>0$에서 $g(x)=f(x)$이므로 $h(x)=f'(x)$이다",
+        "from": [
+          "단서B",
+          "단서C"
+        ],
+        "hint_level": 0,
+        "is_bonus": false,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note5",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note5",
+            "in_target": "note5",
+            "attempt": 0,
+            "score": 1,
+            "reason": "학생의 서술에서 'x≥0에서 g(x)=f(x)이므로 h(x)=f'(x)=2x-(3+c)'라고 명시적으로 언급하여 후보 B의 핵심 결론과 완전히 일치"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 346,
+            "discover_elapsed_ms": 17972,
+            "match_elapsed_ms": 2726,
+            "discover_input_tokens": 1175,
+            "discover_output_tokens": 1126,
+            "match_input_tokens": 931,
+            "match_output_tokens": 109,
+            "claude_output": "[시도] $x \\geq 0$ 영역에서 $h(x)$를 구체적으로 계산하기\n\n[계산]\n$x \\geq 0$에서 $g(x) = f(x) = (x-3)(x-c)$이므로\n\n$$h(x) = \\lim_{t \\to 0+} \\frac{g(x+t)-g(x)}{t} = f'(x) = 2x-(3+c)$$\n\n이 우미분은 $f$가 다항함수이므로 일반 미분과 같다.\n\n$h(x)=0$이 되는 점: $x = \\dfrac{3+c}{2}$\n\n$0 < c < 7$이므로 $\\dfrac{3+c}{2} \\in \\left(\\dfrac{3}{2},\\ 5\\right)$, 즉 **양수 영역** 내에 존재한다.\n\n[결론] $x \\geq 0$에서 $h(x) = 2x-(3+c)$이며, $h\\!\\left(\\dfrac{3+c}{2}\\right)=0$인 점이 양수 영역에 하나 존재한다.",
+            "matches": [
+              {
+                "label": "B",
+                "score": 1,
+                "reason": "학생의 서술에서 'x≥0에서 g(x)=f(x)이므로 h(x)=f'(x)=2x-(3+c)'라고 명시적으로 언급하여 후보 B의 핵심 결론과 완전히 일치"
+              }
+            ],
+            "eval_summary": "FOUND H0 | 346tok | disc 17972ms + match 2726ms | bonus 0"
+          }
+        ]
+      },
+      {
+        "note_index": 6,
+        "note_id": "note6",
+        "neuron": "사실126",
+        "neuron_type": "사실",
+        "note_text": "$x_0=(3+c)/2>0$에서 $f'(x_0)=0$이고 $c\\neq 3$이면 $f(x_0)\\neq 0$이므로 $\\frac{f(x_0+t)}{\\{f'(x_0+t)\\}^2}\\to\\infty$로 극한이 존재하지 않는다",
+        "from": [
+          "note5",
+          "note1",
+          "단서E"
+        ],
+        "hint_level": 1,
+        "is_bonus": false,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note6",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note6",
+            "in_target": "note6",
+            "attempt": 1,
+            "score": 0.85,
+            "reason": "학생의 서술은 c≠3이면 f(x₀)≠0이 되어 극한이 발산한다는 논리를 사용하며 c=3을 결론으로 도출했는데, 이는 후보 B의 핵심 결론(c≠3이면 극한이 존재하지 않는다)과 수학적으로 동일한 논리 구조를 포함하고 있다. 다만 학생은 (3+c)/2=c 경우를 잘못 처리했고, 후보 B의 명시적 발산 결론보다 간략히 서술했다."
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 171,
+            "discover_elapsed_ms": 10084,
+            "match_elapsed_ms": 1570,
+            "discover_input_tokens": 1215,
+            "discover_output_tokens": 599,
+            "match_input_tokens": 774,
+            "match_output_tokens": 8,
+            "claude_output": "[시도] $x = 0$에서 $h(0)$의 값을 구한다.\n\n[계산]\n$$h(0) = \\lim_{t \\to 0+} \\frac{g(0+t) - g(0)}{t} = \\lim_{t \\to 0+} \\frac{f(t) - f(0)}{t}$$\n\n$t > 0$이면 $g(t) = f(t)$이므로 이는 $f$의 $x=0$에서의 미분값이다.\n\n$$h(0) = f'(0)$$\n\n[결론] $h(0) = f'(0)$이다 (즉, $x=0$에서도 $h(x) = f'(x)$가 성립한다).",
+            "matches": [],
+            "eval_summary": "MISS attempt0 dry0 | 171tok | disc 10084ms + match 1570ms | bonus 0"
+          },
+          {
+            "attempt": 1,
+            "think_tokens": 336,
+            "discover_elapsed_ms": 20342,
+            "match_elapsed_ms": 5244,
+            "discover_input_tokens": 1400,
+            "discover_output_tokens": 1348,
+            "match_input_tokens": 971,
+            "match_output_tokens": 213,
+            "claude_output": "[시도] x > 0에서 h(x) = f'(x) = 0이 되는 점에서 극한이 존재해야 하므로 c를 결정한다\n\n[계산]\nx > 0에서 h(x) = f'(x)이고, f(x) = (x-3)(x-c)이므로\n\nf'(x) = 0이 되는 점은 x = (3+c)/2 > 0\n\n이 점에서 lim_{t→0} g(x+t)/[h(x+t)]²의 값이 존재하려면,\n분모 → 0이 되므로 분자도 0이어야 하고 극한값이 유한해야 한다.\n\n즉 g((3+c)/2) = f((3+c)/2) = 0이어야 하므로,\n(3+c)/2 = 3 또는 (3+c)/2 = c\n\n→ c = 3 또는 c = 3 (두 경우 모두 **c = 3**)\n\n검증: c = 3이면 f(x) = (x-3)², h(x) = 2(x-3)이고\nx = 3에서: lim_{t→0} (3+t-3)²/[2t]² = t²/4t² = **1/4** (존재 ✓)\n\n[결론] **c = 3**, 즉 **f(x) = (x-3)²** 이다.",
+            "matches": [
+              {
+                "label": "B",
+                "score": 0.85,
+                "reason": "학생의 서술은 c≠3이면 f(x₀)≠0이 되어 극한이 발산한다는 논리를 사용하며 c=3을 결론으로 도출했는데, 이는 후보 B의 핵심 결론(c≠3이면 극한이 존재하지 않는다)과 수학적으로 동일한 논리 구조를 포함하고 있다. 다만 학생은 (3+c)/2=c 경우를 잘못 처리했고, 후보 B의 명시적 발산 결론보다 간략히 서술했다."
+              }
+            ],
+            "eval_summary": "FOUND H1 | 336tok | disc 20342ms + match 5244ms | bonus 0"
+          }
+        ]
+      },
+      {
+        "note_index": 7,
+        "note_id": "note7",
+        "neuron": "전략23",
+        "neuron_type": "전략",
+        "note_text": "양수 $x_0$에서 극한이 발산하면 (나)에 모순이므로 $c=3$이다",
+        "from": [
+          "note6",
+          "단서E"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 8,
+        "note_id": "note8",
+        "neuron": "전략25",
+        "neuron_type": "전략",
+        "note_text": "$f(x)=(x-3)^2$이다",
+        "from": [
+          "note7",
+          "note1"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 9,
+        "note_id": "note9",
+        "neuron": "전략25",
+        "neuron_type": "전략",
+        "note_text": "$16b=9$에서 $b=\\frac{9}{16}$이다",
+        "from": [
+          "note8",
+          "note2"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 10,
+        "note_id": "note10",
+        "neuron": "연산28",
+        "neuron_type": "연산",
+        "note_text": "$f(x+7)=(x+4)^2$이므로 $p(x)=(ax+\\frac{9}{16})(x+4)^2$이다",
+        "from": [
+          "note8",
+          "note9",
+          "단서B"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 11,
+        "note_id": "note11",
+        "neuron": "연산33",
+        "neuron_type": "연산",
+        "note_text": "$f'(x)=2(x-3)$이므로 $f'(0)=-6$이다",
+        "from": [
+          "note8"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 12,
+        "note_id": "note12",
+        "neuron": "연산36",
+        "neuron_type": "연산",
+        "note_text": "$p'(x)=a(x+4)^2+(ax+\\frac{9}{16})\\cdot 2(x+4)$이므로 $p'(0)=16a+\\frac{9}{2}$이다",
+        "from": [
+          "note10"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 13,
+        "note_id": "note13",
+        "neuron": "전략44",
+        "neuron_type": "전략",
+        "note_text": "우극한: $\\frac{f(0)}{\\{f'(0)\\}^2}=\\frac{9}{36}=\\frac{1}{4}$, 좌극한: $\\frac{p(0)}{\\{p'(0)\\}^2}=\\frac{9}{\\{p'(0)\\}^2}$이므로 $\\{p'(0)\\}^2=36$이다",
+        "from": [
+          "note11",
+          "note12",
+          "단서E"
+        ],
+        "hint_level": 1,
+        "is_bonus": false,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note13",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note13",
+            "in_target": "note13",
+            "attempt": 1,
+            "score": 0.95,
+            "reason": "학생의 계산이 우극한=9/36=1/4, 좌극한=9/(p'(0))^2로 후보 B와 동일한 결론을 도출하고 있으며, {p'(0)}^2=36이라는 결론과 일치한다"
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 321,
+            "discover_elapsed_ms": 19432,
+            "match_elapsed_ms": 2206,
+            "discover_input_tokens": 1553,
+            "discover_output_tokens": 1356,
+            "match_input_tokens": 745,
+            "match_output_tokens": 8,
+            "claude_output": "[시도] $x < 0$에서 $h(x)$ (우미분)을 구체적으로 정리하기\n\n[계산]\n$x < 0$에서 $g(x) = (ax+\\tfrac{9}{16})(x+4)^2$이므로\n\n$$p'(x) = a(x+4)^2 + (ax+\\tfrac{9}{16})\\cdot 2(x+4) = (x+4)\\bigl[3ax + 4a + \\tfrac{9}{8}\\bigr]$$\n\n따라서 $x < 0$에서 $h(x) = (x+4)(3ax + 4a + \\tfrac{9}{8})$\n\n특히 $x = -4$에서 $h(-4) = 0$이고, $3ax+4a+\\tfrac{9}{8}=0$인 점에서도 $h=0$이 된다.\n\n[결론] $x<0$에서 $h(x) = (x+4)(3ax+4a+\\tfrac{9}{8})$이다.",
+            "matches": [],
+            "eval_summary": "MISS attempt0 dry0 | 321tok | disc 19432ms + match 2206ms | bonus 0"
+          },
+          {
+            "attempt": 1,
+            "think_tokens": 596,
+            "discover_elapsed_ms": 34423,
+            "match_elapsed_ms": 3194,
+            "discover_input_tokens": 1759,
+            "discover_output_tokens": 2000,
+            "match_input_tokens": 649,
+            "match_output_tokens": 109,
+            "claude_output": "[시도] $x=0$에서 조건 (나)의 극한이 존재하려면 좌우 극한값이 같아야 한다\n\n[계산]  \n$t \\to 0^+$: $g(0+t)/(h(0+t))^2 = f(t)/(f'(t))^2 \\to f(0)/(f'(0))^2 = 9/(-6)^2 = 9/36 = 1/4$\n\n$t \\to 0^-$: $g(0+t)/(h(0+t))^2 = p(t)/(p'(t))^2 \\to p(0)/(p'(0))^2 = 9/(16a",
+            "matches": [
+              {
+                "label": "B",
+                "score": 0.95,
+                "reason": "학생의 계산이 우극한=9/36=1/4, 좌극한=9/(p'(0))^2로 후보 B와 동일한 결론을 도출하고 있으며, {p'(0)}^2=36이라는 결론과 일치한다"
+              }
+            ],
+            "eval_summary": "FOUND H1 | 596tok | disc 34423ms + match 3194ms | bonus 0"
+          }
+        ]
+      },
+      {
+        "note_index": 14,
+        "note_id": "note14",
+        "neuron": "연산24",
+        "neuron_type": "연산",
+        "note_text": "$16a+\\frac{9}{2}=6$에서 $16a=\\frac{3}{2}$이므로 $a=\\frac{3}{32}$이다",
+        "from": [
+          "note13",
+          "note12",
+          "단서F"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 15,
+        "note_id": "note15",
+        "neuron": "전략29",
+        "neuron_type": "전략",
+        "note_text": "$p(x)=\\frac{3}{32}(x+6)(x+4)^2$이다",
+        "from": [
+          "note10",
+          "note14"
+        ],
+        "hint_level": 3,
+        "is_bonus": false,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note15",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [
+          {
+            "note_id": "note15",
+            "in_target": "note15",
+            "attempt": 1,
+            "score": 0.4,
+            "reason": "학생은 a=3/32을 사용하고 p'(x) 계산에서 (x+4) 인수를 확인했으나, p(x)=3/32*(x+6)(x+4)^2 형태를 직접 도출하지 않고 p'(x)의 인수분해만 수행했다. p(-16/3) 계산에서 (ax+9/16)(x+4)^2 형태를 암묵적으로 사용하여 (x+4)^2 인수 존재를 전제하고 있어 부분적으로 관련됨"
+          },
+          {
+            "note_id": "note15",
+            "in_target": "note15",
+            "attempt": 3,
+            "score": 0.7,
+            "reason": "학생은 p(x) = (3/32 x + 9/16)(x+4)^2로 표현했는데, 이를 인수분해하면 3/32 x + 9/16 = 3/32(x+6)이므로 p(x) = 3/32(x+6)(x+4)^2와 동일하다. 또한 p'(x)=0의 해로 x=-4, x=-8/3을 구했는데, 후보 B의 p(x)=3/32(x+6)(x+4)^2에서 p'(x)=0의 해가 x=-4, x=-8/3임을 확인할 수 있어 같은 함수임이 검증된다. 단, 학생이 명시적으로 p(x)=3/32(x+6)(x+4)^2라고 쓰지는 않았으므로 완전일치는 아니다."
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "think_tokens": 374,
+            "discover_elapsed_ms": 21015,
+            "match_elapsed_ms": 1601,
+            "discover_input_tokens": 1718,
+            "discover_output_tokens": 1538,
+            "match_input_tokens": 657,
+            "match_output_tokens": 8,
+            "claude_output": "[시도] $x < 0$에서 $h(x) = p'(x)$의 영점을 구한다\n\n[계산]\n$$p'(x) = a(x+4)^2 + \\left(ax+\\tfrac{9}{16}\\right)\\cdot 2(x+4) = (x+4)\\left[3ax + \\left(4a+\\tfrac{9}{8}\\right)\\right]$$\n\n$a = \\tfrac{3}{32}$를 대입하면 $4a + \\tfrac{9}{8} = \\tfrac{12}{32}+\\tfrac{36}{32} = \\tfrac{48}{32} = \\tfrac{3}{2}$\n\n$$p'(x) = (x+4)\\left[\\tfrac{9}{32}x + \\tfrac{3}{2}\\right] = \\tfrac{3}{32}(x+4)(3x+16)$$\n\n영점: $x = -4$ 또는 $x = -\\tfrac{16}{3}$\n\n[결론] $x < 0$에서 $p'(x) = 0$의 근은 $x = -4$와 $x = -\\dfrac{16}{3}$이다.",
+            "matches": [],
+            "eval_summary": "MISS attempt0 dry0 | 374tok | disc 21015ms + match 1601ms | bonus 0"
+          },
+          {
+            "attempt": 1,
+            "think_tokens": 342,
+            "discover_elapsed_ms": 21240,
+            "match_elapsed_ms": 6648,
+            "discover_input_tokens": 1845,
+            "discover_output_tokens": 1640,
+            "match_input_tokens": 872,
+            "match_output_tokens": 198,
+            "claude_output": "## [시도] 내가 해볼 것: $p'(x)=0$이 되는 $x<0$ 값을 구해서 $k$를 확정한다\n\n## [계산]\n\n$a=\\frac{3}{32}$를 이용해 $p'(x)=(x+4)[3ax+4a+\\frac{9}{8}]$를 정리한다.\n\n$$4a+\\frac{9}{8}=\\frac{3}{8}+\\frac{9}{8}=\\frac{12}{8}=\\frac{3}{2}, \\quad 3a=\\frac{9}{32}$$\n\n$$p'(x)=(x+4)\\!\\left(\\frac{9x}{32}+\\frac{3}{2}\\right)=\\frac{9}{32}(x+4)(x+\\tfrac{16}{3})$$\n\n$p'(x)=0$인 점: $x=-4$ 또는 $x=-\\dfrac{16}{3}$\n\n- $x=-4$: $p(-4)=0$ → 분자도 $0$이므로 극한 존재 가능\n- $x=-\\dfrac{16}{3}$: $p\\!\\left(-\\tfrac{16}{3}\\right)=\\left(\\tfrac{3}{32}\\cdot\\left(-\\tfrac{16}{3}\\rig",
+            "matches": [
+              {
+                "label": "B",
+                "score": 0.4,
+                "reason": "학생은 a=3/32을 사용하고 p'(x) 계산에서 (x+4) 인수를 확인했으나, p(x)=3/32*(x+6)(x+4)^2 형태를 직접 도출하지 않고 p'(x)의 인수분해만 수행했다. p(-16/3) 계산에서 (ax+9/16)(x+4)^2 형태를 암묵적으로 사용하여 (x+4)^2 인수 존재를 전제하고 있어 부분적으로 관련됨"
+              }
+            ],
+            "eval_summary": "MISS attempt1 dry1 | 342tok | disc 21240ms + match 6648ms | bonus 0"
+          },
+          {
+            "attempt": 2,
+            "think_tokens": 133,
+            "discover_elapsed_ms": 9426,
+            "match_elapsed_ms": 2089,
+            "discover_input_tokens": 1777,
+            "discover_output_tokens": 657,
+            "match_input_tokens": 623,
+            "match_output_tokens": 8,
+            "claude_output": "[시도] note10의 $p(x)$에 note14의 $a=\\frac{3}{32}$를 대입하여 $g(x)$($x<0$)의 명시적 식을 구한다\n\n[계산]\n$$g(x) = \\left(\\frac{3}{32}x + \\frac{9}{16}\\right)(x+4)^2 \\quad (x<0)$$\n\n공통인수를 확인하면:\n$$= \\frac{3}{32}(x + 3)(x+4)^2 \\quad (x<0)$$\n\n실제로 $\\frac{3}{32}x+\\frac{9}{16} = \\frac{3}{32}(x+3)$이므로 정리되어\n\n$$g(x) = \\frac{3}{32}(x+3)(x+4)^2 \\quad (x<0)$$\n\n[결론] $x<0$에서 $g(x) = \\dfrac{3}{32}(x+3)(x+4)^2$이다.",
+            "matches": [],
+            "eval_summary": "MISS attempt2 dry2 | 133tok | disc 9426ms + match 2089ms | bonus 0"
+          },
+          {
+            "attempt": 3,
+            "think_tokens": 473,
+            "discover_elapsed_ms": 22010,
+            "match_elapsed_ms": 5989,
+            "discover_input_tokens": 1768,
+            "discover_output_tokens": 1680,
+            "match_input_tokens": 755,
+            "match_output_tokens": 290,
+            "claude_output": "## [시도] 내가 해볼 것: $x < 0$에서 $h(x) = p'(x)$의 영점을 구하기\n\n## [계산]\n\n$p(x) = \\left(\\frac{3}{32}x + \\frac{9}{16}\\right)(x+4)^2$이므로\n\n$$p'(x) = \\frac{3}{32}(x+4)^2 + \\left(\\frac{3}{32}x + \\frac{9}{16}\\right)\\cdot 2(x+4)$$\n\n$$= (x+4)\\left[\\frac{3}{32}(x+4) + 2\\left(\\frac{3}{32}x + \\frac{9}{16}\\right)\\right]$$\n\n$$= (x+4)\\left[\\frac{3}{32}x + \\frac{12}{32} + \\frac{6}{32}x + \\frac{18}{16}\\right]$$\n\n$$= (x+4)\\left[\\frac{9}{32}x + \\frac{3}{2}\\right]$$\n\n$p'(x) = 0$의 해: $x = -4$ 또는 $x = -\\dfrac{3/2}{9/32} = -\\dfra",
+            "matches": [
+              {
+                "label": "B",
+                "score": 0.7,
+                "reason": "학생은 p(x) = (3/32 x + 9/16)(x+4)^2로 표현했는데, 이를 인수분해하면 3/32 x + 9/16 = 3/32(x+6)이므로 p(x) = 3/32(x+6)(x+4)^2와 동일하다. 또한 p'(x)=0의 해로 x=-4, x=-8/3을 구했는데, 후보 B의 p(x)=3/32(x+6)(x+4)^2에서 p'(x)=0의 해가 x=-4, x=-8/3임을 확인할 수 있어 같은 함수임이 검증된다. 단, 학생이 명시적으로 p(x)=3/32(x+6)(x+4)^2라고 쓰지는 않았으므로 완전일치는 아니다."
+              }
+            ],
+            "eval_summary": "FOUND H3 | 473tok | disc 22010ms + match 5989ms | bonus 0"
+          }
+        ]
+      },
+      {
+        "note_index": 16,
+        "note_id": "note16",
+        "neuron": "연산36",
+        "neuron_type": "연산",
+        "note_text": "$p'(x)=\\frac{3}{32}[(x+4)^2+(x+6)\\cdot 2(x+4)]=\\frac{3}{32}(x+4)(3x+16)$이므로 $p'(x)=0$의 근은 $x=-4$, $x=-\\frac{16}{3}$이다",
+        "from": [
+          "note15"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.03,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 17,
+        "note_id": "note18",
+        "neuron": "사실126",
+        "neuron_type": "사실",
+        "note_text": "$p(-\\frac{16}{3})=\\frac{3}{32}\\cdot\\frac{2}{3}\\cdot\\frac{16}{9}\\neq 0$이고 $p'(-\\frac{16}{3})=0$이므로 극한이 존재하지 않는다. 따라서 $k=-\\frac{16}{3}$이다",
+        "from": [
+          "note15",
+          "note16"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.12,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      },
+      {
+        "note_index": 18,
+        "note_id": "END",
+        "neuron": "전략25",
+        "neuron_type": "전략",
+        "note_text": "$g(-8)=p(-8)=\\frac{3}{32}(-2)(16)=-3$이고 $k\\times g(-8)=(-\\frac{16}{3})(-3)=16$이다",
+        "from": [
+          "note18",
+          "note15"
+        ],
+        "hint_level": 0,
+        "is_bonus": true,
+        "structural_difficulty": 0.25,
+        "discovered_in_target": "note3",
+        "miss_type": null,
+        "absorbed_in": null,
+        "absorb_reason": "",
+        "partial_history": [],
+        "attempts": []
+      }
+    ],
+    "_debug": "v7-split"
+  },
   "folders": [],
   "history": [],
   "recovery_warnings": [],
