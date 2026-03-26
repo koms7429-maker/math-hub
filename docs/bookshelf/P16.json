@@ -1,0 +1,925 @@
+{
+  "problem_id": "P16",
+  "answer": "16",
+  "clues": [
+    {
+      "id": "단서A",
+      "text": "$f(x)$는 최고차항의 계수가 $1$인 이차함수이다"
+    },
+    {
+      "id": "단서B",
+      "text": "$g(x) = \\begin{cases} (ax+b)f(x+7) & (x < 0) \\\\ f(x) & (x \\geq 0) \\end{cases}$이고 실수 전체에서 연속이다"
+    },
+    {
+      "id": "단서C",
+      "text": "$h(x) = \\lim_{t \\to 0+} \\frac{g(x+t) - g(x)}{t}$이다"
+    },
+    {
+      "id": "단서D",
+      "text": "$g(3) = 0$이다"
+    },
+    {
+      "id": "단서E",
+      "text": "$\\lim_{t \\to 0} \\frac{g(x+t)}{\\{h(x+t)\\}^2}$의 값이 존재하지 않도록 하는 실수 $x$의 값은 $k$ ($k < 0$)뿐이다"
+    },
+    {
+      "id": "단서F",
+      "text": "$a > 0$, $b > 0$이다"
+    }
+  ],
+  "skeleton": [
+    {
+      "from": [
+        "단서A",
+        "단서D"
+      ],
+      "to": "note1",
+      "neuron": "전략41",
+      "type": "전략",
+      "domain_hint": "POLY, EQN",
+      "description": "최고차항의 계수가 1인 이차함수에 $g(3)=f(3)=0$ 조건을 반영하여 미정계수로 표현",
+      "note": "$f(3)=0$이므로 $f(x)=(x-3)(x-c)$로 놓는다",
+      "main": true,
+      "step": 1
+    },
+    {
+      "from": [
+        "note1",
+        "단서B"
+      ],
+      "to": "note2",
+      "neuron": "사실94",
+      "type": "사실",
+      "domain_hint": "FUNC, LIM",
+      "description": "조각함수 경계 $x=0$에서 연속 조건 $\\lim_{x\\to 0^-}g(x)=g(0)$을 세움",
+      "note": "$g(x)$가 $x=0$에서 연속이므로 $\\lim_{x\\to 0^-}(ax+b)f(x+7)=f(0)$, 즉 $bf(7)=f(0)$이다",
+      "main": true,
+      "step": 2
+    },
+    {
+      "from": [
+        "note2",
+        "단서F"
+      ],
+      "to": "note3",
+      "neuron": "사실65",
+      "type": "사실",
+      "domain_hint": "INEQ, NUM",
+      "description": "$b>0$이므로 $bf(7)=f(0)$에서 $f(7)$과 $f(0)$이 동부호",
+      "note": "$b>0$이므로 $f(7)$과 $f(0)$은 같은 부호이다",
+      "main": true,
+      "step": 2
+    },
+    {
+      "from": [
+        "note1",
+        "note3"
+      ],
+      "to": "note4",
+      "neuron": "전략25",
+      "type": "전략",
+      "domain_hint": "POLY, INEQ",
+      "description": "$f(0)=3c$, $f(7)=4(7-c)$를 대입하여 동부호 조건에서 $c$의 범위를 결정",
+      "note": "$f(0)=3c$, $f(7)=4(7-c)$이고 동부호 조건에서 $0<c<7$이다",
+      "main": true,
+      "step": 2
+    },
+    {
+      "from": [
+        "단서B",
+        "단서C"
+      ],
+      "to": "note5",
+      "neuron": "사실125",
+      "type": "사실",
+      "domain_hint": "DIFF, FUNC",
+      "description": "$x>0$에서 $g(x)=f(x)$는 다항함수이므로 우미분계수가 통상 도함수와 일치",
+      "note": "$x>0$에서 $g(x)=f(x)$이므로 $h(x)=f'(x)$이다",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": [
+        "note5",
+        "note1",
+        "단서E"
+      ],
+      "to": "note6",
+      "neuron": "사실126",
+      "type": "사실",
+      "domain_hint": "LIM, POLY",
+      "description": "$f'(x_0)=0$인 양수 $x_0=(3+c)/2$에서 $f(x_0)\\neq 0$이면 분모→0, 분자→비영이므로 극한 발산",
+      "note": "$x_0=(3+c)/2>0$에서 $f'(x_0)=0$이고 $c\\neq 3$이면 $f(x_0)\\neq 0$이므로 $\\frac{f(x_0+t)}{\\{f'(x_0+t)\\}^2}\\to\\infty$로 극한이 존재하지 않는다",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": [
+        "note6",
+        "단서E"
+      ],
+      "to": "note7",
+      "neuron": "전략23",
+      "type": "전략",
+      "domain_hint": "EQN, FUNC",
+      "description": "양수에서 극한 발산점이 있으면 (나)의 '$k<0$뿐' 조건에 모순이므로 $c=3$",
+      "note": "양수 $x_0$에서 극한이 발산하면 (나)에 모순이므로 $c=3$이다",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": [
+        "note7",
+        "note1"
+      ],
+      "to": "note8",
+      "neuron": "전략25",
+      "type": "전략",
+      "domain_hint": "POLY",
+      "description": "$c=3$을 대입하여 $f(x)$를 확정",
+      "note": "$f(x)=(x-3)^2$이다",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": "note8",
+      "to": "note8a",
+      "neuron": "사실96",
+      "type": "사실",
+      "domain_hint": "POLY, LIM",
+      "description": "이중근 $x=3$에서 $\\frac{f(3+t)}{\\{f'(3+t)\\}^2}=\\frac{t^2}{4t^2}=\\frac{1}{4}$이므로 극한 존재 확인",
+      "note": "$x=3$에서 $\\frac{(x-3+t)^2}{\\{2(x-3+t)\\}^2}=\\frac{1}{4}$이므로 극한이 존재하여 발산점이 아님을 확인",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": [
+        "note8",
+        "note2"
+      ],
+      "to": "note9",
+      "neuron": "전략25",
+      "type": "전략",
+      "domain_hint": "POLY, EQN",
+      "description": "$f(7)=16$, $f(0)=9$를 $bf(7)=f(0)$에 대입하여 $b$ 결정",
+      "note": "$16b=9$에서 $b=\\frac{9}{16}$이다",
+      "main": true,
+      "step": 4
+    },
+    {
+      "from": [
+        "note8",
+        "note9",
+        "단서B"
+      ],
+      "to": "note10",
+      "neuron": "연산28",
+      "type": "연산",
+      "domain_hint": "POLY",
+      "description": "$p(x)=(ax+\\frac{9}{16})(x+4)^2$으로 정리",
+      "note": "$f(x+7)=(x+4)^2$이므로 $p(x)=(ax+\\frac{9}{16})(x+4)^2$이다",
+      "main": true,
+      "step": 5
+    },
+    {
+      "from": "note8",
+      "to": "note11",
+      "neuron": "연산33",
+      "type": "연산",
+      "domain_hint": "DIFF, POLY",
+      "description": "$f'(x)=2(x-3)$을 계산",
+      "note": "$f'(x)=2(x-3)$이므로 $f'(0)=-6$이다",
+      "main": true,
+      "step": 5
+    },
+    {
+      "from": "note10",
+      "to": "note12",
+      "neuron": "연산36",
+      "type": "연산",
+      "domain_hint": "DIFF, POLY",
+      "description": "곱의 미분법으로 $p'(x)$를 계산",
+      "note": "$p'(x)=a(x+4)^2+(ax+\\frac{9}{16})\\cdot 2(x+4)$이므로 $p'(0)=16a+\\frac{9}{2}$이다",
+      "main": true,
+      "step": 5
+    },
+    {
+      "from": [
+        "note11",
+        "note12",
+        "단서E"
+      ],
+      "to": "note13",
+      "neuron": "전략44",
+      "type": "전략",
+      "domain_hint": "LIM, FUNC",
+      "description": "$x=0$ 경계에서 $\\frac{g(t)}{\\{h(t)\\}^2}$의 좌극한과 우극한이 모두 존재하고 같아야 극한이 존재",
+      "note": "우극한: $\\frac{f(0)}{\\{f'(0)\\}^2}=\\frac{9}{36}=\\frac{1}{4}$, 좌극한: $\\frac{p(0)}{\\{p'(0)\\}^2}=\\frac{9}{\\{p'(0)\\}^2}$이므로 $\\{p'(0)\\}^2=36$이다",
+      "main": true,
+      "step": 5
+    },
+    {
+      "from": [
+        "note13",
+        "note12",
+        "단서F"
+      ],
+      "to": "note14",
+      "neuron": "연산24",
+      "type": "연산",
+      "domain_hint": "EQN, INEQ",
+      "description": "$a>0$에서 $p'(0)=16a+\\frac{9}{2}>0$이므로 $p'(0)=6$으로 결정하여 $a$를 산출",
+      "note": "$16a+\\frac{9}{2}=6$에서 $16a=\\frac{3}{2}$이므로 $a=\\frac{3}{32}$이다",
+      "main": true,
+      "step": 5
+    },
+    {
+      "from": [
+        "note10",
+        "note14"
+      ],
+      "to": "note15",
+      "neuron": "전략29",
+      "type": "전략",
+      "domain_hint": "POLY",
+      "description": "계수 대입 후 $p(x)$를 인수분해",
+      "note": "$p(x)=\\frac{3}{32}(x+6)(x+4)^2$이다",
+      "main": true,
+      "step": 6
+    },
+    {
+      "from": "note15",
+      "to": "note16",
+      "neuron": "연산36",
+      "type": "연산",
+      "domain_hint": "DIFF, POLY",
+      "description": "곱의 미분법으로 $p'(x)$를 계산하고 영점을 구함",
+      "note": "$p'(x)=\\frac{3}{32}[(x+4)^2+(x+6)\\cdot 2(x+4)]=\\frac{3}{32}(x+4)(3x+16)$이므로 $p'(x)=0$의 근은 $x=-4$, $x=-\\frac{16}{3}$이다",
+      "main": true,
+      "step": 6
+    },
+    {
+      "from": [
+        "note15",
+        "note16"
+      ],
+      "to": "note17",
+      "neuron": "전략25",
+      "type": "전략",
+      "domain_hint": "LIM, POLY",
+      "description": "$x=-4$에서 $p(-4)=0$이므로 이중근과 같은 상황으로 극한 존재 확인",
+      "note": "$x=-4$에서 $p(-4)=0$이고 $\\frac{p(-4+t)}{\\{p'(-4+t)\\}^2}$는 유한값으로 수렴하여 극한이 존재한다",
+      "main": false,
+      "step": 7
+    },
+    {
+      "from": [
+        "note15",
+        "note16"
+      ],
+      "to": "note18",
+      "neuron": "사실126",
+      "type": "사실",
+      "domain_hint": "LIM, POLY",
+      "description": "$x=-\\frac{16}{3}$에서 $p'=0$이지만 $p\\neq 0$이므로 분모→0, 분자→비영으로 극한 발산",
+      "note": "$p(-\\frac{16}{3})=\\frac{3}{32}\\cdot\\frac{2}{3}\\cdot\\frac{16}{9}\\neq 0$이고 $p'(-\\frac{16}{3})=0$이므로 극한이 존재하지 않는다. 따라서 $k=-\\frac{16}{3}$이다",
+      "main": true,
+      "step": 7
+    },
+    {
+      "from": [
+        "note18",
+        "note15"
+      ],
+      "to": "END",
+      "neuron": "전략25",
+      "type": "전략",
+      "domain_hint": "POLY",
+      "description": "$g(-8)=p(-8)$을 계산하고 $k\\times g(-8)$을 산출",
+      "note": "$g(-8)=p(-8)=\\frac{3}{32}(-2)(16)=-3$이고 $k\\times g(-8)=(-\\frac{16}{3})(-3)=16$이다",
+      "main": true,
+      "step": 8
+    }
+  ],
+  "solution": "$f(3)=0$이므로 $f(x)=(x-3)(x-c)$로 놓는다. $g(x)$가 $x=0$에서 연속이므로 $bf(7)=f(0)$이다. $b>0$이므로 $f(7)$과 $f(0)$은 같은 부호이고, $f(0)=3c$, $f(7)=4(7-c)$에서 $0<c<7$이다. $x>0$에서 $h(x)=f'(x)$이고, $x_0=(3+c)/2>0$에서 $f'(x_0)=0$이므로 $c\\neq 3$이면 극한이 발산하여 (나)에 모순이다. 따라서 $c=3$이고 $f(x)=(x-3)^2$이다. $16b=9$에서 $b=\\frac{9}{16}$이다. $p(x)=(ax+\\frac{9}{16})(x+4)^2$이고, $f'(0)=-6$이며 $p'(0)=16a+\\frac{9}{2}$이다. $x=0$에서 극한의 좌우극한 일치 조건 $\\{p'(0)\\}^2=36$과 $a>0$에서 $p'(0)=6$이므로 $a=\\frac{3}{32}$이다. $p(x)=\\frac{3}{32}(x+6)(x+4)^2$이고 $p'(x)=\\frac{3}{32}(x+4)(3x+16)$이므로 $p'(x)=0$의 근은 $x=-4$, $x=-\\frac{16}{3}$이다. $x=-4$에서 $p(-4)=0$이므로 극한이 존재하고, $x=-\\frac{16}{3}$에서 $p(-\\frac{16}{3})\\neq 0$이고 $p'(-\\frac{16}{3})=0$이므로 극한이 존재하지 않는다. 따라서 $k=-\\frac{16}{3}$이다. $g(-8)=p(-8)=\\frac{3}{32}(-2)(16)=-3$이고 $k\\times g(-8)=(-\\frac{16}{3})(-3)=16$이다.",
+  "original_solution": "**(가)에서:**\n$g(3) = f(3) = 0$이므로 $f(3) = 0$.\n\n$g(x)$는 $x = 0$에서 연속이므로 $bf(7) = f(0)$ ··· ①\n$b > 0$이므로 $f(0)$과 $f(7)$의 부호가 같다.\n\n따라서 $f(x) = (x-3)(x-c)$ $(0 < c < 7)$ ··· ②로 놓을 수 있다.\n\n**(나) 조건 분석 — (i) $x > 0$일 때:**\n$x \\geq 0$일 때 $h(x) = \\lim_{t \\to 0+} \\dfrac{f(x+t) - f(x)}{t} = f'(x)$\n\n$x > 0$인 모든 $x$에 대하여 $\\displaystyle\\lim_{t \\to 0} \\frac{f(x+t)}{\\{f'(x+t)\\}^2}$의 값이 존재해야 하므로,\n\n$f'(x) = 0$인 양수 $x$에 대하여 방정식 $f(x) = 0$은 중근을 가져야 한다.\n\n$\\Rightarrow c = 3$ (∵ ②)\n$\\Rightarrow f(x) = (x-3)^2$ ··· ⑤\n\n**$p(x) = (ax+b)f(x+7)$로 놓으면:**\n$x < 0$에서 $h(x) = \\lim_{t \\to 0+} \\dfrac{p(x+t) - p(x)}{t} = p'(x)$\n\n**(ii) $x = 0$일 때:**\n\n$$\\lim_{t \\to 0} \\frac{g(t)}{\\{h(t)\\}^2} \\text{에서 좌극한과 우극한이 같아야 하므로}$$\n\n$(p'(0))^2 = \\{f'(0)\\}^2$ (∵ $g(0) \\neq 0$) ··· ④\n\n**(iii) $x < 0$일 때:**\n(i)의 과정을 참고하면\n\n- ㉠ $p'(x) = 0$인 음수 $x$ ($x \\neq k$)에 대하여 방정식 $p(x) = 0$은 중근을 가짐\n- ㉡ $p'(k) = 0$이고 $p(k) \\neq 0$인 음수 $k$가 존재\n\n**$b$ 구하기:**\n①, ⑤에서: $b \\cdot f(7) = f(0) \\Rightarrow b \\cdot 16 = 9 \\Rightarrow b = \\dfrac{9}{16}$\n\n**$a$ 구하기:**\n\n$$f(x) = (x-3)^2 \\Rightarrow f'(x) = 2(x-3) \\Rightarrow f'(0) = -6$$\n\n$$p(x) = \\left(ax + \\frac{9}{16}\\right)(x+4)^2 \\Rightarrow p'(0) = 16a + \\frac{9}{2}$$\n\n④에서: $16a + \\dfrac{9}{2} = 6$ (∵ $a > 0 \\Rightarrow p'(0) > 0$)\n\n$$\\Rightarrow a = \\frac{3}{32}$$\n\n**$k$ 구하기:**\n\n$$p(x) = \\frac{3}{32}(x+6)(x+4)^2 \\Rightarrow p'(x) = \\frac{9}{32}(x+4)\\left(x + \\frac{16}{3}\\right)$$\n\n㉠에서 $x = -4$, ㉡에서 $k = -\\dfrac{16}{3}$\n\n**최종 계산:**\n\n$$k \\times g(-8) = \\left(-\\frac{16}{3}\\right) \\times (-3) = \\boxed{16}$$",
+  "analysis": "",
+  "new_neurons": [],
+  "metadata": {
+    "unit": "미적분",
+    "difficulty": "상",
+    "score": "4",
+    "type": "short_answer",
+    "answer": "16",
+    "year": "2024",
+    "source": "수능",
+    "topic": "함수의 연속과 미분가능성",
+    "subtopic": "우미분과 극한 조건"
+  },
+  "edge_count": 20,
+  "side_count": 2,
+  "statement": "# 16. (수능) - 함수의 연속과 우미분 극한 조건\n\n## Problem\n두 양의 상수 $a$, $b$와 최고차항의 계수가 $1$인 이차함수 $f(x)$에 대하여 실수 전체의 집합에서 연속인 함수\n\n$$g(x) = \\begin{cases} (ax+b)f(x+7) & (x < 0) \\\\ f(x) & (x \\geq 0) \\end{cases}$$\n\n과 실수 전체의 집합에서 정의된 함수\n\n$$h(x) = \\lim_{t \\to 0+} \\frac{g(x+t) - g(x)}{t}$$\n\n가 다음 조건을 만족시킨다.\n\n(가) $g(3) = 0$\n\n(나) $\\displaystyle\\lim_{t \\to 0} \\frac{g(x+t)}{\\{h(x+t)\\}^2}$ 의 값이 존재하지 않도록 하는 실수 $x$의 값은 $k$ $(k < 0)$뿐이다.\n\n$k \\times g(-8)$의 값을 구하시오. [4점]",
+  "dna": {
+    "nodes": [
+      {
+        "id": "top",
+        "dna": "Q1",
+        "label": "값을 구하라",
+        "category": "발문"
+      },
+      {
+        "id": "ask",
+        "dna": "E6",
+        "label": "곱(k, g(-8))",
+        "category": "수식"
+      },
+      {
+        "id": "vk",
+        "dna": "T1",
+        "label": "변수 k",
+        "category": "말단"
+      },
+      {
+        "id": "k_neg",
+        "dna": "C2",
+        "label": "k < 0",
+        "category": "조건"
+      },
+      {
+        "id": "g_neg8",
+        "dna": "F3",
+        "label": "g(-8)",
+        "category": "함수"
+      },
+      {
+        "id": "c_neg8",
+        "dna": "T2",
+        "label": "상수 -8",
+        "category": "말단"
+      },
+      {
+        "id": "va",
+        "dna": "T1",
+        "label": "변수 a",
+        "category": "말단"
+      },
+      {
+        "id": "vb",
+        "dna": "T1",
+        "label": "변수 b",
+        "category": "말단"
+      },
+      {
+        "id": "a_pos",
+        "dna": "C2",
+        "label": "a > 0",
+        "category": "조건"
+      },
+      {
+        "id": "b_pos",
+        "dna": "C2",
+        "label": "b > 0",
+        "category": "조건"
+      },
+      {
+        "id": "fx",
+        "dna": "F6",
+        "label": "함수 f(x)",
+        "category": "함수"
+      },
+      {
+        "id": "fx_quad",
+        "dna": "F11",
+        "label": "f(x) 이차함수",
+        "category": "함수"
+      },
+      {
+        "id": "fx_lc",
+        "dna": "L4",
+        "label": "최고차항 계수1",
+        "category": "제한"
+      },
+      {
+        "id": "c1",
+        "dna": "T2",
+        "label": "상수 1",
+        "category": "말단"
+      },
+      {
+        "id": "gx",
+        "dna": "F1",
+        "label": "함수 g(x)",
+        "category": "함수"
+      },
+      {
+        "id": "gx_piece1",
+        "dna": "F2",
+        "label": "조각 x<0",
+        "category": "함수"
+      },
+      {
+        "id": "gx_piece2",
+        "dna": "F2",
+        "label": "조각 x≥0",
+        "category": "함수"
+      },
+      {
+        "id": "piece1_dom",
+        "dna": "C2",
+        "label": "x < 0",
+        "category": "조건"
+      },
+      {
+        "id": "piece2_dom",
+        "dna": "C2",
+        "label": "x ≥ 0",
+        "category": "조건"
+      },
+      {
+        "id": "c0",
+        "dna": "T2",
+        "label": "상수 0",
+        "category": "말단"
+      },
+      {
+        "id": "piece1_expr",
+        "dna": "E6",
+        "label": "곱(ax+b, f(x+7))",
+        "category": "수식"
+      },
+      {
+        "id": "axpb",
+        "dna": "E1",
+        "label": "합(ax, b)",
+        "category": "수식"
+      },
+      {
+        "id": "ax",
+        "dna": "E6",
+        "label": "곱(a, x)",
+        "category": "수식"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
+      },
+      {
+        "id": "fx7",
+        "dna": "F3",
+        "label": "f(x+7)",
+        "category": "함수"
+      },
+      {
+        "id": "xp7",
+        "dna": "E1",
+        "label": "합(x, 7)",
+        "category": "수식"
+      },
+      {
+        "id": "c7",
+        "dna": "T2",
+        "label": "상수 7",
+        "category": "말단"
+      },
+      {
+        "id": "gx_cts",
+        "dna": "C22",
+        "label": "g(x) 연속",
+        "category": "조건"
+      },
+      {
+        "id": "hx_def",
+        "dna": "F6",
+        "label": "함수 h(x) 정의",
+        "category": "함수"
+      },
+      {
+        "id": "hx_lim",
+        "dna": "E9",
+        "label": "우극한 차분몫",
+        "category": "수식"
+      },
+      {
+        "id": "diff_quot",
+        "dna": "E6",
+        "label": "차분몫 분자/t",
+        "category": "수식"
+      },
+      {
+        "id": "numerator",
+        "dna": "E1",
+        "label": "g(x+t)-g(x)",
+        "category": "수식"
+      },
+      {
+        "id": "gxpt",
+        "dna": "F3",
+        "label": "g(x+t)",
+        "category": "함수"
+      },
+      {
+        "id": "neg_gx",
+        "dna": "E2",
+        "label": "-g(x)",
+        "category": "수식"
+      },
+      {
+        "id": "gx_val",
+        "dna": "F3",
+        "label": "g(x)",
+        "category": "함수"
+      },
+      {
+        "id": "vt",
+        "dna": "T3",
+        "label": "변수 t",
+        "category": "말단"
+      },
+      {
+        "id": "t_inv",
+        "dna": "E7",
+        "label": "t^(-1)",
+        "category": "수식"
+      },
+      {
+        "id": "cneg1",
+        "dna": "T2",
+        "label": "상수 -1",
+        "category": "말단"
+      },
+      {
+        "id": "cond_ga",
+        "dna": "S1",
+        "label": "조건 (가)(나)",
+        "category": "구조"
+      },
+      {
+        "id": "cond_a_eq",
+        "dna": "C1",
+        "label": "g(3)=0",
+        "category": "조건"
+      },
+      {
+        "id": "g3",
+        "dna": "F3",
+        "label": "g(3)",
+        "category": "함수"
+      },
+      {
+        "id": "c3",
+        "dna": "T2",
+        "label": "상수 3",
+        "category": "말단"
+      },
+      {
+        "id": "cond_b_lim",
+        "dna": "E9",
+        "label": "극한 g/h^2",
+        "category": "수식"
+      },
+      {
+        "id": "lim_expr",
+        "dna": "E6",
+        "label": "g(x+t)/h(x+t)^2",
+        "category": "수식"
+      },
+      {
+        "id": "hxpt_sq",
+        "dna": "E7",
+        "label": "h(x+t)^2",
+        "category": "수식"
+      },
+      {
+        "id": "hxpt",
+        "dna": "F3",
+        "label": "h(x+t)",
+        "category": "함수"
+      },
+      {
+        "id": "c2_sq",
+        "dna": "T2",
+        "label": "상수 2",
+        "category": "말단"
+      },
+      {
+        "id": "gxpt2",
+        "dna": "F3",
+        "label": "g(x+t)극한용",
+        "category": "함수"
+      },
+      {
+        "id": "hxpt_inv",
+        "dna": "E7",
+        "label": "h(x+t)^2 역수",
+        "category": "수식"
+      },
+      {
+        "id": "cond_b_x4",
+        "dna": "X4",
+        "label": "미존재 x는 k뿐",
+        "category": "존재"
+      },
+      {
+        "id": "k_restrict",
+        "dna": "C2",
+        "label": "k < 0 (조건나)",
+        "category": "조건"
+      }
+    ],
+    "edges": [
+      {
+        "from": "ask",
+        "to": "top"
+      },
+      {
+        "from": "vk",
+        "to": "ask"
+      },
+      {
+        "from": "g_neg8",
+        "to": "ask"
+      },
+      {
+        "from": "c_neg8",
+        "to": "g_neg8"
+      },
+      {
+        "from": "gx",
+        "to": "g_neg8"
+      },
+      {
+        "from": "vk",
+        "to": "k_neg"
+      },
+      {
+        "from": "c0",
+        "to": "k_neg"
+      },
+      {
+        "from": "k_neg",
+        "to": "cond_b_x4"
+      },
+      {
+        "from": "va",
+        "to": "a_pos"
+      },
+      {
+        "from": "c0",
+        "to": "a_pos"
+      },
+      {
+        "from": "vb",
+        "to": "b_pos"
+      },
+      {
+        "from": "c0",
+        "to": "b_pos"
+      },
+      {
+        "from": "a_pos",
+        "to": "cond_ga"
+      },
+      {
+        "from": "b_pos",
+        "to": "cond_ga"
+      },
+      {
+        "from": "fx_lc",
+        "to": "fx_quad"
+      },
+      {
+        "from": "c1",
+        "to": "fx_lc"
+      },
+      {
+        "from": "fx_quad",
+        "to": "fx"
+      },
+      {
+        "from": "gx_piece1",
+        "to": "gx"
+      },
+      {
+        "from": "gx_piece2",
+        "to": "gx"
+      },
+      {
+        "from": "piece1_dom",
+        "to": "gx_piece1"
+      },
+      {
+        "from": "piece2_dom",
+        "to": "gx_piece2"
+      },
+      {
+        "from": "c0",
+        "to": "piece1_dom"
+      },
+      {
+        "from": "c0",
+        "to": "piece2_dom"
+      },
+      {
+        "from": "vx",
+        "to": "piece1_dom"
+      },
+      {
+        "from": "vx",
+        "to": "piece2_dom"
+      },
+      {
+        "from": "piece1_expr",
+        "to": "gx_piece1"
+      },
+      {
+        "from": "fx",
+        "to": "gx_piece2"
+      },
+      {
+        "from": "axpb",
+        "to": "piece1_expr"
+      },
+      {
+        "from": "fx7",
+        "to": "piece1_expr"
+      },
+      {
+        "from": "ax",
+        "to": "axpb"
+      },
+      {
+        "from": "vb",
+        "to": "axpb"
+      },
+      {
+        "from": "va",
+        "to": "ax"
+      },
+      {
+        "from": "vx",
+        "to": "ax"
+      },
+      {
+        "from": "xp7",
+        "to": "fx7"
+      },
+      {
+        "from": "fx",
+        "to": "fx7"
+      },
+      {
+        "from": "vx",
+        "to": "xp7"
+      },
+      {
+        "from": "c7",
+        "to": "xp7"
+      },
+      {
+        "from": "gx",
+        "to": "gx_cts"
+      },
+      {
+        "from": "gx_cts",
+        "to": "cond_ga"
+      },
+      {
+        "from": "hx_lim",
+        "to": "hx_def"
+      },
+      {
+        "from": "diff_quot",
+        "to": "hx_lim"
+      },
+      {
+        "from": "numerator",
+        "to": "diff_quot"
+      },
+      {
+        "from": "t_inv",
+        "to": "diff_quot"
+      },
+      {
+        "from": "gxpt",
+        "to": "numerator"
+      },
+      {
+        "from": "neg_gx",
+        "to": "numerator"
+      },
+      {
+        "from": "gx_val",
+        "to": "neg_gx"
+      },
+      {
+        "from": "gx",
+        "to": "gxpt"
+      },
+      {
+        "from": "gx",
+        "to": "gx_val"
+      },
+      {
+        "from": "vt",
+        "to": "t_inv"
+      },
+      {
+        "from": "cneg1",
+        "to": "t_inv"
+      },
+      {
+        "from": "g3",
+        "to": "cond_a_eq"
+      },
+      {
+        "from": "c0",
+        "to": "cond_a_eq"
+      },
+      {
+        "from": "gx",
+        "to": "g3"
+      },
+      {
+        "from": "c3",
+        "to": "g3"
+      },
+      {
+        "from": "cond_a_eq",
+        "to": "cond_ga"
+      },
+      {
+        "from": "cond_b_lim",
+        "to": "cond_b_x4"
+      },
+      {
+        "from": "lim_expr",
+        "to": "cond_b_lim"
+      },
+      {
+        "from": "gxpt2",
+        "to": "lim_expr"
+      },
+      {
+        "from": "hxpt_inv",
+        "to": "lim_expr"
+      },
+      {
+        "from": "hxpt_sq",
+        "to": "hxpt_inv"
+      },
+      {
+        "from": "hxpt",
+        "to": "hxpt_sq"
+      },
+      {
+        "from": "c2_sq",
+        "to": "hxpt_sq"
+      },
+      {
+        "from": "hx_def",
+        "to": "hxpt"
+      },
+      {
+        "from": "gx",
+        "to": "gxpt2"
+      },
+      {
+        "from": "vt",
+        "to": "cond_b_lim"
+      },
+      {
+        "from": "cond_b_x4",
+        "to": "cond_ga"
+      },
+      {
+        "from": "vk",
+        "to": "cond_b_x4"
+      },
+      {
+        "from": "k_restrict",
+        "to": "cond_b_x4"
+      },
+      {
+        "from": "vk",
+        "to": "k_restrict"
+      },
+      {
+        "from": "c0",
+        "to": "k_restrict"
+      },
+      {
+        "from": "cond_ga",
+        "to": "top"
+      }
+    ],
+    "new_dna": []
+  },
+  "thinking_profile": null,
+  "folders": [],
+  "history": [],
+  "recovery_warnings": [],
+  "errata": [],
+  "created_at": "2026-03-26T17:22:12.058Z"
+}
