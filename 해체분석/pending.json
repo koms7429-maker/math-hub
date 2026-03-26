@@ -720,5 +720,788 @@
     "edge_count": 16,
     "side_count": 2,
     "created_at": "2026-03-26T13:30:39.219Z"
+  },
+  {
+    "problem_id": "P20",
+    "answer": "②(155/24)",
+    "content": "id: P20\nsource: 수능\nyear: 2024\nunit: 미적분\ntopic: 다항함수와 절댓값 함수의 극값\nsubtopic: 도함수의 부호 변화와 극대 조건\ndifficulty: 상\nscore: 4\nanswer: 2\ntype: multiple_choice\n\n# 20. (수능) - 다항함수와 절댓값 함수의 극값\n\n## Problem\n\n세 상수 $a(a \\neq 0)$, $b$, $c$와 정수 $m$에 대하여 함수\n\n$$f(x) = \\frac{a}{3}x^3 - ax^2 + bx + \\frac{1}{2}|x - c|$$\n\n가 다음 조건을 만족시킨다.\n\n> (가) 함수 $f(x)$는 $x = 2$와 $x = 6$에서 극대이다.\n> (나) 구간 $(-\\infty,\\, 2]$에서 함수 $f(x)$는 최솟값 $m$을 갖는다.\n\n$a + b + c + m$의 값은? [4점]\n\n## Choices\n\n① $\\dfrac{77}{12}$ ② $\\dfrac{155}{24}$ ③ $\\dfrac{13}{2}$ ④ $\\dfrac{157}{24}$ ⑤ $\\dfrac{79}{12}$\n\n## Solution\n\n문제의 $f(x)$의 정의에 의해\n\n$$f'(x) = \\begin{cases} a(x-1)^2 - a + b - \\dfrac{1}{2} & (x < c) \\\\[6pt] a(x-1)^2 - a + b + \\dfrac{1}{2} & (x > c) \\end{cases}$$\n\n이고 (가) 조건에 의해\n\n$$f'(x)\\text{의 부호가 } x = 2,\\; x = 6\\text{의 좌우에서 양에서 음으로 바뀌어야 함} \\quad \\cdots\\; ①$$\n\n을 알 수 있다.\n\n한편,\n\n$$\\lim_{x \\to c^-} f'(x) < \\lim_{x \\to c^+} f'(x) \\text{이므로}$$\n\n$c = 2$ 또는 $c = 6$이면 ①을 만족시킬 수 없음\n\n$$\\Rightarrow f'(2) = f'(6) = 0 \\quad (\\because\\; ①) \\quad \\cdots\\; \\text{ⓒ}$$\n\n을 알 수 있다. 또한\n\n- 함수 $f'(x)$는 $x < c$, $x > c$에서 각각 최고차항의 계수가 $a$인 이차함수의 일부 ($\\because\\; a \\neq 0$)\n\n과 ①, ⓒ을 고려하면\n\n$$a < 0, \\quad 2 < c < 6$$\n\n이고, 함수 $y = f'(x)$의 그래프의 개형은 다음과 같음을 알 수 있다.\n\n[FIGURE: $y = f'(x)$의 그래프. $x = 0$과 $x = 2$에서 $f'(x) = 0$이고, $x < c$ 구간에서 아래로 볼록한 포물선, $x > c$ 구간에서도 아래로 볼록한 포물선. $x = 2$와 $x = 6$에서 $x$축에 접하며, $2 < c < 6$ 구간에서 불연속.]\n\n따라서 ⓒ에 의해\n\n$$\\begin{cases} f'(2) = a(2-1)^2 - a + b - \\dfrac{1}{2} = 0 \\\\[6pt] f'(6) = a(6-1)^2 - a + b + \\dfrac{1}{2} = 0 \\end{cases}$$\n\n$$\\Rightarrow a = -\\frac{1}{24}, \\quad b = \\frac{1}{2}$$\n\n이다. 또한 위의 $y = f'(x)$의 그래프를 참고하면\n\n- 구간 $(-\\infty,\\, 2]$에서 함수 $f(x)$는 $x < 0$에서 감소, $0 < x < 2$에서 증가\n\n$$\\Rightarrow m = f(0) = \\frac{c}{2} \\text{가 정수} \\quad (\\because\\; \\text{(나)})$$\n\n$$\\Rightarrow c = 4, \\quad m = 2 \\quad (\\because\\; 2 < c < 6)$$\n\n를 얻는다.\n\n$$\\therefore\\; a + b + c + m = -\\frac{1}{24} + \\frac{1}{2} + 4 + 2 = \\frac{155}{24}$$",
+    "content_source": "FileLoop",
+    "content_length": 1896,
+    "skel_status": "neuron_missing",
+    "dna_status": "ok",
+    "previous_skeleton": [
+      {
+        "from": "단서A",
+        "to": "note1",
+        "neuron": "전략6",
+        "type": "연산",
+        "domain_hint": "DIFF, ABS",
+        "description": "절댓값 내부 식의 부호에 따라 구간을 분리하여 각 구간에서 절댓값을 제거한 식을 얻는다",
+        "note": "절댓값 내부 식의 부호에 따라 구간을 분리하여 각 구간에서 절댓값을 제거한 식을 얻는다",
+        "main": true,
+        "step": 1,
+        "_keep_neuron": true
+      },
+      {
+        "from": "note1",
+        "to": "note2",
+        "neuron": "연산33",
+        "type": "연산",
+        "domain_hint": "DIFF, ABS",
+        "description": "각 구간에서 다항식으로 표현된 함수를 거듭제곱 미분 공식으로 미분한다",
+        "note": "각 구간에서 다항식으로 표현된 함수를 거듭제곱 미분 공식으로 미분한다",
+        "main": true,
+        "step": 1,
+        "_keep_neuron": true
+      },
+      {
+        "from": "note2",
+        "to": "note3",
+        "neuron": "사실111",
+        "type": "사실",
+        "domain_hint": "ABS, DIFF",
+        "description": "x=c에서 도함수 좌극한·우극한 차이 계산",
+        "note": "$\\lim_{x \\to c^+} f'(x) - \\lim_{x \\to c^-} f'(x) = 1 > 0$이다. $x = c$에서 $f'$의 값이 위로 1만큼 점프한다",
+        "main": true,
+        "step": 2
+      },
+      {
+        "from": [
+          "note3",
+          "단서B"
+        ],
+        "to": "note4",
+        "neuron": "NEW_1",
+        "type": "사실",
+        "domain_hint": "DIFF, FUNC",
+        "description": "위로 점프 불연속점에서 양→음 전환 불가",
+        "note": "$c \\neq 2$이고 $c \\neq 6$이다",
+        "main": true,
+        "step": 2
+      },
+      {
+        "from": [
+          "note4",
+          "note2",
+          "단서B"
+        ],
+        "to": "note5",
+        "neuron": "사실97",
+        "type": "사실",
+        "domain_hint": "DIFF",
+        "description": "극대점에서 연속인 도함수는 반드시 0",
+        "note": "$f'(2) = 0$이고 $f'(6) = 0$이다",
+        "main": true,
+        "step": 3
+      },
+      {
+        "from": [
+          "note5",
+          "note2",
+          "단서B"
+        ],
+        "to": "note6",
+        "neuron": "사실35",
+        "type": "사실",
+        "domain_hint": "POLY, DIFF",
+        "description": "위로 볼록 포물선이어야 양→음 부호전환 가능",
+        "note": "$a < 0$이다",
+        "main": true,
+        "step": 3
+      },
+      {
+        "from": [
+          "note6",
+          "note5",
+          "note4"
+        ],
+        "to": "note7",
+        "neuron": "전략23",
+        "type": "전략",
+        "domain_hint": "POLY, ABS",
+        "description": "같은 조각에 두 극대점 공존 불가로 범위 결정",
+        "note": "$x = 2$와 $x = 6$은 서로 다른 조각에 속하며, $2 < c < 6$이다",
+        "main": true,
+        "step": 3
+      },
+      {
+        "from": [
+          "note5",
+          "note7",
+          "note2"
+        ],
+        "to": "note8",
+        "neuron": "전략25",
+        "type": "연산",
+        "domain_hint": "EQN",
+        "description": "$f'(2)=0$을 $x<c$ 조각에 대입하여 $b$ 결정",
+        "note": "$f'(2) = b - \\dfrac{1}{2} = 0$에서 $b = \\dfrac{1}{2}$이다",
+        "main": true,
+        "step": 4
+      },
+      {
+        "from": [
+          "note5",
+          "note7",
+          "note8",
+          "note2"
+        ],
+        "to": "note9",
+        "neuron": "전략25",
+        "type": "연산",
+        "domain_hint": "EQN",
+        "description": "$f'(6)=0$을 $x>c$ 조각에 대입하여 $a$ 결정",
+        "note": "$f'(6) = 24a + 1 = 0$에서 $a = -\\dfrac{1}{24}$이다",
+        "main": true,
+        "step": 4
+      },
+      {
+        "from": [
+          "note8",
+          "note9",
+          "note2"
+        ],
+        "to": "note10",
+        "neuron": "연산9",
+        "type": "연산",
+        "domain_hint": "POLY",
+        "description": "$x<c$ 구간 $f'(x)$ 인수분해 및 부호 분석",
+        "note": "$x < c$에서 $f'(x) = -\\dfrac{1}{24}x(x-2)$이다. $0 < x < 2$에서 $f'(x) > 0$이고, $x < 0$에서 $f'(x) < 0$이다",
+        "main": true,
+        "step": 5
+      },
+      {
+        "from": [
+          "note8",
+          "note9",
+          "note2"
+        ],
+        "to": "note11",
+        "neuron": "연산9",
+        "type": "연산",
+        "domain_hint": "POLY",
+        "description": "$x>c$ 구간 $f'(x)$ 인수분해 및 부호 분석",
+        "note": "$x > c$에서 $f'(x) = -\\dfrac{1}{24}(x-6)(x+4)$이다. $c < x < 6$에서 $f'(x) > 0$이고, $x > 6$에서 $f'(x) < 0$이다",
+        "main": false,
+        "step": 5
+      },
+      {
+        "from": "note10",
+        "to": "note12",
+        "neuron": "사실98",
+        "type": "사실",
+        "domain_hint": "DIFF, MONO",
+        "description": "도함수 부호로 구간별 증감 판정",
+        "note": "$(-\\infty, 0)$에서 $f$ 감소이고, $(0, 2)$에서 $f$ 증가이다",
+        "main": true,
+        "step": 6
+      },
+      {
+        "from": "note9",
+        "to": "note13",
+        "neuron": "사실112",
+        "type": "사실",
+        "domain_hint": "POLY, LIM",
+        "description": "최고차 계수 음수인 삼차함수의 극한",
+        "note": "$a/3 = -1/72 < 0$이므로 $\\lim_{x \\to -\\infty} f(x) = +\\infty$이다",
+        "main": false,
+        "step": 6
+      },
+      {
+        "from": [
+          "note12",
+          "note13",
+          "단서C"
+        ],
+        "to": "note14",
+        "neuron": "NEW_2",
+        "type": "사실",
+        "domain_hint": "FUNC, DIFF",
+        "description": "감소 후 증가 구간에서 극솟값이 최솟값",
+        "note": "구간 $(-\\infty, 2]$에서 $f$의 최솟값은 $f(0)$이다",
+        "main": true,
+        "step": 6
+      },
+      {
+        "from": [
+          "note14",
+          "단서A",
+          "note7"
+        ],
+        "to": "note15",
+        "neuron": "전략25",
+        "type": "연산",
+        "domain_hint": "FUNC, ABS",
+        "description": "$f(0)$에 대입하여 $m$을 $c$로 표현",
+        "note": "$f(0) = \\dfrac{1}{2}|0 - c| = \\dfrac{c}{2}$이고, $m = \\dfrac{c}{2}$이다",
+        "main": true,
+        "step": 6
+      },
+      {
+        "from": [
+          "note15",
+          "note7",
+          "단서C"
+        ],
+        "to": "note16",
+        "neuron": "전략17",
+        "type": "전략",
+        "domain_hint": "NUM, INEQ",
+        "description": "정수 조건과 범위 조건으로 $c$ 유일 결정",
+        "note": "$2 < c < 6$이고 $c/2$가 정수이므로 $c = 4$이고 $m = 2$이다",
+        "main": true,
+        "step": 7
+      },
+      {
+        "from": [
+          "note16",
+          "note8",
+          "note9"
+        ],
+        "to": "END",
+        "neuron": "NEW_3",
+        "type": "연산",
+        "domain_hint": "EQN",
+        "description": "$a+b+c+m$ 계산",
+        "note": "$a + b + c + m = -\\dfrac{1}{24} + \\dfrac{1}{2} + 4 + 2 = \\dfrac{155}{24}$이다",
+        "main": true,
+        "step": 8
+      }
+    ],
+    "previous_solution": "절댓값 내부 식의 부호에 따라 구간을 분리하여 각 구간에서 절댓값을 제거한 식을 얻는다 각 구간에서 다항식으로 표현된 함수를 거듭제곱 미분 공식으로 미분한다 $\\lim_{x \\to c^+} f'(x) - \\lim_{x \\to c^-} f'(x) = 1 > 0$이다. $x = c$에서 $f'$의 값이 위로 1만큼 점프한다 $c \\neq 2$이고 $c \\neq 6$이다 $f'(2) = 0$이고 $f'(6) = 0$이다 $a < 0$이다 $x = 2$와 $x = 6$은 서로 다른 조각에 속하며, $2 < c < 6$이다 $f'(2) = b - \\dfrac{1}{2} = 0$에서 $b = \\dfrac{1}{2}$이다 $f'(6) = 24a + 1 = 0$에서 $a = -\\dfrac{1}{24}$이다 $x < c$에서 $f'(x) = -\\dfrac{1}{24}x(x-2)$이다. $0 < x < 2$에서 $f'(x) > 0$이고, $x < 0$에서 $f'(x) < 0$이다 $(-\\infty, 0)$에서 $f$ 감소이고, $(0, 2)$에서 $f$ 증가이다 구간 $(-\\infty, 2]$에서 $f$의 최솟값은 $f(0)$이다 $f(0) = \\dfrac{1}{2}|0 - c| = \\dfrac{c}{2}$이고, $m = \\dfrac{c}{2}$이다 $2 < c < 6$이고 $c/2$가 정수이므로 $c = 4$이고 $m = 2$이다 $a + b + c + m = -\\dfrac{1}{24} + \\dfrac{1}{2} + 4 + 2 = \\dfrac{155}{24}$이다",
+    "previous_clues": "[{\"id\":\"단서A\",\"text\":\"$f(x) = \\\\dfrac{a}{3}x^3 - ax^2 + bx + \\\\dfrac{1}{2}|x - c|$이고 $a \\\\neq 0$이다\"},{\"id\":\"단서B\",\"text\":\"$f(x)$는 $x = 2$와 $x = 6$에서 극대이다\"},{\"id\":\"단서C\",\"text\":\"구간 $(-\\\\infty, 2]$에서 $f(x)$는 최솟값 $m$을 가지며, $m$은 정수이다\"}]",
+    "previous_analysis": "절댓값 함수의 미분에서 $x=c$ 불연속 점프(+1)로 극대 불가능 위치를 소거하여 $c \\neq 2,6$을 보이고, 극대 조건 $f'(2)=f'(6)=0$과 $a<0$, $2<c<6$을 결정한다. 연립방정식으로 $a=-1/24$, $b=1/2$를 구하고, 구간별 증감 분석으로 최솟값 $f(0)=c/2$가 정수인 조건에서 $c=4$, $m=2$를 얻어 $a+b+c+m=155/24$이다.",
+    "previous_matching": "",
+    "previous_matched": [],
+    "previous_new_neurons": [
+      {
+        "id": "사실??",
+        "type": "사실",
+        "statement": "함수가 $x=a$에서 위로 점프 불연속($\\lim_{x\\to a^-}f(x) < f(a)$ 또는 좌극한에서 우극한으로 값이 증가하는 점프)이면, 그 불연속점에서 함수값의 부호가 양수에서 음수로 전환될 수 없다.",
+        "description": "위로 점프 불연속점에서 양→음 전환 불가",
+        "note": "$c \\neq 2$이고 $c \\neq 6$이다",
+        "reason": "사실68(단조함수 부호 최대 한 번 변환)은 단조함수에 대한 것이고, 사실73(중간값 정리)은 연속함수에서 부호 변환 시 영점 존재를 말하지만, '위로 점프 불연속점에서는 양→음 전환이 불가하다'는 불연속점의 점프 방향과 부호 전환 가능성 사이의 관계를 직접 다루는 뉴런이 없다.",
+        "blocked_edge": "note3+단서B → note4",
+        "domain_hint": "DIFF, FUNC",
+        "domain": [
+          "FUNC",
+          "LIM"
+        ],
+        "action_hint": "",
+        "step": 2,
+        "main": true,
+        "near_miss": []
+      },
+      {
+        "id": "사실??",
+        "type": "사실",
+        "statement": "연속함수 $f$가 전체 정의역에서 단조감소 후 단조증가로 전환되는 구조(극소가 유일)이면, 극솟값이 전체 최솟값이다.",
+        "description": "감소 후 증가 구간에서 극솟값이 최솟값",
+        "note": "구간 $(-\\infty, 2]$에서 $f$의 최솟값은 $f(0)$이다",
+        "reason": "사실53(닫힌구간에서 단조함수의 최댓값·최솟값은 끝점)은 단조함수에만 해당하고, 사실119(이차함수의 단조 구간)는 이차함수에만 한정된다. '전체 정의역에서 감소 후 증가하는 연속함수의 극솟값이 전체 최솟값'이라는 원리를 직접 서술한 뉴런이 없다.",
+        "blocked_edge": "note12+note13+단서C → note14",
+        "domain_hint": "FUNC, DIFF",
+        "domain": [
+          "FUNC",
+          "DIFF",
+          "MONO"
+        ],
+        "action_hint": "",
+        "step": 6,
+        "main": true,
+        "near_miss": []
+      },
+      {
+        "id": "연산??",
+        "type": "연산",
+        "statement": "이전 단계에서 확정된 여러 미지수의 값을 단순 합산하여 최종 답을 구한다.",
+        "description": "$a+b+c+m$ 계산",
+        "note": "$a + b + c + m = -\\dfrac{1}{24} + \\dfrac{1}{2} + 4 + 2 = \\dfrac{155}{24}$이다",
+        "reason": "전략2(연립)와 전략39(관계로부터 결정)는 과정 전략이고, 사칙연산 병합 규칙에 따라 단순 합산 계산은 별도 뉴런이 아니다. $a+b+c+m$ 계산 자체는 앞 단계에서 결정된 값들을 단순히 더하는 사칙연산이므로 NEW 제안 대상이 아니다.",
+        "blocked_edge": "note16+note8+note9 → END",
+        "domain_hint": "EQN",
+        "domain": [
+          "NUM"
+        ],
+        "action_hint": "",
+        "step": 8,
+        "main": true,
+        "near_miss": [
+          "연산9: $f(x) \\cdot g(x) = 0 \\iff f(x)=0$ 또는 $g(",
+          "연산24: 등식의 양변을 동일한 식으로 가감하여 특정 미지수/함수를 한쪽으로 모은다",
+          "연산29: 다항식을 $a(x-p)^n+q$ 형태로 변환한다 (완전제곱식, 꼭짓점 형"
+        ]
+      }
+    ],
+    "previous_partial_skeleton": [],
+    "previous_blockage_point": "",
+    "previous_skel_review_notes": "ask 노드가 중간 합 트리(ask2, ask3)로 분해되어 있었으나 E1은 2항 합이므로 트리 구조 자체는 유효. 다만 c3inv를 E7로 표현하는 것은 E7 시그니처(밑=변수,지수=상수)에 맞지 않으므로 상수 1/3로 교체. c2_exp(지수2)와 c3_exp(지수3)는 서로 다른 상수이므로 별도 유지하되 라벨 명확화. coeff1의 c3/c3inv/cm1 중복 구조를 c_third(상수 1/3) 단일 노드로 정리.",
+    "previous_dna_nodes": [
+      {
+        "id": "top",
+        "dna": "Q1",
+        "label": "값을 구하라",
+        "category": "발문"
+      },
+      {
+        "id": "ask",
+        "dna": "E1",
+        "label": "합(a+b+c+m)",
+        "category": "수식"
+      },
+      {
+        "id": "ask2",
+        "dna": "E1",
+        "label": "합(a+b+c)",
+        "category": "수식"
+      },
+      {
+        "id": "ask3",
+        "dna": "E1",
+        "label": "합(a+b)",
+        "category": "수식"
+      },
+      {
+        "id": "va",
+        "dna": "T1",
+        "label": "상수 a",
+        "category": "말단"
+      },
+      {
+        "id": "vb",
+        "dna": "T1",
+        "label": "상수 b",
+        "category": "말단"
+      },
+      {
+        "id": "vc",
+        "dna": "T1",
+        "label": "상수 c",
+        "category": "말단"
+      },
+      {
+        "id": "vm",
+        "dna": "T1",
+        "label": "정수 m",
+        "category": "말단"
+      },
+      {
+        "id": "m_int",
+        "dna": "L3",
+        "label": "m은 정수",
+        "category": "제한"
+      },
+      {
+        "id": "a_neq0",
+        "dna": "C2",
+        "label": "a ≠ 0",
+        "category": "조건"
+      },
+      {
+        "id": "func_def",
+        "dna": "F6",
+        "label": "f(x) 정의",
+        "category": "함수"
+      },
+      {
+        "id": "func_eq",
+        "dna": "C11",
+        "label": "f(x) 방정식",
+        "category": "조건"
+      },
+      {
+        "id": "func_c1",
+        "dna": "C1",
+        "label": "f(x)=우변",
+        "category": "조건"
+      },
+      {
+        "id": "rhs",
+        "dna": "E1",
+        "label": "합(다항+절대)",
+        "category": "수식"
+      },
+      {
+        "id": "poly_part",
+        "dna": "E1",
+        "label": "다항 합(3항)",
+        "category": "수식"
+      },
+      {
+        "id": "poly12",
+        "dna": "E1",
+        "label": "합(항1+항2)",
+        "category": "수식"
+      },
+      {
+        "id": "term1",
+        "dna": "E6",
+        "label": "(a/3)·x³",
+        "category": "수식"
+      },
+      {
+        "id": "coeff1",
+        "dna": "E6",
+        "label": "a · (1/3)",
+        "category": "수식"
+      },
+      {
+        "id": "c_third",
+        "dna": "T2",
+        "label": "상수 1/3",
+        "category": "말단"
+      },
+      {
+        "id": "x3",
+        "dna": "E7",
+        "label": "x³",
+        "category": "수식"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
+      },
+      {
+        "id": "c3_exp",
+        "dna": "T2",
+        "label": "지수 3",
+        "category": "말단"
+      },
+      {
+        "id": "term2_neg",
+        "dna": "E2",
+        "label": "-ax²",
+        "category": "수식"
+      },
+      {
+        "id": "term2",
+        "dna": "E6",
+        "label": "a·x²",
+        "category": "수식"
+      },
+      {
+        "id": "x2",
+        "dna": "E7",
+        "label": "x²",
+        "category": "수식"
+      },
+      {
+        "id": "c2_exp",
+        "dna": "T2",
+        "label": "지수 2",
+        "category": "말단"
+      },
+      {
+        "id": "term3",
+        "dna": "E6",
+        "label": "b·x",
+        "category": "수식"
+      },
+      {
+        "id": "abs_part",
+        "dna": "E6",
+        "label": "(1/2)|x-c|",
+        "category": "수식"
+      },
+      {
+        "id": "chalf",
+        "dna": "T2",
+        "label": "상수 1/2",
+        "category": "말단"
+      },
+      {
+        "id": "abs_xc",
+        "dna": "E5",
+        "label": "|x-c|",
+        "category": "수식"
+      },
+      {
+        "id": "x_minus_c",
+        "dna": "E1",
+        "label": "x+(-c)",
+        "category": "수식"
+      },
+      {
+        "id": "neg_c",
+        "dna": "E2",
+        "label": "-c",
+        "category": "수식"
+      },
+      {
+        "id": "cond_ga",
+        "dna": "F14",
+        "label": "x=2에서 극대",
+        "category": "함수"
+      },
+      {
+        "id": "c2_val",
+        "dna": "T2",
+        "label": "상수 2",
+        "category": "말단"
+      },
+      {
+        "id": "cond_gb",
+        "dna": "F14",
+        "label": "x=6에서 극대",
+        "category": "함수"
+      },
+      {
+        "id": "c6",
+        "dna": "T2",
+        "label": "상수 6",
+        "category": "말단"
+      },
+      {
+        "id": "dom_na2",
+        "dna": "F8",
+        "label": "구간(-∞,2]",
+        "category": "함수"
+      },
+      {
+        "id": "cond_na",
+        "dna": "C13",
+        "label": "최솟값=m",
+        "category": "조건"
+      },
+      {
+        "id": "conds",
+        "dna": "S1",
+        "label": "조건 묶음",
+        "category": "구조"
+      }
+    ],
+    "previous_dna_edges": [
+      {
+        "from": "ask",
+        "to": "top"
+      },
+      {
+        "from": "ask2",
+        "to": "ask"
+      },
+      {
+        "from": "vm",
+        "to": "ask"
+      },
+      {
+        "from": "ask3",
+        "to": "ask2"
+      },
+      {
+        "from": "vc",
+        "to": "ask2"
+      },
+      {
+        "from": "va",
+        "to": "ask3"
+      },
+      {
+        "from": "vb",
+        "to": "ask3"
+      },
+      {
+        "from": "conds",
+        "to": "top"
+      },
+      {
+        "from": "a_neq0",
+        "to": "conds"
+      },
+      {
+        "from": "va",
+        "to": "a_neq0"
+      },
+      {
+        "from": "m_int",
+        "to": "vm"
+      },
+      {
+        "from": "func_def",
+        "to": "conds"
+      },
+      {
+        "from": "func_eq",
+        "to": "func_def"
+      },
+      {
+        "from": "func_c1",
+        "to": "func_eq"
+      },
+      {
+        "from": "rhs",
+        "to": "func_c1"
+      },
+      {
+        "from": "poly_part",
+        "to": "rhs"
+      },
+      {
+        "from": "abs_part",
+        "to": "rhs"
+      },
+      {
+        "from": "poly12",
+        "to": "poly_part"
+      },
+      {
+        "from": "term3",
+        "to": "poly_part"
+      },
+      {
+        "from": "term1",
+        "to": "poly12"
+      },
+      {
+        "from": "term2_neg",
+        "to": "poly12"
+      },
+      {
+        "from": "coeff1",
+        "to": "term1"
+      },
+      {
+        "from": "x3",
+        "to": "term1"
+      },
+      {
+        "from": "va",
+        "to": "coeff1"
+      },
+      {
+        "from": "c_third",
+        "to": "coeff1"
+      },
+      {
+        "from": "vx",
+        "to": "x3"
+      },
+      {
+        "from": "c3_exp",
+        "to": "x3"
+      },
+      {
+        "from": "term2",
+        "to": "term2_neg"
+      },
+      {
+        "from": "va",
+        "to": "term2"
+      },
+      {
+        "from": "x2",
+        "to": "term2"
+      },
+      {
+        "from": "vx",
+        "to": "x2"
+      },
+      {
+        "from": "c2_exp",
+        "to": "x2"
+      },
+      {
+        "from": "vb",
+        "to": "term3"
+      },
+      {
+        "from": "vx",
+        "to": "term3"
+      },
+      {
+        "from": "chalf",
+        "to": "abs_part"
+      },
+      {
+        "from": "abs_xc",
+        "to": "abs_part"
+      },
+      {
+        "from": "x_minus_c",
+        "to": "abs_xc"
+      },
+      {
+        "from": "vx",
+        "to": "x_minus_c"
+      },
+      {
+        "from": "neg_c",
+        "to": "x_minus_c"
+      },
+      {
+        "from": "vc",
+        "to": "neg_c"
+      },
+      {
+        "from": "cond_ga",
+        "to": "conds"
+      },
+      {
+        "from": "func_def",
+        "to": "cond_ga"
+      },
+      {
+        "from": "c2_val",
+        "to": "cond_ga"
+      },
+      {
+        "from": "cond_gb",
+        "to": "conds"
+      },
+      {
+        "from": "func_def",
+        "to": "cond_gb"
+      },
+      {
+        "from": "c6",
+        "to": "cond_gb"
+      },
+      {
+        "from": "cond_na",
+        "to": "conds"
+      },
+      {
+        "from": "func_def",
+        "to": "cond_na"
+      },
+      {
+        "from": "dom_na2",
+        "to": "cond_na"
+      },
+      {
+        "from": "vm",
+        "to": "cond_na"
+      },
+      {
+        "from": "c2_val",
+        "to": "dom_na2"
+      }
+    ],
+    "previous_new_dna": [],
+    "previous_dna_review_notes": "ask 노드가 중간 합 트리(ask2, ask3)로 분해되어 있었으나 E1은 2항 합이므로 트리 구조 자체는 유효. 다만 c3inv를 E7로 표현하는 것은 E7 시그니처(밑=변수,지수=상수)에 맞지 않으므로 상수 1/3로 교체. c2_exp(지수2)와 c3_exp(지수3)는 서로 다른 상수이므로 별도 유지하되 라벨 명확화. coeff1의 c3/c3inv/cm1 중복 구조를 c_third(상수 1/3) 단일 노드로 정리.",
+    "original_solution": "문제의 $f(x)$의 정의에 의해\n\n$$f'(x) = \\begin{cases} a(x-1)^2 - a + b - \\dfrac{1}{2} & (x < c) \\\\[6pt] a(x-1)^2 - a + b + \\dfrac{1}{2} & (x > c) \\end{cases}$$\n\n이고 (가) 조건에 의해\n\n$$f'(x)\\text{의 부호가 } x = 2,\\; x = 6\\text{의 좌우에서 양에서 음으로 바뀌어야 함} \\quad \\cdots\\; ①$$\n\n을 알 수 있다.\n\n한편,\n\n$$\\lim_{x \\to c^-} f'(x) < \\lim_{x \\to c^+} f'(x) \\text{이므로}$$\n\n$c = 2$ 또는 $c = 6$이면 ①을 만족시킬 수 없음\n\n$$\\Rightarrow f'(2) = f'(6) = 0 \\quad (\\because\\; ①) \\quad \\cdots\\; \\text{ⓒ}$$\n\n을 알 수 있다. 또한\n\n- 함수 $f'(x)$는 $x < c$, $x > c$에서 각각 최고차항의 계수가 $a$인 이차함수의 일부 ($\\because\\; a \\neq 0$)\n\n과 ①, ⓒ을 고려하면\n\n$$a < 0, \\quad 2 < c < 6$$\n\n이고, 함수 $y = f'(x)$의 그래프의 개형은 다음과 같음을 알 수 있다.\n\n[FIGURE: $y = f'(x)$의 그래프. $x = 0$과 $x = 2$에서 $f'(x) = 0$이고, $x < c$ 구간에서 아래로 볼록한 포물선, $x > c$ 구간에서도 아래로 볼록한 포물선. $x = 2$와 $x = 6$에서 $x$축에 접하며, $2 < c < 6$ 구간에서 불연속.]\n\n따라서 ⓒ에 의해\n\n$$\\begin{cases} f'(2) = a(2-1)^2 - a + b - \\dfrac{1}{2} = 0 \\\\[6pt] f'(6) = a(6-1)^2 - a + b + \\dfrac{1}{2} = 0 \\end{cases}$$\n\n$$\\Rightarrow a = -\\frac{1}{24}, \\quad b = \\frac{1}{2}$$\n\n이다. 또한 위의 $y = f'(x)$의 그래프를 참고하면\n\n- 구간 $(-\\infty,\\, 2]$에서 함수 $f(x)$는 $x < 0$에서 감소, $0 < x < 2$에서 증가\n\n$$\\Rightarrow m = f(0) = \\frac{c}{2} \\text{가 정수} \\quad (\\because\\; \\text{(나)})$$\n\n$$\\Rightarrow c = 4, \\quad m = 2 \\quad (\\because\\; 2 < c < 6)$$\n\n를 얻는다.\n\n$$\\therefore\\; a + b + c + m = -\\frac{1}{24} + \\frac{1}{2} + 4 + 2 = \\frac{155}{24}$$",
+    "recovery_warnings": [],
+    "errata": [],
+    "metadata": {
+      "unit": "미적분",
+      "difficulty": "상",
+      "score": "4",
+      "type": "multiple_choice",
+      "answer": "2",
+      "year": "2024",
+      "source": "수능",
+      "topic": "다항함수와 절댓값 함수의 극값",
+      "subtopic": "도함수의 부호 변화와 극대 조건"
+    },
+    "needed_neurons": [
+      "사실??",
+      "사실??",
+      "연산??"
+    ],
+    "needed_dna": [],
+    "edge_count": 17,
+    "side_count": 2,
+    "created_at": "2026-03-26T13:36:09.241Z"
   }
 ]
