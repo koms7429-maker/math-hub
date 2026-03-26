@@ -6572,29 +6572,26 @@
           "단서C"
         ],
         "to": "note1",
-        "neuron": "NEW_1",
-        "type": "전략",
+        "neuron": "Sarithmetic",
+        "type": "연산",
         "domain_hint": "EQN",
-        "description": "연쇄 등식 A=B=C에서 A=B, A=C 두 조건 분리",
-        "note": "조건①: $\\lim_{x \\to 1^+} g(x) = f(1) + \\lim_{x \\to 1^-} g(x)$, 조건②: $\\lim_{x \\to 1^+} g(x) = f(3)$이다",
+        "description": "A=B=C 등호 체인을 두 등식으로 분리",
+        "note": "조건 ①: $\\lim_{x \\to 1^+} g(x) - \\lim_{x \\to 1^-} g(x) = f(1)$, 조건 ②: $\\lim_{x \\to 1^+} g(x) = f(3)$이다",
         "main": true,
-        "step": 1,
-        "_keep_neuron": false
+        "step": 1
       },
       {
         "from": [
-          "note1",
-          "단서B"
+          "note1"
         ],
         "to": "note2",
         "neuron": "전략21",
         "type": "전략",
-        "domain_hint": "LIM, FUNC",
-        "description": "귀류법으로 f(1)≠0 가정",
-        "note": "$f(1) \\neq 0$이면 조건①에서 $\\lim_{x \\to 1^+} g(x) \\neq \\lim_{x \\to 1^-} g(x)$이다",
-        "main": true,
-        "step": 2,
-        "_keep_neuron": true
+        "domain_hint": "EQN, LIM",
+        "description": "f(1)≠0을 가정하여 귀류법 시작",
+        "note": "$f(1) \\neq 0$이면 조건 ①에서 $\\lim_{x \\to 1^+} g(x) \\neq \\lim_{x \\to 1^-} g(x)$이다",
+        "main": false,
+        "step": 2
       },
       {
         "from": [
@@ -6602,14 +6599,13 @@
           "단서B"
         ],
         "to": "note3",
-        "neuron": "사실94",
+        "neuron": "NEW_1",
         "type": "사실",
         "domain_hint": "FUNC, LIM",
-        "description": "구간별 정의 함수의 좌우극한이 다르면 분기 조건 부호가 변한다",
-        "note": "$x=1$ 좌우에서 $g(x)$에 적용되는 식이 달라야 하고, $f(x)$의 부호가 $x=1$ 전후로 바뀌어야 한다",
-        "main": true,
-        "step": 2,
-        "_keep_neuron": true
+        "description": "구간별 정의 함수의 좌우극한이 다르면 분기 조건의 부호가 바뀜",
+        "note": "좌극한과 우극한이 다르면 $x=1$ 좌우에서 $g(x)$에 다른 식이 적용되고, $f(x)$의 부호가 바뀐다",
+        "main": false,
+        "step": 2
       },
       {
         "from": [
@@ -6617,14 +6613,13 @@
           "단서A"
         ],
         "to": "note4",
-        "neuron": "사실22",
+        "neuron": "사실73",
         "type": "사실",
-        "domain_hint": "FUNC, POLY",
-        "description": "연속함수가 부호 변하면 중간값정리에 의해 영점 존재",
-        "note": "$f$는 연속(삼차함수)이고 부호가 바뀌면 $f(1) = 0$이어야 하나 $f(1) \\neq 0$ 가정과 모순이다",
-        "main": true,
-        "step": 2,
-        "_keep_neuron": true
+        "domain_hint": "POLY, LIM",
+        "description": "연속함수의 부호가 바뀌면 해당 점에서 함수값이 0",
+        "note": "연속함수 $f(x)$의 부호가 $x=1$ 좌우에서 바뀌면 $f(1)=0$이다. $f(1) \\neq 0$ 가정에 모순이다",
+        "main": false,
+        "step": 2
       },
       {
         "from": [
@@ -6634,96 +6629,94 @@
         "neuron": "전략23",
         "type": "전략",
         "domain_hint": "EQN",
-        "description": "귀류법 가정에서 모순이 발생하였으므로, f(1)≠0 가정을 배제한다.",
-        "note": "귀류법 가정에서 모순이 발생하였으므로, f(1)≠0 가정을 배제한다.",
+        "description": "귀류법 모순으로부터 결론 확정",
+        "note": "$f(1) = 0$이다",
         "main": true,
-        "step": 2,
-        "_keep_neuron": true
+        "step": 2
       },
       {
-        "from": "note5",
+        "from": [
+          "note5",
+          "note1"
+        ],
         "to": "note6",
-        "neuron": "전략20",
-        "type": "전략",
-        "domain_hint": "EQN",
-        "description": "배제되지 않은 유일한 경우인 f(1)=0이 원래 명제로 확정된다.",
-        "note": "배제되지 않은 유일한 경우인 f(1)=0이 원래 명제로 확정된다.",
+        "neuron": "전략25",
+        "type": "연산",
+        "domain_hint": "EQN, LIM",
+        "description": "f(1)=0을 조건 ①에 대입하여 좌극한=우극한 도출",
+        "note": "$f(1)=0$을 조건 ①에 대입하면 $\\lim_{x \\to 1^+} g(x) = \\lim_{x \\to 1^-} g(x)$이다",
         "main": true,
-        "step": 2,
-        "_keep_neuron": true
+        "step": 3
       },
       {
         "from": [
           "note6",
-          "note1"
+          "단서B"
         ],
         "to": "note7",
-        "neuron": "전략25",
-        "type": "연산",
-        "domain_hint": "LIM, EQN",
-        "description": "f(1)=0을 조건①에 대입하여 좌우극한 일치 도출",
-        "note": "조건①에 $f(1)=0$ 대입하면 $\\lim_{x \\to 1^+} g(x) = \\lim_{x \\to 1^-} g(x)$이다",
+        "neuron": "사칙연산",
+        "type": "전략",
+        "domain_hint": "FUNC, LIM",
+        "description": "좌우극한 일치 + 두 식의 함수값 차이로부터 극값 조건 유도",
+        "note": "$x=1$에서 $g(x)=x$이면 $1$, $g(x)=x-2$이면 $-1$이다. 좌극한=우극한이 성립하려면 $x=1$ 양쪽에서 같은 식이 적용된다. $f$는 $x=1$에서 극값 $0$을 가진다",
         "main": true,
-        "step": 3,
-        "_keep_neuron": true
+        "step": 3
       },
       {
         "from": [
           "note7",
-          "단서B"
+          "단서A"
         ],
         "to": "note8",
-        "neuron": "사실94",
-        "type": "사실",
-        "domain_hint": "FUNC, LIM",
-        "description": "구간별 정의 함수에서 좌우극한이 같으면 근방에서 같은 식 적용",
-        "note": "$g(x)$에서 $x$와 $x-2$는 $x=1$에서 각각 $1$, $-1$이고 다르므로, 좌우극한이 같으려면 $x=1$ 근방 양측에서 같은 식이 적용되어야 하고, $f(x)$의 부호가 $x=1$ 근방에서 동일하다",
-        "main": true,
-        "step": 3,
-        "_keep_neuron": true
+        "neuron": "전략41",
+        "type": "전략",
+        "domain_hint": "POLY, FUNC",
+        "description": "극소 경우를 설정하고 삼차함수 형태 결정",
+        "note": "$x=1$에서 극소이면 $f(x) = (x-1)^2(x-\\alpha)$, $\\alpha < 1$이고 $x>1$에서 $f(x) \\geq 0$이다",
+        "main": false,
+        "step": 4
       },
       {
         "from": [
           "note8",
-          "note6",
-          "단서A"
+          "단서B"
         ],
         "to": "note9",
-        "neuron": "사실96",
+        "neuron": "전략25",
         "type": "사실",
-        "domain_hint": "POLY, NUM",
-        "description": "연속함수의 영점에서 부호 안 바뀌면 짝수 중복도 근",
-        "note": "$f(1)=0$이고 $x=1$ 근방에서 부호 불변이고, 단근이면 부호가 바뀌고 삼중근 $(x-1)^3$도 부호가 바뀌므로, $x=1$은 정확히 이중근이다",
-        "main": true,
-        "step": 3,
-        "_keep_neuron": true
+        "domain_hint": "LIM, FUNC",
+        "description": "f(x)≥0인 구간에서 g(x)=x-2의 극한 계산",
+        "note": "$x>1$ 근방에서 $f(x) \\geq 0$이면 $g(x)=x-2$이고 $\\lim_{x \\to 1^+} g(x) = -1$이다",
+        "main": false,
+        "step": 4
       },
       {
         "from": [
           "note9",
-          "단서A"
+          "note1"
         ],
         "to": "note10",
-        "neuron": "전략38",
-        "type": "사실",
-        "domain_hint": "POLY",
-        "description": "이중근 α에 대해 f(α)=0이므로 (x-α) | f(x)이고, 중복도 2이므로 (x-α)^2 | f(x)임을 확인한다.",
-        "note": "이중근 α에 대해 f(α)=0이므로 (x-α) | f(x)이고, 중복도 2이므로 (x-α)^2 | f(x)임을 확인한다.",
-        "main": true,
-        "step": 3,
-        "_keep_neuron": true
+        "neuron": "전략23",
+        "type": "전략",
+        "domain_hint": "EQN, POLY",
+        "description": "조건 ②에서 f(3) 값과 실제 계산값의 모순 확인",
+        "note": "조건 ②에서 $f(3) = -1$이지만, $\\alpha < 1$일 때 $f(3) = 4(3-\\alpha) > 0$이다. 모순이다",
+        "main": false,
+        "step": 4
       },
       {
-        "from": "note10",
+        "from": [
+          "note7",
+          "단서A"
+        ],
         "to": "note11",
-        "neuron": "전략29",
-        "type": "사실",
-        "domain_hint": "POLY",
-        "description": "최고차계수 1인 삼차함수 f(x)는 이중근 α와 단순근 β를 이용하여 f(x)=(x-α)^2(x-β)로 인수분해된다.",
-        "note": "최고차계수 1인 삼차함수 f(x)는 이중근 α와 단순근 β를 이용하여 f(x)=(x-α)^2(x-β)로 인수분해된다.",
+        "neuron": "전략41",
+        "type": "전략",
+        "domain_hint": "POLY, FUNC",
+        "description": "극대 경우를 설정하고 삼차함수 형태 결정",
+        "note": "$x=1$에서 극대이면 $f(x) = (x-1)^2(x-\\alpha)$, $\\alpha > 1$이고 $x \\to 1^+$에서 $f(x) < 0$이다",
         "main": true,
-        "step": 3,
-        "_keep_neuron": true
+        "step": 5
       },
       {
         "from": [
@@ -6732,146 +6725,67 @@
         ],
         "to": "note12",
         "neuron": "전략25",
-        "type": "연산",
-        "domain_hint": "POLY, LIM",
-        "description": "α<1일 때 x=1 근방 부호 판정 및 우극한 계산",
-        "note": "$\\alpha < 1$이면 $x=1$ 근방에서 $(x-1)^2 \\geq 0$이고 $(x-\\alpha)>0$이어서 $f(x) \\geq 0$이고, $g(x)=x-2$가 적용되어 $\\lim_{x \\to 1^+} g(x) = -1$이다",
-        "main": false,
-        "step": 4,
-        "_keep_neuron": false
+        "type": "사실",
+        "domain_hint": "LIM, FUNC",
+        "description": "f(x)<0인 구간에서 g(x)=x의 극한 계산",
+        "note": "$x \\to 1^+$에서 $f(x) < 0$이면 $g(x) = x$이고 $\\lim_{x \\to 1^+} g(x) = 1$이다",
+        "main": true,
+        "step": 5
       },
       {
         "from": [
           "note12",
-          "note1",
-          "note11"
+          "note1"
         ],
         "to": "note13",
-        "neuron": "전략23",
-        "type": "전략",
-        "domain_hint": "EQN, INEQ",
-        "description": "조건②와 비교하여 모순 확인, 경우 기각",
-        "note": "조건②에서 $f(3)=-1$이 필요하나, $\\alpha<1$이면 $f(3)=4(3-\\alpha)>8>0$이고 모순이다. $\\alpha < 1$ 기각",
-        "main": false,
-        "step": 4,
-        "_keep_neuron": true
-      },
-      {
-        "from": [
-          "note11",
-          "단서B"
-        ],
-        "to": "note14",
-        "neuron": "전략25",
-        "type": "연산",
-        "domain_hint": "POLY, LIM",
-        "description": "α>1일 때 x=1 근방 부호 판정 및 우극한 계산",
-        "note": "$\\alpha > 1$이면 $x=1$ 근방에서 $(x-1)^2>0$($x \\neq 1$)이고 $(x-\\alpha)<0$이어서 $f(x)<0$이고, $g(x)=x$가 적용되어 $\\lim_{x \\to 1^+} g(x) = 1$이다",
-        "main": true,
-        "step": 5,
-        "_keep_neuron": false
-      },
-      {
-        "from": [
-          "note14",
-          "note1"
-        ],
-        "to": "note15",
-        "neuron": "전략25",
-        "type": "연산",
-        "domain_hint": "EQN",
-        "description": "조건②에 우극한값 대입하여 f(3)=1 도출",
-        "note": "조건②에서 $f(3) = 1$이다",
-        "main": true,
-        "step": 5,
-        "_keep_neuron": true
-      },
-      {
-        "from": [
-          "note15",
-          "note11"
-        ],
-        "to": "note16",
-        "neuron": "전략25",
+        "neuron": "전략2",
         "type": "연산",
         "domain_hint": "EQN, POLY",
-        "description": "f(3)=1 방정식을 풀어 α 결정",
-        "note": "$f(3) = 4(3-\\alpha) = 1$에서 $\\alpha = \\dfrac{11}{4}$이다",
+        "description": "조건 ②에 극한값 대입 후 방정식을 풀어 α 결정",
+        "note": "조건 ②에서 $f(3) = 1$이고, $4(3-\\alpha) = 1$에서 $\\alpha = \\frac{11}{4}$이다",
         "main": true,
-        "step": 6,
-        "_keep_neuron": true
+        "step": 5
       },
       {
         "from": [
-          "note16"
-        ],
-        "to": "note17",
-        "neuron": "전략25",
-        "type": "사실",
-        "domain_hint": "INEQ",
-        "description": "구한 α값이 α>1 조건 충족 확인",
-        "note": "$\\alpha = \\dfrac{11}{4} > 1$이고 $\\alpha > 1$ 조건을 만족한다",
-        "main": false,
-        "step": 6,
-        "_keep_neuron": true
-      },
-      {
-        "from": [
-          "note16",
-          "note6",
-          "note1"
-        ],
-        "to": "note18",
-        "neuron": "전략25",
-        "type": "연산",
-        "domain_hint": "LIM, FUNC",
-        "description": "조건① 성립 검증",
-        "note": "$f(1)=0$이고 $x=1$ 근방에서 $g(x)=x$이고 $\\lim_{x \\to 1^-} g(x) = 1$이고 조건① $1 = 0 + 1$ 성립한다",
-        "main": false,
-        "step": 7,
-        "_keep_neuron": true
-      },
-      {
-        "from": [
-          "note16"
+          "note13"
         ],
         "to": "END",
         "neuron": "전략25",
         "type": "연산",
         "domain_hint": "POLY",
-        "description": "f(5) 대입 계산",
-        "note": "$f(5) = (5-1)^2\\left(5 - \\dfrac{11}{4}\\right) = 16 \\times \\dfrac{9}{4} = 36$이다",
+        "description": "확정된 f(x)에 x=5를 대입하여 최종값 계산",
+        "note": "$f(x) = (x-1)^2\\left(x-\\frac{11}{4}\\right)$이고, $f(5) = 16 \\times \\frac{9}{4} = 36$이다",
         "main": true,
-        "step": 8,
-        "_keep_neuron": true
+        "step": 6
       }
     ],
-    "previous_solution": "조건①: $\\lim_{x \\to 1^+} g(x) = f(1) + \\lim_{x \\to 1^-} g(x)$, 조건②: $\\lim_{x \\to 1^+} g(x) = f(3)$이다 $f(1) \\neq 0$이면 조건①에서 $\\lim_{x \\to 1^+} g(x) \\neq \\lim_{x \\to 1^-} g(x)$이다 $x=1$ 좌우에서 $g(x)$에 적용되는 식이 달라야 하고, $f(x)$의 부호가 $x=1$ 전후로 바뀌어야 한다 $f$는 연속(삼차함수)이고 부호가 바뀌면 $f(1) = 0$이어야 하나 $f(1) \\neq 0$ 가정과 모순이다 귀류법 가정에서 모순이 발생하였으므로, f(1)≠0 가정을 배제한다. 배제되지 않은 유일한 경우인 f(1)=0이 원래 명제로 확정된다. 조건①에 $f(1)=0$ 대입하면 $\\lim_{x \\to 1^+} g(x) = \\lim_{x \\to 1^-} g(x)$이다 $g(x)$에서 $x$와 $x-2$는 $x=1$에서 각각 $1$, $-1$이고 다르므로, 좌우극한이 같으려면 $x=1$ 근방 양측에서 같은 식이 적용되어야 하고, $f(x)$의 부호가 $x=1$ 근방에서 동일하다 $f(1)=0$이고 $x=1$ 근방에서 부호 불변이고, 단근이면 부호가 바뀌고 삼중근 $(x-1)^3$도 부호가 바뀌므로, $x=1$은 정확히 이중근이다 이중근 α에 대해 f(α)=0이므로 (x-α) | f(x)이고, 중복도 2이므로 (x-α)^2 | f(x)임을 확인한다. 최고차계수 1인 삼차함수 f(x)는 이중근 α와 단순근 β를 이용하여 f(x)=(x-α)^2(x-β)로 인수분해된다. $\\alpha > 1$이면 $x=1$ 근방에서 $(x-1)^2>0$($x \\neq 1$)이고 $(x-\\alpha)<0$이어서 $f(x)<0$이고, $g(x)=x$가 적용되어 $\\lim_{x \\to 1^+} g(x) = 1$이다 조건②에서 $f(3) = 1$이다 $f(3) = 4(3-\\alpha) = 1$에서 $\\alpha = \\dfrac{11}{4}$이다 $f(5) = (5-1)^2\\left(5 - \\dfrac{11}{4}\\right) = 16 \\times \\dfrac{9}{4} = 36$이다",
-    "previous_clues": "[{\"id\":\"단서A\",\"text\":\"최고차항의 계수가 $1$인 삼차함수 $f(x)$이다\"},{\"id\":\"단서B\",\"text\":\"$g(x) = \\\\begin{cases} x & (f(x) < 0) \\\\\\\\ x - 2 & (f(x) \\\\geq 0) \\\\end{cases}$이다\"},{\"id\":\"단서C\",\"text\":\"$\\\\displaystyle\\\\lim_{x \\\\to 1^+} g(x) = f(1) + \\\\displaystyle\\\\lim_{x \\\\to 1^-} g(x) = f(3)$이다\"}]",
-    "previous_analysis": "",
+    "previous_solution": "조건 ①: $\\lim_{x \\to 1^+} g(x) - \\lim_{x \\to 1^-} g(x) = f(1)$, 조건 ②: $\\lim_{x \\to 1^+} g(x) = f(3)$이다 $f(1) = 0$이다 $f(1)=0$을 조건 ①에 대입하면 $\\lim_{x \\to 1^+} g(x) = \\lim_{x \\to 1^-} g(x)$이다 $x=1$에서 $g(x)=x$이면 $1$, $g(x)=x-2$이면 $-1$이다. 좌극한=우극한이 성립하려면 $x=1$ 양쪽에서 같은 식이 적용된다. $f$는 $x=1$에서 극값 $0$을 가진다 $x=1$에서 극대이면 $f(x) = (x-1)^2(x-\\alpha)$, $\\alpha > 1$이고 $x \\to 1^+$에서 $f(x) < 0$이다 $x \\to 1^+$에서 $f(x) < 0$이면 $g(x) = x$이고 $\\lim_{x \\to 1^+} g(x) = 1$이다 조건 ②에서 $f(3) = 1$이고, $4(3-\\alpha) = 1$에서 $\\alpha = \\frac{11}{4}$이다 $f(x) = (x-1)^2\\left(x-\\frac{11}{4}\\right)$이고, $f(5) = 16 \\times \\frac{9}{4} = 36$이다",
+    "previous_clues": "[{\"id\":\"단서A\",\"text\":\"$f(x)$는 최고차항의 계수가 $1$인 삼차함수이다\"},{\"id\":\"단서B\",\"text\":\"$g(x) = \\\\begin{cases} x & (f(x) < 0) \\\\\\\\ x - 2 & (f(x) \\\\geq 0) \\\\end{cases}$\"},{\"id\":\"단서C\",\"text\":\"$\\\\lim_{x \\\\to 1^+} g(x) = f(1) + \\\\lim_{x \\\\to 1^-} g(x) = f(3)$\"}]",
+    "previous_analysis": "A=B=C 등호 체인에서 두 조건을 분리한 뒤, 귀류법으로 f(1)=0을 도출한다. x=1에서 극값 0을 가지는 조건을 극소·극대로 나누어 극소는 모순으로 소거하고, 극대인 경우 f(x)=(x-1)²(x-α)에서 f(3)=1을 풀어 α=11/4를 결정한다.",
     "previous_matching": "",
     "previous_matched": [],
     "previous_new_neurons": [
       {
-        "id": "전략??",
-        "type": "전략",
-        "statement": "연쇄 등식 A=B=C는 등호의 추이성에 의해 A=B이고 A=C인 두 조건으로 분리된다.",
-        "description": "연쇄 등식 A=B=C에서 A=B, A=C 두 조건 분리",
-        "note": "조건①: $\\lim_{x \\to 1^+} g(x) = f(1) + \\lim_{x \\to 1^-} g(x)$, 조건②: $\\lim_{x \\to 1^+} g(x) = f(3)$이다",
-        "reason": "피드백에 따르면 A=B=C → A=B ∧ A=C는 등호의 정의 수준(사칙연산급)이므로 별도 뉴런 불필요하다고 기각됨. 그러나 출력 형식상 edge에 대한 결과를 반환해야 하므로: 후보 중 연산24(등식 변형), 전략25(대입 확인) 등을 검토했으나 모두 해당 원리를 직접 표현하지 않음. 단, 피드백이 '사칙연산급'으로 뉴런 불필요라고 명시했으므로, 이 edge는 별도 뉴런 매칭 대상이 아님.",
-        "blocked_edge": "단서C → note1",
-        "domain_hint": "EQN",
+        "id": "사실??",
+        "type": "사실",
+        "statement": "구간별로 다른 식으로 정의된 함수에서 경계점의 좌극한과 우극한이 서로 다르면, 그 경계점 근방에서 함수를 결정하는 조건(부등호 또는 등호 방향)이 경계점을 기준으로 바뀐다.",
+        "description": "구간별 정의 함수의 좌우극한이 다르면 분기 조건의 부호가 바뀜",
+        "note": "좌극한과 우극한이 다르면 $x=1$ 좌우에서 $g(x)$에 다른 식이 적용되고, $f(x)$의 부호가 바뀐다",
+        "reason": "후보 중 사실95가 가장 유사하나, 사실95는 f(a)=0인 점에서의 극한 부호를 다룬다. 여기서 필요한 원리는 구간별 정의 함수에서 분기 경계점 양쪽의 좌·우극한이 다를 수 있다는 것, 즉 불연속점에서 좌극한≠우극한이면 그 점에서 함수 정의에 쓰인 부호 조건이 바뀐다는 원리이다. 사실94는 연속 정의이고, 사실111은 미분가능 조건이다. 어느 것도 '좌우극한 불일치 → 분기 조건 부호 전환'을 직접 표현하지 않는다.",
+        "blocked_edge": "note2+단서B → note3",
+        "domain_hint": "FUNC, LIM",
         "domain": [
-          "SYM",
-          "EQN"
+          "FUNC",
+          "LIM"
         ],
         "action_hint": "",
-        "step": 1,
-        "main": true,
+        "step": 2,
+        "main": false,
         "near_miss": [
-          "전략1: $a^{f(x)}$를 하나의 변수로 치환하면 지수방정식을 다항방정식으로 ",
-          "전략2: 두 조건식을 연립하면 미지수를 결정할 수 있다 |",
-          "전략7: $f(x_1)=g(x_2)$인 실수쌍 $x_1, x_2$가 존재 $\\if"
+          "사실2: $y = f(|x - c|)$는 직선 $x = c$에 대해 대칭이다 ($",
+          "사실5: 지수함수 $y=a^x$는 $a>1$이면 순증가, $0<a<1$이면 순감소",
+          "사실9: 이차함수 $f(x)=a(x-p)^2+q$에서 $f(x)=c$의 실근이 정"
         ]
       }
     ],
@@ -7208,8 +7122,8 @@
       "사실??"
     ],
     "needed_dna": [],
-    "edge_count": 19,
-    "side_count": 4,
-    "created_at": "2026-03-26T14:48:04.273Z"
+    "edge_count": 14,
+    "side_count": 6,
+    "created_at": "2026-03-26T14:53:30.749Z"
   }
 ]
