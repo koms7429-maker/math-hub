@@ -1,0 +1,660 @@
+{
+  "problem_id": "P18",
+  "answer": "370",
+  "clues": [
+    {
+      "id": "단서A",
+      "text": "$f(x) = x^4 + \\dfrac{4}{3}x^3 - 4x^2 + a$"
+    },
+    {
+      "id": "단서B",
+      "text": "방정식 $(k+1)f(x) - (k-1)|f(x)| = t$"
+    },
+    {
+      "id": "단서C",
+      "text": "임의의 실수 $t$에 대하여 서로 다른 실근의 개수가 4 이하가 되도록 하는 실수 $k$의 최솟값이 $-1$이다"
+    }
+  ],
+  "skeleton": [
+    {
+      "from": "단서A",
+      "to": "note1",
+      "neuron": "연산33",
+      "type": "연산",
+      "domain_hint": "DIFF, POLY",
+      "description": "$f(x)$의 각 항을 $(x^n)'=nx^{n-1}$로 미분한다",
+      "note": "$f'(x) = 4x^3 + 4x^2 - 8x = 4x(x+2)(x-1)$",
+      "main": true,
+      "step": 1
+    },
+    {
+      "from": "note1",
+      "to": "note2",
+      "neuron": "사실99",
+      "type": "사실",
+      "domain_hint": "DIFF, POLY",
+      "description": "$f'$의 부호 변화로 극값 위치와 종류를 판정한다",
+      "note": "$x=-2$에서 극소, $x=0$에서 극대, $x=1$에서 극소이다",
+      "main": true,
+      "step": 1
+    },
+    {
+      "from": "단서B",
+      "to": "note3",
+      "neuron": "전략6",
+      "type": "전략",
+      "domain_hint": "ABS, EQN",
+      "description": "$|f(x)|$를 $f(x)$의 부호에 따라 경우 분류한다",
+      "note": "$f(x)\\ge 0$이면 $(k+1)f-(k-1)f=2f=t$, 즉 $f(x)=\\dfrac{t}{2}$ (ⓑ). $f(x)<0$이면 $(k+1)f+(k-1)f=2kf=t$, 즉 $f(x)=\\dfrac{t}{2k}$ (ⓐ)",
+      "main": true,
+      "step": 2
+    },
+    {
+      "from": "단서C",
+      "to": "note4",
+      "neuron": "전략42",
+      "type": "전략",
+      "domain_hint": "EQN, INEQ",
+      "description": "'$k$의 최솟값이 $-1$'을 두 조건으로 분해한다",
+      "note": "① $k=-1$이면 임의의 $t$에 대해 실근 $\\le 4$개. ② $k<-1$이면 실근 $\\ge 5$개인 $t$가 존재한다",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": [
+        "note3",
+        "note4"
+      ],
+      "to": "note5",
+      "neuron": "사실65",
+      "type": "사실",
+      "domain_hint": "INEQ, NUM",
+      "description": "$k\\le -1$, $t\\le 0$일 때 $t/(2k)\\ge 0$이므로 $f(x)<0$과 양립 불가",
+      "note": "$t\\le 0$이면 ⓐ의 실근은 0개이므로 ②를 충족하는 $t$가 될 수 없다. 따라서 $t>0$만 분석한다",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": [
+        "note2",
+        "note3",
+        "note5"
+      ],
+      "to": "note6",
+      "neuron": "전략22",
+      "type": "전략",
+      "domain_hint": "EQN, FUNC",
+      "description": "극솟값 $f(1)$, $f(-2)$의 부호에 따라 경우를 분류한다",
+      "note": "(i) $f(1)<0$, (ii) $f(1)=0$, (iii) $f(1)>0$이고 $f(-2)\\ge 0$, (iv) $f(-2)<0<f(1)$로 분류",
+      "main": true,
+      "step": 4
+    },
+    {
+      "from": "note6",
+      "to": "note7",
+      "neuron": "전략23",
+      "type": "전략",
+      "domain_hint": "EQN, FUNC",
+      "description": "각 경우에서 조건 ①②와 모순되는 경우를 배제한다",
+      "note": "(i) $f(1)<0$: 임의의 $t>0$에서 ⓑ가 실근 $\\ge 2$개를 추가하여 ① 위반. (ii) $f(1)=0$: $t\\to 0^+$에서 ⓑ가 4개, ⓐ가 2개로 ① 위반. (iii) $f(-2)\\ge 0$: ⓐ의 실근이 항상 0개여서 ② 위반. 따라서 (iv) $f(-2)<0<f(1)$만 가능",
+      "main": true,
+      "step": 4
+    },
+    {
+      "from": [
+        "note2",
+        "note3",
+        "note5",
+        "note7"
+      ],
+      "to": "note8",
+      "neuron": "전략42",
+      "type": "전략",
+      "domain_hint": "FUNC, EQN",
+      "description": "임계 수준 $t/2=f(1)$에서 교점 개수 조건을 부등식으로 전환한다",
+      "note": "$t/2=f(1)$일 때 ⓑ는 $x=1$에서 접하여 실근 2개. 총 실근 $\\le 4$이려면 ⓐ의 실근 $\\le 2$이어야 하므로 $\\dfrac{f(1)}{k}\\le f(-2)$이다",
+      "main": true,
+      "step": 5
+    },
+    {
+      "from": "note8",
+      "to": "note9_1",
+      "neuron": "전략21",
+      "type": "전략",
+      "domain_hint": "INEQ",
+      "description": "$k=-1$을 대입하여 조건 ①을 확인한다",
+      "note": "$k=-1$이면 $f(1)/k=-f(1)$이고, 조건은 $-f(1)\\le f(-2)$, 즉 $f(-2)+f(1)\\ge 0$",
+      "main": true,
+      "step": 6
+    },
+    {
+      "from": "note8",
+      "to": "note9_2",
+      "neuron": "사실123",
+      "type": "사실",
+      "domain_hint": "MONO, RAT",
+      "description": "$k<-1$에서 $1/k$의 단조성으로 조건 ②를 해석한다",
+      "note": "$k<-1$일 때 $|k|>1$이므로 $f(1)/k$는 $-f(1)$보다 $0$에 가깝다(크다). 따라서 ②(실근 $\\ge 5$개인 $t$ 존재)가 성립하려면 $f(-2)+f(1)\\le 0$",
+      "main": true,
+      "step": 6
+    },
+    {
+      "from": [
+        "note9_1",
+        "note9_2"
+      ],
+      "to": "note10",
+      "neuron": "전략2",
+      "type": "전략",
+      "domain_hint": "EQN",
+      "description": "두 부등식을 연립하여 등호를 확정한다",
+      "note": "$f(-2)+f(1)\\ge 0$이고 $f(-2)+f(1)\\le 0$이므로 $f(-2)+f(1)=0$, 즉 $f(-2)=-f(1)$",
+      "main": true,
+      "step": 6
+    },
+    {
+      "from": "단서A",
+      "to": "note11",
+      "neuron": "전략25",
+      "type": "연산",
+      "domain_hint": "POLY",
+      "description": "극솟값을 구체적으로 계산한다",
+      "note": "$f(-2)=16-\\dfrac{32}{3}-16+a=-\\dfrac{32}{3}+a$, $f(1)=1+\\dfrac{4}{3}-4+a=-\\dfrac{5}{3}+a$",
+      "main": true,
+      "step": 7
+    },
+    {
+      "from": [
+        "note10",
+        "note11"
+      ],
+      "to": "END",
+      "neuron": "전략2",
+      "type": "전략",
+      "domain_hint": "EQN, NUM",
+      "description": "$f(-2)+f(1)=0$에 대입하여 $a$를 구하고 $60a$를 계산한다",
+      "note": "$\\left(-\\dfrac{32}{3}+a\\right)+\\left(-\\dfrac{5}{3}+a\\right)=0$에서 $2a=\\dfrac{37}{3}$, $a=\\dfrac{37}{6}$, $60a=370$",
+      "main": true,
+      "step": 7
+    }
+  ],
+  "solution": "$f(x)$의 각 항을 $(x^n)'=nx^{n-1}$로 미분한다 → $f'(x) = 4x^3 + 4x^2 - 8x = 4x(x+2)(x-1)$ · $f'$의 부호 변화로 극값 위치와 종류를 판정한다 → $x=-2$에서 극소, $x=0$에서 극대, $x=1$에서 극소이다 · $|f(x)|$를 $f(x)$의 부호에 따라 경우 분류한다 → $f(x)\\ge 0$이면 $f(x)=\\dfrac{t}{2}$ (ⓑ), $f(x)<0$이면 $f(x)=\\dfrac{t}{2k}$ (ⓐ) · '$k$의 최솟값이 $-1$'을 두 조건으로 분해한다 → ① $k=-1$이면 임의의 $t$에 대해 실근 $\\le 4$개, ② $k<-1$이면 실근 $\\ge 5$개인 $t$가 존재 · $t\\le 0$이면 ⓐ의 실근은 0개이므로 $t>0$만 분석한다 · 극솟값 $f(1)$, $f(-2)$의 부호에 따라 경우를 분류하고 모순되는 경우를 배제하면 $f(-2)<0<f(1)$만 가능 · $t/2=f(1)$일 때 ⓑ는 $x=1$에서 접하여 실근 2개이고, 총 실근 $\\le 4$이려면 $f(1)/k\\le f(-2)$ · $k=-1$에서 $f(-2)+f(1)\\ge 0$, $k<-1$에서 $f(-2)+f(1)\\le 0$이므로 $f(-2)+f(1)=0$ · $f(-2)=-\\dfrac{32}{3}+a$, $f(1)=-\\dfrac{5}{3}+a$를 대입하면 $2a=\\dfrac{37}{3}$, $a=\\dfrac{37}{6}$, $60a=370$",
+  "original_solution": "$f(x) = x^4 + \\dfrac{4}{3}x^3 - 4x^2 + a$이므로\n\n$$f'(x) = 4x^3 + 4x^2 - 8x = 4x(x+2)(x-1)$$\n\n이므로 $y = f(x)$의 그래프의 개형은 $x = -2, 0, 1$에서 극값을 가지며, $f(0)$이 극대, $f(-2)$와 $f(1)$이 극소에 해당한다.\n\n[FIGURE: y=f(x)의 그래프 개형. x=-2에서 극솟값 f(-2), x=0에서 극댓값, x=1에서 극솟값 f(1)을 가지며, y=f(1) > y=f(-2) 순서로 나타남]\n\n한편, 문제의 $x$에 대한 방정식 $(k+1)f(x) - (k-1)|f(x)| = t$에서 좌변을 $g(x)$라 하면\n\n- ① $k = -1$일 때 모든 실수 $t$에 대하여 $g(x) = t$인 서로 다른 $x$의 개수가 4 이하\n- ② $k < -1$인 모든 $k$에 대하여 $g(x) = t$인 서로 다른 $x$의 개수가 5 이상인 $t$가 존재함\n\n을 모두 만족시켜야 한다.\n\n따라서 $k \\le -1$일 때만 관찰하면 되고,\n\n$k \\le -1$일 때 $g(x) = t$는\n\n$$\\begin{cases} f(x) < 0 \\text{일 때 } f(x) = \\dfrac{t}{2k} \\cdots \\text{ⓐ} \\\\[6pt] f(x) \\ge 0 \\text{일 때 } f(x) = \\dfrac{t}{2} \\cdots \\text{ⓑ} \\end{cases}$$\n\n이다. 이때,\n\n$t \\le 0$인 경우, ⓐ의 실근의 개수 $= 0$이므로 ②를 만족시키는 $t$가 존재하지 않음을 알 수 있으므로 $t \\le 0$인 경우는 고려하지 않아도 된다.\n\n따라서 $t > 0$이라 할 때, 위의 그림을 참고하면 ⓐ의 실근의 개수 $= 4$인 $t$가 존재\n\n- $f(1) < 0$인 경우, $t$에 상관없이 ⓑ의 실근의 개수 $\\ge 2$이므로 ①에 모순\n- $f(1) = 0$인 경우, $t = 0^+$이면 $\\begin{cases} \\text{ⓐ의 실근의 개수} = 2 \\\\ \\text{ⓑ의 실근의 개수} = 4 \\end{cases}$이므로 ①에 모순\n- $f(-2) \\ge 0$인 경우, $t$에 상관없이 ⓐ의 실근의 개수 $= 0$이므로 ②에 모순\n\n임을 알 수 있다.\n\n또한, $f(-2) < 0 < f(1)$인 경우, 위의 그림을 참고하면\n\n$$\\begin{cases} t > 0 \\text{인 임의의 실수 } t \\text{에 대하여} \\\\ g(x) = t \\text{인 서로 다른 } x \\text{의 개수가 4 이하} \\end{cases}$$\n\n를 만족시키기 위해서는\n\n$\\dfrac{t}{2} = f(1)$인 $t$에 대하여 $\\dfrac{t}{2k} \\le f(-2) \\Leftrightarrow f(1) \\ge kf(-2)$\n\n이어야 하므로\n\n$$\\begin{aligned} &① \\Rightarrow f(1) \\ge -f(-2) \\\\ &② \\Rightarrow f(1) \\le -f(-2) \\end{aligned} \\bigg\\} \\Rightarrow f(-2) = -f(1)$$\n\n$$\\Rightarrow -\\dfrac{32}{3} + a = -\\left(-\\dfrac{5}{3} + a\\right)$$\n\n$$\\Rightarrow a = \\dfrac{37}{6}$$\n\n을 얻는다.\n\n$\\therefore\\ 60a = 370$",
+  "analysis": "",
+  "new_neurons": [],
+  "metadata": {
+    "unit": "함수와 방정식",
+    "difficulty": "상",
+    "score": "4",
+    "type": "short_answer",
+    "answer": "370",
+    "year": "미상",
+    "source": "수능",
+    "topic": "절댓값 포함 방정식의 실근의 개수",
+    "subtopic": "4차 함수와 절댓값 조건 분석"
+  },
+  "edge_count": 13,
+  "side_count": 0,
+  "statement": "# 18. (수능) - 절댓값 포함 방정식의 실근의 개수\n\n## Problem\n함수 $f(x) = x^4 + \\dfrac{4}{3}x^3 - 4x^2 + a$와 임의의 실수 $t$에 대하여 $x$에 대한 방정식\n\n$$(k+1)f(x) - (k-1)|f(x)| = t$$\n\n의 서로 다른 실근의 개수가 4 이하가 되도록 하는 실수 $k$의 최솟값이 $-1$일 때, $60a$의 값을 구하시오. [4점]",
+  "dna": {
+    "nodes": [
+      {
+        "id": "top",
+        "dna": "Q1",
+        "label": "값을 구하라",
+        "category": "발문"
+      },
+      {
+        "id": "ask",
+        "dna": "E6",
+        "label": "곱(60, a)",
+        "category": "수식"
+      },
+      {
+        "id": "c60",
+        "dna": "T2",
+        "label": "상수 60",
+        "category": "말단"
+      },
+      {
+        "id": "va",
+        "dna": "T1",
+        "label": "변수 a",
+        "category": "말단"
+      },
+      {
+        "id": "vk",
+        "dna": "T1",
+        "label": "변수 k",
+        "category": "말단"
+      },
+      {
+        "id": "vt",
+        "dna": "T3",
+        "label": "독립변수 t",
+        "category": "말단"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
+      },
+      {
+        "id": "conds",
+        "dna": "S1",
+        "label": "전체 조건",
+        "category": "구조"
+      },
+      {
+        "id": "fn_f",
+        "dna": "F6",
+        "label": "함수 f(x) 정의",
+        "category": "함수"
+      },
+      {
+        "id": "fn_f_eq",
+        "dna": "C11",
+        "label": "f(x) 방정식",
+        "category": "조건"
+      },
+      {
+        "id": "fn_f_c1",
+        "dna": "C1",
+        "label": "f(x)=x^4+..+a",
+        "category": "조건"
+      },
+      {
+        "id": "rhs_f",
+        "dna": "E1",
+        "label": "합(x^4항들, a)",
+        "category": "수식"
+      },
+      {
+        "id": "term_x4",
+        "dna": "E7",
+        "label": "x^4",
+        "category": "수식"
+      },
+      {
+        "id": "term_43x3",
+        "dna": "E6",
+        "label": "(4/3)x^3",
+        "category": "수식"
+      },
+      {
+        "id": "c43",
+        "dna": "T2",
+        "label": "상수 4/3",
+        "category": "말단"
+      },
+      {
+        "id": "term_x3",
+        "dna": "E7",
+        "label": "x^3",
+        "category": "수식"
+      },
+      {
+        "id": "term_neg4x2",
+        "dna": "E2",
+        "label": "-4x^2",
+        "category": "수식"
+      },
+      {
+        "id": "term_4x2",
+        "dna": "E6",
+        "label": "4x^2",
+        "category": "수식"
+      },
+      {
+        "id": "term_x2",
+        "dna": "E7",
+        "label": "x^2",
+        "category": "수식"
+      },
+      {
+        "id": "c4",
+        "dna": "T2",
+        "label": "상수 4",
+        "category": "말단"
+      },
+      {
+        "id": "c3",
+        "dna": "T2",
+        "label": "상수 3",
+        "category": "말단"
+      },
+      {
+        "id": "sum123",
+        "dna": "E1",
+        "label": "합(x^4,(4/3)x^3)",
+        "category": "수식"
+      },
+      {
+        "id": "sum12",
+        "dna": "E1",
+        "label": "합(x^4+(4/3)x^3,-4x^2)",
+        "category": "수식"
+      },
+      {
+        "id": "eq_main",
+        "dna": "C11",
+        "label": "주 방정식",
+        "category": "조건"
+      },
+      {
+        "id": "eq_main_c1",
+        "dna": "C1",
+        "label": "(k+1)f-(k-1)|f|=t",
+        "category": "조건"
+      },
+      {
+        "id": "lhs_main",
+        "dna": "E1",
+        "label": "합(항1,항2)",
+        "category": "수식"
+      },
+      {
+        "id": "term_kp1_f",
+        "dna": "E6",
+        "label": "(k+1)·f(x)",
+        "category": "수식"
+      },
+      {
+        "id": "kp1",
+        "dna": "E1",
+        "label": "k+1",
+        "category": "수식"
+      },
+      {
+        "id": "c1",
+        "dna": "T2",
+        "label": "상수 1",
+        "category": "말단"
+      },
+      {
+        "id": "fx_apply",
+        "dna": "F3",
+        "label": "f(x) 적용",
+        "category": "함수"
+      },
+      {
+        "id": "term_km1_abs",
+        "dna": "E6",
+        "label": "(k-1)·|f(x)|",
+        "category": "수식"
+      },
+      {
+        "id": "km1",
+        "dna": "E1",
+        "label": "k+(-1)",
+        "category": "수식"
+      },
+      {
+        "id": "neg_c1",
+        "dna": "E2",
+        "label": "-1",
+        "category": "수식"
+      },
+      {
+        "id": "abs_fx",
+        "dna": "E5",
+        "label": "|f(x)|",
+        "category": "수식"
+      },
+      {
+        "id": "neg_term_km1",
+        "dna": "E2",
+        "label": "-(k-1)|f(x)|",
+        "category": "수식"
+      },
+      {
+        "id": "root_cnt_cond",
+        "dna": "C9",
+        "label": "실근 개수≤4",
+        "category": "조건"
+      },
+      {
+        "id": "c4_cnt",
+        "dna": "T2",
+        "label": "상수 4(개수)",
+        "category": "말단"
+      },
+      {
+        "id": "forall_t",
+        "dna": "C18",
+        "label": "임의의 t에 대해",
+        "category": "조건"
+      },
+      {
+        "id": "min_cond",
+        "dna": "C24",
+        "label": "k 최솟값=-1",
+        "category": "조건"
+      },
+      {
+        "id": "c_neg1",
+        "dna": "T2",
+        "label": "상수 -1",
+        "category": "말단"
+      }
+    ],
+    "edges": [
+      {
+        "from": "ask",
+        "to": "top"
+      },
+      {
+        "from": "conds",
+        "to": "top"
+      },
+      {
+        "from": "c60",
+        "to": "ask"
+      },
+      {
+        "from": "va",
+        "to": "ask"
+      },
+      {
+        "from": "fn_f",
+        "to": "conds"
+      },
+      {
+        "from": "fn_f_eq",
+        "to": "fn_f"
+      },
+      {
+        "from": "fn_f_c1",
+        "to": "fn_f_eq"
+      },
+      {
+        "from": "rhs_f",
+        "to": "fn_f_c1"
+      },
+      {
+        "from": "sum12",
+        "to": "rhs_f"
+      },
+      {
+        "from": "va",
+        "to": "rhs_f"
+      },
+      {
+        "from": "sum123",
+        "to": "sum12"
+      },
+      {
+        "from": "term_neg4x2",
+        "to": "sum12"
+      },
+      {
+        "from": "term_x4",
+        "to": "sum123"
+      },
+      {
+        "from": "term_43x3",
+        "to": "sum123"
+      },
+      {
+        "from": "vx",
+        "to": "term_x4"
+      },
+      {
+        "from": "c4",
+        "to": "term_x4"
+      },
+      {
+        "from": "c43",
+        "to": "term_43x3"
+      },
+      {
+        "from": "term_x3",
+        "to": "term_43x3"
+      },
+      {
+        "from": "vx",
+        "to": "term_x3"
+      },
+      {
+        "from": "c3",
+        "to": "term_x3"
+      },
+      {
+        "from": "term_4x2",
+        "to": "term_neg4x2"
+      },
+      {
+        "from": "c4",
+        "to": "term_4x2"
+      },
+      {
+        "from": "term_x2",
+        "to": "term_4x2"
+      },
+      {
+        "from": "vx",
+        "to": "term_x2"
+      },
+      {
+        "from": "c3",
+        "to": "term_x2"
+      },
+      {
+        "from": "eq_main",
+        "to": "conds"
+      },
+      {
+        "from": "eq_main_c1",
+        "to": "eq_main"
+      },
+      {
+        "from": "lhs_main",
+        "to": "eq_main_c1"
+      },
+      {
+        "from": "vt",
+        "to": "eq_main_c1"
+      },
+      {
+        "from": "term_kp1_f",
+        "to": "lhs_main"
+      },
+      {
+        "from": "neg_term_km1",
+        "to": "lhs_main"
+      },
+      {
+        "from": "kp1",
+        "to": "term_kp1_f"
+      },
+      {
+        "from": "fx_apply",
+        "to": "term_kp1_f"
+      },
+      {
+        "from": "vk",
+        "to": "kp1"
+      },
+      {
+        "from": "c1",
+        "to": "kp1"
+      },
+      {
+        "from": "fn_f",
+        "to": "fx_apply"
+      },
+      {
+        "from": "vx",
+        "to": "fx_apply"
+      },
+      {
+        "from": "term_km1_abs",
+        "to": "neg_term_km1"
+      },
+      {
+        "from": "km1",
+        "to": "term_km1_abs"
+      },
+      {
+        "from": "abs_fx",
+        "to": "term_km1_abs"
+      },
+      {
+        "from": "vk",
+        "to": "km1"
+      },
+      {
+        "from": "neg_c1",
+        "to": "km1"
+      },
+      {
+        "from": "c1",
+        "to": "neg_c1"
+      },
+      {
+        "from": "fx_apply",
+        "to": "abs_fx"
+      },
+      {
+        "from": "forall_t",
+        "to": "conds"
+      },
+      {
+        "from": "vt",
+        "to": "forall_t"
+      },
+      {
+        "from": "root_cnt_cond",
+        "to": "forall_t"
+      },
+      {
+        "from": "eq_main",
+        "to": "root_cnt_cond"
+      },
+      {
+        "from": "c4_cnt",
+        "to": "root_cnt_cond"
+      },
+      {
+        "from": "min_cond",
+        "to": "conds"
+      },
+      {
+        "from": "vk",
+        "to": "min_cond"
+      },
+      {
+        "from": "c_neg1",
+        "to": "min_cond"
+      }
+    ],
+    "new_dna": []
+  },
+  "thinking_profile": null,
+  "folders": [],
+  "history": [],
+  "recovery_warnings": [],
+  "errata": [],
+  "created_at": "2026-03-26T15:28:37.499Z"
+}
