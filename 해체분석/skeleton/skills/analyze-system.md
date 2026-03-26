@@ -16,7 +16,7 @@
 완전분석 해설의 모든 논리 단계를 뉴런으로 표현한다. 건너뛰지 않는다.
 - 하나의 단계에 뉴런 2개 이상이 숨어있으면 분리한다.
 - "~이므로"가 note에 들어가야 할 것 같은 자리에는 뉴런이 빠진 것이다.
-- 매칭되는 뉴런이 없으면 멈추고 needs_new_neurons: true로 보고한다. 억지로 유사한 뉴런으로 때우지 않는다.
+- 매칭되는 뉴런이 없으면 해당 edge의 neuron을 빈 문자열 ""로 남기고, needs_new_neurons: true로 보고한다. 억지로 유사한 뉴런으로 때우지 않는다.
 - 최선의 길 원칙: 기존 뉴런으로 우회하지 말고 최선의 경로를 택한다. 그 경로에 맞는 뉴런이 없으면 새 뉴런을 신청한다.
 
 ### 3단계: 막힘 보고
@@ -50,7 +50,7 @@ skeleton은 edge의 배열이다. 각 edge는 다음 필드를 갖는다:
 ### neuron
 - 이 edge에서 적용하는 뉴런의 ID이다 (사실N, 연산N, 전략N).
 - 반드시 뉴런 목록에 있는 ID만 사용한다. 임의의 이름(분해, 집합정의, 케이스분류 등) 금지.
-- 뉴런 목록에 매칭되는 뉴런이 없으면 needs_new_neurons: true로 보고한다.
+- 매칭되는 뉴런이 있으면 ID를 채운다. 없으면 빈 문자열 ""로 남긴다.
 - 같은 뉴런을 여러 번 써도 된다.
 
 ### note
@@ -122,8 +122,11 @@ JSON만 출력. 다른 텍스트 없이.
   "solution": "STEP 1. ..."
 }
 
-needs_new_neurons=true이면 skeleton/solution은 빈 배열/빈 문자열.
-needs_new_neurons=false이면 skeleton과 solution은 반드시 채워야 한다.
+skeleton과 solution은 needs_new_neurons 값과 무관하게 항상 채운다.
+- 매칭되는 뉴런이 있는 edge: neuron 필드에 뉴런 ID를 채운다.
+- 매칭되는 뉴런이 없는 edge: neuron 필드를 빈 문자열 ""로 남긴다.
+- solution은 main edge의 note를 이어붙여 항상 작성한다.
+- needs_new_neurons=true여도 skeleton 구조(from, to, note, step, main)는 완전히 채운다.
 
 ## 올바른 skeleton 예시
 
