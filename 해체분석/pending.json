@@ -1875,777 +1875,6 @@
     "created_at": "2026-03-26T10:16:04.832Z"
   },
   {
-    "problem_id": "Problem5",
-    "answer": "80",
-    "content": "id: P8\nsource: 수능/모의고사\nyear: 미상\nunit: 다항함수의 미분\ntopic: 삼차함수의 조건 분석\nsubtopic: 실근의 개수와 접선 조건\ndifficulty: 상\nscore: 4\nanswer: 173\ntype: short_answer\n\n# 8. 삼차함수의 조건을 만족시키는 $|f(7)|$의 값\n\n## Problem\n\n$f(1) = f'(1)$인 삼차함수 $f(x)$가 다음 조건을 만족시킨다.\n\n(가) $f(k) = f(0)$인 임의의 실수 $k$에 대하여\n$$f(f(k) - f(1)k) = f(0)$$\n이다.\n\n(나) 방정식 $f(f(x) - f(1)x) = f(0)$의 서로 다른 실근의 개수는 3이다.\n\n$f(0) > 0$일 때, $|f(7)|$의 값을 구하시오. [4점]\n\n## Solution\n\n방정식 $f(x) = f(0)$의 실근의 집합을 $A$, 방정식 $f(f(x) - f(1)x) = f(0)$의 실근의 집합을 $B$라 하면 $0 \\in A$, $1 \\in B$이고,\n\n$$\\begin{cases} \\text{(가)} \\Leftrightarrow A \\subset B \\\\ \\text{(나)} \\Leftrightarrow n(B) = 3 \\end{cases}$$\n\n이므로 $B = \\{0,\\, 1,\\, \\alpha\\}$ (단, $\\alpha \\neq 0$, $\\alpha \\neq 1$)로 놓을 수 있다.\n\n또한, $0 \\in B \\Rightarrow f(f(0)) = f(0) \\Rightarrow f(0) \\in A$이므로\n\n$$\\{0,\\, f(0)\\} \\subset A \\subset \\{0,\\, 1,\\, \\alpha\\} \\quad (\\text{단, } f(0) = 1 \\text{ 또는 } f(0) = \\alpha)$$\n\n따라서 (i) $A = \\{0, 1, \\alpha\\}$, (ii) $A = \\{0, f(0)\\}$ 인 경우로 나누어 생각한다.\n\n**(i) $A = \\{0, 1, \\alpha\\}$인 경우**\n\n$f(f(x) - f(1)x) = f(0)$은 다음 세 방정식으로 분해된다:\n- ① $f(x) = f(1)x$\n- ② $f(x) = f(1)x + 1$\n- ③ $f(x) = f(1)x + \\alpha$\n\n각각의 실근은 모두 $B$의 원소이고, 각각 적어도 하나의 실근을 가지며($f(x)$가 삼차함수), 서로 같은 실근을 갖지 않으므로($\\alpha \\neq 0$, $\\alpha \\neq 1$), 각각의 실근의 개수 $= 1$ ($\\because n(B) = 3$).\n\n이때 $f(0) = f(1) = f(\\alpha) > 0$이고, $f(1) = f'(1)$이므로 직선 $y = f(1)x$는 곡선 $y = f(x)$ 위의 점 $(1, f(1))$에서의 접선이다. … ⓐ\n\n[FIGURE: 삼차함수 $y = f(x)$와 직선 $y = f(1)x$, $y = f(0)$의 관계를 보여주는 그래프]\n\n그림을 참고하면 점 $(\\alpha, f(0))$이 직선 $y = f(1)x$보다 아래쪽에 위치하므로 $\\alpha$는 ①, ②, ③의 실근이 아님 → $\\alpha \\in B$에 **모순**.\n\n**(ii) $A = \\{0, f(0)\\}$인 경우**\n\n곡선 $y = f(x)$와 직선 $y = f(0)$는 $x = 0$, $x = f(0)$에서만 만난다.\n\n$f(f(x) - f(1)x) = f(0)$은 다음으로 분해된다:\n- ⓐ $f(x) = f(1)x$\n- ⓑ $f(x) = f(1)x + f(0)$\n\nⓐ의 실근이 1뿐이라면 ⓑ의 실근의 개수 $= 1$이므로 $n(B) = 2$가 되어 모순.\n\n따라서 곡선 $y = f(x)$와 직선 $y = f(1)x$는 $x = 1$에서 접하고 $x = a$에서 만난다.\n\n[FIGURE: $f(0) = 1$인 경우와 $f(0) = a$인 경우의 두 그래프]\n\n그림을 참고하면 ⓑ의 실근이 0뿐이어야 하므로 $f(0) = a$이다.\n$\\Rightarrow y = f(1)x$가 $(0, f(0))$, $(f(0), f(0))$을 지남\n$\\Rightarrow f(1) = 1$\n\n삼차함수의 비율관계에 의해 $\\alpha = 2$이므로\n\n$$f(x) = px(x - 2)^2 + 2$$\n\n$f(1) = 1$에서 $p \\cdot 1 \\cdot (1-2)^2 + 2 = 1$이므로 $p = -1$.\n\n$$\\therefore f(x) = -x(x-2)^2 + 2$$\n\n$$|f(7)| = |-7 \\cdot 25 + 2| = |-175 + 2| = 173$$\n\n$$\\boxed{173}$$",
-    "content_source": "CheckPending",
-    "content_length": 2232,
-    "skel_status": "neuron_missing",
-    "dna_status": "ok",
-    "previous_skeleton": [
-      {
-        "from": [
-          "단서A"
-        ],
-        "to": "note1",
-        "neuron": "연산25",
-        "type": "연산",
-        "domain_hint": "EQN, ABS",
-        "description": "h(x) 정의식을 f(x)에 대해 이항 정리",
-        "note": "$2f(x)+|f(x)| = |g(x)|-h(x)$이다",
-        "main": true,
-        "step": 1,
-        "_keep_neuron": true
-      },
-      {
-        "from": [
-          "note1"
-        ],
-        "to": "note2",
-        "neuron": "전략6",
-        "type": "전략",
-        "domain_hint": "ABS, FUNC",
-        "description": "f(x)의 부호에 따라 |f(x)|를 분류하여 표현",
-        "note": "$f(x) \\geq 0$이면 $f = \\frac{|g(x)|-h(x)}{3}$ ($|g(x)| \\geq h(x)$일 때), $f(x) < 0$이면 $f = |g(x)|-h(x)$ ($|g(x)| < h(x)$일 때)이다",
-        "main": true,
-        "step": 1,
-        "_keep_neuron": true
-      },
-      {
-        "from": [
-          "단서B"
-        ],
-        "to": "note3",
-        "neuron": "사실111",
-        "type": "사실",
-        "domain_hint": "ABS, DIFF",
-        "description": "절댓값 꼭짓점에서 미분불가능점 파악",
-        "note": "$h(x)$는 $x=0$에서 $h'(0^-)=0$, $h'(0^+)=-1$이고 $x=1$에서 $h'(1^-)=-1$, $h'(1^+)=1$이므로 $x=0$과 $x=1$에서만 미분불가능이다",
-        "main": true,
-        "step": 2,
-        "_keep_neuron": false
-      },
-      {
-        "from": [
-          "note2",
-          "note3",
-          "단서C"
-        ],
-        "to": "note4",
-        "neuron": "사실111",
-        "type": "전략",
-        "domain_hint": "DIFF, ABS",
-        "description": "f 미분가능을 위한 상쇄 조건 설정",
-        "note": "$x=0$, $x=1$에서 $|g(x)|$의 미분불가능성 또는 $f$의 부호전환으로 $h$의 꺾임이 상쇄되어야 한다",
-        "main": true,
-        "step": 2,
-        "_keep_neuron": true
-      },
-      {
-        "from": [
-          "note4",
-          "note2",
-          "단서B"
-        ],
-        "to": "note5",
-        "neuron": "전략25",
-        "type": "연산",
-        "domain_hint": "ABS, EQN",
-        "description": "x=1에서 h(1)=0으로부터 f(1) 부호 결정",
-        "note": "$h(1)=0$이고 $f(1)<0$이면 $f(1)=|g(1)| \\geq 0$으로 모순이므로 $f(1) \\geq 0$이다",
-        "main": true,
-        "step": 3,
-        "_keep_neuron": true
-      },
-      {
-        "from": [
-          "note5",
-          "note2"
-        ],
-        "to": "note6",
-        "neuron": "전략23",
-        "type": "전략",
-        "domain_hint": "DIFF, ABS",
-        "description": "f(1)>0이면 |g|가 x=1 근방에서 미분가능하여 모순",
-        "note": "$f(1)>0$이면 $g(1) \\neq 0$이고 $x=1$ 근방에서 $|g|$는 미분가능하여 $f = \\frac{|g|-h}{3}$는 $x=1$에서 미분불가능이 되어 모순이므로 $f(1)=0$이다",
-        "main": true,
-        "step": 3,
-        "_keep_neuron": true
-      },
-      {
-        "from": [
-          "note6"
-        ],
-        "to": "note7",
-        "neuron": "전략25",
-        "type": "연산",
-        "domain_hint": "EQN",
-        "description": "f(1)=0으로부터 g(1) 결정",
-        "note": "$f(1)=0$이면 $|g(1)|=3 \\cdot 0 = 0$이므로 $g(1)=0$이다",
-        "main": true,
-        "step": 3,
-        "_keep_neuron": true
-      },
-      {
-        "from": [
-          "note7"
-        ],
-        "to": "note8",
-        "neuron": "NEW_1",
-        "type": "사실",
-        "domain_hint": "ABS, DIFF",
-        "description": "단순근에서 |g|의 좌우미분계수 계산",
-        "note": "$g(1)=0$이고 $g'(1)>0$이면 $|g|'(1^-)=-g'(1)$, $|g|'(1^+)=g'(1)$이다",
-        "main": true,
-        "step": 3,
-        "_keep_neuron": false
-      },
-      {
-        "from": [
-          "note8",
-          "note2",
-          "note3"
-        ],
-        "to": "note9",
-        "neuron": "사실111",
-        "type": "연산",
-        "domain_hint": "DIFF, EQN",
-        "description": "f가 x=1에서 미분가능하려면 좌미분계수와 우미분계수가 같아야 한다는 방정식이 설정된다.",
-        "note": "f가 x=1에서 미분가능하려면 좌미분계수와 우미분계수가 같아야 한다는 방정식이 설정된다.",
-        "main": true,
-        "step": 3,
-        "_keep_neuron": true
-      },
-      {
-        "from": "note9",
-        "to": "note10",
-        "neuron": "연산36",
-        "type": "연산",
-        "domain_hint": "DIFF, EQN",
-        "description": "좌우미분계수를 곱의 미분법으로 계산하여 g'(1)을 결정하는 방정식을 얻는다.",
-        "note": "좌우미분계수를 곱의 미분법으로 계산하여 g'(1)을 결정하는 방정식을 얻는다.",
-        "main": true,
-        "step": 3,
-        "_keep_neuron": true
-      },
-      {
-        "from": [
-          "note7",
-          "단서D"
-        ],
-        "to": "note11",
-        "neuron": "전략23",
-        "type": "전략",
-        "domain_hint": "POLY, ABS, DIFF",
-        "description": "g'(1)<0일 때 c₁>1에서 추가 근 발생으로 모순",
-        "note": "$g'(1)<0$이면 $x>1$에서 $g<0$이고 최고차항 양수로 $g \\to +\\infty$이므로 $c_1>1$에서 $g(c_1)=0$이 되어 $|g|$가 미분불가능점을 만들고 $f$가 미분불가능이 되어 모순이다",
-        "main": false,
-        "step": 3,
-        "_keep_neuron": true
-      },
-      {
-        "from": [
-          "note10",
-          "note11"
-        ],
-        "to": "note12",
-        "neuron": "전략2",
-        "type": "사실",
-        "domain_hint": "POLY",
-        "description": "x=1에서의 조건 확정",
-        "note": "$g(1)=0$이고 $g'(1)=1$이다",
-        "main": true,
-        "step": 3,
-        "_keep_neuron": true
-      },
-      {
-        "from": [
-          "note4",
-          "note2"
-        ],
-        "to": "note13",
-        "neuron": "전략23",
-        "type": "전략",
-        "domain_hint": "DIFF, ABS",
-        "description": "g(0)=0일 때 좌우미분계수 불일치로 모순",
-        "note": "$g(0)=0$이면 $|g(0)|=0<1=h(0)$이므로 $f(0)=-1<0$이고, 좌미분계수 $=-g'(0)$, 우미분계수 $=g'(0)+1$이 일치할 수 없어 모순이다",
-        "main": false,
-        "step": 4,
-        "_keep_neuron": true
-      },
-      {
-        "from": [
-          "note4",
-          "note13",
-          "note2"
-        ],
-        "to": "note14",
-        "neuron": "전략25",
-        "type": "전략",
-        "domain_hint": "DIFF, ABS",
-        "description": "g(0)≠0이고 f(0)=0으로부터 |g(0)| 결정",
-        "note": "$g(0) \\neq 0$이고 $f(0)=0$이어야 하며, $f(0) = \\frac{|g(0)|-1}{3}=0$이므로 $|g(0)|=1$이다",
-        "main": true,
-        "step": 4,
-        "_keep_neuron": true
-      },
-      {
-        "from": [
-          "note14",
-          "note12",
-          "단서D"
-        ],
-        "to": "note15",
-        "neuron": "전략23",
-        "type": "전략",
-        "domain_hint": "POLY, ABS, DIFF",
-        "description": "g(0)=1일 때 (0,1)에서 추가 근 발생으로 모순",
-        "note": "$g(0)=1$이면 $g(0)>0$, $g(1)=0$, $g'(1)=1>0$이므로 $x=1$ 직전에서 $g<0$이 되어 $(0,1)$에서 추가 단순근이 생기고 $|g|$가 미분불가능점을 만들어 모순이다",
-        "main": false,
-        "step": 4,
-        "_keep_neuron": true
-      },
-      {
-        "from": [
-          "note14",
-          "note15"
-        ],
-        "to": "note16",
-        "neuron": "전략20",
-        "type": "사실",
-        "domain_hint": "POLY",
-        "description": "g(0)의 값 확정",
-        "note": "$g(0)=-1$이다",
-        "main": true,
-        "step": 4,
-        "_keep_neuron": true
-      },
-      {
-        "from": [
-          "note12",
-          "note16",
-          "단서D"
-        ],
-        "to": "note17",
-        "neuron": "전략41",
-        "type": "전략",
-        "domain_hint": "POLY",
-        "description": "g(1)=0, g'(1)=1, g(0)=-1로 삼차함수 형태 결정",
-        "note": "$g(x)-(x-1)$은 $x=1$에서 값과 도함수가 모두 0이므로 $(x-1)^2$을 인수로 가지고, $g(x)=ax(x-1)^2+(x-1)$ ($a>0$)이며 $g(0)=-1$ ✓이다",
-        "main": true,
-        "step": 5,
-        "_keep_neuron": true
-      },
-      {
-        "from": [
-          "note17"
-        ],
-        "to": "note18",
-        "neuron": "연산28",
-        "type": "연산",
-        "domain_hint": "POLY, DIFF",
-        "description": "g(x)를 전개하여 다항식 표준형으로 정리한다.",
-        "note": "g(x)를 전개하여 다항식 표준형으로 정리한다.",
-        "main": true,
-        "step": 5,
-        "_keep_neuron": true
-      },
-      {
-        "from": "note18",
-        "to": "note19",
-        "neuron": "연산33",
-        "type": "연산",
-        "domain_hint": "POLY, DIFF",
-        "description": "각 항을 거듭제곱 미분하여 g'(x)를 구한다.",
-        "note": "각 항을 거듭제곱 미분하여 g'(x)를 구한다.",
-        "main": true,
-        "step": 5,
-        "_keep_neuron": true
-      },
-      {
-        "from": "note19",
-        "to": "note20",
-        "neuron": "전략25",
-        "type": "연산",
-        "domain_hint": "POLY, DIFF",
-        "description": "x=0을 대입하여 g'(0)의 값을 계산한다.",
-        "note": "x=0을 대입하여 g'(0)의 값을 계산한다.",
-        "main": true,
-        "step": 5,
-        "_keep_neuron": true
-      },
-      {
-        "from": [
-          "note20",
-          "note2",
-          "note16"
-        ],
-        "to": "note21",
-        "neuron": "사실111",
-        "type": "연산",
-        "domain_hint": "DIFF, EQN",
-        "description": "f가 x=0에서 미분가능하려면 좌미분계수와 우미분계수가 같아야 한다는 방정식이 설정된다.",
-        "note": "f가 x=0에서 미분가능하려면 좌미분계수와 우미분계수가 같아야 한다는 방정식이 설정된다.",
-        "main": true,
-        "step": 5,
-        "_keep_neuron": true
-      },
-      {
-        "from": "note21",
-        "to": "note22",
-        "neuron": "연산36",
-        "type": "연산",
-        "domain_hint": "DIFF, EQN",
-        "description": "곱의 미분법으로 좌우 도함수를 계산하여 a에 대한 방정식을 얻는다.",
-        "note": "곱의 미분법으로 좌우 도함수를 계산하여 a에 대한 방정식을 얻는다.",
-        "main": true,
-        "step": 5,
-        "_keep_neuron": true
-      },
-      {
-        "from": "note22",
-        "to": "note23",
-        "neuron": "전략25",
-        "type": "연산",
-        "domain_hint": "DIFF, EQN",
-        "description": "방정식을 풀어 a=1/2를 결정한다.",
-        "note": "방정식을 풀어 a=1/2를 결정한다.",
-        "main": true,
-        "step": 5,
-        "_keep_neuron": true
-      },
-      {
-        "from": [
-          "note23",
-          "note17"
-        ],
-        "to": "END",
-        "neuron": "전략25",
-        "type": "연산",
-        "domain_hint": "POLY",
-        "description": "a=1/2 대입 후 g(6) 계산",
-        "note": "$g(x)=\\frac{1}{2}x(x-1)^2+(x-1)$이고 $g(6)=\\frac{1}{2}\\cdot 6\\cdot 25+5=80$이다",
-        "main": true,
-        "step": 6,
-        "_keep_neuron": true
-      }
-    ],
-    "previous_solution": "$2f(x)+|f(x)| = |g(x)|-h(x)$이다 $f(x) \\geq 0$이면 $f = \\frac{|g(x)|-h(x)}{3}$ ($|g(x)| \\geq h(x)$일 때), $f(x) < 0$이면 $f = |g(x)|-h(x)$ ($|g(x)| < h(x)$일 때)이다 $h(x)$는 $x=0$에서 $h'(0^-)=0$, $h'(0^+)=-1$이고 $x=1$에서 $h'(1^-)=-1$, $h'(1^+)=1$이므로 $x=0$과 $x=1$에서만 미분불가능이다 $x=0$, $x=1$에서 $|g(x)|$의 미분불가능성 또는 $f$의 부호전환으로 $h$의 꺾임이 상쇄되어야 한다 $h(1)=0$이고 $f(1)<0$이면 $f(1)=|g(1)| \\geq 0$으로 모순이므로 $f(1) \\geq 0$이다 $f(1)>0$이면 $g(1) \\neq 0$이고 $x=1$ 근방에서 $|g|$는 미분가능하여 $f = \\frac{|g|-h}{3}$는 $x=1$에서 미분불가능이 되어 모순이므로 $f(1)=0$이다 $f(1)=0$이면 $|g(1)|=3 \\cdot 0 = 0$이므로 $g(1)=0$이다 $g(1)=0$이고 $g'(1)>0$이면 $|g|'(1^-)=-g'(1)$, $|g|'(1^+)=g'(1)$이다 f가 x=1에서 미분가능하려면 좌미분계수와 우미분계수가 같아야 한다는 방정식이 설정된다. 좌우미분계수를 곱의 미분법으로 계산하여 g'(1)을 결정하는 방정식을 얻는다. $g(1)=0$이고 $g'(1)=1$이다 $g(0) \\neq 0$이고 $f(0)=0$이어야 하며, $f(0) = \\frac{|g(0)|-1}{3}=0$이므로 $|g(0)|=1$이다 $g(0)=-1$이다 $g(x)-(x-1)$은 $x=1$에서 값과 도함수가 모두 0이므로 $(x-1)^2$을 인수로 가지고, $g(x)=ax(x-1)^2+(x-1)$ ($a>0$)이며 $g(0)=-1$ ✓이다 g(x)를 전개하여 다항식 표준형으로 정리한다. 각 항을 거듭제곱 미분하여 g'(x)를 구한다. x=0을 대입하여 g'(0)의 값을 계산한다. f가 x=0에서 미분가능하려면 좌미분계수와 우미분계수가 같아야 한다는 방정식이 설정된다. 곱의 미분법으로 좌우 도함수를 계산하여 a에 대한 방정식을 얻는다. 방정식을 풀어 a=1/2를 결정한다. $g(x)=\\frac{1}{2}x(x-1)^2+(x-1)$이고 $g(6)=\\frac{1}{2}\\cdot 6\\cdot 25+5=80$이다",
-    "previous_clues": "[{\"id\":\"단서A\",\"text\":\"$h(x) = |g(x)| - |f(x)| - 2f(x)$\"},{\"id\":\"단서B\",\"text\":\"$h(x) = \\\\begin{cases} 1 & (x < 0) \\\\\\\\ |x-1| & (x \\\\geq 0) \\\\end{cases}$\"},{\"id\":\"단서C\",\"text\":\"$f(x)$는 실수 전체의 집합에서 미분가능하다\"},{\"id\":\"단서D\",\"text\":\"$g(x)$는 최고차항의 계수가 양수인 삼차함수이다\"}]",
-    "previous_analysis": "",
-    "previous_matching": "",
-    "previous_matched": [],
-    "previous_new_neurons": [
-      {
-        "id": "사실??",
-        "type": "사실",
-        "statement": "함수 $g$가 $x=a$에서 단순근($g(a)=0$, $g'(a)\\neq 0$)을 가지면, $|g(x)|$의 $x=a$에서의 좌미분계수는 $-|g'(a)|$이고 우미분계수는 $|g'(a)|$이다. 즉 $|g|$는 $x=a$에서 꺾인 점을 가지며 미분불가능하다.",
-        "description": "단순근에서 |g|의 좌우미분계수 계산",
-        "note": "$g(1)=0$이고 $g'(1)>0$이면 $|g|'(1^-)=-g'(1)$, $|g|'(1^+)=g'(1)$이다",
-        "reason": "제시된 후보들은 단조성, 볼록성, 연속성, 수렴 관련 사실들이다. '단순근에서 |g|의 좌우미분계수 계산'은 g(x)=0이 단순근(홀수차 영점)인 점에서 |g(x)|의 좌미분과 우미분을 g의 미분계수와 부호로부터 계산하는 원리로, 목록의 어떤 뉴런과도 매칭되지 않는다.",
-        "blocked_edge": "note7 → note8",
-        "domain_hint": "ABS, DIFF",
-        "domain": [
-          "ABS",
-          "DIFF"
-        ],
-        "action_hint": "",
-        "step": 3,
-        "main": true,
-        "near_miss": [
-          "사실2: $y = f(|x - c|)$는 직선 $x = c$에 대해 대칭이다 ($",
-          "사실6: $y=|\\log_a x|$ ($a>1$)에서 같은 $y$값을 주는 두 양",
-          "사실28: $a + b = 0$이고 $a < 0$, $b > 0$이면 $|a| = "
-        ]
-      }
-    ],
-    "previous_partial_skeleton": [],
-    "previous_blockage_point": "",
-    "previous_skel_review_notes": "",
-    "previous_dna_nodes": [
-      {
-        "id": "top",
-        "dna": "Q1",
-        "label": "값을 구하라",
-        "category": "발문"
-      },
-      {
-        "id": "ask",
-        "dna": "F3",
-        "label": "g(6)",
-        "category": "함수"
-      },
-      {
-        "id": "fn_g",
-        "dna": "F6",
-        "label": "함수 g(x)",
-        "category": "함수"
-      },
-      {
-        "id": "c6",
-        "dna": "T2",
-        "label": "상수 6",
-        "category": "말단"
-      },
-      {
-        "id": "conds",
-        "dna": "S1",
-        "label": "여러 조건",
-        "category": "구조"
-      },
-      {
-        "id": "f_diff",
-        "dna": "C22",
-        "label": "f 미분가능",
-        "category": "조건"
-      },
-      {
-        "id": "fn_f",
-        "dna": "F6",
-        "label": "함수 f(x)",
-        "category": "함수"
-      },
-      {
-        "id": "vf",
-        "dna": "T1",
-        "label": "변수 f",
-        "category": "말단"
-      },
-      {
-        "id": "vx",
-        "dna": "T3",
-        "label": "독립변수 x",
-        "category": "말단"
-      },
-      {
-        "id": "g_cubic",
-        "dna": "C11",
-        "label": "g 삼차함수",
-        "category": "조건"
-      },
-      {
-        "id": "vg",
-        "dna": "T1",
-        "label": "변수 g",
-        "category": "말단"
-      },
-      {
-        "id": "g_pos_coeff",
-        "dna": "L4",
-        "label": "최고차항 양수",
-        "category": "제한"
-      },
-      {
-        "id": "h_def_eq",
-        "dna": "C1",
-        "label": "h(x) 정의식",
-        "category": "조건"
-      },
-      {
-        "id": "fn_h",
-        "dna": "F6",
-        "label": "함수 h(x)",
-        "category": "함수"
-      },
-      {
-        "id": "h_rhs",
-        "dna": "E1",
-        "label": "|g|-|f|-2f",
-        "category": "수식"
-      },
-      {
-        "id": "abs_g",
-        "dna": "F5",
-        "label": "|g(x)|",
-        "category": "함수"
-      },
-      {
-        "id": "neg_abs_f_2f",
-        "dna": "E2",
-        "label": "-(|f|+2f)",
-        "category": "수식"
-      },
-      {
-        "id": "abs_f_plus_2f",
-        "dna": "E1",
-        "label": "|f|+2f",
-        "category": "수식"
-      },
-      {
-        "id": "abs_f",
-        "dna": "F5",
-        "label": "|f(x)|",
-        "category": "함수"
-      },
-      {
-        "id": "two_f",
-        "dna": "E6",
-        "label": "2·f(x)",
-        "category": "수식"
-      },
-      {
-        "id": "c2",
-        "dna": "T2",
-        "label": "상수 2",
-        "category": "말단"
-      },
-      {
-        "id": "h_piecewise",
-        "dna": "C18",
-        "label": "모든 x에 대해 h(x)=조각함수",
-        "category": "조건"
-      },
-      {
-        "id": "h_pieces",
-        "dna": "F1",
-        "label": "h(x) 조각함수",
-        "category": "함수"
-      },
-      {
-        "id": "piece1",
-        "dna": "F2",
-        "label": "조각1: x<0",
-        "category": "함수"
-      },
-      {
-        "id": "piece2",
-        "dna": "F2",
-        "label": "조각2: x>=0",
-        "category": "함수"
-      },
-      {
-        "id": "dom1",
-        "dna": "C2",
-        "label": "x < 0",
-        "category": "조건"
-      },
-      {
-        "id": "c1",
-        "dna": "T2",
-        "label": "상수 1",
-        "category": "말단"
-      },
-      {
-        "id": "dom2",
-        "dna": "C2",
-        "label": "x >= 0",
-        "category": "조건"
-      },
-      {
-        "id": "abs_x_minus_1",
-        "dna": "E5",
-        "label": "|x-1|",
-        "category": "수식"
-      },
-      {
-        "id": "x_minus_1",
-        "dna": "E1",
-        "label": "x + (-1)",
-        "category": "수식"
-      },
-      {
-        "id": "neg_c1",
-        "dna": "E2",
-        "label": "-1",
-        "category": "수식"
-      },
-      {
-        "id": "c0",
-        "dna": "T2",
-        "label": "상수 0",
-        "category": "말단"
-      }
-    ],
-    "previous_dna_edges": [
-      {
-        "from": "ask",
-        "to": "top"
-      },
-      {
-        "from": "conds",
-        "to": "top"
-      },
-      {
-        "from": "fn_g",
-        "to": "ask"
-      },
-      {
-        "from": "c6",
-        "to": "ask"
-      },
-      {
-        "from": "fn_f",
-        "to": "f_diff"
-      },
-      {
-        "from": "f_diff",
-        "to": "conds"
-      },
-      {
-        "from": "vf",
-        "to": "fn_f"
-      },
-      {
-        "from": "vx",
-        "to": "fn_f"
-      },
-      {
-        "from": "fn_g",
-        "to": "g_cubic"
-      },
-      {
-        "from": "g_cubic",
-        "to": "conds"
-      },
-      {
-        "from": "vg",
-        "to": "fn_g"
-      },
-      {
-        "from": "vx",
-        "to": "fn_g"
-      },
-      {
-        "from": "g_pos_coeff",
-        "to": "fn_g"
-      },
-      {
-        "from": "fn_h",
-        "to": "h_def_eq"
-      },
-      {
-        "from": "h_rhs",
-        "to": "h_def_eq"
-      },
-      {
-        "from": "h_def_eq",
-        "to": "conds"
-      },
-      {
-        "from": "vx",
-        "to": "fn_h"
-      },
-      {
-        "from": "abs_g",
-        "to": "h_rhs"
-      },
-      {
-        "from": "neg_abs_f_2f",
-        "to": "h_rhs"
-      },
-      {
-        "from": "abs_f_plus_2f",
-        "to": "neg_abs_f_2f"
-      },
-      {
-        "from": "abs_f",
-        "to": "abs_f_plus_2f"
-      },
-      {
-        "from": "two_f",
-        "to": "abs_f_plus_2f"
-      },
-      {
-        "from": "fn_f",
-        "to": "abs_f"
-      },
-      {
-        "from": "fn_g",
-        "to": "abs_g"
-      },
-      {
-        "from": "c2",
-        "to": "two_f"
-      },
-      {
-        "from": "fn_f",
-        "to": "two_f"
-      },
-      {
-        "from": "fn_h",
-        "to": "h_piecewise"
-      },
-      {
-        "from": "h_pieces",
-        "to": "h_piecewise"
-      },
-      {
-        "from": "h_piecewise",
-        "to": "conds"
-      },
-      {
-        "from": "piece1",
-        "to": "h_pieces"
-      },
-      {
-        "from": "piece2",
-        "to": "h_pieces"
-      },
-      {
-        "from": "dom1",
-        "to": "piece1"
-      },
-      {
-        "from": "c1",
-        "to": "piece1"
-      },
-      {
-        "from": "vx",
-        "to": "dom1"
-      },
-      {
-        "from": "c0",
-        "to": "dom1"
-      },
-      {
-        "from": "dom2",
-        "to": "piece2"
-      },
-      {
-        "from": "abs_x_minus_1",
-        "to": "piece2"
-      },
-      {
-        "from": "vx",
-        "to": "dom2"
-      },
-      {
-        "from": "c0",
-        "to": "dom2"
-      },
-      {
-        "from": "x_minus_1",
-        "to": "abs_x_minus_1"
-      },
-      {
-        "from": "vx",
-        "to": "x_minus_1"
-      },
-      {
-        "from": "neg_c1",
-        "to": "x_minus_1"
-      },
-      {
-        "from": "c1",
-        "to": "neg_c1"
-      }
-    ],
-    "previous_new_dna": [],
-    "previous_dna_review_notes": "",
-    "original_solution": "방정식 $f(x) = f(0)$의 실근의 집합을 $A$, 방정식 $f(f(x) - f(1)x) = f(0)$의 실근의 집합을 $B$라 하면 $0 \\in A$, $1 \\in B$이고,\n\n$$\\begin{cases} \\text{(가)} \\Leftrightarrow A \\subset B \\\\ \\text{(나)} \\Leftrightarrow n(B) = 3 \\end{cases}$$\n\n이므로 $B = \\{0,\\, 1,\\, \\alpha\\}$ (단, $\\alpha \\neq 0$, $\\alpha \\neq 1$)로 놓을 수 있다.\n\n또한, $0 \\in B \\Rightarrow f(f(0)) = f(0) \\Rightarrow f(0) \\in A$이므로\n\n$$\\{0,\\, f(0)\\} \\subset A \\subset \\{0,\\, 1,\\, \\alpha\\} \\quad (\\text{단, } f(0) = 1 \\text{ 또는 } f(0) = \\alpha)$$\n\n따라서 (i) $A = \\{0, 1, \\alpha\\}$, (ii) $A = \\{0, f(0)\\}$ 인 경우로 나누어 생각한다.\n\n**(i) $A = \\{0, 1, \\alpha\\}$인 경우**\n\n$f(f(x) - f(1)x) = f(0)$은 다음 세 방정식으로 분해된다:\n- ① $f(x) = f(1)x$\n- ② $f(x) = f(1)x + 1$\n- ③ $f(x) = f(1)x + \\alpha$\n\n각각의 실근은 모두 $B$의 원소이고, 각각 적어도 하나의 실근을 가지며($f(x)$가 삼차함수), 서로 같은 실근을 갖지 않으므로($\\alpha \\neq 0$, $\\alpha \\neq 1$), 각각의 실근의 개수 $= 1$ ($\\because n(B) = 3$).\n\n이때 $f(0) = f(1) = f(\\alpha) > 0$이고, $f(1) = f'(1)$이므로 직선 $y = f(1)x$는 곡선 $y = f(x)$ 위의 점 $(1, f(1))$에서의 접선이다. … ⓐ\n\n[FIGURE: 삼차함수 $y = f(x)$와 직선 $y = f(1)x$, $y = f(0)$의 관계를 보여주는 그래프]\n\n그림을 참고하면 점 $(\\alpha, f(0))$이 직선 $y = f(1)x$보다 아래쪽에 위치하므로 $\\alpha$는 ①, ②, ③의 실근이 아님 → $\\alpha \\in B$에 **모순**.\n\n**(ii) $A = \\{0, f(0)\\}$인 경우**\n\n곡선 $y = f(x)$와 직선 $y = f(0)$는 $x = 0$, $x = f(0)$에서만 만난다.\n\n$f(f(x) - f(1)x) = f(0)$은 다음으로 분해된다:\n- ⓐ $f(x) = f(1)x$\n- ⓑ $f(x) = f(1)x + f(0)$\n\nⓐ의 실근이 1뿐이라면 ⓑ의 실근의 개수 $= 1$이므로 $n(B) = 2$가 되어 모순.\n\n따라서 곡선 $y = f(x)$와 직선 $y = f(1)x$는 $x = 1$에서 접하고 $x = a$에서 만난다.\n\n[FIGURE: $f(0) = 1$인 경우와 $f(0) = a$인 경우의 두 그래프]\n\n그림을 참고하면 ⓑ의 실근이 0뿐이어야 하므로 $f(0) = a$이다.\n$\\Rightarrow y = f(1)x$가 $(0, f(0))$, $(f(0), f(0))$을 지남\n$\\Rightarrow f(1) = 1$\n\n삼차함수의 비율관계에 의해 $\\alpha = 2$이므로\n\n$$f(x) = px(x - 2)^2 + 2$$\n\n$f(1) = 1$에서 $p \\cdot 1 \\cdot (1-2)^2 + 2 = 1$이므로 $p = -1$.\n\n$$\\therefore f(x) = -x(x-2)^2 + 2$$\n\n$$|f(7)| = |-7 \\cdot 25 + 2| = |-175 + 2| = 173$$\n\n$$\\boxed{173}$$",
-    "recovery_warnings": [],
-    "errata": [],
-    "metadata": {},
-    "needed_neurons": [
-      "사실??",
-      "사실??"
-    ],
-    "needed_dna": [],
-    "edge_count": 24,
-    "side_count": 3,
-    "created_at": "2026-03-26T10:26:39.774Z"
-  },
-  {
     "problem_id": "P6",
     "answer": "198",
     "content": "id: P8\nsource: 수능/모의고사\nyear: 미상\nunit: 다항함수의 미분\ntopic: 삼차함수의 조건 분석\nsubtopic: 실근의 개수와 접선 조건\ndifficulty: 상\nscore: 4\nanswer: 173\ntype: short_answer\n\n# 8. 삼차함수의 조건을 만족시키는 $|f(7)|$의 값\n\n## Problem\n\n$f(1) = f'(1)$인 삼차함수 $f(x)$가 다음 조건을 만족시킨다.\n\n(가) $f(k) = f(0)$인 임의의 실수 $k$에 대하여\n$$f(f(k) - f(1)k) = f(0)$$\n이다.\n\n(나) 방정식 $f(f(x) - f(1)x) = f(0)$의 서로 다른 실근의 개수는 3이다.\n\n$f(0) > 0$일 때, $|f(7)|$의 값을 구하시오. [4점]\n\n## Solution\n\n방정식 $f(x) = f(0)$의 실근의 집합을 $A$, 방정식 $f(f(x) - f(1)x) = f(0)$의 실근의 집합을 $B$라 하면 $0 \\in A$, $1 \\in B$이고,\n\n$$\\begin{cases} \\text{(가)} \\Leftrightarrow A \\subset B \\\\ \\text{(나)} \\Leftrightarrow n(B) = 3 \\end{cases}$$\n\n이므로 $B = \\{0,\\, 1,\\, \\alpha\\}$ (단, $\\alpha \\neq 0$, $\\alpha \\neq 1$)로 놓을 수 있다.\n\n또한, $0 \\in B \\Rightarrow f(f(0)) = f(0) \\Rightarrow f(0) \\in A$이므로\n\n$$\\{0,\\, f(0)\\} \\subset A \\subset \\{0,\\, 1,\\, \\alpha\\} \\quad (\\text{단, } f(0) = 1 \\text{ 또는 } f(0) = \\alpha)$$\n\n따라서 (i) $A = \\{0, 1, \\alpha\\}$, (ii) $A = \\{0, f(0)\\}$ 인 경우로 나누어 생각한다.\n\n**(i) $A = \\{0, 1, \\alpha\\}$인 경우**\n\n$f(f(x) - f(1)x) = f(0)$은 다음 세 방정식으로 분해된다:\n- ① $f(x) = f(1)x$\n- ② $f(x) = f(1)x + 1$\n- ③ $f(x) = f(1)x + \\alpha$\n\n각각의 실근은 모두 $B$의 원소이고, 각각 적어도 하나의 실근을 가지며($f(x)$가 삼차함수), 서로 같은 실근을 갖지 않으므로($\\alpha \\neq 0$, $\\alpha \\neq 1$), 각각의 실근의 개수 $= 1$ ($\\because n(B) = 3$).\n\n이때 $f(0) = f(1) = f(\\alpha) > 0$이고, $f(1) = f'(1)$이므로 직선 $y = f(1)x$는 곡선 $y = f(x)$ 위의 점 $(1, f(1))$에서의 접선이다. … ⓐ\n\n[FIGURE: 삼차함수 $y = f(x)$와 직선 $y = f(1)x$, $y = f(0)$의 관계를 보여주는 그래프]\n\n그림을 참고하면 점 $(\\alpha, f(0))$이 직선 $y = f(1)x$보다 아래쪽에 위치하므로 $\\alpha$는 ①, ②, ③의 실근이 아님 → $\\alpha \\in B$에 **모순**.\n\n**(ii) $A = \\{0, f(0)\\}$인 경우**\n\n곡선 $y = f(x)$와 직선 $y = f(0)$는 $x = 0$, $x = f(0)$에서만 만난다.\n\n$f(f(x) - f(1)x) = f(0)$은 다음으로 분해된다:\n- ⓐ $f(x) = f(1)x$\n- ⓑ $f(x) = f(1)x + f(0)$\n\nⓐ의 실근이 1뿐이라면 ⓑ의 실근의 개수 $= 1$이므로 $n(B) = 2$가 되어 모순.\n\n따라서 곡선 $y = f(x)$와 직선 $y = f(1)x$는 $x = 1$에서 접하고 $x = a$에서 만난다.\n\n[FIGURE: $f(0) = 1$인 경우와 $f(0) = a$인 경우의 두 그래프]\n\n그림을 참고하면 ⓑ의 실근이 0뿐이어야 하므로 $f(0) = a$이다.\n$\\Rightarrow y = f(1)x$가 $(0, f(0))$, $(f(0), f(0))$을 지남\n$\\Rightarrow f(1) = 1$\n\n삼차함수의 비율관계에 의해 $\\alpha = 2$이므로\n\n$$f(x) = px(x - 2)^2 + 2$$\n\n$f(1) = 1$에서 $p \\cdot 1 \\cdot (1-2)^2 + 2 = 1$이므로 $p = -1$.\n\n$$\\therefore f(x) = -x(x-2)^2 + 2$$\n\n$$|f(7)| = |-7 \\cdot 25 + 2| = |-175 + 2| = 173$$\n\n$$\\boxed{173}$$",
@@ -3428,5 +2657,657 @@
     "edge_count": 32,
     "side_count": 9,
     "created_at": "2026-03-26T10:27:55.431Z"
+  },
+  {
+    "problem_id": "Problem5",
+    "answer": "80",
+    "content": "id: P8\nsource: 수능/모의고사\nyear: 미상\nunit: 다항함수의 미분\ntopic: 삼차함수의 조건 분석\nsubtopic: 실근의 개수와 접선 조건\ndifficulty: 상\nscore: 4\nanswer: 173\ntype: short_answer\n\n# 8. 삼차함수의 조건을 만족시키는 $|f(7)|$의 값\n\n## Problem\n\n$f(1) = f'(1)$인 삼차함수 $f(x)$가 다음 조건을 만족시킨다.\n\n(가) $f(k) = f(0)$인 임의의 실수 $k$에 대하여\n$$f(f(k) - f(1)k) = f(0)$$\n이다.\n\n(나) 방정식 $f(f(x) - f(1)x) = f(0)$의 서로 다른 실근의 개수는 3이다.\n\n$f(0) > 0$일 때, $|f(7)|$의 값을 구하시오. [4점]\n\n## Solution\n\n방정식 $f(x) = f(0)$의 실근의 집합을 $A$, 방정식 $f(f(x) - f(1)x) = f(0)$의 실근의 집합을 $B$라 하면 $0 \\in A$, $1 \\in B$이고,\n\n$$\\begin{cases} \\text{(가)} \\Leftrightarrow A \\subset B \\\\ \\text{(나)} \\Leftrightarrow n(B) = 3 \\end{cases}$$\n\n이므로 $B = \\{0,\\, 1,\\, \\alpha\\}$ (단, $\\alpha \\neq 0$, $\\alpha \\neq 1$)로 놓을 수 있다.\n\n또한, $0 \\in B \\Rightarrow f(f(0)) = f(0) \\Rightarrow f(0) \\in A$이므로\n\n$$\\{0,\\, f(0)\\} \\subset A \\subset \\{0,\\, 1,\\, \\alpha\\} \\quad (\\text{단, } f(0) = 1 \\text{ 또는 } f(0) = \\alpha)$$\n\n따라서 (i) $A = \\{0, 1, \\alpha\\}$, (ii) $A = \\{0, f(0)\\}$ 인 경우로 나누어 생각한다.\n\n**(i) $A = \\{0, 1, \\alpha\\}$인 경우**\n\n$f(f(x) - f(1)x) = f(0)$은 다음 세 방정식으로 분해된다:\n- ① $f(x) = f(1)x$\n- ② $f(x) = f(1)x + 1$\n- ③ $f(x) = f(1)x + \\alpha$\n\n각각의 실근은 모두 $B$의 원소이고, 각각 적어도 하나의 실근을 가지며($f(x)$가 삼차함수), 서로 같은 실근을 갖지 않으므로($\\alpha \\neq 0$, $\\alpha \\neq 1$), 각각의 실근의 개수 $= 1$ ($\\because n(B) = 3$).\n\n이때 $f(0) = f(1) = f(\\alpha) > 0$이고, $f(1) = f'(1)$이므로 직선 $y = f(1)x$는 곡선 $y = f(x)$ 위의 점 $(1, f(1))$에서의 접선이다. … ⓐ\n\n[FIGURE: 삼차함수 $y = f(x)$와 직선 $y = f(1)x$, $y = f(0)$의 관계를 보여주는 그래프]\n\n그림을 참고하면 점 $(\\alpha, f(0))$이 직선 $y = f(1)x$보다 아래쪽에 위치하므로 $\\alpha$는 ①, ②, ③의 실근이 아님 → $\\alpha \\in B$에 **모순**.\n\n**(ii) $A = \\{0, f(0)\\}$인 경우**\n\n곡선 $y = f(x)$와 직선 $y = f(0)$는 $x = 0$, $x = f(0)$에서만 만난다.\n\n$f(f(x) - f(1)x) = f(0)$은 다음으로 분해된다:\n- ⓐ $f(x) = f(1)x$\n- ⓑ $f(x) = f(1)x + f(0)$\n\nⓐ의 실근이 1뿐이라면 ⓑ의 실근의 개수 $= 1$이므로 $n(B) = 2$가 되어 모순.\n\n따라서 곡선 $y = f(x)$와 직선 $y = f(1)x$는 $x = 1$에서 접하고 $x = a$에서 만난다.\n\n[FIGURE: $f(0) = 1$인 경우와 $f(0) = a$인 경우의 두 그래프]\n\n그림을 참고하면 ⓑ의 실근이 0뿐이어야 하므로 $f(0) = a$이다.\n$\\Rightarrow y = f(1)x$가 $(0, f(0))$, $(f(0), f(0))$을 지남\n$\\Rightarrow f(1) = 1$\n\n삼차함수의 비율관계에 의해 $\\alpha = 2$이므로\n\n$$f(x) = px(x - 2)^2 + 2$$\n\n$f(1) = 1$에서 $p \\cdot 1 \\cdot (1-2)^2 + 2 = 1$이므로 $p = -1$.\n\n$$\\therefore f(x) = -x(x-2)^2 + 2$$\n\n$$|f(7)| = |-7 \\cdot 25 + 2| = |-175 + 2| = 173$$\n\n$$\\boxed{173}$$",
+    "content_source": "CheckPending",
+    "content_length": 2232,
+    "skel_status": "neuron_missing",
+    "dna_status": "ok",
+    "previous_skeleton": [
+      {
+        "from": [
+          "단서B",
+          "단서C"
+        ],
+        "to": "note1",
+        "neuron": "",
+        "type": "전략",
+        "domain_hint": "SET, FUNC",
+        "description": "집합을 도입하여 합성함수 조건을 포함관계로 재해석",
+        "note": "$A=\\{x: f(x)=f(0)\\}$, $B=\\{x: f(f(x)-f(1)x)=f(0)\\}$로 놓으면 (가)$\\Leftrightarrow A\\subset B$, (나)$\\Leftrightarrow n(B)=3$이다",
+        "main": true,
+        "step": 1
+      },
+      {
+        "from": "note1",
+        "to": "note2",
+        "neuron": "",
+        "type": "사실",
+        "domain_hint": "FUNC, SET",
+        "description": "정의에 직접 대입하여 원소 소속 확인",
+        "note": "$f(0)=f(0)$에서 $0\\in A$이고, $x=1$ 대입 시 $f(f(1)-f(1))=f(0)$에서 $1\\in B$이다",
+        "main": true,
+        "step": 1
+      },
+      {
+        "from": [
+          "note1",
+          "note2"
+        ],
+        "to": "note3",
+        "neuron": "",
+        "type": "전략",
+        "domain_hint": "SET",
+        "description": "원소 개수 조건과 포함관계로 B의 구조 결정",
+        "note": "$0\\in A\\subset B$이고 $1\\in B$이고 $n(B)=3$이므로 $B=\\{0, 1, \\alpha\\}$ ($\\alpha\\neq 0$, $\\alpha\\neq 1$)로 놓을 수 있다",
+        "main": true,
+        "step": 1
+      },
+      {
+        "from": "note3",
+        "to": "note4",
+        "neuron": "",
+        "type": "연산",
+        "domain_hint": "FUNC",
+        "description": "0∈B에서 f(0)∈A 유도",
+        "note": "$0\\in B$에서 $f(f(0)-0)=f(0)$, 즉 $f(f(0))=f(0)$이고 $f(0)\\in A$이다",
+        "main": true,
+        "step": 2
+      },
+      {
+        "from": [
+          "note2",
+          "note3",
+          "note4"
+        ],
+        "to": "note5",
+        "neuron": "NEW_1",
+        "type": "사실",
+        "domain_hint": "SET",
+        "description": "부분집합 관계에서 A의 범위 결정",
+        "note": "$\\{0, f(0)\\}\\subset A\\subset \\{0, 1, \\alpha\\}$이고, $f(0)=1$ 또는 $f(0)=\\alpha$이다",
+        "main": true,
+        "step": 2
+      },
+      {
+        "from": "note5",
+        "to": "note6",
+        "neuron": "",
+        "type": "전략",
+        "domain_hint": "SET",
+        "description": "A의 크기에 따라 경우 분류",
+        "note": "(i) $A=\\{0, 1, \\alpha\\}$, (ii) $A=\\{0, f(0)\\}$의 두 경우로 분류한다",
+        "main": true,
+        "step": 2
+      },
+      {
+        "from": [
+          "note6",
+          "단서A"
+        ],
+        "to": "note7",
+        "neuron": "",
+        "type": "전략",
+        "domain_hint": "FUNC, DIFF",
+        "description": "경우 (i)에서 합성방정식을 세 방정식으로 분해",
+        "note": "(i)의 경우 $f(f(x)-f(1)x)=f(0)$은 $f(x)=f(1)x$, $f(x)=f(1)x+1$, $f(x)=f(1)x+\\alpha$ 세 방정식으로 분해되고, $n(B)=3$에서 각각 실근이 정확히 1개이다",
+        "main": false,
+        "step": 3
+      },
+      {
+        "from": "note7",
+        "to": "note8",
+        "neuron": "",
+        "type": "사실",
+        "domain_hint": "DIFF, POLY",
+        "description": "f(1)=f'(1) 조건에서 접선의 의미 파악",
+        "note": "$f(1)=f'(1)$에서 직선 $y=f(1)x$는 곡선 $y=f(x)$ 위의 점 $(1, f(1))$에서의 접선이다",
+        "main": false,
+        "step": 3
+      },
+      {
+        "from": "note8",
+        "to": "note9",
+        "neuron": "",
+        "type": "전략",
+        "domain_hint": "POLY, FUNC",
+        "description": "접선이 삼차함수와 만나는 점 분석으로 모순 도출",
+        "note": "(i)에서 $f(0)=f(1)=f(\\alpha)>0$인데, 점 $(\\alpha, f(0))$이 접선 $y=f(1)x$보다 아래에 위치하여 $\\alpha$가 세 방정식 어디에도 실근이 될 수 없어 모순이다",
+        "main": false,
+        "step": 3
+      },
+      {
+        "from": [
+          "note6",
+          "note9"
+        ],
+        "to": "note10",
+        "neuron": "",
+        "type": "전략",
+        "domain_hint": "SET",
+        "description": "모순인 경우를 소거하여 유효한 경우 확정",
+        "note": "(i)은 모순이므로 (ii) $A=\\{0, f(0)\\}$만 유효하다",
+        "main": true,
+        "step": 3
+      },
+      {
+        "from": "note10",
+        "to": "note11",
+        "neuron": "",
+        "type": "전략",
+        "domain_hint": "FUNC, EQN",
+        "description": "합성방정식을 f(x)=f(0)의 근으로 분해",
+        "note": "(ii)에서 $f(f(x)-f(1)x)=f(0)$은 (ⓐ) $f(x)=f(1)x$와 (ⓑ) $f(x)=f(1)x+f(0)$으로 분해된다",
+        "main": true,
+        "step": 4
+      },
+      {
+        "from": [
+          "note11",
+          "note8"
+        ],
+        "to": "note12",
+        "neuron": "",
+        "type": "사실",
+        "domain_hint": "POLY, DIFF",
+        "description": "접선이 삼차함수와 접점 외 교점을 가짐을 확인",
+        "note": "ⓐ $f(x)=f(1)x$는 $x=1$에서 접하고 다른 교점 $x=a$를 가져 실근이 2개이다",
+        "main": true,
+        "step": 4
+      },
+      {
+        "from": [
+          "note12",
+          "note3"
+        ],
+        "to": "note13",
+        "neuron": "",
+        "type": "사실",
+        "domain_hint": "SET, EQN",
+        "description": "실근 개수 배분에서 ⓑ의 실근 개수 결정",
+        "note": "ⓐ가 실근 2개($x=1, a$)를 기여하고 $n(B)=3$이므로 ⓑ는 실근이 정확히 1개($x=0$)이다",
+        "main": true,
+        "step": 4
+      },
+      {
+        "from": "note13",
+        "to": "note14",
+        "neuron": "",
+        "type": "전략",
+        "domain_hint": "FUNC, POLY",
+        "description": "ⓑ의 실근 조건에서 그래프 위치 관계 분석",
+        "note": "ⓑ $f(x)=f(1)x+f(0)$의 실근이 $x=0$뿐이려면 $y=f(1)x+f(0)$이 $y=f(x)$와 $x=0$에서만 만나야 하고, $f(0)=a$이다",
+        "main": true,
+        "step": 5
+      },
+      {
+        "from": "note14",
+        "to": "note15",
+        "neuron": "",
+        "type": "연산",
+        "domain_hint": "FUNC, EQN",
+        "description": "직선이 두 점을 지나는 조건에서 f(1) 결정",
+        "note": "$y=f(1)x$가 $(0, 0)$을 지나고 $f(a)=f(0)=a$에서 $f(1)\\cdot a=a$이므로 $f(1)=1$이다",
+        "main": true,
+        "step": 5
+      },
+      {
+        "from": [
+          "note15",
+          "note12"
+        ],
+        "to": "note16",
+        "neuron": "",
+        "type": "사실",
+        "domain_hint": "POLY, DIFF",
+        "description": "삼차함수 접선의 접점-교점 비율관계 적용",
+        "note": "삼차함수에서 접점 $x=1$과 교점 $x=a$의 비율관계에 의해 $a=2$이다",
+        "main": true,
+        "step": 5
+      },
+      {
+        "from": [
+          "note16",
+          "note15",
+          "단서D"
+        ],
+        "to": "note17",
+        "neuron": "",
+        "type": "연산",
+        "domain_hint": "POLY, EQN",
+        "description": "삼차함수 꼴을 설정하고 계수 결정",
+        "note": "$f(x)=px(x-2)^2+2$로 놓으면 $f(1)=p+2=1$에서 $p=-1$이고 $f(x)=-x(x-2)^2+2$이다",
+        "main": true,
+        "step": 6
+      },
+      {
+        "from": "note17",
+        "to": "END",
+        "neuron": "",
+        "type": "연산",
+        "domain_hint": "POLY",
+        "description": "f(7)을 계산하고 절댓값 산출",
+        "note": "$f(7)=-7\\cdot 25+2=-173$이고 $|f(7)|=173$이다",
+        "main": true,
+        "step": 6
+      }
+    ],
+    "previous_solution": "$A=\\{x: f(x)=f(0)\\}$, $B=\\{x: f(f(x)-f(1)x)=f(0)\\}$로 놓으면 (가)$\\Leftrightarrow A\\subset B$, (나)$\\Leftrightarrow n(B)=3$이다 $f(0)=f(0)$에서 $0\\in A$이고, $x=1$ 대입 시 $f(f(1)-f(1))=f(0)$에서 $1\\in B$이다 $0\\in A\\subset B$이고 $1\\in B$이고 $n(B)=3$이므로 $B=\\{0, 1, \\alpha\\}$ ($\\alpha\\neq 0$, $\\alpha\\neq 1$)로 놓을 수 있다 $0\\in B$에서 $f(f(0)-0)=f(0)$, 즉 $f(f(0))=f(0)$이고 $f(0)\\in A$이다 $\\{0, f(0)\\}\\subset A\\subset \\{0, 1, \\alpha\\}$이고, $f(0)=1$ 또는 $f(0)=\\alpha$이다 (i) $A=\\{0, 1, \\alpha\\}$, (ii) $A=\\{0, f(0)\\}$의 두 경우로 분류한다 (i)은 모순이므로 (ii) $A=\\{0, f(0)\\}$만 유효하다 (ii)에서 $f(f(x)-f(1)x)=f(0)$은 (ⓐ) $f(x)=f(1)x$와 (ⓑ) $f(x)=f(1)x+f(0)$으로 분해된다 ⓐ $f(x)=f(1)x$는 $x=1$에서 접하고 다른 교점 $x=a$를 가져 실근이 2개이다 ⓐ가 실근 2개($x=1, a$)를 기여하고 $n(B)=3$이므로 ⓑ는 실근이 정확히 1개($x=0$)이다 ⓑ $f(x)=f(1)x+f(0)$의 실근이 $x=0$뿐이려면 $y=f(1)x+f(0)$이 $y=f(x)$와 $x=0$에서만 만나야 하고, $f(0)=a$이다 $y=f(1)x$가 $(0, 0)$을 지나고 $f(a)=f(0)=a$에서 $f(1)\\cdot a=a$이므로 $f(1)=1$이다 삼차함수에서 접점 $x=1$과 교점 $x=a$의 비율관계에 의해 $a=2$이다 $f(x)=px(x-2)^2+2$로 놓으면 $f(1)=p+2=1$에서 $p=-1$이고 $f(x)=-x(x-2)^2+2$이다 $f(7)=-7\\cdot 25+2=-173$이고 $|f(7)|=173$이다",
+    "previous_clues": "[{\"id\":\"단서A\",\"text\":\"$f(x)$는 삼차함수이고 $f(1)=f'(1)$이다\"},{\"id\":\"단서B\",\"text\":\"(가) $f(k)=f(0)$인 임의의 실수 $k$에 대하여 $f(f(k)-f(1)k)=f(0)$이다\"},{\"id\":\"단서C\",\"text\":\"(나) 방정식 $f(f(x)-f(1)x)=f(0)$의 서로 다른 실근의 개수는 3이다\"},{\"id\":\"단서D\",\"text\":\"$f(0)>0$이다\"}]",
+    "previous_analysis": "집합 A={x: f(x)=f(0)}, B={x: f(f(x)-f(1)x)=f(0)}를 도입하여 조건 (가)를 A⊂B, (나)를 n(B)=3으로 해석한다. 경우 분류 후 모순 소거를 통해 A={0, f(0)}인 경우만 유효함을 확인하고, f(1)=f'(1) 조건에서 y=f(1)x가 x=1에서 접선임을 이용하여 f(0)=2, f(1)=1을 결정한다. f(x)=-x(x-2)²+2로부터 |f(7)|=173을 얻는다.",
+    "previous_matching": "",
+    "previous_matched": [],
+    "previous_new_neurons": [
+      {
+        "id": "전략??",
+        "type": "전략",
+        "statement": "두 집합 A, B에 대해 A ⊆ B이면, A ≠ ∅일 때 A의 모든 원소가 B에 속해야 하므로, A의 정의에 포함된 매개변수는 'A의 원소가 B를 벗어나지 않는다'는 부등식 조건을 만족해야 한다.",
+        "description": "부분집합 관계에서 A의 범위 결정",
+        "note": "$\\{0, f(0)\\}\\subset A\\subset \\{0, 1, \\alpha\\}$이고, $f(0)=1$ 또는 $f(0)=\\alpha$이다",
+        "reason": "사실113은 부등식 해집합의 경계점 조건이고, 사실35/79는 이차함수 근 판별이며, 사실27은 구간 부호 판단이다. 어떤 후보도 'A ⊆ B'라는 집합 포함 관계를 매개변수 조건으로 변환하는 원리를 담지 않는다.",
+        "blocked_edge": "note2+note3+note4 → note5",
+        "domain_hint": "SET",
+        "domain": [
+          "SET",
+          "INEQ"
+        ],
+        "action_hint": "",
+        "step": 2,
+        "main": true,
+        "near_miss": [
+          "사실26: 두 구간 $(a,b)$와 $(c,d)$가 겹치지 않을 조건: $b \\le",
+          "전략9: 조건을 만족시키는 자명한 해(특수한 경우)를 먼저 확인한다 |",
+          "전략17: 미지수의 가능한 값이 유한개이면 모두 대입하여 확인한다 (전수조사) |"
+        ]
+      }
+    ],
+    "previous_partial_skeleton": [],
+    "previous_blockage_point": "",
+    "previous_skel_review_notes": "",
+    "previous_dna_nodes": [
+      {
+        "id": "top",
+        "dna": "Q1",
+        "label": "값을 구하라",
+        "category": "발문"
+      },
+      {
+        "id": "ask",
+        "dna": "F3",
+        "label": "g(6)",
+        "category": "함수"
+      },
+      {
+        "id": "fn_g",
+        "dna": "F6",
+        "label": "함수 g(x)",
+        "category": "함수"
+      },
+      {
+        "id": "c6",
+        "dna": "T2",
+        "label": "상수 6",
+        "category": "말단"
+      },
+      {
+        "id": "conds",
+        "dna": "S1",
+        "label": "여러 조건",
+        "category": "구조"
+      },
+      {
+        "id": "f_diff",
+        "dna": "C22",
+        "label": "f 미분가능",
+        "category": "조건"
+      },
+      {
+        "id": "fn_f",
+        "dna": "F6",
+        "label": "함수 f(x)",
+        "category": "함수"
+      },
+      {
+        "id": "vf",
+        "dna": "T1",
+        "label": "변수 f",
+        "category": "말단"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
+      },
+      {
+        "id": "g_cubic",
+        "dna": "C11",
+        "label": "g 삼차함수",
+        "category": "조건"
+      },
+      {
+        "id": "vg",
+        "dna": "T1",
+        "label": "변수 g",
+        "category": "말단"
+      },
+      {
+        "id": "g_pos_coeff",
+        "dna": "L4",
+        "label": "최고차항 양수",
+        "category": "제한"
+      },
+      {
+        "id": "h_def_eq",
+        "dna": "C1",
+        "label": "h(x) 정의식",
+        "category": "조건"
+      },
+      {
+        "id": "fn_h",
+        "dna": "F6",
+        "label": "함수 h(x)",
+        "category": "함수"
+      },
+      {
+        "id": "h_rhs",
+        "dna": "E1",
+        "label": "|g|-|f|-2f",
+        "category": "수식"
+      },
+      {
+        "id": "abs_g",
+        "dna": "F5",
+        "label": "|g(x)|",
+        "category": "함수"
+      },
+      {
+        "id": "neg_abs_f_2f",
+        "dna": "E2",
+        "label": "-(|f|+2f)",
+        "category": "수식"
+      },
+      {
+        "id": "abs_f_plus_2f",
+        "dna": "E1",
+        "label": "|f|+2f",
+        "category": "수식"
+      },
+      {
+        "id": "abs_f",
+        "dna": "F5",
+        "label": "|f(x)|",
+        "category": "함수"
+      },
+      {
+        "id": "two_f",
+        "dna": "E6",
+        "label": "2·f(x)",
+        "category": "수식"
+      },
+      {
+        "id": "c2",
+        "dna": "T2",
+        "label": "상수 2",
+        "category": "말단"
+      },
+      {
+        "id": "h_piecewise",
+        "dna": "C18",
+        "label": "모든 x에 대해 h(x)=조각함수",
+        "category": "조건"
+      },
+      {
+        "id": "h_pieces",
+        "dna": "F1",
+        "label": "h(x) 조각함수",
+        "category": "함수"
+      },
+      {
+        "id": "piece1",
+        "dna": "F2",
+        "label": "조각1: x<0",
+        "category": "함수"
+      },
+      {
+        "id": "piece2",
+        "dna": "F2",
+        "label": "조각2: x>=0",
+        "category": "함수"
+      },
+      {
+        "id": "dom1",
+        "dna": "C2",
+        "label": "x < 0",
+        "category": "조건"
+      },
+      {
+        "id": "c1",
+        "dna": "T2",
+        "label": "상수 1",
+        "category": "말단"
+      },
+      {
+        "id": "dom2",
+        "dna": "C2",
+        "label": "x >= 0",
+        "category": "조건"
+      },
+      {
+        "id": "abs_x_minus_1",
+        "dna": "E5",
+        "label": "|x-1|",
+        "category": "수식"
+      },
+      {
+        "id": "x_minus_1",
+        "dna": "E1",
+        "label": "x + (-1)",
+        "category": "수식"
+      },
+      {
+        "id": "neg_c1",
+        "dna": "E2",
+        "label": "-1",
+        "category": "수식"
+      },
+      {
+        "id": "c0",
+        "dna": "T2",
+        "label": "상수 0",
+        "category": "말단"
+      }
+    ],
+    "previous_dna_edges": [
+      {
+        "from": "ask",
+        "to": "top"
+      },
+      {
+        "from": "conds",
+        "to": "top"
+      },
+      {
+        "from": "fn_g",
+        "to": "ask"
+      },
+      {
+        "from": "c6",
+        "to": "ask"
+      },
+      {
+        "from": "fn_f",
+        "to": "f_diff"
+      },
+      {
+        "from": "f_diff",
+        "to": "conds"
+      },
+      {
+        "from": "vf",
+        "to": "fn_f"
+      },
+      {
+        "from": "vx",
+        "to": "fn_f"
+      },
+      {
+        "from": "fn_g",
+        "to": "g_cubic"
+      },
+      {
+        "from": "g_cubic",
+        "to": "conds"
+      },
+      {
+        "from": "vg",
+        "to": "fn_g"
+      },
+      {
+        "from": "vx",
+        "to": "fn_g"
+      },
+      {
+        "from": "g_pos_coeff",
+        "to": "fn_g"
+      },
+      {
+        "from": "fn_h",
+        "to": "h_def_eq"
+      },
+      {
+        "from": "h_rhs",
+        "to": "h_def_eq"
+      },
+      {
+        "from": "h_def_eq",
+        "to": "conds"
+      },
+      {
+        "from": "vx",
+        "to": "fn_h"
+      },
+      {
+        "from": "abs_g",
+        "to": "h_rhs"
+      },
+      {
+        "from": "neg_abs_f_2f",
+        "to": "h_rhs"
+      },
+      {
+        "from": "abs_f_plus_2f",
+        "to": "neg_abs_f_2f"
+      },
+      {
+        "from": "abs_f",
+        "to": "abs_f_plus_2f"
+      },
+      {
+        "from": "two_f",
+        "to": "abs_f_plus_2f"
+      },
+      {
+        "from": "fn_f",
+        "to": "abs_f"
+      },
+      {
+        "from": "fn_g",
+        "to": "abs_g"
+      },
+      {
+        "from": "c2",
+        "to": "two_f"
+      },
+      {
+        "from": "fn_f",
+        "to": "two_f"
+      },
+      {
+        "from": "fn_h",
+        "to": "h_piecewise"
+      },
+      {
+        "from": "h_pieces",
+        "to": "h_piecewise"
+      },
+      {
+        "from": "h_piecewise",
+        "to": "conds"
+      },
+      {
+        "from": "piece1",
+        "to": "h_pieces"
+      },
+      {
+        "from": "piece2",
+        "to": "h_pieces"
+      },
+      {
+        "from": "dom1",
+        "to": "piece1"
+      },
+      {
+        "from": "c1",
+        "to": "piece1"
+      },
+      {
+        "from": "vx",
+        "to": "dom1"
+      },
+      {
+        "from": "c0",
+        "to": "dom1"
+      },
+      {
+        "from": "dom2",
+        "to": "piece2"
+      },
+      {
+        "from": "abs_x_minus_1",
+        "to": "piece2"
+      },
+      {
+        "from": "vx",
+        "to": "dom2"
+      },
+      {
+        "from": "c0",
+        "to": "dom2"
+      },
+      {
+        "from": "x_minus_1",
+        "to": "abs_x_minus_1"
+      },
+      {
+        "from": "vx",
+        "to": "x_minus_1"
+      },
+      {
+        "from": "neg_c1",
+        "to": "x_minus_1"
+      },
+      {
+        "from": "c1",
+        "to": "neg_c1"
+      }
+    ],
+    "previous_new_dna": [],
+    "previous_dna_review_notes": "",
+    "original_solution": "방정식 $f(x) = f(0)$의 실근의 집합을 $A$, 방정식 $f(f(x) - f(1)x) = f(0)$의 실근의 집합을 $B$라 하면 $0 \\in A$, $1 \\in B$이고,\n\n$$\\begin{cases} \\text{(가)} \\Leftrightarrow A \\subset B \\\\ \\text{(나)} \\Leftrightarrow n(B) = 3 \\end{cases}$$\n\n이므로 $B = \\{0,\\, 1,\\, \\alpha\\}$ (단, $\\alpha \\neq 0$, $\\alpha \\neq 1$)로 놓을 수 있다.\n\n또한, $0 \\in B \\Rightarrow f(f(0)) = f(0) \\Rightarrow f(0) \\in A$이므로\n\n$$\\{0,\\, f(0)\\} \\subset A \\subset \\{0,\\, 1,\\, \\alpha\\} \\quad (\\text{단, } f(0) = 1 \\text{ 또는 } f(0) = \\alpha)$$\n\n따라서 (i) $A = \\{0, 1, \\alpha\\}$, (ii) $A = \\{0, f(0)\\}$ 인 경우로 나누어 생각한다.\n\n**(i) $A = \\{0, 1, \\alpha\\}$인 경우**\n\n$f(f(x) - f(1)x) = f(0)$은 다음 세 방정식으로 분해된다:\n- ① $f(x) = f(1)x$\n- ② $f(x) = f(1)x + 1$\n- ③ $f(x) = f(1)x + \\alpha$\n\n각각의 실근은 모두 $B$의 원소이고, 각각 적어도 하나의 실근을 가지며($f(x)$가 삼차함수), 서로 같은 실근을 갖지 않으므로($\\alpha \\neq 0$, $\\alpha \\neq 1$), 각각의 실근의 개수 $= 1$ ($\\because n(B) = 3$).\n\n이때 $f(0) = f(1) = f(\\alpha) > 0$이고, $f(1) = f'(1)$이므로 직선 $y = f(1)x$는 곡선 $y = f(x)$ 위의 점 $(1, f(1))$에서의 접선이다. … ⓐ\n\n[FIGURE: 삼차함수 $y = f(x)$와 직선 $y = f(1)x$, $y = f(0)$의 관계를 보여주는 그래프]\n\n그림을 참고하면 점 $(\\alpha, f(0))$이 직선 $y = f(1)x$보다 아래쪽에 위치하므로 $\\alpha$는 ①, ②, ③의 실근이 아님 → $\\alpha \\in B$에 **모순**.\n\n**(ii) $A = \\{0, f(0)\\}$인 경우**\n\n곡선 $y = f(x)$와 직선 $y = f(0)$는 $x = 0$, $x = f(0)$에서만 만난다.\n\n$f(f(x) - f(1)x) = f(0)$은 다음으로 분해된다:\n- ⓐ $f(x) = f(1)x$\n- ⓑ $f(x) = f(1)x + f(0)$\n\nⓐ의 실근이 1뿐이라면 ⓑ의 실근의 개수 $= 1$이므로 $n(B) = 2$가 되어 모순.\n\n따라서 곡선 $y = f(x)$와 직선 $y = f(1)x$는 $x = 1$에서 접하고 $x = a$에서 만난다.\n\n[FIGURE: $f(0) = 1$인 경우와 $f(0) = a$인 경우의 두 그래프]\n\n그림을 참고하면 ⓑ의 실근이 0뿐이어야 하므로 $f(0) = a$이다.\n$\\Rightarrow y = f(1)x$가 $(0, f(0))$, $(f(0), f(0))$을 지남\n$\\Rightarrow f(1) = 1$\n\n삼차함수의 비율관계에 의해 $\\alpha = 2$이므로\n\n$$f(x) = px(x - 2)^2 + 2$$\n\n$f(1) = 1$에서 $p \\cdot 1 \\cdot (1-2)^2 + 2 = 1$이므로 $p = -1$.\n\n$$\\therefore f(x) = -x(x-2)^2 + 2$$\n\n$$|f(7)| = |-7 \\cdot 25 + 2| = |-175 + 2| = 173$$\n\n$$\\boxed{173}$$",
+    "recovery_warnings": [],
+    "errata": [],
+    "metadata": {},
+    "needed_neurons": [
+      "사실??",
+      "사실??"
+    ],
+    "needed_dna": [],
+    "edge_count": 18,
+    "side_count": 3,
+    "created_at": "2026-03-26T10:38:34.762Z"
   }
 ]
