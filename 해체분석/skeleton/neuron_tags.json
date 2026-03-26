@@ -1630,5 +1630,13 @@
       "SET"
     ],
     "action": "PREIMAGE_DECOMPOSITION"
+  },
+  {
+    "id": "사실123",
+    "domain": [
+      "FUNC",
+      "MONO"
+    ],
+    "action": "RECIPROCAL_MONOTONICITY"
   }
 ]
