@@ -1,0 +1,885 @@
+{
+  "problem_id": "P8",
+  "answer": "173",
+  "clues": [
+    {
+      "id": "단서A",
+      "text": "$f(x)$는 삼차함수이고 $f(1)=f'(1)$이다"
+    },
+    {
+      "id": "단서B",
+      "text": "(가) $f(k)=f(0)$인 임의의 실수 $k$에 대하여 $f(f(k)-f(1)k)=f(0)$이다"
+    },
+    {
+      "id": "단서C",
+      "text": "(나) 방정식 $f(f(x)-f(1)x)=f(0)$의 서로 다른 실근의 개수는 3이다"
+    },
+    {
+      "id": "단서D",
+      "text": "$f(0)>0$이다"
+    }
+  ],
+  "skeleton": [
+    {
+      "from": [
+        "단서B",
+        "단서C"
+      ],
+      "to": "note1",
+      "neuron": "전략42",
+      "type": "전략",
+      "domain_hint": "SET, EQN",
+      "description": "방정식의 근의 집합을 정의하여 조건을 집합 관계로 번역",
+      "note": "$A=\\{x: f(x)=f(0)\\}$, $B=\\{x: f(f(x)-f(1)x)=f(0)\\}$로 정의한다",
+      "main": true,
+      "step": 1
+    },
+    {
+      "from": "note1",
+      "to": "note2",
+      "neuron": "전략9",
+      "type": "전략",
+      "domain_hint": "EQN",
+      "description": "자명한 대입으로 원소 소속 확인",
+      "note": "$f(0)=f(0)$이므로 $0 \\in A$이다",
+      "main": true,
+      "step": 1
+    },
+    {
+      "from": [
+        "단서A",
+        "note1"
+      ],
+      "to": "note3",
+      "neuron": "전략25",
+      "type": "연산",
+      "domain_hint": "EQN",
+      "description": "x=1을 대입하여 B 원소 확인",
+      "note": "$f(f(1)-f(1)\\cdot 1)=f(f(1)-f(1))=f(0)$이므로 $1 \\in B$이다",
+      "main": true,
+      "step": 1
+    },
+    {
+      "from": [
+        "단서B",
+        "note1"
+      ],
+      "to": "note4",
+      "neuron": "전략42",
+      "type": "전략",
+      "domain_hint": "SET",
+      "description": "전칭 조건을 집합의 포함 관계로 번역",
+      "note": "조건 (가) '$f(k)=f(0)$인 임의의 $k$에 대해 $f(f(k)-f(1)k)=f(0)$'은 $A \\subset B$와 동치이다",
+      "main": true,
+      "step": 1
+    },
+    {
+      "from": [
+        "단서C",
+        "note1"
+      ],
+      "to": "note5",
+      "neuron": "전략42",
+      "type": "전략",
+      "domain_hint": "SET",
+      "description": "근의 개수를 집합 원소 수로 번역",
+      "note": "조건 (나)는 $n(B)=3$이다",
+      "main": true,
+      "step": 1
+    },
+    {
+      "from": [
+        "note2",
+        "note3",
+        "note4",
+        "note5"
+      ],
+      "to": "note6",
+      "neuron": "전략42",
+      "type": "전략",
+      "domain_hint": "SET",
+      "description": "$A \\subset B$, $n(B)=3$, $0 \\in A$, $1 \\in B$를 종합하여 집합 관계를 정리",
+      "note": "$A \\subset B$이고 $n(B)=3$이므로 $B$는 $A$의 모든 원소를 포함하며 원소가 정확히 3개이다. $0 \\in A \\subset B$이고 $1 \\in B$이다",
+      "main": true,
+      "step": 1
+    },
+    {
+      "from": "note6",
+      "to": "note7",
+      "neuron": "전략25",
+      "type": "연산",
+      "domain_hint": "EQN",
+      "description": "$0 \\in B$를 $B$의 정의에 대입하여 $f(f(0))=f(0)$ 유도",
+      "note": "$0 \\in B$이므로 $f(f(0)-f(1)\\cdot 0)=f(f(0))=f(0)$이다",
+      "main": true,
+      "step": 2
+    },
+    {
+      "from": "note7",
+      "to": "note8",
+      "neuron": "전략42",
+      "type": "전략",
+      "domain_hint": "SET, EQN",
+      "description": "$f(f(0))=f(0)$을 $A$의 정의에 적용",
+      "note": "$f(f(0))=f(0)$이므로 $f(0) \\in A$이다. 따라서 $\\{0, f(0)\\} \\subset A$이다",
+      "main": true,
+      "step": 2
+    },
+    {
+      "from": [
+        "note8",
+        "단서D",
+        "note6"
+      ],
+      "to": "note9",
+      "neuron": "전략22",
+      "type": "전략",
+      "domain_hint": "SET",
+      "description": "$|A|$의 크기에 따라 경우를 분류. $f(x)=f(0)$은 삼차방정식이므로 서로 다른 실근은 1, 2, 또는 3개이고, $\\{0, f(0)\\} \\subset A$이므로 $|A| \\geq 1$",
+      "note": "(i) $|A|=3$인 경우와 (ii) $|A|=2$인 경우와 (iii) $|A|=1$ ($f(0)=0$)인 경우로 나눈다. $f(0)>0$이므로 $f(0) \\neq 0$이고 $|A| \\geq 2$이다. 따라서 (i) $|A|=3$과 (ii) $|A|=2$만 가능하다",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": "note9",
+      "to": "note10",
+      "neuron": "전략43",
+      "type": "전략",
+      "domain_hint": "EQN, SET",
+      "description": "(i) $|A|=3$ 검토: $A=\\{0, \\beta, \\gamma\\}$이면 합성함수 방정식을 역상 분해",
+      "note": "$|A|=3$이면 $A=\\{0, r_1, r_2\\}$이고, $f(f(x)-f(1)x)=f(0)$은 $f(x)-f(1)x=0$, $f(x)-f(1)x=r_1$, $f(x)-f(1)x=r_2$로 분해된다",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": [
+        "note10",
+        "단서A"
+      ],
+      "to": "note11",
+      "neuron": "사실96",
+      "type": "사실",
+      "domain_hint": "POLY",
+      "description": "$g(x)=f(x)-f(1)x$로 정의하면 $g(1)=f(1)-f(1)=0$이고 $g'(1)=f'(1)-f(1)=0$이므로 $x=1$은 $g(x)$의 이중근",
+      "note": "$g(x)=f(x)-f(1)x$로 두면 $g(1)=0$, $g'(1)=f'(1)-f(1)=0$이므로 $(x-1)^2 \\mid g(x)$이다. $g(x)=a_3(x-1)^2(x-a)$ ($a_3 \\neq 0$)로 쓸 수 있다",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": [
+        "note11",
+        "note10",
+        "note5"
+      ],
+      "to": "note12",
+      "neuron": "전략20",
+      "type": "전략",
+      "domain_hint": "POLY, EQN",
+      "description": "$|A|=3$일 때 세 방정식 각각의 근 1개씩이어야 하는데, 접선 조건으로 인한 기하적 모순 확인",
+      "note": "$g(x)=a_3(x-1)^2(x-a)$이고 세 방정식 $g(x)=0$, $g(x)=r_1$, $g(x)=r_2$가 각각 근 1개씩이어야 한다. $g(x)=0$은 이미 $x=1$(이중근)과 $x=a$를 근으로 가진다. $a \\neq 1$이면 서로 다른 근 2개이므로 '각각 근 1개'에 모순. $a=1$이면 삼중근이지만 $g(x)=r_i$의 근은 $r_i$가 극값이 아닌 한 3개 또는 1개이다. 이 경우에도 $A=\\{0, f(0)\\}$에서 $f(0) \\neq 0$이면 $f(0) \\in A \\setminus \\{0\\}$이어야 하고 $|A|=3$과 양립하려면 추가 근이 필요한데, 접선 위치에서 $\\alpha$의 함수값 조건에 모순이 발생한다",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": "note12",
+      "to": "note13",
+      "neuron": "전략23",
+      "type": "전략",
+      "domain_hint": "SET",
+      "description": "$|A|=3$인 경우를 모순으로 배제",
+      "note": "$|A|=3$인 경우는 근의 개수 조건 $n(B)=3$에 모순이므로 배제한다",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": [
+        "note9",
+        "note13"
+      ],
+      "to": "note14",
+      "neuron": "전략20",
+      "type": "전략",
+      "domain_hint": "SET, POLY",
+      "description": "소거 후 생존 경우 채택",
+      "note": "$|A|=2$이고 $A=\\{0, f(0)\\}$이다. $f(x)-f(0)=0$은 삼차방정식이고 서로 다른 실근이 2개이므로 하나가 이중근이다",
+      "main": true,
+      "step": 4
+    },
+    {
+      "from": "note14",
+      "to": "note15",
+      "neuron": "전략43",
+      "type": "전략",
+      "domain_hint": "EQN, SET",
+      "description": "합성함수 방정식을 역상으로 두 방정식으로 분해",
+      "note": "$f(f(x)-f(1)x)=f(0)$은 ⓐ $f(x)-f(1)x=0$ 또는 ⓑ $f(x)-f(1)x=f(0)$으로 분해된다",
+      "main": true,
+      "step": 4
+    },
+    {
+      "from": [
+        "note11",
+        "note15"
+      ],
+      "to": "note16",
+      "neuron": "전략41",
+      "type": "전략",
+      "domain_hint": "POLY",
+      "description": "$g(x)=a_3(x-1)^2(x-a)$로 놓고 ⓐ는 $g(x)=0$, ⓑ는 $g(x)=f(0)$에 대응시킴",
+      "note": "$g(x)=a_3(x-1)^2(x-a)$이므로 ⓐ의 근은 $x=1$(이중근)과 $x=a$이다. $a=1$이면 ⓐ의 근은 $\\{1\\}$뿐이고, $a \\neq 1$이면 $\\{1, a\\}$이다",
+      "main": true,
+      "step": 4
+    },
+    {
+      "from": [
+        "note16",
+        "note5"
+      ],
+      "to": "note17",
+      "neuron": "전략20",
+      "type": "전략",
+      "domain_hint": "EQN",
+      "description": "ⓐ와 ⓑ의 근 개수 배분을 검토하여 $n(B)=3$ 조건을 만족하는 경우 확정",
+      "note": "$a=1$이면 ⓐ의 근은 $\\{1\\}$이고 ⓑ가 근 2개를 제공해야 $n(B)=3$. $a \\neq 1$이면 ⓐ의 근은 $\\{1, a\\}$이고 ⓑ가 근 1개를 제공해야 $n(B)=3$ (단, ⓑ의 근이 ⓐ의 근과 겹치지 않아야 함)",
+      "main": true,
+      "step": 4
+    },
+    {
+      "from": "note17",
+      "to": "note18",
+      "neuron": "전략25",
+      "type": "연산",
+      "domain_hint": "POLY, EQN",
+      "description": "ⓑ에 $x=0$ 대입하여 $g(0)=f(0)$ 관계 유도",
+      "note": "$g(0)=a_3(-1)^2(0-a)=-a_3 a$이고, ⓑ: $g(0)=f(0)$이면 $0$이 ⓑ의 근이다. 즉 $-a_3 a = f(0)$이다",
+      "main": true,
+      "step": 5
+    },
+    {
+      "from": [
+        "note18",
+        "note14",
+        "note4"
+      ],
+      "to": "note19",
+      "neuron": "전략42",
+      "type": "전략",
+      "domain_hint": "SET",
+      "description": "$0 \\in A \\subset B$이므로 $0$은 ⓐ 또는 ⓑ의 근이어야 함. $g(0)=-a_3 a$이므로 $g(0)=0$이면 $a_3 a=0$인데 $a_3 \\neq 0$이므로 $a=0$. 또는 $g(0)=f(0)$이면 $0$은 ⓑ의 근",
+      "note": "$0 \\in B$이므로 $0$은 ⓐ 또는 ⓑ의 근이다. $g(0)=-a_3 a$이므로 $g(0)=0 \\Leftrightarrow a=0$이다",
+      "main": true,
+      "step": 5
+    },
+    {
+      "from": [
+        "note17",
+        "note19"
+      ],
+      "to": "note20",
+      "neuron": "전략22",
+      "type": "전략",
+      "domain_hint": "EQN",
+      "description": "$a=0$인 경우와 $a \\neq 0$인 경우로 분류하여 검토",
+      "note": "Case A: $a=0$이면 $g(x)=a_3 x(x-1)^2$이고 ⓐ의 근은 $\\{0, 1\\}$. ⓑ: $g(x)=f(0)$의 근이 1개여야 $n(B)=3$. Case B: $a \\neq 0$이면 $0$은 ⓑ의 근이고 $-a_3 a = f(0)$이다",
+      "main": true,
+      "step": 5
+    },
+    {
+      "from": "note20",
+      "to": "note21",
+      "neuron": "전략25",
+      "type": "연산",
+      "domain_hint": "POLY",
+      "description": "Case A ($a=0$) 검토: $g(x)=a_3 x(x-1)^2$이면 $f(x)=g(x)+f(1)x=a_3 x(x-1)^2+f(1)x$. $f(0)=0$인데 $f(0)>0$에 모순",
+      "note": "$a=0$이면 $f(0)=g(0)+f(1)\\cdot 0=0$이므로 $f(0)>0$에 모순. Case A 배제",
+      "main": true,
+      "step": 5
+    },
+    {
+      "from": [
+        "note20",
+        "note21"
+      ],
+      "to": "note22",
+      "neuron": "전략23",
+      "type": "전략",
+      "domain_hint": "SET",
+      "description": "Case A 배제 후 Case B ($a \\neq 0$) 채택",
+      "note": "$a \\neq 0$이고, $0$은 ⓑ의 근이며, $-a_3 a = f(0)$이다. ⓐ의 근은 $\\{1, a\\}$ ($a \\neq 1$인 경우)이다",
+      "main": true,
+      "step": 5
+    },
+    {
+      "from": [
+        "note22",
+        "note17"
+      ],
+      "to": "note23",
+      "neuron": "전략20",
+      "type": "전략",
+      "domain_hint": "EQN, SET",
+      "description": "$a \\neq 1$이면 ⓐ의 근 $\\{1, a\\}$와 ⓑ의 근 1개(=0 포함)로 $B=\\{0, 1, a\\}$ 구성. ⓑ의 유일근이 0이어야 함을 확인",
+      "note": "$a \\neq 1$이면 ⓐ의 근이 $\\{1, a\\}$이고 ⓑ의 근이 $\\{0\\}$이어서 $B=\\{0, 1, a\\}$이 된다. $n(B)=3$이려면 $a \\neq 0$, $a \\neq 1$이어야 한다",
+      "main": true,
+      "step": 5
+    },
+    {
+      "from": [
+        "note23",
+        "note14"
+      ],
+      "to": "note24",
+      "neuron": "전략42",
+      "type": "전략",
+      "domain_hint": "SET",
+      "description": "$a \\in B$이고 $A \\subset B$이므로 $a$가 $A$의 원소인지 확인. ⓐ에서 $g(a)=0$이므로 $f(a)=f(1) \\cdot a$",
+      "note": "$x=a$가 ⓐ의 근이므로 $f(a)=f(1) \\cdot a$이다. 또한 $A=\\{0, f(0)\\}$이고 $a \\neq 0$이므로 $a$가 $A$에 속하려면 $a=f(0)$이어야 한다",
+      "main": true,
+      "step": 5
+    },
+    {
+      "from": "note24",
+      "to": "note25",
+      "neuron": "전략39",
+      "type": "전략",
+      "domain_hint": "SET",
+      "description": "$a=f(0)$로 확정하고 $f(a)=f(f(0))=f(0)=a$ 관계와 $f(a)=f(1) \\cdot a$ 관계를 연립",
+      "note": "$a=f(0)$이므로 $f(a)=f(f(0))=f(0)=a$이다. 또한 $f(a)=f(1) \\cdot a$이므로 $a = f(1) \\cdot a$이다. $a \\neq 0$이므로 $f(1)=1$이다",
+      "main": true,
+      "step": 6
+    },
+    {
+      "from": [
+        "note25",
+        "note11"
+      ],
+      "to": "note26",
+      "neuron": "전략25",
+      "type": "연산",
+      "domain_hint": "POLY",
+      "description": "$f(1)=1$과 $g(x)=a_3(x-1)^2(x-a)$에서 $g(0)$을 계산하여 $a_3$와 $a$의 관계 유도",
+      "note": "$g(0)=a_3 \\cdot 1 \\cdot (-a) = -a_3 a$이다. 또한 $g(0)=f(0)-f(1)\\cdot 0=f(0)=a$이므로 $-a_3 a = a$이다. $a \\neq 0$이므로 $a_3 = -1$이다",
+      "main": true,
+      "step": 6
+    },
+    {
+      "from": "note26",
+      "to": "note27",
+      "neuron": "연산28",
+      "type": "연산",
+      "domain_hint": "POLY",
+      "description": "$g(x)=-(x-1)^2(x-a)$이므로 $f(x)=g(x)+x=-(x-1)^2(x-a)+x$를 전개",
+      "note": "$f(x)=-(x-1)^2(x-a)+x$이다",
+      "main": true,
+      "step": 6
+    },
+    {
+      "from": [
+        "note27",
+        "note14"
+      ],
+      "to": "note28",
+      "neuron": "전략38",
+      "type": "연산",
+      "domain_hint": "POLY",
+      "description": "$f(x)=f(0)=a$를 풀어 $A$의 원소를 구하고 $|A|=2$ 조건 적용",
+      "note": "$f(x)-a=-(x-1)^2(x-a)+x-a=0$. $x=0$이 근이므로 $(x)$로 나누면 나머지 인수를 구할 수 있다. $x=a$도 근인지 확인: $f(a)=-(a-1)^2 \\cdot 0+a=a$이므로 $x=a$도 근이다. 따라서 $f(x)-a$를 $x(x-a)$로 나누면 $f(x)-a=-x(x-a)(x-c)$ 꼴이다",
+      "main": true,
+      "step": 6
+    },
+    {
+      "from": "note28",
+      "to": "note29",
+      "neuron": "전략2",
+      "type": "연산",
+      "domain_hint": "POLY",
+      "description": "$f(x)-a=-(x-1)^2(x-a)+x-a$의 최고차항 비교와 근 조건을 연립하여 $a$를 결정",
+      "note": "$f(x)-a=-(x-1)^2(x-a)+x-a$에서 $x=0$ 대입: $f(0)-a=a-a=0$ ✓. 전개하면 $f(x)-a=-(x^3-(a+2)x^2+(2a+1)x-a)+x-a=-x^3+(a+2)x^2-(2a+1)x+a+x-a=-x^3+(a+2)x^2-2ax$이다. 따라서 $f(x)-a=-x(x^2-(a+2)x+2a)=-x(x-2)(x-a)$이다",
+      "main": true,
+      "step": 6
+    },
+    {
+      "from": "note29",
+      "to": "note30",
+      "neuron": "전략42",
+      "type": "전략",
+      "domain_hint": "SET",
+      "description": "$|A|=2$이므로 $f(x)=a$의 서로 다른 실근이 2개. 근은 $\\{0, 2, a\\}$이므로 이 중 두 개만 서로 달라야 함",
+      "note": "$f(x)-a=-x(x-2)(x-a)=0$의 근은 $0, 2, a$이다. $|A|=2$이므로 이 중 두 근이 같아야 한다. $a \\neq 0$ (이미 확인)이므로 $a=2$이거나 $a=0$ (배제됨)이다",
+      "main": true,
+      "step": 6
+    },
+    {
+      "from": "note30",
+      "to": "note31",
+      "neuron": "전략39",
+      "type": "전략",
+      "domain_hint": "SET",
+      "description": "$a \\neq 0$이므로 $a=2$로 확정",
+      "note": "$a=2$이다. 따라서 $f(0)=a=2>0$이고 $f(0)>0$ 조건을 만족한다",
+      "main": true,
+      "step": 6
+    },
+    {
+      "from": [
+        "note31",
+        "note27"
+      ],
+      "to": "note32",
+      "neuron": "전략25",
+      "type": "연산",
+      "domain_hint": "POLY",
+      "description": "$a=2$를 대입하여 $f(x)$ 확정",
+      "note": "$f(x)=-(x-1)^2(x-2)+x=-x^3+4x^2-5x+2+x=-x^3+4x^2-4x+2=-x(x-2)^2+2$이다",
+      "main": true,
+      "step": 7
+    },
+    {
+      "from": "note32",
+      "to": "note33",
+      "neuron": "전략25",
+      "type": "연산",
+      "domain_hint": "POLY",
+      "description": "$f(1)=f'(1)$ 조건 검증",
+      "note": "$f(1)=-1 \\cdot 1+2=1$이고, $f'(x)=-3x^2+8x-4$이므로 $f'(1)=-3+8-4=1$이다. $f(1)=f'(1)=1$ ✓",
+      "main": false,
+      "step": 7
+    },
+    {
+      "from": "note32",
+      "to": "END",
+      "neuron": "전략25",
+      "type": "연산",
+      "domain_hint": "POLY",
+      "description": "$f(7)$을 계산하고 절댓값을 구함",
+      "note": "$f(7)=-7 \\cdot (7-2)^2+2=-7 \\cdot 25+2=-175+2=-173$이므로 $|f(7)|=173$이다",
+      "main": true,
+      "step": 7
+    }
+  ],
+  "solution": "$A=\\{x: f(x)=f(0)\\}$, $B=\\{x: f(f(x)-f(1)x)=f(0)\\}$로 정의한다. $f(0)=f(0)$이므로 $0 \\in A$이다. $f(f(1)-f(1) \\cdot 1)=f(0)$이므로 $1 \\in B$이다. 조건 (가)는 $A \\subset B$와 동치이고, 조건 (나)는 $n(B)=3$이다. $A \\subset B$이고 $n(B)=3$이므로 $B$는 $A$의 모든 원소를 포함하며 원소가 정확히 3개이다. $0 \\in A \\subset B$이므로 $f(f(0))=f(0)$이고, 따라서 $f(0) \\in A$이다. $f(0)>0$이므로 $f(0) \\neq 0$이고 $|A| \\geq 2$이다. $|A|=3$인 경우와 $|A|=2$인 경우로 나눈다. $g(x)=f(x)-f(1)x$로 정의하면 $g(1)=0$이고 $g'(1)=f'(1)-f(1)=0$이므로 $(x-1)^2 \\mid g(x)$이다. $g(x)=a_3(x-1)^2(x-a)$로 쓸 수 있다. $|A|=3$인 경우를 검토하면 근의 개수 조건에 모순이 발생하므로 배제한다. 따라서 $|A|=2$이고 $A=\\{0, f(0)\\}$이다. $f(f(x)-f(1)x)=f(0)$은 ⓐ $g(x)=0$, ⓑ $g(x)=f(0)$으로 분해된다. $a=0$이면 $f(0)=0$이 되어 $f(0)>0$에 모순이므로 $a \\neq 0$이다. $a \\neq 0$, $a \\neq 1$이면 ⓐ의 근이 $\\{1, a\\}$이고 ⓑ의 유일한 근이 $0$이어서 $B=\\{0, 1, a\\}$이다. $x=a$가 ⓐ의 근이므로 $f(a)=f(1) \\cdot a$이고, $a=f(0)$이면 $f(a)=f(f(0))=f(0)=a$이다. $f(1) \\cdot a = a$이고 $a \\neq 0$이므로 $f(1)=1$이다. $g(0)=-a_3 a=f(0)=a$이므로 $a_3=-1$이다. $f(x)=-(x-1)^2(x-a)+x$이다. $f(x)-a=-x(x-2)(x-a)$이고 $|A|=2$이므로 $a=2$이다. $f(0)=2>0$ ✓. $f(x)=-x(x-2)^2+2$이다. $f(7)=-7 \\cdot 25+2=-173$이므로 $|f(7)|=173$이다.",
+  "original_solution": "방정식 $f(x) = f(0)$의 실근의 집합을 $A$, 방정식 $f(f(x) - f(1)x) = f(0)$의 실근의 집합을 $B$라 하면 $0 \\in A$, $1 \\in B$이고,\n\n$$\\begin{cases} \\text{(가)} \\Leftrightarrow A \\subset B \\\\ \\text{(나)} \\Leftrightarrow n(B) = 3 \\end{cases}$$\n\n이므로 $B = \\{0,\\, 1,\\, \\alpha\\}$ (단, $\\alpha \\neq 0$, $\\alpha \\neq 1$)로 놓을 수 있다.\n\n또한, $0 \\in B \\Rightarrow f(f(0)) = f(0) \\Rightarrow f(0) \\in A$이므로\n\n$$\\{0,\\, f(0)\\} \\subset A \\subset \\{0,\\, 1,\\, \\alpha\\} \\quad (\\text{단, } f(0) = 1 \\text{ 또는 } f(0) = \\alpha)$$\n\n따라서 (i) $A = \\{0, 1, \\alpha\\}$, (ii) $A = \\{0, f(0)\\}$ 인 경우로 나누어 생각한다.\n\n**(i) $A = \\{0, 1, \\alpha\\}$인 경우**\n\n$f(f(x) - f(1)x) = f(0)$은 다음 세 방정식으로 분해된다:\n- ① $f(x) = f(1)x$\n- ② $f(x) = f(1)x + 1$\n- ③ $f(x) = f(1)x + \\alpha$\n\n각각의 실근은 모두 $B$의 원소이고, 각각 적어도 하나의 실근을 가지며($f(x)$가 삼차함수), 서로 같은 실근을 갖지 않으므로($\\alpha \\neq 0$, $\\alpha \\neq 1$), 각각의 실근의 개수 $= 1$ ($\\because n(B) = 3$).\n\n이때 $f(0) = f(1) = f(\\alpha) > 0$이고, $f(1) = f'(1)$이므로 직선 $y = f(1)x$는 곡선 $y = f(x)$ 위의 점 $(1, f(1))$에서의 접선이다. … ⓐ\n\n[FIGURE: 삼차함수 $y = f(x)$와 직선 $y = f(1)x$, $y = f(0)$의 관계를 보여주는 그래프]\n\n그림을 참고하면 점 $(\\alpha, f(0))$이 직선 $y = f(1)x$보다 아래쪽에 위치하므로 $\\alpha$는 ①, ②, ③의 실근이 아님 → $\\alpha \\in B$에 **모순**.\n\n**(ii) $A = \\{0, f(0)\\}$인 경우**\n\n곡선 $y = f(x)$와 직선 $y = f(0)$는 $x = 0$, $x = f(0)$에서만 만난다.\n\n$f(f(x) - f(1)x) = f(0)$은 다음으로 분해된다:\n- ⓐ $f(x) = f(1)x$\n- ⓑ $f(x) = f(1)x + f(0)$\n\nⓐ의 실근이 1뿐이라면 ⓑ의 실근의 개수 $= 1$이므로 $n(B) = 2$가 되어 모순.\n\n따라서 곡선 $y = f(x)$와 직선 $y = f(1)x$는 $x = 1$에서 접하고 $x = a$에서 만난다.\n\n[FIGURE: $f(0) = 1$인 경우와 $f(0) = a$인 경우의 두 그래프]\n\n그림을 참고하면 ⓑ의 실근이 0뿐이어야 하므로 $f(0) = a$이다.\n$\\Rightarrow y = f(1)x$가 $(0, f(0))$, $(f(0), f(0))$을 지남\n$\\Rightarrow f(1) = 1$\n\n삼차함수의 비율관계에 의해 $\\alpha = 2$이므로\n\n$$f(x) = px(x - 2)^2 + 2$$\n\n$f(1) = 1$에서 $p \\cdot 1 \\cdot (1-2)^2 + 2 = 1$이므로 $p = -1$.\n\n$$\\therefore f(x) = -x(x-2)^2 + 2$$\n\n$$|f(7)| = |-7 \\cdot 25 + 2| = |-175 + 2| = 173$$\n\n$$\\boxed{173}$$",
+  "analysis": "",
+  "new_neurons": [],
+  "metadata": {
+    "unit": "다항함수의 미분",
+    "difficulty": "상",
+    "score": "4",
+    "type": "short_answer",
+    "answer": "173",
+    "year": "미상",
+    "source": "수능/모의고사",
+    "topic": "삼차함수의 조건 분석",
+    "subtopic": "실근의 개수와 접선 조건"
+  },
+  "edge_count": 34,
+  "side_count": 3,
+  "statement": "# 8. 삼차함수의 조건을 만족시키는 $|f(7)|$의 값\n\n## Problem\n\n$f(1) = f'(1)$인 삼차함수 $f(x)$가 다음 조건을 만족시킨다.\n\n(가) $f(k) = f(0)$인 임의의 실수 $k$에 대하여\n$$f(f(k) - f(1)k) = f(0)$$\n이다.\n\n(나) 방정식 $f(f(x) - f(1)x) = f(0)$의 서로 다른 실근의 개수는 3이다.\n\n$f(0) > 0$일 때, $|f(7)|$의 값을 구하시오. [4점]",
+  "dna": {
+    "nodes": [
+      {
+        "id": "top",
+        "dna": "Q1",
+        "label": "값을 구하라",
+        "category": "발문"
+      },
+      {
+        "id": "ask_abs",
+        "dna": "E5",
+        "label": "|f(7)|",
+        "category": "수식"
+      },
+      {
+        "id": "ask_f7",
+        "dna": "F3",
+        "label": "f(7)",
+        "category": "함수"
+      },
+      {
+        "id": "vf",
+        "dna": "F6",
+        "label": "함수 f(x)",
+        "category": "함수"
+      },
+      {
+        "id": "f_cubic",
+        "dna": "F11",
+        "label": "삼차함수",
+        "category": "함수"
+      },
+      {
+        "id": "c7",
+        "dna": "T2",
+        "label": "상수 7",
+        "category": "말단"
+      },
+      {
+        "id": "c0_const",
+        "dna": "T2",
+        "label": "상수 0",
+        "category": "말단"
+      },
+      {
+        "id": "c1_const",
+        "dna": "T2",
+        "label": "상수 1",
+        "category": "말단"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
+      },
+      {
+        "id": "eq_f1_fprime1",
+        "dna": "C1",
+        "label": "f(1)=f'(1)",
+        "category": "조건"
+      },
+      {
+        "id": "f1_val",
+        "dna": "F3",
+        "label": "f(1)",
+        "category": "함수"
+      },
+      {
+        "id": "fprime",
+        "dna": "F13",
+        "label": "f'(x)",
+        "category": "함수"
+      },
+      {
+        "id": "fprime1_val",
+        "dna": "F3",
+        "label": "f'(1)",
+        "category": "함수"
+      },
+      {
+        "id": "cond_a",
+        "dna": "C18",
+        "label": "조건(가): 임의의 실수 k에 대하여",
+        "category": "조건"
+      },
+      {
+        "id": "cond_a_inner",
+        "dna": "C1",
+        "label": "f(f(k)-f(1)k)=f(0)",
+        "category": "조건"
+      },
+      {
+        "id": "cond_a_premise",
+        "dna": "C1",
+        "label": "f(k)=f(0)",
+        "category": "조건"
+      },
+      {
+        "id": "vk",
+        "dna": "T1",
+        "label": "변수 k",
+        "category": "말단"
+      },
+      {
+        "id": "fk_val",
+        "dna": "F3",
+        "label": "f(k)",
+        "category": "함수"
+      },
+      {
+        "id": "f0_val",
+        "dna": "F3",
+        "label": "f(0)",
+        "category": "함수"
+      },
+      {
+        "id": "comp_ga",
+        "dna": "F3",
+        "label": "f(f(k)-f(1)k)",
+        "category": "함수"
+      },
+      {
+        "id": "inner_ga",
+        "dna": "E1",
+        "label": "f(k)-f(1)k",
+        "category": "수식"
+      },
+      {
+        "id": "neg_f1k_ga",
+        "dna": "E2",
+        "label": "-f(1)·k",
+        "category": "수식"
+      },
+      {
+        "id": "f1k_ga",
+        "dna": "E6",
+        "label": "f(1)·k",
+        "category": "수식"
+      },
+      {
+        "id": "cond_b",
+        "dna": "C9",
+        "label": "실근 개수=3",
+        "category": "조건"
+      },
+      {
+        "id": "eq_b",
+        "dna": "C11",
+        "label": "방정식(나)",
+        "category": "조건"
+      },
+      {
+        "id": "eq_b_eq",
+        "dna": "C1",
+        "label": "f(f(x)-f(1)x)=f(0)",
+        "category": "조건"
+      },
+      {
+        "id": "comp_b",
+        "dna": "F3",
+        "label": "f(f(x)-f(1)x)",
+        "category": "함수"
+      },
+      {
+        "id": "inner_b",
+        "dna": "E1",
+        "label": "f(x)-f(1)x",
+        "category": "수식"
+      },
+      {
+        "id": "neg_f1x_b",
+        "dna": "E2",
+        "label": "-f(1)·x",
+        "category": "수식"
+      },
+      {
+        "id": "f1x_b",
+        "dna": "E6",
+        "label": "f(1)·x",
+        "category": "수식"
+      },
+      {
+        "id": "fx_val",
+        "dna": "F3",
+        "label": "f(x)",
+        "category": "함수"
+      },
+      {
+        "id": "cond_f0_pos",
+        "dna": "C2",
+        "label": "f(0)>0",
+        "category": "조건"
+      },
+      {
+        "id": "c3_roots",
+        "dna": "T2",
+        "label": "상수 3",
+        "category": "말단"
+      }
+    ],
+    "edges": [
+      {
+        "from": "ask_abs",
+        "to": "top"
+      },
+      {
+        "from": "ask_f7",
+        "to": "ask_abs"
+      },
+      {
+        "from": "vf",
+        "to": "ask_f7"
+      },
+      {
+        "from": "c7",
+        "to": "ask_f7"
+      },
+      {
+        "from": "f_cubic",
+        "to": "vf"
+      },
+      {
+        "from": "eq_f1_fprime1",
+        "to": "top"
+      },
+      {
+        "from": "f1_val",
+        "to": "eq_f1_fprime1"
+      },
+      {
+        "from": "fprime1_val",
+        "to": "eq_f1_fprime1"
+      },
+      {
+        "from": "vf",
+        "to": "f1_val"
+      },
+      {
+        "from": "c1_const",
+        "to": "f1_val"
+      },
+      {
+        "from": "fprime",
+        "to": "fprime1_val"
+      },
+      {
+        "from": "c1_const",
+        "to": "fprime1_val"
+      },
+      {
+        "from": "vf",
+        "to": "fprime"
+      },
+      {
+        "from": "cond_a",
+        "to": "top"
+      },
+      {
+        "from": "cond_a_premise",
+        "to": "cond_a"
+      },
+      {
+        "from": "cond_a_inner",
+        "to": "cond_a"
+      },
+      {
+        "from": "fk_val",
+        "to": "cond_a_premise"
+      },
+      {
+        "from": "f0_val",
+        "to": "cond_a_premise"
+      },
+      {
+        "from": "vk",
+        "to": "cond_a_premise"
+      },
+      {
+        "from": "vf",
+        "to": "fk_val"
+      },
+      {
+        "from": "vk",
+        "to": "fk_val"
+      },
+      {
+        "from": "vf",
+        "to": "f0_val"
+      },
+      {
+        "from": "c0_const",
+        "to": "f0_val"
+      },
+      {
+        "from": "comp_ga",
+        "to": "cond_a_inner"
+      },
+      {
+        "from": "f0_val",
+        "to": "cond_a_inner"
+      },
+      {
+        "from": "vf",
+        "to": "comp_ga"
+      },
+      {
+        "from": "inner_ga",
+        "to": "comp_ga"
+      },
+      {
+        "from": "fk_val",
+        "to": "inner_ga"
+      },
+      {
+        "from": "neg_f1k_ga",
+        "to": "inner_ga"
+      },
+      {
+        "from": "f1k_ga",
+        "to": "neg_f1k_ga"
+      },
+      {
+        "from": "f1_val",
+        "to": "f1k_ga"
+      },
+      {
+        "from": "vk",
+        "to": "f1k_ga"
+      },
+      {
+        "from": "cond_b",
+        "to": "top"
+      },
+      {
+        "from": "eq_b",
+        "to": "cond_b"
+      },
+      {
+        "from": "c3_roots",
+        "to": "cond_b"
+      },
+      {
+        "from": "eq_b_eq",
+        "to": "eq_b"
+      },
+      {
+        "from": "comp_b",
+        "to": "eq_b_eq"
+      },
+      {
+        "from": "f0_val",
+        "to": "eq_b_eq"
+      },
+      {
+        "from": "vf",
+        "to": "comp_b"
+      },
+      {
+        "from": "inner_b",
+        "to": "comp_b"
+      },
+      {
+        "from": "fx_val",
+        "to": "inner_b"
+      },
+      {
+        "from": "neg_f1x_b",
+        "to": "inner_b"
+      },
+      {
+        "from": "f1x_b",
+        "to": "neg_f1x_b"
+      },
+      {
+        "from": "f1_val",
+        "to": "f1x_b"
+      },
+      {
+        "from": "vx",
+        "to": "f1x_b"
+      },
+      {
+        "from": "vf",
+        "to": "fx_val"
+      },
+      {
+        "from": "vx",
+        "to": "fx_val"
+      },
+      {
+        "from": "cond_f0_pos",
+        "to": "top"
+      },
+      {
+        "from": "f0_val",
+        "to": "cond_f0_pos"
+      }
+    ],
+    "new_dna": []
+  },
+  "thinking_profile": null,
+  "folders": [],
+  "history": [],
+  "recovery_warnings": [],
+  "errata": [],
+  "created_at": "2026-03-26T12:09:18.925Z"
+}
