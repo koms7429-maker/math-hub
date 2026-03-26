@@ -1,0 +1,630 @@
+{
+  "problem_id": "P12",
+  "answer": "-18",
+  "clues": [
+    {
+      "id": "단서A",
+      "text": "$f(x)$는 최고차항의 계수가 $1$인 이차함수이다"
+    },
+    {
+      "id": "단서B",
+      "text": "$g(x)$는 최고차항의 계수가 $1$인 일차함수이다"
+    },
+    {
+      "id": "단서C",
+      "text": "$h(x) = \\begin{cases} f(x)g(x) & (x \\leq 1) \\\\ -g(x) & (x > 1) \\end{cases}$"
+    },
+    {
+      "id": "단서D",
+      "text": "$h(x)$는 실수 전체의 집합에서 연속이다"
+    },
+    {
+      "id": "단서E",
+      "text": "$|h(x)|$는 실수 전체의 집합에서 미분가능하다"
+    }
+  ],
+  "skeleton": [
+    {
+      "from": [
+        "단서A",
+        "단서B"
+      ],
+      "to": "note1",
+      "neuron": "전략41",
+      "note": "$f(x)=x^2+ax+b$, $g(x)=x+c$로 놓는다",
+      "main": true,
+      "step": 1
+    },
+    {
+      "from": [
+        "단서C",
+        "단서D"
+      ],
+      "to": "note2",
+      "neuron": "사실111",
+      "note": "$h(x)$가 $x=1$에서 연속이면 $\\lim_{x\\to 1^-}f(x)g(x)=\\lim_{x\\to 1^+}(-g(x))$이므로 $f(1)g(1)=-g(1)$이다",
+      "main": true,
+      "step": 2
+    },
+    {
+      "from": "note2",
+      "to": "note3",
+      "neuron": "연산9",
+      "note": "$g(1)(f(1)+1)=0$이므로 $g(1)=0$ 또는 $f(1)=-1$이다",
+      "main": true,
+      "step": 2
+    },
+    {
+      "from": "note3",
+      "to": "note4",
+      "neuron": "전략22",
+      "note": "$g(1)=0$인 경우(Case 1)와 $f(1)=-1$인 경우(Case 2)로 나눈다",
+      "main": true,
+      "step": 2
+    },
+    {
+      "from": [
+        "note4",
+        "note1"
+      ],
+      "to": "note5",
+      "neuron": "전략25",
+      "note": "Case 1: $g(1)=0$이면 $c=-1$이고 $g(x)=x-1$이다",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": [
+        "note5",
+        "단서C"
+      ],
+      "to": "note6",
+      "neuron": "전략25",
+      "note": "$h(1)=f(1)g(1)=0$이다",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": [
+        "note6",
+        "단서E"
+      ],
+      "to": "note7",
+      "neuron": "사실120",
+      "note": "$h(1)=0$이고 $|h(x)|$가 $x=1$에서 미분가능이면 $h'(1)=0$이어야 한다",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": [
+        "note7",
+        "note5",
+        "단서C"
+      ],
+      "to": "note8",
+      "neuron": "연산36",
+      "note": "$x>1$에서 $h(x)=-(x-1)$이므로 우미분 $h'(1^+)=-1\\neq 0$이다",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": "note8",
+      "to": "note9",
+      "neuron": "전략23",
+      "note": "$h'(1^+)=-1\\neq 0$이므로 Case 1은 불가능하다",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": [
+        "note4",
+        "note9"
+      ],
+      "to": "note10",
+      "neuron": "전략20",
+      "note": "Case 2가 성립한다: $f(1)=-1$이다",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": [
+        "note10",
+        "note1"
+      ],
+      "to": "note11",
+      "neuron": "전략25",
+      "note": "$f(1)=1+a+b=-1$이므로 $a+b=-2$이다",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": [
+        "note10",
+        "note3"
+      ],
+      "to": "note12",
+      "neuron": "전략25",
+      "note": "$f(1)=-1\\neq 0$이고 $g(1)(f(1)+1)=0$에서 $g(1)$은 임의이므로 $g(1)\\neq 0$도 가능하다. $h(1)=-g(1)\\neq 0$이다",
+      "main": true,
+      "step": 4
+    },
+    {
+      "from": [
+        "note12",
+        "단서E"
+      ],
+      "to": "note13",
+      "neuron": "사실117",
+      "note": "$h(1)\\neq 0$이므로 $|h(x)|$가 $x=1$에서 미분가능이면 $h(x)$ 자체가 $x=1$에서 미분가능하다",
+      "main": true,
+      "step": 4
+    },
+    {
+      "from": [
+        "note13",
+        "단서C"
+      ],
+      "to": "note14",
+      "neuron": "사실111",
+      "note": "$h(x)$가 $x=1$에서 미분가능이면 좌미분$=$우미분이다",
+      "main": true,
+      "step": 4
+    },
+    {
+      "from": [
+        "note14",
+        "note1"
+      ],
+      "to": "note15",
+      "neuron": "연산36",
+      "note": "좌미분 $=f'(1)g(1)+f(1)g'(1)=(2+a)(1+c)+(-1)(1)=(2+a)(1+c)-1$이고 우미분 $=-g'(1)=-1$이다",
+      "main": true,
+      "step": 4
+    },
+    {
+      "from": "note15",
+      "to": "note16",
+      "neuron": "전략2",
+      "note": "$(2+a)(1+c)-1=-1$이므로 $(2+a)(1+c)=0$이다",
+      "main": true,
+      "step": 4
+    },
+    {
+      "from": "note16",
+      "to": "note17",
+      "neuron": "연산9",
+      "note": "$2+a=0$ 또는 $1+c=0$이다",
+      "main": true,
+      "step": 5
+    },
+    {
+      "from": "note17",
+      "to": "note18",
+      "neuron": "전략22",
+      "note": "$c=-1$(즉 $g(1)=0$)인 경우와 $a=-2$인 경우로 나눈다",
+      "main": true,
+      "step": 5
+    },
+    {
+      "from": "note18",
+      "to": "note19",
+      "neuron": "전략23",
+      "note": "$c=-1$이면 $g(1)=0$이고 이는 Case 1에서 이미 배제되었으므로 불가능하다",
+      "main": false,
+      "step": 5
+    },
+    {
+      "from": [
+        "note18",
+        "note19"
+      ],
+      "to": "note20",
+      "neuron": "전략20",
+      "note": "$a=-2$이다",
+      "main": true,
+      "step": 5
+    },
+    {
+      "from": [
+        "note20",
+        "note11"
+      ],
+      "to": "note21",
+      "neuron": "전략25",
+      "note": "$a=-2$이고 $a+b=-2$이므로 $b=0$이다. $f(x)=x^2-2x=x(x-2)$이다",
+      "main": true,
+      "step": 5
+    },
+    {
+      "from": [
+        "note21",
+        "note1",
+        "단서C"
+      ],
+      "to": "note22",
+      "neuron": "전략25",
+      "note": "$x\\leq 1$에서 $h(x)=x(x-2)(x+c)$이다. $h(0)=0$이다",
+      "main": true,
+      "step": 6
+    },
+    {
+      "from": [
+        "note22",
+        "단서E"
+      ],
+      "to": "note23",
+      "neuron": "사실96",
+      "note": "$h(0)=0$이고 $|h(x)|$가 $x=0$에서 미분가능이므로 $x=0$은 $h(x)$의 짝수 중복도 근이고 $h'(0)=0$이다",
+      "main": true,
+      "step": 6
+    },
+    {
+      "from": [
+        "note23",
+        "note22"
+      ],
+      "to": "note24",
+      "neuron": "연산36",
+      "note": "$h'(x)=f'(x)g(x)+f(x)g'(x)$이고 $h'(0)=f'(0)g(0)+f(0)g'(0)=(-2)(c)+0=-2c$이다",
+      "main": true,
+      "step": 6
+    },
+    {
+      "from": "note24",
+      "to": "note25",
+      "neuron": "전략25",
+      "note": "$-2c=0$이므로 $c=0$이고 $g(x)=x$이다",
+      "main": true,
+      "step": 6
+    },
+    {
+      "from": [
+        "note25",
+        "note21",
+        "단서C"
+      ],
+      "to": "note26",
+      "neuron": "전략25",
+      "note": "$h(x)=\\begin{cases} x^2(x-2) & (x\\leq 1) \\\\ -x & (x>1) \\end{cases}$이다",
+      "main": true,
+      "step": 7
+    },
+    {
+      "from": "note26",
+      "to": "note27",
+      "neuron": "전략25",
+      "note": "$x\\leq 1$에서 $h(x)=x^3-2x^2$이고 $h(x)\\leq 0$이다($x^2\\geq 0$, $x-2\\leq -1<0$)",
+      "main": false,
+      "step": 7
+    },
+    {
+      "from": "note27",
+      "to": "note28",
+      "neuron": "전략25",
+      "note": "$|h(x)|=-h(x)$이고 $x\\leq 1$에서 $|h(x)|=2x^2-x^3$, $x>1$에서 $|h(x)|=x$이다",
+      "main": false,
+      "step": 7
+    },
+    {
+      "from": "note28",
+      "to": "note29",
+      "neuron": "사실111",
+      "note": "$x=1$에서 $|h|$의 좌미분 $=(4x-3x^2)|_{x=1}=1$이고 우미분 $=1$이므로 미분가능하다",
+      "main": false,
+      "step": 7
+    },
+    {
+      "from": "note26",
+      "to": "END",
+      "neuron": "전략25",
+      "note": "$h(-2)=(-2)^2\\cdot(-4)=-16$, $h(2)=-2$이므로 $h(-2)+h(2)=-18$이다",
+      "main": true,
+      "step": 8
+    }
+  ],
+  "solution": "STEP 1. $f(x)=x^2+ax+b$, $g(x)=x+c$로 놓는다.\nSTEP 2. $h(x)$가 $x=1$에서 연속이면 $f(1)g(1)=-g(1)$이므로 $g(1)(f(1)+1)=0$이다. $g(1)=0$ 또는 $f(1)=-1$이다.\nSTEP 3. $g(1)=0$이면 $h(1)=0$이고 $|h|$가 $x=1$에서 미분가능이면 $h'(1)=0$이어야 하나 우미분이 $-1\\neq 0$이므로 불가능하다. 따라서 $f(1)=-1$이고 $a+b=-2$이다.\nSTEP 4. $h(1)=-g(1)\\neq 0$이므로 $|h|$ 미분가능은 $h$ 미분가능을 의미한다. 좌미분$=(2+a)(1+c)-1$, 우미분$=-1$이므로 $(2+a)(1+c)=0$이다.\nSTEP 5. $c=-1$은 Case 1에서 배제되었으므로 $a=-2$이다. $b=0$이고 $f(x)=x(x-2)$이다.\nSTEP 6. $h(0)=0$이고 $|h|$가 $x=0$에서 미분가능이므로 $h'(0)=0$이다. $h'(0)=-2c=0$에서 $c=0$이고 $g(x)=x$이다.\nSTEP 7. $h(x)=x^2(x-2)$ ($x\\leq 1$), $-x$ ($x>1$)이다.\nSTEP 8. $h(-2)=4\\cdot(-4)=-16$, $h(2)=-2$이므로 $h(-2)+h(2)=-18$이다.",
+  "original_solution": "**문제의 조건에 의해** $h(x)$는 $x=1$에서 연속이므로, $|h(x)|$가 $x=1$에서 미분가능하기 위해서는:\n\n- **① $h(1) \\neq 0$인 경우:** $h(x)$는 $x=1$에서 미분가능해야 함\n- **② $h(1) = 0$인 경우:** $\\displaystyle\\lim_{x \\to 1} \\frac{h(x)}{x-1} = 0$이어야 함\n\n$x=1$일 때 $h(x) = -g(x)$이고, $g'(1) \\neq 0$ ($g(x)$는 일차함수)이므로\n\n$$\\lim_{x \\to 1^+} \\frac{h(x)-h(1)}{x-1} \\neq 0$$\n\n따라서 ②의 경우는 불가능하고, **①의 경우만 가능**하다.\n\n이때 $h(x)$가 $x=1$에서 **미분가능**해야 하므로:\n\n**$h(x)$가 $x=1$에서 연속:**\n\n$$f(1)g(1) = -g(1) \\implies f(1) = -1 \\quad (\\because\\; h(1) \\neq 0 \\Rightarrow g(1) \\neq 0)$$\n\n**$h(x)$가 $x=1$에서 미분가능:**\n\n좌미분 $= f'(1)g(1) + f(1)g'(1)$, 우미분 $= -g'(1)$\n\n$$f'(1)g(1) + f(1)g'(1) = -g'(1)$$\n\n$f(1)=-1$을 대입하면 $f'(1)g(1) - g'(1) = -g'(1)$이므로 $f'(1)g(1) = 0$.\n\n그런데 $|h(x)|$가 미분가능하려면 좌미분과 우미분의 **절댓값 조건**에서 $f'(1)=0$이 필요하다.\n\n$$\\Rightarrow f'(1) = 0$$\n\n최고차항의 계수가 $1$이고, $f(1)=-1$, $f'(1)=0$이므로:\n\n$$f(x) = x^2 - 2x$$\n\n**$x=0$에서의 조건:** $f(0)=0$이므로 $h(0)=f(0)g(0)=0$.\n\n$|h(x)|$가 실수 전체에서 미분가능하므로 $h'(0)=0$이어야 한다:\n\n$$h'(0) = f'(0)g(0) + f(0)g'(0) = f'(0)g(0) = 0$$\n\n$f'(0) = -2 \\neq 0$이므로 $g(0) = 0$.\n\n최고차항의 계수가 $1$이고 $g(0)=0$이므로:\n\n$$g(x) = x$$\n\n따라서:\n\n$$h(x) = \\begin{cases} x^2(x-2) & (x \\leq 1) \\\\ -x & (x > 1) \\end{cases}$$\n\n$$h(-2) + h(2) = (-2)^2(-2-2) + (-2) = 4 \\cdot (-4) + (-2) = -16 - 2 = \\boxed{-18}$$\n\n**정답: ①**",
+  "analysis": "h(1)=0이면 |h(x)|의 좌미분과 우미분이 일치할 수 없으므로 h(1)≠0이다. 이로부터 f(1)=-1, f'(1)=0을 얻어 f(x)=x²-2x를 결정하고, f(0)=0에서 |h|의 미분가능성 조건으로 g(0)=0을 얻어 g(x)=x를 결정한다. h(-2)+h(2)=-16+(-2)=-18이다.",
+  "new_neurons": [],
+  "metadata": {
+    "unit": "미분법",
+    "difficulty": "상",
+    "score": "4",
+    "type": "multiple_choice",
+    "answer": "1",
+    "year": "미상",
+    "source": "수능",
+    "topic": "절댓값 함수의 미분가능성",
+    "subtopic": "연속과 미분가능 조건 분석"
+  },
+  "edge_count": 30,
+  "side_count": 9,
+  "statement": "# 12. (수능) - 절댓값 함수의 미분가능성\n\n## Problem\n최고차항의 계수가 각각 $1$인 이차함수 $f(x)$와 일차함수 $g(x)$에 대하여 함수\n\n$$h(x) = \\begin{cases} f(x)g(x) & (x \\leq 1) \\\\ -g(x) & (x > 1) \\end{cases}$$\n\n이 실수 전체의 집합에서 연속이다. 함수 $|h(x)|$가 실수 전체의 집합에서 미분가능할 때, $h(-2)+h(2)$의 값은? [4점]",
+  "dna": {
+    "nodes": [
+      {
+        "id": "top",
+        "dna": "Q1",
+        "label": "값을 구하라",
+        "category": "발문"
+      },
+      {
+        "id": "ask",
+        "dna": "E1",
+        "label": "h(-2)+h(2)",
+        "category": "수식"
+      },
+      {
+        "id": "hm2",
+        "dna": "F3",
+        "label": "h(-2)",
+        "category": "함수"
+      },
+      {
+        "id": "h2",
+        "dna": "F3",
+        "label": "h(2)",
+        "category": "함수"
+      },
+      {
+        "id": "cm2",
+        "dna": "T2",
+        "label": "상수 -2",
+        "category": "말단"
+      },
+      {
+        "id": "c2",
+        "dna": "T2",
+        "label": "상수 2",
+        "category": "말단"
+      },
+      {
+        "id": "hfunc",
+        "dna": "F1",
+        "label": "h(x) 조각함수",
+        "category": "함수"
+      },
+      {
+        "id": "piece1",
+        "dna": "F2",
+        "label": "f(x)g(x), x≤1",
+        "category": "함수"
+      },
+      {
+        "id": "piece2",
+        "dna": "F2",
+        "label": "-g(x), x>1",
+        "category": "함수"
+      },
+      {
+        "id": "piece1_expr",
+        "dna": "E6",
+        "label": "곱(f,g)",
+        "category": "수식"
+      },
+      {
+        "id": "piece2_expr",
+        "dna": "E2",
+        "label": "부호반전(g)",
+        "category": "수식"
+      },
+      {
+        "id": "dom1",
+        "dna": "F8",
+        "label": "x≤1 영역",
+        "category": "함수"
+      },
+      {
+        "id": "dom2",
+        "dna": "F8",
+        "label": "x>1 영역",
+        "category": "함수"
+      },
+      {
+        "id": "c1",
+        "dna": "T2",
+        "label": "상수 1",
+        "category": "말단"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
+      },
+      {
+        "id": "ffunc",
+        "dna": "F6",
+        "label": "f(x) 정의",
+        "category": "함수"
+      },
+      {
+        "id": "gfunc",
+        "dna": "F6",
+        "label": "g(x) 정의",
+        "category": "함수"
+      },
+      {
+        "id": "f_quadratic",
+        "dna": "F11",
+        "label": "f는 이차함수",
+        "category": "함수"
+      },
+      {
+        "id": "f_leadcoef",
+        "dna": "L4",
+        "label": "f 최고차항=1",
+        "category": "제한"
+      },
+      {
+        "id": "g_leadcoef",
+        "dna": "L4",
+        "label": "g 최고차항=1",
+        "category": "제한"
+      },
+      {
+        "id": "cond_cont",
+        "dna": "C18",
+        "label": "h 실수전체 연속",
+        "category": "조건"
+      },
+      {
+        "id": "cond_diff",
+        "dna": "C22",
+        "label": "|h| 실수전체 미분가능",
+        "category": "조건"
+      },
+      {
+        "id": "abs_h",
+        "dna": "F5",
+        "label": "|h(x)|",
+        "category": "함수"
+      },
+      {
+        "id": "real_all",
+        "dna": "F8",
+        "label": "실수 전체",
+        "category": "함수"
+      },
+      {
+        "id": "conds",
+        "dna": "S1",
+        "label": "전체 조건",
+        "category": "구조"
+      }
+    ],
+    "edges": [
+      {
+        "from": "ask",
+        "to": "top"
+      },
+      {
+        "from": "conds",
+        "to": "top"
+      },
+      {
+        "from": "hm2",
+        "to": "ask"
+      },
+      {
+        "from": "h2",
+        "to": "ask"
+      },
+      {
+        "from": "hfunc",
+        "to": "hm2"
+      },
+      {
+        "from": "cm2",
+        "to": "hm2"
+      },
+      {
+        "from": "hfunc",
+        "to": "h2"
+      },
+      {
+        "from": "c2",
+        "to": "h2"
+      },
+      {
+        "from": "piece1",
+        "to": "hfunc"
+      },
+      {
+        "from": "piece2",
+        "to": "hfunc"
+      },
+      {
+        "from": "piece1_expr",
+        "to": "piece1"
+      },
+      {
+        "from": "dom1",
+        "to": "piece1"
+      },
+      {
+        "from": "piece2_expr",
+        "to": "piece2"
+      },
+      {
+        "from": "dom2",
+        "to": "piece2"
+      },
+      {
+        "from": "c1",
+        "to": "dom1"
+      },
+      {
+        "from": "c1",
+        "to": "dom2"
+      },
+      {
+        "from": "ffunc",
+        "to": "piece1_expr"
+      },
+      {
+        "from": "gfunc",
+        "to": "piece1_expr"
+      },
+      {
+        "from": "gfunc",
+        "to": "piece2_expr"
+      },
+      {
+        "from": "vx",
+        "to": "ffunc"
+      },
+      {
+        "from": "vx",
+        "to": "gfunc"
+      },
+      {
+        "from": "f_quadratic",
+        "to": "ffunc"
+      },
+      {
+        "from": "f_leadcoef",
+        "to": "ffunc"
+      },
+      {
+        "from": "g_leadcoef",
+        "to": "gfunc"
+      },
+      {
+        "from": "hfunc",
+        "to": "cond_cont"
+      },
+      {
+        "from": "real_all",
+        "to": "cond_cont"
+      },
+      {
+        "from": "abs_h",
+        "to": "cond_diff"
+      },
+      {
+        "from": "real_all",
+        "to": "cond_diff"
+      },
+      {
+        "from": "hfunc",
+        "to": "abs_h"
+      },
+      {
+        "from": "cond_cont",
+        "to": "conds"
+      },
+      {
+        "from": "cond_diff",
+        "to": "conds"
+      }
+    ],
+    "new_dna": []
+  },
+  "thinking_profile": null,
+  "folders": [],
+  "history": [],
+  "recovery_warnings": [],
+  "errata": [],
+  "created_at": "2026-03-26T13:46:40.976Z"
+}
