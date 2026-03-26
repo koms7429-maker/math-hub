@@ -1503,5 +1503,774 @@
     "edge_count": 17,
     "side_count": 2,
     "created_at": "2026-03-26T13:36:09.241Z"
+  },
+  {
+    "problem_id": "P11",
+    "answer": "27",
+    "content": "id: P11\nsource: 수능\nyear: 미상\nunit: 미분\ntopic: 미분계수의 부호 조건\nsubtopic: 정수 조건을 만족하는 매개변수의 합\ndifficulty: 상\nscore: 4\nanswer: 5\ntype: multiple_choice\n\n# 11. (수능) - 미분계수의 부호 조건과 정수의 개수\n\n## Problem\n\n정수 $a$에 대하여 함수 $f(x)$를\n\n$$f(x) = 2x^2 + ax + 1$$\n\n이라 하자. 다음 조건을 만족시키는 정수 $k$의 개수가 2가 되도록 하는 모든 $a$의 값의 합은? [4점]\n\n> 함수 $f(x) - x^2$의 $x = k$에서의 미분계수는 양수이고,\n> 함수 $f(x) + 2x^3 - 10x^2$의 $x = k$에서의 미분계수는 음수이다.\n\n## Choices\n\n① 19 &emsp; ② 21 &emsp; ③ 23 &emsp; ④ 25 &emsp; ⑤ 27\n\n## Solution\n\n$f(x) = 2x^2 + ax + 1$이므로 $f'(x) = 4x + a$이다.\n\n**조건 1:** $f(x) - x^2$의 $x = k$에서의 미분계수가 양수\n\n$$\\frac{d}{dx}\\bigl[f(x) - x^2\\bigr]\\bigg|_{x=k} = f'(k) - 2k = (4k + a) - 2k = 2k + a > 0$$\n\n$$\\Rightarrow a > -2k$$\n\n**조건 2:** $f(x) + 2x^3 - 10x^2$의 $x = k$에서의 미분계수가 음수\n\n$$\\frac{d}{dx}\\bigl[f(x) + 2x^3 - 10x^2\\bigr]\\bigg|_{x=k} = f'(k) + 6k^2 - 20k = (4k + a) + 6k^2 - 20k < 0$$\n\n$$\\Rightarrow a < -6k^2 + 16k$$\n\n두 조건을 결합하면:\n\n$$-2k < a < -6k^2 + 16k \\quad \\cdots \\text{㉠}$$\n\n이 범위가 존재하려면 $-2k < -6k^2 + 16k$이어야 하므로:\n\n$$0 < -6k^2 + 18k \\iff 6k(k-3) < 0 \\iff 0 < k < 3$$\n\n따라서 ㉠을 만족시키는 정수 $k$는 $k = 1$과 $k = 2$뿐이다.\n\n문제에서 정수 $k$의 개수가 2이므로, $k = 1$과 $k = 2$ **모두** 조건을 만족해야 한다.\n\n- $k = 1$일 때: $-2 < a < 10$\n- $k = 2$일 때: $-4 < a < 8$\n\n[FIGURE: $y = -6x^2 + 16x$와 $y = -2x$의 그래프. $x = 1$에서 두 함수값은 각각 $10$과 $-2$, $x = 2$에서 각각 $8$과 $-4$, $x = 3$에서 만남.]\n\n두 조건의 교집합: $-2 < a < 8$\n\n이를 만족하는 정수 $a$의 값: $-1,\\, 0,\\, 1,\\, 2,\\, 3,\\, 4,\\, 5,\\, 6,\\, 7$ (총 9개)\n\n$$\\therefore \\text{(모든 정수 } a \\text{의 값의 합)} = \\frac{9 \\times (-1 + 7)}{2} = \\frac{9 \\times 6}{2} = \\boxed{27}$$\n\n**정답: ⑤**",
+    "content_source": "FileLoop",
+    "content_length": 1534,
+    "skel_status": "neuron_missing",
+    "dna_status": "ok",
+    "previous_skeleton": [
+      {
+        "from": "단서A",
+        "to": "note1",
+        "neuron": "연산33",
+        "type": "연산",
+        "domain_hint": "POLY, DIFF",
+        "description": "각 항에 거듭제곱 미분 규칙 적용: (x^n)' = nx^{n-1}",
+        "note": "각 항에 거듭제곱 미분 규칙 적용: (x^n)' = nx^{n-1}",
+        "main": true,
+        "step": 1,
+        "_keep_neuron": true
+      },
+      {
+        "from": "note1",
+        "to": "note2",
+        "neuron": "연산35",
+        "type": "연산",
+        "domain_hint": "POLY, DIFF",
+        "description": "각 항의 상수배 처리: (cf)' = cf'",
+        "note": "각 항의 상수배 처리: (cf)' = cf'",
+        "main": true,
+        "step": 1,
+        "_keep_neuron": true
+      },
+      {
+        "from": "note2",
+        "to": "note3",
+        "neuron": "연산34",
+        "type": "연산",
+        "domain_hint": "POLY, DIFF",
+        "description": "합/차 미분법칙으로 각 항의 미분을 합산하여 도함수 완성",
+        "note": "합/차 미분법칙으로 각 항의 미분을 합산하여 도함수 완성",
+        "main": true,
+        "step": 1,
+        "_keep_neuron": true
+      },
+      {
+        "from": [
+          "note3",
+          "단서B"
+        ],
+        "to": "note4",
+        "neuron": "연산34",
+        "type": "연산",
+        "domain_hint": "DIFF, POLY",
+        "description": "합성된 함수를 합/차로 분리하여 각 항별로 미분 적용",
+        "note": "합성된 함수를 합/차로 분리하여 각 항별로 미분 적용",
+        "main": true,
+        "step": 2,
+        "_keep_neuron": true
+      },
+      {
+        "from": "note4",
+        "to": "note5",
+        "neuron": "연산38",
+        "type": "연산",
+        "domain_hint": "DIFF, POLY",
+        "description": "각 합성 항에 연쇄법칙 적용하여 도함수 산출",
+        "note": "각 합성 항에 연쇄법칙 적용하여 도함수 산출",
+        "main": true,
+        "step": 2,
+        "_keep_neuron": true
+      },
+      {
+        "from": "note5",
+        "to": "note6",
+        "neuron": "연산21",
+        "type": "연산",
+        "domain_hint": "INEQ",
+        "description": "미분계수 양수 조건을 매개변수에 대해 정리",
+        "note": "$g'(k) = 2k + a > 0$에서 $a > -2k$이다",
+        "main": true,
+        "step": 2
+      },
+      {
+        "from": [
+          "note3",
+          "단서C"
+        ],
+        "to": "note7",
+        "neuron": "연산34",
+        "type": "연산",
+        "domain_hint": "DIFF, POLY",
+        "description": "합성된 함수를 합/차로 분리하여 각 항별로 미분 적용",
+        "note": "합성된 함수를 합/차로 분리하여 각 항별로 미분 적용",
+        "main": true,
+        "step": 3,
+        "_keep_neuron": true
+      },
+      {
+        "from": "note7",
+        "to": "note8",
+        "neuron": "연산38",
+        "type": "연산",
+        "domain_hint": "DIFF, POLY",
+        "description": "각 합성 항에 연쇄법칙 적용하여 도함수 산출",
+        "note": "각 합성 항에 연쇄법칙 적용하여 도함수 산출",
+        "main": true,
+        "step": 3,
+        "_keep_neuron": true
+      },
+      {
+        "from": "note8",
+        "to": "note9",
+        "neuron": "연산22",
+        "type": "연산",
+        "domain_hint": "INEQ",
+        "description": "미분계수 음수 조건을 매개변수에 대해 정리",
+        "note": "$h'(k) = 6k^2 - 16k + a < 0$에서 $a < -6k^2 + 16k$이다",
+        "main": true,
+        "step": 3
+      },
+      {
+        "from": [
+          "note6",
+          "note9"
+        ],
+        "to": "note10",
+        "neuron": "전략2",
+        "type": "사실",
+        "domain_hint": "INEQ",
+        "description": "두 부등식을 결합하여 연립부등식 구성",
+        "note": "$-2k < a < -6k^2 + 16k$ ···㉠ 이다",
+        "main": true,
+        "step": 4
+      },
+      {
+        "from": "note10",
+        "to": "note11",
+        "neuron": "전략2",
+        "type": "전략",
+        "domain_hint": "INEQ",
+        "description": "연립부등식이 해를 가질 필요조건으로 변수 범위 유도",
+        "note": "㉠이 해를 가지려면 $-2k < -6k^2 + 16k$이어야 하고 정리하면 $6k(k - 3) < 0$이다",
+        "main": true,
+        "step": 4
+      },
+      {
+        "from": "note11",
+        "to": "note12",
+        "neuron": "사실35",
+        "type": "사실",
+        "domain_hint": "INEQ, NUM",
+        "description": "이차부등식을 풀고 정수해를 나열함",
+        "note": "$0 < k < 3$이고 정수 $k$는 $k = 1$ 또는 $k = 2$이다",
+        "main": true,
+        "step": 4
+      },
+      {
+        "from": [
+          "note10",
+          "note12"
+        ],
+        "to": "note13",
+        "neuron": "전략25",
+        "type": "연산",
+        "domain_hint": "EQN, INEQ",
+        "description": "각 정수 k를 대입하여 a의 범위를 계산",
+        "note": "$k = 1$일 때 $-2 < a < 10$이고, $k = 2$일 때 $-4 < a < 8$이다",
+        "main": true,
+        "step": 5
+      },
+      {
+        "from": [
+          "note13",
+          "단서D"
+        ],
+        "to": "note14",
+        "neuron": "전략2",
+        "type": "전략",
+        "domain_hint": "SET, INEQ",
+        "description": "개수 조건으로부터 교집합을 취하여 매개변수 범위 확정",
+        "note": "정수 $k$의 개수가 2이려면 $k = 1$, $k = 2$ 모두 만족해야 하고 교집합은 $-2 < a < 8$이다",
+        "main": true,
+        "step": 6
+      },
+      {
+        "from": "note14",
+        "to": "END",
+        "neuron": "NEW_1",
+        "type": "연산",
+        "domain_hint": "NUM",
+        "description": "범위 내 정수를 나열하고 합을 계산",
+        "note": "정수 $a$는 $-1, 0, 1, 2, 3, 4, 5, 6, 7$이고 합은 $\\frac{9 \\times (-1+7)}{2} = 27$이다",
+        "main": true,
+        "step": 7
+      }
+    ],
+    "previous_solution": "각 항에 거듭제곱 미분 규칙 적용: (x^n)' = nx^{n-1} 각 항의 상수배 처리: (cf)' = cf' 합/차 미분법칙으로 각 항의 미분을 합산하여 도함수 완성 합성된 함수를 합/차로 분리하여 각 항별로 미분 적용 각 합성 항에 연쇄법칙 적용하여 도함수 산출 $g'(k) = 2k + a > 0$에서 $a > -2k$이다 합성된 함수를 합/차로 분리하여 각 항별로 미분 적용 각 합성 항에 연쇄법칙 적용하여 도함수 산출 $h'(k) = 6k^2 - 16k + a < 0$에서 $a < -6k^2 + 16k$이다 $-2k < a < -6k^2 + 16k$ ···㉠ 이다 ㉠이 해를 가지려면 $-2k < -6k^2 + 16k$이어야 하고 정리하면 $6k(k - 3) < 0$이다 $0 < k < 3$이고 정수 $k$는 $k = 1$ 또는 $k = 2$이다 $k = 1$일 때 $-2 < a < 10$이고, $k = 2$일 때 $-4 < a < 8$이다 정수 $k$의 개수가 2이려면 $k = 1$, $k = 2$ 모두 만족해야 하고 교집합은 $-2 < a < 8$이다 정수 $a$는 $-1, 0, 1, 2, 3, 4, 5, 6, 7$이고 합은 $\\frac{9 \\times (-1+7)}{2} = 27$이다",
+    "previous_clues": "[{\"id\":\"단서A\",\"text\":\"$f(x) = 2x^2 + ax + 1$ ($a$는 정수)\"},{\"id\":\"단서B\",\"text\":\"함수 $f(x) - x^2$의 $x = k$에서의 미분계수는 양수이다\"},{\"id\":\"단서C\",\"text\":\"함수 $f(x) + 2x^3 - 10x^2$의 $x = k$에서의 미분계수는 음수이다\"},{\"id\":\"단서D\",\"text\":\"조건을 만족시키는 정수 $k$의 개수가 2이다\"}]",
+    "previous_analysis": "$f(x)$를 미분한 뒤, 두 조건에서 $a$에 대한 연립부등식 $-2k < a < -6k^2+16k$를 유도한다. 해가 존재할 조건으로 정수 $k=1,2$만 가능함을 보이고, 각 $k$에서의 $a$ 범위의 교집합 $-2<a<8$에서 정수 합 27을 구한다.",
+    "previous_matching": "",
+    "previous_matched": [],
+    "previous_new_neurons": [
+      {
+        "id": "전략??",
+        "type": "전략",
+        "statement": "부등식의 해 범위가 확정되면, 그 범위 안에 속하는 정수를 순서대로 나열할 수 있다.",
+        "description": "범위 내 정수를 나열하고 합을 계산",
+        "note": "정수 $a$는 $-1, 0, 1, 2, 3, 4, 5, 6, 7$이고 합은 $\\frac{9 \\times (-1+7)}{2} = 27$이다",
+        "reason": "연산21·22·25는 부등호 방향 변환 규칙이며, 범위 내 정수 나열 및 합산이라는 절차를 포괄하지 않는다. 이 행위는 단순 사칙연산(합산)이 아니라 '연속 정수 범위를 확정한 뒤 열거하는' 절차적 원리이다. 사칙연산 병합 규칙에 따라 합산 자체는 NEW로 내지 않으나, '정수 범위를 확정하고 나열한다'는 절차는 기존 뉴런에 없다.",
+        "blocked_edge": "note14 → END",
+        "domain_hint": "NUM",
+        "domain": [
+          "INEQ",
+          "NUM"
+        ],
+        "action_hint": "",
+        "step": 7,
+        "main": true,
+        "near_miss": [
+          "연산47: $1 + 2 + \\cdots + n = \\dfrac{n(n+1)}{2}$",
+          "연산9: $f(x) \\cdot g(x) = 0 \\iff f(x)=0$ 또는 $g(",
+          "연산24: 등식의 양변을 동일한 식으로 가감하여 특정 미지수/함수를 한쪽으로 모은다"
+        ]
+      }
+    ],
+    "previous_partial_skeleton": [],
+    "previous_blockage_point": "",
+    "previous_skel_review_notes": "parse fail: Unexpected token '검', \"검토를 수행합니다.\"... is not valid JSON",
+    "previous_dna_nodes": [
+      {
+        "id": "top",
+        "dna": "Q3",
+        "label": "a값의 합",
+        "category": "발문"
+      },
+      {
+        "id": "ask_sum",
+        "dna": "E1",
+        "label": "모든 a의 합",
+        "category": "수식"
+      },
+      {
+        "id": "va",
+        "dna": "T1",
+        "label": "변수 a",
+        "category": "말단"
+      },
+      {
+        "id": "vk",
+        "dna": "T1",
+        "label": "변수 k",
+        "category": "말단"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
+      },
+      {
+        "id": "c1",
+        "dna": "T2",
+        "label": "상수 1",
+        "category": "말단"
+      },
+      {
+        "id": "c2",
+        "dna": "T2",
+        "label": "상수 2",
+        "category": "말단"
+      },
+      {
+        "id": "c10",
+        "dna": "T2",
+        "label": "상수 10",
+        "category": "말단"
+      },
+      {
+        "id": "c2b",
+        "dna": "T2",
+        "label": "상수 2(지수)",
+        "category": "말단"
+      },
+      {
+        "id": "c3",
+        "dna": "T2",
+        "label": "상수 3",
+        "category": "말단"
+      },
+      {
+        "id": "la_int",
+        "dna": "L3",
+        "label": "a는 정수",
+        "category": "제한"
+      },
+      {
+        "id": "lk_int",
+        "dna": "L3",
+        "label": "k는 정수",
+        "category": "제한"
+      },
+      {
+        "id": "f_def",
+        "dna": "F6",
+        "label": "f(x) 정의",
+        "category": "함수"
+      },
+      {
+        "id": "f_eq",
+        "dna": "C11",
+        "label": "f(x)=2x²+ax+1",
+        "category": "조건"
+      },
+      {
+        "id": "f_c1",
+        "dna": "C1",
+        "label": "등식 f=우변",
+        "category": "조건"
+      },
+      {
+        "id": "f_rhs",
+        "dna": "E1",
+        "label": "합(2x²+ax, 1)",
+        "category": "수식"
+      },
+      {
+        "id": "f_ax",
+        "dna": "E1",
+        "label": "합(2x², ax)",
+        "category": "수식"
+      },
+      {
+        "id": "f_2x2",
+        "dna": "E6",
+        "label": "곱(2, x²)",
+        "category": "수식"
+      },
+      {
+        "id": "f_x2",
+        "dna": "E7",
+        "label": "x²",
+        "category": "수식"
+      },
+      {
+        "id": "f_axterm",
+        "dna": "E6",
+        "label": "곱(a, x)",
+        "category": "수식"
+      },
+      {
+        "id": "g1_def",
+        "dna": "F6",
+        "label": "g1=f(x)-x² 정의",
+        "category": "함수"
+      },
+      {
+        "id": "g1_eq",
+        "dna": "C11",
+        "label": "g1=f(x)-x²",
+        "category": "조건"
+      },
+      {
+        "id": "g1_c1",
+        "dna": "C1",
+        "label": "등식 g1=우변",
+        "category": "조건"
+      },
+      {
+        "id": "g1_rhs",
+        "dna": "E1",
+        "label": "합(f(x),-x²)",
+        "category": "수식"
+      },
+      {
+        "id": "f_app1",
+        "dna": "F3",
+        "label": "f(x) 적용",
+        "category": "함수"
+      },
+      {
+        "id": "neg_x2",
+        "dna": "E2",
+        "label": "부호반전 x²",
+        "category": "수식"
+      },
+      {
+        "id": "x2_g1",
+        "dna": "E7",
+        "label": "x²(g1용)",
+        "category": "수식"
+      },
+      {
+        "id": "g1_deriv",
+        "dna": "F13",
+        "label": "g1의 도함수",
+        "category": "함수"
+      },
+      {
+        "id": "g1_deriv_k",
+        "dna": "F3",
+        "label": "g1'(k)",
+        "category": "함수"
+      },
+      {
+        "id": "cond1",
+        "dna": "C2",
+        "label": "g1'(k)>0",
+        "category": "조건"
+      },
+      {
+        "id": "g2_def",
+        "dna": "F6",
+        "label": "g2=f+2x³-10x² 정의",
+        "category": "함수"
+      },
+      {
+        "id": "g2_eq",
+        "dna": "C11",
+        "label": "g2=f(x)+2x³-10x²",
+        "category": "조건"
+      },
+      {
+        "id": "g2_c1",
+        "dna": "C1",
+        "label": "등식 g2=우변",
+        "category": "조건"
+      },
+      {
+        "id": "g2_rhs",
+        "dna": "E1",
+        "label": "합(f(x),2x³-10x²)",
+        "category": "수식"
+      },
+      {
+        "id": "f_app2",
+        "dna": "F3",
+        "label": "f(x) 적용2",
+        "category": "함수"
+      },
+      {
+        "id": "g2_extra",
+        "dna": "E1",
+        "label": "합(2x³,-10x²)",
+        "category": "수식"
+      },
+      {
+        "id": "g2_2x3",
+        "dna": "E6",
+        "label": "곱(2,x³)",
+        "category": "수식"
+      },
+      {
+        "id": "g2_x3",
+        "dna": "E7",
+        "label": "x³",
+        "category": "수식"
+      },
+      {
+        "id": "g2_neg10x2",
+        "dna": "E2",
+        "label": "부호반전 10x²",
+        "category": "수식"
+      },
+      {
+        "id": "g2_10x2",
+        "dna": "E6",
+        "label": "곱(10,x²)",
+        "category": "수식"
+      },
+      {
+        "id": "g2_x2",
+        "dna": "E7",
+        "label": "x²(g2용)",
+        "category": "수식"
+      },
+      {
+        "id": "g2_deriv",
+        "dna": "F13",
+        "label": "g2의 도함수",
+        "category": "함수"
+      },
+      {
+        "id": "g2_deriv_k",
+        "dna": "F3",
+        "label": "g2'(k)",
+        "category": "함수"
+      },
+      {
+        "id": "cond2",
+        "dna": "C2",
+        "label": "g2'(k)<0",
+        "category": "조건"
+      },
+      {
+        "id": "k_count",
+        "dna": "C9",
+        "label": "정수k개수=2",
+        "category": "조건"
+      },
+      {
+        "id": "c2_count",
+        "dna": "T2",
+        "label": "상수 2(개수)",
+        "category": "말단"
+      }
+    ],
+    "previous_dna_edges": [
+      {
+        "from": "ask_sum",
+        "to": "top"
+      },
+      {
+        "from": "va",
+        "to": "ask_sum"
+      },
+      {
+        "from": "la_int",
+        "to": "va"
+      },
+      {
+        "from": "lk_int",
+        "to": "vk"
+      },
+      {
+        "from": "f_eq",
+        "to": "f_def"
+      },
+      {
+        "from": "f_c1",
+        "to": "f_eq"
+      },
+      {
+        "from": "f_rhs",
+        "to": "f_c1"
+      },
+      {
+        "from": "f_ax",
+        "to": "f_rhs"
+      },
+      {
+        "from": "c1",
+        "to": "f_rhs"
+      },
+      {
+        "from": "f_2x2",
+        "to": "f_ax"
+      },
+      {
+        "from": "f_axterm",
+        "to": "f_ax"
+      },
+      {
+        "from": "c2",
+        "to": "f_2x2"
+      },
+      {
+        "from": "f_x2",
+        "to": "f_2x2"
+      },
+      {
+        "from": "vx",
+        "to": "f_x2"
+      },
+      {
+        "from": "c2b",
+        "to": "f_x2"
+      },
+      {
+        "from": "va",
+        "to": "f_axterm"
+      },
+      {
+        "from": "vx",
+        "to": "f_axterm"
+      },
+      {
+        "from": "f_def",
+        "to": "g1_def"
+      },
+      {
+        "from": "g1_eq",
+        "to": "g1_def"
+      },
+      {
+        "from": "g1_c1",
+        "to": "g1_eq"
+      },
+      {
+        "from": "g1_rhs",
+        "to": "g1_c1"
+      },
+      {
+        "from": "f_app1",
+        "to": "g1_rhs"
+      },
+      {
+        "from": "neg_x2",
+        "to": "g1_rhs"
+      },
+      {
+        "from": "f_def",
+        "to": "f_app1"
+      },
+      {
+        "from": "vx",
+        "to": "f_app1"
+      },
+      {
+        "from": "x2_g1",
+        "to": "neg_x2"
+      },
+      {
+        "from": "vx",
+        "to": "x2_g1"
+      },
+      {
+        "from": "c2b",
+        "to": "x2_g1"
+      },
+      {
+        "from": "g1_def",
+        "to": "g1_deriv"
+      },
+      {
+        "from": "g1_deriv",
+        "to": "g1_deriv_k"
+      },
+      {
+        "from": "vk",
+        "to": "g1_deriv_k"
+      },
+      {
+        "from": "g1_deriv_k",
+        "to": "cond1"
+      },
+      {
+        "from": "f_def",
+        "to": "g2_def"
+      },
+      {
+        "from": "g2_eq",
+        "to": "g2_def"
+      },
+      {
+        "from": "g2_c1",
+        "to": "g2_eq"
+      },
+      {
+        "from": "g2_rhs",
+        "to": "g2_c1"
+      },
+      {
+        "from": "f_app2",
+        "to": "g2_rhs"
+      },
+      {
+        "from": "g2_extra",
+        "to": "g2_rhs"
+      },
+      {
+        "from": "f_def",
+        "to": "f_app2"
+      },
+      {
+        "from": "vx",
+        "to": "f_app2"
+      },
+      {
+        "from": "g2_2x3",
+        "to": "g2_extra"
+      },
+      {
+        "from": "g2_neg10x2",
+        "to": "g2_extra"
+      },
+      {
+        "from": "c2",
+        "to": "g2_2x3"
+      },
+      {
+        "from": "g2_x3",
+        "to": "g2_2x3"
+      },
+      {
+        "from": "vx",
+        "to": "g2_x3"
+      },
+      {
+        "from": "c3",
+        "to": "g2_x3"
+      },
+      {
+        "from": "g2_10x2",
+        "to": "g2_neg10x2"
+      },
+      {
+        "from": "c10",
+        "to": "g2_10x2"
+      },
+      {
+        "from": "g2_x2",
+        "to": "g2_10x2"
+      },
+      {
+        "from": "vx",
+        "to": "g2_x2"
+      },
+      {
+        "from": "c2b",
+        "to": "g2_x2"
+      },
+      {
+        "from": "g2_def",
+        "to": "g2_deriv"
+      },
+      {
+        "from": "g2_deriv",
+        "to": "g2_deriv_k"
+      },
+      {
+        "from": "vk",
+        "to": "g2_deriv_k"
+      },
+      {
+        "from": "g2_deriv_k",
+        "to": "cond2"
+      },
+      {
+        "from": "cond1",
+        "to": "k_count"
+      },
+      {
+        "from": "cond2",
+        "to": "k_count"
+      },
+      {
+        "from": "c2_count",
+        "to": "k_count"
+      },
+      {
+        "from": "k_count",
+        "to": "top"
+      }
+    ],
+    "previous_new_dna": [],
+    "previous_dna_review_notes": "parse fail: Unexpected token '검', \"검토를 수행합니다.\"... is not valid JSON",
+    "original_solution": "$f(x) = 2x^2 + ax + 1$이므로 $f'(x) = 4x + a$이다.\n\n**조건 1:** $f(x) - x^2$의 $x = k$에서의 미분계수가 양수\n\n$$\\frac{d}{dx}\\bigl[f(x) - x^2\\bigr]\\bigg|_{x=k} = f'(k) - 2k = (4k + a) - 2k = 2k + a > 0$$\n\n$$\\Rightarrow a > -2k$$\n\n**조건 2:** $f(x) + 2x^3 - 10x^2$의 $x = k$에서의 미분계수가 음수\n\n$$\\frac{d}{dx}\\bigl[f(x) + 2x^3 - 10x^2\\bigr]\\bigg|_{x=k} = f'(k) + 6k^2 - 20k = (4k + a) + 6k^2 - 20k < 0$$\n\n$$\\Rightarrow a < -6k^2 + 16k$$\n\n두 조건을 결합하면:\n\n$$-2k < a < -6k^2 + 16k \\quad \\cdots \\text{㉠}$$\n\n이 범위가 존재하려면 $-2k < -6k^2 + 16k$이어야 하므로:\n\n$$0 < -6k^2 + 18k \\iff 6k(k-3) < 0 \\iff 0 < k < 3$$\n\n따라서 ㉠을 만족시키는 정수 $k$는 $k = 1$과 $k = 2$뿐이다.\n\n문제에서 정수 $k$의 개수가 2이므로, $k = 1$과 $k = 2$ **모두** 조건을 만족해야 한다.\n\n- $k = 1$일 때: $-2 < a < 10$\n- $k = 2$일 때: $-4 < a < 8$\n\n[FIGURE: $y = -6x^2 + 16x$와 $y = -2x$의 그래프. $x = 1$에서 두 함수값은 각각 $10$과 $-2$, $x = 2$에서 각각 $8$과 $-4$, $x = 3$에서 만남.]\n\n두 조건의 교집합: $-2 < a < 8$\n\n이를 만족하는 정수 $a$의 값: $-1,\\, 0,\\, 1,\\, 2,\\, 3,\\, 4,\\, 5,\\, 6,\\, 7$ (총 9개)\n\n$$\\therefore \\text{(모든 정수 } a \\text{의 값의 합)} = \\frac{9 \\times (-1 + 7)}{2} = \\frac{9 \\times 6}{2} = \\boxed{27}$$\n\n**정답: ⑤**",
+    "recovery_warnings": [],
+    "errata": [],
+    "metadata": {
+      "unit": "미분",
+      "difficulty": "상",
+      "score": "4",
+      "type": "multiple_choice",
+      "answer": "5",
+      "year": "미상",
+      "source": "수능",
+      "topic": "미분계수의 부호 조건",
+      "subtopic": "정수 조건을 만족하는 매개변수의 합"
+    },
+    "needed_neurons": [
+      "전략??"
+    ],
+    "needed_dna": [],
+    "edge_count": 15,
+    "side_count": 0,
+    "created_at": "2026-03-26T13:40:44.724Z"
   }
 ]
