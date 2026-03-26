@@ -1,0 +1,680 @@
+{
+  "problem_id": "Problem5_2",
+  "answer": "80",
+  "clues": [
+    {
+      "id": "단서A",
+      "text": "$f(x)$는 실수 전체의 집합에서 미분가능한 함수이다"
+    },
+    {
+      "id": "단서B",
+      "text": "$g(x)$는 최고차항의 계수가 양수인 삼차함수이다"
+    },
+    {
+      "id": "단서C",
+      "text": "$h(x) = |g(x)| - |f(x)| - 2f(x)$이다"
+    },
+    {
+      "id": "단서D",
+      "text": "$h(x) = \\begin{cases} 1 & (x < 0) \\\\ |x-1| & (x \\geq 0) \\end{cases}$이다"
+    }
+  ],
+  "skeleton": [
+    {
+      "from": "단서C",
+      "to": "note1",
+      "neuron": "연산24",
+      "note": "$2f(x) + |f(x)| = |g(x)| - h(x)$이다",
+      "main": true,
+      "step": 1
+    },
+    {
+      "from": "note1",
+      "to": "note2",
+      "neuron": "전략6",
+      "note": "$f(x) \\geq 0$이면 $3f(x) = |g(x)| - h(x)$이고, $f(x) < 0$이면 $f(x) = h(x) - |g(x)|$이다",
+      "main": true,
+      "step": 1
+    },
+    {
+      "from": "단서D",
+      "to": "note3",
+      "neuron": "사실120",
+      "note": "$h(x)$는 $x = 0$에서 불연속이고, $x = 1$에서 미분불가능하다",
+      "main": true,
+      "step": 2
+    },
+    {
+      "from": "단서D",
+      "to": "note3b",
+      "neuron": "사실117",
+      "note": "$x \\geq 0$, $x \\neq 1$에서 $h(x) = |x-1|$은 미분가능하고, $x < 0$에서 $h(x) = 1$은 미분가능하다",
+      "main": false,
+      "step": 2
+    },
+    {
+      "from": [
+        "단서A",
+        "note2",
+        "note3"
+      ],
+      "to": "note4",
+      "neuron": "사실111",
+      "note": "$f(x)$가 전체에서 미분가능하려면 $x = 0$, $x = 1$에서 $h(x)$의 꺾임을 $|g(x)|$ 또는 $|f(x)|$의 꺾임이 상쇄해야 한다",
+      "main": true,
+      "step": 2
+    },
+    {
+      "from": "단서D",
+      "to": "note5",
+      "neuron": "전략25",
+      "note": "$h(1) = |1-1| = 0$이다",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": [
+        "note2",
+        "note5"
+      ],
+      "to": "note6",
+      "neuron": "전략21",
+      "note": "$f(1) < 0$을 가정한다",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": "note6",
+      "to": "note7",
+      "neuron": "전략23",
+      "note": "$f(1) < 0$이면 $f(1) = h(1) - |g(1)| = -|g(1)| \\leq 0$이고 $|g(1)| = 0$이면 $f(1) = 0$으로 모순이므로 $f(1) \\geq 0$이다",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": [
+        "note4",
+        "note7",
+        "note5"
+      ],
+      "to": "note8",
+      "neuron": "전략6",
+      "note": "$f(1) \\geq 0$이고 $h(1) = 0$이므로 $3f(1) = |g(1)|$이다. $x = 1$에서 $|g(x)|$의 꺾임으로 $h$의 꺾임을 상쇄하려면 $g(1) = 0$이 필요하고, 따라서 $f(1) = 0$이다",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": [
+        "note8",
+        "note2"
+      ],
+      "to": "note9",
+      "neuron": "연산38",
+      "note": "$g'(1) < 0$이면 $x < 1$ 부근에서 $g > 0$이고 $f$의 좌미분계수 $= \\dfrac{g'(1)+1}{3}$, 우미분계수 $= \\dfrac{-g'(1)-1}{3}$이므로 미분가능 조건에서 $g'(1) = -1$이다",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": "note9",
+      "to": "note10",
+      "neuron": "전략40",
+      "note": "$g(1) = 0$이고 $g'(1) = -1 < 0$이면 $x = 1$ 부근에서 $g$가 감소하고, 삼차함수이므로 $x > 1$에서 추가 영점이 발생한다",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": "note10",
+      "to": "note11",
+      "neuron": "전략23",
+      "note": "추가 영점에서 $|g|$의 꺾임이 생기고 $f$의 미분가능성이 깨지므로 $g'(1) < 0$인 경우를 배제한다",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": [
+        "note8",
+        "note2"
+      ],
+      "to": "note12",
+      "neuron": "연산38",
+      "note": "$g'(1) > 0$이면 $x < 1$ 부근에서 $g < 0$이고 $f$의 좌미분계수 $= \\dfrac{-g'(1)+1}{3}$, 우미분계수 $= \\dfrac{g'(1)-1}{3}$이므로 미분가능 조건에서 $g'(1) = 1$이다",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": [
+        "note12",
+        "note11"
+      ],
+      "to": "note13",
+      "neuron": "전략20",
+      "note": "$g(1) = 0$, $g'(1) = 1$이다",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": "단서D",
+      "to": "note14",
+      "neuron": "전략25",
+      "note": "$\\lim_{x \\to 0^+} h(x) = |0-1| = 1$이고 $\\lim_{x \\to 0^-} h(x) = 1$이므로 $h(0) = 1$이다",
+      "main": true,
+      "step": 4
+    },
+    {
+      "from": [
+        "note2",
+        "note14"
+      ],
+      "to": "note15",
+      "neuron": "전략21",
+      "note": "$g(0) = 0$을 가정하면 $|g(0)| = 0 < 1 = h(0)$이므로 $f(0) < 0$이 되어 $f(0) = h(0) - |g(0)| = 1 - 0 = 1$이다",
+      "main": false,
+      "step": 4
+    },
+    {
+      "from": "note15",
+      "to": "note16",
+      "neuron": "사실111",
+      "note": "$g(0) = 0$이면 $x = 0$ 부근에서 $|g|$의 꺾임과 $h$의 불연속이 겹쳐 $f$의 좌우미분계수가 일치하지 않는다",
+      "main": false,
+      "step": 4
+    },
+    {
+      "from": "note16",
+      "to": "note17",
+      "neuron": "전략23",
+      "note": "$f$가 $x = 0$에서 미분가능하다는 조건과 모순이므로 $g(0) = 0$을 배제한다",
+      "main": false,
+      "step": 4
+    },
+    {
+      "from": [
+        "note17",
+        "note4"
+      ],
+      "to": "note18",
+      "neuron": "전략6",
+      "note": "$g(0) \\neq 0$이므로 $|f(x)|$의 $x = 0$에서의 꺾임으로 $h$의 불연속을 상쇄해야 하며, $f(0) = 0$이다",
+      "main": true,
+      "step": 4
+    },
+    {
+      "from": [
+        "note18",
+        "note14"
+      ],
+      "to": "note19",
+      "neuron": "연산24",
+      "note": "$f(0) = 0$이고 $h(0) = 1$을 $3f(0) = |g(0)| - h(0)$에 대입하면 $|g(0)| = 1$이다",
+      "main": true,
+      "step": 4
+    },
+    {
+      "from": [
+        "note19",
+        "note13"
+      ],
+      "to": "note20",
+      "neuron": "사실98",
+      "note": "$g'(1) = 1 > 0$이므로 $x < 1$ 부근에서 $g < 0$이고, $|g(0)| = 1$에서 $g(0) = -1$이다",
+      "main": true,
+      "step": 4
+    },
+    {
+      "from": [
+        "note13",
+        "note20",
+        "단서B"
+      ],
+      "to": "note21",
+      "neuron": "전략41",
+      "note": "$g(x) = ax(x-1)^2 + (x-1)$ ($a > 0$)로 놓으면 $g(0) = -1$, $g(1) = 0$, $g'(1) = 1$을 만족한다",
+      "main": true,
+      "step": 5
+    },
+    {
+      "from": "note21",
+      "to": "note22",
+      "neuron": "연산33",
+      "note": "$g'(x) = a(3x^2 - 4x + 1) + 1$이다",
+      "main": true,
+      "step": 5
+    },
+    {
+      "from": "note22",
+      "to": "note23",
+      "neuron": "전략25",
+      "note": "$g'(0) = a + 1$이다",
+      "main": true,
+      "step": 5
+    },
+    {
+      "from": [
+        "note2",
+        "note21",
+        "note18"
+      ],
+      "to": "note24",
+      "neuron": "연산38",
+      "note": "$x < 0$ 부근에서 $g(x) < 0$이고 $f(x) \\geq 0$이므로 $f(x) = \\dfrac{-g(x) - 1}{3}$이고 $f'(0^-) = \\dfrac{-(a+1)}{3}$이다",
+      "main": true,
+      "step": 6
+    },
+    {
+      "from": [
+        "note2",
+        "note21",
+        "note18"
+      ],
+      "to": "note25",
+      "neuron": "연산38",
+      "note": "$0 < x < 1$ 부근에서 $g(x) < 0$이고 $f(x) = \\dfrac{-g(x) - |x-1|}{3} = \\dfrac{-ax(x-1)^2}{3}$이며 $f'(0^+) = \\dfrac{-a}{3} \\cdot (-1)^2 \\cdot (-1) \\cdot ... $이다. 직접 미분하면 $f'(0^+) = \\dfrac{a}{3}$이다",
+      "main": true,
+      "step": 6
+    },
+    {
+      "from": "note25",
+      "to": "note25b",
+      "neuron": "연산33",
+      "note": "$f(x) = -ax(x-1)^2$이면 $f'(x) = -a(3x^2-4x+1) = -a(x-1)(3x-1)$이고 $f'(0) = -a \\cdot (-1) \\cdot (-1) = -a$이다",
+      "main": true,
+      "step": 6
+    },
+    {
+      "from": [
+        "note24",
+        "note25b",
+        "단서A"
+      ],
+      "to": "note26",
+      "neuron": "사실111",
+      "note": "$f'(0^-) = f'(0^+)$에서 $-\\dfrac{a+1}{3} = -a$를 풀면 $a = \\dfrac{1}{2}$이다",
+      "main": true,
+      "step": 6
+    },
+    {
+      "from": [
+        "note26",
+        "note21"
+      ],
+      "to": "END",
+      "neuron": "전략25",
+      "note": "$g(x) = \\dfrac{1}{2}x(x-1)^2 + (x-1)$이고 $g(6) = \\dfrac{1}{2} \\cdot 6 \\cdot 25 + 5 = 80$이다",
+      "main": true,
+      "step": 7
+    }
+  ],
+  "solution": "STEP 1. $h(x) = |g(x)| - |f(x)| - 2f(x)$를 정리하면 $2f(x) + |f(x)| = |g(x)| - h(x)$이다. $f(x) \\geq 0$이면 $3f(x) = |g(x)| - h(x)$이고, $f(x) < 0$이면 $f(x) = h(x) - |g(x)|$이다.\nSTEP 2. $h(x)$는 $x = 0$에서 불연속(좌극한 1, 우극한 1이나 구간 경계)이고, $x = 1$에서 미분불가능하다. $f(x)$가 전체에서 미분가능하려면 $x = 0$, $x = 1$에서 $h(x)$의 꺾임을 $|g(x)|$ 또는 $|f(x)|$의 꺾임이 상쇄해야 한다.\nSTEP 3. $h(1) = 0$이다. $f(1) \\geq 0$이고 $3f(1) = |g(1)|$이다. $x = 1$에서 $|g(x)|$의 꺾임으로 $h$의 꺾임을 상쇄하려면 $g(1) = 0$이 필요하고, 따라서 $f(1) = 0$이다. $g'(1) > 0$이면 미분가능 조건에서 $g'(1) = 1$이고, $g'(1) < 0$이면 추가 영점에서 모순이 발생하므로 배제한다. 따라서 $g(1) = 0$, $g'(1) = 1$이다.\nSTEP 4. $h(0) = 1$이다. $g(0) \\neq 0$이고 $f(0) = 0$이다. $|g(0)| = 1$이고, $g'(1) > 0$에서 $x < 1$ 부근 $g < 0$이므로 $g(0) = -1$이다.\nSTEP 5. $g(x) = ax(x-1)^2 + (x-1)$ ($a > 0$)로 놓으면 세 조건을 만족한다. $g'(x) = a(3x^2 - 4x + 1) + 1$이고 $g'(0) = a + 1$이다.\nSTEP 6. $x < 0$ 부근에서 $f(x) = \\dfrac{-g(x) - 1}{3}$이고 $f'(0^-) = -\\dfrac{a+1}{3}$이다. $0 < x$ 부근에서 $f(x) = -ax(x-1)^2$이고 $f'(0) = -a$이다. $f'(0^-) = f'(0^+)$에서 $-\\dfrac{a+1}{3} = -a$를 풀면 $a = \\dfrac{1}{2}$이다.\nSTEP 7. $g(x) = \\dfrac{1}{2}x(x-1)^2 + (x-1)$이고 $g(6) = \\dfrac{1}{2} \\cdot 6 \\cdot 25 + 5 = 80$이다.",
+  "original_solution": "주어진 식을 정리하면\r\n\r\n$$2f(x) + |f(x)| = |g(x)| - h(x)$$\r\n\r\n$f(x) \\geq 0$이면 $3f(x) = |g(x)| - h(x)$이고, $f(x) < 0$이면 $f(x) = |g(x)| - h(x)$이므로\r\n\r\n$$\\Rightarrow f(x) = \\begin{cases} \\dfrac{|g(x)| - h(x)}{3} & \\left(f(x) \\geq 0 \\Leftrightarrow |g(x)| \\geq h(x)\\right) \\\\[6pt] |g(x)| - h(x) & \\left(f(x) < 0 \\Leftrightarrow |g(x)| < h(x)\\right) \\end{cases}$$\r\n\r\n이고, $h(x)$는 $x = 0$과 $x = 1$에서만 미분가능하지 않음을 알 수 있다.\r\n\r\n따라서 $f(x)$가 실수 전체의 집합에서 미분가능하려면, $x = 0$과 $x = 1$에서\r\n\r\n① $|g(x)|$가 미분가능하지 않거나\r\n② $f(x)$의 양음의 변환\r\n\r\n을 만족시켜야 하고, $g(c) = 0$이고 $g'(c) = 0$인 $c$($c = 0$, $c = 1$)가 존재하거나\r\n\r\n$$f(x) = |g(x)| - h(x) \\quad \\cdots (\\bigstar)$$\r\n\r\n을 알 수 있다.\r\n\r\n**(i) $x = 1$에서 $f(x)$가 미분가능**\r\n\r\n$h(1) = 0 \\Rightarrow$ ①, ②의 경우 모두 $g(1) = f(1) = 0$\r\n\r\n이므로\r\n\r\n$|g(x)|$의 $x = 1$에서의 우미분계수 $= k$ ($k \\geq 0$)\r\n\r\n이라 하면\r\n\r\n- $\\{f(x)\\}$의 $x = 1$에서의 좌미분계수 $= -k + 1$ 또는 $\\dfrac{-k+1}{3}$\r\n- $\\{f(x)\\}$의 $x = 1$에서의 우미분계수 $= k - 1$ 또는 $\\dfrac{k-1}{3}$\r\n\r\n이므로 $f(x)$가 $x = 1$에서 미분가능하려면\r\n\r\n$k = 1 \\Rightarrow g'(1) = -1$ 또는 $g'(1) = 1$\r\n\r\n이고, 이때\r\n\r\n$g'(1) = -1$, $g(1) = 0$이면 $g(c_1) = 0$인 $c_1$($c_1 > 1$)이 존재하고,\r\n\r\n이때 $g'(c_1) = 0$이므로 $(\\bigstar)$에 모순\r\n\r\n이므로\r\n\r\n$$g(1) = 0, \\quad g'(1) = 1 \\quad \\cdots \\textcircled{3}$$\r\n\r\n임을 알 수 있다.\r\n\r\n**(ii) $x = 0$에서 $f(x)$가 미분가능**\r\n\r\n②의 경우,\r\n\r\n$g(0) = 0 \\Rightarrow |g(x)|$의 $x = 0$에서의 우미분계수 $= m$ ($m > 0$)\r\n\r\n이라 하면\r\n\r\n- $\\{f(x)\\}$의 $x = 0$에서의 좌미분계수 $= -m < 0$\r\n- $\\{f(x)\\}$의 $x = 0$에서의 우미분계수 $= m + 1 > 1$\r\n\r\n$\\Rightarrow x = 0$에서 $f(x)$가 미분가능할 수 없음\r\n\r\n따라서\r\n\r\n②의 경우는 불가 $\\Rightarrow f(0) = 0$\r\n\r\n$\\Rightarrow |g(0)| = 1 \\quad (\\because h(0) = 1)$\r\n\r\n이므로\r\n\r\n$(\\bigstar)$에서 $\\Rightarrow g(0) = -1 \\quad \\cdots \\textcircled{4}$\r\n\r\n임을 알 수 있고,\r\n\r\n③, ④ $\\Rightarrow g(x) = ax(x-1)^2 + x - 1$ ($a > 0$) $\\quad \\cdots \\textcircled{5}$\r\n\r\n로 놓을 수 있다.\r\n\r\n따라서\r\n\r\n⑤ $\\Rightarrow g'(0) = a + 1$\r\n\r\n이므로 위의 그림을 참고하면\r\n\r\n- $\\{f(x)\\}$의 $x = 0$에서의 좌미분계수 $= \\dfrac{-(a+1) - 0}{3} = -\\dfrac{a+1}{3}$\r\n- $\\{f(x)\\}$의 $x = 0$에서의 우미분계수 $= -(a+1) - (-1) = -a$\r\n\r\n이고, 이 두 값이 서로 같아야 하므로\r\n\r\n$$\\frac{a+1}{3} = a \\Rightarrow a = \\frac{1}{2}$$\r\n\r\n을 얻는다.\r\n\r\n$$\\therefore\\; g(x) = \\frac{1}{2}x(x-1)^2 + x - 1 \\Rightarrow g(6) = \\frac{1}{2} \\cdot 6 \\cdot 25 + 5 = 75 + 5 = \\boxed{80}$$",
+  "analysis": "h(x)의 정의식을 정리하여 f(x)를 |g(x)|와 h(x)로 표현한 후, h(x)의 미분불가능점 x=0, x=1에서 f(x)의 미분가능성 조건을 분석한다. x=1에서 g(1)=0, g'(1)=1을 얻고, x=0에서 g(0)=-1을 얻어 g(x)=ax(x-1)²+(x-1)로 설정한 후, x=0에서의 미분가능 조건으로 a=1/2를 결정하여 g(6)=80을 구한다.",
+  "new_neurons": [],
+  "metadata": {
+    "unit": "미분",
+    "difficulty": "킬러",
+    "score": "4",
+    "type": "주관식",
+    "answer": "80"
+  },
+  "edge_count": 29,
+  "side_count": 9,
+  "statement": "# 5. (수능) - 절댓값 함수의 미분가능성과 삼차함수\r\n\r\n## Problem\r\n실수 전체의 집합에서 미분가능한 함수 $f(x)$와 최고차항의 계수가 양수인 삼차함수 $g(x)$에 대하여 함수 $h(x)$를\r\n\r\n$$h(x) = |g(x)| - |f(x)| - 2f(x)$$\r\n\r\n라 하면 모든 실수 $x$에 대하여\r\n\r\n$$h(x) = \\begin{cases} 1 & (x < 0) \\\\ |x-1| & (x \\geq 0) \\end{cases}$$\r\n\r\n이다. $g(6)$의 값을 구하시오. [4점]\r\n\r\n[FIGURE: $y = h(x)$의 그래프. $x < 0$에서 $y = 1$인 수평선, $x = 0$에서 연속적으로 연결되어 $x \\geq 0$에서 $y = |x-1|$ (꼭짓점 $(1, 0)$인 V자 형태). $(0, 1)$과 $(2, 1)$을 지나며 $(1, 0)$에서 최솟값을 가짐.]",
+  "dna": {
+    "nodes": [
+      {
+        "id": "top",
+        "dna": "Q1",
+        "label": "값을 구하라",
+        "category": "발문"
+      },
+      {
+        "id": "ask_f3",
+        "dna": "F3",
+        "label": "g(6)",
+        "category": "함수"
+      },
+      {
+        "id": "vg",
+        "dna": "T1",
+        "label": "함수 g",
+        "category": "말단"
+      },
+      {
+        "id": "c6",
+        "dna": "T2",
+        "label": "상수 6",
+        "category": "말단"
+      },
+      {
+        "id": "conds",
+        "dna": "S1",
+        "label": "모든 조건",
+        "category": "구조"
+      },
+      {
+        "id": "f_diff",
+        "dna": "C22",
+        "label": "f 실수전체 미분가능",
+        "category": "조건"
+      },
+      {
+        "id": "vf",
+        "dna": "T1",
+        "label": "함수 f",
+        "category": "말단"
+      },
+      {
+        "id": "g_cubic",
+        "dna": "F11",
+        "label": "g는 삼차함수",
+        "category": "함수"
+      },
+      {
+        "id": "g_lead_pos",
+        "dna": "L4",
+        "label": "최고차항 계수 양수",
+        "category": "제한"
+      },
+      {
+        "id": "h_def_eq",
+        "dna": "C1",
+        "label": "h(x) = |g(x)|-|f(x)|-2f(x)",
+        "category": "조건"
+      },
+      {
+        "id": "vh",
+        "dna": "T1",
+        "label": "함수 h",
+        "category": "말단"
+      },
+      {
+        "id": "h_rhs",
+        "dna": "E1",
+        "label": "합(inner_sum, neg_2f)",
+        "category": "수식"
+      },
+      {
+        "id": "inner_sum",
+        "dna": "E1",
+        "label": "합(|g|, -|f|)",
+        "category": "수식"
+      },
+      {
+        "id": "abs_g",
+        "dna": "F5",
+        "label": "|g(x)|",
+        "category": "함수"
+      },
+      {
+        "id": "neg_abs_f",
+        "dna": "E2",
+        "label": "-|f(x)|",
+        "category": "수식"
+      },
+      {
+        "id": "abs_f",
+        "dna": "F5",
+        "label": "|f(x)|",
+        "category": "함수"
+      },
+      {
+        "id": "neg_2f",
+        "dna": "E2",
+        "label": "-2f(x)",
+        "category": "수식"
+      },
+      {
+        "id": "two_f",
+        "dna": "E6",
+        "label": "2f(x)",
+        "category": "수식"
+      },
+      {
+        "id": "c2",
+        "dna": "T2",
+        "label": "상수 2",
+        "category": "말단"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
+      },
+      {
+        "id": "h_piecewise",
+        "dna": "C18",
+        "label": "모든 x에 대해 h(x) 성립",
+        "category": "조건"
+      },
+      {
+        "id": "h_func",
+        "dna": "F1",
+        "label": "h 조각함수",
+        "category": "함수"
+      },
+      {
+        "id": "piece1",
+        "dna": "F2",
+        "label": "x<0 조각: 1",
+        "category": "함수"
+      },
+      {
+        "id": "c1",
+        "dna": "T2",
+        "label": "상수 1",
+        "category": "말단"
+      },
+      {
+        "id": "piece1_dom",
+        "dna": "C2",
+        "label": "x < 0",
+        "category": "조건"
+      },
+      {
+        "id": "c0",
+        "dna": "T2",
+        "label": "상수 0",
+        "category": "말단"
+      },
+      {
+        "id": "piece2",
+        "dna": "F2",
+        "label": "x≥0 조각: |x-1|",
+        "category": "함수"
+      },
+      {
+        "id": "piece2_dom",
+        "dna": "C2",
+        "label": "x ≥ 0",
+        "category": "조건"
+      },
+      {
+        "id": "abs_x_minus1",
+        "dna": "F5",
+        "label": "|x-1|",
+        "category": "함수"
+      },
+      {
+        "id": "x_minus1",
+        "dna": "E1",
+        "label": "합(x, -1)",
+        "category": "수식"
+      },
+      {
+        "id": "neg_c1",
+        "dna": "E2",
+        "label": "-1",
+        "category": "수식"
+      }
+    ],
+    "edges": [
+      {
+        "from": "ask_f3",
+        "to": "top"
+      },
+      {
+        "from": "conds",
+        "to": "top"
+      },
+      {
+        "from": "vg",
+        "to": "ask_f3"
+      },
+      {
+        "from": "c6",
+        "to": "ask_f3"
+      },
+      {
+        "from": "f_diff",
+        "to": "conds"
+      },
+      {
+        "from": "vf",
+        "to": "f_diff"
+      },
+      {
+        "from": "g_cubic",
+        "to": "conds"
+      },
+      {
+        "from": "vg",
+        "to": "g_cubic"
+      },
+      {
+        "from": "g_lead_pos",
+        "to": "vg"
+      },
+      {
+        "from": "h_def_eq",
+        "to": "conds"
+      },
+      {
+        "from": "vh",
+        "to": "h_def_eq"
+      },
+      {
+        "from": "vx",
+        "to": "h_def_eq"
+      },
+      {
+        "from": "h_rhs",
+        "to": "h_def_eq"
+      },
+      {
+        "from": "inner_sum",
+        "to": "h_rhs"
+      },
+      {
+        "from": "neg_2f",
+        "to": "h_rhs"
+      },
+      {
+        "from": "abs_g",
+        "to": "inner_sum"
+      },
+      {
+        "from": "neg_abs_f",
+        "to": "inner_sum"
+      },
+      {
+        "from": "abs_f",
+        "to": "neg_abs_f"
+      },
+      {
+        "from": "vf",
+        "to": "abs_f"
+      },
+      {
+        "from": "vg",
+        "to": "abs_g"
+      },
+      {
+        "from": "two_f",
+        "to": "neg_2f"
+      },
+      {
+        "from": "c2",
+        "to": "two_f"
+      },
+      {
+        "from": "vf",
+        "to": "two_f"
+      },
+      {
+        "from": "h_piecewise",
+        "to": "conds"
+      },
+      {
+        "from": "vh",
+        "to": "h_piecewise"
+      },
+      {
+        "from": "h_func",
+        "to": "h_piecewise"
+      },
+      {
+        "from": "piece1",
+        "to": "h_func"
+      },
+      {
+        "from": "piece2",
+        "to": "h_func"
+      },
+      {
+        "from": "piece1_dom",
+        "to": "piece1"
+      },
+      {
+        "from": "c1",
+        "to": "piece1"
+      },
+      {
+        "from": "vx",
+        "to": "piece1_dom"
+      },
+      {
+        "from": "c0",
+        "to": "piece1_dom"
+      },
+      {
+        "from": "piece2_dom",
+        "to": "piece2"
+      },
+      {
+        "from": "abs_x_minus1",
+        "to": "piece2"
+      },
+      {
+        "from": "vx",
+        "to": "piece2_dom"
+      },
+      {
+        "from": "c0",
+        "to": "piece2_dom"
+      },
+      {
+        "from": "x_minus1",
+        "to": "abs_x_minus1"
+      },
+      {
+        "from": "vx",
+        "to": "x_minus1"
+      },
+      {
+        "from": "neg_c1",
+        "to": "x_minus1"
+      },
+      {
+        "from": "c1",
+        "to": "neg_c1"
+      }
+    ],
+    "new_dna": []
+  },
+  "thinking_profile": null,
+  "folders": [],
+  "history": [],
+  "recovery_warnings": [],
+  "errata": [],
+  "created_at": "2026-03-26T13:03:24.607Z"
+}
