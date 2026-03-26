@@ -5707,15 +5707,13 @@
     "dna_status": "ok",
     "previous_skeleton": [
       {
-        "from": [
-          "단서A"
-        ],
+        "from": "단서A",
         "to": "note1",
-        "neuron": "연산34",
+        "neuron": "연산35",
         "type": "연산",
         "domain_hint": "DIFF, POLY",
-        "description": "사차함수의 각 항을 합/차 미분 규칙으로 분리한다",
-        "note": "사차함수의 각 항을 합/차 미분 규칙으로 분리한다",
+        "description": "각 항의 상수배를 분리한다",
+        "note": "각 항의 상수배를 분리한다",
         "main": true,
         "step": 1,
         "_keep_neuron": true
@@ -5723,11 +5721,11 @@
       {
         "from": "note1",
         "to": "note2",
-        "neuron": "연산35",
+        "neuron": "연산34",
         "type": "연산",
         "domain_hint": "DIFF, POLY",
-        "description": "각 항의 상수배를 앞으로 꺼낸다",
-        "note": "각 항의 상수배를 앞으로 꺼낸다",
+        "description": "합/차 형태의 각 항별로 미분을 분배한다",
+        "note": "합/차 형태의 각 항별로 미분을 분배한다",
         "main": true,
         "step": 1,
         "_keep_neuron": true
@@ -5738,8 +5736,8 @@
         "neuron": "연산33",
         "type": "연산",
         "domain_hint": "DIFF, POLY",
-        "description": "각 항을 거듭제곱 미분 규칙으로 미분하여 삼차 도함수를 얻는다",
-        "note": "각 항을 거듭제곱 미분 규칙으로 미분하여 삼차 도함수를 얻는다",
+        "description": "각 항 x^n을 nx^(n-1)로 미분하여 도함수를 완성한다",
+        "note": "각 항 x^n을 nx^(n-1)로 미분하여 도함수를 완성한다",
         "main": true,
         "step": 1,
         "_keep_neuron": true
@@ -5747,332 +5745,238 @@
       {
         "from": "note3",
         "to": "note4",
-        "neuron": "연산9",
-        "type": "연산",
-        "domain_hint": "DIFF, POLY",
-        "description": "삼차 도함수를 영인자법칙을 이용해 인수분해하여 각 인수별 근을 분리한다",
-        "note": "삼차 도함수를 영인자법칙을 이용해 인수분해하여 각 인수별 근을 분리한다",
-        "main": true,
-        "step": 1,
-        "_keep_neuron": true
-      },
-      {
-        "from": [
-          "단서A",
-          "note4"
-        ],
-        "to": "note5",
-        "neuron": "사실104",
+        "neuron": "사실99",
         "type": "사실",
-        "domain_hint": "DIFF",
-        "description": "이계도함수 판정법으로 극대·극소를 판별한다",
-        "note": "$f''(-2) = 24 > 0$, $f''(0) = -8 < 0$, $f''(1) = 12 > 0$이다. $x = -2$에서 극소, $x = 0$에서 극대, $x = 1$에서 극소이다",
+        "domain_hint": "DIFF, POLY",
+        "description": "도함수의 부호 변화로 극값 위치와 종류 판정",
+        "note": "$x=-2$에서 극소 $f(-2)$, $x=0$에서 극대 $f(0)$, $x=1$에서 극소 $f(1)$이다",
         "main": true,
-        "step": 1,
-        "_keep_neuron": true
+        "step": 1
       },
       {
-        "from": [
-          "단서A",
-          "note4"
-        ],
-        "to": "note6",
-        "neuron": "전략25",
-        "type": "연산",
-        "domain_hint": "POLY",
-        "description": "극점에서의 함수값을 계산한다",
-        "note": "$f(-2) = a - \\dfrac{32}{3}$, $f(0) = a$, $f(1) = a - \\dfrac{5}{3}$이다",
-        "main": true,
-        "step": 1,
-        "_keep_neuron": true
-      },
-      {
-        "from": [
-          "note6"
-        ],
-        "to": "note7",
-        "neuron": "전략25",
-        "type": "연산",
-        "domain_hint": "INEQ",
-        "description": "극솟값들의 대소를 비교한다",
-        "note": "$f(-2) - f(1) = -9 < 0$이고, $f(-2) < f(1) < f(0) = a$이다",
-        "main": false,
-        "step": 1,
-        "_keep_neuron": false
-      },
-      {
-        "from": [
-          "단서B"
-        ],
-        "to": "note8",
+        "from": "단서B",
+        "to": "note5",
         "neuron": "전략6",
         "type": "전략",
         "domain_hint": "ABS, EQN",
-        "description": "절댓값을 f(x)의 부호로 경우 분리한다",
-        "note": "$f(x) \\geq 0$일 때 $f(x) = \\dfrac{t}{2}$ (ⓑ), $f(x) < 0$일 때 $f(x) = \\dfrac{t}{2k}$ (ⓐ)이다",
+        "description": "절댓값을 부호 기준으로 경우 분류한다",
+        "note": "$f(x) < 0$이면 $2kf(x) = t$, 즉 $f(x) = \\dfrac{t}{2k}$ (ⓐ)이고, $f(x) \\geq 0$이면 $2f(x) = t$, 즉 $f(x) = \\dfrac{t}{2}$ (ⓑ)이다",
         "main": true,
-        "step": 2,
-        "_keep_neuron": true
+        "step": 2
       },
       {
-        "from": [
-          "단서B"
-        ],
-        "to": "note9",
-        "neuron": "사실113",
+        "from": "단서C",
+        "to": "note6",
+        "neuron": "NEW_1",
         "type": "전략",
         "domain_hint": "EQN, INEQ",
-        "description": "최솟값 조건을 경계 조건과 위반 조건으로 분해한다",
-        "note": "① $k = -1$일 때 모든 $t$에 대해 실근 $\\leq 4$, ② $k < -1$인 모든 $k$에 대해 실근 $\\geq 5$인 $t$가 존재한다",
+        "description": "최솟값 조건을 경계값 성립과 초과 시 실패 두 조건으로 분해",
+        "note": "최솟값 조건을 (1) f(x)≥c(경계 성립)와 (2) f(x₀)=c인 x₀ 존재(초과 시 실패)로 분해한다. 두 부등식 방향이 모두 성립하면 반대칭성에 의해 등호가 확정된다.",
         "main": true,
-        "step": 2,
-        "_keep_neuron": true
+        "step": 3
       },
       {
         "from": [
-          "note8",
-          "note9"
+          "note5",
+          "note6"
         ],
+        "to": "note7",
+        "neuron": "사실79",
+        "type": "사실",
+        "domain_hint": "INEQ, NUM",
+        "description": "부호 분석으로 ⓐ의 실근이 없는 경우를 판별",
+        "note": "$k \\leq -1$이고 $t \\leq 0$이면 $t/(2k) \\geq 0$이어서 $f(x) < 0$과 양립 불가하여 ⓐ의 실근은 0개이다",
+        "main": false,
+        "step": 3
+      },
+      {
+        "from": "note7",
+        "to": "note8",
+        "neuron": "전략42",
+        "type": "전략",
+        "domain_hint": "EQN",
+        "description": "유효한 매개변수 범위를 한정한다",
+        "note": "$t > 0$인 경우만 분석 대상이다",
+        "main": true,
+        "step": 3
+      },
+      {
+        "from": [
+          "note4",
+          "note5",
+          "note8"
+        ],
+        "to": "note9",
+        "neuron": "전략22",
+        "type": "전략",
+        "domain_hint": "EQN, FUNC",
+        "description": "극솟값이 양수, 0, 음수인 세 경우로 분류한다",
+        "note": "극솟값이 양수, 0, 음수인 세 경우로 분류한다",
+        "main": false,
+        "step": 4,
+        "_keep_neuron": true
+      },
+      {
+        "from": "note9",
         "to": "note10",
         "neuron": "전략23",
         "type": "전략",
-        "domain_hint": "INEQ, EQN",
-        "description": "t≤0일 때 실근이 없음을 확인하여 범위를 제한한다",
-        "note": "$k \\leq -1$이고 $t \\leq 0$이면 ⓐ에서 $\\dfrac{t}{2k} \\geq 0$이어서 $f(x) < 0$과 양립 불가이고, ⓑ에서 $\\dfrac{t}{2} \\leq 0$이어서 $f(x) \\geq 0$과 양립 불가하다. $t > 0$만 고려한다",
-        "main": true,
-        "step": 3,
+        "domain_hint": "EQN, FUNC",
+        "description": "각 경우에서 실근 개수가 주어진 조건과 모순되는 경우를 배제한다",
+        "note": "각 경우에서 실근 개수가 주어진 조건과 모순되는 경우를 배제한다",
+        "main": false,
+        "step": 4,
         "_keep_neuron": true
       },
       {
         "from": [
-          "note8",
-          "note10"
+          "note4",
+          "note5",
+          "note8"
         ],
         "to": "note11",
-        "neuron": "NEW_1",
-        "type": "사실",
-        "domain_hint": "EQN, INEQ",
-        "description": "수준값의 k-의존성을 파악한다",
-        "note": "$t > 0$일 때 ⓑ의 수준값 $\\dfrac{t}{2} > 0$은 $k$에 무관하고, ⓐ의 수준값 $\\dfrac{t}{2k} < 0$ ($k < 0$)은 $k$가 음의 방향으로 갈수록 $0^-$에 가까워진다",
-        "main": true,
-        "step": 3,
-        "_keep_neuron": false
+        "neuron": "전략21",
+        "type": "전략",
+        "domain_hint": "EQN, FUNC",
+        "description": "극솟값이 정확히 0인 경우를 가정하고 실근 개수를 확인한다",
+        "note": "극솟값이 정확히 0인 경우를 가정하고 실근 개수를 확인한다",
+        "main": false,
+        "step": 4,
+        "_keep_neuron": true
       },
       {
-        "from": [
-          "note5",
-          "note6",
-          "note11"
-        ],
+        "from": "note11",
         "to": "note12",
-        "neuron": "전략25",
+        "neuron": "전략23",
         "type": "전략",
-        "domain_hint": "FUNC, INEQ",
-        "description": "f(1)<0일 때 실근 초과를 확인한다",
-        "note": "$f(1) < 0$이면 $f(x) < 0$인 영역이 양쪽 극소점을 포함하여, ⓐ에서 4개 + ⓑ에서 2개 이상 = 총 6개 이상이 되어 ①에 모순이다",
+        "domain_hint": "EQN, FUNC",
+        "description": "실근 개수가 조건과 모순되면 극솟값=0 경우를 배제한다",
+        "note": "실근 개수가 조건과 모순되면 극솟값=0 경우를 배제한다",
         "main": false,
         "step": 4,
         "_keep_neuron": true
       },
       {
         "from": [
+          "note4",
           "note5",
-          "note6",
-          "note11"
+          "note8"
         ],
         "to": "note13",
-        "neuron": "전략25",
+        "neuron": "전략21",
         "type": "전략",
-        "domain_hint": "FUNC, INEQ",
-        "description": "f(1)=0일 때 실근 초과를 확인한다",
-        "note": "$f(1) = 0$이면 $t \\to 0^+$에서 ⓑ의 $\\dfrac{t}{2} \\to 0^+$이므로 ⓑ = 4개, ⓐ의 $\\dfrac{t}{2k} \\to 0^-$이므로 ⓐ = 2개, 총 6개로 ①에 모순이다",
+        "domain_hint": "EQN, FUNC",
+        "description": "나머지 극솟값 부호 경우(양수 또는 음수)를 가정하고 실근 개수를 확인한다",
+        "note": "나머지 극솟값 부호 경우(양수 또는 음수)를 가정하고 실근 개수를 확인한다",
         "main": false,
         "step": 4,
         "_keep_neuron": true
       },
       {
-        "from": [
-          "note5",
-          "note6",
-          "note11"
-        ],
+        "from": "note13",
         "to": "note14",
-        "neuron": "전략25",
+        "neuron": "전략23",
         "type": "전략",
-        "domain_hint": "FUNC, INEQ",
-        "description": "f(-2)≥0일 때 ⓐ=0 항상임을 확인한다",
-        "note": "$f(-2) \\geq 0$이면 $f(x) < 0$인 영역이 존재하지 않아 ⓐ의 실근이 항상 0개이고, $k$에 관계없이 ⓑ만 존재하여 ②에 모순이다",
+        "domain_hint": "EQN, FUNC",
+        "description": "실근 개수가 조건과 모순되면 해당 경우를 배제한다",
+        "note": "실근 개수가 조건과 모순되면 해당 경우를 배제한다",
         "main": false,
         "step": 4,
         "_keep_neuron": true
       },
       {
         "from": [
+          "note10",
           "note12",
-          "note13",
           "note14"
         ],
         "to": "note15",
         "neuron": "전략20",
         "type": "전략",
-        "domain_hint": "INEQ",
-        "description": "소거법으로 생존 조건을 도출한다",
-        "note": "$f(-2) < 0 < f(1)$이어야 한다",
+        "domain_hint": "EQN, INEQ",
+        "description": "소거 결과를 종합하여 유일한 경우를 확정",
+        "note": "$f(-2) < 0 < f(1)$이다",
         "main": true,
-        "step": 4,
-        "_keep_neuron": true
+        "step": 4
       },
       {
         "from": [
+          "note4",
           "note5",
-          "note6",
-          "note7",
-          "note15"
+          "note15",
+          "note8"
         ],
         "to": "note16",
-        "neuron": "사실44",
-        "type": "사실",
-        "domain_hint": "FUNC, POLY",
-        "description": "f(-2)<0<f(1)일 때 각 수준값의 교점 개수를 정리한다",
-        "note": "$f(-2) < 0 < f(1)$일 때, ⓑ의 실근은 $\\dfrac{t}{2}$에 따라 2~4개이고, ⓐ의 실근은 $f(x) < 0$인 구간 $(\\alpha,\\beta)$($\\alpha < -2 < \\beta < 0$)에서 $\\dfrac{t}{2k}$와 $f(-2)$의 관계에 따라 0, 1, 2개이다",
+        "neuron": "전략42",
+        "type": "전략",
+        "domain_hint": "FUNC, EQN",
+        "description": "임계 수준 t/2=f(1)에서 교점 개수 조건을 부등식으로 전환",
+        "note": "$t/2 = f(1)$일 때 ⓑ는 $x=1$에서 접하여 실근 2개이고, 총 실근 $\\leq 4$이려면 $f(1)/k \\leq f(-2)$이다",
         "main": true,
-        "step": 5,
-        "_keep_neuron": true
+        "step": 5
       },
       {
         "from": [
           "note16",
-          "note9",
-          "note11"
+          "note8"
         ],
         "to": "note17",
-        "neuron": "전략22",
-        "type": "전략",
-        "domain_hint": "INEQ, EQN",
-        "description": "k=-1에서 임계 상황을 분석하여 ①의 부등식 조건을 도출한다",
-        "note": "$k = -1$일 때 $\\dfrac{t}{2} = f(1)$이면 ⓑ = 3이고 $\\dfrac{t}{2k} = -f(1)$이다. ⓐ $\\leq 1$이려면 $-f(1) \\leq f(-2)$이어야 한다. ⓑ = 4일 때도 $f(-2) + f(1) \\geq 0$이면 ⓐ = 0이다. ①이 성립할 조건은 $f(-2) + f(1) \\geq 0$이다",
-        "main": true,
-        "step": 5,
-        "_keep_neuron": true
-      },
-      {
-        "from": [
-          "note16",
-          "note9",
-          "note11"
-        ],
-        "to": "note18",
-        "neuron": "전략22",
-        "type": "전략",
-        "domain_hint": "INEQ, EQN",
-        "description": "k<-1에서 임계 상황을 분석하여 ②의 부등식 조건을 도출한다",
-        "note": "$k < -1$일 때 $t = 2f(1)$로 놓으면 ⓑ = 3이고 $\\dfrac{f(1)}{k} \\in (-f(1), 0)$이다. $f(-2) + f(1) \\leq 0$이면 $\\dfrac{f(1)}{k} > f(-2)$이므로 ⓐ = 2, 총 5개이다. ②가 성립할 조건은 $f(-2) + f(1) \\leq 0$이다",
-        "main": true,
-        "step": 5,
-        "_keep_neuron": true
-      },
-      {
-        "from": [
-          "note17",
-          "note18"
-        ],
-        "to": "note19",
-        "neuron": "NEW_2",
+        "neuron": "사실123",
         "type": "사실",
-        "domain_hint": "INEQ",
-        "description": "양방향 부등식의 교집합으로 등식을 얻는다",
-        "note": "$f(-2) + f(1) \\geq 0$이고 $f(-2) + f(1) \\leq 0$이므로 $f(-2) + f(1) = 0$이다",
-        "main": true,
-        "step": 6,
-        "_keep_neuron": false
-      },
-      {
-        "from": [
-          "note19",
-          "note6"
-        ],
-        "to": "note20",
-        "neuron": "전략25",
-        "type": "연산",
-        "domain_hint": "EQN",
-        "description": "극값 식을 대입하여 a를 구한다",
-        "note": "$\\left(a - \\dfrac{32}{3}\\right) + \\left(a - \\dfrac{5}{3}\\right) = 0$을 풀면 $2a = \\dfrac{37}{3}$이고 $a = \\dfrac{37}{6}$이다",
-        "main": true,
-        "step": 6,
-        "_keep_neuron": true
-      },
-      {
-        "from": [
-          "note20",
-          "note15"
-        ],
-        "to": "note21",
-        "neuron": "전략25",
-        "type": "연산",
-        "domain_hint": "NUM",
-        "description": "a=37/6일 때 f(-2)<0<f(1) 성립을 검증한다",
-        "note": "$a = \\dfrac{37}{6}$일 때 $f(-2) = -\\dfrac{9}{2} < 0$, $f(1) = \\dfrac{9}{2} > 0$이어서 $f(-2) < 0 < f(1)$이 성립한다",
+        "domain_hint": "MONO, RAT",
+        "description": "반비례 함수의 단조성으로 수준값의 k-의존성 파악",
+        "note": "$t > 0$ 고정 시 $t/(2k) = (t/2) \\cdot (1/k)$이고, $k < 0$ 구간에서 $k$가 감소하면 $1/k$가 증가(0⁻ 접근)하여 $f(1)/k$는 $k < -1$일 때 $-f(1)$보다 크다(0에 가깝다)",
         "main": false,
-        "step": 6,
-        "_keep_neuron": true
+        "step": 5
+      },
+      {
+        "from": "단서A",
+        "to": "note18",
+        "neuron": "전략25",
+        "type": "연산",
+        "domain_hint": "POLY",
+        "description": "극솟값을 구체적으로 계산한다",
+        "note": "$f(-2) = 16 - \\dfrac{32}{3} - 16 + a = -\\dfrac{32}{3} + a$이고, $f(1) = 1 + \\dfrac{4}{3} - 4 + a = -\\dfrac{5}{3} + a$이다",
+        "main": true,
+        "step": 7
       },
       {
         "from": [
-          "note20",
-          "단서C"
+          "note6",
+          "note18"
         ],
         "to": "END",
         "neuron": "전략25",
         "type": "연산",
-        "domain_hint": "NUM",
-        "description": "60a를 계산한다",
-        "note": "$60a = 60 \\times \\dfrac{37}{6} = 370$이다",
+        "domain_hint": "EQN, NUM",
+        "description": "등식에 대입하여 a를 구하고 60a를 계산한다",
+        "note": "$\\left(-\\dfrac{32}{3}+a\\right)+\\left(-\\dfrac{5}{3}+a\\right)=0$에서 $2a = \\dfrac{37}{3}$이고 $a = \\dfrac{37}{6}$이며, $60a = 370$이다",
         "main": true,
-        "step": 6,
-        "_keep_neuron": true
+        "step": 7
       }
     ],
-    "previous_solution": "사차함수의 각 항을 합/차 미분 규칙으로 분리한다 각 항의 상수배를 앞으로 꺼낸다 각 항을 거듭제곱 미분 규칙으로 미분하여 삼차 도함수를 얻는다 삼차 도함수를 영인자법칙을 이용해 인수분해하여 각 인수별 근을 분리한다 $f''(-2) = 24 > 0$, $f''(0) = -8 < 0$, $f''(1) = 12 > 0$이다. $x = -2$에서 극소, $x = 0$에서 극대, $x = 1$에서 극소이다 $f(-2) = a - \\dfrac{32}{3}$, $f(0) = a$, $f(1) = a - \\dfrac{5}{3}$이다 $f(x) \\geq 0$일 때 $f(x) = \\dfrac{t}{2}$ (ⓑ), $f(x) < 0$일 때 $f(x) = \\dfrac{t}{2k}$ (ⓐ)이다 ① $k = -1$일 때 모든 $t$에 대해 실근 $\\leq 4$, ② $k < -1$인 모든 $k$에 대해 실근 $\\geq 5$인 $t$가 존재한다 $k \\leq -1$이고 $t \\leq 0$이면 ⓐ에서 $\\dfrac{t}{2k} \\geq 0$이어서 $f(x) < 0$과 양립 불가이고, ⓑ에서 $\\dfrac{t}{2} \\leq 0$이어서 $f(x) \\geq 0$과 양립 불가하다. $t > 0$만 고려한다 $t > 0$일 때 ⓑ의 수준값 $\\dfrac{t}{2} > 0$은 $k$에 무관하고, ⓐ의 수준값 $\\dfrac{t}{2k} < 0$ ($k < 0$)은 $k$가 음의 방향으로 갈수록 $0^-$에 가까워진다 $f(-2) < 0 < f(1)$이어야 한다 $f(-2) < 0 < f(1)$일 때, ⓑ의 실근은 $\\dfrac{t}{2}$에 따라 2~4개이고, ⓐ의 실근은 $f(x) < 0$인 구간 $(\\alpha,\\beta)$($\\alpha < -2 < \\beta < 0$)에서 $\\dfrac{t}{2k}$와 $f(-2)$의 관계에 따라 0, 1, 2개이다 $k = -1$일 때 $\\dfrac{t}{2} = f(1)$이면 ⓑ = 3이고 $\\dfrac{t}{2k} = -f(1)$이다. ⓐ $\\leq 1$이려면 $-f(1) \\leq f(-2)$이어야 한다. ⓑ = 4일 때도 $f(-2) + f(1) \\geq 0$이면 ⓐ = 0이다. ①이 성립할 조건은 $f(-2) + f(1) \\geq 0$이다 $k < -1$일 때 $t = 2f(1)$로 놓으면 ⓑ = 3이고 $\\dfrac{f(1)}{k} \\in (-f(1), 0)$이다. $f(-2) + f(1) \\leq 0$이면 $\\dfrac{f(1)}{k} > f(-2)$이므로 ⓐ = 2, 총 5개이다. ②가 성립할 조건은 $f(-2) + f(1) \\leq 0$이다 $f(-2) + f(1) \\geq 0$이고 $f(-2) + f(1) \\leq 0$이므로 $f(-2) + f(1) = 0$이다 $\\left(a - \\dfrac{32}{3}\\right) + \\left(a - \\dfrac{5}{3}\\right) = 0$을 풀면 $2a = \\dfrac{37}{3}$이고 $a = \\dfrac{37}{6}$이다 $60a = 60 \\times \\dfrac{37}{6} = 370$이다",
-    "previous_clues": "[{\"id\":\"단서A\",\"text\":\"$f(x) = x^4 + \\\\dfrac{4}{3}x^3 - 4x^2 + a$\"},{\"id\":\"단서B\",\"text\":\"$(k+1)f(x) - (k-1)|f(x)| = t$의 서로 다른 실근의 개수가 4 이하가 되도록 하는 실수 $k$의 최솟값이 $-1$이다\"},{\"id\":\"단서C\",\"text\":\"구하는 값은 $60a$이다\"}]",
-    "previous_analysis": "",
+    "previous_solution": "각 항의 상수배를 분리한다 합/차 형태의 각 항별로 미분을 분배한다 각 항 x^n을 nx^(n-1)로 미분하여 도함수를 완성한다 $x=-2$에서 극소 $f(-2)$, $x=0$에서 극대 $f(0)$, $x=1$에서 극소 $f(1)$이다 $f(x) < 0$이면 $2kf(x) = t$, 즉 $f(x) = \\dfrac{t}{2k}$ (ⓐ)이고, $f(x) \\geq 0$이면 $2f(x) = t$, 즉 $f(x) = \\dfrac{t}{2}$ (ⓑ)이다 최솟값 조건을 (1) f(x)≥c(경계 성립)와 (2) f(x₀)=c인 x₀ 존재(초과 시 실패)로 분해한다. 두 부등식 방향이 모두 성립하면 반대칭성에 의해 등호가 확정된다. $t > 0$인 경우만 분석 대상이다 $f(-2) < 0 < f(1)$이다 $t/2 = f(1)$일 때 ⓑ는 $x=1$에서 접하여 실근 2개이고, 총 실근 $\\leq 4$이려면 $f(1)/k \\leq f(-2)$이다 $f(-2) = 16 - \\dfrac{32}{3} - 16 + a = -\\dfrac{32}{3} + a$이고, $f(1) = 1 + \\dfrac{4}{3} - 4 + a = -\\dfrac{5}{3} + a$이다 $\\left(-\\dfrac{32}{3}+a\\right)+\\left(-\\dfrac{5}{3}+a\\right)=0$에서 $2a = \\dfrac{37}{3}$이고 $a = \\dfrac{37}{6}$이며, $60a = 370$이다",
+    "previous_clues": "[{\"id\":\"단서A\",\"text\":\"$f(x) = x^4 + \\\\dfrac{4}{3}x^3 - 4x^2 + a$\"},{\"id\":\"단서B\",\"text\":\"방정식 $(k+1)f(x) - (k-1)|f(x)| = t$\"},{\"id\":\"단서C\",\"text\":\"임의의 실수 $t$에 대하여 서로 다른 실근의 개수가 4 이하가 되도록 하는 실수 $k$의 최솟값이 $-1$이다\"}]",
+    "previous_analysis": "f(x)를 미분하여 극값 구조를 파악하고, 절댓값 방정식을 f(x)≥0과 f(x)<0으로 경우 분류하여 수준값 t/2와 t/(2k)의 교점 개수를 분석한다. 최솟값 조건 k=-1을 경계값·초과 조건으로 분해하고, 소거법으로 f(-2)<0<f(1)을 확정한 뒤 임계 수준에서 반비례 단조성을 활용하여 f(-2)+f(1)=0을 도출, a=37/6을 얻는다.",
     "previous_matching": "",
     "previous_matched": [],
     "previous_new_neurons": [
       {
         "id": "전략??",
         "type": "전략",
-        "statement": "함수에 포함된 파라미터 $k$의 값이 변할 때, 특정 수준값(level value) $c$가 $k$의 함수로서 어떻게 변화하는지를 분석하면 $k$의 범위별로 교점 개수나 해의 개수가 달라지는 구조를 파악할 수 있다.",
-        "description": "수준값의 k-의존성을 파악한다",
-        "note": "$t > 0$일 때 ⓑ의 수준값 $\\dfrac{t}{2} > 0$은 $k$에 무관하고, ⓐ의 수준값 $\\dfrac{t}{2k} < 0$ ($k < 0$)은 $k$가 음의 방향으로 갈수록 $0^-$에 가까워진다",
-        "reason": "사실47(점근값에서 근의 개수 불연속 변화)이 가장 근접하지만, 이는 특정 임계값에서의 불연속적 변화를 말하는 것이고, 여기서 필요한 것은 파라미터 k의 값에 따라 수준값(level value)이 어떻게 달라지는지 — 즉 파라미터가 함수의 특정 출력값에 미치는 영향을 추적하는 원리이다. 사실19, 사실24, 사실25는 치역 결정에 관한 것이지 파라미터 의존성 분석이 아니다. 어떤 단일 뉴런도 'k에 따라 수준값이 어떻게 변하는가'를 직접 포착하지 않는다.",
-        "blocked_edge": "note8+note10 → note11",
+        "statement": "최솟값(또는 최댓값) 조건 'f(x) ≥ k의 최솟값이 k₀'는 ① f(x) ≥ k₀가 항상 성립(경계 달성 가능)하는 조건과 ② f(x) ≥ k₀+ε이 불가능(경계 초과 불가)한 조건으로 분해된다.",
+        "description": "최솟값 조건을 경계값 성립과 초과 시 실패 두 조건으로 분해",
+        "note": "최솟값 조건을 (1) f(x)≥c(경계 성립)와 (2) f(x₀)=c인 x₀ 존재(초과 시 실패)로 분해한다. 두 부등식 방향이 모두 성립하면 반대칭성에 의해 등호가 확정된다.",
+        "reason": "전략8(대우)은 명제 변환이고, 전략27(무한집합 배제)은 집합 크기 논리이며, 사실123(반비례 단조성)은 함수 성질이다. 이 edge는 '최솟값 조건을 경계 성립 조건과 초과 시 실패 조건으로 분해'하는 전략으로, 최적화 문제에서 등호 조건과 불등호 조건을 분리하는 일반 원리다. 기존 후보 중 이를 커버하는 뉴런이 없다.",
+        "blocked_edge": "단서C → note6",
         "domain_hint": "EQN, INEQ",
         "domain": [
+          "INEQ",
           "FUNC",
-          "EXP",
-          "LOG",
-          "INEQ"
+          "MONO"
         ],
         "action_hint": "",
         "step": 3,
-        "main": true,
-        "near_miss": []
-      },
-      {
-        "id": "사실??",
-        "type": "사실",
-        "statement": "실수의 순서에 대한 반대칭성: $A \\leq B$이고 $B \\leq A$이면 $A = B$이다. 이를 이용해 양방향 부등식의 교집합으로부터 등식을 도출할 수 있다.",
-        "description": "양방향 부등식의 교집합으로 등식을 얻는다",
-        "note": "$f(-2) + f(1) \\geq 0$이고 $f(-2) + f(1) \\leq 0$이므로 $f(-2) + f(1) = 0$이다",
-        "reason": "사실29(합=0이면 부호 반대)는 부호 조건에 관한 것이고, 사실28도 절댓값 관계이다. 여기서 필요한 것은 'A≤B이고 B≤A이면 A=B'라는 반대칭성 원리인데, 피드백에서 이것이 '순서 공리(반대칭성), 정의 수준'으로 기각되었다. 그러나 이 원리 자체가 기각된 것이지 다른 기존 뉴런으로 매칭하라는 뜻이므로, 후보 목록에서 이를 포착하는 뉴런이 없다. 전략25(대입 확인)나 사칙연산급으로 처리 불가하며, 피드백 지시에 따라 NEW로 제안하되 '정의 수준'임을 감안해 최소화된 서술로 제안한다.",
-        "blocked_edge": "note17+note18 → note19",
-        "domain_hint": "INEQ",
-        "domain": [
-          "INEQ",
-          "NUM"
-        ],
-        "action_hint": "",
-        "step": 6,
         "main": true,
         "near_miss": []
       }
@@ -6554,8 +6458,8 @@
       "사실??"
     ],
     "needed_dna": [],
-    "edge_count": 22,
-    "side_count": 5,
-    "created_at": "2026-03-26T14:45:40.212Z"
+    "edge_count": 19,
+    "side_count": 8,
+    "created_at": "2026-03-26T15:17:05.797Z"
   }
 ]
