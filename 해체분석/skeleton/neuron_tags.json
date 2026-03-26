@@ -1669,5 +1669,13 @@
       "LIM"
     ],
     "action": "NONZERO_OVER_ZERO_DIVERGES"
+  },
+  {
+    "id": "전략45",
+    "domain": [
+      "FUNC",
+      "LIM"
+    ],
+    "action": "PIECEWISE_BOUNDARY_OBSERVE"
   }
 ]
