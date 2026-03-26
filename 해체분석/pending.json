@@ -6376,7 +6376,7 @@
     "problem_id": "P18",
     "answer": "370",
     "content": "id: P18\nsource: 수능\nyear: 미상\nunit: 함수와 방정식\ntopic: 절댓값 포함 방정식의 실근의 개수\nsubtopic: 4차 함수와 절댓값 조건 분석\ndifficulty: 상\nscore: 4\nanswer: 370\ntype: short_answer\n\n# 18. (수능) - 절댓값 포함 방정식의 실근의 개수\n\n## Problem\n함수 $f(x) = x^4 + \\dfrac{4}{3}x^3 - 4x^2 + a$와 임의의 실수 $t$에 대하여 $x$에 대한 방정식\n\n$$(k+1)f(x) - (k-1)|f(x)| = t$$\n\n의 서로 다른 실근의 개수가 4 이하가 되도록 하는 실수 $k$의 최솟값이 $-1$일 때, $60a$의 값을 구하시오. [4점]\n\n## Solution\n$f(x) = x^4 + \\dfrac{4}{3}x^3 - 4x^2 + a$이므로\n\n$$f'(x) = 4x^3 + 4x^2 - 8x = 4x(x+2)(x-1)$$\n\n이므로 $y = f(x)$의 그래프의 개형은 $x = -2, 0, 1$에서 극값을 가지며, $f(0)$이 극대, $f(-2)$와 $f(1)$이 극소에 해당한다.\n\n[FIGURE: y=f(x)의 그래프 개형. x=-2에서 극솟값 f(-2), x=0에서 극댓값, x=1에서 극솟값 f(1)을 가지며, y=f(1) > y=f(-2) 순서로 나타남]\n\n한편, 문제의 $x$에 대한 방정식 $(k+1)f(x) - (k-1)|f(x)| = t$에서 좌변을 $g(x)$라 하면\n\n- ① $k = -1$일 때 모든 실수 $t$에 대하여 $g(x) = t$인 서로 다른 $x$의 개수가 4 이하\n- ② $k < -1$인 모든 $k$에 대하여 $g(x) = t$인 서로 다른 $x$의 개수가 5 이상인 $t$가 존재함\n\n을 모두 만족시켜야 한다.\n\n따라서 $k \\le -1$일 때만 관찰하면 되고,\n\n$k \\le -1$일 때 $g(x) = t$는\n\n$$\\begin{cases} f(x) < 0 \\text{일 때 } f(x) = \\dfrac{t}{2k} \\cdots \\text{ⓐ} \\\\[6pt] f(x) \\ge 0 \\text{일 때 } f(x) = \\dfrac{t}{2} \\cdots \\text{ⓑ} \\end{cases}$$\n\n이다. 이때,\n\n$t \\le 0$인 경우, ⓐ의 실근의 개수 $= 0$이므로 ②를 만족시키는 $t$가 존재하지 않음을 알 수 있으므로 $t \\le 0$인 경우는 고려하지 않아도 된다.\n\n따라서 $t > 0$이라 할 때, 위의 그림을 참고하면 ⓐ의 실근의 개수 $= 4$인 $t$가 존재\n\n- $f(1) < 0$인 경우, $t$에 상관없이 ⓑ의 실근의 개수 $\\ge 2$이므로 ①에 모순\n- $f(1) = 0$인 경우, $t = 0^+$이면 $\\begin{cases} \\text{ⓐ의 실근의 개수} = 2 \\\\ \\text{ⓑ의 실근의 개수} = 4 \\end{cases}$이므로 ①에 모순\n- $f(-2) \\ge 0$인 경우, $t$에 상관없이 ⓐ의 실근의 개수 $= 0$이므로 ②에 모순\n\n임을 알 수 있다.\n\n또한, $f(-2) < 0 < f(1)$인 경우, 위의 그림을 참고하면\n\n$$\\begin{cases} t > 0 \\text{인 임의의 실수 } t \\text{에 대하여} \\\\ g(x) = t \\text{인 서로 다른 } x \\text{의 개수가 4 이하} \\end{cases}$$\n\n를 만족시키기 위해서는\n\n$\\dfrac{t}{2} = f(1)$인 $t$에 대하여 $\\dfrac{t}{2k} \\le f(-2) \\Leftrightarrow f(1) \\ge kf(-2)$\n\n이어야 하므로\n\n$$\\begin{aligned} &① \\Rightarrow f(1) \\ge -f(-2) \\\\ &② \\Rightarrow f(1) \\le -f(-2) \\end{aligned} \\bigg\\} \\Rightarrow f(-2) = -f(1)$$\n\n$$\\Rightarrow -\\dfrac{32}{3} + a = -\\left(-\\dfrac{5}{3} + a\\right)$$\n\n$$\\Rightarrow a = \\dfrac{37}{6}$$\n\n을 얻는다.\n\n$\\therefore\\ 60a = 370$",
-    "content_source": "FileLoop",
+    "content_source": "CheckPending",
     "content_length": 2038,
     "skel_status": "neuron_missing",
     "dna_status": "ok",
@@ -6386,11 +6386,11 @@
           "단서A"
         ],
         "to": "note1",
-        "neuron": "연산33",
+        "neuron": "연산34",
         "type": "연산",
         "domain_hint": "DIFF, POLY",
-        "description": "사차함수의 각 항을 거듭제곱 미분 규칙으로 미분하여 삼차 도함수를 얻는다",
-        "note": "사차함수의 각 항을 거듭제곱 미분 규칙으로 미분하여 삼차 도함수를 얻는다",
+        "description": "사차함수의 각 항을 합/차 미분 규칙으로 분리한다",
+        "note": "사차함수의 각 항을 합/차 미분 규칙으로 분리한다",
         "main": true,
         "step": 1,
         "_keep_neuron": true
@@ -6398,6 +6398,30 @@
       {
         "from": "note1",
         "to": "note2",
+        "neuron": "연산35",
+        "type": "연산",
+        "domain_hint": "DIFF, POLY",
+        "description": "각 항의 상수배를 앞으로 꺼낸다",
+        "note": "각 항의 상수배를 앞으로 꺼낸다",
+        "main": true,
+        "step": 1,
+        "_keep_neuron": true
+      },
+      {
+        "from": "note2",
+        "to": "note3",
+        "neuron": "연산33",
+        "type": "연산",
+        "domain_hint": "DIFF, POLY",
+        "description": "각 항을 거듭제곱 미분 규칙으로 미분하여 삼차 도함수를 얻는다",
+        "note": "각 항을 거듭제곱 미분 규칙으로 미분하여 삼차 도함수를 얻는다",
+        "main": true,
+        "step": 1,
+        "_keep_neuron": true
+      },
+      {
+        "from": "note3",
+        "to": "note4",
         "neuron": "연산9",
         "type": "연산",
         "domain_hint": "DIFF, POLY",
@@ -6410,249 +6434,266 @@
       {
         "from": [
           "단서A",
-          "note2"
+          "note4"
         ],
-        "to": "note3",
+        "to": "note5",
         "neuron": "사실104",
         "type": "사실",
         "domain_hint": "DIFF",
         "description": "이계도함수 판정법으로 극대·극소를 판별한다",
         "note": "$f''(-2) = 24 > 0$, $f''(0) = -8 < 0$, $f''(1) = 12 > 0$이다. $x = -2$에서 극소, $x = 0$에서 극대, $x = 1$에서 극소이다",
         "main": true,
-        "step": 1
+        "step": 1,
+        "_keep_neuron": true
       },
       {
         "from": [
           "단서A",
-          "note2"
+          "note4"
         ],
-        "to": "note4",
+        "to": "note6",
         "neuron": "전략25",
         "type": "연산",
         "domain_hint": "POLY",
         "description": "극점에서의 함수값을 계산한다",
         "note": "$f(-2) = a - \\dfrac{32}{3}$, $f(0) = a$, $f(1) = a - \\dfrac{5}{3}$이다",
         "main": true,
-        "step": 1
+        "step": 1,
+        "_keep_neuron": true
       },
       {
         "from": [
-          "note4"
+          "note6"
         ],
-        "to": "note5",
-        "neuron": "NEW_1",
+        "to": "note7",
+        "neuron": "전략25",
         "type": "연산",
         "domain_hint": "INEQ",
         "description": "극솟값들의 대소를 비교한다",
         "note": "$f(-2) - f(1) = -9 < 0$이고, $f(-2) < f(1) < f(0) = a$이다",
         "main": false,
-        "step": 1
+        "step": 1,
+        "_keep_neuron": false
       },
       {
         "from": [
           "단서B"
         ],
-        "to": "note6",
+        "to": "note8",
         "neuron": "전략6",
         "type": "전략",
         "domain_hint": "ABS, EQN",
         "description": "절댓값을 f(x)의 부호로 경우 분리한다",
         "note": "$f(x) \\geq 0$일 때 $f(x) = \\dfrac{t}{2}$ (ⓑ), $f(x) < 0$일 때 $f(x) = \\dfrac{t}{2k}$ (ⓐ)이다",
         "main": true,
-        "step": 2
+        "step": 2,
+        "_keep_neuron": true
       },
       {
         "from": [
           "단서B"
         ],
-        "to": "note7",
+        "to": "note9",
         "neuron": "사실113",
         "type": "전략",
         "domain_hint": "EQN, INEQ",
         "description": "최솟값 조건을 경계 조건과 위반 조건으로 분해한다",
         "note": "① $k = -1$일 때 모든 $t$에 대해 실근 $\\leq 4$, ② $k < -1$인 모든 $k$에 대해 실근 $\\geq 5$인 $t$가 존재한다",
         "main": true,
-        "step": 2
+        "step": 2,
+        "_keep_neuron": true
       },
       {
         "from": [
-          "note6",
-          "note7"
+          "note8",
+          "note9"
         ],
-        "to": "note8",
+        "to": "note10",
         "neuron": "전략23",
         "type": "전략",
         "domain_hint": "INEQ, EQN",
         "description": "t≤0일 때 실근이 없음을 확인하여 범위를 제한한다",
         "note": "$k \\leq -1$이고 $t \\leq 0$이면 ⓐ에서 $\\dfrac{t}{2k} \\geq 0$이어서 $f(x) < 0$과 양립 불가이고, ⓑ에서 $\\dfrac{t}{2} \\leq 0$이어서 $f(x) \\geq 0$과 양립 불가하다. $t > 0$만 고려한다",
         "main": true,
-        "step": 3
+        "step": 3,
+        "_keep_neuron": true
       },
       {
         "from": [
-          "note6",
-          "note8"
+          "note8",
+          "note10"
         ],
-        "to": "note9",
-        "neuron": "NEW_2",
+        "to": "note11",
+        "neuron": "NEW_1",
         "type": "사실",
         "domain_hint": "EQN, INEQ",
         "description": "수준값의 k-의존성을 파악한다",
         "note": "$t > 0$일 때 ⓑ의 수준값 $\\dfrac{t}{2} > 0$은 $k$에 무관하고, ⓐ의 수준값 $\\dfrac{t}{2k} < 0$ ($k < 0$)은 $k$가 음의 방향으로 갈수록 $0^-$에 가까워진다",
         "main": true,
-        "step": 3
+        "step": 3,
+        "_keep_neuron": false
       },
       {
         "from": [
-          "note3",
-          "note4",
-          "note9"
+          "note5",
+          "note6",
+          "note11"
         ],
-        "to": "note10",
+        "to": "note12",
         "neuron": "전략25",
         "type": "전략",
         "domain_hint": "FUNC, INEQ",
         "description": "f(1)<0일 때 실근 초과를 확인한다",
         "note": "$f(1) < 0$이면 $f(x) < 0$인 영역이 양쪽 극소점을 포함하여, ⓐ에서 4개 + ⓑ에서 2개 이상 = 총 6개 이상이 되어 ①에 모순이다",
         "main": false,
-        "step": 4
+        "step": 4,
+        "_keep_neuron": true
       },
       {
         "from": [
-          "note3",
-          "note4",
-          "note9"
+          "note5",
+          "note6",
+          "note11"
         ],
-        "to": "note11",
+        "to": "note13",
         "neuron": "전략25",
         "type": "전략",
         "domain_hint": "FUNC, INEQ",
         "description": "f(1)=0일 때 실근 초과를 확인한다",
         "note": "$f(1) = 0$이면 $t \\to 0^+$에서 ⓑ의 $\\dfrac{t}{2} \\to 0^+$이므로 ⓑ = 4개, ⓐ의 $\\dfrac{t}{2k} \\to 0^-$이므로 ⓐ = 2개, 총 6개로 ①에 모순이다",
         "main": false,
-        "step": 4
+        "step": 4,
+        "_keep_neuron": true
       },
       {
         "from": [
-          "note3",
-          "note4",
-          "note9"
+          "note5",
+          "note6",
+          "note11"
         ],
-        "to": "note12",
+        "to": "note14",
         "neuron": "전략25",
         "type": "전략",
         "domain_hint": "FUNC, INEQ",
         "description": "f(-2)≥0일 때 ⓐ=0 항상임을 확인한다",
         "note": "$f(-2) \\geq 0$이면 $f(x) < 0$인 영역이 존재하지 않아 ⓐ의 실근이 항상 0개이고, $k$에 관계없이 ⓑ만 존재하여 ②에 모순이다",
         "main": false,
-        "step": 4
+        "step": 4,
+        "_keep_neuron": true
       },
       {
         "from": [
-          "note10",
-          "note11",
-          "note12"
+          "note12",
+          "note13",
+          "note14"
         ],
-        "to": "note13",
+        "to": "note15",
         "neuron": "전략20",
         "type": "전략",
         "domain_hint": "INEQ",
         "description": "소거법으로 생존 조건을 도출한다",
         "note": "$f(-2) < 0 < f(1)$이어야 한다",
         "main": true,
-        "step": 4
+        "step": 4,
+        "_keep_neuron": true
       },
       {
         "from": [
-          "note3",
-          "note4",
           "note5",
-          "note13"
+          "note6",
+          "note7",
+          "note15"
         ],
-        "to": "note14",
+        "to": "note16",
         "neuron": "사실44",
         "type": "사실",
         "domain_hint": "FUNC, POLY",
         "description": "f(-2)<0<f(1)일 때 각 수준값의 교점 개수를 정리한다",
         "note": "$f(-2) < 0 < f(1)$일 때, ⓑ의 실근은 $\\dfrac{t}{2}$에 따라 2~4개이고, ⓐ의 실근은 $f(x) < 0$인 구간 $(\\alpha,\\beta)$($\\alpha < -2 < \\beta < 0$)에서 $\\dfrac{t}{2k}$와 $f(-2)$의 관계에 따라 0, 1, 2개이다",
         "main": true,
-        "step": 5
+        "step": 5,
+        "_keep_neuron": true
       },
       {
         "from": [
-          "note14",
-          "note7",
-          "note9"
+          "note16",
+          "note9",
+          "note11"
         ],
-        "to": "note15",
+        "to": "note17",
         "neuron": "전략22",
         "type": "전략",
         "domain_hint": "INEQ, EQN",
         "description": "k=-1에서 임계 상황을 분석하여 ①의 부등식 조건을 도출한다",
         "note": "$k = -1$일 때 $\\dfrac{t}{2} = f(1)$이면 ⓑ = 3이고 $\\dfrac{t}{2k} = -f(1)$이다. ⓐ $\\leq 1$이려면 $-f(1) \\leq f(-2)$이어야 한다. ⓑ = 4일 때도 $f(-2) + f(1) \\geq 0$이면 ⓐ = 0이다. ①이 성립할 조건은 $f(-2) + f(1) \\geq 0$이다",
         "main": true,
-        "step": 5
+        "step": 5,
+        "_keep_neuron": true
       },
       {
         "from": [
-          "note14",
-          "note7",
-          "note9"
+          "note16",
+          "note9",
+          "note11"
         ],
-        "to": "note16",
+        "to": "note18",
         "neuron": "전략22",
         "type": "전략",
         "domain_hint": "INEQ, EQN",
         "description": "k<-1에서 임계 상황을 분석하여 ②의 부등식 조건을 도출한다",
         "note": "$k < -1$일 때 $t = 2f(1)$로 놓으면 ⓑ = 3이고 $\\dfrac{f(1)}{k} \\in (-f(1), 0)$이다. $f(-2) + f(1) \\leq 0$이면 $\\dfrac{f(1)}{k} > f(-2)$이므로 ⓐ = 2, 총 5개이다. ②가 성립할 조건은 $f(-2) + f(1) \\leq 0$이다",
         "main": true,
-        "step": 5
+        "step": 5,
+        "_keep_neuron": true
       },
       {
         "from": [
-          "note15",
-          "note16"
+          "note17",
+          "note18"
         ],
-        "to": "note17",
-        "neuron": "NEW_3",
+        "to": "note19",
+        "neuron": "NEW_2",
         "type": "사실",
         "domain_hint": "INEQ",
         "description": "양방향 부등식의 교집합으로 등식을 얻는다",
         "note": "$f(-2) + f(1) \\geq 0$이고 $f(-2) + f(1) \\leq 0$이므로 $f(-2) + f(1) = 0$이다",
         "main": true,
-        "step": 6
+        "step": 6,
+        "_keep_neuron": false
       },
       {
         "from": [
-          "note17",
-          "note4"
+          "note19",
+          "note6"
         ],
-        "to": "note18",
+        "to": "note20",
         "neuron": "전략25",
         "type": "연산",
         "domain_hint": "EQN",
         "description": "극값 식을 대입하여 a를 구한다",
         "note": "$\\left(a - \\dfrac{32}{3}\\right) + \\left(a - \\dfrac{5}{3}\\right) = 0$을 풀면 $2a = \\dfrac{37}{3}$이고 $a = \\dfrac{37}{6}$이다",
         "main": true,
-        "step": 6
+        "step": 6,
+        "_keep_neuron": true
       },
       {
         "from": [
-          "note18",
-          "note13"
+          "note20",
+          "note15"
         ],
-        "to": "note19",
+        "to": "note21",
         "neuron": "전략25",
         "type": "연산",
         "domain_hint": "NUM",
         "description": "a=37/6일 때 f(-2)<0<f(1) 성립을 검증한다",
         "note": "$a = \\dfrac{37}{6}$일 때 $f(-2) = -\\dfrac{9}{2} < 0$, $f(1) = \\dfrac{9}{2} > 0$이어서 $f(-2) < 0 < f(1)$이 성립한다",
         "main": false,
-        "step": 6
+        "step": 6,
+        "_keep_neuron": true
       },
       {
         "from": [
-          "note18",
+          "note20",
           "단서C"
         ],
         "to": "END",
@@ -6662,46 +6703,29 @@
         "description": "60a를 계산한다",
         "note": "$60a = 60 \\times \\dfrac{37}{6} = 370$이다",
         "main": true,
-        "step": 6
+        "step": 6,
+        "_keep_neuron": true
       }
     ],
-    "previous_solution": "사차함수의 각 항을 거듭제곱 미분 규칙으로 미분하여 삼차 도함수를 얻는다 삼차 도함수를 영인자법칙을 이용해 인수분해하여 각 인수별 근을 분리한다 $f''(-2) = 24 > 0$, $f''(0) = -8 < 0$, $f''(1) = 12 > 0$이다. $x = -2$에서 극소, $x = 0$에서 극대, $x = 1$에서 극소이다 $f(-2) = a - \\dfrac{32}{3}$, $f(0) = a$, $f(1) = a - \\dfrac{5}{3}$이다 $f(x) \\geq 0$일 때 $f(x) = \\dfrac{t}{2}$ (ⓑ), $f(x) < 0$일 때 $f(x) = \\dfrac{t}{2k}$ (ⓐ)이다 ① $k = -1$일 때 모든 $t$에 대해 실근 $\\leq 4$, ② $k < -1$인 모든 $k$에 대해 실근 $\\geq 5$인 $t$가 존재한다 $k \\leq -1$이고 $t \\leq 0$이면 ⓐ에서 $\\dfrac{t}{2k} \\geq 0$이어서 $f(x) < 0$과 양립 불가이고, ⓑ에서 $\\dfrac{t}{2} \\leq 0$이어서 $f(x) \\geq 0$과 양립 불가하다. $t > 0$만 고려한다 $t > 0$일 때 ⓑ의 수준값 $\\dfrac{t}{2} > 0$은 $k$에 무관하고, ⓐ의 수준값 $\\dfrac{t}{2k} < 0$ ($k < 0$)은 $k$가 음의 방향으로 갈수록 $0^-$에 가까워진다 $f(-2) < 0 < f(1)$이어야 한다 $f(-2) < 0 < f(1)$일 때, ⓑ의 실근은 $\\dfrac{t}{2}$에 따라 2~4개이고, ⓐ의 실근은 $f(x) < 0$인 구간 $(\\alpha,\\beta)$($\\alpha < -2 < \\beta < 0$)에서 $\\dfrac{t}{2k}$와 $f(-2)$의 관계에 따라 0, 1, 2개이다 $k = -1$일 때 $\\dfrac{t}{2} = f(1)$이면 ⓑ = 3이고 $\\dfrac{t}{2k} = -f(1)$이다. ⓐ $\\leq 1$이려면 $-f(1) \\leq f(-2)$이어야 한다. ⓑ = 4일 때도 $f(-2) + f(1) \\geq 0$이면 ⓐ = 0이다. ①이 성립할 조건은 $f(-2) + f(1) \\geq 0$이다 $k < -1$일 때 $t = 2f(1)$로 놓으면 ⓑ = 3이고 $\\dfrac{f(1)}{k} \\in (-f(1), 0)$이다. $f(-2) + f(1) \\leq 0$이면 $\\dfrac{f(1)}{k} > f(-2)$이므로 ⓐ = 2, 총 5개이다. ②가 성립할 조건은 $f(-2) + f(1) \\leq 0$이다 $f(-2) + f(1) \\geq 0$이고 $f(-2) + f(1) \\leq 0$이므로 $f(-2) + f(1) = 0$이다 $\\left(a - \\dfrac{32}{3}\\right) + \\left(a - \\dfrac{5}{3}\\right) = 0$을 풀면 $2a = \\dfrac{37}{3}$이고 $a = \\dfrac{37}{6}$이다 $60a = 60 \\times \\dfrac{37}{6} = 370$이다",
+    "previous_solution": "사차함수의 각 항을 합/차 미분 규칙으로 분리한다 각 항의 상수배를 앞으로 꺼낸다 각 항을 거듭제곱 미분 규칙으로 미분하여 삼차 도함수를 얻는다 삼차 도함수를 영인자법칙을 이용해 인수분해하여 각 인수별 근을 분리한다 $f''(-2) = 24 > 0$, $f''(0) = -8 < 0$, $f''(1) = 12 > 0$이다. $x = -2$에서 극소, $x = 0$에서 극대, $x = 1$에서 극소이다 $f(-2) = a - \\dfrac{32}{3}$, $f(0) = a$, $f(1) = a - \\dfrac{5}{3}$이다 $f(x) \\geq 0$일 때 $f(x) = \\dfrac{t}{2}$ (ⓑ), $f(x) < 0$일 때 $f(x) = \\dfrac{t}{2k}$ (ⓐ)이다 ① $k = -1$일 때 모든 $t$에 대해 실근 $\\leq 4$, ② $k < -1$인 모든 $k$에 대해 실근 $\\geq 5$인 $t$가 존재한다 $k \\leq -1$이고 $t \\leq 0$이면 ⓐ에서 $\\dfrac{t}{2k} \\geq 0$이어서 $f(x) < 0$과 양립 불가이고, ⓑ에서 $\\dfrac{t}{2} \\leq 0$이어서 $f(x) \\geq 0$과 양립 불가하다. $t > 0$만 고려한다 $t > 0$일 때 ⓑ의 수준값 $\\dfrac{t}{2} > 0$은 $k$에 무관하고, ⓐ의 수준값 $\\dfrac{t}{2k} < 0$ ($k < 0$)은 $k$가 음의 방향으로 갈수록 $0^-$에 가까워진다 $f(-2) < 0 < f(1)$이어야 한다 $f(-2) < 0 < f(1)$일 때, ⓑ의 실근은 $\\dfrac{t}{2}$에 따라 2~4개이고, ⓐ의 실근은 $f(x) < 0$인 구간 $(\\alpha,\\beta)$($\\alpha < -2 < \\beta < 0$)에서 $\\dfrac{t}{2k}$와 $f(-2)$의 관계에 따라 0, 1, 2개이다 $k = -1$일 때 $\\dfrac{t}{2} = f(1)$이면 ⓑ = 3이고 $\\dfrac{t}{2k} = -f(1)$이다. ⓐ $\\leq 1$이려면 $-f(1) \\leq f(-2)$이어야 한다. ⓑ = 4일 때도 $f(-2) + f(1) \\geq 0$이면 ⓐ = 0이다. ①이 성립할 조건은 $f(-2) + f(1) \\geq 0$이다 $k < -1$일 때 $t = 2f(1)$로 놓으면 ⓑ = 3이고 $\\dfrac{f(1)}{k} \\in (-f(1), 0)$이다. $f(-2) + f(1) \\leq 0$이면 $\\dfrac{f(1)}{k} > f(-2)$이므로 ⓐ = 2, 총 5개이다. ②가 성립할 조건은 $f(-2) + f(1) \\leq 0$이다 $f(-2) + f(1) \\geq 0$이고 $f(-2) + f(1) \\leq 0$이므로 $f(-2) + f(1) = 0$이다 $\\left(a - \\dfrac{32}{3}\\right) + \\left(a - \\dfrac{5}{3}\\right) = 0$을 풀면 $2a = \\dfrac{37}{3}$이고 $a = \\dfrac{37}{6}$이다 $60a = 60 \\times \\dfrac{37}{6} = 370$이다",
     "previous_clues": "[{\"id\":\"단서A\",\"text\":\"$f(x) = x^4 + \\\\dfrac{4}{3}x^3 - 4x^2 + a$\"},{\"id\":\"단서B\",\"text\":\"$(k+1)f(x) - (k-1)|f(x)| = t$의 서로 다른 실근의 개수가 4 이하가 되도록 하는 실수 $k$의 최솟값이 $-1$이다\"},{\"id\":\"단서C\",\"text\":\"구하는 값은 $60a$이다\"}]",
-    "previous_analysis": "f(x)를 미분하여 극점과 극값을 구한 뒤, 절댓값 방정식을 f(x)의 부호별로 분리하면 ⓐ f(x)=t/(2k)과 ⓑ f(x)=t/2로 나뉜다. 최솟값 조건을 ①(k=-1일 때 항상 ≤4)과 ②(k<-1일 때 ≥5인 t 존재)로 분해하고, 그래프 분석으로 f(-2)<0<f(1)을 도출한 뒤, 임계 상황에서 두 조건의 부등식이 f(-2)+f(1)=0으로 결합되어 a=37/6을 얻는다.",
+    "previous_analysis": "",
     "previous_matching": "",
     "previous_matched": [],
     "previous_new_neurons": [
       {
-        "id": "연산??",
-        "type": "연산",
-        "statement": "함수의 여러 극솟값(또는 극댓값)을 구한 뒤, 그 값들을 수치 비교하여 대소 관계를 판정한다.",
-        "description": "극솟값들의 대소를 비교한다",
-        "note": "$f(-2) - f(1) = -9 < 0$이고, $f(-2) < f(1) < f(0) = a$이다",
-        "reason": "제시된 후보들은 모두 평행이동, 치역 변환, 로그·지수 연산, 미분 등에 관한 것으로, '극솟값들의 대소를 비교한다'는 원리와 무관하다. 이는 단순 사칙연산도 아니고, 기존 뉴런 중 극값 비교를 다루는 것이 없다.",
-        "blocked_edge": "note4 → note5",
-        "domain_hint": "INEQ",
-        "domain": [
-          "FUNC",
-          "DIFF",
-          "MONO"
-        ],
-        "action_hint": "",
-        "step": 1,
-        "main": false,
-        "near_miss": []
-      },
-      {
         "id": "전략??",
         "type": "전략",
-        "statement": "방정식 또는 조건식에 포함된 파라미터 $k$의 값에 따라 수준값(임계값·교점값 등)이 어떻게 변하는지 분석하여, $k$의 범위별로 경우를 나눈다.",
+        "statement": "함수에 포함된 파라미터 $k$의 값이 변할 때, 특정 수준값(level value) $c$가 $k$의 함수로서 어떻게 변화하는지를 분석하면 $k$의 범위별로 교점 개수나 해의 개수가 달라지는 구조를 파악할 수 있다.",
         "description": "수준값의 k-의존성을 파악한다",
         "note": "$t > 0$일 때 ⓑ의 수준값 $\\dfrac{t}{2} > 0$은 $k$에 무관하고, ⓐ의 수준값 $\\dfrac{t}{2k} < 0$ ($k < 0$)은 $k$가 음의 방향으로 갈수록 $0^-$에 가까워진다",
-        "reason": "제시된 후보들은 단조성, 치역, 합성함수, 연속성 등을 다루지만, '파라미터 k에 따라 수준값(level)이 어떻게 달라지는가'를 분석하는 원리는 없다. 사실17(치역의 정의)이 가장 가깝지만, k-의존성 파악은 파라미터가 변할 때 방정식의 해 개수나 해 자체가 어떻게 변하는지를 추적하는 별도 원리이다.",
-        "blocked_edge": "note6+note8 → note9",
+        "reason": "사실47(점근값에서 근의 개수 불연속 변화)이 가장 근접하지만, 이는 특정 임계값에서의 불연속적 변화를 말하는 것이고, 여기서 필요한 것은 파라미터 k의 값에 따라 수준값(level value)이 어떻게 달라지는지 — 즉 파라미터가 함수의 특정 출력값에 미치는 영향을 추적하는 원리이다. 사실19, 사실24, 사실25는 치역 결정에 관한 것이지 파라미터 의존성 분석이 아니다. 어떤 단일 뉴런도 'k에 따라 수준값이 어떻게 변하는가'를 직접 포착하지 않는다.",
+        "blocked_edge": "note8+note10 → note11",
         "domain_hint": "EQN, INEQ",
         "domain": [
           "FUNC",
-          "EQN",
+          "EXP",
+          "LOG",
           "INEQ"
         ],
         "action_hint": "",
@@ -6712,11 +6736,11 @@
       {
         "id": "사실??",
         "type": "사실",
-        "statement": "$A \\leq B$이고 동시에 $B \\leq A$이면 $A = B$이다. 양방향 부등식이 성립하면 등식이 도출된다.",
+        "statement": "실수의 순서에 대한 반대칭성: $A \\leq B$이고 $B \\leq A$이면 $A = B$이다. 이를 이용해 양방향 부등식의 교집합으로부터 등식을 도출할 수 있다.",
         "description": "양방향 부등식의 교집합으로 등식을 얻는다",
         "note": "$f(-2) + f(1) \\geq 0$이고 $f(-2) + f(1) \\leq 0$이므로 $f(-2) + f(1) = 0$이다",
-        "reason": "제시된 후보들(사실112, 115, 118, 119, 122)은 다항함수의 차수·계수·단조성에 관한 것으로, '양방향 부등식의 교집합으로 등식을 얻는다'는 원리와 무관하다. 이 원리는 $A \\leq B$이고 $B \\leq A$이면 $A = B$라는 반대칭성(antisymmetry)에 해당하며, 기존 뉴런 중 이를 명시한 것이 없다.",
-        "blocked_edge": "note15+note16 → note17",
+        "reason": "사실29(합=0이면 부호 반대)는 부호 조건에 관한 것이고, 사실28도 절댓값 관계이다. 여기서 필요한 것은 'A≤B이고 B≤A이면 A=B'라는 반대칭성 원리인데, 피드백에서 이것이 '순서 공리(반대칭성), 정의 수준'으로 기각되었다. 그러나 이 원리 자체가 기각된 것이지 다른 기존 뉴런으로 매칭하라는 뜻이므로, 후보 목록에서 이를 포착하는 뉴런이 없다. 전략25(대입 확인)나 사칙연산급으로 처리 불가하며, 피드백 지시에 따라 NEW로 제안하되 '정의 수준'임을 감안해 최소화된 서술로 제안한다.",
+        "blocked_edge": "note17+note18 → note19",
         "domain_hint": "INEQ",
         "domain": [
           "INEQ",
@@ -6730,7 +6754,7 @@
     ],
     "previous_partial_skeleton": [],
     "previous_blockage_point": "",
-    "previous_skel_review_notes": "C24(최솟값 조건)은 C13(최댓값 조건)의 대칭 구조로 신규 제안. '임의의 실수 t에 대하여'는 C18(모든 x에 대해)로 처리 가능하므로 신규 제안 않음. 방정식의 좌변은 f(x)>=0일 때와 f(x)<0일 때 달라지는 구조이나, 문제 텍스트에는 조각함수로 명시되지 않으므로 절대값 포함 수식으로만 분해. 묻는 값은 60a(곱(상수60, 변수a)).",
+    "previous_skel_review_notes": "",
     "previous_dna_nodes": [
       {
         "id": "top",
@@ -7183,21 +7207,8 @@
         "to": "min_cond"
       }
     ],
-    "previous_new_dna": [
-      {
-        "id": "C24",
-        "name": "최솟값 조건",
-        "signature": "(대상, 조건, 값) → 조건",
-        "reason": "어떤 조건을 만족하는 값의 최솟값이 특정 값임을 나타내는 조건. C13(최댓값 조건)의 대응 DNA가 없음."
-      },
-      {
-        "id": "C25",
-        "name": "임의의 값에 대해",
-        "signature": "(변수, 조건) → 조건",
-        "reason": "임의의 실수 t에 대하여 ~가 성립한다는 전칭 조건. C18(모든 x에 대해)과 유사하나 문제에서 변수가 t이고 조건 구조가 다름. 사실상 C18과 동일 구조이므로 C18로 처리 가능 — C18 사용."
-      }
-    ],
-    "previous_dna_review_notes": "C24(최솟값 조건)은 C13(최댓값 조건)의 대칭 구조로 신규 제안. '임의의 실수 t에 대하여'는 C18(모든 x에 대해)로 처리 가능하므로 신규 제안 않음. 방정식의 좌변은 f(x)>=0일 때와 f(x)<0일 때 달라지는 구조이나, 문제 텍스트에는 조각함수로 명시되지 않으므로 절대값 포함 수식으로만 분해. 묻는 값은 60a(곱(상수60, 변수a)).",
+    "previous_new_dna": [],
+    "previous_dna_review_notes": "",
     "original_solution": "$f(x) = x^4 + \\dfrac{4}{3}x^3 - 4x^2 + a$이므로\n\n$$f'(x) = 4x^3 + 4x^2 - 8x = 4x(x+2)(x-1)$$\n\n이므로 $y = f(x)$의 그래프의 개형은 $x = -2, 0, 1$에서 극값을 가지며, $f(0)$이 극대, $f(-2)$와 $f(1)$이 극소에 해당한다.\n\n[FIGURE: y=f(x)의 그래프 개형. x=-2에서 극솟값 f(-2), x=0에서 극댓값, x=1에서 극솟값 f(1)을 가지며, y=f(1) > y=f(-2) 순서로 나타남]\n\n한편, 문제의 $x$에 대한 방정식 $(k+1)f(x) - (k-1)|f(x)| = t$에서 좌변을 $g(x)$라 하면\n\n- ① $k = -1$일 때 모든 실수 $t$에 대하여 $g(x) = t$인 서로 다른 $x$의 개수가 4 이하\n- ② $k < -1$인 모든 $k$에 대하여 $g(x) = t$인 서로 다른 $x$의 개수가 5 이상인 $t$가 존재함\n\n을 모두 만족시켜야 한다.\n\n따라서 $k \\le -1$일 때만 관찰하면 되고,\n\n$k \\le -1$일 때 $g(x) = t$는\n\n$$\\begin{cases} f(x) < 0 \\text{일 때 } f(x) = \\dfrac{t}{2k} \\cdots \\text{ⓐ} \\\\[6pt] f(x) \\ge 0 \\text{일 때 } f(x) = \\dfrac{t}{2} \\cdots \\text{ⓑ} \\end{cases}$$\n\n이다. 이때,\n\n$t \\le 0$인 경우, ⓐ의 실근의 개수 $= 0$이므로 ②를 만족시키는 $t$가 존재하지 않음을 알 수 있으므로 $t \\le 0$인 경우는 고려하지 않아도 된다.\n\n따라서 $t > 0$이라 할 때, 위의 그림을 참고하면 ⓐ의 실근의 개수 $= 4$인 $t$가 존재\n\n- $f(1) < 0$인 경우, $t$에 상관없이 ⓑ의 실근의 개수 $\\ge 2$이므로 ①에 모순\n- $f(1) = 0$인 경우, $t = 0^+$이면 $\\begin{cases} \\text{ⓐ의 실근의 개수} = 2 \\\\ \\text{ⓑ의 실근의 개수} = 4 \\end{cases}$이므로 ①에 모순\n- $f(-2) \\ge 0$인 경우, $t$에 상관없이 ⓐ의 실근의 개수 $= 0$이므로 ②에 모순\n\n임을 알 수 있다.\n\n또한, $f(-2) < 0 < f(1)$인 경우, 위의 그림을 참고하면\n\n$$\\begin{cases} t > 0 \\text{인 임의의 실수 } t \\text{에 대하여} \\\\ g(x) = t \\text{인 서로 다른 } x \\text{의 개수가 4 이하} \\end{cases}$$\n\n를 만족시키기 위해서는\n\n$\\dfrac{t}{2} = f(1)$인 $t$에 대하여 $\\dfrac{t}{2k} \\le f(-2) \\Leftrightarrow f(1) \\ge kf(-2)$\n\n이어야 하므로\n\n$$\\begin{aligned} &① \\Rightarrow f(1) \\ge -f(-2) \\\\ &② \\Rightarrow f(1) \\le -f(-2) \\end{aligned} \\bigg\\} \\Rightarrow f(-2) = -f(1)$$\n\n$$\\Rightarrow -\\dfrac{32}{3} + a = -\\left(-\\dfrac{5}{3} + a\\right)$$\n\n$$\\Rightarrow a = \\dfrac{37}{6}$$\n\n을 얻는다.\n\n$\\therefore\\ 60a = 370$",
     "recovery_warnings": [],
     "errata": [],
@@ -7217,22 +7228,9 @@
       "전략??",
       "사실??"
     ],
-    "needed_dna": [
-      {
-        "id": "C24",
-        "name": "최솟값 조건",
-        "signature": "(대상, 조건, 값) → 조건",
-        "reason": "어떤 조건을 만족하는 값의 최솟값이 특정 값임을 나타내는 조건. C13(최댓값 조건)의 대응 DNA가 없음."
-      },
-      {
-        "id": "C25",
-        "name": "임의의 값에 대해",
-        "signature": "(변수, 조건) → 조건",
-        "reason": "임의의 실수 t에 대하여 ~가 성립한다는 전칭 조건. C18(모든 x에 대해)과 유사하나 문제에서 변수가 t이고 조건 구조가 다름. 사실상 C18과 동일 구조이므로 C18로 처리 가능 — C18 사용."
-      }
-    ],
-    "edge_count": 20,
+    "needed_dna": [],
+    "edge_count": 22,
     "side_count": 5,
-    "created_at": "2026-03-26T14:23:57.654Z"
+    "created_at": "2026-03-26T14:45:40.212Z"
   }
 ]
