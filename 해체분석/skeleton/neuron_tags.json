@@ -1638,5 +1638,13 @@
       "MONO"
     ],
     "action": "RECIPROCAL_MONOTONICITY"
+  },
+  {
+    "id": "전략44",
+    "domain": [
+      "FUNC",
+      "LIM"
+    ],
+    "action": "PIECEWISE_BOUNDARY_OBSERVE"
   }
 ]
