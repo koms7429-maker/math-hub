@@ -1654,5 +1654,20 @@
       "INEQ"
     ],
     "action": "INFIMUM_APPROACHABILITY"
+  },
+  {
+    "id": "사실125",
+    "domain": [
+      "DIFF",
+      "POLY"
+    ],
+    "action": "POLYNOMIAL_DIFFERENTIABLE_EVERYWHERE"
+  },
+  {
+    "id": "사실126",
+    "domain": [
+      "LIM"
+    ],
+    "action": "NONZERO_OVER_ZERO_DIVERGES"
   }
 ]
