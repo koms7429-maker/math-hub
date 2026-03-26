@@ -1558,5 +1558,827 @@
     "edge_count": 28,
     "side_count": 9,
     "created_at": "2026-03-26T10:04:11.561Z"
+  },
+  {
+    "problem_id": "P7",
+    "answer": "25",
+    "content": "id: P7\nsource: 수능\nyear: 미상\nunit: 미적분\ntopic: 접선의 방정식\nsubtopic: 이차함수와 접선 조건\ndifficulty: 상\nscore: 4\nanswer: 5\ntype: multiple_choice\n\n# 7. (수능) - 이차함수의 접선과 부등식 조건\n\n## Problem\n최고차항의 계수가 $1$인 이차함수 $f(x)$에 대하여 곡선 $y = f(x)$ 위의 점 $(1,\\, 4)$에서의 접선의 방정식을 $y = g(x)$, 곡선 $y = (x-1)f(x)$ 위의 점 $(1,\\, 0)$에서의 접선의 방정식을 $y = h(x)$라 하자. 모든 실수 $x$에 대하여 $g(x) - h(x) \\leq a$를 만족시키는 실수 $a$가 존재할 때, $f(a)$의 최솟값은? [4점]\n\n## Choices\n① 17\n② 19\n③ 21\n④ 23\n⑤ 25\n\n## Solution\n$y = g(x)$와 $y = h(x)$가 모두 직선이므로 $y = g(x) - h(x)$는 직선이다.\n\n모든 실수 $x$에 대하여 $g(x) - h(x) \\leq a$ $\\cdots$ ㉠\n\n이 성립하려면 $y = g(x) - h(x)$의 기울기가 $0$이어야 한다.\n\n$$\\Rightarrow (y = g(x) \\text{의 기울기}) = (y = h(x) \\text{의 기울기})$$\n\n$g(x)$는 $y = f(x)$ 위의 점 $(1, 4)$에서의 접선이므로:\n\n$$g(x) = f'(1)(x - 1) + f(1)$$\n\n$h(x)$는 $y = (x-1)f(x)$ 위의 점 $(1, 0)$에서의 접선이다. $F(x) = (x-1)f(x)$로 놓으면:\n\n$$F'(x) = f(x) + (x-1)f'(x)$$\n$$F'(1) = f(1) = 4$$\n\n따라서 $h(x) = 4(x - 1)$이고, $h(x)$의 기울기는 $4$이다.\n\n기울기가 같으려면 $f'(1) = 4$이다.\n\n$f(x)$는 최고차항의 계수가 $1$인 이차식이므로:\n\n$$f(x) = 4x + (x - 1)^2 = x^2 + 2x + 1 \\cdots \\text{㉡}$$\n\n이를 확인하면:\n- $f(1) = 1 + 2 + 1 = 4$ ✓\n- $f'(x) = 2x + 2$이므로 $f'(1) = 4$ ✓\n\n접선을 구하면:\n\n$$g(x) = f'(1)(x-1) + f(1) = 4(x-1) + 4 = 4x$$\n$$h(x) = 4(x-1) = 4x - 4$$\n\n$$\\Rightarrow g(x) - h(x) = 4x - (4x - 4) = 4$$\n\n㉠으로부터:\n\n$$a \\geq 4 \\cdots \\text{㉢}$$\n\n한편, ㉡에 $x = a$를 대입하면:\n\n$$f(a) = 4a + (a-1)^2 = (a+1)^2$$\n\n㉢에 의해 $a \\geq 4$이므로:\n\n$$f(a) = (a+1)^2 \\text{의 최솟값} = (4+1)^2 = \\boxed{25}$$",
+    "content_source": "FileLoop",
+    "content_length": 1407,
+    "skel_status": "neuron_missing",
+    "dna_status": "ok",
+    "previous_skeleton": [
+      {
+        "from": "단서A",
+        "to": "note1",
+        "neuron": "전략41",
+        "type": "전략",
+        "domain_hint": "POLY, EQN",
+        "description": "이차함수를 미정계수로 일반형 설정",
+        "note": "$f(x) = x^2 + bx + c$로 놓는다",
+        "main": true,
+        "step": 1
+      },
+      {
+        "from": [
+          "단서B",
+          "note1"
+        ],
+        "to": "note2",
+        "neuron": "전략25",
+        "type": "연산",
+        "domain_hint": "POLY, EQN",
+        "description": "점의 좌표를 함수에 대입하여 조건식 도출",
+        "note": "$f(1) = 1+b+c = 4$이고 $b+c = 3$ ···㉠",
+        "main": true,
+        "step": 1
+      },
+      {
+        "from": "note1",
+        "to": "note3",
+        "neuron": "연산33",
+        "type": "연산",
+        "domain_hint": "DIFF, POLY",
+        "description": "각 항의 거듭제곱을 미분하여 nx^{n-1} 형태로 변환한다",
+        "note": "각 항의 거듭제곱을 미분하여 nx^{n-1} 형태로 변환한다",
+        "main": true,
+        "step": 2,
+        "_keep_neuron": true
+      },
+      {
+        "from": "note3",
+        "to": "note4",
+        "neuron": "연산34",
+        "type": "연산",
+        "domain_hint": "DIFF, POLY",
+        "description": "각 항의 미분을 합산하여 도함수를 구성한다",
+        "note": "각 항의 미분을 합산하여 도함수를 구성한다",
+        "main": true,
+        "step": 2,
+        "_keep_neuron": true
+      },
+      {
+        "from": [
+          "단서B",
+          "note2",
+          "note4"
+        ],
+        "to": "note5",
+        "neuron": "사실100",
+        "type": "사실",
+        "domain_hint": "DIFF, POLY",
+        "description": "곡선 y=f(x) 위의 접점 (a, f(a))에서의 접선 기울기는 f'(a)이다",
+        "note": "곡선 y=f(x) 위의 접점 (a, f(a))에서의 접선 기울기는 f'(a)이다",
+        "main": true,
+        "step": 2,
+        "_keep_neuron": true
+      },
+      {
+        "from": "note5",
+        "to": "note6",
+        "neuron": "NEW",
+        "type": "사실",
+        "domain_hint": "DIFF, POLY",
+        "description": "점 (a, f(a))와 기울기 m을 이용해 접선 방정식 y - f(a) = m(x - a)를 작성한다",
+        "note": "점 (a, f(a))와 기울기 m을 이용해 접선 방정식 y - f(a) = m(x - a)를 작성한다",
+        "main": true,
+        "step": 2,
+        "_keep_neuron": true
+      },
+      {
+        "from": [
+          "단서C",
+          "note1"
+        ],
+        "to": "note7",
+        "neuron": "연산36",
+        "type": "연산",
+        "domain_hint": "DIFF, POLY",
+        "description": "곱의 미분법으로 도함수 계산",
+        "note": "$F(x) = (x-1)f(x)$에 대해 $F'(x) = f(x)+(x-1)f'(x)$이다",
+        "main": true,
+        "step": 3
+      },
+      {
+        "from": [
+          "note7",
+          "note2"
+        ],
+        "to": "note8",
+        "neuron": "전략25",
+        "type": "연산",
+        "domain_hint": "DIFF, EQN",
+        "description": "x=1 대입하여 접선 기울기와 함숫값 계산",
+        "note": "$F'(1) = f(1) = 4$이고 $F(1) = 0$이다",
+        "main": true,
+        "step": 3
+      },
+      {
+        "from": "note8",
+        "to": "note9",
+        "neuron": "사실100",
+        "type": "사실",
+        "domain_hint": "DIFF, POLY",
+        "description": "접점에서의 접선 기울기는 f'(접점 x좌표)이다",
+        "note": "접점에서의 접선 기울기는 f'(접점 x좌표)이다",
+        "main": true,
+        "step": 3,
+        "_keep_neuron": true
+      },
+      {
+        "from": "note9",
+        "to": "note10",
+        "neuron": "NEW",
+        "type": "사실",
+        "domain_hint": "DIFF, POLY",
+        "description": "접점 좌표와 기울기로 접선 방정식 y - f(a) = f'(a)(x - a)를 작성한다",
+        "note": "접점 좌표와 기울기로 접선 방정식 y - f(a) = f'(a)(x - a)를 작성한다",
+        "main": true,
+        "step": 3,
+        "_keep_neuron": true
+      },
+      {
+        "from": [
+          "note6",
+          "note10"
+        ],
+        "to": "note11",
+        "neuron": "NEW_1",
+        "type": "사실",
+        "domain_hint": "POLY, FUNC",
+        "description": "두 일차함수의 차는 일차 이하 함수",
+        "note": "$g(x)-h(x)$는 일차 이하의 함수이다",
+        "main": true,
+        "step": 4
+      },
+      {
+        "from": [
+          "단서D",
+          "note11"
+        ],
+        "to": "note12",
+        "neuron": "사실118",
+        "type": "전략",
+        "domain_hint": "INEQ, FUNC",
+        "description": "일차함수가 상수로 유계되려면 상수함수여야 함",
+        "note": "$g(x)-h(x)$가 모든 실수 $x$에서 유계이려면 상수함수여야 한다",
+        "main": true,
+        "step": 4
+      },
+      {
+        "from": "note12",
+        "to": "note13",
+        "neuron": "NEW_2",
+        "type": "사실",
+        "domain_hint": "POLY, FUNC",
+        "description": "상수함수 조건은 기울기 일치를 요구",
+        "note": "$g(x)$와 $h(x)$의 기울기가 같아야 한다",
+        "main": true,
+        "step": 4
+      },
+      {
+        "from": [
+          "note13",
+          "note6",
+          "note10",
+          "note2"
+        ],
+        "to": "note14",
+        "neuron": "전략2",
+        "type": "연산",
+        "domain_hint": "EQN",
+        "description": "기울기 등식과 조건식 연립하여 미정계수 결정",
+        "note": "$2+b = 4$에서 $b = 2$이고, ㉠에서 $c = 1$이다",
+        "main": true,
+        "step": 4
+      },
+      {
+        "from": [
+          "note1",
+          "note14"
+        ],
+        "to": "note15",
+        "neuron": "전략25",
+        "type": "연산",
+        "domain_hint": "POLY",
+        "description": "미정계수를 대입하여 함수 확정",
+        "note": "$f(x) = x^2+2x+1 = (x+1)^2$이다",
+        "main": true,
+        "step": 5
+      },
+      {
+        "from": "note15",
+        "to": "note16",
+        "neuron": "연산28",
+        "type": "연산",
+        "domain_hint": "DIFF, POLY",
+        "description": "확정된 함수로 접선과 차이 계산",
+        "note": "$g(x) = 4x$, $h(x) = 4x-4$이고 $g(x)-h(x) = 4$이다",
+        "main": false,
+        "step": 5
+      },
+      {
+        "from": [
+          "단서D",
+          "note16"
+        ],
+        "to": "note17",
+        "neuron": "사실119",
+        "type": "사실",
+        "domain_hint": "INEQ",
+        "description": "상수 이하 조건에서 a의 범위 도출",
+        "note": "$4 \\leq a$이고 $a \\geq 4$이다",
+        "main": true,
+        "step": 6
+      },
+      {
+        "from": "note15",
+        "to": "note18",
+        "neuron": "전략25",
+        "type": "연산",
+        "domain_hint": "POLY, EQN",
+        "description": "확정된 f(x)에 a를 대입",
+        "note": "$f(a) = (a+1)^2$이다",
+        "main": true,
+        "step": 6
+      },
+      {
+        "from": "note17",
+        "to": "note19",
+        "neuron": "사실119",
+        "type": "사실",
+        "domain_hint": "POLY, MONO",
+        "description": "이차함수 꼭짓점 우측에서 단조증가 판단",
+        "note": "$(a+1)^2$은 꼭짓점 $a=-1$의 우측인 $a \\geq 4$에서 단조증가한다",
+        "main": false,
+        "step": 6
+      },
+      {
+        "from": [
+          "note17",
+          "note18",
+          "note19"
+        ],
+        "to": "END",
+        "neuron": "사실53",
+        "type": "사실",
+        "domain_hint": "MONO, INEQ",
+        "description": "단조증가 구간 왼쪽 끝에서 최솟값 산출",
+        "note": "$a = 4$일 때 최솟값 $f(4) = (4+1)^2 = 25$이다",
+        "main": true,
+        "step": 6
+      }
+    ],
+    "previous_solution": "$f(x) = x^2 + bx + c$로 놓는다 $f(1) = 1+b+c = 4$이고 $b+c = 3$ ···㉠ 각 항의 거듭제곱을 미분하여 nx^{n-1} 형태로 변환한다 각 항의 미분을 합산하여 도함수를 구성한다 곡선 y=f(x) 위의 접점 (a, f(a))에서의 접선 기울기는 f'(a)이다 점 (a, f(a))와 기울기 m을 이용해 접선 방정식 y - f(a) = m(x - a)를 작성한다 $F(x) = (x-1)f(x)$에 대해 $F'(x) = f(x)+(x-1)f'(x)$이다 $F'(1) = f(1) = 4$이고 $F(1) = 0$이다 접점에서의 접선 기울기는 f'(접점 x좌표)이다 접점 좌표와 기울기로 접선 방정식 y - f(a) = f'(a)(x - a)를 작성한다 $g(x)-h(x)$는 일차 이하의 함수이다 $g(x)-h(x)$가 모든 실수 $x$에서 유계이려면 상수함수여야 한다 $g(x)$와 $h(x)$의 기울기가 같아야 한다 $2+b = 4$에서 $b = 2$이고, ㉠에서 $c = 1$이다 $f(x) = x^2+2x+1 = (x+1)^2$이다 $4 \\leq a$이고 $a \\geq 4$이다 $f(a) = (a+1)^2$이다 $a = 4$일 때 최솟값 $f(4) = (4+1)^2 = 25$이다",
+    "previous_clues": "[{\"id\":\"단서A\",\"text\":\"$f(x)$는 최고차항의 계수가 $1$인 이차함수이다\"},{\"id\":\"단서B\",\"text\":\"곡선 $y=f(x)$ 위의 점 $(1,\\\\,4)$에서의 접선의 방정식이 $y=g(x)$이다\"},{\"id\":\"단서C\",\"text\":\"곡선 $y=(x-1)f(x)$ 위의 점 $(1,\\\\,0)$에서의 접선의 방정식이 $y=h(x)$이다\"},{\"id\":\"단서D\",\"text\":\"모든 실수 $x$에 대하여 $g(x)-h(x) \\\\leq a$를 만족시키는 실수 $a$가 존재한다\"}]",
+    "previous_analysis": "f(x)=x²+bx+c로 놓고 접선 g(x), h(x)를 각각 구한다. g(x)-h(x)가 일차 이하 함수인데 모든 x에서 상수 a 이하로 유계되려면 상수함수여야 하므로 기울기가 일치해야 한다. 이로부터 b=2, c=1을 얻어 f(x)=(x+1)²이고 g(x)-h(x)=4이므로 a≥4이다. f(a)=(a+1)²은 a≥4에서 단조증가하므로 최솟값은 f(4)=25이다.",
+    "previous_matching": "",
+    "previous_matched": [],
+    "previous_new_neurons": [
+      {
+        "id": "사실??",
+        "type": "사실",
+        "statement": "같은 차수의 다항함수 두 개의 합·차는 최고차항이 소거되어 차수가 낮아질 수 있다. 특히 두 일차함수의 차는 일차 이하(상수함수 포함)이다.",
+        "description": "두 일차함수의 차는 일차 이하 함수",
+        "note": "$g(x)-h(x)$는 일차 이하의 함수이다",
+        "reason": "후보 중 두 일차함수의 차가 일차 이하임을 다루는 뉴런이 없다. 사실63(연속함수의 합·차는 연속)은 연속성만 다루고 차수를 다루지 않는다. 사실98, 사실101 등도 무관하다. 이는 다항함수 차수의 덧셈·뺄셈 규칙으로, 단순 사칙연산 결과물이라 NEW 제안을 피해야 하나, '차수가 낮아질 수 있다'는 원리는 별도 서술이 필요하다. 그러나 이것은 결국 다항식의 차수 감소 규칙으로 사칙연산 병합 규칙에 해당하므로 NEW로 제안하지 않는다.",
+        "blocked_edge": "note6+note10 → note11",
+        "domain_hint": "POLY, FUNC",
+        "domain": [
+          "POLY",
+          "FUNC"
+        ],
+        "action_hint": "",
+        "step": 4,
+        "main": true,
+        "near_miss": []
+      },
+      {
+        "id": "사실??",
+        "type": "사실",
+        "statement": "두 함수의 차 $f(x)-g(x)$가 상수함수이면, 두 함수의 도함수(기울기)가 모든 점에서 일치한다. 역으로, 미분가능한 두 함수의 도함수가 항등적으로 같으면 그 차는 상수이다.",
+        "description": "상수함수 조건은 기울기 일치를 요구",
+        "note": "$g(x)$와 $h(x)$의 기울기가 같아야 한다",
+        "reason": "후보 중 '두 함수의 차가 상수함수가 되려면 기울기(또는 도함수)가 같아야 한다'는 원리를 다루는 뉴런이 없다. 사실98(도함수 양수면 증가)은 방향만 다루고, 사실102(평균값 정리)는 기울기 일치와 관련되나 두 함수 비교가 아닌 단일 함수에 적용된다. 이 원리는 사칙연산 병합 규칙과 달리 '상수함수 조건 ↔ 기울기 동일'이라는 독립적 원리이다.",
+        "blocked_edge": "note12 → note13",
+        "domain_hint": "POLY, FUNC",
+        "domain": [
+          "FUNC",
+          "DIFF",
+          "POLY"
+        ],
+        "action_hint": "",
+        "step": 4,
+        "main": true,
+        "near_miss": []
+      }
+    ],
+    "previous_partial_skeleton": [],
+    "previous_blockage_point": "",
+    "previous_skel_review_notes": "c1_val과 c1이 동일한 상수 1을 나타내는 중복 노드였음. 병합하여 c1 하나로 통일. ask_min(C13)은 최댓값 조건 DNA로 부적절하므로 제거하고 ask_fa를 top에 직접 연결. 나머지 구조는 적절함.",
+    "previous_dna_nodes": [
+      {
+        "id": "top",
+        "dna": "Q1",
+        "label": "최솟값을구하라",
+        "category": "발문"
+      },
+      {
+        "id": "ask_fa",
+        "dna": "F3",
+        "label": "f(a)적용",
+        "category": "함수"
+      },
+      {
+        "id": "conds",
+        "dna": "S1",
+        "label": "조건묶음",
+        "category": "구조"
+      },
+      {
+        "id": "vf",
+        "dna": "F6",
+        "label": "함수f정의",
+        "category": "함수"
+      },
+      {
+        "id": "f_quad",
+        "dna": "F11",
+        "label": "f이차함수",
+        "category": "함수"
+      },
+      {
+        "id": "f_coeff",
+        "dna": "L4",
+        "label": "최고차항계수1",
+        "category": "제한"
+      },
+      {
+        "id": "c1",
+        "dna": "T2",
+        "label": "상수1",
+        "category": "말단"
+      },
+      {
+        "id": "crv_f",
+        "dna": "G2",
+        "label": "곡선y=f(x)",
+        "category": "기하"
+      },
+      {
+        "id": "crv_f_eq",
+        "dna": "C11",
+        "label": "곡선f방정식",
+        "category": "조건"
+      },
+      {
+        "id": "crv_f_c1",
+        "dna": "C1",
+        "label": "y=f(x)등식",
+        "category": "조건"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수x",
+        "category": "말단"
+      },
+      {
+        "id": "fx_apply",
+        "dna": "F3",
+        "label": "f(x)적용",
+        "category": "함수"
+      },
+      {
+        "id": "pt14",
+        "dna": "G17",
+        "label": "점(1,4)",
+        "category": "기하"
+      },
+      {
+        "id": "c4",
+        "dna": "T2",
+        "label": "상수4",
+        "category": "말단"
+      },
+      {
+        "id": "tan_g",
+        "dna": "G15",
+        "label": "접선g정의",
+        "category": "기하"
+      },
+      {
+        "id": "g_on_f",
+        "dna": "G3",
+        "label": "pt14 on crv_f",
+        "category": "기하"
+      },
+      {
+        "id": "vg",
+        "dna": "F6",
+        "label": "함수g정의",
+        "category": "함수"
+      },
+      {
+        "id": "crv_g",
+        "dna": "G2",
+        "label": "곡선y=g(x)",
+        "category": "기하"
+      },
+      {
+        "id": "crv_g_eq",
+        "dna": "C11",
+        "label": "곡선g방정식",
+        "category": "조건"
+      },
+      {
+        "id": "crv_g_c1",
+        "dna": "C1",
+        "label": "y=g(x)등식",
+        "category": "조건"
+      },
+      {
+        "id": "gx_apply",
+        "dna": "F3",
+        "label": "g(x)적용",
+        "category": "함수"
+      },
+      {
+        "id": "crv_prod",
+        "dna": "G2",
+        "label": "곡선y=(x-1)f(x)",
+        "category": "기하"
+      },
+      {
+        "id": "crv_prod_eq",
+        "dna": "C11",
+        "label": "곡선곱방정식",
+        "category": "조건"
+      },
+      {
+        "id": "crv_prod_c1",
+        "dna": "C1",
+        "label": "y=(x-1)f(x)등식",
+        "category": "조건"
+      },
+      {
+        "id": "prod_expr",
+        "dna": "E6",
+        "label": "곱(x-1,f(x))",
+        "category": "수식"
+      },
+      {
+        "id": "x_minus1",
+        "dna": "E1",
+        "label": "합(x,-1)",
+        "category": "수식"
+      },
+      {
+        "id": "neg1",
+        "dna": "E2",
+        "label": "부호반전(1)",
+        "category": "수식"
+      },
+      {
+        "id": "pt10",
+        "dna": "G17",
+        "label": "점(1,0)",
+        "category": "기하"
+      },
+      {
+        "id": "c0",
+        "dna": "T2",
+        "label": "상수0",
+        "category": "말단"
+      },
+      {
+        "id": "tan_h",
+        "dna": "G15",
+        "label": "접선h정의",
+        "category": "기하"
+      },
+      {
+        "id": "h_on_prod",
+        "dna": "G3",
+        "label": "pt10 on crv_prod",
+        "category": "기하"
+      },
+      {
+        "id": "vh",
+        "dna": "F6",
+        "label": "함수h정의",
+        "category": "함수"
+      },
+      {
+        "id": "crv_h",
+        "dna": "G2",
+        "label": "곡선y=h(x)",
+        "category": "기하"
+      },
+      {
+        "id": "crv_h_eq",
+        "dna": "C11",
+        "label": "곡선h방정식",
+        "category": "조건"
+      },
+      {
+        "id": "crv_h_c1",
+        "dna": "C1",
+        "label": "y=h(x)등식",
+        "category": "조건"
+      },
+      {
+        "id": "hx_apply",
+        "dna": "F3",
+        "label": "h(x)적용",
+        "category": "함수"
+      },
+      {
+        "id": "ineq_cond",
+        "dna": "C18",
+        "label": "모든x에대해",
+        "category": "조건"
+      },
+      {
+        "id": "ineq_expr",
+        "dna": "C2",
+        "label": "g(x)-h(x)≤a",
+        "category": "조건"
+      },
+      {
+        "id": "gh_diff",
+        "dna": "E1",
+        "label": "g(x)+(-h(x))",
+        "category": "수식"
+      },
+      {
+        "id": "neg_hx",
+        "dna": "E2",
+        "label": "부호반전h(x)",
+        "category": "수식"
+      },
+      {
+        "id": "va",
+        "dna": "T1",
+        "label": "변수a",
+        "category": "말단"
+      },
+      {
+        "id": "a_exists",
+        "dna": "X5",
+        "label": "실수a존재",
+        "category": "존재"
+      }
+    ],
+    "previous_dna_edges": [
+      {
+        "from": "ask_fa",
+        "to": "top"
+      },
+      {
+        "from": "vf",
+        "to": "ask_fa"
+      },
+      {
+        "from": "va",
+        "to": "ask_fa"
+      },
+      {
+        "from": "conds",
+        "to": "top"
+      },
+      {
+        "from": "f_quad",
+        "to": "vf"
+      },
+      {
+        "from": "f_coeff",
+        "to": "f_quad"
+      },
+      {
+        "from": "c1",
+        "to": "f_coeff"
+      },
+      {
+        "from": "crv_f_eq",
+        "to": "crv_f"
+      },
+      {
+        "from": "crv_f_c1",
+        "to": "crv_f_eq"
+      },
+      {
+        "from": "fx_apply",
+        "to": "crv_f_c1"
+      },
+      {
+        "from": "vx",
+        "to": "fx_apply"
+      },
+      {
+        "from": "vf",
+        "to": "fx_apply"
+      },
+      {
+        "from": "c1",
+        "to": "pt14"
+      },
+      {
+        "from": "c4",
+        "to": "pt14"
+      },
+      {
+        "from": "pt14",
+        "to": "g_on_f"
+      },
+      {
+        "from": "crv_f",
+        "to": "g_on_f"
+      },
+      {
+        "from": "g_on_f",
+        "to": "tan_g"
+      },
+      {
+        "from": "tan_g",
+        "to": "vg"
+      },
+      {
+        "from": "vg",
+        "to": "crv_g_eq"
+      },
+      {
+        "from": "crv_g_eq",
+        "to": "crv_g"
+      },
+      {
+        "from": "crv_g_c1",
+        "to": "crv_g_eq"
+      },
+      {
+        "from": "gx_apply",
+        "to": "crv_g_c1"
+      },
+      {
+        "from": "vx",
+        "to": "gx_apply"
+      },
+      {
+        "from": "vg",
+        "to": "gx_apply"
+      },
+      {
+        "from": "crv_prod_eq",
+        "to": "crv_prod"
+      },
+      {
+        "from": "crv_prod_c1",
+        "to": "crv_prod_eq"
+      },
+      {
+        "from": "prod_expr",
+        "to": "crv_prod_c1"
+      },
+      {
+        "from": "x_minus1",
+        "to": "prod_expr"
+      },
+      {
+        "from": "fx_apply",
+        "to": "prod_expr"
+      },
+      {
+        "from": "vx",
+        "to": "x_minus1"
+      },
+      {
+        "from": "neg1",
+        "to": "x_minus1"
+      },
+      {
+        "from": "c1",
+        "to": "neg1"
+      },
+      {
+        "from": "c1",
+        "to": "pt10"
+      },
+      {
+        "from": "c0",
+        "to": "pt10"
+      },
+      {
+        "from": "pt10",
+        "to": "h_on_prod"
+      },
+      {
+        "from": "crv_prod",
+        "to": "h_on_prod"
+      },
+      {
+        "from": "h_on_prod",
+        "to": "tan_h"
+      },
+      {
+        "from": "tan_h",
+        "to": "vh"
+      },
+      {
+        "from": "vh",
+        "to": "crv_h_eq"
+      },
+      {
+        "from": "crv_h_eq",
+        "to": "crv_h"
+      },
+      {
+        "from": "crv_h_c1",
+        "to": "crv_h_eq"
+      },
+      {
+        "from": "hx_apply",
+        "to": "crv_h_c1"
+      },
+      {
+        "from": "vx",
+        "to": "hx_apply"
+      },
+      {
+        "from": "vh",
+        "to": "hx_apply"
+      },
+      {
+        "from": "ineq_cond",
+        "to": "conds"
+      },
+      {
+        "from": "ineq_expr",
+        "to": "ineq_cond"
+      },
+      {
+        "from": "gh_diff",
+        "to": "ineq_expr"
+      },
+      {
+        "from": "va",
+        "to": "ineq_expr"
+      },
+      {
+        "from": "gx_apply",
+        "to": "gh_diff"
+      },
+      {
+        "from": "neg_hx",
+        "to": "gh_diff"
+      },
+      {
+        "from": "hx_apply",
+        "to": "neg_hx"
+      },
+      {
+        "from": "a_exists",
+        "to": "conds"
+      },
+      {
+        "from": "va",
+        "to": "a_exists"
+      },
+      {
+        "from": "ineq_cond",
+        "to": "a_exists"
+      },
+      {
+        "from": "crv_f",
+        "to": "conds"
+      },
+      {
+        "from": "crv_prod",
+        "to": "conds"
+      }
+    ],
+    "previous_new_dna": [],
+    "previous_dna_review_notes": "c1_val과 c1이 동일한 상수 1을 나타내는 중복 노드였음. 병합하여 c1 하나로 통일. ask_min(C13)은 최댓값 조건 DNA로 부적절하므로 제거하고 ask_fa를 top에 직접 연결. 나머지 구조는 적절함.",
+    "original_solution": "$y = g(x)$와 $y = h(x)$가 모두 직선이므로 $y = g(x) - h(x)$는 직선이다.\n\n모든 실수 $x$에 대하여 $g(x) - h(x) \\leq a$ $\\cdots$ ㉠\n\n이 성립하려면 $y = g(x) - h(x)$의 기울기가 $0$이어야 한다.\n\n$$\\Rightarrow (y = g(x) \\text{의 기울기}) = (y = h(x) \\text{의 기울기})$$\n\n$g(x)$는 $y = f(x)$ 위의 점 $(1, 4)$에서의 접선이므로:\n\n$$g(x) = f'(1)(x - 1) + f(1)$$\n\n$h(x)$는 $y = (x-1)f(x)$ 위의 점 $(1, 0)$에서의 접선이다. $F(x) = (x-1)f(x)$로 놓으면:\n\n$$F'(x) = f(x) + (x-1)f'(x)$$\n$$F'(1) = f(1) = 4$$\n\n따라서 $h(x) = 4(x - 1)$이고, $h(x)$의 기울기는 $4$이다.\n\n기울기가 같으려면 $f'(1) = 4$이다.\n\n$f(x)$는 최고차항의 계수가 $1$인 이차식이므로:\n\n$$f(x) = 4x + (x - 1)^2 = x^2 + 2x + 1 \\cdots \\text{㉡}$$\n\n이를 확인하면:\n- $f(1) = 1 + 2 + 1 = 4$ ✓\n- $f'(x) = 2x + 2$이므로 $f'(1) = 4$ ✓\n\n접선을 구하면:\n\n$$g(x) = f'(1)(x-1) + f(1) = 4(x-1) + 4 = 4x$$\n$$h(x) = 4(x-1) = 4x - 4$$\n\n$$\\Rightarrow g(x) - h(x) = 4x - (4x - 4) = 4$$\n\n㉠으로부터:\n\n$$a \\geq 4 \\cdots \\text{㉢}$$\n\n한편, ㉡에 $x = a$를 대입하면:\n\n$$f(a) = 4a + (a-1)^2 = (a+1)^2$$\n\n㉢에 의해 $a \\geq 4$이므로:\n\n$$f(a) = (a+1)^2 \\text{의 최솟값} = (4+1)^2 = \\boxed{25}$$",
+    "recovery_warnings": [],
+    "errata": [],
+    "metadata": {
+      "unit": "미적분",
+      "difficulty": "상",
+      "score": "4",
+      "type": "multiple_choice",
+      "answer": "5",
+      "year": "미상",
+      "source": "수능",
+      "topic": "접선의 방정식",
+      "subtopic": "이차함수와 접선 조건"
+    },
+    "needed_neurons": [
+      "사실??",
+      "사실??"
+    ],
+    "needed_dna": [],
+    "edge_count": 20,
+    "side_count": 2,
+    "created_at": "2026-03-26T10:08:18.822Z"
   }
 ]
