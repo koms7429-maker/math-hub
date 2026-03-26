@@ -1568,5 +1568,10 @@
       "FUNC"
     ],
     "action": "QUAD_MONOTONE"
-  }
+  },
+  {
+  "id": "사실120",
+  "domain": ["ABS", "DIFF"],
+  "action": "ABS_ROOT_NONDIFF"
+}
 ]
