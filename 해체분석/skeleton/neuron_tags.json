@@ -1677,5 +1677,13 @@
       "LIM"
     ],
     "action": "PIECEWISE_BOUNDARY_OBSERVE"
+  },
+  {
+    "id": "사실127",
+    "domain": [
+      "FUNC",
+      "LIM"
+    ],
+    "action": "PIECEWISE_LIMIT_SIDE"
   }
 ]
