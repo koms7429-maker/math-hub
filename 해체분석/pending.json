@@ -1,727 +1,5 @@
 [
   {
-    "problem_id": "P19",
-    "answer": "14",
-    "content": "id: P19\nsource: 수능\nyear: 2024\nunit: 미적분\ntopic: 이차함수와 접선, 극한\nsubtopic: 접선 조건과 극한을 이용한 함수 결정\ndifficulty: 상\nscore: 4\nanswer: 2\ntype: multiple_choice\n\n# 19. (수능) - 이차함수의 접선과 극한 조건을 이용한 함수값 구하기\n\n## Problem\n\n이차함수 $f(x)$에 대하여 곡선 $y = f(x)$ 위의 점 $(1,\\, f(1))$에서의 접선이 원점을 지난다.\n\n$$\\lim_{t \\to \\infty} t\\left\\{f\\!\\left(1+\\frac{4}{t}\\right)-f(1)\\right\\} = \\{f(1)\\}^2$$\n\n이고 함수 $f(x)$가 $x = -3$에서 최소일 때, $f(3)$의 값은? [4점]\n\n## Choices\n\n① 13 &emsp; ② 14 &emsp; ③ 15 &emsp; ④ 16 &emsp; ⑤ 17\n\n## Solution\n\n문제의 조건에서 $y = f(x)$ 위의 점 $(1,\\, f(1))$에서의 접선:\n\n$$y = f'(1)(x-1) + f(1)$$\n\n이 원점을 지나므로\n\n$$f(1) = f'(1) \\quad \\cdots\\ ㉠$$\n\n한편, 문제의 극한에서 $\\dfrac{1}{t} = x$로 치환하면\n\n$$\\lim_{t \\to \\infty} t\\left\\{f\\!\\left(1+\\frac{4}{t}\\right)-f(1)\\right\\} = \\lim_{x \\to 0+}\\frac{f(1+4x)-f(1)}{x} = 4f'(1)$$\n\n이고, 이 값이 $\\{f(1)\\}^2$이므로\n\n$$4f'(1) = \\{f(1)\\}^2 \\quad \\cdots\\ ㉡$$\n\n㉠, ㉡으로부터\n\n$$\\begin{cases} \\text{(i)}\\ f(1) = f'(1) = 0 \\\\ \\text{(ii)}\\ f(1) = f'(1) = 4 \\end{cases}$$\n\n$f(x)$는 $x = -3$에서 최소이므로 (∵ 문제의 조건)\n\n$\\Rightarrow$ $f'(x) = 0$의 실근은 $x = -3$뿐 (∵ $f'(x)$는 일차함수)\n\n$\\Rightarrow$ $f'(1) \\neq 0$\n\n$\\Rightarrow$ (i)가 모순이므로 (ii)만 가능: $f(1) = f'(1) = 4$\n\n$\\Rightarrow$ $f(x) = p(x-1)^2 + 4x$ (단, $p > 0$인 상수)\n\n$f'(x) = 2p(x-1) + 4$이므로\n\n$$f'(-3) = 0 \\Rightarrow 2p(-4) + 4 = 0 \\Rightarrow p = \\frac{1}{2}$$\n\n따라서\n\n$$f(x) = \\frac{1}{2}(x-1)^2 + 4x$$\n\n$$f(3) = \\frac{1}{2}(3-1)^2 + 4 \\cdot 3 = \\frac{1}{2} \\cdot 4 + 12 = 2 + 12 = \\boxed{14}$$",
-    "content_source": "FileLoop",
-    "content_length": 1406,
-    "skel_status": "neuron_missing",
-    "dna_status": "ok",
-    "previous_skeleton": [
-      {
-        "from": [
-          "단서A",
-          "단서B"
-        ],
-        "to": "note1",
-        "neuron": "사실100",
-        "type": "사실",
-        "domain_hint": "DIFF",
-        "description": "접점 $(a, f(a))$에서의 접선 기울기는 $f'(a)$이다.",
-        "note": "접점 $(a, f(a))$에서의 접선 기울기는 $f'(a)$이다.",
-        "main": true,
-        "step": 1,
-        "_keep_neuron": true
-      },
-      {
-        "from": "note1",
-        "to": "note2",
-        "neuron": "NEW",
-        "type": "사실",
-        "domain_hint": "DIFF",
-        "description": "접점 $(a, f(a))$와 기울기 $f'(a)$로부터 접선 방정식 $y - f(a) = f'(a)(x - a)$를 작성한다.",
-        "note": "접점 $(a, f(a))$와 기울기 $f'(a)$로부터 접선 방정식 $y - f(a) = f'(a)(x - a)$를 작성한다.",
-        "main": true,
-        "step": 1,
-        "_keep_neuron": true
-      },
-      {
-        "from": [
-          "note2",
-          "단서B"
-        ],
-        "to": "note3",
-        "neuron": "전략25",
-        "type": "연산",
-        "domain_hint": "EQN",
-        "description": "접선에 원점 대입하여 관계식 도출",
-        "note": "원점 $(0,0)$을 대입하면 $0 = -f'(1) + f(1)$이고 $f(1) = f'(1)$이다",
-        "main": true,
-        "step": 1
-      },
-      {
-        "from": "단서C",
-        "to": "note4",
-        "neuron": "NEW_1",
-        "type": "전략",
-        "domain_hint": "LIM",
-        "description": "역수 치환으로 극한식 변환",
-        "note": "$\\frac{1}{t} = x$로 치환하면 $\\lim_{x \\to 0^+} \\frac{f(1+4x)-f(1)}{x}$이다",
-        "main": true,
-        "step": 2
-      },
-      {
-        "from": "note4",
-        "to": "note5",
-        "neuron": "NEW_2",
-        "type": "사실",
-        "domain_hint": "LIM, DIFF",
-        "description": "미분 정의를 이용하여 극한값 산출",
-        "note": "$4x = h$로 재치환하면 극한값은 $4\\lim_{h \\to 0^+} \\frac{f(1+h)-f(1)}{h} = 4f'(1)$이다",
-        "main": true,
-        "step": 2
-      },
-      {
-        "from": [
-          "note5",
-          "단서C"
-        ],
-        "to": "note6",
-        "neuron": "연산24",
-        "type": "연산",
-        "domain_hint": "EQN",
-        "description": "극한값과 주어진 조건 등치",
-        "note": "$4f'(1) = \\{f(1)\\}^2$이다",
-        "main": true,
-        "step": 2
-      },
-      {
-        "from": [
-          "note3",
-          "note6"
-        ],
-        "to": "note7",
-        "neuron": "전략2",
-        "type": "연산",
-        "domain_hint": "EQN",
-        "description": "두 관계식 연립하여 후보값 도출",
-        "note": "$f(1) = f'(1)$을 대입하면 $f(1)(f(1)-4)=0$이고, (i) $f(1) = f'(1) = 0$ 또는 (ii) $f(1) = f'(1) = 4$이다",
-        "main": true,
-        "step": 3
-      },
-      {
-        "from": "단서A",
-        "to": "note8",
-        "neuron": "NEW_3",
-        "type": "사실",
-        "domain_hint": "POLY, DIFF",
-        "description": "이차함수의 도함수는 일차함수",
-        "note": "$f(x)$가 이차함수이므로 $f'(x)$는 일차함수이다",
-        "main": false,
-        "step": 4
-      },
-      {
-        "from": [
-          "단서D",
-          "note8"
-        ],
-        "to": "note9",
-        "neuron": "사실97",
-        "type": "사실",
-        "domain_hint": "DIFF, POLY",
-        "description": "최솟값 점 $x=a$에서 $f'(a)=0$이다.",
-        "note": "최솟값 점 $x=a$에서 $f'(a)=0$이다.",
-        "main": true,
-        "step": 4,
-        "_keep_neuron": true
-      },
-      {
-        "from": "note9",
-        "to": "note10",
-        "neuron": "사실118",
-        "type": "사실",
-        "domain_hint": "DIFF, POLY",
-        "description": "도함수 $f'(x)$는 비상수 일차함수이므로 치역이 $\\mathbb{R}$ 전체이고 단조이어서 $f'(x)=0$의 해는 $x=a$ 하나뿐이다.",
-        "note": "도함수 $f'(x)$는 비상수 일차함수이므로 치역이 $\\mathbb{R}$ 전체이고 단조이어서 $f'(x)=0$의 해는 $x=a$ 하나뿐이다.",
-        "main": true,
-        "step": 4,
-        "_keep_neuron": true
-      },
-      {
-        "from": [
-          "note7",
-          "note10"
-        ],
-        "to": "note11",
-        "neuron": "전략23",
-        "type": "전략",
-        "domain_hint": "EQN",
-        "description": "경우 (i)이 유일 영점 조건에 모순임을 확인",
-        "note": "(i) $f'(1) = 0$이면 $f'(x)$가 $x = 1$에서도 영점을 가져 유일 영점 조건에 모순이다",
-        "main": false,
-        "step": 4
-      },
-      {
-        "from": [
-          "note7",
-          "note11"
-        ],
-        "to": "note12",
-        "neuron": "전략20",
-        "type": "전략",
-        "domain_hint": "EQN",
-        "description": "모순인 경우 소거하여 유일한 해 결정",
-        "note": "(ii)만 가능하여 $f(1) = 4$, $f'(1) = 4$이다",
-        "main": true,
-        "step": 4
-      },
-      {
-        "from": [
-          "단서A",
-          "단서D"
-        ],
-        "to": "note13",
-        "neuron": "전략41",
-        "type": "전략",
-        "domain_hint": "POLY",
-        "description": "꼭짓점 형태로 이차함수 설정",
-        "note": "$f(x) = a(x+3)^2 + k$ ($a > 0$)로 놓으면 $f'(x) = 2a(x+3)$이다",
-        "main": true,
-        "step": 5
-      },
-      {
-        "from": [
-          "note13",
-          "note12"
-        ],
-        "to": "note14",
-        "neuron": "연산33",
-        "type": "연산",
-        "domain_hint": "EQN",
-        "description": "도함수 조건으로 이차항 계수 결정",
-        "note": "$f'(1) = 2a \\cdot 4 = 8a = 4$에서 $a = \\frac{1}{2}$이다",
-        "main": true,
-        "step": 5
-      },
-      {
-        "from": [
-          "note14",
-          "note12"
-        ],
-        "to": "note15",
-        "neuron": "전략25",
-        "type": "연산",
-        "domain_hint": "EQN",
-        "description": "함수값 조건으로 상수항 결정 및 함수 확정",
-        "note": "$f(1) = \\frac{1}{2} \\cdot 16 + k = 8 + k = 4$에서 $k = -4$이고, $f(x) = \\frac{1}{2}(x+3)^2 - 4$이다",
-        "main": true,
-        "step": 5
-      },
-      {
-        "from": "note15",
-        "to": "END",
-        "neuron": "전략25",
-        "type": "연산",
-        "domain_hint": "POLY",
-        "description": "x=3 대입하여 함수값 계산",
-        "note": "$f(3) = \\frac{1}{2}(6)^2 - 4 = 18 - 4 = 14$이다",
-        "main": true,
-        "step": 6
-      }
-    ],
-    "previous_solution": "접점 $(a, f(a))$에서의 접선 기울기는 $f'(a)$이다. 접점 $(a, f(a))$와 기울기 $f'(a)$로부터 접선 방정식 $y - f(a) = f'(a)(x - a)$를 작성한다. 원점 $(0,0)$을 대입하면 $0 = -f'(1) + f(1)$이고 $f(1) = f'(1)$이다 $\\frac{1}{t} = x$로 치환하면 $\\lim_{x \\to 0^+} \\frac{f(1+4x)-f(1)}{x}$이다 $4x = h$로 재치환하면 극한값은 $4\\lim_{h \\to 0^+} \\frac{f(1+h)-f(1)}{h} = 4f'(1)$이다 $4f'(1) = \\{f(1)\\}^2$이다 $f(1) = f'(1)$을 대입하면 $f(1)(f(1)-4)=0$이고, (i) $f(1) = f'(1) = 0$ 또는 (ii) $f(1) = f'(1) = 4$이다 최솟값 점 $x=a$에서 $f'(a)=0$이다. 도함수 $f'(x)$는 비상수 일차함수이므로 치역이 $\\mathbb{R}$ 전체이고 단조이어서 $f'(x)=0$의 해는 $x=a$ 하나뿐이다. (ii)만 가능하여 $f(1) = 4$, $f'(1) = 4$이다 $f(x) = a(x+3)^2 + k$ ($a > 0$)로 놓으면 $f'(x) = 2a(x+3)$이다 $f'(1) = 2a \\cdot 4 = 8a = 4$에서 $a = \\frac{1}{2}$이다 $f(1) = \\frac{1}{2} \\cdot 16 + k = 8 + k = 4$에서 $k = -4$이고, $f(x) = \\frac{1}{2}(x+3)^2 - 4$이다 $f(3) = \\frac{1}{2}(6)^2 - 4 = 18 - 4 = 14$이다",
-    "previous_clues": "[{\"id\":\"단서A\",\"text\":\"$f(x)$는 이차함수이다\"},{\"id\":\"단서B\",\"text\":\"곡선 $y = f(x)$ 위의 점 $(1, f(1))$에서의 접선이 원점을 지난다\"},{\"id\":\"단서C\",\"text\":\"$\\\\lim_{t \\\\to \\\\infty} t\\\\left\\\\{f\\\\!\\\\left(1+\\\\frac{4}{t}\\\\right)-f(1)\\\\right\\\\} = \\\\{f(1)\\\\}^2$\"},{\"id\":\"단서D\",\"text\":\"$f(x)$가 $x = -3$에서 최소이다\"}]",
-    "previous_analysis": "접선 조건에서 f(1)=f'(1)을, 극한 조건에서 4f'(1)={f(1)}²을 얻어 연립하면 f(1)=0 또는 4이다. x=-3에서 최솟값 조건으로 f'(x)의 유일 영점이 x=-3이므로 f'(1)=0인 경우를 소거하고, f(x)=(1/2)(x+3)²-4를 결정하여 f(3)=14를 구한다.",
-    "previous_matching": "",
-    "previous_matched": [],
-    "previous_new_neurons": [
-      {
-        "id": "전략??",
-        "type": "전략",
-        "statement": "극한식에서 $t = 1/x$ (또는 $t = 1/(x-a)$)로 역수 치환하면, $x \\to \\infty$가 $t \\to 0^+$로, $x \\to 0^+$가 $t \\to +\\infty$로 변환되어 극한 계산이 단순화된다.",
-        "description": "역수 치환으로 극한식 변환",
-        "note": "$\\frac{1}{t} = x$로 치환하면 $\\lim_{x \\to 0^+} \\frac{f(1+4x)-f(1)}{x}$이다",
-        "reason": "제시된 전략 후보들은 치환(지수→다항), 연립, 인수분해, 합성함수 역상 분해 등을 다루지만, '역수 치환으로 극한식 변환'—즉 $x→∞$ 또는 $x→0$ 등의 상황에서 $t=1/x$ 로 놓아 극한의 변수를 바꾸는 전략—은 포함되어 있지 않다. 어떤 후보도 이 원리를 커버하지 않으며, 단순 사칙연산도 아니다.",
-        "blocked_edge": "단서C → note4",
-        "domain_hint": "LIM",
-        "domain": [
-          "LIM",
-          "TRANS"
-        ],
-        "action_hint": "",
-        "step": 2,
-        "main": true,
-        "near_miss": [
-          "사실21: $a>1$일 때 $\\lim_{x \\to +\\infty} a^x = \\in",
-          "사실22: 연속함수가 두 값 $f(a)$, $f(b)$를 취하면, 그 사이의 모든 ",
-          "사실45: $f(n)$이 $L$에 아래에서 수렴하면($f(n) < L$이고 $f(n"
-        ]
-      },
-      {
-        "id": "사실??",
-        "type": "사실",
-        "statement": "$\\lim_{h \\to 0} \\frac{f(a+h)-f(a)}{h} = f'(a)$이다. 극한식이 이 꼴로 변환되면 그 극한값은 $a$에서의 미분계수이다.",
-        "description": "미분 정의를 이용하여 극한값 산출",
-        "note": "$4x = h$로 재치환하면 극한값은 $4\\lim_{h \\to 0^+} \\frac{f(1+h)-f(1)}{h} = 4f'(1)$이다",
-        "reason": "제시된 후보들은 단조성·치역·이차함수·지수·로그 관련 사실들이며, 미분의 정의($\\lim_{h\\to 0}\\frac{f(x+h)-f(x)}{h}$)를 이용해 극한값을 $f'(a)$로 인식하는 원리는 포함되어 있지 않다.",
-        "blocked_edge": "note4 → note5",
-        "domain_hint": "LIM, DIFF",
-        "domain": [
-          "DIFF",
-          "LIM"
-        ],
-        "action_hint": "",
-        "step": 2,
-        "main": true,
-        "near_miss": []
-      },
-      {
-        "id": "사실??",
-        "type": "사실",
-        "statement": "다항함수 $f(x) = a_n x^n + \\cdots + a_0$의 도함수는 $f'(x) = n a_n x^{n-1} + \\cdots + a_1$이다. 특히 이차함수($n=2$)의 도함수는 일차함수이다.",
-        "description": "이차함수의 도함수는 일차함수",
-        "note": "$f(x)$가 이차함수이므로 $f'(x)$는 일차함수이다",
-        "reason": "제시된 후보들은 지수·로그·연속·단조성 관련 사실들로, 다항함수의 미분 공식($\\frac{d}{dx}x^n = nx^{n-1}$)이나 이차함수의 도함수가 일차함수라는 사실은 포함되어 있지 않다.",
-        "blocked_edge": "단서A → note8",
-        "domain_hint": "POLY, DIFF",
-        "domain": [
-          "DIFF",
-          "POLY"
-        ],
-        "action_hint": "",
-        "step": 4,
-        "main": false,
-        "near_miss": []
-      }
-    ],
-    "previous_partial_skeleton": [],
-    "previous_blockage_point": "",
-    "previous_skel_review_notes": "주요 수정: vy(독립변수 y) 노드 제거. 곡선 방정식에서 y는 독립변수가 아닌 출력값이므로 T3로 표현하는 것은 부적절. crv_c1은 fx_rhs(f(x))를 좌변으로 하는 등식 구조로 정리. 나머지 공유 노드, 3단 구조, 엣지 방향 모두 정상.",
-    "previous_dna_nodes": [
-      {
-        "id": "top",
-        "dna": "Q1",
-        "label": "값을 구하라",
-        "category": "발문"
-      },
-      {
-        "id": "ask",
-        "dna": "F3",
-        "label": "f(3)",
-        "category": "함수"
-      },
-      {
-        "id": "c3val",
-        "dna": "T2",
-        "label": "상수 3",
-        "category": "말단"
-      },
-      {
-        "id": "fn_f",
-        "dna": "F6",
-        "label": "함수 f",
-        "category": "함수"
-      },
-      {
-        "id": "f11",
-        "dna": "F11",
-        "label": "이차함수",
-        "category": "함수"
-      },
-      {
-        "id": "conds",
-        "dna": "S1",
-        "label": "조건 묶음",
-        "category": "구조"
-      },
-      {
-        "id": "crv",
-        "dna": "G2",
-        "label": "곡선 y=f(x)",
-        "category": "기하"
-      },
-      {
-        "id": "crv_eq",
-        "dna": "C11",
-        "label": "곡선 방정식",
-        "category": "조건"
-      },
-      {
-        "id": "crv_c1",
-        "dna": "C1",
-        "label": "y=f(x) 등식",
-        "category": "조건"
-      },
-      {
-        "id": "vx",
-        "dna": "T3",
-        "label": "독립변수 x",
-        "category": "말단"
-      },
-      {
-        "id": "fx_rhs",
-        "dna": "F3",
-        "label": "f(x)",
-        "category": "함수"
-      },
-      {
-        "id": "pt1",
-        "dna": "G1",
-        "label": "점 (1,f(1))",
-        "category": "기하"
-      },
-      {
-        "id": "pt1_coord",
-        "dna": "G17",
-        "label": "좌표 (1,f(1))",
-        "category": "기하"
-      },
-      {
-        "id": "c1val",
-        "dna": "T2",
-        "label": "상수 1",
-        "category": "말단"
-      },
-      {
-        "id": "f1_val",
-        "dna": "F3",
-        "label": "f(1)",
-        "category": "함수"
-      },
-      {
-        "id": "tgt",
-        "dna": "G15",
-        "label": "접선",
-        "category": "기하"
-      },
-      {
-        "id": "pt_on_crv",
-        "dna": "G3",
-        "label": "곡선 위의 점",
-        "category": "기하"
-      },
-      {
-        "id": "pass_o",
-        "dna": "G16",
-        "label": "접선이 원점 통과",
-        "category": "기하"
-      },
-      {
-        "id": "pt_o",
-        "dna": "G17",
-        "label": "원점 O(0,0)",
-        "category": "기하"
-      },
-      {
-        "id": "c0",
-        "dna": "T2",
-        "label": "상수 0",
-        "category": "말단"
-      },
-      {
-        "id": "lim_eq",
-        "dna": "C1",
-        "label": "극한=f(1)^2",
-        "category": "조건"
-      },
-      {
-        "id": "lim_expr",
-        "dna": "E6",
-        "label": "t*{f(1+4/t)-f(1)}",
-        "category": "수식"
-      },
-      {
-        "id": "f1_sq",
-        "dna": "E7",
-        "label": "f(1)^2",
-        "category": "수식"
-      },
-      {
-        "id": "c2_exp",
-        "dna": "T2",
-        "label": "지수 2",
-        "category": "말단"
-      },
-      {
-        "id": "vt",
-        "dna": "T3",
-        "label": "독립변수 t",
-        "category": "말단"
-      },
-      {
-        "id": "c4val",
-        "dna": "T2",
-        "label": "상수 4",
-        "category": "말단"
-      },
-      {
-        "id": "inner_arg",
-        "dna": "E1",
-        "label": "1+4/t",
-        "category": "수식"
-      },
-      {
-        "id": "frac_4t",
-        "dna": "E6",
-        "label": "4*(1/t)",
-        "category": "수식"
-      },
-      {
-        "id": "inv_t",
-        "dna": "E7",
-        "label": "t^(-1)",
-        "category": "수식"
-      },
-      {
-        "id": "neg1",
-        "dna": "T2",
-        "label": "상수 -1",
-        "category": "말단"
-      },
-      {
-        "id": "f_inner",
-        "dna": "F3",
-        "label": "f(1+4/t)",
-        "category": "함수"
-      },
-      {
-        "id": "diff_expr",
-        "dna": "E1",
-        "label": "f(1+4/t)-f(1)",
-        "category": "수식"
-      },
-      {
-        "id": "neg_f1",
-        "dna": "E2",
-        "label": "-f(1)",
-        "category": "수식"
-      },
-      {
-        "id": "t_times",
-        "dna": "E6",
-        "label": "t*{...}",
-        "category": "수식"
-      },
-      {
-        "id": "min_cond",
-        "dna": "F14",
-        "label": "x=-3에서 최소",
-        "category": "함수"
-      },
-      {
-        "id": "cneg3",
-        "dna": "T2",
-        "label": "상수 -3",
-        "category": "말단"
-      }
-    ],
-    "previous_dna_edges": [
-      {
-        "from": "ask",
-        "to": "top"
-      },
-      {
-        "from": "conds",
-        "to": "top"
-      },
-      {
-        "from": "c3val",
-        "to": "ask"
-      },
-      {
-        "from": "fn_f",
-        "to": "ask"
-      },
-      {
-        "from": "f11",
-        "to": "fn_f"
-      },
-      {
-        "from": "crv",
-        "to": "conds"
-      },
-      {
-        "from": "crv_eq",
-        "to": "crv"
-      },
-      {
-        "from": "crv_c1",
-        "to": "crv_eq"
-      },
-      {
-        "from": "fx_rhs",
-        "to": "crv_c1"
-      },
-      {
-        "from": "vx",
-        "to": "fx_rhs"
-      },
-      {
-        "from": "fn_f",
-        "to": "fx_rhs"
-      },
-      {
-        "from": "pt1",
-        "to": "pt_on_crv"
-      },
-      {
-        "from": "crv",
-        "to": "pt_on_crv"
-      },
-      {
-        "from": "pt_on_crv",
-        "to": "conds"
-      },
-      {
-        "from": "pt1_coord",
-        "to": "pt1"
-      },
-      {
-        "from": "c1val",
-        "to": "pt1_coord"
-      },
-      {
-        "from": "f1_val",
-        "to": "pt1_coord"
-      },
-      {
-        "from": "fn_f",
-        "to": "f1_val"
-      },
-      {
-        "from": "c1val",
-        "to": "f1_val"
-      },
-      {
-        "from": "tgt",
-        "to": "pass_o"
-      },
-      {
-        "from": "pt_o",
-        "to": "pass_o"
-      },
-      {
-        "from": "pass_o",
-        "to": "conds"
-      },
-      {
-        "from": "pt1",
-        "to": "tgt"
-      },
-      {
-        "from": "crv",
-        "to": "tgt"
-      },
-      {
-        "from": "c0",
-        "to": "pt_o"
-      },
-      {
-        "from": "lim_eq",
-        "to": "conds"
-      },
-      {
-        "from": "lim_expr",
-        "to": "lim_eq"
-      },
-      {
-        "from": "f1_sq",
-        "to": "lim_eq"
-      },
-      {
-        "from": "f1_val",
-        "to": "f1_sq"
-      },
-      {
-        "from": "c2_exp",
-        "to": "f1_sq"
-      },
-      {
-        "from": "t_times",
-        "to": "lim_expr"
-      },
-      {
-        "from": "vt",
-        "to": "t_times"
-      },
-      {
-        "from": "diff_expr",
-        "to": "t_times"
-      },
-      {
-        "from": "f_inner",
-        "to": "diff_expr"
-      },
-      {
-        "from": "neg_f1",
-        "to": "diff_expr"
-      },
-      {
-        "from": "f1_val",
-        "to": "neg_f1"
-      },
-      {
-        "from": "fn_f",
-        "to": "f_inner"
-      },
-      {
-        "from": "inner_arg",
-        "to": "f_inner"
-      },
-      {
-        "from": "c1val",
-        "to": "inner_arg"
-      },
-      {
-        "from": "frac_4t",
-        "to": "inner_arg"
-      },
-      {
-        "from": "c4val",
-        "to": "frac_4t"
-      },
-      {
-        "from": "inv_t",
-        "to": "frac_4t"
-      },
-      {
-        "from": "vt",
-        "to": "inv_t"
-      },
-      {
-        "from": "neg1",
-        "to": "inv_t"
-      },
-      {
-        "from": "min_cond",
-        "to": "conds"
-      },
-      {
-        "from": "fn_f",
-        "to": "min_cond"
-      },
-      {
-        "from": "cneg3",
-        "to": "min_cond"
-      }
-    ],
-    "previous_new_dna": [],
-    "previous_dna_review_notes": "주요 수정: vy(독립변수 y) 노드 제거. 곡선 방정식에서 y는 독립변수가 아닌 출력값이므로 T3로 표현하는 것은 부적절. crv_c1은 fx_rhs(f(x))를 좌변으로 하는 등식 구조로 정리. 나머지 공유 노드, 3단 구조, 엣지 방향 모두 정상.",
-    "original_solution": "문제의 조건에서 $y = f(x)$ 위의 점 $(1,\\, f(1))$에서의 접선:\n\n$$y = f'(1)(x-1) + f(1)$$\n\n이 원점을 지나므로\n\n$$f(1) = f'(1) \\quad \\cdots\\ ㉠$$\n\n한편, 문제의 극한에서 $\\dfrac{1}{t} = x$로 치환하면\n\n$$\\lim_{t \\to \\infty} t\\left\\{f\\!\\left(1+\\frac{4}{t}\\right)-f(1)\\right\\} = \\lim_{x \\to 0+}\\frac{f(1+4x)-f(1)}{x} = 4f'(1)$$\n\n이고, 이 값이 $\\{f(1)\\}^2$이므로\n\n$$4f'(1) = \\{f(1)\\}^2 \\quad \\cdots\\ ㉡$$\n\n㉠, ㉡으로부터\n\n$$\\begin{cases} \\text{(i)}\\ f(1) = f'(1) = 0 \\\\ \\text{(ii)}\\ f(1) = f'(1) = 4 \\end{cases}$$\n\n$f(x)$는 $x = -3$에서 최소이므로 (∵ 문제의 조건)\n\n$\\Rightarrow$ $f'(x) = 0$의 실근은 $x = -3$뿐 (∵ $f'(x)$는 일차함수)\n\n$\\Rightarrow$ $f'(1) \\neq 0$\n\n$\\Rightarrow$ (i)가 모순이므로 (ii)만 가능: $f(1) = f'(1) = 4$\n\n$\\Rightarrow$ $f(x) = p(x-1)^2 + 4x$ (단, $p > 0$인 상수)\n\n$f'(x) = 2p(x-1) + 4$이므로\n\n$$f'(-3) = 0 \\Rightarrow 2p(-4) + 4 = 0 \\Rightarrow p = \\frac{1}{2}$$\n\n따라서\n\n$$f(x) = \\frac{1}{2}(x-1)^2 + 4x$$\n\n$$f(3) = \\frac{1}{2}(3-1)^2 + 4 \\cdot 3 = \\frac{1}{2} \\cdot 4 + 12 = 2 + 12 = \\boxed{14}$$",
-    "recovery_warnings": [],
-    "errata": [],
-    "metadata": {
-      "unit": "미적분",
-      "difficulty": "상",
-      "score": "4",
-      "type": "multiple_choice",
-      "answer": "2",
-      "year": "2024",
-      "source": "수능",
-      "topic": "이차함수와 접선, 극한",
-      "subtopic": "접선 조건과 극한을 이용한 함수 결정"
-    },
-    "needed_neurons": [
-      "전략??",
-      "사실??",
-      "사실??"
-    ],
-    "needed_dna": [],
-    "edge_count": 16,
-    "side_count": 2,
-    "created_at": "2026-03-26T13:30:39.219Z"
-  },
-  {
     "problem_id": "P20",
     "answer": "②(155/24)",
     "content": "id: P20\nsource: 수능\nyear: 2024\nunit: 미적분\ntopic: 다항함수와 절댓값 함수의 극값\nsubtopic: 도함수의 부호 변화와 극대 조건\ndifficulty: 상\nscore: 4\nanswer: 2\ntype: multiple_choice\n\n# 20. (수능) - 다항함수와 절댓값 함수의 극값\n\n## Problem\n\n세 상수 $a(a \\neq 0)$, $b$, $c$와 정수 $m$에 대하여 함수\n\n$$f(x) = \\frac{a}{3}x^3 - ax^2 + bx + \\frac{1}{2}|x - c|$$\n\n가 다음 조건을 만족시킨다.\n\n> (가) 함수 $f(x)$는 $x = 2$와 $x = 6$에서 극대이다.\n> (나) 구간 $(-\\infty,\\, 2]$에서 함수 $f(x)$는 최솟값 $m$을 갖는다.\n\n$a + b + c + m$의 값은? [4점]\n\n## Choices\n\n① $\\dfrac{77}{12}$ ② $\\dfrac{155}{24}$ ③ $\\dfrac{13}{2}$ ④ $\\dfrac{157}{24}$ ⑤ $\\dfrac{79}{12}$\n\n## Solution\n\n문제의 $f(x)$의 정의에 의해\n\n$$f'(x) = \\begin{cases} a(x-1)^2 - a + b - \\dfrac{1}{2} & (x < c) \\\\[6pt] a(x-1)^2 - a + b + \\dfrac{1}{2} & (x > c) \\end{cases}$$\n\n이고 (가) 조건에 의해\n\n$$f'(x)\\text{의 부호가 } x = 2,\\; x = 6\\text{의 좌우에서 양에서 음으로 바뀌어야 함} \\quad \\cdots\\; ①$$\n\n을 알 수 있다.\n\n한편,\n\n$$\\lim_{x \\to c^-} f'(x) < \\lim_{x \\to c^+} f'(x) \\text{이므로}$$\n\n$c = 2$ 또는 $c = 6$이면 ①을 만족시킬 수 없음\n\n$$\\Rightarrow f'(2) = f'(6) = 0 \\quad (\\because\\; ①) \\quad \\cdots\\; \\text{ⓒ}$$\n\n을 알 수 있다. 또한\n\n- 함수 $f'(x)$는 $x < c$, $x > c$에서 각각 최고차항의 계수가 $a$인 이차함수의 일부 ($\\because\\; a \\neq 0$)\n\n과 ①, ⓒ을 고려하면\n\n$$a < 0, \\quad 2 < c < 6$$\n\n이고, 함수 $y = f'(x)$의 그래프의 개형은 다음과 같음을 알 수 있다.\n\n[FIGURE: $y = f'(x)$의 그래프. $x = 0$과 $x = 2$에서 $f'(x) = 0$이고, $x < c$ 구간에서 아래로 볼록한 포물선, $x > c$ 구간에서도 아래로 볼록한 포물선. $x = 2$와 $x = 6$에서 $x$축에 접하며, $2 < c < 6$ 구간에서 불연속.]\n\n따라서 ⓒ에 의해\n\n$$\\begin{cases} f'(2) = a(2-1)^2 - a + b - \\dfrac{1}{2} = 0 \\\\[6pt] f'(6) = a(6-1)^2 - a + b + \\dfrac{1}{2} = 0 \\end{cases}$$\n\n$$\\Rightarrow a = -\\frac{1}{24}, \\quad b = \\frac{1}{2}$$\n\n이다. 또한 위의 $y = f'(x)$의 그래프를 참고하면\n\n- 구간 $(-\\infty,\\, 2]$에서 함수 $f(x)$는 $x < 0$에서 감소, $0 < x < 2$에서 증가\n\n$$\\Rightarrow m = f(0) = \\frac{c}{2} \\text{가 정수} \\quad (\\because\\; \\text{(나)})$$\n\n$$\\Rightarrow c = 4, \\quad m = 2 \\quad (\\because\\; 2 < c < 6)$$\n\n를 얻는다.\n\n$$\\therefore\\; a + b + c + m = -\\frac{1}{24} + \\frac{1}{2} + 4 + 2 = \\frac{155}{24}$$",
@@ -4471,5 +3749,720 @@
     "edge_count": 22,
     "side_count": 8,
     "created_at": "2026-03-26T14:04:08.169Z"
+  },
+  {
+    "problem_id": "P19",
+    "answer": "14",
+    "content": "id: P15\nsource: 수능\nyear: 2024\nunit: 미적분\ntopic: 삼차함수의 조건 분석\nsubtopic: 도함수 부호 조건과 함수값\ndifficulty: 상\nscore: 4\nanswer: 46\ntype: short_answer\n\n# 15. (수능) - 삼차함수의 도함수 부호 조건과 함수값\n\n## Problem\n최고차항의 계수가 $1$인 삼차함수 $f(x)$가 다음 조건을 만족시킨다.\n\n> (가) $f'(-1)f'(1) < 0$\n>\n> (나) $f'(n)f'(n+1) < 0$을 만족시키는 정수 $n$은 $2$뿐이다.\n\n$f(k) = f(k+2) = 0$인 정수 $k$가 존재할 때, $f(5)$의 값을 구하시오. [4점]\n\n## Solution\n(나)에서 $f'(2)f'(3) < 0$이므로 $f'(x) = 0$은 $2$와 $3$ 사이의 실근을 가짐을 알 수 있다.\n\n문제의 조건에서:\n\n$$f'(-1)f'(1) < 0$$\n$$f'(-1)f'(0) \\geq 0$$\n$$f'(0)f'(1) \\geq 0$$\n\n이 세 조건을 동시에 만족시키려면 $f'(0) = 0$이어야 한다.\n\n이므로\n\n$$f'(x) = 3x(x - a) \\quad (2 < a < 3)$$\n\n$$\\Rightarrow f(x) = x^3 - \\frac{3a}{2}x^2 + C \\quad (2 < a < 3, \\; C\\text{는 상수}) \\cdots \\text{⑦}$$\n\n로 놓을 수 있다.\n\n[FIGURE: $y = f(x)$의 그래프. $x = 0$에서 극대, $x = a$에서 극소를 가지며, 극대값은 $C$, 극소값은 $f(a)$이다. $x$축 위의 주요 점은 $-\\dfrac{a}{2},\\; 0,\\; a,\\; \\dfrac{3a}{2}$이다.]\n\n위 그림을 참고하면 $f(k) = f(k+2) = 0 \\cdots$ ⓒ 을 만족시킬 수 있는 정수 $k$로 가능한 것은\n\n$$-\\frac{a}{2} < k \\text{이고 } k+2 < \\frac{3a}{2} \\text{인 } a \\; (2 < a < 3)\\text{이 존재}$$\n\n$$\\Rightarrow k = -1, \\; k = 0, \\; k = 1, \\; k = 2$$\n\n이고, 이때\n\n- ① $k = -1$일 때: $f(-1) < f(1)$ → ⓒ 불가\n- ② $k = 0$일 때: $f(0) > f(2)$ ($\\because a < 2 < \\dfrac{3a}{2}$) → ⓒ 불가\n- ③ $k = 1$일 때: $f(1) = f(3)$이면 $a = \\dfrac{13}{6}$이고, $f(1) = 0$으로부터 $C = \\dfrac{9}{4}$ → ⓒ 성립\n- ④ $k = 2$일 때: $f(2) < f(4)$ → ⓒ 불가\n\n이므로 ⓒ을 만족시키는 경우는 ③의 경우뿐임을 알 수 있다.\n\n$$\\therefore f(x) = x^3 - \\frac{13}{4}x^2 + \\frac{9}{4}$$\n\n$$\\Rightarrow f(5) = 125 - \\frac{13 \\times 25}{4} + \\frac{9}{4} = 125 - \\frac{325}{4} + \\frac{9}{4} = 125 - \\frac{316}{4} = 125 - 79 = \\boxed{46}$$",
+    "content_source": "CheckPending",
+    "content_length": 1569,
+    "skel_status": "neuron_missing",
+    "dna_status": "ok",
+    "previous_skeleton": [
+      {
+        "from": [
+          "단서A",
+          "단서B"
+        ],
+        "to": "note1",
+        "neuron": "사실100",
+        "type": "사실",
+        "domain_hint": "DIFF",
+        "description": "접점 $(a, f(a))$에서의 접선 기울기는 $f'(a)$이다.",
+        "note": "접점 $(a, f(a))$에서의 접선 기울기는 $f'(a)$이다.",
+        "main": true,
+        "step": 1,
+        "_keep_neuron": true
+      },
+      {
+        "from": "note1",
+        "to": "note2",
+        "neuron": "NEW_1",
+        "type": "사실",
+        "domain_hint": "DIFF",
+        "description": "접점 $(a, f(a))$와 기울기 $f'(a)$로부터 접선 방정식 $y - f(a) = f'(a)(x - a)$를 작성한다.",
+        "note": "접점 $(a, f(a))$와 기울기 $f'(a)$로부터 접선 방정식 $y - f(a) = f'(a)(x - a)$를 작성한다.",
+        "main": true,
+        "step": 1,
+        "_keep_neuron": false
+      },
+      {
+        "from": [
+          "note2",
+          "단서B"
+        ],
+        "to": "note3",
+        "neuron": "전략25",
+        "type": "연산",
+        "domain_hint": "EQN",
+        "description": "접선에 원점 대입하여 관계식 도출",
+        "note": "원점 $(0,0)$을 대입하면 $0 = -f'(1) + f(1)$이고 $f(1) = f'(1)$이다",
+        "main": true,
+        "step": 1,
+        "_keep_neuron": true
+      },
+      {
+        "from": "단서C",
+        "to": "note4",
+        "neuron": "NEW_2",
+        "type": "전략",
+        "domain_hint": "LIM",
+        "description": "역수 치환으로 극한식 변환",
+        "note": "$\\frac{1}{t} = x$로 치환하면 $\\lim_{x \\to 0^+} \\frac{f(1+4x)-f(1)}{x}$이다",
+        "main": true,
+        "step": 2,
+        "_keep_neuron": false
+      },
+      {
+        "from": "note4",
+        "to": "note5",
+        "neuron": "NEW_3",
+        "type": "사실",
+        "domain_hint": "LIM, DIFF",
+        "description": "미분 정의를 이용하여 극한값 산출",
+        "note": "미분 정의 $f'(a) = \\lim_{h \\to 0} \\frac{f(a+h)-f(a)}{h}$를 이용하여 극한값을 산출하고, 이를 주어진 조건값과 등치시켜 관계식을 얻는다.",
+        "main": true,
+        "step": 2,
+        "_keep_neuron": false
+      },
+      {
+        "from": [
+          "note3",
+          "note5"
+        ],
+        "to": "note6",
+        "neuron": "전략2",
+        "type": "연산",
+        "domain_hint": "EQN",
+        "description": "두 관계식 연립하여 후보값 도출",
+        "note": "$f(1) = f'(1)$을 대입하면 $f(1)(f(1)-4)=0$이고, (i) $f(1) = f'(1) = 0$ 또는 (ii) $f(1) = f'(1) = 4$이다",
+        "main": true,
+        "step": 3,
+        "_keep_neuron": true
+      },
+      {
+        "from": [
+          "단서D",
+          "note7"
+        ],
+        "to": "note7",
+        "neuron": "사실97",
+        "type": "사실",
+        "domain_hint": "DIFF, POLY",
+        "description": "최솟값 점 $x=a$에서 $f'(a)=0$이다.",
+        "note": "이차함수 $f(x)$를 미분하면 도함수 $f'(x)$는 비상수 일차함수이다(연산33 적용). 최솟값 점 $x=a$에서 $f'(a)=0$이다(사실97).",
+        "main": true,
+        "step": 4,
+        "_keep_neuron": true
+      },
+      {
+        "from": "note7",
+        "to": "note8",
+        "neuron": "사실118",
+        "type": "사실",
+        "domain_hint": "DIFF, POLY",
+        "description": "도함수 $f'(x)$는 비상수 일차함수이므로 치역이 $\\mathbb{R}$ 전체이고 단조이어서 $f'(x)=0$의 해는 $x=a$ 하나뿐이다.",
+        "note": "도함수 $f'(x)$는 비상수 일차함수이므로 치역이 $\\mathbb{R}$ 전체이고 단조이어서 $f'(x)=0$의 해는 $x=a$ 하나뿐이다.",
+        "main": true,
+        "step": 4,
+        "_keep_neuron": true
+      },
+      {
+        "from": [
+          "note6",
+          "note8"
+        ],
+        "to": "note9",
+        "neuron": "전략23",
+        "type": "전략",
+        "domain_hint": "EQN",
+        "description": "경우 (i)이 유일 영점 조건에 모순임을 확인",
+        "note": "(i) $f'(1) = 0$이면 $f'(x)$가 $x = 1$에서도 영점을 가져 유일 영점 조건에 모순이다",
+        "main": false,
+        "step": 4,
+        "_keep_neuron": true
+      },
+      {
+        "from": [
+          "note6",
+          "note9"
+        ],
+        "to": "note10",
+        "neuron": "전략20",
+        "type": "전략",
+        "domain_hint": "EQN",
+        "description": "모순인 경우 소거하여 유일한 해 결정",
+        "note": "(ii)만 가능하여 $f(1) = 4$, $f'(1) = 4$이다",
+        "main": true,
+        "step": 4,
+        "_keep_neuron": true
+      },
+      {
+        "from": [
+          "단서A",
+          "단서D"
+        ],
+        "to": "note11",
+        "neuron": "전략41",
+        "type": "전략",
+        "domain_hint": "POLY",
+        "description": "꼭짓점 형태로 이차함수 설정",
+        "note": "$f(x) = a(x+3)^2 + k$ ($a > 0$)로 놓으면 $f'(x) = 2a(x+3)$이다",
+        "main": true,
+        "step": 5,
+        "_keep_neuron": true
+      },
+      {
+        "from": [
+          "note11",
+          "note10"
+        ],
+        "to": "note12",
+        "neuron": "연산33",
+        "type": "연산",
+        "domain_hint": "EQN",
+        "description": "도함수 조건으로 이차항 계수 결정",
+        "note": "$f'(1) = 2a \\cdot 4 = 8a = 4$에서 $a = \\frac{1}{2}$이다",
+        "main": true,
+        "step": 5,
+        "_keep_neuron": true
+      },
+      {
+        "from": [
+          "note12",
+          "note10"
+        ],
+        "to": "note13",
+        "neuron": "전략25",
+        "type": "연산",
+        "domain_hint": "EQN",
+        "description": "함수값 조건으로 상수항 결정 및 함수 확정",
+        "note": "$f(1) = \\frac{1}{2} \\cdot 16 + k = 8 + k = 4$에서 $k = -4$이고, $f(x) = \\frac{1}{2}(x+3)^2 - 4$이다",
+        "main": true,
+        "step": 5,
+        "_keep_neuron": true
+      },
+      {
+        "from": "note13",
+        "to": "END",
+        "neuron": "전략25",
+        "type": "연산",
+        "domain_hint": "POLY",
+        "description": "x=3 대입하여 함수값 계산",
+        "note": "$f(3) = \\frac{1}{2}(6)^2 - 4 = 18 - 4 = 14$이다",
+        "main": true,
+        "step": 6,
+        "_keep_neuron": true
+      }
+    ],
+    "previous_solution": "접점 $(a, f(a))$에서의 접선 기울기는 $f'(a)$이다. 접점 $(a, f(a))$와 기울기 $f'(a)$로부터 접선 방정식 $y - f(a) = f'(a)(x - a)$를 작성한다. 원점 $(0,0)$을 대입하면 $0 = -f'(1) + f(1)$이고 $f(1) = f'(1)$이다 $\\frac{1}{t} = x$로 치환하면 $\\lim_{x \\to 0^+} \\frac{f(1+4x)-f(1)}{x}$이다 미분 정의 $f'(a) = \\lim_{h \\to 0} \\frac{f(a+h)-f(a)}{h}$를 이용하여 극한값을 산출하고, 이를 주어진 조건값과 등치시켜 관계식을 얻는다. $f(1) = f'(1)$을 대입하면 $f(1)(f(1)-4)=0$이고, (i) $f(1) = f'(1) = 0$ 또는 (ii) $f(1) = f'(1) = 4$이다 이차함수 $f(x)$를 미분하면 도함수 $f'(x)$는 비상수 일차함수이다(연산33 적용). 최솟값 점 $x=a$에서 $f'(a)=0$이다(사실97). 도함수 $f'(x)$는 비상수 일차함수이므로 치역이 $\\mathbb{R}$ 전체이고 단조이어서 $f'(x)=0$의 해는 $x=a$ 하나뿐이다. (ii)만 가능하여 $f(1) = 4$, $f'(1) = 4$이다 $f(x) = a(x+3)^2 + k$ ($a > 0$)로 놓으면 $f'(x) = 2a(x+3)$이다 $f'(1) = 2a \\cdot 4 = 8a = 4$에서 $a = \\frac{1}{2}$이다 $f(1) = \\frac{1}{2} \\cdot 16 + k = 8 + k = 4$에서 $k = -4$이고, $f(x) = \\frac{1}{2}(x+3)^2 - 4$이다 $f(3) = \\frac{1}{2}(6)^2 - 4 = 18 - 4 = 14$이다",
+    "previous_clues": "[{\"id\":\"단서A\",\"text\":\"$f(x)$는 이차함수이다\"},{\"id\":\"단서B\",\"text\":\"곡선 $y = f(x)$ 위의 점 $(1, f(1))$에서의 접선이 원점을 지난다\"},{\"id\":\"단서C\",\"text\":\"$\\\\lim_{t \\\\to \\\\infty} t\\\\left\\\\{f\\\\!\\\\left(1+\\\\frac{4}{t}\\\\right)-f(1)\\\\right\\\\} = \\\\{f(1)\\\\}^2$\"},{\"id\":\"단서D\",\"text\":\"$f(x)$가 $x = -3$에서 최소이다\"}]",
+    "previous_analysis": "",
+    "previous_matching": "",
+    "previous_matched": [],
+    "previous_new_neurons": [
+      {
+        "id": "사실??",
+        "type": "사실",
+        "statement": "곡선 $y=f(x)$ 위의 점 $(a, f(a))$에서의 접선 방정식은 $y - f(a) = f'(a)(x - a)$이다.",
+        "description": "접점 $(a, f(a))$와 기울기 $f'(a)$로부터 접선 방정식 $y - f(a) = f'(a)(x - a)$를 작성한다.",
+        "note": "접점 $(a, f(a))$와 기울기 $f'(a)$로부터 접선 방정식 $y - f(a) = f'(a)(x - a)$를 작성한다.",
+        "reason": "제공된 후보 뉴런들은 단조함수, 치역, 지수/로그함수, 절댓값, 연속성 등에 관한 것으로, 접선 방정식 작성 원리(점-기울기 공식)를 직접 표현하는 뉴런이 없다.",
+        "blocked_edge": "note1 → note2",
+        "domain_hint": "DIFF",
+        "domain": [
+          "DIFF",
+          "FUNC"
+        ],
+        "action_hint": "",
+        "step": 1,
+        "main": true,
+        "near_miss": [
+          "사실96: 다항함수 $f(x)$가 $x=a$에서 근을 갖고 $x=a$ 근방에서 부호",
+          "사실97: $f$가 미분가능하고 $x=a$에서 극값을 가지면 $f'(a) = 0$이",
+          "사실98: 구간에서 $f'(x) > 0$이면 $f$는 순증가, $f'(x) < 0$"
+        ]
+      },
+      {
+        "id": "전략??",
+        "type": "전략",
+        "statement": "$\\lim_{x \\to \\infty} f(x)$를 계산할 때 $t = 1/x$로 치환하면 $\\lim_{t \\to 0} f(1/t)$로 변환되어 $t \\to 0$ 극한 문제로 바꿀 수 있다.",
+        "description": "역수 치환으로 극한식 변환",
+        "note": "$\\frac{1}{t} = x$로 치환하면 $\\lim_{x \\to 0^+} \\frac{f(1+4x)-f(1)}{x}$이다",
+        "reason": "제공된 후보 전략들은 치환(지수방정식), 연립, 인수분해, 합성함수 역상 분해 등에 관한 것이다. 역수 치환 $t = 1/x$ (또는 $t = 1/n$)을 이용해 극한식을 변환하는 원리에 해당하는 뉴런이 없다.",
+        "blocked_edge": "단서C → note4",
+        "domain_hint": "LIM",
+        "domain": [
+          "LIM",
+          "FUNC"
+        ],
+        "action_hint": "",
+        "step": 2,
+        "main": true,
+        "near_miss": [
+          "전략24: 점근선이 있을 때는 점근선 주변부터 관찰한다 |",
+          "전략44: 조각함수의 극한·연속성을 분석할 때, 경계점 좌우에서 어떤 조각이 적용되",
+          "전략45: 조각함수의 극한·연속성을 분석할 때, 경계점 좌우에서 어떤 조각이 적용되"
+        ]
+      },
+      {
+        "id": "사실??",
+        "type": "사실",
+        "statement": "극한식이 $\\lim_{h \\to 0} \\frac{f(a+h)-f(a)}{h}$ 또는 $\\lim_{x \\to a} \\frac{f(x)-f(a)}{x-a}$ 꼴이면 이는 $f'(a)$와 같다 (미분의 정의).",
+        "description": "미분 정의를 이용하여 극한값 산출",
+        "note": "미분 정의 $f'(a) = \\lim_{h \\to 0} \\frac{f(a+h)-f(a)}{h}$를 이용하여 극한값을 산출하고, 이를 주어진 조건값과 등치시켜 관계식을 얻는다.",
+        "reason": "후보 뉴런들은 다항함수 미분가능성(사실125), 도함수 관련 성질(사실121, 사실122) 등을 포함하지만, 미분의 정의 $\\lim_{h \\to 0} \\frac{f(a+h)-f(a)}{h} = f'(a)$ 자체를 극한 계산에 적용하는 원리를 직접 서술한 뉴런이 없다.",
+        "blocked_edge": "note4 → note5",
+        "domain_hint": "LIM, DIFF",
+        "domain": [
+          "DIFF",
+          "LIM"
+        ],
+        "action_hint": "",
+        "step": 2,
+        "main": true,
+        "near_miss": [
+          "사실21: $a>1$일 때 $\\lim_{x \\to +\\infty} a^x = \\in",
+          "사실22: 연속함수가 두 값 $f(a)$, $f(b)$를 취하면, 그 사이의 모든 ",
+          "사실45: $f(n)$이 $L$에 아래에서 수렴하면($f(n) < L$이고 $f(n"
+        ]
+      }
+    ],
+    "previous_partial_skeleton": [],
+    "previous_blockage_point": "",
+    "previous_skel_review_notes": "",
+    "previous_dna_nodes": [
+      {
+        "id": "top",
+        "dna": "Q1",
+        "label": "값을 구하라",
+        "category": "발문"
+      },
+      {
+        "id": "ask",
+        "dna": "F3",
+        "label": "f(3)",
+        "category": "함수"
+      },
+      {
+        "id": "c3val",
+        "dna": "T2",
+        "label": "상수 3",
+        "category": "말단"
+      },
+      {
+        "id": "fn_f",
+        "dna": "F6",
+        "label": "함수 f",
+        "category": "함수"
+      },
+      {
+        "id": "f11",
+        "dna": "F11",
+        "label": "이차함수",
+        "category": "함수"
+      },
+      {
+        "id": "conds",
+        "dna": "S1",
+        "label": "조건 묶음",
+        "category": "구조"
+      },
+      {
+        "id": "crv",
+        "dna": "G2",
+        "label": "곡선 y=f(x)",
+        "category": "기하"
+      },
+      {
+        "id": "crv_eq",
+        "dna": "C11",
+        "label": "곡선 방정식",
+        "category": "조건"
+      },
+      {
+        "id": "crv_c1",
+        "dna": "C1",
+        "label": "y=f(x) 등식",
+        "category": "조건"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
+      },
+      {
+        "id": "fx_rhs",
+        "dna": "F3",
+        "label": "f(x)",
+        "category": "함수"
+      },
+      {
+        "id": "pt1",
+        "dna": "G1",
+        "label": "점 (1,f(1))",
+        "category": "기하"
+      },
+      {
+        "id": "pt1_coord",
+        "dna": "G17",
+        "label": "좌표 (1,f(1))",
+        "category": "기하"
+      },
+      {
+        "id": "c1val",
+        "dna": "T2",
+        "label": "상수 1",
+        "category": "말단"
+      },
+      {
+        "id": "f1_val",
+        "dna": "F3",
+        "label": "f(1)",
+        "category": "함수"
+      },
+      {
+        "id": "tgt",
+        "dna": "G15",
+        "label": "접선",
+        "category": "기하"
+      },
+      {
+        "id": "pt_on_crv",
+        "dna": "G3",
+        "label": "곡선 위의 점",
+        "category": "기하"
+      },
+      {
+        "id": "pass_o",
+        "dna": "G16",
+        "label": "접선이 원점 통과",
+        "category": "기하"
+      },
+      {
+        "id": "pt_o",
+        "dna": "G17",
+        "label": "원점 O(0,0)",
+        "category": "기하"
+      },
+      {
+        "id": "c0",
+        "dna": "T2",
+        "label": "상수 0",
+        "category": "말단"
+      },
+      {
+        "id": "lim_eq",
+        "dna": "C1",
+        "label": "극한=f(1)^2",
+        "category": "조건"
+      },
+      {
+        "id": "lim_expr",
+        "dna": "E6",
+        "label": "t*{f(1+4/t)-f(1)}",
+        "category": "수식"
+      },
+      {
+        "id": "f1_sq",
+        "dna": "E7",
+        "label": "f(1)^2",
+        "category": "수식"
+      },
+      {
+        "id": "c2_exp",
+        "dna": "T2",
+        "label": "지수 2",
+        "category": "말단"
+      },
+      {
+        "id": "vt",
+        "dna": "T3",
+        "label": "독립변수 t",
+        "category": "말단"
+      },
+      {
+        "id": "c4val",
+        "dna": "T2",
+        "label": "상수 4",
+        "category": "말단"
+      },
+      {
+        "id": "inner_arg",
+        "dna": "E1",
+        "label": "1+4/t",
+        "category": "수식"
+      },
+      {
+        "id": "frac_4t",
+        "dna": "E6",
+        "label": "4*(1/t)",
+        "category": "수식"
+      },
+      {
+        "id": "inv_t",
+        "dna": "E7",
+        "label": "t^(-1)",
+        "category": "수식"
+      },
+      {
+        "id": "neg1",
+        "dna": "T2",
+        "label": "상수 -1",
+        "category": "말단"
+      },
+      {
+        "id": "f_inner",
+        "dna": "F3",
+        "label": "f(1+4/t)",
+        "category": "함수"
+      },
+      {
+        "id": "diff_expr",
+        "dna": "E1",
+        "label": "f(1+4/t)-f(1)",
+        "category": "수식"
+      },
+      {
+        "id": "neg_f1",
+        "dna": "E2",
+        "label": "-f(1)",
+        "category": "수식"
+      },
+      {
+        "id": "t_times",
+        "dna": "E6",
+        "label": "t*{...}",
+        "category": "수식"
+      },
+      {
+        "id": "min_cond",
+        "dna": "F14",
+        "label": "x=-3에서 최소",
+        "category": "함수"
+      },
+      {
+        "id": "cneg3",
+        "dna": "T2",
+        "label": "상수 -3",
+        "category": "말단"
+      }
+    ],
+    "previous_dna_edges": [
+      {
+        "from": "ask",
+        "to": "top"
+      },
+      {
+        "from": "conds",
+        "to": "top"
+      },
+      {
+        "from": "c3val",
+        "to": "ask"
+      },
+      {
+        "from": "fn_f",
+        "to": "ask"
+      },
+      {
+        "from": "f11",
+        "to": "fn_f"
+      },
+      {
+        "from": "crv",
+        "to": "conds"
+      },
+      {
+        "from": "crv_eq",
+        "to": "crv"
+      },
+      {
+        "from": "crv_c1",
+        "to": "crv_eq"
+      },
+      {
+        "from": "fx_rhs",
+        "to": "crv_c1"
+      },
+      {
+        "from": "vx",
+        "to": "fx_rhs"
+      },
+      {
+        "from": "fn_f",
+        "to": "fx_rhs"
+      },
+      {
+        "from": "pt1",
+        "to": "pt_on_crv"
+      },
+      {
+        "from": "crv",
+        "to": "pt_on_crv"
+      },
+      {
+        "from": "pt_on_crv",
+        "to": "conds"
+      },
+      {
+        "from": "pt1_coord",
+        "to": "pt1"
+      },
+      {
+        "from": "c1val",
+        "to": "pt1_coord"
+      },
+      {
+        "from": "f1_val",
+        "to": "pt1_coord"
+      },
+      {
+        "from": "fn_f",
+        "to": "f1_val"
+      },
+      {
+        "from": "c1val",
+        "to": "f1_val"
+      },
+      {
+        "from": "tgt",
+        "to": "pass_o"
+      },
+      {
+        "from": "pt_o",
+        "to": "pass_o"
+      },
+      {
+        "from": "pass_o",
+        "to": "conds"
+      },
+      {
+        "from": "pt1",
+        "to": "tgt"
+      },
+      {
+        "from": "crv",
+        "to": "tgt"
+      },
+      {
+        "from": "c0",
+        "to": "pt_o"
+      },
+      {
+        "from": "lim_eq",
+        "to": "conds"
+      },
+      {
+        "from": "lim_expr",
+        "to": "lim_eq"
+      },
+      {
+        "from": "f1_sq",
+        "to": "lim_eq"
+      },
+      {
+        "from": "f1_val",
+        "to": "f1_sq"
+      },
+      {
+        "from": "c2_exp",
+        "to": "f1_sq"
+      },
+      {
+        "from": "t_times",
+        "to": "lim_expr"
+      },
+      {
+        "from": "vt",
+        "to": "t_times"
+      },
+      {
+        "from": "diff_expr",
+        "to": "t_times"
+      },
+      {
+        "from": "f_inner",
+        "to": "diff_expr"
+      },
+      {
+        "from": "neg_f1",
+        "to": "diff_expr"
+      },
+      {
+        "from": "f1_val",
+        "to": "neg_f1"
+      },
+      {
+        "from": "fn_f",
+        "to": "f_inner"
+      },
+      {
+        "from": "inner_arg",
+        "to": "f_inner"
+      },
+      {
+        "from": "c1val",
+        "to": "inner_arg"
+      },
+      {
+        "from": "frac_4t",
+        "to": "inner_arg"
+      },
+      {
+        "from": "c4val",
+        "to": "frac_4t"
+      },
+      {
+        "from": "inv_t",
+        "to": "frac_4t"
+      },
+      {
+        "from": "vt",
+        "to": "inv_t"
+      },
+      {
+        "from": "neg1",
+        "to": "inv_t"
+      },
+      {
+        "from": "min_cond",
+        "to": "conds"
+      },
+      {
+        "from": "fn_f",
+        "to": "min_cond"
+      },
+      {
+        "from": "cneg3",
+        "to": "min_cond"
+      }
+    ],
+    "previous_new_dna": [],
+    "previous_dna_review_notes": "",
+    "original_solution": "(나)에서 $f'(2)f'(3) < 0$이므로 $f'(x) = 0$은 $2$와 $3$ 사이의 실근을 가짐을 알 수 있다.\n\n문제의 조건에서:\n\n$$f'(-1)f'(1) < 0$$\n$$f'(-1)f'(0) \\geq 0$$\n$$f'(0)f'(1) \\geq 0$$\n\n이 세 조건을 동시에 만족시키려면 $f'(0) = 0$이어야 한다.\n\n이므로\n\n$$f'(x) = 3x(x - a) \\quad (2 < a < 3)$$\n\n$$\\Rightarrow f(x) = x^3 - \\frac{3a}{2}x^2 + C \\quad (2 < a < 3, \\; C\\text{는 상수}) \\cdots \\text{⑦}$$\n\n로 놓을 수 있다.\n\n[FIGURE: $y = f(x)$의 그래프. $x = 0$에서 극대, $x = a$에서 극소를 가지며, 극대값은 $C$, 극소값은 $f(a)$이다. $x$축 위의 주요 점은 $-\\dfrac{a}{2},\\; 0,\\; a,\\; \\dfrac{3a}{2}$이다.]\n\n위 그림을 참고하면 $f(k) = f(k+2) = 0 \\cdots$ ⓒ 을 만족시킬 수 있는 정수 $k$로 가능한 것은\n\n$$-\\frac{a}{2} < k \\text{이고 } k+2 < \\frac{3a}{2} \\text{인 } a \\; (2 < a < 3)\\text{이 존재}$$\n\n$$\\Rightarrow k = -1, \\; k = 0, \\; k = 1, \\; k = 2$$\n\n이고, 이때\n\n- ① $k = -1$일 때: $f(-1) < f(1)$ → ⓒ 불가\n- ② $k = 0$일 때: $f(0) > f(2)$ ($\\because a < 2 < \\dfrac{3a}{2}$) → ⓒ 불가\n- ③ $k = 1$일 때: $f(1) = f(3)$이면 $a = \\dfrac{13}{6}$이고, $f(1) = 0$으로부터 $C = \\dfrac{9}{4}$ → ⓒ 성립\n- ④ $k = 2$일 때: $f(2) < f(4)$ → ⓒ 불가\n\n이므로 ⓒ을 만족시키는 경우는 ③의 경우뿐임을 알 수 있다.\n\n$$\\therefore f(x) = x^3 - \\frac{13}{4}x^2 + \\frac{9}{4}$$\n\n$$\\Rightarrow f(5) = 125 - \\frac{13 \\times 25}{4} + \\frac{9}{4} = 125 - \\frac{325}{4} + \\frac{9}{4} = 125 - \\frac{316}{4} = 125 - 79 = \\boxed{46}$$",
+    "recovery_warnings": [],
+    "errata": [],
+    "metadata": {
+      "unit": "미적분",
+      "difficulty": "상",
+      "score": "4",
+      "type": "multiple_choice",
+      "answer": "2",
+      "year": "2024",
+      "source": "수능",
+      "topic": "이차함수와 접선, 극한",
+      "subtopic": "접선 조건과 극한을 이용한 함수 결정"
+    },
+    "needed_neurons": [
+      "전략??",
+      "사실??",
+      "사실??"
+    ],
+    "needed_dna": [],
+    "edge_count": 14,
+    "side_count": 1,
+    "created_at": "2026-03-27T09:57:27.519Z"
   }
 ]
