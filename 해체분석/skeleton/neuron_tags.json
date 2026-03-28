@@ -1698,7 +1698,7 @@
     "id": "사실129",
     "domain": [
       "POLY",
-      "SYM"
+      "DIFF"
     ],
     "action": "CUBIC_INFLECTION_ROOT_MEAN"
   }
