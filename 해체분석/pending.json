@@ -3760,83 +3760,86 @@
     "problem_id": "P29",
     "answer": "15",
     "content": "id: P29\nsource: 수능\nyear: 미상\nunit: 미적분\ntopic: 삼차함수와 정적분\nsubtopic: 극값 조건과 부등식\ndifficulty: 상\nscore: 4\nanswer: 15\ntype: short_answer\n\n# 29. (수능) - 삼차함수와 정적분 조건\n\n## Problem\n상수 $a\\;(a > 0)$에 대하여 최고차항의 계수가 자연수인 삼차함수 $f(x)$와 함수\n\n$$g(x) = \\int_0^x \\left(\\frac{3}{2}t^2 + at + a\\right) dt$$\n\n가 다음 조건을 만족시킨다.\n\n(가) 함수 $f(x)$의 극댓값과 극솟값의 차는 $4$이다.\n\n(나) 모든 실수 $x$에 대하여 $|f(x) - g(x)| \\leq x^2|x - 3|$이다.\n\n$a$의 값이 $p + q\\sqrt{3}$일 때, $p + q$의 값을 구하시오.\n(단, $p$와 $q$는 유리수이다.)\n\n## Solution\n### Step 1. $g(x)$ 계산 및 $h(x)$ 설정\n\n적분으로 정의된 $g(x)$를 먼저 구한다.\n\n$$g(x) = \\int_0^x \\left(\\frac{3}{2}t^2 + at + a\\right) dt = \\frac{1}{2}x^3 + \\frac{a}{2}x^2 + ax$$\n\n조건 (나)에서 $|f(x) - g(x)| \\leq x^2|x - 3|$이므로, 차이 함수 $h(x) = f(x) - g(x)$를 조건으로 활용한다.\n\n관찰:\n1. $x = 0$에서 접함 ($x^2$ 인수)\n2. $x = 3$에서 만남 ($x - 3$ 인수)\n3. $|h(x)|$의 최고차항 계수의 절댓값이 $1$ 이하\n\n즉, $h(x) = kx^2(x - 3)$  ($|k| \\leq 1$) 꼴이다.\n\n### Step 2. $f(x)$의 최고차항 계수 결정 (자연수 조건)\n\n$f(x) = g(x) + h(x)$이므로:\n- $g(x)$의 최고차항 계수: $\\frac{1}{2}$\n- $h(x)$의 최고차항 계수: $k$\n- $f(x)$의 최고차항 계수: $\\frac{1}{2} + k$\n\n문제에서 $f(x)$의 최고차항 계수는 자연수이다.\n\n$|k| \\leq 1$이므로, $\\frac{1}{2} + k$가 가질 수 있는 범위:\n\n$$-\\frac{1}{2} \\leq \\text{(계수)} \\leq \\frac{3}{2}$$\n\n이 범위 안의 유일한 자연수는 $1$이다.\n\n따라서 $\\frac{1}{2} + k = 1 \\implies k = \\frac{1}{2}$\n\n### Step 3. $f(x)$ 완성 및 미분\n\n$k = \\frac{1}{2}$이므로:\n\n$$h(x) = \\frac{1}{2}x^2(x - 3) = \\frac{1}{2}x^3 - \\frac{3}{2}x^2$$\n\n$$f(x) = g(x) + h(x) = \\left(\\frac{1}{2}x^3 + \\frac{a}{2}x^2 + ax\\right) + \\left(\\frac{1}{2}x^3 - \\frac{3}{2}x^2\\right) = x^3 + \\frac{a-3}{2}x^2 + ax$$\n\n미분하여 도함수를 구한다.\n\n$$f'(x) = 3x^2 + (a-3)x + a$$\n\n### Step 4. 극댓값과 극솟값의 차 (조건 가)\n\n최고차항 계수가 $1$인 삼차함수의 극값의 차 공식:\n\n$$\\frac{1}{2} \\times (\\text{두 근의 차})^3 = 4$$\n\n$$\\implies (\\text{두 근의 차})^3 = 8 \\implies \\text{두 근의 차} = 2$$\n\n$f'(x) = 3x^2 + (a-3)x + a = 0$의 두 근의 차:\n\n$$\\text{두 근의 차} = \\frac{\\sqrt{D}}{3} = 2$$\n\n$$\\implies \\sqrt{D} = 6 \\implies D = 36$$\n\n판별식 $D$를 계산한다.\n\n$$D = (a-3)^2 - 4 \\cdot 3 \\cdot a = a^2 - 6a + 9 - 12a = a^2 - 18a + 9$$\n\n$$a^2 - 18a + 9 = 36$$\n\n$$a^2 - 18a - 27 = 0$$\n\n### Step 5. $a$ 계산\n\n근의 공식을 적용한다.\n\n$$a = \\frac{18 \\pm \\sqrt{324 + 108}}{2} = \\frac{18 \\pm \\sqrt{432}}{2} = \\frac{18 \\pm 12\\sqrt{3}}{2} = 9 \\pm 6\\sqrt{3}$$\n\n$a > 0$ 조건에서 두 값 모두 양수인지 확인:\n- $9 - 6\\sqrt{3} = 9 - 10.39 \\cdots < 0$ → 제외\n- $9 + 6\\sqrt{3} > 0$ ✔\n\n따라서 $a = 9 + 6\\sqrt{3}$\n\n$a = p + q\\sqrt{3}$ 형태이므로: $p = 9,\\; q = 6$\n\n### 정답\n\n$$p + q = 9 + 6 = \\boxed{15}$$",
-    "content_source": "FileLoop",
+    "content_source": "CheckPending",
     "content_length": 2347,
     "skel_status": "neuron_missing",
     "dna_status": "ok",
     "previous_skeleton": [
       {
-        "from": "단서C",
+        "from": "단서B",
         "to": "note1",
         "neuron": "연산49",
         "type": "연산",
         "domain_hint": "INTG",
-        "description": "정적분을 계산하여 g(x)를 다항식으로 구한다",
-        "note": "$g(x) = \\frac{1}{2}x^3 + \\frac{a}{2}x^2 + ax$이다",
+        "description": "피적분함수를 항별로 적분하여 g(x)의 각 항을 구한다",
+        "note": "피적분함수를 항별로 적분하여 g(x)의 각 항을 구한다",
+        "main": true,
+        "step": 1,
+        "_keep_neuron": true
+      },
+      {
+        "from": "note1",
+        "to": "note2",
+        "neuron": "연산28",
+        "type": "연산",
+        "domain_hint": "INTG",
+        "description": "적분 결과를 전개하여 g(x)를 다항식 형태로 표현한다",
+        "note": "적분 결과를 전개하여 g(x)를 다항식 형태로 표현한다",
+        "main": true,
+        "step": 1,
+        "_keep_neuron": true
+      },
+      {
+        "from": "단서D",
+        "to": "note3",
+        "neuron": "전략28",
+        "type": "전략",
+        "domain_hint": "FUNC, INEQ",
+        "description": "차이 함수 h(x)를 도입하여 부등식 분석",
+        "note": "$h(x) = f(x) - g(x)$로 놓으면 $|h(x)| \\leq x^2|x-3|$이다",
         "main": true,
         "step": 1
       },
       {
         "from": [
-          "단서E",
-          "note1"
+          "단서A",
+          "note2"
         ],
-        "to": "note2",
-        "neuron": "전략28",
-        "type": "전략",
-        "domain_hint": "FUNC, INEQ",
-        "description": "차이 함수 h(x)를 도입하여 부등식을 정리한다",
-        "note": "$h(x) = f(x) - g(x)$로 놓으면 $|h(x)| \\le x^2|x-3|$이다",
-        "main": true,
-        "step": 2
-      },
-      {
-        "from": "note2",
-        "to": "note3",
-        "neuron": "사실96",
-        "type": "사실",
-        "domain_hint": "POLY, LIM",
-        "description": "다항부등식에서 x=0 대입과 유계 조건으로 이중근을 유도한다",
-        "note": "$x=0$ 대입 시 $h(0)=0$이고, $|h(x)|/x^2 \\le |x-3|$에서 $x=0$은 $h(x)$의 적어도 이중근이다",
-        "main": true,
-        "step": 2
-      },
-      {
-        "from": "note2",
         "to": "note4",
-        "neuron": "전략39",
-        "type": "연산",
-        "domain_hint": "EQN",
-        "description": "h(x)의 식에 x=3을 대입하여 h(3)의 값을 계산한다",
-        "note": "h(x)의 식에 x=3을 대입하여 h(3)의 값을 계산한다",
-        "main": true,
-        "step": 2,
-        "_keep_neuron": true
-      },
-      {
-        "from": "note4",
-        "to": "note5",
-        "neuron": "전략38",
-        "type": "연산",
-        "domain_hint": "EQN",
-        "description": "h(3)=0이므로 x=3은 h(x)의 근임을 확인한다",
-        "note": "h(3)=0이므로 x=3은 h(x)의 근임을 확인한다",
-        "main": true,
-        "step": 2,
-        "_keep_neuron": true
+        "neuron": "사실122",
+        "type": "사실",
+        "domain_hint": "POLY",
+        "description": "삼차−삼차는 삼차 이하 다항식",
+        "note": "$h(x) = f(x) - g(x)$는 삼차 이하 다항식이다",
+        "main": false,
+        "step": 1
       },
       {
         "from": [
-          "단서B",
           "note3",
-          "note5"
+          "note4"
+        ],
+        "to": "note5",
+        "neuron": "사실113",
+        "type": "사실",
+        "domain_hint": "POLY, INEQ",
+        "description": "다항식 부등식에서 영점 구조와 계수 범위 결정",
+        "note": "$h(x) = kx^2(x-3)$이고 $|k| \\leq 1$이다",
+        "main": true,
+        "step": 1
+      },
+      {
+        "from": [
+          "note2",
+          "note5",
+          "단서A"
         ],
         "to": "note6",
-        "neuron": "사실133",
+        "neuron": "NEW_1",
         "type": "사실",
-        "domain_hint": "POLY",
-        "description": "근의 조건으로 삼차 이하 다항식의 형태를 결정한다",
-        "note": "$h(x)$는 삼차 이하 다항식이고 $x=0$이 이중근, $x=3$이 근이면 $h(x) = kx^2(x-3)$이다",
+        "domain_hint": "NUM, POLY",
+        "description": "최고차항 계수 자연수 조건과 k 범위로 k 결정",
+        "note": "$f(x)$의 최고차항 계수 $\\frac{1}{2}+k$가 자연수이고 $|k| \\leq 1$에서 $k = \\frac{1}{2}$이다",
         "main": true,
         "step": 2
       },
@@ -3846,251 +3849,158 @@
           "note6"
         ],
         "to": "note7",
-        "neuron": "NEW_1",
-        "type": "연산",
-        "domain_hint": "INEQ",
-        "description": "부등식에 h(x)의 형태를 대입하여 k의 범위를 구한다",
-        "note": "$|k| \\cdot x^2|x-3| \\le x^2|x-3|$에서 $|k| \\le 1$이다",
-        "main": true,
-        "step": 2
-      },
-      {
-        "from": [
-          "note1",
-          "note6"
-        ],
-        "to": "note8",
         "neuron": "연산28",
         "type": "연산",
         "domain_hint": "POLY",
-        "description": "f(x)의 최고차항 계수를 k로 표현한다",
-        "note": "$f(x) = g(x) + h(x)$의 최고차항 계수는 $\\frac{1}{2} + k$이다",
+        "description": "g(x)+h(x)를 전개하여 f(x) 확정",
+        "note": "$f(x) = x^3 + \\frac{a-3}{2}x^2 + ax$이다",
+        "main": true,
+        "step": 3
+      },
+      {
+        "from": "note7",
+        "to": "note8",
+        "neuron": "연산33",
+        "type": "연산",
+        "domain_hint": "DIFF",
+        "description": "f(x)를 미분하여 f'(x) 산출",
+        "note": "$f'(x) = 3x^2 + (a-3)x + a$이다",
         "main": true,
         "step": 3
       },
       {
         "from": [
-          "단서B",
-          "note7",
-          "note8"
+          "단서C",
+          "note7"
         ],
         "to": "note9",
-        "neuron": "전략22",
-        "type": "전략",
-        "domain_hint": "NUM, INEQ",
-        "description": "k의 범위 안에 자연수가 정확히 1개인 경우를 기준으로 케이스를 분류한다",
-        "note": "k의 범위 안에 자연수가 정확히 1개인 경우를 기준으로 케이스를 분류한다",
-        "main": true,
-        "step": 3,
-        "_keep_neuron": true
-      },
-      {
-        "from": "note9",
-        "to": "note10",
-        "neuron": "전략25",
-        "type": "전략",
-        "domain_hint": "NUM, INEQ",
-        "description": "각 자연수 후보를 대입하여 유일성 조건을 만족하는지 확인하여 k값을 결정한다",
-        "note": "각 자연수 후보를 대입하여 유일성 조건을 만족하는지 확인하여 k값을 결정한다",
-        "main": true,
-        "step": 3,
-        "_keep_neuron": true
-      },
-      {
-        "from": [
-          "note1",
-          "note10"
-        ],
-        "to": "note11",
-        "neuron": "전략11",
-        "type": "연산",
+        "neuron": "사실141",
+        "type": "사실",
         "domain_hint": "POLY",
-        "description": "g(x)와 h(x)의 식을 더하여 f(x)=g(x)+h(x)를 계산한다",
-        "note": "g(x)와 h(x)의 식을 더하여 f(x)=g(x)+h(x)를 계산한다",
-        "main": true,
-        "step": 4,
-        "_keep_neuron": true
-      },
-      {
-        "from": "note11",
-        "to": "note12",
-        "neuron": "연산28",
-        "type": "연산",
-        "domain_hint": "POLY",
-        "description": "합산된 결과를 전개하여 f(x)를 표준 다항식 형태로 정리한다",
-        "note": "합산된 결과를 전개하여 f(x)를 표준 다항식 형태로 정리한다",
-        "main": true,
-        "step": 4,
-        "_keep_neuron": true
-      },
-      {
-        "from": "note12",
-        "to": "note13",
-        "neuron": "연산33",
-        "type": "연산",
-        "domain_hint": "DIFF",
-        "description": "f(x)를 미분하여 도함수를 구한다",
-        "note": "$f'(x) = 3x^2 + (a-3)x + a$이다",
+        "description": "최고차항 계수 1인 삼차함수 극값 차 공식 적용",
+        "note": "극값 차 $= \\frac{d^3}{2} = 4$에서 극점 간 거리 $d = 2$이다",
         "main": true,
         "step": 4
       },
       {
         "from": [
-          "단서D",
-          "note13"
+          "note9",
+          "note8"
         ],
-        "to": "note14",
-        "neuron": "NEW_2",
+        "to": "note10",
+        "neuron": "연산51",
         "type": "사실",
-        "domain_hint": "POLY, DIFF",
-        "description": "최고차계수 1인 삼차함수의 극값 차 공식을 적용한다",
-        "note": "최고차항 계수가 $1$인 삼차함수의 극값의 차는 $\\frac{d^3}{2}$이고($d$는 $f'(x)=0$의 두 근의 차), $\\frac{d^3}{2} = 4$에서 $d = 2$이다",
+        "domain_hint": "POLY, EQN",
+        "description": "이차방정식의 두 근을 근의 공식으로 표현하면 α = (-b+√D)/(2a), β = (-b-√D)/(2a)이다",
+        "note": "이차방정식의 두 근을 근의 공식으로 표현하면 α = (-b+√D)/(2a), β = (-b-√D)/(2a)이다",
+        "main": true,
+        "step": 4,
+        "_keep_neuron": true
+      },
+      {
+        "from": "note10",
+        "to": "note11",
+        "neuron": "연산29",
+        "type": "사실",
+        "domain_hint": "POLY, EQN",
+        "description": "두 근의 차 α-β = √D/a이므로, (두 근의 차)² = D/a²로 판별식과 연결된다",
+        "note": "두 근의 차 α-β = √D/a이므로, (두 근의 차)² = D/a²로 판별식과 연결된다",
+        "main": true,
+        "step": 4,
+        "_keep_neuron": true
+      },
+      {
+        "from": "note8",
+        "to": "note12",
+        "neuron": "연산28",
+        "type": "연산",
+        "domain_hint": "POLY",
+        "description": "f'(x)=0의 판별식을 a로 표현",
+        "note": "f'(x)=0의 판별식을 a로 표현하면 D=특정 식(a)이고, D=36을 대입하면 a에 대한 이차방정식이 수립된다.",
+        "main": false,
+        "step": 4
+      },
+      {
+        "from": "note12",
+        "to": "note13",
+        "neuron": "연산51",
+        "type": "연산",
+        "domain_hint": "EQN",
+        "description": "근의 공식으로 이차방정식의 근 산출",
+        "note": "근의 공식으로 이차방정식의 두 근을 산출하고, 그 중 음수인 근을 부호 확인으로 식별한다.",
         "main": true,
         "step": 5
       },
       {
         "from": [
           "note13",
-          "note14"
+          "note13",
+          "단서E"
         ],
-        "to": "note15",
-        "neuron": "사실78",
-        "type": "연산",
-        "domain_hint": "EQN, POLY",
-        "description": "이차식의 판별식으로 두 근의 차를 표현하고 방정식을 세운다",
-        "note": "$D = (a-3)^2 - 12a = a^2 - 18a + 9$이고 $d = \\frac{\\sqrt{D}}{3} = 2$에서 $D = 36$이다",
+        "to": "note14",
+        "neuron": "NEW_2",
+        "type": "사실",
+        "domain_hint": "NUM",
+        "description": "양수 조건으로 근 선택",
+        "note": "양수 조건으로 유효한 근 a를 선택하고, 해당 a값으로부터 p, q를 식별한 뒤 p+q를 산출한다.",
         "main": true,
         "step": 5
-      },
-      {
-        "from": "note15",
-        "to": "note16",
-        "neuron": "연산28",
-        "type": "연산",
-        "domain_hint": "EQN",
-        "description": "D=36을 대입하여 a에 대한 이차방정식을 정리한다",
-        "note": "$a^2 - 18a + 9 = 36$에서 $a^2 - 18a - 27 = 0$이다",
-        "main": true,
-        "step": 5
-      },
-      {
-        "from": "note16",
-        "to": "note17",
-        "neuron": "NEW_3",
-        "type": "연산",
-        "domain_hint": "EQN",
-        "description": "이차방정식의 근의 공식을 적용한다",
-        "note": "$a = \\frac{18 \\pm \\sqrt{324+108}}{2} = \\frac{18 \\pm 12\\sqrt{3}}{2} = 9 \\pm 6\\sqrt{3}$이다",
-        "main": true,
-        "step": 6
-      },
-      {
-        "from": [
-          "단서A",
-          "note17",
-          "END"
-        ],
-        "to": "note18",
-        "neuron": "전략25",
-        "type": "사실",
-        "domain_hint": "INEQ, NUM",
-        "description": "이차방정식의 두 근 중 양수 조건을 만족하는 근을 선택하여 p, q를 확정한다",
-        "note": "이차방정식의 두 근 중 양수 조건을 만족하는 근을 선택하여 p, q를 확정한다",
-        "main": true,
-        "step": 6,
-        "_keep_neuron": true
-      },
-      {
-        "from": "note18",
-        "to": "END",
-        "neuron": "전략39",
-        "type": "사실",
-        "domain_hint": "INEQ, NUM",
-        "description": "확정된 p, q로부터 p+q의 값을 계산한다",
-        "note": "확정된 p, q로부터 p+q의 값을 계산한다",
-        "main": true,
-        "step": 6,
-        "_keep_neuron": true
       }
     ],
-    "previous_solution": "$g(x) = \\frac{1}{2}x^3 + \\frac{a}{2}x^2 + ax$이다 $h(x) = f(x) - g(x)$로 놓으면 $|h(x)| \\le x^2|x-3|$이다 $x=0$ 대입 시 $h(0)=0$이고, $|h(x)|/x^2 \\le |x-3|$에서 $x=0$은 $h(x)$의 적어도 이중근이다 h(x)의 식에 x=3을 대입하여 h(3)의 값을 계산한다 h(3)=0이므로 x=3은 h(x)의 근임을 확인한다 $h(x)$는 삼차 이하 다항식이고 $x=0$이 이중근, $x=3$이 근이면 $h(x) = kx^2(x-3)$이다 $|k| \\cdot x^2|x-3| \\le x^2|x-3|$에서 $|k| \\le 1$이다 $f(x) = g(x) + h(x)$의 최고차항 계수는 $\\frac{1}{2} + k$이다 k의 범위 안에 자연수가 정확히 1개인 경우를 기준으로 케이스를 분류한다 각 자연수 후보를 대입하여 유일성 조건을 만족하는지 확인하여 k값을 결정한다 g(x)와 h(x)의 식을 더하여 f(x)=g(x)+h(x)를 계산한다 합산된 결과를 전개하여 f(x)를 표준 다항식 형태로 정리한다 $f'(x) = 3x^2 + (a-3)x + a$이다 최고차항 계수가 $1$인 삼차함수의 극값의 차는 $\\frac{d^3}{2}$이고($d$는 $f'(x)=0$의 두 근의 차), $\\frac{d^3}{2} = 4$에서 $d = 2$이다 $D = (a-3)^2 - 12a = a^2 - 18a + 9$이고 $d = \\frac{\\sqrt{D}}{3} = 2$에서 $D = 36$이다 $a^2 - 18a + 9 = 36$에서 $a^2 - 18a - 27 = 0$이다 $a = \\frac{18 \\pm \\sqrt{324+108}}{2} = \\frac{18 \\pm 12\\sqrt{3}}{2} = 9 \\pm 6\\sqrt{3}$이다 이차방정식의 두 근 중 양수 조건을 만족하는 근을 선택하여 p, q를 확정한다 확정된 p, q로부터 p+q의 값을 계산한다",
-    "previous_clues": "[{\"id\":\"단서A\",\"text\":\"$a > 0$이고 $p$, $q$는 유리수이다\"},{\"id\":\"단서B\",\"text\":\"$f(x)$는 최고차항의 계수가 자연수인 삼차함수이다\"},{\"id\":\"단서C\",\"text\":\"$g(x) = \\\\int_0^x \\\\left(\\\\frac{3}{2}t^2 + at + a\\\\right) dt$\"},{\"id\":\"단서D\",\"text\":\"(가) $f(x)$의 극댓값과 극솟값의 차는 $4$이다\"},{\"id\":\"단서E\",\"text\":\"(나) 모든 실수 $x$에 대하여 $|f(x) - g(x)| \\\\leq x^2|x - 3|$이다\"}]",
-    "previous_analysis": "g(x)를 적분으로 구한 뒤, 조건 (나)에서 h(x)=f(x)-g(x)가 kx²(x-3) 형태임을 유도한다. 최고차항 자연수 조건으로 k=1/2를 결정하고, f(x)를 구한 후 조건 (가)의 극값 차 공식으로 a에 대한 이차방정식을 세워 a=9+6√3을 얻는다.",
+    "previous_solution": "피적분함수를 항별로 적분하여 g(x)의 각 항을 구한다 적분 결과를 전개하여 g(x)를 다항식 형태로 표현한다 $h(x) = f(x) - g(x)$로 놓으면 $|h(x)| \\leq x^2|x-3|$이다 $h(x) = kx^2(x-3)$이고 $|k| \\leq 1$이다 $f(x)$의 최고차항 계수 $\\frac{1}{2}+k$가 자연수이고 $|k| \\leq 1$에서 $k = \\frac{1}{2}$이다 $f(x) = x^3 + \\frac{a-3}{2}x^2 + ax$이다 $f'(x) = 3x^2 + (a-3)x + a$이다 극값 차 $= \\frac{d^3}{2} = 4$에서 극점 간 거리 $d = 2$이다 이차방정식의 두 근을 근의 공식으로 표현하면 α = (-b+√D)/(2a), β = (-b-√D)/(2a)이다 두 근의 차 α-β = √D/a이므로, (두 근의 차)² = D/a²로 판별식과 연결된다 근의 공식으로 이차방정식의 두 근을 산출하고, 그 중 음수인 근을 부호 확인으로 식별한다. 양수 조건으로 유효한 근 a를 선택하고, 해당 a값으로부터 p, q를 식별한 뒤 p+q를 산출한다.",
+    "previous_clues": "[{\"id\":\"단서A\",\"text\":\"$f(x)$는 최고차항의 계수가 자연수인 삼차함수이다\"},{\"id\":\"단서B\",\"text\":\"$g(x) = \\\\int_0^x \\\\left(\\\\frac{3}{2}t^2 + at + a\\\\right) dt$이다\"},{\"id\":\"단서C\",\"text\":\"$f(x)$의 극댓값과 극솟값의 차는 $4$이다\"},{\"id\":\"단서D\",\"text\":\"모든 실수 $x$에 대하여 $|f(x) - g(x)| \\\\leq x^2|x - 3|$이다\"},{\"id\":\"단서E\",\"text\":\"$a > 0$이고 $a = p + q\\\\sqrt{3}$이다 ($p$, $q$는 유리수)\"}]",
+    "previous_analysis": "g(x)를 적분하고 h(x)=f(x)−g(x)로 놓으면 부등식 조건에서 h(x)=kx²(x−3), |k|≤1을 얻는다. 최고차항 자연수 조건으로 k=1/2을 결정하고, f(x)를 확정한 뒤 극값 차 공식으로 판별식 방정식 a²−18a−27=0을 세워 a=9+6√3을 구한다.",
     "previous_matching": "",
     "previous_matched": [],
     "previous_new_neurons": [
       {
         "id": "전략??",
         "type": "전략",
-        "statement": "부등식 $f(x) \\leq k$ (또는 $\\geq k$)가 특정 구간에서 항상 성립하려면, $k \\geq \\max f(x)$ (또는 $k \\leq \\min f(x)$)이어야 한다",
-        "description": "부등식에 h(x)의 형태를 대입하여 k의 범위를 구한다",
-        "note": "$|k| \\cdot x^2|x-3| \\le x^2|x-3|$에서 $|k| \\le 1$이다",
-        "reason": "연산28(다항식 전개), 연산33(거듭제곱 미분), 연산49(부정적분) 모두 부등식에 함수 형태를 대입하여 k의 범위를 구하는 원리를 포함하지 않는다. 이 단계는 h(x)의 구체적 식을 부등식 조건에 대입하고 최대·최솟값 분석으로 k의 범위를 도출하는 과정이다",
-        "blocked_edge": "note2+note16 → note6",
-        "domain_hint": "INEQ",
+        "statement": "미지수가 연속 범위 조건과 정수(또는 자연수) 조건을 동시에 만족할 때, 두 조건의 교집합이 유한 개이면 그 값을 확정할 수 있다",
+        "description": "최고차항 계수 자연수 조건과 k 범위로 k 결정",
+        "note": "$f(x)$의 최고차항 계수 $\\frac{1}{2}+k$가 자연수이고 $|k| \\leq 1$에서 $k = \\frac{1}{2}$이다",
+        "reason": "사실141은 극값 차 공식, 연산51은 근의 공식, 사실43·17·22·94는 치역·연속 관련으로 모두 무관. 이 edge는 '최고차항 계수가 자연수'라는 정수 조건과 k의 범위 조건을 결합하여 k를 유일하게 결정하는 원리인데, 이를 직접 표현하는 기존 뉴런이 없다",
+        "blocked_edge": "note13+note4+단서A → note5",
+        "domain_hint": "NUM, POLY",
         "domain": [
-          "INEQ",
-          "FUNC",
+          "NUM",
           "POLY"
         ],
         "action_hint": "",
         "step": 2,
         "main": true,
         "near_miss": [
-          "연산21: 부등식의 양변에 같은 수를 더하거나 빼면 부등호 방향이 유지된다 |",
-          "연산22: 부등식의 양변에 음수를 곱하면 부등호 방향이 반대가 된다 |",
-          "연산25: 양변이 양수인 부등식에서 역수를 취하면 부등호 방향이 반대가 된다 ($a"
+          "사실4: 실수 $a$의 $n$제곱근 중 실수인 것의 개수: $a>0$이면 $n$홀",
+          "사실18: $a^0 = 1$ ($a \\neq 0$) |",
+          "사실28: $a + b = 0$이고 $a < 0$, $b > 0$이면 $|a| = "
         ]
       },
       {
-        "id": "사실??",
-        "type": "사실",
-        "statement": "최고차항의 계수가 $a$인 삼차함수 $f(x)$의 극대점 $x=\\alpha$, 극소점 $x=\\beta$ ($\\alpha < \\beta$)에 대해, 극댓값과 극솟값의 차는 $|f(\\alpha)-f(\\beta)| = \\frac{|a|}{2}(\\beta-\\alpha)^3$이다",
-        "description": "최고차계수 1인 삼차함수의 극값 차 공식을 적용한다",
-        "note": "최고차항 계수가 $1$인 삼차함수의 극값의 차는 $\\frac{d^3}{2}$이고($d$는 $f'(x)=0$의 두 근의 차), $\\frac{d^3}{2} = 4$에서 $d = 2$이다",
-        "reason": "후보 목록에 삼차함수의 극댓값과 극솟값의 차를 극값점 간격으로 표현하는 공식이 없다. 사실132(접선 방정식), 사실43(단조함수 치역) 등은 모두 다른 원리이다",
-        "blocked_edge": "단서D+note16 → note17",
-        "domain_hint": "POLY, DIFF",
+        "id": "전략??",
+        "type": "전략",
+        "statement": "방정식의 두 근 후보 중 문제 조건(양수, 범위 등)을 만족하지 않는 근을 버리고 조건을 만족하는 근만을 채택한다",
+        "description": "양수 조건으로 근 선택",
+        "note": "양수 조건으로 유효한 근 a를 선택하고, 해당 a값으로부터 p, q를 식별한 뒤 p+q를 산출한다.",
+        "reason": "연산51은 근의 공식 자체이고, 사실112·115·118·119·122·125·129·137·138·140·141은 모두 다항함수 성질 관련으로 '양수 조건으로 근 선택'과 무관. 근의 공식으로 ± 두 후보가 나왔을 때 양수(또는 특정 부호) 조건으로 하나를 선택하는 원리를 표현하는 기존 뉴런이 없다",
+        "blocked_edge": "note131+note11+단서E → note14",
+        "domain_hint": "NUM",
         "domain": [
-          "POLY",
-          "DIFF",
-          "MONO"
+          "EQN",
+          "NUM"
         ],
         "action_hint": "",
         "step": 5,
         "main": true,
         "near_miss": [
-          "사실9: 이차함수 $f(x)=a(x-p)^2+q$에서 $f(x)=c$의 실근이 정",
-          "사실35: 이차함수 $f(x)=a(x-p)(x-q)$에서 $a>0$이면 $p<x<q",
-          "사실78: 이차방정식 $ax^2+bx+c=0$의 두 근을 $\\alpha, \\beta"
-        ]
-      },
-      {
-        "id": "연산??",
-        "type": "연산",
-        "statement": "이차방정식 $ax^2+bx+c=0$ ($a\\neq 0$)의 근은 $x=\\dfrac{-b\\pm\\sqrt{b^2-4ac}}{2a}$이다",
-        "description": "이차방정식의 근의 공식을 적용한다",
-        "note": "$a = \\frac{18 \\pm \\sqrt{324+108}}{2} = \\frac{18 \\pm 12\\sqrt{3}}{2} = 9 \\pm 6\\sqrt{3}$이다",
-        "reason": "후보 목록의 사실79(판별식)는 근의 존재 조건이고, 사실78(근과 계수의 관계)는 근의 합·곱을 주지만, 이차방정식의 근을 직접 $x=\\frac{-b\\pm\\sqrt{b^2-4ac}}{2a}$로 계산하는 근의 공식 자체는 별도 뉴런으로 존재하지 않는다",
-        "blocked_edge": "note16 → note17",
-        "domain_hint": "EQN",
-        "domain": [
-          "POLY",
-          "EQN"
-        ],
-        "action_hint": "",
-        "step": 6,
-        "main": true,
-        "near_miss": [
-          "연산9: $f(x) \\cdot g(x) = 0 \\iff f(x)=0$ 또는 $g(",
-          "연산24: 등식의 양변을 동일한 식으로 가감하여 특정 미지수/함수를 한쪽으로 모은다",
-          "연산29: 다항식을 $a(x-p)^n+q$ 형태로 변환한다 (완전제곱식, 꼭짓점 형"
+          "사실4: 실수 $a$의 $n$제곱근 중 실수인 것의 개수: $a>0$이면 $n$홀",
+          "사실18: $a^0 = 1$ ($a \\neq 0$) |",
+          "사실28: $a + b = 0$이고 $a < 0$, $b > 0$이면 $|a| = "
         ]
       }
     ],
     "previous_partial_skeleton": [],
     "previous_blockage_point": "",
-    "previous_skel_review_notes": "g(x)는 정적분으로 정의된 함수. 정적분 DNA(E10)가 없어 신규 제안. 조건(가)는 극댓값-극솟값=4로, 두 극값의 차를 표현하는 DNA C25 신규 제안. 조건(나)의 |f(x)-g(x)|≤x²|x-3|는 모든 실수 x에 대한 부등식(C18)과 절대값(E5), 부등식(C2)의 결합으로 처리. x²|x-3|은 곱(E6)으로 분해. p+q√3 형태의 답 표현은 발문 구조에 포함. 최고차항 계수가 자연수(L3+L4 조합)로 처리.",
+    "previous_skel_review_notes": "",
     "previous_dna_nodes": [
       {
         "id": "top",
@@ -4661,21 +4571,8 @@
         "to": "neg_c3"
       }
     ],
-    "previous_new_dna": [
-      {
-        "id": "E10",
-        "name": "정적분",
-        "signature": "(피적분함수, 하한, 상한) → 값/함수",
-        "reason": "∫₀ˣ f(t)dt 형태의 정적분을 표현하는 DNA가 목록에 없음. E9(극한)와 다르며, 기존 수식 DNA로는 적분 구조를 표현 불가"
-      },
-      {
-        "id": "C25",
-        "name": "극값 차 조건",
-        "signature": "(함수, 값) → 조건",
-        "reason": "함수의 극댓값과 극솟값의 차가 특정 값이라는 조건. C13(최댓값 조건), C24(최솟값 조건)은 각각 단독 극값 조건이며, 두 극값의 차를 표현하는 DNA가 없음"
-      }
-    ],
-    "previous_dna_review_notes": "g(x)는 정적분으로 정의된 함수. 정적분 DNA(E10)가 없어 신규 제안. 조건(가)는 극댓값-극솟값=4로, 두 극값의 차를 표현하는 DNA C25 신규 제안. 조건(나)의 |f(x)-g(x)|≤x²|x-3|는 모든 실수 x에 대한 부등식(C18)과 절대값(E5), 부등식(C2)의 결합으로 처리. x²|x-3|은 곱(E6)으로 분해. p+q√3 형태의 답 표현은 발문 구조에 포함. 최고차항 계수가 자연수(L3+L4 조합)로 처리.",
+    "previous_new_dna": [],
+    "previous_dna_review_notes": "",
     "original_solution": "### Step 1. $g(x)$ 계산 및 $h(x)$ 설정\n\n적분으로 정의된 $g(x)$를 먼저 구한다.\n\n$$g(x) = \\int_0^x \\left(\\frac{3}{2}t^2 + at + a\\right) dt = \\frac{1}{2}x^3 + \\frac{a}{2}x^2 + ax$$\n\n조건 (나)에서 $|f(x) - g(x)| \\leq x^2|x - 3|$이므로, 차이 함수 $h(x) = f(x) - g(x)$를 조건으로 활용한다.\n\n관찰:\n1. $x = 0$에서 접함 ($x^2$ 인수)\n2. $x = 3$에서 만남 ($x - 3$ 인수)\n3. $|h(x)|$의 최고차항 계수의 절댓값이 $1$ 이하\n\n즉, $h(x) = kx^2(x - 3)$  ($|k| \\leq 1$) 꼴이다.",
     "recovery_warnings": [],
     "errata": [],
@@ -4695,22 +4592,9 @@
       "사실??",
       "연산??"
     ],
-    "needed_dna": [
-      {
-        "id": "E10",
-        "name": "정적분",
-        "signature": "(피적분함수, 하한, 상한) → 값/함수",
-        "reason": "∫₀ˣ f(t)dt 형태의 정적분을 표현하는 DNA가 목록에 없음. E9(극한)와 다르며, 기존 수식 DNA로는 적분 구조를 표현 불가"
-      },
-      {
-        "id": "C25",
-        "name": "극값 차 조건",
-        "signature": "(함수, 값) → 조건",
-        "reason": "함수의 극댓값과 극솟값의 차가 특정 값이라는 조건. C13(최댓값 조건), C24(최솟값 조건)은 각각 단독 극값 조건이며, 두 극값의 차를 표현하는 DNA가 없음"
-      }
-    ],
-    "edge_count": 19,
-    "side_count": 0,
-    "created_at": "2026-03-28T14:53:38.045Z"
+    "needed_dna": [],
+    "edge_count": 14,
+    "side_count": 2,
+    "created_at": "2026-03-28T15:17:58.280Z"
   }
 ]
