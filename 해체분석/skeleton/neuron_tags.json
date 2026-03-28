@@ -1701,5 +1701,21 @@
       "DIFF"
     ],
     "action": "CUBIC_INFLECTION_ROOT_MEAN"
+  },
+  {
+    "id": "연산49",
+    "domain": [
+      "DIFF",
+      "POLY"
+    ],
+    "action": "POLYNOMIAL_ANTIDERIVATIVE"
+  },
+  {
+    "id": "사실130",
+    "domain": [
+      "FUNC",
+      "SYM"
+    ],
+    "action": "POINT_SYMMETRY_VALUE_RELATION"
   }
 ]
