@@ -3692,224 +3692,208 @@
     "dna_status": "ok",
     "previous_skeleton": [
       {
-        "from": "note1",
+        "from": "단서C",
         "to": "note1",
-        "neuron": "전략25",
+        "neuron": "사실99",
         "type": "사실",
-        "domain_hint": "NUM",
-        "description": "n=-1, 0 대입으로 부호곱 비음수 특정",
-        "note": "n=-1, 0을 대입하여 각 인수의 부호를 확인하면(사실65), 부호곱이 비음수임을 특정할 수 있다. 또한 n=2 이외의 나머지 정수에서도 동일한 부호 판정으로 부호곱이 비음수임이 도출된다.",
+        "domain_hint": "DIFF, EQN",
+        "description": "조건 대입으로 부호 변환 확인",
+        "note": "$n=2$를 대입하면 $f'(2)f'(3)<0$이고, $f'(x)=0$은 $(2,3)$에 실근을 갖는다",
         "main": true,
         "step": 1
       },
       {
-        "from": [
-          "단서B",
-          "note1"
-        ],
+        "from": "단서C",
         "to": "note2",
-        "neuron": "사실99",
+        "neuron": "NEW_1",
         "type": "사실",
-        "domain_hint": "INEQ, NUM",
-        "description": "f'(x)의 부호가 x=0 전후에서 바뀌므로 x=0은 극값점이다.",
-        "note": "f'(x)의 부호가 x=0 전후에서 바뀌므로 x=0은 극값점이다.",
+        "domain_hint": "FUNC, INEQ",
+        "description": "유일 조건의 부정으로 나머지 부등식 유도",
+        "note": "$n \\neq 2$인 모든 정수 $n$에 대해 $f'(n)f'(n+1) \\geq 0$이다",
         "main": true,
-        "step": 1,
-        "_keep_neuron": true
+        "step": 2
       },
       {
-        "from": "note2",
+        "from": [
+          "단서B",
+          "note2"
+        ],
         "to": "note3",
-        "neuron": "사실97",
+        "neuron": "전략2",
+        "type": "전략",
+        "domain_hint": "INEQ, FUNC",
+        "description": "세 부등식 조합으로 핵심 등식 유도",
+        "note": "$f'(-1)f'(1)<0$이고 $f'(-1)f'(0) \\geq 0$이고 $f'(0)f'(1) \\geq 0$이다",
+        "main": true,
+        "step": 2
+      },
+      {
+        "from": "note3",
+        "to": "note4",
+        "neuron": "사실65",
         "type": "사실",
         "domain_hint": "INEQ, NUM",
-        "description": "f가 미분가능하고 x=0에서 극값을 가지므로 f'(0)=0이다.",
-        "note": "f가 미분가능하고 x=0에서 극값을 가지므로 f'(0)=0이다.",
+        "description": "부호 곱 조건의 모순 해소로 f'(0)=0 결론",
+        "note": "$f'(0)=0$이다",
         "main": true,
-        "step": 1,
-        "_keep_neuron": true
+        "step": 2
       },
       {
         "from": [
           "단서A",
           "note1",
-          "note3"
+          "note4"
         ],
-        "to": "note4",
-        "neuron": "전략41",
-        "type": "전략",
-        "domain_hint": "POLY, DIFF",
-        "description": "이차식의 두 근과 최고차계수로 일반형 설정",
-        "note": "$f'(x)=3x(x-a)$ ($2<a<3$)이다",
-        "main": true,
-        "step": 2
-      },
-      {
-        "from": "note4",
         "to": "note5",
-        "neuron": "NEW_1",
-        "type": "연산",
-        "domain_hint": "INTG",
-        "description": "f'(x)를 부정적분하여 f(x) 결정",
-        "note": "$f(x)=x^3-\\dfrac{3a}{2}x^2+C$ ($2<a<3$, $C$는 상수)이다",
-        "main": true,
-        "step": 2
-      },
-      {
-        "from": "note5",
-        "to": "note6",
-        "neuron": "사실129",
+        "neuron": "사실79",
         "type": "사실",
-        "domain_hint": "POLY, SYM",
-        "description": "삼차함수 변곡점은 세 근의 평균 (사실129)",
-        "note": "$f(x)$의 대칭 중심(변곡점)은 $x=\\dfrac{a}{2}$이고, $f(\\alpha)=f(\\beta)$이면 $\\dfrac{\\alpha+\\beta}{2}=\\dfrac{a}{2}$이다",
+        "domain_hint": "DIFF, POLY",
+        "description": "이차 도함수의 근 조건으로 형태 결정",
+        "note": "$f'(x) = 3x(x-a)$이고 $2 < a < 3$이다",
         "main": true,
         "step": 3
       },
       {
-        "from": [
-          "note6",
-          "단서D"
-        ],
+        "from": "note5",
+        "to": "note6",
+        "neuron": "연산49",
+        "type": "연산",
+        "domain_hint": "DIFF, POLY",
+        "description": "다항함수 부정적분으로 f(x) 복원",
+        "note": "$f(x) = x^3 - \\dfrac{3a}{2}x^2 + C$이다",
+        "main": true,
+        "step": 3
+      },
+      {
+        "from": "note6",
         "to": "note7",
-        "neuron": "사실129",
-        "type": "전략",
-        "domain_hint": "NUM, POLY",
-        "description": "삼차함수의 변곡점(대칭 중심) x좌표가 세 근의 평균임을 이용하여, 주어진 조건으로부터 정수 k가 속하는 근의 범위(2 < a < 3 등)를 결정한다.",
-        "note": "삼차함수의 변곡점(대칭 중심) x좌표가 세 근의 평균임을 이용하여, 주어진 조건으로부터 정수 k가 속하는 근의 범위(2 < a < 3 등)를 결정한다.",
+        "neuron": "사실99",
+        "type": "사실",
+        "domain_hint": "DIFF, FUNC",
+        "description": "도함수 부호 변화로 극대극소 판정",
+        "note": "$f(x)$는 $x=0$에서 극대값 $C$, $x=a$에서 극소를 갖는다",
         "main": true,
-        "step": 3,
-        "_keep_neuron": true
+        "step": 4
       },
       {
-        "from": "note7",
+        "from": [
+          "단서D",
+          "note7"
+        ],
         "to": "note8",
-        "neuron": "전략17",
+        "neuron": "전략20",
         "type": "전략",
-        "domain_hint": "NUM, POLY",
-        "description": "근의 범위가 유한한 구간으로 결정되었으므로, 해당 구간 안의 정수 k 후보를 모두 열거하여 전수조사한다.",
-        "note": "근의 범위가 유한한 구간으로 결정되었으므로, 해당 구간 안의 정수 k 후보를 모두 열거하여 전수조사한다.",
+        "domain_hint": "POLY, NUM",
+        "description": "삼차함수 영점 분포에서 가능한 정수 k 범위 결정",
+        "note": "$-\\dfrac{a}{2} < k$이고 $k+2 < \\dfrac{3a}{2}$인 정수 $k$는 $-1, 0, 1, 2$이다",
         "main": true,
-        "step": 3,
-        "_keep_neuron": true
+        "step": 4
       },
       {
-        "from": [
-          "note5",
-          "note8"
-        ],
+        "from": "note6",
         "to": "note9",
-        "neuron": "NEW_2",
-        "type": "사실",
-        "domain_hint": "POLY, SYM",
-        "description": "대칭 중심 기준 함수값 비교로 불가 판정",
-        "note": "$k=-1$일 때 $f(-1)<f(1)$이므로 $f(-1)=f(1)=0$은 불가하다",
+        "neuron": "사실130",
+        "type": "연산",
+        "domain_hint": "POLY",
+        "description": "f(1)-f(-1) 함수값 차이 계산",
+        "note": "대칭 중심이 0과 1 사이에 없으므로 f(-1)+f(1)=2f(a/2)가 f(-1)=f(1)을 보장하지 않는다. f(1)≠f(-1)이므로 f(1)=0과 f(-1)=0이 동시에 성립할 수 없다. 따라서 k=-1일 때 f(-1)=f(1)=0은 불가능하다.",
         "main": false,
-        "step": 4
+        "step": 5
       },
       {
-        "from": [
-          "note5",
-          "note8"
-        ],
+        "from": "note6",
         "to": "note10",
-        "neuron": "사실97",
-        "type": "사실",
-        "domain_hint": "POLY, MONO",
-        "description": "극대점에서의 함수값으로 불가 판정",
-        "note": "$k=0$일 때 $x=0$은 극대점이고 $f(0)>f(2)$($\\because 2<\\dfrac{3a}{2}$)이므로 $f(0)=f(2)=0$은 불가하다",
+        "neuron": "사실130",
+        "type": "연산",
+        "domain_hint": "POLY, INEQ",
+        "description": "f(0)-f(2) 함수값 차이 계산",
+        "note": "대칭 중심 x=a/2에서 f(a/2+t)+f(a/2-t)=2f(a/2)이므로 f(0)+f(2)=2f(a/2)를 계산하여 f(0)≠f(2)임을 확인한다. f(0)≠f(2)이므로 f(0)=0과 f(2)=0이 동시에 성립할 수 없다. 따라서 해당 k 값에서 f(0)=f(2)=0은 불가능하다.",
         "main": false,
-        "step": 4
+        "step": 5
       },
       {
-        "from": [
-          "note5",
-          "note8"
-        ],
+        "from": "note6",
         "to": "note11",
-        "neuron": "사실98",
-        "type": "사실",
-        "domain_hint": "POLY, MONO",
-        "description": "극소점 이후 증가 성질로 불가 판정",
-        "note": "$k=2$일 때 $f(2)<f(4)$이므로 $f(2)=f(4)=0$은 불가하다",
+        "neuron": "사실130",
+        "type": "연산",
+        "domain_hint": "POLY, INEQ",
+        "description": "f(4)-f(2) 함수값 차이 계산",
+        "note": "대칭 중심 x=a/2에서 f(a/2+t)+f(a/2-t)=2f(a/2)이므로 f(4)+f(2)를 계산하여 f(4)≠f(2)임을 확인한다. f(4)≠f(2)이므로 f(4)=0과 f(2)=0이 동시에 성립할 수 없다. 따라서 해당 k 값에서 f(4)=f(2)=0은 불가능하다.",
         "main": false,
-        "step": 4
+        "step": 5
       },
       {
         "from": [
-          "note5",
-          "note8"
+          "note8",
+          "note9",
+          "note10",
+          "note11"
         ],
         "to": "note12",
+        "neuron": "전략20",
+        "type": "전략",
+        "domain_hint": "NUM",
+        "description": "소거법으로 유일한 후보 결정",
+        "note": "$k=1$이다",
+        "main": true,
+        "step": 5
+      },
+      {
+        "from": [
+          "note6",
+          "note12"
+        ],
+        "to": "note13",
         "neuron": "전략2",
         "type": "연산",
         "domain_hint": "EQN, POLY",
-        "description": "f(1)=f(3)=0 연립하여 미지수 결정",
-        "note": "$k=1$일 때 $f(1)=f(3)=0$에서 $a=\\dfrac{13}{6}$, $C=\\dfrac{9}{4}$이다",
+        "description": "f(1)=f(3)=0 연립으로 미지수 결정",
+        "note": "$f(1)=f(3)$에서 $a=\\dfrac{13}{6}$이고 $f(1)=0$에서 $C=\\dfrac{9}{4}$이다",
         "main": true,
-        "step": 4
+        "step": 6
       },
       {
-        "from": "note12",
+        "from": "note13",
         "to": "END",
         "neuron": "전략25",
         "type": "연산",
         "domain_hint": "POLY",
-        "description": "확정된 f(x)에 x=5 대입하여 계산",
+        "description": "확정된 함수에 x=5 대입하여 계산",
         "note": "$f(x)=x^3-\\dfrac{13}{4}x^2+\\dfrac{9}{4}$이고 $f(5)=125-\\dfrac{325}{4}+\\dfrac{9}{4}=46$이다",
         "main": true,
-        "step": 5
+        "step": 6
       }
     ],
-    "previous_solution": "n=-1, 0을 대입하여 각 인수의 부호를 확인하면(사실65), 부호곱이 비음수임을 특정할 수 있다. 또한 n=2 이외의 나머지 정수에서도 동일한 부호 판정으로 부호곱이 비음수임이 도출된다. f'(x)의 부호가 x=0 전후에서 바뀌므로 x=0은 극값점이다. f가 미분가능하고 x=0에서 극값을 가지므로 f'(0)=0이다. $f'(x)=3x(x-a)$ ($2<a<3$)이다 $f(x)=x^3-\\dfrac{3a}{2}x^2+C$ ($2<a<3$, $C$는 상수)이다 $f(x)$의 대칭 중심(변곡점)은 $x=\\dfrac{a}{2}$이고, $f(\\alpha)=f(\\beta)$이면 $\\dfrac{\\alpha+\\beta}{2}=\\dfrac{a}{2}$이다 삼차함수의 변곡점(대칭 중심) x좌표가 세 근의 평균임을 이용하여, 주어진 조건으로부터 정수 k가 속하는 근의 범위(2 < a < 3 등)를 결정한다. 근의 범위가 유한한 구간으로 결정되었으므로, 해당 구간 안의 정수 k 후보를 모두 열거하여 전수조사한다. $k=1$일 때 $f(1)=f(3)=0$에서 $a=\\dfrac{13}{6}$, $C=\\dfrac{9}{4}$이다 $f(x)=x^3-\\dfrac{13}{4}x^2+\\dfrac{9}{4}$이고 $f(5)=125-\\dfrac{325}{4}+\\dfrac{9}{4}=46$이다",
-    "previous_clues": "[{\"id\":\"단서A\",\"text\":\"최고차항의 계수가 $1$인 삼차함수 $f(x)$\"},{\"id\":\"단서B\",\"text\":\"$f'(-1)f'(1) < 0$\"},{\"id\":\"단서C\",\"text\":\"$f'(n)f'(n+1) < 0$을 만족시키는 정수 $n$은 $2$뿐이다\"},{\"id\":\"단서D\",\"text\":\"$f(k) = f(k+2) = 0$인 정수 $k$가 존재한다\"}]",
-    "previous_analysis": "조건 (나)에서 n≠2인 정수에서는 f'의 부호 변화가 없음을 이용하고, 조건 (가)와 결합하여 f'(0)=0을 유도한다. f'(x)=3x(x-a) (2<a<3)으로 설정 후 적분하여 f(x)를 구하고, 삼차함수의 대칭 성질로 f(k)=f(k+2)=0을 만족하는 정수 k 후보를 한정한 뒤 전수 검증하여 k=1, a=13/6, C=9/4를 확정하고 f(5)=46을 계산한다.",
+    "previous_solution": "$n=2$를 대입하면 $f'(2)f'(3)<0$이고, $f'(x)=0$은 $(2,3)$에 실근을 갖는다 $n \\neq 2$인 모든 정수 $n$에 대해 $f'(n)f'(n+1) \\geq 0$이다 $f'(-1)f'(1)<0$이고 $f'(-1)f'(0) \\geq 0$이고 $f'(0)f'(1) \\geq 0$이다 $f'(0)=0$이다 $f'(x) = 3x(x-a)$이고 $2 < a < 3$이다 $f(x) = x^3 - \\dfrac{3a}{2}x^2 + C$이다 $f(x)$는 $x=0$에서 극대값 $C$, $x=a$에서 극소를 갖는다 $-\\dfrac{a}{2} < k$이고 $k+2 < \\dfrac{3a}{2}$인 정수 $k$는 $-1, 0, 1, 2$이다 $k=1$이다 $f(1)=f(3)$에서 $a=\\dfrac{13}{6}$이고 $f(1)=0$에서 $C=\\dfrac{9}{4}$이다 $f(x)=x^3-\\dfrac{13}{4}x^2+\\dfrac{9}{4}$이고 $f(5)=125-\\dfrac{325}{4}+\\dfrac{9}{4}=46$이다",
+    "previous_clues": "[{\"id\":\"단서A\",\"text\":\"$f(x)$는 최고차항의 계수가 $1$인 삼차함수이다\"},{\"id\":\"단서B\",\"text\":\"$f'(-1)f'(1) < 0$\"},{\"id\":\"단서C\",\"text\":\"$f'(n)f'(n+1) < 0$을 만족시키는 정수 $n$은 $2$뿐이다\"},{\"id\":\"단서D\",\"text\":\"$f(k) = f(k+2) = 0$인 정수 $k$가 존재한다\"}]",
+    "previous_analysis": "조건 (나)에서 f'(x)=0의 근 하나가 (2,3)에 있음을 파악하고, 조건 (가)·(나)의 동시 충족을 위해 f'(0)=0을 유도한다. f'(x)=3x(x-a)로 결정 후 적분하여 f(x)를 구하고, f(k)=f(k+2)=0을 만족시키는 k를 소거법으로 k=1만 가능함을 보여 a=13/6, C=9/4를 확정한 뒤 f(5)=46을 계산한다.",
     "previous_matching": "",
-    "previous_matched": [],
+    "previous_matched": [
+      "연산49",
+      "사실130"
+    ],
     "previous_new_neurons": [
       {
-        "id": "연산??",
-        "type": "연산",
-        "statement": "다항함수 $f'(x) = a_n x^n + \\cdots + a_0$의 부정적분은 $f(x) = \\dfrac{a_n}{n+1}x^{n+1} + \\cdots + a_0 x + C$ ($C$는 적분상수)이다.",
-        "description": "f'(x)를 부정적분하여 f(x) 결정",
-        "note": "$f(x)=x^3-\\dfrac{3a}{2}x^2+C$ ($2<a<3$, $C$는 상수)이다",
-        "reason": "연산33은 미분이고, 여기서 필요한 것은 그 역연산인 부정적분이다. 후보 중 부정적분 자체를 서술하는 뉴런이 없다. 전략41은 일반형 설정이고, 연산24~29는 대수적 변형이며 적분과 무관하다.",
-        "blocked_edge": "note12 → note4",
-        "domain_hint": "INTG",
+        "id": "사실??",
+        "type": "사실",
+        "statement": "방정식 또는 조건이 유일한 해(중근, 접선 등)를 가질 필요충분조건의 부정은 해가 없거나 2개 이상임을 의미하며, 이로부터 판별식 또는 관련 파라미터에 대한 부등식(strict inequality)이 유도된다.",
+        "description": "유일 조건의 부정으로 나머지 부등식 유도",
+        "note": "$n \\neq 2$인 모든 정수 $n$에 대해 $f'(n)f'(n+1) \\geq 0$이다",
+        "reason": "후보들을 검토했다. 사실79(판별식)는 근의 개수 조건과 관련되지만, '유일 조건의 부정'으로 부등식을 유도하는 논리 흐름을 직접 서술하지 않는다. 사실96(짝수 중복도)은 부호 불변 근에 관한 것이고, 사실113(해집합이 닫힌구간이면 경계에서 0)은 방향이 다르다. 전략23(모순 배제)은 전략이지, '유일 조건의 부정이 특정 부등식을 함의한다'는 사실 원리가 아니다. 핵심 원리는: 방정식/조건이 '유일한 해'를 가진다는 조건의 부정(즉, 해가 2개 이상이거나 없다)으로부터 판별식 또는 구조적 부등식을 이끌어내는 것인데, 이를 범용적으로 서술하는 기존 뉴런이 없다. 사실79는 판별식 값의 부호와 근의 개수를 연결하지만, '유일 조건의 부정 → 부등식 유도'라는 논리 방향을 직접 표현하지 않는다.",
+        "blocked_edge": "단서C → note2",
+        "domain_hint": "FUNC, INEQ",
         "domain": [
-          "POLY",
-          "DIFF"
+          "EQN",
+          "INEQ",
+          "POLY"
         ],
         "action_hint": "",
         "step": 2,
         "main": true,
         "near_miss": [
-          "연산7: $y=f(x)$를 벡터 $(p,q)$만큼 평행이동하면 $y-q=f(x-p",
-          "연산23: $y=f(x)+c$의 치역은 $f(x)$의 치역을 $c$만큼 평행이동한 ",
-          "연산26: $y=c \\cdot f(x)$의 치역은 $f(x)$의 치역에 $c$를 곱"
-        ]
-      },
-      {
-        "id": "사실??",
-        "type": "사실",
-        "statement": "점 $(m, n)$이 곡선 $y=f(x)$의 대칭 중심이면 $f(m+t)+f(m-t)=2n$이 모든 $t$에 대해 성립한다. 이를 이용해 특정 함수값 조건의 가부를 판정할 수 있다.",
-        "description": "대칭 중심 기준 함수값 비교로 불가 판정",
-        "note": "$k=-1$일 때 $f(-1)<f(1)$이므로 $f(-1)=f(1)=0$은 불가하다",
-        "reason": "사실129는 변곡점의 x좌표를 결정하고, 사실97·99는 극값 조건이다. 여기서 필요한 것은 '대칭 중심(변곡점)에서의 함수값 대칭성으로부터 특정 함수값 조건이 불가능함을 판정'하는 원리인데, 이를 직접 서술하는 뉴런이 없다. 나머지 후보(기하, 단조, 지수·로그 관련)는 무관하다.",
-        "blocked_edge": "note12+note7 → note8",
-        "domain_hint": "POLY, SYM",
-        "domain": [
-          "POLY",
-          "SYMMETRY",
-          "FUNC"
-        ],
-        "action_hint": "",
-        "step": 4,
-        "main": false,
-        "near_miss": [
-          "사실9: 이차함수 $f(x)=a(x-p)^2+q$에서 $f(x)=c$의 실근이 정",
-          "사실35: 이차함수 $f(x)=a(x-p)(x-q)$에서 $a>0$이면 $p<x<q",
-          "사실78: 이차방정식 $ax^2+bx+c=0$의 두 근을 $\\alpha, \\beta"
+          "사실2: $y = f(|x - c|)$는 직선 $x = c$에 대해 대칭이다 ($",
+          "사실5: 지수함수 $y=a^x$는 $a>1$이면 순증가, $0<a<1$이면 순감소",
+          "사실9: 이차함수 $f(x)=a(x-p)^2+q$에서 $f(x)=c$의 실근이 정"
         ]
       }
     ],
@@ -4380,8 +4364,8 @@
       "연산??"
     ],
     "needed_dna": [],
-    "edge_count": 13,
+    "edge_count": 14,
     "side_count": 3,
-    "created_at": "2026-03-28T04:16:26.216Z"
+    "created_at": "2026-03-28T04:23:19.344Z"
   }
 ]
