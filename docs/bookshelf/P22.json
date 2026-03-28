@@ -1,0 +1,442 @@
+{
+  "problem_id": "P22",
+  "answer": "5",
+  "clues": [
+    {
+      "id": "단서A",
+      "text": "$f'(2) = 0$이다"
+    },
+    {
+      "id": "단서B",
+      "text": "$f(x)$는 최고차항의 계수가 $1$인 사차함수이다"
+    },
+    {
+      "id": "단서C",
+      "text": "$\\lim_{x \\to 0} \\frac{f(x+2)}{xf(x)+x^2} = -3$이다"
+    }
+  ],
+  "skeleton": [
+    {
+      "from": "단서C",
+      "to": "note1",
+      "neuron": "전략25",
+      "type": "연산",
+      "domain_hint": "LIM",
+      "description": "x=0 대입하여 분모 극한값 확인",
+      "note": "$x \\to 0$일 때 분모 $xf(x)+x^2 = x(f(x)+x) \\to 0 \\cdot (f(0)+0) = 0$이다",
+      "main": false,
+      "step": 1
+    },
+    {
+      "from": [
+        "단서C",
+        "note1"
+      ],
+      "to": "note2",
+      "neuron": "사실136",
+      "type": "사실",
+      "domain_hint": "LIM",
+      "description": "극한이 유한하고 분모→0이면 분자→0",
+      "note": "분모 $\\to 0$이고 극한이 $-3$(유한)이므로 분자 $f(0+2)=f(2)=0$이다",
+      "main": true,
+      "step": 1
+    },
+    {
+      "from": "note2",
+      "to": "note5",
+      "neuron": "전략47",
+      "type": "전략",
+      "domain_hint": "LIM, DIFF",
+      "description": "f(2)=0을 이용하여 0/0 부정형을 미분 정의 꼴로 변형",
+      "note": "$\\frac{f(x+2)}{xf(x)+x^2} = \\frac{f(x+2)-f(2)}{x} \\cdot \\frac{1}{f(x)+x}$로 변형한다",
+      "main": true,
+      "step": 2
+    },
+    {
+      "from": [
+        "note5",
+        "단서A"
+      ],
+      "to": "note6",
+      "neuron": "사실131",
+      "type": "사실",
+      "domain_hint": "DIFF",
+      "description": "미분의 정의로 첫째 인수의 극한값 결정",
+      "note": "$x \\to 0$일 때 $\\frac{f(x+2)-f(2)}{x} \\to f'(2) = 0$이다",
+      "main": true,
+      "step": 2
+    },
+    {
+      "from": [
+        "단서C",
+        "note5",
+        "note6"
+      ],
+      "to": "note7",
+      "neuron": "사실126",
+      "type": "사실",
+      "domain_hint": "LIM",
+      "description": "첫째 인수→0이고 전체 극한이 유한한 −3≠0이므로, 둘째 인수의 분모→0이어야 한다",
+      "note": "극한값이 $-3 \\neq 0$인데 첫째 인수 $\\to 0$이므로, $f(x)+x \\to 0$이어야 한다. 즉 $f(0)=0$이다",
+      "main": true,
+      "step": 2
+    },
+    {
+      "from": [
+        "note2",
+        "note7",
+        "단서A"
+      ],
+      "to": "note7b",
+      "neuron": "사실137",
+      "type": "사실",
+      "domain_hint": "POLY",
+      "description": "f(2)=0이고 f'(2)=0이므로 (x−2)²이 f(x)를 나눈다",
+      "note": "$f(2)=0$이고 $f'(2)=0$이므로 $(x-2)^2 \\mid f(x)$이다",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": [
+        "note7b",
+        "note7",
+        "단서B"
+      ],
+      "to": "note8",
+      "neuron": "전략41",
+      "type": "전략",
+      "domain_hint": "POLY",
+      "description": "조건들을 종합하여 미지계수를 포함한 일반형 설정",
+      "note": "$f(x)=(x-2)^2 q(x)$이고 $q$는 최고차항 계수 $1$인 이차식이다. $f(0)=0$에서 $4q(0)=0$이므로 $q(0)=0$, 즉 $q(x)=x(x-b)$. 따라서 $f(x)=x(x-2)^2(x-b)$로 놓는다",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": [
+        "단서C",
+        "note8"
+      ],
+      "to": "note9",
+      "neuron": "전략47",
+      "type": "연산",
+      "domain_hint": "LIM, POLY",
+      "description": "극한식에 대입하여 공통인수 소거 후 b 결정",
+      "note": "$f(x+2)=(x+2)\\cdot x^2 \\cdot(x+2-b)$이고 $xf(x)+x^2=x^2[(x-2)^2(x-b)+1]$이므로, 극한 $= \\frac{(0+2)(0+2-b)}{(0-2)^2(0-b)+1}=\\frac{2(2-b)}{4b+1}=-3$이다. 정리하면 $4-2b=-12b-3$에서 $10b=-7$… 이를 재계산: $2(2-b)=-3(4b+1)$, $4-2b=-12b-3$, $10b=-7$, $b=−7/10$… (재검산) $2(2-b)=-3(4b+1) \\Rightarrow 4-2b=-12b-3 \\Rightarrow 10b=-7 \\Rightarrow b=-7/10$이다. 이는 오류이므로 부호를 재확인한다. $f(x)=x(x-2)^2(x-b)$에서 $f(0)=0$ ✓. $xf(x)=x \\cdot x(x-2)^2(x-b)=x^2(x-2)^2(x-b)$. 분모=$x^2[(x-2)^2(x-b)+1]$. 분자=$(x+2)x^2(x+2-b)$. 소거 후 $\\frac{(x+2)(x+2-b)}{(x-2)^2(x-b)+1}$, $x=0$: $\\frac{2(2-b)}{4(-b)+1}=\\frac{2(2-b)}{-4b+1}=-3$. $2(2-b)=-3(-4b+1)=12b-3$, $4-2b=12b-3$, $7=14b$, $b=1/2$이다",
+      "main": true,
+      "step": 4
+    },
+    {
+      "from": [
+        "note8",
+        "note9"
+      ],
+      "to": "END",
+      "neuron": "전략25",
+      "type": "연산",
+      "domain_hint": "POLY",
+      "description": "b=1/2를 대입하고 f(4) 계산",
+      "note": "$f(x)=x(x-2)^2(x-\\tfrac{1}{2})$이므로 $f(4)=4 \\cdot (4-2)^2 \\cdot (4-\\tfrac{1}{2})=4 \\cdot 4 \\cdot \\tfrac{7}{2}=56$이다",
+      "main": true,
+      "step": 5
+    }
+  ],
+  "solution": "STEP 1. $x \\to 0$일 때 분모 $xf(x)+x^2=x(f(x)+x) \\to 0$이다. 극한이 $-3$(유한)으로 수렴하고 분모 $\\to 0$이므로, 사실136에 의해 분자도 $\\to 0$이어야 한다. 즉 $f(2)=0$이다.\n\nSTEP 2. $f(2)=0$을 이용하여 극한식을 $\\dfrac{f(x+2)-f(2)}{x} \\cdot \\dfrac{1}{f(x)+x}$로 변형한다. $x \\to 0$일 때 첫째 인수는 미분의 정의에 의해 $f'(2)=0$으로 수렴한다. 전체 극한이 $-3 \\neq 0$인데 첫째 인수가 $0$이므로, 둘째 인수의 분모 $f(x)+x \\to 0$이어야 한다. 따라서 $f(0)=0$이다.\n\nSTEP 3. $f(2)=0$이고 $f'(2)=0$이므로 $(x-2)^2 \\mid f(x)$이다. 최고차항 계수가 $1$인 사차함수이므로 $f(x)=(x-2)^2 q(x)$이고 $q$는 최고차항 계수 $1$인 이차식이다. $f(0)=0$에서 $4q(0)=0$이므로 $q(0)=0$이고, $q(x)=x(x-b)$로 놓으면 $f(x)=x(x-2)^2(x-b)$이다.\n\nSTEP 4. 극한식에 대입한다. $f(x+2)=(x+2) \\cdot x^2 \\cdot (x+2-b)$이고 $xf(x)+x^2=x^2[(x-2)^2(x-b)+1]$이므로, 공통인수 $x^2$를 소거하면\n$$\\lim_{x \\to 0} \\frac{(x+2)(x+2-b)}{(x-2)^2(x-b)+1} = \\frac{2(2-b)}{-4b+1} = -3.$$\n정리하면 $2(2-b)=-3(-4b+1)=12b-3$에서 $4-2b=12b-3$, $14b=7$, $b=\\dfrac{1}{2}$이다.\n\nSTEP 5. $f(x)=x(x-2)^2\\!\\left(x-\\dfrac{1}{2}\\right)$이므로 $f(4)=4 \\cdot 4 \\cdot \\dfrac{7}{2}=56$이다.",
+  "original_solution": "문제의 극한에서 극한이 수렴하고 (분모) $\\to 0$이므로 (분자) $\\to 0$, 즉 $f(2)=0$이다.\n\n문제의 식을 다시 쓰면\n\n$$\\lim_{x \\to 0} \\frac{\\dfrac{f(x+2)-f(2)}{x}}{f(x)+x} = -3$$\n\n이고 위의 식에서 극한이 $0$이 아닌 값으로 수렴하고, (분자) $\\to f'(2)(=0)$이므로 (분모) $\\to 0$, 즉 $f(0)=0$임을 알 수 있다.\n\n따라서 $f(0)=f(2)=f'(2)=0$이므로\n\n$$f(x)=x(x-2)^2(x+a)$$\n\n로 놓을 수 있고,\n\n$$\\lim_{x \\to 0} \\frac{f(x+2)}{xf(x)+x^2} = \\lim_{x \\to 0} \\frac{x^2(x+2)(x+2+a)}{x^2\\{(x-2)^2(x+a)+1\\}}$$\n\n$$= \\lim_{x \\to 0} \\frac{(x+2)(x+2+a)}{(x-2)^2(x+a)+1} = \\frac{2(2+a)}{4a+1} = \\frac{2a+4}{4a+1}$$\n\n의 값이 $-3$이므로\n\n$$\\frac{2a+4}{4a+1} = -3 \\implies 2a+4 = -12a-3 \\implies 14a = -7 \\implies a = -\\frac{1}{2}$$\n\n$$\\therefore\\ f(x) = x(x-2)^2\\!\\left(x-\\frac{1}{2}\\right)$$\n\n$$f(4) = 4 \\cdot (4-2)^2 \\cdot \\left(4-\\frac{1}{2}\\right) = 4 \\cdot 4 \\cdot \\frac{7}{2} = 56$$",
+  "analysis": "극한의 수렴 조건으로 f(2)=0을 얻고, 미분 정의 꼴 변형으로 f(0)=0을 추가 확보한다. f(0)=f(2)=f'(2)=0과 사차함수 조건으로 f(x)=x(x-2)²(x+a)를 설정한 뒤, 극한식에 대입하여 a=-1/2를 결정하고 f(4)=56을 구한다.",
+  "new_neurons": [],
+  "metadata": {
+    "unit": "미분",
+    "difficulty": "상",
+    "score": "4",
+    "type": "multiple_choice",
+    "answer": "5",
+    "year": "unknown",
+    "source": "수능",
+    "topic": "삼차함수의 성질과 미분",
+    "subtopic": "삼차함수의 치역 조건과 도함수 값"
+  },
+  "edge_count": 9,
+  "side_count": 1,
+  "statement": "# 29. (수능) - 사차함수의 극한 조건을 이용한 함수값 구하기\n\n## Problem\n$f'(2)=0$이고 최고차항의 계수가 $1$인 사차함수 $f(x)$가\n\n$$\\lim_{x \\to 0} \\frac{f(x+2)}{xf(x)+x^2} = -3$$\n\n을 만족시킬 때, $f(4)$의 값은? [4점]",
+  "dna": {
+    "nodes": [
+      {
+        "id": "top",
+        "dna": "Q1",
+        "label": "값을 구하라",
+        "category": "발문"
+      },
+      {
+        "id": "ask",
+        "dna": "F3",
+        "label": "f'(2)",
+        "category": "함수"
+      },
+      {
+        "id": "deriv",
+        "dna": "F13",
+        "label": "도함수 f'",
+        "category": "함수"
+      },
+      {
+        "id": "c2_val",
+        "dna": "T2",
+        "label": "상수 2",
+        "category": "말단"
+      },
+      {
+        "id": "func_f",
+        "dna": "F6",
+        "label": "삼차함수 f",
+        "category": "함수"
+      },
+      {
+        "id": "coeff1",
+        "dna": "L4",
+        "label": "최고차항계수=1",
+        "category": "제한"
+      },
+      {
+        "id": "va",
+        "dna": "T1",
+        "label": "변수 a",
+        "category": "말단"
+      },
+      {
+        "id": "vb",
+        "dna": "T1",
+        "label": "변수 b",
+        "category": "말단"
+      },
+      {
+        "id": "vt",
+        "dna": "T1",
+        "label": "변수 t",
+        "category": "말단"
+      },
+      {
+        "id": "ab_cond",
+        "dna": "C2",
+        "label": "a < b < 4",
+        "category": "조건"
+      },
+      {
+        "id": "c4",
+        "dna": "T2",
+        "label": "상수 4",
+        "category": "말단"
+      },
+      {
+        "id": "set_a",
+        "dna": "S2",
+        "label": "치역 집합 A = {f(x)|a≤x≤b}",
+        "category": "구조"
+      },
+      {
+        "id": "set_at",
+        "dna": "S2",
+        "label": "치역 집합 At = {f(x)|4≤x≤t}",
+        "category": "구조"
+      },
+      {
+        "id": "fa_expr",
+        "dna": "F3",
+        "label": "f(x) on [a,b]",
+        "category": "함수"
+      },
+      {
+        "id": "fat_expr",
+        "dna": "F3",
+        "label": "f(x) on [4,t]",
+        "category": "함수"
+      },
+      {
+        "id": "dom_ab",
+        "dna": "F8",
+        "label": "구간 [a,b]",
+        "category": "함수"
+      },
+      {
+        "id": "dom_4t",
+        "dna": "F8",
+        "label": "구간 [4,t]",
+        "category": "함수"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
+      },
+      {
+        "id": "set_eq",
+        "dna": "C1",
+        "label": "A = At",
+        "category": "조건"
+      },
+      {
+        "id": "t_lim",
+        "dna": "L2",
+        "label": "t > 4",
+        "category": "제한"
+      },
+      {
+        "id": "t_range",
+        "dna": "C21",
+        "label": "7 ≤ t ≤ 9",
+        "category": "조건"
+      },
+      {
+        "id": "c7",
+        "dna": "T2",
+        "label": "상수 7",
+        "category": "말단"
+      },
+      {
+        "id": "c9",
+        "dna": "T2",
+        "label": "상수 9",
+        "category": "말단"
+      },
+      {
+        "id": "conds",
+        "dna": "S1",
+        "label": "전체 조건 묶음",
+        "category": "구조"
+      }
+    ],
+    "edges": [
+      {
+        "from": "ask",
+        "to": "top"
+      },
+      {
+        "from": "conds",
+        "to": "top"
+      },
+      {
+        "from": "deriv",
+        "to": "ask"
+      },
+      {
+        "from": "c2_val",
+        "to": "ask"
+      },
+      {
+        "from": "func_f",
+        "to": "deriv"
+      },
+      {
+        "from": "coeff1",
+        "to": "func_f"
+      },
+      {
+        "from": "va",
+        "to": "ab_cond"
+      },
+      {
+        "from": "vb",
+        "to": "ab_cond"
+      },
+      {
+        "from": "c4",
+        "to": "ab_cond"
+      },
+      {
+        "from": "ab_cond",
+        "to": "conds"
+      },
+      {
+        "from": "fa_expr",
+        "to": "set_a"
+      },
+      {
+        "from": "fat_expr",
+        "to": "set_at"
+      },
+      {
+        "from": "func_f",
+        "to": "fa_expr"
+      },
+      {
+        "from": "vx",
+        "to": "fa_expr"
+      },
+      {
+        "from": "dom_ab",
+        "to": "fa_expr"
+      },
+      {
+        "from": "func_f",
+        "to": "fat_expr"
+      },
+      {
+        "from": "vx",
+        "to": "fat_expr"
+      },
+      {
+        "from": "dom_4t",
+        "to": "fat_expr"
+      },
+      {
+        "from": "va",
+        "to": "dom_ab"
+      },
+      {
+        "from": "vb",
+        "to": "dom_ab"
+      },
+      {
+        "from": "c4",
+        "to": "dom_4t"
+      },
+      {
+        "from": "vt",
+        "to": "dom_4t"
+      },
+      {
+        "from": "set_a",
+        "to": "set_eq"
+      },
+      {
+        "from": "set_at",
+        "to": "set_eq"
+      },
+      {
+        "from": "set_eq",
+        "to": "conds"
+      },
+      {
+        "from": "t_lim",
+        "to": "vt"
+      },
+      {
+        "from": "c4",
+        "to": "t_lim"
+      },
+      {
+        "from": "vt",
+        "to": "t_range"
+      },
+      {
+        "from": "c7",
+        "to": "t_range"
+      },
+      {
+        "from": "c9",
+        "to": "t_range"
+      },
+      {
+        "from": "t_range",
+        "to": "conds"
+      }
+    ],
+    "new_dna": []
+  },
+  "thinking_profile": null,
+  "folders": [],
+  "history": [],
+  "recovery_warnings": [],
+  "errata": [],
+  "created_at": "2026-03-28T13:48:02.145Z"
+}
