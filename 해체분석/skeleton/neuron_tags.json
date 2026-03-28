@@ -1812,5 +1812,13 @@
       "DIFF"
     ],
     "action": "ZERO_OVER_ZERO_TO_DERIVATIVE_FORM"
+  },
+  {
+    "id": "사실137",
+    "domain": [
+      "POLY",
+      "DIFF"
+    ],
+    "action": "REPEATED_ROOT_FROM_DERIVATIVE_ZEROS"
   }
 ]
