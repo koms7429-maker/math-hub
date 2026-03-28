@@ -1685,5 +1685,22 @@
       "LIM"
     ],
     "action": "PIECEWISE_LIMIT_SIDE"
+  },
+  {
+    "id": "사실128",
+    "domain": [
+      "LIM",
+      "FUNC"
+    ],
+    "action": "UPWARD_JUMP_BLOCKS_SIGN_CHANGE"
+  },
+  {
+    "id": "사실129",
+    "domain": [
+      "FUNC",
+      "MONO",
+      "DIFF"
+    ],
+    "action": "UNIQUE_LOCAL_MIN_IS_GLOBAL"
   }
 ]
