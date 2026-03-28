@@ -1861,5 +1861,14 @@
       "POLY"
     ],
     "action": "QUADRATIC_FORMULA"
+  },
+  {
+    "id": "사실142",
+    "domain": [
+      "SYM",
+      "INTG",
+      "FUNC"
+    ],
+    "action": "EVEN_ODD_INTEGRAL_SYMMETRY"
   }
 ]
