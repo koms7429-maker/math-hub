@@ -674,5 +674,974 @@
     "edge_count": 14,
     "side_count": 3,
     "created_at": "2026-03-28T06:33:12.858Z"
+  },
+  {
+    "problem_id": "P21",
+    "answer": "75",
+    "content": "id: P21\nsource: 수능\nyear: 2024\nunit: 미분법\ntopic: 함수의 미분과 방정식\nsubtopic: 미분가능성과 실근의 개수\ndifficulty: 상\nscore: 4\nanswer: 75\ntype: short_answer\n\n# 21. (수능) - 함수의 미분가능성과 방정식의 실근\n\n## Problem\n상수 $a$에 대하여 함수 $f(x) = x^3 - 3x^2 + ax$가 있다.\n$k < 1$인 상수 $k$에 대하여 함수 $g(x)$를\n\n$$g(x) = \\begin{cases} 2f(k) - f(x) & (x \\leq k) \\\\ f(x) & (x > k) \\end{cases}$$\n\n라 할 때, $x$에 대한 방정식\n\n$$\\lim_{t \\to 0+} \\frac{g(x+t) - g(x-t)}{2t} = 12(x - k)$$\n\n의 서로 다른 모든 실근은 $x_1,\\, x_2,\\, x_3,\\, x_4$이다.\n\n$x_1 + x_2 + x_3 + x_4 = \\dfrac{9}{2}$일 때, $30(k - a)$의 값을 구하시오. [4점]\n\n## Solution\n문제의 방정식에서 좌변을\n\n$$h(x) = \\lim_{t \\to 0+} \\frac{g(x+t) - g(x-t)}{2t}$$\n\n라 하면\n\n$$h(x) = \\frac{1}{2} \\times \\lim_{t \\to 0+} \\left\\{ \\frac{g(x+t) - g(x)}{t} + \\frac{g(x-t) - g(x)}{-t} \\right\\}$$\n\n이다. 이때 함수 $g(x)$는 $x \\neq k$에서 미분가능하므로\n\n$x \\neq k$일 때:\n\n$$h(x) = g'(x) = \\begin{cases} -f'(x) & (x < k) \\\\ f'(x) & (x > k) \\end{cases}$$\n\n$x = k$일 때:\n\n$$h(k) = \\frac{1}{2} \\times \\bigl(f'(k) - f'(k)\\bigr) = 0$$\n\n따라서 함수 $h(x)$를 다시 쓰면\n\n$$h(x) = \\begin{cases} -f'(x) & (x < k) \\\\ 0 & (x = k) \\\\ f'(x) & (x > k) \\end{cases}$$\n\n이고, $k < 1$이므로 $f'(x) = 3(x-1)^2 + a - 3$이다.\n\n[FIGURE: $f'(k) < 0$, $f'(k) = 0$, $f'(k) > 0$인 세 경우에 대해 $y = h(x)$의 그래프를 각각 나타낸 그림]\n\n한편, 문제의 조건에 의해\n\n(방정식 $h(x) = 12(x - k)$의 서로 다른 실근의 개수) $= 4$ $\\cdots$ ①\n\n위 그림에서\n\n- $f'(k) < 0$일 때: (①의 좌변) $= 3$\n- $f'(k) = 0$일 때: (①의 좌변) $= 2$ 또는 $3$\n\n이므로 두 경우 모두 ①을 만족시키지 않는다.\n\n따라서 $f'(k) > 0$이어야 하고 ①을 만족시키는 상황은 다음과 같다.\n\n[FIGURE: $y = h(x)$의 그래프($x < k$ 부분)와 직선 $y = 12(x - k)$가 접하는 그림. 접점의 $x$좌표가 $p$]\n\n따라서 곡선 $y = h(x)$ ($x < k$)와 직선 $y = 12(x - k)$가 접해야 하므로\n\n접점의 $x$좌표를 $p$ ($p < k$)라 하면\n\n$$h'(p) = 12 \\;\\Rightarrow\\; -6p + 6 = 12$$\n$$\\Rightarrow\\; p = -1$$\n\n이고, 방정식 $h(x) = 12(x - k)$는\n\n- $x > k$에서 두 실근의 합이 $6$ ($\\because$ 근과 계수의 관계)\n- $k$, $-1$을 실근으로 가짐\n\n을 알 수 있다. 문제의 조건에 의해 네 실근의 합이 $\\dfrac{9}{2}$이므로\n\n$$-1 + k + 6 = \\frac{9}{2} \\;\\Rightarrow\\; k = -\\frac{1}{2}$$\n\n$$\\Rightarrow\\; h(-1) = 12(-1 - k)$$\n$$\\Rightarrow\\; a = -3$$\n\n을 얻는다.\n\n$$\\therefore\\; 30(k - a) = 30 \\times \\frac{5}{2} = \\boxed{75}$$",
+    "content_source": "FileLoop",
+    "content_length": 2006,
+    "skel_status": "neuron_missing",
+    "dna_status": "ok",
+    "previous_skeleton": [
+      {
+        "from": [
+          "단서C"
+        ],
+        "to": "note1",
+        "neuron": "NEW_1",
+        "type": "연산",
+        "domain_hint": "LIM, DIFF",
+        "description": "차분 극한을 우미분·좌미분 평균으로 변형",
+        "note": "$h(x) = \\lim_{t \\to 0+} \\frac{g(x+t)-g(x-t)}{2t}$로 두면 $h(x) = \\frac{1}{2}\\left(\\lim_{t\\to 0+}\\frac{g(x+t)-g(x)}{t} + \\lim_{t\\to 0+}\\frac{g(x-t)-g(x)}{-t}\\right)$이다",
+        "main": true,
+        "step": 1
+      },
+      {
+        "from": [
+          "단서B",
+          "note1"
+        ],
+        "to": "note2",
+        "neuron": "사실125",
+        "type": "사실",
+        "domain_hint": "DIFF, POLY",
+        "description": "다항함수는 미분가능하므로 극한이 도함수가 됨",
+        "note": "$x \\neq k$에서 $g(x)$는 다항함수이고 미분가능하므로 $h(x) = g'(x)$이다",
+        "main": true,
+        "step": 1
+      },
+      {
+        "from": [
+          "단서B",
+          "note2"
+        ],
+        "to": "note3",
+        "neuron": "연산33",
+        "type": "연산",
+        "domain_hint": "DIFF",
+        "description": "조각함수의 각 영역에서 도함수 계산",
+        "note": "$x < k$일 때 $g'(x) = -f'(x)$이고 $x > k$일 때 $g'(x) = f'(x)$이다",
+        "main": true,
+        "step": 1
+      },
+      {
+        "from": [
+          "단서B",
+          "note1"
+        ],
+        "to": "note4",
+        "neuron": "NEW_2",
+        "type": "연산",
+        "domain_hint": "LIM, DIFF",
+        "description": "x=k에서 극한값을 테일러 전개로 계산",
+        "note": "$x = k$일 때 분자가 $f''(k)t^2 + O(t^3)$이고 $h(k) = \\lim_{t \\to 0+}\\frac{f''(k)t^2}{2t} = 0$이다",
+        "main": true,
+        "step": 1
+      },
+      {
+        "from": [
+          "note3",
+          "note4"
+        ],
+        "to": "note5",
+        "neuron": "사실44",
+        "type": "연산",
+        "domain_hint": "FUNC",
+        "description": "h(x)를 조각함수로 정리",
+        "note": "절댓값 또는 조건식을 포함한 함수 $h(x)$를 구간별 다항식으로 표현한 조각함수로 정리하고, $x=k$를 대입하면 $h(k)=0$이므로 $x=k$는 방정식의 근임을 확인한다.",
+        "main": true,
+        "step": 1
+      },
+      {
+        "from": [
+          "단서A"
+        ],
+        "to": "note6",
+        "neuron": "연산33",
+        "type": "연산",
+        "domain_hint": "DIFF, POLY",
+        "description": "다항함수 $f(x)$를 미분하여 $f'(x)$를 계산한다.",
+        "note": "다항함수 $f(x)$를 미분하여 $f'(x)$를 계산한다.",
+        "main": true,
+        "step": 2,
+        "_keep_neuron": true
+      },
+      {
+        "from": "note6",
+        "to": "note7",
+        "neuron": "연산29",
+        "type": "연산",
+        "domain_hint": "DIFF, POLY",
+        "description": "$f'(x)$를 $a(x-p)^2+q$ 형태의 완전제곱식으로 변환한다.",
+        "note": "$f'(x)$를 $a(x-p)^2+q$ 형태의 완전제곱식으로 변환한다.",
+        "main": true,
+        "step": 2,
+        "_keep_neuron": true
+      },
+      {
+        "from": [
+          "note5",
+          "note7"
+        ],
+        "to": "note8",
+        "neuron": "연산28",
+        "type": "연산",
+        "domain_hint": "EQN, POLY",
+        "description": "x>k 영역에서 방정식을 이차방정식으로 정리",
+        "note": "x>k 영역에서 방정식을 이차방정식으로 정리하고, $x=k$를 대입하면 양쪽 이차식이 같은 값을 가짐을 확인한다.",
+        "main": true,
+        "step": 3
+      },
+      {
+        "from": [
+          "note5",
+          "note7"
+        ],
+        "to": "note9",
+        "neuron": "연산28",
+        "type": "연산",
+        "domain_hint": "EQN, POLY",
+        "description": "x<k 영역에서 방정식을 이차방정식으로 정리",
+        "note": "$x < k$에서 $-f'(x) = 12(x-k)$을 정리하면 $3x^2 + 6x + a - 12k = 0$ (II)이다",
+        "main": true,
+        "step": 3
+      },
+      {
+        "from": [
+          "단서C",
+          "note8"
+        ],
+        "to": "note10",
+        "neuron": "전략22",
+        "type": "전략",
+        "domain_hint": "EQN, POLY",
+        "description": "f'(k)의 부호로 근의 개수를 분류",
+        "note": "실근 4개 조건을 위해 $f'(k)$의 부호에 따라 경우를 분류한다",
+        "main": true,
+        "step": 4
+      },
+      {
+        "from": [
+          "note8"
+        ],
+        "to": "note11",
+        "neuron": "사실79",
+        "type": "사실",
+        "domain_hint": "POLY, EQN",
+        "description": "이차방정식 근의 위치와 부호 조건 분석",
+        "note": "$f'(k) < 0$이면 (I)에서 $x > k$ 근 1개, (II)에서 $x < k$ 근 1개로 $x = k$ 포함 총 3개이다",
+        "main": false,
+        "step": 4
+      },
+      {
+        "from": [
+          "note8"
+        ],
+        "to": "note12",
+        "neuron": "사실79",
+        "type": "사실",
+        "domain_hint": "POLY, EQN",
+        "description": "이차방정식 근의 위치와 부호 조건 분석",
+        "note": "$f'(k) = 0$이면 $x = k$가 (I), (II)의 근이지만 각 영역에 속하지 않아 총 2개 또는 3개이다",
+        "main": false,
+        "step": 4
+      },
+      {
+        "from": [
+          "note10",
+          "note11",
+          "note12"
+        ],
+        "to": "note13",
+        "neuron": "전략20",
+        "type": "전략",
+        "domain_hint": "EQN",
+        "description": "불가능한 경우를 소거하여 유일한 경우 결정",
+        "note": "$f'(k) < 0$, $f'(k) = 0$은 근 4개 불가이고 $f'(k) > 0$이어야 한다",
+        "main": true,
+        "step": 4
+      },
+      {
+        "from": [
+          "note13",
+          "note8"
+        ],
+        "to": "note14",
+        "neuron": "사실78",
+        "type": "사실",
+        "domain_hint": "POLY, EQN",
+        "description": "f'(k)>0일 때 이차방정식 근의 위치 분석과 근과 계수",
+        "note": "$f'(k) > 0$이면 $x > k$에서 (I)은 두 근을 가지고 근과 계수의 관계에 의해 두 근의 합은 $6$이다",
+        "main": true,
+        "step": 5
+      },
+      {
+        "from": [
+          "단서C",
+          "note5",
+          "note14"
+        ],
+        "to": "note15",
+        "neuron": "전략42",
+        "type": "전략",
+        "domain_hint": "EQN, POLY",
+        "description": "총 근 4개를 위해 x<k에서 정확히 1개 근 필요 판단",
+        "note": "$x = k$에서 1개, $x > k$에서 2개이고, 총 4개를 위해 $x < k$에서 정확히 1개 근이 필요하다",
+        "main": true,
+        "step": 5
+      },
+      {
+        "from": [
+          "note15",
+          "note9"
+        ],
+        "to": "note16",
+        "neuron": "사실96",
+        "type": "사실",
+        "domain_hint": "POLY, EQN",
+        "description": "이차방정식의 중근 조건은 곡선과 직선의 접선 조건",
+        "note": "(II)가 중근을 가져야 하고, 이는 $y = -f'(x)$와 $y = 12(x-k)$가 $x < k$에서 접하는 것이다",
+        "main": true,
+        "step": 5
+      },
+      {
+        "from": [
+          "note16",
+          "note7"
+        ],
+        "to": "note17",
+        "neuron": "연산33",
+        "type": "연산",
+        "domain_hint": "DIFF, EQN",
+        "description": "접점에서 기울기 일치 조건으로 접점 좌표 결정",
+        "note": "접점 $x = p$에서 $-f''(p) = 12$이고 $-(6p-6) = 12$에서 $p = -1$이다",
+        "main": true,
+        "step": 5
+      },
+      {
+        "from": [
+          "note17",
+          "note7"
+        ],
+        "to": "note18",
+        "neuron": "연산28",
+        "type": "연산",
+        "domain_hint": "EQN",
+        "description": "접점에서 함수값 일치 조건으로 a와 k의 관계식 도출",
+        "note": "접점에서 함수값 일치 조건으로 $a$와 $k$의 관계식을 도출하고, $k$값을 대입하여 $a$의 값을 결정한다.",
+        "main": true,
+        "step": 5
+      },
+      {
+        "from": [
+          "note5",
+          "note17",
+          "note14",
+          "단서D"
+        ],
+        "to": "note19",
+        "neuron": "사실78",
+        "type": "연산",
+        "domain_hint": "EQN, POLY",
+        "description": "네 근의 합을 k로 표현하고 조건에서 k 결정",
+        "note": "네 근 $k$, $-1$, (I)의 두 근(합 $6$)의 합은 $k + 5 = \\frac{9}{2}$이고 $k = -\\frac{1}{2}$이다",
+        "main": true,
+        "step": 6
+      },
+      {
+        "from": [
+          "note18"
+        ],
+        "to": "note20",
+        "neuron": "전략25",
+        "type": "연산",
+        "domain_hint": "POLY, EQN",
+        "description": "(I)의 두 근이 x>k 영역에 속하는지 검증",
+        "note": "(I): $x^2-6x-3=0$의 근 $3 \\pm 2\\sqrt{3}$은 모두 $k = -\\frac{1}{2}$보다 크다",
+        "main": false,
+        "step": 7
+      }
+    ],
+    "previous_solution": "$h(x) = \\lim_{t \\to 0+} \\frac{g(x+t)-g(x-t)}{2t}$로 두면 $h(x) = \\frac{1}{2}\\left(\\lim_{t\\to 0+}\\frac{g(x+t)-g(x)}{t} + \\lim_{t\\to 0+}\\frac{g(x-t)-g(x)}{-t}\\right)$이다 $x \\neq k$에서 $g(x)$는 다항함수이고 미분가능하므로 $h(x) = g'(x)$이다 $x < k$일 때 $g'(x) = -f'(x)$이고 $x > k$일 때 $g'(x) = f'(x)$이다 $x = k$일 때 분자가 $f''(k)t^2 + O(t^3)$이고 $h(k) = \\lim_{t \\to 0+}\\frac{f''(k)t^2}{2t} = 0$이다 절댓값 또는 조건식을 포함한 함수 $h(x)$를 구간별 다항식으로 표현한 조각함수로 정리하고, $x=k$를 대입하면 $h(k)=0$이므로 $x=k$는 방정식의 근임을 확인한다. 다항함수 $f(x)$를 미분하여 $f'(x)$를 계산한다. $f'(x)$를 $a(x-p)^2+q$ 형태의 완전제곱식으로 변환한다. x>k 영역에서 방정식을 이차방정식으로 정리하고, $x=k$를 대입하면 양쪽 이차식이 같은 값을 가짐을 확인한다. $x < k$에서 $-f'(x) = 12(x-k)$을 정리하면 $3x^2 + 6x + a - 12k = 0$ (II)이다 실근 4개 조건을 위해 $f'(k)$의 부호에 따라 경우를 분류한다 $f'(k) < 0$, $f'(k) = 0$은 근 4개 불가이고 $f'(k) > 0$이어야 한다 $f'(k) > 0$이면 $x > k$에서 (I)은 두 근을 가지고 근과 계수의 관계에 의해 두 근의 합은 $6$이다 $x = k$에서 1개, $x > k$에서 2개이고, 총 4개를 위해 $x < k$에서 정확히 1개 근이 필요하다 (II)가 중근을 가져야 하고, 이는 $y = -f'(x)$와 $y = 12(x-k)$가 $x < k$에서 접하는 것이다 접점 $x = p$에서 $-f''(p) = 12$이고 $-(6p-6) = 12$에서 $p = -1$이다 접점에서 함수값 일치 조건으로 $a$와 $k$의 관계식을 도출하고, $k$값을 대입하여 $a$의 값을 결정한다. 네 근 $k$, $-1$, (I)의 두 근(합 $6$)의 합은 $k + 5 = \\frac{9}{2}$이고 $k = -\\frac{1}{2}$이다",
+    "previous_clues": "[{\"id\":\"단서A\",\"text\":\"$f(x) = x^3 - 3x^2 + ax$ ($a$는 상수)\"},{\"id\":\"단서B\",\"text\":\"$k < 1$인 상수 $k$에 대해 $g(x) = \\\\begin{cases} 2f(k) - f(x) & (x \\\\leq k) \\\\\\\\ f(x) & (x > k) \\\\end{cases}$\"},{\"id\":\"단서C\",\"text\":\"방정식 $\\\\lim_{t \\\\to 0+} \\\\frac{g(x+t) - g(x-t)}{2t} = 12(x - k)$의 서로 다른 모든 실근이 $x_1, x_2, x_3, x_4$이다\"},{\"id\":\"단서D\",\"text\":\"$x_1 + x_2 + x_3 + x_4 = \\\\dfrac{9}{2}$\"}]",
+    "previous_analysis": "극한식 h(x)를 우미분·좌미분의 평균으로 변형하면 x≠k에서 g'(x), x=k에서 0이 된다. g(x)의 조각 정의로부터 h(x)는 |f'(x)|의 부호 반전 구조를 갖는다. f'(k)>0인 경우만 실근 4개를 허용하고, x<k 영역에서 접선 조건으로 접점 p=-1, a=3+12k를 얻는다. 근의 합 조건으로 k=-1/2, a=-3을 결정하여 30(k-a)=75이다.",
+    "previous_matching": "",
+    "previous_matched": [],
+    "previous_new_neurons": [
+      {
+        "id": "연산??",
+        "type": "연산",
+        "statement": "대칭 차분 극한 $\\lim_{h\\to0}\\dfrac{f(x+h)-f(x-h)}{2h}$는 우미분과 좌미분의 평균 $\\dfrac{f'_+(x)+f'_-(x)}{2}$와 같다.",
+        "description": "차분 극한을 우미분·좌미분 평균으로 변형",
+        "note": "$h(x) = \\lim_{t \\to 0+} \\frac{g(x+t)-g(x-t)}{2t}$로 두면 $h(x) = \\frac{1}{2}\\left(\\lim_{t\\to 0+}\\frac{g(x+t)-g(x)}{t} + \\lim_{t\\to 0+}\\frac{g(x-t)-g(x)}{-t}\\right)$이다",
+        "reason": "제공된 후보들은 모두 기하(넓이, 거리, 대칭, 직선) 관련 연산이며, 차분 극한을 우미분·좌미분의 평균으로 변형하는 미분 관련 원리와 전혀 무관하다. 이 변형은 f(x+h)-f(x-h))/2h = (f'(x+)+f'(x-))/2 형태의 대칭 차분과 미분의 관계에 해당한다.",
+        "blocked_edge": "단서C → note1",
+        "domain_hint": "LIM, DIFF",
+        "domain": [
+          "DIFF",
+          "LIM"
+        ],
+        "action_hint": "",
+        "step": 1,
+        "main": true,
+        "near_miss": [
+          "연산33: $(x^n)' = nx^{n-1}$ (거듭제곱 미분) |",
+          "연산34: $(f \\pm g)' = f' \\pm g'$ (합/차 미분) |",
+          "연산35: $(cf)' = cf'$ (상수배 미분) |"
+        ]
+      },
+      {
+        "id": "연산??",
+        "type": "연산",
+        "statement": "함수 $f(x)$가 $x=k$ 근방에서 테일러 전개 $f(x)=\\sum_{n=0}^{\\infty}\\dfrac{f^{(n)}(k)}{n!}(x-k)^n$를 가지면, 이를 이용해 $x\\to k$에서의 극한값을 계산할 수 있다.",
+        "description": "x=k에서 극한값을 테일러 전개로 계산",
+        "note": "$x = k$일 때 분자가 $f''(k)t^2 + O(t^3)$이고 $h(k) = \\lim_{t \\to 0+}\\frac{f''(k)t^2}{2t} = 0$이다",
+        "reason": "제공된 후보들은 모두 기하(넓이, 거리, 대칭, 직선) 관련 연산이며, 테일러 전개를 이용해 특정 점에서의 극한값을 계산하는 해석학적 원리와 무관하다.",
+        "blocked_edge": "단서B+note1 → note4",
+        "domain_hint": "LIM, DIFF",
+        "domain": [
+          "LIM",
+          "DIFF"
+        ],
+        "action_hint": "",
+        "step": 1,
+        "main": true,
+        "near_miss": [
+          "연산33: $(x^n)' = nx^{n-1}$ (거듭제곱 미분) |",
+          "연산34: $(f \\pm g)' = f' \\pm g'$ (합/차 미분) |",
+          "연산35: $(cf)' = cf'$ (상수배 미분) |"
+        ]
+      }
+    ],
+    "previous_partial_skeleton": [],
+    "previous_blockage_point": "",
+    "previous_skel_review_notes": "parse fail: Unexpected token 'L', \"Let me ana\"... is not valid JSON",
+    "previous_dna_nodes": [
+      {
+        "id": "top",
+        "dna": "Q1",
+        "label": "값을 구하라",
+        "category": "발문"
+      },
+      {
+        "id": "ask",
+        "dna": "E6",
+        "label": "곱(30,k-a)",
+        "category": "수식"
+      },
+      {
+        "id": "c30",
+        "dna": "T2",
+        "label": "상수 30",
+        "category": "말단"
+      },
+      {
+        "id": "diff_ka",
+        "dna": "E1",
+        "label": "합(k,-a)",
+        "category": "수식"
+      },
+      {
+        "id": "neg_a",
+        "dna": "E2",
+        "label": "부호반전(a)",
+        "category": "수식"
+      },
+      {
+        "id": "va",
+        "dna": "T1",
+        "label": "변수 a",
+        "category": "말단"
+      },
+      {
+        "id": "vk",
+        "dna": "T1",
+        "label": "변수 k",
+        "category": "말단"
+      },
+      {
+        "id": "k_lt1",
+        "dna": "C2",
+        "label": "k<1",
+        "category": "조건"
+      },
+      {
+        "id": "c1_k",
+        "dna": "T2",
+        "label": "상수 1",
+        "category": "말단"
+      },
+      {
+        "id": "fdef",
+        "dna": "F6",
+        "label": "f(x) 정의",
+        "category": "함수"
+      },
+      {
+        "id": "fdef_eq",
+        "dna": "C11",
+        "label": "f 방정식",
+        "category": "조건"
+      },
+      {
+        "id": "fdef_c1",
+        "dna": "C1",
+        "label": "f=x^3-3x^2+ax",
+        "category": "조건"
+      },
+      {
+        "id": "f_rhs",
+        "dna": "E1",
+        "label": "합(x^3,-3x^2,ax)",
+        "category": "수식"
+      },
+      {
+        "id": "x3",
+        "dna": "E7",
+        "label": "x^3",
+        "category": "수식"
+      },
+      {
+        "id": "neg3x2",
+        "dna": "E2",
+        "label": "-3x^2",
+        "category": "수식"
+      },
+      {
+        "id": "e3x2",
+        "dna": "E6",
+        "label": "3x^2",
+        "category": "수식"
+      },
+      {
+        "id": "c3_f",
+        "dna": "T2",
+        "label": "상수 3",
+        "category": "말단"
+      },
+      {
+        "id": "x2",
+        "dna": "E7",
+        "label": "x^2",
+        "category": "수식"
+      },
+      {
+        "id": "ax",
+        "dna": "E6",
+        "label": "ax",
+        "category": "수식"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
+      },
+      {
+        "id": "gdef",
+        "dna": "F1",
+        "label": "g(x) 조각함수",
+        "category": "함수"
+      },
+      {
+        "id": "g_piece1",
+        "dna": "F2",
+        "label": "2f(k)-f(x), x≤k",
+        "category": "함수"
+      },
+      {
+        "id": "g_p1_dom",
+        "dna": "C2",
+        "label": "x≤k",
+        "category": "조건"
+      },
+      {
+        "id": "g_p1_expr",
+        "dna": "E1",
+        "label": "2f(k)-f(x)",
+        "category": "수식"
+      },
+      {
+        "id": "two_fk",
+        "dna": "E6",
+        "label": "2·f(k)",
+        "category": "수식"
+      },
+      {
+        "id": "c2_g",
+        "dna": "T2",
+        "label": "상수 2",
+        "category": "말단"
+      },
+      {
+        "id": "fk",
+        "dna": "F3",
+        "label": "f(k)",
+        "category": "수식"
+      },
+      {
+        "id": "neg_fx",
+        "dna": "E2",
+        "label": "-f(x)",
+        "category": "수식"
+      },
+      {
+        "id": "fx",
+        "dna": "F3",
+        "label": "f(x)",
+        "category": "수식"
+      },
+      {
+        "id": "g_piece2",
+        "dna": "F2",
+        "label": "f(x), x>k",
+        "category": "함수"
+      },
+      {
+        "id": "g_p2_dom",
+        "dna": "C2",
+        "label": "x>k",
+        "category": "조건"
+      },
+      {
+        "id": "lim_expr",
+        "dna": "E9",
+        "label": "우극한 몫",
+        "category": "수식"
+      },
+      {
+        "id": "lim_num",
+        "dna": "E1",
+        "label": "g(x+t)-g(x-t)",
+        "category": "수식"
+      },
+      {
+        "id": "g_xpt",
+        "dna": "F3",
+        "label": "g(x+t)",
+        "category": "수식"
+      },
+      {
+        "id": "neg_gxmt",
+        "dna": "E2",
+        "label": "-g(x-t)",
+        "category": "수식"
+      },
+      {
+        "id": "g_xmt",
+        "dna": "F3",
+        "label": "g(x-t)",
+        "category": "수식"
+      },
+      {
+        "id": "lim_den",
+        "dna": "E6",
+        "label": "2t",
+        "category": "수식"
+      },
+      {
+        "id": "vt",
+        "dna": "T3",
+        "label": "독립변수 t",
+        "category": "말단"
+      },
+      {
+        "id": "rhs_eq",
+        "dna": "E6",
+        "label": "12(x-k)",
+        "category": "수식"
+      },
+      {
+        "id": "c12",
+        "dna": "T2",
+        "label": "상수 12",
+        "category": "말단"
+      },
+      {
+        "id": "x_minus_k",
+        "dna": "E1",
+        "label": "x-k",
+        "category": "수식"
+      },
+      {
+        "id": "neg_k_rhs",
+        "dna": "E2",
+        "label": "-k",
+        "category": "수식"
+      },
+      {
+        "id": "main_eq",
+        "dna": "C1",
+        "label": "극한=12(x-k)",
+        "category": "조건"
+      },
+      {
+        "id": "roots_cond",
+        "dna": "C9",
+        "label": "실근 개수=4",
+        "category": "조건"
+      },
+      {
+        "id": "c4_r",
+        "dna": "T2",
+        "label": "상수 4",
+        "category": "말단"
+      },
+      {
+        "id": "roots_named",
+        "dna": "G8",
+        "label": "근 x1,x2,x3,x4",
+        "category": "기하"
+      },
+      {
+        "id": "sum_roots",
+        "dna": "C19",
+        "label": "근합=9/2",
+        "category": "조건"
+      },
+      {
+        "id": "c9h",
+        "dna": "T2",
+        "label": "상수 9/2",
+        "category": "말단"
+      },
+      {
+        "id": "a_const",
+        "dna": "C11",
+        "label": "a는 상수",
+        "category": "조건"
+      }
+    ],
+    "previous_dna_edges": [
+      {
+        "from": "ask",
+        "to": "top"
+      },
+      {
+        "from": "c30",
+        "to": "ask"
+      },
+      {
+        "from": "diff_ka",
+        "to": "ask"
+      },
+      {
+        "from": "vk",
+        "to": "diff_ka"
+      },
+      {
+        "from": "neg_a",
+        "to": "diff_ka"
+      },
+      {
+        "from": "va",
+        "to": "neg_a"
+      },
+      {
+        "from": "vk",
+        "to": "k_lt1"
+      },
+      {
+        "from": "c1_k",
+        "to": "k_lt1"
+      },
+      {
+        "from": "k_lt1",
+        "to": "top"
+      },
+      {
+        "from": "va",
+        "to": "a_const"
+      },
+      {
+        "from": "a_const",
+        "to": "top"
+      },
+      {
+        "from": "fdef_eq",
+        "to": "fdef"
+      },
+      {
+        "from": "fdef_c1",
+        "to": "fdef_eq"
+      },
+      {
+        "from": "f_rhs",
+        "to": "fdef_c1"
+      },
+      {
+        "from": "x3",
+        "to": "f_rhs"
+      },
+      {
+        "from": "neg3x2",
+        "to": "f_rhs"
+      },
+      {
+        "from": "ax",
+        "to": "f_rhs"
+      },
+      {
+        "from": "vx",
+        "to": "x3"
+      },
+      {
+        "from": "c3_f",
+        "to": "x3"
+      },
+      {
+        "from": "e3x2",
+        "to": "neg3x2"
+      },
+      {
+        "from": "c3_f",
+        "to": "e3x2"
+      },
+      {
+        "from": "x2",
+        "to": "e3x2"
+      },
+      {
+        "from": "vx",
+        "to": "x2"
+      },
+      {
+        "from": "c2_g",
+        "to": "x2"
+      },
+      {
+        "from": "va",
+        "to": "ax"
+      },
+      {
+        "from": "vx",
+        "to": "ax"
+      },
+      {
+        "from": "fdef",
+        "to": "gdef"
+      },
+      {
+        "from": "g_piece1",
+        "to": "gdef"
+      },
+      {
+        "from": "g_piece2",
+        "to": "gdef"
+      },
+      {
+        "from": "g_p1_dom",
+        "to": "g_piece1"
+      },
+      {
+        "from": "g_p1_expr",
+        "to": "g_piece1"
+      },
+      {
+        "from": "vx",
+        "to": "g_p1_dom"
+      },
+      {
+        "from": "vk",
+        "to": "g_p1_dom"
+      },
+      {
+        "from": "two_fk",
+        "to": "g_p1_expr"
+      },
+      {
+        "from": "neg_fx",
+        "to": "g_p1_expr"
+      },
+      {
+        "from": "c2_g",
+        "to": "two_fk"
+      },
+      {
+        "from": "fk",
+        "to": "two_fk"
+      },
+      {
+        "from": "vk",
+        "to": "fk"
+      },
+      {
+        "from": "fdef",
+        "to": "fk"
+      },
+      {
+        "from": "fx",
+        "to": "neg_fx"
+      },
+      {
+        "from": "vx",
+        "to": "fx"
+      },
+      {
+        "from": "fdef",
+        "to": "fx"
+      },
+      {
+        "from": "g_p2_dom",
+        "to": "g_piece2"
+      },
+      {
+        "from": "fx",
+        "to": "g_piece2"
+      },
+      {
+        "from": "vx",
+        "to": "g_p2_dom"
+      },
+      {
+        "from": "vk",
+        "to": "g_p2_dom"
+      },
+      {
+        "from": "lim_expr",
+        "to": "main_eq"
+      },
+      {
+        "from": "rhs_eq",
+        "to": "main_eq"
+      },
+      {
+        "from": "lim_num",
+        "to": "lim_expr"
+      },
+      {
+        "from": "lim_den",
+        "to": "lim_expr"
+      },
+      {
+        "from": "vt",
+        "to": "lim_expr"
+      },
+      {
+        "from": "g_xpt",
+        "to": "lim_num"
+      },
+      {
+        "from": "neg_gxmt",
+        "to": "lim_num"
+      },
+      {
+        "from": "g_xmt",
+        "to": "neg_gxmt"
+      },
+      {
+        "from": "gdef",
+        "to": "g_xpt"
+      },
+      {
+        "from": "vx",
+        "to": "g_xpt"
+      },
+      {
+        "from": "vt",
+        "to": "g_xpt"
+      },
+      {
+        "from": "gdef",
+        "to": "g_xmt"
+      },
+      {
+        "from": "vx",
+        "to": "g_xmt"
+      },
+      {
+        "from": "vt",
+        "to": "g_xmt"
+      },
+      {
+        "from": "c2_g",
+        "to": "lim_den"
+      },
+      {
+        "from": "vt",
+        "to": "lim_den"
+      },
+      {
+        "from": "c12",
+        "to": "rhs_eq"
+      },
+      {
+        "from": "x_minus_k",
+        "to": "rhs_eq"
+      },
+      {
+        "from": "vx",
+        "to": "x_minus_k"
+      },
+      {
+        "from": "neg_k_rhs",
+        "to": "x_minus_k"
+      },
+      {
+        "from": "vk",
+        "to": "neg_k_rhs"
+      },
+      {
+        "from": "main_eq",
+        "to": "top"
+      },
+      {
+        "from": "roots_cond",
+        "to": "top"
+      },
+      {
+        "from": "main_eq",
+        "to": "roots_cond"
+      },
+      {
+        "from": "c4_r",
+        "to": "roots_cond"
+      },
+      {
+        "from": "roots_named",
+        "to": "top"
+      },
+      {
+        "from": "roots_cond",
+        "to": "roots_named"
+      },
+      {
+        "from": "sum_roots",
+        "to": "top"
+      },
+      {
+        "from": "roots_named",
+        "to": "sum_roots"
+      },
+      {
+        "from": "c9h",
+        "to": "sum_roots"
+      }
+    ],
+    "previous_new_dna": [],
+    "previous_dna_review_notes": "parse fail: Unexpected token 'L', \"Let me ana\"... is not valid JSON",
+    "original_solution": "문제의 방정식에서 좌변을\n\n$$h(x) = \\lim_{t \\to 0+} \\frac{g(x+t) - g(x-t)}{2t}$$\n\n라 하면\n\n$$h(x) = \\frac{1}{2} \\times \\lim_{t \\to 0+} \\left\\{ \\frac{g(x+t) - g(x)}{t} + \\frac{g(x-t) - g(x)}{-t} \\right\\}$$\n\n이다. 이때 함수 $g(x)$는 $x \\neq k$에서 미분가능하므로\n\n$x \\neq k$일 때:\n\n$$h(x) = g'(x) = \\begin{cases} -f'(x) & (x < k) \\\\ f'(x) & (x > k) \\end{cases}$$\n\n$x = k$일 때:\n\n$$h(k) = \\frac{1}{2} \\times \\bigl(f'(k) - f'(k)\\bigr) = 0$$\n\n따라서 함수 $h(x)$를 다시 쓰면\n\n$$h(x) = \\begin{cases} -f'(x) & (x < k) \\\\ 0 & (x = k) \\\\ f'(x) & (x > k) \\end{cases}$$\n\n이고, $k < 1$이므로 $f'(x) = 3(x-1)^2 + a - 3$이다.\n\n[FIGURE: $f'(k) < 0$, $f'(k) = 0$, $f'(k) > 0$인 세 경우에 대해 $y = h(x)$의 그래프를 각각 나타낸 그림]\n\n한편, 문제의 조건에 의해\n\n(방정식 $h(x) = 12(x - k)$의 서로 다른 실근의 개수) $= 4$ $\\cdots$ ①\n\n위 그림에서\n\n- $f'(k) < 0$일 때: (①의 좌변) $= 3$\n- $f'(k) = 0$일 때: (①의 좌변) $= 2$ 또는 $3$\n\n이므로 두 경우 모두 ①을 만족시키지 않는다.\n\n따라서 $f'(k) > 0$이어야 하고 ①을 만족시키는 상황은 다음과 같다.\n\n[FIGURE: $y = h(x)$의 그래프($x < k$ 부분)와 직선 $y = 12(x - k)$가 접하는 그림. 접점의 $x$좌표가 $p$]\n\n따라서 곡선 $y = h(x)$ ($x < k$)와 직선 $y = 12(x - k)$가 접해야 하므로\n\n접점의 $x$좌표를 $p$ ($p < k$)라 하면\n\n$$h'(p) = 12 \\;\\Rightarrow\\; -6p + 6 = 12$$\n$$\\Rightarrow\\; p = -1$$\n\n이고, 방정식 $h(x) = 12(x - k)$는\n\n- $x > k$에서 두 실근의 합이 $6$ ($\\because$ 근과 계수의 관계)\n- $k$, $-1$을 실근으로 가짐\n\n을 알 수 있다. 문제의 조건에 의해 네 실근의 합이 $\\dfrac{9}{2}$이므로\n\n$$-1 + k + 6 = \\frac{9}{2} \\;\\Rightarrow\\; k = -\\frac{1}{2}$$\n\n$$\\Rightarrow\\; h(-1) = 12(-1 - k)$$\n$$\\Rightarrow\\; a = -3$$\n\n을 얻는다.\n\n$$\\therefore\\; 30(k - a) = 30 \\times \\frac{5}{2} = \\boxed{75}$$",
+    "recovery_warnings": [],
+    "errata": [],
+    "metadata": {
+      "unit": "미분법",
+      "difficulty": "상",
+      "score": "4",
+      "type": "short_answer",
+      "answer": "75",
+      "year": "2024",
+      "source": "수능",
+      "topic": "함수의 미분과 방정식",
+      "subtopic": "미분가능성과 실근의 개수"
+    },
+    "needed_neurons": [
+      "연산??",
+      "연산??"
+    ],
+    "needed_dna": [],
+    "edge_count": 20,
+    "side_count": 3,
+    "created_at": "2026-03-28T07:23:35.119Z"
   }
 ]
