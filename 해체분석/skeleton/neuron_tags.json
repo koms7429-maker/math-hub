@@ -131,7 +131,8 @@
   {
     "id": "사실17",
     "domain": [
-      "FUNC"
+      "FUNC",
+      "GENERIC"
     ],
     "action": "DEFINE"
   },
@@ -164,7 +165,8 @@
     "id": "사실22",
     "domain": [
       "FUNC",
-      "LIM"
+      "LIM",
+      "GENERIC"
     ],
     "action": "PROP"
   },
@@ -512,7 +514,8 @@
   {
     "id": "사실65",
     "domain": [
-      "NUM"
+      "NUM",
+      "GENERIC"
     ],
     "action": "PROP"
   },
@@ -738,7 +741,8 @@
     "id": "사실94",
     "domain": [
       "LIM",
-      "FUNC"
+      "FUNC",
+      "GENERIC"
     ],
     "action": "DEFINE"
   },
@@ -1010,7 +1014,8 @@
     "id": "연산9",
     "domain": [
       "EQN",
-      "POLY"
+      "POLY",
+      "GENERIC"
     ],
     "action": "FACTOR"
   },
@@ -1118,7 +1123,8 @@
   {
     "id": "연산24",
     "domain": [
-      "EQN"
+      "EQN",
+      "GENERIC"
     ],
     "action": "REARRANGE"
   },
@@ -1308,7 +1314,8 @@
   {
     "id": "전략2",
     "domain": [
-      "EQN"
+      "EQN",
+      "GENERIC"
     ],
     "action": "SUBST"
   },
@@ -1347,13 +1354,16 @@
   {
     "id": "전략8",
     "domain": [
-      "SET"
+      "SET",
+      "GENERIC"
     ],
     "action": "CONVERT"
   },
   {
     "id": "전략9",
-    "domain": [],
+    "domain": [
+      "GENERIC"
+    ],
     "action": "SUBST"
   },
   {
@@ -1367,7 +1377,8 @@
   {
     "id": "전략11",
     "domain": [
-      "EQN"
+      "EQN",
+      "GENERIC"
     ],
     "action": "ELIMINATE"
   },
@@ -1417,7 +1428,9 @@
   },
   {
     "id": "전략17",
-    "domain": [],
+    "domain": [
+      "GENERIC"
+    ],
     "action": "ENUM"
   },
   {
@@ -1437,22 +1450,30 @@
   },
   {
     "id": "전략20",
-    "domain": [],
+    "domain": [
+      "GENERIC"
+    ],
     "action": "ELIMINATE"
   },
   {
     "id": "전략21",
-    "domain": [],
+    "domain": [
+      "GENERIC"
+    ],
     "action": "SUBST"
   },
   {
     "id": "전략22",
-    "domain": [],
+    "domain": [
+      "GENERIC"
+    ],
     "action": "CLASSIFY"
   },
   {
     "id": "전략23",
-    "domain": [],
+    "domain": [
+      "GENERIC"
+    ],
     "action": "ELIMINATE"
   },
   {
@@ -1465,7 +1486,9 @@
   },
   {
     "id": "전략25",
-    "domain": [],
+    "domain": [
+      "GENERIC"
+    ],
     "action": "SUBST"
   },
   {
@@ -1573,7 +1596,8 @@
     "id": "전략39",
     "domain": [
       "EQN",
-      "FUNC"
+      "FUNC",
+      "GENERIC"
     ],
     "action": "DETERMINE_FROM_RELATION"
   },
@@ -1589,7 +1613,8 @@
     "id": "전략41",
     "domain": [
       "POLY",
-      "EQN"
+      "EQN",
+      "GENERIC"
     ],
     "action": "SET_GENERAL_FORM"
   },
