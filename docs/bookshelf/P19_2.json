@@ -1,0 +1,615 @@
+{
+  "problem_id": "P19_2",
+  "answer": "14",
+  "clues": [
+    {
+      "id": "단서A",
+      "text": "$f(x)$는 최고차항의 계수가 $1$인 삼차함수이다"
+    },
+    {
+      "id": "단서B",
+      "text": "$f'(-1)f'(1) < 0$이다 (조건 가)"
+    },
+    {
+      "id": "단서C",
+      "text": "$f'(n)f'(n+1) < 0$을 만족시키는 정수 $n$은 $2$뿐이다 (조건 나)"
+    },
+    {
+      "id": "단서D",
+      "text": "$f(k) = f(k+2) = 0$인 정수 $k$가 존재한다"
+    }
+  ],
+  "skeleton": [
+    {
+      "from": "단서C",
+      "to": "note1",
+      "neuron": "사실65",
+      "type": "사실",
+      "domain_hint": "DIFF, EQN",
+      "description": "$f'(n)f'(n+1) < 0$이므로 $f'(n)$과 $f'(n+1)$은 서로 다른 부호이다.",
+      "note": "$f'(2)f'(3) < 0$이므로 $f'(2)$와 $f'(3)$은 서로 다른 부호이다.",
+      "main": true,
+      "step": 1
+    },
+    {
+      "from": "note1",
+      "to": "note2",
+      "neuron": "사실73",
+      "type": "사실",
+      "domain_hint": "DIFF, EQN",
+      "description": "$f'(2)$와 $f'(3)$이 서로 다른 부호이므로 중간값 정리에 의해 $(2,3)$ 사이에 $f'(x)=0$인 실수점이 존재한다.",
+      "note": "$f'$는 연속이고 $f'(2)$와 $f'(3)$이 이부호이므로 $(2,3)$에 $f'$의 근 $a$가 존재한다.",
+      "main": true,
+      "step": 1
+    },
+    {
+      "from": "단서C",
+      "to": "note3",
+      "neuron": "전략8",
+      "type": "전략",
+      "domain_hint": "EQN, NUM",
+      "description": "$n=2$만이 $f'(n)f'(n+1)<0$을 만족하므로, 다른 모든 정수 $n$에 대해 $f'(n)f'(n+1)\\geq 0$이다. 특히 $n=-1,0$에 적용한다.",
+      "note": "$f'(-1)f'(0) \\geq 0$이고 $f'(0)f'(1) \\geq 0$이다.",
+      "main": true,
+      "step": 1
+    },
+    {
+      "from": [
+        "단서B",
+        "note3"
+      ],
+      "to": "note4",
+      "neuron": "사실65",
+      "type": "사실",
+      "domain_hint": "EQN, NUM",
+      "description": "$f'(-1)f'(1)<0$이므로 $f'(-1)$과 $f'(1)$은 이부호인데, $f'(-1)f'(0)\\geq 0$과 $f'(0)f'(1)\\geq 0$을 동시에 만족하려면 $f'(0)=0$이어야 한다.",
+      "note": "$f'(0)=0$이다.",
+      "main": true,
+      "step": 1
+    },
+    {
+      "from": [
+        "단서A",
+        "note2",
+        "note4"
+      ],
+      "to": "note5",
+      "neuron": "전략38",
+      "type": "전략",
+      "domain_hint": "DIFF, POLY",
+      "description": "$f'(x)$는 최고차항의 계수가 $3$인 이차식이고 $f'(0)=0$이므로 $x$를 인수로 가진다. 또한 $(2,3)$에 다른 근 $a$가 있으므로 $f'(x)=3x(x-a)$로 결정된다 ($2<a<3$).",
+      "note": "$f'(x)=3x(x-a)$ ($2<a<3$)이다.",
+      "main": true,
+      "step": 2
+    },
+    {
+      "from": "note5",
+      "to": "note6",
+      "neuron": "연산28",
+      "type": "연산",
+      "domain_hint": "DIFF, POLY",
+      "description": "$f'(x)=3x(x-a)$를 전개하면 $f'(x)=3x^2-3ax$이다.",
+      "note": "$f'(x)=3x^2-3ax$이다.",
+      "main": true,
+      "step": 2
+    },
+    {
+      "from": "note6",
+      "to": "note7",
+      "neuron": "연산49",
+      "type": "연산",
+      "domain_hint": "INTG, POLY",
+      "description": "$f'(x)=3x^2-3ax$를 적분하면 $f(x)=x^3-\\frac{3a}{2}x^2+C$이다 ($C$는 적분상수).",
+      "note": "$f(x)=x^3-\\frac{3a}{2}x^2+C$이다 ($2<a<3$, $C$는 상수).",
+      "main": true,
+      "step": 2
+    },
+    {
+      "from": "note7",
+      "to": "note8",
+      "neuron": "사실99",
+      "type": "사실",
+      "domain_hint": "DIFF, MONO",
+      "description": "$f'$의 부호 변화로부터 $x=0$에서 극대(양→음), $x=a$에서 극소(음→양)를 판정한다.",
+      "note": "$x=0$에서 극대값 $C$, $x=a$에서 극소값 $-\\frac{a^3}{2}+C$를 가진다.",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": [
+        "note8",
+        "단서D"
+      ],
+      "to": "note9",
+      "neuron": "전략46",
+      "type": "전략",
+      "domain_hint": "POLY, NUM",
+      "description": "$f(k)=f(k+2)=0$이 되려면 $y=f(x)$가 $x=k$와 $x=k+2$에서 $0$을 지나야 한다. 그래프 개형(극대·극소 위치와 값, $x\\to\\pm\\infty$ 거동)으로부터 가능한 정수 $k$의 후보를 $k\\in\\{-1,0,1,2\\}$로 좁힌다.",
+      "note": "$f$의 영점 구조에서 $k$의 후보는 $-1, 0, 1, 2$이다.",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": "note9",
+      "to": "note9a",
+      "neuron": "전략20",
+      "type": "전략",
+      "domain_hint": "POLY, NUM",
+      "description": "각 후보 $k$에 대해 $f(k)=f(k+2)=0$이 성립 가능한지 그래프 단조성과 극값 조건으로 판정하여 불가능한 경우를 소거한다.",
+      "note": "$k=-1$: $f(-1)<0<f(1)$이므로 $f(-1)=f(1)=0$ 불가. $k=0$: 극대점이므로 $f(0)=C>0$이면 $f(2)\\neq 0$ 일반적으로 불가. $k=2$: $f(2)<f(4)$이므로 동시에 $0$이 되기 어렵다. $k=1$만 유효하다.",
+      "main": true,
+      "step": 4
+    },
+    {
+      "from": [
+        "note7",
+        "note9a"
+      ],
+      "to": "note10",
+      "neuron": "전략2",
+      "type": "전략",
+      "domain_hint": "EQN, POLY",
+      "description": "$k=1$일 때 $f(1)=0$과 $f(3)=0$을 연립하여 미정계수 $a$와 $C$를 결정한다.",
+      "note": "$f(1)=1-\\frac{3a}{2}+C=0$, $f(3)=27-\\frac{27a}{2}+C=0$을 연립하면 $a=\\frac{13}{6}$, $C=\\frac{9}{4}$이다.",
+      "main": true,
+      "step": 4
+    },
+    {
+      "from": "note10",
+      "to": "note11",
+      "neuron": "전략25",
+      "type": "전략",
+      "domain_hint": "POLY",
+      "description": "확정된 계수를 대입하여 $f(x)$를 확정한다.",
+      "note": "$f(x)=x^3-\\frac{13}{4}x^2+\\frac{9}{4}$이다.",
+      "main": true,
+      "step": 5
+    },
+    {
+      "from": "note11",
+      "to": "END",
+      "neuron": "전략25",
+      "type": "전략",
+      "domain_hint": "POLY",
+      "description": "확정된 함수에 $x=5$를 대입하여 $f(5)$를 계산한다.",
+      "note": "$f(5)=125-\\frac{325}{4}+\\frac{9}{4}=125-79=46$이다.",
+      "main": true,
+      "step": 5
+    }
+  ],
+  "solution": "$f'(2)f'(3)<0$이므로 $f'(2)$와 $f'(3)$은 서로 다른 부호이다. $f'$는 연속이므로 중간값 정리에 의해 $(2,3)$에 $f'$의 근 $a$가 존재한다. $n=2$만이 조건 (나)를 만족하므로 다른 정수 $n$에 대해 $f'(n)f'(n+1)\\geq 0$이다. 특히 $f'(-1)f'(0)\\geq 0$이고 $f'(0)f'(1)\\geq 0$이다. 조건 (가) $f'(-1)f'(1)<0$과 결합하면 $f'(0)=0$이어야 한다. $f(x)$의 최고차항의 계수가 $1$이므로 $f'(x)$는 최고차항의 계수가 $3$인 이차식이고, $f'(0)=0$과 $(2,3)$에 근 $a$가 있으므로 $f'(x)=3x(x-a)$ ($2<a<3$)이다. 이를 전개하면 $f'(x)=3x^2-3ax$이고, 적분하면 $f(x)=x^3-\\frac{3a}{2}x^2+C$이다. $f'$의 부호 변화로부터 $x=0$에서 극대값 $C$, $x=a$에서 극소값 $-\\frac{a^3}{2}+C$를 가진다. $f(k)=f(k+2)=0$을 만족하는 정수 $k$의 후보는 그래프 개형으로부터 $k\\in\\{-1,0,1,2\\}$이다. 각 후보를 검토하면 $k=1$만 유효하다. $f(1)=1-\\frac{3a}{2}+C=0$과 $f(3)=27-\\frac{27a}{2}+C=0$을 연립하면 $a=\\frac{13}{6}$, $C=\\frac{9}{4}$이다. 따라서 $f(x)=x^3-\\frac{13}{4}x^2+\\frac{9}{4}$이고, $f(5)=125-\\frac{325}{4}+\\frac{9}{4}=125-79=46$이다.",
+  "original_solution": "(나)에서 $f'(2)f'(3) < 0$이므로 $f'(x) = 0$은 $2$와 $3$ 사이의 실근을 가짐을 알 수 있다.\n\n문제의 조건에서:\n\n$$f'(-1)f'(1) < 0$$\n$$f'(-1)f'(0) \\geq 0$$\n$$f'(0)f'(1) \\geq 0$$\n\n이 세 조건을 동시에 만족시키려면 $f'(0) = 0$이어야 한다.\n\n이므로\n\n$$f'(x) = 3x(x - a) \\quad (2 < a < 3)$$\n\n$$\\Rightarrow f(x) = x^3 - \\frac{3a}{2}x^2 + C \\quad (2 < a < 3, \\; C\\text{는 상수}) \\cdots \\text{⑦}$$\n\n로 놓을 수 있다.\n\n[FIGURE: $y = f(x)$의 그래프. $x = 0$에서 극대, $x = a$에서 극소를 가지며, 극대값은 $C$, 극소값은 $f(a)$이다. $x$축 위의 주요 점은 $-\\dfrac{a}{2},\\; 0,\\; a,\\; \\dfrac{3a}{2}$이다.]\n\n위 그림을 참고하면 $f(k) = f(k+2) = 0 \\cdots$ ⓒ 을 만족시킬 수 있는 정수 $k$로 가능한 것은\n\n$$-\\frac{a}{2} < k \\text{이고 } k+2 < \\frac{3a}{2} \\text{인 } a \\; (2 < a < 3)\\text{이 존재}$$\n\n$$\\Rightarrow k = -1, \\; k = 0, \\; k = 1, \\; k = 2$$\n\n이고, 이때\n\n- ① $k = -1$일 때: $f(-1) < f(1)$ → ⓒ 불가\n- ② $k = 0$일 때: $f(0) > f(2)$ ($\\because a < 2 < \\dfrac{3a}{2}$) → ⓒ 불가\n- ③ $k = 1$일 때: $f(1) = f(3)$이면 $a = \\dfrac{13}{6}$이고, $f(1) = 0$으로부터 $C = \\dfrac{9}{4}$ → ⓒ 성립\n- ④ $k = 2$일 때: $f(2) < f(4)$ → ⓒ 불가\n\n이므로 ⓒ을 만족시키는 경우는 ③의 경우뿐임을 알 수 있다.\n\n$$\\therefore f(x) = x^3 - \\frac{13}{4}x^2 + \\frac{9}{4}$$\n\n$$\\Rightarrow f(5) = 125 - \\frac{13 \\times 25}{4} + \\frac{9}{4} = 125 - \\frac{325}{4} + \\frac{9}{4} = 125 - \\frac{316}{4} = 125 - 79 = \\boxed{46}$$",
+  "analysis": "",
+  "new_neurons": [],
+  "metadata": {
+    "unit": "미적분",
+    "difficulty": "상",
+    "score": "4",
+    "type": "multiple_choice",
+    "answer": "2",
+    "year": "2024",
+    "source": "수능",
+    "topic": "이차함수와 접선, 극한",
+    "subtopic": "접선 조건과 극한을 이용한 함수 결정"
+  },
+  "edge_count": 13,
+  "side_count": 0,
+  "statement": "# 15. (수능) - 삼차함수의 도함수 부호 조건과 함수값\n\n## Problem\n최고차항의 계수가 $1$인 삼차함수 $f(x)$가 다음 조건을 만족시킨다.\n\n> (가) $f'(-1)f'(1) < 0$\n>\n> (나) $f'(n)f'(n+1) < 0$을 만족시키는 정수 $n$은 $2$뿐이다.\n\n$f(k) = f(k+2) = 0$인 정수 $k$가 존재할 때, $f(5)$의 값을 구하시오. [4점]",
+  "dna": {
+    "nodes": [
+      {
+        "id": "top",
+        "dna": "Q1",
+        "label": "값을 구하라",
+        "category": "발문"
+      },
+      {
+        "id": "ask",
+        "dna": "F3",
+        "label": "f(3)",
+        "category": "함수"
+      },
+      {
+        "id": "c3val",
+        "dna": "T2",
+        "label": "상수 3",
+        "category": "말단"
+      },
+      {
+        "id": "fn_f",
+        "dna": "F6",
+        "label": "함수 f",
+        "category": "함수"
+      },
+      {
+        "id": "f11",
+        "dna": "F11",
+        "label": "이차함수",
+        "category": "함수"
+      },
+      {
+        "id": "conds",
+        "dna": "S1",
+        "label": "조건 묶음",
+        "category": "구조"
+      },
+      {
+        "id": "crv",
+        "dna": "G2",
+        "label": "곡선 y=f(x)",
+        "category": "기하"
+      },
+      {
+        "id": "crv_eq",
+        "dna": "C11",
+        "label": "곡선 방정식",
+        "category": "조건"
+      },
+      {
+        "id": "crv_c1",
+        "dna": "C1",
+        "label": "y=f(x) 등식",
+        "category": "조건"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
+      },
+      {
+        "id": "fx_rhs",
+        "dna": "F3",
+        "label": "f(x)",
+        "category": "함수"
+      },
+      {
+        "id": "pt1",
+        "dna": "G1",
+        "label": "점 (1,f(1))",
+        "category": "기하"
+      },
+      {
+        "id": "pt1_coord",
+        "dna": "G17",
+        "label": "좌표 (1,f(1))",
+        "category": "기하"
+      },
+      {
+        "id": "c1val",
+        "dna": "T2",
+        "label": "상수 1",
+        "category": "말단"
+      },
+      {
+        "id": "f1_val",
+        "dna": "F3",
+        "label": "f(1)",
+        "category": "함수"
+      },
+      {
+        "id": "tgt",
+        "dna": "G15",
+        "label": "접선",
+        "category": "기하"
+      },
+      {
+        "id": "pt_on_crv",
+        "dna": "G3",
+        "label": "곡선 위의 점",
+        "category": "기하"
+      },
+      {
+        "id": "pass_o",
+        "dna": "G16",
+        "label": "접선이 원점 통과",
+        "category": "기하"
+      },
+      {
+        "id": "pt_o",
+        "dna": "G17",
+        "label": "원점 O(0,0)",
+        "category": "기하"
+      },
+      {
+        "id": "c0",
+        "dna": "T2",
+        "label": "상수 0",
+        "category": "말단"
+      },
+      {
+        "id": "lim_eq",
+        "dna": "C1",
+        "label": "극한=f(1)^2",
+        "category": "조건"
+      },
+      {
+        "id": "lim_expr",
+        "dna": "E6",
+        "label": "t*{f(1+4/t)-f(1)}",
+        "category": "수식"
+      },
+      {
+        "id": "f1_sq",
+        "dna": "E7",
+        "label": "f(1)^2",
+        "category": "수식"
+      },
+      {
+        "id": "c2_exp",
+        "dna": "T2",
+        "label": "지수 2",
+        "category": "말단"
+      },
+      {
+        "id": "vt",
+        "dna": "T3",
+        "label": "독립변수 t",
+        "category": "말단"
+      },
+      {
+        "id": "c4val",
+        "dna": "T2",
+        "label": "상수 4",
+        "category": "말단"
+      },
+      {
+        "id": "inner_arg",
+        "dna": "E1",
+        "label": "1+4/t",
+        "category": "수식"
+      },
+      {
+        "id": "frac_4t",
+        "dna": "E6",
+        "label": "4*(1/t)",
+        "category": "수식"
+      },
+      {
+        "id": "inv_t",
+        "dna": "E7",
+        "label": "t^(-1)",
+        "category": "수식"
+      },
+      {
+        "id": "neg1",
+        "dna": "T2",
+        "label": "상수 -1",
+        "category": "말단"
+      },
+      {
+        "id": "f_inner",
+        "dna": "F3",
+        "label": "f(1+4/t)",
+        "category": "함수"
+      },
+      {
+        "id": "diff_expr",
+        "dna": "E1",
+        "label": "f(1+4/t)-f(1)",
+        "category": "수식"
+      },
+      {
+        "id": "neg_f1",
+        "dna": "E2",
+        "label": "-f(1)",
+        "category": "수식"
+      },
+      {
+        "id": "t_times",
+        "dna": "E6",
+        "label": "t*{...}",
+        "category": "수식"
+      },
+      {
+        "id": "min_cond",
+        "dna": "F14",
+        "label": "x=-3에서 최소",
+        "category": "함수"
+      },
+      {
+        "id": "cneg3",
+        "dna": "T2",
+        "label": "상수 -3",
+        "category": "말단"
+      }
+    ],
+    "edges": [
+      {
+        "from": "ask",
+        "to": "top"
+      },
+      {
+        "from": "conds",
+        "to": "top"
+      },
+      {
+        "from": "c3val",
+        "to": "ask"
+      },
+      {
+        "from": "fn_f",
+        "to": "ask"
+      },
+      {
+        "from": "f11",
+        "to": "fn_f"
+      },
+      {
+        "from": "crv",
+        "to": "conds"
+      },
+      {
+        "from": "crv_eq",
+        "to": "crv"
+      },
+      {
+        "from": "crv_c1",
+        "to": "crv_eq"
+      },
+      {
+        "from": "fx_rhs",
+        "to": "crv_c1"
+      },
+      {
+        "from": "vx",
+        "to": "fx_rhs"
+      },
+      {
+        "from": "fn_f",
+        "to": "fx_rhs"
+      },
+      {
+        "from": "pt1",
+        "to": "pt_on_crv"
+      },
+      {
+        "from": "crv",
+        "to": "pt_on_crv"
+      },
+      {
+        "from": "pt_on_crv",
+        "to": "conds"
+      },
+      {
+        "from": "pt1_coord",
+        "to": "pt1"
+      },
+      {
+        "from": "c1val",
+        "to": "pt1_coord"
+      },
+      {
+        "from": "f1_val",
+        "to": "pt1_coord"
+      },
+      {
+        "from": "fn_f",
+        "to": "f1_val"
+      },
+      {
+        "from": "c1val",
+        "to": "f1_val"
+      },
+      {
+        "from": "tgt",
+        "to": "pass_o"
+      },
+      {
+        "from": "pt_o",
+        "to": "pass_o"
+      },
+      {
+        "from": "pass_o",
+        "to": "conds"
+      },
+      {
+        "from": "pt1",
+        "to": "tgt"
+      },
+      {
+        "from": "crv",
+        "to": "tgt"
+      },
+      {
+        "from": "c0",
+        "to": "pt_o"
+      },
+      {
+        "from": "lim_eq",
+        "to": "conds"
+      },
+      {
+        "from": "lim_expr",
+        "to": "lim_eq"
+      },
+      {
+        "from": "f1_sq",
+        "to": "lim_eq"
+      },
+      {
+        "from": "f1_val",
+        "to": "f1_sq"
+      },
+      {
+        "from": "c2_exp",
+        "to": "f1_sq"
+      },
+      {
+        "from": "t_times",
+        "to": "lim_expr"
+      },
+      {
+        "from": "vt",
+        "to": "t_times"
+      },
+      {
+        "from": "diff_expr",
+        "to": "t_times"
+      },
+      {
+        "from": "f_inner",
+        "to": "diff_expr"
+      },
+      {
+        "from": "neg_f1",
+        "to": "diff_expr"
+      },
+      {
+        "from": "f1_val",
+        "to": "neg_f1"
+      },
+      {
+        "from": "fn_f",
+        "to": "f_inner"
+      },
+      {
+        "from": "inner_arg",
+        "to": "f_inner"
+      },
+      {
+        "from": "c1val",
+        "to": "inner_arg"
+      },
+      {
+        "from": "frac_4t",
+        "to": "inner_arg"
+      },
+      {
+        "from": "c4val",
+        "to": "frac_4t"
+      },
+      {
+        "from": "inv_t",
+        "to": "frac_4t"
+      },
+      {
+        "from": "vt",
+        "to": "inv_t"
+      },
+      {
+        "from": "neg1",
+        "to": "inv_t"
+      },
+      {
+        "from": "min_cond",
+        "to": "conds"
+      },
+      {
+        "from": "fn_f",
+        "to": "min_cond"
+      },
+      {
+        "from": "cneg3",
+        "to": "min_cond"
+      }
+    ],
+    "new_dna": []
+  },
+  "thinking_profile": null,
+  "folders": [],
+  "history": [],
+  "recovery_warnings": [],
+  "errata": [],
+  "created_at": "2026-03-28T06:36:16.068Z"
+}
