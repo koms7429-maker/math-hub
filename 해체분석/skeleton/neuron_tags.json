@@ -1828,5 +1828,22 @@
       "POLY"
     ],
     "action": "RATIONAL_LIMIT_DEGREE_MATCH"
+  },
+  {
+    "id": "사실139",
+    "domain": [
+      "FUNC",
+      "LIM"
+    ],
+    "action": "CONTINUOUS_IMAGE_CLOSED_INTERVAL"
+  },
+  {
+    "id": "사실140",
+    "domain": [
+      "POLY",
+      "DIFF",
+      "FUNC"
+    ],
+    "action": "CUBIC_NONINJECTIVE_IFF_TWO_EXTREMA"
   }
 ]
