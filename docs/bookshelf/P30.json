@@ -1,0 +1,771 @@
+{
+  "problem_id": "P30",
+  "answer": "2 (선택지 ③ 3)",
+  "clues": [
+    {
+      "id": "단서A",
+      "text": "$f(x)$는 최고차항의 계수가 $1$인 삼차함수이다"
+    },
+    {
+      "id": "단서B",
+      "text": "$g(x) = \\begin{cases} f(x) & (x < 0) \\\\ 2x - f(x-2) & (x \\geq 0) \\end{cases}$"
+    },
+    {
+      "id": "단서C",
+      "text": "$y = g(x)$의 그래프가 직선 $y = x + k$와 서로 다른 두 점 $(\\alpha, g(\\alpha))$, $(\\beta, g(\\beta))$에서 접하고, $\\alpha\\beta \\neq 0$이다"
+    },
+    {
+      "id": "단서D",
+      "text": "$\\alpha + \\beta = 2$이고 $f'(1) = 1$이다"
+    }
+  ],
+  "skeleton": [
+    {
+      "from": [
+        "단서A",
+        "단서B"
+      ],
+      "to": "note1",
+      "neuron": "사실135",
+      "type": "사실",
+      "domain_hint": "POLY, FUNC",
+      "description": "삼차식과 직선의 접점(이중근)은 최대 1개",
+      "note": "각 조각 $f(x)$, $2x-f(x-2)$는 삼차식이고, 직선과의 접점은 조각당 최대 $1$개이다",
+      "main": true,
+      "step": 1
+    },
+    {
+      "from": [
+        "note1",
+        "단서C"
+      ],
+      "to": "note2",
+      "neuron": "전략22",
+      "type": "전략",
+      "domain_hint": "FUNC, SET",
+      "description": "두 접점을 두 조각에 하나씩 배분하고 부호 결정",
+      "note": "두 접점은 각 조각에 하나씩 배분되며, $\\alpha\\beta\\neq 0$이므로 $\\alpha < 0 < \\beta$이다",
+      "main": true,
+      "step": 1
+    },
+    {
+      "from": "단서B",
+      "to": "note3",
+      "neuron": "연산38",
+      "type": "연산",
+      "domain_hint": "DIFF",
+      "description": "$x\\geq 0$ 조각 $2x-f(x-2)$의 미분에 합성함수 미분(연쇄법칙)을 적용한다",
+      "note": "$g'(x)=2-f'(x-2)$ ($x>0$)를 얻는다",
+      "main": true,
+      "step": 2
+    },
+    {
+      "from": [
+        "단서B",
+        "note3"
+      ],
+      "to": "note4",
+      "neuron": "연산34",
+      "type": "연산",
+      "domain_hint": "DIFF",
+      "description": "각 조각의 도함수를 구간별로 정리한다",
+      "note": "$g'(x)=\\begin{cases}f'(x)&(x<0)\\\\2-f'(x-2)&(x>0)\\end{cases}$",
+      "main": true,
+      "step": 2
+    },
+    {
+      "from": [
+        "note2",
+        "note4",
+        "단서C"
+      ],
+      "to": "note5",
+      "neuron": "사실100",
+      "type": "사실",
+      "domain_hint": "DIFF",
+      "description": "접점에서 곡선의 접선 기울기가 직선 기울기 $1$과 같다",
+      "note": "$f'(\\alpha)=1$이고 $2-f'(\\beta-2)=1$, 즉 $f'(\\beta-2)=1$이다",
+      "main": true,
+      "step": 2
+    },
+    {
+      "from": [
+        "단서A",
+        "note5"
+      ],
+      "to": "note6",
+      "neuron": "연산33",
+      "type": "연산",
+      "domain_hint": "POLY",
+      "description": "최고차항의 계수가 $1$인 삼차함수를 미분하면 최고차항 계수가 $3$인 이차식이다",
+      "note": "$f'(x)$는 최고차항의 계수가 $3$인 이차식이므로 $f'(x)-1=0$은 최대 2개의 근을 갖는다",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": [
+        "note5",
+        "note6",
+        "단서D"
+      ],
+      "to": "note7",
+      "neuron": "사실134",
+      "type": "사실",
+      "domain_hint": "POLY, NUM",
+      "description": "$f'(x)=1$의 근은 최대 2개인데, $\\alpha$, $1$, $\\beta-2$의 3개 값이 모두 이를 만족하므로 비둘기집 원리에 의해 적어도 둘은 일치한다",
+      "note": "세 값 $\\alpha$, $1$, $\\beta-2$ 중 적어도 둘은 같아야 한다",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": "note7",
+      "to": "note8",
+      "neuron": "전략22",
+      "type": "전략",
+      "domain_hint": "EQN",
+      "description": "일치 가능한 쌍을 경우 분류",
+      "note": "(i) $\\alpha=1$, (ii) $\\beta-2=\\alpha$, (iii) $\\beta-2=1$로 분류한다",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": [
+        "note8",
+        "note2"
+      ],
+      "to": "note9",
+      "neuron": "전략23",
+      "type": "전략",
+      "domain_hint": "EQN, INEQ",
+      "description": "경우 (i)이 조건에 모순임을 확인",
+      "note": "$\\alpha=1$은 $\\alpha<0$에 모순이므로 배제한다",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": [
+        "note8",
+        "단서D"
+      ],
+      "to": "note10",
+      "neuron": "전략2",
+      "type": "전략",
+      "domain_hint": "EQN",
+      "description": "경우 (ii) $\\beta-2=\\alpha$와 $\\alpha+\\beta=2$를 연립",
+      "note": "$\\beta=\\alpha+2$와 $\\alpha+\\beta=2$를 연립하면 $\\alpha=0$, $\\beta=2$이다",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": [
+        "note10",
+        "note2"
+      ],
+      "to": "note11",
+      "neuron": "전략23",
+      "type": "전략",
+      "domain_hint": "EQN, INEQ",
+      "description": "경우 (ii)이 조건에 모순임을 확인",
+      "note": "$\\alpha=0$은 $\\alpha<0$에 모순이므로 배제한다",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": [
+        "note8",
+        "단서D"
+      ],
+      "to": "note12",
+      "neuron": "전략2",
+      "type": "전략",
+      "domain_hint": "EQN",
+      "description": "경우 (iii) $\\beta-2=1$에서 $\\beta=3$, $\\alpha+\\beta=2$에서 $\\alpha=-1$을 결정",
+      "note": "$\\beta=3$, $\\alpha=-1$이다. $\\alpha<0<\\beta$를 만족한다",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": [
+        "note12",
+        "note6"
+      ],
+      "to": "note13",
+      "neuron": "사실133",
+      "type": "사실",
+      "domain_hint": "POLY",
+      "description": "$f'(x)-1$은 최고차항 계수 $3$인 이차식이고 근이 $x=-1$, $x=1$이므로 유일하게 결정된다",
+      "note": "$f'(x)-1=3(x+1)(x-1)$이므로 $f'(x)=3x^2-2$이다",
+      "main": true,
+      "step": 4
+    },
+    {
+      "from": "note13",
+      "to": "note14",
+      "neuron": "연산49",
+      "type": "연산",
+      "domain_hint": "INTG, POLY",
+      "description": "$f'(x)=3x^2-2$를 적분하여 $f(x)$를 결정한다",
+      "note": "$f(x)=x^3-2x+C$ ($C$는 적분상수)이다",
+      "main": true,
+      "step": 4
+    },
+    {
+      "from": [
+        "note14",
+        "note12",
+        "단서C"
+      ],
+      "to": "note15",
+      "neuron": "전략25",
+      "type": "전략",
+      "domain_hint": "EQN",
+      "description": "각 접점의 좌표를 직선 $y=x+k$ 위에 대입하여 연립방정식을 세운다",
+      "note": "$f(-1)=-1+k$에서 $1+C=-1+k$, 즉 $k=C+2$ ···ⓑ / $2(3)-f(1)=3+k$에서 $6-(1-2+C)=3+k$, 즉 $k=4-C$ ···ⓒ",
+      "main": true,
+      "step": 5
+    },
+    {
+      "from": "note15",
+      "to": "note16",
+      "neuron": "전략2",
+      "type": "전략",
+      "domain_hint": "EQN",
+      "description": "ⓑ과 ⓒ을 연립하여 $C$와 $k$를 결정한다",
+      "note": "$C+2=4-C$를 풀면 $C=1$, $k=3$이다. 따라서 $f(x)=x^3-2x+1$이다",
+      "main": true,
+      "step": 5
+    },
+    {
+      "from": "note16",
+      "to": "note17",
+      "neuron": "전략25",
+      "type": "전략",
+      "domain_hint": "POLY",
+      "description": "$x<0$ 영역에서 접선 조건을 검증한다",
+      "note": "$f(x)-(x+3)=x^3-3x-2=(x+1)^2(x-2)$이므로, $x<0$에서 $x=-1$에서만 접한다",
+      "main": false,
+      "step": 6
+    },
+    {
+      "from": "note16",
+      "to": "note18",
+      "neuron": "전략25",
+      "type": "전략",
+      "domain_hint": "POLY",
+      "description": "$x\\geq 0$ 영역에서 접선 조건을 검증한다",
+      "note": "$g(x)-(x+3)=2x-f(x-2)-(x+3)=x-((x-2)^3-2(x-2)+1)-3=-(x-3)^2 x$이므로, $x\\geq 0$에서 $x=3$에서만 접한다",
+      "main": false,
+      "step": 6
+    },
+    {
+      "from": "note16",
+      "to": "END",
+      "neuron": "전략25",
+      "type": "전략",
+      "domain_hint": "POLY, FUNC",
+      "description": "$g(k+1)=g(4)$를 계산한다",
+      "note": "$g(4)=2(4)-f(4-2)=8-f(2)=8-(8-4+1)=3$이다",
+      "main": true,
+      "step": 7
+    }
+  ],
+  "solution": "각 조각 $f(x)$, $2x-f(x-2)$는 삼차식이고, 직선과의 접점은 조각당 최대 $1$개이다. 두 접점은 각 조각에 하나씩 배분되며, $\\alpha\\beta\\neq 0$이므로 $\\alpha < 0 < \\beta$이다. $x\\geq 0$ 조각의 미분에 합성함수 미분을 적용하면 $g'(x)=2-f'(x-2)$이고, 구간별로 정리하면 $g'(x)=f'(x)$ ($x<0$), $g'(x)=2-f'(x-2)$ ($x>0$)이다. 접점에서 접선 기울기가 직선 기울기 $1$과 같으므로 $f'(\\alpha)=1$이고 $f'(\\beta-2)=1$이다. $f'(x)$는 최고차항 계수 $3$인 이차식이므로 $f'(x)=1$의 근은 최대 2개인데, $\\alpha$, $1$, $\\beta-2$의 3개 값이 모두 이를 만족하므로 적어도 둘은 일치한다. (i) $\\alpha=1$은 $\\alpha<0$에 모순, (ii) $\\beta-2=\\alpha$이면 $\\alpha+\\beta=2$와 연립하여 $\\alpha=0$인데 이는 $\\alpha<0$에 모순, (iii) $\\beta-2=1$이면 $\\beta=3$, $\\alpha=-1$이고 이는 모든 조건을 만족한다. $f'(x)-1=3(x+1)(x-1)$이므로 $f'(x)=3x^2-2$이고, 적분하면 $f(x)=x^3-2x+C$이다. $f(-1)=-1+k$에서 $k=C+2$, $6-f(1)=3+k$에서 $k=4-C$이므로 연립하면 $C=1$, $k=3$이다. 따라서 $f(x)=x^3-2x+1$이고, $g(k+1)=g(4)=8-f(2)=8-5=3$이다.",
+  "original_solution": "$f(x)$가 삼차함수이므로\n\n- 곡선 $y = f(x)$와 $y = 2x - f(x-2)$는 각각\n- 직선 $y = x + k$와 최대 한 점에서 접할 수 있음\n\n을 통해 편의상 문제의 박스 조건에서 $\\alpha < \\beta$라 하면\n\n$$\\alpha < 0 < \\beta \\quad (\\because \\alpha\\beta \\neq 0)$$\n\n이어야 하고, 이때 $g(x)$의 도함수는\n\n$$g'(x) = \\begin{cases} f'(x) & (x < 0) \\\\ 2 - f'(x-2) & (x > 0) \\end{cases}$$\n\n이므로\n\n$$\\begin{cases} f'(\\alpha) = 1 \\\\ 2 - f'(\\beta - 2) = 1 \\implies f'(\\beta - 2) = 1 \\end{cases}$$\n\n이다. 또한, 문제의 조건에서 $f'(1) = 1$이므로\n\n$$\\begin{cases} f'(\\alpha) = f'(1) = 1 \\implies f'(x) = 3(x - \\alpha)(x - 1) + 1 \\quad \\cdots \\text{①} \\\\ \\beta = \\alpha + 2 \\text{ 또는 } \\beta = 3 \\end{cases}$$\n\n이고,\n\n- $\\beta = \\alpha + 2$이면 $\\alpha + \\beta = 2$와 연립하여 $\\alpha = 0$, $\\beta = 2$를 얻을 수 있는데 이는 $\\alpha < 0 < \\beta$임에 모순\n\n이므로\n\n$$\\beta = 3, \\quad \\alpha = -1 \\quad (\\because \\alpha + \\beta = 2)$$\n\n을 얻는다.\n\n따라서\n\n$$\\text{①} \\implies f'(x) = 3x^2 - 2 \\implies f(x) = x^3 - 2x + C \\quad (C\\text{는 상수})$$\n\n이고\n\n- $\\alpha = -1 \\implies y = f(x)$와 $y = x + k$가 $x = -1$에서 만남\n$$\\implies f(-1) = -1 + k$$\n$$\\implies 1 + C = -1 + k \\quad \\cdots \\text{ⓑ}$$\n\n- $\\beta = 3 \\implies y = 2x - f(x-2)$와 $y = x + k$가 $x = 3$에서 만남\n$$\\implies 6 - f(1) = 3 + k$$\n$$\\implies 7 - C = 3 + k \\quad \\cdots \\text{ⓒ}$$\n\n이므로 ⓑ, ⓒ을 연립하면\n\n$$C = 1, \\quad k = 3$$\n\n을 얻는다.\n\n$$\\therefore f(x) = x^3 - 2x + 1$$\n\n$$\\therefore g(k+1) = g(4) = 8 - f(2) = 8 - (8 - 4 + 1) = 8 - 5 = 3$$",
+  "analysis": "",
+  "new_neurons": [],
+  "metadata": {
+    "unit": "미적분",
+    "difficulty": "상",
+    "score": "4",
+    "type": "multiple_choice",
+    "answer": "2",
+    "year": "미상",
+    "source": "수능",
+    "topic": "삼차함수와 접선",
+    "subtopic": "접선 조건을 이용한 함수 결정"
+  },
+  "edge_count": 19,
+  "side_count": 5,
+  "statement": "# 30. (수능) - 삼차함수와 접선 조건을 이용한 함수 결정\n\n## Problem\n최고차항의 계수가 $1$인 삼차함수 $f(x)$에 대하여 함수\n\n$$g(x) = \\begin{cases} f(x) & (x < 0) \\\\ 2x - f(x-2) & (x \\geq 0) \\end{cases}$$\n\n이 상수 $k$에 대하여 다음 조건을 만족시킨다.\n\n> 함수 $y = g(x)$의 그래프가 직선 $y = x + k$와 서로 다른 두 점 $(\\alpha,\\, g(\\alpha))$, $(\\beta,\\, g(\\beta))$에서 접한다. (단, $\\alpha\\beta \\neq 0$)\n\n$\\alpha + \\beta = 2$, $f'(1) = 1$일 때, $g(k+1)$의 값은? [4점]",
+  "dna": {
+    "nodes": [
+      {
+        "id": "top",
+        "dna": "Q1",
+        "label": "값을 구하라",
+        "category": "발문"
+      },
+      {
+        "id": "ask",
+        "dna": "F3",
+        "label": "g(k+1)",
+        "category": "함수"
+      },
+      {
+        "id": "ask_input",
+        "dna": "E1",
+        "label": "k+1",
+        "category": "수식"
+      },
+      {
+        "id": "vg",
+        "dna": "F1",
+        "label": "함수 g(x)",
+        "category": "함수"
+      },
+      {
+        "id": "vk",
+        "dna": "T1",
+        "label": "변수 k",
+        "category": "말단"
+      },
+      {
+        "id": "c1",
+        "dna": "T2",
+        "label": "상수 1",
+        "category": "말단"
+      },
+      {
+        "id": "c0",
+        "dna": "T2",
+        "label": "상수 0",
+        "category": "말단"
+      },
+      {
+        "id": "c2",
+        "dna": "T2",
+        "label": "상수 2",
+        "category": "말단"
+      },
+      {
+        "id": "vf",
+        "dna": "F6",
+        "label": "함수 f(x)",
+        "category": "함수"
+      },
+      {
+        "id": "f_cubic",
+        "dna": "L4",
+        "label": "최고차항=1",
+        "category": "제한"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
+      },
+      {
+        "id": "piece1",
+        "dna": "F2",
+        "label": "조각1: f(x)",
+        "category": "함수"
+      },
+      {
+        "id": "dom1",
+        "dna": "C2",
+        "label": "x < 0",
+        "category": "조건"
+      },
+      {
+        "id": "piece2",
+        "dna": "F2",
+        "label": "조각2: 2x-f(x-2)",
+        "category": "함수"
+      },
+      {
+        "id": "dom2",
+        "dna": "C2",
+        "label": "x ≥ 0",
+        "category": "조건"
+      },
+      {
+        "id": "expr2",
+        "dna": "E1",
+        "label": "2x-f(x-2)",
+        "category": "수식"
+      },
+      {
+        "id": "term2x",
+        "dna": "E6",
+        "label": "2·x",
+        "category": "수식"
+      },
+      {
+        "id": "neg_fx2",
+        "dna": "E2",
+        "label": "-f(x-2)",
+        "category": "수식"
+      },
+      {
+        "id": "fx2",
+        "dna": "F3",
+        "label": "f(x-2)",
+        "category": "함수"
+      },
+      {
+        "id": "x_minus2",
+        "dna": "E1",
+        "label": "x-2",
+        "category": "수식"
+      },
+      {
+        "id": "neg2",
+        "dna": "E2",
+        "label": "-2",
+        "category": "수식"
+      },
+      {
+        "id": "line",
+        "dna": "G12",
+        "label": "직선 y=x+k",
+        "category": "기하"
+      },
+      {
+        "id": "line_eq",
+        "dna": "C11",
+        "label": "직선 방정식",
+        "category": "조건"
+      },
+      {
+        "id": "line_c1",
+        "dna": "C1",
+        "label": "y=x+k",
+        "category": "조건"
+      },
+      {
+        "id": "line_rhs",
+        "dna": "E1",
+        "label": "x+k",
+        "category": "수식"
+      },
+      {
+        "id": "vy_line",
+        "dna": "T3",
+        "label": "독립변수 y",
+        "category": "말단"
+      },
+      {
+        "id": "crv_g",
+        "dna": "G2",
+        "label": "곡선 y=g(x)",
+        "category": "기하"
+      },
+      {
+        "id": "tang_cond",
+        "dna": "G27",
+        "label": "두 점에서 접함",
+        "category": "기하"
+      },
+      {
+        "id": "diff2",
+        "dna": "C4",
+        "label": "서로 다른 두 점",
+        "category": "조건"
+      },
+      {
+        "id": "pt_alpha",
+        "dna": "G1",
+        "label": "점 (α,g(α))",
+        "category": "기하"
+      },
+      {
+        "id": "pt_beta",
+        "dna": "G1",
+        "label": "점 (β,g(β))",
+        "category": "기하"
+      },
+      {
+        "id": "va",
+        "dna": "T1",
+        "label": "변수 α",
+        "category": "말단"
+      },
+      {
+        "id": "vb",
+        "dna": "T1",
+        "label": "변수 β",
+        "category": "말단"
+      },
+      {
+        "id": "ab_nonzero",
+        "dna": "C2",
+        "label": "αβ≠0",
+        "category": "조건"
+      },
+      {
+        "id": "ab_prod",
+        "dna": "E6",
+        "label": "α·β",
+        "category": "수식"
+      },
+      {
+        "id": "alpha_beta_sum",
+        "dna": "C1",
+        "label": "α+β=2",
+        "category": "조건"
+      },
+      {
+        "id": "ab_sum_expr",
+        "dna": "E1",
+        "label": "α+β",
+        "category": "수식"
+      },
+      {
+        "id": "fprime_def",
+        "dna": "F13",
+        "label": "f'(x)",
+        "category": "함수"
+      },
+      {
+        "id": "fprime_cond",
+        "dna": "C1",
+        "label": "f'(1)=1",
+        "category": "조건"
+      },
+      {
+        "id": "fprime_at1",
+        "dna": "F3",
+        "label": "f'(1)",
+        "category": "함수"
+      }
+    ],
+    "edges": [
+      {
+        "from": "ask",
+        "to": "top"
+      },
+      {
+        "from": "vg",
+        "to": "ask"
+      },
+      {
+        "from": "ask_input",
+        "to": "ask"
+      },
+      {
+        "from": "vk",
+        "to": "ask_input"
+      },
+      {
+        "from": "c1",
+        "to": "ask_input"
+      },
+      {
+        "from": "f_cubic",
+        "to": "vf"
+      },
+      {
+        "from": "vf",
+        "to": "piece1"
+      },
+      {
+        "from": "dom1",
+        "to": "piece1"
+      },
+      {
+        "from": "vx",
+        "to": "dom1"
+      },
+      {
+        "from": "c0",
+        "to": "dom1"
+      },
+      {
+        "from": "piece1",
+        "to": "vg"
+      },
+      {
+        "from": "piece2",
+        "to": "vg"
+      },
+      {
+        "from": "dom2",
+        "to": "piece2"
+      },
+      {
+        "from": "vx",
+        "to": "dom2"
+      },
+      {
+        "from": "c0",
+        "to": "dom2"
+      },
+      {
+        "from": "expr2",
+        "to": "piece2"
+      },
+      {
+        "from": "term2x",
+        "to": "expr2"
+      },
+      {
+        "from": "neg_fx2",
+        "to": "expr2"
+      },
+      {
+        "from": "c2",
+        "to": "term2x"
+      },
+      {
+        "from": "vx",
+        "to": "term2x"
+      },
+      {
+        "from": "fx2",
+        "to": "neg_fx2"
+      },
+      {
+        "from": "vf",
+        "to": "fx2"
+      },
+      {
+        "from": "x_minus2",
+        "to": "fx2"
+      },
+      {
+        "from": "vx",
+        "to": "x_minus2"
+      },
+      {
+        "from": "neg2",
+        "to": "x_minus2"
+      },
+      {
+        "from": "c2",
+        "to": "neg2"
+      },
+      {
+        "from": "line_eq",
+        "to": "line"
+      },
+      {
+        "from": "line_c1",
+        "to": "line_eq"
+      },
+      {
+        "from": "vy_line",
+        "to": "line_c1"
+      },
+      {
+        "from": "line_rhs",
+        "to": "line_c1"
+      },
+      {
+        "from": "vx",
+        "to": "line_rhs"
+      },
+      {
+        "from": "vk",
+        "to": "line_rhs"
+      },
+      {
+        "from": "vg",
+        "to": "crv_g"
+      },
+      {
+        "from": "tang_cond",
+        "to": "top"
+      },
+      {
+        "from": "crv_g",
+        "to": "tang_cond"
+      },
+      {
+        "from": "line",
+        "to": "tang_cond"
+      },
+      {
+        "from": "diff2",
+        "to": "tang_cond"
+      },
+      {
+        "from": "pt_alpha",
+        "to": "tang_cond"
+      },
+      {
+        "from": "pt_beta",
+        "to": "tang_cond"
+      },
+      {
+        "from": "va",
+        "to": "pt_alpha"
+      },
+      {
+        "from": "vb",
+        "to": "pt_beta"
+      },
+      {
+        "from": "ab_prod",
+        "to": "ab_nonzero"
+      },
+      {
+        "from": "va",
+        "to": "ab_prod"
+      },
+      {
+        "from": "vb",
+        "to": "ab_prod"
+      },
+      {
+        "from": "c0",
+        "to": "ab_nonzero"
+      },
+      {
+        "from": "ab_nonzero",
+        "to": "top"
+      },
+      {
+        "from": "ab_sum_expr",
+        "to": "alpha_beta_sum"
+      },
+      {
+        "from": "va",
+        "to": "ab_sum_expr"
+      },
+      {
+        "from": "vb",
+        "to": "ab_sum_expr"
+      },
+      {
+        "from": "c2",
+        "to": "alpha_beta_sum"
+      },
+      {
+        "from": "alpha_beta_sum",
+        "to": "top"
+      },
+      {
+        "from": "fprime_def",
+        "to": "fprime_at1"
+      },
+      {
+        "from": "c1",
+        "to": "fprime_at1"
+      },
+      {
+        "from": "fprime_at1",
+        "to": "fprime_cond"
+      },
+      {
+        "from": "c1",
+        "to": "fprime_cond"
+      },
+      {
+        "from": "fprime_cond",
+        "to": "top"
+      },
+      {
+        "from": "vf",
+        "to": "fprime_def"
+      }
+    ],
+    "new_dna": []
+  },
+  "thinking_profile": null,
+  "folders": [],
+  "history": [],
+  "recovery_warnings": [],
+  "errata": [],
+  "created_at": "2026-03-28T11:52:02.992Z"
+}
