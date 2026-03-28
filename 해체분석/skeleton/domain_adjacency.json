@@ -34,6 +34,7 @@
     "POLY",
     "FUNC",
     "COORD",
+    "LIM",
     "GENERIC"
   ],
   "INTG": [
@@ -43,6 +44,7 @@
   "LIM": [
     "FUNC",
     "SEQ",
+    "DIFF",
     "GENERIC"
   ],
   "SEQ": [
