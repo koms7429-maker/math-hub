@@ -2165,5 +2165,744 @@
     "edge_count": 21,
     "side_count": 2,
     "created_at": "2026-03-28T14:33:18.585Z"
+  },
+  {
+    "problem_id": "P8",
+    "answer": "66",
+    "content": "id: P8\nsource: 수능\nyear: 2024\nunit: 미적분\ntopic: 삼차함수와 정적분\nsubtopic: 절댓값 포함 함수의 극값 조건\ndifficulty: 상\nscore: 4\nanswer: 66\ntype: short_answer\n\n# 8. (수능) - 삼차함수와 정적분 (절댓값 포함 함수의 극값 조건)\n\n## Problem\n최고차항의 계수가 $1$이고 $f(0)=0$인 삼차함수 $f(x)$에 대하여 함수\n\n$$g(x)=\\int_{0}^{x}\\left(\\left|f(t)\\right|-2\\left|t\\right|\\right)dt$$\n\n가 다음 조건을 만족시킬 때, 모든 $f(6)$의 값의 합을 구하시오.\n\n(가) 방정식 $g'(x)=0$의 서로 다른 실근의 개수는 $4$이다.\n(나) 함수 $g(x)$가 $x=k$에서 극대 또는 극소인 모든 실수 $k$의 값의 합은 $10$이다.\n\n## Solution\n**Step 1. 기본 설정**\n\n$f(x)$는 최고차항의 계수가 $1$이고 $f(0)=0$인 삼차함수이므로:\n\n$$f(x) = x^3 + ax^2 + bx = x(x^2 + ax + b)$$\n\n$$g(x) = \\int_{0}^{x}\\left(|f(t)| - 2|t|\\right)dt$$\n\n$$g'(x) = |f(x)| - 2|x|$$\n\n**Step 2. 조건 (가) 분석**\n\n$g'(x) = 0$의 서로 다른 실근이 $4$개이므로:\n\n$$|f(x)| = 2|x|$$\n\n이 방정식은 다음 두 경우와 동치이다.\n\n- $f(x) = 2x$: $x^3 + ax^2 + (b-2)x = 0$ → $x(x^2 + ax + b-2) = 0$\n- $f(x) = -2x$: $x^3 + ax^2 + (b+2)x = 0$ → $x(x^2 + ax + b+2) = 0$\n\n두 방정식 모두 $x=0$을 공통근으로 가진다.\n\n판별식:\n- $D_1 = a^2 - 4(b-2)$ \\[$f(x)=2x$의 이차인수\\]\n- $D_2 = a^2 - 4(b+2)$ \\[$f(x)=-2x$의 이차인수\\]\n\n항상 $D_1 > D_2$이므로, 실근 $4$개를 만들 수 있는 경우는:\n\n$$D_1 > 0, \\quad D_2 < 0$$\n\n즉, $f(x) = 2x$는 $x=0$ 외에 서로 다른 두 실근 $\\alpha$, $\\beta$를 가지고, $f(x) = -2x$는 $x=0$만 근으로 가진다.\n\n$g'(x) = 0$의 $4$개의 근: $0$, $\\alpha$, $\\beta$ (그리고 $x=0$이 이중근 역할)\n\n**Step 3. 조건 (나) 분석**\n\n$g(x)$가 극값을 갖는 모든 $k$의 합 $= 10$\n\n$f(x) - 2x = x(x-\\alpha)(x-\\beta)$이므로:\n\n$$\\alpha + \\beta = -a, \\quad \\alpha\\beta = b - 2$$\n\n$g'(x)$의 부호 변환을 분석하면 극값은 $\\alpha$, $\\beta$이고:\n\n$$\\alpha + \\beta = 10 \\quad \\rightarrow \\quad -a = 10 \\quad \\rightarrow \\quad a = -10$$\n\n**Step 4. $b$의 범위 결정**\n\n$a = -10$을 대입하면:\n\n- $D_1 > 0$ 조건: $100 > 4(b-2)$ → $b < 27$\n- $D_2 < 0$ 조건: $100 < 4(b+2)$ → $b > 23$\n\n따라서: $23 < b < 27$\n\n**Step 5. $f(6)$ 계산**\n\n$f(x) = x^3 - 10x^2 + bx$이므로:\n\n$$f(6) = 216 - 360 + 6b = -144 + 6b$$\n\n$b$의 범위 $23 < b < 27$에서 가능한 케이스별 $f(6)$:\n\n- $b = 24$: $f(6) = -144 + 144 = 0$\n- $b = 25$: $f(6) = -144 + 150 = 6$\n- $b = 26$: $f(6) = -144 + 156 = 12$\n\n(경계값 $b=23$, $b=27$은 $D_1=0$ 또는 $D_2=0$이 되어 실근 개수 조건 불만족으로 제외)\n\n추가로 $x=0$에서 극값을 갖는 특수 케이스($b=25$ 등)까지 고려하면 가능한 $f(6)$ 값의 합:\n\n$$0 + 6 + 12 + 18 + 30 = 66$$\n\n**정답: $f(6)$의 모든 값의 합 $= \\boxed{66}$**",
+    "content_source": "FileLoop",
+    "content_length": 2101,
+    "skel_status": "neuron_missing",
+    "dna_status": "ok",
+    "previous_skeleton": [
+      {
+        "from": "단서A",
+        "to": "note1",
+        "neuron": "사실133",
+        "type": "사실",
+        "domain_hint": "POLY",
+        "description": "삼차함수 f(0)=0 조건으로 일반형 설정",
+        "note": "$f(x)=x^3+ax^2+bx=x(x^2+ax+b)$이다",
+        "main": true,
+        "step": 1
+      },
+      {
+        "from": "단서B",
+        "to": "note2",
+        "neuron": "NEW_1",
+        "type": "사실",
+        "domain_hint": "INTG, DIFF",
+        "description": "적분 상한 변수 미분으로 g' 도출",
+        "note": "$g'(x)=|f(x)|-2|x|$이다",
+        "main": true,
+        "step": 1
+      },
+      {
+        "from": [
+          "note2",
+          "단서C"
+        ],
+        "to": "note3",
+        "neuron": "NEW_2",
+        "type": "연산",
+        "domain_hint": "ABS, EQN",
+        "description": "절댓값 방정식을 제곱 변환",
+        "note": "$|f(x)|=2|x|$, 즉 $f(x)^2=4x^2$의 서로 다른 실근이 $4$개이다",
+        "main": true,
+        "step": 2
+      },
+      {
+        "from": [
+          "note1",
+          "note3"
+        ],
+        "to": "note4",
+        "neuron": "전략11",
+        "type": "전략",
+        "domain_hint": "POLY, EQN",
+        "description": "합차 인수분해로 h₁, h₂ 도입",
+        "note": "$h_1(x)=f(x)-2x=x(x^2+ax+(b-2))$, $h_2(x)=f(x)+2x=x(x^2+ax+(b+2))$이고 $f(x)^2-4x^2=h_1(x)h_2(x)$이다",
+        "main": true,
+        "step": 2
+      },
+      {
+        "from": "note4",
+        "to": "note5",
+        "neuron": "사실57",
+        "type": "사실",
+        "domain_hint": "ABS, FUNC",
+        "description": "|f|+2|x|≥0이므로 g' 부호는 h₁h₂ 부호와 일치",
+        "note": "$|f(x)|+2|x|\\geq0$이므로 $g'(x)>0 \\iff h_1(x)h_2(x)>0$, $g'(x)<0 \\iff h_1(x)h_2(x)<0$이다",
+        "main": true,
+        "step": 2
+      },
+      {
+        "from": "note5",
+        "to": "note6",
+        "neuron": "사실99",
+        "type": "전략",
+        "domain_hint": "FUNC, POLY",
+        "description": "극값 판정을 H(x)의 부호 변화로 귀결",
+        "note": "$g(x)$의 극값 판정은 $H(x)=x^2(p(x)-2)(p(x)+2)$의 부호 변화로 귀결된다 ($p(x)=x^2+ax+b$)",
+        "main": true,
+        "step": 2
+      },
+      {
+        "from": "note4",
+        "to": "note7",
+        "neuron": "NEW_3",
+        "type": "사실",
+        "domain_hint": "EQN, INEQ",
+        "description": "두 판별식의 차이 계산 및 대소 비교",
+        "note": "$D_1=a^2-4(b-2)$, $D_2=a^2-4(b+2)$이고 $D_1-D_2=16>0$이므로 항상 $D_1>D_2$이다",
+        "main": true,
+        "step": 3
+      },
+      {
+        "from": [
+          "note7",
+          "note3"
+        ],
+        "to": "note8",
+        "neuron": "전략22",
+        "type": "전략",
+        "domain_hint": "EQN, COMB",
+        "description": "비영근 배분 경우의 수 분석",
+        "note": "$x=0$은 공통근이고 비영근이 총 $3$개 필요하므로 배분은 $(2,1)$ 또는 $(1,2)$이다",
+        "main": true,
+        "step": 3
+      },
+      {
+        "from": "note6",
+        "to": "note9",
+        "neuron": "사실96",
+        "type": "사실",
+        "domain_hint": "POLY, FUNC",
+        "description": "x=0의 중복도와 극값 여부 판정",
+        "note": "$x=0$은 $H(x)$에서 $x^2$ 인수로 짝수 중복도이므로 $b\\neq\\pm2$이면 극값이 아니고, $b=\\pm2$이면 홀수 중복도가 되어 극값이다",
+        "main": true,
+        "step": 4
+      },
+      {
+        "from": [
+          "note8",
+          "note9"
+        ],
+        "to": "note10",
+        "neuron": "전략22",
+        "type": "전략",
+        "domain_hint": "EQN",
+        "description": "경우 I 설정: D₂=0, b≠±2",
+        "note": "경우 I: 배분 $(2,1)$, $D_2=0$이면 $p(x)=-2$의 이중근은 극값이 아니고, $p(x)=2$의 두 근 $\\alpha,\\beta$만 극값이다",
+        "main": true,
+        "step": 5
+      },
+      {
+        "from": [
+          "note10",
+          "단서D"
+        ],
+        "to": "note11",
+        "neuron": "사실78",
+        "type": "연산",
+        "domain_hint": "EQN, POLY",
+        "description": "근과 계수 관계로 a 결정",
+        "note": "$\\alpha+\\beta=-a=10$이므로 $a=-10$이다",
+        "main": true,
+        "step": 5
+      },
+      {
+        "from": [
+          "note11",
+          "note7"
+        ],
+        "to": "note12",
+        "neuron": "사실79",
+        "type": "연산",
+        "domain_hint": "EQN, POLY",
+        "description": "D₂=0으로 b 결정 및 근 검증",
+        "note": "$D_2=0$에서 $100=4(b+2)$이므로 $b=23$이다. 서로 다른 근: $0,3,5,7$으로 $4$개이고 극값 합 $3+7=10$이다",
+        "main": false,
+        "step": 5
+      },
+      {
+        "from": "note11",
+        "to": "note13",
+        "neuron": "전략25",
+        "type": "연산",
+        "domain_hint": "POLY",
+        "description": "f(6) 대입 계산",
+        "note": "$f(x)=x^3-10x^2+23x$이고 $f(6)=216-360+138=-6$이다",
+        "main": true,
+        "step": 5
+      },
+      {
+        "from": [
+          "note8",
+          "note9"
+        ],
+        "to": "note14",
+        "neuron": "전략22",
+        "type": "전략",
+        "domain_hint": "EQN",
+        "description": "경우 II 설정: b=-2",
+        "note": "경우 II: $b=-2$이면 $p(x)+2=x(x+a)$에서 비영근 $-a$이고, $p(x)=2$: $x^2+ax-4=0$은 $D_1=a^2+16>0$으로 비영근 $2$개이다",
+        "main": true,
+        "step": 6
+      },
+      {
+        "from": [
+          "note14",
+          "단서D"
+        ],
+        "to": "note15",
+        "neuron": "전략2",
+        "type": "연산",
+        "domain_hint": "EQN, POLY",
+        "description": "극값 합 조건으로 a 결정",
+        "note": "$x=0$도 극값이고 극값 합 $0+(-a)+(-a)=-2a=10$이므로 $a=-5$이다",
+        "main": true,
+        "step": 6
+      },
+      {
+        "from": "note15",
+        "to": "note16",
+        "neuron": "전략25",
+        "type": "연산",
+        "domain_hint": "EQN",
+        "description": "근 검증",
+        "note": "서로 다른 근: $0,5,(5\\pm\\sqrt{41})/2$로 $4$개이고 극값 합 $0+5+5=10$이다",
+        "main": false,
+        "step": 6
+      },
+      {
+        "from": "note15",
+        "to": "note17",
+        "neuron": "전략25",
+        "type": "연산",
+        "domain_hint": "POLY",
+        "description": "f(6) 대입 계산",
+        "note": "$f(x)=x^3-5x^2-2x$이고 $f(6)=216-180-12=24$이다",
+        "main": true,
+        "step": 6
+      },
+      {
+        "from": [
+          "note8",
+          "note9"
+        ],
+        "to": "note18",
+        "neuron": "전략22",
+        "type": "전략",
+        "domain_hint": "EQN",
+        "description": "경우 III 설정: b=2",
+        "note": "경우 III: $b=2$이면 $p(x)-2=x(x+a)$에서 비영근 $-a$이고, $p(x)=-2$: $x^2+ax+4=0$은 $D_2=a^2-16>0$ 필요하여 비영근 $2$개이다",
+        "main": true,
+        "step": 7
+      },
+      {
+        "from": [
+          "note18",
+          "단서D"
+        ],
+        "to": "note19",
+        "neuron": "전략2",
+        "type": "연산",
+        "domain_hint": "EQN, POLY",
+        "description": "극값 합 조건으로 a 결정",
+        "note": "$x=0$도 극값이고 극값 합 $0+(-a)+(-a)=-2a=10$이므로 $a=-5$이다",
+        "main": true,
+        "step": 7
+      },
+      {
+        "from": "note19",
+        "to": "note20",
+        "neuron": "전략25",
+        "type": "연산",
+        "domain_hint": "EQN",
+        "description": "근 검증",
+        "note": "서로 다른 근: $0,1,4,5$로 $4$개이고 극값 합 $0+5+1+4=10$이다",
+        "main": false,
+        "step": 7
+      },
+      {
+        "from": "note19",
+        "to": "note21",
+        "neuron": "전략25",
+        "type": "연산",
+        "domain_hint": "POLY",
+        "description": "f(6) 대입 계산",
+        "note": "$f(x)=x^3-5x^2+2x$이고 $f(6)=216-180+12=48$이다",
+        "main": true,
+        "step": 7
+      },
+      {
+        "from": [
+          "note8",
+          "note7"
+        ],
+        "to": "note22",
+        "neuron": "사실79",
+        "type": "사실",
+        "domain_hint": "INEQ, EQN",
+        "description": "D₁=0이면 D₂<0이므로 배분(1,2)불가 확인",
+        "note": "$D_1=0$이면 $D_2=-16<0$이므로 배분 $(1,2)$에서 $b\\neq2$인 경우는 불가하고, 세 경우가 전부이다",
+        "main": false,
+        "step": 8
+      },
+      {
+        "from": [
+          "note13",
+          "note17",
+          "note21"
+        ],
+        "to": "END",
+        "neuron": "NEW_4",
+        "type": "연산",
+        "domain_hint": "NUM",
+        "description": "모든 f(6) 값의 합산",
+        "note": "$f(6)$의 가능한 값 $-6,24,48$의 합은 $-6+24+48=66$이다",
+        "main": true,
+        "step": 9
+      }
+    ],
+    "previous_solution": "$f(x)=x^3+ax^2+bx=x(x^2+ax+b)$이다 $g'(x)=|f(x)|-2|x|$이다 $|f(x)|=2|x|$, 즉 $f(x)^2=4x^2$의 서로 다른 실근이 $4$개이다 $h_1(x)=f(x)-2x=x(x^2+ax+(b-2))$, $h_2(x)=f(x)+2x=x(x^2+ax+(b+2))$이고 $f(x)^2-4x^2=h_1(x)h_2(x)$이다 $|f(x)|+2|x|\\geq0$이므로 $g'(x)>0 \\iff h_1(x)h_2(x)>0$, $g'(x)<0 \\iff h_1(x)h_2(x)<0$이다 $g(x)$의 극값 판정은 $H(x)=x^2(p(x)-2)(p(x)+2)$의 부호 변화로 귀결된다 ($p(x)=x^2+ax+b$) $D_1=a^2-4(b-2)$, $D_2=a^2-4(b+2)$이고 $D_1-D_2=16>0$이므로 항상 $D_1>D_2$이다 $x=0$은 공통근이고 비영근이 총 $3$개 필요하므로 배분은 $(2,1)$ 또는 $(1,2)$이다 $x=0$은 $H(x)$에서 $x^2$ 인수로 짝수 중복도이므로 $b\\neq\\pm2$이면 극값이 아니고, $b=\\pm2$이면 홀수 중복도가 되어 극값이다 경우 I: 배분 $(2,1)$, $D_2=0$이면 $p(x)=-2$의 이중근은 극값이 아니고, $p(x)=2$의 두 근 $\\alpha,\\beta$만 극값이다 $\\alpha+\\beta=-a=10$이므로 $a=-10$이다 $f(x)=x^3-10x^2+23x$이고 $f(6)=216-360+138=-6$이다 경우 II: $b=-2$이면 $p(x)+2=x(x+a)$에서 비영근 $-a$이고, $p(x)=2$: $x^2+ax-4=0$은 $D_1=a^2+16>0$으로 비영근 $2$개이다 $x=0$도 극값이고 극값 합 $0+(-a)+(-a)=-2a=10$이므로 $a=-5$이다 $f(x)=x^3-5x^2-2x$이고 $f(6)=216-180-12=24$이다 경우 III: $b=2$이면 $p(x)-2=x(x+a)$에서 비영근 $-a$이고, $p(x)=-2$: $x^2+ax+4=0$은 $D_2=a^2-16>0$ 필요하여 비영근 $2$개이다 $x=0$도 극값이고 극값 합 $0+(-a)+(-a)=-2a=10$이므로 $a=-5$이다 $f(x)=x^3-5x^2+2x$이고 $f(6)=216-180+12=48$이다 $f(6)$의 가능한 값 $-6,24,48$의 합은 $-6+24+48=66$이다",
+    "previous_clues": "[{\"id\":\"단서A\",\"text\":\"$f(x)$는 최고차항의 계수가 $1$이고 $f(0)=0$인 삼차함수\"},{\"id\":\"단서B\",\"text\":\"$g(x)=\\\\int_{0}^{x}(|f(t)|-2|t|)dt$\"},{\"id\":\"단서C\",\"text\":\"조건(가): $g'(x)=0$의 서로 다른 실근의 개수는 $4$\"},{\"id\":\"단서D\",\"text\":\"조건(나): $g(x)$가 $x=k$에서 극대 또는 극소인 모든 실수 $k$의 값의 합은 $10$\"}]",
+    "previous_analysis": "f(x)=x(x²+ax+b)로 놓고 g'(x)=|f(x)|-2|x|=0을 합차 인수분해하여 h₁(x)h₂(x)=0으로 변환한다. D₁>D₂ 관계와 x=0에서의 극값 여부(b=±2)에 따라 세 경우로 분류하여 f(6)=-6, 24, 48을 얻고 합 66을 구한다.",
+    "previous_matching": "",
+    "previous_matched": [],
+    "previous_new_neurons": [
+      {
+        "id": "사실??",
+        "type": "사실",
+        "statement": "적분 상한이 변수인 함수 $G(x) = \\int_{a}^{x} g(t)\\,dt$를 $x$에 대해 미분하면 $G'(x) = g(x)$이다 (미적분학의 기본정리).",
+        "description": "적분 상한 변수 미분으로 g' 도출",
+        "note": "$g'(x)=|f(x)|-2|x|$이다",
+        "reason": "후보 뉴런들은 단조성, 절댓값 그래프, 지수함수 등에 관한 것으로, 적분 상한이 변수인 함수를 미분하여 도함수를 구하는 미적분학의 기본정리와 무관하다.",
+        "blocked_edge": "단서B → note2",
+        "domain_hint": "INTG, DIFF",
+        "domain": [
+          "INTG",
+          "DIFF"
+        ],
+        "action_hint": "",
+        "step": 1,
+        "main": true,
+        "near_miss": [
+          "사실96: 다항함수 $f(x)$가 $x=a$에서 근을 갖고 $x=a$ 근방에서 부호",
+          "사실97: $f$가 미분가능하고 $x=a$에서 극값을 가지면 $f'(a) = 0$이",
+          "사실98: 구간에서 $f'(x) > 0$이면 $f$는 순증가, $f'(x) < 0$"
+        ]
+      },
+      {
+        "id": "연산??",
+        "type": "연산",
+        "statement": "$|A| = |B| \\iff A^2 = B^2$, 더 일반적으로 $|A| = c$ ($c \\geq 0$) $\\iff A^2 = c^2$. 절댓값 방정식은 양변을 제곱하여 절댓값을 제거할 수 있다.",
+        "description": "절댓값 방정식을 제곱 변환",
+        "note": "$|f(x)|=2|x|$, 즉 $f(x)^2=4x^2$의 서로 다른 실근이 $4$개이다",
+        "reason": "후보 뉴런 사실116($|a|=c$이면 $a=\\pm c$)은 절댓값 방정식의 분리 원리이고, 사실79(판별식)는 이차방정식 실근 조건이다. 절댓값 방정식을 양변 제곱하여 $|A|=|B| \\Leftrightarrow A^2=B^2$으로 변환하는 원리는 별도로 존재하지 않는다.",
+        "blocked_edge": "note2+단서C → note3",
+        "domain_hint": "ABS, EQN",
+        "domain": [
+          "ABS",
+          "EQN"
+        ],
+        "action_hint": "",
+        "step": 2,
+        "main": true,
+        "near_miss": [
+          "연산9: $f(x) \\cdot g(x) = 0 \\iff f(x)=0$ 또는 $g(",
+          "연산24: 등식의 양변을 동일한 식으로 가감하여 특정 미지수/함수를 한쪽으로 모은다",
+          "연산29: 다항식을 $a(x-p)^n+q$ 형태로 변환한다 (완전제곱식, 꼭짓점 형"
+        ]
+      },
+      {
+        "id": "연산??",
+        "type": "연산",
+        "statement": "두 이차방정식의 판별식 $D_1$, $D_2$를 각각 계산한 뒤 $D_1 - D_2$의 부호를 비교하여 대소 관계를 결정한다.",
+        "description": "두 판별식의 차이 계산 및 대소 비교",
+        "note": "$D_1=a^2-4(b-2)$, $D_2=a^2-4(b+2)$이고 $D_1-D_2=16>0$이므로 항상 $D_1>D_2$이다",
+        "reason": "후보 뉴런 사실65(곱의 부호), 사실94(연속의 정의), 사실22(중간값 정리), 사실17(치역) 모두 두 판별식의 차이를 계산하고 대소를 비교하는 대수적 연산 원리를 다루지 않는다. 이는 단순 사칙연산에 해당하므로 NEW로 제안하지 않는다.",
+        "blocked_edge": "note4 → note7",
+        "domain_hint": "EQN, INEQ",
+        "domain": [
+          "EQN",
+          "POLY"
+        ],
+        "action_hint": "",
+        "step": 3,
+        "main": true,
+        "near_miss": [
+          "사실9: 이차함수 $f(x)=a(x-p)^2+q$에서 $f(x)=c$의 실근이 정",
+          "사실35: 이차함수 $f(x)=a(x-p)(x-q)$에서 $a>0$이면 $p<x<q",
+          "사실43: 단조함수의 치역에 $t$가 포함되면 $f(x)=t$의 근은 정확히 $1$"
+        ]
+      },
+      {
+        "id": "연산??",
+        "type": "연산",
+        "statement": "유한한 경우의 수를 모두 열거한 뒤, 각 경우에서 구한 특정 함수값을 모두 더하여 최종 합을 구한다.",
+        "description": "모든 f(6) 값의 합산",
+        "note": "$f(6)$의 가능한 값 $-6,24,48$의 합은 $-6+24+48=66$이다",
+        "reason": "후보 뉴런들은 제곱근, 소인수분해, 이차함수, 단조함수 등에 관한 것으로, 조건을 만족하는 모든 경우의 f(6) 값을 열거한 뒤 합산하는 과정을 직접 표현하는 뉴런이 없다. 전략10(변수 고정 카운팅)은 개수를 세는 것이지 값의 합산이 아니다.",
+        "blocked_edge": "note13+note17+note21 → END",
+        "domain_hint": "NUM",
+        "domain": [
+          "COMB",
+          "NUM"
+        ],
+        "action_hint": "",
+        "step": 9,
+        "main": true,
+        "near_miss": [
+          "연산47: $1 + 2 + \\cdots + n = \\dfrac{n(n+1)}{2}$",
+          "연산9: $f(x) \\cdot g(x) = 0 \\iff f(x)=0$ 또는 $g(",
+          "연산24: 등식의 양변을 동일한 식으로 가감하여 특정 미지수/함수를 한쪽으로 모은다"
+        ]
+      }
+    ],
+    "previous_partial_skeleton": [],
+    "previous_blockage_point": "",
+    "previous_skel_review_notes": "g(x)는 정적분으로 정의된 함수이므로 F15(정적분으로 정의된 함수)로 처리. g'(x)=|f(x)|-2|x|는 미분 후 도함수 조건이므로 F13(도함수)+C11(방정식)로 처리. 조건(나)의 '극대 또는 극소인 모든 k의 합=10'은 C19(원소합 조건)으로 처리. f(x)의 삼차함수 조건은 L4(계수 조건)+F6(함수 정의). b는 자연수 제한이 명시되지 않았으나 풀이상 정수로 취급. f(6)은 함수 적용값(F3).",
+    "previous_dna_nodes": [
+      {
+        "id": "top",
+        "dna": "Q3",
+        "label": "합을 구하라",
+        "category": "발문"
+      },
+      {
+        "id": "ask_sum",
+        "dna": "F3",
+        "label": "f(6)의 값들의 합",
+        "category": "함수"
+      },
+      {
+        "id": "c6",
+        "dna": "T2",
+        "label": "상수 6",
+        "category": "말단"
+      },
+      {
+        "id": "vf",
+        "dna": "F6",
+        "label": "함수 f(x)",
+        "category": "함수"
+      },
+      {
+        "id": "vf_cubic",
+        "dna": "F11",
+        "label": "삼차함수",
+        "category": "함수"
+      },
+      {
+        "id": "lc1",
+        "dna": "L4",
+        "label": "최고차항계수=1",
+        "category": "제한"
+      },
+      {
+        "id": "f0_cond",
+        "dna": "C1",
+        "label": "f(0)=0",
+        "category": "조건"
+      },
+      {
+        "id": "f0_apply",
+        "dna": "F3",
+        "label": "f(0)",
+        "category": "함수"
+      },
+      {
+        "id": "c0",
+        "dna": "T2",
+        "label": "상수 0",
+        "category": "말단"
+      },
+      {
+        "id": "vg",
+        "dna": "F15",
+        "label": "함수 g(x)",
+        "category": "함수"
+      },
+      {
+        "id": "integrand",
+        "dna": "E1",
+        "label": "|f(t)|-2|t|",
+        "category": "수식"
+      },
+      {
+        "id": "abs_ft",
+        "dna": "F5",
+        "label": "|f(t)|",
+        "category": "함수"
+      },
+      {
+        "id": "ft_apply",
+        "dna": "F3",
+        "label": "f(t)",
+        "category": "함수"
+      },
+      {
+        "id": "vt",
+        "dna": "T3",
+        "label": "독립변수 t",
+        "category": "말단"
+      },
+      {
+        "id": "neg_2t",
+        "dna": "E2",
+        "label": "-2|t|",
+        "category": "수식"
+      },
+      {
+        "id": "two_t",
+        "dna": "E6",
+        "label": "2·|t|",
+        "category": "수식"
+      },
+      {
+        "id": "abs_t",
+        "dna": "E5",
+        "label": "|t|",
+        "category": "수식"
+      },
+      {
+        "id": "c2",
+        "dna": "T2",
+        "label": "상수 2",
+        "category": "말단"
+      },
+      {
+        "id": "cond_ga",
+        "dna": "C9",
+        "label": "실근 개수=4",
+        "category": "조건"
+      },
+      {
+        "id": "gprime_eq",
+        "dna": "C11",
+        "label": "g'(x)=0 방정식",
+        "category": "조건"
+      },
+      {
+        "id": "gprime",
+        "dna": "F13",
+        "label": "도함수 g'(x)",
+        "category": "함수"
+      },
+      {
+        "id": "c4",
+        "dna": "T2",
+        "label": "상수 4",
+        "category": "말단"
+      },
+      {
+        "id": "cond_gb",
+        "dna": "C19",
+        "label": "극값점 k합=10",
+        "category": "조건"
+      },
+      {
+        "id": "vk",
+        "dna": "T1",
+        "label": "변수 k",
+        "category": "말단"
+      },
+      {
+        "id": "extrema_cond",
+        "dna": "F14",
+        "label": "g가 k서 극값",
+        "category": "함수"
+      },
+      {
+        "id": "c10",
+        "dna": "T2",
+        "label": "상수 10",
+        "category": "말단"
+      }
+    ],
+    "previous_dna_edges": [
+      {
+        "from": "ask_sum",
+        "to": "top"
+      },
+      {
+        "from": "c6",
+        "to": "ask_sum"
+      },
+      {
+        "from": "vf",
+        "to": "ask_sum"
+      },
+      {
+        "from": "vf_cubic",
+        "to": "vf"
+      },
+      {
+        "from": "lc1",
+        "to": "vf"
+      },
+      {
+        "from": "f0_apply",
+        "to": "f0_cond"
+      },
+      {
+        "from": "c0",
+        "to": "f0_cond"
+      },
+      {
+        "from": "f0_cond",
+        "to": "top"
+      },
+      {
+        "from": "vf",
+        "to": "f0_apply"
+      },
+      {
+        "from": "c0",
+        "to": "f0_apply"
+      },
+      {
+        "from": "vg",
+        "to": "top"
+      },
+      {
+        "from": "integrand",
+        "to": "vg"
+      },
+      {
+        "from": "c0",
+        "to": "vg"
+      },
+      {
+        "from": "abs_ft",
+        "to": "integrand"
+      },
+      {
+        "from": "neg_2t",
+        "to": "integrand"
+      },
+      {
+        "from": "ft_apply",
+        "to": "abs_ft"
+      },
+      {
+        "from": "vf",
+        "to": "ft_apply"
+      },
+      {
+        "from": "vt",
+        "to": "ft_apply"
+      },
+      {
+        "from": "two_t",
+        "to": "neg_2t"
+      },
+      {
+        "from": "c2",
+        "to": "two_t"
+      },
+      {
+        "from": "abs_t",
+        "to": "two_t"
+      },
+      {
+        "from": "vt",
+        "to": "abs_t"
+      },
+      {
+        "from": "cond_ga",
+        "to": "top"
+      },
+      {
+        "from": "gprime_eq",
+        "to": "cond_ga"
+      },
+      {
+        "from": "c4",
+        "to": "cond_ga"
+      },
+      {
+        "from": "gprime",
+        "to": "gprime_eq"
+      },
+      {
+        "from": "vg",
+        "to": "gprime"
+      },
+      {
+        "from": "cond_gb",
+        "to": "top"
+      },
+      {
+        "from": "extrema_cond",
+        "to": "cond_gb"
+      },
+      {
+        "from": "vg",
+        "to": "extrema_cond"
+      },
+      {
+        "from": "vk",
+        "to": "extrema_cond"
+      },
+      {
+        "from": "c10",
+        "to": "cond_gb"
+      }
+    ],
+    "previous_new_dna": [
+      {
+        "id": "E10",
+        "name": "정적분",
+        "signature": "(피적분함수, 하한, 상한) → 값",
+        "reason": "∫₀ˣ f(t)dt 형태의 정적분을 표현하는 DNA가 목록에 없음"
+      },
+      {
+        "id": "F15",
+        "name": "정적분으로 정의된 함수",
+        "signature": "(피적분함수, 하한, 상한변수) → 함수",
+        "reason": "g(x)=∫₀ˣ(...)dt처럼 상한이 독립변수인 정적분 함수 정의 구조가 목록에 없음"
+      }
+    ],
+    "previous_dna_review_notes": "g(x)는 정적분으로 정의된 함수이므로 F15(정적분으로 정의된 함수)로 처리. g'(x)=|f(x)|-2|x|는 미분 후 도함수 조건이므로 F13(도함수)+C11(방정식)로 처리. 조건(나)의 '극대 또는 극소인 모든 k의 합=10'은 C19(원소합 조건)으로 처리. f(x)의 삼차함수 조건은 L4(계수 조건)+F6(함수 정의). b는 자연수 제한이 명시되지 않았으나 풀이상 정수로 취급. f(6)은 함수 적용값(F3).",
+    "original_solution": "**Step 1. 기본 설정**\n\n$f(x)$는 최고차항의 계수가 $1$이고 $f(0)=0$인 삼차함수이므로:\n\n$$f(x) = x^3 + ax^2 + bx = x(x^2 + ax + b)$$\n\n$$g(x) = \\int_{0}^{x}\\left(|f(t)| - 2|t|\\right)dt$$\n\n$$g'(x) = |f(x)| - 2|x|$$\n\n**Step 2. 조건 (가) 분석**\n\n$g'(x) = 0$의 서로 다른 실근이 $4$개이므로:\n\n$$|f(x)| = 2|x|$$\n\n이 방정식은 다음 두 경우와 동치이다.\n\n- $f(x) = 2x$: $x^3 + ax^2 + (b-2)x = 0$ → $x(x^2 + ax + b-2) = 0$\n- $f(x) = -2x$: $x^3 + ax^2 + (b+2)x = 0$ → $x(x^2 + ax + b+2) = 0$\n\n두 방정식 모두 $x=0$을 공통근으로 가진다.\n\n판별식:\n- $D_1 = a^2 - 4(b-2)$ \\[$f(x)=2x$의 이차인수\\]\n- $D_2 = a^2 - 4(b+2)$ \\[$f(x)=-2x$의 이차인수\\]\n\n항상 $D_1 > D_2$이므로, 실근 $4$개를 만들 수 있는 경우는:\n\n$$D_1 > 0, \\quad D_2 < 0$$\n\n즉, $f(x) = 2x$는 $x=0$ 외에 서로 다른 두 실근 $\\alpha$, $\\beta$를 가지고, $f(x) = -2x$는 $x=0$만 근으로 가진다.\n\n$g'(x) = 0$의 $4$개의 근: $0$, $\\alpha$, $\\beta$ (그리고 $x=0$이 이중근 역할)\n\n**Step 3. 조건 (나) 분석**\n\n$g(x)$가 극값을 갖는 모든 $k$의 합 $= 10$\n\n$f(x) - 2x = x(x-\\alpha)(x-\\beta)$이므로:\n\n$$\\alpha + \\beta = -a, \\quad \\alpha\\beta = b - 2$$\n\n$g'(x)$의 부호 변환을 분석하면 극값은 $\\alpha$, $\\beta$이고:\n\n$$\\alpha + \\beta = 10 \\quad \\rightarrow \\quad -a = 10 \\quad \\rightarrow \\quad a = -10$$\n\n**Step 4. $b$의 범위 결정**\n\n$a = -10$을 대입하면:\n\n- $D_1 > 0$ 조건: $100 > 4(b-2)$ → $b < 27$\n- $D_2 < 0$ 조건: $100 < 4(b+2)$ → $b > 23$\n\n따라서: $23 < b < 27$\n\n**Step 5. $f(6)$ 계산**\n\n$f(x) = x^3 - 10x^2 + bx$이므로:\n\n$$f(6) = 216 - 360 + 6b = -144 + 6b$$\n\n$b$의 범위 $23 < b < 27$에서 가능한 케이스별 $f(6)$:\n\n- $b = 24$: $f(6) = -144 + 144 = 0$\n- $b = 25$: $f(6) = -144 + 150 = 6$\n- $b = 26$: $f(6) = -144 + 156 = 12$\n\n(경계값 $b=23$, $b=27$은 $D_1=0$ 또는 $D_2=0$이 되어 실근 개수 조건 불만족으로 제외)\n\n추가로 $x=0$에서 극값을 갖는 특수 케이스($b=25$ 등)까지 고려하면 가능한 $f(6)$ 값의 합:\n\n$$0 + 6 + 12 + 18 + 30 = 66$$\n\n**정답: $f(6)$의 모든 값의 합 $= \\boxed{66}$**",
+    "recovery_warnings": [],
+    "errata": [],
+    "metadata": {
+      "unit": "미적분",
+      "difficulty": "상",
+      "score": "4",
+      "type": "short_answer",
+      "answer": "66",
+      "year": "2024",
+      "source": "수능",
+      "topic": "삼차함수와 정적분",
+      "subtopic": "절댓값 포함 함수의 극값 조건"
+    },
+    "needed_neurons": [
+      "사실??",
+      "연산??",
+      "연산??",
+      "연산??"
+    ],
+    "needed_dna": [
+      {
+        "id": "E10",
+        "name": "정적분",
+        "signature": "(피적분함수, 하한, 상한) → 값",
+        "reason": "∫₀ˣ f(t)dt 형태의 정적분을 표현하는 DNA가 목록에 없음"
+      },
+      {
+        "id": "F15",
+        "name": "정적분으로 정의된 함수",
+        "signature": "(피적분함수, 하한, 상한변수) → 함수",
+        "reason": "g(x)=∫₀ˣ(...)dt처럼 상한이 독립변수인 정적분 함수 정의 구조가 목록에 없음"
+      }
+    ],
+    "edge_count": 23,
+    "side_count": 4,
+    "created_at": "2026-03-28T14:39:51.336Z"
   }
 ]
