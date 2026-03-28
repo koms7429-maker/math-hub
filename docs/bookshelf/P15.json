@@ -1,0 +1,616 @@
+{
+  "problem_id": "P15",
+  "answer": "46",
+  "clues": [
+    {
+      "id": "단서A",
+      "text": "$f(x)$는 최고차항의 계수가 $1$인 삼차함수이다"
+    },
+    {
+      "id": "단서B",
+      "text": "$f'(-1)f'(1) < 0$"
+    },
+    {
+      "id": "단서C",
+      "text": "$f'(n)f'(n+1) < 0$을 만족시키는 정수 $n$은 $2$뿐이다"
+    },
+    {
+      "id": "단서D",
+      "text": "$f(k) = f(k+2) = 0$인 정수 $k$가 존재한다"
+    }
+  ],
+  "skeleton": [
+    {
+      "from": "단서C",
+      "to": "note1",
+      "neuron": "사실73",
+      "type": "사실",
+      "domain_hint": "DIFF, POLY",
+      "description": "부호 변화로부터 구간 내 근 존재 판정",
+      "note": "$n=2$를 대입하면 $f'(2)f'(3)<0$이므로, 중간값 정리에 의해 $f'(x)=0$은 구간 $(2,3)$에 실근을 갖는다",
+      "main": true,
+      "step": 1
+    },
+    {
+      "from": "단서C",
+      "to": "note2",
+      "neuron": "전략8",
+      "type": "전략",
+      "domain_hint": "SET",
+      "description": "조건의 대우를 취하여 비부호변화 구간 도출",
+      "note": "(나)의 대우에 의해 $n \\neq 2$인 정수 $n$에 대해 $f'(n)f'(n+1) \\geq 0$이다. 특히 $n=-1$이면 $f'(-1)f'(0) \\geq 0$, $n=0$이면 $f'(0)f'(1) \\geq 0$이다",
+      "main": true,
+      "step": 2
+    },
+    {
+      "from": [
+        "note2",
+        "단서B"
+      ],
+      "to": "note5",
+      "neuron": "전략23",
+      "type": "전략",
+      "domain_hint": "INEQ",
+      "description": "$f'(0) \\neq 0$ 가정 시 모순이 발생하므로 $f'(0)=0$ 확정",
+      "note": "$f'(0) \\neq 0$이면 $f'(-1)f'(0) \\geq 0$과 $f'(0)f'(1) \\geq 0$에서 $f'(-1)$과 $f'(1)$이 모두 $f'(0)$과 같은 부호이므로 $f'(-1)f'(1) > 0$이 되어 (가)에 모순이다. 따라서 $f'(0)=0$이다",
+      "main": true,
+      "step": 2
+    },
+    {
+      "from": [
+        "단서A",
+        "note1",
+        "note5"
+      ],
+      "to": "note6",
+      "neuron": "사실133",
+      "type": "사실",
+      "domain_hint": "POLY, DIFF",
+      "description": "도함수의 근과 최고차항 계수로 도함수 결정",
+      "note": "$f'(x)$는 최고차항 계수 $3$인 이차식이고 근이 $0$과 $a$ ($2<a<3$)이므로 $f'(x)=3x(x-a)$이다",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": "note6",
+      "to": "note7",
+      "neuron": "연산50",
+      "type": "연산",
+      "domain_hint": "INTG, POLY",
+      "description": "도함수를 적분하여 원함수 결정",
+      "note": "$f'(x)=3x^2-3ax$를 적분하면 $f(x)=x^3-\\dfrac{3a}{2}x^2+C$이다",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": "note7",
+      "to": "note8",
+      "neuron": "사실99",
+      "type": "사실",
+      "domain_hint": "DIFF, FUNC",
+      "description": "극대·극소 위치로 그래프 개형 파악",
+      "note": "$f''(0)=-3a<0$이므로 $x=0$에서 극대(극댓값 $C$), $f''(a)=3a>0$이므로 $x=a$에서 극소이다",
+      "main": true,
+      "step": 4
+    },
+    {
+      "from": [
+        "note7",
+        "단서D"
+      ],
+      "to": "note9",
+      "neuron": "전략17",
+      "type": "전략",
+      "domain_hint": "FUNC, POLY",
+      "description": "$f(k)=f(k+2)=0$을 만족시키는 정수 후보 열거",
+      "note": "$f(k)=f(k+2)=0$인 정수 $k$가 존재하는지를 $k=-1,0,1,2$ 등의 후보에 대해 조사한다",
+      "main": true,
+      "step": 4
+    },
+    {
+      "from": "note9",
+      "to": "note10",
+      "neuron": "전략23",
+      "type": "전략",
+      "domain_hint": "POLY",
+      "description": "$k=-1$ 배제",
+      "note": "$f(-1)=-1-\\frac{3a}{2}+C$, $f(1)=1-\\frac{3a}{2}+C$이므로 $f(1)-f(-1)=2 \\neq 0$이다. $f(-1)=f(1)=0$은 불가능하다",
+      "main": false,
+      "step": 5
+    },
+    {
+      "from": "note9",
+      "to": "note11",
+      "neuron": "전략23",
+      "type": "전략",
+      "domain_hint": "POLY",
+      "description": "$k=0$ 배제",
+      "note": "$f(0)=C=0$이면 $f(2)=8-6a=0$에서 $a=\\frac{4}{3}$인데 $2<a<3$에 모순이다",
+      "main": false,
+      "step": 5
+    },
+    {
+      "from": "note9",
+      "to": "note12",
+      "neuron": "전략23",
+      "type": "전략",
+      "domain_hint": "POLY",
+      "description": "$k=2$ 배제",
+      "note": "$f(2)=8-6a+C=0$이면 $C=6a-8$이고, $f(4)=64-24a+C=64-24a+6a-8=56-18a=0$에서 $a=\\frac{28}{9} \\approx 3.11$인데 $2<a<3$에 모순이다",
+      "main": false,
+      "step": 5
+    },
+    {
+      "from": "note9",
+      "to": "note13",
+      "neuron": "전략2",
+      "type": "전략",
+      "domain_hint": "EQN, POLY",
+      "description": "$k=1$에서 $f(1)=f(3)=0$을 연립하여 미지수 결정",
+      "note": "$f(1)=1-\\frac{3a}{2}+C=0$과 $f(3)=27-\\frac{27a}{2}+C=0$을 빼면 $26-12a=0$이므로 $a=\\frac{13}{6}$이다. $C=\\frac{3a}{2}-1=\\frac{13}{4}-1=\\frac{9}{4}$이다. $2<\\frac{13}{6}<3$을 만족한다",
+      "main": true,
+      "step": 5
+    },
+    {
+      "from": [
+        "note10",
+        "note11",
+        "note12",
+        "note13"
+      ],
+      "to": "note14",
+      "neuron": "전략20",
+      "type": "전략",
+      "domain_hint": "SET",
+      "description": "소거법으로 유일한 가능 경우를 확정",
+      "note": "$k=1$만 가능하고, $f(x)=x^3-\\dfrac{13}{4}x^2+\\dfrac{9}{4}$이다",
+      "main": true,
+      "step": 5
+    },
+    {
+      "from": "note14",
+      "to": "note15",
+      "neuron": "전략25",
+      "type": "전략",
+      "domain_hint": "POLY",
+      "description": "조건 (나) 검증",
+      "note": "$f'(x)=3x^2-\\frac{13}{2}x=x(3x-\\frac{13}{2})$이므로 $f'(n)f'(n+1)$을 계산하면, $n=2$에서만 $f'(2)f'(3)=2 \\cdot (-\\frac{3}{2})<0$이고 다른 정수 $n$에서는 $f'(n)f'(n+1) \\geq 0$이다. 조건 (나) 성립 확인",
+      "main": false,
+      "step": 5
+    },
+    {
+      "from": "note14",
+      "to": "END",
+      "neuron": "전략25",
+      "type": "전략",
+      "domain_hint": "POLY",
+      "description": "확정된 함수에 $x=5$를 대입하여 값 계산",
+      "note": "$f(5)=125-\\dfrac{325}{4}+\\dfrac{9}{4}=125-\\dfrac{316}{4}=125-79=46$이다",
+      "main": true,
+      "step": 6
+    }
+  ],
+  "solution": "$n=2$를 대입하면 $f'(2)f'(3)<0$이므로, 중간값 정리에 의해 $f'(x)=0$은 구간 $(2,3)$에 실근을 갖는다.\n\n(나)의 대우에 의해 $n \\neq 2$인 정수 $n$에 대해 $f'(n)f'(n+1) \\geq 0$이다. 특히 $n=-1$이면 $f'(-1)f'(0) \\geq 0$, $n=0$이면 $f'(0)f'(1) \\geq 0$이다.\n\n$f'(0) \\neq 0$이면 $f'(-1)$과 $f'(1)$이 모두 $f'(0)$과 같은 부호이므로 $f'(-1)f'(1) > 0$이 되어 (가)에 모순이다. 따라서 $f'(0)=0$이다.\n\n$f'(x)$는 최고차항 계수 $3$인 이차식이고 근이 $0$과 $a$ ($2<a<3$)이므로 $f'(x)=3x(x-a)$이다.\n\n$f'(x)=3x^2-3ax$를 적분하면 $f(x)=x^3-\\dfrac{3a}{2}x^2+C$이다.\n\n$f''(0)=-3a<0$이므로 $x=0$에서 극대(극댓값 $C$), $x=a$에서 극소이다.\n\n$f(k)=f(k+2)=0$인 정수 $k$의 후보를 조사한다.\n\n$k=-1$: $f(1)-f(-1)=2 \\neq 0$이므로 $f(-1)=f(1)=0$은 불가능하다.\n\n$k=0$: $f(0)=C=0$이면 $f(2)=8-6a=0$에서 $a=\\frac{4}{3} \\notin (2,3)$이므로 불가능하다.\n\n$k=2$: $f(2)=0$이면 $C=6a-8$이고, $f(4)=56-18a=0$에서 $a=\\frac{28}{9} \\approx 3.11 \\notin (2,3)$이므로 불가능하다.\n\n$k=1$: $f(1)=1-\\frac{3a}{2}+C=0$과 $f(3)=27-\\frac{27a}{2}+C=0$을 연립하면 $a=\\frac{13}{6}$, $C=\\frac{9}{4}$이다. $\\frac{13}{6} \\in (2,3)$을 만족한다.\n\n따라서 $k=1$만 가능하고, $f(x)=x^3-\\dfrac{13}{4}x^2+\\dfrac{9}{4}$이다.\n\n$f(5)=125-\\dfrac{325}{4}+\\dfrac{9}{4}=125-\\dfrac{316}{4}=125-79=46$이다.",
+  "original_solution": "(나)에서 $f'(2)f'(3) < 0$이므로 $f'(x) = 0$은 $2$와 $3$ 사이의 실근을 가짐을 알 수 있다.\n\n문제의 조건에서:\n\n$$f'(-1)f'(1) < 0$$\n$$f'(-1)f'(0) \\geq 0$$\n$$f'(0)f'(1) \\geq 0$$\n\n이 세 조건을 동시에 만족시키려면 $f'(0) = 0$이어야 한다.\n\n이므로\n\n$$f'(x) = 3x(x - a) \\quad (2 < a < 3)$$\n\n$$\\Rightarrow f(x) = x^3 - \\frac{3a}{2}x^2 + C \\quad (2 < a < 3, \\; C\\text{는 상수}) \\cdots \\text{⑦}$$\n\n로 놓을 수 있다.\n\n[FIGURE: $y = f(x)$의 그래프. $x = 0$에서 극대, $x = a$에서 극소를 가지며, 극대값은 $C$, 극소값은 $f(a)$이다. $x$축 위의 주요 점은 $-\\dfrac{a}{2},\\; 0,\\; a,\\; \\dfrac{3a}{2}$이다.]\n\n위 그림을 참고하면 $f(k) = f(k+2) = 0 \\cdots$ ⓒ 을 만족시킬 수 있는 정수 $k$로 가능한 것은\n\n$$-\\frac{a}{2} < k \\text{이고 } k+2 < \\frac{3a}{2} \\text{인 } a \\; (2 < a < 3)\\text{이 존재}$$\n\n$$\\Rightarrow k = -1, \\; k = 0, \\; k = 1, \\; k = 2$$\n\n이고, 이때\n\n- ① $k = -1$일 때: $f(-1) < f(1)$ → ⓒ 불가\n- ② $k = 0$일 때: $f(0) > f(2)$ ($\\because a < 2 < \\dfrac{3a}{2}$) → ⓒ 불가\n- ③ $k = 1$일 때: $f(1) = f(3)$이면 $a = \\dfrac{13}{6}$이고, $f(1) = 0$으로부터 $C = \\dfrac{9}{4}$ → ⓒ 성립\n- ④ $k = 2$일 때: $f(2) < f(4)$ → ⓒ 불가\n\n이므로 ⓒ을 만족시키는 경우는 ③의 경우뿐임을 알 수 있다.\n\n$$\\therefore f(x) = x^3 - \\frac{13}{4}x^2 + \\frac{9}{4}$$\n\n$$\\Rightarrow f(5) = 125 - \\frac{13 \\times 25}{4} + \\frac{9}{4} = 125 - \\frac{325}{4} + \\frac{9}{4} = 125 - \\frac{316}{4} = 125 - 79 = \\boxed{46}$$",
+  "analysis": "조건 (나)에서 f'(2)f'(3)<0으로 f'의 근이 (2,3)에 존재함을 알고, 대우로 f'(-1)f'(0)≥0, f'(0)f'(1)≥0을 얻은 뒤 (가)와 결합하여 f'(0)=0을 도출한다. f'(x)=3x(x-a)로 놓고 적분한 후, f(k)=f(k+2)=0의 후보 k를 그래프 개형으로 좁혀 k=1만 성립함을 확인하여 f(5)=46을 얻는다.",
+  "new_neurons": [],
+  "metadata": {
+    "unit": "미적분",
+    "difficulty": "상",
+    "score": "4",
+    "type": "short_answer",
+    "answer": "46",
+    "year": "2024",
+    "source": "수능",
+    "topic": "삼차함수의 조건 분석",
+    "subtopic": "도함수 부호 조건과 함수값"
+  },
+  "edge_count": 14,
+  "side_count": 4,
+  "statement": "# 15. (수능) - 삼차함수의 도함수 부호 조건과 함수값\n\n## Problem\n최고차항의 계수가 $1$인 삼차함수 $f(x)$가 다음 조건을 만족시킨다.\n\n> (가) $f'(-1)f'(1) < 0$\n>\n> (나) $f'(n)f'(n+1) < 0$을 만족시키는 정수 $n$은 $2$뿐이다.\n\n$f(k) = f(k+2) = 0$인 정수 $k$가 존재할 때, $f(5)$의 값을 구하시오. [4점]",
+  "dna": {
+    "nodes": [
+      {
+        "id": "top",
+        "dna": "Q1",
+        "label": "f(5) 구하라",
+        "category": "발문"
+      },
+      {
+        "id": "ask_f5",
+        "dna": "F3",
+        "label": "f(5)",
+        "category": "함수"
+      },
+      {
+        "id": "c5",
+        "dna": "T2",
+        "label": "상수 5",
+        "category": "말단"
+      },
+      {
+        "id": "fx",
+        "dna": "F6",
+        "label": "함수 f(x)",
+        "category": "함수"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
+      },
+      {
+        "id": "f11",
+        "dna": "F11",
+        "label": "삼차함수",
+        "category": "함수"
+      },
+      {
+        "id": "lead1",
+        "dna": "L4",
+        "label": "최고차항계수=1",
+        "category": "제한"
+      },
+      {
+        "id": "fpx",
+        "dna": "F13",
+        "label": "도함수 f'(x)",
+        "category": "함수"
+      },
+      {
+        "id": "conds",
+        "dna": "S1",
+        "label": "조건 묶음",
+        "category": "구조"
+      },
+      {
+        "id": "cond_ga",
+        "dna": "C2",
+        "label": "(가) 곱<0",
+        "category": "조건"
+      },
+      {
+        "id": "prod_ga",
+        "dna": "E6",
+        "label": "f'(-1)·f'(1)",
+        "category": "수식"
+      },
+      {
+        "id": "fp_m1",
+        "dna": "F3",
+        "label": "f'(-1)",
+        "category": "함수"
+      },
+      {
+        "id": "fp_1",
+        "dna": "F3",
+        "label": "f'(1)",
+        "category": "함수"
+      },
+      {
+        "id": "cm1",
+        "dna": "T2",
+        "label": "상수 -1",
+        "category": "말단"
+      },
+      {
+        "id": "c1",
+        "dna": "T2",
+        "label": "상수 1",
+        "category": "말단"
+      },
+      {
+        "id": "c0",
+        "dna": "T2",
+        "label": "상수 0",
+        "category": "말단"
+      },
+      {
+        "id": "cond_na",
+        "dna": "X4",
+        "label": "(나) n=2뿐",
+        "category": "존재"
+      },
+      {
+        "id": "na_ineq",
+        "dna": "C2",
+        "label": "f'(n)f'(n+1)<0",
+        "category": "조건"
+      },
+      {
+        "id": "prod_na",
+        "dna": "E6",
+        "label": "f'(n)·f'(n+1)",
+        "category": "수식"
+      },
+      {
+        "id": "fp_n",
+        "dna": "F3",
+        "label": "f'(n)",
+        "category": "함수"
+      },
+      {
+        "id": "fp_n1",
+        "dna": "F3",
+        "label": "f'(n+1)",
+        "category": "함수"
+      },
+      {
+        "id": "vn",
+        "dna": "T1",
+        "label": "변수 n",
+        "category": "말단"
+      },
+      {
+        "id": "n_int",
+        "dna": "L3",
+        "label": "n은 정수",
+        "category": "제한"
+      },
+      {
+        "id": "n1_sum",
+        "dna": "E1",
+        "label": "n+1",
+        "category": "수식"
+      },
+      {
+        "id": "c2",
+        "dna": "T2",
+        "label": "상수 2",
+        "category": "말단"
+      },
+      {
+        "id": "exist_k",
+        "dna": "X5",
+        "label": "정수 k 존재",
+        "category": "존재"
+      },
+      {
+        "id": "k_conds",
+        "dna": "S1",
+        "label": "k 조건 묶음",
+        "category": "구조"
+      },
+      {
+        "id": "vk",
+        "dna": "T1",
+        "label": "변수 k",
+        "category": "말단"
+      },
+      {
+        "id": "k_int",
+        "dna": "L3",
+        "label": "k는 정수",
+        "category": "제한"
+      },
+      {
+        "id": "eq_fk0",
+        "dna": "C1",
+        "label": "f(k)=0",
+        "category": "조건"
+      },
+      {
+        "id": "fk_val",
+        "dna": "F3",
+        "label": "f(k)",
+        "category": "함수"
+      },
+      {
+        "id": "eq_fk20",
+        "dna": "C1",
+        "label": "f(k+2)=0",
+        "category": "조건"
+      },
+      {
+        "id": "fk2_val",
+        "dna": "F3",
+        "label": "f(k+2)",
+        "category": "함수"
+      },
+      {
+        "id": "k2_sum",
+        "dna": "E1",
+        "label": "k+2",
+        "category": "수식"
+      }
+    ],
+    "edges": [
+      {
+        "from": "ask_f5",
+        "to": "top"
+      },
+      {
+        "from": "conds",
+        "to": "top"
+      },
+      {
+        "from": "c5",
+        "to": "ask_f5"
+      },
+      {
+        "from": "fx",
+        "to": "ask_f5"
+      },
+      {
+        "from": "f11",
+        "to": "fx"
+      },
+      {
+        "from": "lead1",
+        "to": "fx"
+      },
+      {
+        "from": "vx",
+        "to": "fx"
+      },
+      {
+        "from": "fx",
+        "to": "fpx"
+      },
+      {
+        "from": "fpx",
+        "to": "fp_m1"
+      },
+      {
+        "from": "fpx",
+        "to": "fp_1"
+      },
+      {
+        "from": "fpx",
+        "to": "fp_n"
+      },
+      {
+        "from": "fpx",
+        "to": "fp_n1"
+      },
+      {
+        "from": "cond_ga",
+        "to": "conds"
+      },
+      {
+        "from": "prod_ga",
+        "to": "cond_ga"
+      },
+      {
+        "from": "c0",
+        "to": "cond_ga"
+      },
+      {
+        "from": "fp_m1",
+        "to": "prod_ga"
+      },
+      {
+        "from": "fp_1",
+        "to": "prod_ga"
+      },
+      {
+        "from": "cm1",
+        "to": "fp_m1"
+      },
+      {
+        "from": "c1",
+        "to": "fp_1"
+      },
+      {
+        "from": "cond_na",
+        "to": "conds"
+      },
+      {
+        "from": "na_ineq",
+        "to": "cond_na"
+      },
+      {
+        "from": "c2",
+        "to": "cond_na"
+      },
+      {
+        "from": "prod_na",
+        "to": "na_ineq"
+      },
+      {
+        "from": "c0",
+        "to": "na_ineq"
+      },
+      {
+        "from": "fp_n",
+        "to": "prod_na"
+      },
+      {
+        "from": "fp_n1",
+        "to": "prod_na"
+      },
+      {
+        "from": "vn",
+        "to": "fp_n"
+      },
+      {
+        "from": "n1_sum",
+        "to": "fp_n1"
+      },
+      {
+        "from": "vn",
+        "to": "n1_sum"
+      },
+      {
+        "from": "c1",
+        "to": "n1_sum"
+      },
+      {
+        "from": "n_int",
+        "to": "vn"
+      },
+      {
+        "from": "exist_k",
+        "to": "conds"
+      },
+      {
+        "from": "k_conds",
+        "to": "exist_k"
+      },
+      {
+        "from": "vk",
+        "to": "exist_k"
+      },
+      {
+        "from": "k_int",
+        "to": "vk"
+      },
+      {
+        "from": "eq_fk0",
+        "to": "k_conds"
+      },
+      {
+        "from": "eq_fk20",
+        "to": "k_conds"
+      },
+      {
+        "from": "fk_val",
+        "to": "eq_fk0"
+      },
+      {
+        "from": "c0",
+        "to": "eq_fk0"
+      },
+      {
+        "from": "fk2_val",
+        "to": "eq_fk20"
+      },
+      {
+        "from": "c0",
+        "to": "eq_fk20"
+      },
+      {
+        "from": "fx",
+        "to": "fk_val"
+      },
+      {
+        "from": "vk",
+        "to": "fk_val"
+      },
+      {
+        "from": "fx",
+        "to": "fk2_val"
+      },
+      {
+        "from": "k2_sum",
+        "to": "fk2_val"
+      },
+      {
+        "from": "vk",
+        "to": "k2_sum"
+      },
+      {
+        "from": "c2",
+        "to": "k2_sum"
+      }
+    ],
+    "new_dna": []
+  },
+  "thinking_profile": null,
+  "folders": [],
+  "history": [],
+  "recovery_warnings": [],
+  "errata": [],
+  "created_at": "2026-03-28T06:08:13.402Z"
+}
