@@ -1778,9 +1778,8 @@
   {
     "id": "연산50",
     "domain": [
-      "POLY",
-      "INTG"
+      "COORD"
     ],
-    "action": "ANTIDERIVATIVE"
+    "action": "POINT_LINE_DISTANCE"
   }
 ]
