@@ -1615,280 +1615,140 @@
     "previous_skeleton": [
       {
         "from": [
-          "단서A",
-          "단서B"
+          "단서B",
+          "단서A"
         ],
         "to": "note1",
-        "neuron": "NEW_1",
+        "neuron": "사실136",
         "type": "사실",
-        "domain_hint": "FUNC",
-        "description": "연속함수의 닫힌구간 위 상은 닫힌 구간",
-        "note": "$A=\\{f(x)\\mid a\\leq x\\leq b\\}$, $A_t=\\{f(x)\\mid 4\\leq x\\leq t\\}$는 각각 닫힌 구간이다",
+        "domain_hint": "LIM",
+        "description": "극한 수렴 시 분모→0이면 분자→0",
+        "note": "$f(2) = 0$이다",
         "main": true,
-        "step": 1,
-        "_keep_neuron": false
+        "step": 1
       },
       {
-        "from": "단서C",
+        "from": [
+          "단서B",
+          "note1"
+        ],
         "to": "note2",
-        "neuron": "전략25",
-        "type": "전략",
-        "domain_hint": "SET, FUNC",
-        "description": "경계값 t=7 대입으로 f(4)∈A 유도",
-        "note": "$t=7$일 때 $A = A_7$이고 $4 \\in [4,7]$이므로 $f(4) \\in A$이다",
+        "neuron": "NEW_1",
+        "type": "연산",
+        "domain_hint": "LIM",
+        "description": "f(2)=0 대입 후 분자분모를 x로 나누어 변형",
+        "note": "$\\lim_{x \\to 0} \\dfrac{\\dfrac{f(x+2)-f(2)}{x}}{f(x)+x} = -3$으로 변형된다",
         "main": true,
-        "step": 1,
-        "_keep_neuron": true
+        "step": 2
+      },
+      {
+        "from": [
+          "단서A",
+          "note2"
+        ],
+        "to": "note3",
+        "neuron": "사실131",
+        "type": "사실",
+        "domain_hint": "DIFF,LIM",
+        "description": "미분계수 정의로 분자의 극한값 도출",
+        "note": "$x \\to 0$일 때 분자 $\\dfrac{f(x+2)-f(2)}{x} \\to f'(2) = 0$이다",
+        "main": false,
+        "step": 2
       },
       {
         "from": [
           "note2",
-          "단서B"
+          "note3"
         ],
-        "to": "note3",
-        "neuron": "사실17",
-        "type": "전략",
-        "domain_hint": "FUNC",
-        "description": "특정 값 t가 치역에 속하면 f(x)=t의 해가 존재한다.",
-        "note": "특정 값 t가 치역에 속하면 f(x)=t의 해가 존재한다.",
-        "main": true,
-        "step": 2,
-        "_keep_neuron": true
-      },
-      {
-        "from": "note3",
         "to": "note4",
-        "neuron": "사실43",
-        "type": "전략",
-        "domain_hint": "FUNC",
-        "description": "단조함수이면 치역의 원소 t에 대해 f(x)=t의 근이 정확히 1개이므로, 근이 2개 이상이면 단조함수가 아니다(비단사).",
-        "note": "단조함수이면 치역의 원소 t에 대해 f(x)=t의 근이 정확히 1개이므로, 근이 2개 이상이면 단조함수가 아니다(비단사).",
+        "neuron": "사실136",
+        "type": "사실",
+        "domain_hint": "LIM",
+        "description": "극한값≠0이고 분자→0이면 분모→0",
+        "note": "$f(0) = 0$이다",
         "main": true,
-        "step": 2,
-        "_keep_neuron": true
+        "step": 2
       },
       {
         "from": [
-          "note4",
-          "단서A"
+          "단서A",
+          "note1",
+          "note4"
         ],
         "to": "note5",
-        "neuron": "NEW_2",
-        "type": "사실",
-        "domain_hint": "POLY, DIFF",
-        "description": "비단사 삼차함수는 극대·극소를 모두 가짐",
-        "note": "$f$는 $x=\\alpha$에서 극대, $x=\\beta$에서 극소를 가진다 ($\\alpha < \\beta$)",
+        "neuron": "전략41",
+        "type": "전략",
+        "domain_hint": "POLY,DIFF",
+        "description": "근·중근 조건과 최고차계수로 사차함수 형태 결정",
+        "note": "$f(x) = x(x-2)^2(x+a)$로 놓을 수 있다",
         "main": true,
-        "step": 2,
-        "_keep_neuron": false
+        "step": 3
       },
       {
         "from": [
           "note5",
-          "단서A"
+          "단서B"
         ],
         "to": "note6",
-        "neuron": "사실99",
-        "type": "사실",
-        "domain_hint": "MONO, DIFF",
-        "description": "삼차함수의 극값 기준 증감 구간 결정",
-        "note": "$f$는 $(-\\infty,\\alpha)$에서 증가, $(\\alpha,\\beta)$에서 감소, $(\\beta,\\infty)$에서 증가한다",
+        "neuron": "전략47",
+        "type": "연산",
+        "domain_hint": "LIM,POLY",
+        "description": "f(x) 대입 후 공통인수 소거하여 극한 계산",
+        "note": "$\\dfrac{2(2+a)}{4a+1} = -3$이다",
         "main": true,
-        "step": 2,
-        "_keep_neuron": true
+        "step": 4
       },
       {
-        "from": [
-          "note6",
-          "note2",
-          "단서C"
-        ],
+        "from": "note6",
         "to": "note7",
-        "neuron": "전략46",
-        "type": "전략",
-        "domain_hint": "MONO, FUNC",
-        "description": "치역 조건과 t 범위로부터 α<4<β 확인",
-        "note": "$\\alpha < 4 < \\beta$이다",
-        "main": false,
-        "step": 3,
-        "_keep_neuron": true
-      },
-      {
-        "from": [
-          "note6",
-          "note7"
-        ],
-        "to": "note8",
-        "neuron": "전략26",
-        "type": "전략",
-        "domain_hint": "FUNC, MONO",
-        "description": "감소구간에서 t 증가 시 A_t 확장 분석",
-        "note": "$4 < t \\leq \\beta$에서 $f$는 $[4,t]$에서 감소하고, $t=\\beta$에서 $A_t = [f(\\beta),\\, f(4)] = A$이다",
-        "main": true,
-        "step": 3,
-        "_keep_neuron": false
-      },
-      {
-        "from": [
-          "note8",
-          "단서C"
-        ],
-        "to": "note9",
-        "neuron": "전략40",
-        "type": "전략",
-        "domain_hint": "EQN, FUNC",
-        "description": "A=A_t 성립 최소 t가 극소점임을 결정",
-        "note": "$A = A_t$가 성립하는 최소 $t$가 $7$이고 $\\beta = 7$이다",
-        "main": true,
-        "step": 3,
-        "_keep_neuron": true
-      },
-      {
-        "from": [
-          "note6",
-          "note9"
-        ],
-        "to": "note10",
-        "neuron": "사실53",
-        "type": "사실",
-        "domain_hint": "FUNC, MONO",
-        "description": "t>β에서 A_t의 최댓값 구조 분석",
-        "note": "$t > 7$일 때 $A_t = [f(7),\\, \\max(f(4),\\, f(t))]$이고 $A = A_t \\Leftrightarrow f(t) \\leq f(4)$이다",
-        "main": true,
-        "step": 4,
-        "_keep_neuron": true
-      },
-      {
-        "from": [
-          "note10",
-          "단서C"
-        ],
-        "to": "note11",
-        "neuron": "전략26",
-        "type": "전략",
-        "domain_hint": "MONO, EQN",
-        "description": "순증가 구간에서 최대 t 결정",
-        "note": "$f$는 $(7,\\infty)$에서 순증가이고, $f(t)=f(4)$인 $t$가 최대 $t$이다. 최대 $t = 9$이고 $f(9) = f(4)$이다",
-        "main": true,
-        "step": 4,
-        "_keep_neuron": true
-      },
-      {
-        "from": [
-          "note9",
-          "단서A"
-        ],
-        "to": "note12",
-        "neuron": "사실133",
-        "type": "사실",
-        "domain_hint": "POLY",
-        "description": "극소점에서 중근을 이용한 삼차식 표현",
-        "note": "$x=7$이 극소이고 $f(x)-f(7)$은 $(x-7)^2$을 인수로 가진다. $f(x) = (x-p)(x-7)^2 + f(7)$이다",
+        "neuron": "전략2",
+        "type": "연산",
+        "domain_hint": "EQN",
+        "description": "조건식들을 연립하여 일차방정식을 풀면 a의 값이 결정된다.",
+        "note": "조건식들을 연립하여 일차방정식을 풀면 a의 값이 결정된다.",
         "main": true,
         "step": 5,
         "_keep_neuron": true
       },
       {
-        "from": [
-          "note12",
-          "note11"
-        ],
-        "to": "note13",
+        "from": "note7",
+        "to": "END",
         "neuron": "전략25",
         "type": "연산",
-        "domain_hint": "EQN, POLY",
-        "description": "f(4)=f(9)을 대입하여 p 결정",
-        "note": "$f(4)=f(9)$에서 $9(4-p)=4(9-p)$이고 $p=0$이다. $f(x) = x(x-7)^2 + f(7)$이다",
+        "domain_hint": "EQN",
+        "description": "결정된 a를 f(4)에 대입하여 최종 함숫값을 계산한다.",
+        "note": "결정된 a를 f(4)에 대입하여 최종 함숫값을 계산한다.",
         "main": true,
         "step": 5,
-        "_keep_neuron": true
-      },
-      {
-        "from": "note13",
-        "to": "note14",
-        "neuron": "연산28",
-        "type": "연산",
-        "domain_hint": "DIFF, POLY",
-        "description": "삼차함수를 $\\sum a_n x^n$ 형태로 전개한다.",
-        "note": "삼차함수를 $\\sum a_n x^n$ 형태로 전개한다.",
-        "main": true,
-        "step": 6,
-        "_keep_neuron": true
-      },
-      {
-        "from": "note14",
-        "to": "note15",
-        "neuron": "연산33",
-        "type": "연산",
-        "domain_hint": "DIFF, POLY",
-        "description": "각 항에 $(x^n)' = nx^{n-1}$을 적용하여 도함수를 계산한다.",
-        "note": "각 항에 $(x^n)' = nx^{n-1}$을 적용하여 도함수를 계산한다.",
-        "main": true,
-        "step": 6,
-        "_keep_neuron": true
-      },
-      {
-        "from": "note15",
-        "to": "note16",
-        "neuron": "사실99",
-        "type": "사실",
-        "domain_hint": "MONO, DIFF",
-        "description": "극대점 위치 확인으로 가정 검증",
-        "note": "도함수 $f'(x)$에 $x=2$를 대입하면 $f'(2)$의 값을 산출할 수 있으며, 이를 통해 극대점 위치 가정이 검증된다.",
-        "main": false,
-        "step": 6,
         "_keep_neuron": true
       }
     ],
-    "previous_solution": "$A=\\{f(x)\\mid a\\leq x\\leq b\\}$, $A_t=\\{f(x)\\mid 4\\leq x\\leq t\\}$는 각각 닫힌 구간이다 $t=7$일 때 $A = A_7$이고 $4 \\in [4,7]$이므로 $f(4) \\in A$이다 특정 값 t가 치역에 속하면 f(x)=t의 해가 존재한다. 단조함수이면 치역의 원소 t에 대해 f(x)=t의 근이 정확히 1개이므로, 근이 2개 이상이면 단조함수가 아니다(비단사). $f$는 $x=\\alpha$에서 극대, $x=\\beta$에서 극소를 가진다 ($\\alpha < \\beta$) $f$는 $(-\\infty,\\alpha)$에서 증가, $(\\alpha,\\beta)$에서 감소, $(\\beta,\\infty)$에서 증가한다 $4 < t \\leq \\beta$에서 $f$는 $[4,t]$에서 감소하고, $t=\\beta$에서 $A_t = [f(\\beta),\\, f(4)] = A$이다 $A = A_t$가 성립하는 최소 $t$가 $7$이고 $\\beta = 7$이다 $t > 7$일 때 $A_t = [f(7),\\, \\max(f(4),\\, f(t))]$이고 $A = A_t \\Leftrightarrow f(t) \\leq f(4)$이다 $f$는 $(7,\\infty)$에서 순증가이고, $f(t)=f(4)$인 $t$가 최대 $t$이다. 최대 $t = 9$이고 $f(9) = f(4)$이다 $x=7$이 극소이고 $f(x)-f(7)$은 $(x-7)^2$을 인수로 가진다. $f(x) = (x-p)(x-7)^2 + f(7)$이다 $f(4)=f(9)$에서 $9(4-p)=4(9-p)$이고 $p=0$이다. $f(x) = x(x-7)^2 + f(7)$이다 삼차함수를 $\\sum a_n x^n$ 형태로 전개한다. 각 항에 $(x^n)' = nx^{n-1}$을 적용하여 도함수를 계산한다.",
-    "previous_clues": "[{\"id\":\"단서A\",\"text\":\"$f(x)$는 최고차항의 계수가 $1$인 삼차함수이다\"},{\"id\":\"단서B\",\"text\":\"$a < b < 4$인 두 상수 $a$, $b$가 있다\"},{\"id\":\"단서C\",\"text\":\"$\\\\{f(x) \\\\mid a \\\\leq x \\\\leq b\\\\} = \\\\{f(x) \\\\mid 4 \\\\leq x \\\\leq t\\\\}$가 성립하는 모든 실수 $t$ $(t>4)$의 범위는 $7 \\\\leq t \\\\leq 9$이다\"}]",
-    "previous_analysis": "",
+    "previous_solution": "$f(2) = 0$이다 $\\lim_{x \\to 0} \\dfrac{\\dfrac{f(x+2)-f(2)}{x}}{f(x)+x} = -3$으로 변형된다 $f(0) = 0$이다 $f(x) = x(x-2)^2(x+a)$로 놓을 수 있다 $\\dfrac{2(2+a)}{4a+1} = -3$이다 조건식들을 연립하여 일차방정식을 풀면 a의 값이 결정된다. 결정된 a를 f(4)에 대입하여 최종 함숫값을 계산한다.",
+    "previous_clues": "[{\"id\":\"단서A\",\"text\":\"$f'(2)=0$이고 최고차항의 계수가 $1$인 사차함수 $f(x)$\"},{\"id\":\"단서B\",\"text\":\"$\\\\lim_{x \\\\to 0} \\\\frac{f(x+2)}{xf(x)+x^2} = -3$\"}]",
+    "previous_analysis": "극한의 수렴 조건에서 분모→0이면 분자→0 원리를 두 번 적용하여 f(2)=0, f(0)=0을 얻는다. 근과 중근 조건으로 f(x)=x(x-2)²(x+a)를 세우고, 극한식에 대입·정리하여 a=-1/2을 결정한 뒤 f(4)=56을 구한다.",
     "previous_matching": "",
     "previous_matched": [],
     "previous_new_neurons": [
       {
         "id": "사실??",
         "type": "사실",
-        "statement": "닫힌구간 $[a,b]$에서 연속인 함수 $f$의 치역 $f([a,b])$는 닫힌구간 $[m, M]$이다. 여기서 $m$과 $M$은 각각 $f$의 최솟값과 최댓값이다 (최대·최소 정리 + 중간값 정리).",
-        "description": "연속함수의 닫힌구간 위 상은 닫힌 구간",
-        "note": "$A=\\{f(x)\\mid a\\leq x\\leq b\\}$, $A_t=\\{f(x)\\mid 4\\leq x\\leq t\\}$는 각각 닫힌 구간이다",
-        "reason": "후보 중 사실56(단조함수의 극값 위치), 사실22(중간값 정리), 사실94(연속의 정의), 사실113(해집합과 경계값)을 검토했으나, 이 중 어느 것도 '연속함수의 닫힌구간 위 상(image)이 닫힌구간이다'는 원리를 직접 표현하지 않는다. 사실22(중간값 정리)는 중간값을 취함을 말하지만, 최댓값·최솟값의 존재(최대·최소 정리)와 결합해야 상이 닫힌구간임을 말할 수 있다. 이 두 원리의 결합은 별도 뉴런으로 등록이 필요하다.",
-        "blocked_edge": "단서A+단서B → note1",
-        "domain_hint": "FUNC",
-        "domain": [
-          "FUNC",
-          "LIM"
-        ],
-        "action_hint": "",
-        "step": 1,
-        "main": true,
-        "near_miss": [
-          "사실2: $y = f(|x - c|)$는 직선 $x = c$에 대해 대칭이다 ($",
-          "사실5: 지수함수 $y=a^x$는 $a>1$이면 순증가, $0<a<1$이면 순감소",
-          "사실9: 이차함수 $f(x)=a(x-p)^2+q$에서 $f(x)=c$의 실근이 정"
-        ]
-      },
-      {
-        "id": "사실??",
-        "type": "사실",
-        "statement": "삼차함수 $f(x)=ax^3+bx^2+cx+d$ ($a\\neq 0$)이 단사함수가 아닌 것과 $f$가 극대·극소를 모두 갖는 것은 동치이다. 즉 $f'(x)=0$이 서로 다른 두 실근을 가질 때만 비단사이다.",
-        "description": "비단사 삼차함수는 극대·극소를 모두 가짐",
-        "note": "$f$는 $x=\\alpha$에서 극대, $x=\\beta$에서 극소를 가진다 ($\\alpha < \\beta$)",
-        "reason": "후보 중 사실58(단조함수는 단사함수), 사실68(단조함수 부호 최대 1회 변환), 사실98(도함수 부호와 단조성)을 검토했으나, '삼차함수가 단사가 아니면(비단사이면) 극대와 극소를 모두 가진다'는 원리를 직접 표현하는 뉴런이 없다. 이 원리는 삼차함수의 도함수(이차식)가 두 실근을 가질 때만 극대·극소가 모두 존재한다는 미적분 특성이다.",
-        "blocked_edge": "note4+단서A → note5",
-        "domain_hint": "POLY, DIFF",
+        "statement": "다항식 $f(x)$에서 $f(0)=0$이면 $x$는 $f(x)$의 인수이다. 즉 $f(x)=x \\cdot g(x)$로 인수분해되며, 분자분모에서 공통인수 $x$를 소거할 수 있다.",
+        "description": "f(2)=0 대입 후 분자분모를 x로 나누어 변형",
+        "note": "$\\lim_{x \\to 0} \\dfrac{\\dfrac{f(x+2)-f(2)}{x}}{f(x)+x} = -3$으로 변형된다",
+        "reason": "후보 중 연산28(다항식 전개), 연산29(완전제곱식 변환), 연산33(거듭제곱 미분), 연산49(부정적분) 등은 모두 다항식 변환/미분에 관한 것이고, 사실139·사실140은 치역·단조성에 관한 것으로, f(2)=0 조건 대입 후 분자분모를 x로 나누어 식을 변형하는 대수적 조작과 무관하다. 이 조작은 '특정 점에서 함수값=0임을 이용해 인수분해 후 공통인수 약분'으로, 0/0 부정형 해소의 일반 전략인 전략47과 유사하지만, 여기서는 극한이 아닌 식 자체를 x로 나누는 변형이므로 별도 원리이다. 사칙연산 병합 규칙에 따라 단순 나눗셈 자체는 NEW가 아니나, 'f(a)=0을 이용한 인수 추출 후 약분'은 전략47로 커버 가능한지 검토: 전략47은 극한 문맥의 0/0 변환이므로 일반 식 변형에는 적용 범위 초과. 그러나 실질적으로 이 조작은 '분자에서 f(a)=0으로 인수 (x-a) 또는 x를 추출 후 약분'이며, 이는 인수정리(사실 미등록)에 해당한다. 기존 뉴런 중 인수정리 관련 항목 없음.",
+        "blocked_edge": "단서B+note1 → note2",
+        "domain_hint": "LIM",
         "domain": [
           "POLY",
-          "DIFF",
-          "FUNC"
+          "EQN"
         ],
         "action_hint": "",
         "step": 2,
         "main": true,
         "near_miss": [
-          "사실9: 이차함수 $f(x)=a(x-p)^2+q$에서 $f(x)=c$의 실근이 정",
-          "사실35: 이차함수 $f(x)=a(x-p)(x-q)$에서 $a>0$이면 $p<x<q",
-          "사실78: 이차방정식 $ax^2+bx+c=0$의 두 근을 $\\alpha, \\beta"
+          "사실139: 닫힌구간 $[a,b]$에서 연속인 함수 $f$의 치역 $f([a,b])$",
+          "연산7: $y=f(x)$를 벡터 $(p,q)$만큼 평행이동하면 $y-q=f(x-p",
+          "연산23: $y=f(x)+c$의 치역은 $f(x)$의 치역을 $c$만큼 평행이동한 "
         ]
       }
     ],
@@ -2189,8 +2049,8 @@
       "전략??"
     ],
     "needed_dna": [],
-    "edge_count": 16,
-    "side_count": 2,
-    "created_at": "2026-03-28T13:25:44.304Z"
+    "edge_count": 8,
+    "side_count": 1,
+    "created_at": "2026-03-28T13:40:20.066Z"
   }
 ]
