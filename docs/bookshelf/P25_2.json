@@ -1,0 +1,607 @@
+{
+  "problem_id": "P25_2",
+  "answer": "144",
+  "clues": [
+    {
+      "id": "단서A",
+      "text": "$f(x) \\geq 0$인 연속함수 $f(x)$이다"
+    },
+    {
+      "id": "단서B",
+      "text": "$4x^2 \\leq f(x) \\leq x^4 - 6x^2 + 9$를 만족하는 모든 정수 $x$의 집합을 $A$라 할 때 $n(A^c) = 2$이다"
+    },
+    {
+      "id": "단서C",
+      "text": "모든 정수 $n$에 대하여 구간 $[n,\\, n+1]$에서 함수 $y = f(x)$의 그래프는 직선의 일부이다"
+    }
+  ],
+  "skeleton": [
+    {
+      "from": "단서B",
+      "to": "note1",
+      "neuron": "연산21",
+      "type": "연산",
+      "domain_hint": "POLY, INEQ",
+      "description": "부등식 $4x^2 \\leq x^4 - 6x^2 + 9$의 양변을 이항하여 $x^4 - 10x^2 + 9 \\geq 0$으로 정리한다.",
+      "note": "$4x^2 \\leq x^4 - 6x^2 + 9$에서 $x^4 - 10x^2 + 9 \\geq 0$을 얻는다",
+      "main": true,
+      "step": 1
+    },
+    {
+      "from": "note1",
+      "to": "note2",
+      "neuron": "전략29",
+      "type": "전략",
+      "domain_hint": "POLY, INEQ",
+      "description": "$(x^2-1)(x^2-9) \\geq 0$으로 인수분해한다.",
+      "note": "$x^4 - 10x^2 + 9 = (x^2-1)(x^2-9) \\geq 0$",
+      "main": true,
+      "step": 1
+    },
+    {
+      "from": "note2",
+      "to": "note3",
+      "neuron": "사실35",
+      "type": "사실",
+      "domain_hint": "INEQ, POLY",
+      "description": "이차식 곱의 부등식에서 해 집합을 결정한다.",
+      "note": "해는 $x^2 \\leq 1$ 또는 $x^2 \\geq 9$, 즉 $|x| \\leq 1$ 또는 $|x| \\geq 3$이다",
+      "main": true,
+      "step": 1
+    },
+    {
+      "from": [
+        "note3",
+        "단서B"
+      ],
+      "to": "note4",
+      "neuron": "전략17",
+      "type": "전략",
+      "domain_hint": "SET, NUM",
+      "description": "부등식의 해 범위 밖에 있는 정수 후보 $x = \\pm 2$를 열거하고, $n(A^c) = 2$와 정합함을 확인한다.",
+      "note": "$A^c = \\{-2, 2\\}$이고 $n(A^c)=2$이다",
+      "main": true,
+      "step": 1
+    },
+    {
+      "from": "단서C",
+      "to": "note5",
+      "neuron": "연산15",
+      "type": "연산",
+      "domain_hint": "INTG, FUNC",
+      "description": "각 구간 $[n, n+1]$에서 $f$가 직선이므로 적분은 사다리꼴 공식 $\\frac{f(n)+f(n+1)}{2}$로 계산된다.",
+      "note": "$\\int_n^{n+1} f(x)\\,dx = \\frac{f(n)+f(n+1)}{2}$이므로, 적분값을 최소화하려면 정수점에서의 함숫값을 최소화해야 한다",
+      "main": true,
+      "step": 2
+    },
+    {
+      "from": [
+        "note4",
+        "note5",
+        "단서A"
+      ],
+      "to": "note6",
+      "neuron": "전략25",
+      "type": "전략",
+      "domain_hint": "INEQ, EQN",
+      "description": "$A$에 속하는 정수에서는 하한 $f(n)=4n^2$을, $A^c$에 속하는 $\\pm 2$에서는 $f(\\pm 2)=0$을 설정한다.",
+      "note": "$f(0)=0,\\ f(\\pm 1)=4,\\ f(\\pm 2)=0,\\ f(\\pm 3)=36,\\ f(\\pm 4)=64$",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": "note6",
+      "to": "note7",
+      "neuron": "사실57",
+      "type": "사실",
+      "domain_hint": "FUNC, INEQ",
+      "description": "각 구간에서 직선의 양 끝값이 모두 $\\geq 0$이므로 $f(x) \\geq 0$ 조건이 만족됨을 확인한다.",
+      "note": "구간 $[1,2]$에서 $f(1)=4,\\ f(2)=0$이므로 $f(x)=4-4(x-1) \\geq 0$, 구간 $[2,3]$에서 $f(2)=0,\\ f(3)=36$이므로 $f(x)=36(x-2) \\geq 0$",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": "note6",
+      "to": "note8",
+      "neuron": "사실142",
+      "type": "사실",
+      "domain_hint": "SYM, INTG",
+      "description": "$f(-x)=f(x)$이므로 우함수 대칭성을 이용하여 적분 구간을 축소한다.",
+      "note": "$f(-x)=f(x)$이므로 $\\int_{-4}^{4} f(x)\\,dx = 2\\int_0^4 f(x)\\,dx$",
+      "main": true,
+      "step": 4
+    },
+    {
+      "from": [
+        "note5",
+        "note6",
+        "note8"
+      ],
+      "to": "END",
+      "neuron": "연산15",
+      "type": "연산",
+      "domain_hint": "INTG",
+      "description": "구간별 사다리꼴 넓이를 합산하여 최종 적분값을 계산한다.",
+      "note": "$\\int_0^4 f(x)\\,dx = \\frac{0+4}{2} + \\frac{4+0}{2} + \\frac{0+36}{2} + \\frac{36+64}{2} = 2+2+18+50 = 72$이고 $\\int_{-4}^{4} f(x)\\,dx = 2 \\times 72 = 144$",
+      "main": true,
+      "step": 4
+    }
+  ],
+  "solution": "STEP 1. 부등식 $4x^2 \\leq x^4 - 6x^2 + 9$의 양변을 이항하여 $x^4 - 10x^2 + 9 \\geq 0$으로 정리한다. $(x^2-1)(x^2-9) \\geq 0$으로 인수분해하면, 해는 $|x| \\leq 1$ 또는 $|x| \\geq 3$이다. 따라서 $A^c = \\{-2, 2\\}$이고 $n(A^c)=2$이다.\nSTEP 2. 각 구간 $[n, n+1]$에서 $f$가 직선이므로 $\\int_n^{n+1} f(x)\\,dx = \\frac{f(n)+f(n+1)}{2}$이다. 적분값을 최소화하려면 정수점에서의 함숫값을 최소화해야 한다.\nSTEP 3. $A$에 속하는 정수에서는 하한 $f(n)=4n^2$을 택하고, $A^c$에 속하는 $\\pm 2$에서는 $f(\\pm 2)=0$으로 설정한다: $f(0)=0,\\ f(\\pm 1)=4,\\ f(\\pm 2)=0,\\ f(\\pm 3)=36,\\ f(\\pm 4)=64$. 각 구간에서 직선의 양 끝값이 $\\geq 0$이므로 $f(x) \\geq 0$ 조건도 만족된다.\nSTEP 4. $f(-x)=f(x)$이므로 $\\int_{-4}^{4} f(x)\\,dx = 2\\int_0^4 f(x)\\,dx$이다. $\\int_0^4 f(x)\\,dx = \\frac{0+4}{2} + \\frac{4+0}{2} + \\frac{0+36}{2} + \\frac{36+64}{2} = 2+2+18+50 = 72$이고, $\\int_{-4}^{4} f(x)\\,dx = 2 \\times 72 = 144$이다.",
+  "original_solution": "**Step 1. 조건 (가) 분석: 집합 $A$ 구하기**\n\n부등식 $4x^2 \\leq f(x) \\leq x^4 - 6x^2 + 9$가 성립하려면 우선 $4x^2 \\leq x^4 - 6x^2 + 9$이어야 한다.\n\n$$4x^2 \\leq (x^2 - 3)^2$$\n$$4x^2 \\leq x^4 - 6x^2 + 9$$\n$$x^4 - 10x^2 + 9 \\geq 0$$\n$$(x^2 - 1)(x^2 - 9) \\geq 0$$\n\n이 부등식의 해는 $x^2 \\leq 1$ 또는 $x^2 \\geq 9$, 즉 $-1 \\leq x \\leq 1$ 또는 $x \\leq -3$ 또는 $x \\geq 3$이다.\n\n따라서 정수 $x$에 대해 집합은:\n\n$$A = \\{x \\in \\mathbb{Z} \\mid x = 0,\\, \\pm1,\\, \\pm3,\\, \\pm4,\\, \\pm5,\\, \\ldots\\}$$\n\n조건에서 $n(A^c) = 2$라고 하였으므로, 정수 전체 집합에서 $A$를 제외한 집합 $A^c$는 $|x| < 3$이면서 $|x| > 1$인 정수, 즉 $x = \\pm 2$이다. 이는 원소가 2개이므로 조건을 만족한다.\n\n따라서 $n(A^c) = 2$라는 조건과 정합이 확인된다.\n\n**결과적으로 정수 $x$에 대한 $f(x)$의 할당 범위:**\n- $x \\in \\{0,\\, \\pm1,\\, \\pm3,\\, \\pm4\\}$ 일 때: $4x^2 \\leq f(x) \\leq (x^2 - 3)^2$\n- $x = \\pm 2$ 일 때: 부등식을 만족하지 않음 → $f(x) \\geq 0$인 조건만 유지\n\n**Step 2. 조건 (나) 분석: $f(x)$의 개형**\n\n조건 (나)에 의해 $f(x)$는 모든 정수 구간 $[n,\\, n+1]$에서 직선(일차함수 또는 상수)이다.\n\n즉, $f(x)$는 구간마다 선형이 연속 함수(연속인 꺾은선 함수)이다.\n\n각 정수 $x$에서의 함숫값 $f(n)$이 결정되면, 각 구간 $[n,\\, n+1]$에서의 그래프는 $f(n)$과 $f(n+1)$을 잇는 직선이다.\n\n**Step 3. 정수 점에서의 최솟값 설정**\n\n적분값 $\\displaystyle\\int_{-4}^{4} f(x)\\,dx$를 최소화하려면 각 정수 $x$ 점에서의 함숫값 $f(n)$을 최소화해야 한다.\n\n$x \\in \\{0,\\, \\pm1,\\, \\pm3,\\, \\pm4\\}$: 조건 (가)에서 $4x^2 \\leq f(x) \\leq (x^2-3)^2$이므로 최솟값은 $4x^2$이다.\n\n$$f(0) = 0, \\quad f(1) = f(-1) = 4, \\quad f(3) = f(-3) = 36, \\quad f(4) = f(-4) = 64$$\n\n$x = \\pm 2$: 부등식 조건이 없으므로 $f(x) \\geq 0$인 만큼 자유롭다.\n\n단, $x = 1$과 $x = 3$ 사이 연속인 직선으로 이어야 하므로, 구간 $[1, 3]$에서 $f(x)$는 $f(1) = 4$와 $f(3) = 36$을 잇는 직선이다.\n\n$$f(2) = \\frac{4 + 36}{2} = 20$$\n\n마찬가지로 $f(-2) = 20$이다.\n\n**Step 4. 적분값 계산 (최솟값 찾기)**\n\n각 구간은 사다리꼴이므로 넓이 $= \\dfrac{f(n) + f(n+1)}{2} \\times 1$이다.\n\n대칭성에 의해 $2 \\times \\displaystyle\\int_0^4 f(x)\\,dx$를 계산한다.\n\n구간별 계산:\n- $[0, 1]$: $(f(0) + f(1)) / 2 = (0 + 4) / 2 = 2$\n- $[1, 2]$: $(f(1) + f(2)) / 2 = (4 + 20) / 2 = 12$\n- $[2, 3]$: $(f(2) + f(3)) / 2 = (20 + 36) / 2 = 28$\n- $[3, 4]$: $(f(3) + f(4)) / 2 = (36 + 64) / 2 = 50$\n\n$$\\int_0^4 f(x)\\,dx = 2 + 12 + 28 + 50 = 92 \\quad \\cdots \\text{(계산)}$$\n\n**핵심 포인트:** $x = \\pm 2$에서는 조건 (가)의 부등식이 성립하지 않으므로, $f(\\pm 2)$는 연속성을 해치지 않는 범위에서 최대한 낮게 설정할 수 있다.\n\n$f(2) = 0$으로 설정하면 $[1, 2]$와 $[2, 3]$ 구간 모두 직선 조건을 만족하면서 적분값을 최소화할 수 있다.\n\n$f(2) = 0$으로 재설정하면:\n- $[0, 1]$: $(0 + 4) / 2 = 2$\n- $[1, 2]$: $(4 + 0) / 2 = 2$\n- $[2, 3]$: $(0 + 36) / 2 = 18$\n- $[3, 4]$: $(36 + 64) / 2 = 50$\n\n$$\\int_0^4 f(x)\\,dx = 2 + 2 + 18 + 50 = 72$$\n\n$$\\int_{-4}^{4} f(x)\\,dx = 2 \\times 72 = \\boxed{144}$$",
+  "analysis": "",
+  "new_neurons": [],
+  "metadata": {
+    "unit": "적분",
+    "difficulty": "상",
+    "score": "4",
+    "type": "short_answer",
+    "answer": "144",
+    "year": "미상",
+    "source": "수능",
+    "topic": "정적분의 최솟값",
+    "subtopic": "조건을 만족하는 연속함수의 적분 최솟값"
+  },
+  "edge_count": 9,
+  "side_count": 1,
+  "statement": "# 25. (수능) - 조건을 만족하는 연속함수의 정적분 최솟값\n\n## Problem\n모든 실수 $x$에서 $f(x) \\geq 0$인 연속함수 $f(x)$가 다음 조건을 만족시킬 때, $\\displaystyle\\int_{-4}^{4} f(x)\\,dx$의 최솟값을 구하시오.\n\n(가) $4x^2 \\leq f(x) \\leq x^4 - 6x^2 + 9$를 만족하는 모든 정수 $x$의 집합을 $A$라 할 때, $n(A^c) = 2$이다.\n\n(나) 모든 정수 $n$에 대하여 구간 $[n,\\, n+1]$에서 함수 $y = f(x)$의 그래프는 직선의 일부이다.",
+  "dna": {
+    "nodes": [
+      {
+        "id": "top",
+        "dna": "Q1",
+        "label": "최솟값 구하라",
+        "category": "발문"
+      },
+      {
+        "id": "ask_min",
+        "dna": "C24",
+        "label": "정적분 최솟값",
+        "category": "조건"
+      },
+      {
+        "id": "integ",
+        "dna": "???",
+        "label": "정적분∫_{-4}^{4}",
+        "category": "수식"
+      },
+      {
+        "id": "vf",
+        "dna": "F6",
+        "label": "연속함수 f(x)",
+        "category": "함수"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
+      },
+      {
+        "id": "cm4",
+        "dna": "T2",
+        "label": "상수 -4",
+        "category": "말단"
+      },
+      {
+        "id": "c4",
+        "dna": "T2",
+        "label": "상수 4",
+        "category": "말단"
+      },
+      {
+        "id": "nonneg_cond",
+        "dna": "C18",
+        "label": "모든 x에서",
+        "category": "조건"
+      },
+      {
+        "id": "fx_ge0",
+        "dna": "C2",
+        "label": "f(x)≥0",
+        "category": "조건"
+      },
+      {
+        "id": "c0",
+        "dna": "T2",
+        "label": "상수 0",
+        "category": "말단"
+      },
+      {
+        "id": "cond_ga",
+        "dna": "S1",
+        "label": "조건(가)",
+        "category": "구조"
+      },
+      {
+        "id": "setA_def",
+        "dna": "S2",
+        "label": "집합A 정의",
+        "category": "구조"
+      },
+      {
+        "id": "ineq_lower",
+        "dna": "C2",
+        "label": "4x²≤f(x)",
+        "category": "조건"
+      },
+      {
+        "id": "ineq_upper",
+        "dna": "C2",
+        "label": "f(x)≤x⁴-6x²+9",
+        "category": "조건"
+      },
+      {
+        "id": "expr_4x2",
+        "dna": "E6",
+        "label": "곱(4,x²)",
+        "category": "수식"
+      },
+      {
+        "id": "c4_coef",
+        "dna": "T2",
+        "label": "상수 4(계수)",
+        "category": "말단"
+      },
+      {
+        "id": "x_sq",
+        "dna": "E7",
+        "label": "x²",
+        "category": "수식"
+      },
+      {
+        "id": "c2_exp",
+        "dna": "T2",
+        "label": "상수 2(지수)",
+        "category": "말단"
+      },
+      {
+        "id": "expr_rhs",
+        "dna": "E1",
+        "label": "x⁴-6x²+9",
+        "category": "수식"
+      },
+      {
+        "id": "x4",
+        "dna": "E7",
+        "label": "x⁴",
+        "category": "수식"
+      },
+      {
+        "id": "c4_exp",
+        "dna": "T2",
+        "label": "상수 4(지수)",
+        "category": "말단"
+      },
+      {
+        "id": "neg6x2",
+        "dna": "E2",
+        "label": "부호반전(6x²)",
+        "category": "수식"
+      },
+      {
+        "id": "expr_6x2",
+        "dna": "E6",
+        "label": "곱(6,x²)",
+        "category": "수식"
+      },
+      {
+        "id": "c6",
+        "dna": "T2",
+        "label": "상수 6",
+        "category": "말단"
+      },
+      {
+        "id": "c9",
+        "dna": "T2",
+        "label": "상수 9",
+        "category": "말단"
+      },
+      {
+        "id": "setAc",
+        "dna": "S3",
+        "label": "A의 여집합Aᶜ",
+        "category": "구조"
+      },
+      {
+        "id": "setZ",
+        "dna": "S2",
+        "label": "정수 전체 집합",
+        "category": "구조"
+      },
+      {
+        "id": "nAc",
+        "dna": "S4",
+        "label": "n(Aᶜ)=2",
+        "category": "구조"
+      },
+      {
+        "id": "c2_cnt",
+        "dna": "T2",
+        "label": "상수 2(개수)",
+        "category": "말단"
+      },
+      {
+        "id": "nAc_eq2",
+        "dna": "C1",
+        "label": "n(Aᶜ)=2 등식",
+        "category": "조건"
+      },
+      {
+        "id": "int_x_cond",
+        "dna": "L3",
+        "label": "x는 정수",
+        "category": "제한"
+      },
+      {
+        "id": "cond_na",
+        "dna": "C26",
+        "label": "구간별 선형조건",
+        "category": "조건"
+      },
+      {
+        "id": "vn",
+        "dna": "T1",
+        "label": "정수 n",
+        "category": "말단"
+      },
+      {
+        "id": "n_int",
+        "dna": "L3",
+        "label": "n은 정수",
+        "category": "제한"
+      },
+      {
+        "id": "interval_n",
+        "dna": "F8",
+        "label": "구간[n,n+1]",
+        "category": "함수"
+      },
+      {
+        "id": "vn1",
+        "dna": "E1",
+        "label": "n+1",
+        "category": "수식"
+      },
+      {
+        "id": "c1_inc",
+        "dna": "T2",
+        "label": "상수 1",
+        "category": "말단"
+      },
+      {
+        "id": "crv_f",
+        "dna": "G2",
+        "label": "y=f(x) 그래프",
+        "category": "기하"
+      },
+      {
+        "id": "crv_eq",
+        "dna": "C11",
+        "label": "y=f(x) 방정식",
+        "category": "조건"
+      },
+      {
+        "id": "crv_c1",
+        "dna": "C1",
+        "label": "y=f(x) 등식",
+        "category": "조건"
+      },
+      {
+        "id": "vy",
+        "dna": "T3",
+        "label": "독립변수 y",
+        "category": "말단"
+      }
+    ],
+    "edges": [
+      {
+        "from": "ask_min",
+        "to": "top"
+      },
+      {
+        "from": "integ",
+        "to": "ask_min"
+      },
+      {
+        "from": "vf",
+        "to": "integ"
+      },
+      {
+        "from": "cm4",
+        "to": "integ"
+      },
+      {
+        "from": "c4",
+        "to": "integ"
+      },
+      {
+        "from": "nonneg_cond",
+        "to": "top"
+      },
+      {
+        "from": "fx_ge0",
+        "to": "nonneg_cond"
+      },
+      {
+        "from": "vf",
+        "to": "fx_ge0"
+      },
+      {
+        "from": "c0",
+        "to": "fx_ge0"
+      },
+      {
+        "from": "cond_ga",
+        "to": "top"
+      },
+      {
+        "from": "setA_def",
+        "to": "cond_ga"
+      },
+      {
+        "from": "ineq_lower",
+        "to": "setA_def"
+      },
+      {
+        "from": "ineq_upper",
+        "to": "setA_def"
+      },
+      {
+        "from": "int_x_cond",
+        "to": "setA_def"
+      },
+      {
+        "from": "expr_4x2",
+        "to": "ineq_lower"
+      },
+      {
+        "from": "vf",
+        "to": "ineq_lower"
+      },
+      {
+        "from": "vf",
+        "to": "ineq_upper"
+      },
+      {
+        "from": "expr_rhs",
+        "to": "ineq_upper"
+      },
+      {
+        "from": "c4_coef",
+        "to": "expr_4x2"
+      },
+      {
+        "from": "x_sq",
+        "to": "expr_4x2"
+      },
+      {
+        "from": "vx",
+        "to": "x_sq"
+      },
+      {
+        "from": "c2_exp",
+        "to": "x_sq"
+      },
+      {
+        "from": "x4",
+        "to": "expr_rhs"
+      },
+      {
+        "from": "neg6x2",
+        "to": "expr_rhs"
+      },
+      {
+        "from": "c9",
+        "to": "expr_rhs"
+      },
+      {
+        "from": "vx",
+        "to": "x4"
+      },
+      {
+        "from": "c4_exp",
+        "to": "x4"
+      },
+      {
+        "from": "expr_6x2",
+        "to": "neg6x2"
+      },
+      {
+        "from": "c6",
+        "to": "expr_6x2"
+      },
+      {
+        "from": "x_sq",
+        "to": "expr_6x2"
+      },
+      {
+        "from": "nAc_eq2",
+        "to": "cond_ga"
+      },
+      {
+        "from": "nAc",
+        "to": "nAc_eq2"
+      },
+      {
+        "from": "c2_cnt",
+        "to": "nAc_eq2"
+      },
+      {
+        "from": "setAc",
+        "to": "nAc"
+      },
+      {
+        "from": "setZ",
+        "to": "setAc"
+      },
+      {
+        "from": "setA_def",
+        "to": "setAc"
+      },
+      {
+        "from": "cond_na",
+        "to": "top"
+      },
+      {
+        "from": "vn",
+        "to": "cond_na"
+      },
+      {
+        "from": "interval_n",
+        "to": "cond_na"
+      },
+      {
+        "from": "crv_f",
+        "to": "cond_na"
+      },
+      {
+        "from": "vn",
+        "to": "interval_n"
+      },
+      {
+        "from": "vn1",
+        "to": "interval_n"
+      },
+      {
+        "from": "vn",
+        "to": "vn1"
+      },
+      {
+        "from": "c1_inc",
+        "to": "vn1"
+      },
+      {
+        "from": "n_int",
+        "to": "vn"
+      },
+      {
+        "from": "int_x_cond",
+        "to": "vx"
+      },
+      {
+        "from": "crv_eq",
+        "to": "crv_f"
+      },
+      {
+        "from": "crv_c1",
+        "to": "crv_eq"
+      },
+      {
+        "from": "vy",
+        "to": "crv_c1"
+      },
+      {
+        "from": "vf",
+        "to": "crv_c1"
+      }
+    ],
+    "new_dna": []
+  },
+  "thinking_profile": null,
+  "folders": [],
+  "history": [],
+  "recovery_warnings": [],
+  "errata": [],
+  "created_at": "2026-03-28T15:36:58.266Z"
+}
