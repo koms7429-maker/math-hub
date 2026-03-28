@@ -1,0 +1,902 @@
+{
+  "problem_id": "P29_3",
+  "answer": "15",
+  "clues": [
+    {
+      "id": "단서A",
+      "text": "$f(x)$는 최고차항의 계수가 자연수인 삼차함수이다"
+    },
+    {
+      "id": "단서B",
+      "text": "$g(x) = \\int_0^x \\left(\\frac{3}{2}t^2 + at + a\\right) dt$"
+    },
+    {
+      "id": "단서C",
+      "text": "(가) $f(x)$의 극댓값과 극솟값의 차는 $4$이다"
+    },
+    {
+      "id": "단서D",
+      "text": "(나) 모든 실수 $x$에 대하여 $|f(x) - g(x)| \\leq x^2|x - 3|$이다"
+    },
+    {
+      "id": "단서E",
+      "text": "$a > 0$이고 $a = p + q\\sqrt{3}$일 때 $p, q$는 유리수이다"
+    }
+  ],
+  "skeleton": [
+    {
+      "from": [
+        "단서B"
+      ],
+      "to": "note1",
+      "neuron": "연산49",
+      "type": "연산",
+      "domain_hint": "INTG",
+      "description": "다항식 부정적분 계산",
+      "note": "$g(x) = \\frac{1}{2}x^3 + \\frac{a}{2}x^2 + ax$이다",
+      "main": true,
+      "step": 1
+    },
+    {
+      "from": [
+        "단서D"
+      ],
+      "to": "note2",
+      "neuron": "전략28",
+      "type": "전략",
+      "domain_hint": "POLY, INEQ",
+      "description": "차이함수 도입하여 부등식 분석",
+      "note": "$h(x) = f(x) - g(x)$로 놓으면 $|h(x)| \\leq x^2|x-3|$이다",
+      "main": true,
+      "step": 1
+    },
+    {
+      "from": [
+        "note2"
+      ],
+      "to": "note3a",
+      "neuron": "전략25",
+      "type": "전략",
+      "domain_hint": "POLY, INEQ",
+      "description": "$x=0$ 대입으로 $h(0)=0$ 도출",
+      "note": "$x=0$ 대입하면 $|h(0)| \\leq 0$이므로 $h(0)=0$이다",
+      "main": true,
+      "step": 1
+    },
+    {
+      "from": [
+        "note2",
+        "note3a"
+      ],
+      "to": "note3b",
+      "neuron": "사실131",
+      "type": "사실",
+      "domain_hint": "DIFF",
+      "description": "$h(0)=0$과 부등식에서 $h'(0)=0$ 도출",
+      "note": "$x \\neq 0$일 때 $\\left|\\frac{h(x)}{x}\\right| \\leq |x||x-3|$이고 $\\frac{h(x)-h(0)}{x-0} = \\frac{h(x)}{x}$이므로 $x \\to 0$에서 $|h'(0)| \\leq 0$, 즉 $h'(0)=0$이다",
+      "main": true,
+      "step": 1
+    },
+    {
+      "from": [
+        "note2"
+      ],
+      "to": "note3c",
+      "neuron": "전략25",
+      "type": "전략",
+      "domain_hint": "POLY, INEQ",
+      "description": "$x=3$ 대입으로 $h(3)=0$ 도출",
+      "note": "$x=3$ 대입하면 $|h(3)| \\leq 0$이므로 $h(3)=0$이다",
+      "main": true,
+      "step": 1
+    },
+    {
+      "from": [
+        "note3a",
+        "note3b",
+        "note3c",
+        "단서A",
+        "note1"
+      ],
+      "to": "note4",
+      "neuron": "사실137",
+      "type": "사실",
+      "domain_hint": "POLY",
+      "description": "$h(0)=0$, $h'(0)=0$이면 $(x-0)^2 \\mid h(x)$이고, $h(3)=0$이면 $(x-3) \\mid h(x)$이므로 삼차다항식 $h(x) = kx^2(x-3)$으로 결정",
+      "note": "$h(x)$는 삼차다항식이고 $h(0)=h'(0)=0$에서 $x^2 \\mid h(x)$, $h(3)=0$에서 $(x-3) \\mid h(x)$이므로 $h(x) = kx^2(x-3)$이다",
+      "main": true,
+      "step": 1
+    },
+    {
+      "from": [
+        "note2",
+        "note4"
+      ],
+      "to": "note5",
+      "neuron": "전략25",
+      "type": "전략",
+      "domain_hint": "INEQ",
+      "description": "$h(x)=kx^2(x-3)$을 부등식에 대입하여 $|k| \\leq 1$ 도출",
+      "note": "$|kx^2(x-3)| \\leq x^2|x-3|$에서 $x \\neq 0$, $x \\neq 3$인 모든 $x$에 대해 $|k| \\leq 1$이다",
+      "main": true,
+      "step": 2
+    },
+    {
+      "from": [
+        "note1",
+        "note4"
+      ],
+      "to": "note6",
+      "neuron": "연산28",
+      "type": "연산",
+      "domain_hint": "POLY",
+      "description": "$f(x) = g(x) + h(x)$의 최고차항 계수 산출",
+      "note": "$f(x) = g(x) + h(x)$의 최고차항 계수는 $\\frac{1}{2} + k$이다",
+      "main": true,
+      "step": 2
+    },
+    {
+      "from": [
+        "note6",
+        "note5",
+        "단서A"
+      ],
+      "to": "note7",
+      "neuron": "전략17",
+      "type": "전략",
+      "domain_hint": "NUM",
+      "description": "범위 내 자연수 전수조사",
+      "note": "$|k| \\leq 1$에서 $-\\frac{1}{2} \\leq \\frac{1}{2}+k \\leq \\frac{3}{2}$이고, 이 범위의 자연수는 $1$뿐이므로 $k = \\frac{1}{2}$이다",
+      "main": true,
+      "step": 2
+    },
+    {
+      "from": [
+        "note1",
+        "note4",
+        "note7"
+      ],
+      "to": "note8",
+      "neuron": "연산24",
+      "type": "연산",
+      "domain_hint": "POLY",
+      "description": "$h(x)$와 $g(x)$ 합산하여 $f(x)$ 확정",
+      "note": "$h(x) = \\frac{1}{2}x^2(x-3)$이고 $f(x) = g(x)+h(x) = x^3 + \\frac{a-3}{2}x^2 + ax$이다",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": [
+        "note8"
+      ],
+      "to": "note9",
+      "neuron": "연산33",
+      "type": "연산",
+      "domain_hint": "DIFF",
+      "description": "각 항에 거듭제곱 미분 규칙 적용",
+      "note": "$(x^3)' = 3x^2$, $(\\frac{a-3}{2}x^2)' = (a-3)x$, $(ax)' = a$",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": [
+        "note9"
+      ],
+      "to": "note10",
+      "neuron": "연산34",
+      "type": "연산",
+      "domain_hint": "DIFF",
+      "description": "합/차 규칙으로 $f'(x)$ 확정",
+      "note": "$f'(x) = 3x^2 + (a-3)x + a$이다",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": [
+        "note8",
+        "단서C"
+      ],
+      "to": "note11",
+      "neuron": "사실141",
+      "type": "사실",
+      "domain_hint": "POLY, DIFF",
+      "description": "최고차항 계수 $1$인 삼차함수의 극값 차 공식 적용",
+      "note": "극댓값과 극솟값의 차는 $\\frac{1}{2}|\\alpha-\\beta|^3$이고 $(\\text{가})$에서 $\\frac{1}{2}|\\alpha-\\beta|^3 = 4$이므로 $|\\alpha-\\beta| = 2$이다",
+      "main": true,
+      "step": 4
+    },
+    {
+      "from": [
+        "note10"
+      ],
+      "to": "note12",
+      "neuron": "사실78",
+      "type": "사실",
+      "domain_hint": "POLY, EQN",
+      "description": "$f'(x)=3x^2+(a-3)x+a$의 두 근에 대해 근과 계수의 관계 적용",
+      "note": "$f'(x)=0$의 두 근 $\\alpha, \\beta$에 대해 $\\alpha+\\beta = \\frac{-(a-3)}{3} = \\frac{3-a}{3}$, $\\alpha\\beta = \\frac{a}{3}$이다",
+      "main": true,
+      "step": 4
+    },
+    {
+      "from": [
+        "note11",
+        "note12"
+      ],
+      "to": "note13",
+      "neuron": "연산28",
+      "type": "연산",
+      "domain_hint": "EQN",
+      "description": "$(\\alpha-\\beta)^2 = (\\alpha+\\beta)^2 - 4\\alpha\\beta$ 전개",
+      "note": "$(\\alpha-\\beta)^2 = \\left(\\frac{3-a}{3}\\right)^2 - 4 \\cdot \\frac{a}{3} = \\frac{(3-a)^2}{9} - \\frac{4a}{3} = \\frac{a^2-6a+9-12a}{9} = \\frac{a^2-18a+9}{9}$이다",
+      "main": true,
+      "step": 4
+    },
+    {
+      "from": [
+        "note13",
+        "note11"
+      ],
+      "to": "note14",
+      "neuron": "전략2",
+      "type": "전략",
+      "domain_hint": "EQN",
+      "description": "$|\\alpha-\\beta|=2$를 대입하여 $a$에 대한 방정식 수립",
+      "note": "$(\\alpha-\\beta)^2 = 4$이므로 $\\frac{a^2-18a+9}{9} = 4$에서 $a^2-18a+9 = 36$, 즉 $a^2-18a-27=0$이다",
+      "main": true,
+      "step": 4
+    },
+    {
+      "from": [
+        "note14"
+      ],
+      "to": "note15",
+      "neuron": "연산51",
+      "type": "연산",
+      "domain_hint": "EQN",
+      "description": "근의 공식으로 이차방정식 풀기",
+      "note": "$a = \\frac{18 \\pm \\sqrt{324+108}}{2} = \\frac{18 \\pm \\sqrt{432}}{2} = \\frac{18 \\pm 12\\sqrt{3}}{2} = 9 \\pm 6\\sqrt{3}$이다",
+      "main": true,
+      "step": 5
+    },
+    {
+      "from": [
+        "note15"
+      ],
+      "to": "note16",
+      "neuron": "전략25",
+      "type": "전략",
+      "domain_hint": "NUM",
+      "description": "구체적 수치 대입으로 부호 판별",
+      "note": "$9 - 6\\sqrt{3} \\approx 9 - 10.39 \\approx -1.39 < 0$이다",
+      "main": false,
+      "step": 5
+    },
+    {
+      "from": [
+        "note16",
+        "단서E"
+      ],
+      "to": "note17",
+      "neuron": "전략23",
+      "type": "전략",
+      "domain_hint": "NUM",
+      "description": "$a > 0$ 조건에 모순이므로 후보 기각",
+      "note": "$a > 0$에 모순이므로 $a = 9 - 6\\sqrt{3}$은 기각한다",
+      "main": false,
+      "step": 5
+    },
+    {
+      "from": [
+        "note15",
+        "note17",
+        "단서E"
+      ],
+      "to": "END",
+      "neuron": "전략25",
+      "type": "전략",
+      "domain_hint": "NUM",
+      "description": "생존 근 채택 후 최종 계산",
+      "note": "$a = 9 + 6\\sqrt{3}$이고 $p = 9$, $q = 6$이므로 $p + q = 15$이다",
+      "main": true,
+      "step": 5
+    }
+  ],
+  "solution": "STEP 1. $g(x) = \\frac{1}{2}x^3 + \\frac{a}{2}x^2 + ax$이다. $h(x) = f(x) - g(x)$로 놓으면 $|h(x)| \\leq x^2|x-3|$이다. $x=0$ 대입하면 $h(0)=0$이고, $\\frac{h(x)}{x} \\to h'(0)$이므로 $|h'(0)| \\leq \\lim_{x \\to 0} |x||x-3| = 0$에서 $h'(0)=0$이다. $x=3$ 대입하면 $h(3)=0$이다. $h(x)$는 삼차다항식이고, $h(0)=h'(0)=0$에서 $x^2 \\mid h(x)$이고 $h(3)=0$에서 $(x-3) \\mid h(x)$이므로 $h(x) = kx^2(x-3)$이다.\nSTEP 2. $|kx^2(x-3)| \\leq x^2|x-3|$에서 $|k| \\leq 1$이다. $f(x)$의 최고차항 계수는 $\\frac{1}{2}+k$이고, $|k| \\leq 1$에서 $-\\frac{1}{2} \\leq \\frac{1}{2}+k \\leq \\frac{3}{2}$이다. 이 범위의 자연수는 $1$뿐이므로 $k = \\frac{1}{2}$이다.\nSTEP 3. $h(x) = \\frac{1}{2}x^2(x-3)$이고 $f(x) = x^3 + \\frac{a-3}{2}x^2 + ax$이다. $f'(x) = 3x^2 + (a-3)x + a$이다.\nSTEP 4. 최고차항 계수 $1$인 삼차함수의 극값의 차는 $\\frac{1}{2}|\\alpha-\\beta|^3 = 4$에서 $|\\alpha-\\beta| = 2$이다. $f'(x)=0$의 두 근에 대해 $(\\alpha-\\beta)^2 = \\frac{(3-a)^2-12a}{9} = \\frac{a^2-18a+9}{9} = 4$이므로 $a^2-18a-27 = 0$이다.\nSTEP 5. $a = 9 \\pm 6\\sqrt{3}$이고, $9 - 6\\sqrt{3} < 0$이므로 $a > 0$에 의해 기각한다. $a = 9 + 6\\sqrt{3}$이고 $p + q = 9 + 6 = 15$이다.",
+  "original_solution": "### Step 1. $g(x)$ 계산 및 $h(x)$ 설정\n\n적분으로 정의된 $g(x)$를 먼저 구한다.\n\n$$g(x) = \\int_0^x \\left(\\frac{3}{2}t^2 + at + a\\right) dt = \\frac{1}{2}x^3 + \\frac{a}{2}x^2 + ax$$\n\n조건 (나)에서 $|f(x) - g(x)| \\leq x^2|x - 3|$이므로, 차이 함수 $h(x) = f(x) - g(x)$를 조건으로 활용한다.\n\n관찰:\n1. $x = 0$에서 접함 ($x^2$ 인수)\n2. $x = 3$에서 만남 ($x - 3$ 인수)\n3. $|h(x)|$의 최고차항 계수의 절댓값이 $1$ 이하\n\n즉, $h(x) = kx^2(x - 3)$  ($|k| \\leq 1$) 꼴이다.",
+  "analysis": "g(x)를 적분으로 구한 뒤, h(x)=f(x)-g(x)에 대해 |h(x)|≤x²|x-3|로부터 h(x)=kx²(x-3), |k|≤1을 도출한다. 최고차항 계수가 자연수인 조건으로 k=1/2를 확정하고, f(x)를 완성한 후 극값의 차 조건으로 a에 대한 이차방정식을 세워 a=9+6√3을 구한다.",
+  "new_neurons": [],
+  "metadata": {
+    "unit": "미적분",
+    "difficulty": "상",
+    "score": "4",
+    "type": "short_answer",
+    "answer": "15",
+    "year": "미상",
+    "source": "수능",
+    "topic": "삼차함수와 정적분",
+    "subtopic": "극값 조건과 부등식"
+  },
+  "edge_count": 20,
+  "side_count": 2,
+  "statement": "# 29. (수능) - 삼차함수와 정적분 조건\n\n## Problem\n상수 $a\\;(a > 0)$에 대하여 최고차항의 계수가 자연수인 삼차함수 $f(x)$와 함수\n\n$$g(x) = \\int_0^x \\left(\\frac{3}{2}t^2 + at + a\\right) dt$$\n\n가 다음 조건을 만족시킨다.\n\n(가) 함수 $f(x)$의 극댓값과 극솟값의 차는 $4$이다.\n\n(나) 모든 실수 $x$에 대하여 $|f(x) - g(x)| \\leq x^2|x - 3|$이다.\n\n$a$의 값이 $p + q\\sqrt{3}$일 때, $p + q$의 값을 구하시오.\n(단, $p$와 $q$는 유리수이다.)",
+  "dna": {
+    "nodes": [
+      {
+        "id": "top",
+        "dna": "Q1",
+        "label": "p+q값 구하라",
+        "category": "발문"
+      },
+      {
+        "id": "ask_sum",
+        "dna": "E1",
+        "label": "합(p,q)",
+        "category": "수식"
+      },
+      {
+        "id": "vp",
+        "dna": "T1",
+        "label": "변수 p",
+        "category": "말단"
+      },
+      {
+        "id": "vq",
+        "dna": "T1",
+        "label": "변수 q",
+        "category": "말단"
+      },
+      {
+        "id": "p_rational",
+        "dna": "L3",
+        "label": "p는 유리수",
+        "category": "제한"
+      },
+      {
+        "id": "q_rational",
+        "dna": "L3",
+        "label": "q는 유리수",
+        "category": "제한"
+      },
+      {
+        "id": "a_form",
+        "dna": "C1",
+        "label": "a=p+q√3",
+        "category": "조건"
+      },
+      {
+        "id": "a_rhs",
+        "dna": "E1",
+        "label": "합(p, q√3)",
+        "category": "수식"
+      },
+      {
+        "id": "q_sqrt3",
+        "dna": "E6",
+        "label": "곱(q,√3)",
+        "category": "수식"
+      },
+      {
+        "id": "c_sqrt3",
+        "dna": "E8",
+        "label": "√3",
+        "category": "수식"
+      },
+      {
+        "id": "c3",
+        "dna": "T2",
+        "label": "상수 3",
+        "category": "말단"
+      },
+      {
+        "id": "va",
+        "dna": "T1",
+        "label": "변수 a",
+        "category": "말단"
+      },
+      {
+        "id": "a_pos",
+        "dna": "C2",
+        "label": "a>0",
+        "category": "조건"
+      },
+      {
+        "id": "fx",
+        "dna": "F6",
+        "label": "함수 f(x)",
+        "category": "함수"
+      },
+      {
+        "id": "f_cubic",
+        "dna": "F11",
+        "label": "f는 삼차함수",
+        "category": "함수"
+      },
+      {
+        "id": "f_leadcoef",
+        "dna": "L4",
+        "label": "최고차항계수 자연수",
+        "category": "제한"
+      },
+      {
+        "id": "f_nat",
+        "dna": "L3",
+        "label": "계수가 자연수",
+        "category": "제한"
+      },
+      {
+        "id": "gx",
+        "dna": "F6",
+        "label": "함수 g(x)",
+        "category": "함수"
+      },
+      {
+        "id": "g_def",
+        "dna": "C11",
+        "label": "g(x) 방정식",
+        "category": "조건"
+      },
+      {
+        "id": "g_eq",
+        "dna": "C1",
+        "label": "g=정적분",
+        "category": "조건"
+      },
+      {
+        "id": "g_integral",
+        "dna": "E10",
+        "label": "정적분 0~x",
+        "category": "수식"
+      },
+      {
+        "id": "integrand",
+        "dna": "E1",
+        "label": "3/2t²+at+a",
+        "category": "수식"
+      },
+      {
+        "id": "term1",
+        "dna": "E6",
+        "label": "곱(3/2, t²)",
+        "category": "수식"
+      },
+      {
+        "id": "c_3o2",
+        "dna": "T2",
+        "label": "상수 3/2",
+        "category": "말단"
+      },
+      {
+        "id": "t_sq",
+        "dna": "E7",
+        "label": "t²",
+        "category": "수식"
+      },
+      {
+        "id": "vt",
+        "dna": "T3",
+        "label": "독립변수 t",
+        "category": "말단"
+      },
+      {
+        "id": "c2_exp",
+        "dna": "T2",
+        "label": "지수 2",
+        "category": "말단"
+      },
+      {
+        "id": "term2",
+        "dna": "E6",
+        "label": "곱(a,t)",
+        "category": "수식"
+      },
+      {
+        "id": "term3",
+        "dna": "T1",
+        "label": "상수항 a",
+        "category": "말단"
+      },
+      {
+        "id": "lower",
+        "dna": "T2",
+        "label": "하한 0",
+        "category": "말단"
+      },
+      {
+        "id": "upper",
+        "dna": "T3",
+        "label": "상한 x",
+        "category": "말단"
+      },
+      {
+        "id": "cond_ga",
+        "dna": "C25",
+        "label": "극값 차=4",
+        "category": "조건"
+      },
+      {
+        "id": "c4",
+        "dna": "T2",
+        "label": "상수 4",
+        "category": "말단"
+      },
+      {
+        "id": "f_maxval",
+        "dna": "F14",
+        "label": "f의 극댓값",
+        "category": "함수"
+      },
+      {
+        "id": "f_minval",
+        "dna": "F14",
+        "label": "f의 극솟값",
+        "category": "함수"
+      },
+      {
+        "id": "diff_extrema",
+        "dna": "E1",
+        "label": "극댓값-극솟값",
+        "category": "수식"
+      },
+      {
+        "id": "neg_minval",
+        "dna": "E2",
+        "label": "부호반전(극솟값)",
+        "category": "수식"
+      },
+      {
+        "id": "cond_nb",
+        "dna": "C18",
+        "label": "모든 x 부등식",
+        "category": "조건"
+      },
+      {
+        "id": "ineq_nb",
+        "dna": "C2",
+        "label": "|f-g|≤x²|x-3|",
+        "category": "조건"
+      },
+      {
+        "id": "lhs_abs",
+        "dna": "E5",
+        "label": "|f(x)-g(x)|",
+        "category": "수식"
+      },
+      {
+        "id": "f_minus_g",
+        "dna": "E1",
+        "label": "f(x)-g(x)",
+        "category": "수식"
+      },
+      {
+        "id": "neg_gx_val",
+        "dna": "E2",
+        "label": "부호반전 g(x)",
+        "category": "수식"
+      },
+      {
+        "id": "fx_val",
+        "dna": "F3",
+        "label": "f(x) 값",
+        "category": "함수"
+      },
+      {
+        "id": "gx_val",
+        "dna": "F3",
+        "label": "g(x) 값",
+        "category": "함수"
+      },
+      {
+        "id": "rhs_prod",
+        "dna": "E6",
+        "label": "x²·|x-3|",
+        "category": "수식"
+      },
+      {
+        "id": "x_sq",
+        "dna": "E7",
+        "label": "x²",
+        "category": "수식"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
+      },
+      {
+        "id": "abs_x3",
+        "dna": "E5",
+        "label": "|x-3|",
+        "category": "수식"
+      },
+      {
+        "id": "x_minus3",
+        "dna": "E1",
+        "label": "x-3",
+        "category": "수식"
+      },
+      {
+        "id": "neg_c3",
+        "dna": "E2",
+        "label": "부호반전(3)",
+        "category": "수식"
+      },
+      {
+        "id": "conds",
+        "dna": "S1",
+        "label": "조건(가)(나)",
+        "category": "구조"
+      }
+    ],
+    "edges": [
+      {
+        "from": "ask_sum",
+        "to": "top"
+      },
+      {
+        "from": "conds",
+        "to": "top"
+      },
+      {
+        "from": "a_form",
+        "to": "top"
+      },
+      {
+        "from": "vp",
+        "to": "ask_sum"
+      },
+      {
+        "from": "vq",
+        "to": "ask_sum"
+      },
+      {
+        "from": "p_rational",
+        "to": "vp"
+      },
+      {
+        "from": "q_rational",
+        "to": "vq"
+      },
+      {
+        "from": "va",
+        "to": "a_form"
+      },
+      {
+        "from": "a_rhs",
+        "to": "a_form"
+      },
+      {
+        "from": "vp",
+        "to": "a_rhs"
+      },
+      {
+        "from": "q_sqrt3",
+        "to": "a_rhs"
+      },
+      {
+        "from": "vq",
+        "to": "q_sqrt3"
+      },
+      {
+        "from": "c_sqrt3",
+        "to": "q_sqrt3"
+      },
+      {
+        "from": "c3",
+        "to": "c_sqrt3"
+      },
+      {
+        "from": "va",
+        "to": "a_pos"
+      },
+      {
+        "from": "a_pos",
+        "to": "conds"
+      },
+      {
+        "from": "fx",
+        "to": "f_cubic"
+      },
+      {
+        "from": "f_cubic",
+        "to": "conds"
+      },
+      {
+        "from": "f_leadcoef",
+        "to": "fx"
+      },
+      {
+        "from": "f_nat",
+        "to": "f_leadcoef"
+      },
+      {
+        "from": "gx",
+        "to": "g_def"
+      },
+      {
+        "from": "g_def",
+        "to": "conds"
+      },
+      {
+        "from": "g_eq",
+        "to": "g_def"
+      },
+      {
+        "from": "g_integral",
+        "to": "g_eq"
+      },
+      {
+        "from": "integrand",
+        "to": "g_integral"
+      },
+      {
+        "from": "lower",
+        "to": "g_integral"
+      },
+      {
+        "from": "upper",
+        "to": "g_integral"
+      },
+      {
+        "from": "term1",
+        "to": "integrand"
+      },
+      {
+        "from": "term2",
+        "to": "integrand"
+      },
+      {
+        "from": "term3",
+        "to": "integrand"
+      },
+      {
+        "from": "c_3o2",
+        "to": "term1"
+      },
+      {
+        "from": "t_sq",
+        "to": "term1"
+      },
+      {
+        "from": "vt",
+        "to": "t_sq"
+      },
+      {
+        "from": "c2_exp",
+        "to": "t_sq"
+      },
+      {
+        "from": "va",
+        "to": "term2"
+      },
+      {
+        "from": "vt",
+        "to": "term2"
+      },
+      {
+        "from": "va",
+        "to": "term3"
+      },
+      {
+        "from": "cond_ga",
+        "to": "conds"
+      },
+      {
+        "from": "diff_extrema",
+        "to": "cond_ga"
+      },
+      {
+        "from": "c4",
+        "to": "cond_ga"
+      },
+      {
+        "from": "f_maxval",
+        "to": "diff_extrema"
+      },
+      {
+        "from": "neg_minval",
+        "to": "diff_extrema"
+      },
+      {
+        "from": "f_minval",
+        "to": "neg_minval"
+      },
+      {
+        "from": "fx",
+        "to": "f_maxval"
+      },
+      {
+        "from": "fx",
+        "to": "f_minval"
+      },
+      {
+        "from": "cond_nb",
+        "to": "conds"
+      },
+      {
+        "from": "ineq_nb",
+        "to": "cond_nb"
+      },
+      {
+        "from": "lhs_abs",
+        "to": "ineq_nb"
+      },
+      {
+        "from": "rhs_prod",
+        "to": "ineq_nb"
+      },
+      {
+        "from": "f_minus_g",
+        "to": "lhs_abs"
+      },
+      {
+        "from": "fx_val",
+        "to": "f_minus_g"
+      },
+      {
+        "from": "neg_gx_val",
+        "to": "f_minus_g"
+      },
+      {
+        "from": "gx_val",
+        "to": "neg_gx_val"
+      },
+      {
+        "from": "fx",
+        "to": "fx_val"
+      },
+      {
+        "from": "gx",
+        "to": "gx_val"
+      },
+      {
+        "from": "vx",
+        "to": "fx_val"
+      },
+      {
+        "from": "vx",
+        "to": "gx_val"
+      },
+      {
+        "from": "x_sq",
+        "to": "rhs_prod"
+      },
+      {
+        "from": "abs_x3",
+        "to": "rhs_prod"
+      },
+      {
+        "from": "vx",
+        "to": "x_sq"
+      },
+      {
+        "from": "c2_exp",
+        "to": "x_sq"
+      },
+      {
+        "from": "x_minus3",
+        "to": "abs_x3"
+      },
+      {
+        "from": "vx",
+        "to": "x_minus3"
+      },
+      {
+        "from": "neg_c3",
+        "to": "x_minus3"
+      },
+      {
+        "from": "c3",
+        "to": "neg_c3"
+      }
+    ],
+    "new_dna": []
+  },
+  "thinking_profile": null,
+  "folders": [],
+  "history": [],
+  "recovery_warnings": [],
+  "errata": [],
+  "created_at": "2026-03-28T15:27:32.945Z"
+}
