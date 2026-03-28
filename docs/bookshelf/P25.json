@@ -1,0 +1,918 @@
+{
+  "problem_id": "P25",
+  "answer": "28",
+  "clues": [
+    {
+      "id": "단서A",
+      "text": "$f(x) = -x^4 + ax^3 + 14x^2$ ($a$는 실수)"
+    },
+    {
+      "id": "단서B",
+      "text": "$k-1 \\leq x \\leq k$인 모든 실수 $x$에 대하여 $f(x) \\leq f(k-1)$이고, $k \\leq x \\leq k+2$인 모든 실수 $x$에 대하여 $f(x) \\leq f(k+2)$이다"
+    },
+    {
+      "id": "단서C",
+      "text": "조건을 만족시키는 정수 $k$의 개수가 2이다"
+    }
+  ],
+  "skeleton": [
+    {
+      "from": [
+        "단서A"
+      ],
+      "to": "note1",
+      "neuron": "연산33",
+      "type": "연산",
+      "domain_hint": "DIFF, POLY",
+      "description": "사차함수 f(x)를 거듭제곱 미분 규칙으로 미분하여 삼차 도함수 f'(x)를 얻는다",
+      "note": "사차함수 f(x)를 거듭제곱 미분 규칙으로 미분하여 삼차 도함수 f'(x)를 얻는다",
+      "main": true,
+      "step": 1,
+      "_keep_neuron": true
+    },
+    {
+      "from": "note1",
+      "to": "note2",
+      "neuron": "연산34",
+      "type": "연산",
+      "domain_hint": "DIFF, POLY",
+      "description": "합/차 미분 규칙으로 각 항을 분리하여 f'(x)를 정리한다",
+      "note": "합/차 미분 규칙으로 각 항을 분리하여 f'(x)를 정리한다",
+      "main": true,
+      "step": 1,
+      "_keep_neuron": true
+    },
+    {
+      "from": "note2",
+      "to": "note3",
+      "neuron": "연산9",
+      "type": "연산",
+      "domain_hint": "DIFF, POLY",
+      "description": "f'(x)를 인수분해하여 f'(x)=0의 근을 인수별로 분리한다",
+      "note": "f'(x)를 인수분해하여 f'(x)=0의 근을 인수별로 분리한다",
+      "main": true,
+      "step": 1,
+      "_keep_neuron": true
+    },
+    {
+      "from": [
+        "note3"
+      ],
+      "to": "note4",
+      "neuron": "사실79",
+      "type": "사실",
+      "domain_hint": "POLY, EQN",
+      "description": "이차방정식의 판별식으로 실근 존재 판정",
+      "note": "$x^2 - \\dfrac{3a}{4}x - 7 = 0$의 판별식 $D = \\dfrac{9a^2}{16} + 28 > 0$이다",
+      "main": false,
+      "step": 1
+    },
+    {
+      "from": [
+        "note3"
+      ],
+      "to": "note5",
+      "neuron": "사실78",
+      "type": "사실",
+      "domain_hint": "POLY, EQN",
+      "description": "근과 계수의 관계로 근의 곱 부호 판정",
+      "note": "$x^2 - \\dfrac{3a}{4}x - 7 = 0$의 두 근의 곱 $= -7 < 0$이다",
+      "main": false,
+      "step": 1
+    },
+    {
+      "from": [
+        "note4",
+        "note5"
+      ],
+      "to": "note6",
+      "neuron": "사실65",
+      "type": "사실",
+      "domain_hint": "EQN, NUM",
+      "description": "근의 곱이 음이면 부호가 다른 두 실근",
+      "note": "서로 다른 두 실근 $\\alpha, \\beta$ ($\\alpha < 0 < \\beta$)를 가진다",
+      "main": true,
+      "step": 1
+    },
+    {
+      "from": [
+        "note3",
+        "note6"
+      ],
+      "to": "note7",
+      "neuron": "사실99",
+      "type": "사실",
+      "domain_hint": "POLY, MONO, FUNC",
+      "description": "삼차 도함수의 부호 변화로 극값 구조 결정",
+      "note": "$f'(x) = -4(x - \\alpha)\\cdot x \\cdot (x - \\beta)$의 부호 변화에 의해 $f(x)$는 $x = \\alpha, \\beta$에서 극대, $x = 0$에서 극소이다",
+      "main": true,
+      "step": 2
+    },
+    {
+      "from": [
+        "단서B",
+        "note3"
+      ],
+      "to": "note8",
+      "neuron": "사실98",
+      "type": "사실",
+      "domain_hint": "DIFF, MONO",
+      "description": "f'>0이면 증가 (대우 논증 전제)",
+      "note": "$f'((k-1)^+) > 0$이라 가정하면 $x = k-1$ 직후에서 $f$는 증가한다",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": [
+        "note8",
+        "단서B"
+      ],
+      "to": "note9",
+      "neuron": "사실98",
+      "type": "전략",
+      "domain_hint": "FUNC",
+      "description": "최댓값 가정 하에 f'(끝점)>0이면 끝점 직후 f가 증가하여 끝점 이후에 더 큰 값이 존재한다",
+      "note": "최댓값 가정 하에 f'(끝점)>0이면 끝점 직후 f가 증가하여 끝점 이후에 더 큰 값이 존재한다",
+      "main": false,
+      "step": 3,
+      "_keep_neuron": true
+    },
+    {
+      "from": "note9",
+      "to": "note10",
+      "neuron": "전략23",
+      "type": "전략",
+      "domain_hint": "FUNC",
+      "description": "끝점이 최댓값이라는 가정과 모순이 발생하므로 f'(끝점)>0인 가능성을 배제한다",
+      "note": "끝점이 최댓값이라는 가정과 모순이 발생하므로 f'(끝점)>0인 가능성을 배제한다",
+      "main": false,
+      "step": 3,
+      "_keep_neuron": true
+    },
+    {
+      "from": [
+        "note10"
+      ],
+      "to": "note11",
+      "neuron": "사실98",
+      "type": "사실",
+      "domain_hint": "DIFF, MONO",
+      "description": "모순에 의한 부등식 결론 (대우)",
+      "note": "$f'((k-1)^+) \\leq 0$이다",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": [
+        "단서B",
+        "note3"
+      ],
+      "to": "note12",
+      "neuron": "사실98",
+      "type": "사실",
+      "domain_hint": "DIFF, MONO",
+      "description": "f'<0이면 감소 (대우 논증 전제)",
+      "note": "$f'((k+2)^-) < 0$이라 가정하면 $x = k+2$ 직전에서 $f$는 감소한다",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": [
+        "note12",
+        "단서B"
+      ],
+      "to": "note13",
+      "neuron": "사실98",
+      "type": "전략",
+      "domain_hint": "FUNC",
+      "description": "최댓값 가정 하에 f'(끝점)>0이면 끝점 직후 f가 증가하여 끝점 이후에 더 큰 값이 존재한다",
+      "note": "최댓값 가정 하에 f'(끝점)>0이면 끝점 직후 f가 증가하여 끝점 이후에 더 큰 값이 존재한다",
+      "main": false,
+      "step": 3,
+      "_keep_neuron": true
+    },
+    {
+      "from": "note13",
+      "to": "note14",
+      "neuron": "전략23",
+      "type": "전략",
+      "domain_hint": "FUNC",
+      "description": "끝점이 최댓값이라는 가정과 모순이 발생하므로 f'(끝점)>0인 가능성을 배제한다",
+      "note": "끝점이 최댓값이라는 가정과 모순이 발생하므로 f'(끝점)>0인 가능성을 배제한다",
+      "main": false,
+      "step": 3,
+      "_keep_neuron": true
+    },
+    {
+      "from": [
+        "note14"
+      ],
+      "to": "note15",
+      "neuron": "사실98",
+      "type": "사실",
+      "domain_hint": "DIFF, MONO",
+      "description": "모순에 의한 부등식 결론 (대우)",
+      "note": "$f'((k+2)^-) \\geq 0$이다",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": [
+        "note11",
+        "note15"
+      ],
+      "to": "note16",
+      "neuron": "사실99",
+      "type": "사실",
+      "domain_hint": "DIFF, FUNC",
+      "description": "도함수 부호 변화로 극소 존재 판정",
+      "note": "$(k-1, k+2)$에서 $f'$의 부호가 음→양으로 바뀌므로 $f$는 극솟값을 가진다",
+      "main": true,
+      "step": 4
+    },
+    {
+      "from": [
+        "note16",
+        "note7"
+      ],
+      "to": "note17",
+      "neuron": "사실99",
+      "type": "사실",
+      "domain_hint": "FUNC, NUM",
+      "description": "유일한 극소점으로부터 구간 조건 유도",
+      "note": "$f(x)$의 유일한 극소점이 $x = 0$이므로 $0 \\in (k-1, k+2)$이다",
+      "main": true,
+      "step": 4
+    },
+    {
+      "from": [
+        "note17"
+      ],
+      "to": "note18",
+      "neuron": "연산21",
+      "type": "연산",
+      "domain_hint": "INEQ, NUM",
+      "description": "부등식을 풀어 정수 후보 도출",
+      "note": "$k - 1 < 0 < k + 2$에서 $-1 < k$이고 $k < 1$이므로 정수 $k$는 $k = -1$ 또는 $k = 0$이다",
+      "main": true,
+      "step": 4
+    },
+    {
+      "from": [
+        "note18",
+        "단서C"
+      ],
+      "to": "note19",
+      "neuron": "사실79",
+      "type": "사실",
+      "domain_hint": "SET, NUM",
+      "description": "개수 조건으로 두 후보 모두 유효 확정",
+      "note": "정수 $k$의 개수가 2이므로 $k = -1$과 $k = 0$ 모두 조건을 만족시킨다",
+      "main": true,
+      "step": 5
+    },
+    {
+      "from": [
+        "note19",
+        "note7"
+      ],
+      "to": "note20",
+      "neuron": "전략22",
+      "type": "전략",
+      "domain_hint": "FUNC, MONO",
+      "description": "k=-1일 때 각 구간 조건 해석",
+      "note": "$k = -1$일 때, $[-2, -1]$에서 $f(x) \\leq f(-2)$이므로 $f$는 $[-2, -1]$에서 감소한다",
+      "main": true,
+      "step": 5
+    },
+    {
+      "from": [
+        "note19",
+        "note7"
+      ],
+      "to": "note21",
+      "neuron": "사실53",
+      "type": "사실",
+      "domain_hint": "MONO, FUNC",
+      "description": "감소구간에서 단조함수 끝점이 최댓값",
+      "note": "$k = -1$일 때, $[-1, 0]$에서 $f$는 감소이므로 구간 최댓값은 $f(-1)$이다",
+      "main": false,
+      "step": 5
+    },
+    {
+      "from": [
+        "note19",
+        "note7"
+      ],
+      "to": "note22",
+      "neuron": "사실53",
+      "type": "사실",
+      "domain_hint": "MONO, FUNC",
+      "description": "증가구간에서 단조함수 끝점이 최댓값",
+      "note": "$k = -1$일 때, $[0, 1]$에서 $f$는 증가이므로 구간 최댓값은 $f(1)$이다",
+      "main": false,
+      "step": 5
+    },
+    {
+      "from": [
+        "note21",
+        "note22"
+      ],
+      "to": "note23",
+      "neuron": "사실53",
+      "type": "사실",
+      "domain_hint": "FUNC, INEQ",
+      "description": "두 구간 최댓값 비교로 끝점 부등식 도출",
+      "note": "$[-1, 1]$에서 $f(1)$이 최댓값이 되려면 $f(-1) \\leq f(1)$이다",
+      "main": true,
+      "step": 5
+    },
+    {
+      "from": [
+        "note19",
+        "note7"
+      ],
+      "to": "note24",
+      "neuron": "전략22",
+      "type": "전략",
+      "domain_hint": "FUNC, MONO",
+      "description": "k=0일 때 각 구간 조건 해석",
+      "note": "$k = 0$일 때, $[-1, 0]$에서 $f$는 감소하고 $[0, 2]$에서 $f$는 증가한다",
+      "main": true,
+      "step": 5
+    },
+    {
+      "from": [
+        "note20",
+        "note24"
+      ],
+      "to": "note25",
+      "neuron": "사실98",
+      "type": "사실",
+      "domain_hint": "MONO, FUNC",
+      "description": "감소구간 결합으로 단조감소 구간 확장",
+      "note": "$f$는 $[-2, 0]$에서 감소한다",
+      "main": true,
+      "step": 6
+    },
+    {
+      "from": [
+        "note25",
+        "note3"
+      ],
+      "to": "note26",
+      "neuron": "사실98",
+      "type": "사실",
+      "domain_hint": "DIFF, MONO",
+      "description": "단조감소 구간 끝점에서 도함수 부호 조건",
+      "note": "$f'(-2) \\leq 0$이다",
+      "main": true,
+      "step": 6
+    },
+    {
+      "from": [
+        "note26"
+      ],
+      "to": "note27",
+      "neuron": "연산21",
+      "type": "연산",
+      "domain_hint": "POLY, INEQ",
+      "description": "도함수에 값 대입하여 a의 부등식 유도",
+      "note": "$f'(-2) = 12a - 24 \\leq 0$에서 $a \\leq 2$이다",
+      "main": true,
+      "step": 6
+    },
+    {
+      "from": [
+        "note24",
+        "note3"
+      ],
+      "to": "note28",
+      "neuron": "사실98",
+      "type": "사실",
+      "domain_hint": "DIFF, MONO",
+      "description": "단조증가 구간 끝점에서 도함수 부호 조건",
+      "note": "$f'(2) \\geq 0$이다",
+      "main": true,
+      "step": 6
+    },
+    {
+      "from": [
+        "note28"
+      ],
+      "to": "note29",
+      "neuron": "연산21",
+      "type": "연산",
+      "domain_hint": "POLY, INEQ",
+      "description": "도함수에 값 대입하여 a의 부등식 유도",
+      "note": "$f'(2) = 12a + 24 \\geq 0$에서 $a \\geq -2$이다",
+      "main": true,
+      "step": 6
+    },
+    {
+      "from": [
+        "note23",
+        "단서A"
+      ],
+      "to": "note30",
+      "neuron": "연산21",
+      "type": "연산",
+      "domain_hint": "POLY, INEQ",
+      "description": "함수값을 계산하여 a의 부등식 유도",
+      "note": "각 구간 조건에서 도출된 부등식들(note23, note25, note26)의 교집합이 a의 최종 허용 범위이다",
+      "main": true,
+      "step": 6
+    },
+    {
+      "from": [
+        "note30",
+        "단서A"
+      ],
+      "to": "END",
+      "neuron": "사실53",
+      "type": "연산",
+      "domain_hint": "POLY, INEQ",
+      "description": "일차함수의 범위에서 최댓값·최솟값 합 계산",
+      "note": "$f(1) = 13 + a$이고 $0 \\leq a \\leq 2$이므로 최댓값 $M = 15$, 최솟값 $m = 13$이고 $M + m = 28$이다",
+      "main": true,
+      "step": 7
+    }
+  ],
+  "solution": "STEP 1. $f'(x) = -4x(x^2 - \\frac{3a}{4}x - 7)$로 인수분해한다. 이차식의 판별식이 항상 양이고 근의 곱이 $-7 < 0$이므로 서로 다른 두 실근 $\\alpha < 0 < \\beta$를 가진다.\nSTEP 2. $f'(x)$의 부호 변화에 의해 $f(x)$는 $x = \\alpha, \\beta$에서 극대, $x = 0$에서 극소이다.\nSTEP 3. 끝점이 최댓값인데 $f' > 0$이면 증가하여 모순이므로 $f'((k-1)^+) \\leq 0$이다. 마찬가지로 $f'((k+2)^-) \\geq 0$이다.\nSTEP 4. $(k-1, k+2)$에서 극솟값을 가지며 유일한 극소점이 $x = 0$이므로 $k - 1 < 0 < k + 2$이고 정수 $k = -1$ 또는 $k = 0$이다.\nSTEP 5. 개수 조건에 의해 $k = -1$, $k = 0$ 모두 성립한다. $k = -1$일 때 $[-2, -1]$에서 감소, $f(-1) \\leq f(1)$이다. $k = 0$일 때 $[-1, 0]$에서 감소, $[0, 2]$에서 증가한다.\nSTEP 6. $[-2, 0]$에서 감소이므로 $f'(-2) \\leq 0$에서 $a \\leq 2$이다. $[0, 2]$에서 증가이므로 $f'(2) \\geq 0$에서 $a \\geq -2$이다. $f(-1) \\leq f(1)$에서 $a \\geq 0$이다.\nSTEP 7. $0 \\leq a \\leq 2$이고 $f(1) = 13 + a$이므로 최댓값 $15$, 최솟값 $13$이고 합은 $28$이다.",
+  "original_solution": "$f(x) = -x^4 + ax^3 + 14x^2$이므로\n\n$$f'(x) = -4x^3 + 3ax^2 + 28x = -4x\\!\\left(x^2 - \\frac{3a}{4}x - 7\\right) \\quad \\cdots \\; \\textcircled{1}$$\n\n이때 $x^2 - \\dfrac{3a}{4}x - 7 = 0$은\n\n$$\\begin{cases} \\text{서로 다른 두 실근을 가짐} \\;(\\because\\; D > 0) \\\\ \\text{두 실근의 곱} < 0 \\end{cases}$$\n\n이므로 위 방정식의 두 실근을 $\\alpha,\\;\\beta$ $(\\alpha < 0 < \\beta)$라 하면, $f(x)$는 $x = \\alpha,\\;\\beta$에서 극댓값을 갖고 $x = 0$에서 극솟값을 가짐을 알 수 있다.\n\n한편, 문제의 박스 조건을 만족시키는 정수 $k$에 대하여\n\n$$\\begin{cases} \\textcircled{1} \\Rightarrow x = (k-1)^{+}\\text{에서 } f'(x) < 0 \\\\ \\textcircled{2} \\Rightarrow x = (k+2)^{-}\\text{에서 } f'(x) > 0 \\end{cases}$$\n\n이므로\n\n$$\\Rightarrow f(x)\\text{는 열린구간 } (k-1,\\; k+2)\\text{에서 극솟값을 가짐}$$\n\n$$\\Rightarrow \\text{가능한 정수 } k\\text{의 값은 } k = -1 \\text{ 또는 } k = 0$$\n\n$$(\\because\\; f(x)\\text{는 } x = 0\\text{에서만 극소})$$\n\n이때 문제의 박스 조건을 만족시키는 정수 $k$의 개수가 2이므로, $k = -1$, $k = 0$ **모두** 박스 조건을 만족시킴을 알 수 있다.\n\n$f(x)$가 $x = 0$에서 극소임을 고려하면\n\n- $k = -1$일 때, 문제의 박스 조건이 성립\n  $\\Rightarrow$ 구간 $[-2,\\;-1]$에서 감소, $f(-1) \\leq f(1)$\n\n- $k = 0$일 때, 문제의 박스 조건이 성립\n  $\\Rightarrow$ 구간 $[-1,\\;0]$에서 감소, 구간 $[0,\\;2]$에서 증가\n\n따라서\n\n$$\\begin{cases} f(-1) \\leq f(1) \\;\\Rightarrow\\; a \\geq 0 \\\\ \\text{구간 } [-2,\\;0]\\text{에서 감소} \\;\\Rightarrow\\; f'(-2) \\leq 0 \\;\\Rightarrow\\; a \\leq 2 \\;(\\because\\;\\textcircled{1}) \\\\ \\text{구간 } [0,\\;2]\\text{에서 증가} \\;\\Rightarrow\\; f'(2) \\geq 0 \\;\\Rightarrow\\; a \\geq -2 \\;(\\because\\;\\textcircled{1}) \\end{cases}$$\n\n$$\\Rightarrow 0 \\leq a \\leq 2$$\n\n$f(1) = -1 + a + 14 = 13 + a$이므로\n\n- $f(1) = 13 + a$의 **최댓값** $M = 15$ (when $a = 2$)\n- $f(1) = 13 + a$의 **최솟값** $m = 13$ (when $a = 0$)\n\n$$\\therefore\\; M + m = 15 + 13 = \\boxed{28}$$",
+  "analysis": "f'(x)를 인수분해하면 극대점 α<0<β와 극소점 x=0을 갖는 구조이다. 박스 조건의 끝점 최댓값으로부터 도함수 부호 조건을 유도하고, 극소점이 (k-1, k+2)에 포함되어야 하므로 k∈{-1,0}을 얻는다. 두 정수 모두 조건을 만족시킬 때 a의 범위 0≤a≤2를 구하고 f(1)=13+a의 최댓값·최솟값 합 28을 구한다.",
+  "new_neurons": [],
+  "metadata": {
+    "unit": "미적분",
+    "difficulty": "상",
+    "score": "4",
+    "type": "short_answer",
+    "answer": "28",
+    "year": "미상",
+    "source": "수능",
+    "topic": "다항함수의 극값과 부등식 조건",
+    "subtopic": "극소 조건을 만족하는 정수 k의 개수와 f(1)의 최댓값·최솟값"
+  },
+  "edge_count": 31,
+  "side_count": 10,
+  "statement": "# 25. (수능) - 다항함수의 극값 조건과 정수 $k$의 개수\n\n## Problem\n실수 $a$에 대하여 함수\n\n$$f(x) = -x^4 + ax^3 + 14x^2$$\n\n이 있다. 다음 조건을 만족시키는 정수 $k$의 개수가 2일 때, $f(1)$의 최댓값과 최솟값의 합을 구하시오. [4점]\n\n$$\\begin{cases} k-1 \\leq x \\leq k\\text{인 모든 실수 } x\\text{에 대하여 } f(x) \\leq f(k-1)\\text{이고} \\\\ k \\leq x \\leq k+2\\text{인 모든 실수 } x\\text{에 대하여 } f(x) \\leq f(k+2)\\text{이다.} \\end{cases}$$",
+  "dna": {
+    "nodes": [
+      {
+        "id": "top",
+        "dna": "Q1",
+        "label": "값을 구하라",
+        "category": "발문"
+      },
+      {
+        "id": "ask",
+        "dna": "E1",
+        "label": "최댓+최솟 합",
+        "category": "수식"
+      },
+      {
+        "id": "ask_max",
+        "dna": "T1",
+        "label": "f(1) 최댓값",
+        "category": "말단"
+      },
+      {
+        "id": "ask_min",
+        "dna": "T1",
+        "label": "f(1) 최솟값",
+        "category": "말단"
+      },
+      {
+        "id": "f1_val",
+        "dna": "F3",
+        "label": "f(1)",
+        "category": "함수"
+      },
+      {
+        "id": "func_f",
+        "dna": "F6",
+        "label": "함수 f 정의",
+        "category": "함수"
+      },
+      {
+        "id": "func_eq",
+        "dna": "C11",
+        "label": "f 방정식",
+        "category": "조건"
+      },
+      {
+        "id": "func_c1",
+        "dna": "C1",
+        "label": "f(x)=수식",
+        "category": "조건"
+      },
+      {
+        "id": "rhs",
+        "dna": "E1",
+        "label": "항들의 합",
+        "category": "수식"
+      },
+      {
+        "id": "term1_neg",
+        "dna": "E2",
+        "label": "-x^4",
+        "category": "수식"
+      },
+      {
+        "id": "term1",
+        "dna": "E7",
+        "label": "x^4",
+        "category": "수식"
+      },
+      {
+        "id": "term2",
+        "dna": "E6",
+        "label": "ax^3",
+        "category": "수식"
+      },
+      {
+        "id": "x3",
+        "dna": "E7",
+        "label": "x^3",
+        "category": "수식"
+      },
+      {
+        "id": "term3",
+        "dna": "E6",
+        "label": "14x^2",
+        "category": "수식"
+      },
+      {
+        "id": "x2",
+        "dna": "E7",
+        "label": "x^2",
+        "category": "수식"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
+      },
+      {
+        "id": "va",
+        "dna": "T1",
+        "label": "변수 a",
+        "category": "말단"
+      },
+      {
+        "id": "c4",
+        "dna": "T2",
+        "label": "상수 4",
+        "category": "말단"
+      },
+      {
+        "id": "c3",
+        "dna": "T2",
+        "label": "상수 3",
+        "category": "말단"
+      },
+      {
+        "id": "c2",
+        "dna": "T2",
+        "label": "상수 2",
+        "category": "말단"
+      },
+      {
+        "id": "c14",
+        "dna": "T2",
+        "label": "상수 14",
+        "category": "말단"
+      },
+      {
+        "id": "c1a",
+        "dna": "T2",
+        "label": "상수 1",
+        "category": "말단"
+      },
+      {
+        "id": "va_real",
+        "dna": "L3",
+        "label": "a는 실수",
+        "category": "제한"
+      },
+      {
+        "id": "vk",
+        "dna": "T1",
+        "label": "변수 k",
+        "category": "말단"
+      },
+      {
+        "id": "vk_int",
+        "dna": "L3",
+        "label": "k는 정수",
+        "category": "제한"
+      },
+      {
+        "id": "cnt_cond",
+        "dna": "X4",
+        "label": "정수k 개수=2",
+        "category": "존재"
+      },
+      {
+        "id": "cond1",
+        "dna": "C18",
+        "label": "구간1 모든x",
+        "category": "조건"
+      },
+      {
+        "id": "cond1_range",
+        "dna": "F8",
+        "label": "구간[k-1,k]",
+        "category": "함수"
+      },
+      {
+        "id": "k_minus1",
+        "dna": "E1",
+        "label": "k-1",
+        "category": "수식"
+      },
+      {
+        "id": "neg1_a",
+        "dna": "E2",
+        "label": "-(1)",
+        "category": "수식"
+      },
+      {
+        "id": "k_plus2",
+        "dna": "E1",
+        "label": "k+2",
+        "category": "수식"
+      },
+      {
+        "id": "cond1_ineq",
+        "dna": "C2",
+        "label": "f(x)≤f(k-1)",
+        "category": "조건"
+      },
+      {
+        "id": "fx",
+        "dna": "F3",
+        "label": "f(x)",
+        "category": "함수"
+      },
+      {
+        "id": "fkm1",
+        "dna": "F3",
+        "label": "f(k-1)",
+        "category": "함수"
+      },
+      {
+        "id": "cond2",
+        "dna": "C18",
+        "label": "구간2 모든x",
+        "category": "조건"
+      },
+      {
+        "id": "cond2_range",
+        "dna": "F8",
+        "label": "구간[k,k+2]",
+        "category": "함수"
+      },
+      {
+        "id": "cond2_ineq",
+        "dna": "C2",
+        "label": "f(x)≤f(k+2)",
+        "category": "조건"
+      },
+      {
+        "id": "fkp2",
+        "dna": "F3",
+        "label": "f(k+2)",
+        "category": "함수"
+      },
+      {
+        "id": "all_conds",
+        "dna": "S1",
+        "label": "전체 조건 묶음",
+        "category": "구조"
+      }
+    ],
+    "edges": [
+      {
+        "from": "ask",
+        "to": "top"
+      },
+      {
+        "from": "ask_max",
+        "to": "ask"
+      },
+      {
+        "from": "ask_min",
+        "to": "ask"
+      },
+      {
+        "from": "f1_val",
+        "to": "ask_max"
+      },
+      {
+        "from": "f1_val",
+        "to": "ask_min"
+      },
+      {
+        "from": "func_f",
+        "to": "f1_val"
+      },
+      {
+        "from": "c1a",
+        "to": "f1_val"
+      },
+      {
+        "from": "all_conds",
+        "to": "top"
+      },
+      {
+        "from": "func_eq",
+        "to": "func_f"
+      },
+      {
+        "from": "func_c1",
+        "to": "func_eq"
+      },
+      {
+        "from": "rhs",
+        "to": "func_c1"
+      },
+      {
+        "from": "term1_neg",
+        "to": "rhs"
+      },
+      {
+        "from": "term2",
+        "to": "rhs"
+      },
+      {
+        "from": "term3",
+        "to": "rhs"
+      },
+      {
+        "from": "term1",
+        "to": "term1_neg"
+      },
+      {
+        "from": "vx",
+        "to": "term1"
+      },
+      {
+        "from": "c4",
+        "to": "term1"
+      },
+      {
+        "from": "va",
+        "to": "term2"
+      },
+      {
+        "from": "x3",
+        "to": "term2"
+      },
+      {
+        "from": "vx",
+        "to": "x3"
+      },
+      {
+        "from": "c3",
+        "to": "x3"
+      },
+      {
+        "from": "c14",
+        "to": "term3"
+      },
+      {
+        "from": "x2",
+        "to": "term3"
+      },
+      {
+        "from": "vx",
+        "to": "x2"
+      },
+      {
+        "from": "c2",
+        "to": "x2"
+      },
+      {
+        "from": "va_real",
+        "to": "va"
+      },
+      {
+        "from": "vk_int",
+        "to": "vk"
+      },
+      {
+        "from": "cnt_cond",
+        "to": "all_conds"
+      },
+      {
+        "from": "c2",
+        "to": "cnt_cond"
+      },
+      {
+        "from": "cond1",
+        "to": "cnt_cond"
+      },
+      {
+        "from": "cond1_range",
+        "to": "cond1"
+      },
+      {
+        "from": "k_minus1",
+        "to": "cond1_range"
+      },
+      {
+        "from": "vk",
+        "to": "k_minus1"
+      },
+      {
+        "from": "neg1_a",
+        "to": "k_minus1"
+      },
+      {
+        "from": "c1a",
+        "to": "neg1_a"
+      },
+      {
+        "from": "vk",
+        "to": "cond1_range"
+      },
+      {
+        "from": "cond1_ineq",
+        "to": "cond1"
+      },
+      {
+        "from": "fx",
+        "to": "cond1_ineq"
+      },
+      {
+        "from": "fkm1",
+        "to": "cond1_ineq"
+      },
+      {
+        "from": "func_f",
+        "to": "fx"
+      },
+      {
+        "from": "func_f",
+        "to": "fkm1"
+      },
+      {
+        "from": "k_minus1",
+        "to": "fkm1"
+      },
+      {
+        "from": "cond2",
+        "to": "cnt_cond"
+      },
+      {
+        "from": "cond2_range",
+        "to": "cond2"
+      },
+      {
+        "from": "vk",
+        "to": "cond2_range"
+      },
+      {
+        "from": "k_plus2",
+        "to": "cond2_range"
+      },
+      {
+        "from": "vk",
+        "to": "k_plus2"
+      },
+      {
+        "from": "c2",
+        "to": "k_plus2"
+      },
+      {
+        "from": "cond2_ineq",
+        "to": "cond2"
+      },
+      {
+        "from": "fx",
+        "to": "cond2_ineq"
+      },
+      {
+        "from": "fkp2",
+        "to": "cond2_ineq"
+      },
+      {
+        "from": "func_f",
+        "to": "fkp2"
+      },
+      {
+        "from": "k_plus2",
+        "to": "fkp2"
+      }
+    ],
+    "new_dna": []
+  },
+  "thinking_profile": null,
+  "folders": [],
+  "history": [],
+  "recovery_warnings": [],
+  "errata": [],
+  "created_at": "2026-03-28T13:20:52.481Z"
+}
