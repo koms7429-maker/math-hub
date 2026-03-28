@@ -1,463 +1,5 @@
 [
   {
-    "problem_id": "P29",
-    "answer": "56",
-    "content": "id: P29\nsource: 수능\nyear: 미상\nunit: 미적분\ntopic: 극한과 미분\nsubtopic: 다항함수의 극한 조건\ndifficulty: 상\nscore: 4\nanswer: 1\ntype: multiple_choice\n\n# 29. (수능) - 사차함수의 극한 조건을 이용한 함수값 구하기\n\n## Problem\n$f'(2)=0$이고 최고차항의 계수가 $1$인 사차함수 $f(x)$가\n\n$$\\lim_{x \\to 0} \\frac{f(x+2)}{xf(x)+x^2} = -3$$\n\n을 만족시킬 때, $f(4)$의 값은? [4점]\n\n## Choices\n① 56\n② 60\n③ 64\n④ 68\n⑤ 72\n\n## Solution\n문제의 극한에서 극한이 수렴하고 (분모) $\\to 0$이므로 (분자) $\\to 0$, 즉 $f(2)=0$이다.\n\n문제의 식을 다시 쓰면\n\n$$\\lim_{x \\to 0} \\frac{\\dfrac{f(x+2)-f(2)}{x}}{f(x)+x} = -3$$\n\n이고 위의 식에서 극한이 $0$이 아닌 값으로 수렴하고, (분자) $\\to f'(2)(=0)$이므로 (분모) $\\to 0$, 즉 $f(0)=0$임을 알 수 있다.\n\n따라서 $f(0)=f(2)=f'(2)=0$이므로\n\n$$f(x)=x(x-2)^2(x+a)$$\n\n로 놓을 수 있고,\n\n$$\\lim_{x \\to 0} \\frac{f(x+2)}{xf(x)+x^2} = \\lim_{x \\to 0} \\frac{x^2(x+2)(x+2+a)}{x^2\\{(x-2)^2(x+a)+1\\}}$$\n\n$$= \\lim_{x \\to 0} \\frac{(x+2)(x+2+a)}{(x-2)^2(x+a)+1} = \\frac{2(2+a)}{4a+1} = \\frac{2a+4}{4a+1}$$\n\n의 값이 $-3$이므로\n\n$$\\frac{2a+4}{4a+1} = -3 \\implies 2a+4 = -12a-3 \\implies 14a = -7 \\implies a = -\\frac{1}{2}$$\n\n$$\\therefore\\ f(x) = x(x-2)^2\\!\\left(x-\\frac{1}{2}\\right)$$\n\n$$f(4) = 4 \\cdot (4-2)^2 \\cdot \\left(4-\\frac{1}{2}\\right) = 4 \\cdot 4 \\cdot \\frac{7}{2} = 56$$",
-    "content_source": "CheckPending",
-    "content_length": 1116,
-    "skel_status": "neuron_missing",
-    "dna_status": "ok",
-    "previous_skeleton": [
-      {
-        "from": [
-          "단서B",
-          "note1"
-        ],
-        "to": "note1",
-        "neuron": "사실136",
-        "type": "사실",
-        "domain_hint": "LIM",
-        "description": "극한 수렴+분모→0이면 분자→0",
-        "note": "x→0 극한에서 분모는 0으로 수렴한다. 극한이 유한값으로 수렴하고 분모→0이므로 사실136에 의해 분자→0이다.",
-        "main": true,
-        "step": 1
-      },
-      {
-        "from": [
-          "단서B",
-          "note1"
-        ],
-        "to": "note2",
-        "neuron": "전략38",
-        "type": "연산",
-        "domain_hint": "LIM",
-        "description": "f(2)=0이므로 분자 f(x)는 (x-2)를 인수로 갖는다. 분자를 (x-2)·g(x) 형태로 인수분해할 수 있다.",
-        "note": "f(2)=0이므로 분자 f(x)는 (x-2)를 인수로 갖는다. 분자를 (x-2)·g(x) 형태로 인수분해할 수 있다.",
-        "main": true,
-        "step": 2,
-        "_keep_neuron": true
-      },
-      {
-        "from": "note2",
-        "to": "note3",
-        "neuron": "MERGE",
-        "type": "연산",
-        "domain_hint": "LIM",
-        "description": "분자분모에서 공통인수 x를 약분하여 극한식을 단순화한다.",
-        "note": "분자분모에서 공통인수 x를 약분하여 극한식을 단순화한다.",
-        "main": true,
-        "step": 2,
-        "_keep_neuron": true
-      },
-      {
-        "from": [
-          "note3",
-          "단서A"
-        ],
-        "to": "note4",
-        "neuron": "사실131",
-        "type": "사실",
-        "domain_hint": "DIFF, LIM",
-        "description": "미분계수 정의로 분자의 극한값 산출",
-        "note": "분자 $\\frac{f(x+2)-f(2)}{x} \\to f'(2) = 0$이다",
-        "main": false,
-        "step": 2
-      },
-      {
-        "from": [
-          "note3",
-          "note4"
-        ],
-        "to": "note5",
-        "neuron": "NEW_1",
-        "type": "사실",
-        "domain_hint": "LIM",
-        "description": "극한값≠0이고 분자→0이면 분모→0",
-        "note": "$f(0)+0 = 0$에서 $f(0) = 0$이다",
-        "main": true,
-        "step": 2
-      },
-      {
-        "from": [
-          "note1",
-          "단서A"
-        ],
-        "to": "note6",
-        "neuron": "사실137",
-        "type": "사실",
-        "domain_hint": "POLY, DIFF",
-        "description": "f(a)=f'(a)=0이면 (x-a)²|f(x)",
-        "note": "$f(2)=0$이고 $f'(2)=0$에서 $(x-2)^2 \\mid f(x)$이다",
-        "main": true,
-        "step": 3
-      },
-      {
-        "from": "note5",
-        "to": "note7",
-        "neuron": "전략38",
-        "type": "사실",
-        "domain_hint": "POLY",
-        "description": "f(a)=0이면 (x-a)|f(x)",
-        "note": "$f(0)=0$에서 $x \\mid f(x)$이다",
-        "main": true,
-        "step": 3
-      },
-      {
-        "from": [
-          "note6",
-          "note7",
-          "단서A"
-        ],
-        "to": "note8",
-        "neuron": "사실133",
-        "type": "사실",
-        "domain_hint": "POLY",
-        "description": "인수들과 차수·최고차계수로 다항식 형태 결정",
-        "note": "$f(x) = x(x-2)^2(x+a)$ ($a$는 상수)이다",
-        "main": true,
-        "step": 3
-      },
-      {
-        "from": "note9",
-        "to": "note9",
-        "neuron": "NEW_2",
-        "type": "연산",
-        "domain_hint": "EQN",
-        "description": "극한값=-3 조건으로 일차방정식 풀기",
-        "note": "f(x+2)를 대입하고 x²을 약분하여 극한을 계산하면 a에 관한 일차식이 나온다. 이 값이 -3임을 조건으로 a를 결정한다.",
-        "main": true,
-        "step": 4
-      }
-    ],
-    "previous_solution": "x→0 극한에서 분모는 0으로 수렴한다. 극한이 유한값으로 수렴하고 분모→0이므로 사실136에 의해 분자→0이다. f(2)=0이므로 분자 f(x)는 (x-2)를 인수로 갖는다. 분자를 (x-2)·g(x) 형태로 인수분해할 수 있다. 분자분모에서 공통인수 x를 약분하여 극한식을 단순화한다. $f(0)+0 = 0$에서 $f(0) = 0$이다 $f(2)=0$이고 $f'(2)=0$에서 $(x-2)^2 \\mid f(x)$이다 $f(0)=0$에서 $x \\mid f(x)$이다 $f(x) = x(x-2)^2(x+a)$ ($a$는 상수)이다 f(x+2)를 대입하고 x²을 약분하여 극한을 계산하면 a에 관한 일차식이 나온다. 이 값이 -3임을 조건으로 a를 결정한다.",
-    "previous_clues": "[{\"id\":\"단서A\",\"text\":\"$f(x)$는 최고차항의 계수가 $1$인 사차함수이고 $f'(2)=0$이다\"},{\"id\":\"단서B\",\"text\":\"$\\\\lim_{x \\\\to 0} \\\\frac{f(x+2)}{xf(x)+x^2} = -3$이다\"}]",
-    "previous_analysis": "극한의 수렴 조건에서 분모→0이면 분자→0 원리를 두 번 적용하여 f(2)=0과 f(0)=0을 순차적으로 도출한다. f(0)=0, f(2)=f'(2)=0과 사차함수 조건으로 f(x)=x(x-2)²(x+a)를 결정한 뒤, 극한값 조건에서 a=-1/2를 구하고 f(4)=56을 계산한다.",
-    "previous_matching": "",
-    "previous_matched": [],
-    "previous_new_neurons": [
-      {
-        "id": "사실??",
-        "type": "사실",
-        "statement": "극한 $\\lim_{x \\to a} \\dfrac{f(x)}{g(x)} = L \\neq 0$이고 $f(x) \\to 0$이면, 반드시 $g(x) \\to 0$이다. 반대로 $g(x) \\to 0$이고 $f(x) \\not\\to 0$이면 극한값은 $0$이 아니거나 발산한다.",
-        "description": "극한값≠0이고 분자→0이면 분모→0",
-        "note": "$f(0)+0 = 0$에서 $f(0) = 0$이다",
-        "reason": "제시된 후보들은 다항함수의 근, 단조성, 지수함수 등에 관한 것으로, '극한값≠0이고 분자→0이면 분모→0'이라는 극한의 수렴 조건 원리를 직접 표현하는 뉴런이 없다. 사실43(단조함수 치역), 사실47(지수함수 점근값) 등은 모두 무관하다.",
-        "blocked_edge": "note3+note4 → note5",
-        "domain_hint": "LIM",
-        "domain": [
-          "LIM",
-          "POLY"
-        ],
-        "action_hint": "",
-        "step": 2,
-        "main": true,
-        "near_miss": [
-          "사실21: $a>1$일 때 $\\lim_{x \\to +\\infty} a^x = \\in",
-          "사실22: 연속함수가 두 값 $f(a)$, $f(b)$를 취하면, 그 사이의 모든 ",
-          "사실45: $f(n)$이 $L$에 아래에서 수렴하면($f(n) < L$이고 $f(n"
-        ]
-      },
-      {
-        "id": "전략??",
-        "type": "전략",
-        "statement": "극한 조건 $\\lim_{x \\to a} E(x) = L$에서 미지수를 포함한 식 $E(x)$를 정리하면, 미지수에 대한 방정식이 도출되어 미지수를 유일하게 결정할 수 있다.",
-        "description": "극한값=-3 조건으로 일차방정식 풀기",
-        "note": "f(x+2)를 대입하고 x²을 약분하여 극한을 계산하면 a에 관한 일차식이 나온다. 이 값이 -3임을 조건으로 a를 결정한다.",
-        "reason": "제시된 후보들은 다항식 인수분해, 평행이동, 미분 공식 등에 관한 것으로, '극한값 조건으로부터 미지계수에 대한 방정식을 세워 푸는' 절차를 직접 표현하는 뉴런이 없다. 연산36(곱의 미분), 연산47(자연수 합) 등은 무관하다. 그러나 이는 단순히 '극한값 = L 조건 → 계수 결정'이라는 원리이며 사칙연산 수준은 아니다.",
-        "blocked_edge": "note9 → note9",
-        "domain_hint": "EQN",
-        "domain": [
-          "LIM",
-          "EQN"
-        ],
-        "action_hint": "",
-        "step": 4,
-        "main": true,
-        "near_miss": []
-      }
-    ],
-    "previous_partial_skeleton": [],
-    "previous_blockage_point": "",
-    "previous_skel_review_notes": "",
-    "previous_dna_nodes": [
-      {
-        "id": "top",
-        "dna": "Q1",
-        "label": "f(4)값구하라",
-        "category": "발문"
-      },
-      {
-        "id": "ask",
-        "dna": "F3",
-        "label": "f(4)",
-        "category": "함수"
-      },
-      {
-        "id": "c4",
-        "dna": "T2",
-        "label": "상수 4",
-        "category": "말단"
-      },
-      {
-        "id": "vf",
-        "dna": "F6",
-        "label": "사차함수 f",
-        "category": "함수"
-      },
-      {
-        "id": "lim_cond",
-        "dna": "C1",
-        "label": "극한값=-3",
-        "category": "조건"
-      },
-      {
-        "id": "lim_expr",
-        "dna": "E9",
-        "label": "극한(x→0)",
-        "category": "수식"
-      },
-      {
-        "id": "frac_num",
-        "dna": "F3",
-        "label": "f(x+2)",
-        "category": "함수"
-      },
-      {
-        "id": "arg_xp2",
-        "dna": "E1",
-        "label": "합(x,2)",
-        "category": "수식"
-      },
-      {
-        "id": "frac_den",
-        "dna": "E1",
-        "label": "합(xf(x),x²)",
-        "category": "수식"
-      },
-      {
-        "id": "den_t1",
-        "dna": "E6",
-        "label": "곱(x,f(x))",
-        "category": "수식"
-      },
-      {
-        "id": "den_t2",
-        "dna": "E7",
-        "label": "x²",
-        "category": "수식"
-      },
-      {
-        "id": "vx",
-        "dna": "T3",
-        "label": "독립변수 x",
-        "category": "말단"
-      },
-      {
-        "id": "fx_apply",
-        "dna": "F3",
-        "label": "f(x)",
-        "category": "함수"
-      },
-      {
-        "id": "c2",
-        "dna": "T2",
-        "label": "상수 2",
-        "category": "말단"
-      },
-      {
-        "id": "cm3",
-        "dna": "T2",
-        "label": "상수 -3",
-        "category": "말단"
-      },
-      {
-        "id": "c0",
-        "dna": "T2",
-        "label": "상수 0",
-        "category": "말단"
-      },
-      {
-        "id": "deriv_cond",
-        "dna": "C1",
-        "label": "f'(2)=0",
-        "category": "조건"
-      },
-      {
-        "id": "deriv_f",
-        "dna": "F13",
-        "label": "도함수 f'",
-        "category": "함수"
-      },
-      {
-        "id": "deriv_apply",
-        "dna": "F3",
-        "label": "f'(2)",
-        "category": "함수"
-      },
-      {
-        "id": "leading_cond",
-        "dna": "L4",
-        "label": "최고차항계수=1",
-        "category": "제한"
-      },
-      {
-        "id": "c1",
-        "dna": "T2",
-        "label": "상수 1",
-        "category": "말단"
-      },
-      {
-        "id": "deg4_cond",
-        "dna": "L3",
-        "label": "사차함수 종류제한",
-        "category": "제한"
-      }
-    ],
-    "previous_dna_edges": [
-      {
-        "from": "ask",
-        "to": "top"
-      },
-      {
-        "from": "c4",
-        "to": "ask"
-      },
-      {
-        "from": "vf",
-        "to": "ask"
-      },
-      {
-        "from": "lim_cond",
-        "to": "top"
-      },
-      {
-        "from": "deriv_cond",
-        "to": "top"
-      },
-      {
-        "from": "lim_expr",
-        "to": "lim_cond"
-      },
-      {
-        "from": "cm3",
-        "to": "lim_cond"
-      },
-      {
-        "from": "frac_num",
-        "to": "lim_expr"
-      },
-      {
-        "from": "frac_den",
-        "to": "lim_expr"
-      },
-      {
-        "from": "c0",
-        "to": "lim_expr"
-      },
-      {
-        "from": "vf",
-        "to": "frac_num"
-      },
-      {
-        "from": "arg_xp2",
-        "to": "frac_num"
-      },
-      {
-        "from": "vx",
-        "to": "arg_xp2"
-      },
-      {
-        "from": "c2",
-        "to": "arg_xp2"
-      },
-      {
-        "from": "den_t1",
-        "to": "frac_den"
-      },
-      {
-        "from": "den_t2",
-        "to": "frac_den"
-      },
-      {
-        "from": "vx",
-        "to": "den_t1"
-      },
-      {
-        "from": "fx_apply",
-        "to": "den_t1"
-      },
-      {
-        "from": "vf",
-        "to": "fx_apply"
-      },
-      {
-        "from": "vx",
-        "to": "fx_apply"
-      },
-      {
-        "from": "vx",
-        "to": "den_t2"
-      },
-      {
-        "from": "deriv_apply",
-        "to": "deriv_cond"
-      },
-      {
-        "from": "c0",
-        "to": "deriv_cond"
-      },
-      {
-        "from": "deriv_f",
-        "to": "deriv_apply"
-      },
-      {
-        "from": "c2",
-        "to": "deriv_apply"
-      },
-      {
-        "from": "vf",
-        "to": "deriv_f"
-      },
-      {
-        "from": "leading_cond",
-        "to": "vf"
-      },
-      {
-        "from": "c1",
-        "to": "leading_cond"
-      },
-      {
-        "from": "deg4_cond",
-        "to": "vf"
-      }
-    ],
-    "previous_new_dna": [],
-    "previous_dna_review_notes": "",
-    "original_solution": "문제의 극한에서 극한이 수렴하고 (분모) $\\to 0$이므로 (분자) $\\to 0$, 즉 $f(2)=0$이다.\n\n문제의 식을 다시 쓰면\n\n$$\\lim_{x \\to 0} \\frac{\\dfrac{f(x+2)-f(2)}{x}}{f(x)+x} = -3$$\n\n이고 위의 식에서 극한이 $0$이 아닌 값으로 수렴하고, (분자) $\\to f'(2)(=0)$이므로 (분모) $\\to 0$, 즉 $f(0)=0$임을 알 수 있다.\n\n따라서 $f(0)=f(2)=f'(2)=0$이므로\n\n$$f(x)=x(x-2)^2(x+a)$$\n\n로 놓을 수 있고,\n\n$$\\lim_{x \\to 0} \\frac{f(x+2)}{xf(x)+x^2} = \\lim_{x \\to 0} \\frac{x^2(x+2)(x+2+a)}{x^2\\{(x-2)^2(x+a)+1\\}}$$\n\n$$= \\lim_{x \\to 0} \\frac{(x+2)(x+2+a)}{(x-2)^2(x+a)+1} = \\frac{2(2+a)}{4a+1} = \\frac{2a+4}{4a+1}$$\n\n의 값이 $-3$이므로\n\n$$\\frac{2a+4}{4a+1} = -3 \\implies 2a+4 = -12a-3 \\implies 14a = -7 \\implies a = -\\frac{1}{2}$$\n\n$$\\therefore\\ f(x) = x(x-2)^2\\!\\left(x-\\frac{1}{2}\\right)$$\n\n$$f(4) = 4 \\cdot (4-2)^2 \\cdot \\left(4-\\frac{1}{2}\\right) = 4 \\cdot 4 \\cdot \\frac{7}{2} = 56$$",
-    "recovery_warnings": [],
-    "errata": [],
-    "metadata": {
-      "unit": "미적분",
-      "difficulty": "상",
-      "score": "4",
-      "type": "multiple_choice",
-      "answer": "1",
-      "year": "미상",
-      "source": "수능",
-      "topic": "극한과 미분",
-      "subtopic": "다항함수의 극한 조건"
-    },
-    "needed_neurons": [
-      "사실??",
-      "전략??",
-      "사실??"
-    ],
-    "needed_dna": [],
-    "edge_count": 9,
-    "side_count": 1,
-    "created_at": "2026-03-28T12:28:13.642Z"
-  },
-  {
     "problem_id": "P19",
     "answer": "14",
     "content": "id: P29\nsource: 수능\nyear: 미상\nunit: 미적분\ntopic: 극한과 미분\nsubtopic: 다항함수의 극한 조건\ndifficulty: 상\nscore: 4\nanswer: 1\ntype: multiple_choice\n\n# 29. (수능) - 사차함수의 극한 조건을 이용한 함수값 구하기\n\n## Problem\n$f'(2)=0$이고 최고차항의 계수가 $1$인 사차함수 $f(x)$가\n\n$$\\lim_{x \\to 0} \\frac{f(x+2)}{xf(x)+x^2} = -3$$\n\n을 만족시킬 때, $f(4)$의 값은? [4점]\n\n## Choices\n① 56\n② 60\n③ 64\n④ 68\n⑤ 72\n\n## Solution\n문제의 극한에서 극한이 수렴하고 (분모) $\\to 0$이므로 (분자) $\\to 0$, 즉 $f(2)=0$이다.\n\n문제의 식을 다시 쓰면\n\n$$\\lim_{x \\to 0} \\frac{\\dfrac{f(x+2)-f(2)}{x}}{f(x)+x} = -3$$\n\n이고 위의 식에서 극한이 $0$이 아닌 값으로 수렴하고, (분자) $\\to f'(2)(=0)$이므로 (분모) $\\to 0$, 즉 $f(0)=0$임을 알 수 있다.\n\n따라서 $f(0)=f(2)=f'(2)=0$이므로\n\n$$f(x)=x(x-2)^2(x+a)$$\n\n로 놓을 수 있고,\n\n$$\\lim_{x \\to 0} \\frac{f(x+2)}{xf(x)+x^2} = \\lim_{x \\to 0} \\frac{x^2(x+2)(x+2+a)}{x^2\\{(x-2)^2(x+a)+1\\}}$$\n\n$$= \\lim_{x \\to 0} \\frac{(x+2)(x+2+a)}{(x-2)^2(x+a)+1} = \\frac{2(2+a)}{4a+1} = \\frac{2a+4}{4a+1}$$\n\n의 값이 $-3$이므로\n\n$$\\frac{2a+4}{4a+1} = -3 \\implies 2a+4 = -12a-3 \\implies 14a = -7 \\implies a = -\\frac{1}{2}$$\n\n$$\\therefore\\ f(x) = x(x-2)^2\\!\\left(x-\\frac{1}{2}\\right)$$\n\n$$f(4) = 4 \\cdot (4-2)^2 \\cdot \\left(4-\\frac{1}{2}\\right) = 4 \\cdot 4 \\cdot \\frac{7}{2} = 56$$",
@@ -3148,5 +2690,438 @@
     "edge_count": 9,
     "side_count": 0,
     "created_at": "2026-03-28T13:26:22.482Z"
+  },
+  {
+    "problem_id": "P29",
+    "answer": "56",
+    "content": "id: P29\nsource: 수능\nyear: 미상\nunit: 미적분\ntopic: 극한과 미분\nsubtopic: 다항함수의 극한 조건\ndifficulty: 상\nscore: 4\nanswer: 1\ntype: multiple_choice\n\n# 29. (수능) - 사차함수의 극한 조건을 이용한 함수값 구하기\n\n## Problem\n$f'(2)=0$이고 최고차항의 계수가 $1$인 사차함수 $f(x)$가\n\n$$\\lim_{x \\to 0} \\frac{f(x+2)}{xf(x)+x^2} = -3$$\n\n을 만족시킬 때, $f(4)$의 값은? [4점]\n\n## Choices\n① 56\n② 60\n③ 64\n④ 68\n⑤ 72\n\n## Solution\n문제의 극한에서 극한이 수렴하고 (분모) $\\to 0$이므로 (분자) $\\to 0$, 즉 $f(2)=0$이다.\n\n문제의 식을 다시 쓰면\n\n$$\\lim_{x \\to 0} \\frac{\\dfrac{f(x+2)-f(2)}{x}}{f(x)+x} = -3$$\n\n이고 위의 식에서 극한이 $0$이 아닌 값으로 수렴하고, (분자) $\\to f'(2)(=0)$이므로 (분모) $\\to 0$, 즉 $f(0)=0$임을 알 수 있다.\n\n따라서 $f(0)=f(2)=f'(2)=0$이므로\n\n$$f(x)=x(x-2)^2(x+a)$$\n\n로 놓을 수 있고,\n\n$$\\lim_{x \\to 0} \\frac{f(x+2)}{xf(x)+x^2} = \\lim_{x \\to 0} \\frac{x^2(x+2)(x+2+a)}{x^2\\{(x-2)^2(x+a)+1\\}}$$\n\n$$= \\lim_{x \\to 0} \\frac{(x+2)(x+2+a)}{(x-2)^2(x+a)+1} = \\frac{2(2+a)}{4a+1} = \\frac{2a+4}{4a+1}$$\n\n의 값이 $-3$이므로\n\n$$\\frac{2a+4}{4a+1} = -3 \\implies 2a+4 = -12a-3 \\implies 14a = -7 \\implies a = -\\frac{1}{2}$$\n\n$$\\therefore\\ f(x) = x(x-2)^2\\!\\left(x-\\frac{1}{2}\\right)$$\n\n$$f(4) = 4 \\cdot (4-2)^2 \\cdot \\left(4-\\frac{1}{2}\\right) = 4 \\cdot 4 \\cdot \\frac{7}{2} = 56$$",
+    "content_source": "CheckPending",
+    "content_length": 1116,
+    "skel_status": "neuron_missing",
+    "dna_status": "ok",
+    "previous_skeleton": [
+      {
+        "from": [
+          "단서B",
+          "note1"
+        ],
+        "to": "note1",
+        "neuron": "사실136",
+        "type": "사실",
+        "domain_hint": "LIM",
+        "description": "극한 수렴 시 분모→0이면 분자→0",
+        "note": "$f(2)=0$이다",
+        "main": true,
+        "step": 1
+      },
+      {
+        "from": [
+          "단서B",
+          "note1"
+        ],
+        "to": "note2",
+        "neuron": "NEW_1",
+        "type": "연산",
+        "domain_hint": "LIM",
+        "description": "분자분모를 x로 나누고 f(2)=0 적용하여 변형",
+        "note": "$\\lim_{x \\to 0} \\frac{\\frac{f(x+2)-f(2)}{x}}{f(x)+x} = -3$으로 변형된다",
+        "main": true,
+        "step": 2
+      },
+      {
+        "from": [
+          "note2",
+          "단서A"
+        ],
+        "to": "note3",
+        "neuron": "사실131",
+        "type": "사실",
+        "domain_hint": "DIFF, LIM",
+        "description": "미분계수 정의를 인식하여 분자의 극한값 도출",
+        "note": "$x \\to 0$일 때 분자 $\\frac{f(x+2)-f(2)}{x} \\to f'(2) = 0$이다",
+        "main": true,
+        "step": 2
+      },
+      {
+        "from": [
+          "note2",
+          "note3"
+        ],
+        "to": "note4",
+        "neuron": "사실136",
+        "type": "사실",
+        "domain_hint": "LIM",
+        "description": "극한값≠0이고 분자→0이면 분모→0",
+        "note": "$f(0)=0$이다",
+        "main": true,
+        "step": 2
+      },
+      {
+        "from": [
+          "note1",
+          "단서A"
+        ],
+        "to": "note5",
+        "neuron": "사실137",
+        "type": "사실",
+        "domain_hint": "POLY, DIFF",
+        "description": "f(a)=0이고 f'(a)=0이면 (x-a)²이 인수",
+        "note": "$x=2$는 $f(x)$의 이중근이다",
+        "main": false,
+        "step": 3
+      },
+      {
+        "from": [
+          "단서A",
+          "note4",
+          "note5"
+        ],
+        "to": "note6",
+        "neuron": "전략41",
+        "type": "전략",
+        "domain_hint": "POLY",
+        "description": "근의 조건과 차수로 다항함수의 꼴 결정",
+        "note": "$f(x) = x(x-2)^2(x+a)$로 놓을 수 있다",
+        "main": true,
+        "step": 3
+      },
+      {
+        "from": [
+          "note6",
+          "단서B"
+        ],
+        "to": "note7",
+        "neuron": "전략47",
+        "type": "연산",
+        "domain_hint": "LIM, POLY",
+        "description": "f(x)를 극한식에 대입하면 0/0 부정형이 되고, f(a)=0을 이용하여 (f(x)-f(a))/(x-a) 꼴로 변환하여 공통인수를 소거한다.",
+        "note": "f(x)를 극한식에 대입하면 0/0 부정형이 되고, f(a)=0을 이용하여 (f(x)-f(a))/(x-a) 꼴로 변환하여 공통인수를 소거한다.",
+        "main": true,
+        "step": 4,
+        "_keep_neuron": true
+      },
+      {
+        "from": "note7",
+        "to": "note8",
+        "neuron": "사실131",
+        "type": "연산",
+        "domain_hint": "LIM, POLY",
+        "description": "변환된 식 (f(x)-f(a))/(x-a)의 극한은 f'(a)이므로, 극한값을 도함수 값으로 계산한다.",
+        "note": "변환된 식 (f(x)-f(a))/(x-a)의 극한은 f'(a)이므로, 극한값을 도함수 값으로 계산한다.",
+        "main": true,
+        "step": 4,
+        "_keep_neuron": true
+      }
+    ],
+    "previous_solution": "$f(2)=0$이다 $\\lim_{x \\to 0} \\frac{\\frac{f(x+2)-f(2)}{x}}{f(x)+x} = -3$으로 변형된다 $x \\to 0$일 때 분자 $\\frac{f(x+2)-f(2)}{x} \\to f'(2) = 0$이다 $f(0)=0$이다 $f(x) = x(x-2)^2(x+a)$로 놓을 수 있다 f(x)를 극한식에 대입하면 0/0 부정형이 되고, f(a)=0을 이용하여 (f(x)-f(a))/(x-a) 꼴로 변환하여 공통인수를 소거한다. 변환된 식 (f(x)-f(a))/(x-a)의 극한은 f'(a)이므로, 극한값을 도함수 값으로 계산한다.",
+    "previous_clues": "[{\"id\":\"단서A\",\"text\":\"$f(x)$는 최고차항의 계수가 $1$인 사차함수이고 $f'(2)=0$이다\"},{\"id\":\"단서B\",\"text\":\"$\\\\lim_{x \\\\to 0} \\\\frac{f(x+2)}{xf(x)+x^2} = -3$이다\"}]",
+    "previous_analysis": "극한이 수렴하고 분모→0인 조건에서 f(2)=0을 도출한 뒤, 식을 미분계수 형태로 변형하여 f(0)=0도 얻는다. f(0)=f(2)=f'(2)=0과 사차함수 조건으로 f(x)=x(x-2)²(x+a)를 세우고, 극한값 조건에서 a=-1/2을 결정하여 f(4)=56을 구한다.",
+    "previous_matching": "",
+    "previous_matched": [],
+    "previous_new_neurons": [
+      {
+        "id": "전략??",
+        "type": "전략",
+        "statement": "유리식 극한 $\\lim_{x \\to a} \\dfrac{P(x)}{Q(x)}$에서 $f(a)=0$ 등의 조건을 이용해 분자·분모를 공통 인수 $(x-a)$로 나누거나 특정 식으로 묶어 부정형을 해소한 뒤 극한을 계산한다.",
+        "description": "분자분모를 x로 나누고 f(2)=0 적용하여 변형",
+        "note": "$\\lim_{x \\to 0} \\frac{\\frac{f(x+2)-f(2)}{x}}{f(x)+x} = -3$으로 변형된다",
+        "reason": "사실136은 '극한값 유한+분모→0이면 분자→0'이고, 전략47은 '0/0 부정형을 미분 정의 꼴로 변환'이다. 이 edge는 분자분모를 x로 나누고 f(2)=0 조건을 대입하여 극한식을 변형하는 조작으로, 유리식의 분자·분모를 특정 인수로 나누어 부정형을 해소하는 대수적 변환이다. 후보 중 이를 직접 포괄하는 뉴런이 없다.",
+        "blocked_edge": "단서B+note1 → note2",
+        "domain_hint": "LIM",
+        "domain": [
+          "RAT",
+          "LIM",
+          "EQN"
+        ],
+        "action_hint": "",
+        "step": 2,
+        "main": true,
+        "near_miss": [
+          "연산7: $y=f(x)$를 벡터 $(p,q)$만큼 평행이동하면 $y-q=f(x-p",
+          "연산23: $y=f(x)+c$의 치역은 $f(x)$의 치역을 $c$만큼 평행이동한 ",
+          "연산26: $y=c \\cdot f(x)$의 치역은 $f(x)$의 치역에 $c$를 곱"
+        ]
+      }
+    ],
+    "previous_partial_skeleton": [],
+    "previous_blockage_point": "",
+    "previous_skel_review_notes": "",
+    "previous_dna_nodes": [
+      {
+        "id": "top",
+        "dna": "Q1",
+        "label": "f(4)값구하라",
+        "category": "발문"
+      },
+      {
+        "id": "ask",
+        "dna": "F3",
+        "label": "f(4)",
+        "category": "함수"
+      },
+      {
+        "id": "c4",
+        "dna": "T2",
+        "label": "상수 4",
+        "category": "말단"
+      },
+      {
+        "id": "vf",
+        "dna": "F6",
+        "label": "사차함수 f",
+        "category": "함수"
+      },
+      {
+        "id": "lim_cond",
+        "dna": "C1",
+        "label": "극한값=-3",
+        "category": "조건"
+      },
+      {
+        "id": "lim_expr",
+        "dna": "E9",
+        "label": "극한(x→0)",
+        "category": "수식"
+      },
+      {
+        "id": "frac_num",
+        "dna": "F3",
+        "label": "f(x+2)",
+        "category": "함수"
+      },
+      {
+        "id": "arg_xp2",
+        "dna": "E1",
+        "label": "합(x,2)",
+        "category": "수식"
+      },
+      {
+        "id": "frac_den",
+        "dna": "E1",
+        "label": "합(xf(x),x²)",
+        "category": "수식"
+      },
+      {
+        "id": "den_t1",
+        "dna": "E6",
+        "label": "곱(x,f(x))",
+        "category": "수식"
+      },
+      {
+        "id": "den_t2",
+        "dna": "E7",
+        "label": "x²",
+        "category": "수식"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
+      },
+      {
+        "id": "fx_apply",
+        "dna": "F3",
+        "label": "f(x)",
+        "category": "함수"
+      },
+      {
+        "id": "c2",
+        "dna": "T2",
+        "label": "상수 2",
+        "category": "말단"
+      },
+      {
+        "id": "cm3",
+        "dna": "T2",
+        "label": "상수 -3",
+        "category": "말단"
+      },
+      {
+        "id": "c0",
+        "dna": "T2",
+        "label": "상수 0",
+        "category": "말단"
+      },
+      {
+        "id": "deriv_cond",
+        "dna": "C1",
+        "label": "f'(2)=0",
+        "category": "조건"
+      },
+      {
+        "id": "deriv_f",
+        "dna": "F13",
+        "label": "도함수 f'",
+        "category": "함수"
+      },
+      {
+        "id": "deriv_apply",
+        "dna": "F3",
+        "label": "f'(2)",
+        "category": "함수"
+      },
+      {
+        "id": "leading_cond",
+        "dna": "L4",
+        "label": "최고차항계수=1",
+        "category": "제한"
+      },
+      {
+        "id": "c1",
+        "dna": "T2",
+        "label": "상수 1",
+        "category": "말단"
+      },
+      {
+        "id": "deg4_cond",
+        "dna": "L3",
+        "label": "사차함수 종류제한",
+        "category": "제한"
+      }
+    ],
+    "previous_dna_edges": [
+      {
+        "from": "ask",
+        "to": "top"
+      },
+      {
+        "from": "c4",
+        "to": "ask"
+      },
+      {
+        "from": "vf",
+        "to": "ask"
+      },
+      {
+        "from": "lim_cond",
+        "to": "top"
+      },
+      {
+        "from": "deriv_cond",
+        "to": "top"
+      },
+      {
+        "from": "lim_expr",
+        "to": "lim_cond"
+      },
+      {
+        "from": "cm3",
+        "to": "lim_cond"
+      },
+      {
+        "from": "frac_num",
+        "to": "lim_expr"
+      },
+      {
+        "from": "frac_den",
+        "to": "lim_expr"
+      },
+      {
+        "from": "c0",
+        "to": "lim_expr"
+      },
+      {
+        "from": "vf",
+        "to": "frac_num"
+      },
+      {
+        "from": "arg_xp2",
+        "to": "frac_num"
+      },
+      {
+        "from": "vx",
+        "to": "arg_xp2"
+      },
+      {
+        "from": "c2",
+        "to": "arg_xp2"
+      },
+      {
+        "from": "den_t1",
+        "to": "frac_den"
+      },
+      {
+        "from": "den_t2",
+        "to": "frac_den"
+      },
+      {
+        "from": "vx",
+        "to": "den_t1"
+      },
+      {
+        "from": "fx_apply",
+        "to": "den_t1"
+      },
+      {
+        "from": "vf",
+        "to": "fx_apply"
+      },
+      {
+        "from": "vx",
+        "to": "fx_apply"
+      },
+      {
+        "from": "vx",
+        "to": "den_t2"
+      },
+      {
+        "from": "deriv_apply",
+        "to": "deriv_cond"
+      },
+      {
+        "from": "c0",
+        "to": "deriv_cond"
+      },
+      {
+        "from": "deriv_f",
+        "to": "deriv_apply"
+      },
+      {
+        "from": "c2",
+        "to": "deriv_apply"
+      },
+      {
+        "from": "vf",
+        "to": "deriv_f"
+      },
+      {
+        "from": "leading_cond",
+        "to": "vf"
+      },
+      {
+        "from": "c1",
+        "to": "leading_cond"
+      },
+      {
+        "from": "deg4_cond",
+        "to": "vf"
+      }
+    ],
+    "previous_new_dna": [],
+    "previous_dna_review_notes": "",
+    "original_solution": "문제의 극한에서 극한이 수렴하고 (분모) $\\to 0$이므로 (분자) $\\to 0$, 즉 $f(2)=0$이다.\n\n문제의 식을 다시 쓰면\n\n$$\\lim_{x \\to 0} \\frac{\\dfrac{f(x+2)-f(2)}{x}}{f(x)+x} = -3$$\n\n이고 위의 식에서 극한이 $0$이 아닌 값으로 수렴하고, (분자) $\\to f'(2)(=0)$이므로 (분모) $\\to 0$, 즉 $f(0)=0$임을 알 수 있다.\n\n따라서 $f(0)=f(2)=f'(2)=0$이므로\n\n$$f(x)=x(x-2)^2(x+a)$$\n\n로 놓을 수 있고,\n\n$$\\lim_{x \\to 0} \\frac{f(x+2)}{xf(x)+x^2} = \\lim_{x \\to 0} \\frac{x^2(x+2)(x+2+a)}{x^2\\{(x-2)^2(x+a)+1\\}}$$\n\n$$= \\lim_{x \\to 0} \\frac{(x+2)(x+2+a)}{(x-2)^2(x+a)+1} = \\frac{2(2+a)}{4a+1} = \\frac{2a+4}{4a+1}$$\n\n의 값이 $-3$이므로\n\n$$\\frac{2a+4}{4a+1} = -3 \\implies 2a+4 = -12a-3 \\implies 14a = -7 \\implies a = -\\frac{1}{2}$$\n\n$$\\therefore\\ f(x) = x(x-2)^2\\!\\left(x-\\frac{1}{2}\\right)$$\n\n$$f(4) = 4 \\cdot (4-2)^2 \\cdot \\left(4-\\frac{1}{2}\\right) = 4 \\cdot 4 \\cdot \\frac{7}{2} = 56$$",
+    "recovery_warnings": [],
+    "errata": [],
+    "metadata": {
+      "unit": "미적분",
+      "difficulty": "상",
+      "score": "4",
+      "type": "multiple_choice",
+      "answer": "1",
+      "year": "미상",
+      "source": "수능",
+      "topic": "극한과 미분",
+      "subtopic": "다항함수의 극한 조건"
+    },
+    "needed_neurons": [
+      "사실??",
+      "전략??",
+      "사실??"
+    ],
+    "needed_dna": [],
+    "edge_count": 8,
+    "side_count": 1,
+    "created_at": "2026-03-28T13:29:36.826Z"
   }
 ]
