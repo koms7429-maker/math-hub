@@ -1732,5 +1732,22 @@
       "COORD"
     ],
     "action": "TANGENT_LINE_EQUATION"
+  },
+  {
+    "id": "사실133",
+    "domain": [
+      "POLY",
+      "EQN"
+    ],
+    "action": "POLY_DETERMINED_BY_ROOTS_AND_LEADING"
+  },
+  {
+    "id": "전략46",
+    "domain": [
+      "FUNC",
+      "EQN",
+      "INEQ"
+    ],
+    "action": "ROOT_EXISTENCE_VIA_RANGE"
   }
 ]
