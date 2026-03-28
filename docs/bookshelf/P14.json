@@ -1,0 +1,568 @@
+{
+  "problem_id": "P14",
+  "answer": "2",
+  "clues": [
+    {
+      "id": "단서A",
+      "text": "$f(x) = -\\dfrac{1}{4}x^4 + x^3 + 2x - 10$"
+    },
+    {
+      "id": "단서B",
+      "text": "세 점 $A(t-1,\\,2t-2)$, $B(t,\\,f(t))$, $C(t+1,\\,2t+2)$를 꼭짓점으로 하는 삼각형의 넓이의 최솟값을 구하라"
+    }
+  ],
+  "skeleton": [
+    {
+      "from": "단서A",
+      "to": "note1",
+      "neuron": "연산11",
+      "type": "연산",
+      "domain_hint": "COORD",
+      "description": "두 점 $A(t-1,2t-2)$와 $C(t+1,2t+2)$ 사이의 거리를 구한다",
+      "note": "$AC = \\sqrt{(t+1-(t-1))^2+(2t+2-(2t-2))^2} = \\sqrt{4+16} = 2\\sqrt{5}$",
+      "main": true,
+      "step": 1
+    },
+    {
+      "from": "note1",
+      "to": "note2",
+      "neuron": "연산30",
+      "type": "연산",
+      "domain_hint": "COORD",
+      "description": "두 점 $A$, $C$를 지나는 직선의 방정식을 구한다",
+      "note": "기울기 $= \\dfrac{4}{2} = 2$이고 $A(t-1,2t-2)$를 지나므로 직선 $AC$: $y = 2x$, 즉 $2x - y = 0$",
+      "main": true,
+      "step": 1
+    },
+    {
+      "from": [
+        "단서A",
+        "note2"
+      ],
+      "to": "note3",
+      "neuron": "연산50",
+      "type": "연산",
+      "domain_hint": "COORD",
+      "description": "점 $B(t,f(t))$에서 직선 $2x-y=0$까지의 거리를 구한다",
+      "note": "거리 $= \\dfrac{|2t - f(t)|}{\\sqrt{4+1}} = \\dfrac{|2t - f(t)|}{\\sqrt{5}}$",
+      "main": true,
+      "step": 2
+    },
+    {
+      "from": [
+        "note1",
+        "note3"
+      ],
+      "to": "note4",
+      "neuron": "연산13",
+      "type": "연산",
+      "domain_hint": "COORD",
+      "description": "삼각형 넓이 $= \\frac{1}{2} \\times$ 밑변 $\\times$ 높이를 적용한다",
+      "note": "넓이 $= \\dfrac{1}{2} \\times 2\\sqrt{5} \\times \\dfrac{|2t-f(t)|}{\\sqrt{5}} = |2t - f(t)|$",
+      "main": true,
+      "step": 2
+    },
+    {
+      "from": [
+        "단서A",
+        "note4"
+      ],
+      "to": "note5",
+      "neuron": "연산28",
+      "type": "연산",
+      "domain_hint": "POLY",
+      "description": "$g(t) = 2t - f(t)$를 전개·정리한다",
+      "note": "$g(t) = 2t - \\left(-\\dfrac{1}{4}t^4 + t^3 + 2t - 10\\right) = \\dfrac{1}{4}t^4 - t^3 + 10$",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": "note5",
+      "to": "note6",
+      "neuron": "연산33",
+      "type": "연산",
+      "domain_hint": "DIFF",
+      "description": "$g(t) = \\frac{1}{4}t^4 - t^3 + 10$을 미분한다",
+      "note": "$g'(t) = t^3 - 3t^2 = t^2(t - 3)$",
+      "main": true,
+      "step": 4
+    },
+    {
+      "from": "note6",
+      "to": "note7",
+      "neuron": "사실98",
+      "type": "사실",
+      "domain_hint": "DIFF",
+      "description": "$g'(t)$의 부호를 분석하여 증감을 판별한다",
+      "note": "$t^2 \\geq 0$이므로 $g'(t)$의 부호는 $(t-3)$이 결정한다. $t < 3$일 때 $g'(t) \\leq 0$ (감소), $t > 3$일 때 $g'(t) > 0$ (증가)",
+      "main": true,
+      "step": 4
+    },
+    {
+      "from": [
+        "note6",
+        "note7"
+      ],
+      "to": "note8",
+      "neuron": "사실99",
+      "type": "사실",
+      "domain_hint": "DIFF",
+      "description": "감소→증가 전환점이 극소(전역 최소)임을 판정한다",
+      "note": "$g(t)$는 $t = 3$에서 유일한 극솟값을 가지며, $\\lim_{t \\to \\pm\\infty} g(t) = +\\infty$이므로 이것이 전역 최솟값이다",
+      "main": true,
+      "step": 4
+    },
+    {
+      "from": [
+        "note5",
+        "note8"
+      ],
+      "to": "note9",
+      "neuron": "전략25",
+      "type": "전략",
+      "domain_hint": "POLY",
+      "description": "$t = 3$을 대입하여 최솟값을 계산한다",
+      "note": "$g(3) = \\dfrac{81}{4} - 27 + 10 = \\dfrac{81}{4} - \\dfrac{108}{4} + \\dfrac{40}{4} = \\dfrac{13}{4}$",
+      "main": true,
+      "step": 5
+    },
+    {
+      "from": "note9",
+      "to": "note10",
+      "neuron": "사실57",
+      "type": "사실",
+      "domain_hint": "FUNC",
+      "description": "최솟값이 양수이므로 모든 $t$에서 $g(t) > 0$임을 확인한다",
+      "note": "$g(t) \\geq \\dfrac{13}{4} > 0$이므로 $|g(t)| = g(t)$",
+      "main": true,
+      "step": 5
+    },
+    {
+      "from": [
+        "note4",
+        "note10"
+      ],
+      "to": "END",
+      "neuron": "사실124",
+      "type": "사실",
+      "domain_hint": "FUNC",
+      "description": "넓이 $= |g(t)| = g(t)$의 최솟값을 최종 답으로 산출한다",
+      "note": "삼각형 넓이의 최솟값은 $g(3) = \\dfrac{13}{4}$이다 (답: $\\dfrac{13}{4}$)",
+      "main": true,
+      "step": 5
+    }
+  ],
+  "solution": "$A(t-1,\\,2t-2)$와 $C(t+1,\\,2t+2)$ 사이의 거리는 $AC = \\sqrt{4+16} = 2\\sqrt{5}$이다. 두 점을 지나는 직선은 기울기 $2$이므로 $y = 2x$, 즉 $2x - y = 0$이다. 점 $B(t,\\,f(t))$에서 이 직선까지의 거리는 $\\dfrac{|2t - f(t)|}{\\sqrt{5}}$이다. 따라서 삼각형의 넓이는 $\\dfrac{1}{2} \\times 2\\sqrt{5} \\times \\dfrac{|2t - f(t)|}{\\sqrt{5}} = |2t - f(t)|$이다. $g(t) = 2t - f(t) = 2t - \\left(-\\dfrac{1}{4}t^4 + t^3 + 2t - 10\\right) = \\dfrac{1}{4}t^4 - t^3 + 10$을 정리한다. $g'(t) = t^3 - 3t^2 = t^2(t-3)$이므로, $t < 3$에서 $g'(t) \\leq 0$ (감소), $t > 3$에서 $g'(t) > 0$ (증가)이다. 따라서 $t = 3$에서 전역 최솟값을 가진다. $g(3) = \\dfrac{81}{4} - 27 + 10 = \\dfrac{13}{4}$이고, 이는 양수이므로 $|g(t)| = g(t)$이다. 삼각형 넓이의 최솟값은 $\\dfrac{13}{4}$이다.",
+  "original_solution": "문제의 조건에서의 세 점을\n\n$$A(t-1,\\, 2t-2),\\quad B(t,\\, f(t)),\\quad C(t+1,\\, 2t+2)$$\n\n라 하면, 두 점 $A$, $C$는 모두 $y = 2x$ 위의 점임을 알 수 있다.\n\n[FIGURE: 직선 $y=2x$ 위에 점 $A(t-1, 2t-2)$와 $C(t+1, 2t+2)$가 있고, 직선 아래에 점 $B(t, f(t))$가 있는 삼각형. 점 $(t, 2t)$에서 $B$까지의 수직 거리가 높이이며, $AC$의 길이가 밑변이다.]\n\n$A$와 $C$ 사이의 거리:\n\n$$AC = \\sqrt{(t+1-(t-1))^2 + (2t+2-(2t-2))^2} = \\sqrt{4+16} = \\sqrt{20} = 2\\sqrt{5}$$\n\n직선 $y = 2x$, 즉 $2x - y = 0$에서 점 $B(t, f(t))$까지의 거리:\n\n$$d = \\frac{|2t - f(t)|}{\\sqrt{5}}$$\n\n따라서\n\n$$\\text{(삼각형 ABC의 넓이)} = \\frac{1}{2} \\times 2\\sqrt{5} \\times \\frac{|2t - f(t)|}{\\sqrt{5}} = \\frac{1}{2} \\times 2 \\times |2t - f(t)| \\quad \\cdots \\; \\textcircled{ㄱ}$$\n\n이고, 이때\n\n$$2x - f(x) = 2x - \\left(-\\frac{1}{4}x^4 + x^3 + 2x - 10\\right) = \\frac{1}{4}x^4 - x^3 + 10$$\n\n$$\\Rightarrow \\{2x - f(x)\\}' = x^3 - 3x^2 = x^2(x-3)$$\n\n$$\\Rightarrow 2x - f(x) \\text{는 } x = 3 \\text{일 때 최솟값 } \\frac{13}{4} \\text{을 가짐}$$\n\n($x=3$ 대입: $\\frac{1}{4}(81) - 27 + 10 = \\frac{81}{4} - 17 = \\frac{81-68}{4} = \\frac{13}{4}$)\n\n을 알 수 있으므로\n\n$$\\textcircled{ㄱ} \\Rightarrow \\text{(삼각형 ABC의 넓이의 최솟값)} = \\frac{13}{4}$$\n\n를 얻는다.\n\n**정답: ②**",
+  "analysis": "A(t-1,2(t-1))과 C(t+1,2(t+1))이 직선 y=2x 위의 점임을 확인하고 AC=2√5를 구한다. B에서 직선 2x-y=0까지의 거리 공식으로 넓이를 |2t-f(t)|로 정리한 뒤, g(t)=2t-f(t)=t⁴/4-t³+10을 미분하여 t=3에서 최솟값 13/4를 얻는다.",
+  "new_neurons": [],
+  "metadata": {
+    "unit": "미적분",
+    "difficulty": "상",
+    "score": "4",
+    "type": "multiple_choice",
+    "answer": "2",
+    "year": "미상",
+    "source": "수능",
+    "topic": "다항함수의 최솟값",
+    "subtopic": "삼각형 넓이의 최솟값"
+  },
+  "edge_count": 11,
+  "side_count": 0,
+  "statement": "# 14. (수능) - 세 점을 꼭짓점으로 하는 삼각형 넓이의 최솟값\n\n## Problem\n실수 $t$와 함수 $f(x) = -\\dfrac{1}{4}x^4 + x^3 + 2x - 10$에 대하여 세 점 $(t-1,\\, 2t-2)$, $(t,\\, f(t))$, $(t+1,\\, 2t+2)$를 꼭짓점으로 하는 삼각형의 넓이의 최솟값은? [4점]",
+  "dna": {
+    "nodes": [
+      {
+        "id": "top",
+        "dna": "Q1",
+        "label": "넓이 최솟값",
+        "category": "발문"
+      },
+      {
+        "id": "tri_area",
+        "dna": "G11",
+        "label": "삼각형 넓이",
+        "category": "기하"
+      },
+      {
+        "id": "tri",
+        "dna": "G25",
+        "label": "삼각형 ABC",
+        "category": "기하"
+      },
+      {
+        "id": "pt_a",
+        "dna": "G1",
+        "label": "점 A",
+        "category": "기하"
+      },
+      {
+        "id": "pt_b",
+        "dna": "G1",
+        "label": "점 B",
+        "category": "기하"
+      },
+      {
+        "id": "pt_c",
+        "dna": "G1",
+        "label": "점 C",
+        "category": "기하"
+      },
+      {
+        "id": "coord_a",
+        "dna": "G17",
+        "label": "A 좌표",
+        "category": "기하"
+      },
+      {
+        "id": "coord_b",
+        "dna": "G17",
+        "label": "B 좌표",
+        "category": "기하"
+      },
+      {
+        "id": "coord_c",
+        "dna": "G17",
+        "label": "C 좌표",
+        "category": "기하"
+      },
+      {
+        "id": "ax",
+        "dna": "E1",
+        "label": "t-1",
+        "category": "수식"
+      },
+      {
+        "id": "ay",
+        "dna": "E6",
+        "label": "2(t-1)",
+        "category": "수식"
+      },
+      {
+        "id": "bx",
+        "dna": "T1",
+        "label": "변수 t(B x)",
+        "category": "말단"
+      },
+      {
+        "id": "bfy",
+        "dna": "F3",
+        "label": "f(t)",
+        "category": "함수"
+      },
+      {
+        "id": "cx",
+        "dna": "E1",
+        "label": "t+1",
+        "category": "수식"
+      },
+      {
+        "id": "cy",
+        "dna": "E1",
+        "label": "2t+2",
+        "category": "수식"
+      },
+      {
+        "id": "vt",
+        "dna": "T1",
+        "label": "변수 t",
+        "category": "말단"
+      },
+      {
+        "id": "c1",
+        "dna": "T2",
+        "label": "상수 1",
+        "category": "말단"
+      },
+      {
+        "id": "c2",
+        "dna": "T2",
+        "label": "상수 2",
+        "category": "말단"
+      },
+      {
+        "id": "cn1",
+        "dna": "T2",
+        "label": "상수 -1",
+        "category": "말단"
+      },
+      {
+        "id": "func_f",
+        "dna": "F6",
+        "label": "함수 f(x)",
+        "category": "함수"
+      },
+      {
+        "id": "func_eq",
+        "dna": "C11",
+        "label": "f(x) 방정식",
+        "category": "조건"
+      },
+      {
+        "id": "func_c1",
+        "dna": "C1",
+        "label": "f(x)=수식",
+        "category": "조건"
+      },
+      {
+        "id": "f_sum1",
+        "dna": "E1",
+        "label": "합(항1,항2)",
+        "category": "수식"
+      },
+      {
+        "id": "f_sum2",
+        "dna": "E1",
+        "label": "합(항3,항4)",
+        "category": "수식"
+      },
+      {
+        "id": "f_sum3",
+        "dna": "E1",
+        "label": "합(x^4항,x^3)",
+        "category": "수식"
+      },
+      {
+        "id": "f_x4term",
+        "dna": "E6",
+        "label": "-1/4·x^4",
+        "category": "수식"
+      },
+      {
+        "id": "f_x4",
+        "dna": "E7",
+        "label": "x^4",
+        "category": "수식"
+      },
+      {
+        "id": "f_x3",
+        "dna": "E7",
+        "label": "x^3",
+        "category": "수식"
+      },
+      {
+        "id": "f_2x",
+        "dna": "E6",
+        "label": "2x",
+        "category": "수식"
+      },
+      {
+        "id": "cm14",
+        "dna": "T2",
+        "label": "상수 -1/4",
+        "category": "말단"
+      },
+      {
+        "id": "c4exp",
+        "dna": "T2",
+        "label": "상수 4(지수)",
+        "category": "말단"
+      },
+      {
+        "id": "c3exp",
+        "dna": "T2",
+        "label": "상수 3(지수)",
+        "category": "말단"
+      },
+      {
+        "id": "cm10",
+        "dna": "T2",
+        "label": "상수 -10",
+        "category": "말단"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
+      },
+      {
+        "id": "t_real",
+        "dna": "L3",
+        "label": "t는 실수",
+        "category": "제한"
+      }
+    ],
+    "edges": [
+      {
+        "from": "tri_area",
+        "to": "top"
+      },
+      {
+        "from": "tri",
+        "to": "tri_area"
+      },
+      {
+        "from": "pt_a",
+        "to": "tri"
+      },
+      {
+        "from": "pt_b",
+        "to": "tri"
+      },
+      {
+        "from": "pt_c",
+        "to": "tri"
+      },
+      {
+        "from": "coord_a",
+        "to": "pt_a"
+      },
+      {
+        "from": "coord_b",
+        "to": "pt_b"
+      },
+      {
+        "from": "coord_c",
+        "to": "pt_c"
+      },
+      {
+        "from": "ax",
+        "to": "coord_a"
+      },
+      {
+        "from": "ay",
+        "to": "coord_a"
+      },
+      {
+        "from": "vt",
+        "to": "ax"
+      },
+      {
+        "from": "cn1",
+        "to": "ax"
+      },
+      {
+        "from": "c2",
+        "to": "ay"
+      },
+      {
+        "from": "ax",
+        "to": "ay"
+      },
+      {
+        "from": "bx",
+        "to": "coord_b"
+      },
+      {
+        "from": "bfy",
+        "to": "coord_b"
+      },
+      {
+        "from": "vt",
+        "to": "bfy"
+      },
+      {
+        "from": "func_f",
+        "to": "bfy"
+      },
+      {
+        "from": "cx",
+        "to": "coord_c"
+      },
+      {
+        "from": "cy",
+        "to": "coord_c"
+      },
+      {
+        "from": "vt",
+        "to": "cx"
+      },
+      {
+        "from": "c1",
+        "to": "cx"
+      },
+      {
+        "from": "c2",
+        "to": "cy"
+      },
+      {
+        "from": "vt",
+        "to": "cy"
+      },
+      {
+        "from": "c1",
+        "to": "cy"
+      },
+      {
+        "from": "t_real",
+        "to": "vt"
+      },
+      {
+        "from": "func_eq",
+        "to": "func_f"
+      },
+      {
+        "from": "func_c1",
+        "to": "func_eq"
+      },
+      {
+        "from": "f_sum1",
+        "to": "func_c1"
+      },
+      {
+        "from": "f_sum2",
+        "to": "f_sum1"
+      },
+      {
+        "from": "f_2x",
+        "to": "f_sum2"
+      },
+      {
+        "from": "cm10",
+        "to": "f_sum1"
+      },
+      {
+        "from": "f_sum3",
+        "to": "f_sum2"
+      },
+      {
+        "from": "f_x4term",
+        "to": "f_sum3"
+      },
+      {
+        "from": "f_x3",
+        "to": "f_sum3"
+      },
+      {
+        "from": "cm14",
+        "to": "f_x4term"
+      },
+      {
+        "from": "f_x4",
+        "to": "f_x4term"
+      },
+      {
+        "from": "vx",
+        "to": "f_x4"
+      },
+      {
+        "from": "c4exp",
+        "to": "f_x4"
+      },
+      {
+        "from": "vx",
+        "to": "f_x3"
+      },
+      {
+        "from": "c3exp",
+        "to": "f_x3"
+      },
+      {
+        "from": "c2",
+        "to": "f_2x"
+      },
+      {
+        "from": "vx",
+        "to": "f_2x"
+      }
+    ],
+    "new_dna": []
+  },
+  "thinking_profile": null,
+  "folders": [],
+  "history": [],
+  "recovery_warnings": [],
+  "errata": [],
+  "created_at": "2026-03-28T06:16:02.690Z"
+}
