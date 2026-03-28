@@ -1820,5 +1820,13 @@
       "DIFF"
     ],
     "action": "REPEATED_ROOT_FROM_DERIVATIVE_ZEROS"
+  },
+  {
+    "id": "사실138",
+    "domain": [
+      "LIM",
+      "POLY"
+    ],
+    "action": "RATIONAL_LIMIT_DEGREE_MATCH"
   }
 ]
