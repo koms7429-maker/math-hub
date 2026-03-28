@@ -1697,10 +1697,9 @@
   {
     "id": "사실129",
     "domain": [
-      "FUNC",
-      "MONO",
-      "DIFF"
+      "POLY",
+      "SYM"
     ],
-    "action": "UNIQUE_LOCAL_MIN_IS_GLOBAL"
+    "action": "CUBIC_INFLECTION_ROOT_MEAN"
   }
 ]
