@@ -1,0 +1,514 @@
+{
+  "problem_id": "P26",
+  "answer": "16",
+  "clues": [
+    {
+      "id": "단서A",
+      "text": "최고차항의 계수가 양수인 삼차함수 $f(x)$"
+    },
+    {
+      "id": "단서B",
+      "text": "두 곡선 $y = f(x)$, $y = xf(x)$가 세 점 A, B, C에서만 만난다"
+    },
+    {
+      "id": "단서C",
+      "text": "$f(1) = 4$"
+    },
+    {
+      "id": "단서D",
+      "text": "$f(2) = 0$"
+    },
+    {
+      "id": "단서E",
+      "text": "삼각형 ABC의 넓이가 $4$"
+    }
+  ],
+  "skeleton": [
+    {
+      "from": "단서B",
+      "to": "note1",
+      "neuron": "연산9",
+      "type": "연산",
+      "domain_hint": "EQN,POLY",
+      "description": "교점 방정식 $f(x)=xf(x)$를 $f(x)(x-1)=0$으로 인수분해",
+      "note": "$y=f(x)$와 $y=xf(x)$의 교점에서 $f(x)=xf(x)$, 즉 $f(x)-xf(x)=0$이므로 $f(x)(1-x)=0$. 따라서 $x=1$ 또는 $f(x)=0$이다.",
+      "main": true,
+      "step": 1
+    },
+    {
+      "from": [
+        "note1",
+        "단서C"
+      ],
+      "to": "note2",
+      "neuron": "사실44",
+      "type": "사실",
+      "domain_hint": "EQN,COMB",
+      "description": "$f(1)=4\\neq 0$이므로 $x=1$은 $f(x)=0$의 근이 아니고, 교점 총 3개에서 $x=1$이 1개를 차지하므로 $f(x)=0$의 서로 다른 실근은 2개",
+      "note": "$x=1$에서 $f(1)=4\\neq 0$이므로 $x=1$은 $f(x)=0$과 중복되지 않는다. 교점이 정확히 3개이므로, $f(x)=0$의 서로 다른 실근은 2개이다.",
+      "main": true,
+      "step": 2
+    },
+    {
+      "from": [
+        "note2",
+        "단서A",
+        "단서D"
+      ],
+      "to": "note3",
+      "neuron": "사실135",
+      "type": "사실",
+      "domain_hint": "POLY",
+      "description": "삼차방정식의 서로 다른 실근이 2개이면 이중근+단근 구조",
+      "note": "최고차항의 계수가 양수인 삼차함수 $f(x)=0$이 서로 다른 실근 2개를 가지므로, 하나는 이중근이고 하나는 단근이다. $f(2)=0$이므로 $x=2$는 이 근 중 하나이다.",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": "note3",
+      "to": "note4",
+      "neuron": "전략22",
+      "type": "전략",
+      "domain_hint": "POLY",
+      "description": "$x=2$가 이중근인 경우와 단근인 경우로 분류",
+      "note": "경우1: $f(x)=a(x-b)(x-2)^2$ (이중근 $x=2$, 단근 $x=b$). 경우2: $f(x)=a(x-b)^2(x-2)$ (이중근 $x=b$, 단근 $x=2$).",
+      "main": true,
+      "step": 4
+    },
+    {
+      "from": [
+        "note4",
+        "단서C"
+      ],
+      "to": "note5",
+      "neuron": "전략23",
+      "type": "전략",
+      "domain_hint": "EQN",
+      "description": "경우2에서 $f(1)=4>0$과의 모순을 확인하여 소거",
+      "note": "경우2: $f(x)=a(x-b)^2(x-2)$에서 $f(1)=a(1-b)^2(1-2)=-a(1-b)^2$. $a>0$이므로 $f(1)\\leq 0$이 되어 $f(1)=4>0$과 모순. 따라서 경우2는 불가능하다.",
+      "main": true,
+      "step": 5
+    },
+    {
+      "from": "note5",
+      "to": "note6",
+      "neuron": "사실133",
+      "type": "사실",
+      "domain_hint": "POLY",
+      "description": "$f(x)=a(x-b)(x-2)^2$으로 확정하고 $f(1)=4$ 대입",
+      "note": "$f(x)=a(x-b)(x-2)^2$에서 $f(1)=a(1-b)(1-2)^2=a(1-b)$. $f(1)=4$이므로 $a(1-b)=4$. $a>0$이므로 $1-b>0$, 즉 $b<1$이다.",
+      "main": true,
+      "step": 6
+    },
+    {
+      "from": "note6",
+      "to": "note7",
+      "neuron": "연산13",
+      "type": "연산",
+      "domain_hint": "COORD",
+      "description": "세 교점의 좌표를 구하고 삼각형 넓이 조건으로 미지수 결정",
+      "note": "세 교점: A=$(b,0)$, B=$(2,0)$, C=$(1,f(1))=(1,4)$. AB는 $x$축 위이므로 $|\\text{AB}|=2-b$, 높이는 $|4-0|=4$. 넓이$=\\frac{1}{2}(2-b)\\times 4=2(2-b)=4$이므로 $b=0$. $a(1-0)=4$에서 $a=4$.",
+      "main": true,
+      "step": 7
+    },
+    {
+      "from": "note7",
+      "to": "note8",
+      "neuron": "연산36",
+      "type": "연산",
+      "domain_hint": "DIFF",
+      "description": "$f(x)=4x(x-2)^2$를 곱의 미분법으로 미분",
+      "note": "$f(x)=4x(x-2)^2$. 곱의 미분법: $f'(x)=4(x-2)^2+4x\\cdot 2(x-2)=4(x-2)^2+8x(x-2)$.",
+      "main": true,
+      "step": 8
+    },
+    {
+      "from": "note8",
+      "to": "END",
+      "neuron": "전략25",
+      "type": "전략",
+      "domain_hint": "DIFF",
+      "description": "$x=0$을 대입하여 $f'(0)$ 계산",
+      "note": "$f'(0)=4(-2)^2+8\\cdot 0\\cdot(-2)=16$. 따라서 $f'(0)=16$.",
+      "main": true,
+      "step": 9
+    }
+  ],
+  "solution": "STEP 1. 교점 방정식 $f(x)=xf(x)$를 정리하면 $f(x)(1-x)=0$이므로, $x=1$ 또는 $f(x)=0$이다.\nSTEP 2. $f(1)=4\\neq 0$이므로 $x=1$은 $f(x)=0$의 근이 아니다. 교점이 정확히 3개이므로 $f(x)=0$의 서로 다른 실근은 2개이다.\nSTEP 3. 삼차방정식 $f(x)=0$이 서로 다른 실근 2개를 가지므로, 이중근 하나와 단근 하나를 가진다.\nSTEP 4. $x=2$가 이중근인 경우와 단근인 경우로 분류한다.\nSTEP 5. $f(x)=a(x-b)^2(x-2)$이면 $f(1)=-a(1-b)^2\\leq 0$이므로 $f(1)=4>0$과 모순. 따라서 $x=2$가 이중근이다.\nSTEP 6. $f(x)=a(x-b)(x-2)^2$에서 $f(1)=a(1-b)=4$이고, $a>0$이므로 $b<1$이다.\nSTEP 7. 세 교점 A=$(b,0)$, B=$(2,0)$, C=$(1,4)$에 대해 삼각형 넓이$=\\frac{1}{2}(2-b)\\times 4=2(2-b)=4$이므로 $b=0$, $a=4$. 따라서 $f(x)=4x(x-2)^2$.\nSTEP 8. 곱의 미분법으로 $f'(x)=4(x-2)^2+8x(x-2)$.\nSTEP 9. $f'(0)=4\\times 4+0=16$.",
+  "original_solution": "$f(x) = xf(x)$에서 $f(x)(x-1) = 0$이므로\n\n$$\\begin{cases} \\text{①} \\quad x = 1 \\\\ \\text{②} \\quad f(x) = 0 \\end{cases}$$\n\n문제의 조건에 의해 ① 또는 ②를 만족시키는 서로 다른 $x$의 개수가 3 $\\cdots$ ㉠ 이어야 한다.\n\n이때 $f(1) = 4$이므로 $x = 1$은 ②의 방정식의 실근이 아님을 알 수 있다.\n\n㉠ $\\Rightarrow$ ②의 방정식의 서로 다른 실근의 개수는 2\n\n$\\Rightarrow$ $f(x) = 0$은 $x = 2$를 포함한 두 실근을 가짐 ($\\because f(2) = 0$)\n\n$f(x)$의 극댓값이 $0$이면 $f(1) < 0$이 되어 모순이므로, $f(x)$는 극솟값 $0$을 가짐을 알 수 있다.\n\n또한 $f(x)$가 $x = 2$에서 극소가 아니면 $f(1) < 0$이 되어 모순이므로, $f(x)$는 $x = 2$에서 극소임을 알 수 있다.\n\n따라서\n\n$$f(x) = a(x - b)(x - 2)^2 \\quad (\\text{단, } a > 0,\\; b < 2) \\cdots \\text{㉡}$$\n\n로 놓을 수 있다.\n\n[FIGURE: $y = f(x)$ 그래프와 $y = f(2)$ 직선이 그려져 있고, 세 점 A($b$, $0$), B($2$, $0$), C($1$, $f(1)$)가 표시됨]\n\n세 점 A, B, C를 잡으면\n\n$$(\\triangle \\text{ABC의 넓이}) = \\frac{1}{2} \\times \\overline{\\text{AB}} \\times \\{f(1) - f(2)\\} = 2(2 - b)$$\n\n문제의 조건에서 이 값이 $4$이므로\n\n$$2(2 - b) = 4 \\quad \\Rightarrow \\quad b = 0$$\n\n$f(1) = 4$와 ㉡에서\n\n$$a \\times (1 - 0)(1 - 2)^2 = 4 \\quad \\Rightarrow \\quad a = 4$$\n\n따라서\n\n$$f(x) = 4x(x - 2)^2$$\n\n$$f'(x) = 4(x - 2)^2 + 8x(x - 2)$$\n\n$$\\therefore\\; f'(0) = 4 \\cdot (-2)^2 + 0 = \\boxed{16}$$\n\n**정답: ⑤**",
+  "analysis": "",
+  "new_neurons": [],
+  "metadata": {
+    "unit": "다항함수의 미분",
+    "difficulty": "상",
+    "score": "4",
+    "type": "multiple_choice",
+    "answer": "5",
+    "year": "미상",
+    "source": "수능",
+    "topic": "삼차함수와 곡선의 교점",
+    "subtopic": "삼각형 넓이 조건을 이용한 도함수 값 구하기"
+  },
+  "edge_count": 9,
+  "side_count": 0,
+  "statement": "# 26. (수능) - 삼차함수와 곡선의 교점, 삼각형 넓이\n\n## Problem\n최고차항의 계수가 양수인 삼차함수 $f(x)$에 대하여 두 곡선\n\n$$y = f(x), \\quad y = xf(x)$$\n\n가 세 점 A, B, C에서만 만난다. $f(1) = 4$, $f(2) = 0$이고 삼각형 ABC의 넓이가 $4$일 때, $f'(0)$의 값은? [4점]",
+  "dna": {
+    "nodes": [
+      {
+        "id": "top",
+        "dna": "Q1",
+        "label": "값을 구하라",
+        "category": "발문"
+      },
+      {
+        "id": "ask",
+        "dna": "F3",
+        "label": "f'(0)",
+        "category": "함수"
+      },
+      {
+        "id": "deriv_f",
+        "dna": "F13",
+        "label": "도함수 f'",
+        "category": "함수"
+      },
+      {
+        "id": "c0",
+        "dna": "T2",
+        "label": "상수 0",
+        "category": "말단"
+      },
+      {
+        "id": "c1",
+        "dna": "T2",
+        "label": "상수 1",
+        "category": "말단"
+      },
+      {
+        "id": "c2",
+        "dna": "T2",
+        "label": "상수 2",
+        "category": "말단"
+      },
+      {
+        "id": "c4",
+        "dna": "T2",
+        "label": "상수 4",
+        "category": "말단"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
+      },
+      {
+        "id": "func_f",
+        "dna": "F6",
+        "label": "삼차함수 f",
+        "category": "함수"
+      },
+      {
+        "id": "lead_pos",
+        "dna": "L4",
+        "label": "최고차항 양수",
+        "category": "제한"
+      },
+      {
+        "id": "crv1",
+        "dna": "G2",
+        "label": "곡선 y=f(x)",
+        "category": "기하"
+      },
+      {
+        "id": "crv1_eq",
+        "dna": "C11",
+        "label": "곡선1 방정식",
+        "category": "조건"
+      },
+      {
+        "id": "crv1_c1",
+        "dna": "C1",
+        "label": "y=f(x) 등식",
+        "category": "조건"
+      },
+      {
+        "id": "fx_apply",
+        "dna": "F3",
+        "label": "f(x)",
+        "category": "함수"
+      },
+      {
+        "id": "crv2",
+        "dna": "G2",
+        "label": "곡선 y=xf(x)",
+        "category": "기하"
+      },
+      {
+        "id": "crv2_eq",
+        "dna": "C11",
+        "label": "곡선2 방정식",
+        "category": "조건"
+      },
+      {
+        "id": "crv2_c1",
+        "dna": "C1",
+        "label": "y=xf(x) 등식",
+        "category": "조건"
+      },
+      {
+        "id": "xfx",
+        "dna": "E6",
+        "label": "곱(x, f(x))",
+        "category": "수식"
+      },
+      {
+        "id": "meet3",
+        "dna": "C3",
+        "label": "세 점 교점",
+        "category": "조건"
+      },
+      {
+        "id": "exact3",
+        "dna": "C4",
+        "label": "서로 다른 세 점",
+        "category": "조건"
+      },
+      {
+        "id": "pt_a",
+        "dna": "G1",
+        "label": "점 A",
+        "category": "기하"
+      },
+      {
+        "id": "pt_b",
+        "dna": "G1",
+        "label": "점 B",
+        "category": "기하"
+      },
+      {
+        "id": "pt_c",
+        "dna": "G1",
+        "label": "점 C",
+        "category": "기하"
+      },
+      {
+        "id": "cond_f1",
+        "dna": "C1",
+        "label": "f(1)=4",
+        "category": "조건"
+      },
+      {
+        "id": "f1_apply",
+        "dna": "F3",
+        "label": "f(1)",
+        "category": "함수"
+      },
+      {
+        "id": "cond_f2",
+        "dna": "C1",
+        "label": "f(2)=0",
+        "category": "조건"
+      },
+      {
+        "id": "f2_apply",
+        "dna": "F3",
+        "label": "f(2)",
+        "category": "함수"
+      },
+      {
+        "id": "tri_abc",
+        "dna": "G25",
+        "label": "삼각형 ABC",
+        "category": "기하"
+      },
+      {
+        "id": "area_tri",
+        "dna": "G11",
+        "label": "삼각형 넓이",
+        "category": "기하"
+      },
+      {
+        "id": "area_cond",
+        "dna": "C1",
+        "label": "넓이=4",
+        "category": "조건"
+      },
+      {
+        "id": "conds",
+        "dna": "S1",
+        "label": "전체 조건",
+        "category": "구조"
+      }
+    ],
+    "edges": [
+      {
+        "from": "ask",
+        "to": "top"
+      },
+      {
+        "from": "conds",
+        "to": "top"
+      },
+      {
+        "from": "deriv_f",
+        "to": "ask"
+      },
+      {
+        "from": "c0",
+        "to": "ask"
+      },
+      {
+        "from": "func_f",
+        "to": "deriv_f"
+      },
+      {
+        "from": "lead_pos",
+        "to": "func_f"
+      },
+      {
+        "from": "crv1",
+        "to": "meet3"
+      },
+      {
+        "from": "crv2",
+        "to": "meet3"
+      },
+      {
+        "from": "pt_a",
+        "to": "meet3"
+      },
+      {
+        "from": "pt_b",
+        "to": "meet3"
+      },
+      {
+        "from": "pt_c",
+        "to": "meet3"
+      },
+      {
+        "from": "exact3",
+        "to": "meet3"
+      },
+      {
+        "from": "meet3",
+        "to": "conds"
+      },
+      {
+        "from": "crv1_eq",
+        "to": "crv1"
+      },
+      {
+        "from": "crv1_c1",
+        "to": "crv1_eq"
+      },
+      {
+        "from": "fx_apply",
+        "to": "crv1_c1"
+      },
+      {
+        "from": "func_f",
+        "to": "fx_apply"
+      },
+      {
+        "from": "vx",
+        "to": "fx_apply"
+      },
+      {
+        "from": "crv2_eq",
+        "to": "crv2"
+      },
+      {
+        "from": "crv2_c1",
+        "to": "crv2_eq"
+      },
+      {
+        "from": "xfx",
+        "to": "crv2_c1"
+      },
+      {
+        "from": "vx",
+        "to": "xfx"
+      },
+      {
+        "from": "fx_apply",
+        "to": "xfx"
+      },
+      {
+        "from": "f1_apply",
+        "to": "cond_f1"
+      },
+      {
+        "from": "c4",
+        "to": "cond_f1"
+      },
+      {
+        "from": "func_f",
+        "to": "f1_apply"
+      },
+      {
+        "from": "c1",
+        "to": "f1_apply"
+      },
+      {
+        "from": "cond_f1",
+        "to": "conds"
+      },
+      {
+        "from": "f2_apply",
+        "to": "cond_f2"
+      },
+      {
+        "from": "c0",
+        "to": "cond_f2"
+      },
+      {
+        "from": "func_f",
+        "to": "f2_apply"
+      },
+      {
+        "from": "c2",
+        "to": "f2_apply"
+      },
+      {
+        "from": "cond_f2",
+        "to": "conds"
+      },
+      {
+        "from": "pt_a",
+        "to": "tri_abc"
+      },
+      {
+        "from": "pt_b",
+        "to": "tri_abc"
+      },
+      {
+        "from": "pt_c",
+        "to": "tri_abc"
+      },
+      {
+        "from": "tri_abc",
+        "to": "area_tri"
+      },
+      {
+        "from": "area_tri",
+        "to": "area_cond"
+      },
+      {
+        "from": "c4",
+        "to": "area_cond"
+      },
+      {
+        "from": "area_cond",
+        "to": "conds"
+      }
+    ],
+    "new_dna": []
+  },
+  "thinking_profile": null,
+  "folders": [],
+  "history": [],
+  "recovery_warnings": [],
+  "errata": [],
+  "created_at": "2026-03-28T13:04:48.991Z"
+}
