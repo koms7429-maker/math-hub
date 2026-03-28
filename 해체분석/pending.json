@@ -2904,5 +2904,856 @@
     "edge_count": 23,
     "side_count": 4,
     "created_at": "2026-03-28T14:39:51.336Z"
+  },
+  {
+    "problem_id": "P25",
+    "answer": "144",
+    "content": "id: P25\nsource: 수능\nyear: 미상\nunit: 적분\ntopic: 정적분의 최솟값\nsubtopic: 조건을 만족하는 연속함수의 적분 최솟값\ndifficulty: 상\nscore: 4\nanswer: 144\ntype: short_answer\n\n# 25. (수능) - 조건을 만족하는 연속함수의 정적분 최솟값\n\n## Problem\n모든 실수 $x$에서 $f(x) \\geq 0$인 연속함수 $f(x)$가 다음 조건을 만족시킬 때, $\\displaystyle\\int_{-4}^{4} f(x)\\,dx$의 최솟값을 구하시오.\n\n(가) $4x^2 \\leq f(x) \\leq x^4 - 6x^2 + 9$를 만족하는 모든 정수 $x$의 집합을 $A$라 할 때, $n(A^c) = 2$이다.\n\n(나) 모든 정수 $n$에 대하여 구간 $[n,\\, n+1]$에서 함수 $y = f(x)$의 그래프는 직선의 일부이다.\n\n## Solution\n**Step 1. 조건 (가) 분석: 집합 $A$ 구하기**\n\n부등식 $4x^2 \\leq f(x) \\leq x^4 - 6x^2 + 9$가 성립하려면 우선 $4x^2 \\leq x^4 - 6x^2 + 9$이어야 한다.\n\n$$4x^2 \\leq (x^2 - 3)^2$$\n$$4x^2 \\leq x^4 - 6x^2 + 9$$\n$$x^4 - 10x^2 + 9 \\geq 0$$\n$$(x^2 - 1)(x^2 - 9) \\geq 0$$\n\n이 부등식의 해는 $x^2 \\leq 1$ 또는 $x^2 \\geq 9$, 즉 $-1 \\leq x \\leq 1$ 또는 $x \\leq -3$ 또는 $x \\geq 3$이다.\n\n따라서 정수 $x$에 대해 집합은:\n\n$$A = \\{x \\in \\mathbb{Z} \\mid x = 0,\\, \\pm1,\\, \\pm3,\\, \\pm4,\\, \\pm5,\\, \\ldots\\}$$\n\n조건에서 $n(A^c) = 2$라고 하였으므로, 정수 전체 집합에서 $A$를 제외한 집합 $A^c$는 $|x| < 3$이면서 $|x| > 1$인 정수, 즉 $x = \\pm 2$이다. 이는 원소가 2개이므로 조건을 만족한다.\n\n따라서 $n(A^c) = 2$라는 조건과 정합이 확인된다.\n\n**결과적으로 정수 $x$에 대한 $f(x)$의 할당 범위:**\n- $x \\in \\{0,\\, \\pm1,\\, \\pm3,\\, \\pm4\\}$ 일 때: $4x^2 \\leq f(x) \\leq (x^2 - 3)^2$\n- $x = \\pm 2$ 일 때: 부등식을 만족하지 않음 → $f(x) \\geq 0$인 조건만 유지\n\n**Step 2. 조건 (나) 분석: $f(x)$의 개형**\n\n조건 (나)에 의해 $f(x)$는 모든 정수 구간 $[n,\\, n+1]$에서 직선(일차함수 또는 상수)이다.\n\n즉, $f(x)$는 구간마다 선형이 연속 함수(연속인 꺾은선 함수)이다.\n\n각 정수 $x$에서의 함숫값 $f(n)$이 결정되면, 각 구간 $[n,\\, n+1]$에서의 그래프는 $f(n)$과 $f(n+1)$을 잇는 직선이다.\n\n**Step 3. 정수 점에서의 최솟값 설정**\n\n적분값 $\\displaystyle\\int_{-4}^{4} f(x)\\,dx$를 최소화하려면 각 정수 $x$ 점에서의 함숫값 $f(n)$을 최소화해야 한다.\n\n$x \\in \\{0,\\, \\pm1,\\, \\pm3,\\, \\pm4\\}$: 조건 (가)에서 $4x^2 \\leq f(x) \\leq (x^2-3)^2$이므로 최솟값은 $4x^2$이다.\n\n$$f(0) = 0, \\quad f(1) = f(-1) = 4, \\quad f(3) = f(-3) = 36, \\quad f(4) = f(-4) = 64$$\n\n$x = \\pm 2$: 부등식 조건이 없으므로 $f(x) \\geq 0$인 만큼 자유롭다.\n\n단, $x = 1$과 $x = 3$ 사이 연속인 직선으로 이어야 하므로, 구간 $[1, 3]$에서 $f(x)$는 $f(1) = 4$와 $f(3) = 36$을 잇는 직선이다.\n\n$$f(2) = \\frac{4 + 36}{2} = 20$$\n\n마찬가지로 $f(-2) = 20$이다.\n\n**Step 4. 적분값 계산 (최솟값 찾기)**\n\n각 구간은 사다리꼴이므로 넓이 $= \\dfrac{f(n) + f(n+1)}{2} \\times 1$이다.\n\n대칭성에 의해 $2 \\times \\displaystyle\\int_0^4 f(x)\\,dx$를 계산한다.\n\n구간별 계산:\n- $[0, 1]$: $(f(0) + f(1)) / 2 = (0 + 4) / 2 = 2$\n- $[1, 2]$: $(f(1) + f(2)) / 2 = (4 + 20) / 2 = 12$\n- $[2, 3]$: $(f(2) + f(3)) / 2 = (20 + 36) / 2 = 28$\n- $[3, 4]$: $(f(3) + f(4)) / 2 = (36 + 64) / 2 = 50$\n\n$$\\int_0^4 f(x)\\,dx = 2 + 12 + 28 + 50 = 92 \\quad \\cdots \\text{(계산)}$$\n\n**핵심 포인트:** $x = \\pm 2$에서는 조건 (가)의 부등식이 성립하지 않으므로, $f(\\pm 2)$는 연속성을 해치지 않는 범위에서 최대한 낮게 설정할 수 있다.\n\n$f(2) = 0$으로 설정하면 $[1, 2]$와 $[2, 3]$ 구간 모두 직선 조건을 만족하면서 적분값을 최소화할 수 있다.\n\n$f(2) = 0$으로 재설정하면:\n- $[0, 1]$: $(0 + 4) / 2 = 2$\n- $[1, 2]$: $(4 + 0) / 2 = 2$\n- $[2, 3]$: $(0 + 36) / 2 = 18$\n- $[3, 4]$: $(36 + 64) / 2 = 50$\n\n$$\\int_0^4 f(x)\\,dx = 2 + 2 + 18 + 50 = 72$$\n\n$$\\int_{-4}^{4} f(x)\\,dx = 2 \\times 72 = \\boxed{144}$$",
+    "content_source": "FileLoop",
+    "content_length": 2810,
+    "skel_status": "neuron_missing",
+    "dna_status": "dna_missing",
+    "previous_skeleton": [
+      {
+        "from": "단서B",
+        "to": "note1",
+        "neuron": "NEW_1",
+        "type": "전략",
+        "domain_hint": "INEQ",
+        "description": "이중 부등식의 필요조건으로 하한 ≤ 상한 유도",
+        "note": "$4x^2 \\leq f(x) \\leq x^4 - 6x^2 + 9$가 성립하려면 $4x^2 \\leq x^4 - 6x^2 + 9$이 필요하다",
+        "main": true,
+        "step": 1
+      },
+      {
+        "from": "note1",
+        "to": "note2",
+        "neuron": "연산21",
+        "type": "연산",
+        "domain_hint": "POLY, INEQ",
+        "description": "부등식의 양변을 이항하여 한쪽이 0인 형태로 정리한다.",
+        "note": "부등식의 양변을 이항하여 한쪽이 0인 형태로 정리한다.",
+        "main": true,
+        "step": 1,
+        "_keep_neuron": true
+      },
+      {
+        "from": "note2",
+        "to": "note3",
+        "neuron": "전략29",
+        "type": "연산",
+        "domain_hint": "POLY, INEQ",
+        "description": "정리된 다항식을 인수분해하여 곱의 형태로 변환한다.",
+        "note": "정리된 다항식을 인수분해하여 곱의 형태로 변환한다.",
+        "main": true,
+        "step": 1,
+        "_keep_neuron": true
+      },
+      {
+        "from": "note3",
+        "to": "note4",
+        "neuron": "사실35",
+        "type": "사실",
+        "domain_hint": "INEQ, POLY",
+        "description": "이차식 곱의 부등식 해 결정",
+        "note": "해는 $x^2 \\leq 1$ 또는 $x^2 \\geq 9$, 즉 $|x| \\leq 1$ 또는 $|x| \\geq 3$이다",
+        "main": true,
+        "step": 1
+      },
+      {
+        "from": [
+          "note4",
+          "단서B"
+        ],
+        "to": "note5",
+        "neuron": "NEW_2",
+        "type": "연산",
+        "domain_hint": "SET, NUM",
+        "description": "부등식 불성립 정수를 찾아 Aᶜ 결정",
+        "note": "정수 중 부등식을 만족하지 않는 것은 $x = \\pm 2$뿐이고 $A^c = \\{-2,\\, 2\\}$, $n(A^c) = 2$이다",
+        "main": true,
+        "step": 1
+      },
+      {
+        "from": "단서C",
+        "to": "note6",
+        "neuron": "NEW_3",
+        "type": "사실",
+        "domain_hint": "INTG, FUNC",
+        "description": "구간별 직선 함수의 적분은 사다리꼴 공식",
+        "note": "각 구간 $[n,\\, n+1]$에서 $\\int_n^{n+1} f(x)\\,dx = \\frac{f(n) + f(n+1)}{2}$이다",
+        "main": true,
+        "step": 2
+      },
+      {
+        "from": "note6",
+        "to": "note7",
+        "neuron": "NEW_4",
+        "type": "전략",
+        "domain_hint": "INTG, FUNC",
+        "description": "적분 최소화를 정수점 함숫값 최소화로 환원",
+        "note": "$\\int_{-4}^{4} f(x)\\,dx$를 최소화하려면 각 정수점 $f(n)$을 최소화한다",
+        "main": true,
+        "step": 3
+      },
+      {
+        "from": [
+          "note5",
+          "note7"
+        ],
+        "to": "note8",
+        "neuron": "NEW_5",
+        "type": "연산",
+        "domain_hint": "INEQ, EQN",
+        "description": "A에 속하는 정수에서 f의 최솟값 계산",
+        "note": "$x \\in A$인 정수에서 $f(x)$의 최솟값은 $4x^2$이고, $f(0)=0$, $f(\\pm1)=4$, $f(\\pm3)=36$, $f(\\pm4)=64$이다",
+        "main": true,
+        "step": 3
+      },
+      {
+        "from": [
+          "note5",
+          "note7",
+          "단서A"
+        ],
+        "to": "note9",
+        "neuron": "NEW_6",
+        "type": "전략",
+        "domain_hint": "FUNC, INEQ",
+        "description": "제약 없는 점에서 f ≥ 0 하한으로 설정",
+        "note": "$x = \\pm 2$는 조건 (가)의 제약이 없고 $f(x) \\geq 0$만 필요하므로 $f(\\pm 2) = 0$으로 설정한다",
+        "main": true,
+        "step": 3
+      },
+      {
+        "from": [
+          "note8",
+          "note9"
+        ],
+        "to": "note10",
+        "neuron": "사실57",
+        "type": "사실",
+        "domain_hint": "FUNC, INEQ",
+        "description": "구간별 직선에서 f ≥ 0 조건 검증",
+        "note": "구간 $[1,2]$에서 $f(x) = 8-4x \\geq 0$이고 구간 $[2,3]$에서 $f(x) = 36(x-2) \\geq 0$이다",
+        "main": false,
+        "step": 3
+      },
+      {
+        "from": [
+          "note8",
+          "note9"
+        ],
+        "to": "note11",
+        "neuron": "NEW_7",
+        "type": "전략",
+        "domain_hint": "SYM, INTG",
+        "description": "우함수 대칭성으로 적분 구간 축소",
+        "note": "$f(-x) = f(x)$이고 $\\int_{-4}^{4} f(x)\\,dx = 2\\int_0^4 f(x)\\,dx$이다",
+        "main": true,
+        "step": 4
+      },
+      {
+        "from": [
+          "note6",
+          "note8",
+          "note9",
+          "note11"
+        ],
+        "to": "END",
+        "neuron": "NEW_8",
+        "type": "연산",
+        "domain_hint": "INTG",
+        "description": "구간별 사다리꼴 넓이 합산 후 최종 계산",
+        "note": "$\\int_0^4 f(x)\\,dx = \\frac{0+4}{2} + \\frac{4+0}{2} + \\frac{0+36}{2} + \\frac{36+64}{2} = 2+2+18+50 = 72$이고 $\\int_{-4}^{4} f(x)\\,dx = 2 \\times 72 = 144$이다",
+        "main": true,
+        "step": 4
+      }
+    ],
+    "previous_solution": "$4x^2 \\leq f(x) \\leq x^4 - 6x^2 + 9$가 성립하려면 $4x^2 \\leq x^4 - 6x^2 + 9$이 필요하다 부등식의 양변을 이항하여 한쪽이 0인 형태로 정리한다. 정리된 다항식을 인수분해하여 곱의 형태로 변환한다. 해는 $x^2 \\leq 1$ 또는 $x^2 \\geq 9$, 즉 $|x| \\leq 1$ 또는 $|x| \\geq 3$이다 정수 중 부등식을 만족하지 않는 것은 $x = \\pm 2$뿐이고 $A^c = \\{-2,\\, 2\\}$, $n(A^c) = 2$이다 각 구간 $[n,\\, n+1]$에서 $\\int_n^{n+1} f(x)\\,dx = \\frac{f(n) + f(n+1)}{2}$이다 $\\int_{-4}^{4} f(x)\\,dx$를 최소화하려면 각 정수점 $f(n)$을 최소화한다 $x \\in A$인 정수에서 $f(x)$의 최솟값은 $4x^2$이고, $f(0)=0$, $f(\\pm1)=4$, $f(\\pm3)=36$, $f(\\pm4)=64$이다 $x = \\pm 2$는 조건 (가)의 제약이 없고 $f(x) \\geq 0$만 필요하므로 $f(\\pm 2) = 0$으로 설정한다 $f(-x) = f(x)$이고 $\\int_{-4}^{4} f(x)\\,dx = 2\\int_0^4 f(x)\\,dx$이다 $\\int_0^4 f(x)\\,dx = \\frac{0+4}{2} + \\frac{4+0}{2} + \\frac{0+36}{2} + \\frac{36+64}{2} = 2+2+18+50 = 72$이고 $\\int_{-4}^{4} f(x)\\,dx = 2 \\times 72 = 144$이다",
+    "previous_clues": "[{\"id\":\"단서A\",\"text\":\"$f(x) \\\\geq 0$인 연속함수 $f(x)$이다\"},{\"id\":\"단서B\",\"text\":\"$4x^2 \\\\leq f(x) \\\\leq x^4 - 6x^2 + 9$를 만족하는 모든 정수 $x$의 집합을 $A$라 할 때 $n(A^c) = 2$이다\"},{\"id\":\"단서C\",\"text\":\"모든 정수 $n$에 대하여 구간 $[n,\\\\, n+1]$에서 함수 $y = f(x)$의 그래프는 직선의 일부이다\"}]",
+    "previous_analysis": "조건 (가)의 이중 부등식에서 필요조건 $4x^2 \\leq (x^2-3)^2$을 유도하여 $A^c = \\{-2, 2\\}$를 결정한다. 조건 (나)로 $f$가 꺾은선 함수임을 파악하고 적분을 사다리꼴 공식으로 변환한 뒤, 각 정수점에서 함숫값을 최소화하여 적분의 최솟값 144를 구한다.",
+    "previous_matching": "",
+    "previous_matched": [],
+    "previous_new_neurons": [
+      {
+        "id": "사실??",
+        "type": "사실",
+        "statement": "이중 부등식 $a \\leq f(x) \\leq b$가 해를 가지려면 $a \\leq b$이어야 한다 (하한 ≤ 상한은 해 존재의 필요조건).",
+        "description": "이중 부등식의 필요조건으로 하한 ≤ 상한 유도",
+        "note": "$4x^2 \\leq f(x) \\leq x^4 - 6x^2 + 9$가 성립하려면 $4x^2 \\leq x^4 - 6x^2 + 9$이 필요하다",
+        "reason": "후보 중 사실26(구간 비겹침), 사실113(해집합 닫힌구간), 연산21~25(부등식 변환) 등을 검토했으나, 이중 부등식 a ≤ x ≤ b가 해를 가지려면 필연적으로 a ≤ b이어야 한다는 필요조건 유도 원리를 직접 서술하는 뉴런이 없다.",
+        "blocked_edge": "단서B → note1",
+        "domain_hint": "INEQ",
+        "domain": [
+          "INEQ"
+        ],
+        "action_hint": "",
+        "step": 1,
+        "main": true,
+        "near_miss": [
+          "전략26: 함수가 단조인 구간에서 부등식의 해의 범위를 알려면, 경계만 조사하면 된",
+          "전략28: 부등식 $f(x) > g(x)$가 주어지면, $h(x) = f(x) - ",
+          "전략30: 로그 부등식 $\\log u \\times \\log v \\ge 0$에서, 정"
+        ]
+      },
+      {
+        "id": "전략??",
+        "type": "전략",
+        "statement": "부등식의 해집합의 여집합은 그 부등식이 성립하지 않는 원소들의 집합이며, 정수 범위에서는 각 정수를 대입하여 불성립 여부를 판정함으로써 결정한다.",
+        "description": "부등식 불성립 정수를 찾아 Aᶜ 결정",
+        "note": "정수 중 부등식을 만족하지 않는 것은 $x = \\pm 2$뿐이고 $A^c = \\{-2,\\, 2\\}$, $n(A^c) = 2$이다",
+        "reason": "연산21~25는 부등식 방향 변환 규칙이지, 특정 정수를 대입하여 부등식 불성립 여부를 판정하는 원리가 아니다. 후보 중 해당 원리를 직접 서술하는 뉴런이 없다.",
+        "blocked_edge": "note4+단서B → note5",
+        "domain_hint": "SET, NUM",
+        "domain": [
+          "INEQ",
+          "SET"
+        ],
+        "action_hint": "",
+        "step": 1,
+        "main": true,
+        "near_miss": []
+      },
+      {
+        "id": "사실??",
+        "type": "사실",
+        "statement": "구간 $[a,b]$에서 직선 함수 $f(x)$의 정적분은 사다리꼴 넓이 공식 $\\frac{(f(a)+f(b))}{2}(b-a)$와 같다.",
+        "description": "구간별 직선 함수의 적분은 사다리꼴 공식",
+        "note": "각 구간 $[n,\\, n+1]$에서 $\\int_n^{n+1} f(x)\\,dx = \\frac{f(n) + f(n+1)}{2}$이다",
+        "reason": "후보 중 단조함수, 볼록성, 연속성 관련 사실들을 검토했으나, 구간별 직선(일차) 함수의 정적분이 사다리꼴 넓이 공식으로 계산된다는 원리를 직접 서술하는 뉴런이 없다.",
+        "blocked_edge": "단서C → note6",
+        "domain_hint": "INTG, FUNC",
+        "domain": [
+          "INTG"
+        ],
+        "action_hint": "",
+        "step": 2,
+        "main": true,
+        "near_miss": [
+          "전략3: 구간별 정의 함수에서 $f(x_1)=f(x_2)$인 서로 다른 쌍이 없으",
+          "전략4: 연속함수의 치역 $[a,b]$에 정수가 포함되지 않으려면 구간 전체가 두",
+          "전략6: $|a| = a$ ($a \\geq 0$), $-a$ ($a < 0$). "
+        ]
+      },
+      {
+        "id": "전략??",
+        "type": "전략",
+        "statement": "구간별 선형 함수의 적분은 꼭짓점(정수점 포함)에서의 함숫값에 의해 결정되므로, 적분을 최소화하는 문제는 해당 함숫값들을 최소화하는 문제로 환원된다.",
+        "description": "적분 최소화를 정수점 함숫값 최소화로 환원",
+        "note": "$\\int_{-4}^{4} f(x)\\,dx$를 최소화하려면 각 정수점 $f(n)$을 최소화한다",
+        "reason": "전략10~37 후보들은 변수 고정 카운팅, 홀짝 분리, 소인수 분해 등의 전략이며, 적분 최소화를 피적분 함수의 이산 점 함숫값 최소화로 환원하는 원리를 서술하는 뉴런이 없다.",
+        "blocked_edge": "note6 → note7",
+        "domain_hint": "INTG, FUNC",
+        "domain": [
+          "INTG",
+          "FUNC"
+        ],
+        "action_hint": "",
+        "step": 3,
+        "main": true,
+        "near_miss": [
+          "연산21: 부등식의 양변에 같은 수를 더하거나 빼면 부등호 방향이 유지된다 |",
+          "연산22: 부등식의 양변에 음수를 곱하면 부등호 방향이 반대가 된다 |",
+          "연산25: 양변이 양수인 부등식에서 역수를 취하면 부등호 방향이 반대가 된다 ($a"
+        ]
+      },
+      {
+        "id": "전략??",
+        "type": "전략",
+        "statement": "유한 집합의 원소들에 함수를 적용한 값들의 최솟값은, 각 원소에서의 함숫값을 직접 계산하여 비교함으로써 구한다.",
+        "description": "A에 속하는 정수에서 f의 최솟값 계산",
+        "note": "$x \\in A$인 정수에서 $f(x)$의 최솟값은 $4x^2$이고, $f(0)=0$, $f(\\pm1)=4$, $f(\\pm3)=36$, $f(\\pm4)=64$이다",
+        "reason": "연산47(자연수 합), 연산7·23·26(치역 이동·스케일)은 집합 A의 정수 원소들에서 함수값의 최솟값을 직접 계산하는 원리가 아니다. 후보 중 적합한 뉴런이 없다.",
+        "blocked_edge": "note5+note7 → note8",
+        "domain_hint": "INEQ, EQN",
+        "domain": [
+          "FUNC",
+          "SET"
+        ],
+        "action_hint": "",
+        "step": 3,
+        "main": true,
+        "near_miss": [
+          "전략3: 구간별 정의 함수에서 $f(x_1)=f(x_2)$인 서로 다른 쌍이 없으",
+          "전략4: 연속함수의 치역 $[a,b]$에 정수가 포함되지 않으려면 구간 전체가 두",
+          "전략6: $|a| = a$ ($a \\geq 0$), $-a$ ($a < 0$). "
+        ]
+      },
+      {
+        "id": "전략??",
+        "type": "전략",
+        "statement": "조건이 부과되지 않은 자유 변수 또는 점에서 함수값이 $\\geq 0$이어야 한다는 하한 조건을 별도의 필요조건으로 추출할 수 있다.",
+        "description": "제약 없는 점에서 f ≥ 0 하한으로 설정",
+        "note": "$x = \\pm 2$는 조건 (가)의 제약이 없고 $f(x) \\geq 0$만 필요하므로 $f(\\pm 2) = 0$으로 설정한다",
+        "reason": "전략22~25는 케이스 분류, 모순 배제, 대입 검증 전략이며, 제약이 없는 점(자유점)에서 함수의 비음수 하한을 설정하는 원리를 직접 서술하는 뉴런이 없다.",
+        "blocked_edge": "note5+note7+단서A → note9",
+        "domain_hint": "FUNC, INEQ",
+        "domain": [
+          "INEQ",
+          "FUNC"
+        ],
+        "action_hint": "",
+        "step": 3,
+        "main": true,
+        "near_miss": [
+          "사실2: $y = f(|x - c|)$는 직선 $x = c$에 대해 대칭이다 ($",
+          "사실5: 지수함수 $y=a^x$는 $a>1$이면 순증가, $0<a<1$이면 순감소",
+          "사실9: 이차함수 $f(x)=a(x-p)^2+q$에서 $f(x)=c$의 실근이 정"
+        ]
+      },
+      {
+        "id": "사실??",
+        "type": "사실",
+        "statement": "우함수 $f(-x)=f(x)$에 대해 $\\int_{-a}^{a} f(x)\\,dx = 2\\int_{0}^{a} f(x)\\,dx$이다.",
+        "description": "우함수 대칭성으로 적분 구간 축소",
+        "note": "$f(-x) = f(x)$이고 $\\int_{-4}^{4} f(x)\\,dx = 2\\int_0^4 f(x)\\,dx$이다",
+        "reason": "후보 중 사실2(절댓값 대칭), 사실106(sin/cos 기함수·우함수), 사실130(대칭 중심) 등을 검토했으나, 우함수의 정적분을 대칭 구간에서 절반 구간으로 축소하는 원리를 직접 서술하는 뉴런이 없다.",
+        "blocked_edge": "note8+note9 → note11",
+        "domain_hint": "SYM, INTG",
+        "domain": [
+          "INTG",
+          "FUNC"
+        ],
+        "action_hint": "",
+        "step": 4,
+        "main": true,
+        "near_miss": [
+          "사실2: $y = f(|x - c|)$는 직선 $x = c$에 대해 대칭이다 ($",
+          "사실5: 지수함수 $y=a^x$는 $a>1$이면 순증가, $0<a<1$이면 순감소",
+          "사실9: 이차함수 $f(x)=a(x-p)^2+q$에서 $f(x)=c$의 실근이 정"
+        ]
+      },
+      {
+        "id": "연산??",
+        "type": "연산",
+        "statement": "구간별 선형 함수의 정적분은 각 구간에서의 사다리꼴 넓이를 개별 계산한 후 합산하여 구한다.",
+        "description": "구간별 사다리꼴 넓이 합산 후 최종 계산",
+        "note": "$\\int_0^4 f(x)\\,dx = \\frac{0+4}{2} + \\frac{4+0}{2} + \\frac{0+36}{2} + \\frac{36+64}{2} = 2+2+18+50 = 72$이고 $\\int_{-4}^{4} f(x)\\,dx = 2 \\times 72 = 144$이다",
+        "reason": "후보들은 단조성, 치역, 볼록성, 연속성 등에 관한 사실들이며, 구간별 사다리꼴 넓이를 합산하여 최종 수치를 계산하는 절차적 연산 원리를 직접 서술하는 뉴런이 없다.",
+        "blocked_edge": "note6+note8+note9+note11 → END",
+        "domain_hint": "INTG",
+        "domain": [
+          "INTG"
+        ],
+        "action_hint": "",
+        "step": 4,
+        "main": true,
+        "near_miss": [
+          "연산7: $y=f(x)$를 벡터 $(p,q)$만큼 평행이동하면 $y-q=f(x-p",
+          "연산23: $y=f(x)+c$의 치역은 $f(x)$의 치역을 $c$만큼 평행이동한 ",
+          "연산26: $y=c \\cdot f(x)$의 치역은 $f(x)$의 치역에 $c$를 곱"
+        ]
+      }
+    ],
+    "previous_partial_skeleton": [],
+    "previous_blockage_point": "",
+    "previous_skel_review_notes": "조건(가)에서 집합 A는 4x²≤f(x)≤x⁴-6x²+9를 만족하는 정수 x의 집합이며, A^c의 원소 개수가 2라는 조건이다. 이를 S2(집합정의)+S3(집합연산)+S4(원소개수)+C1(등식)으로 분해했다. 조건(나)의 '구간 [n,n+1]에서 직선의 일부'는 기존 DNA로 직접 표현하기 어려워 C26으로 신규 제안했다. 부등식 4x²≤f(x)≤x⁴-6x²+9는 이중 부등식으로 C2 두 개로 분해했다. 발문은 정적분의 최솟값이므로 C24(최솟값 조건)를 루트로, Q1(값을 구하라)을 발문으로 처리했다. 모든 x에서 f(x)≥0 조건은 C18(모든 x에 대해)+C2(부등식)로 처리했다.",
+    "previous_dna_nodes": [
+      {
+        "id": "top",
+        "dna": "Q1",
+        "label": "최솟값 구하라",
+        "category": "발문"
+      },
+      {
+        "id": "ask_min",
+        "dna": "C24",
+        "label": "정적분 최솟값",
+        "category": "조건"
+      },
+      {
+        "id": "integ",
+        "dna": "???",
+        "label": "정적분∫_{-4}^{4}",
+        "category": "수식"
+      },
+      {
+        "id": "vf",
+        "dna": "F6",
+        "label": "연속함수 f(x)",
+        "category": "함수"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
+      },
+      {
+        "id": "cm4",
+        "dna": "T2",
+        "label": "상수 -4",
+        "category": "말단"
+      },
+      {
+        "id": "c4",
+        "dna": "T2",
+        "label": "상수 4",
+        "category": "말단"
+      },
+      {
+        "id": "nonneg_cond",
+        "dna": "C18",
+        "label": "모든 x에서",
+        "category": "조건"
+      },
+      {
+        "id": "fx_ge0",
+        "dna": "C2",
+        "label": "f(x)≥0",
+        "category": "조건"
+      },
+      {
+        "id": "c0",
+        "dna": "T2",
+        "label": "상수 0",
+        "category": "말단"
+      },
+      {
+        "id": "cond_ga",
+        "dna": "S1",
+        "label": "조건(가)",
+        "category": "구조"
+      },
+      {
+        "id": "setA_def",
+        "dna": "S2",
+        "label": "집합A 정의",
+        "category": "구조"
+      },
+      {
+        "id": "ineq_lower",
+        "dna": "C2",
+        "label": "4x²≤f(x)",
+        "category": "조건"
+      },
+      {
+        "id": "ineq_upper",
+        "dna": "C2",
+        "label": "f(x)≤x⁴-6x²+9",
+        "category": "조건"
+      },
+      {
+        "id": "expr_4x2",
+        "dna": "E6",
+        "label": "곱(4,x²)",
+        "category": "수식"
+      },
+      {
+        "id": "c4_coef",
+        "dna": "T2",
+        "label": "상수 4(계수)",
+        "category": "말단"
+      },
+      {
+        "id": "x_sq",
+        "dna": "E7",
+        "label": "x²",
+        "category": "수식"
+      },
+      {
+        "id": "c2_exp",
+        "dna": "T2",
+        "label": "상수 2(지수)",
+        "category": "말단"
+      },
+      {
+        "id": "expr_rhs",
+        "dna": "E1",
+        "label": "x⁴-6x²+9",
+        "category": "수식"
+      },
+      {
+        "id": "x4",
+        "dna": "E7",
+        "label": "x⁴",
+        "category": "수식"
+      },
+      {
+        "id": "c4_exp",
+        "dna": "T2",
+        "label": "상수 4(지수)",
+        "category": "말단"
+      },
+      {
+        "id": "neg6x2",
+        "dna": "E2",
+        "label": "부호반전(6x²)",
+        "category": "수식"
+      },
+      {
+        "id": "expr_6x2",
+        "dna": "E6",
+        "label": "곱(6,x²)",
+        "category": "수식"
+      },
+      {
+        "id": "c6",
+        "dna": "T2",
+        "label": "상수 6",
+        "category": "말단"
+      },
+      {
+        "id": "c9",
+        "dna": "T2",
+        "label": "상수 9",
+        "category": "말단"
+      },
+      {
+        "id": "setAc",
+        "dna": "S3",
+        "label": "A의 여집합Aᶜ",
+        "category": "구조"
+      },
+      {
+        "id": "setZ",
+        "dna": "S2",
+        "label": "정수 전체 집합",
+        "category": "구조"
+      },
+      {
+        "id": "nAc",
+        "dna": "S4",
+        "label": "n(Aᶜ)=2",
+        "category": "구조"
+      },
+      {
+        "id": "c2_cnt",
+        "dna": "T2",
+        "label": "상수 2(개수)",
+        "category": "말단"
+      },
+      {
+        "id": "nAc_eq2",
+        "dna": "C1",
+        "label": "n(Aᶜ)=2 등식",
+        "category": "조건"
+      },
+      {
+        "id": "int_x_cond",
+        "dna": "L3",
+        "label": "x는 정수",
+        "category": "제한"
+      },
+      {
+        "id": "cond_na",
+        "dna": "C26",
+        "label": "구간별 선형조건",
+        "category": "조건"
+      },
+      {
+        "id": "vn",
+        "dna": "T1",
+        "label": "정수 n",
+        "category": "말단"
+      },
+      {
+        "id": "n_int",
+        "dna": "L3",
+        "label": "n은 정수",
+        "category": "제한"
+      },
+      {
+        "id": "interval_n",
+        "dna": "F8",
+        "label": "구간[n,n+1]",
+        "category": "함수"
+      },
+      {
+        "id": "vn1",
+        "dna": "E1",
+        "label": "n+1",
+        "category": "수식"
+      },
+      {
+        "id": "c1_inc",
+        "dna": "T2",
+        "label": "상수 1",
+        "category": "말단"
+      },
+      {
+        "id": "crv_f",
+        "dna": "G2",
+        "label": "y=f(x) 그래프",
+        "category": "기하"
+      },
+      {
+        "id": "crv_eq",
+        "dna": "C11",
+        "label": "y=f(x) 방정식",
+        "category": "조건"
+      },
+      {
+        "id": "crv_c1",
+        "dna": "C1",
+        "label": "y=f(x) 등식",
+        "category": "조건"
+      },
+      {
+        "id": "vy",
+        "dna": "T3",
+        "label": "독립변수 y",
+        "category": "말단"
+      }
+    ],
+    "previous_dna_edges": [
+      {
+        "from": "ask_min",
+        "to": "top"
+      },
+      {
+        "from": "integ",
+        "to": "ask_min"
+      },
+      {
+        "from": "vf",
+        "to": "integ"
+      },
+      {
+        "from": "cm4",
+        "to": "integ"
+      },
+      {
+        "from": "c4",
+        "to": "integ"
+      },
+      {
+        "from": "nonneg_cond",
+        "to": "top"
+      },
+      {
+        "from": "fx_ge0",
+        "to": "nonneg_cond"
+      },
+      {
+        "from": "vf",
+        "to": "fx_ge0"
+      },
+      {
+        "from": "c0",
+        "to": "fx_ge0"
+      },
+      {
+        "from": "cond_ga",
+        "to": "top"
+      },
+      {
+        "from": "setA_def",
+        "to": "cond_ga"
+      },
+      {
+        "from": "ineq_lower",
+        "to": "setA_def"
+      },
+      {
+        "from": "ineq_upper",
+        "to": "setA_def"
+      },
+      {
+        "from": "int_x_cond",
+        "to": "setA_def"
+      },
+      {
+        "from": "expr_4x2",
+        "to": "ineq_lower"
+      },
+      {
+        "from": "vf",
+        "to": "ineq_lower"
+      },
+      {
+        "from": "vf",
+        "to": "ineq_upper"
+      },
+      {
+        "from": "expr_rhs",
+        "to": "ineq_upper"
+      },
+      {
+        "from": "c4_coef",
+        "to": "expr_4x2"
+      },
+      {
+        "from": "x_sq",
+        "to": "expr_4x2"
+      },
+      {
+        "from": "vx",
+        "to": "x_sq"
+      },
+      {
+        "from": "c2_exp",
+        "to": "x_sq"
+      },
+      {
+        "from": "x4",
+        "to": "expr_rhs"
+      },
+      {
+        "from": "neg6x2",
+        "to": "expr_rhs"
+      },
+      {
+        "from": "c9",
+        "to": "expr_rhs"
+      },
+      {
+        "from": "vx",
+        "to": "x4"
+      },
+      {
+        "from": "c4_exp",
+        "to": "x4"
+      },
+      {
+        "from": "expr_6x2",
+        "to": "neg6x2"
+      },
+      {
+        "from": "c6",
+        "to": "expr_6x2"
+      },
+      {
+        "from": "x_sq",
+        "to": "expr_6x2"
+      },
+      {
+        "from": "nAc_eq2",
+        "to": "cond_ga"
+      },
+      {
+        "from": "nAc",
+        "to": "nAc_eq2"
+      },
+      {
+        "from": "c2_cnt",
+        "to": "nAc_eq2"
+      },
+      {
+        "from": "setAc",
+        "to": "nAc"
+      },
+      {
+        "from": "setZ",
+        "to": "setAc"
+      },
+      {
+        "from": "setA_def",
+        "to": "setAc"
+      },
+      {
+        "from": "cond_na",
+        "to": "top"
+      },
+      {
+        "from": "vn",
+        "to": "cond_na"
+      },
+      {
+        "from": "interval_n",
+        "to": "cond_na"
+      },
+      {
+        "from": "crv_f",
+        "to": "cond_na"
+      },
+      {
+        "from": "vn",
+        "to": "interval_n"
+      },
+      {
+        "from": "vn1",
+        "to": "interval_n"
+      },
+      {
+        "from": "vn",
+        "to": "vn1"
+      },
+      {
+        "from": "c1_inc",
+        "to": "vn1"
+      },
+      {
+        "from": "n_int",
+        "to": "vn"
+      },
+      {
+        "from": "int_x_cond",
+        "to": "vx"
+      },
+      {
+        "from": "crv_eq",
+        "to": "crv_f"
+      },
+      {
+        "from": "crv_c1",
+        "to": "crv_eq"
+      },
+      {
+        "from": "vy",
+        "to": "crv_c1"
+      },
+      {
+        "from": "vf",
+        "to": "crv_c1"
+      }
+    ],
+    "previous_new_dna": [
+      {
+        "id": "C25",
+        "name": "여집합 원소 개수 조건",
+        "signature": "(집합A, 개수k) → 조건",
+        "reason": "n(A^c)=k 형태의 조건은 집합의 여집합 원소 개수를 등식으로 표현하는 구조로, S4(원소 개수)와 C1(등식)의 조합이지만 여집합 연산(S3)을 매개로 하는 특수 패턴이다. S3+S4+C1로 표현 가능하나 여집합 특화 구조로 별도 제안."
+      },
+      {
+        "id": "C26",
+        "name": "구간별 선형 조건",
+        "signature": "(함수, 정수n) → 조건",
+        "reason": "모든 정수 n에 대하여 구간 [n,n+1]에서 함수의 그래프가 직선의 일부라는 조건은 기존 DNA에 없는 구간별 선형성(piecewise linearity) 조건이다."
+      }
+    ],
+    "previous_dna_review_notes": "조건(가)에서 집합 A는 4x²≤f(x)≤x⁴-6x²+9를 만족하는 정수 x의 집합이며, A^c의 원소 개수가 2라는 조건이다. 이를 S2(집합정의)+S3(집합연산)+S4(원소개수)+C1(등식)으로 분해했다. 조건(나)의 '구간 [n,n+1]에서 직선의 일부'는 기존 DNA로 직접 표현하기 어려워 C26으로 신규 제안했다. 부등식 4x²≤f(x)≤x⁴-6x²+9는 이중 부등식으로 C2 두 개로 분해했다. 발문은 정적분의 최솟값이므로 C24(최솟값 조건)를 루트로, Q1(값을 구하라)을 발문으로 처리했다. 모든 x에서 f(x)≥0 조건은 C18(모든 x에 대해)+C2(부등식)로 처리했다.",
+    "original_solution": "**Step 1. 조건 (가) 분석: 집합 $A$ 구하기**\n\n부등식 $4x^2 \\leq f(x) \\leq x^4 - 6x^2 + 9$가 성립하려면 우선 $4x^2 \\leq x^4 - 6x^2 + 9$이어야 한다.\n\n$$4x^2 \\leq (x^2 - 3)^2$$\n$$4x^2 \\leq x^4 - 6x^2 + 9$$\n$$x^4 - 10x^2 + 9 \\geq 0$$\n$$(x^2 - 1)(x^2 - 9) \\geq 0$$\n\n이 부등식의 해는 $x^2 \\leq 1$ 또는 $x^2 \\geq 9$, 즉 $-1 \\leq x \\leq 1$ 또는 $x \\leq -3$ 또는 $x \\geq 3$이다.\n\n따라서 정수 $x$에 대해 집합은:\n\n$$A = \\{x \\in \\mathbb{Z} \\mid x = 0,\\, \\pm1,\\, \\pm3,\\, \\pm4,\\, \\pm5,\\, \\ldots\\}$$\n\n조건에서 $n(A^c) = 2$라고 하였으므로, 정수 전체 집합에서 $A$를 제외한 집합 $A^c$는 $|x| < 3$이면서 $|x| > 1$인 정수, 즉 $x = \\pm 2$이다. 이는 원소가 2개이므로 조건을 만족한다.\n\n따라서 $n(A^c) = 2$라는 조건과 정합이 확인된다.\n\n**결과적으로 정수 $x$에 대한 $f(x)$의 할당 범위:**\n- $x \\in \\{0,\\, \\pm1,\\, \\pm3,\\, \\pm4\\}$ 일 때: $4x^2 \\leq f(x) \\leq (x^2 - 3)^2$\n- $x = \\pm 2$ 일 때: 부등식을 만족하지 않음 → $f(x) \\geq 0$인 조건만 유지\n\n**Step 2. 조건 (나) 분석: $f(x)$의 개형**\n\n조건 (나)에 의해 $f(x)$는 모든 정수 구간 $[n,\\, n+1]$에서 직선(일차함수 또는 상수)이다.\n\n즉, $f(x)$는 구간마다 선형이 연속 함수(연속인 꺾은선 함수)이다.\n\n각 정수 $x$에서의 함숫값 $f(n)$이 결정되면, 각 구간 $[n,\\, n+1]$에서의 그래프는 $f(n)$과 $f(n+1)$을 잇는 직선이다.\n\n**Step 3. 정수 점에서의 최솟값 설정**\n\n적분값 $\\displaystyle\\int_{-4}^{4} f(x)\\,dx$를 최소화하려면 각 정수 $x$ 점에서의 함숫값 $f(n)$을 최소화해야 한다.\n\n$x \\in \\{0,\\, \\pm1,\\, \\pm3,\\, \\pm4\\}$: 조건 (가)에서 $4x^2 \\leq f(x) \\leq (x^2-3)^2$이므로 최솟값은 $4x^2$이다.\n\n$$f(0) = 0, \\quad f(1) = f(-1) = 4, \\quad f(3) = f(-3) = 36, \\quad f(4) = f(-4) = 64$$\n\n$x = \\pm 2$: 부등식 조건이 없으므로 $f(x) \\geq 0$인 만큼 자유롭다.\n\n단, $x = 1$과 $x = 3$ 사이 연속인 직선으로 이어야 하므로, 구간 $[1, 3]$에서 $f(x)$는 $f(1) = 4$와 $f(3) = 36$을 잇는 직선이다.\n\n$$f(2) = \\frac{4 + 36}{2} = 20$$\n\n마찬가지로 $f(-2) = 20$이다.\n\n**Step 4. 적분값 계산 (최솟값 찾기)**\n\n각 구간은 사다리꼴이므로 넓이 $= \\dfrac{f(n) + f(n+1)}{2} \\times 1$이다.\n\n대칭성에 의해 $2 \\times \\displaystyle\\int_0^4 f(x)\\,dx$를 계산한다.\n\n구간별 계산:\n- $[0, 1]$: $(f(0) + f(1)) / 2 = (0 + 4) / 2 = 2$\n- $[1, 2]$: $(f(1) + f(2)) / 2 = (4 + 20) / 2 = 12$\n- $[2, 3]$: $(f(2) + f(3)) / 2 = (20 + 36) / 2 = 28$\n- $[3, 4]$: $(f(3) + f(4)) / 2 = (36 + 64) / 2 = 50$\n\n$$\\int_0^4 f(x)\\,dx = 2 + 12 + 28 + 50 = 92 \\quad \\cdots \\text{(계산)}$$\n\n**핵심 포인트:** $x = \\pm 2$에서는 조건 (가)의 부등식이 성립하지 않으므로, $f(\\pm 2)$는 연속성을 해치지 않는 범위에서 최대한 낮게 설정할 수 있다.\n\n$f(2) = 0$으로 설정하면 $[1, 2]$와 $[2, 3]$ 구간 모두 직선 조건을 만족하면서 적분값을 최소화할 수 있다.\n\n$f(2) = 0$으로 재설정하면:\n- $[0, 1]$: $(0 + 4) / 2 = 2$\n- $[1, 2]$: $(4 + 0) / 2 = 2$\n- $[2, 3]$: $(0 + 36) / 2 = 18$\n- $[3, 4]$: $(36 + 64) / 2 = 50$\n\n$$\\int_0^4 f(x)\\,dx = 2 + 2 + 18 + 50 = 72$$\n\n$$\\int_{-4}^{4} f(x)\\,dx = 2 \\times 72 = \\boxed{144}$$",
+    "recovery_warnings": [],
+    "errata": [],
+    "metadata": {
+      "unit": "적분",
+      "difficulty": "상",
+      "score": "4",
+      "type": "short_answer",
+      "answer": "144",
+      "year": "미상",
+      "source": "수능",
+      "topic": "정적분의 최솟값",
+      "subtopic": "조건을 만족하는 연속함수의 적분 최솟값"
+    },
+    "needed_neurons": [
+      "사실??",
+      "전략??",
+      "사실??",
+      "전략??",
+      "전략??",
+      "전략??",
+      "사실??",
+      "연산??"
+    ],
+    "needed_dna": [
+      {
+        "id": "C25",
+        "name": "여집합 원소 개수 조건",
+        "signature": "(집합A, 개수k) → 조건",
+        "reason": "n(A^c)=k 형태의 조건은 집합의 여집합 원소 개수를 등식으로 표현하는 구조로, S4(원소 개수)와 C1(등식)의 조합이지만 여집합 연산(S3)을 매개로 하는 특수 패턴이다. S3+S4+C1로 표현 가능하나 여집합 특화 구조로 별도 제안."
+      },
+      {
+        "id": "C26",
+        "name": "구간별 선형 조건",
+        "signature": "(함수, 정수n) → 조건",
+        "reason": "모든 정수 n에 대하여 구간 [n,n+1]에서 함수의 그래프가 직선의 일부라는 조건은 기존 DNA에 없는 구간별 선형성(piecewise linearity) 조건이다."
+      }
+    ],
+    "edge_count": 12,
+    "side_count": 1,
+    "created_at": "2026-03-28T14:45:09.590Z"
   }
 ]
