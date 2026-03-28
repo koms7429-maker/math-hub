@@ -1774,5 +1774,13 @@
       "INEQ"
     ],
     "action": "ROOT_EXISTENCE_VIA_RANGE"
+  },
+  {
+    "id": "연산50",
+    "domain": [
+      "POLY",
+      "INTG"
+    ],
+    "action": "ANTIDERIVATIVE"
   }
 ]
