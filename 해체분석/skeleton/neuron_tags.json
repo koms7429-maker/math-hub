@@ -1781,37 +1781,5 @@
       "COORD"
     ],
     "action": "POINT_LINE_DISTANCE"
-  },
-  {
-    "id": "사실134",
-    "domain": [
-      "FUNC",
-      "MONO"
-    ],
-    "action": "SIGN_JUMP_BLOCK"
-  },
-  {
-    "id": "사실135",
-    "domain": [
-      "DIFF",
-      "MONO"
-    ],
-    "action": "GLOBAL_MIN"
-  },
-  {
-    "id": "사실136",
-    "domain": [
-      "FUNC",
-      "MONO"
-    ],
-    "action": "SIGN_ANALYSIS"
-  },
-  {
-    "id": "사실137",
-    "domain": [
-      "DIFF",
-      "MONO"
-    ],
-    "action": "GLOBAL_MIN"
   }
 ]
