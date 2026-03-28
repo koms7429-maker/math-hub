@@ -1845,5 +1845,21 @@
       "FUNC"
     ],
     "action": "CUBIC_NONINJECTIVE_IFF_TWO_EXTREMA"
+  },
+  {
+    "id": "사실141",
+    "domain": [
+      "POLY",
+      "DIFF"
+    ],
+    "action": "CUBIC_EXTREMA_DIFFERENCE_FORMULA"
+  },
+  {
+    "id": "연산51",
+    "domain": [
+      "EQN",
+      "POLY"
+    ],
+    "action": "QUADRATIC_FORMULA"
   }
 ]
