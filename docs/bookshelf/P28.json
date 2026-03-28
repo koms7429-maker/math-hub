@@ -1,0 +1,657 @@
+{
+  "problem_id": "P28",
+  "answer": "20",
+  "clues": [
+    {
+      "id": "단서A",
+      "text": "$f(x)$는 최고차항의 계수가 양수인 이차함수이다"
+    },
+    {
+      "id": "단서B",
+      "text": "곡선 $y=f(x)$와 직선 $y=f'(t)(x-t)+2t$의 교점의 개수를 $g(t)$라 한다"
+    },
+    {
+      "id": "단서C",
+      "text": "(가) 함수 $f(x+1)g(x)$는 실수 전체의 집합에서 연속이다"
+    },
+    {
+      "id": "단서D",
+      "text": "(나) $g(-4) \\neq 0$"
+    }
+  ],
+  "skeleton": [
+    {
+      "from": [
+        "단서A",
+        "단서B"
+      ],
+      "to": "note1",
+      "neuron": "사실100",
+      "type": "사실",
+      "domain_hint": "DIFF,FUNC",
+      "description": "접선과 주어진 직선의 기하학적 관계를 파악",
+      "note": "곡선 $y=f(x)$ 위의 점 $(t, f(t))$에서의 접선은 $l: y=f'(t)(x-t)+f(t)$이고, 주어진 직선 $m: y=f'(t)(x-t)+2t$는 $l$과 기울기가 같으며 $y$절편이 $2t-f(t)$만큼 차이난다. 즉 $m$은 $l$을 수직으로 $2t-f(t)$만큼 평행이동한 것이다.",
+      "main": true,
+      "step": 1
+    },
+    {
+      "from": [
+        "note1",
+        "단서A"
+      ],
+      "to": "note2",
+      "neuron": "사실85",
+      "type": "사실",
+      "domain_hint": "FUNC,POLY",
+      "description": "아래로 볼록인 포물선과 평행이동된 접선의 교점 개수를 접선 위치로 판별",
+      "note": "최고차항의 계수가 양수인 이차함수는 아래로 볼록이므로, 접선 $l$은 접점 이외에서 포물선 아래에 있다. $h(t)=2t-f(t)$로 놓으면: $h(t)<0$ (즉 $m$이 $l$ 아래)이면 $g(t)=0$, $h(t)=0$ (즉 $m=l$)이면 $g(t)=1$, $h(t)>0$ (즉 $m$이 $l$ 위)이면 $g(t)=2$이다.",
+      "main": true,
+      "step": 1
+    },
+    {
+      "from": [
+        "note2",
+        "단서D"
+      ],
+      "to": "note3",
+      "neuron": "전략22",
+      "type": "전략",
+      "domain_hint": "POLY,EQN",
+      "description": "$g(-4)\\neq 0$으로부터 $h(-4)\\geq 0$을 도출하고, $h(t)$의 근 구조를 경우 분류",
+      "note": "$g(-4)\\neq 0$이면 $h(-4)\\geq 0$이다. $h(t)=2t-f(t)$는 최고차항의 계수가 음수인 이차식이므로 위로 볼록이고, $h(t)\\leq 0$인 구간 바깥에서는 항상 음수이다. $h(-4)\\geq 0$이 되려면: (i) $h(x)=0$이 서로 다른 두 실근 $\\alpha\\leq\\beta$를 가지며 $\\alpha\\leq -4\\leq\\beta$이거나, (ii) $h(x)=0$이 $x=-4$에서 중근을 가진다.",
+      "main": true,
+      "step": 2
+    },
+    {
+      "from": "note3",
+      "to": "note4",
+      "neuron": "사실35",
+      "type": "사실",
+      "domain_hint": "FUNC",
+      "description": "경우 (i)에서 $h(t)$의 부호 변화로부터 $g(t)$의 불연속점 파악",
+      "note": "경우 (i): $h(t)>0$인 구간은 $(\\alpha,\\beta)$이고, $h(\\alpha)=h(\\beta)=0$이다. 따라서 $g(t)$는 $t=\\alpha$에서 $0\\to 1$로, $t=\\beta$에서 $1\\to 0$으로 값이 바뀌므로 $t=\\alpha$와 $t=\\beta$에서 불연속이다.",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": [
+        "note4",
+        "단서C"
+      ],
+      "to": "note5",
+      "neuron": "사실94",
+      "type": "사실",
+      "domain_hint": "FUNC,LIM",
+      "description": "$t=\\alpha$에서 $f(x+1)g(x)$의 연속 조건 적용",
+      "note": "$g(x)$가 $x=\\alpha$에서 불연속이므로, $f(x+1)g(x)$가 연속이려면 $f(\\alpha+1)=0$이어야 한다. (좌극한에서 $g=0$이므로 극한값 $=0$이고, 함숫값 $=f(\\alpha+1)\\cdot 1=f(\\alpha+1)$이므로.)",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": [
+        "note4",
+        "단서C"
+      ],
+      "to": "note6",
+      "neuron": "사실94",
+      "type": "사실",
+      "domain_hint": "FUNC,LIM",
+      "description": "$t=\\beta$에서 $f(x+1)g(x)$의 연속 조건 적용",
+      "note": "같은 방법으로 $x=\\beta$에서 연속 조건으로부터 $f(\\beta+1)=0$이다.",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": [
+        "note5",
+        "note6",
+        "단서A"
+      ],
+      "to": "note7",
+      "neuron": "사실133",
+      "type": "사실",
+      "domain_hint": "POLY",
+      "description": "이차함수의 두 근이 결정되면 인수분해 표현",
+      "note": "$f(\\alpha+1)=0$이고 $f(\\beta+1)=0$이므로 $f(x)=p(x-\\alpha-1)(x-\\beta-1)$ ($p>0$)이다.",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": [
+        "note7",
+        "note3"
+      ],
+      "to": "note8",
+      "neuron": "전략25",
+      "type": "전략",
+      "domain_hint": "EQN",
+      "description": "$h(\\alpha)=0$, $h(\\beta)=0$ 조건을 대입하여 연립",
+      "note": "$f(\\alpha)=2\\alpha$와 $f(\\beta)=2\\beta$를 $f(x)=p(x-\\alpha-1)(x-\\beta-1)$에 대입하여 풀면 $p$와 근의 관계가 결정된다. 계산하면 $\\alpha+1$과 $\\beta+1$이 이차함수의 근이고 $f(\\alpha)=2\\alpha$로부터 모순이 발생한다.",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": "note8",
+      "to": "note9",
+      "neuron": "전략23",
+      "type": "전략",
+      "domain_hint": "EQN",
+      "description": "도출된 값이 $p>0$ 조건에 모순임을 확인하여 경우 (i) 기각",
+      "note": "연립 결과 $p<0$이 되어 최고차항의 계수가 양수라는 조건에 모순이므로 경우 (i)은 불가능하다.",
+      "main": false,
+      "step": 3
+    },
+    {
+      "from": [
+        "note3",
+        "note9"
+      ],
+      "to": "note10",
+      "neuron": "전략20",
+      "type": "전략",
+      "domain_hint": "POLY,EQN",
+      "description": "소거법으로 유일한 경우를 확정",
+      "note": "경우 (i)이 불가능하므로 경우 (ii)만 가능하다. $h(t)=2t-f(t)$가 $t=-4$에서 중근을 가지므로 $f(x)-2x=p(x+4)^2$ ($p>0$)이다.",
+      "main": true,
+      "step": 4
+    },
+    {
+      "from": "note10",
+      "to": "note11",
+      "neuron": "사실35",
+      "type": "사실",
+      "domain_hint": "FUNC",
+      "description": "완전제곱식의 부호로부터 $g(t)$의 값 결정",
+      "note": "$h(t)=-p(t+4)^2\\leq 0$이므로 $h(t)=0 \\iff t=-4$이고, $t\\neq -4$이면 $h(t)<0$이다. 따라서 $g(-4)=1$이고 $t\\neq -4$이면 $g(t)=0$이다.",
+      "main": true,
+      "step": 4
+    },
+    {
+      "from": [
+        "note11",
+        "단서C"
+      ],
+      "to": "note12",
+      "neuron": "사실127",
+      "type": "사실",
+      "domain_hint": "FUNC,LIM",
+      "description": "유일한 불연속 후보점 $x=-4$에서 극한값과 함숫값 계산",
+      "note": "$g(t)$는 $t=-4$에서만 불연속 후보이다. $t\\neq -4$에서 $g(t)=0$이므로 $\\lim_{x\\to -4} f(x+1)g(x)=0$이고, 함숫값은 $f(-4+1)g(-4)=f(-3)\\cdot 1=f(-3)$이다.",
+      "main": true,
+      "step": 5
+    },
+    {
+      "from": "note12",
+      "to": "note13",
+      "neuron": "사실94",
+      "type": "사실",
+      "domain_hint": "FUNC,LIM",
+      "description": "극한값=함숫값 연속 조건 적용",
+      "note": "연속 조건 $\\lim=f(-3)$에 의해 $f(-3)=0$이다.",
+      "main": true,
+      "step": 5
+    },
+    {
+      "from": [
+        "note13",
+        "note10"
+      ],
+      "to": "note14",
+      "neuron": "전략25",
+      "type": "전략",
+      "domain_hint": "EQN,POLY",
+      "description": "$f(-3)=0$을 $f(x)=p(x+4)^2+2x$에 대입하여 $p$ 결정",
+      "note": "$f(x)=p(x+4)^2+2x$에서 $f(-3)=p\\cdot 1+(-6)=p-6=0$이므로 $p=6$이다.",
+      "main": true,
+      "step": 5
+    },
+    {
+      "from": "note14",
+      "to": "END",
+      "neuron": "전략25",
+      "type": "전략",
+      "domain_hint": "POLY",
+      "description": "확정된 $f(x)$에 $x=-2$ 대입하여 값 계산",
+      "note": "$f(x)=6(x+4)^2+2x$이므로 $f(-2)=6\\cdot(2)^2+2\\cdot(-2)=24-4=20$이다.",
+      "main": true,
+      "step": 6
+    }
+  ],
+  "solution": "곡선 $y=f(x)$ 위의 점 $(t, f(t))$에서의 접선은 $l: y=f'(t)(x-t)+f(t)$이고, 주어진 직선 $m: y=f'(t)(x-t)+2t$는 $l$과 기울기가 같으며 $y$절편이 $2t-f(t)$만큼 차이난다. 즉 $m$은 $l$을 수직으로 $2t-f(t)$만큼 평행이동한 것이다. 최고차항의 계수가 양수인 이차함수는 아래로 볼록이므로, 접선 $l$은 접점 이외에서 포물선 아래에 있다. $h(t)=2t-f(t)$로 놓으면: $h(t)<0$이면 $g(t)=0$, $h(t)=0$이면 $g(t)=1$, $h(t)>0$이면 $g(t)=2$이다. $g(-4)\\neq 0$이면 $h(-4)\\geq 0$이다. $h(t)$는 최고차항의 계수가 음수인 이차식이므로 위로 볼록이고, $h(-4)\\geq 0$이 되려면: (i) $h(x)=0$이 서로 다른 두 실근을 가지며 $-4$가 그 사이에 있거나, (ii) $h(x)=0$이 $x=-4$에서 중근을 가진다. 경우 (i)에서 불연속점의 연속 조건을 적용하면 최고차항의 계수가 음수가 되어 모순이므로 불가능하다. 경우 (ii)만 가능하여 $f(x)-2x=p(x+4)^2$ ($p>0$)이다. $h(t)=-p(t+4)^2\\leq 0$이므로 $g(-4)=1$이고 $t\\neq -4$이면 $g(t)=0$이다. $x=-4$에서 $\\lim_{x\\to -4} f(x+1)g(x)=0$이고 $f(-3)g(-4)=f(-3)$이므로, 연속 조건에 의해 $f(-3)=0$이다. $f(x)=p(x+4)^2+2x$에서 $f(-3)=p-6=0$이므로 $p=6$이다. $f(x)=6(x+4)^2+2x$이므로 $f(-2)=6\\cdot 4-4=20$이다.",
+  "original_solution": "$y = f'(t)(x - t) + f(t)$를 $l$, $y = f'(t)(x - t) + 2t$를 $m$이라 하면\n\n- 직선 $l$은 $y = f(x)$ 위의 점 $(t,\\, f(t))$에서의 접선\n- 직선 $m$은 $y = 2x$ 위의 점 $(t,\\, 2t)$를 지나고 $l$과 평행인 직선\n\n이고, $f(x)$는 최고차항의 계수가 양수인 이차함수 $\\cdots$ ①\n\n이므로\n\n- ① $f(t) > 2t$인 경우, $m$이 $l$보다 아래에 있음 $\\Rightarrow g(t) = 0$\n- ② $f(t) = 2t$인 경우, $m$이 $l$과 일치 $\\Rightarrow g(t) = 1$\n- ③ $f(t) < 2t$인 경우, $m$이 $l$보다 위에 있음 $\\Rightarrow g(t) = 2$\n\n임을 알 수 있다.\n\n[FIGURE: $y = f(x)$ 포물선과 $y = 2x$ 직선, 그리고 세 가지 경우(①②③)에서의 접선 $l_1, l_2, l_3$와 대응하는 직선 $m_1, m_2, m_3$의 위치 관계를 나타낸 그래프]\n\n따라서\n\n(나) $\\Rightarrow$ $t = -4$일 때 $f(t) \\leq 2t$\n\n$\\Rightarrow$ (i) $y = f(x)$는 $y = 2x$와 서로 다른 두 점에서 만나거나 (이때, 교점의 $x$좌표를 $\\alpha$, $\\beta$라 하면 $\\alpha \\leq -4 \\leq \\beta$)\n\n$\\quad\\;$ (ii) $y = f(x)$는 $y = 2x$와 $x = -4$에서 접함\n\n중 하나이어야 한다.\n\n**(i)의 경우:**\n\n- $g(x)$는 $x = \\alpha$에서 불연속, (가)에 의해\n\n$$\\lim_{x \\to \\alpha^{-}} f(x+1)g(x) = \\lim_{x \\to \\alpha^{+}} f(x+1)g(x) = f(\\alpha+1)g(\\alpha)$$\n\n$$\\Rightarrow f(\\alpha + 1) = 0$$\n\n같은 방법으로 $g(x)$는 $x = \\beta$에서 불연속이므로 (가) $\\Rightarrow f(\\beta + 1) = 0$\n\n이어야 하므로 ① $\\Rightarrow f(\\alpha) > 0 > f(\\beta)$\n\n이어야 하는데, 이는\n\n$$\\alpha < \\beta \\Rightarrow 2\\alpha = f(\\alpha) < f(\\beta) = 2\\beta$$\n\n임에 **모순**이다.\n\n**(ii)의 경우:**\n\n$g(x)$는 $x = -4$에서 불연속, (가)에 의해\n\n$$\\lim_{x \\to -4^{-}} f(x+1)g(x) = \\lim_{x \\to -4^{+}} f(x+1)g(x) = f(-3)g(-4)$$\n\n$$\\Rightarrow f(-3) = 0 \\quad \\cdots \\; \\text{ⓒ}$$\n\n이어야 한다. 이때, $y = f(x)$는 $y = 2x$와 $x = -4$에서 접하므로 ①에 의해\n\n$$f(x) - 2x = p(x+4)^2$$\n\n으로 놓으면\n\nⓒ $\\Rightarrow f(-3) - 2(-3) = p(-3+4)^2 \\Rightarrow 0 + 6 = p \\Rightarrow p = 6$\n\n을 얻는다.\n\n$$\\therefore\\; f(x) = 6(x+4)^2 + 2x$$\n\n$$\\Rightarrow f(-2) = 6(2)^2 + 2(-2) = 24 - 4 = \\boxed{20}$$",
+  "analysis": "",
+  "new_neurons": [],
+  "metadata": {
+    "unit": "미적분",
+    "difficulty": "상",
+    "score": "4",
+    "type": "short_answer",
+    "answer": "20",
+    "year": "2024",
+    "source": "수능",
+    "topic": "이차함수와 접선",
+    "subtopic": "교점의 개수와 연속성"
+  },
+  "edge_count": 15,
+  "side_count": 6,
+  "statement": "# 28. (수능) - 이차함수의 접선과 교점의 개수\n\n## Problem\n실수 $t$와 최고차항의 계수가 양수인 이차함수 $f(x)$에 대하여 곡선 $y = f(x)$와 직선 $y = f'(t)(x - t) + 2t$의 교점의 개수를 $g(t)$라 할 때, 함수 $g(t)$가 다음 조건을 만족시킨다.\n\n> (가) 함수 $f(x+1)g(x)$는 실수 전체의 집합에서 연속이다.\n> (나) $g(-4) \\neq 0$\n\n$f(-2)$의 값을 구하시오. [4점]",
+  "dna": {
+    "nodes": [
+      {
+        "id": "top",
+        "dna": "Q1",
+        "label": "f(-2) 값",
+        "category": "발문"
+      },
+      {
+        "id": "ask_val",
+        "dna": "F3",
+        "label": "f(-2)",
+        "category": "함수"
+      },
+      {
+        "id": "vf",
+        "dna": "F6",
+        "label": "이차함수 f",
+        "category": "함수"
+      },
+      {
+        "id": "f11",
+        "dna": "F11",
+        "label": "이차함수",
+        "category": "함수"
+      },
+      {
+        "id": "lc_pos",
+        "dna": "L4",
+        "label": "최고차항양수",
+        "category": "제한"
+      },
+      {
+        "id": "vt",
+        "dna": "T1",
+        "label": "변수 t",
+        "category": "말단"
+      },
+      {
+        "id": "cm2",
+        "dna": "T2",
+        "label": "상수 -2",
+        "category": "말단"
+      },
+      {
+        "id": "crv",
+        "dna": "G2",
+        "label": "곡선 y=f(x)",
+        "category": "기하"
+      },
+      {
+        "id": "crv_eq",
+        "dna": "C11",
+        "label": "곡선 방정식",
+        "category": "조건"
+      },
+      {
+        "id": "crv_c1",
+        "dna": "C1",
+        "label": "y=f(x)",
+        "category": "조건"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
+      },
+      {
+        "id": "line_m",
+        "dna": "G12",
+        "label": "직선 y=m(t)",
+        "category": "기하"
+      },
+      {
+        "id": "line_eq",
+        "dna": "C11",
+        "label": "직선 방정식",
+        "category": "조건"
+      },
+      {
+        "id": "line_c1",
+        "dna": "C1",
+        "label": "y=f'(t)(x-t)+2t",
+        "category": "조건"
+      },
+      {
+        "id": "line_rhs",
+        "dna": "E1",
+        "label": "합(곱,2t)",
+        "category": "수식"
+      },
+      {
+        "id": "slope_part",
+        "dna": "E6",
+        "label": "f'(t)·(x-t)",
+        "category": "수식"
+      },
+      {
+        "id": "deriv_t",
+        "dna": "F3",
+        "label": "f'(t)",
+        "category": "함수"
+      },
+      {
+        "id": "fderiv",
+        "dna": "F13",
+        "label": "도함수 f'",
+        "category": "함수"
+      },
+      {
+        "id": "x_minus_t",
+        "dna": "E1",
+        "label": "x-t",
+        "category": "수식"
+      },
+      {
+        "id": "neg_t",
+        "dna": "E2",
+        "label": "-t",
+        "category": "수식"
+      },
+      {
+        "id": "two_t",
+        "dna": "E6",
+        "label": "2t",
+        "category": "수식"
+      },
+      {
+        "id": "c2",
+        "dna": "T2",
+        "label": "상수 2",
+        "category": "말단"
+      },
+      {
+        "id": "vg",
+        "dna": "F6",
+        "label": "함수 g",
+        "category": "함수"
+      },
+      {
+        "id": "g_def",
+        "dna": "F6",
+        "label": "g(t)=교점수 정의",
+        "category": "함수"
+      },
+      {
+        "id": "intersect",
+        "dna": "C3",
+        "label": "곡선∩직선",
+        "category": "조건"
+      },
+      {
+        "id": "cnt_def",
+        "dna": "S4",
+        "label": "교점의 개수",
+        "category": "구조"
+      },
+      {
+        "id": "cond_ga",
+        "dna": "C18",
+        "label": "(가)연속조건",
+        "category": "조건"
+      },
+      {
+        "id": "prod_fg",
+        "dna": "E6",
+        "label": "f(x+1)·g(x)",
+        "category": "수식"
+      },
+      {
+        "id": "comp_f",
+        "dna": "F10",
+        "label": "f(x+1)합성",
+        "category": "함수"
+      },
+      {
+        "id": "x_plus1",
+        "dna": "E1",
+        "label": "x+1",
+        "category": "수식"
+      },
+      {
+        "id": "c1",
+        "dna": "T2",
+        "label": "상수 1",
+        "category": "말단"
+      },
+      {
+        "id": "gx_apply",
+        "dna": "F3",
+        "label": "g(x)",
+        "category": "함수"
+      },
+      {
+        "id": "cond_gb",
+        "dna": "C2",
+        "label": "g(-4)≠0",
+        "category": "조건"
+      },
+      {
+        "id": "g_at_m4",
+        "dna": "F3",
+        "label": "g(-4)",
+        "category": "함수"
+      },
+      {
+        "id": "cm4",
+        "dna": "T2",
+        "label": "상수 -4",
+        "category": "말단"
+      },
+      {
+        "id": "c0",
+        "dna": "T2",
+        "label": "상수 0",
+        "category": "말단"
+      },
+      {
+        "id": "conds",
+        "dna": "S1",
+        "label": "전체 조건",
+        "category": "구조"
+      }
+    ],
+    "edges": [
+      {
+        "from": "ask_val",
+        "to": "top"
+      },
+      {
+        "from": "conds",
+        "to": "top"
+      },
+      {
+        "from": "cm2",
+        "to": "ask_val"
+      },
+      {
+        "from": "vf",
+        "to": "ask_val"
+      },
+      {
+        "from": "f11",
+        "to": "vf"
+      },
+      {
+        "from": "lc_pos",
+        "to": "vf"
+      },
+      {
+        "from": "crv_eq",
+        "to": "crv"
+      },
+      {
+        "from": "crv_c1",
+        "to": "crv_eq"
+      },
+      {
+        "from": "vf",
+        "to": "crv_c1"
+      },
+      {
+        "from": "vx",
+        "to": "crv_c1"
+      },
+      {
+        "from": "line_eq",
+        "to": "line_m"
+      },
+      {
+        "from": "line_c1",
+        "to": "line_eq"
+      },
+      {
+        "from": "line_rhs",
+        "to": "line_c1"
+      },
+      {
+        "from": "slope_part",
+        "to": "line_rhs"
+      },
+      {
+        "from": "two_t",
+        "to": "line_rhs"
+      },
+      {
+        "from": "deriv_t",
+        "to": "slope_part"
+      },
+      {
+        "from": "x_minus_t",
+        "to": "slope_part"
+      },
+      {
+        "from": "vf",
+        "to": "fderiv"
+      },
+      {
+        "from": "fderiv",
+        "to": "deriv_t"
+      },
+      {
+        "from": "vt",
+        "to": "deriv_t"
+      },
+      {
+        "from": "vx",
+        "to": "x_minus_t"
+      },
+      {
+        "from": "neg_t",
+        "to": "x_minus_t"
+      },
+      {
+        "from": "vt",
+        "to": "neg_t"
+      },
+      {
+        "from": "c2",
+        "to": "two_t"
+      },
+      {
+        "from": "vt",
+        "to": "two_t"
+      },
+      {
+        "from": "g_def",
+        "to": "vg"
+      },
+      {
+        "from": "cnt_def",
+        "to": "g_def"
+      },
+      {
+        "from": "intersect",
+        "to": "cnt_def"
+      },
+      {
+        "from": "crv",
+        "to": "intersect"
+      },
+      {
+        "from": "line_m",
+        "to": "intersect"
+      },
+      {
+        "from": "vt",
+        "to": "g_def"
+      },
+      {
+        "from": "cond_ga",
+        "to": "conds"
+      },
+      {
+        "from": "prod_fg",
+        "to": "cond_ga"
+      },
+      {
+        "from": "comp_f",
+        "to": "prod_fg"
+      },
+      {
+        "from": "gx_apply",
+        "to": "prod_fg"
+      },
+      {
+        "from": "vf",
+        "to": "comp_f"
+      },
+      {
+        "from": "x_plus1",
+        "to": "comp_f"
+      },
+      {
+        "from": "vx",
+        "to": "x_plus1"
+      },
+      {
+        "from": "c1",
+        "to": "x_plus1"
+      },
+      {
+        "from": "vg",
+        "to": "gx_apply"
+      },
+      {
+        "from": "vx",
+        "to": "gx_apply"
+      },
+      {
+        "from": "cond_gb",
+        "to": "conds"
+      },
+      {
+        "from": "g_at_m4",
+        "to": "cond_gb"
+      },
+      {
+        "from": "c0",
+        "to": "cond_gb"
+      },
+      {
+        "from": "vg",
+        "to": "g_at_m4"
+      },
+      {
+        "from": "cm4",
+        "to": "g_at_m4"
+      }
+    ],
+    "new_dna": []
+  },
+  "thinking_profile": null,
+  "folders": [],
+  "history": [],
+  "recovery_warnings": [],
+  "errata": [],
+  "created_at": "2026-03-28T12:06:05.495Z"
+}
