@@ -1,0 +1,741 @@
+{
+  "problem_id": "P21",
+  "answer": "75",
+  "clues": [
+    {
+      "id": "단서A",
+      "text": "$f'(2)=0$이고 최고차항의 계수가 $1$인 사차함수 $f(x)$"
+    },
+    {
+      "id": "단서B",
+      "text": "$\\lim_{x \\to 0} \\frac{f(x+2)}{xf(x)+x^2} = -3$"
+    }
+  ],
+  "skeleton": [
+    {
+      "from": [
+        "단서A",
+        "단서B"
+      ],
+      "to": "note1",
+      "neuron": "사실136",
+      "type": "사실",
+      "domain_hint": "LIM",
+      "description": "극한이 유한하고 분모→0이므로 분자→0, 즉 f(2)=0",
+      "note": "$x \\to 0$일 때 분모 $= xf(0)+x^2 = x(f(0)+x) \\to 0$이고 극한이 $-3$(유한·비영)이므로 사실136에 의해 분자 $f(x+2) \\to f(2) = 0$이어야 한다.",
+      "main": true,
+      "step": 1
+    },
+    {
+      "from": [
+        "note1",
+        "단서A"
+      ],
+      "to": "note2",
+      "neuron": "사실137",
+      "type": "사실",
+      "domain_hint": "POLY",
+      "description": "f(2)=0, f'(2)=0이므로 (x-2)²|f(x)",
+      "note": "$f(2)=0$이고 $f'(2)=0$이므로 사실137에 의해 $(x-2)^2 \\mid f(x)$이다. 최고차항 계수 $1$인 사차함수이므로 $f(x)=(x-2)^2(x^2+bx+c)$로 쓸 수 있다.",
+      "main": true,
+      "step": 2
+    },
+    {
+      "from": [
+        "note2",
+        "단서B"
+      ],
+      "to": "note3",
+      "neuron": "사실136",
+      "type": "사실",
+      "domain_hint": "LIM",
+      "description": "약분 후에도 극한이 0/비영이면 추가 조건 f(0)=0 도출",
+      "note": "$f(x+2)=x^2(x^2+(4+b)x+(4+2b+c))$이므로 분수를 $x$로 약분하면 $\\frac{x(x^2+(4+b)x+(4+2b+c))}{(x-2)^2(x^2+bx+c)+x}$이다. $x \\to 0$일 때 분자$\\to 0$, 분모$\\to 4c$이므로 $4c \\neq 0$이면 극한$=0 \\neq -3$. 따라서 $c=0$, 즉 $f(0)=0$이다.",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": [
+        "note3"
+      ],
+      "to": "note4",
+      "neuron": "전략41",
+      "type": "전략",
+      "domain_hint": "POLY",
+      "description": "c=0을 반영하여 f(x)의 인수분해형 확정",
+      "note": "$c=0$을 대입하면 $f(x)=(x-2)^2 \\cdot x(x+b) = x(x-2)^2(x+b)$이다.",
+      "main": true,
+      "step": 4
+    },
+    {
+      "from": [
+        "note4",
+        "단서B"
+      ],
+      "to": "note5",
+      "neuron": "연산28",
+      "type": "연산",
+      "domain_hint": "LIM,POLY",
+      "description": "극한식에 대입·약분 후 x→0 대입",
+      "note": "$c=0$이면 분수는 $\\frac{x^2+(4+b)x+(4+2b)}{(x-2)^2(x+b)+1}$이 되고, $x \\to 0$일 때 분자$\\to 4+2b$, 분모$\\to 4b+1$이므로 극한$=\\frac{4+2b}{4b+1}$이다.",
+      "main": true,
+      "step": 5
+    },
+    {
+      "from": [
+        "note5"
+      ],
+      "to": "note6",
+      "neuron": "전략2",
+      "type": "전략",
+      "domain_hint": "EQN",
+      "description": "극한값=-3 조건에서 b에 관한 방정식을 풀어 b를 결정",
+      "note": "$\\frac{4+2b}{4b+1}=-3$에서 $4+2b=-12b-3$, $14b=-7$, $b=-\\frac{1}{2}$이다.",
+      "main": true,
+      "step": 6
+    },
+    {
+      "from": [
+        "note4",
+        "note6"
+      ],
+      "to": "END",
+      "neuron": "연산28",
+      "type": "연산",
+      "domain_hint": "POLY",
+      "description": "b값을 대입하여 f(x) 확정 후 f(4) 계산",
+      "note": "$f(x)=x(x-2)^2\\!\\left(x-\\frac{1}{2}\\right)$이므로 $f(4)=4\\cdot(4-2)^2\\cdot\\left(4-\\frac{1}{2}\\right)=4\\cdot 4\\cdot\\frac{7}{2}=56$이다.",
+      "main": true,
+      "step": 7
+    }
+  ],
+  "solution": "**[Step 1]** 극한이 유한($-3$)이고 $x \\to 0$일 때 분모 $xf(0)+x^2 \\to 0$이므로, 사실136에 의해 분자도 $0$으로 수렴해야 한다. 따라서 $f(2)=0$이다.\n\n**[Step 2]** $f(2)=0$이고 $f'(2)=0$이므로 사실137에 의해 $(x-2)^2 \\mid f(x)$이다. 최고차항의 계수가 $1$인 사차함수이므로 $f(x)=(x-2)^2(x^2+bx+c)$로 놓는다.\n\n**[Step 3]** $f(x+2)=x^2\\bigl(x^2+(4+b)x+(4+2b+c)\\bigr)$이고, 분모 $xf(x)+x^2$에서 $x$를 묶으면 $x\\bigl[(x-2)^2(x^2+bx+c)+x\\bigr]$이다. 약분하면\n$$\\frac{x\\bigl(x^2+(4+b)x+(4+2b+c)\\bigr)}{(x-2)^2(x^2+bx+c)+x}$$\n$x \\to 0$일 때 분자$\\to 0$이고 분모$\\to 4c$이므로, $c \\neq 0$이면 극한$=0 \\neq -3$이다. 따라서 $c=0$이다.\n\n**[Step 4]** $c=0$을 대입하면 $f(x)=x(x-2)^2(x+b)$이다.\n\n**[Step 5]** $c=0$일 때 분모도 $x \\to 0$에서 $0$이 되므로 $x$를 한 번 더 약분하면\n$$\\frac{x^2+(4+b)x+(4+2b)}{(x-2)^2(x+b)+1}$$\n$x=0$을 대입하면 극한값 $=\\dfrac{4+2b}{4b+1}$이다.\n\n**[Step 6]** $\\dfrac{4+2b}{4b+1}=-3$에서 $4+2b = -12b-3$, $14b=-7$, $b=-\\dfrac{1}{2}$이다.\n\n**[Step 7]** $f(x)=x(x-2)^2\\!\\left(x-\\dfrac{1}{2}\\right)$이므로\n$$f(4)=4 \\cdot (2)^2 \\cdot \\frac{7}{2} = 4 \\cdot 4 \\cdot \\frac{7}{2} = 56$$",
+  "original_solution": "문제의 극한에서 극한이 수렴하고 (분모) $\\to 0$이므로 (분자) $\\to 0$, 즉 $f(2)=0$이다.\n\n문제의 식을 다시 쓰면\n\n$$\\lim_{x \\to 0} \\frac{\\dfrac{f(x+2)-f(2)}{x}}{f(x)+x} = -3$$\n\n이고 위의 식에서 극한이 $0$이 아닌 값으로 수렴하고, (분자) $\\to f'(2)(=0)$이므로 (분모) $\\to 0$, 즉 $f(0)=0$임을 알 수 있다.\n\n따라서 $f(0)=f(2)=f'(2)=0$이므로\n\n$$f(x)=x(x-2)^2(x+a)$$\n\n로 놓을 수 있고,\n\n$$\\lim_{x \\to 0} \\frac{f(x+2)}{xf(x)+x^2} = \\lim_{x \\to 0} \\frac{x^2(x+2)(x+2+a)}{x^2\\{(x-2)^2(x+a)+1\\}}$$\n\n$$= \\lim_{x \\to 0} \\frac{(x+2)(x+2+a)}{(x-2)^2(x+a)+1} = \\frac{2(2+a)}{4a+1} = \\frac{2a+4}{4a+1}$$\n\n의 값이 $-3$이므로\n\n$$\\frac{2a+4}{4a+1} = -3 \\implies 2a+4 = -12a-3 \\implies 14a = -7 \\implies a = -\\frac{1}{2}$$\n\n$$\\therefore\\ f(x) = x(x-2)^2\\!\\left(x-\\frac{1}{2}\\right)$$\n\n$$f(4) = 4 \\cdot (4-2)^2 \\cdot \\left(4-\\frac{1}{2}\\right) = 4 \\cdot 4 \\cdot \\frac{7}{2} = 56$$",
+  "analysis": "극한 수렴 조건에서 f(2)=0을 얻고, 식을 변형하여 미분 정의를 적용해 f(0)=0을 추론한다. f(0)=f(2)=f'(2)=0과 최고차 계수 조건으로 f(x)=x(x-2)²(x+a)를 설정하고, 극한값 조건에서 a=-1/2를 결정하여 f(4)=56을 구한다.",
+  "new_neurons": [],
+  "metadata": {
+    "unit": "미분법",
+    "difficulty": "상",
+    "score": "4",
+    "type": "short_answer",
+    "answer": "75",
+    "year": "2024",
+    "source": "수능",
+    "topic": "함수의 미분과 방정식",
+    "subtopic": "미분가능성과 실근의 개수"
+  },
+  "edge_count": 7,
+  "side_count": 0,
+  "statement": "# 29. (수능) - 사차함수의 극한 조건을 이용한 함수값 구하기\n\n## Problem\n$f'(2)=0$이고 최고차항의 계수가 $1$인 사차함수 $f(x)$가\n\n$$\\lim_{x \\to 0} \\frac{f(x+2)}{xf(x)+x^2} = -3$$\n\n을 만족시킬 때, $f(4)$의 값은? [4점]",
+  "dna": {
+    "nodes": [
+      {
+        "id": "top",
+        "dna": "Q1",
+        "label": "값을 구하라",
+        "category": "발문"
+      },
+      {
+        "id": "ask",
+        "dna": "E6",
+        "label": "곱(30,k-a)",
+        "category": "수식"
+      },
+      {
+        "id": "c30",
+        "dna": "T2",
+        "label": "상수 30",
+        "category": "말단"
+      },
+      {
+        "id": "diff_ka",
+        "dna": "E1",
+        "label": "합(k,-a)",
+        "category": "수식"
+      },
+      {
+        "id": "neg_a",
+        "dna": "E2",
+        "label": "부호반전(a)",
+        "category": "수식"
+      },
+      {
+        "id": "va",
+        "dna": "T1",
+        "label": "변수 a",
+        "category": "말단"
+      },
+      {
+        "id": "vk",
+        "dna": "T1",
+        "label": "변수 k",
+        "category": "말단"
+      },
+      {
+        "id": "k_lt1",
+        "dna": "C2",
+        "label": "k<1",
+        "category": "조건"
+      },
+      {
+        "id": "c1_k",
+        "dna": "T2",
+        "label": "상수 1",
+        "category": "말단"
+      },
+      {
+        "id": "fdef",
+        "dna": "F6",
+        "label": "f(x) 정의",
+        "category": "함수"
+      },
+      {
+        "id": "fdef_eq",
+        "dna": "C11",
+        "label": "f 방정식",
+        "category": "조건"
+      },
+      {
+        "id": "fdef_c1",
+        "dna": "C1",
+        "label": "f=x^3-3x^2+ax",
+        "category": "조건"
+      },
+      {
+        "id": "f_rhs",
+        "dna": "E1",
+        "label": "합(x^3,-3x^2,ax)",
+        "category": "수식"
+      },
+      {
+        "id": "x3",
+        "dna": "E7",
+        "label": "x^3",
+        "category": "수식"
+      },
+      {
+        "id": "neg3x2",
+        "dna": "E2",
+        "label": "-3x^2",
+        "category": "수식"
+      },
+      {
+        "id": "e3x2",
+        "dna": "E6",
+        "label": "3x^2",
+        "category": "수식"
+      },
+      {
+        "id": "c3_f",
+        "dna": "T2",
+        "label": "상수 3",
+        "category": "말단"
+      },
+      {
+        "id": "x2",
+        "dna": "E7",
+        "label": "x^2",
+        "category": "수식"
+      },
+      {
+        "id": "ax",
+        "dna": "E6",
+        "label": "ax",
+        "category": "수식"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
+      },
+      {
+        "id": "gdef",
+        "dna": "F1",
+        "label": "g(x) 조각함수",
+        "category": "함수"
+      },
+      {
+        "id": "g_piece1",
+        "dna": "F2",
+        "label": "2f(k)-f(x), x≤k",
+        "category": "함수"
+      },
+      {
+        "id": "g_p1_dom",
+        "dna": "C2",
+        "label": "x≤k",
+        "category": "조건"
+      },
+      {
+        "id": "g_p1_expr",
+        "dna": "E1",
+        "label": "2f(k)-f(x)",
+        "category": "수식"
+      },
+      {
+        "id": "two_fk",
+        "dna": "E6",
+        "label": "2·f(k)",
+        "category": "수식"
+      },
+      {
+        "id": "c2_g",
+        "dna": "T2",
+        "label": "상수 2",
+        "category": "말단"
+      },
+      {
+        "id": "fk",
+        "dna": "F3",
+        "label": "f(k)",
+        "category": "수식"
+      },
+      {
+        "id": "neg_fx",
+        "dna": "E2",
+        "label": "-f(x)",
+        "category": "수식"
+      },
+      {
+        "id": "fx",
+        "dna": "F3",
+        "label": "f(x)",
+        "category": "수식"
+      },
+      {
+        "id": "g_piece2",
+        "dna": "F2",
+        "label": "f(x), x>k",
+        "category": "함수"
+      },
+      {
+        "id": "g_p2_dom",
+        "dna": "C2",
+        "label": "x>k",
+        "category": "조건"
+      },
+      {
+        "id": "lim_expr",
+        "dna": "E9",
+        "label": "우극한 몫",
+        "category": "수식"
+      },
+      {
+        "id": "lim_num",
+        "dna": "E1",
+        "label": "g(x+t)-g(x-t)",
+        "category": "수식"
+      },
+      {
+        "id": "g_xpt",
+        "dna": "F3",
+        "label": "g(x+t)",
+        "category": "수식"
+      },
+      {
+        "id": "neg_gxmt",
+        "dna": "E2",
+        "label": "-g(x-t)",
+        "category": "수식"
+      },
+      {
+        "id": "g_xmt",
+        "dna": "F3",
+        "label": "g(x-t)",
+        "category": "수식"
+      },
+      {
+        "id": "lim_den",
+        "dna": "E6",
+        "label": "2t",
+        "category": "수식"
+      },
+      {
+        "id": "vt",
+        "dna": "T3",
+        "label": "독립변수 t",
+        "category": "말단"
+      },
+      {
+        "id": "rhs_eq",
+        "dna": "E6",
+        "label": "12(x-k)",
+        "category": "수식"
+      },
+      {
+        "id": "c12",
+        "dna": "T2",
+        "label": "상수 12",
+        "category": "말단"
+      },
+      {
+        "id": "x_minus_k",
+        "dna": "E1",
+        "label": "x-k",
+        "category": "수식"
+      },
+      {
+        "id": "neg_k_rhs",
+        "dna": "E2",
+        "label": "-k",
+        "category": "수식"
+      },
+      {
+        "id": "main_eq",
+        "dna": "C1",
+        "label": "극한=12(x-k)",
+        "category": "조건"
+      },
+      {
+        "id": "roots_cond",
+        "dna": "C9",
+        "label": "실근 개수=4",
+        "category": "조건"
+      },
+      {
+        "id": "c4_r",
+        "dna": "T2",
+        "label": "상수 4",
+        "category": "말단"
+      },
+      {
+        "id": "roots_named",
+        "dna": "G8",
+        "label": "근 x1,x2,x3,x4",
+        "category": "기하"
+      },
+      {
+        "id": "sum_roots",
+        "dna": "C19",
+        "label": "근합=9/2",
+        "category": "조건"
+      },
+      {
+        "id": "c9h",
+        "dna": "T2",
+        "label": "상수 9/2",
+        "category": "말단"
+      },
+      {
+        "id": "a_const",
+        "dna": "C11",
+        "label": "a는 상수",
+        "category": "조건"
+      }
+    ],
+    "edges": [
+      {
+        "from": "ask",
+        "to": "top"
+      },
+      {
+        "from": "c30",
+        "to": "ask"
+      },
+      {
+        "from": "diff_ka",
+        "to": "ask"
+      },
+      {
+        "from": "vk",
+        "to": "diff_ka"
+      },
+      {
+        "from": "neg_a",
+        "to": "diff_ka"
+      },
+      {
+        "from": "va",
+        "to": "neg_a"
+      },
+      {
+        "from": "vk",
+        "to": "k_lt1"
+      },
+      {
+        "from": "c1_k",
+        "to": "k_lt1"
+      },
+      {
+        "from": "k_lt1",
+        "to": "top"
+      },
+      {
+        "from": "va",
+        "to": "a_const"
+      },
+      {
+        "from": "a_const",
+        "to": "top"
+      },
+      {
+        "from": "fdef_eq",
+        "to": "fdef"
+      },
+      {
+        "from": "fdef_c1",
+        "to": "fdef_eq"
+      },
+      {
+        "from": "f_rhs",
+        "to": "fdef_c1"
+      },
+      {
+        "from": "x3",
+        "to": "f_rhs"
+      },
+      {
+        "from": "neg3x2",
+        "to": "f_rhs"
+      },
+      {
+        "from": "ax",
+        "to": "f_rhs"
+      },
+      {
+        "from": "vx",
+        "to": "x3"
+      },
+      {
+        "from": "c3_f",
+        "to": "x3"
+      },
+      {
+        "from": "e3x2",
+        "to": "neg3x2"
+      },
+      {
+        "from": "c3_f",
+        "to": "e3x2"
+      },
+      {
+        "from": "x2",
+        "to": "e3x2"
+      },
+      {
+        "from": "vx",
+        "to": "x2"
+      },
+      {
+        "from": "c2_g",
+        "to": "x2"
+      },
+      {
+        "from": "va",
+        "to": "ax"
+      },
+      {
+        "from": "vx",
+        "to": "ax"
+      },
+      {
+        "from": "fdef",
+        "to": "gdef"
+      },
+      {
+        "from": "g_piece1",
+        "to": "gdef"
+      },
+      {
+        "from": "g_piece2",
+        "to": "gdef"
+      },
+      {
+        "from": "g_p1_dom",
+        "to": "g_piece1"
+      },
+      {
+        "from": "g_p1_expr",
+        "to": "g_piece1"
+      },
+      {
+        "from": "vx",
+        "to": "g_p1_dom"
+      },
+      {
+        "from": "vk",
+        "to": "g_p1_dom"
+      },
+      {
+        "from": "two_fk",
+        "to": "g_p1_expr"
+      },
+      {
+        "from": "neg_fx",
+        "to": "g_p1_expr"
+      },
+      {
+        "from": "c2_g",
+        "to": "two_fk"
+      },
+      {
+        "from": "fk",
+        "to": "two_fk"
+      },
+      {
+        "from": "vk",
+        "to": "fk"
+      },
+      {
+        "from": "fdef",
+        "to": "fk"
+      },
+      {
+        "from": "fx",
+        "to": "neg_fx"
+      },
+      {
+        "from": "vx",
+        "to": "fx"
+      },
+      {
+        "from": "fdef",
+        "to": "fx"
+      },
+      {
+        "from": "g_p2_dom",
+        "to": "g_piece2"
+      },
+      {
+        "from": "fx",
+        "to": "g_piece2"
+      },
+      {
+        "from": "vx",
+        "to": "g_p2_dom"
+      },
+      {
+        "from": "vk",
+        "to": "g_p2_dom"
+      },
+      {
+        "from": "lim_expr",
+        "to": "main_eq"
+      },
+      {
+        "from": "rhs_eq",
+        "to": "main_eq"
+      },
+      {
+        "from": "lim_num",
+        "to": "lim_expr"
+      },
+      {
+        "from": "lim_den",
+        "to": "lim_expr"
+      },
+      {
+        "from": "vt",
+        "to": "lim_expr"
+      },
+      {
+        "from": "g_xpt",
+        "to": "lim_num"
+      },
+      {
+        "from": "neg_gxmt",
+        "to": "lim_num"
+      },
+      {
+        "from": "g_xmt",
+        "to": "neg_gxmt"
+      },
+      {
+        "from": "gdef",
+        "to": "g_xpt"
+      },
+      {
+        "from": "vx",
+        "to": "g_xpt"
+      },
+      {
+        "from": "vt",
+        "to": "g_xpt"
+      },
+      {
+        "from": "gdef",
+        "to": "g_xmt"
+      },
+      {
+        "from": "vx",
+        "to": "g_xmt"
+      },
+      {
+        "from": "vt",
+        "to": "g_xmt"
+      },
+      {
+        "from": "c2_g",
+        "to": "lim_den"
+      },
+      {
+        "from": "vt",
+        "to": "lim_den"
+      },
+      {
+        "from": "c12",
+        "to": "rhs_eq"
+      },
+      {
+        "from": "x_minus_k",
+        "to": "rhs_eq"
+      },
+      {
+        "from": "vx",
+        "to": "x_minus_k"
+      },
+      {
+        "from": "neg_k_rhs",
+        "to": "x_minus_k"
+      },
+      {
+        "from": "vk",
+        "to": "neg_k_rhs"
+      },
+      {
+        "from": "main_eq",
+        "to": "top"
+      },
+      {
+        "from": "roots_cond",
+        "to": "top"
+      },
+      {
+        "from": "main_eq",
+        "to": "roots_cond"
+      },
+      {
+        "from": "c4_r",
+        "to": "roots_cond"
+      },
+      {
+        "from": "roots_named",
+        "to": "top"
+      },
+      {
+        "from": "roots_cond",
+        "to": "roots_named"
+      },
+      {
+        "from": "sum_roots",
+        "to": "top"
+      },
+      {
+        "from": "roots_named",
+        "to": "sum_roots"
+      },
+      {
+        "from": "c9h",
+        "to": "sum_roots"
+      }
+    ],
+    "new_dna": []
+  },
+  "thinking_profile": null,
+  "folders": [],
+  "history": [],
+  "recovery_warnings": [],
+  "errata": [],
+  "created_at": "2026-03-28T14:02:04.570Z"
+}
