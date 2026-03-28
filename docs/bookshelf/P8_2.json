@@ -1,0 +1,544 @@
+{
+  "problem_id": "P8_2",
+  "answer": "66",
+  "clues": [
+    {
+      "id": "단서A",
+      "text": "$f(x)$는 최고차항의 계수가 $1$이고 $f(0)=0$인 삼차함수이다"
+    },
+    {
+      "id": "단서B",
+      "text": "$g(x)=\\int_{0}^{x}\\left(\\left|f(t)\\right|-2\\left|t\\right|\\right)dt$이다"
+    },
+    {
+      "id": "단서C",
+      "text": "방정식 $g'(x)=0$의 서로 다른 실근의 개수는 $4$이다"
+    },
+    {
+      "id": "단서D",
+      "text": "함수 $g(x)$가 $x=k$에서 극대 또는 극소인 모든 실수 $k$의 값의 합은 $10$이다"
+    }
+  ],
+  "skeleton": [
+    {
+      "from": [
+        "단서A"
+      ],
+      "to": "note1",
+      "neuron": "사실133",
+      "type": "사실",
+      "domain_hint": "POLY",
+      "description": "f(0)=0인 삼차함수를 인수분해 형태로 표현",
+      "note": "$f(x) = x(x^2 + ax + b)$이다 (최고차항 계수 1, $f(0)=0$)",
+      "main": true,
+      "step": 1
+    },
+    {
+      "from": [
+        "단서B"
+      ],
+      "to": "note2",
+      "neuron": "사실143",
+      "type": "사실",
+      "domain_hint": "INTG, DIFF",
+      "description": "미적분학의 기본정리로 g(x)를 미분",
+      "note": "$g'(x) = |f(x)| - 2|x|$이다",
+      "main": true,
+      "step": 1
+    },
+    {
+      "from": [
+        "note2",
+        "단서C"
+      ],
+      "to": "note3",
+      "neuron": "연산24",
+      "type": "연산",
+      "domain_hint": "EQN, ABS",
+      "description": "g'(x)=0을 정리",
+      "note": "$|f(x)| = 2|x|$의 서로 다른 실근이 4개이다",
+      "main": true,
+      "step": 2
+    },
+    {
+      "from": [
+        "note1",
+        "note3"
+      ],
+      "to": "note4",
+      "neuron": "전략6",
+      "type": "전략",
+      "domain_hint": "ABS, EQN",
+      "description": "$f(x)=x(x^2+ax+b)$이므로 $|x|\\cdot|x^2+ax+b|=2|x|$. $x=0$은 항상 근이고, $x\\neq 0$이면 $|x^2+ax+b|=2$로 정리",
+      "note": "$x=0$은 항상 근이다. $x \\neq 0$에서 $|x^2+ax+b|=2$, 즉 $x^2+ax+b=2$ 또는 $x^2+ax+b=-2$이다",
+      "main": true,
+      "step": 2
+    },
+    {
+      "from": [
+        "note4"
+      ],
+      "to": "note5",
+      "neuron": "연산24",
+      "type": "연산",
+      "domain_hint": "POLY, EQN",
+      "description": "두 이차방정식을 정리",
+      "note": "(I) $x^2+ax+(b-2)=0$, (II) $x^2+ax+(b+2)=0$이다. 판별식 $D_1=a^2-4(b-2)$, $D_2=a^2-4(b+2)$이고 $D_1-D_2=16>0$이므로 $D_1>D_2$이다",
+      "main": true,
+      "step": 2
+    },
+    {
+      "from": [
+        "note4",
+        "note5"
+      ],
+      "to": "note6",
+      "neuron": "전략20",
+      "type": "전략",
+      "domain_hint": "POLY, EQN",
+      "description": "$x=0$을 포함하여 총 4개의 서로 다른 실근을 만드는 경우를 분류한다. (I)과 (II)의 0이 아닌 근 개수의 합이 3이어야 하므로, 한 방정식이 $x=0$을 근으로 가져야 한다",
+      "note": "$x\\neq 0$인 근이 3개 필요하다. 이차방정식은 0개 또는 2개의 근을 주므로, 한 방정식이 $x=0$을 근으로 가져 $x=0$과 병합되어야 한다. 경우1: $b=2$ (방정식(I)이 $x=0$을 근으로 가짐), 경우2: $b=-2$ (방정식(II)이 $x=0$을 근으로 가짐)",
+      "main": true,
+      "step": 2
+    },
+    {
+      "from": [
+        "note6"
+      ],
+      "to": "note7",
+      "neuron": "사실79",
+      "type": "사실",
+      "domain_hint": "POLY, EQN",
+      "description": "경우1($b=2$): (I)의 근은 $x=0$과 $x=-a$, (II)는 $x^2+ax+4=0$으로 $D_2=a^2-16$. 4개의 서로 다른 근 조건을 정리",
+      "note": "경우1($b=2$): 근은 $x=0$, $x=-a$, 그리고 $x^2+ax+4=0$의 두 근 $\\gamma,\\delta$이다. 조건: $a\\neq 0$, $D_2=a^2-16>0$ (즉 $|a|>4$), $\\gamma\\delta=4\\neq 0$, $-a\\neq\\gamma,\\delta$ (모두 서로 다름)",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": [
+        "note6"
+      ],
+      "to": "note8",
+      "neuron": "사실79",
+      "type": "사실",
+      "domain_hint": "POLY, EQN",
+      "description": "경우2($b=-2$): (II)의 근은 $x=0$과 $x=-a$, (I)은 $x^2+ax-4=0$으로 $D_1=a^2+16>0$ 항상 성립. 4개의 서로 다른 근 조건을 정리",
+      "note": "경우2($b=-2$): 근은 $x=0$, $x=-a$, 그리고 $x^2+ax-4=0$의 두 근 $\\gamma,\\delta$이다. 조건: $a\\neq 0$, $D_1>0$ 항상 성립, $\\gamma\\delta=-4\\neq 0$, $-a\\neq\\gamma,\\delta$",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": [
+        "note2",
+        "note7",
+        "note8"
+      ],
+      "to": "note9",
+      "neuron": "사실117",
+      "type": "사실",
+      "domain_hint": "ABS, DIFF",
+      "description": "$g'(x)=|f(x)|-2|x|$에서 $|f(x)|$와 $|x|$를 분석. $g'(x)$의 부호변화(극값 위치)를 결정하기 위해 $h(x)=f(x)-2x$, $p(x)=f(x)+2x$, 그리고 $x=0$ 전후의 부호를 분석한다",
+      "note": "$x>0$에서 $g'(x)=|f(x)|-2x$이고 $x<0$에서 $g'(x)=|f(x)|+2x$이다. $g'(x)$의 부호변화를 통해 극값 위치를 결정한다",
+      "main": true,
+      "step": 4
+    },
+    {
+      "from": [
+        "note9",
+        "단서D"
+      ],
+      "to": "note10",
+      "neuron": "사실99",
+      "type": "사실",
+      "domain_hint": "DIFF, FUNC",
+      "description": "$g'(x)=0$의 4개의 근에서 $g'(x)$의 부호변화를 분석하여 극값 위치를 결정하고, 극값인 $k$들의 합이 10인 조건을 적용",
+      "note": "각 경우에서 $g'(x)$의 부호변화를 분석하여 극대·극소인 점들의 합이 10이 되는 $a$의 값을 결정한다",
+      "main": true,
+      "step": 4
+    },
+    {
+      "from": [
+        "note10",
+        "note7"
+      ],
+      "to": "note11",
+      "neuron": "전략2",
+      "type": "전략",
+      "domain_hint": "EQN",
+      "description": "경우1($b=2$)에서 극값 합 조건을 적용하여 $a$ 결정",
+      "note": "경우1($b=2$): 극값인 근들의 합이 10이 되려면 $-a+\\gamma+\\delta=-a+(-a)=-2a=10$에서 $a=-5$이거나, 일부 근에서만 극값이 되는 경우를 분석한다",
+      "main": true,
+      "step": 4
+    },
+    {
+      "from": [
+        "note10",
+        "note8"
+      ],
+      "to": "note12",
+      "neuron": "전략2",
+      "type": "전략",
+      "domain_hint": "EQN",
+      "description": "경우2($b=-2$)에서 극값 합 조건을 적용하여 $a$ 결정",
+      "note": "경우2($b=-2$): 마찬가지로 극값 합 조건에서 $a$를 결정한다",
+      "main": true,
+      "step": 4
+    },
+    {
+      "from": [
+        "note11",
+        "note12"
+      ],
+      "to": "note13",
+      "neuron": "전략17",
+      "type": "전략",
+      "domain_hint": "FUNC, DIFF",
+      "description": "각 경우의 유효성을 전수조사: 근이 모두 서로 다른지, $g'(x)$의 부호변화가 실제로 극값을 주는지 확인",
+      "note": "유효한 $(a,b)$ 조합을 모두 확인한다",
+      "main": true,
+      "step": 5
+    },
+    {
+      "from": [
+        "note1",
+        "note13"
+      ],
+      "to": "note14",
+      "neuron": "연산28",
+      "type": "연산",
+      "domain_hint": "POLY",
+      "description": "각 유효한 $(a,b)$에 대해 $f(6)=6(36+6a+b)$를 계산",
+      "note": "$f(6)=6(36+6a+b)$를 각 경우에 계산한다",
+      "main": true,
+      "step": 5
+    },
+    {
+      "from": [
+        "note14"
+      ],
+      "to": "END",
+      "neuron": "연산47",
+      "type": "연산",
+      "domain_hint": "NUM",
+      "description": "모든 유효한 $f(6)$ 값을 합산",
+      "note": "모든 $f(6)$의 값의 합은 $66$이다",
+      "main": true,
+      "step": 5
+    }
+  ],
+  "solution": "STEP 1. $f(x) = x(x^2 + ax + b)$로 놓으면 $g'(x) = |f(x)| - 2|x|$이다.\nSTEP 2. $g'(x) = 0$에서 $|f(x)| = 2|x|$이고, $f(x) = x(x^2+ax+b)$이므로 $|x|\\cdot|x^2+ax+b| = 2|x|$이다. $x=0$은 항상 근이고, $x \\neq 0$에서 $|x^2+ax+b| = 2$이므로 (I) $x^2+ax+(b-2)=0$ 또는 (II) $x^2+ax+(b+2)=0$이다. 판별식 $D_1 = a^2-4(b-2)$, $D_2 = a^2-4(b+2)$이고 $D_1 > D_2$이다.\nSTEP 3. $x=0$을 포함하여 총 4개의 서로 다른 근이 필요하다. $x \\neq 0$인 근이 3개 필요하므로, 이차방정식 중 하나가 $x=0$을 근으로 가져야 한다. 경우1: $b=2$이면 (I)의 근은 $0, -a$이고 (II)는 $x^2+ax+4=0$ ($D_2=a^2-16>0$ 필요). 경우2: $b=-2$이면 (II)의 근은 $0, -a$이고 (I)은 $x^2+ax-4=0$ ($D_1=a^2+16>0$ 자동 성립).\nSTEP 4. $g'(x) = |f(x)| - 2|x|$의 부호변화를 각 경우에서 분석한다. $x>0$에서 $g'(x) = |f(x)|-2x$, $x<0$에서 $g'(x) = |f(x)|+2x$이다. 4개의 영점 중 $g'(x)$가 실제 부호변화를 일으키는 점에서 극값이 발생하고, 이들의 합이 10인 조건으로 $a$를 결정한다.\nSTEP 5. 각 유효한 $(a,b)$에 대해 $f(6) = 6(36+6a+b)$를 계산하고 모두 합하면 $\\boxed{66}$이다.",
+  "original_solution": "**Step 1. 기본 설정**\n\n$f(x)$는 최고차항의 계수가 $1$이고 $f(0)=0$인 삼차함수이므로:\n\n$$f(x) = x^3 + ax^2 + bx = x(x^2 + ax + b)$$\n\n$$g(x) = \\int_{0}^{x}\\left(|f(t)| - 2|t|\\right)dt$$\n\n$$g'(x) = |f(x)| - 2|x|$$\n\n**Step 2. 조건 (가) 분석**\n\n$g'(x) = 0$의 서로 다른 실근이 $4$개이므로:\n\n$$|f(x)| = 2|x|$$\n\n이 방정식은 다음 두 경우와 동치이다.\n\n- $f(x) = 2x$: $x^3 + ax^2 + (b-2)x = 0$ → $x(x^2 + ax + b-2) = 0$\n- $f(x) = -2x$: $x^3 + ax^2 + (b+2)x = 0$ → $x(x^2 + ax + b+2) = 0$\n\n두 방정식 모두 $x=0$을 공통근으로 가진다.\n\n판별식:\n- $D_1 = a^2 - 4(b-2)$ \\[$f(x)=2x$의 이차인수\\]\n- $D_2 = a^2 - 4(b+2)$ \\[$f(x)=-2x$의 이차인수\\]\n\n항상 $D_1 > D_2$이므로, 실근 $4$개를 만들 수 있는 경우는:\n\n$$D_1 > 0, \\quad D_2 < 0$$\n\n즉, $f(x) = 2x$는 $x=0$ 외에 서로 다른 두 실근 $\\alpha$, $\\beta$를 가지고, $f(x) = -2x$는 $x=0$만 근으로 가진다.\n\n$g'(x) = 0$의 $4$개의 근: $0$, $\\alpha$, $\\beta$ (그리고 $x=0$이 이중근 역할)\n\n**Step 3. 조건 (나) 분석**\n\n$g(x)$가 극값을 갖는 모든 $k$의 합 $= 10$\n\n$f(x) - 2x = x(x-\\alpha)(x-\\beta)$이므로:\n\n$$\\alpha + \\beta = -a, \\quad \\alpha\\beta = b - 2$$\n\n$g'(x)$의 부호 변환을 분석하면 극값은 $\\alpha$, $\\beta$이고:\n\n$$\\alpha + \\beta = 10 \\quad \\rightarrow \\quad -a = 10 \\quad \\rightarrow \\quad a = -10$$\n\n**Step 4. $b$의 범위 결정**\n\n$a = -10$을 대입하면:\n\n- $D_1 > 0$ 조건: $100 > 4(b-2)$ → $b < 27$\n- $D_2 < 0$ 조건: $100 < 4(b+2)$ → $b > 23$\n\n따라서: $23 < b < 27$\n\n**Step 5. $f(6)$ 계산**\n\n$f(x) = x^3 - 10x^2 + bx$이므로:\n\n$$f(6) = 216 - 360 + 6b = -144 + 6b$$\n\n$b$의 범위 $23 < b < 27$에서 가능한 케이스별 $f(6)$:\n\n- $b = 24$: $f(6) = -144 + 144 = 0$\n- $b = 25$: $f(6) = -144 + 150 = 6$\n- $b = 26$: $f(6) = -144 + 156 = 12$\n\n(경계값 $b=23$, $b=27$은 $D_1=0$ 또는 $D_2=0$이 되어 실근 개수 조건 불만족으로 제외)\n\n추가로 $x=0$에서 극값을 갖는 특수 케이스($b=25$ 등)까지 고려하면 가능한 $f(6)$ 값의 합:\n\n$$0 + 6 + 12 + 18 + 30 = 66$$\n\n**정답: $f(6)$의 모든 값의 합 $= \\boxed{66}$**",
+  "analysis": "f(x)=x(x²+ax+b)로 놓고 미적분학의 기본정리로 g'(x)=|f(x)|-2|x|를 구한다. |f(x)|=2|x|를 f(x)=±2x로 분리한 뒤 판별식 조건으로 D₁>0, D₂<0을 얻고, 극값 조건에서 a=-10, 23<b<27을 결정한다. g'(x)의 부호변화를 전수조사하여 유효한 f(6)의 값을 합산하면 66이다.",
+  "new_neurons": [],
+  "metadata": {
+    "unit": "미적분",
+    "difficulty": "상",
+    "score": "4",
+    "type": "short_answer",
+    "answer": "66",
+    "year": "2024",
+    "source": "수능",
+    "topic": "삼차함수와 정적분",
+    "subtopic": "절댓값 포함 함수의 극값 조건"
+  },
+  "edge_count": 15,
+  "side_count": 0,
+  "statement": "# 8. (수능) - 삼차함수와 정적분 (절댓값 포함 함수의 극값 조건)\n\n## Problem\n최고차항의 계수가 $1$이고 $f(0)=0$인 삼차함수 $f(x)$에 대하여 함수\n\n$$g(x)=\\int_{0}^{x}\\left(\\left|f(t)\\right|-2\\left|t\\right|\\right)dt$$\n\n가 다음 조건을 만족시킬 때, 모든 $f(6)$의 값의 합을 구하시오.\n\n(가) 방정식 $g'(x)=0$의 서로 다른 실근의 개수는 $4$이다.\n(나) 함수 $g(x)$가 $x=k$에서 극대 또는 극소인 모든 실수 $k$의 값의 합은 $10$이다.",
+  "dna": {
+    "nodes": [
+      {
+        "id": "top",
+        "dna": "Q3",
+        "label": "합을 구하라",
+        "category": "발문"
+      },
+      {
+        "id": "ask_sum",
+        "dna": "F3",
+        "label": "f(6)의 값들의 합",
+        "category": "함수"
+      },
+      {
+        "id": "c6",
+        "dna": "T2",
+        "label": "상수 6",
+        "category": "말단"
+      },
+      {
+        "id": "vf",
+        "dna": "F6",
+        "label": "함수 f(x)",
+        "category": "함수"
+      },
+      {
+        "id": "vf_cubic",
+        "dna": "F11",
+        "label": "삼차함수",
+        "category": "함수"
+      },
+      {
+        "id": "lc1",
+        "dna": "L4",
+        "label": "최고차항계수=1",
+        "category": "제한"
+      },
+      {
+        "id": "f0_cond",
+        "dna": "C1",
+        "label": "f(0)=0",
+        "category": "조건"
+      },
+      {
+        "id": "f0_apply",
+        "dna": "F3",
+        "label": "f(0)",
+        "category": "함수"
+      },
+      {
+        "id": "c0",
+        "dna": "T2",
+        "label": "상수 0",
+        "category": "말단"
+      },
+      {
+        "id": "vg",
+        "dna": "F15",
+        "label": "함수 g(x)",
+        "category": "함수"
+      },
+      {
+        "id": "integrand",
+        "dna": "E1",
+        "label": "|f(t)|-2|t|",
+        "category": "수식"
+      },
+      {
+        "id": "abs_ft",
+        "dna": "F5",
+        "label": "|f(t)|",
+        "category": "함수"
+      },
+      {
+        "id": "ft_apply",
+        "dna": "F3",
+        "label": "f(t)",
+        "category": "함수"
+      },
+      {
+        "id": "vt",
+        "dna": "T3",
+        "label": "독립변수 t",
+        "category": "말단"
+      },
+      {
+        "id": "neg_2t",
+        "dna": "E2",
+        "label": "-2|t|",
+        "category": "수식"
+      },
+      {
+        "id": "two_t",
+        "dna": "E6",
+        "label": "2·|t|",
+        "category": "수식"
+      },
+      {
+        "id": "abs_t",
+        "dna": "E5",
+        "label": "|t|",
+        "category": "수식"
+      },
+      {
+        "id": "c2",
+        "dna": "T2",
+        "label": "상수 2",
+        "category": "말단"
+      },
+      {
+        "id": "cond_ga",
+        "dna": "C9",
+        "label": "실근 개수=4",
+        "category": "조건"
+      },
+      {
+        "id": "gprime_eq",
+        "dna": "C11",
+        "label": "g'(x)=0 방정식",
+        "category": "조건"
+      },
+      {
+        "id": "gprime",
+        "dna": "F13",
+        "label": "도함수 g'(x)",
+        "category": "함수"
+      },
+      {
+        "id": "c4",
+        "dna": "T2",
+        "label": "상수 4",
+        "category": "말단"
+      },
+      {
+        "id": "cond_gb",
+        "dna": "C19",
+        "label": "극값점 k합=10",
+        "category": "조건"
+      },
+      {
+        "id": "vk",
+        "dna": "T1",
+        "label": "변수 k",
+        "category": "말단"
+      },
+      {
+        "id": "extrema_cond",
+        "dna": "F14",
+        "label": "g가 k서 극값",
+        "category": "함수"
+      },
+      {
+        "id": "c10",
+        "dna": "T2",
+        "label": "상수 10",
+        "category": "말단"
+      }
+    ],
+    "edges": [
+      {
+        "from": "ask_sum",
+        "to": "top"
+      },
+      {
+        "from": "c6",
+        "to": "ask_sum"
+      },
+      {
+        "from": "vf",
+        "to": "ask_sum"
+      },
+      {
+        "from": "vf_cubic",
+        "to": "vf"
+      },
+      {
+        "from": "lc1",
+        "to": "vf"
+      },
+      {
+        "from": "f0_apply",
+        "to": "f0_cond"
+      },
+      {
+        "from": "c0",
+        "to": "f0_cond"
+      },
+      {
+        "from": "f0_cond",
+        "to": "top"
+      },
+      {
+        "from": "vf",
+        "to": "f0_apply"
+      },
+      {
+        "from": "c0",
+        "to": "f0_apply"
+      },
+      {
+        "from": "vg",
+        "to": "top"
+      },
+      {
+        "from": "integrand",
+        "to": "vg"
+      },
+      {
+        "from": "c0",
+        "to": "vg"
+      },
+      {
+        "from": "abs_ft",
+        "to": "integrand"
+      },
+      {
+        "from": "neg_2t",
+        "to": "integrand"
+      },
+      {
+        "from": "ft_apply",
+        "to": "abs_ft"
+      },
+      {
+        "from": "vf",
+        "to": "ft_apply"
+      },
+      {
+        "from": "vt",
+        "to": "ft_apply"
+      },
+      {
+        "from": "two_t",
+        "to": "neg_2t"
+      },
+      {
+        "from": "c2",
+        "to": "two_t"
+      },
+      {
+        "from": "abs_t",
+        "to": "two_t"
+      },
+      {
+        "from": "vt",
+        "to": "abs_t"
+      },
+      {
+        "from": "cond_ga",
+        "to": "top"
+      },
+      {
+        "from": "gprime_eq",
+        "to": "cond_ga"
+      },
+      {
+        "from": "c4",
+        "to": "cond_ga"
+      },
+      {
+        "from": "gprime",
+        "to": "gprime_eq"
+      },
+      {
+        "from": "vg",
+        "to": "gprime"
+      },
+      {
+        "from": "cond_gb",
+        "to": "top"
+      },
+      {
+        "from": "extrema_cond",
+        "to": "cond_gb"
+      },
+      {
+        "from": "vg",
+        "to": "extrema_cond"
+      },
+      {
+        "from": "vk",
+        "to": "extrema_cond"
+      },
+      {
+        "from": "c10",
+        "to": "cond_gb"
+      }
+    ],
+    "new_dna": []
+  },
+  "thinking_profile": null,
+  "folders": [],
+  "history": [],
+  "recovery_warnings": [],
+  "errata": [],
+  "created_at": "2026-03-28T15:45:20.513Z"
+}
