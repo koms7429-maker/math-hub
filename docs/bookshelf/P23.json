@@ -1,0 +1,660 @@
+{
+  "problem_id": "P23",
+  "answer": "36",
+  "clues": [
+    {
+      "id": "단서A",
+      "text": "$f(2)=0$, $f'(4)=0$인 삼차함수 $f(x)$"
+    },
+    {
+      "id": "단서B",
+      "text": "$g(x)=\\begin{cases} x^2+2x & (x<t) \\\\ f(x) & (x \\geq t) \\end{cases}$"
+    },
+    {
+      "id": "단서C",
+      "text": "$h(t)$는 방정식 $g(x)=tx$의 서로 다른 실근의 개수"
+    },
+    {
+      "id": "단서D",
+      "text": "0이 아닌 모든 실수 $t$에 대하여 $h(t)$의 값은 2 또는 4이다"
+    }
+  ],
+  "skeleton": [
+    {
+      "from": [
+        "단서B",
+        "단서C"
+      ],
+      "to": "note1",
+      "neuron": "사실44",
+      "note": "$h(t) = h_1(t) + h_2(t)$이다 ($h_1(t)$: $x<t$에서 $x^2+2x=tx$의 근의 개수, $h_2(t)$: $x \\geq t$에서 $f(x)=tx$의 근의 개수)",
+      "step": 1
+    },
+    {
+      "from": "note1",
+      "to": "note2",
+      "neuron": "전략29",
+      "note": "$x<t$ 영역에서 $x^2+2x-tx=0$, 즉 $x(x+2-t)=0$이다",
+      "step": 2
+    },
+    {
+      "from": "note2",
+      "to": "note3",
+      "neuron": "연산9",
+      "note": "$x=0$ 또는 $x=t-2$이다",
+      "step": 2
+    },
+    {
+      "from": "note3",
+      "to": "note4",
+      "neuron": "전략46",
+      "note": "$x<t$ 조건에서 $x=0$은 $t>0$일 때, $x=t-2$는 $t-2<t$ (항상)일 때 유효하다. 따라서 $t>0$이면 $h_1(t)=2$, $t<0$이면 $h_1(t)=1$, $t=2$이면 중근으로 $h_1(t)=1$이다",
+      "step": 2
+    },
+    {
+      "from": [
+        "note4",
+        "단서D"
+      ],
+      "to": "note5",
+      "neuron": "전략42",
+      "note": "$t \\neq 0$에서 $h(t) \\in \\{2,4\\}$이므로: $t>2$이면 $h_2(t) \\in \\{0,2\\}$, $0<t<2$이면 $h_2(t) \\in \\{0,2\\}$, $t=2$이면 $h_2(2) \\in \\{1,3\\}$, $t<0$이면 $h_2(t) \\in \\{1,3\\}$이다",
+      "step": 3
+    },
+    {
+      "from": [
+        "note5",
+        "단서A"
+      ],
+      "to": "note6",
+      "neuron": "전략21",
+      "note": "$t=0$일 때 $g(x)=0$의 근을 조사한다. $x<0$에서 $x^2+2x=0$이면 $x=-2$, $x \\geq 0$에서 $f(x)=0$의 근의 개수가 $h_2(0)$이다",
+      "main": false,
+      "step": 4
+    },
+    {
+      "from": "note6",
+      "to": "note7",
+      "neuron": "전략20",
+      "note": "$h_2(0)=1$이면 $t \\to 0^+$에서 $h_2$가 $\\{0,2\\}$에서 $1$로 점프하여 $h(t)$가 홀수가 되어 모순이다. $h_2(0)=3$이면 $f(x)=0$이 $x \\geq 0$에서 근 3개이다",
+      "main": false,
+      "step": 4
+    },
+    {
+      "from": "note7",
+      "to": "note8",
+      "neuron": "전략21",
+      "note": "$f(0) \\neq 0$을 가정하면 $x=0$은 $f(x)=0$의 근이 아니므로 $x \\geq 0$에서 근 3개를 확보하기 어렵다",
+      "main": false,
+      "step": 4
+    },
+    {
+      "from": "note8",
+      "to": "note9",
+      "neuron": "전략23",
+      "note": "$f(0) \\neq 0$이면 모순이므로 $f(0)=0$이다",
+      "main": false,
+      "step": 4
+    },
+    {
+      "from": [
+        "note9",
+        "단서A"
+      ],
+      "to": "note10",
+      "neuron": "전략38",
+      "note": "$f(0)=0$, $f(2)=0$이므로 $f(x)=a \\cdot x(x-2)(x-r)$ ($a \\neq 0$)로 쓸 수 있다",
+      "step": 5
+    },
+    {
+      "from": "note10",
+      "to": "note11",
+      "neuron": "전략21",
+      "note": "$f(x)-tx = 0$, 즉 $x(a(x-2)(x-r)-t)=0$에서 $x \\geq t$ 영역의 근의 개수 변화를 분석한다. $y=tx$와 $y=f(x)$의 교점으로 해석한다",
+      "step": 5
+    },
+    {
+      "from": [
+        "note11",
+        "note5"
+      ],
+      "to": "note12",
+      "neuron": "전략44",
+      "note": "$t=2$에서 $h_2(2) \\in \\{1,3\\}$이고 $t>2$에서 $h_2(t) \\in \\{0,2\\}$이므로, $t=2$ 전후로 근의 개수가 홀짝 전환된다. 따라서 $y=2x$와 $y=f(x)$가 $x \\geq 2$에서 접한다",
+      "step": 6
+    },
+    {
+      "from": [
+        "note12",
+        "note10"
+      ],
+      "to": "note13",
+      "neuron": "사실80",
+      "note": "$y=f(x)$와 $y=2x$가 접하는 점 $x=\\alpha$ ($\\alpha > 2$)에서 $f(\\alpha)=2\\alpha$이고 $f'(\\alpha)=2$이다",
+      "step": 6
+    },
+    {
+      "from": [
+        "note13",
+        "note5"
+      ],
+      "to": "note14",
+      "neuron": "전략21",
+      "note": "$a>0$을 가정하면 $t<0$에서 $h_2(t) \\in \\{1,3\\}$ 조건과 충돌한다",
+      "main": false,
+      "step": 7
+    },
+    {
+      "from": "note14",
+      "to": "note15",
+      "neuron": "전략23",
+      "note": "$a>0$이면 모순이므로 $a<0$이다",
+      "main": false,
+      "step": 7
+    },
+    {
+      "from": [
+        "note15",
+        "note12"
+      ],
+      "to": "note16",
+      "neuron": "전략41",
+      "note": "$f(x)-2x = a \\cdot x(x-2)(x-r) - 2x$가 $x=\\alpha$에서 이중근을 가지므로 $f(x)-2x = a(x-\\alpha)^2(x-\\beta)$ 형태이다. 한편 $f(0)=0$이므로 $f(0)-0=0$, 즉 $a \\cdot \\alpha^2 \\cdot (-\\beta)=0$에서 $\\beta=0$이다. 따라서 $f(x)=ax(x-\\alpha)^2+2x$이다",
+      "step": 7
+    },
+    {
+      "from": [
+        "note16",
+        "단서A"
+      ],
+      "to": "note17",
+      "neuron": "전략25",
+      "note": "$f(2)=0$: $2a(2-\\alpha)^2+4=0$이므로 $a(2-\\alpha)^2=-2$이다",
+      "step": 8
+    },
+    {
+      "from": "note16",
+      "to": "note18",
+      "neuron": "연산33",
+      "note": "$f'(x)=a[(x-\\alpha)^2+2x(x-\\alpha)]+2=a(x-\\alpha)(3x-\\alpha)+2$이다",
+      "step": 8
+    },
+    {
+      "from": [
+        "note18",
+        "단서A"
+      ],
+      "to": "note19",
+      "neuron": "전략25",
+      "note": "$f'(4)=0$: $a(4-\\alpha)(12-\\alpha)+2=0$이므로 $a(4-\\alpha)(12-\\alpha)=-2$이다",
+      "step": 8
+    },
+    {
+      "from": [
+        "note17",
+        "note19"
+      ],
+      "to": "note20",
+      "neuron": "전략2",
+      "note": "두 식에서 $a(2-\\alpha)^2 = a(4-\\alpha)(12-\\alpha)$이고, $a \\neq 0$이므로 $(2-\\alpha)^2=(4-\\alpha)(12-\\alpha)$이다",
+      "step": 9
+    },
+    {
+      "from": "note20",
+      "to": "note21",
+      "neuron": "연산28",
+      "note": "$4-4\\alpha+\\alpha^2=48-16\\alpha+\\alpha^2$이므로 $12\\alpha=44$, $\\alpha=\\frac{11}{3}$이다",
+      "step": 9
+    },
+    {
+      "from": [
+        "note21",
+        "note17"
+      ],
+      "to": "note22",
+      "neuron": "전략25",
+      "note": "$\\alpha=\\frac{11}{3}$을 $a(2-\\frac{11}{3})^2=-2$에 대입하면 $a \\cdot \\frac{25}{9}=-2$이므로 $a=-\\frac{18}{25}$이다",
+      "step": 9
+    },
+    {
+      "from": "note22",
+      "to": "END",
+      "neuron": "전략25",
+      "note": "$f(x)=-\\frac{18}{25}x\\left(x-\\frac{11}{3}\\right)^2+2x$이므로 $f(5)=-\\frac{18}{25} \\cdot 5 \\cdot \\left(\\frac{4}{3}\\right)^2+10=-\\frac{18}{5} \\cdot \\frac{16}{9}+10=-\\frac{32}{5}+10=\\frac{18}{5}$이다. $10 \\times f(5)=36$이다",
+      "step": 10
+    }
+  ],
+  "solution": "STEP 1. $g(x)$가 조각함수이므로 $g(x)=tx$의 근의 개수는 각 조각의 근의 개수의 합이다: $h(t) = h_1(t) + h_2(t)$ ($h_1(t)$: $x<t$에서 $x^2+2x=tx$의 근의 개수, $h_2(t)$: $x \\geq t$에서 $f(x)=tx$의 근의 개수).\n\nSTEP 2. $x<t$ 영역에서 $x^2+2x-tx=0$을 인수분해하면 $x(x+2-t)=0$이므로 $x=0$ 또는 $x=t-2$이다. $t>0$이면 $h_1(t)=2$, $t<0$이면 $h_1(t)=1$, $t=2$이면 중근으로 $h_1(t)=1$이다.\n\nSTEP 3. $h(t) \\in \\{2,4\\}$ 조건에서: $t>2$이면 $h_2(t) \\in \\{0,2\\}$, $0<t<2$이면 $h_2(t) \\in \\{0,2\\}$, $t=2$이면 $h_2(2) \\in \\{1,3\\}$, $t<0$이면 $h_2(t) \\in \\{1,3\\}$이다.\n\nSTEP 5. $f(0)=0$, $f(2)=0$이므로 $f(x)=a \\cdot x(x-2)(x-r)$로 쓸 수 있다.\n\nSTEP 6. $t=2$에서 $h_2(2) \\in \\{1,3\\}$이고 $t>2$에서 $h_2(t) \\in \\{0,2\\}$이므로 $y=2x$와 $y=f(x)$가 $x \\geq 2$에서 접한다. 접점 $x=\\alpha$에서 $f(\\alpha)=2\\alpha$, $f'(\\alpha)=2$이다.\n\nSTEP 7. $a<0$이고 $f(x)-2x=a(x-\\alpha)^2 \\cdot x$ 형태($\\beta=0$)이므로 $f(x)=ax(x-\\alpha)^2+2x$이다.\n\nSTEP 8. $f(2)=0$에서 $a(2-\\alpha)^2=-2$이다. $f'(x)=a(x-\\alpha)(3x-\\alpha)+2$에서 $f'(4)=0$이면 $a(4-\\alpha)(12-\\alpha)=-2$이다.\n\nSTEP 9. $(2-\\alpha)^2=(4-\\alpha)(12-\\alpha)$를 풀면 $\\alpha=\\frac{11}{3}$이고 $a=-\\frac{18}{25}$이다.\n\nSTEP 10. $f(5)=-\\frac{18}{25} \\cdot 5 \\cdot \\left(\\frac{4}{3}\\right)^2+10=\\frac{18}{5}$이므로 $10 \\times f(5)=36$이다.",
+  "original_solution": "$x < t$에서 $x^2 + 2x = tx$의 서로 다른 실근의 개수를 $h_1(t)$,\n$x \\geq t$에서 $f(x) = tx$의 서로 다른 실근의 개수를 $h_2(t)$라 하면\n\n$$h(t) = h_1(t) + h_2(t)$$\n\n이므로 문제의 박스 조건에 의해\n$t \\neq 0$일 때, $h_1(t) + h_2(t)$의 가능한 값은 2, 4 … (★)\n\n이어야 한다.\n\n한편, $x^2 + 2x = tx \\Rightarrow x = 0$ 또는 $x = t - 2$\n\n이고 $x < t$에서의 실근의 개수가 $h_1(t)$이므로\n\n$$h_1(t) = \\begin{cases} 1 & (t=0, t=2) \\\\ 2 & (t>0, t\\neq 2) \\end{cases}$$\n\n따라서 (★)로부터\n\n- ① $h_2(0)$의 값은 1 또는 3\n- ② $h_2(2)$의 값은 1 또는 3\n- ③ $t > 0$, $t \\neq 2$일 때, $h_2(t)$의 값은 0 또는 2\n\n임을 알 수 있다.\n\n이때, ①에서 $h_2(0) = 1$이면\n\n- $x \\geq 0$에서 $f(x) = 0$의 서로 다른 실근이 1개뿐\n- $f(2) = 0$, $f'(4) = 0$ (문제의 조건)\n\n을 모두 만족시키는 $y = f(x)$의 개형은 다음 그림의 경우뿐이므로 $t = 0+$일 때 $h_2(t)$의 값이 1이 되어 ③에 모순임을 알 수 있다.\n\n[FIGURE: $y = f(x)$와 $y = tx$의 개형을 나타낸 그래프들 — 극점 둘 중 하나가 4인 경우]\n\n따라서\n\n① $\\Rightarrow h_2(0) = 3$\n$\\Rightarrow x \\geq 0$에서 $f(x) = 0$의 서로 다른 실근의 개수는 3\n\n이고, 이때 다음 그림을 참고하면\n$f(0) \\neq 0$이면 $t = 0+$일 때 $h_2(t) = 3 \\Rightarrow$ ③에 모순\n\n임을 알 수 있다.\n\n[FIGURE: $a > 0$인 경우와 $a < 0$인 경우의 $y = f(x)$, $y = tx$ 그래프]\n\n따라서\n$$f(0) = 0 \\cdots \\text{ㄱ}$$\n\n임을 알 수 있고, 이때\n$f(x)$의 최고차항의 계수를 $a$라 하고 다음 그림을 참고하면\n\na>0인 경우, $\\lim_{t\\rightarrow2+}h_2(t)=h_2(2)=1 \\rightarrow$③에 모순\n\n임을 알 수 있다.\n\n따라서\n$a < 0$\n\n이고,\n②, ③ $\\Rightarrow h_2(2) \\neq \\lim_{t \\to 2+} h_2(t)$\n이어야 하므로 오른쪽 그림과 같이\n$y = 2x$와 $y = f(x)$가 $x > 2$에서 접해야 한다. … ㄴ\n\n[FIGURE: $y = 2x$와 $y = f(x)$가 $x > 2$에서 접하는 그래프]\n\n따라서\nㄱ, ㄴ $\\Rightarrow f(x) - 2x = ax(x - b)^2$\n\n로 놓으면\n\n$$f(2) = 0 \\Rightarrow 2a(2 - b)^2 = -4 \\cdots \\text{ㄷ}$$\n$$f'(4) = 0 \\Rightarrow a(4 - b)^2 + 8a(4 - b) = -2$$\n\n이고, 두 식을 각 변끼리 나누어 정리하면\n\n$$\\frac{2(2 - b)^2}{(4 - b)^2 + 8(4 - b)} = 2 \\Rightarrow b = \\frac{11}{3}$$\n\nㄷ에 대입하면\n\n$$\\Rightarrow a = -\\frac{18}{25} \\quad (\\because \\text{ㄷ})$$\n\n을 얻는다.\n\n$$\\therefore f(x) = -\\frac{18}{25}x\\!\\left(x - \\frac{11}{3}\\right)^{\\!2} + 2x \\Rightarrow 10f(5) = \\boxed{36}$$",
+  "analysis": "조각함수 g(x)=tx의 실근 개수를 영역별로 h_1(t)+h_2(t)로 분해한 뒤, h_1(t)를 직접 산출하고 h_2(t)의 조건을 도출한다. 귀류법을 반복 적용하여 f(0)=0, a<0, y=2x와의 접선 조건을 얻고, f(x)-2x=ax(x-b)²로 놓아 연립방정식을 풀면 a=-18/25, b=11/3이 되어 10f(5)=36을 얻는다.",
+  "new_neurons": [],
+  "metadata": {
+    "unit": "다항함수의 미분",
+    "difficulty": "상",
+    "score": "4",
+    "type": "short_answer",
+    "answer": "36",
+    "year": "미상",
+    "source": "수능",
+    "topic": "삼차함수와 조건을 만족하는 함수의 실근 개수",
+    "subtopic": "삼차함수 결정 및 조건 분석"
+  },
+  "edge_count": 23,
+  "side_count": 6,
+  "statement": "# 23. (수능) - 삼차함수와 실근의 개수 조건\n\n## Problem\n\n$f(2) = 0$, $f'(4) = 0$인 삼차함수 $f(x)$와 실수 $t$에 대하여 함수 $g(x)$를\n\n$$g(x) = \\begin{cases} x^2 + 2x & (x < t) \\\\ f(x) & (x \\geq t) \\end{cases}$$\n\n라 할 때, 방정식 $g(x) = tx$의 서로 다른 실근의 개수를 $h(t)$라 하자. 함수 $h(t)$가 다음 조건을 만족시킬 때, $10 \\times f(5)$의 값을 구하시오. [4점]\n\n> 0이 아닌 모든 실수 $t$에 대하여 $h(t)$의 값은 2 또는 4이다.",
+  "dna": {
+    "nodes": [
+      {
+        "id": "top",
+        "dna": "Q1",
+        "label": "값을 구하라",
+        "category": "발문"
+      },
+      {
+        "id": "ask",
+        "dna": "E6",
+        "label": "10×f(5)",
+        "category": "수식"
+      },
+      {
+        "id": "c10",
+        "dna": "T2",
+        "label": "상수 10",
+        "category": "말단"
+      },
+      {
+        "id": "f5_val",
+        "dna": "F3",
+        "label": "f(5)",
+        "category": "함수"
+      },
+      {
+        "id": "c5",
+        "dna": "T2",
+        "label": "상수 5",
+        "category": "말단"
+      },
+      {
+        "id": "vf",
+        "dna": "F6",
+        "label": "함수 f(x)",
+        "category": "함수"
+      },
+      {
+        "id": "f_cubic",
+        "dna": "F11",
+        "label": "삼차함수",
+        "category": "함수"
+      },
+      {
+        "id": "f_cond1",
+        "dna": "C1",
+        "label": "f(2)=0",
+        "category": "조건"
+      },
+      {
+        "id": "f2_val",
+        "dna": "F3",
+        "label": "f(2)",
+        "category": "함수"
+      },
+      {
+        "id": "c2",
+        "dna": "T2",
+        "label": "상수 2",
+        "category": "말단"
+      },
+      {
+        "id": "c0",
+        "dna": "T2",
+        "label": "상수 0",
+        "category": "말단"
+      },
+      {
+        "id": "f_cond2",
+        "dna": "C1",
+        "label": "f'(4)=0",
+        "category": "조건"
+      },
+      {
+        "id": "df",
+        "dna": "F13",
+        "label": "도함수 f'",
+        "category": "함수"
+      },
+      {
+        "id": "df4_val",
+        "dna": "F3",
+        "label": "f'(4)",
+        "category": "함수"
+      },
+      {
+        "id": "c4",
+        "dna": "T2",
+        "label": "상수 4",
+        "category": "말단"
+      },
+      {
+        "id": "vt",
+        "dna": "T1",
+        "label": "변수 t",
+        "category": "말단"
+      },
+      {
+        "id": "vt_real",
+        "dna": "L3",
+        "label": "t는 실수",
+        "category": "제한"
+      },
+      {
+        "id": "vg",
+        "dna": "F1",
+        "label": "조각함수 g(x)",
+        "category": "함수"
+      },
+      {
+        "id": "piece1",
+        "dna": "F2",
+        "label": "x²+2x (x<t)",
+        "category": "함수"
+      },
+      {
+        "id": "piece2",
+        "dna": "F2",
+        "label": "f(x) (x≥t)",
+        "category": "함수"
+      },
+      {
+        "id": "expr_quad",
+        "dna": "E1",
+        "label": "x²+2x",
+        "category": "수식"
+      },
+      {
+        "id": "x2",
+        "dna": "E7",
+        "label": "x²",
+        "category": "수식"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
+      },
+      {
+        "id": "c2b",
+        "dna": "T2",
+        "label": "상수 2(계수)",
+        "category": "말단"
+      },
+      {
+        "id": "two_x",
+        "dna": "E6",
+        "label": "2x",
+        "category": "수식"
+      },
+      {
+        "id": "dom1",
+        "dna": "C2",
+        "label": "x < t",
+        "category": "조건"
+      },
+      {
+        "id": "dom2",
+        "dna": "C2",
+        "label": "x ≥ t",
+        "category": "조건"
+      },
+      {
+        "id": "vh",
+        "dna": "F6",
+        "label": "함수 h(t)",
+        "category": "함수"
+      },
+      {
+        "id": "eq_gx_tx",
+        "dna": "C1",
+        "label": "g(x)=tx",
+        "category": "조건"
+      },
+      {
+        "id": "tx_expr",
+        "dna": "E6",
+        "label": "tx",
+        "category": "수식"
+      },
+      {
+        "id": "root_count",
+        "dna": "C9",
+        "label": "실근 개수=h(t)",
+        "category": "조건"
+      },
+      {
+        "id": "cond_ht",
+        "dna": "C18",
+        "label": "모든 t≠0에 대해",
+        "category": "조건"
+      },
+      {
+        "id": "ht_val",
+        "dna": "C2",
+        "label": "h(t)=2 또는 4",
+        "category": "조건"
+      },
+      {
+        "id": "t_neq0",
+        "dna": "C2",
+        "label": "t≠0",
+        "category": "조건"
+      },
+      {
+        "id": "c_conds",
+        "dna": "S1",
+        "label": "조건 묶음",
+        "category": "구조"
+      }
+    ],
+    "edges": [
+      {
+        "from": "ask",
+        "to": "top"
+      },
+      {
+        "from": "c10",
+        "to": "ask"
+      },
+      {
+        "from": "f5_val",
+        "to": "ask"
+      },
+      {
+        "from": "vf",
+        "to": "f5_val"
+      },
+      {
+        "from": "c5",
+        "to": "f5_val"
+      },
+      {
+        "from": "f_cubic",
+        "to": "vf"
+      },
+      {
+        "from": "f_cond1",
+        "to": "c_conds"
+      },
+      {
+        "from": "f2_val",
+        "to": "f_cond1"
+      },
+      {
+        "from": "c0",
+        "to": "f_cond1"
+      },
+      {
+        "from": "vf",
+        "to": "f2_val"
+      },
+      {
+        "from": "c2",
+        "to": "f2_val"
+      },
+      {
+        "from": "f_cond2",
+        "to": "c_conds"
+      },
+      {
+        "from": "df4_val",
+        "to": "f_cond2"
+      },
+      {
+        "from": "c0",
+        "to": "f_cond2"
+      },
+      {
+        "from": "df",
+        "to": "df4_val"
+      },
+      {
+        "from": "c4",
+        "to": "df4_val"
+      },
+      {
+        "from": "vf",
+        "to": "df"
+      },
+      {
+        "from": "vt_real",
+        "to": "vt"
+      },
+      {
+        "from": "vg",
+        "to": "c_conds"
+      },
+      {
+        "from": "piece1",
+        "to": "vg"
+      },
+      {
+        "from": "piece2",
+        "to": "vg"
+      },
+      {
+        "from": "expr_quad",
+        "to": "piece1"
+      },
+      {
+        "from": "dom1",
+        "to": "piece1"
+      },
+      {
+        "from": "x2",
+        "to": "expr_quad"
+      },
+      {
+        "from": "two_x",
+        "to": "expr_quad"
+      },
+      {
+        "from": "vx",
+        "to": "x2"
+      },
+      {
+        "from": "c2b",
+        "to": "x2"
+      },
+      {
+        "from": "c2b",
+        "to": "two_x"
+      },
+      {
+        "from": "vx",
+        "to": "two_x"
+      },
+      {
+        "from": "vx",
+        "to": "dom1"
+      },
+      {
+        "from": "vt",
+        "to": "dom1"
+      },
+      {
+        "from": "vf",
+        "to": "piece2"
+      },
+      {
+        "from": "dom2",
+        "to": "piece2"
+      },
+      {
+        "from": "vx",
+        "to": "dom2"
+      },
+      {
+        "from": "vt",
+        "to": "dom2"
+      },
+      {
+        "from": "vh",
+        "to": "c_conds"
+      },
+      {
+        "from": "eq_gx_tx",
+        "to": "root_count"
+      },
+      {
+        "from": "vg",
+        "to": "eq_gx_tx"
+      },
+      {
+        "from": "tx_expr",
+        "to": "eq_gx_tx"
+      },
+      {
+        "from": "vt",
+        "to": "tx_expr"
+      },
+      {
+        "from": "vx",
+        "to": "tx_expr"
+      },
+      {
+        "from": "root_count",
+        "to": "vh"
+      },
+      {
+        "from": "cond_ht",
+        "to": "c_conds"
+      },
+      {
+        "from": "ht_val",
+        "to": "cond_ht"
+      },
+      {
+        "from": "t_neq0",
+        "to": "cond_ht"
+      },
+      {
+        "from": "vh",
+        "to": "ht_val"
+      },
+      {
+        "from": "vt",
+        "to": "t_neq0"
+      },
+      {
+        "from": "c_conds",
+        "to": "top"
+      }
+    ],
+    "new_dna": []
+  },
+  "thinking_profile": null,
+  "folders": [],
+  "history": [],
+  "recovery_warnings": [],
+  "errata": [],
+  "created_at": "2026-03-28T07:40:34.729Z"
+}
