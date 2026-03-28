@@ -1797,5 +1797,20 @@
       "EQN"
     ],
     "action": "MAX_DOUBLE_ROOTS_BY_DEGREE"
+  },
+  {
+    "id": "사실136",
+    "domain": [
+      "LIM"
+    ],
+    "action": "FINITE_LIMIT_ZERO_DENOM_FORCES_ZERO_NUMER"
+  },
+  {
+    "id": "전략47",
+    "domain": [
+      "LIM",
+      "DIFF"
+    ],
+    "action": "ZERO_OVER_ZERO_TO_DERIVATIVE_FORM"
   }
 ]
