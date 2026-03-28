@@ -1781,5 +1781,21 @@
       "COORD"
     ],
     "action": "POINT_LINE_DISTANCE"
+  },
+  {
+    "id": "사실134",
+    "domain": [
+      "NUM",
+      "COMB"
+    ],
+    "action": "PIGEONHOLE_PRINCIPLE"
+  },
+  {
+    "id": "사실135",
+    "domain": [
+      "POLY",
+      "EQN"
+    ],
+    "action": "MAX_DOUBLE_ROOTS_BY_DEGREE"
   }
 ]
