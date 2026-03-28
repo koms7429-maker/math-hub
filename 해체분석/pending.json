@@ -3621,5 +3621,673 @@
     "edge_count": 18,
     "side_count": 2,
     "created_at": "2026-03-28T07:53:24.337Z"
+  },
+  {
+    "problem_id": "P26",
+    "answer": "16",
+    "content": "id: P26\nsource: 수능\nyear: 미상\nunit: 다항함수의 미분\ntopic: 삼차함수와 곡선의 교점\nsubtopic: 삼각형 넓이 조건을 이용한 도함수 값 구하기\ndifficulty: 상\nscore: 4\nanswer: 5\ntype: multiple_choice\n\n# 26. (수능) - 삼차함수와 곡선의 교점, 삼각형 넓이\n\n## Problem\n최고차항의 계수가 양수인 삼차함수 $f(x)$에 대하여 두 곡선\n\n$$y = f(x), \\quad y = xf(x)$$\n\n가 세 점 A, B, C에서만 만난다. $f(1) = 4$, $f(2) = 0$이고 삼각형 ABC의 넓이가 $4$일 때, $f'(0)$의 값은? [4점]\n\n## Choices\n① 8\n② 10\n③ 12\n④ 14\n⑤ 16\n\n## Solution\n$f(x) = xf(x)$에서 $f(x)(x-1) = 0$이므로\n\n$$\\begin{cases} \\text{①} \\quad x = 1 \\\\ \\text{②} \\quad f(x) = 0 \\end{cases}$$\n\n문제의 조건에 의해 ① 또는 ②를 만족시키는 서로 다른 $x$의 개수가 3 $\\cdots$ ㉠ 이어야 한다.\n\n이때 $f(1) = 4$이므로 $x = 1$은 ②의 방정식의 실근이 아님을 알 수 있다.\n\n㉠ $\\Rightarrow$ ②의 방정식의 서로 다른 실근의 개수는 2\n\n$\\Rightarrow$ $f(x) = 0$은 $x = 2$를 포함한 두 실근을 가짐 ($\\because f(2) = 0$)\n\n$f(x)$의 극댓값이 $0$이면 $f(1) < 0$이 되어 모순이므로, $f(x)$는 극솟값 $0$을 가짐을 알 수 있다.\n\n또한 $f(x)$가 $x = 2$에서 극소가 아니면 $f(1) < 0$이 되어 모순이므로, $f(x)$는 $x = 2$에서 극소임을 알 수 있다.\n\n따라서\n\n$$f(x) = a(x - b)(x - 2)^2 \\quad (\\text{단, } a > 0,\\; b < 2) \\cdots \\text{㉡}$$\n\n로 놓을 수 있다.\n\n[FIGURE: $y = f(x)$ 그래프와 $y = f(2)$ 직선이 그려져 있고, 세 점 A($b$, $0$), B($2$, $0$), C($1$, $f(1)$)가 표시됨]\n\n세 점 A, B, C를 잡으면\n\n$$(\\triangle \\text{ABC의 넓이}) = \\frac{1}{2} \\times \\overline{\\text{AB}} \\times \\{f(1) - f(2)\\} = 2(2 - b)$$\n\n문제의 조건에서 이 값이 $4$이므로\n\n$$2(2 - b) = 4 \\quad \\Rightarrow \\quad b = 0$$\n\n$f(1) = 4$와 ㉡에서\n\n$$a \\times (1 - 0)(1 - 2)^2 = 4 \\quad \\Rightarrow \\quad a = 4$$\n\n따라서\n\n$$f(x) = 4x(x - 2)^2$$\n\n$$f'(x) = 4(x - 2)^2 + 8x(x - 2)$$\n\n$$\\therefore\\; f'(0) = 4 \\cdot (-2)^2 + 0 = \\boxed{16}$$\n\n**정답: ⑤**",
+    "content_source": "FileLoop",
+    "content_length": 1505,
+    "skel_status": "neuron_missing",
+    "dna_status": "ok",
+    "previous_skeleton": [
+      {
+        "from": "단서B",
+        "to": "note1",
+        "neuron": "연산9",
+        "type": "연산",
+        "domain_hint": "EQN,POLY",
+        "description": "교점 방정식을 인수분해하여 조건 분리",
+        "note": "$f(x) = xf(x)$에서 $f(x)(x-1) = 0$이고, 교점의 $x$좌표는 $x = 1$ 또는 $f(x) = 0$의 근이다",
+        "main": true,
+        "step": 1
+      },
+      {
+        "from": [
+          "note1",
+          "단서C"
+        ],
+        "to": "note2",
+        "neuron": "NEW_1",
+        "type": "사실",
+        "domain_hint": "EQN",
+        "description": "함숫값이 0이 아니면 해당 x는 근이 아님",
+        "note": "$f(1) = 4 \\neq 0$이고 $x = 1$은 $f(x) = 0$의 근이 아니다",
+        "main": true,
+        "step": 2
+      },
+      {
+        "from": [
+          "note2",
+          "단서B"
+        ],
+        "to": "note3",
+        "neuron": "연산9",
+        "type": "전략",
+        "domain_hint": "EQN,COMB",
+        "description": "방정식 $f(x)\\cdot g(x)=0$을 $f(x)=0$ 또는 $g(x)=0$으로 인수별로 분리한다.",
+        "note": "방정식 $f(x)\\cdot g(x)=0$을 $f(x)=0$ 또는 $g(x)=0$으로 인수별로 분리한다.",
+        "main": true,
+        "step": 2,
+        "_keep_neuron": true
+      },
+      {
+        "from": "note3",
+        "to": "note4",
+        "neuron": "사실44",
+        "type": "전략",
+        "domain_hint": "EQN,COMB",
+        "description": "전체 근(교점)의 총 개수는 각 인수 방정식의 근 개수의 합이므로, 총수에서 한 인수의 근 개수를 빼면 나머지 인수의 근 개수를 역산할 수 있다.",
+        "note": "전체 근(교점)의 총 개수는 각 인수 방정식의 근 개수의 합이므로, 총수에서 한 인수의 근 개수를 빼면 나머지 인수의 근 개수를 역산할 수 있다.",
+        "main": true,
+        "step": 2,
+        "_keep_neuron": true
+      },
+      {
+        "from": [
+          "note4",
+          "단서A"
+        ],
+        "to": "note5",
+        "neuron": "NEW_2",
+        "type": "사실",
+        "domain_hint": "POLY",
+        "description": "삼차방정식의 서로 다른 실근이 2개이면 이중근+단근",
+        "note": "$f(x) = 0$은 이중근 하나와 단근 하나를 가진다",
+        "main": true,
+        "step": 3
+      },
+      {
+        "from": [
+          "note5",
+          "단서D"
+        ],
+        "to": "note6",
+        "neuron": "전략22",
+        "type": "전략",
+        "domain_hint": "POLY",
+        "description": "특정 근이 단근인지 이중근인지 경우 분류",
+        "note": "$x = 2$가 단근인 경우와 이중근인 경우로 분류한다",
+        "main": true,
+        "step": 3
+      },
+      {
+        "from": "note6",
+        "to": "note7",
+        "neuron": "사실133",
+        "type": "사실",
+        "domain_hint": "POLY",
+        "description": "단근·이중근 구조로 삼차식 표현",
+        "note": "단근·이중근 구조로 삼차식이 $a(x-\\alpha)^2(x-\\beta)$ 형태로 표현되며, 특정 값을 대입하여 각 인수의 부호를 계산함으로써 해당 x가 근인지 여부 및 함숫값의 부호를 확인할 수 있다.",
+        "main": false,
+        "step": 3
+      },
+      {
+        "from": [
+          "note7",
+          "단서C"
+        ],
+        "to": "note8",
+        "neuron": "전략23",
+        "type": "전략",
+        "domain_hint": "EQN",
+        "description": "모순에 의한 경우 소거",
+        "note": "$f(1) = 4 > 0$과 $f(1) \\leq 0$이 모순이고, $x = 2$가 단근인 경우는 불가능하다",
+        "main": false,
+        "step": 3
+      },
+      {
+        "from": [
+          "note6",
+          "note8"
+        ],
+        "to": "note9",
+        "neuron": "사실133",
+        "type": "사실",
+        "domain_hint": "POLY",
+        "description": "이중근·단근 구조로 삼차식 표현",
+        "note": "이중근·단근 구조 $a(x-\\alpha)(x-\\beta)^2$로 삼차식이 표현되며, 각 근 $\\alpha$, $\\beta$를 원래 함수에 대입하여 교점의 좌표 $(\\alpha, f(\\alpha))$, $(\\beta, f(\\beta))$를 산출할 수 있다.",
+        "main": true,
+        "step": 3
+      },
+      {
+        "from": [
+          "note9",
+          "단서C"
+        ],
+        "to": "note10",
+        "neuron": "NEW_3",
+        "type": "연산",
+        "domain_hint": "POLY,EQN",
+        "description": "조건 대입하여 매개변수 범위 결정",
+        "note": "$f(1) = a(1-b) = 4$이고 $a > 0$에서 $b < 1$이다",
+        "main": true,
+        "step": 3
+      },
+      {
+        "from": [
+          "note9",
+          "단서E"
+        ],
+        "to": "note11",
+        "neuron": "연산13",
+        "type": "연산",
+        "domain_hint": "COORD",
+        "description": "삼각형 넓이 공식으로 미지수 결정",
+        "note": "넓이 $= \\frac{1}{2}(2-b) \\times 4 = 2(2-b) = 4$에서 $b = 0$이다",
+        "main": true,
+        "step": 5
+      },
+      {
+        "from": [
+          "note11",
+          "note10"
+        ],
+        "to": "note12",
+        "neuron": "NEW_4",
+        "type": "연산",
+        "domain_hint": "POLY,EQN",
+        "description": "매개변수 값 대입하여 함수 확정",
+        "note": "$a = 4$이고 $f(x) = 4x(x-2)^2$이다",
+        "main": true,
+        "step": 6
+      },
+      {
+        "from": "note12",
+        "to": "note13",
+        "neuron": "연산36",
+        "type": "연산",
+        "domain_hint": "DIFF",
+        "description": "곱의 미분법 적용",
+        "note": "$f'(x) = 4(x-2)^2 + 8x(x-2)$이다",
+        "main": true,
+        "step": 7
+      },
+      {
+        "from": "note13",
+        "to": "END",
+        "neuron": "",
+        "type": "연산",
+        "domain_hint": "DIFF",
+        "description": "x=0 대입하여 도함수 값 계산",
+        "note": "$f'(0) = 4 \\times 4 + 0 = 16$이다",
+        "main": true,
+        "step": 7
+      }
+    ],
+    "previous_solution": "$f(x) = xf(x)$에서 $f(x)(x-1) = 0$이고, 교점의 $x$좌표는 $x = 1$ 또는 $f(x) = 0$의 근이다 $f(1) = 4 \\neq 0$이고 $x = 1$은 $f(x) = 0$의 근이 아니다 방정식 $f(x)\\cdot g(x)=0$을 $f(x)=0$ 또는 $g(x)=0$으로 인수별로 분리한다. 전체 근(교점)의 총 개수는 각 인수 방정식의 근 개수의 합이므로, 총수에서 한 인수의 근 개수를 빼면 나머지 인수의 근 개수를 역산할 수 있다. $f(x) = 0$은 이중근 하나와 단근 하나를 가진다 $x = 2$가 단근인 경우와 이중근인 경우로 분류한다 이중근·단근 구조 $a(x-\\alpha)(x-\\beta)^2$로 삼차식이 표현되며, 각 근 $\\alpha$, $\\beta$를 원래 함수에 대입하여 교점의 좌표 $(\\alpha, f(\\alpha))$, $(\\beta, f(\\beta))$를 산출할 수 있다. $f(1) = a(1-b) = 4$이고 $a > 0$에서 $b < 1$이다 넓이 $= \\frac{1}{2}(2-b) \\times 4 = 2(2-b) = 4$에서 $b = 0$이다 $a = 4$이고 $f(x) = 4x(x-2)^2$이다 $f'(x) = 4(x-2)^2 + 8x(x-2)$이다 $f'(0) = 4 \\times 4 + 0 = 16$이다",
+    "previous_clues": "[{\"id\":\"단서A\",\"text\":\"최고차항의 계수가 양수인 삼차함수 $f(x)$\"},{\"id\":\"단서B\",\"text\":\"두 곡선 $y = f(x)$, $y = xf(x)$가 세 점 A, B, C에서만 만난다\"},{\"id\":\"단서C\",\"text\":\"$f(1) = 4$\"},{\"id\":\"단서D\",\"text\":\"$f(2) = 0$\"},{\"id\":\"단서E\",\"text\":\"삼각형 ABC의 넓이가 $4$\"}]",
+    "previous_analysis": "두 곡선의 교점 조건 f(x)(x-1)=0에서 f(1)≠0이므로 f(x)=0이 x≠1인 실근 2개를 가져야 한다. 삼차방정식의 근 구조와 경우 분류로 f(x)=a(x-b)(x-2)²를 얻고, 삼각형 넓이 조건과 f(1)=4로 b=0, a=4를 결정하여 f'(0)=16을 구한다.",
+    "previous_matching": "",
+    "previous_matched": [],
+    "previous_new_neurons": [
+      {
+        "id": "사실??",
+        "type": "사실",
+        "statement": "$f(a) \\neq 0$이면 $a$는 방정식 $f(x)=0$의 근이 아니다. (근의 정의의 대우: $x=a$가 근 $\\iff f(a)=0$)",
+        "description": "함숫값이 0이 아니면 해당 x는 근이 아님",
+        "note": "$f(1) = 4 \\neq 0$이고 $x = 1$은 $f(x) = 0$의 근이 아니다",
+        "reason": "제시된 후보들은 단조성, 대칭, 치역, 연속 등에 관한 뉴런들이다. '함숫값이 0이 아니면 해당 x는 근이 아니다'는 근의 정의(f(a)=0 ⟺ a가 근)의 대우 명제로, 이를 직접 서술하는 후보가 없다.",
+        "blocked_edge": "note1+단서C → note2",
+        "domain_hint": "EQN",
+        "domain": [
+          "EQN",
+          "POLY"
+        ],
+        "action_hint": "",
+        "step": 2,
+        "main": true,
+        "near_miss": [
+          "사실9: 이차함수 $f(x)=a(x-p)^2+q$에서 $f(x)=c$의 실근이 정",
+          "사실35: 이차함수 $f(x)=a(x-p)(x-q)$에서 $a>0$이면 $p<x<q",
+          "사실43: 단조함수의 치역에 $t$가 포함되면 $f(x)=t$의 근은 정확히 $1$"
+        ]
+      },
+      {
+        "id": "사실??",
+        "type": "사실",
+        "statement": "$n$차 다항식(최고차항 계수 $\\neq 0$)의 서로 다른 실근의 개수가 $n-1$개이면, 그 중 정확히 하나는 이중근(중복도 2)이고 나머지는 단순근이다. 특히 삼차방정식의 서로 다른 실근이 2개이면 이중근 1개와 단순근 1개로 이루어진다.",
+        "description": "삼차방정식의 서로 다른 실근이 2개이면 이중근+단근",
+        "note": "$f(x) = 0$은 이중근 하나와 단근 하나를 가진다",
+        "reason": "삼차방정식의 서로 다른 실근이 정확히 2개일 때 이중근+단근 구조가 됨을 직접 서술하는 뉴런이 없다. 연산9(영인자법칙), 전략38(근→인수분해), 사실96(짝수 중복도 근) 등이 관련되나, '3차 다항식의 근 개수가 2개이면 이중근이 존재한다'는 명제를 직접 표현하는 후보가 없다.",
+        "blocked_edge": "note13+단서A → note4",
+        "domain_hint": "POLY",
+        "domain": [
+          "POLY",
+          "EQN"
+        ],
+        "action_hint": "",
+        "step": 3,
+        "main": true,
+        "near_miss": [
+          "사실9: 이차함수 $f(x)=a(x-p)^2+q$에서 $f(x)=c$의 실근이 정",
+          "사실35: 이차함수 $f(x)=a(x-p)(x-q)$에서 $a>0$이면 $p<x<q",
+          "사실78: 이차방정식 $ax^2+bx+c=0$의 두 근을 $\\alpha, \\beta"
+        ]
+      },
+      {
+        "id": "전략??",
+        "type": "전략",
+        "statement": "주어진 조건식에 특정 값을 대입하거나 조건을 등식·부등식으로 변환하면, 매개변수가 만족해야 할 범위를 결정할 수 있다.",
+        "description": "조건 대입하여 매개변수 범위 결정",
+        "note": "$f(1) = a(1-b) = 4$이고 $a > 0$에서 $b < 1$이다",
+        "reason": "제시된 후보 연산21·22·25는 부등식 변환 규칙이다. '조건 대입하여 매개변수 범위 결정'은 특정 조건(등식·부등식·근의 존재 등)을 만족시키는 매개변수 값을 대입·검증하여 범위를 확정하는 전략으로, 이를 직접 서술하는 후보가 없다.",
+        "blocked_edge": "note13+단서C → note9",
+        "domain_hint": "POLY,EQN",
+        "domain": [
+          "EQN",
+          "INEQ"
+        ],
+        "action_hint": "",
+        "step": 3,
+        "main": true,
+        "near_miss": [
+          "연산9: $f(x) \\cdot g(x) = 0 \\iff f(x)=0$ 또는 $g(",
+          "연산28: 다항식을 전개하여 $\\sum a_n x^n$ 형태로 풀어 쓴다 |",
+          "연산29: 다항식을 $a(x-p)^n+q$ 형태로 변환한다 (완전제곱식, 꼭짓점 형"
+        ]
+      },
+      {
+        "id": "전략??",
+        "type": "전략",
+        "statement": "매개변수를 포함한 함수의 일반형에서, 결정된 매개변수 값을 대입하면 구체적인 함수식이 유일하게 확정된다.",
+        "description": "매개변수 값 대입하여 함수 확정",
+        "note": "$a = 4$이고 $f(x) = 4x(x-2)^2$이다",
+        "reason": "연산7·23·26은 평행이동과 치역 변환에 관한 뉴런이다. '매개변수 값 대입하여 함수 확정'은 구해진 매개변수를 일반형에 대입해 구체적 함수식을 확정하는 절차로, 이를 직접 서술하는 후보가 없다.",
+        "blocked_edge": "note13+note10 → note11",
+        "domain_hint": "POLY,EQN",
+        "domain": [
+          "FUNC",
+          "EQN"
+        ],
+        "action_hint": "",
+        "step": 6,
+        "main": true,
+        "near_miss": [
+          "연산9: $f(x) \\cdot g(x) = 0 \\iff f(x)=0$ 또는 $g(",
+          "연산28: 다항식을 전개하여 $\\sum a_n x^n$ 형태로 풀어 쓴다 |",
+          "연산29: 다항식을 $a(x-p)^n+q$ 형태로 변환한다 (완전제곱식, 꼭짓점 형"
+        ]
+      }
+    ],
+    "previous_partial_skeleton": [],
+    "previous_blockage_point": "",
+    "previous_skel_review_notes": "fx_apply1(f(x))과 fx_apply2(f(x)내부)는 동일한 f(x) 함수 적용 노드로 중복. 병합하여 fx_apply 하나로 통합. crv1_c1과 crv2_c1 모두 이 노드를 공유하도록 수정.",
+    "previous_dna_nodes": [
+      {
+        "id": "top",
+        "dna": "Q1",
+        "label": "값을 구하라",
+        "category": "발문"
+      },
+      {
+        "id": "ask",
+        "dna": "F3",
+        "label": "f'(0)",
+        "category": "함수"
+      },
+      {
+        "id": "deriv_f",
+        "dna": "F13",
+        "label": "도함수 f'",
+        "category": "함수"
+      },
+      {
+        "id": "c0",
+        "dna": "T2",
+        "label": "상수 0",
+        "category": "말단"
+      },
+      {
+        "id": "c1",
+        "dna": "T2",
+        "label": "상수 1",
+        "category": "말단"
+      },
+      {
+        "id": "c2",
+        "dna": "T2",
+        "label": "상수 2",
+        "category": "말단"
+      },
+      {
+        "id": "c4",
+        "dna": "T2",
+        "label": "상수 4",
+        "category": "말단"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
+      },
+      {
+        "id": "func_f",
+        "dna": "F6",
+        "label": "삼차함수 f",
+        "category": "함수"
+      },
+      {
+        "id": "lead_pos",
+        "dna": "L4",
+        "label": "최고차항 양수",
+        "category": "제한"
+      },
+      {
+        "id": "crv1",
+        "dna": "G2",
+        "label": "곡선 y=f(x)",
+        "category": "기하"
+      },
+      {
+        "id": "crv1_eq",
+        "dna": "C11",
+        "label": "곡선1 방정식",
+        "category": "조건"
+      },
+      {
+        "id": "crv1_c1",
+        "dna": "C1",
+        "label": "y=f(x) 등식",
+        "category": "조건"
+      },
+      {
+        "id": "fx_apply",
+        "dna": "F3",
+        "label": "f(x)",
+        "category": "함수"
+      },
+      {
+        "id": "crv2",
+        "dna": "G2",
+        "label": "곡선 y=xf(x)",
+        "category": "기하"
+      },
+      {
+        "id": "crv2_eq",
+        "dna": "C11",
+        "label": "곡선2 방정식",
+        "category": "조건"
+      },
+      {
+        "id": "crv2_c1",
+        "dna": "C1",
+        "label": "y=xf(x) 등식",
+        "category": "조건"
+      },
+      {
+        "id": "xfx",
+        "dna": "E6",
+        "label": "곱(x, f(x))",
+        "category": "수식"
+      },
+      {
+        "id": "meet3",
+        "dna": "C3",
+        "label": "세 점 교점",
+        "category": "조건"
+      },
+      {
+        "id": "exact3",
+        "dna": "C4",
+        "label": "서로 다른 세 점",
+        "category": "조건"
+      },
+      {
+        "id": "pt_a",
+        "dna": "G1",
+        "label": "점 A",
+        "category": "기하"
+      },
+      {
+        "id": "pt_b",
+        "dna": "G1",
+        "label": "점 B",
+        "category": "기하"
+      },
+      {
+        "id": "pt_c",
+        "dna": "G1",
+        "label": "점 C",
+        "category": "기하"
+      },
+      {
+        "id": "cond_f1",
+        "dna": "C1",
+        "label": "f(1)=4",
+        "category": "조건"
+      },
+      {
+        "id": "f1_apply",
+        "dna": "F3",
+        "label": "f(1)",
+        "category": "함수"
+      },
+      {
+        "id": "cond_f2",
+        "dna": "C1",
+        "label": "f(2)=0",
+        "category": "조건"
+      },
+      {
+        "id": "f2_apply",
+        "dna": "F3",
+        "label": "f(2)",
+        "category": "함수"
+      },
+      {
+        "id": "tri_abc",
+        "dna": "G25",
+        "label": "삼각형 ABC",
+        "category": "기하"
+      },
+      {
+        "id": "area_tri",
+        "dna": "G11",
+        "label": "삼각형 넓이",
+        "category": "기하"
+      },
+      {
+        "id": "area_cond",
+        "dna": "C1",
+        "label": "넓이=4",
+        "category": "조건"
+      },
+      {
+        "id": "conds",
+        "dna": "S1",
+        "label": "전체 조건",
+        "category": "구조"
+      }
+    ],
+    "previous_dna_edges": [
+      {
+        "from": "ask",
+        "to": "top"
+      },
+      {
+        "from": "conds",
+        "to": "top"
+      },
+      {
+        "from": "deriv_f",
+        "to": "ask"
+      },
+      {
+        "from": "c0",
+        "to": "ask"
+      },
+      {
+        "from": "func_f",
+        "to": "deriv_f"
+      },
+      {
+        "from": "lead_pos",
+        "to": "func_f"
+      },
+      {
+        "from": "crv1",
+        "to": "meet3"
+      },
+      {
+        "from": "crv2",
+        "to": "meet3"
+      },
+      {
+        "from": "pt_a",
+        "to": "meet3"
+      },
+      {
+        "from": "pt_b",
+        "to": "meet3"
+      },
+      {
+        "from": "pt_c",
+        "to": "meet3"
+      },
+      {
+        "from": "exact3",
+        "to": "meet3"
+      },
+      {
+        "from": "meet3",
+        "to": "conds"
+      },
+      {
+        "from": "crv1_eq",
+        "to": "crv1"
+      },
+      {
+        "from": "crv1_c1",
+        "to": "crv1_eq"
+      },
+      {
+        "from": "fx_apply",
+        "to": "crv1_c1"
+      },
+      {
+        "from": "func_f",
+        "to": "fx_apply"
+      },
+      {
+        "from": "vx",
+        "to": "fx_apply"
+      },
+      {
+        "from": "crv2_eq",
+        "to": "crv2"
+      },
+      {
+        "from": "crv2_c1",
+        "to": "crv2_eq"
+      },
+      {
+        "from": "xfx",
+        "to": "crv2_c1"
+      },
+      {
+        "from": "vx",
+        "to": "xfx"
+      },
+      {
+        "from": "fx_apply",
+        "to": "xfx"
+      },
+      {
+        "from": "f1_apply",
+        "to": "cond_f1"
+      },
+      {
+        "from": "c4",
+        "to": "cond_f1"
+      },
+      {
+        "from": "func_f",
+        "to": "f1_apply"
+      },
+      {
+        "from": "c1",
+        "to": "f1_apply"
+      },
+      {
+        "from": "cond_f1",
+        "to": "conds"
+      },
+      {
+        "from": "f2_apply",
+        "to": "cond_f2"
+      },
+      {
+        "from": "c0",
+        "to": "cond_f2"
+      },
+      {
+        "from": "func_f",
+        "to": "f2_apply"
+      },
+      {
+        "from": "c2",
+        "to": "f2_apply"
+      },
+      {
+        "from": "cond_f2",
+        "to": "conds"
+      },
+      {
+        "from": "pt_a",
+        "to": "tri_abc"
+      },
+      {
+        "from": "pt_b",
+        "to": "tri_abc"
+      },
+      {
+        "from": "pt_c",
+        "to": "tri_abc"
+      },
+      {
+        "from": "tri_abc",
+        "to": "area_tri"
+      },
+      {
+        "from": "area_tri",
+        "to": "area_cond"
+      },
+      {
+        "from": "c4",
+        "to": "area_cond"
+      },
+      {
+        "from": "area_cond",
+        "to": "conds"
+      }
+    ],
+    "previous_new_dna": [],
+    "previous_dna_review_notes": "fx_apply1(f(x))과 fx_apply2(f(x)내부)는 동일한 f(x) 함수 적용 노드로 중복. 병합하여 fx_apply 하나로 통합. crv1_c1과 crv2_c1 모두 이 노드를 공유하도록 수정.",
+    "original_solution": "$f(x) = xf(x)$에서 $f(x)(x-1) = 0$이므로\n\n$$\\begin{cases} \\text{①} \\quad x = 1 \\\\ \\text{②} \\quad f(x) = 0 \\end{cases}$$\n\n문제의 조건에 의해 ① 또는 ②를 만족시키는 서로 다른 $x$의 개수가 3 $\\cdots$ ㉠ 이어야 한다.\n\n이때 $f(1) = 4$이므로 $x = 1$은 ②의 방정식의 실근이 아님을 알 수 있다.\n\n㉠ $\\Rightarrow$ ②의 방정식의 서로 다른 실근의 개수는 2\n\n$\\Rightarrow$ $f(x) = 0$은 $x = 2$를 포함한 두 실근을 가짐 ($\\because f(2) = 0$)\n\n$f(x)$의 극댓값이 $0$이면 $f(1) < 0$이 되어 모순이므로, $f(x)$는 극솟값 $0$을 가짐을 알 수 있다.\n\n또한 $f(x)$가 $x = 2$에서 극소가 아니면 $f(1) < 0$이 되어 모순이므로, $f(x)$는 $x = 2$에서 극소임을 알 수 있다.\n\n따라서\n\n$$f(x) = a(x - b)(x - 2)^2 \\quad (\\text{단, } a > 0,\\; b < 2) \\cdots \\text{㉡}$$\n\n로 놓을 수 있다.\n\n[FIGURE: $y = f(x)$ 그래프와 $y = f(2)$ 직선이 그려져 있고, 세 점 A($b$, $0$), B($2$, $0$), C($1$, $f(1)$)가 표시됨]\n\n세 점 A, B, C를 잡으면\n\n$$(\\triangle \\text{ABC의 넓이}) = \\frac{1}{2} \\times \\overline{\\text{AB}} \\times \\{f(1) - f(2)\\} = 2(2 - b)$$\n\n문제의 조건에서 이 값이 $4$이므로\n\n$$2(2 - b) = 4 \\quad \\Rightarrow \\quad b = 0$$\n\n$f(1) = 4$와 ㉡에서\n\n$$a \\times (1 - 0)(1 - 2)^2 = 4 \\quad \\Rightarrow \\quad a = 4$$\n\n따라서\n\n$$f(x) = 4x(x - 2)^2$$\n\n$$f'(x) = 4(x - 2)^2 + 8x(x - 2)$$\n\n$$\\therefore\\; f'(0) = 4 \\cdot (-2)^2 + 0 = \\boxed{16}$$\n\n**정답: ⑤**",
+    "recovery_warnings": [],
+    "errata": [],
+    "metadata": {
+      "unit": "다항함수의 미분",
+      "difficulty": "상",
+      "score": "4",
+      "type": "multiple_choice",
+      "answer": "5",
+      "year": "미상",
+      "source": "수능",
+      "topic": "삼차함수와 곡선의 교점",
+      "subtopic": "삼각형 넓이 조건을 이용한 도함수 값 구하기"
+    },
+    "needed_neurons": [
+      "사실??",
+      "사실??",
+      "전략??",
+      "전략??"
+    ],
+    "needed_dna": [],
+    "edge_count": 14,
+    "side_count": 2,
+    "created_at": "2026-03-28T07:57:57.832Z"
   }
 ]
