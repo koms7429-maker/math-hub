@@ -1797,5 +1797,21 @@
       "MONO"
     ],
     "action": "GLOBAL_MIN"
+  },
+  {
+    "id": "사실136",
+    "domain": [
+      "FUNC",
+      "MONO"
+    ],
+    "action": "SIGN_ANALYSIS"
+  },
+  {
+    "id": "사실137",
+    "domain": [
+      "DIFF",
+      "MONO"
+    ],
+    "action": "GLOBAL_MIN"
   }
 ]
