@@ -1870,5 +1870,13 @@
       "FUNC"
     ],
     "action": "EVEN_ODD_INTEGRAL_SYMMETRY"
+  },
+  {
+    "id": "사실143",
+    "domain": [
+      "INTG",
+      "DIFF"
+    ],
+    "action": "FUNDAMENTAL_THEOREM_OF_CALCULUS"
   }
 ]
