@@ -1,29 +1,154 @@
 {
-  "EXP":    ["LOG", "FUNC"],
-  "LOG":    ["EXP", "FUNC"],
-  "POLY":   ["EQN"],
-  "EQN":    ["POLY"],
-  "INEQ":   ["EQN"],
-  "FUNC":   ["EQN"],
-  "ABS":    ["FUNC", "INEQ"],
-  "DIFF":   ["POLY", "FUNC", "COORD"],
-  "INTG":   ["FUNC"],
-  "LIM":    ["FUNC", "SEQ"],
-  "SEQ":    ["LIM", "NUM"],
-  "COORD":  ["EQN"],
-  "CIRCLE": ["COORD"],
-  "CONIC":  ["COORD"],
-  "VEC":    ["COORD"],
-  "TRIG":   ["FUNC"],
-  "NUM":    ["EQN"],
-  "RAT":    ["EQN"],
-  "SET":    [],
-  "COMB":   ["NUM"],
-  "PROB":   ["COMB"],
-  "STAT":   ["NUM"],
-  "SPACE":  ["VEC", "COORD"],
-  "TRANS":  ["EXP", "LOG", "TRIG", "DIFF"],
-  "SYM":    ["COORD", "FUNC", "TRANSF"],
-  "TRANSF": ["COORD", "SYM"],
-  "MONO":   ["FUNC", "EXP", "LOG"]
+  "EXP": [
+    "LOG",
+    "FUNC",
+    "GENERIC"
+  ],
+  "LOG": [
+    "EXP",
+    "FUNC",
+    "GENERIC"
+  ],
+  "POLY": [
+    "EQN",
+    "GENERIC"
+  ],
+  "EQN": [
+    "POLY",
+    "GENERIC"
+  ],
+  "INEQ": [
+    "EQN",
+    "GENERIC"
+  ],
+  "FUNC": [
+    "EQN",
+    "GENERIC"
+  ],
+  "ABS": [
+    "FUNC",
+    "INEQ",
+    "GENERIC"
+  ],
+  "DIFF": [
+    "POLY",
+    "FUNC",
+    "COORD",
+    "GENERIC"
+  ],
+  "INTG": [
+    "FUNC",
+    "GENERIC"
+  ],
+  "LIM": [
+    "FUNC",
+    "SEQ",
+    "GENERIC"
+  ],
+  "SEQ": [
+    "LIM",
+    "NUM",
+    "GENERIC"
+  ],
+  "COORD": [
+    "EQN",
+    "GENERIC"
+  ],
+  "CIRCLE": [
+    "COORD",
+    "GENERIC"
+  ],
+  "CONIC": [
+    "COORD",
+    "GENERIC"
+  ],
+  "VEC": [
+    "COORD",
+    "GENERIC"
+  ],
+  "TRIG": [
+    "FUNC",
+    "GENERIC"
+  ],
+  "NUM": [
+    "EQN",
+    "GENERIC"
+  ],
+  "RAT": [
+    "EQN",
+    "GENERIC"
+  ],
+  "SET": [
+    "GENERIC"
+  ],
+  "COMB": [
+    "NUM",
+    "GENERIC"
+  ],
+  "PROB": [
+    "COMB",
+    "GENERIC"
+  ],
+  "STAT": [
+    "NUM",
+    "GENERIC"
+  ],
+  "SPACE": [
+    "VEC",
+    "COORD",
+    "GENERIC"
+  ],
+  "TRANS": [
+    "EXP",
+    "LOG",
+    "TRIG",
+    "DIFF",
+    "GENERIC"
+  ],
+  "SYM": [
+    "COORD",
+    "FUNC",
+    "TRANSF",
+    "GENERIC"
+  ],
+  "TRANSF": [
+    "COORD",
+    "SYM",
+    "GENERIC"
+  ],
+  "MONO": [
+    "FUNC",
+    "EXP",
+    "LOG",
+    "GENERIC"
+  ],
+  "GENERIC": [
+    "EXP",
+    "LOG",
+    "POLY",
+    "EQN",
+    "INEQ",
+    "FUNC",
+    "ABS",
+    "DIFF",
+    "INTG",
+    "LIM",
+    "SEQ",
+    "COORD",
+    "CIRCLE",
+    "CONIC",
+    "VEC",
+    "TRIG",
+    "NUM",
+    "RAT",
+    "SET",
+    "COMB",
+    "PROB",
+    "STAT",
+    "SPACE",
+    "TRANS",
+    "SYM",
+    "TRANSF",
+    "MONO"
+  ]
 }
