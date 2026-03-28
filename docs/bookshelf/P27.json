@@ -1,0 +1,795 @@
+{
+  "problem_id": "P27",
+  "answer": "2 (-9)",
+  "clues": [
+    {
+      "id": "단서A",
+      "text": "$f(x)$는 최고차항의 계수가 $1$인 삼차함수이다"
+    },
+    {
+      "id": "단서B",
+      "text": "$\\lim_{h \\to 0+} \\frac{|f(x+k^3h)| - |f(x)|}{kh} = |f'(x)|$이다"
+    },
+    {
+      "id": "단서C",
+      "text": "조건을 만족시키는 모든 실수 $x$의 집합이 $\\{x \\mid x = 0 \\text{ 또는 } x > 2\\}$이다"
+    },
+    {
+      "id": "단서D",
+      "text": "$k \\neq 0$이고 $k$는 상수이다"
+    }
+  ],
+  "skeleton": [
+    {
+      "from": "단서B",
+      "to": "note1",
+      "neuron": "연산38",
+      "type": "연산",
+      "domain_hint": "LIM, ABS",
+      "description": "합성함수 미분(연쇄법칙)을 적용하여 극한식 좌변을 정리한다",
+      "note": "$\\lim_{h \\to 0+} \\frac{|f(x+k^3h)| - |f(x)|}{kh}$에서 $k^3h$를 묶으면 $\\frac{k^3}{k} \\cdot \\lim_{h \\to 0+} \\frac{|f(x+k^3h)| - |f(x)|}{k^3 h} = k^2 \\cdot \\frac{d}{dx}|f(x)|$ (우미분)이다. 따라서 조건은 $k^2 \\cdot \\left(\\frac{d}{dx}|f(x)|\\right)_{+} = |f'(x)|$로 변환된다",
+      "main": true,
+      "step": 1
+    },
+    {
+      "from": "note1",
+      "to": "note2",
+      "neuron": "전략22",
+      "type": "전략",
+      "domain_hint": "ABS, LIM",
+      "description": "f(x)의 부호에 따라 세 경우로 분류하여 조건식을 분석한다",
+      "note": "① $f(x)>0$이면 $|f|=f$이므로 좌변$=k^2 f'(x)$, 우변$=|f'(x)|$. 조건 성립 $\\iff$ $k^2 f'(x)=|f'(x)|$ $\\iff$ $f'(x)\\ge 0$ (또는 $f'(x)=0$). ② $f(x)<0$이면 $|f|=-f$이므로 좌변$=-k^2 f'(x)$, 우변$=|f'(x)|$. 조건 성립 $\\iff$ $-k^2 f'(x)=|f'(x)|$ $\\iff$ $f'(x)\\le 0$ (또는 $f'(x)=0$). ③ $f(x)=0$이고 $f'(x)\\neq 0$이면 $h\\to 0+$에서 $|f(x+k^3 h)|\\approx |f'(x)||k^3 h|$이므로 좌변$=k^2|f'(x)|=|f'(x)|$ (∵$k^2>0$). 이는 항상 성립. ④ $f'(x)=0$이면 양변 모두 $0$이므로 항상 성립",
+      "main": true,
+      "step": 2
+    },
+    {
+      "from": "note2",
+      "to": "note3",
+      "neuron": "사실68",
+      "type": "사실",
+      "domain_hint": "ABS, FUNC",
+      "description": "f(x)≠0이고 f'(x)≠0인 점에서 조건 성립 조건을 정리한다",
+      "note": "정리하면, $f(x)\\neq 0$이고 $f'(x)\\neq 0$인 점 $x$에서 조건이 성립하려면: $f(x)>0$일 때 $f'(x)>0$, $f(x)<0$일 때 $f'(x)<0$이어야 한다. 즉 $f(x)$와 $f'(x)$의 부호가 같아야 한다. 이는 $f(x)\\cdot f'(x)>0$, 즉 $\\frac{d}{dx}\\frac{f(x)^2}{2}>0$과 동치이다",
+      "main": true,
+      "step": 2
+    },
+    {
+      "from": "note3",
+      "to": "note3a",
+      "neuron": "전략23",
+      "type": "전략",
+      "domain_hint": "FUNC",
+      "description": "③에서 f(x)=0이고 f'(x)≠0인 점은 항상 성립하므로 해집합에 포함됨을 확인",
+      "note": "$f(x)=0$이고 $f'(x)\\neq 0$인 점에서는 $k^2$의 값에 무관하게 조건이 항상 성립한다. 또한 $f'(x)=0$인 점도 항상 성립한다",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": [
+        "note3",
+        "note3a",
+        "단서C"
+      ],
+      "to": "note4",
+      "neuron": "전략42",
+      "type": "전략",
+      "domain_hint": "FUNC, SET",
+      "description": "조건 성립 집합 = {x=0 또는 x>2}를 해석한다",
+      "note": "성립 집합이 $\\{0\\}\\cup(2,\\infty)$이다. 비성립 집합은 $(-\\infty,0)\\cup(0,2]$이다. $f'(x)=0$인 점과 $f(x)=0$인 점(단근)은 반드시 성립 집합에 포함되므로, 비성립 구간에는 $f$의 단근이 없고 $f'$의 영점도 없어야 한다",
+      "main": true,
+      "step": 3
+    },
+    {
+      "from": "note4",
+      "to": "note5",
+      "neuron": "전략23",
+      "type": "전략",
+      "domain_hint": "FUNC",
+      "description": "x=0이 성립 집합에 포함되므로 f'(0)=0 또는 f(0)=0 중 하나가 성립해야 한다",
+      "note": "$x=0$은 고립점(주변의 $(-\\epsilon,0)\\cup(0,\\epsilon)$에서 비성립)이므로, $x=0$ 근방에서 $f(x)\\neq 0$이고 $f(x)f'(x)$의 부호가 음이다. $x=0$에서 성립하려면 ④에 의해 $f'(0)=0$이어야 한다",
+      "main": true,
+      "step": 4
+    },
+    {
+      "from": "note4",
+      "to": "note6",
+      "neuron": "전략23",
+      "type": "전략",
+      "domain_hint": "FUNC",
+      "description": "x=2에서 비성립이고 x>2에서 성립인 경계를 분석한다",
+      "note": "$x>2$에서 모두 성립이므로 $x>2$에서 $f(x)f'(x)\\ge 0$이다. $x=2$에서 비성립이므로 $f(2)\\neq 0$이고 $f'(2)\\neq 0$이며 $f(2)f'(2)<0$이다. 또는 $f(2)=0$이고 $f'(2)\\neq 0$이면 ③에 의해 성립해버리므로 모순. 따라서 $f(2)\\neq 0$",
+      "main": true,
+      "step": 4
+    },
+    {
+      "from": [
+        "note5",
+        "note6",
+        "단서A"
+      ],
+      "to": "note7",
+      "neuron": "전략41",
+      "type": "전략",
+      "domain_hint": "POLY",
+      "description": "f'(0)=0 조건과 삼차함수 구조에서 f'(x)의 형태를 설정한다",
+      "note": "$f(x)=x^3+bx^2+cx+d$이므로 $f'(x)=3x^2+2bx+c$. $f'(0)=0$에서 $c=0$. 따라서 $f'(x)=3x^2+2bx=x(3x+2b)$이고 $f(x)=x^3+bx^2+d$",
+      "main": true,
+      "step": 5
+    },
+    {
+      "from": "note7",
+      "to": "note8",
+      "neuron": "전략23",
+      "type": "전략",
+      "domain_hint": "FUNC",
+      "description": "비성립 구간 (0,2)에서 f'의 다른 영점이 없어야 한다는 조건을 적용한다",
+      "note": "$f'(x)=x(3x+2b)$의 영점은 $x=0$과 $x=-2b/3$이다. $(0,2)$에서 $f'$의 영점이 없어야 하므로(비성립 구간에서 f'=0이면 성립해버리므로) $-2b/3\\notin(0,2)$, 즉 $-2b/3\\le 0$ 또는 $-2b/3\\ge 2$. 즉 $b\\ge 0$ 또는 $b\\le -3$",
+      "main": true,
+      "step": 5
+    },
+    {
+      "from": [
+        "note6",
+        "note7"
+      ],
+      "to": "note9",
+      "neuron": "사실112",
+      "type": "사실",
+      "domain_hint": "POLY, FUNC",
+      "description": "x>2에서 f(x)f'(x)≥0 조건과 x→+∞에서의 거동을 분석한다",
+      "note": "$x\\to+\\infty$에서 $f(x)\\to+\\infty$, $f'(x)\\to+\\infty$이므로 충분히 큰 $x$에서 $f(x)f'(x)>0$. $x>2$에서 $f(x)f'(x)\\ge 0$이 모두 성립해야 한다. $f(2)\\neq 0$이고 $f(2)f'(2)<0$ (비성립)이며, $x>2$에서 성립으로 전환되려면 $x=2$에서 $f$ 또는 $f'$의 부호가 바뀌어야 한다",
+      "main": true,
+      "step": 5
+    },
+    {
+      "from": "note9",
+      "to": "note10",
+      "neuron": "전략25",
+      "type": "전략",
+      "domain_hint": "POLY",
+      "description": "f'의 영점이 x=2일 가능성을 검토: -2b/3=2, 즉 b=-3",
+      "note": "$f'(2)=0$이면 $-2b/3=2$에서 $b=-3$. 이때 $f'(x)=x(3x-6)=3x(x-2)$. $f(x)=x^3-3x^2+d$. $f(2)=8-12+d=d-4$. $x=2$에서 $f'(2)=0$이므로 ④에 의해 성립해야 하는데, $x=2$는 비성립 집합에 속한다. 모순. 따라서 $f'(2)\\neq 0$",
+      "main": true,
+      "step": 5
+    },
+    {
+      "from": [
+        "note8",
+        "note10"
+      ],
+      "to": "note11",
+      "neuron": "전략20",
+      "type": "전략",
+      "domain_hint": "POLY, FUNC",
+      "description": "f(x)가 x=2를 근으로 가져야 부호 전환이 가능함을 분석한다",
+      "note": "$f'(2)\\neq 0$이고 $x=2$ 전후에서 $f(x)f'(x)$의 부호가 바뀌려면: $f'$은 $(0,\\infty)$에서 영점이 $0$뿐($b\\ge 0$)이거나 $x\\le 0$($b\\ge 0$). $f'(x)>0$ for $x>0$ (∵$f'(x)=x(3x+2b)$에서 $b\\ge 0$이면 $x>0$일 때 $3x+2b>0$). 그러면 $x>0$에서 $f'(x)>0$이므로 $f(x)f'(x)$의 부호는 $f(x)$의 부호로 결정. $f(2)<0$이고 $x>2$에서 $f(x)>0$이려면 $f$가 $x=2$에서 근. 그러나 $f(2)\\neq 0$이므로 모순. 따라서 $b\\ge 0$은 불가",
+      "main": true,
+      "step": 5
+    },
+    {
+      "from": "note11",
+      "to": "note11a",
+      "neuron": "전략20",
+      "type": "전략",
+      "domain_hint": "POLY, FUNC",
+      "description": "b≤-3 경우를 검토한다",
+      "note": "$b\\le -3$이면 $-2b/3\\ge 2$. $f'$의 영점은 $x=0$과 $x=-2b/3\\ge 2$. $f'(x)=3x^2+2bx$에서 $0<x<-2b/3$일 때 $f'(x)<0$이고, $x>-2b/3$일 때 $f'(x)>0$",
+      "main": true,
+      "step": 5
+    },
+    {
+      "from": "note11a",
+      "to": "note12",
+      "neuron": "전략25",
+      "type": "전략",
+      "domain_hint": "POLY, FUNC",
+      "description": "x>2에서 f(x)f'(x)≥0 조건을 b=-3 (영점=2)에서 다시 검토",
+      "note": "$b=-3$일 때 영점 $-2b/3=2$이므로 $f'(2)=0$. 이는 note10에서 모순. $b<-3$이면 영점 $\\alpha=-2b/3>2$. $(2,\\alpha)$에서 $f'<0$, $(\\alpha,\\infty)$에서 $f'>0$. $x>2$에서 $f(x)f'(x)\\ge 0$ 성립 조건: $(2,\\alpha)$에서 $f(x)\\le 0$이고 $f'(x)<0$ → $f(x)f'(x)\\ge 0$ ✓. $(\\alpha,\\infty)$에서 $f(x)\\ge 0$이고 $f'(x)>0$ → ✓. $x=\\alpha$에서 $f'(\\alpha)=0$ → 성립 ✓. $f(\\alpha)\\le 0$이어야 하고 동시에 $f(\\alpha)\\ge 0$이므로 $f(\\alpha)=0$",
+      "main": true,
+      "step": 6
+    },
+    {
+      "from": "note12",
+      "to": "note13",
+      "neuron": "전략23",
+      "type": "전략",
+      "domain_hint": "FUNC",
+      "description": "x=α에서 f(α)=0이고 f'(α)=0이면 이중근",
+      "note": "$f(\\alpha)=0$이고 $f'(\\alpha)=0$. $\\alpha>2$이고 $(2,\\alpha)$에서 $f(x)\\le 0$이므로 $f(2)\\le 0$. $f(2)\\neq 0$이므로 $f(2)<0$. $(0,2)$에서 비성립 조건: $f(x)f'(x)<0$. $(0,2)$에서 $f'(x)<0$이므로 $f(x)>0$ for $x\\in(0,2)$. 따라서 $f$는 $x=0$ 근방에서 양($x>0$쪽)이고 $x=2$에서 음. 중간에 근이 필요한데, $f$가 $(0,2)$에서 양이고 $f(2)<0$이면 $(0,2)$에서 근이 존재 → 그 근 $r$에서 $f(r)=0$, $f'(r)\\neq 0$이면 ③에 의해 성립 → 비성립 구간에 성립점이 생기므로 모순",
+      "main": true,
+      "step": 6
+    },
+    {
+      "from": "note13",
+      "to": "note14",
+      "neuron": "전략20",
+      "type": "전략",
+      "domain_hint": "FUNC",
+      "description": "모순 해소를 위해 f(0)=0을 검토한다",
+      "note": "$(0,2)$에서 $f(x)>0$이고 $f(2)<0$이면 중간값 정리에 의해 근이 $(0,2)$에 존재하여 모순. 따라서 $f(0)\\le 0$이어야 한다. $f(0)=d$이므로 $d\\le 0$. 또한 $(-\\infty,0)$에서도 비성립이어야 한다. $x<0$에서: $f'(x)=x(3x+2b)$. $b<-3$이면 $3x+2b<0$ for $x<0$이므로 $f'(x)=x(3x+2b)>0$ ($x<0$, $3x+2b<0$). 따라서 $x<0$에서 $f'(x)>0$이고 비성립 → $f(x)<0$ for $x<0$. $f(0)=d\\le 0$이고 연속성에서 $d\\le 0$. $(0,2)$에서 $f'<0$이므로 $f$ 감소. $f(0)=d$이고 $f$가 $(0,2)$에서 감소하면 $f(x)<d\\le 0$ for $x\\in(0,2)$. 비성립 조건: $f'(x)<0$이고 $f(x)<0$ → $f(x)f'(x)>0$ → 성립! 모순",
+      "main": true,
+      "step": 6
+    },
+    {
+      "from": "note14",
+      "to": "note15",
+      "neuron": "전략23",
+      "type": "전략",
+      "domain_hint": "FUNC",
+      "description": "d<0이면 (0,2)에서 f<0, f'<0 → ff'>0 → 성립으로 모순. d=0이면 재검토",
+      "note": "$d=0$이면 $f(0)=0$. $f(x)=x^3+bx^2=x^2(x+b)$. $f'(x)=3x^2+2bx=x(3x+2b)$. $f(\\alpha)=0$에서 $\\alpha=-2b/3>2$ (∵$b<-3$). $f(\\alpha)=\\alpha^2(\\alpha+b)=0$이므로 $\\alpha=-b$ (∵$\\alpha\\neq 0$). $-b=-2b/3$ → $-b=-2b/3$ → $-3b=-2b$ → $b=0$. 그러나 $b<-3$이므로 모순",
+      "main": true,
+      "step": 6
+    },
+    {
+      "from": "note15",
+      "to": "note16",
+      "neuron": "전략22",
+      "type": "전략",
+      "domain_hint": "FUNC",
+      "description": "이전 분석을 재검토하고, note6의 조건 f(2)≠0을 재검토한다",
+      "note": "note6에서 $f(2)=0$이면 $f'(2)\\neq 0$일 때 ③에 의해 $x=2$에서 성립. 그런데 $x=2$는 비성립 집합에 속한다고 했으나, 문제의 집합이 $\\{x|x=0$ 또는 $x>2\\}$이므로 $x=2$는 비성립. 따라서 $f(2)=0$이면 $f'(2)\\neq 0$일 때 성립해버려 모순. $f(2)=0$이고 $f'(2)=0$이면 ④에 의해 성립 → 역시 모순. 따라서 $f(2)\\neq 0$ 확정. 그런데 이전 분석에서 모든 경우가 모순에 도달했다",
+      "main": true,
+      "step": 7
+    },
+    {
+      "from": "note16",
+      "to": "note17",
+      "neuron": "전략22",
+      "type": "전략",
+      "domain_hint": "LIM, ABS",
+      "description": "note2의 case ③ (f(x)=0, f'(x)≠0)을 재분석: 우극한이므로 k³의 부호가 중요하다",
+      "note": "③ 재분석: $f(t)=0$, $f'(t)\\neq 0$일 때, $h\\to 0+$에서 $f(t+k^3 h)\\approx f'(t)\\cdot k^3 h$. 좌변$=\\frac{|f'(t)\\cdot k^3 h|}{kh}=\\frac{|f'(t)||k|^3}{k}$. $k>0$이면 $=k^2|f'(t)|$. $k<0$이면 $=\\frac{|f'(t)||k|^3}{k}=-|k|^2|f'(t)|=-k^2|f'(t)|<0$이므로 $|f'(x)|\\ge 0$과 등식 불가($f'(t)\\neq 0$이면). 따라서 $k<0$이면 $f(t)=0$이고 $f'(t)\\neq 0$인 점에서 조건이 **비성립**한다",
+      "main": true,
+      "step": 7
+    },
+    {
+      "from": "note17",
+      "to": "note18",
+      "neuron": "전략25",
+      "type": "전략",
+      "domain_hint": "LIM, ABS",
+      "description": "k>0과 k<0 각각에서 조건 성립/비성립을 종합한다",
+      "note": "종합: (A) $f'(x)=0$ → 항상 성립. (B) $f(x)>0$, $f'(x)\\neq 0$ → $k^2 f'(x)=|f'(x)|$ → $f'(x)>0$일 때 성립. (C) $f(x)<0$, $f'(x)\\neq 0$ → $-k^2 f'(x)=|f'(x)|$ → $f'(x)<0$일 때 성립. (D) $f(x)=0$, $f'(x)\\neq 0$: $k>0$이면 좌변$=k^2|f'(x)|=|f'(x)|$ (성립), $k<0$이면 좌변$=-k^2|f'(x)|$ (비성립)",
+      "main": true,
+      "step": 7
+    },
+    {
+      "from": [
+        "note18",
+        "단서C"
+      ],
+      "to": "note19",
+      "neuron": "전략23",
+      "type": "전략",
+      "domain_hint": "FUNC",
+      "description": "k<0일 때 f의 단근은 비성립점이므로 해집합 구조와 대조한다",
+      "note": "$k<0$: $f$의 단근($f=0$, $f'\\neq 0$)에서 비성립. $f'=0$인 점에서 성립. $f\\neq 0$인 점에서는 $ff'>0$일 때 성립. 해집합 $\\{0\\}\\cup(2,\\infty)$에서 $x=0$은 고립 성립점이므로 $f'(0)=0$. $x>2$에서 모두 성립. $x=2$에서 비성립",
+      "main": true,
+      "step": 8
+    },
+    {
+      "from": "note19",
+      "to": "note20",
+      "neuron": "전략41",
+      "type": "전략",
+      "domain_hint": "POLY",
+      "description": "f'(0)=0에서 c=0, f(x)=x³+bx²+d, f'(x)=x(3x+2b)",
+      "note": "$f(x)=x^3+bx^2+d$, $f'(x)=3x^2+2bx=x(3x+2b)$. $f'$의 영점: $x=0$, $x=-2b/3$",
+      "main": true,
+      "step": 8
+    },
+    {
+      "from": [
+        "note18",
+        "note20"
+      ],
+      "to": "note21",
+      "neuron": "전략25",
+      "type": "전략",
+      "domain_hint": "FUNC",
+      "description": "k>0 시도: 단근에서 성립하므로 f(2)=0인 단근 가능성 검토",
+      "note": "$k>0$이면 단근에서 성립. $x=2$는 비성립이므로 $f(2)\\neq 0$ (단근 아님). $x=2$에서 비성립이면 $f(2)\\neq 0$, $f'(2)\\neq 0$, $f(2)f'(2)<0$ (즉 부호 불일치). $x>2$에서 성립이면 $f(x)f'(x)\\ge 0$ 또는 $f(x)=0$(단근, 성립). note11-15와 동일한 분석으로 $b\\ge 0$ 불가. $b<-3$을 검토",
+      "main": true,
+      "step": 8
+    },
+    {
+      "from": "note21",
+      "to": "note22",
+      "neuron": "전략25",
+      "type": "전략",
+      "domain_hint": "POLY, FUNC",
+      "description": "k>0, b=-3 검토: f'(2)=0이면 x=2에서 성립(④)이므로 모순. k<0 시도",
+      "note": "$k>0$일 때도 이전과 동일한 모순이 발생하므로, $k<0$을 다시 검토. $k<0$이면 $f$의 단근에서 비성립. 따라서 $x=2$가 $f$의 단근일 수 있다(비성립 집합에 속하므로). $f(2)=0$이고 $f'(2)\\neq 0$이면 (D)에 의해 비성립 ✓",
+      "main": true,
+      "step": 8
+    },
+    {
+      "from": "note22",
+      "to": "note23",
+      "neuron": "전략41",
+      "type": "전략",
+      "domain_hint": "POLY",
+      "description": "f(2)=0 조건과 f(x)=x³+bx²+d에서 d=-(8+4b)",
+      "note": "$f(2)=8+4b+d=0$에서 $d=-8-4b$. $f(x)=x^3+bx^2-8-4b$",
+      "main": true,
+      "step": 9
+    },
+    {
+      "from": [
+        "note23",
+        "note20"
+      ],
+      "to": "note24",
+      "neuron": "전략25",
+      "type": "전략",
+      "domain_hint": "POLY, FUNC",
+      "description": "(0,2)에서 비성립 조건을 분석한다",
+      "note": "$(-\\infty,0)\\cup(0,2)$에서 비성립이어야 한다. $f$의 단근은 비성립을 유발하므로 OK. $f'(x)=0$인 점은 성립을 유발하므로, $(0,2)$에 $f'$의 영점이 없어야 한다. $f'$의 영점은 $0$과 $-2b/3$. $-2b/3\\notin(0,2)$ → $b\\ge 0$ 또는 $b\\le -3$. 또 $(-\\infty,0)$에도 $f'$의 영점($0$ 제외)이 없어야 함: $-2b/3\\notin(-\\infty,0)$ → $-2b/3\\ge 0$ → $b\\le 0$. 결합하면 $b=0$ 또는 $b\\le -3$",
+      "main": true,
+      "step": 9
+    },
+    {
+      "from": "note24",
+      "to": "note25",
+      "neuron": "전략25",
+      "type": "전략",
+      "domain_hint": "POLY, FUNC",
+      "description": "b=0 검토",
+      "note": "$b=0$: $f(x)=x^3-8=(x-2)(x^2+2x+4)$. $f'(x)=3x^2$. $f$의 실근은 $x=2$뿐(단근). $x<2$에서 $f(x)<0$, $x>2$에서 $f(x)>0$. $f'(x)>0$ for $x\\neq 0$. 성립 조건 체크: $x>2$: $f>0$, $f'>0$ → $ff'>0$ → 성립 ✓. $0<x<2$: $f<0$, $f'>0$ → $ff'<0$ → 비성립 ✓. $x<0$: $f<0$, $f'>0$ → $ff'<0$ → 비성립 ✓. $x=0$: $f'(0)=0$ → 성립(④) ✓. $x=2$: $f(2)=0$, $f'(2)=12\\neq 0$, $k<0$ → 비성립(D) ✓. 성립 집합: $\\{0\\}\\cup(2,\\infty)$ ✓",
+      "main": true,
+      "step": 10
+    },
+    {
+      "from": "note25",
+      "to": "note26",
+      "neuron": "전략25",
+      "type": "전략",
+      "domain_hint": "POLY",
+      "description": "b≤-3도 가능한지 검토하여 유일성 확인",
+      "note": "$b\\le -3$: $-2b/3\\ge 2$이고 $f'$의 영점이 $0$과 $-2b/3$. $x=-2b/3\\ge 2$에서 $f'=0$ → 성립(④). 이 점이 $(2,\\infty)$에 있으면 OK. 그러나 $-2b/3=2$ (즉 $b=-3$)이면 추가 확인 필요. $b=-3$: $f'(x)=x(3x-6)=3x(x-2)$. $f(x)=x^3-3x^2+4=(x-2)^2(x+1)$. $f(2)=0$이고 $f'(2)=0$이므로 $x=2$는 이중근. (D)에서 $f(2)=0, f'(2)=0$이면 ④에 의해 성립. 그러나 $x=2$는 비성립이어야 하므로 모순 ✗. $b=-4$: $-2b/3=8/3$, $d=-8+16=8$, $f(x)=x^3-4x^2+8$. $f(2)=8-16+8=0$ ✓. $f(8/3)=(8/3)^3-4(8/3)^2+8=512/27-256/9+8=512/27-768/27+216/27=-40/27<0$. $x=8/3$에서 $f'=0$ → 성립 ✓. $x=8/3>2$이므로 성립 집합에 포함됨 ✓. 그러나 $(2,8/3)$에서 $f'<0$이고 $f$: $f(2)=0$이고 $f'(2)=-4<0$이므로 $x>2$ 직후 $f<0$. $f<0$, $f'<0$ → $ff'>0$ → 성립 ✓. $x=8/3$에서 $f=-40/27<0$, $f'=0$ → 성립(④) ✓. $(8/3,\\infty)$에서 $f'>0$이고 $f(8/3)<0$, $f$ 증가. $f(3)=27-36+8=-1<0$, $f(4)=64-64+8=8>0$. 근 $r\\in(3,4)$에서 $f(r)=0$, $f'(r)\\neq 0$, $k<0$ → 비성립(D). 그러나 $r>2$이므로 성립 집합에 속해야 함 → 모순 ✗. 따라서 $b\\le -3$은 불가",
+      "main": true,
+      "step": 10
+    },
+    {
+      "from": "note26",
+      "to": "note27",
+      "neuron": "전략2",
+      "type": "전략",
+      "domain_hint": "POLY",
+      "description": "b=0이 유일한 해이므로 f(x)=x³-8 확정",
+      "note": "$f(x)=x^3-8$. 남은 것은 $k$의 값 결정",
+      "main": true,
+      "step": 11
+    },
+    {
+      "from": [
+        "note27",
+        "note17"
+      ],
+      "to": "note28",
+      "neuron": "전략23",
+      "type": "전략",
+      "domain_hint": "EQN",
+      "description": "k<0 확정, k²=1에서 k 결정",
+      "note": "note2에서 $f(x)\\neq 0$, $f'(x)\\neq 0$인 점의 조건에서 $k^2$이 등장했고 조건은 $k^2 f'(x)=|f'(x)|$ 또는 $-k^2 f'(x)=|f'(x)|$. 이는 임의의 $k\\neq 0$에 대해 성립(부호 조건만 중요). 그러나 (D)에서 $k<0$이 필요했다. $k<0$이면 어떤 $k$든 동일한 해집합을 주는가? note1에서 좌변$=k^2\\cdot(|f|의 우도함수)$이고 우변$=|f'|$이므로 $k^2=1$이어야 한다. 즉 $k=\\pm 1$이고 $k<0$이므로 $k=-1$",
+      "main": true,
+      "step": 11
+    },
+    {
+      "from": [
+        "note27",
+        "note28"
+      ],
+      "to": "END",
+      "neuron": "전략25",
+      "type": "연산",
+      "domain_hint": "POLY",
+      "description": "f(k)=f(-1)=(-1)³-8=-9",
+      "note": "$f(-1)=(-1)^3-8=-1-8=-9$",
+      "main": true,
+      "step": 12
+    }
+  ],
+  "solution": "주어진 극한식을 정리한다. $h \\to 0+$에서 $k^3h \\to 0$이므로 좌변은 $\\frac{k^3}{k} \\cdot \\lim_{h \\to 0+} \\frac{|f(x+k^3h)| - |f(x)|}{k^3 h} = k^2 \\cdot (|f(x)|\\text{의 우미분})$이다.\n\n$f(x)$의 부호에 따라 분류한다.\n\n(B) $f(x) > 0$, $f'(x) \\neq 0$: $|f| = f$이므로 좌변 $= k^2 f'(x)$, 우변 $= |f'(x)|$. 성립 조건: $f'(x) > 0$.\n\n(C) $f(x) < 0$, $f'(x) \\neq 0$: $|f| = -f$이므로 좌변 $= -k^2 f'(x)$. 성립 조건: $f'(x) < 0$.\n\n(D) $f(x) = 0$, $f'(x) \\neq 0$: $f(x + k^3 h) \\approx f'(x) \\cdot k^3 h$이므로 좌변 $= \\frac{|f'(x)| \\cdot |k|^3}{k} \\cdot \\text{sgn}(h)$. $h \\to 0+$에서 $k > 0$이면 좌변 $= k^2|f'(x)| = |f'(x)|$ (성립), $k < 0$이면 좌변 $= -k^2|f'(x)| < 0$ (비성립).\n\n(④) $f'(x) = 0$: 양변 모두 0이므로 항상 성립.\n\n요약하면, $f(x) \\neq 0$이고 $f'(x) \\neq 0$인 점에서는 $f(x) \\cdot f'(x) > 0$일 때 성립하고, 이는 $k$의 부호와 무관하다. 그러나 (D)에서 $f$의 단근($f = 0$, $f' \\neq 0$)에서의 성립 여부는 $k$의 부호에 의존한다.\n\n성립 집합이 $\\{0\\} \\cup (2, \\infty)$이므로 $x = 2$는 비성립이다. 만약 $k > 0$이면 단근에서 성립하므로 $f(2) = 0$이면 $x = 2$에서 성립이 되어 모순이고, $f(2) \\neq 0$이면 이전 분석에서 모순이 도출된다. 따라서 $k < 0$이다.\n\n$k < 0$이면 $f$의 단근에서 비성립이다. $x = 0$은 고립 성립점이므로 $f'(0) = 0$이어야 한다.\n\n$f(x) = x^3 + bx^2 + d$ ($c = 0$ from $f'(0) = 0$), $f'(x) = x(3x + 2b)$.\n\n$(0, 2)$에서 $f'$의 영점이 없어야 하고, $(-\\infty, 0)$에서도 $f'$의 영점($x = 0$ 제외)이 없어야 한다. $f'$의 다른 영점 $-2b/3 \\ge 0$이고 $\\notin (0,2)$이므로 $b = 0$ 또는 $b \\le -3$.\n\n$f(2) = 0$으로 설정하면 ($k < 0$이므로 단근에서 비성립 → $x = 2$에서 비성립 ✓): $8 + 4b + d = 0$, $d = -8 - 4b$.\n\n$b = 0$: $f(x) = x^3 - 8 = (x-2)(x^2+2x+4)$. 유일한 실근 $x = 2$. $f'(x) = 3x^2 > 0$ ($x \\neq 0$). 검증: $x > 2$에서 $f > 0$, $f' > 0$ → 성립 ✓. $0 < x < 2$에서 $f < 0$, $f' > 0$ → 비성립 ✓. $x < 0$에서 $f < 0$, $f' > 0$ → 비성립 ✓. $x = 0$: $f'(0) = 0$ → 성립 ✓. $x = 2$: 단근, $k < 0$ → 비성립 ✓.\n\n$b \\le -3$인 경우 $(2, \\infty)$에서 $f$의 추가 실근이 발생하여 단근 비성립 조건과 충돌하므로 불가.\n\n따라서 $f(x) = x^3 - 8$. (B)(C)의 조건에서 $k^2 = 1$이어야 하고 $k < 0$이므로 $k = -1$.\n\n$f(k) = f(-1) = (-1)^3 - 8 = -9$.",
+  "original_solution": "문제의 식을 정리하면\n\n$$k^2 \\times \\lim_{h \\to 0+} \\frac{|f(x+k^3h)| - |f(x)|}{k^3h} = |f'(x)| \\quad \\cdots\\ (\\bigstar)$$\n\n이고, $x = t$일 때\n\n- $f(t) > 0$인 경우, $k^2 \\times f'(t) = |f'(t)|$\n- $f(t) < 0$인 경우, $-k^2 \\times f'(t) = |f'(t)|$\n- $f(t) = 0$인 경우, $k^2 \\times \\displaystyle\\lim_{h \\to 0+} \\frac{|f(t+k^3h)|}{k^3h} = |f'(t)| \\quad \\cdots$ ①\n\n이므로\n\n$f'(t) = 0$일 때, 항상 $(\\bigstar)$을 만족시킴 $\\cdots$ (♥)\n\n을 알 수 있다.\n\n또한, $f'(t) \\neq 0$일 때 $(\\bigstar)$을 만족시키려면\n\n$k^2 = 1$이고 $\\begin{cases} \\text{①}\\ f(t)>0 \\text{일 때 } f'(t)>0 \\\\ \\text{②}\\ f(t)<0 \\text{일 때 } f'(t)<0 \\end{cases}$\n\n이어야 하고, 이때\n\n- $k = 1$인 경우, $\\displaystyle\\lim_{h \\to 0+} \\frac{|f(t+h)|}{h} = |f'(t)|$이므로 $(\\bigstar)$을 만족시킴 $\\cdots$ ③\n- $k = -1$인 경우, $-\\displaystyle\\lim_{h \\to 0+} \\frac{|f(t-h)|}{h} = |f'(t)|$의 양변의 부호가 다르므로 $(\\bigstar)$을 만족시키지 않음 $\\cdots$ ④\n\n따라서 $(\\bigstar)$을 만족시키는 모든 실수 $x$의 집합이 $\\{x \\mid x = 0 \\text{ 또는 } x > 2\\}$임을 만족시키려면\n\n- $x > 2$일 때 만족시킴 $\\Rightarrow x > 2$에서 $f'(x) \\ge 0$ $\\quad(\\because \\displaystyle\\lim_{x \\to \\infty} f(x) = \\infty)$\n- $x = 2$일 때 만족시키지 않음 $\\Rightarrow f(2) = 0$이고 $f'(2) \\neq 0$ (∵ ①, (♥)) $\\cdots$ ⓒ $\\Rightarrow x = 2^{-}$에서 $f(x) < 0$\n- $x < 2$에서 $(\\bigstar)$을 만족시키는 $x$는 $0$뿐 $\\Rightarrow f'(0) = 0$이고, $x < 2,\\ x \\neq 0$일 때 $f'(x) > 0$ $\\cdots$ ⓓ\n  (∵ ② $\\Rightarrow f(t) < 0,\\ f'(t) < 0$인 $t$가 하나만 있을 수는 없음)\n\n이어야 하고,\n\nⓒ $\\Rightarrow k = -1$ (∵ ③, ④)\n\n임을 알 수 있다.\n\n[FIGURE: $y = f(x)$의 그래프. 원점을 지나고 $x = 2$에서 $x$축과 만나며, $x < 2$에서 $f(x) < 0$ (원점 제외), $x > 2$에서 $f(x) > 0$인 삼차함수]\n\n또한, $f(x)$는 최고차항의 계수가 $1$인 삼차함수이므로\n\nⓓ $\\Rightarrow f(x) = x^3 + a$\n\n로 놓으면 ⓒ에 의해\n\n$$f(2) = 0 \\Rightarrow a = -8$$\n\n을 얻는다.\n\n$$\\therefore\\ f(x) = x^3 - 8 \\Rightarrow f(k) = f(-1) = -1 - 8 = \\boxed{-9}$$",
+  "analysis": "주어진 극한식을 u=k³h 치환으로 정리하면 k²×(|f|의 우미분)=|f'(x)| 형태가 된다. f(t)의 부호에 따른 경우 분석으로 f'(t)=0이면 항상 성립(♥), f'(t)≠0이면 k²=1과 부호 조건이 필요함을 얻는다. k=1이면 f(t)=0 경우 성립, k=-1이면 비성립임을 확인한 뒤, 해집합 {x=0 또는 x>2}에서 f(2)=0, f'(2)≠0→k=-1, f'(0)=0, f'(x)=3x² → f(x)=x³-8, f(-1)=-9를 구한다.",
+  "new_neurons": [],
+  "metadata": {
+    "unit": "미적분",
+    "difficulty": "상",
+    "score": "4",
+    "type": "multiple_choice",
+    "answer": "2",
+    "year": "미확인",
+    "source": "수능",
+    "topic": "삼차함수와 극한",
+    "subtopic": "절댓값 함수의 미분가능성"
+  },
+  "edge_count": 31,
+  "side_count": 0,
+  "statement": "# 27. (수능) - 삼차함수와 절댓값 극한 조건\n\n## Problem\n최고차항의 계수가 $1$인 삼차함수 $f(x)$와 상수 $k$$(k \\neq 0)$에 대하여\n\n$$\\lim_{h \\to 0+} \\frac{|f(x+k^3h)| - |f(x)|}{kh} = |f'(x)|$$\n\n를 만족시키는 모든 실수 $x$의 값의 집합이\n\n$$\\{x \\mid x = 0 \\text{ 또는 } x > 2\\}$$\n\n일 때, $f(k)$의 값은? [4점]",
+  "dna": {
+    "nodes": [
+      {
+        "id": "top",
+        "dna": "Q1",
+        "label": "값을 구하라",
+        "category": "발문"
+      },
+      {
+        "id": "ask",
+        "dna": "F3",
+        "label": "f(k)",
+        "category": "함수"
+      },
+      {
+        "id": "conds",
+        "dna": "S1",
+        "label": "여러 조건",
+        "category": "구조"
+      },
+      {
+        "id": "vf",
+        "dna": "F6",
+        "label": "함수 f(x)",
+        "category": "함수"
+      },
+      {
+        "id": "cubic",
+        "dna": "F11",
+        "label": "삼차함수",
+        "category": "함수"
+      },
+      {
+        "id": "lead1",
+        "dna": "L4",
+        "label": "최고차항계수=1",
+        "category": "제한"
+      },
+      {
+        "id": "vk",
+        "dna": "T1",
+        "label": "변수 k",
+        "category": "말단"
+      },
+      {
+        "id": "k_nonzero",
+        "dna": "C2",
+        "label": "k≠0",
+        "category": "조건"
+      },
+      {
+        "id": "c0",
+        "dna": "T2",
+        "label": "상수 0",
+        "category": "말단"
+      },
+      {
+        "id": "c2",
+        "dna": "T2",
+        "label": "상수 2",
+        "category": "말단"
+      },
+      {
+        "id": "c3",
+        "dna": "T2",
+        "label": "상수 3",
+        "category": "말단"
+      },
+      {
+        "id": "c_neg1",
+        "dna": "T2",
+        "label": "상수 -1",
+        "category": "말단"
+      },
+      {
+        "id": "vx",
+        "dna": "T3",
+        "label": "독립변수 x",
+        "category": "말단"
+      },
+      {
+        "id": "vh",
+        "dna": "T3",
+        "label": "독립변수 h",
+        "category": "말단"
+      },
+      {
+        "id": "lim_eq",
+        "dna": "C1",
+        "label": "극한식=|f'(x)|",
+        "category": "조건"
+      },
+      {
+        "id": "lim_expr",
+        "dna": "E9",
+        "label": "h→0+ 극한",
+        "category": "수식"
+      },
+      {
+        "id": "lim_frac",
+        "dna": "E6",
+        "label": "분자×분모역수",
+        "category": "수식"
+      },
+      {
+        "id": "lim_num",
+        "dna": "E1",
+        "label": "|f(x+k³h)|-|f(x)|",
+        "category": "수식"
+      },
+      {
+        "id": "lim_denom",
+        "dna": "E6",
+        "label": "kh",
+        "category": "수식"
+      },
+      {
+        "id": "lim_denom_inv",
+        "dna": "E7",
+        "label": "(kh)^{-1}",
+        "category": "수식"
+      },
+      {
+        "id": "abs_fxk3h",
+        "dna": "E5",
+        "label": "|f(x+k³h)|",
+        "category": "수식"
+      },
+      {
+        "id": "fxk3h",
+        "dna": "F3",
+        "label": "f(x+k³h)",
+        "category": "함수"
+      },
+      {
+        "id": "arg_xk3h",
+        "dna": "E1",
+        "label": "x+k³h",
+        "category": "수식"
+      },
+      {
+        "id": "k3h",
+        "dna": "E6",
+        "label": "k³·h",
+        "category": "수식"
+      },
+      {
+        "id": "k_cube",
+        "dna": "E7",
+        "label": "k³",
+        "category": "수식"
+      },
+      {
+        "id": "neg_abs_fx",
+        "dna": "E2",
+        "label": "-|f(x)|",
+        "category": "수식"
+      },
+      {
+        "id": "abs_fx",
+        "dna": "E5",
+        "label": "|f(x)|",
+        "category": "수식"
+      },
+      {
+        "id": "fx_inner",
+        "dna": "F3",
+        "label": "f(x)",
+        "category": "함수"
+      },
+      {
+        "id": "rhs_absfpx",
+        "dna": "E5",
+        "label": "|f'(x)|",
+        "category": "수식"
+      },
+      {
+        "id": "fpx",
+        "dna": "F13",
+        "label": "f'(x)",
+        "category": "함수"
+      },
+      {
+        "id": "h0plus",
+        "dna": "T2",
+        "label": "0+",
+        "category": "말단"
+      },
+      {
+        "id": "sol_set",
+        "dna": "C21",
+        "label": "해집합={x=0또는x>2}",
+        "category": "조건"
+      },
+      {
+        "id": "set_def",
+        "dna": "S2",
+        "label": "{x|x=0또는x>2}",
+        "category": "구조"
+      }
+    ],
+    "edges": [
+      {
+        "from": "ask",
+        "to": "top"
+      },
+      {
+        "from": "conds",
+        "to": "top"
+      },
+      {
+        "from": "vf",
+        "to": "ask"
+      },
+      {
+        "from": "vk",
+        "to": "ask"
+      },
+      {
+        "from": "cubic",
+        "to": "vf"
+      },
+      {
+        "from": "lead1",
+        "to": "vf"
+      },
+      {
+        "from": "k_nonzero",
+        "to": "conds"
+      },
+      {
+        "from": "vk",
+        "to": "k_nonzero"
+      },
+      {
+        "from": "c0",
+        "to": "k_nonzero"
+      },
+      {
+        "from": "lim_expr",
+        "to": "lim_eq"
+      },
+      {
+        "from": "rhs_absfpx",
+        "to": "lim_eq"
+      },
+      {
+        "from": "lim_frac",
+        "to": "lim_expr"
+      },
+      {
+        "from": "vh",
+        "to": "lim_expr"
+      },
+      {
+        "from": "h0plus",
+        "to": "lim_expr"
+      },
+      {
+        "from": "lim_num",
+        "to": "lim_frac"
+      },
+      {
+        "from": "lim_denom_inv",
+        "to": "lim_frac"
+      },
+      {
+        "from": "lim_denom",
+        "to": "lim_denom_inv"
+      },
+      {
+        "from": "c_neg1",
+        "to": "lim_denom_inv"
+      },
+      {
+        "from": "vk",
+        "to": "lim_denom"
+      },
+      {
+        "from": "vh",
+        "to": "lim_denom"
+      },
+      {
+        "from": "abs_fxk3h",
+        "to": "lim_num"
+      },
+      {
+        "from": "neg_abs_fx",
+        "to": "lim_num"
+      },
+      {
+        "from": "fxk3h",
+        "to": "abs_fxk3h"
+      },
+      {
+        "from": "vf",
+        "to": "fxk3h"
+      },
+      {
+        "from": "arg_xk3h",
+        "to": "fxk3h"
+      },
+      {
+        "from": "vx",
+        "to": "arg_xk3h"
+      },
+      {
+        "from": "k3h",
+        "to": "arg_xk3h"
+      },
+      {
+        "from": "k_cube",
+        "to": "k3h"
+      },
+      {
+        "from": "vh",
+        "to": "k3h"
+      },
+      {
+        "from": "vk",
+        "to": "k_cube"
+      },
+      {
+        "from": "c3",
+        "to": "k_cube"
+      },
+      {
+        "from": "abs_fx",
+        "to": "neg_abs_fx"
+      },
+      {
+        "from": "fx_inner",
+        "to": "abs_fx"
+      },
+      {
+        "from": "vf",
+        "to": "fx_inner"
+      },
+      {
+        "from": "vx",
+        "to": "fx_inner"
+      },
+      {
+        "from": "fpx",
+        "to": "rhs_absfpx"
+      },
+      {
+        "from": "vf",
+        "to": "fpx"
+      },
+      {
+        "from": "vx",
+        "to": "fpx"
+      },
+      {
+        "from": "lim_eq",
+        "to": "sol_set"
+      },
+      {
+        "from": "set_def",
+        "to": "sol_set"
+      },
+      {
+        "from": "c0",
+        "to": "set_def"
+      },
+      {
+        "from": "c2",
+        "to": "set_def"
+      },
+      {
+        "from": "sol_set",
+        "to": "conds"
+      }
+    ],
+    "new_dna": []
+  },
+  "thinking_profile": null,
+  "folders": [],
+  "history": [],
+  "recovery_warnings": [],
+  "errata": [],
+  "created_at": "2026-03-28T12:57:22.285Z"
+}
