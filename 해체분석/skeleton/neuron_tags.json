@@ -1673,10 +1673,9 @@
   {
     "id": "전략45",
     "domain": [
-      "FUNC",
       "LIM"
     ],
-    "action": "PIECEWISE_BOUNDARY_OBSERVE"
+    "action": "RECIPROCAL_SUBSTITUTION_LIMIT"
   },
   {
     "id": "사실127",
@@ -1717,5 +1716,21 @@
       "SYM"
     ],
     "action": "POINT_SYMMETRY_VALUE_RELATION"
+  },
+  {
+    "id": "사실131",
+    "domain": [
+      "DIFF",
+      "LIM"
+    ],
+    "action": "DERIVATIVE_DEFINITION_AS_LIMIT"
+  },
+  {
+    "id": "사실132",
+    "domain": [
+      "DIFF",
+      "COORD"
+    ],
+    "action": "TANGENT_LINE_EQUATION"
   }
 ]
