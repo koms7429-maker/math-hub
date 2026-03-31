@@ -1,0 +1,42 @@
+{
+  "timestamp": "2026-03-31T05-50-10",
+  "total_rounds": 1,
+  "final_pids": [],
+  "theme_tags": {
+    "math_object": "(미상)",
+    "hidden_fact_type": "(미상)",
+    "idea_pids": []
+  },
+  "convergence": {
+    "rounds_to_eval_pass": 1,
+    "eval_rejects": 0,
+    "sendbacks": {
+      "db_to_pm": 0,
+      "db_to_im": 0,
+      "pm_to_im": 0
+    },
+    "self_loops": {
+      "idea_maker": 0,
+      "problem_maker": 0,
+      "detail_builder": 0
+    }
+  },
+  "cost": {
+    "total_api_calls": 0,
+    "total_thinking_chars": 0,
+    "total_output_chars": 0
+  },
+  "summary": {
+    "failures_by_stage": {
+      "idea_maker": 0,
+      "problem_maker": 0,
+      "detail_builder": 0
+    },
+    "bottleneck_stage": "detail_builder"
+  },
+  "learning_log": {
+    "idea_maker": [],
+    "problem_maker": [],
+    "detail_builder": []
+  }
+}
