@@ -1,1 +1,10 @@
-{"evaluator":[],"self":[]}
+{
+  "evaluator": [
+    {
+      "round": 0,
+      "from": "system",
+      "text": "출력이 max_tokens에 도달하여 잘림. 한 방향만 시도하고 NEEDS_MORE_THINKING으로 중단하십시오."
+    }
+  ],
+  "self": []
+}
