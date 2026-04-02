@@ -14,6 +14,11 @@
       "round": 1,
       "from": "system",
       "text": "출력이 max_tokens에 도달하여 잘림 (thinking: 0t, output: 24000t). Phase 1에서 SENDBACK 판정이 나오면 즉시 반송. Phase 2 후보 2개까지. Phase 3 포장으로 유일성 확보."
+    },
+    {
+      "round": 1,
+      "from": "system",
+      "text": "출력이 max_tokens에 도달하여 잘림 (thinking: 0t, output: 24000t). Phase 1에서 SENDBACK 판정이 나오면 즉시 반송. Phase 2 후보 2개까지. Phase 3 포장으로 유일성 확보."
     }
   ],
   "self": []
